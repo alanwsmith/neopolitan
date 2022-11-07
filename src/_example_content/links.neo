@@ -1,0 +1,15 @@
+---: CONTENT
+
+Links looks like this: <<link|1|ping>>
+
+<<link|1|things like "<" get parsed>>
+
+
+---: LINKS
+
+[
+  {
+    "href": "https://links.alanwsmith.com/"
+  }
+]
+

@@ -6,35 +6,78 @@ class Neopolitan():
     def __init__(self):
         self._content = []
         self._thing = {
-            "type": None, "content": None
+            "type": None, "content": []
         }
+        self._links = None
 
     def content(self):
         self._content.append('placeholder')
         content = "\n".join(self._content)
         return content
 
+    def expand_links(self, string):
+        m = re.search(r'<<link\|(\d+)\|(.+)>>', string)
+        if m:
+            link = self._links[int(m.group(1))]
+            c = ['<a', ' ']
+            for key in link.keys():
+                c.append(key)
+                c.append('="')
+                c.append(link[key])
+                c.append('"')
+            c.append('>')
+            c.append(m.group(2))
+            c.append('</a>')
+            string = string.replace(m.group(), ''.join(c))
+        return string
+
+
     def load(self, text):
         self.text = text
         sections = re.split(r'^---:\s+', self.text, flags=re.M)
+        # Get the meta data stuff first. 
+        for section in sections:
+            lines = section.split("\n")
+            section_type = lines[0].split(" ")[0]
+            if section_type == "LINKS":
+                self.load_links(lines)
+
         for section in sections:
             lines = section.split("\n")
             section_type = lines[0].split(" ")[0]
             if section_type == "CONTENT":
                 self.parse_content(lines)
 
+    def load_links(self, lines):
+        # This process moves the links one forward
+        # so the indexes match directly
+        self._links = [{}]
+        load_lines = json.loads("".join(lines[1:]))
+        for load_line in load_lines:
+            self._links.append(load_line)
+
+
     def parse_content(self, lines):
         for line in lines[1:]:
+            m_empty = re.search(r'^\s*$', line)
             m_header = re.search(r'^(#+) (.*)', line)
-            if m_header:
-                self._thing['type'] = f"h{len(m_header.group(1))}"
-                self._thing['content'] = m_header.group(2)
+
+            if m_empty:
                 self.publish()
-                continue
-            m_words = re.search(r'^([a-zA-Z])', line)
-            if m_words and self._thing['type'] == None:
-                print(line)
-            
+
+            elif m_header:
+                self._thing['type'] = f"h{len(m_header.group(1))}"
+                self._thing['content'] = [m_header.group(2)]
+
+            else:
+                self._thing['type'] = 'p'
+                self._thing['content'].append(line)
+
+            # elif m_words and self._thing['type'] == None:
+            #     self._thing['type'] = 'p'
+            #     self._thing['content'] = [m_words.group()]
+            # elif self._thing['type'] == 'p':
+            #     self._thing['content'].append(line)
 
 
     def publish(self):
@@ -42,23 +85,26 @@ class Neopolitan():
         t = self._thing['type']
         c = self._thing['content']
         if t == 'h1':
-            out = f"<h1>{c}</h1>"
+            out = f"<h1>{c[0]}</h1>"
         if t == 'h2':
-            out = f"<h2>{c}</h2>"
+            out = f"<h2>{c[0]}</h2>"
         if t == 'h3':
-            out = f"<h3>{c}</h3>"
+            out = f"<h3>{c[0]}</h3>"
         if t == 'h4':
-            out = f"<h4>{c}</h4>"
+            out = f"<h4>{c[0]}</h4>"
         if t == 'h5':
-            out = f"<h5>{c}</h5>"
+            out = f"<h5>{c[0]}</h5>"
         if t == 'h6':
-            out = f"<h6>{c}</h6>"
+            out = f"<h6>{c[0]}</h6>"
+        if t == 'p':
+            string = ' '.join(c)
+            string = self.expand_links(string)
+            out = f"<p>{string}</p>"
         if out != None:
             self._content.append(out)
 
-
         self._thing = {
-            "type": None, "content": None
+            "type": None, "content": []
         }
 
 

@@ -9,10 +9,7 @@ from html import escape
 
 class Builder():
     def __init__(self):
-        self._sections = {
-            "intro_neo": "asdf",
-            "intro_html": "werwerwer"
-        }
+        self._sections = {}
 
     def load_template(self, path):
         with open(path) as _template:
@@ -40,7 +37,18 @@ class Builder():
             n = Neopolitan()
             n.load(content)
             self._sections['intro_html'] = n.content()
+            self._sections['intro_html_text'] = escape(n.content())
             self._sections['intro_neo'] = escape(content)
+
+
+        with open("_example_content/links.neo") as _neo_i:
+            content = _neo_i.read()
+            n = Neopolitan()
+            n.load(content)
+            self._sections['links_html'] = n.content()
+            self._sections['links_html_text'] = escape(n.content())
+            self._sections['links_neo'] = escape(content)
+
 
         template = Template(self._template)
         with open(path, 'w') as _out:
