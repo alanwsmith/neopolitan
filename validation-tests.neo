@@ -18,15 +18,140 @@ in its long term stability)
 
 Validation is done via HTML. 
 
+---: TODO
+
+This is the list of all the tags to consider for
+inclusion. Not all of them will be used. This is
+focused on content and not metadata (which) is 
+contained in the ---: CONFIG json 
+
+[] address
+[] article
+[] aside
+[] footer
+[] header
+[] h1-h6
+[] main
+[] nav
+[] section
+[] blockquote
+[] dd
+[] div
+[] dl
+[] dt
+[] hr
+[] li
+[] figure/figcaption
+[x] ol
+[x] p
+[] pre
+[x] ul
+[] abbr
+[] br
+[] cite
+[] code
+[] data
+[] dfn
+[] em
+[] i
+[] kbd
+[] a
+[] strong
+[] bdi
+[] bdo
+[] mark
+[] q
+[] ruby
+[] rp
+[] rt
+[] s
+[] samp
+[] small
+[] span
+[] strong
+[] sub
+[] sup
+[] time
+[] u
+[] var
+[] wbr
+[] area
+[] audio
+[] img
+[] map
+[] track
+[] video
+[] html
+[] base
+[] head
+[] link
+[] meta
+[] style
+[] title
+[] body
+
+(Thinking maybe a lot of these are just straight double
+less than tags with the name, content and then arguments
+and directives passed)
+
+One of the directives that you could use for the 
+double lt tags is `~no-escape` or something like that so 
+that you can pass already escaped character in
+
+You do want to have the ability to have text above and 
+below the notes in the notes section. Probably not
+so much with lists. 
+
+
+---: HIDDEN
+
+
+
+
+
+
+
+
+
+
+
 ---: HIDDEN
 
 [] Description lists
 [] TODO Lists
 [] ::: :headers - which are attributes that are included
 [] ::: ~headers - which are custom thing that can be used by interpreters  
+[] Talks with Ben about accessibility 
+[] Figure out tables
+[] probably directives should be defined for `~` since 
+they're being used explicity for sections and possible other things
+[] so maybe `::: x-` for custom header payload.
+[] Make an explicit `---: CONFIG` section that's a json blog for
+whatever folks want to throw in it. 
 
 
 ---: HIDDEN
+
+- Some of these thought conflict. Because I don't want to break 
+flow and go find the prior version. They'll be cleaned up
+and reconsiled 
+
+- Make white space required between chunks. That is the separator
+without it, you don't do things like have a dash that's at the
+start of a later line in a paragraph. Something 
+- like that. It looks weird in general, but that's still part
+of the paragraph.
+
+- Personally I'd move that dash to the preceeding line because
+it looks weird. But that's not a requirement. 
+
+- Even without having to make a determination of intent, 
+using only empty lines for separators makes the software
+less complex. 
+
+
+- This will probably be split out to content-test.neo for just 
+those tests and another document will contain sections. 
 
 Metadata (LINKS, REFERENCES, and WIDGETS) can be called from
 external sources via a url or file location. Anything starting
@@ -36,13 +161,23 @@ is a relative path. Everything else needs to be interpreted
 by the parser. (this should cover windows `C:/` when that format
 is used, but need to verify)
 
-
 - Separate out the python code. It is
 to be maintained ina separate repo. The idea
 is that there's not a reference implementation. 
 It only matters if all the test cases pass. 
 
+- The list is setup to allow any number of spaces between the
+initial `-` and the text. TODO: Add an explict test for that. 
+Also, setup so that all markers have the same behavior.  
+
+- TOOD: Investigate starting ordered lists at different
+numbers
+
 Guidelines:
+
+- The goal is to handle the 80/20 of content easily 
+and punt the remaining 20% to native code and data
+files. 
 
 - remove leading and trailing whitespace from inside 
 tags that aren't preformatted.
@@ -50,8 +185,51 @@ tags that aren't preformatted.
 - white space (including empty lines) is fine between html
 output lines. 
 
+- Empty lines are always separators in CONTENT and
+other sections that are explicitly formatted. 
 
+- Leading and trailing whitespace is always removed
+from sections (todo: determine is there should be
+a flat that prevents this? Seems like no since you
+could just use PRE. That turns off all formatting
+but if you're looking for whitespace that seems
+like the right play)
 
+- TODO, Determine if there should be other stuff 
+in links besides the attributes in the metadata
+feels like yes so you can have one link with 
+a url and aria-lable and then style it differntly
+in differnt places. 
+
+- Thinking that ":" will always add things
+directly to attributes of a tag and `~` is 
+a processing instruction for whatever 
+implementation is being used. 
+
+- Fiugre out how to do References to other 
+content. You'll want that so things 
+can be included directly 
+
+- Show an example of using an HTML section
+to open a grid, then multiple div sections
+then a closing tag in another ---: HTML 
+section
+
+- Allow `::: ~header`, `::: ~footer`, 
+etc... directives under `---: CONTENT` that
+create an opening tag for that type of
+content. 
+
+- The `::: ~header` type directives will 
+be closed with a `---: END` section with 
+the directive for the tag to close (e.g.
+`::: ~header`)
+
+- `---: CONTENT` sections can have nothing
+in them other than attributes and directives
+
+- Don't make `TEST` part of the foundation. 
+Use it as an example of creating custom sections.
 
 
 
@@ -65,10 +243,10 @@ Single line paragraph
 
 --------------------------------------------------
 
-This is a paragraph on a single line
+The curtain rose and the show was on.
 
 --------------------------------------------------
-<p>This is a paragraph on a single line</p>
+<p>The curtain rose and the show was on.</p>
 --------------------------------------------------
 
 
@@ -78,13 +256,14 @@ Multi line paragraph
 
 --------------------------------------------------
 
-This is a
-paragraph
-on multiple
-lines
+The birch 
+canoe 
+slid on the 
+smooth planks. 
+
 
 --------------------------------------------------
-<p>This is a paragraph on multiple lines</p>
+<p>The birch canoe slid on the smooth planks.</p>
 --------------------------------------------------
 
 
@@ -94,20 +273,20 @@ Multiple paragraphs
 
 --------------------------------------------------
 
-This is three paragraphs with
-multiple lines in a content section.
+Glue the sheet to the dark blue 
+background. It is easy to tell the depth 
+of a well.
 
-Two blue fish swam in the tank. A saw is 
-a tool used for making boards.
+Rice is often served in round bowls. The box 
+was thrown beside the parked truck. 
 
-Cut the pie into large parts. There are more than 
-two factors here. Split the log with a quick, sharp 
-blow. Oak is strong and also gives shade.
+The source of the huge river is the clear spring.
+The salt breeze came across from the sea.
 
 --------------------------------------------------
-<p>This is three paragraphs with multiple lines in a content section.</p>
-<p>Two blue fish swam in the tank. A saw is a tool used for making boards.</p>
-<p>Cut the pie into large parts. There are more than two factors here. Split the log with a quick, sharp blow. Oak is strong and also gives shade.</p>
+<p>Glue the sheet to the dark blue background. It is easy to tell the depth of a well.</p>
+<p>Rice is often served in round bowls. The box was thrown beside the parked truck.</p>
+<p>The source of the huge river is the clear spring. The salt breeze came across from the sea.</p>
 --------------------------------------------------
 
 ---: TEST
@@ -116,10 +295,10 @@ White space at the end of a paragraph is stripped
 
 --------------------------------------------------
 
-Trailing whitespace removal check  
+Two blue fish swam in the tank.     
 
 --------------------------------------------------
-<p>Trailing whitespace removal check</p>
+<p>Two blue fish swam in the tank.</p>
 --------------------------------------------------
 
 
@@ -132,7 +311,21 @@ Properly escape HTML characters
 Checking & ' " < >
 
 --------------------------------------------------
-<p>Checking &amp; &#39; &quot; &lt; &gt;
+<p>Checking &amp; &#x27; &quot; &lt; &gt;</p>
+--------------------------------------------------
+
+---: TEST
+
+Unordered list with one item
+
+--------------------------------------------------
+
+- The colt reared and threw the tall rider. 
+
+--------------------------------------------------
+<ul>
+<li>The colt reared and threw the tall rider.</li>
+</ul>
 --------------------------------------------------
 
 
@@ -144,52 +337,102 @@ with white space at the end that is removed
 
 --------------------------------------------------
 
-- Item 1 that is on one line
+- It snowed, rained, and hailed the same 
+morning. Take the winding path to reach 
+the lake.    
 
-- Item 2 that is on 
-multiple lines without an indent 
 
-- Item 3 that is on multiple 
-    lines with an indent 
+- The wide road shimmered in the hot sun.
+  Lift the square stone over the fence.
+
+- Mesh wire keeps chicks inside. The frosty air 
+passed through the coat.
+
+- A saw is a tool used for making boards.   
+
 
 --------------------------------------------------
 <ul>
-<li>Item 1 that is on one line</li>
-<li>Item 2 that is on multiple lines without an indent</li>
-<li>Item 3 that is on multiple lines with an indent</li>
+<li>It snowed, rained, and hailed the same morning. Take the winding path to reach the lake.</li>
+<li>The wide road shimmered in the hot sun. Lift the square stone over the fence.</li>
+<li>Mesh wire keeps chicks inside. The frosty air passed through the coat.</li>
+<li>A saw is a tool used for making boards.</li>
 </ul>
-<p>After the list</p>
 --------------------------------------------------
-
----: TEST
-
-Ordered list
-
---------------------------------------------------
-
-
---------------------------------------------------
-
---------------------------------------------------
-
 
 
 ---: TEST
 
+List with dash at the start of a line in the content
 
 --------------------------------------------------
 
+- Use a pencil to write the first draft. A 
+- small creek cut across the field.
+
+- The dune rose from the edge of the water. Those 
+words were the cue for the actor to leave.
+
+- The ink stain dried on the finished page.
+
 
 --------------------------------------------------
-
+<ul>
+<li>Use a pencil to write the first draft. A - small creek cut across the field.</li>
+<li>The dune rose from the edge of the water. Those words were the cue for the actor to leave.</li>
+<li>The ink stain dried on the finished page.</li>
+</ul>
 --------------------------------------------------
-
 
 
 ---: TEST
 
+Ordered list with one item
 
 --------------------------------------------------
+
+1. The fruit peel was cut in thick slices.   
+
+--------------------------------------------------
+<ol>
+<li>The fruit peel was cut in thick slices.</li>
+</ol>
+--------------------------------------------------
+
+
+---: TEST
+
+Multiple item ordered list and numbers don't matter
+
+--------------------------------------------------
+
+1. There are more than two factors here.
+The grass curled around the fence post.
+
+2. Cut the pie into large parts. A wisp 
+of cloud hung in the blue air.
+
+3. Oak is strong and 
+    also gives shade.
+
+--------------------------------------------------
+<ol>
+<li>There are more than two factors here. The grass curled around the fence post.</li>
+<li>Cut the pie into large parts. A wisp of cloud hung in the blue air.</li>
+<li>Oak is strong and also gives shade.</li>
+</ol>
+--------------------------------------------------
+
+---: TEST
+
+Description List
+
+--------------------------------------------------
+
+- First sentence
+
+~ 
+
 
 
 --------------------------------------------------
