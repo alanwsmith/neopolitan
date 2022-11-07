@@ -4,12 +4,11 @@ Links looks like this: <<link|1|ping>>
 
 <<link|1|things like "<" get parsed>>
 
-
 ---: LINKS
 
 [
   {
-    "href": "https://links.alanwsmith.com/"
+    "href": "https://links.alanwsmith.com/",
+    "aria-label": "An example link pointing to my links website"
   }
 ]
-

@@ -11,16 +11,24 @@ class Neopolitan():
         self._links = None
 
     def content(self):
-        self._content.append('placeholder')
         content = "\n".join(self._content)
         return content
+
+    def escape_characters(self, string):
+        string = string.replace("&", '&amp;')
+        string = string.replace('"', '&quot;')
+        string = string.replace("'", '&#39;')
+        string = re.sub(r'(?<!<)<(?!<)', '&lt;', string)
+        string = re.sub(r'(?<!>)>(?!>)', '&gt;', string)
+        return string
 
     def expand_links(self, string):
         m = re.search(r'<<link\|(\d+)\|(.+)>>', string)
         if m:
             link = self._links[int(m.group(1))]
-            c = ['<a', ' ']
+            c = ['<a']
             for key in link.keys():
+                c.append(' ')
                 c.append(key)
                 c.append('="')
                 c.append(link[key])
@@ -31,17 +39,17 @@ class Neopolitan():
             string = string.replace(m.group(), ''.join(c))
         return string
 
-
     def load(self, text):
         self.text = text
         sections = re.split(r'^---:\s+', self.text, flags=re.M)
-        # Get the meta data stuff first. 
+        # Get the meta data stuff first since the 
+        # content uses it
         for section in sections:
             lines = section.split("\n")
             section_type = lines[0].split(" ")[0]
             if section_type == "LINKS":
                 self.load_links(lines)
-
+        # Then get the content 
         for section in sections:
             lines = section.split("\n")
             section_type = lines[0].split(" ")[0]
@@ -55,7 +63,6 @@ class Neopolitan():
         load_lines = json.loads("".join(lines[1:]))
         for load_line in load_lines:
             self._links.append(load_line)
-
 
     def parse_content(self, lines):
         for line in lines[1:]:
@@ -98,6 +105,7 @@ class Neopolitan():
             out = f"<h6>{c[0]}</h6>"
         if t == 'p':
             string = ' '.join(c)
+            string = self.escape_characters(string)
             string = self.expand_links(string)
             out = f"<p>{string}</p>"
         if out != None:
@@ -106,7 +114,6 @@ class Neopolitan():
         self._thing = {
             "type": None, "content": []
         }
-
 
         # for section in sections:
         #     lines = section.split("\n")
@@ -147,11 +154,6 @@ class Neopolitan():
     #             thing['content'] = m_header.group(2)
     #             self.publish(thing)
 
-
-
-
-
-        
 
     # def body_v1(self):
     #     self._body = []
