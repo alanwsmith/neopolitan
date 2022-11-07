@@ -1,4 +1,9 @@
----: CONTENT 
+---: NOTE
+
+This is old content that needs to be combined
+with the new stuff
+
+---: CONTENT
 
 # Neapolitan Guidelines
 
@@ -9,8 +14,6 @@ using to overhaul my site. Working on my site
 is no longer fun. It's a constant struggle against
 the opinions of frameworks and the limitations 
 of 
-
-
 
 This document is to determine the design of the
 content that'll be used for the site. I've been

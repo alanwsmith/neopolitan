@@ -1,0 +1,42 @@
+---: CONTENT
+
+# Usage Guide
+
+- Documents are made up of sections
+
+- Every section starts with a header 
+that looks like this:
+
+#+being_src
+---: CONTENT
+#+end_src
+
+- Headers can have attributes that look
+like this:
+
+#+begin_src
+---: DIV
+:::: :id example-id
+:::: :class alpha bravo
+#+end_src
+
+- For sections that have opening tags, those
+attributes are inserted into the tag:
+
+#+begin_src
+<div id="example-id" class="alpha bravo"></div>
+#+end_src
+
+- Not all sections having wrapping tags. For 
+example the `---: CONTENT` header does not. 
+
+---: TODO
+
+[] Provide a list of standard headers that have
+wrapper elements. (starting with DIV, NOTES, UL,
+LI, DL. etc...)
+
+
+
+
+
