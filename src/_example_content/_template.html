@@ -76,6 +76,10 @@
         padding-bottom: 12px;
         font-size: 0.9rem;
       }
+      pre {
+        background: #123431;
+        padding: 10px;
+      }
     </style>
   </head>
   <body>
@@ -87,7 +91,28 @@
       <a href="https://twitter.com/TheIdOfAlan">twitter</a> ~
       <a href="https://hachyderm.io/web/@TheIdOfAlan">hachyderm (mastodon)</a>
     </header>
-    <main>$BODY</main>
+    <main>
+
+      $intro_html
+      <!--
+      <pre>
+$intro_html_text
+      </pre>
+    -->
+      <pre>
+$intro_neo
+      </pre>
+
+      $links_html
+      <!--
+      <pre>
+$links_html_text
+      </pre>
+    -->
+      <pre>
+$links_neo
+      </pre>
+    </main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
       <br />

@@ -1,0 +1,5 @@
+<h1>Neopolitan</h1>
+<h2>Overview</h2>
+<p>Neopolitan is a plain-text content format inspired by <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, <a href="https://mdxjs.com/">MDX</a>, and <a href="https://orgmode.org/">Org-Mode</a>. It&#39;s designed to provide a strong separation of concerns between the content and it&#39;s usage. I&#39;ve run my website for over twenty years. I&#39;ve changed the way I store content half a dozen times. My with Neopolitan is for it to last the next twenty without having to change again.</p>
+<p>This page is built from a collection of Neopolitan documents. The content for each section is followed by the plain-text that generated it to demonstrate usage.</p>
+<p>For example:</p>
