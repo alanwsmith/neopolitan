@@ -4,15 +4,15 @@ import os
 
 from datetime import datetime
 from string import Template
-
+from neopolitan import Neopolitan
+from html import escape
 
 class Builder():
     def __init__(self):
-        pass
-
-        # self.source_root = f"{self.project_root}/builder/src"
-        # self.site_root = f"{self.project_root}/site"
-        # self.parts = {}
+        self._sections = {
+            "intro_neo": "asdf",
+            "intro_html": "werwerwer"
+        }
 
     def load_template(self, path):
         with open(path) as _template:
@@ -21,7 +21,6 @@ class Builder():
     def load_content(self, path):
         with open(path) as _content:
             self._content = _content.read()
-
 
     # def build_content(self):
     #     # Make dynamic content here
@@ -35,13 +34,20 @@ class Builder():
     #             self.parts[name_parts[0]] = _file_part.read()
 
     def output_page(self, path):
+
+        with open("_example_content/intro.neo") as _neo_i:
+            content = _neo_i.read()
+            n = Neopolitan()
+            n.load(content)
+            self._sections['intro_html'] = n.content()
+            self._sections['intro_neo'] = escape(content)
+
         template = Template(self._template)
         with open(path, 'w') as _out:
             _out.write(
-                template.substitute({
-                    "BODY": "This is the stuff",
-                    "PRE": 'werwerwer'
-                })
+                template.substitute(
+                    self._sections
+                )
             )
 
     # def make_page(self, template_path, output_path, data):
@@ -55,8 +61,9 @@ class Builder():
 if __name__ == "__main__":
     project_root = os.path.dirname(os.path.dirname(__file__))
     b = Builder()
-    b.load_template(f"{project_root}/builder/templates/home-page.html")
-    b.load_content(f"{project_root}/builder/content/reference.neo")
+    b.load_template(f"{project_root}/src/_example_content/_template.html")
+
+    # b.load_content(f"{project_root}/src/_example_content/intro.neo")
     b.output_page(f"{project_root}/site/index.html")
 
 

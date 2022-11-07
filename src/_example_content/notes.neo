@@ -1,0 +1,4 @@
+---: NOTES
+
+- Links and such start at `1` instead of `0`
+even though they point to an array. 
