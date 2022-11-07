@@ -29,7 +29,7 @@ class TestBasicPost(unittest.TestCase):
         with open('_test_targets/links.html.txt') as _target:
             target_lines = _target.read().split("\n")
             test_lines = n.content().split("\n")
-            line_count = 2
+            line_count = len(target_lines)
             for index in range(0, line_count):
                 self.assertEqual(target_lines[index], test_lines[index])
 

@@ -22,8 +22,7 @@ class Neopolitan():
         string = re.sub(r'(?<!>)>(?!>)', '&gt;', string)
         return string
 
-    def expand_links(self, string):
-        m = re.search(r'<<link\|(\d+)\|(.+)>>', string)
+    def expand_links_replacement(self, m):
         if m:
             link = self._links[int(m.group(1))]
             c = ['<a']
@@ -36,7 +35,28 @@ class Neopolitan():
             c.append('>')
             c.append(m.group(2))
             c.append('</a>')
-            string = string.replace(m.group(), ''.join(c))
+        return ''.join(c) 
+
+    def expand_links(self, string):
+        string = re.sub(r'<<link\|(\d+)\|(.+?)>>', self.expand_links_replacement, string, flags=re.M)
+
+        # print(x)
+
+        # m = re.search(r'<<link\|(\d+)\|(.+)>>', string)
+        # if m:
+        #     link = self._links[int(m.group(1))]
+        #     c = ['<a']
+        #     for key in link.keys():
+        #         c.append(' ')
+        #         c.append(key)
+        #         c.append('="')
+        #         c.append(link[key])
+        #         c.append('"')
+        #     c.append('>')
+        #     c.append(m.group(2))
+        #     c.append('</a>')
+        #     string = string.replace(m.group(), ''.join(c))
+
         return string
 
     def load(self, text):
@@ -107,7 +127,7 @@ class Neopolitan():
             string = ' '.join(c)
             string = self.escape_characters(string)
             string = self.expand_links(string)
-            out = f"<p>{string}</p>"
+            out = f"<p>{string.strip()}</p>"
         if out != None:
             self._content.append(out)
 

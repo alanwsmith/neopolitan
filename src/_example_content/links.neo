@@ -1,8 +1,12 @@
 ---: CONTENT
 
+### Links
+
 Links looks like this: <<link|1|ping>>
 
 <<link|1|things like "<" get parsed>>
+
+<<link|1|Multiple>><<link|1|links>> 
 
 ---: LINKS
 
