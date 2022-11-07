@@ -18,6 +18,46 @@ in its long term stability)
 
 Validation is done via HTML. 
 
+The tests are done by convention. The document 
+is split by `---: CONTENT` headers then 
+`---: PRE` headers. If there are three
+items in the resulting array the values are
+run as a test. The target is wrapped in 
+`-----------...` lines to control for 
+whitespace
+
+
+---: CONTENT
+
+## Single line paragraph
+
+---: PRE
+
+The curtain rose and the show was on.
+
+---: PRE
+
+--------------------------------------------------
+<p>The curtain rose and the show was on.</p>
+--------------------------------------------------
+
+---: CONTENT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---: TODO
 
 This is the list of all the tags to consider for
@@ -231,6 +271,15 @@ in them other than attributes and directives
 - Don't make `TEST` part of the foundation. 
 Use it as an example of creating custom sections.
 
+- If you want multiple lines in a `dd` you'll have to 
+drop in your own tags to make that happen in this
+iteration. 
+
+- The `---: DIV` just wraps it stuff in a 
+div with whatever headers you pass (or none
+if you don't). The internally processing
+is the same as `---: CONTENT`
+
 
 
 ---: CONTENT
@@ -238,16 +287,6 @@ Use it as an example of creating custom sections.
 ## Test Cases 
 
 ---: TEST
-
-Single line paragraph
-
---------------------------------------------------
-
-The curtain rose and the show was on.
-
---------------------------------------------------
-<p>The curtain rose and the show was on.</p>
---------------------------------------------------
 
 
 ---: TEST
@@ -429,27 +468,89 @@ Description List
 
 --------------------------------------------------
 
-- First sentence
+~ Alpha
 
-~ 
-
-
+: Split the log with a quick, sharp blow. He 
+ordered peach pie with ice cream.
 
 --------------------------------------------------
-
+<dl>
+<dt>Alpha</dt>
+<dd>Split the log with a quick, sharp blow. He ordered peach pie with ice cream.</dd>
+</dl>
 --------------------------------------------------
 
 
 
 ---: TEST
 
+Description List - Multiple Items
 
 --------------------------------------------------
 
+~ Bravo
+
+: Weave the carpet on the right hand side. The 
+    cup cracked and spilled its contents.   
+
+~ Charlie 
+
+: Pluck the bright rose without leaves. The 
+young kid jumped the rusty gate.
+
+
+--------------------------------------------------
+<dl>
+<dt>Bravo</dt>
+<dd>Weave the carpet on the right hand side. The cup cracked and spilled its contents.</dd>
+<dt>Charlie</dt>
+<dd>Pluck the bright rose without leaves. The young kid jumped the rusty gate.</dd>
+</dl>
+--------------------------------------------------
+
+
+---: TEST
+
+Description lists with multi paragraph
+descriptions. 
 
 --------------------------------------------------
 
+~ Delta
+
+:  Guess the results from the first scores. 
+
+: These thistles bend in a high wind.  
+
+
+~ Echo
+
+: The spot on the blotter was made by green ink.
+The cigar burned a hole in the desk top.
+
+
 --------------------------------------------------
+<dl>
+<dt>Delta</dt>
+<dd>Guess the results from the first scores.<br /><br />These thistles bend in a high wind.</dd>
+<dt>Echo</dt>
+<dd>The spot on the blotter was made by green ink. The cigar burned a hole in the desk top.</dd>
+</dl>
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

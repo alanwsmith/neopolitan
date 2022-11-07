@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neopolitan - A Plain-Text Document Format</title>
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Neopolitan - A Plain-Text Document Format"
+    />
+    <meta
+      property="og:description"
+      content="A plain-text document designed to last twenty years"
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/awsimages/image/upload/w_1200,h_630,o_0,b_rgb:000000/c_fit,w_1020,h_430,co_rgb:eeeeee,l_text:Abhaya%20Libre_124_bold:Neopolitan%20-%20A%20Plain-Text%20Document%20Format/fl_layer_apply,g_north_west,x_65,y_65/co_rgb:666666,l_text:Inconsolata_36_bold:from%20alan%20w.%20smith/fl_layer_apply,g_south_east,x_65,y_45/1x1.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site:id" content="@TheIdOfAlan" />
+    <meta name="twitter:creator" content="@TheIdOfAlan" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="228x228"
+      href="/favicons/228x228.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="180x180"
+      href="/favicons/180x180.png"
+    />
+
+    <style>
+      body {
+        background-color: #232946;
+        color: #b8c1ec;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: #fffffe;
+      }
+      a {
+        color: #eebbc3;
+        text-decoration: none;
+      }
+      header {
+        padding-top: 18px;
+        padding-bottom: 4px;
+        width: 100%;
+        max-width: 72ch;
+        margin: 0 auto;
+        border-bottom: 1px solid #888;
+      }
+      main {
+        width: 100%;
+        max-width: 72ch;
+        margin: 0 auto;
+      }
+      footer {
+        width: 100%;
+        max-width: 72ch;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 60px;
+        padding-bottom: 12px;
+        font-size: 0.9rem;
+      }
+    </style>
+    <script>
+      const kickoff = () => {}
+      document.addEventListener('DOMContentLoaded', kickoff)
+    </script>
+  </head>
+  <body>
+    <header>
+      <a href="/">Home</a> ~
+      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
+      <a href="https://links.alanwsmith.com">links</a> ~
+      <a href="https://podcast.alanwsmith.com/">podcast</a> ~
+      <a href="https://twitter.com/TheIdOfAlan">twitter</a>
+    </header>
+    <main><ul>
+<p>---: CONTENT</p>
+<p># Neopolitan Reference</p>
+<p>This document defines neopolitan transformations.</p>
+<p>This document is maintained with revisions. Any parser that produces the same output as the (TKTKTKTK link) neopolitan-py reference implementation is a valid Neopolitan interpreter for that revision. Providing additional functionality is encouraged.</p>
+<p>Every effort will be made to ensure backward compatibility once revision 1 is published. (Preview revisions before revision 1 will be used to finalize the first revision in an effort to lock in its long term stability)</p>
+<p>Validation is done via HTML.</p>
+<p>The tests are done by convention. The document is split by `---: CONTENT` headers then `---: PRE` headers. If there are three items in the resulting array the values are run as a test. The target is wrapped in `-----------...` lines to control for whitespace</p>
+<p>---: CONTENT</p>
+<p>## Single line paragraph</p>
+<p>---: PRE</p>
+<p>The curtain rose and the show was on.</p>
+<p>---: PRE</p>
+<p>-------------------------------------------------- &lt;p&gt;The curtain rose and the show was on.&lt;/p&gt; --------------------------------------------------</p>
+<p>---: CONTENT</p>
+<p>---: TODO</p>
+<p>This is the list of all the tags to consider for inclusion. Not all of them will be used. This is focused on content and not metadata (which) is contained in the ---: CONFIG json</p>
+<p>[] address [] article [] aside [] footer [] header [] h1-h6 [] main [] nav [] section [] blockquote [] dd [] div [] dl [] dt [] hr [] li [] figure/figcaption [x] ol [x] p [] pre [x] ul [] abbr [] br [] cite [] code [] data [] dfn [] em [] i [] kbd [] a [] strong [] bdi [] bdo [] mark [] q [] ruby [] rp [] rt [] s [] samp [] small [] span [] strong [] sub [] sup [] time [] u [] var [] wbr [] area [] audio [] img [] map [] track [] video [] html [] base [] head [] link [] meta [] style [] title [] body</p>
+<p>(Thinking maybe a lot of these are just straight double less than tags with the name, content and then arguments and directives passed)</p>
+<p>One of the directives that you could use for the double lt tags is `~no-escape` or something like that so that you can pass already escaped character in</p>
+<p>You do want to have the ability to have text above and below the notes in the notes section. Probably not so much with lists.</p>
+<p>---: HIDDEN</p>
+<p>---: HIDDEN</p>
+<p>[] Description lists [] TODO Lists [] ::: :headers - which are attributes that are included [] ::: ~headers - which are custom thing that can be used by interpreters [] Talks with Ben about accessibility [] Figure out tables [] probably directives should be defined for `~` since they&#x27;re being used explicity for sections and possible other things [] so maybe `::: x-` for custom header payload. [] Make an explicit `---: CONFIG` section that&#x27;s a json blog for whatever folks want to throw in it.</p>
+<p>---: HIDDEN</p>
+<li>Some of these thought conflict. Because I don&#x27;t want to break flow and go find the prior version. They&#x27;ll be cleaned up and reconsiled</li>
+<li>Make white space required between chunks. That is the separator without it, you don&#x27;t do things like have a dash that&#x27;s at the start of a later line in a paragraph. Something - like that. It looks weird in general, but that&#x27;s still part of the paragraph.</li>
+<li>Personally I&#x27;d move that dash to the preceeding line because it looks weird. But that&#x27;s not a requirement.</li>
+<li>Even without having to make a determination of intent, using only empty lines for separators makes the software less complex.</li>
+<li>This will probably be split out to content-test.neo for just those tests and another document will contain sections.</li>
+<li>Metadata (LINKS, REFERENCES, and WIDGETS) can be called from external sources via a url or file location. Anything starting with a `/` slash is a path accessible from the local file system starting for the root. Anything starting with a `./` dot slash is a relative path. Everything else needs to be interpreted by the parser. (this should cover windows `C:/` when that format is used, but need to verify)</li>
+<li>Separate out the python code. It is to be maintained ina separate repo. The idea is that there&#x27;s not a reference implementation. It only matters if all the test cases pass.</li>
+<li>The list is setup to allow any number of spaces between the initial `-` and the text. TODO: Add an explict test for that. Also, setup so that all markers have the same behavior.</li>
+<li>TOOD: Investigate starting ordered lists at different numbers</li>
+<li>Guidelines:</li>
+<li>The goal is to handle the 80/20 of content easily and punt the remaining 20% to native code and data files.</li>
+<li>remove leading and trailing whitespace from inside tags that aren&#x27;t preformatted.</li>
+<li>white space (including empty lines) is fine between html output lines.</li>
+<li>Empty lines are always separators in CONTENT and other sections that are explicitly formatted.</li>
+<li>Leading and trailing whitespace is always removed from sections (todo: determine is there should be a flat that prevents this? Seems like no since you could just use PRE. That turns off all formatting but if you&#x27;re looking for whitespace that seems like the right play)</li>
+<li>TODO, Determine if there should be other stuff in links besides the attributes in the metadata feels like yes so you can have one link with a url and aria-lable and then style it differntly in differnt places.</li>
+<li>Thinking that &quot;:&quot; will always add things directly to attributes of a tag and `~` is a processing instruction for whatever implementation is being used.</li>
+<li>Fiugre out how to do References to other content. You&#x27;ll want that so things can be included directly</li>
+<li>Show an example of using an HTML section to open a grid, then multiple div sections then a closing tag in another ---: HTML section</li>
+<li>Allow `::: ~header`, `::: ~footer`, etc... directives under `---: CONTENT` that create an opening tag for that type of content.</li>
+<li>The `::: ~header` type directives will be closed with a `---: END` section with the directive for the tag to close (e.g. `::: ~header`)</li>
+<li>`---: CONTENT` sections can have nothing in them other than attributes and directives</li>
+<li>Don&#x27;t make `TEST` part of the foundation. Use it as an example of creating custom sections.</li>
+<li>If you want multiple lines in a `dd` you&#x27;ll have to drop in your own tags to make that happen in this iteration.</li>
+<li>The `---: DIV` just wraps it stuff in a div with whatever headers you pass (or none if you don&#x27;t). The internally processing is the same as `---: CONTENT`</li>
+<li>---: CONTENT</li>
+<li>## Test Cases</li>
+<li>---: TEST</li>
+<li>---: TEST</li>
+<li>Multi line paragraph</li>
+<li>--------------------------------------------------</li>
+<li>The birch canoe slid on the smooth planks.</li>
+<li>-------------------------------------------------- &lt;p&gt;The birch canoe slid on the smooth planks.&lt;/p&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>Multiple paragraphs</li>
+<li>--------------------------------------------------</li>
+<li>Glue the sheet to the dark blue background. It is easy to tell the depth of a well.</li>
+<li>Rice is often served in round bowls. The box was thrown beside the parked truck.</li>
+<li>The source of the huge river is the clear spring. The salt breeze came across from the sea.</li>
+<li>-------------------------------------------------- &lt;p&gt;Glue the sheet to the dark blue background. It is easy to tell the depth of a well.&lt;/p&gt; &lt;p&gt;Rice is often served in round bowls. The box was thrown beside the parked truck.&lt;/p&gt; &lt;p&gt;The source of the huge river is the clear spring. The salt breeze came across from the sea.&lt;/p&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>White space at the end of a paragraph is stripped</li>
+<li>--------------------------------------------------</li>
+<li>Two blue fish swam in the tank.</li>
+<li>-------------------------------------------------- &lt;p&gt;Two blue fish swam in the tank.&lt;/p&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>Properly escape HTML characters</li>
+<li>--------------------------------------------------</li>
+<li>Checking &amp; &#x27; &quot; &lt; &gt;</li>
+<li>-------------------------------------------------- &lt;p&gt;Checking &amp;amp; &amp;#x27; &amp;quot; &amp;lt; &amp;gt;&lt;/p&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>Unordered list with one item</li>
+<li>--------------------------------------------------</li>
+<li>The colt reared and threw the tall rider.</li>
+<li>-------------------------------------------------- &lt;ul&gt; &lt;li&gt;The colt reared and threw the tall rider.&lt;/li&gt; &lt;/ul&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>Unordered lists with and without spaces and with mutiple lines with and withone indents with white space at the end that is removed</li>
+<li>--------------------------------------------------</li>
+<li>It snowed, rained, and hailed the same morning. Take the winding path to reach the lake.</li>
+<li>The wide road shimmered in the hot sun. Lift the square stone over the fence.</li>
+<li>Mesh wire keeps chicks inside. The frosty air passed through the coat.</li>
+<li>A saw is a tool used for making boards.</li>
+<li>-------------------------------------------------- &lt;ul&gt; &lt;li&gt;It snowed, rained, and hailed the same morning. Take the winding path to reach the lake.&lt;/li&gt; &lt;li&gt;The wide road shimmered in the hot sun. Lift the square stone over the fence.&lt;/li&gt; &lt;li&gt;Mesh wire keeps chicks inside. The frosty air passed through the coat.&lt;/li&gt; &lt;li&gt;A saw is a tool used for making boards.&lt;/li&gt; &lt;/ul&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>List with dash at the start of a line in the content</li>
+<li>--------------------------------------------------</li>
+<li>Use a pencil to write the first draft. A - small creek cut across the field.</li>
+<li>The dune rose from the edge of the water. Those words were the cue for the actor to leave.</li>
+<li>The ink stain dried on the finished page.</li>
+<li>-------------------------------------------------- &lt;ul&gt; &lt;li&gt;Use a pencil to write the first draft. A - small creek cut across the field.&lt;/li&gt; &lt;li&gt;The dune rose from the edge of the water. Those words were the cue for the actor to leave.&lt;/li&gt; &lt;li&gt;The ink stain dried on the finished page.&lt;/li&gt; &lt;/ul&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>Ordered list with one item</li>
+<li>--------------------------------------------------</li>
+<li>1. The fruit peel was cut in thick slices.</li>
+<li>-------------------------------------------------- &lt;ol&gt; &lt;li&gt;The fruit peel was cut in thick slices.&lt;/li&gt; &lt;/ol&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>Multiple item ordered list and numbers don&#x27;t matter</li>
+<li>--------------------------------------------------</li>
+<li>1. There are more than two factors here. The grass curled around the fence post.</li>
+<li>2. Cut the pie into large parts. A wisp of cloud hung in the blue air.</li>
+<li>3. Oak is strong and also gives shade.</li>
+<li>-------------------------------------------------- &lt;ol&gt; &lt;li&gt;There are more than two factors here. The grass curled around the fence post.&lt;/li&gt; &lt;li&gt;Cut the pie into large parts. A wisp of cloud hung in the blue air.&lt;/li&gt; &lt;li&gt;Oak is strong and also gives shade.&lt;/li&gt; &lt;/ol&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>Description List</li>
+<li>--------------------------------------------------</li>
+<li>~ Alpha</li>
+<li>: Split the log with a quick, sharp blow. He ordered peach pie with ice cream.</li>
+<li>-------------------------------------------------- &lt;dl&gt; &lt;dt&gt;Alpha&lt;/dt&gt; &lt;dd&gt;Split the log with a quick, sharp blow. He ordered peach pie with ice cream.&lt;/dd&gt; &lt;/dl&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>Description List - Multiple Items</li>
+<li>--------------------------------------------------</li>
+<li>~ Bravo</li>
+<li>: Weave the carpet on the right hand side. The cup cracked and spilled its contents.</li>
+<li>~ Charlie</li>
+<li>: Pluck the bright rose without leaves. The young kid jumped the rusty gate.</li>
+<li>-------------------------------------------------- &lt;dl&gt; &lt;dt&gt;Bravo&lt;/dt&gt; &lt;dd&gt;Weave the carpet on the right hand side. The cup cracked and spilled its contents.&lt;/dd&gt; &lt;dt&gt;Charlie&lt;/dt&gt; &lt;dd&gt;Pluck the bright rose without leaves. The young kid jumped the rusty gate.&lt;/dd&gt; &lt;/dl&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>Description lists with multi paragraph descriptions.</li>
+<li>--------------------------------------------------</li>
+<li>~ Delta</li>
+<li>:  Guess the results from the first scores.</li>
+<li>: These thistles bend in a high wind.</li>
+<li>~ Echo</li>
+<li>: The spot on the blotter was made by green ink. The cigar burned a hole in the desk top.</li>
+<li>-------------------------------------------------- &lt;dl&gt; &lt;dt&gt;Delta&lt;/dt&gt; &lt;dd&gt;Guess the results from the first scores.&lt;br /&gt;&lt;br /&gt;These thistles bend in a high wind.&lt;/dd&gt; &lt;dt&gt;Echo&lt;/dt&gt; &lt;dd&gt;The spot on the blotter was made by green ink. The cigar burned a hole in the desk top.&lt;/dd&gt; &lt;/dl&gt; --------------------------------------------------</li>
+<li>---: TEST</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: TEST</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: TEST</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: TEST</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: TEST</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: TEST</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: TEST</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: TEST</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: TEST</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>## Overview</li>
+<li>This document contains examples of all features in one place.</li>
+<li>## Examples</li>
+<li>### Headers</li>
+<li>Headers are made with between one and six *#* characters that map to `&lt;h1&gt;` to `&lt;h6&gt;`</li>
+<li>---: TEXT</li>
+<li>--- - &lt;&lt;text ---</li>
+<li>---: TEXT</li>
+<li>&lt;&lt;code</li>
+<li>&lt;&lt;text|&amp;#39;|&gt;&gt;</li>
+<li>&lt;&lt;text|&amp;#39;|:class something|&gt;&gt;</li>
+<li>*&lt;&lt;text|&amp;#39;|&gt;&gt;</li>
+<li>---: NOTES</li>
+<li>If you need to but &lt; or &gt; in code see if you need to add a |</li>
+<li>Setup:</li>
+<li>&lt;&lt;span|some text|:id some-id|:class some classes|&gt;&gt;</li>
+<li>Make closing `&gt;&gt;` tags allow an optional `|` or should that be mandatory? Feels like maybe so that it&#x27;s explicit and consistent</li>
+<li>definitely make `` work</li>
+<li>---: CONTENT</li>
+<li>## Tags</li>
+<li>div</li>
+<li>code</li>
+<li>span</li>
+<li>&lt;&lt;div|this is some text|:id some-id|&gt;&gt;</li>
+<li>&lt;&lt;div|this is some text|:id some-id&gt;&gt;</li>
+<li>For div span and code, any following item that starts with a `:` will turn into an attribute for the opening tag.</li>
+<li>Stuff without the `:` is not part of the spec but can be used in whatever way the implementaiton wants.</li>
+<li>---: CONTENT</li>
+<li>And single lines like this.</li>
+<li>## Formatting</li>
+<li>Headers are marked with between 1-6 &lt;&lt;code|#&gt;&gt; characters at the start of a line.</li>
+<li>There is &lt;&lt;text|*|strong&gt;&gt;*bold*&lt;&lt;text|*|strong&gt;&gt;</li>
+<li>There is &lt;&lt;text|*|strong|&gt;&gt;*bold*&lt;&lt;text|*|strong|&gt;&gt;</li>
+<li>TODO: Figure out is &lt;&lt;&lt;text|tree&gt;&gt;&gt; works for a way to pass things through so you can see them</li>
+<li>---: HIDDEN</li>
+<li>Content in hidden sections isn&#x27;t output.</li>
+<li>_</li>
+<li>---: DESCRIPTIONS :::: :class desription-example</li>
+<li>open with a dash</li>
+<li>the description itself follows</li>
+<li>an important detail is that</li>
+<li>both the initail text and the full defintion can be on multiple lines</li>
+<li>the *can* &lt;&lt;link|0|link&gt;&gt;</li>
+<li>in _both_ the initial and &lt;&lt;link|0|lower levels&gt;&gt;</li>
+<li>You can also have multipe paragraphs in a description like this one.</li>
+<li>An characters that you don&#x27;t want to get converted go in &lt;&lt;code|text&gt;&gt; tags &lt;&lt;text|*&gt;&gt;</li>
+<li>&lt;&lt;span|this is some stuff that will have a span on it|</li>
+<li>---: QUOTE</li>
+<li>This is a multiline block quote.</li>
+<li>With &lt;&lt;link|0|links&gt;&gt; and &lt;&lt;code|print(&#x27;code&#x27;)|python&gt;&gt;</li>
+<li>---: TODO</li>
+<li>[] Figure out tables</li>
+<li>[] Add escaping to pipes in double tags</li>
+<li>[x] Add description lists</li>
+<li>[] Also test todos that move to multiple lines</li>
+<li>And multipe paragraphs</li>
+<li>---: CONTENT</li>
+<li>TODOs and other blocks are stopped when another &lt;&lt;code|---:&gt;&gt; marker shows up.</li>
+<li>Moving between any type of block is possible.</li>
+<li>CONTENT is the one to default to.</li>
+<li>---: DIV :::: :id main-references :::: :class references</li>
+<li>### div wrappers</li>
+<li>divs with distint attributes can be added at any locaiton that wrap content. They are processed like normal content.</li>
+<li>&lt;&lt;link|0|alpha&gt;&gt; - the quick brown fox</li>
+<li>&lt;&lt;link|0|bravo&gt;&gt; - the quick brown fox</li>
+<li>---: CONTENT</li>
+<li>## Links</li>
+<li>SHould links have attributes in the tags or should those be stored in the metadata... feels like it&#x27;s nicerer to have them up top. So, make them both an option.</li>
+<li>&lt;&lt;link|1|basic link|&gt;&gt;</li>
+<li>&lt;&lt;link|1|link with &quot; and &lt; and &gt;|&gt;&gt;</li>
+<li>&lt;&lt;link|1|link that breaks lines|&gt;&gt;</li>
+<li>&lt;&lt;link|1|extra attributes|:id some-id|:class some class|&gt;&gt;</li>
+<li>&lt;&lt;link|1|atts break lines|:id link-jump-line|&gt;&gt;</li>
+</ul></main>
+    <footer>
+      made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
+      <br />
+      who has a <a href="https://www.alanwsmith.com">website</a> and a
+      <a href="https://podcast.alanwsmith.com/">podcast</a> <br />
+      among other <a href="https://links.alanwsmith.com">things</a>
+    </footer>
+  </body>
+</html>
