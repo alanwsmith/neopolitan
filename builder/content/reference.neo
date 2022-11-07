@@ -1,0 +1,114 @@
+---: CONTENT
+
+# Neopolitan Reference
+
+## Overview
+
+This file is used to verify Neopolitan 
+transformations. That include multi-line
+paragraphcs. 
+
+And single lines like this.
+
+## Formatting
+
+Headers are marked with between 1-6 <<code|#>>
+characters at the start of a line.
+
+There is <<text|*|strong>>*bold*<<text|*|strong>>
+
+TODO: Figure out is <<<text|tree>>> works for a way
+to pass things through so you can see them 
+
+
+---: HIDDEN
+
+Content in hidden sections isn't output. 
+
+
+
+_
+
+
+
+---: DESCRIPTIONS
+:::: :class desription-example
+
+- open with a dash
+
+the description itself follows
+
+- an important detail
+is that
+
+both the initail text and the full
+defintion can be on multiple lines
+
+- the *can* <<link|0|link>>
+
+in _both_ the initial and 
+<<link|0|lower levels>>
+
+You can also have multipe paragraphs
+in a description like this one. 
+
+
+
+
+
+An characters that you don't want to get converted go in
+<<code|text>> tags <<text|*>>
+
+<<span|this is some stuff that will have a span on it|
+
+
+---: QUOTE
+
+This is a multiline block quote. 
+
+With <<link|0|links>> and 
+<<code|print('code')|python>>
+
+
+
+
+---: TODO
+
+[] Figure out tables
+
+[] Add escaping to pipes in double tags
+
+[x] Add description lists
+
+[] Also test todos
+that move to multiple lines
+
+And multipe paragraphs
+
+
+---: CONTENT
+
+TODOs and other blocks are stopped when
+another <<code|---:>> marker shows up. 
+
+Moving between any type of block is possible. 
+
+CONTENT is the one to default to. 
+
+
+---: DIV
+:::: :id main-references
+:::: :class references
+
+### div wrappers
+
+divs with distint attributes can be added 
+at any locaiton that wrap content. They are 
+processed like normal content. 
+
+- <<link|0|alpha>> - the quick brown fox
+
+- <<link|0|bravo>> - the quick brown fox
+
+
+
