@@ -2,31 +2,21 @@
 
 # Neopolitan
 
-Neopolitan is a plain-text content format inspired by 
-<<link|1|Markdown>>, <<link|2|MDX>>, and 
-<<link|3|Org-Mode>>. It's designed to provide a strong 
-separation of concerns between the content 
-and it's usage. I've run my website for over 
-twenty years. I've changed the way I store 
-content half a dozen times. My with Neopolitan is for
-it to last the next twenty without having to change again.
+Neopolitan is a plain-text document format. It's designed 
+to provide wide flexibility while maintaining a strong 
+separation of concerns between content and its usage. 
+
+I've run my site for twenty years. In that time, I've 
+undertaken a half dozen overhauls that required migrating 
+content. As I think forward to the next twenty years, I 
+never want to have to do that again. That's the goal of 
+Neopolitan. To be the format for the next two decades. 
+
+
+## Live Examples
 
 This page is built from a collection of Neopolitan documents. 
 The content for each section is followed by the plain-text 
 that generated it to demonstrate usage.
 
 For example:
-
----: LINKS
-
-[
-    {
-        "href": "https://daringfireball.net/projects/markdown/"
-    },
-    {
-        "href": "https://mdxjs.com/"
-    },
-    {
-        "href": "https://orgmode.org/"
-    }
-]

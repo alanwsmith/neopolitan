@@ -9,20 +9,18 @@ class TestBasicPost(unittest.TestCase):
     def setUp(self):
         self.maxDiff = None 
 
-
-    # def test_intro(self):
-    #     n = Neopolitan()
-    #     with open('_example_content/intro.neo') as _source:
-    #         n.load(_source.read())
-    #     with open('_test_targets/intro.html') as _target:
-    #         target_lines = _target.read().split("\n")
-    #         test_lines = n.content().split("\n")
-    #         line_count = 2
-    #         for index in range(0, line_count):
-    #             self.assertEqual(target_lines[index], test_lines[index])
-
-
     def test_intro(self):
+        n = Neopolitan()
+        with open('_example_content/intro.neo') as _source:
+            n.load(_source.read())
+        with open('_test_targets/intro.html.txt') as _target:
+            target_lines = _target.read().split("\n")
+            test_lines = n.content().split("\n")
+            line_count = len(target_lines)
+            for index in range(0, line_count):
+                self.assertEqual(target_lines[index], test_lines[index])
+
+    def test_links(self):
         n = Neopolitan()
         with open('_example_content/links.neo') as _source:
             n.load(_source.read())
@@ -32,12 +30,6 @@ class TestBasicPost(unittest.TestCase):
             line_count = len(target_lines)
             for index in range(0, line_count):
                 self.assertEqual(target_lines[index], test_lines[index])
-
-
-            
-
-
-
 
 
 

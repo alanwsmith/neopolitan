@@ -92,26 +92,73 @@
       <a href="https://hachyderm.io/web/@TheIdOfAlan">hachyderm (mastodon)</a>
     </header>
     <main>
-      <h3>Links</h3>
+
+      <h1>Neopolitan</h1>
+<p>Neopolitan is a plain-text document format. It&#39;s designed to provide wide flexibility while maintaining a strong separation of concerns between content and its usage.</p>
+<p>I&#39;ve run my site for twenty years. In that time, I&#39;ve undertaken a half dozen overhauls that required migrating content. As I think forward to the next twenty years, I never want to have to do that again. That&#39;s the goal of Neopolitan. To be the format for the next two decades.</p>
+<h2>Live Examples</h2>
+<p>This page is built from a collection of Neopolitan documents. The content for each section is followed by the plain-text that generated it to demonstrate usage.</p>
+<p>For example:</p>
+      <!--
+      <pre>
+&lt;h1&gt;Neopolitan&lt;/h1&gt;
+&lt;p&gt;Neopolitan is a plain-text document format. It&amp;#39;s designed to provide wide flexibility while maintaining a strong separation of concerns between content and its usage.&lt;/p&gt;
+&lt;p&gt;I&amp;#39;ve run my site for twenty years. In that time, I&amp;#39;ve undertaken a half dozen overhauls that required migrating content. As I think forward to the next twenty years, I never want to have to do that again. That&amp;#39;s the goal of Neopolitan. To be the format for the next two decades.&lt;/p&gt;
+&lt;h2&gt;Live Examples&lt;/h2&gt;
+&lt;p&gt;This page is built from a collection of Neopolitan documents. The content for each section is followed by the plain-text that generated it to demonstrate usage.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+      </pre>
+    -->
+      <pre>
+---: CONTENT
+
+# Neopolitan
+
+Neopolitan is a plain-text document format. It&#x27;s designed 
+to provide wide flexibility while maintaining a strong 
+separation of concerns between content and its usage. 
+
+I&#x27;ve run my site for twenty years. In that time, I&#x27;ve 
+undertaken a half dozen overhauls that required migrating 
+content. As I think forward to the next twenty years, I 
+never want to have to do that again. That&#x27;s the goal of 
+Neopolitan. To be the format for the next two decades. 
+
+
+## Live Examples
+
+This page is built from a collection of Neopolitan documents. 
+The content for each section is followed by the plain-text 
+that generated it to demonstrate usage.
+
+For example:
+
+      </pre>
+
+      <h2>Links</h2>
 <p>Links looks like this: <a href="https://links.alanwsmith.com/" aria-label="An example link pointing to my links website">ping</a></p>
 <p><a href="https://links.alanwsmith.com/" aria-label="An example link pointing to my links website">things like &quot;&lt;&quot; get parsed</a></p>
 <p><a href="https://links.alanwsmith.com/" aria-label="An example link pointing to my links website">Multiple</a><a href="https://links.alanwsmith.com/" aria-label="An example link pointing to my links website">links</a></p>
+      <!--
       <pre>
-&lt;h3&gt;Links&lt;/h3&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
 &lt;p&gt;Links looks like this: &lt;a href=&quot;https://links.alanwsmith.com/&quot; aria-label=&quot;An example link pointing to my links website&quot;&gt;ping&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://links.alanwsmith.com/&quot; aria-label=&quot;An example link pointing to my links website&quot;&gt;things like &amp;quot;&amp;lt;&amp;quot; get parsed&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://links.alanwsmith.com/&quot; aria-label=&quot;An example link pointing to my links website&quot;&gt;Multiple&lt;/a&gt;&lt;a href=&quot;https://links.alanwsmith.com/&quot; aria-label=&quot;An example link pointing to my links website&quot;&gt;links&lt;/a&gt;&lt;/p&gt;
       </pre>
+    -->
       <pre>
 ---: CONTENT
 
-### Links
+## Links
+
 
 Links looks like this: &lt;&lt;link|1|ping&gt;&gt;
 
 &lt;&lt;link|1|things like &quot;&lt;&quot; get parsed&gt;&gt;
 
 &lt;&lt;link|1|Multiple&gt;&gt;&lt;&lt;link|1|links&gt;&gt; 
+
 
 ---: LINKS
 
@@ -120,52 +167,6 @@ Links looks like this: &lt;&lt;link|1|ping&gt;&gt;
     &quot;href&quot;: &quot;https://links.alanwsmith.com/&quot;,
     &quot;aria-label&quot;: &quot;An example link pointing to my links website&quot;
   }
-]
-
-      </pre>
-
-      <h1>Neopolitan</h1>
-<p>Neopolitan is a plain-text content format inspired by  <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, <a href="https://mdxjs.com/">MDX</a>, and  <a href="https://orgmode.org/">Org-Mode</a>. It&#39;s designed to provide a strong  separation of concerns between the content  and it&#39;s usage. I&#39;ve run my website for over  twenty years. I&#39;ve changed the way I store  content half a dozen times. My with Neopolitan is for it to last the next twenty without having to change again.</p>
-<p>This page is built from a collection of Neopolitan documents.  The content for each section is followed by the plain-text  that generated it to demonstrate usage.</p>
-<p>For example:</p>
-      <pre>
-&lt;h1&gt;Neopolitan&lt;/h1&gt;
-&lt;p&gt;Neopolitan is a plain-text content format inspired by  &lt;a href=&quot;https://daringfireball.net/projects/markdown/&quot;&gt;Markdown&lt;/a&gt;, &lt;a href=&quot;https://mdxjs.com/&quot;&gt;MDX&lt;/a&gt;, and  &lt;a href=&quot;https://orgmode.org/&quot;&gt;Org-Mode&lt;/a&gt;. It&amp;#39;s designed to provide a strong  separation of concerns between the content  and it&amp;#39;s usage. I&amp;#39;ve run my website for over  twenty years. I&amp;#39;ve changed the way I store  content half a dozen times. My with Neopolitan is for it to last the next twenty without having to change again.&lt;/p&gt;
-&lt;p&gt;This page is built from a collection of Neopolitan documents.  The content for each section is followed by the plain-text  that generated it to demonstrate usage.&lt;/p&gt;
-&lt;p&gt;For example:&lt;/p&gt;
-      </pre>
-      <pre>
----: CONTENT
-
-# Neopolitan
-
-Neopolitan is a plain-text content format inspired by 
-&lt;&lt;link|1|Markdown&gt;&gt;, &lt;&lt;link|2|MDX&gt;&gt;, and 
-&lt;&lt;link|3|Org-Mode&gt;&gt;. It&#x27;s designed to provide a strong 
-separation of concerns between the content 
-and it&#x27;s usage. I&#x27;ve run my website for over 
-twenty years. I&#x27;ve changed the way I store 
-content half a dozen times. My with Neopolitan is for
-it to last the next twenty without having to change again.
-
-This page is built from a collection of Neopolitan documents. 
-The content for each section is followed by the plain-text 
-that generated it to demonstrate usage.
-
-For example:
-
----: LINKS
-
-[
-    {
-        &quot;href&quot;: &quot;https://daringfireball.net/projects/markdown/&quot;
-    },
-    {
-        &quot;href&quot;: &quot;https://mdxjs.com/&quot;
-    },
-    {
-        &quot;href&quot;: &quot;https://orgmode.org/&quot;
-    }
 ]
 
       </pre>

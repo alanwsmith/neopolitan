@@ -88,14 +88,11 @@ class Neopolitan():
         for line in lines[1:]:
             m_empty = re.search(r'^\s*$', line)
             m_header = re.search(r'^(#+) (.*)', line)
-
             if m_empty:
                 self.publish()
-
             elif m_header:
                 self._thing['type'] = f"h{len(m_header.group(1))}"
                 self._thing['content'] = [m_header.group(2)]
-
             else:
                 self._thing['type'] = 'p'
                 self._thing['content'].append(line)
@@ -111,19 +108,23 @@ class Neopolitan():
         out = None
         t = self._thing['type']
         c = self._thing['content']
+        # TODO: Send the headers through the 
+        # escaper. And links.
         if t == 'h1':
-            out = f"<h1>{c[0]}</h1>"
+            out = f"<h1>{c[0].strip()}</h1>"
         if t == 'h2':
-            out = f"<h2>{c[0]}</h2>"
+            out = f"<h2>{c[0].strip()}</h2>"
         if t == 'h3':
-            out = f"<h3>{c[0]}</h3>"
+            out = f"<h3>{c[0].strip()}</h3>"
         if t == 'h4':
-            out = f"<h4>{c[0]}</h4>"
+            out = f"<h4>{c[0].strip()}</h4>"
         if t == 'h5':
-            out = f"<h5>{c[0]}</h5>"
+            out = f"<h5>{c[0].strip()}</h5>"
         if t == 'h6':
-            out = f"<h6>{c[0]}</h6>"
+            out = f"<h6>{c[0].strip()}</h6>"
         if t == 'p':
+            for i in range(0, len(c)):
+                c[i] = c[i].strip()
             string = ' '.join(c)
             string = self.escape_characters(string)
             string = self.expand_links(string)
