@@ -1243,5 +1243,9 @@ it.
 - section headers are always 
   UPPERCASE and only 1 word/string
 
-
+- Maybe make links JSON all the time. 
+Let widgets be whatever they want. 
+That way there isn't a burden on 
+other languates to try to parse javascript
+(unless that turns out to be trivial)
 

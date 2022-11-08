@@ -1,0 +1,47 @@
+---: HTML
+
+<!DOCTYPE html>
+<html><head><style> body {
+background-color: #000; color: #aaa; }
+</style></head><body>
+
+---: CONTENT
+
+# Neopolitan Integration Test
+
+This document is the reference integration 
+get for Neopolitan. Any parser that renders 
+it with the same out is considered valid.
+
+## Whitespace And Scope
+
+Whitespace is doesn't matter except when it
+does. (e.g. `---: PRE` sections). 
+
+This document does not aim to test edge 
+cases and variations. See the <<link|1|unit 
+tests>> for that.
+
+---: TODO
+:::: :id main-todo
+:::: :class sierra tango 
+
+[] Put in the actual link to unit tests 
+when the location has been determined. 
+
+
+
+
+---: LINKS
+
+[
+  {
+    "href": "https://links.alanwsmith.com/",
+    "aria-label": "This is not currently the right link"
+  }
+]
+
+
+---: HTML
+
+</body></html>
