@@ -322,15 +322,35 @@ The cigar burned a hole in the desk top.
 
 ---: CONTENT
 
+Mixed content
 
 ---: PRE
 
+## Victor
+
+Steam hissed from the broken valve. There 
+was a sound of dry leaves outside.
+
+- Torn scraps littered the stone floor.
+
+- We admire and love a good cook. Corn 
+  cobs can be used to kindle a fire.
+
+Where were they when the noise started. The 
+paper box is full of thumb tacks. The petals 
+fall with the next puff of wind.
 
 
 ---: PRE
 
 --------------------------------------------------
-
+<h2>Victor</h2>
+<p>Steam hissed from the broken valve. There was a sound of dry leaves outside.</p>
+<ul>
+<li>Torn scraps littered the stone floor.</li>
+<li>We admire and love a good cook. Corn cobs can be used to kindle a fire.</li>
+</ul>
+<p>Where were they when the noise started. The paper box is full of thumb tacks. The petals fall with the next puff of wind.</p>
 --------------------------------------------------
 
 
@@ -1184,7 +1204,12 @@ the gain for trying to nest would be
 minimal compared to the effort and 
 complexity involved. 
 
-
+Figure out if you want to make
+`---: TABLE` be a header or just
+something in the content. I think
+probably it should be a header
+so attributes can be applied to
+it. 
 
 
 
