@@ -95,7 +95,6 @@ TODO: Figure out is <<<text|tree>>> works for a way
 to pass things through so you can see them 
 
 
----: HIDDEN
 
 Content in hidden sections isn't output. 
 
@@ -105,7 +104,7 @@ _
 
 
 
----: DESCRIPTIONS
+,---: DESCRIPTIONS
 :::: :class desription-example
 
 - open with a dash
@@ -338,19 +337,7 @@ below the notes in the notes section. Probably not
 so much with lists. 
 
 
----: HIDDEN
 
-
-
-
-
-
-
-
-
-
-
----: HIDDEN
 
 [] Description lists
 [] TODO Lists
@@ -365,7 +352,6 @@ they're being used explicity for sections and possible other things
 whatever folks want to throw in it. 
 
 
----: HIDDEN
 
 - Some of these thought conflict. Because I don't want to break 
 flow and go find the prior version. They'll be cleaned up

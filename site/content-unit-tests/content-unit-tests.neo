@@ -1,12 +1,18 @@
+---: HTML
 
+<!DOCTYPE html>
+<html><head><style>body {
+background-color: #000; color: #aaa; }
+</style></head><body>
+<div><a href="/">Home</a></div>
 
 ---: CONTENT
 
 # Neopolitan Unit Tests
 
-This document is use to verify functionality. 
+This document is use to verify neopolitan functionality. 
 
-## Details
+### Details
 
 - Each CONTENT section that's followed by two
 PRE sections collectively constitute a test
@@ -32,7 +38,7 @@ applies to are DIVs. TBD on others
 
 ---: CONTENT
 
-## Single line paragraph
+### Single line paragraph
 
 ---: PRE
 
@@ -47,7 +53,7 @@ The curtain rose and the show was on.
 
 ---: CONTENT
 
-## Multi line paragraph
+### Multi line paragraph
 
 ---: PRE
 
@@ -65,7 +71,7 @@ smooth planks.
 
 ---: CONTENT
 
-## Multiple paragraphs
+### Multiple paragraphs
 
 ---: PRE
 
@@ -89,7 +95,7 @@ The salt breeze came across from the sea.
 
 ---: CONTENT
 
-## White space at the end of a paragraph is stripped
+### White space at the end of a paragraph is stripped
 
 ---: PRE
 
@@ -104,7 +110,7 @@ Two blue fish swam in the tank.
 
 ---: CONTENT
 
-## Properly escape HTML characters
+### Properly escape HTML characters
 
 ---: PRE
 
@@ -120,7 +126,7 @@ Checking & ' " < >
 
 ---: CONTENT
 
-## Unordered list with one item
+### Unordered list with one item
 
 ---: PRE
 
@@ -137,7 +143,7 @@ Checking & ' " < >
 
 ---: CONTENT
 
-## Unordered lists with and without spaces and
+### Unordered lists with and without spaces and
 with mutiple lines with and withone indents
 with white space at the end that is removed
 
@@ -170,7 +176,7 @@ passed through the coat.
 
 ---: CONTENT
 
-## List surrounded by paragraphs
+### List surrounded by paragraphs
 
 ---: PRE
 
@@ -199,7 +205,7 @@ It is hard to erase blue or red ink.
 
 ---: CONTENT
 
-## List with dash at the start of a line in the content
+### List with dash at the start of a line in the content
 
 ---: PRE
 
@@ -270,7 +276,7 @@ Description List
 
 ---: PRE
 
-~ Alpha
+~ Alfa
 
 : Split the log with a quick, sharp blow. He 
 ordered peach pie with ice cream.
@@ -279,7 +285,7 @@ ordered peach pie with ice cream.
 
 --------------------------------------------------
 <dl>
-<dt>Alpha</dt>
+<dt>Alfa</dt>
 <dd>Split the log with a quick, sharp blow. He ordered peach pie with ice cream.</dd>
 </dl>
 --------------------------------------------------
@@ -347,11 +353,11 @@ The cigar burned a hole in the desk top.
 
 ---: CONTENT
 
-## Headers
+### Headers
 
 ---: PRE
 
-# Alpha 
+# Alfa 
 
 #### Delta 
 
@@ -361,12 +367,12 @@ The cigar burned a hole in the desk top.
 
 ###### Foxtrot  
 
-## Bravo 
+### Bravo 
 
 ---: PRE
 
 --------------------------------------------------
-<h1>Alpha</h1>
+<h1>Alfa</h1>
 <h4>Delta</h4>
 <h3>Charlie</h3>
 <h5>Echo</h5>
@@ -381,7 +387,7 @@ Mixed content
 
 ---: PRE
 
-## Victor
+### Victor
 
 Steam hissed from the broken valve. There 
 was a sound of dry leaves outside.
@@ -409,4 +415,6 @@ fall with the next puff of wind.
 --------------------------------------------------
 
 
+---: HTML
 
+</body></html>

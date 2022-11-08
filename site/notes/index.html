@@ -1,0 +1,62 @@
+<h2>Tags</h2>
+<ul>
+<li>div</li>
+<li>code</li>
+<li>span</li>
+</ul>
+<p>&lt;&lt;div|this is some text|:id some-id|&gt;&gt;</p>
+<p>&lt;&lt;div|this is some text|:id some-id&gt;&gt;</p>
+<p>For div span and code, any following item that starts with a `:` will turn into an attribute for the opening tag.</p>
+<p>Stuff without the `:` is not part of the spec but can be used in whatever way the implementaiton wants.</p>
+<p>And single lines like this.</p>
+<h2>Formatting</h2>
+<p>Headers are marked with between 1-6 &lt;&lt;code|#&gt;&gt; characters at the start of a line.</p>
+<p>There is &lt;&lt;text|*|strong&gt;&gt;*bold*&lt;&lt;text|*|strong&gt;&gt;</p>
+<p>There is &lt;&lt;text|*|strong|&gt;&gt;*bold*&lt;&lt;text|*|strong|&gt;&gt;</p>
+<p>TODO: Figure out is &lt;&lt;&lt;text|tree&gt;&gt;&gt; works for a way to pass things through so you can see them</p>
+<p>Content in hidden sections isn&#x27;t output.</p>
+<p>_</p>
+<p>,---: DESCRIPTIONS :::: :class desription-example</p>
+<ul>
+<li>open with a dash</li>
+</ul>
+<p>the description itself follows</p>
+<ul>
+<li>an important detail is that</li>
+</ul>
+<p>both the initail text and the full defintion can be on multiple lines</p>
+<ul>
+<li>the *can* &lt;&lt;link|0|link&gt;&gt;</li>
+</ul>
+<p>in _both_ the initial and &lt;&lt;link|0|lower levels&gt;&gt;</p>
+<p>You can also have multipe paragraphs in a description like this one.</p>
+<p>An characters that you don&#x27;t want to get converted go in &lt;&lt;code|text&gt;&gt; tags &lt;&lt;text|*&gt;&gt;</p>
+<p>&lt;&lt;span|this is some stuff that will have a span on it|</p>
+<p>TODOs and other blocks are stopped when another &lt;&lt;code|---:&gt;&gt; marker shows up.</p>
+<p>Moving between any type of block is possible.</p>
+<p>CONTENT is the one to default to.</p>
+<h2>Links</h2>
+<p>SHould links have attributes in the tags or should those be stored in the metadata... feels like it&#x27;s nicerer to have them up top. So, make them both an option.</p>
+<p>&lt;&lt;link|1|basic link|&gt;&gt;</p>
+<p>&lt;&lt;link|1|link with &quot; and &lt; and &gt;|&gt;&gt;</p>
+<p>&lt;&lt;link|1|link that breaks lines|&gt;&gt;</p>
+<p>&lt;&lt;link|1|extra attributes|:id some-id|:class some class|&gt;&gt;</p>
+<p>&lt;&lt;link|1|atts break lines|:id link-jump-line|&gt;&gt;</p>
+<p>Consider how to do things like</p>
+<p>```html &lt;a href=&quot;/en-US/docs/Web/HTML/Element/blockquote&quot;&gt; &lt;cite&gt;MDN blockquote page&lt;/cite&gt;&lt;/a&gt; ```</p>
+<p>And other nestings, like `code` inside `strong`</p>
+<p>Maybe that just goes back to HTML?</p>
+<p>Could do `+` and `-` to put tags inside and out</p>
+<p>``` &lt;&lt;link|1|the text|:class something|+strong&gt;&gt; ```</p>
+<p>Feels like that would be better off being addressed by an id or class. Thinking the gain for trying to nest would be minimal compared to the effort and complexity involved.</p>
+<p>Figure out if you want to make `---: TABLE` be a header or just something in the content. I think probably it should be a header so attributes can be applied to it.</p>
+<ul>
+<li>section headers are always UPPERCASE and only 1 word/string</li>
+<li>Maybe make links JSON all the time. Let widgets be whatever they want. That way there isn&#x27;t a burden on other languates to try to parse javascript (unless that turns out to be trivial)</li>
+</ul>
+<h1>Neopolitan Reference</h1>
+<p>This document defines neopolitan transformations.</p>
+<p>This document is maintained with revisions. Any parser that produces the same output as the (TKTKTKTK link) neopolitan-py reference implementation is a valid Neopolitan interpreter for that revision. Providing additional functionality is encouraged.</p>
+<p>Every effort will be made to ensure backward compatibility once revision 1 is published. (Preview revisions before revision 1 will be used to finalize the first revision in an effort to lock in its long term stability)</p>
+<p>Validation is done via HTML.</p>
+<p>The tests are done by convention. The document is split by `---: CONTENT` headers then `---: PRE` headers. If there are three items in the resulting array the values are run as a test. The target is wrapped in `-----------...` lines to control for whitespace</p>
