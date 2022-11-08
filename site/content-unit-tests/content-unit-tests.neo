@@ -12,7 +12,7 @@ background-color: #000; color: #aaa; }
 
 This document is use to verify neopolitan functionality. 
 
-### Details
+## Details
 
 - Each CONTENT section that's followed by two
 PRE sections collectively constitute a test
@@ -38,7 +38,7 @@ applies to are DIVs. TBD on others
 
 ---: CONTENT
 
-### Single line paragraph
+Single line paragraph
 
 ---: PRE
 
@@ -53,7 +53,7 @@ The curtain rose and the show was on.
 
 ---: CONTENT
 
-### Multi line paragraph
+Multi line paragraph
 
 ---: PRE
 
@@ -71,7 +71,7 @@ smooth planks.
 
 ---: CONTENT
 
-### Multiple paragraphs
+Multiple paragraphs
 
 ---: PRE
 
@@ -95,7 +95,7 @@ The salt breeze came across from the sea.
 
 ---: CONTENT
 
-### White space at the end of a paragraph is stripped
+White space at the end of a paragraph is stripped
 
 ---: PRE
 
@@ -110,7 +110,7 @@ Two blue fish swam in the tank.
 
 ---: CONTENT
 
-### Properly escape HTML characters
+Properly escape HTML characters
 
 ---: PRE
 
@@ -126,7 +126,7 @@ Checking & ' " < >
 
 ---: CONTENT
 
-### Unordered list with one item
+Unordered list with one item
 
 ---: PRE
 
@@ -143,8 +143,9 @@ Checking & ' " < >
 
 ---: CONTENT
 
-### Unordered lists with and without spaces and
-with mutiple lines with and withone indents
+Unordered lists with and without spaces 
+
+and with mutiple lines with and withone indents
 with white space at the end that is removed
 
 ---: PRE
@@ -176,7 +177,7 @@ passed through the coat.
 
 ---: CONTENT
 
-### List surrounded by paragraphs
+List surrounded by paragraphs
 
 ---: PRE
 
@@ -205,7 +206,7 @@ It is hard to erase blue or red ink.
 
 ---: CONTENT
 
-### List with dash at the start of a line in the content
+List with dash at the start of a line in the content
 
 ---: PRE
 
@@ -353,7 +354,7 @@ The cigar burned a hole in the desk top.
 
 ---: CONTENT
 
-### Headers
+Headers
 
 ---: PRE
 
@@ -367,7 +368,7 @@ The cigar burned a hole in the desk top.
 
 ###### Foxtrot  
 
-### Bravo 
+## Bravo 
 
 ---: PRE
 
@@ -387,7 +388,7 @@ Mixed content
 
 ---: PRE
 
-### Victor
+## Victor
 
 Steam hissed from the broken valve. There 
 was a sound of dry leaves outside.
@@ -413,6 +414,41 @@ fall with the next puff of wind.
 </ul>
 <p>Where were they when the noise started. The paper box is full of thumb tacks. The petals fall with the next puff of wind.</p>
 --------------------------------------------------
+
+
+
+---: CONTENT
+
+Turn back tic into code tags
+
+---: PRE
+
+This `is code`
+
+
+---: PRE
+
+--------------------------------------------------
+<p>This <code>is code</code></p>
+--------------------------------------------------
+
+
+---: CONTENT
+
+Line starts with code backtics 
+
+---: PRE
+
+`foxtrot` bravo alfa
+
+
+---: PRE
+
+--------------------------------------------------
+<p><code>foxtrot</code> bravo alfa</p>
+--------------------------------------------------
+
+
 
 
 ---: HTML

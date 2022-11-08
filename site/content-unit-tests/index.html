@@ -5,7 +5,7 @@ background-color: #000; color: #aaa; }
 <div><a href="/">Home</a></div>
 <h1>Neopolitan Unit Tests</h1>
 <p>This document is use to verify neopolitan functionality.</p>
-<h3>Details</h3>
+<h2>Details</h2>
 <ul>
 <li>Each CONTENT section that&#x27;s followed by two PRE sections collectively constitute a test</li>
 <li>The CONTENT section contains a description of the test</li>
@@ -14,12 +14,12 @@ background-color: #000; color: #aaa; }
 <li>In all cases in this file, the content represents that coming from a CONTENT sections (i.e. not a PRE, HTML, etc...)</li>
 <li>The other sections the same processing applies to are DIVs. TBD on others</li>
 </ul>
-<h3>Single line paragraph</h3>
+<p>Single line paragraph</p>
 <pre>The curtain rose and the show was on.</pre>
 <pre>--------------------------------------------------
 &lt;p&gt;The curtain rose and the show was on.&lt;/p&gt;
 --------------------------------------------------</pre>
-<h3>Multi line paragraph</h3>
+<p>Multi line paragraph</p>
 <pre>The birch 
 canoe 
 slid on the 
@@ -27,7 +27,7 @@ smooth planks.  </pre>
 <pre>--------------------------------------------------
 &lt;p&gt;The birch canoe slid on the smooth planks.&lt;/p&gt;
 --------------------------------------------------</pre>
-<h3>Multiple paragraphs</h3>
+<p>Multiple paragraphs</p>
 <pre>Glue the sheet to the dark blue 
 background. It is easy to tell the depth 
 of a well.
@@ -42,24 +42,25 @@ The salt breeze came across from the sea.</pre>
 &lt;p&gt;Rice is often served in round bowls. The box was thrown beside the parked truck.&lt;/p&gt;
 &lt;p&gt;The source of the huge river is the clear spring. The salt breeze came across from the sea.&lt;/p&gt;
 --------------------------------------------------</pre>
-<h3>White space at the end of a paragraph is stripped</h3>
+<p>White space at the end of a paragraph is stripped</p>
 <pre>Two blue fish swam in the tank.     </pre>
 <pre>--------------------------------------------------
 &lt;p&gt;Two blue fish swam in the tank.&lt;/p&gt;
 --------------------------------------------------</pre>
-<h3>Properly escape HTML characters</h3>
+<p>Properly escape HTML characters</p>
 <pre>Checking &amp; &#x27; &quot; &lt; &gt;</pre>
 <pre>--------------------------------------------------
 &lt;p&gt;Checking &amp;amp; &amp;#x27; &amp;quot; &amp;lt; &amp;gt;&lt;/p&gt;
 --------------------------------------------------</pre>
-<h3>Unordered list with one item</h3>
+<p>Unordered list with one item</p>
 <pre>- The colt reared and threw the tall rider. </pre>
 <pre>--------------------------------------------------
 &lt;ul&gt;
 &lt;li&gt;The colt reared and threw the tall rider.&lt;/li&gt;
 &lt;/ul&gt;
 --------------------------------------------------</pre>
-<h3>Unordered lists with and without spaces and with mutiple lines with and withone indents with white space at the end that is removed</h3>
+<p>Unordered lists with and without spaces</p>
+<p>and with mutiple lines with and withone indents with white space at the end that is removed</p>
 <pre>- It snowed, rained, and hailed the same 
 morning. Take the winding path to reach 
 the lake.    
@@ -80,7 +81,7 @@ passed through the coat.
 &lt;li&gt;A saw is a tool used for making boards.&lt;/li&gt;
 &lt;/ul&gt;
 --------------------------------------------------</pre>
-<h3>List surrounded by paragraphs</h3>
+<p>List surrounded by paragraphs</p>
 <pre>The petals fall with the next puff of wind.
 
 - Bring your best compass to the third class.
@@ -99,7 +100,7 @@ It is hard to erase blue or red ink.</pre>
 &lt;p&gt;He wrote his last novel there at the inn.&lt;/p&gt;
 &lt;p&gt;It is hard to erase blue or red ink.&lt;/p&gt;
 --------------------------------------------------</pre>
-<h3>List with dash at the start of a line in the content</h3>
+<p>List with dash at the start of a line in the content</p>
 <pre>- Use a pencil to write the first draft. A 
 - small creek cut across the field.
 
@@ -186,7 +187,7 @@ The cigar burned a hole in the desk top.</pre>
 &lt;dd&gt;The spot on the blotter was made by green ink. The cigar burned a hole in the desk top.&lt;/dd&gt;
 &lt;/dl&gt;
 --------------------------------------------------</pre>
-<h3>Headers</h3>
+<p>Headers</p>
 <pre># Alfa 
 
 #### Delta 
@@ -197,7 +198,7 @@ The cigar burned a hole in the desk top.</pre>
 
 ###### Foxtrot  
 
-### Bravo </pre>
+## Bravo </pre>
 <pre>--------------------------------------------------
 &lt;h1&gt;Alfa&lt;/h1&gt;
 &lt;h4&gt;Delta&lt;/h4&gt;
@@ -207,7 +208,7 @@ The cigar burned a hole in the desk top.</pre>
 &lt;h2&gt;Bravo&lt;/h2&gt;
 --------------------------------------------------</pre>
 <p>Mixed content</p>
-<pre>### Victor
+<pre>## Victor
 
 Steam hissed from the broken valve. There 
 was a sound of dry leaves outside.
@@ -228,5 +229,15 @@ fall with the next puff of wind.</pre>
 &lt;li&gt;We admire and love a good cook. Corn cobs can be used to kindle a fire.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Where were they when the noise started. The paper box is full of thumb tacks. The petals fall with the next puff of wind.&lt;/p&gt;
+--------------------------------------------------</pre>
+<p>Turn back tic into code tags</p>
+<pre>This `is code`</pre>
+<pre>--------------------------------------------------
+&lt;p&gt;This &lt;code&gt;is code&lt;/code&gt;&lt;/p&gt;
+--------------------------------------------------</pre>
+<p>Line starts with code backtics</p>
+<pre>`foxtrot` bravo alfa</pre>
+<pre>--------------------------------------------------
+&lt;p&gt;&lt;code&gt;foxtrot&lt;/code&gt; bravo alfa&lt;/p&gt;
 --------------------------------------------------</pre>
 </body></html>
