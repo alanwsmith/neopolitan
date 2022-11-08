@@ -2,7 +2,6 @@
 
 # neopolitan
 
-
 ---: NOTE
 :::: :class heads-up
 
@@ -19,24 +18,108 @@ too. It's all part of the process.
 
 ---: CONTENT
 
-Neopolitan is a plain-text document format 
-designed. It's designed to:
+Neopolitan is a plain-text content format 
+with two goals:
 
 1. Make it fast to write
-2. Make it easy to move
 
-I've run my site for twenty years. I've done a half dozen 
-overhauls that required migrating content. Thinking forward 
-to the next twenty years, I never want to have to do that again.
+2. Make it easy to assemble  
 
-
-
-
+I've run my site for twenty years. I've 
+done a half dozen overhauls that required changing
+the way I store content. Thinking forward 
+to the next twenty years, I never want to have to do it again.
 
 
-That's the goal of Neopolitan. To be a format 
-that powers sites for the next two decades
-without compromise. 
+### TL;DR
+
+Neopolitan documents are made of
+sections. Each sections starts with 
+`---:` followd by the type of section. For
+example:
+
+---: PRE
+
+  ---: CONTENT
+
+---: CONTENT 
+
+### Processing
+
+Each section type has a distince set of rules 
+for how to process what's inside it. For example, 
+<<c|---: CONTENT|neo>> sections are very much
+like markdown. 
+
+This:
+
+---: PRE 
+
+##### Small Example Header
+
+Here's a list
+
+- It's easy to tell the depth of a well.
+
+- Two blue fish swam in the tank.
+
+And one with numbers
+
+1. Cut the pie into large parts.
+
+2. The pencils have all been used.
+
+---: CONTENT
+
+Turns into this:
+
+---: DIV 
+:::: :class example
+
+##### Small Example Header
+
+Here's a list
+
+- It's easy to tell the depth of a well.
+
+- Two blue fish swam in the tank.
+
+And one with numbers
+
+1. Cut the pie into large parts.
+
+2. The pencils have all been used.
+
+
+
+
+
+
+
+
+---: TODO
+
+[] Come up with a way to have `---:` strings at 
+the start of lines in `---: PRE` sections. 
+Thinking a directive in the opening section header
+that can identfy the string you want to use for
+a closing item. That way the system doesn't have
+to try to come up with something. it just uses
+whatever the author puts in. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Some Details
@@ -75,5 +158,13 @@ https://github.com/alanwsmith/neopolitan-py
 
 [] Move most of this content to a secondary about 
 page and put examples here. 
+
+[] Write up "Why not Markdown"
+
+[] Write up "Why not MDX"
+
+[] Write up "Why not Org Mode"
+
+[] Write up "Why not format X"
 
 

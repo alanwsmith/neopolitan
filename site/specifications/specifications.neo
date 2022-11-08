@@ -1,0 +1,47 @@
+---: CONTENT
+
+# Specifications
+
+---: NOTES
+
+- should it be possible to add a class to 
+CONTENT if there's no element defined? OR
+really, should that default to somethhing 
+like setion or should it just ignore it?
+Feels like it should default to section
+or something be
+
+
+
+
+## Candidate Content Sections
+
+- CONTENT
+
+- DIV
+
+- EXAMPLE
+
+- FOOTNOTES
+
+- NOTE
+
+- NOTES
+
+- PRE
+
+- REFERENCES
+
+- TODO 
+
+
+## Candidate Meta Sections
+
+
+- LINKS
+
+- META
+
+- WIDGET
+
+

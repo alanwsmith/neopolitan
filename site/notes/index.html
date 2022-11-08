@@ -51,19 +51,21 @@
 <a href="/integration-test/index.html">integration-test</a> ~ 
 <a href="/notes/index.html">notes</a> ~ 
 <a href="/overview/index.html">overview</a> ~ 
-<a href="/thoughts/index.html">thoughts</a> 
+<a href="/specifications/index.html">specifications</a> ~ 
+<a href="/thoughts/index.html">thoughts</a> ~ 
+<a href="/usage/index.html">usage</a> 
 </p>
 <hr />
 
 DRAFT: This is very much a work in progress. While the initial 
 ideas for the format are pretty solid, implementaiton is
-still in the early stages. Content will continue to become
-visible as functonality is implemented. I'm not waiting for
-that to actually write the content though. Doing both at 
-the same time is fast feedback that's helping me refine 
-the format. 
+still in the early stages. There's a bunch of content in 
+the source files that you can't see. It'll become visible
+as the functionality is implemented. Building while the site
+is helping inform the spec. I prefer working this way than
+tryint to define everything up front. 
 
-The <a href="https://github.com/alanwsmith/neopolitan"repo
+The <a href="https://github.com/alanwsmith/neopolitan">repo
 is here</a> if you want to see more behind the scenes. 
 
 <hr />
@@ -214,7 +216,18 @@ It will be passed straight thru and things like ampersands
 <p>The first part of the name is pronounced like the character Neo in The Matrix. The second half is pronounced like the second half of neapolitan ice cream. To do, come up with the phenetics.</p>
 <p>For capitalizaiotn. The standard is all lowercase. But, using a capital letter in headlines, etc... is fine. Do whatever you think looks best.</p>
 <p>The short hand term is <code>neo</code>, again like the matrix.</p>
-<p>I recognize none of that may stick, but some folks get really into that stuff and want to know how the creator pronounces and captializes. So, there ya go.</p></main>
+<p>I recognize none of that may stick, but some folks get really into that stuff and want to know how the creator pronounces and captializes. So, there ya go.</p>
+
+<h1>Usage Guide</h1>
+<ul>
+<li>Documents are made up of sections</li>
+<li>Every section starts with a header that looks like this:</li>
+</ul>
+<p>#+being_src</p>
+<ul>
+<li>Headers can have attributes that look like this:</li>
+</ul>
+<p>#+begin_src</p></main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
       <br />
