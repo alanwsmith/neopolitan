@@ -19,17 +19,20 @@ too. It's all part of the process.
 
 ---: CONTENT
 
-Neopolitan is a plain-text document format. 
-It's designed to provide a wide flexibility 
-of easy to manage content while maintaining 
-a strong separation of concerns between 
-content and its usage.
+Neopolitan is a plain-text document format 
+designed. It's designed to:
 
-I've run my site for twenty years. In that 
-time, I've undertaken a half dozen overhauls 
-that required migrating content. As I think
-forward to the next twenty years, I never 
-want to have to do it again.
+1. Make it fast to write
+2. Make it easy to move
+
+I've run my site for twenty years. I've done a half dozen 
+overhauls that required migrating content. Thinking forward 
+to the next twenty years, I never want to have to do that again.
+
+
+
+
+
 
 That's the goal of Neopolitan. To be a format 
 that powers sites for the next two decades

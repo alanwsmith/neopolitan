@@ -42,16 +42,32 @@
       <a href="https://twitter.com/TheIdOfAlan">twitter</a>
     </header>
     <main>
-      <p>
-      <a href="/considerations/index.html">considerations</a> ~ 
-      <a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
-      <a href="/element-types/index.html">element-types</a> ~ 
-      <a href="/examples/index.html">examples</a> ~ 
-      <a href="/integration-test/index.html">integration-test</a> ~ 
-      <a href="/notes/index.html">notes</a> ~ 
-      <a href="/overview/index.html">overview</a> ~ 
-      <a href="/thoughts/index.html">thoughts</a> 
-    </p>
+
+<p>
+<a href="/considerations/index.html">considerations</a> ~ 
+<a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
+<a href="/element-types/index.html">element-types</a> ~ 
+<a href="/examples/index.html">examples</a> ~ 
+<a href="/integration-test/index.html">integration-test</a> ~ 
+<a href="/notes/index.html">notes</a> ~ 
+<a href="/overview/index.html">overview</a> ~ 
+<a href="/thoughts/index.html">thoughts</a> 
+</p>
+<hr />
+
+DRAFT: This is very much a work in progress. While the initial 
+ideas for the format are pretty solid, implementaiton is
+still in the early stages. Content will continue to become
+visible as functonality is implemented. I'm not waiting for
+that to actually write the content though. Doing both at 
+the same time is fast feedback that's helping me refine 
+the format. 
+
+The <a href="https://github.com/alanwsmith/neopolitan"repo
+is here</a> if you want to see more behind the scenes. 
+
+<hr />
+
       
       <h1>Neopolitan Notes</h1>
 <h2>Examples</h2>
@@ -118,7 +134,87 @@
 <p>This document is maintained with revisions. Any parser that produces the same output as the (TKTKTKTK link) neopolitan-py reference implementation is a valid Neopolitan interpreter for that revision. Providing additional functionality is encouraged.</p>
 <p>Every effort will be made to ensure backward compatibility once revision 1 is published. (Preview revisions before revision 1 will be used to finalize the first revision in an effort to lock in its long term stability)</p>
 <p>Validation is done via HTML.</p>
-<p>The tests are done by convention. The document is split by <code>---: CONTENT</code> headers then <code>---: PRE</code> headers. If there are three items in the resulting array the values are run as a test. The target is wrapped in <code>-----------...</code> lines to control for whitespace</p></main>
+<p>The tests are done by convention. The document is split by <code>---: CONTENT</code> headers then <code>---: PRE</code> headers. If there are three items in the resulting array the values are run as a test. The target is wrapped in <code>-----------...</code> lines to control for whitespace</p>
+
+<h1>Neapolitan Guidelines</h1>
+<h2>Overview</h2>
+<p>This document lays out the plain-text format I&#x27;m using to overhaul my site. Working on my site is no longer fun. It&#x27;s a constant struggle against the opinions of frameworks and the limitations of</p>
+<p>This document is to determine the design of the content that&#x27;ll be used for the site. I&#x27;ve been using markdown. It&#x27;s been solid, but always feels a little constraining.</p>
+<p>Getting out from under those constraints from the framework side of things is the key reason I&#x27;m redoing the site. I&#x27;ve been using Org Mode and was going to do a combination of Org Mode and Markdown for the content but that would keep me locked into those constraints. They aren&#x27;t bad, but I want to see what I can do without them.</p>
+<p>So this is where I&#x27;m setting up the spec for the format I&#x27;m going to use.</p>
+<h3>HTML</h3>
+<div>This text is in a div under an <code>#+HTML</code> token</div>
+<div class="test-class">
+It will be passed straight thru and things like ampersands
+(&amp;) won't be modified
+</div>
+<p>This is back to the basic content setup.</p>
+<p>Here is a &lt;&lt;link|0|link&gt;&gt;</p>
+<p>Things to deal with:</p>
+<ul>
+<li>Unordered Lists</li>
+<li>With stuff in them that is basic</li>
+<li>And catch multiline in lists</li>
+</ul>
+<p>Also need to do &quot;quotes&quot;</p>
+<p>And less than &lt; and greater than &gt;</p>
+<p>Going to to ahead and do the &#x27; single quote too</p>
+<p>And the &amp; ampersand</p>
+<p>This is an ordered list.</p>
+<ol>
+<li>They start with numbers followed by a dot</li>
+<li>There must be a blank row between the numbers</li>
+<li>Multiple lines require white space before the first character</li>
+<li>The actual number doesn&#x27;t matter, they will be numbered automatically in the HTML</li>
+</ol>
+<p>This line is here because lists don&#x27;t currently close if they are followed by another section without some text in between.</p>
+<p>Here&#x27;s a footnote&lt;&lt;footnote|2&gt;&gt;. Implementation determines if it&#x27;s a link or not.</p>
+<p>And we&#x27;re back to normal with a horizontal rule</p>
+<p>---</p>
+<p>And the different sized headers:</p>
+<h1>H1 Alpha</h1>
+<h2>H2 Bravo</h2>
+<h3>H3 Charlie</h3>
+<h4>H4 Delta</h4>
+<h5>H5 Echo</h5>
+<h6>H6 Foxtrot</h6>
+<p>Something else that can go in is Org Mode source blocks</p>
+<p>#+begin_src python :results output :wrap example</p>
+<p>print(&#x27;the quick brown fox&#x27;)</p>
+<p>#+end_src</p>
+<p>#+RESULTS: #+begin_example</p>
+<p>the quick brown fox</p>
+<p>#+end_example</p>
+<p>There are also examples that aren&#x27;t the results of #+begin_src blocks</p>
+<p>#+begin_example</p>
+<p>Data is here</p>
+<p>#+end_example</p>
+<h2>Images</h2>
+<p>Images are done in a similar way to links:</p>
+<p>&lt;&lt;image|0&gt;&gt;</p>
+<p>But the data for the images is stored in JSON so alt text can be applied.</p>
+<h2>Inline Code</h2>
+<p>Maybe something &lt;&lt;code|print(&#x27;like this&#x27;)|python&gt;&gt;</p>
+<p>There won&#x27;t be &lt;&lt;code|```&gt;&gt; code fences. Blocks are done in &lt;&lt;code|#+begin_src&gt;&gt; blocks.</p>
+<p>First stages, line breaks can&#x27;t go in inline code.</p>
+<p>Code inside double &lt; snippets gets escaped too.</p>
+<h2>Other stuff</h2>
+<p>Almost forgot *bold* and _italic_ which I know aren&#x27;t the preferred names, but it&#x27;s all I can remember at the moment.</p>
+<p>#+begin_html</p>
+<p>&lt;p&gt;This is the Org Mode style of adding HTML&lt;/p&gt; &lt;p&gt;It&#x27;s output directly minus trimming the trailing and leading white space. &lt;/p&gt; &lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt; So You Can Do Code In It &lt;/code&gt;&lt;/pre&gt;</p>
+<p>#+end_html</p>
+<h3>UL Header Test</h3>
+<ul>
+<li>This is testing a UL</li>
+<li>That&#x27;s followed by a header</li>
+<h3>Done With UL Header Test</h3>
+<h1>NOTES</h1>
+<p>These are some general notes to hang onto until they file a good home. They are very much still a draft.</p>
+<h2>Pronouncation</h2>
+<p>The first part of the name is pronounced like the character Neo in The Matrix. The second half is pronounced like the second half of neapolitan ice cream. To do, come up with the phenetics.</p>
+<p>For capitalizaiotn. The standard is all lowercase. But, using a capital letter in headlines, etc... is fine. Do whatever you think looks best.</p>
+<p>The short hand term is <code>neo</code>, again like the matrix.</p>
+<p>I recognize none of that may stick, but some folks get really into that stuff and want to know how the creator pronounces and captializes. So, there ya go.</p></main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
       <br />
