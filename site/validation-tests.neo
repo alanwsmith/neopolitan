@@ -142,6 +142,35 @@ passed through the coat.
 
 ---: CONTENT
 
+## List surrounded by paragraphs
+
+---: PRE
+
+The petals fall with the next puff of wind.
+
+- Bring your best compass to the third class.
+
+- A fresh start will work such wonders.
+
+He wrote his last novel there at the inn.
+
+It is hard to erase blue or red ink.
+
+---: PRE
+
+--------------------------------------------------
+<p>The petals fall with the next puff of wind.</p>
+<ul>
+<li>Bring your best compass to the third class.</li>
+<li>A fresh start will work such wonders.</li>
+</ul>
+<p>He wrote his last novel there at the inn.</p>
+<p>It is hard to erase blue or red ink.</p>
+--------------------------------------------------
+
+
+---: CONTENT
+
 ## List with dash at the start of a line in the content
 
 ---: PRE
@@ -1211,6 +1240,8 @@ probably it should be a header
 so attributes can be applied to
 it. 
 
+- section headers are always 
+  UPPERCASE and only 1 word/string
 
 
 
