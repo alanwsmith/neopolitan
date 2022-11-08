@@ -1,0 +1,79 @@
+---: CONTENT
+
+# neopolitan considerations
+
+These lists contain three types of items
+to consider for implementation: probably, 
+maybe, probably not. Those titles represent
+the likelyhood when I last considered them. 
+Things will migrate over time. 
+
+---: TODO
+:::: ~title: Probably 
+
+[] Add `~title` directive to `TODO` sections
+(like this one) that changes the title from
+todo to whatever the text is. 
+
+[] Add `~no-title~ directive to `TODO` sections 
+
+[] Multi-line TODO lists.
+
+[] HTML content directly in unordered lists
+(e.g. with a `-h`)
+
+[] HTML contend directly in other <<code|<li>|html>>, 
+<<code|<dt>|html>>, and <<code|<dd>|html>> elements
+with `1.h` style flags. 
+
+[] Nested lists of the same type (e.g. uls in 
+uls.)
+
+[] Next lists of different types (e.g. uls inside 
+dds)
+
+[] Should part of the requirement be that a JSON
+blob with content and metadata is made available?
+Not sure how that would work or if that gets
+too far into implementaiton. But that could
+be an output? Probalby a later phase if it happens
+at all and feel like likely just an implementation
+specific thing. 
+
+[] Should there be a way to feed it templates
+and have its response be the full thing? At the
+high level getting the final output is the goal
+but should this make that happen as part of the
+spec? Well, now that I think about it, the spec
+is just the format. Except, of course, that it's
+also the output.... So... thinking to be done
+here. - Getting into the template world feels 
+a bit fraught. Could probably pull an 80/20
+but once you start down the path the kibble is
+gonna start. 
+
+[] Setup so you can start ordered list number
+at something other than 1. 
+
+[] Mandate WIDGET, META, etc... be JSON? Was 
+thinking you could flag for a different data
+type like `.js` so you could use that style
+notation for objects, but that feels like 
+maybe adding cruft. Also, that would make it
+harder for other processors to deal with 
+which would mean lock-in. So, no on that. 
+Custom section types can do whatever they
+want, but the standards will only be 
+valid if they use JSON. 
+
+
+
+
+
+
+
+
+
+
+
+

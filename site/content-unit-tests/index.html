@@ -1,9 +1,59 @@
 <!DOCTYPE html>
-<html><head><style>body {
-background-color: #000; color: #aaa; }
-</style></head><body>
-<div><a href="/">Home</a></div>
-<h1>Neopolitan Unit Tests</h1>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neopolitan - A Plain-Text Document Format</title>
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Neopolitan - A Plain-Text Document Format"
+    />
+    <meta
+      property="og:description"
+      content="A plain-text document designed to last twenty years"
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/awsimages/image/upload/w_1200,h_630,o_0,b_rgb:000000/c_fit,w_1020,h_430,co_rgb:eeeeee,l_text:Abhaya%20Libre_124_bold:Neopolitan%20-%20A%20Plain-Text%20Document%20Format/fl_layer_apply,g_north_west,x_65,y_65/co_rgb:666666,l_text:Inconsolata_36_bold:from%20alan%20w.%20smith/fl_layer_apply,g_south_east,x_65,y_45/1x1.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site:id" content="@TheIdOfAlan" />
+    <meta name="twitter:creator" content="@TheIdOfAlan" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="228x228"
+      href="/favicons/228x228.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="180x180"
+      href="/favicons/180x180.png"
+    />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/">Home</a> ~
+      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
+      <a href="https://links.alanwsmith.com">links</a> ~
+      <a href="https://podcast.alanwsmith.com/">podcast</a> ~
+      <a href="https://twitter.com/TheIdOfAlan">twitter</a>
+    </header>
+    <main>
+      <p>
+      <a href="/considerations/index.html">considerations</a> ~ 
+      <a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
+      <a href="/element-types/index.html">element-types</a> ~ 
+      <a href="/examples/index.html">examples</a> ~ 
+      <a href="/integration-test/index.html">integration-test</a> ~ 
+      <a href="/notes/index.html">notes</a> ~ 
+      <a href="/overview/index.html">overview</a> ~ 
+      <a href="/thoughts/index.html">thoughts</a> 
+    </p>
+      
+      <h1>Neopolitan Unit Tests</h1>
 <p>This document is use to verify neopolitan functionality.</p>
 <h2>Details</h2>
 <ul>
@@ -14,12 +64,13 @@ background-color: #000; color: #aaa; }
 <li>In all cases in this file, the content represents that coming from a CONTENT sections (i.e. not a PRE, HTML, etc...)</li>
 <li>The other sections the same processing applies to are DIVs. TBD on others</li>
 </ul>
-<p>Single line paragraph</p>
+<h3>Single line paragraph</h3>
 <pre>The curtain rose and the show was on.</pre>
 <pre>--------------------------------------------------
 &lt;p&gt;The curtain rose and the show was on.&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>Multi line paragraph</p>
+<p>The curtain rose and the show was on.</p>
+<h3>Multi line paragraph</h3>
 <pre>The birch 
 canoe 
 slid on the 
@@ -27,7 +78,8 @@ smooth planks.  </pre>
 <pre>--------------------------------------------------
 &lt;p&gt;The birch canoe slid on the smooth planks.&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>Multiple paragraphs</p>
+<p>The birch canoe slid on the smooth planks.</p>
+<h3>Multiple paragraphs</h3>
 <pre>Glue the sheet to the dark blue 
 background. It is easy to tell the depth 
 of a well.
@@ -42,24 +94,32 @@ The salt breeze came across from the sea.</pre>
 &lt;p&gt;Rice is often served in round bowls. The box was thrown beside the parked truck.&lt;/p&gt;
 &lt;p&gt;The source of the huge river is the clear spring. The salt breeze came across from the sea.&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>White space at the end of a paragraph is stripped</p>
+<p>Glue the sheet to the dark blue background. It is easy to tell the depth of a well.</p>
+<p>Rice is often served in round bowls. The box was thrown beside the parked truck.</p>
+<p>The source of the huge river is the clear spring. The salt breeze came across from the sea.</p>
+<h3>White space at the end of a paragraph is stripped</h3>
 <pre>Two blue fish swam in the tank.     </pre>
 <pre>--------------------------------------------------
 &lt;p&gt;Two blue fish swam in the tank.&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>Properly escape HTML characters</p>
+<p>Two blue fish swam in the tank.</p>
+<h3>Properly escape HTML characters</h3>
 <pre>Checking &amp; &#x27; &quot; &lt; &gt;</pre>
 <pre>--------------------------------------------------
 &lt;p&gt;Checking &amp;amp; &amp;#x27; &amp;quot; &amp;lt; &amp;gt;&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>Unordered list with one item</p>
+<p>Checking &amp; &#x27; &quot; &lt; &gt;</p>
+<h3>Unordered list with one item</h3>
 <pre>- The colt reared and threw the tall rider. </pre>
 <pre>--------------------------------------------------
 &lt;ul&gt;
 &lt;li&gt;The colt reared and threw the tall rider.&lt;/li&gt;
 &lt;/ul&gt;
 --------------------------------------------------</pre>
-<p>Unordered lists with and without spaces</p>
+<ul>
+<li>The colt reared and threw the tall rider.</li>
+</ul>
+<h3>Unordered lists with and without spaces</h3>
 <p>and with mutiple lines with and withone indents with white space at the end that is removed</p>
 <pre>- It snowed, rained, and hailed the same 
 morning. Take the winding path to reach 
@@ -81,7 +141,13 @@ passed through the coat.
 &lt;li&gt;A saw is a tool used for making boards.&lt;/li&gt;
 &lt;/ul&gt;
 --------------------------------------------------</pre>
-<p>List surrounded by paragraphs</p>
+<ul>
+<li>It snowed, rained, and hailed the same morning. Take the winding path to reach the lake.</li>
+<li>The wide road shimmered in the hot sun. Lift the square stone over the fence.</li>
+<li>Mesh wire keeps chicks inside. The frosty air passed through the coat.</li>
+<li>A saw is a tool used for making boards.</li>
+</ul>
+<h3>List surrounded by paragraphs</h3>
 <pre>The petals fall with the next puff of wind.
 
 - Bring your best compass to the third class.
@@ -100,7 +166,14 @@ It is hard to erase blue or red ink.</pre>
 &lt;p&gt;He wrote his last novel there at the inn.&lt;/p&gt;
 &lt;p&gt;It is hard to erase blue or red ink.&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>List with dash at the start of a line in the content</p>
+<p>The petals fall with the next puff of wind.</p>
+<ul>
+<li>Bring your best compass to the third class.</li>
+<li>A fresh start will work such wonders.</li>
+</ul>
+<p>He wrote his last novel there at the inn.</p>
+<p>It is hard to erase blue or red ink.</p>
+<h3>List with dash at the start of a line in the content</h3>
 <pre>- Use a pencil to write the first draft. A 
 - small creek cut across the field.
 
@@ -115,14 +188,22 @@ words were the cue for the actor to leave.
 &lt;li&gt;The ink stain dried on the finished page.&lt;/li&gt;
 &lt;/ul&gt;
 --------------------------------------------------</pre>
-<p>Ordered list with one item</p>
+<ul>
+<li>Use a pencil to write the first draft. A - small creek cut across the field.</li>
+<li>The dune rose from the edge of the water. Those words were the cue for the actor to leave.</li>
+<li>The ink stain dried on the finished page.</li>
+</ul>
+<h3>Ordered list with one item</h3>
 <pre>1. The fruit peel was cut in thick slices.   </pre>
 <pre>--------------------------------------------------
 &lt;ol&gt;
 &lt;li&gt;The fruit peel was cut in thick slices.&lt;/li&gt;
 &lt;/ol&gt;
 --------------------------------------------------</pre>
-<p>Multiple item ordered list and numbers don&#x27;t matter</p>
+<ol>
+<li>The fruit peel was cut in thick slices.</li>
+</ol>
+<h3>Multiple item ordered list</h3>
 <pre>1. There are more than two factors here.
 The grass curled around the fence post.
 
@@ -138,7 +219,12 @@ of cloud hung in the blue air.
 &lt;li&gt;Oak is strong and also gives shade.&lt;/li&gt;
 &lt;/ol&gt;
 --------------------------------------------------</pre>
-<p>Description List</p>
+<ol>
+<li>There are more than two factors here. The grass curled around the fence post.</li>
+<li>Cut the pie into large parts. A wisp of cloud hung in the blue air.</li>
+<li>Oak is strong and also gives shade.</li>
+</ol>
+<h3>Description List</h3>
 <pre>~ Alfa
 
 : Split the log with a quick, sharp blow. He 
@@ -149,7 +235,11 @@ ordered peach pie with ice cream.</pre>
 &lt;dd&gt;Split the log with a quick, sharp blow. He ordered peach pie with ice cream.&lt;/dd&gt;
 &lt;/dl&gt;
 --------------------------------------------------</pre>
-<p>Description List - Multiple Items</p>
+<dl>
+<dt>Alfa</dt>
+<dd>Split the log with a quick, sharp blow. He ordered peach pie with ice cream.</dd>
+</dl>
+<h3>Description List - Multiple Items</h3>
 <pre>~ Bravo
 
 : Weave the carpet on the right hand side. The 
@@ -167,7 +257,13 @@ young kid jumped the rusty gate.</pre>
 &lt;dd&gt;Pluck the bright rose without leaves. The young kid jumped the rusty gate.&lt;/dd&gt;
 &lt;/dl&gt;
 --------------------------------------------------</pre>
-<p>Description lists with multi paragraph descriptions.</p>
+<dl>
+<dt>Bravo</dt>
+<dd>Weave the carpet on the right hand side. The cup cracked and spilled its contents.</dd>
+<dt>Charlie</dt>
+<dd>Pluck the bright rose without leaves. The young kid jumped the rusty gate.</dd>
+</dl>
+<h3>Description lists with multi line descriptions.</h3>
 <pre>~ Delta
 
 :  Guess the results from the first scores. 
@@ -187,27 +283,37 @@ The cigar burned a hole in the desk top.</pre>
 &lt;dd&gt;The spot on the blotter was made by green ink. The cigar burned a hole in the desk top.&lt;/dd&gt;
 &lt;/dl&gt;
 --------------------------------------------------</pre>
-<p>Headers</p>
+<dl>
+<dt>Delta</dt>
+<dd>Guess the results from the first scores.<br /><br />These thistles bend in a high wind.</dd>
+</dl>
+<h3>Headers</h3>
 <pre># Alfa 
 
-#### Delta 
+## Bravo 
 
 ### Charlie  
 
+#### Delta 
+
 ##### Echo 
 
-###### Foxtrot  
-
-## Bravo </pre>
+###### Foxtrot  </pre>
 <pre>--------------------------------------------------
 &lt;h1&gt;Alfa&lt;/h1&gt;
-&lt;h4&gt;Delta&lt;/h4&gt;
+&lt;h2&gt;Bravo&lt;/h2&gt;
 &lt;h3&gt;Charlie&lt;/h3&gt;
+&lt;h4&gt;Delta&lt;/h4&gt;
 &lt;h5&gt;Echo&lt;/h5&gt;
 &lt;h6&gt;Foxtrot&lt;/h6&gt;
-&lt;h2&gt;Bravo&lt;/h2&gt;
 --------------------------------------------------</pre>
-<p>Mixed content</p>
+<h1>Alfa</h1>
+<h2>Bravo</h2>
+<h3>Charlie</h3>
+<h4>Delta</h4>
+<h5>Echo</h5>
+<h6>Foxtrot</h6>
+<h3>Mixed content</h3>
 <pre>## Victor
 
 Steam hissed from the broken valve. There 
@@ -230,14 +336,33 @@ fall with the next puff of wind.</pre>
 &lt;/ul&gt;
 &lt;p&gt;Where were they when the noise started. The paper box is full of thumb tacks. The petals fall with the next puff of wind.&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>Turn back tic into code tags</p>
+<h2>Victor</h2>
+<p>Steam hissed from the broken valve. There was a sound of dry leaves outside.</p>
+<ul>
+<li>Torn scraps littered the stone floor.</li>
+<li>We admire and love a good cook. Corn cobs can be used to kindle a fire.</li>
+</ul>
+<p>Where were they when the noise started. The paper box is full of thumb tacks. The petals fall with the next puff of wind.</p>
+<h3>Turn back tic into code tags</h3>
 <pre>This `is code`</pre>
 <pre>--------------------------------------------------
 &lt;p&gt;This &lt;code&gt;is code&lt;/code&gt;&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>Line starts with code backtics</p>
+<p>This <code>is code</code></p>
+<h3>Line starts with code backtics</h3>
 <pre>`foxtrot` bravo alfa</pre>
 <pre>--------------------------------------------------
 &lt;p&gt;&lt;code&gt;foxtrot&lt;/code&gt; bravo alfa&lt;/p&gt;
 --------------------------------------------------</pre>
-</body></html>
+<p><code>foxtrot</code> bravo alfa</p>
+<p>--- META</p>
+<p>{ &quot;title&quot;: }</p></main>
+    <footer>
+      made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
+      <br />
+      who has a <a href="https://www.alanwsmith.com">website</a> and a
+      <a href="https://podcast.alanwsmith.com/">podcast</a> <br />
+      among other <a href="https://links.alanwsmith.com">things</a>
+    </footer>
+  </body>
+</html>

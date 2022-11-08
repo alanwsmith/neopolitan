@@ -1,0 +1,49 @@
+---: CONTENT
+
+# Neopolitan Thoughts
+
+---: NOTE
+:::: :class heads-up
+
+This document it a draft. Over time
+it will refine down to the resons
+I made specific decisions where I had
+to pick an option when there were other
+good contenders. 
+
+You may not like a decision I made, but
+maybe learning why I did it will help
+it make more sense. 
+
+---: CONTENT
+
+## Overview
+
+This document lays out my thought process
+on decisions that were tough to make and
+will cause some amount of headache if
+you're workflows would be better atuned
+to the unchosen path. 
+
+## Overriding Guideline
+
+The guiding principales are:
+
+1. Make it fast to write
+2. Make it easy to move
+
+(that might work)
+
+---
+
+1. Store content in plain-text
+2. Make it fast to write
+3. Make it easy to understand 
+4. The primary output is web pages
+5. Make it easy to jump rending framworks
+6. Don't store custom components in the 
+    default content types. 
+7. Store data for custom complents that
+
+(Need to refine that list and make it shorter)
+

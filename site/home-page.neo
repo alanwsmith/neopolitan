@@ -1,0 +1,76 @@
+---: CONTENT
+
+# neopolitan
+
+
+---: NOTE
+:::: :class heads-up
+
+Everything on this site is a draft. I use
+writing and building to figure things out. 
+Making this site is how I'm refining the 
+format into something I want to use. 
+
+I hope you enjoy seeing the process, 
+but nothing here should be considered 
+stable. Contrictions are all over the place
+too. It's all part of the process. 
+
+
+---: CONTENT
+
+Neopolitan is a plain-text document format. 
+It's designed to provide a wide flexibility 
+of easy to manage content while maintaining 
+a strong separation of concerns between 
+content and its usage.
+
+I've run my site for twenty years. In that 
+time, I've undertaken a half dozen overhauls 
+that required migrating content. As I think
+forward to the next twenty years, I never 
+want to have to do it again.
+
+That's the goal of Neopolitan. To be a format 
+that powers sites for the next two decades
+without compromise. 
+
+
+## Some Details
+
+neopolitan will be open-source as soon 
+as I figure out which license to use. 
+
+The source code is at <<l|https://github.com/alanwsmith/neopolitan>>
+
+That repo is only the spec. I'm specificlly keeping
+implemtations out of the repo. What is in the
+repo is a set of tests to verify implementations. 
+
+If you're interpreter takes the input and produces
+the output, you're good to go. I know there's 
+all kinds of stuff that goes into a formal spec. 
+Creating that is not a skillset I currenlyt have
+and I'm ready to build buildin on my personal site. 
+
+I'm making this site, and redoing my personal 
+site. The process of building those is what I'll
+use to finalize the first version of the format. 
+
+I'll add a bunch of documentation, but the real
+test will be the interpreter passing the test. 
+
+
+
+Here's an initial implementatio I'm working on. 
+
+https://github.com/alanwsmith/neopolitan-py
+
+---: TODO
+
+[] Link up the validaiton tests
+
+[] Move most of this content to a secondary about 
+page and put examples here. 
+
+
