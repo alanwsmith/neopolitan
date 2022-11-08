@@ -71,34 +71,32 @@ is here</a> if you want to see more behind the scenes.
 <hr />
 
       
-      <p>Neopolitan is a plain-text content format. It&#x27;s designed to be fast to write and easy to move.</p>
-<p>From <code class="neo-inline-code">Learning Perl</code>: Making Easy Things Easy and Hard Things Possible</p>
-<ol>
-<li>Make it fast</li>
-<li>Make it powerful</li>
-<li>Make it portable</li>
-</ol>
+      <h1 class="neo-title">neopolitan</h1>
+<p>Neopolitan is a plain-text file format. It&#x27;s similar to Markdown, MDX, and Org-Mode. I&#x27;ve used all of those before but always ran up against shortcoming in the way I want things to work&lt;&lt;footnote:&gt;&gt;.</p>
+<p>but comes at things from a different angle.</p>
 <p>I&#x27;ve run my site for twenty years. I&#x27;ve done a half dozen overhauls that required changing the way I store content. Thinking forward to the next twenty years, I never want to have to do it again.</p>
 <p>The fundamental goal of neopolitan is to keep me from having to do that while still providing a fully featured set of content options.</p>
 <h3>Overview</h3>
 <p>Neopolitan documents are made of sections. Each sections starts with <code class="neo-inline-code">---:</code> followd by the type of section. For example:</p>
-<pre>  ---: CONTENT</pre>
+<pre> ---: CONTENT</pre>
 <h3>Processing</h3>
 <p>Each section type has a distince set of rules for how to process what&#x27;s inside it. For example,  sections are very much like markdown.</p>
 <p>This:</p>
-<pre>##### Small Example Header
+<pre> ---: CONTENT
 
-Here&#x27;s a list
+ ##### Small Example Header
 
-- It&#x27;s easy to tell the depth of a well.
+ Here&#x27;s a list
 
-- Two blue fish swam in the tank.
+ - It&#x27;s easy to tell the depth of a well.
 
-And one with numbers
+ - Two blue fish swam in the tank.
 
-1. Cut the pie into large parts.
+ And one with numbers
 
-2. The pencils have all been used.</pre>
+ 1. Cut the pie into large parts.
+
+ 2. The pencils have all been used.</pre>
 <p>Turns into this:</p>
 <h3>More Stuff</h3>
 <p>neopolitan offers an expanded set of options with the basic processing. For example, detail lists.</p>

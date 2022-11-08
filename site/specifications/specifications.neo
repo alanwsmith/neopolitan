@@ -53,7 +53,26 @@ tags. The only processing is for HTML escaping
 - FOOTNOTES - probably makes the cut to 
 provide for linking. Probably set a flag to 
 turn links off too?  - This can be like a list 
-but multiline works fine
+but multiline works fine - can be added
+anywhere in the page and there can 
+be any number of them, they just get appended
+to each other. That makes it easier to 
+see what's attached to whate while youre 
+writing. TBD on thow to make the number
+eaiser? maybe ou have to put in a title?
+But I don't want to have to reference that. 
+Maybe they auto increment, but then you 
+can override them? That seems like a good
+play. 
+
+Maybe there are both `FOOTNOTE` and `FOOTNOTES`
+and they just append down the page?
+
+Either way, they're made up of lists, so
+until there's a way to embed lists in lists
+overall, that won't be an option. 
+
+
 
 - NOTE
 

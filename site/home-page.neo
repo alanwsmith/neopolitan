@@ -2,6 +2,11 @@
 
 neopolitan
 
+---: SUBTITLE
+
+neo for short
+
+
 ---: NOTE
 :::: :class heads-up
 
@@ -18,16 +23,34 @@ too. It's all part of the process.
 
 ---: CONTENT
 
-Neopolitan is a plain-text content format. It's 
-designed to be fast to write and easy to move. 
 
-From `Learning Perl`: Making Easy Things Easy and Hard Things Possible
+Neopolitan is a plain-text file format. It's 
+similar to Markdown, MDX, and Org-Mode. I've 
+used all of those before but always ran up
+against shortcoming in the way I want things 
+to work<<footnote:>>. 
 
-1. Make it fast 
+---: FOOTNOTE
 
-2. Make it powerful
+- To be fair, MDX and Org-Mode both allow 
+increasing degrees of customization. But 
+MDX is tied to JSX components and Org-Mode
+requires diggin into lisp. I've done that, 
+but I'm way more effifieicne in other 
+languages. 
 
-3. Make it portable 
+
+
+
+
+---: CONTENT 
+
+but 
+comes at things from a different angle.
+
+
+
+
 
 I've run my site for twenty years. I've 
 done a half dozen overhauls that required changing
@@ -48,9 +71,11 @@ sections. Each sections starts with
 `---:` followd by the type of section. For
 example:
 
+
 ---: PRE
 
-  ---: CONTENT
+ ---: CONTENT
+
 
 ---: CONTENT 
 
@@ -61,23 +86,52 @@ for how to process what's inside it. For example,
 <<c|---: CONTENT|neo>> sections are very much
 like markdown. 
 
+
+
+---: HIDDEN
+
+Note that right now the lines in the next
+PRE section are spaced over one. That's 
+because the functonality to embed section
+header in PRE sections hasn't been 
+implemented yet. 
+
+Also, There's a lot going on with the 
+duplication of content and example headers. 
+Files without so much meta examination 
+don't look as cluttered. 
+
+Being able to add as much space as you 
+want between sections helps with that 
+thought
+
+
+
+
+
+---: CONTENT
+
 This:
+
+
 
 ---: PRE 
 
-##### Small Example Header
+ ---: CONTENT
 
-Here's a list
+ ##### Small Example Header
 
-- It's easy to tell the depth of a well.
+ Here's a list
 
-- Two blue fish swam in the tank.
+ - It's easy to tell the depth of a well.
 
-And one with numbers
+ - Two blue fish swam in the tank.
 
-1. Cut the pie into large parts.
+ And one with numbers
 
-2. The pencils have all been used.
+ 1. Cut the pie into large parts.
+
+ 2. The pencils have all been used.
 
 ---: CONTENT
 
@@ -139,17 +193,6 @@ Becomes
 
 I'm currnetly in the proces of going <l|1|MDN's full list of elements>>
 
-
-
-
----: LINKS
-
-[
-  {
-    "href": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
-  }
-]
-  
 
 
 
@@ -226,5 +269,23 @@ page and put examples here.
 [] Write up "Why not Org Mode"
 
 [] Write up "Why not format X"
+
+
+
+Scratch line:
+
+From `Learning Perl`: Making Easy Things Easy and Hard Things Possible
+
+
+
+
+---: LINKS
+
+[
+  {
+    "href": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
+  }
+]
+  
 
 

@@ -5,6 +5,15 @@ Considerations
 
 ---: CONTENT
 
+Ingest the title into the metadata
+automaticcally? seems like a good idea. 
+not sure if that's spec or implemenation. 
+
+
+---
+
+
+
 ### Headers
 
 I'm liking the idea that the functionaly
