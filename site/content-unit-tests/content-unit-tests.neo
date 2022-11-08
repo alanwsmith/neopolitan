@@ -1,6 +1,13 @@
+---: TITLE
+
+Neopolitan Unit Tests
+
+---: TODO
+
+- Setup ---:TITLE that turns into an `<h1 class="neo-title">`
+
 ---: CONTENT
 
-# Neopolitan Unit Tests
 
 This document is use to verify neopolitan functionality. 
 
@@ -640,9 +647,28 @@ Check <<l|1|links>> work
 
 
 
----: TODO
 
-- ---:TITLE that turns into an `<h1 class="neo-title">`
+---: CONTENT
+
+### Verify multiple links in a segment work
+
+---: PRE
+
+Verify <<l|1|links>> work <<l|2|twice>> 
+
+
+---: PRE
+
+--------------------------------------------------
+<p>Verify <a aria-label="aria example" href="https://links.alanwsmith.com">links</a> work <a aria-label="aria test" href="https://ideas.alanwsmith.com">twice</a></p>
+--------------------------------------------------
+
+---: CONTENT
+
+Verify <<l|1|links>> work <<l|2|twice>> 
+
+
+
 
 
 
@@ -650,8 +676,12 @@ Check <<l|1|links>> work
 ---: LINKS
 
 [
-{
-  "href": "https://links.alanwsmith.com", 
-  "aria-label": "aria example"
-}
+  {
+    "href": "https://links.alanwsmith.com", 
+    "aria-label": "aria example"
+  },
+  {
+    "href": "https://ideas.alanwsmith.com", 
+    "aria-label": "aria test"
+  }
 ]

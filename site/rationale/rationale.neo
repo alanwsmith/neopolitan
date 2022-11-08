@@ -78,3 +78,31 @@ envoiroment it seems natural. Plus, it's
 less typing. 
 
 
+### No HTML In CONTENT
+
+- Markdown lets you put HTML in the doucments
+that'll get rendered when the file is processed. 
+You can do that in neopolitan too, just not
+in the CONTENT sections. single `<` and `>` characters 
+are alwasy translated to their `&lt;` and `&gt;`
+conterparts. 
+
+There are provisios for HTML though. The biggest
+one is `---: HTML` sections. Other than chompig
+whitespace off the top and bottom, no other 
+processing is done. Throw whatever you want 
+in there and it'll be passed on intact. 
+
+Other things you can do:
+
+- Make a <<c|---: DIV|neo>> section. IDs and
+styles can be applied those with a `<div>`
+wrapping the content that is otherwise 
+processed the same way as <<c:---\: CONTENT>>
+sections
+
+
+
+
+
+

@@ -1,6 +1,6 @@
----: CONTENT
+---: TITLE 
 
-# neopolitan
+neopolitan
 
 ---: NOTE
 :::: :class heads-up
@@ -18,8 +18,10 @@ too. It's all part of the process.
 
 ---: CONTENT
 
-Neopolitan is a plain-text content format. The 
-underlying principales are: 
+Neopolitan is a plain-text content format. It's 
+designed to be fast to write and easy to move. 
+
+From `Learning Perl`: Making Easy Things Easy and Hard Things Possible
 
 1. Make it fast 
 
@@ -38,7 +40,8 @@ providing a fully featured set of content
 options. 
 
 
-### TL;DR
+### Overview 
+
 
 Neopolitan documents are made of
 sections. Each sections starts with 

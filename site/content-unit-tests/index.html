@@ -71,8 +71,7 @@ is here</a> if you want to see more behind the scenes.
 <hr />
 
       
-      <h1>Neopolitan Unit Tests</h1>
-<p>This document is use to verify neopolitan functionality.</p>
+      <p>This document is use to verify neopolitan functionality.</p>
 <h2>Details</h2>
 <ul>
 <li>Each CONTENT section that&#x27;s followed by two PRE sections collectively constitute a test</li>
@@ -378,7 +377,13 @@ fall with the next puff of wind.</pre>
 <pre>--------------------------------------------------
 &lt;p&gt;Check &lt;a aria-label=&quot;aria example&quot; href=&quot;https://links.alanwsmith.com&quot;&gt;links&lt;/a&gt; work&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>Check <a aria-label="aria example" href="https://links.alanwsmith.com">links</a> work</p></main>
+<p>Check <a aria-label="aria example" href="https://links.alanwsmith.com">links</a> work</p>
+<h3>Verify multiple links in a segment work</h3>
+<pre>Verify &lt;&lt;l|1|links&gt;&gt; work &lt;&lt;l|2|twice&gt;&gt; </pre>
+<pre>--------------------------------------------------
+&lt;p&gt;Verify &lt;a aria-label=&quot;aria example&quot; href=&quot;https://links.alanwsmith.com&quot;&gt;links&lt;/a&gt; work &lt;a aria-label=&quot;aria test&quot; href=&quot;https://ideas.alanwsmith.com&quot;&gt;twice&lt;/a&gt;&lt;/p&gt;
+--------------------------------------------------</pre>
+<p>Verify <a aria-label="aria example" href="https://links.alanwsmith.com">links</a> work <a aria-label="aria test" href="https://ideas.alanwsmith.com">twice</a></p></main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
       <br />

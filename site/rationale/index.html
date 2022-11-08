@@ -91,7 +91,16 @@ is here</a> if you want to see more behind the scenes.
 <li>As simple as possible. No simpler - Prefer ease of use in the 80/20 mix</li>
 </ul>
 <p>You can add a <code class="neo-inline-code">:class</code> to <code class="neo-inline-code">---: CONTENT</code> without specifying a <code class="neo-inline-code">~tag</code> (or whatever it ends up being) and it&#x27;ll default to section. It could just be ignored, but the author is signaling intent so act on it as best as possible.</p>
-<p>The only difference between <code class="neo-inline-code">DIV</code> and <code class="neo-inline-code">CONTENT</code> sections is that the former gets wrapped in a div. It&#x27;s possible to do the exact same thing by adding a <code class="neo-inline-code">~tag</code> directive to a <code class="neo-inline-code">CONTENT</code> section, but I like the stronger signal of intent with the separate tags. HTML divs are also such a fundamental part of the envoiroment it seems natural. Plus, it&#x27;s less typing.</p></main>
+<p>The only difference between <code class="neo-inline-code">DIV</code> and <code class="neo-inline-code">CONTENT</code> sections is that the former gets wrapped in a div. It&#x27;s possible to do the exact same thing by adding a <code class="neo-inline-code">~tag</code> directive to a <code class="neo-inline-code">CONTENT</code> section, but I like the stronger signal of intent with the separate tags. HTML divs are also such a fundamental part of the envoiroment it seems natural. Plus, it&#x27;s less typing.</p>
+<h3>No HTML In CONTENT</h3>
+<ul>
+<li>Markdown lets you put HTML in the doucments that&#x27;ll get rendered when the file is processed. You can do that in neopolitan too, just not in the CONTENT sections. single <code class="neo-inline-code">&lt;</code> and <code class="neo-inline-code">&gt;</code> characters are alwasy translated to their <code class="neo-inline-code">&amp;lt;</code> and <code class="neo-inline-code">&amp;gt;</code> conterparts.</li>
+</ul>
+<p>There are provisios for HTML though. The biggest one is <code class="neo-inline-code">---: HTML</code> sections. Other than chompig whitespace off the top and bottom, no other processing is done. Throw whatever you want in there and it&#x27;ll be passed on intact.</p>
+<p>Other things you can do:</p>
+<ul>
+<li>Make a  section. IDs and styles can be applied those with a <code class="neo-inline-code">&lt;div&gt;</code> wrapping the content that is otherwise processed the same way as &lt;&lt;c:---\: CONTENT&gt;&gt; sections</li>
+</ul></main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
       <br />
