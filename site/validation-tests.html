@@ -92,29 +92,190 @@
     </header>
     <main><ul>
 <p>---: CONTENT</p>
-<p># Neopolitan Reference</p>
-<p>This document defines neopolitan transformations.</p>
-<p>This document is maintained with revisions. Any parser that produces the same output as the (TKTKTKTK link) neopolitan-py reference implementation is a valid Neopolitan interpreter for that revision. Providing additional functionality is encouraged.</p>
-<p>Every effort will be made to ensure backward compatibility once revision 1 is published. (Preview revisions before revision 1 will be used to finalize the first revision in an effort to lock in its long term stability)</p>
-<p>Validation is done via HTML.</p>
-<p>The tests are done by convention. The document is split by `---: CONTENT` headers then `---: PRE` headers. If there are three items in the resulting array the values are run as a test. The target is wrapped in `-----------...` lines to control for whitespace</p>
+<p>Temporarily moving the test up top</p>
 <p>---: CONTENT</p>
-<p>## Single line paragraph</p>
+<h2>Single line paragraph</h2>
 <p>---: PRE</p>
 <p>The curtain rose and the show was on.</p>
 <p>---: PRE</p>
 <p>-------------------------------------------------- &lt;p&gt;The curtain rose and the show was on.&lt;/p&gt; --------------------------------------------------</p>
 <p>---: CONTENT</p>
-<p>---: TODO</p>
-<p>This is the list of all the tags to consider for inclusion. Not all of them will be used. This is focused on content and not metadata (which) is contained in the ---: CONFIG json</p>
-<p>[] address [] article [] aside [] footer [] header [] h1-h6 [] main [] nav [] section [] blockquote [] dd [] div [] dl [] dt [] hr [] li [] figure/figcaption [x] ol [x] p [] pre [x] ul [] abbr [] br [] cite [] code [] data [] dfn [] em [] i [] kbd [] a [] strong [] bdi [] bdo [] mark [] q [] ruby [] rp [] rt [] s [] samp [] small [] span [] strong [] sub [] sup [] time [] u [] var [] wbr [] area [] audio [] img [] map [] track [] video [] html [] base [] head [] link [] meta [] style [] title [] body</p>
-<p>(Thinking maybe a lot of these are just straight double less than tags with the name, content and then arguments and directives passed)</p>
-<p>One of the directives that you could use for the double lt tags is `~no-escape` or something like that so that you can pass already escaped character in</p>
-<p>You do want to have the ability to have text above and below the notes in the notes section. Probably not so much with lists.</p>
-<p>---: HIDDEN</p>
-<p>---: HIDDEN</p>
-<p>[] Description lists [] TODO Lists [] ::: :headers - which are attributes that are included [] ::: ~headers - which are custom thing that can be used by interpreters [] Talks with Ben about accessibility [] Figure out tables [] probably directives should be defined for `~` since they&#x27;re being used explicity for sections and possible other things [] so maybe `::: x-` for custom header payload. [] Make an explicit `---: CONFIG` section that&#x27;s a json blog for whatever folks want to throw in it.</p>
-<p>---: HIDDEN</p>
+<h2>Multi line paragraph</h2>
+<p>---: PRE</p>
+<p>The birch canoe slid on the smooth planks.</p>
+<p>---: PRE</p>
+<p>-------------------------------------------------- &lt;p&gt;The birch canoe slid on the smooth planks.&lt;/p&gt; --------------------------------------------------</p>
+<p>---: CONTENT</p>
+<h2>Multiple paragraphs</h2>
+<p>---: PRE</p>
+<p>Glue the sheet to the dark blue background. It is easy to tell the depth of a well.</p>
+<p>Rice is often served in round bowls. The box was thrown beside the parked truck.</p>
+<p>The source of the huge river is the clear spring. The salt breeze came across from the sea.</p>
+<p>---: PRE</p>
+<p>-------------------------------------------------- &lt;p&gt;Glue the sheet to the dark blue background. It is easy to tell the depth of a well.&lt;/p&gt; &lt;p&gt;Rice is often served in round bowls. The box was thrown beside the parked truck.&lt;/p&gt; &lt;p&gt;The source of the huge river is the clear spring. The salt breeze came across from the sea.&lt;/p&gt; --------------------------------------------------</p>
+<p>---: CONTENT</p>
+<h2>White space at the end of a paragraph is stripped</h2>
+<p>---: PRE</p>
+<p>Two blue fish swam in the tank.</p>
+<p>---: PRE</p>
+<p>-------------------------------------------------- &lt;p&gt;Two blue fish swam in the tank.&lt;/p&gt; --------------------------------------------------</p>
+<p>---: CONTENT</p>
+<h2>Properly escape HTML characters</h2>
+<p>---: PRE</p>
+<p>Checking &amp; &#x27; &quot; &lt; &gt;</p>
+<p>---: PRE</p>
+<p>-------------------------------------------------- &lt;p&gt;Checking &amp;amp; &amp;#x27; &amp;quot; &amp;lt; &amp;gt;&lt;/p&gt; --------------------------------------------------</p>
+<p>---: CONTENT</p>
+<h2>Unordered list with one item</h2>
+<p>---: PRE</p>
+<li>The colt reared and threw the tall rider.</li>
+<li>---: PRE</li>
+<li>-------------------------------------------------- &lt;ul&gt; &lt;li&gt;The colt reared and threw the tall rider.&lt;/li&gt; &lt;/ul&gt; --------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>## Unordered lists with and without spaces and with mutiple lines with and withone indents with white space at the end that is removed</li>
+<li>---: PRE</li>
+<li>It snowed, rained, and hailed the same morning. Take the winding path to reach the lake.</li>
+<li>The wide road shimmered in the hot sun. Lift the square stone over the fence.</li>
+<li>Mesh wire keeps chicks inside. The frosty air passed through the coat.</li>
+<li>A saw is a tool used for making boards.</li>
+<li>---: PRE</li>
+<li>-------------------------------------------------- &lt;ul&gt; &lt;li&gt;It snowed, rained, and hailed the same morning. Take the winding path to reach the lake.&lt;/li&gt; &lt;li&gt;The wide road shimmered in the hot sun. Lift the square stone over the fence.&lt;/li&gt; &lt;li&gt;Mesh wire keeps chicks inside. The frosty air passed through the coat.&lt;/li&gt; &lt;li&gt;A saw is a tool used for making boards.&lt;/li&gt; &lt;/ul&gt; --------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>## List with dash at the start of a line in the content</li>
+<li>---: PRE</li>
+<li>Use a pencil to write the first draft. A - small creek cut across the field.</li>
+<li>The dune rose from the edge of the water. Those words were the cue for the actor to leave.</li>
+<li>The ink stain dried on the finished page.</li>
+<li>---: PRE</li>
+<li>-------------------------------------------------- &lt;ul&gt; &lt;li&gt;Use a pencil to write the first draft. A - small creek cut across the field.&lt;/li&gt; &lt;li&gt;The dune rose from the edge of the water. Those words were the cue for the actor to leave.&lt;/li&gt; &lt;li&gt;The ink stain dried on the finished page.&lt;/li&gt; &lt;/ul&gt; --------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>Ordered list with one item</li>
+<li>---: PRE</li>
+<li>1. The fruit peel was cut in thick slices.</li>
+<li>---: PRE</li>
+<li>-------------------------------------------------- &lt;ol&gt; &lt;li&gt;The fruit peel was cut in thick slices.&lt;/li&gt; &lt;/ol&gt; --------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>Multiple item ordered list and numbers don&#x27;t matter</li>
+<li>---: PRE</li>
+<li>1. There are more than two factors here. The grass curled around the fence post.</li>
+<li>2. Cut the pie into large parts. A wisp of cloud hung in the blue air.</li>
+<li>3. Oak is strong and also gives shade.</li>
+<li>---: PRE</li>
+<li>-------------------------------------------------- &lt;ol&gt; &lt;li&gt;There are more than two factors here. The grass curled around the fence post.&lt;/li&gt; &lt;li&gt;Cut the pie into large parts. A wisp of cloud hung in the blue air.&lt;/li&gt; &lt;li&gt;Oak is strong and also gives shade.&lt;/li&gt; &lt;/ol&gt; --------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>Description List</li>
+<li>---: PRE</li>
+<li>~ Alpha</li>
+<li>: Split the log with a quick, sharp blow. He ordered peach pie with ice cream.</li>
+<li>---: PRE</li>
+<li>-------------------------------------------------- &lt;dl&gt; &lt;dt&gt;Alpha&lt;/dt&gt; &lt;dd&gt;Split the log with a quick, sharp blow. He ordered peach pie with ice cream.&lt;/dd&gt; &lt;/dl&gt; --------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>Description List - Multiple Items</li>
+<li>---: PRE</li>
+<li>~ Bravo</li>
+<li>: Weave the carpet on the right hand side. The cup cracked and spilled its contents.</li>
+<li>~ Charlie</li>
+<li>: Pluck the bright rose without leaves. The young kid jumped the rusty gate.</li>
+<li>---: PRE</li>
+<li>-------------------------------------------------- &lt;dl&gt; &lt;dt&gt;Bravo&lt;/dt&gt; &lt;dd&gt;Weave the carpet on the right hand side. The cup cracked and spilled its contents.&lt;/dd&gt; &lt;dt&gt;Charlie&lt;/dt&gt; &lt;dd&gt;Pluck the bright rose without leaves. The young kid jumped the rusty gate.&lt;/dd&gt; &lt;/dl&gt; --------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>Description lists with multi paragraph descriptions.</li>
+<li>---: PRE</li>
+<li>~ Delta</li>
+<li>:  Guess the results from the first scores.</li>
+<li>: These thistles bend in a high wind.</li>
+<li>~ Echo</li>
+<li>: The spot on the blotter was made by green ink. The cigar burned a hole in the desk top.</li>
+<li>---: PRE</li>
+<li>-------------------------------------------------- &lt;dl&gt; &lt;dt&gt;Delta&lt;/dt&gt; &lt;dd&gt;Guess the results from the first scores.&lt;br /&gt;&lt;br /&gt;These thistles bend in a high wind.&lt;/dd&gt; &lt;dt&gt;Echo&lt;/dt&gt; &lt;dd&gt;The spot on the blotter was made by green ink. The cigar burned a hole in the desk top.&lt;/dd&gt; &lt;/dl&gt; --------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>## Headers</li>
+<li>---: PRE</li>
+<li># Alpha</li>
+<li>#### Delta</li>
+<li>### Charlie</li>
+<li>##### Echo</li>
+<li>###### Foxtrot</li>
+<li>## Bravo</li>
+<li>---: PRE</li>
+<li>-------------------------------------------------- &lt;h1&gt;Alpha&lt;/h1&gt; &lt;h4&gt;Delta&lt;/h4&gt; &lt;h3&gt;Charlie&lt;/h3&gt; &lt;h5&gt;Echo&lt;/h5&gt; &lt;h6&gt;Foxtrot&lt;/h6&gt; &lt;h2&gt;Bravo&lt;/h2&gt; --------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li>---: PRE</li>
+<li>---: PRE</li>
+<li>--------------------------------------------------</li>
+<li>--------------------------------------------------</li>
+<li>---: CONTENT</li>
+<li># Neopolitan Reference</li>
+<li>This document defines neopolitan transformations.</li>
+<li>This document is maintained with revisions. Any parser that produces the same output as the (TKTKTKTK link) neopolitan-py reference implementation is a valid Neopolitan interpreter for that revision. Providing additional functionality is encouraged.</li>
+<li>Every effort will be made to ensure backward compatibility once revision 1 is published. (Preview revisions before revision 1 will be used to finalize the first revision in an effort to lock in its long term stability)</li>
+<li>Validation is done via HTML.</li>
+<li>The tests are done by convention. The document is split by `---: CONTENT` headers then `---: PRE` headers. If there are three items in the resulting array the values are run as a test. The target is wrapped in `-----------...` lines to control for whitespace</li>
+<li>---: TODO</li>
+<li>This is the list of all the tags to consider for inclusion. Not all of them will be used. This is focused on content and not metadata (which) is contained in the ---: CONFIG json</li>
+<li>[] address [] article [] aside [] footer [] header [] h1-h6 [] main [] nav [] section [] blockquote [] dd [] div [] dl [] dt [] hr [] li [] figure/figcaption [x] ol [x] p [] pre [x] ul [] abbr [] br [] cite [] code [] data [] dfn [] em [] i [] kbd [] a [] strong [] bdi [] bdo [] mark [] q [] ruby [] rp [] rt [] s [] samp [] small [] span [] strong [] sub [] sup [] time [] u [] var [] wbr [] area [] audio [] img [] map [] track [] video [] html [] base [] head [] link [] meta [] style [] title [] body</li>
+<li>(Thinking maybe a lot of these are just straight double less than tags with the name, content and then arguments and directives passed)</li>
+<li>One of the directives that you could use for the double lt tags is `~no-escape` or something like that so that you can pass already escaped character in</li>
+<li>You do want to have the ability to have text above and below the notes in the notes section. Probably not so much with lists.</li>
+<li>---: HIDDEN</li>
+<li>---: HIDDEN</li>
+<li>[] Description lists [] TODO Lists [] ::: :headers - which are attributes that are included [] ::: ~headers - which are custom thing that can be used by interpreters [] Talks with Ben about accessibility [] Figure out tables [] probably directives should be defined for `~` since they&#x27;re being used explicity for sections and possible other things [] so maybe `::: x-` for custom header payload. [] Make an explicit `---: CONFIG` section that&#x27;s a json blog for whatever folks want to throw in it.</li>
+<li>---: HIDDEN</li>
 <li>Some of these thought conflict. Because I don&#x27;t want to break flow and go find the prior version. They&#x27;ll be cleaned up and reconsiled</li>
 <li>Make white space required between chunks. That is the separator without it, you don&#x27;t do things like have a dash that&#x27;s at the start of a later line in a paragraph. Something - like that. It looks weird in general, but that&#x27;s still part of the paragraph.</li>
 <li>Personally I&#x27;d move that dash to the preceeding line because it looks weird. But that&#x27;s not a requirement.</li>
@@ -140,119 +301,43 @@
 <li>Don&#x27;t make `TEST` part of the foundation. Use it as an example of creating custom sections.</li>
 <li>If you want multiple lines in a `dd` you&#x27;ll have to drop in your own tags to make that happen in this iteration.</li>
 <li>The `---: DIV` just wraps it stuff in a div with whatever headers you pass (or none if you don&#x27;t). The internally processing is the same as `---: CONTENT`</li>
+<li>Widget handling is an implemetiontaion details. The only spec for widget sections in the file is that they be valid JSON or javascript object style format. Maybe the header could determien the content type and directives?</li>
+<li>Something like:</li>
+<li>`---: WIDGET` `:::: :type SomeType` `:::: :format JSON|JS|Whatever`</li>
+<li>Since handling is up th</li>
 <li>---: CONTENT</li>
-<li>## Test Cases</li>
-<li>---: TEST</li>
-<li>---: TEST</li>
-<li>Multi line paragraph</li>
-<li>--------------------------------------------------</li>
-<li>The birch canoe slid on the smooth planks.</li>
-<li>-------------------------------------------------- &lt;p&gt;The birch canoe slid on the smooth planks.&lt;/p&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
-<li>Multiple paragraphs</li>
-<li>--------------------------------------------------</li>
-<li>Glue the sheet to the dark blue background. It is easy to tell the depth of a well.</li>
-<li>Rice is often served in round bowls. The box was thrown beside the parked truck.</li>
-<li>The source of the huge river is the clear spring. The salt breeze came across from the sea.</li>
-<li>-------------------------------------------------- &lt;p&gt;Glue the sheet to the dark blue background. It is easy to tell the depth of a well.&lt;/p&gt; &lt;p&gt;Rice is often served in round bowls. The box was thrown beside the parked truck.&lt;/p&gt; &lt;p&gt;The source of the huge river is the clear spring. The salt breeze came across from the sea.&lt;/p&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
-<li>White space at the end of a paragraph is stripped</li>
-<li>--------------------------------------------------</li>
-<li>Two blue fish swam in the tank.</li>
-<li>-------------------------------------------------- &lt;p&gt;Two blue fish swam in the tank.&lt;/p&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
-<li>Properly escape HTML characters</li>
-<li>--------------------------------------------------</li>
-<li>Checking &amp; &#x27; &quot; &lt; &gt;</li>
-<li>-------------------------------------------------- &lt;p&gt;Checking &amp;amp; &amp;#x27; &amp;quot; &amp;lt; &amp;gt;&lt;/p&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
-<li>Unordered list with one item</li>
-<li>--------------------------------------------------</li>
-<li>The colt reared and threw the tall rider.</li>
-<li>-------------------------------------------------- &lt;ul&gt; &lt;li&gt;The colt reared and threw the tall rider.&lt;/li&gt; &lt;/ul&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
-<li>Unordered lists with and without spaces and with mutiple lines with and withone indents with white space at the end that is removed</li>
-<li>--------------------------------------------------</li>
-<li>It snowed, rained, and hailed the same morning. Take the winding path to reach the lake.</li>
-<li>The wide road shimmered in the hot sun. Lift the square stone over the fence.</li>
-<li>Mesh wire keeps chicks inside. The frosty air passed through the coat.</li>
-<li>A saw is a tool used for making boards.</li>
-<li>-------------------------------------------------- &lt;ul&gt; &lt;li&gt;It snowed, rained, and hailed the same morning. Take the winding path to reach the lake.&lt;/li&gt; &lt;li&gt;The wide road shimmered in the hot sun. Lift the square stone over the fence.&lt;/li&gt; &lt;li&gt;Mesh wire keeps chicks inside. The frosty air passed through the coat.&lt;/li&gt; &lt;li&gt;A saw is a tool used for making boards.&lt;/li&gt; &lt;/ul&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
-<li>List with dash at the start of a line in the content</li>
-<li>--------------------------------------------------</li>
-<li>Use a pencil to write the first draft. A - small creek cut across the field.</li>
-<li>The dune rose from the edge of the water. Those words were the cue for the actor to leave.</li>
-<li>The ink stain dried on the finished page.</li>
-<li>-------------------------------------------------- &lt;ul&gt; &lt;li&gt;Use a pencil to write the first draft. A - small creek cut across the field.&lt;/li&gt; &lt;li&gt;The dune rose from the edge of the water. Those words were the cue for the actor to leave.&lt;/li&gt; &lt;li&gt;The ink stain dried on the finished page.&lt;/li&gt; &lt;/ul&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
-<li>Ordered list with one item</li>
-<li>--------------------------------------------------</li>
-<li>1. The fruit peel was cut in thick slices.</li>
-<li>-------------------------------------------------- &lt;ol&gt; &lt;li&gt;The fruit peel was cut in thick slices.&lt;/li&gt; &lt;/ol&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
-<li>Multiple item ordered list and numbers don&#x27;t matter</li>
-<li>--------------------------------------------------</li>
-<li>1. There are more than two factors here. The grass curled around the fence post.</li>
-<li>2. Cut the pie into large parts. A wisp of cloud hung in the blue air.</li>
-<li>3. Oak is strong and also gives shade.</li>
-<li>-------------------------------------------------- &lt;ol&gt; &lt;li&gt;There are more than two factors here. The grass curled around the fence post.&lt;/li&gt; &lt;li&gt;Cut the pie into large parts. A wisp of cloud hung in the blue air.&lt;/li&gt; &lt;li&gt;Oak is strong and also gives shade.&lt;/li&gt; &lt;/ol&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
-<li>Description List</li>
-<li>--------------------------------------------------</li>
-<li>~ Alpha</li>
-<li>: Split the log with a quick, sharp blow. He ordered peach pie with ice cream.</li>
-<li>-------------------------------------------------- &lt;dl&gt; &lt;dt&gt;Alpha&lt;/dt&gt; &lt;dd&gt;Split the log with a quick, sharp blow. He ordered peach pie with ice cream.&lt;/dd&gt; &lt;/dl&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
-<li>Description List - Multiple Items</li>
-<li>--------------------------------------------------</li>
-<li>~ Bravo</li>
-<li>: Weave the carpet on the right hand side. The cup cracked and spilled its contents.</li>
-<li>~ Charlie</li>
-<li>: Pluck the bright rose without leaves. The young kid jumped the rusty gate.</li>
-<li>-------------------------------------------------- &lt;dl&gt; &lt;dt&gt;Bravo&lt;/dt&gt; &lt;dd&gt;Weave the carpet on the right hand side. The cup cracked and spilled its contents.&lt;/dd&gt; &lt;dt&gt;Charlie&lt;/dt&gt; &lt;dd&gt;Pluck the bright rose without leaves. The young kid jumped the rusty gate.&lt;/dd&gt; &lt;/dl&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
-<li>Description lists with multi paragraph descriptions.</li>
-<li>--------------------------------------------------</li>
-<li>~ Delta</li>
-<li>:  Guess the results from the first scores.</li>
-<li>: These thistles bend in a high wind.</li>
-<li>~ Echo</li>
-<li>: The spot on the blotter was made by green ink. The cigar burned a hole in the desk top.</li>
-<li>-------------------------------------------------- &lt;dl&gt; &lt;dt&gt;Delta&lt;/dt&gt; &lt;dd&gt;Guess the results from the first scores.&lt;br /&gt;&lt;br /&gt;These thistles bend in a high wind.&lt;/dd&gt; &lt;dt&gt;Echo&lt;/dt&gt; &lt;dd&gt;The spot on the blotter was made by green ink. The cigar burned a hole in the desk top.&lt;/dd&gt; &lt;/dl&gt; --------------------------------------------------</li>
-<li>---: TEST</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
-<li>---: TEST</li>
+<li>---: CONTENT</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
-<li>---: TEST</li>
+<li>---: CONTENT</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
-<li>---: TEST</li>
+<li>---: CONTENT</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
-<li>---: TEST</li>
+<li>---: CONTENT</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
-<li>---: TEST</li>
+<li>---: CONTENT</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
-<li>---: TEST</li>
+<li>---: CONTENT</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
-<li>---: TEST</li>
+<li>---: CONTENT</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
-<li>---: TEST</li>
+<li>---: CONTENT</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
 <li>--------------------------------------------------</li>
@@ -329,6 +414,14 @@
 <li>&lt;&lt;link|1|link that breaks lines|&gt;&gt;</li>
 <li>&lt;&lt;link|1|extra attributes|:id some-id|:class some class|&gt;&gt;</li>
 <li>&lt;&lt;link|1|atts break lines|:id link-jump-line|&gt;&gt;</li>
+<li>---: CONTENT</li>
+<li>Consider how to do things like</li>
+<li>```html &lt;a href=&quot;/en-US/docs/Web/HTML/Element/blockquote&quot;&gt; &lt;cite&gt;MDN blockquote page&lt;/cite&gt;&lt;/a&gt; ```</li>
+<li>And other nestings, like `code` inside `strong`</li>
+<li>Maybe that just goes back to HTML?</li>
+<li>Could do `+` and `-` to put tags inside and out</li>
+<li>``` &lt;&lt;link|1|the text|:class something|+strong&gt;&gt; ```</li>
+<li>Feels like that would be better off being addressed by an id or class. Thinking the gain for trying to nest would be minimal compared to the effort and complexity involved.</li>
 </ul></main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
