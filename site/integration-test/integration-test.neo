@@ -4,15 +4,15 @@
 
 This document is the reference integration 
 get for Neopolitan. Any parser that renders 
-it with the same out is considered valid.
+it with the same output is considered valid.
 
 ## Whitespace And Scope
 
-Whitespace is doesn't matter except when it
+Whitespace doesn't matter except when it
 does. (e.g. `---: PRE` sections). 
 
 This document does not aim to test edge 
-cases and variations. See the <<link|1|unit 
+cases and variations. See the <<l|1|unit 
 tests>> for that.
 
 ---: TODO

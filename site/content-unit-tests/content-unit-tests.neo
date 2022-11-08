@@ -569,22 +569,27 @@ fall with the next puff of wind.
 
 ---: CONTENT
 
-### Turn back tic into code tags
+### Turn backtics into code tags
+
 
 ---: PRE
 
-This `is code`
+This `code` is inline
 
 
 ---: PRE
 
 --------------------------------------------------
-<p>This <code>is code</code></p>
+<p>This <code class="neo-inline-code">code</code> is inline</p>
 --------------------------------------------------
 
 ---: CONTENT
 
 This `is code`
+
+
+
+
 
 
 
@@ -600,7 +605,7 @@ This `is code`
 ---: PRE
 
 --------------------------------------------------
-<p><code>foxtrot</code> bravo alfa</p>
+<p><code class="neo-inline-code">foxtrot</code> bravo alfa</p>
 --------------------------------------------------
 
 ---: CONTENT
@@ -608,8 +613,45 @@ This `is code`
 `foxtrot` bravo alfa
 
 
---- META
 
+
+
+
+
+---: CONTENT
+
+### Basic link
+
+---: PRE
+
+Check <<l|1|links>> work
+
+
+---: PRE
+
+--------------------------------------------------
+<p>Check <a aria-label="aria example" href="https://links.alanwsmith.com">links</a> work</p>
+--------------------------------------------------
+
+---: CONTENT
+
+Check <<l|1|links>> work
+
+
+
+
+---: TODO
+
+- ---:TITLE that turns into an `<h1 class="neo-title">`
+
+
+
+
+---: LINKS
+
+[
 {
-  "title": 
+  "href": "https://links.alanwsmith.com", 
+  "aria-label": "aria example"
 }
+]

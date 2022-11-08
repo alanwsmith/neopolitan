@@ -18,17 +18,24 @@ too. It's all part of the process.
 
 ---: CONTENT
 
-Neopolitan is a plain-text content format 
-with two goals:
+Neopolitan is a plain-text content format. The 
+underlying principales are: 
 
-1. Make it fast to write
+1. Make it fast 
 
-2. Make it easy to assemble  
+2. Make it powerful
+
+3. Make it portable 
 
 I've run my site for twenty years. I've 
 done a half dozen overhauls that required changing
 the way I store content. Thinking forward 
 to the next twenty years, I never want to have to do it again.
+
+The fundamental goal of neopolitan is to 
+keep me from having to do that while still 
+providing a fully featured set of content
+options. 
 
 
 ### TL;DR
@@ -90,6 +97,56 @@ And one with numbers
 
 2. The pencils have all been used.
 
+---: CONTENT
+
+### More Stuff
+
+neopolitan offers an expanded set of options 
+with the basic processing. For example, 
+detail lists. 
+
+---: PRE
+
+~ Alfa
+
+: The office paint was a dull sad tan.
+
+~ Bravo
+
+: We admire and love a good cook.
+
+: Ducks fly north but lack a compass.
+
+---: CONTENT
+
+Becomes
+
+---: EXAMPLE
+
+: The office paint was a dull sad tan.
+
+~ Bravo
+
+: We admire and love a good cook.
+
+: Ducks fly north but lack a compass.
+
+
+---: CONTENT
+
+I'm currnetly in the proces of going <l|1|MDN's full list of elements>>
+
+
+
+
+---: LINKS
+
+[
+  {
+    "href": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
+  }
+]
+  
 
 
 

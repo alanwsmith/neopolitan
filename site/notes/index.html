@@ -74,23 +74,23 @@ is here</a> if you want to see more behind the scenes.
       <h1>Neopolitan Notes</h1>
 <h2>Examples</h2>
 <h3>Headers</h3>
-<p>Headers are made with between one and six *#* characters that map to <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code></p>
+<p>Headers are made with between one and six *#* characters that map to <code class="neo-inline-code">&lt;h1&gt;</code> to <code class="neo-inline-code">&lt;h6&gt;</code></p>
 <h2>Tags</h2>
 <ul>
 <li>div</li>
 <li>code</li>
 <li>span</li>
 </ul>
-<p>&lt;&lt;div|this is some text|:id some-id|&gt;&gt;</p>
-<p>&lt;&lt;div|this is some text|:id some-id&gt;&gt;</p>
-<p>For div span and code, any following item that starts with a <code>:</code> will turn into an attribute for the opening tag.</p>
-<p>Stuff without the <code>:</code> is not part of the spec but can be used in whatever way the implementaiton wants.</p>
+<p></p>
+<p></p>
+<p>For div span and code, any following item that starts with a <code class="neo-inline-code">:</code> will turn into an attribute for the opening tag.</p>
+<p>Stuff without the <code class="neo-inline-code">:</code> is not part of the spec but can be used in whatever way the implementaiton wants.</p>
 <p>And single lines like this.</p>
 <h2>Formatting</h2>
-<p>Headers are marked with between 1-6 &lt;&lt;code|#&gt;&gt; characters at the start of a line.</p>
-<p>There is &lt;&lt;text|*|strong&gt;&gt;*bold*&lt;&lt;text|*|strong&gt;&gt;</p>
-<p>There is &lt;&lt;text|*|strong|&gt;&gt;*bold*&lt;&lt;text|*|strong|&gt;&gt;</p>
-<p>TODO: Figure out is &lt;&lt;&lt;text|tree&gt;&gt;&gt; works for a way to pass things through so you can see them</p>
+<p>Headers are marked with between 1-6  characters at the start of a line.</p>
+<p>There is *bold*</p>
+<p>There is *bold*</p>
+<p>TODO: Figure out is &lt;&gt; works for a way to pass things through so you can see them</p>
 <p>Content in hidden sections isn&#x27;t output.</p>
 <p>_</p>
 <p>,---: DESCRIPTIONS :::: :class desription-example</p>
@@ -103,30 +103,30 @@ is here</a> if you want to see more behind the scenes.
 </ul>
 <p>both the initail text and the full defintion can be on multiple lines</p>
 <ul>
-<li>the *can* &lt;&lt;link|0|link&gt;&gt;</li>
+<li>the *can* </li>
 </ul>
-<p>in _both_ the initial and &lt;&lt;link|0|lower levels&gt;&gt;</p>
+<p>in _both_ the initial and </p>
 <p>You can also have multipe paragraphs in a description like this one.</p>
-<p>An characters that you don&#x27;t want to get converted go in &lt;&lt;code|text&gt;&gt; tags &lt;&lt;text|*&gt;&gt;</p>
+<p>An characters that you don&#x27;t want to get converted go in  tags &lt;&lt;text|*&gt;&gt;</p>
 <p>&lt;&lt;span|this is some stuff that will have a span on it|</p>
-<p>TODOs and other blocks are stopped when another &lt;&lt;code|---:&gt;&gt; marker shows up.</p>
+<p>TODOs and other blocks are stopped when another  marker shows up.</p>
 <p>Moving between any type of block is possible.</p>
 <p>CONTENT is the one to default to.</p>
 <h2>Links</h2>
 <p>SHould links have attributes in the tags or should those be stored in the metadata... feels like it&#x27;s nicerer to have them up top. So, make them both an option.</p>
-<p>&lt;&lt;link|1|basic link|&gt;&gt;</p>
-<p>&lt;&lt;link|1|link with &quot; and &lt; and &gt;|&gt;&gt;</p>
-<p>&lt;&lt;link|1|link that breaks lines|&gt;&gt;</p>
-<p>&lt;&lt;link|1|extra attributes|:id some-id|:class some class|&gt;&gt;</p>
-<p>&lt;&lt;link|1|atts break lines|:id link-jump-line|&gt;&gt;</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
 <p>Consider how to do things like</p>
-<p><code></code><code>html &lt;a href=&quot;/en-US/docs/Web/HTML/Element/blockquote&quot;&gt; &lt;cite&gt;MDN blockquote page&lt;/cite&gt;&lt;/a&gt; </code><code></code></p>
-<p>And other nestings, like <code>code</code> inside <code>strong</code></p>
+<p><code class="neo-inline-code"></code><code class="neo-inline-code">html &lt;a href=&quot;/en-US/docs/Web/HTML/Element/blockquote&quot;&gt; &lt;cite&gt;MDN blockquote page&lt;/cite&gt;&lt;/a&gt; </code><code class="neo-inline-code"></code></p>
+<p>And other nestings, like <code class="neo-inline-code">code</code> inside <code class="neo-inline-code">strong</code></p>
 <p>Maybe that just goes back to HTML?</p>
-<p>Could do <code>+</code> and <code>-</code> to put tags inside and out</p>
-<p><code></code><code> &lt;&lt;link|1|the text|:class something|+strong&gt;&gt; </code><code></code></p>
+<p>Could do <code class="neo-inline-code">+</code> and <code class="neo-inline-code">-</code> to put tags inside and out</p>
+<p><code class="neo-inline-code"></code><code class="neo-inline-code">  </code><code class="neo-inline-code"></code></p>
 <p>Feels like that would be better off being addressed by an id or class. Thinking the gain for trying to nest would be minimal compared to the effort and complexity involved.</p>
-<p>Figure out if you want to make <code>---: TABLE</code> be a header or just something in the content. I think probably it should be a header so attributes can be applied to it.</p>
+<p>Figure out if you want to make <code class="neo-inline-code">---: TABLE</code> be a header or just something in the content. I think probably it should be a header so attributes can be applied to it.</p>
 <ul>
 <li>section headers are always UPPERCASE and only 1 word/string</li>
 <li>Maybe make links JSON all the time. Let widgets be whatever they want. That way there isn&#x27;t a burden on other languates to try to parse javascript (unless that turns out to be trivial)</li>
@@ -136,7 +136,7 @@ is here</a> if you want to see more behind the scenes.
 <p>This document is maintained with revisions. Any parser that produces the same output as the (TKTKTKTK link) neopolitan-py reference implementation is a valid Neopolitan interpreter for that revision. Providing additional functionality is encouraged.</p>
 <p>Every effort will be made to ensure backward compatibility once revision 1 is published. (Preview revisions before revision 1 will be used to finalize the first revision in an effort to lock in its long term stability)</p>
 <p>Validation is done via HTML.</p>
-<p>The tests are done by convention. The document is split by <code>---: CONTENT</code> headers then <code>---: PRE</code> headers. If there are three items in the resulting array the values are run as a test. The target is wrapped in <code>-----------...</code> lines to control for whitespace</p>
+<p>The tests are done by convention. The document is split by <code class="neo-inline-code">---: CONTENT</code> headers then <code class="neo-inline-code">---: PRE</code> headers. If there are three items in the resulting array the values are run as a test. The target is wrapped in <code class="neo-inline-code">-----------...</code> lines to control for whitespace</p>
 
 <h1>Neapolitan Guidelines</h1>
 <h2>Overview</h2>
@@ -151,7 +151,7 @@ It will be passed straight thru and things like ampersands
 (&amp;) won't be modified
 </div>
 <p>This is back to the basic content setup.</p>
-<p>Here is a &lt;&lt;link|0|link&gt;&gt;</p>
+<p>Here is a </p>
 <p>Things to deal with:</p>
 <ul>
 <li>Unordered Lists</li>
@@ -170,7 +170,7 @@ It will be passed straight thru and things like ampersands
 <li>The actual number doesn&#x27;t matter, they will be numbered automatically in the HTML</li>
 </ol>
 <p>This line is here because lists don&#x27;t currently close if they are followed by another section without some text in between.</p>
-<p>Here&#x27;s a footnote&lt;&lt;footnote|2&gt;&gt;. Implementation determines if it&#x27;s a link or not.</p>
+<p>Here&#x27;s a footnote. Implementation determines if it&#x27;s a link or not.</p>
 <p>And we&#x27;re back to normal with a horizontal rule</p>
 <p>---</p>
 <p>And the different sized headers:</p>
@@ -193,11 +193,11 @@ It will be passed straight thru and things like ampersands
 <p>#+end_example</p>
 <h2>Images</h2>
 <p>Images are done in a similar way to links:</p>
-<p>&lt;&lt;image|0&gt;&gt;</p>
+<p></p>
 <p>But the data for the images is stored in JSON so alt text can be applied.</p>
 <h2>Inline Code</h2>
-<p>Maybe something &lt;&lt;code|print(&#x27;like this&#x27;)|python&gt;&gt;</p>
-<p>There won&#x27;t be &lt;&lt;code|```&gt;&gt; code fences. Blocks are done in &lt;&lt;code|#+begin_src&gt;&gt; blocks.</p>
+<p>Maybe something </p>
+<p>There won&#x27;t be  code fences. Blocks are done in &lt;&lt;code|#+begin_src&gt;&gt; blocks.</p>
 <p>First stages, line breaks can&#x27;t go in inline code.</p>
 <p>Code inside double &lt; snippets gets escaped too.</p>
 <h2>Other stuff</h2>
@@ -215,7 +215,7 @@ It will be passed straight thru and things like ampersands
 <h2>Pronouncation</h2>
 <p>The first part of the name is pronounced like the character Neo in The Matrix. The second half is pronounced like the second half of neapolitan ice cream. To do, come up with the phenetics.</p>
 <p>For capitalizaiotn. The standard is all lowercase. But, using a capital letter in headlines, etc... is fine. Do whatever you think looks best.</p>
-<p>The short hand term is <code>neo</code>, again like the matrix.</p>
+<p>The short hand term is <code class="neo-inline-code">neo</code>, again like the matrix.</p>
 <p>I recognize none of that may stick, but some folks get really into that stuff and want to know how the creator pronounces and captializes. So, there ya go.</p>
 
 <h1>Usage Guide</h1>

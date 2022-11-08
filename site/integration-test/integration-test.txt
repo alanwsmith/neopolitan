@@ -1,4 +1,5 @@
 <h1>Neopolitan Integration Test</h1>
 <p>This document is the reference integration get for Neopolitan. Any parser that renders it with the same out is considered valid.</p>
 <h2>Whitespace And Scope</h2>
-<p>Whitespace is doesn&#x27;t matter except when it does. (e.g. <code>---: PRE</code> sections).</p>
+<p>Whitespace doesn&#x27;t matter except when it does. (e.g. <code class="neo-inline-code">---: PRE</code> sections).</p>
+<p>This document does not aim to test edge cases and variations. See the <a aria-label="This is not currently the right link" href="https://links.alanwsmith.com/">for that.</p>

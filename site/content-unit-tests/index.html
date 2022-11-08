@@ -361,20 +361,24 @@ fall with the next puff of wind.</pre>
 <li>We admire and love a good cook. Corn cobs can be used to kindle a fire.</li>
 </ul>
 <p>Where were they when the noise started. The paper box is full of thumb tacks. The petals fall with the next puff of wind.</p>
-<h3>Turn back tic into code tags</h3>
-<pre>This `is code`</pre>
+<h3>Turn backtics into code tags</h3>
+<pre>This `code` is inline</pre>
 <pre>--------------------------------------------------
-&lt;p&gt;This &lt;code&gt;is code&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This &lt;code class=&quot;neo-inline-code&quot;&gt;code&lt;/code&gt; is inline&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>This <code>is code</code></p>
+<p>This <code class="neo-inline-code">is code</code></p>
 <h3>Line starts with code backtics</h3>
 <pre>`foxtrot` bravo alfa</pre>
 <pre>--------------------------------------------------
-&lt;p&gt;&lt;code&gt;foxtrot&lt;/code&gt; bravo alfa&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;neo-inline-code&quot;&gt;foxtrot&lt;/code&gt; bravo alfa&lt;/p&gt;
 --------------------------------------------------</pre>
-<p><code>foxtrot</code> bravo alfa</p>
-<p>--- META</p>
-<p>{ &quot;title&quot;: }</p></main>
+<p><code class="neo-inline-code">foxtrot</code> bravo alfa</p>
+<h3>Basic link</h3>
+<pre>Check &lt;&lt;l|1|links&gt;&gt; work</pre>
+<pre>--------------------------------------------------
+&lt;p&gt;Check &lt;a aria-label=&quot;aria example&quot; href=&quot;https://links.alanwsmith.com&quot;&gt;links&lt;/a&gt; work&lt;/p&gt;
+--------------------------------------------------</pre>
+<p>Check <a aria-label="aria example" href="https://links.alanwsmith.com">links</a> work</p></main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
       <br />

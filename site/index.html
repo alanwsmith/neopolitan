@@ -72,17 +72,19 @@ is here</a> if you want to see more behind the scenes.
 
       
       <h1>neopolitan</h1>
-<p>Neopolitan is a plain-text content format with two goals:</p>
+<p>Neopolitan is a plain-text content format. The underlying principales are:</p>
 <ol>
-<li>Make it fast to write</li>
-<li>Make it easy to assemble</li>
+<li>Make it fast</li>
+<li>Make it powerful</li>
+<li>Make it portable</li>
 </ol>
 <p>I&#x27;ve run my site for twenty years. I&#x27;ve done a half dozen overhauls that required changing the way I store content. Thinking forward to the next twenty years, I never want to have to do it again.</p>
+<p>The fundamental goal of neopolitan is to keep me from having to do that while still providing a fully featured set of content options.</p>
 <h3>TL;DR</h3>
-<p>Neopolitan documents are made of sections. Each sections starts with <code>---:</code> followd by the type of section. For example:</p>
+<p>Neopolitan documents are made of sections. Each sections starts with <code class="neo-inline-code">---:</code> followd by the type of section. For example:</p>
 <pre>  ---: CONTENT</pre>
 <h3>Processing</h3>
-<p>Each section type has a distince set of rules for how to process what&#x27;s inside it. For example, &lt;&lt;c|---: CONTENT|neo&gt;&gt; sections are very much like markdown.</p>
+<p>Each section type has a distince set of rules for how to process what&#x27;s inside it. For example,  sections are very much like markdown.</p>
 <p>This:</p>
 <pre>##### Small Example Header
 
@@ -97,7 +99,20 @@ And one with numbers
 1. Cut the pie into large parts.
 
 2. The pencils have all been used.</pre>
-<p>Turns into this:</p></main>
+<p>Turns into this:</p>
+<h3>More Stuff</h3>
+<p>neopolitan offers an expanded set of options with the basic processing. For example, detail lists.</p>
+<pre>~ Alfa
+
+: The office paint was a dull sad tan.
+
+~ Bravo
+
+: We admire and love a good cook.
+
+: Ducks fly north but lack a compass.</pre>
+<p>Becomes</p>
+<p>I&#x27;m currnetly in the proces of going &lt;l|1|MDN&#x27;s full list of elements&gt;&gt;</p></main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
       <br />

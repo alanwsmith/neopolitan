@@ -75,15 +75,15 @@ is here</a> if you want to see more behind the scenes.
 <p>Neopolitan is made of the following types of elements:</p>
 <h3>Sections</h3>
 <ul>
-<li>Start with <code>---:</code> at the start of a line.</li>
-<li>The <code>---:</code> marker is proceeded by at least one empty line.</li>
-<li>The <code>---:</code> marker is followed by one space character and a single token that is all uppercase, numbers, and underscores with no spaces for the english portion of it. The regular expression to match in english is: &lt;&lt;c|^---: [A-Z_0-9]+$|regex&gt;&gt; (TODO: verify that and expand it for non-english alphabets)</li>
-<li>The combination of the <code>---:</code> and the token is called the &lt;&lt;i|section header&gt;&gt;</li>
+<li>Start with <code class="neo-inline-code">---:</code> at the start of a line.</li>
+<li>The <code class="neo-inline-code">---:</code> marker is proceeded by at least one empty line.</li>
+<li>The <code class="neo-inline-code">---:</code> marker is followed by one space character and a single token that is all uppercase, numbers, and underscores with no spaces for the english portion of it. The regular expression to match in english is:  (TODO: verify that and expand it for non-english alphabets)</li>
+<li>The combination of the <code class="neo-inline-code">---:</code> and the token is called the </li>
 <li>There is a pre-defined list of sections with specific functoality listed further below in this document.</li>
 <li>Custom headers can be added as long as they match the regex.</li>
 <li>It&#x27;s up to the creater of the header to ensure the parser they are using understands the custom header.</li>
-<li>My recommendation would be to avoid custom headers and use &lt;&lt;c|WIDGETS|neo&gt;&gt; instead. (More on them below)</li>
-<li>Any section with a header that an interpreter doesn&#x27;t understand will be treated as &lt;&lt;c|---: CONTENT|neo&gt;&gt;</li>
+<li>My recommendation would be to avoid custom headers and use  instead. (More on them below)</li>
+<li>Any section with a header that an interpreter doesn&#x27;t understand will be treated as </li>
 </ul></main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
