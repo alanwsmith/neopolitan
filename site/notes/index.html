@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neopolitan - A Plain-Text Document Format</title>
+    <title>Neopolitan - A Plain-Text Document Format </title>
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
@@ -43,38 +43,29 @@
     </header>
     <main>
 
-<p>
-<a href="/considerations/index.html">considerations</a> ~ 
-<a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
-<a href="/element-types/index.html">element-types</a> ~ 
-<a href="/examples/index.html">examples</a> ~ 
-<a href="/integration-test/index.html">integration-test</a> ~ 
-<a href="/notes/index.html">notes</a> ~ 
-<a href="/overview/index.html">overview</a> ~ 
-<a href="/specifications/index.html">specifications</a> ~ 
-<a href="/thoughts/index.html">thoughts</a> ~ 
-<a href="/usage/index.html">usage</a> 
-</p>
-<hr />
-
-DRAFT: This is very much a work in progress. While the initial 
-ideas for the format are pretty solid, implementaiton is
-still in the early stages. There's a bunch of content in 
-the source files that you can't see. It'll become visible
-as the functionality is implemented. Building while the site
-is helping inform the spec. I prefer working this way than
-tryint to define everything up front. 
-
-The <a href="https://github.com/alanwsmith/neopolitan">repo
-is here</a> if you want to see more behind the scenes. 
-
-<hr />
+      <p>
+      <a href="/index.html">home page</a> ~ 
+      <a href="/considerations/index.html">considerations</a> ~ 
+      <a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
+      <a href="/element-types/index.html">element-types</a> ~ 
+      <a href="/elements/index.html">elements</a> ~ 
+      <a href="/examples/index.html">examples</a> ~ 
+      <a href="/integration-test/index.html">integration-test</a> ~ 
+      <a href="/notes/index.html">notes</a> ~ 
+      <a href="/overview/index.html">overview</a> ~ 
+      <a href="/rationale/index.html">rationale</a> ~ 
+      <a href="/specifications/index.html">specifications</a> ~ 
+      <a href="/usage/index.html">usage</a> 
+      </p>
+      <hr />
+      
+      
 
       
       <h1>Neopolitan Notes</h1>
 <h2>Examples</h2>
 <h3>Headers</h3>
-<p>Headers are made with between one and six *#* characters that map to <code class="neo-inline-code">&lt;h1&gt;</code> to <code class="neo-inline-code">&lt;h6&gt;</code></p>
+<p>Headers are made with between one and six *#* characters that map to <code class="language-txt neo-code">&lt;h1&gt;</code> to <code class="language-txt neo-code">&lt;h6&gt;</code></p>
 <h2>Tags</h2>
 <ul>
 <li>div</li>
@@ -83,11 +74,11 @@ is here</a> if you want to see more behind the scenes.
 </ul>
 <p></p>
 <p></p>
-<p>For div span and code, any following item that starts with a <code class="neo-inline-code">:</code> will turn into an attribute for the opening tag.</p>
-<p>Stuff without the <code class="neo-inline-code">:</code> is not part of the spec but can be used in whatever way the implementaiton wants.</p>
+<p>For div span and code, any following item that starts with a <code class="language-txt neo-code">:</code> will turn into an attribute for the opening tag.</p>
+<p>Stuff without the <code class="language-txt neo-code">:</code> is not part of the spec but can be used in whatever way the implementaiton wants.</p>
 <p>And single lines like this.</p>
 <h2>Formatting</h2>
-<p>Headers are marked with between 1-6  characters at the start of a line.</p>
+<p>Headers are marked with between 1-6 <code class="neotag-code"</code> characters at the start of a line.</p>
 <p>There is *bold*</p>
 <p>There is *bold*</p>
 <p>TODO: Figure out is &lt;&gt; works for a way to pass things through so you can see them</p>
@@ -107,9 +98,9 @@ is here</a> if you want to see more behind the scenes.
 </ul>
 <p>in _both_ the initial and </p>
 <p>You can also have multipe paragraphs in a description like this one.</p>
-<p>An characters that you don&#x27;t want to get converted go in  tags </p>
+<p>An characters that you don&#x27;t want to get converted go in <code class="neotag-code"</code> tags </p>
 <p>&lt;&lt;span|this is some stuff that will have a span on it|</p>
-<p>TODOs and other blocks are stopped when another  marker shows up.</p>
+<p>TODOs and other blocks are stopped when another <code class="neotag-code"</code> marker shows up.</p>
 <p>Moving between any type of block is possible.</p>
 <p>CONTENT is the one to default to.</p>
 <h2>Links</h2>
@@ -120,13 +111,13 @@ is here</a> if you want to see more behind the scenes.
 <p></p>
 <p></p>
 <p>Consider how to do things like</p>
-<p><code class="neo-inline-code"></code><code class="neo-inline-code">html &lt;a href=&quot;/en-US/docs/Web/HTML/Element/blockquote&quot;&gt; &lt;cite&gt;MDN blockquote page&lt;/cite&gt;&lt;/a&gt; </code><code class="neo-inline-code"></code></p>
-<p>And other nestings, like <code class="neo-inline-code">code</code> inside <code class="neo-inline-code">strong</code></p>
+<p><code class="language-txt neo-code"></code><code class="language-txt neo-code">html &lt;a href=&quot;/en-US/docs/Web/HTML/Element/blockquote&quot;&gt; &lt;cite&gt;MDN blockquote page&lt;/cite&gt;&lt;/a&gt; </code><code class="language-txt neo-code"></code></p>
+<p>And other nestings, like <code class="language-txt neo-code">code</code> inside <code class="language-txt neo-code">strong</code></p>
 <p>Maybe that just goes back to HTML?</p>
-<p>Could do <code class="neo-inline-code">+</code> and <code class="neo-inline-code">-</code> to put tags inside and out</p>
-<p><code class="neo-inline-code"></code><code class="neo-inline-code">  </code><code class="neo-inline-code"></code></p>
+<p>Could do <code class="language-txt neo-code">+</code> and <code class="language-txt neo-code">-</code> to put tags inside and out</p>
+<p><code class="language-txt neo-code"></code><code class="language-txt neo-code">  </code><code class="language-txt neo-code"></code></p>
 <p>Feels like that would be better off being addressed by an id or class. Thinking the gain for trying to nest would be minimal compared to the effort and complexity involved.</p>
-<p>Figure out if you want to make <code class="neo-inline-code">---: TABLE</code> be a header or just something in the content. I think probably it should be a header so attributes can be applied to it.</p>
+<p>Figure out if you want to make <code class="language-txt neo-code">---: TABLE</code> be a header or just something in the content. I think probably it should be a header so attributes can be applied to it.</p>
 <ul>
 <li>section headers are always UPPERCASE and only 1 word/string</li>
 <li>Maybe make links JSON all the time. Let widgets be whatever they want. That way there isn&#x27;t a burden on other languates to try to parse javascript (unless that turns out to be trivial)</li>
@@ -136,8 +127,11 @@ is here</a> if you want to see more behind the scenes.
 <p>This document is maintained with revisions. Any parser that produces the same output as the (TKTKTKTK link) neopolitan-py reference implementation is a valid Neopolitan interpreter for that revision. Providing additional functionality is encouraged.</p>
 <p>Every effort will be made to ensure backward compatibility once revision 1 is published. (Preview revisions before revision 1 will be used to finalize the first revision in an effort to lock in its long term stability)</p>
 <p>Validation is done via HTML.</p>
-<p>The tests are done by convention. The document is split by <code class="neo-inline-code">---: CONTENT</code> headers then <code class="neo-inline-code">---: PRE</code> headers. If there are three items in the resulting array the values are run as a test. The target is wrapped in <code class="neo-inline-code">-----------...</code> lines to control for whitespace</p>
+<p>The tests are done by convention. The document is split by <code class="language-txt neo-code">---: CONTENT</code> headers then <code class="language-txt neo-code">---: PRE</code> headers. If there are three items in the resulting array the values are run as a test. The target is wrapped in <code class="language-txt neo-code">-----------...</code> lines to control for whitespace</p>
 
+<div class="neo-note">
+<p>This is old content that needs to be combined with the new stuff</p>
+</div>
 <h1>Neapolitan Guidelines</h1>
 <h2>Overview</h2>
 <p>This document lays out the plain-text format I&#x27;m using to overhaul my site. Working on my site is no longer fun. It&#x27;s a constant struggle against the opinions of frameworks and the limitations of</p>
@@ -180,6 +174,10 @@ It will be passed straight thru and things like ampersands
 <h4>H4 Delta</h4>
 <h5>H5 Echo</h5>
 <h6>H6 Foxtrot</h6>
+<div class="neo-note">
+<p>Stand alone notes are a thing.</p>
+<p>They are parsed like regular content. The difference is that they have their own div wrapper which can have attributes applied.</p>
+</div>
 <p>Something else that can go in is Org Mode source blocks</p>
 <p>#+begin_src python :results output :wrap example</p>
 <p>print(&#x27;the quick brown fox&#x27;)</p>
@@ -196,8 +194,8 @@ It will be passed straight thru and things like ampersands
 <p></p>
 <p>But the data for the images is stored in JSON so alt text can be applied.</p>
 <h2>Inline Code</h2>
-<p>Maybe something </p>
-<p>There won&#x27;t be  code fences. Blocks are done in  blocks.</p>
+<p>Maybe something <code class="language-python neo-code">print(&#x27;like this&#x27;)</code></p>
+<p>There won&#x27;t be <code class="neotag-code"</code> code fences. Blocks are done in <code class="neotag-code"</code> blocks.</p>
 <p>First stages, line breaks can&#x27;t go in inline code.</p>
 <p>Code inside double &lt; snippets gets escaped too.</p>
 <h2>Other stuff</h2>
@@ -215,7 +213,7 @@ It will be passed straight thru and things like ampersands
 <h2>Pronouncation</h2>
 <p>The first part of the name is pronounced like the character Neo in The Matrix. The second half is pronounced like the second half of neapolitan ice cream. To do, come up with the phenetics.</p>
 <p>For capitalizaiotn. The standard is all lowercase. But, using a capital letter in headlines, etc... is fine. Do whatever you think looks best.</p>
-<p>The short hand term is <code class="neo-inline-code">neo</code>, again like the matrix.</p>
+<p>The short hand term is <code class="language-txt neo-code">neo</code>, again like the matrix.</p>
 <p>I recognize none of that may stick, but some folks get really into that stuff and want to know how the creator pronounces and captializes. So, there ya go.</p>
 
 <h1>Usage Guide</h1>

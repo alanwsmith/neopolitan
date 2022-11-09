@@ -3,12 +3,28 @@
 Neopolitan Integration Test
 
 
+---: SUBTITLE
+
+kicking the tires to see what's up
+
 ---: CONTENT
 
 
 This document is the reference integration 
 get for Neopolitan. Any parser that renders 
 it with the same output is considered valid.
+
+---: EXAMPLE
+
+### Example Sections
+
+- Core functionality is the same as 
+CONTAINER
+
+- Difference is it's wrapped in
+`<div class="neo-example"></div>` tags
+
+---: CONTENT
 
 ## Whitespace And Scope
 
@@ -18,6 +34,12 @@ does. (e.g. `---: PRE` sections).
 This document does not aim to test edge 
 cases and variations. See the <<l|1|unit 
 tests>> for that.
+
+---: NOTE
+
+This is a note which means it is wrapped in a div
+
+
 
 ---: TODO
 :::: :id main-todo

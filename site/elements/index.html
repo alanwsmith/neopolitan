@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neopolitan - A Plain-Text Document Format</title>
+    <title>Neopolitan - A Plain-Text Document Format </title>
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
@@ -43,42 +43,33 @@
     </header>
     <main>
 
-<p>
-<a href="/considerations/index.html">considerations</a> ~ 
-<a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
-<a href="/element-types/index.html">element-types</a> ~ 
-<a href="/examples/index.html">examples</a> ~ 
-<a href="/integration-test/index.html">integration-test</a> ~ 
-<a href="/notes/index.html">notes</a> ~ 
-<a href="/overview/index.html">overview</a> ~ 
-<a href="/specifications/index.html">specifications</a> ~ 
-<a href="/thoughts/index.html">thoughts</a> ~ 
-<a href="/usage/index.html">usage</a> 
-</p>
-<hr />
-
-DRAFT: This is very much a work in progress. While the initial 
-ideas for the format are pretty solid, implementaiton is
-still in the early stages. There's a bunch of content in 
-the source files that you can't see. It'll become visible
-as the functionality is implemented. Building while the site
-is helping inform the spec. I prefer working this way than
-tryint to define everything up front. 
-
-The <a href="https://github.com/alanwsmith/neopolitan">repo
-is here</a> if you want to see more behind the scenes. 
-
-<hr />
+      <p>
+      <a href="/index.html">home page</a> ~ 
+      <a href="/considerations/index.html">considerations</a> ~ 
+      <a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
+      <a href="/element-types/index.html">element-types</a> ~ 
+      <a href="/elements/index.html">elements</a> ~ 
+      <a href="/examples/index.html">examples</a> ~ 
+      <a href="/integration-test/index.html">integration-test</a> ~ 
+      <a href="/notes/index.html">notes</a> ~ 
+      <a href="/overview/index.html">overview</a> ~ 
+      <a href="/rationale/index.html">rationale</a> ~ 
+      <a href="/specifications/index.html">specifications</a> ~ 
+      <a href="/usage/index.html">usage</a> 
+      </p>
+      <hr />
+      
+      
 
       
       <h1>Neopolitan Data Types</h1>
 <p>This is the map between Neopolitan and HTML. It contains the full list of HTML elements from the MDN page and the corresponding mapping.</p>
 <p>Thinking at this point is that anything that doesn&#x27;t have a direct Neopolitan counterpart will be handled via the double less than tags</p>
-<p>(Need a better name than <code class="neo-inline-code">double tags</code>, but it&#x27;sll work for now)</p>
+<p>(Need a better name than <code class="language-txt neo-code">double tags</code>, but it&#x27;sll work for now)</p>
 <h2>Elements</h2>
 <dl>
 <dt>a</dt>
-<dd>Anchor tags are handed via a combinaiton of link double tags and the <code class="neo-inline-code">---: LINKS</code> header which holds the metadata details for the links</dd>
+<dd>Anchor tags are handed via a combinaiton of link double tags and the <code class="language-txt neo-code">---: LINKS</code> header which holds the metadata details for the links</dd>
 <dt>abbr</dt>
 <dd>TKTKTK</dd>
 <dt>address</dt>

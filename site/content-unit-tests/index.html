@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neopolitan - A Plain-Text Document Format</title>
+    <title>Neopolitan - A Plain-Text Document Format </title>
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
@@ -43,32 +43,23 @@
     </header>
     <main>
 
-<p>
-<a href="/considerations/index.html">considerations</a> ~ 
-<a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
-<a href="/element-types/index.html">element-types</a> ~ 
-<a href="/examples/index.html">examples</a> ~ 
-<a href="/integration-test/index.html">integration-test</a> ~ 
-<a href="/notes/index.html">notes</a> ~ 
-<a href="/overview/index.html">overview</a> ~ 
-<a href="/specifications/index.html">specifications</a> ~ 
-<a href="/thoughts/index.html">thoughts</a> ~ 
-<a href="/usage/index.html">usage</a> 
-</p>
-<hr />
-
-DRAFT: This is very much a work in progress. While the initial 
-ideas for the format are pretty solid, implementaiton is
-still in the early stages. There's a bunch of content in 
-the source files that you can't see. It'll become visible
-as the functionality is implemented. Building while the site
-is helping inform the spec. I prefer working this way than
-tryint to define everything up front. 
-
-The <a href="https://github.com/alanwsmith/neopolitan">repo
-is here</a> if you want to see more behind the scenes. 
-
-<hr />
+      <p>
+      <a href="/index.html">home page</a> ~ 
+      <a href="/considerations/index.html">considerations</a> ~ 
+      <a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
+      <a href="/element-types/index.html">element-types</a> ~ 
+      <a href="/elements/index.html">elements</a> ~ 
+      <a href="/examples/index.html">examples</a> ~ 
+      <a href="/integration-test/index.html">integration-test</a> ~ 
+      <a href="/notes/index.html">notes</a> ~ 
+      <a href="/overview/index.html">overview</a> ~ 
+      <a href="/rationale/index.html">rationale</a> ~ 
+      <a href="/specifications/index.html">specifications</a> ~ 
+      <a href="/usage/index.html">usage</a> 
+      </p>
+      <hr />
+      
+      
 
       
       <h1 class="neo-title">Neopolitan Unit Tests</h1>
@@ -82,6 +73,9 @@ is here</a> if you want to see more behind the scenes.
 <li>In all cases in this file, the content represents that coming from a CONTENT sections (i.e. not a PRE, HTML, etc...)</li>
 <li>The other sections the same processing applies to are DIVs. TBD on others</li>
 </ul>
+<div class="neo-note">
+<p>There are headers all over the place in here makes it hard to read, but this is about making the tests, not readabiliyt.</p>
+</div>
 <h3>Single line paragraph</h3>
 <pre>The curtain rose and the show was on.</pre>
 <pre>--------------------------------------------------
@@ -364,15 +358,15 @@ fall with the next puff of wind.</pre>
 <h3>Turn backtics into code tags</h3>
 <pre>This `code` is inline</pre>
 <pre>--------------------------------------------------
-&lt;p&gt;This &lt;code class=&quot;neo-inline-code&quot;&gt;code&lt;/code&gt; is inline&lt;/p&gt;
+&lt;p&gt;This &lt;code class=&quot;language-txt neo-code&quot;&gt;code&lt;/code&gt; is inline&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>This <code class="neo-inline-code">is code</code></p>
+<p>This <code class="language-txt neo-code">is code</code></p>
 <h3>Line starts with code backtics</h3>
 <pre>`foxtrot` bravo alfa</pre>
 <pre>--------------------------------------------------
-&lt;p&gt;&lt;code class=&quot;neo-inline-code&quot;&gt;foxtrot&lt;/code&gt; bravo alfa&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-txt neo-code&quot;&gt;foxtrot&lt;/code&gt; bravo alfa&lt;/p&gt;
 --------------------------------------------------</pre>
-<p><code class="neo-inline-code">foxtrot</code> bravo alfa</p>
+<p><code class="language-txt neo-code">foxtrot</code> bravo alfa</p>
 <h3>Basic link</h3>
 <pre>Check &lt;&lt;l|1|links&gt;&gt; work</pre>
 <pre>--------------------------------------------------
@@ -384,7 +378,19 @@ fall with the next puff of wind.</pre>
 <pre>--------------------------------------------------
 &lt;p&gt;Verify &lt;a aria-label=&quot;aria example&quot; href=&quot;https://links.alanwsmith.com&quot;&gt;links&lt;/a&gt; work &lt;a aria-label=&quot;aria test&quot; href=&quot;https://ideas.alanwsmith.com&quot;&gt;twice&lt;/a&gt;&lt;/p&gt;
 --------------------------------------------------</pre>
-<p>Verify <a aria-label="aria example" href="https://links.alanwsmith.com">links</a> work <a aria-label="aria test" href="https://ideas.alanwsmith.com">twice</a></p></main>
+<p>Verify <a aria-label="aria example" href="https://links.alanwsmith.com">links</a> work <a aria-label="aria test" href="https://ideas.alanwsmith.com">twice</a></p>
+<h3>Check Code tags</h3>
+<pre>Verify &lt;&lt;code|---: DIV|neo&gt;&gt;</pre>
+<pre>--------------------------------------------------
+&lt;p&gt;Verify &lt;code class=&quot;language-neo neo-code&quot;&gt;---: DIV&lt;/code&gt;&lt;/p&gt;
+--------------------------------------------------</pre>
+<p><code class="language-neo neo-code">---: DIV</code></p>
+<h3>Extra attributes in code</h3>
+<pre>Verify &lt;&lt;code|---: DIV|neo|id snippet-1|class more-stuff&gt;&gt;</pre>
+<pre>--------------------------------------------------
+&lt;p&gt;Verify &lt;code class=&quot;language-neo more-stuff neo-code&quot; id=&quot;snippet-1&quot;&gt;---: DIV&lt;/code&gt;&lt;/p&gt;
+--------------------------------------------------</pre>
+<p><code class="language-neo neo-code">---: DIV</code></p></main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
       <br />

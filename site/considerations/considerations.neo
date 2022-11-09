@@ -1,3 +1,11 @@
+---: NOTE
+
+NOTE: Not all the content on this page
+is visible yet. Features are still being
+added that are necessary for everything
+to show up. 
+
+
 ---: TITLE 
 
 Considerations
@@ -8,6 +16,25 @@ Considerations
 Ingest the title into the metadata
 automaticcally? seems like a good idea. 
 not sure if that's spec or implemenation. 
+
+
+
+---: CONTENT
+
+Maybe add a backtic format with three
+tics. where the last you can 
+put the language and attributes in the
+secont section? Probably be issues 
+with parsing though which would lead
+to a not great experience. So, 
+een though that would be alittle faster
+probalby not. (there would be some ways
+to make the parsing easlier like requireing
+all undersacores, but that would add
+complexity in a way that means there's 
+no reason not to use the neotags directly
+
+
 
 
 ---

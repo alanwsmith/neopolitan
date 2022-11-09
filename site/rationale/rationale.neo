@@ -101,6 +101,61 @@ wrapping the content that is otherwise
 processed the same way as <<c:---\: CONTENT>>
 sections
 
+---
+
+For adding items to class in `<<` tags instead
+of overwriting them. I'm sure there are 
+reasons to want to wipe out a class, but 
+compared to having to add `language-js`
+back in every time you want to add 
+additional styling to a code tag, it's
+not worth it. (And, as alwasy, you 
+can roll back to html whenever you want)
+
+---
+
+Probably wrait something up specifically
+about the different levels of escape
+hatch and a big key is setting up a bucnhs
+so you don't end up in an either or
+situation. 
+
+
+---
+
+There is no nesting of sections. I think 
+of content as blocks, they can be 
+assembled however but that's specific 
+to the design. 
+
+Of course, the HTML escape hatch allows
+for nesting by placing content in between
+HTML secitons that contain an opening
+tag above and a closing tag below:
+
+---: PRE
+
+ ---: HTML
+
+ <div>
+
+ --- Multiple 
+ --- Sections
+ --- Here
+
+ ---: HTML
+
+ </div>
+
+
+---: CONTENT
+
+That feels a little to much like combining
+content and layout, but there are 
+certainly times when that would be useful. 
+
+
+
 
 
 

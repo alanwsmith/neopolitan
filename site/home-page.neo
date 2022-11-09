@@ -1,14 +1,32 @@
----: TITLE 
-
-neopolitan
-
----: SUBTITLE
-
-neo for short
-
-
 ---: NOTE
 :::: :class heads-up
+
+### DRAFT
+
+This site is the home of the neopolitan 
+plain-text file format. 
+
+Or, it will be when I finish it. It's currently 
+an early work in progress. 
+
+#### Make It Real
+
+I can't work in the abstract. I need something to work on in order to 
+make it work. So, I'm doing the dog-fooding, drinking 
+your own champaign, getting high on your 
+on supply thing. This site is made from
+a collection of neopolitan docs run through
+a prototype parser. 
+
+It'll be bumpy for a while. 
+
+
+
+
+
+
+
+
 
 Everything on this site is a draft. I use
 writing and building to figure things out. 
@@ -21,12 +39,32 @@ stable. Contrictions are all over the place
 too. It's all part of the process. 
 
 
+---: TITLE 
+
+neopolitan
+
+
+---: SUBTITLE
+
+neo for short
+
+
 ---: CONTENT
 
-
 Neopolitan is a plain-text file format. It's 
-similar to Markdown, MDX, and Org-Mode. I've 
-used all of those before but always ran up
+inspired by Markdown, MDX, and Org-Mode. While 
+those formats are all great, each one 
+introduced some type of friction into my work. 
+I can deal with friction just fine, but, like
+everyone, I'm way more productive without
+it. 
+
+
+
+
+
+
+
 against shortcoming in the way I want things 
 to work<<footnote:>>. 
 
@@ -41,19 +79,10 @@ languages.
 
 
 
-
-
 ---: CONTENT 
 
-but 
-comes at things from a different angle.
-
-
-
-
-
 I've run my site for twenty years. I've 
-done a half dozen overhauls that required changing
+done half a dozen overhauls that required changing
 the way I store content. Thinking forward 
 to the next twenty years, I never want to have to do it again.
 
@@ -66,26 +95,22 @@ options.
 ### Overview 
 
 
-Neopolitan documents are made of
+Neopolitan files are made of
 sections. Each sections starts with 
 `---:` followd by the type of section. For
 example:
 
 
----: PRE
-
- ---: CONTENT
 
 
 ---: CONTENT 
 
 ### Processing
 
-Each section type has a distince set of rules 
+Each type of section has a distince set of rules 
 for how to process what's inside it. For example, 
-<<c|---: CONTENT|neo>> sections are very much
-like markdown. 
-
+<<code|---: CONTENT|neo>> sections are a lot like 
+markdown. 
 
 
 ---: HIDDEN
@@ -119,7 +144,7 @@ This:
 
  ---: CONTENT
 
- ##### Small Example Header
+ ## Small Example Header
 
  Here's a list
 
@@ -137,10 +162,9 @@ This:
 
 Turns into this:
 
----: DIV 
-:::: :class example
+---: EXAMPLE
 
-##### Small Example Header
+#### Small Example Header
 
 Here's a list
 

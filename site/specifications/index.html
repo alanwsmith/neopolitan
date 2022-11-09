@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neopolitan - A Plain-Text Document Format</title>
+    <title>Neopolitan - A Plain-Text Document Format </title>
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
@@ -43,35 +43,46 @@
     </header>
     <main>
 
-<p>
-<a href="/considerations/index.html">considerations</a> ~ 
-<a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
-<a href="/element-types/index.html">element-types</a> ~ 
-<a href="/examples/index.html">examples</a> ~ 
-<a href="/integration-test/index.html">integration-test</a> ~ 
-<a href="/notes/index.html">notes</a> ~ 
-<a href="/overview/index.html">overview</a> ~ 
-<a href="/specifications/index.html">specifications</a> ~ 
-<a href="/thoughts/index.html">thoughts</a> ~ 
-<a href="/usage/index.html">usage</a> 
-</p>
-<hr />
-
-DRAFT: This is very much a work in progress. While the initial 
-ideas for the format are pretty solid, implementaiton is
-still in the early stages. There's a bunch of content in 
-the source files that you can't see. It'll become visible
-as the functionality is implemented. Building while the site
-is helping inform the spec. I prefer working this way than
-tryint to define everything up front. 
-
-The <a href="https://github.com/alanwsmith/neopolitan">repo
-is here</a> if you want to see more behind the scenes. 
-
-<hr />
+      <p>
+      <a href="/index.html">home page</a> ~ 
+      <a href="/considerations/index.html">considerations</a> ~ 
+      <a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
+      <a href="/element-types/index.html">element-types</a> ~ 
+      <a href="/elements/index.html">elements</a> ~ 
+      <a href="/examples/index.html">examples</a> ~ 
+      <a href="/integration-test/index.html">integration-test</a> ~ 
+      <a href="/notes/index.html">notes</a> ~ 
+      <a href="/overview/index.html">overview</a> ~ 
+      <a href="/rationale/index.html">rationale</a> ~ 
+      <a href="/specifications/index.html">specifications</a> ~ 
+      <a href="/usage/index.html">usage</a> 
+      </p>
+      <hr />
+      
+      
 
       
-      <h1 class="neo-title">Specifications</h1></main>
+      <h1 class="neo-title">Specifications</h1>
+<div class="neo-subtitle">The nitty gritty of how things fit togehter</div>
+<h2>The Sections</h2>
+<p>The core buidling block of neopolitan is the section. Documents start with a section and every piece of content is contained in one (and only one)</p>
+<h3>The CONTENT Section</h3>
+<ul>
+<li>Primary section</li>
+<li>Has all the translations in it between</li>
+<li>Can use any <code class="language-txt neo-code">&lt;&lt;</code> neotag</li>
+<li>Accepts <code class="language-txt neo-code">:::: :</code> attributes</li>
+<li>If no <code class="language-txt neo-code">:::: :</code> attributes are passed, no additional wrapper is put around the content.</li>
+<li>If a <code class="language-txt neo-code">:::: :</code> is added a default <code class="language-txt neo-code">&lt;section&gt;</code> tag is added around the content with the given attributes.</li>
+<li>Accepts a <code class="language-txt neo-code">:::: tag:</code> directive, the value of which must be a valid HTML tag which will be used as a wrapper for the contnet.</li>
+<li><code class="language-txt neo-code">:::: :</code> attributes can be used without <code class="language-txt neo-code">:::: tag:</code> headers and vice verse as well as using them at the same time.</li>
+<h3>The TITLE Section</h3>
+<ul>
+<li>Can go anywhere</li>
+<li>Gets output in <code class="language-txt neo-code">&lt;h1 class=&quot;neo-title&quot;&gt;&lt;/h1&gt;</code></li>
+<li>Since it&#x27;s an <code class="language-txt neo-code">&lt;h1&gt;</code> it should only be used on pages that don&#x27;t already have one and won&#x27;t have one added.</li>
+<li>The primary reason the TITLE secition exists is to provide an easy way to maintain the title in one location. By having a named, stand-alone aread it can be parsed out unambisiously. (It also looks nice when you&#x27;re editing your files)</li>
+</ul></main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
       <br />

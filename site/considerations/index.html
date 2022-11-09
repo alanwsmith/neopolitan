@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neopolitan - A Plain-Text Document Format</title>
+    <title>Neopolitan - A Plain-Text Document Format </title>
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
@@ -43,36 +43,31 @@
     </header>
     <main>
 
-<p>
-<a href="/considerations/index.html">considerations</a> ~ 
-<a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
-<a href="/element-types/index.html">element-types</a> ~ 
-<a href="/examples/index.html">examples</a> ~ 
-<a href="/integration-test/index.html">integration-test</a> ~ 
-<a href="/notes/index.html">notes</a> ~ 
-<a href="/overview/index.html">overview</a> ~ 
-<a href="/specifications/index.html">specifications</a> ~ 
-<a href="/thoughts/index.html">thoughts</a> ~ 
-<a href="/usage/index.html">usage</a> 
-</p>
-<hr />
-
-DRAFT: This is very much a work in progress. While the initial 
-ideas for the format are pretty solid, implementaiton is
-still in the early stages. There's a bunch of content in 
-the source files that you can't see. It'll become visible
-as the functionality is implemented. Building while the site
-is helping inform the spec. I prefer working this way than
-tryint to define everything up front. 
-
-The <a href="https://github.com/alanwsmith/neopolitan">repo
-is here</a> if you want to see more behind the scenes. 
-
-<hr />
+      <p>
+      <a href="/index.html">home page</a> ~ 
+      <a href="/considerations/index.html">considerations</a> ~ 
+      <a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
+      <a href="/element-types/index.html">element-types</a> ~ 
+      <a href="/elements/index.html">elements</a> ~ 
+      <a href="/examples/index.html">examples</a> ~ 
+      <a href="/integration-test/index.html">integration-test</a> ~ 
+      <a href="/notes/index.html">notes</a> ~ 
+      <a href="/overview/index.html">overview</a> ~ 
+      <a href="/rationale/index.html">rationale</a> ~ 
+      <a href="/specifications/index.html">specifications</a> ~ 
+      <a href="/usage/index.html">usage</a> 
+      </p>
+      <hr />
+      
+      
 
       
-      <h1 class="neo-title">Considerations</h1>
+      <div class="neo-note">
+<p>NOTE: Not all the content on this page is visible yet. Features are still being added that are necessary for everything to show up.</p>
+</div>
+<h1 class="neo-title">Considerations</h1>
 <p>Ingest the title into the metadata automaticcally? seems like a good idea. not sure if that&#x27;s spec or implemenation.</p>
+<p>Maybe add a backtic format with three tics. where the last you can put the language and attributes in the secont section? Probably be issues with parsing though which would lead to a not great experience. So, een though that would be alittle faster probalby not. (there would be some ways to make the parsing easlier like requireing all undersacores, but that would add complexity in a way that means there&#x27;s no reason not to use the neotags directly</p>
 <p>---</p>
 <h3>Headers</h3>
 <p>I&#x27;m liking the idea that the functionaly of headers is determined by which side the colons are on:</p>
@@ -83,16 +78,16 @@ is here</a> if you want to see more behind the scenes.
 <h3>neotag formats</h3>
 <ul>
 <li>The default tags will be defined but, as with the rest of the format, they are extensible for custom implenentations. The structure of the tags is as follows:</li>
-<li>always start and with <code class="neo-inline-code">&lt;&lt;</code> followed by a string of one or more lower case letters.</li>
-<li>the string of letters is terminated by either a <code class="neo-inline-code">|</code> or <code class="neo-inline-code">:</code> character. Both operate the same way. The reason there are two is to pick the one that doesn&#x27;t need escaping to keep the content more readable. (escaping is possible too, see below)</li>
-<li>The payload that follows the delimeter varies based on the tag type. For example, the base tag to wrap inline code has two, parts, the <code class="neo-inline-code">c</code> tag identifier and the code to be wrapper. For example,</li>
+<li>always start and with <code class="language-txt neo-code">&lt;&lt;</code> followed by a string of one or more lower case letters.</li>
+<li>the string of letters is terminated by either a <code class="language-txt neo-code">|</code> or <code class="language-txt neo-code">:</code> character. Both operate the same way. The reason there are two is to pick the one that doesn&#x27;t need escaping to keep the content more readable. (escaping is possible too, see below)</li>
+<li>The payload that follows the delimeter varies based on the tag type. For example, the base tag to wrap inline code has two, parts, the <code class="language-txt neo-code">c</code> tag identifier and the code to be wrapper. For example,</li>
 </ul>
 <p>Other tags require more. For example, the link tag which take a minimum of a reference ID and the text for the link itself.</p>
 <pre>&lt;&lt;link:1:click here&gt;&gt;</pre>
-<p>In cases where there is more than two string, the same delimetered (i.e. <code class="neo-inline-code">|</code> or <code class="neo-inline-code">:</code>) that is used as the initail separator is used for the reaming points of demarcation.</p>
+<p>In cases where there is more than two string, the same delimetered (i.e. <code class="language-txt neo-code">|</code> or <code class="language-txt neo-code">:</code>) that is used as the initail separator is used for the reaming points of demarcation.</p>
 <ul>
-<li>there is no requirement for whitespace to preceed the opening <code class="neo-inline-code">&lt;&lt;</code> characters</li>
-<li>There are aliases for the different tag types (or, there will be when they are speced) For example, (<code class="neo-inline-code">&lt;&lt;l</code> and <code class="neo-inline-code">&lt;&lt;link</code> are both for links. Might add <code class="neo-inline-code">&lt;&lt;a</code> if it doesn&#x27;t conflict with something else.</li>
+<li>there is no requirement for whitespace to preceed the opening <code class="language-txt neo-code">&lt;&lt;</code> characters</li>
+<li>There are aliases for the different tag types (or, there will be when they are speced) For example, (<code class="language-txt neo-code">&lt;&lt;l</code> and <code class="language-txt neo-code">&lt;&lt;link</code> are both for links. Might add <code class="language-txt neo-code">&lt;&lt;a</code> if it doesn&#x27;t conflict with something else.</li>
 </ul>
 <p>These lists contain three types of items to consider for implementation: probably, maybe, probably not. Those titles represent the likelyhood when I last considered them. Things will migrate over time.</p></main>
     <footer>

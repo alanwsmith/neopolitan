@@ -35,6 +35,13 @@ sections (i.e. not a PRE, HTML, etc...)
 applies to are DIVs. TBD on others
 
 
+---: NOTE
+
+There are headers all over the place in here
+makes it hard to read, but this is about 
+making the tests, not readabiliyt. 
+
+
 ---: CONTENT
 
 ### Single line paragraph
@@ -587,7 +594,7 @@ This `code` is inline
 ---: PRE
 
 --------------------------------------------------
-<p>This <code class="neo-inline-code">code</code> is inline</p>
+<p>This <code class="language-txt neo-code">code</code> is inline</p>
 --------------------------------------------------
 
 ---: CONTENT
@@ -612,7 +619,7 @@ This `is code`
 ---: PRE
 
 --------------------------------------------------
-<p><code class="neo-inline-code">foxtrot</code> bravo alfa</p>
+<p><code class="language-txt neo-code">foxtrot</code> bravo alfa</p>
 --------------------------------------------------
 
 ---: CONTENT
@@ -645,7 +652,9 @@ Check <<l|1|links>> work
 Check <<l|1|links>> work
 
 
+---: ########################################################
 
+---: ########################################################
 
 
 ---: CONTENT
@@ -667,6 +676,57 @@ Verify <<l|1|links>> work <<l|2|twice>>
 
 Verify <<l|1|links>> work <<l|2|twice>> 
 
+
+---: ########################################################
+
+---: ########################################################
+
+
+---: CONTENT
+
+### Check Code tags
+
+---: PRE
+
+Verify <<code|---: DIV|neo>>
+
+
+---: PRE
+
+--------------------------------------------------
+<p>Verify <code class="language-neo neo-code">---: DIV</code></p>
+--------------------------------------------------
+
+---: CONTENT
+
+<<code|---: DIV|neo>>
+
+
+
+---: ########################################################
+
+---: ########################################################
+
+
+
+---: CONTENT
+
+### Extra attributes in code
+
+---: PRE
+
+Verify <<code|---: DIV|neo|id snippet-1|class more-stuff>>
+
+
+---: PRE
+
+--------------------------------------------------
+<p>Verify <code class="language-neo more-stuff neo-code" id="snippet-1">---: DIV</code></p>
+--------------------------------------------------
+
+---: CONTENT
+
+<<code|---: DIV|neo>>
 
 
 

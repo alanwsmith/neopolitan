@@ -1,5 +1,11 @@
+:root {
+  --b1: #3c2317;
+  --p2: #ffa1cf;
+  --p1: #ff74b1;
+}
+
 body {
-  background-color: hsla(24, 87%, 10%, 1);
+  background-color: var(--b1);
   color: hsla(140, 0%, 91%, 1);
   margin: 0;
   padding: 0;
@@ -15,13 +21,14 @@ h4,
 h5,
 h6 {
   color: #fffffe;
+  margin: 0;
 }
 h3 {
   border-top: 1px solid #aaa;
   padding-top: 1.2rem;
 }
 a {
-  color: #eebbc3;
+  color: #ff74b1;
   text-decoration: none;
 }
 header {
@@ -50,4 +57,25 @@ pre {
   border-radius: 10px;
   background-color: #123432;
   padding: 1.6rem;
+}
+.neo-title {
+  margin: 0;
+  padding: 0;
+}
+
+.neo-subtitle {
+  background-color: var(--p1);
+  padding-left: 0.3rem;
+  border-radius: 5px;
+}
+
+.neo-example {
+  background-color: #320013;
+  border-radius: 10px;
+  padding: 1.6rem;
+}
+
+.neo-note {
+  background-color: #333;
+  padding: 1.2rem;
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neopolitan - A Plain-Text Document Format</title>
+    <title>Neopolitan - A Plain-Text Document Format </title>
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
@@ -43,42 +43,33 @@
     </header>
     <main>
 
-<p>
-<a href="/considerations/index.html">considerations</a> ~ 
-<a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
-<a href="/element-types/index.html">element-types</a> ~ 
-<a href="/examples/index.html">examples</a> ~ 
-<a href="/integration-test/index.html">integration-test</a> ~ 
-<a href="/notes/index.html">notes</a> ~ 
-<a href="/overview/index.html">overview</a> ~ 
-<a href="/specifications/index.html">specifications</a> ~ 
-<a href="/thoughts/index.html">thoughts</a> ~ 
-<a href="/usage/index.html">usage</a> 
-</p>
-<hr />
-
-DRAFT: This is very much a work in progress. While the initial 
-ideas for the format are pretty solid, implementaiton is
-still in the early stages. There's a bunch of content in 
-the source files that you can't see. It'll become visible
-as the functionality is implemented. Building while the site
-is helping inform the spec. I prefer working this way than
-tryint to define everything up front. 
-
-The <a href="https://github.com/alanwsmith/neopolitan">repo
-is here</a> if you want to see more behind the scenes. 
-
-<hr />
+      <p>
+      <a href="/index.html">home page</a> ~ 
+      <a href="/considerations/index.html">considerations</a> ~ 
+      <a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
+      <a href="/element-types/index.html">element-types</a> ~ 
+      <a href="/elements/index.html">elements</a> ~ 
+      <a href="/examples/index.html">examples</a> ~ 
+      <a href="/integration-test/index.html">integration-test</a> ~ 
+      <a href="/notes/index.html">notes</a> ~ 
+      <a href="/overview/index.html">overview</a> ~ 
+      <a href="/rationale/index.html">rationale</a> ~ 
+      <a href="/specifications/index.html">specifications</a> ~ 
+      <a href="/usage/index.html">usage</a> 
+      </p>
+      <hr />
+      
+      
 
       
       <h2>Overview</h2>
 <p>Neopolitan is made of the following types of elements:</p>
 <h3>Sections</h3>
 <ul>
-<li>Start with <code class="neo-inline-code">---:</code> at the start of a line.</li>
-<li>The <code class="neo-inline-code">---:</code> marker is proceeded by at least one empty line.</li>
-<li>The <code class="neo-inline-code">---:</code> marker is followed by one space character and a single token that is all uppercase, numbers, and underscores with no spaces for the english portion of it. The regular expression to match in english is:  (TODO: verify that and expand it for non-english alphabets)</li>
-<li>The combination of the <code class="neo-inline-code">---:</code> and the token is called the </li>
+<li>Start with <code class="language-txt neo-code">---:</code> at the start of a line.</li>
+<li>The <code class="language-txt neo-code">---:</code> marker is proceeded by at least one empty line.</li>
+<li>The <code class="language-txt neo-code">---:</code> marker is followed by one space character and a single token that is all uppercase, numbers, and underscores with no spaces for the english portion of it. The regular expression to match in english is:  (TODO: verify that and expand it for non-english alphabets)</li>
+<li>The combination of the <code class="language-txt neo-code">---:</code> and the token is called the </li>
 <li>There is a pre-defined list of sections with specific functoality listed further below in this document.</li>
 <li>Custom headers can be added as long as they match the regex.</li>
 <li>It&#x27;s up to the creater of the header to ensure the parser they are using understands the custom header.</li>
