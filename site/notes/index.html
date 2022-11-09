@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neopolitan - A Plain-Text Document Format </title>
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Neopolitan - A Plain-Text Document Format"
+    />
+    <meta
+      property="og:description"
+      content="A plain-text document designed to last twenty years"
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/awsimages/image/upload/w_1200,h_630,o_0,b_rgb:000000/c_fit,w_1020,h_430,co_rgb:eeeeee,l_text:Abhaya%20Libre_124_bold:Neopolitan%20-%20A%20Plain-Text%20Document%20Format/fl_layer_apply,g_north_west,x_65,y_65/co_rgb:666666,l_text:Inconsolata_36_bold:from%20alan%20w.%20smith/fl_layer_apply,g_south_east,x_65,y_45/1x1.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site:id" content="@TheIdOfAlan" />
+    <meta name="twitter:creator" content="@TheIdOfAlan" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="228x228"
+      href="/favicons/228x228.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="180x180"
+      href="/favicons/180x180.png"
+    />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/">Home</a> ~
+      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
+      <a href="https://links.alanwsmith.com">links</a> ~
+      <a href="https://podcast.alanwsmith.com/">podcast</a> ~
+      <a href="https://twitter.com/TheIdOfAlan">twitter</a> ~
+      <a href="https://hachyderm.io/web/@TheIdOfAlan">mastodon</a>
+    </header>
+    <main>
+
+      <p>
+      <a href="/index.html">home page</a> ~ 
+      <a href="/considerations/index.html">considerations</a> ~ 
+      <a href="/content-unit-tests/index.html">content-unit-tests</a> ~ 
+      <a href="/element-types/index.html">element-types</a> ~ 
+      <a href="/elements/index.html">elements</a> ~ 
+      <a href="/examples/index.html">examples</a> ~ 
+      <a href="/integration-test/index.html">integration-test</a> ~ 
+      <a href="/notes/index.html">notes</a> ~ 
+      <a href="/overview/index.html">overview</a> ~ 
+      <a href="/rationale/index.html">rationale</a> ~ 
+      <a href="/specifications/index.html">specifications</a> ~ 
+      <a href="/usage/index.html">usage</a> 
+      </p>
+      <hr />
+      
+      
+
+      
+      <h1>Neopolitan Notes</h1>
+<h2>Examples</h2>
+<h3>Headers</h3>
+<p>Headers are made with between one and six *#* characters that map to <code class="language-txt neo-code">&lt;h1&gt;</code> to <code class="language-txt neo-code">&lt;h6&gt;</code></p>
+<h2>Tags</h2>
+<ul>
+<li>div</li>
+<li>code</li>
+<li>span</li>
+</ul>
+<p></p>
+<p></p>
+<p>For div span and code, any following item that starts with a <code class="language-txt neo-code">:</code> will turn into an attribute for the opening tag.</p>
+<p>Stuff without the <code class="language-txt neo-code">:</code> is not part of the spec but can be used in whatever way the implementaiton wants.</p>
+<p>And single lines like this.</p>
+<h2>Formatting</h2>
+<p>Headers are marked with between 1-6 <code class="neotag-code"</code> characters at the start of a line.</p>
+<p>There is *bold*</p>
+<p>There is *bold*</p>
+<p>TODO: Figure out is &lt;&gt; works for a way to pass things through so you can see them</p>
+<p>Content in hidden sections isn&#x27;t output.</p>
+<p>_</p>
+<p>,---: DESCRIPTIONS :::: :class desription-example</p>
+<ul>
+<li>open with a dash</li>
+</ul>
+<p>the description itself follows</p>
+<ul>
+<li>an important detail is that</li>
+</ul>
+<p>both the initail text and the full defintion can be on multiple lines</p>
+<ul>
+<li>the *can* </li>
+</ul>
+<p>in _both_ the initial and </p>
+<p>You can also have multipe paragraphs in a description like this one.</p>
+<p>An characters that you don&#x27;t want to get converted go in <code class="neotag-code"</code> tags </p>
+<p>&lt;&lt;span|this is some stuff that will have a span on it|</p>
+<p>TODOs and other blocks are stopped when another <code class="neotag-code"</code> marker shows up.</p>
+<p>Moving between any type of block is possible.</p>
+<p>CONTENT is the one to default to.</p>
+<h2>Links</h2>
+<p>SHould links have attributes in the tags or should those be stored in the metadata... feels like it&#x27;s nicerer to have them up top. So, make them both an option.</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p>Consider how to do things like</p>
+<p><code class="language-txt neo-code"></code><code class="language-txt neo-code">html &lt;a href=&quot;/en-US/docs/Web/HTML/Element/blockquote&quot;&gt; &lt;cite&gt;MDN blockquote page&lt;/cite&gt;&lt;/a&gt; </code><code class="language-txt neo-code"></code></p>
+<p>And other nestings, like <code class="language-txt neo-code">code</code> inside <code class="language-txt neo-code">strong</code></p>
+<p>Maybe that just goes back to HTML?</p>
+<p>Could do <code class="language-txt neo-code">+</code> and <code class="language-txt neo-code">-</code> to put tags inside and out</p>
+<p><code class="language-txt neo-code"></code><code class="language-txt neo-code">  </code><code class="language-txt neo-code"></code></p>
+<p>Feels like that would be better off being addressed by an id or class. Thinking the gain for trying to nest would be minimal compared to the effort and complexity involved.</p>
+<p>Figure out if you want to make <code class="language-txt neo-code">---: TABLE</code> be a header or just something in the content. I think probably it should be a header so attributes can be applied to it.</p>
+<ul>
+<li>section headers are always UPPERCASE and only 1 word/string</li>
+<li>Maybe make links JSON all the time. Let widgets be whatever they want. That way there isn&#x27;t a burden on other languates to try to parse javascript (unless that turns out to be trivial)</li>
+</ul>
+<h1>Neopolitan Reference</h1>
+<p>This document defines neopolitan transformations.</p>
+<p>This document is maintained with revisions. Any parser that produces the same output as the (TKTKTKTK link) neopolitan-py reference implementation is a valid Neopolitan interpreter for that revision. Providing additional functionality is encouraged.</p>
+<p>Every effort will be made to ensure backward compatibility once revision 1 is published. (Preview revisions before revision 1 will be used to finalize the first revision in an effort to lock in its long term stability)</p>
+<p>Validation is done via HTML.</p>
+<p>The tests are done by convention. The document is split by <code class="language-txt neo-code">---: CONTENT</code> headers then <code class="language-txt neo-code">---: PRE</code> headers. If there are three items in the resulting array the values are run as a test. The target is wrapped in <code class="language-txt neo-code">-----------...</code> lines to control for whitespace</p>
+
+<div class="neo-note">
+<p>This is old content that needs to be combined with the new stuff</p>
+</div>
+<h1>Neapolitan Guidelines</h1>
+<h2>Overview</h2>
+<p>This document lays out the plain-text format I&#x27;m using to overhaul my site. Working on my site is no longer fun. It&#x27;s a constant struggle against the opinions of frameworks and the limitations of</p>
+<p>This document is to determine the design of the content that&#x27;ll be used for the site. I&#x27;ve been using markdown. It&#x27;s been solid, but always feels a little constraining.</p>
+<p>Getting out from under those constraints from the framework side of things is the key reason I&#x27;m redoing the site. I&#x27;ve been using Org Mode and was going to do a combination of Org Mode and Markdown for the content but that would keep me locked into those constraints. They aren&#x27;t bad, but I want to see what I can do without them.</p>
+<p>So this is where I&#x27;m setting up the spec for the format I&#x27;m going to use.</p>
+<h3>HTML</h3>
+<div>This text is in a div under an <code>#+HTML</code> token</div>
+<div class="test-class">
+It will be passed straight thru and things like ampersands
+(&amp;) won't be modified
+</div>
+<p>This is back to the basic content setup.</p>
+<p>Here is a </p>
+<p>Things to deal with:</p>
+<ul>
+<li>Unordered Lists</li>
+<li>With stuff in them that is basic</li>
+<li>And catch multiline in lists</li>
+</ul>
+<p>Also need to do &quot;quotes&quot;</p>
+<p>And less than &lt; and greater than &gt;</p>
+<p>Going to to ahead and do the &#x27; single quote too</p>
+<p>And the &amp; ampersand</p>
+<p>This is an ordered list.</p>
+<ol>
+<li>They start with numbers followed by a dot</li>
+<li>There must be a blank row between the numbers</li>
+<li>Multiple lines require white space before the first character</li>
+<li>The actual number doesn&#x27;t matter, they will be numbered automatically in the HTML</li>
+</ol>
+<p>This line is here because lists don&#x27;t currently close if they are followed by another section without some text in between.</p>
+<p>Here&#x27;s a footnote. Implementation determines if it&#x27;s a link or not.</p>
+<p>And we&#x27;re back to normal with a horizontal rule</p>
+<p>---</p>
+<p>And the different sized headers:</p>
+<h1>H1 Alpha</h1>
+<h2>H2 Bravo</h2>
+<h3>H3 Charlie</h3>
+<h4>H4 Delta</h4>
+<h5>H5 Echo</h5>
+<h6>H6 Foxtrot</h6>
+<div class="neo-note">
+<p>Stand alone notes are a thing.</p>
+<p>They are parsed like regular content. The difference is that they have their own div wrapper which can have attributes applied.</p>
+</div>
+<p>Something else that can go in is Org Mode source blocks</p>
+<p>#+begin_src python :results output :wrap example</p>
+<p>print(&#x27;the quick brown fox&#x27;)</p>
+<p>#+end_src</p>
+<p>#+RESULTS: #+begin_example</p>
+<p>the quick brown fox</p>
+<p>#+end_example</p>
+<p>There are also examples that aren&#x27;t the results of #+begin_src blocks</p>
+<p>#+begin_example</p>
+<p>Data is here</p>
+<p>#+end_example</p>
+<h2>Images</h2>
+<p>Images are done in a similar way to links:</p>
+<p></p>
+<p>But the data for the images is stored in JSON so alt text can be applied.</p>
+<h2>Inline Code</h2>
+<p>Maybe something <code class="language-python neo-code">print(&#x27;like this&#x27;)</code></p>
+<p>There won&#x27;t be <code class="neotag-code"</code> code fences. Blocks are done in <code class="neotag-code"</code> blocks.</p>
+<p>First stages, line breaks can&#x27;t go in inline code.</p>
+<p>Code inside double &lt; snippets gets escaped too.</p>
+<h2>Other stuff</h2>
+<p>Almost forgot *bold* and _italic_ which I know aren&#x27;t the preferred names, but it&#x27;s all I can remember at the moment.</p>
+<p>#+begin_html</p>
+<p>&lt;p&gt;This is the Org Mode style of adding HTML&lt;/p&gt; &lt;p&gt;It&#x27;s output directly minus trimming the trailing and leading white space. &lt;/p&gt; &lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt; So You Can Do Code In It &lt;/code&gt;&lt;/pre&gt;</p>
+<p>#+end_html</p>
+<h3>UL Header Test</h3>
+<ul>
+<li>This is testing a UL</li>
+<li>That&#x27;s followed by a header</li>
+<h3>Done With UL Header Test</h3>
+<h1>NOTES</h1>
+<p>These are some general notes to hang onto until they file a good home. They are very much still a draft.</p>
+<h2>Pronouncation</h2>
+<p>The first part of the name is pronounced like the character Neo in The Matrix. The second half is pronounced like the second half of neapolitan ice cream. To do, come up with the phenetics.</p>
+<p>For capitalizaiotn. The standard is all lowercase. But, using a capital letter in headlines, etc... is fine. Do whatever you think looks best.</p>
+<p>The short hand term is <code class="language-txt neo-code">neo</code>, again like the matrix.</p>
+<p>I recognize none of that may stick, but some folks get really into that stuff and want to know how the creator pronounces and captializes. So, there ya go.</p>
+
+<h1>Usage Guide</h1>
+<ul>
+<li>Documents are made up of sections</li>
+<li>Every section starts with a header that looks like this:</li>
+</ul>
+<p>#+being_src</p>
+<ul>
+<li>Headers can have attributes that look like this:</li>
+</ul>
+<p>#+begin_src</p></main>
+    <footer>
+      made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
+      <br />
+      who has a <a href="https://www.alanwsmith.com">website</a> and a
+      <a href="https://podcast.alanwsmith.com/">podcast</a> <br />
+      among other <a href="https://links.alanwsmith.com">things</a>
+    </footer>
+  </body>
+</html>

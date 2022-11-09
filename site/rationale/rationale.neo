@@ -1,0 +1,163 @@
+---: CONTENT
+
+# Rationale  
+
+---: NOTE
+:::: :class heads-up
+
+This document it a draft. Over time
+it will refine down to the resons
+I made specific decisions where I had
+to pick an option when there were other
+good contenders. 
+
+You may not like a decision I made, but
+maybe learning why I did it will help
+it make more sense. 
+
+---: CONTENT
+
+## Overview
+
+This document lays out my thought process
+on decisions that were tough to make and
+will cause some amount of headache if
+you're workflows would be better atuned
+to the unchosen path. 
+
+## Overriding Guideline
+
+The guiding principales are:
+
+1. Make it fast to write
+2. Make it easy to move
+
+(that might work)
+
+---
+
+1. Store content in plain-text
+2. Make it fast to write
+3. Make it easy to understand 
+4. The primary output is web pages
+5. Make it easy to jump rending framworks
+6. Don't store custom components in the 
+    default content types. 
+7. Store data for custom complents that
+
+(Need to refine that list and make it shorter)
+
+
+## Guildlines
+
+Some basic guildelines 
+
+- As simple as possible. No simpler 
+- Prefer ease of use in the 80/20 mix
+
+
+
+---: CONTENT
+
+You can add a `:class` to `---: CONTENT` 
+without specifying a `~tag` (or whatever it ends
+up being) and it'll default to section. It 
+could just be ignored, but the author is
+signaling intent so act on it as best as
+possible. 
+
+
+The only difference between `DIV` and `CONTENT`
+sections is that the former gets wrapped in 
+a div. It's possible to do the exact same thing 
+by adding a `~tag` directive to a `CONTENT`
+section, but I like the stronger signal of
+intent with the separate tags. HTML divs
+are also such a fundamental part of the 
+envoiroment it seems natural. Plus, it's 
+less typing. 
+
+
+### No HTML In CONTENT
+
+- Markdown lets you put HTML in the doucments
+that'll get rendered when the file is processed. 
+You can do that in neopolitan too, just not
+in the CONTENT sections. single `<` and `>` characters 
+are alwasy translated to their `&lt;` and `&gt;`
+conterparts. 
+
+There are provisios for HTML though. The biggest
+one is `---: HTML` sections. Other than chompig
+whitespace off the top and bottom, no other 
+processing is done. Throw whatever you want 
+in there and it'll be passed on intact. 
+
+Other things you can do:
+
+- Make a <<c|---: DIV|neo>> section. IDs and
+styles can be applied those with a `<div>`
+wrapping the content that is otherwise 
+processed the same way as <<c:---\: CONTENT>>
+sections
+
+---
+
+For adding items to class in `<<` tags instead
+of overwriting them. I'm sure there are 
+reasons to want to wipe out a class, but 
+compared to having to add `language-js`
+back in every time you want to add 
+additional styling to a code tag, it's
+not worth it. (And, as alwasy, you 
+can roll back to html whenever you want)
+
+---
+
+Probably wrait something up specifically
+about the different levels of escape
+hatch and a big key is setting up a bucnhs
+so you don't end up in an either or
+situation. 
+
+
+---
+
+There is no nesting of sections. I think 
+of content as blocks, they can be 
+assembled however but that's specific 
+to the design. 
+
+Of course, the HTML escape hatch allows
+for nesting by placing content in between
+HTML secitons that contain an opening
+tag above and a closing tag below:
+
+---: PRE
+
+ ---: HTML
+
+ <div>
+
+ --- Multiple 
+ --- Sections
+ --- Here
+
+ ---: HTML
+
+ </div>
+
+
+---: CONTENT
+
+That feels a little to much like combining
+content and layout, but there are 
+certainly times when that would be useful. 
+
+
+
+
+
+
+
+

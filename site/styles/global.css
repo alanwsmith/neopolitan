@@ -1,0 +1,95 @@
+:root {
+  --b1: #3c2317;
+  --p2: #ffa1cf;
+  --p1: #ff74b1;
+}
+
+body {
+  background-color: var(--b1);
+  color: hsla(140, 0%, 91%, 1);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-size: 1.2rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #fffffe;
+  margin: 0;
+}
+h3 {
+  border-top: 1px solid #aaa;
+  padding-top: 1.2rem;
+}
+a {
+  color: #ff74b1;
+  text-decoration: none;
+}
+header {
+  padding-top: 18px;
+  padding-bottom: 4px;
+  width: 100%;
+  max-width: 72ch;
+  margin: 0 auto;
+  border-bottom: 1px solid #888;
+}
+main {
+  width: 100%;
+  max-width: 72ch;
+  margin: 0 auto;
+}
+footer {
+  width: 100%;
+  max-width: 72ch;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 60px;
+  padding-bottom: 12px;
+  font-size: 0.9rem;
+}
+pre {
+  border-radius: 10px;
+  background-color: #123432;
+  padding: 1.6rem;
+}
+.neo-title {
+  margin: 0;
+  padding: 0;
+}
+
+.neo-subtitle {
+  background-color: var(--p1);
+  padding-left: 0.3rem;
+  border-radius: 5px;
+}
+
+.neo-example {
+  background-color: #320013;
+  border-radius: 10px;
+  padding: 1.6rem;
+}
+
+.neo-note {
+  background-color: #888;
+  border-radius: 10px;
+  padding: 1.1rem;
+  margin: 0.5rem;
+}
+
+.neo-warning {
+  background-color: #333;
+  border-radius: 10px;
+  padding: 1.1rem;
+  margin: 0.5rem;
+}
+
+.neo-code {
+  font-weight: bold;
+  color: #666;
+}

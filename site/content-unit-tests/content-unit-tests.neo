@@ -1,0 +1,747 @@
+---: TITLE
+
+Neopolitan Unit Tests
+
+---: TODO
+
+- Setup ---:TITLE that turns into an `<h1 class="neo-title">`
+
+---: CONTENT
+
+
+This document is use to verify neopolitan functionality. 
+
+## Details
+
+- Each CONTENT section that's followed by two
+PRE sections collectively constitute a test
+
+- The CONTENT section contains a description 
+of the test
+
+- The first PRE section after the CONTENT 
+section contains the input for the test
+
+- The second PRE section contains the expected
+result sandwiched between rows of dashes
+above and below to avoid whitespace 
+variations
+
+- In all cases in this file, the content
+represents that coming from a CONTENT 
+sections (i.e. not a PRE, HTML, etc...)
+
+- The other sections the same processing 
+applies to are DIVs. TBD on others
+
+
+---: NOTE
+
+There are headers all over the place in here
+makes it hard to read, but this is about 
+making the tests, not readabiliyt. 
+
+
+---: CONTENT
+
+### Single line paragraph
+
+
+---: PRE
+
+The curtain rose and the show was on.
+
+---: PRE
+
+--------------------------------------------------
+<p>The curtain rose and the show was on.</p>
+--------------------------------------------------
+
+---: CONTENT
+
+The curtain rose and the show was on.
+
+
+---: CONTENT
+
+### Multi line paragraph
+
+---: PRE
+
+The birch 
+canoe 
+slid on the 
+smooth planks.  
+
+---: PRE
+
+--------------------------------------------------
+<p>The birch canoe slid on the smooth planks.</p>
+--------------------------------------------------
+
+---: CONTENT
+
+The birch 
+canoe 
+slid on the 
+smooth planks.  
+
+
+---: CONTENT
+
+### Multiple paragraphs
+
+---: PRE
+
+Glue the sheet to the dark blue 
+background. It is easy to tell the depth 
+of a well.
+
+Rice is often served in round bowls. The box 
+was thrown beside the parked truck. 
+
+The source of the huge river is the clear spring.
+The salt breeze came across from the sea.
+
+---: PRE
+
+--------------------------------------------------
+<p>Glue the sheet to the dark blue background. It is easy to tell the depth of a well.</p>
+<p>Rice is often served in round bowls. The box was thrown beside the parked truck.</p>
+<p>The source of the huge river is the clear spring. The salt breeze came across from the sea.</p>
+--------------------------------------------------
+
+
+---: CONTENT
+
+Glue the sheet to the dark blue 
+background. It is easy to tell the depth 
+of a well.
+
+Rice is often served in round bowls. The box 
+was thrown beside the parked truck. 
+
+The source of the huge river is the clear spring.
+The salt breeze came across from the sea.
+
+
+---: CONTENT
+
+### White space at the end of a paragraph is stripped
+
+---: PRE
+
+Two blue fish swam in the tank.     
+
+---: PRE
+
+--------------------------------------------------
+<p>Two blue fish swam in the tank.</p>
+--------------------------------------------------
+
+---: CONTENT
+
+
+Two blue fish swam in the tank.   
+
+---: CONTENT
+
+### Properly escape HTML characters
+
+---: PRE
+
+Checking & ' " < >
+
+
+---: PRE
+
+
+--------------------------------------------------
+<p>Checking &amp; &#x27; &quot; &lt; &gt;</p>
+--------------------------------------------------
+
+
+---: CONTENT
+
+
+Checking & ' " < >
+
+
+---: CONTENT
+
+### Unordered list with one item
+
+---: PRE
+
+- The colt reared and threw the tall rider. 
+
+---: PRE
+
+--------------------------------------------------
+<ul>
+<li>The colt reared and threw the tall rider.</li>
+</ul>
+--------------------------------------------------
+
+---: CONTENT
+
+- The colt reared and threw the tall rider. 
+
+
+---: CONTENT
+
+### Unordered lists with and without spaces 
+
+and with mutiple lines with and withone indents
+with white space at the end that is removed
+
+---: PRE
+
+- It snowed, rained, and hailed the same 
+morning. Take the winding path to reach 
+the lake.    
+
+
+- The wide road shimmered in the hot sun.
+  Lift the square stone over the fence.
+
+- Mesh wire keeps chicks inside. The frosty air 
+passed through the coat.
+
+- A saw is a tool used for making boards.   
+
+---: PRE
+
+--------------------------------------------------
+<ul>
+<li>It snowed, rained, and hailed the same morning. Take the winding path to reach the lake.</li>
+<li>The wide road shimmered in the hot sun. Lift the square stone over the fence.</li>
+<li>Mesh wire keeps chicks inside. The frosty air passed through the coat.</li>
+<li>A saw is a tool used for making boards.</li>
+</ul>
+--------------------------------------------------
+
+
+---: CONTENT
+
+- It snowed, rained, and hailed the same 
+morning. Take the winding path to reach 
+the lake.    
+
+
+- The wide road shimmered in the hot sun.
+  Lift the square stone over the fence.
+
+- Mesh wire keeps chicks inside. The frosty air 
+passed through the coat.
+
+- A saw is a tool used for making boards.   
+
+
+
+---: CONTENT
+
+### List surrounded by paragraphs
+
+---: PRE
+
+The petals fall with the next puff of wind.
+
+- Bring your best compass to the third class.
+
+- A fresh start will work such wonders.
+
+He wrote his last novel there at the inn.
+
+It is hard to erase blue or red ink.
+
+---: PRE
+
+--------------------------------------------------
+<p>The petals fall with the next puff of wind.</p>
+<ul>
+<li>Bring your best compass to the third class.</li>
+<li>A fresh start will work such wonders.</li>
+</ul>
+<p>He wrote his last novel there at the inn.</p>
+<p>It is hard to erase blue or red ink.</p>
+--------------------------------------------------
+
+
+---: CONTENT
+
+The petals fall with the next puff of wind.
+
+- Bring your best compass to the third class.
+
+- A fresh start will work such wonders.
+
+He wrote his last novel there at the inn.
+
+It is hard to erase blue or red ink.
+
+
+---: CONTENT
+
+### List with dash at the start of a line in the content
+
+---: PRE
+
+- Use a pencil to write the first draft. A 
+- small creek cut across the field.
+
+- The dune rose from the edge of the water. Those 
+words were the cue for the actor to leave.
+
+- The ink stain dried on the finished page.
+
+---: PRE
+
+--------------------------------------------------
+<ul>
+<li>Use a pencil to write the first draft. A - small creek cut across the field.</li>
+<li>The dune rose from the edge of the water. Those words were the cue for the actor to leave.</li>
+<li>The ink stain dried on the finished page.</li>
+</ul>
+--------------------------------------------------
+
+
+
+---: CONTENT
+
+- Use a pencil to write the first draft. A 
+- small creek cut across the field.
+
+- The dune rose from the edge of the water. Those 
+words were the cue for the actor to leave.
+
+- The ink stain dried on the finished page.
+
+
+---: CONTENT
+
+### Ordered list with one item
+
+---: PRE
+
+1. The fruit peel was cut in thick slices.   
+
+---: PRE
+
+--------------------------------------------------
+<ol>
+<li>The fruit peel was cut in thick slices.</li>
+</ol>
+--------------------------------------------------
+
+---: CONTENT
+
+1. The fruit peel was cut in thick slices. 
+
+---: CONTENT
+
+### Multiple item ordered list
+
+---: PRE
+
+1. There are more than two factors here.
+The grass curled around the fence post.
+
+2. Cut the pie into large parts. A wisp 
+of cloud hung in the blue air.
+
+3. Oak is strong and 
+    also gives shade.
+
+---: PRE
+
+--------------------------------------------------
+<ol>
+<li>There are more than two factors here. The grass curled around the fence post.</li>
+<li>Cut the pie into large parts. A wisp of cloud hung in the blue air.</li>
+<li>Oak is strong and also gives shade.</li>
+</ol>
+--------------------------------------------------
+
+---: CONTENT
+
+1. There are more than two factors here.
+The grass curled around the fence post.
+
+2. Cut the pie into large parts. A wisp 
+of cloud hung in the blue air.
+
+3. Oak is strong and 
+    also gives shade.
+
+
+---: CONTENT
+
+### Description List
+
+---: PRE
+
+~ Alfa
+
+: Split the log with a quick, sharp blow. He 
+ordered peach pie with ice cream.
+
+---: PRE
+
+--------------------------------------------------
+<dl>
+<dt>Alfa</dt>
+<dd>Split the log with a quick, sharp blow. He ordered peach pie with ice cream.</dd>
+</dl>
+--------------------------------------------------
+
+---: CONTENT
+
+~ Alfa
+
+: Split the log with a quick, sharp blow. He 
+ordered peach pie with ice cream.
+
+
+---: CONTENT
+
+### Description List - Multiple Items
+
+---: PRE
+
+~ Bravo
+
+: Weave the carpet on the right hand side. The 
+    cup cracked and spilled its contents.   
+
+~ Charlie 
+
+: Pluck the bright rose without leaves. The 
+young kid jumped the rusty gate.
+
+---: PRE
+
+--------------------------------------------------
+<dl>
+<dt>Bravo</dt>
+<dd>Weave the carpet on the right hand side. The cup cracked and spilled its contents.</dd>
+<dt>Charlie</dt>
+<dd>Pluck the bright rose without leaves. The young kid jumped the rusty gate.</dd>
+</dl>
+--------------------------------------------------
+
+---: CONTENT
+
+~ Bravo
+
+: Weave the carpet on the right hand side. The 
+    cup cracked and spilled its contents.   
+
+~ Charlie 
+
+: Pluck the bright rose without leaves. The 
+young kid jumped the rusty gate.
+
+---: CONTENT
+
+### Description lists with multi line
+descriptions. 
+
+---: PRE
+
+~ Delta
+
+:  Guess the results from the first scores. 
+
+: These thistles bend in a high wind.  
+
+
+~ Echo
+
+: The spot on the blotter was made by green ink.
+The cigar burned a hole in the desk top.
+
+---: PRE
+
+--------------------------------------------------
+<dl>
+<dt>Delta</dt>
+<dd>Guess the results from the first scores.<br /><br />These thistles bend in a high wind.</dd>
+<dt>Echo</dt>
+<dd>The spot on the blotter was made by green ink. The cigar burned a hole in the desk top.</dd>
+</dl>
+--------------------------------------------------
+
+
+---: CONTENT
+
+~ Delta
+
+:  Guess the results from the first scores. 
+
+: These thistles bend in a high wind.  
+
+
+---: CONTENT
+
+### Headers
+
+---: PRE
+
+# Alfa 
+
+## Bravo 
+
+### Charlie  
+
+#### Delta 
+
+##### Echo 
+
+###### Foxtrot  
+
+
+---: PRE
+
+--------------------------------------------------
+<h1>Alfa</h1>
+<h2>Bravo</h2>
+<h3>Charlie</h3>
+<h4>Delta</h4>
+<h5>Echo</h5>
+<h6>Foxtrot</h6>
+--------------------------------------------------
+
+---: CONTENT
+
+
+# Alfa 
+
+## Bravo 
+
+### Charlie  
+
+#### Delta 
+
+##### Echo 
+
+###### Foxtrot  
+
+
+
+---: CONTENT
+
+### Mixed content
+
+---: PRE
+
+## Victor
+
+Steam hissed from the broken valve. There 
+was a sound of dry leaves outside.
+
+- Torn scraps littered the stone floor.
+
+- We admire and love a good cook. Corn 
+  cobs can be used to kindle a fire.
+
+Where were they when the noise started. The 
+paper box is full of thumb tacks. The petals 
+fall with the next puff of wind.
+
+
+---: PRE
+
+--------------------------------------------------
+<h2>Victor</h2>
+<p>Steam hissed from the broken valve. There was a sound of dry leaves outside.</p>
+<ul>
+<li>Torn scraps littered the stone floor.</li>
+<li>We admire and love a good cook. Corn cobs can be used to kindle a fire.</li>
+</ul>
+<p>Where were they when the noise started. The paper box is full of thumb tacks. The petals fall with the next puff of wind.</p>
+--------------------------------------------------
+
+
+---: CONTENT
+
+## Victor
+
+Steam hissed from the broken valve. There 
+was a sound of dry leaves outside.
+
+- Torn scraps littered the stone floor.
+
+- We admire and love a good cook. Corn 
+  cobs can be used to kindle a fire.
+
+Where were they when the noise started. The 
+paper box is full of thumb tacks. The petals 
+fall with the next puff of wind.
+
+
+
+---: CONTENT
+
+### Turn backtics into code tags
+
+
+---: PRE
+
+This `code` is inline
+
+
+---: PRE
+
+--------------------------------------------------
+<p>This <code class="language-txt neo-code">code</code> is inline</p>
+--------------------------------------------------
+
+---: CONTENT
+
+This `is code`
+
+
+
+
+
+
+
+---: CONTENT
+
+### Line starts with code backtics 
+
+---: PRE
+
+`foxtrot` bravo alfa
+
+
+---: PRE
+
+--------------------------------------------------
+<p><code class="language-txt neo-code">foxtrot</code> bravo alfa</p>
+--------------------------------------------------
+
+---: CONTENT
+
+`foxtrot` bravo alfa
+
+
+
+
+
+
+
+---: CONTENT
+
+### Basic link
+
+---: PRE
+
+Check <<l|1|links>> work
+
+
+---: PRE
+
+--------------------------------------------------
+<p>Check <a aria-label="aria example" href="https://links.alanwsmith.com">links</a> work</p>
+--------------------------------------------------
+
+---: CONTENT
+
+Check <<l|1|links>> work
+
+
+---: ########################################################
+
+---: ########################################################
+
+
+---: CONTENT
+
+### Verify multiple links in a segment work
+
+---: PRE
+
+Verify <<l|1|links>> work <<l|2|twice>> 
+
+
+---: PRE
+
+--------------------------------------------------
+<p>Verify <a aria-label="aria example" href="https://links.alanwsmith.com">links</a> work <a aria-label="aria test" href="https://ideas.alanwsmith.com">twice</a></p>
+--------------------------------------------------
+
+---: CONTENT
+
+Verify <<l|1|links>> work <<l|2|twice>> 
+
+
+---: ########################################################
+
+---: ########################################################
+
+
+---: CONTENT
+
+### Check Code tags
+
+---: PRE
+
+Verify <<code|---: DIV|neo>>
+
+
+---: PRE
+
+--------------------------------------------------
+<p>Verify <code class="language-neo neo-code">---: DIV</code></p>
+--------------------------------------------------
+
+---: CONTENT
+
+<<code|---: DIV|neo>>
+
+
+
+---: ########################################################
+
+---: ########################################################
+
+
+
+---: CONTENT
+
+### Extra attributes in code
+
+---: PRE
+
+Verify <<code|---: DIV|neo|id snippet-1|class more-stuff>>
+
+
+---: PRE
+
+--------------------------------------------------
+<p>Verify <code class="language-neo more-stuff neo-code" id="snippet-1">---: DIV</code></p>
+--------------------------------------------------
+
+---: CONTENT
+
+<<code|---: DIV|neo>>
+
+
+
+
+
+
+---: LINKS
+
+[
+  {
+    "href": "https://links.alanwsmith.com", 
+    "aria-label": "aria example"
+  },
+  {
+    "href": "https://ideas.alanwsmith.com", 
+    "aria-label": "aria test"
+  }
+]

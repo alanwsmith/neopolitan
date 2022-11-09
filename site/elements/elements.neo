@@ -1,0 +1,507 @@
+---: CONTENT
+
+# Neopolitan Data Types
+
+
+
+This is the map between Neopolitan and HTML. It
+contains the full list of HTML elements 
+from the MDN page and the corresponding mapping. 
+
+Thinking at this point is that anything that
+doesn't have a direct Neopolitan counterpart
+will be handled via the double less than 
+tags
+
+(Need a better name than `double tags`, but 
+it'sll work for now)
+
+## Elements
+
+~ a
+
+: Anchor tags are handed via a combinaiton of link double tags
+and the `---: LINKS` header which holds the metadata details 
+for the links
+
+~ abbr
+
+: TKTKTK
+
+~ address
+
+: TKTKTK
+
+~ area
+
+: TKTKTK
+
+~ article
+
+: TKTKTK
+
+~ aside
+
+: TKTKTK
+
+~ audio
+
+: TKTKTK
+
+~ b
+
+: TKTKTK
+
+~ base
+
+: TKTKTK
+
+~ bdi
+
+: TKTKTK
+
+~ bdo
+
+: TKTKTK
+
+~ blockquote
+
+: TKTKTK
+
+~ body
+
+: TKTKTK
+
+~ br
+
+: TKTKTK
+
+~ button
+
+: TKTKTK
+
+~ canvas
+
+: TKTKTK
+
+~ caption
+
+: TKTKTK
+
+~ cite
+
+: TKTKTK
+
+~ code
+
+: TKTKTK
+
+~ col
+
+: TKTKTK
+
+~ colgroup
+
+: TKTKTK
+
+~ data
+
+: TKTKTK
+
+~ datalist
+
+: TKTKTK
+
+~ dd
+
+: TKTKTK
+
+~ del
+
+: TKTKTK
+
+~ details
+
+: TKTKTK
+
+~ dfn
+
+: TKTKTK
+
+~ dialog
+
+: TKTKTK
+
+~ div
+
+: TKTKTK
+
+~ dl
+
+: TKTKTK
+
+~ dt
+
+: TKTKTK
+
+~ em
+
+: TKTKTK
+
+~ embed
+
+: TKTKTK
+
+~ fieldset
+
+: TKTKTK
+
+~ figcaption
+
+: TKTKTK
+
+~ figure
+
+: TKTKTK
+
+~ footer
+
+: TKTKTK
+
+~ form
+
+: TKTKTK
+
+~ h1 
+
+: TKTKTK
+
+~ h2
+
+: TKTKTK
+
+~ h3
+
+: TKTKTK
+
+~ h4
+
+: TKTKTK
+
+~ h5
+
+: TKTKTK
+
+~ h6
+
+: TKTKTK
+
+~ head
+
+: TKTKTK
+
+~ header
+
+: TKTKTK
+
+~ hr
+
+: TKTKTK
+
+~ html
+
+: TKTKTK
+
+~ i
+
+: TKTKTK
+
+~ iframe
+
+: TKTKTK
+
+~ img
+
+: TKTKTK
+
+~ input
+
+: TKTKTK
+
+~ ins
+
+: TKTKTK
+
+~ kbd
+
+: TKTKTK
+
+~ label
+
+: TKTKTK
+
+~ legend
+
+: TKTKTK
+
+~ li
+
+: TKTKTK
+
+~ link
+
+: TKTKTK
+
+~ main
+
+: TKTKTK
+
+~ map
+
+: TKTKTK
+
+~ mark
+
+: TKTKTK
+
+~ math
+
+: TKTKTK
+
+~ menu
+
+: TKTKTK
+
+~ meta
+
+: TKTKTK
+
+~ meter
+
+: TKTKTK
+
+~ nav
+
+: TKTKTK
+
+~ noscript
+
+: TKTKTK
+
+~ object
+
+: TKTKTK
+
+~ ol
+
+: TKTKTK
+
+~ optgroup
+
+: TKTKTK
+
+~ option
+
+: TKTKTK
+
+~ output
+
+: TKTKTK
+
+~ p
+
+: TKTKTK
+
+~ picture
+
+: TKTKTK
+
+~ portal
+
+: TKTKTK
+
+~ pre
+
+: TKTKTK
+
+~ progress
+
+: TKTKTK
+
+~ q
+
+: TKTKTK
+
+~ rp
+
+: TKTKTK
+
+~ rt
+
+: TKTKTK
+
+~ ruby
+
+: TKTKTK
+
+~ s
+
+: TKTKTK
+
+~ samp
+
+: TKTKTK
+
+~ script
+
+: TKTKTK
+
+~ section
+
+: TKTKTK
+
+~ select
+
+: TKTKTK
+
+~ slot
+
+: TKTKTK
+
+~ small
+
+: TKTKTK
+
+~ source
+
+: TKTKTK
+
+~ span
+
+: TKTKTK
+
+~ strong
+
+: TKTKTK
+
+~ style
+
+: TKTKTK
+
+~ sub
+
+: TKTKTK
+
+~ summary
+
+: TKTKTK
+
+~ sup
+
+: TKTKTK
+
+~ svg
+
+: TKTKTK
+
+~ table
+
+: TKTKTK
+
+~ tbody
+
+: TKTKTK
+
+~ td
+
+: TKTKTK
+
+~ template
+
+: TKTKTK
+
+~ textarea
+
+: TKTKTK
+
+~ tfoot
+
+: TKTKTK
+
+~ th
+
+: TKTKTK
+
+~ thead
+
+: TKTKTK
+
+~ time
+
+: TKTKTK
+
+~ title
+
+: TKTKTK
+
+~ tr
+
+: TKTKTK
+
+~ track
+
+: TKTKTK
+
+~ u
+
+: TKTKTK
+
+~ ul
+
+: TKTKTK
+
+~ var
+
+: TKTKTK
+
+~ video
+
+: TKTKTK
+
+~ wbr
+
+: TKTKTK
+
+
+## Deprecated Elements
+
+These items are not considered for inclusion
+as they are deprecated. 
+
+- acronym
+- applet
+- bgsound
+- big
+- blink
+- center
+- content
+- dir
+- font
+- frame
+- frameset
+- image
+- keygen
+- marquee
+- menuitem
+- nobr
+- noembed
+- noframes
+- param
+- plaintext
+- rb
+- rtc
+- shadow
+- spacer
+- strike
+- tt
+- xmp
