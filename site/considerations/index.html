@@ -39,7 +39,8 @@
       <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
       <a href="https://links.alanwsmith.com">links</a> ~
       <a href="https://podcast.alanwsmith.com/">podcast</a> ~
-      <a href="https://twitter.com/TheIdOfAlan">twitter</a>
+      <a href="https://twitter.com/TheIdOfAlan">twitter</a> ~
+      <a href="https://hachyderm.io/web/@TheIdOfAlan">mastodon</a>
     </header>
     <main>
 
@@ -62,11 +63,14 @@
       
 
       
-      <div class="neo-note">
+      <div class="neo-warning">
 <p>NOTE: Not all the content on this page is visible yet. Features are still being added that are necessary for everything to show up.</p>
 </div>
 <h1 class="neo-title">Considerations</h1>
 <p>Ingest the title into the metadata automaticcally? seems like a good idea. not sure if that&#x27;s spec or implemenation.</p>
+<div class="neo-note">
+<p>Thinking about what should go and what shouldn&#x27;t now I&#x27;m leaning more towars if the parser doesnt&#x27; understan a header it skips the section. I&#x27;m thinking of that in terms of HIDDEN. where, if you misspell or type or whatever it&#x27;ll send stuff out that you didn&#x27;t mean to go. Maybe the way to do custom headers is to have a single custom type that add details for processing: like a <code class="language-txt neo-code">:::: type:</code> directive. Need to do more thiking on that.</p>
+</div>
 <p>Maybe add a backtic format with three tics. where the last you can put the language and attributes in the secont section? Probably be issues with parsing though which would lead to a not great experience. So, een though that would be alittle faster probalby not. (there would be some ways to make the parsing easlier like requireing all undersacores, but that would add complexity in a way that means there&#x27;s no reason not to use the neotags directly</p>
 <p>---</p>
 <h3>Headers</h3>

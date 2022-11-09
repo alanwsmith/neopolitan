@@ -40,6 +40,12 @@ tests>> for that.
 This is a note which means it is wrapped in a div
 
 
+---: WARNING
+
+this is a warning which has a neo-warning div 
+wrapper
+
+
 
 ---: TODO
 :::: :id main-todo

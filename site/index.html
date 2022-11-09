@@ -39,7 +39,8 @@
       <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
       <a href="https://links.alanwsmith.com">links</a> ~
       <a href="https://podcast.alanwsmith.com/">podcast</a> ~
-      <a href="https://twitter.com/TheIdOfAlan">twitter</a>
+      <a href="https://twitter.com/TheIdOfAlan">twitter</a> ~
+      <a href="https://hachyderm.io/web/@TheIdOfAlan">mastodon</a>
     </header>
     <main>
 
@@ -59,27 +60,26 @@
         </p>
 
       
-      <div class="neo-note">
-<h3>DRAFT</h3>
-<p>This site is the home of the neopolitan plain-text file format.</p>
-<p>Or, it will be when I finish it. It&#x27;s currently an early work in progress.</p>
-<h4>Make It Real</h4>
-<p>I can&#x27;t work in the abstract. I need something to work on in order to make it work. So, I&#x27;m doing the dog-fooding, drinking your own champaign, getting high on your on supply thing. This site is made from a collection of neopolitan docs run through a prototype parser.</p>
-<p>It&#x27;ll be bumpy for a while.</p>
-<p>Everything on this site is a draft. I use writing and building to figure things out. Making this site is how I&#x27;m refining the format into something I want to use.</p>
-<p>I hope you enjoy seeing the process, but nothing here should be considered stable. Contrictions are all over the place too. It&#x27;s all part of the process.</p>
+      <div class="neo-warning">
+<h2>DRAFT</h2>
+<p>This site is the home of the neopolitan plain-text file format</p>
+<p>Or, it will be when I finish it. The first iteration is still under construction</p>
+<p>I&#x27;m pretty good at working in the abstract, but nothing tells you more about how something works (or doesn&#x27;t) than working with it. So, I&#x27;m doing the dog-fooding, drinking your own champaign, getting high on your own supply thing. This site is made from a collection of neopolitan docs run through a prototype parser.</p>
+<p>Instability and spelling error abound. If you&#x27;re cool with that, have a look around and let me know what you think <a href="https://hachyderm.io/web/@TheIdOfAlan">on mastodon</a> or <a href="https://twitter.com/TheIdOfAlan">twitter</a></p>
+<p><code class="language-txt neo-code">-a</code></p>
 </div>
 <h1 class="neo-title">neopolitan</h1>
 <div class="neo-subtitle">neo for short</div>
-<p>Neopolitan is a plain-text file format. It&#x27;s inspired by Markdown, MDX, and Org-Mode. While those formats are all great, each one introduced some type of friction into my work. I can deal with friction just fine, but, like everyone, I&#x27;m way more productive without it.</p>
-<p>against shortcoming in the way I want things to work&lt;&lt;footnote:&gt;&gt;.</p>
-<p>I&#x27;ve run my site for twenty years. I&#x27;ve done half a dozen overhauls that required changing the way I store content. Thinking forward to the next twenty years, I never want to have to do it again.</p>
-<p>The fundamental goal of neopolitan is to keep me from having to do that while still providing a fully featured set of content options.</p>
-<h3>Overview</h3>
+<p>Neopolitan is a plain-text file format. It&#x27;s inspired by Markdown, MDX, and Org-Mode. As great as those formats are, they don&#x27;t work for me. The have frictions that break my concentration and knock me out of the flow.</p>
+<p>Being in a state of flow is precious to me. I&#x27;ve been through some shit that&#x27;s done the cliche &quot;making me realize how little time we have&quot;. Having stared down the abbys, I now do everything I can to attain and maintain flow states. That includes creating a new file format.</p>
+<div class="neo-note">
+<p>(TODO: edit this a little more and put in some content about the desing goals of speed and portablity</p>
+</div>
+<h2>Overview</h2>
 <p>Neopolitan files are made of sections. Each sections starts with <code class="language-txt neo-code">---:</code> followd by the type of section. For example:</p>
+<pre> ---: CONTENT </pre>
 <h3>Processing</h3>
-<p>Each type of section has a distince set of rules for how to process what&#x27;s inside it. For example, <code class="language-neo neo-code">---: CONTENT</code> sections are a lot like markdown.</p>
-<p>This:</p>
+<p>Each type of section has a distince set of rules for how to process what&#x27;s inside it. For example, <code class="language-neo neo-code">---: CONTENT</code> sections look a lot like markdown. This:</p>
 <pre> ---: CONTENT
 
  ## Small Example Header
@@ -122,13 +122,61 @@
 : Ducks fly north but lack a compass.</pre>
 <p>Becomes</p>
 <div class="neo-example">
-<dd>The office paint was a dull sad tan.</dd>
 <dl>
+<dt>Alfa</dt>
+<dd>The office paint was a dull sad tan.</dd>
 <dt>Bravo</dt>
 <dd>We admire and love a good cook.<br /><br />Ducks fly north but lack a compass.</dd>
 </dl>
 </div>
-<p>I&#x27;m currnetly in the proces of going &lt;l|1|MDN&#x27;s full list of elements&gt;&gt;</p></main>
+<p>The display for the examples is done with section headers too, along with some other standard types. This:</p>
+<pre>  ---: NOTE
+
+  This is a note
+
+  ---: EXAMPLE
+
+  This is an example 
+
+  ---: WARNING
+
+  This is a warning </pre>
+<p>Produces this:</p>
+<div class="neo-note">
+<p>This is a note</p>
+</div>
+<div class="neo-example">
+<p>This is an example</p>
+</div>
+<div class="neo-warning">
+<p>This is a warning</p>
+</div>
+<p>There is also a <code class="language-txt neo-code">---: DIV</code> which you can add classes to like this:</p>
+<pre>  ---: DIV
+  :::: :class alpha bravo
+
+  hotel foxtrot</pre>
+<p>Outputs the HTML:</p>
+<div class="neo-example">
+<p>&lt;div class=&quot;alpha bravo neo-div&quot;&gt;hotel foxtrot&lt;/div&gt;</p>
+</div>
+<p>The <code class="language-txt neo-code">neo-div</code> is a class that&#x27;s added automaticaly to various tags generated by neopolitan. They all start with <code class="language-txt neo-code">neo-</code> as a type of namespace.</p>
+<p>More than classes can be added to. Any number of arbitraty attirbutes can be added with this format:</p>
+<pre>  ---: PRE
+  :::: :id alpha 
+  :::: :class bravo 
+  :::: :data-key delta echo</pre>
+<p>That will output:</p>
+<div class="neo-example">
+<p>&lt;div id=&quot;alpha&quot; class=&quot;bravo neo-div&quot; data-key=&quot;delta echo&quot; &gt;</p>
+</div>
+<p>There&#x27;s other things too that I&#x27;m still getting put togehter.</p>
+<ul>
+<li><code class="language-txt neo-code">:::: type:</code> style directives (where the colon is on the right side of the word instead of the left.</li>
+<li><code class="language-txt neo-code">&lt;&lt;</code> format for links, code, spans, and tags</li>
+<li>JSON metadata containers</li>
+<li>WIDGETS (which are really just JSON blobs with <code class="language-txt neo-code">:::: type:</code> directives</li>
+</ul></main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
       <br />

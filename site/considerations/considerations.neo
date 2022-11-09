@@ -1,4 +1,4 @@
----: NOTE
+---: WARNING 
 
 NOTE: Not all the content on this page
 is visible yet. Features are still being
@@ -16,6 +16,24 @@ Considerations
 Ingest the title into the metadata
 automaticcally? seems like a good idea. 
 not sure if that's spec or implemenation. 
+
+
+
+---: NOTE
+
+Thinking about what should go and what 
+shouldn't now I'm leaning more towars
+if the parser doesnt' understan a header
+it skips the section. I'm thinking of
+that in terms of HIDDEN. where, if you 
+misspell or type or whatever it'll 
+send stuff out that you didn't mean to 
+go. Maybe the way to do custom headers
+is to have a single custom type that 
+add details for processing: like a 
+`:::: type:` directive. Need to do
+more thiking on that. 
+
 
 
 

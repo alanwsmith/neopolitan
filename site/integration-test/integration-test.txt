@@ -13,3 +13,7 @@
 <p>This document does not aim to test edge cases and variations. See the <a aria-label="This is not currently the right link" href="https://links.alanwsmith.com/">unit tests</a> for that.</p>
 <div class="neo-note">
 <p>This is a note which means it is wrapped in a div</p>
+</div>
+<div class="neo-warning">
+<p>this is a warning which has a neo-warning div wrapper</p>
+</div>
