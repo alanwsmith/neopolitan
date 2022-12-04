@@ -1,0 +1,98 @@
+---: CONTENT
+
+# Neopolitan Code 
+
+Dealing with code blocks is one of the primary reasons
+I'm making neopolitan. 
+
+Still thinking this thru. Here's where I'm at at the
+moment. (these are scratch notes, so they aren't 
+super organized and may contain contrications
+as I think things thru). Most of the ideas are 
+from Emacs Org-Mode
+
+## Top Goal
+
+A single documnet that includes livesource code 
+that can be documented line by line and assembled 
+without duplication and the results output directly
+into the document
+
+## Goals
+
+1. Code is executable in the document
+
+2. Ouput from the code goes into the document
+
+3. Out of band comments can be added to the code
+
+
+---: CONTENT
+
+## Requirements
+
+- Default behavior is that each source code block 
+renders it's output directly below it like Emacs Org-Mode
+
+---: PRE
+
+ ---: CODE
+ ---: lang: python
+
+ print('Hello, World')
+
+ ---: RESULTS
+
+ Hello, World
+
+
+---: CONTENT
+
+- Each source code block starts with a header like org-mode
+
+- In the header you can add `lang:`. Optional. (All
+those metadata pieces (directives? I forget what I'm
+called them) are optional. You should never have to 
+remember anything other than the header. 
+
+- Be default, if there's a language and you run
+the source code it'll output into a `---: RESULTS` 
+section directoy below it: 
+
+- If there are multiple `---: CODE` blocks on a page
+they are all independent unless linked. 
+
+- It's an implementation detail to determine how 
+running the code works (e.g. if goes throu a REPL
+or whatever...) The part that's part of the spec is 
+that if source blocks are linked, the output will
+only got behind the last one by default. 
+
+- TODO: Dig into jupyter to see how they do stuff. 
+Not trying to duplicate that though. This format isn't
+only about code. It's content in general, with an
+80/20 style foundation of code functionality.
+
+
+
+
+
+
+
+
+
+
+
+---: CONTENT  
+:::: :class draft
+
+
+
+## Goal Thoughts 
+
+These are things that it seems like it would be nice
+to have but aren't requirements for the first iteration
+
+- 
+
+

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>$TITLE $SUBTITLE</title>
+        <title>Neopolitan - A Plain-Text Document Format </title>
         <meta property="og:type" content="website" />
         <meta
             property="og:title"
@@ -65,7 +65,40 @@
             </p>
             <hr />
 
-            $BODY
+            <h1>Neopolitan Code</h1>
+<p>Dealing with code blocks is one of the primary reasons I&#x27;m making neopolitan.</p>
+<p>Still thinking this thru. Here&#x27;s where I&#x27;m at at the moment. (these are scratch notes, so they aren&#x27;t super organized and may contain contrications as I think things thru). Most of the ideas are from Emacs Org-Mode</p>
+<h2>Top Goal</h2>
+<p>A single documnet that includes livesource code that can be documented line by line and assembled without duplication and the results output directly into the document</p>
+<h2>Goals</h2>
+<ol>
+<li>Code is executable in the document</li>
+<li>Ouput from the code goes into the document</li>
+<li>Out of band comments can be added to the code</li>
+</ol>
+<h2>Requirements</h2>
+<ul>
+<li>Default behavior is that each source code block renders it&#x27;s output directly below it like Emacs Org-Mode</li>
+</ul>
+<pre> ---: CODE
+ ---: lang: python
+
+ print(&#x27;Hello, World&#x27;)
+
+ ---: RESULTS
+
+ Hello, World</pre>
+<ul>
+<li>Each source code block starts with a header like org-mode</li>
+<li>In the header you can add <code class="language-txt neo-code">lang:</code>. Optional. (All those metadata pieces (directives? I forget what I&#x27;m called them) are optional. You should never have to remember anything other than the header.</li>
+<li>Be default, if there&#x27;s a language and you run the source code it&#x27;ll output into a <code class="language-txt neo-code">---: RESULTS</code> section directoy below it:</li>
+<li>If there are multiple <code class="language-txt neo-code">---: CODE</code> blocks on a page they are all independent unless linked.</li>
+<li>It&#x27;s an implementation detail to determine how running the code works (e.g. if goes throu a REPL or whatever...) The part that&#x27;s part of the spec is that if source blocks are linked, the output will only got behind the last one by default.</li>
+<li>TODO: Dig into jupyter to see how they do stuff. Not trying to duplicate that though. This format isn&#x27;t only about code. It&#x27;s content in general, with an 80/20 style foundation of code functionality.</li>
+</ul>
+<h2>Goal Thoughts</h2>
+<p>These are things that it seems like it would be nice to have but aren&#x27;t requirements for the first iteration</p>
+<p>-</p>
         </main>
         <footer>
             made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>$TITLE $SUBTITLE</title>
+        <title>Neopolitan - A Plain-Text Document Format </title>
         <meta property="og:type" content="website" />
         <meta
             property="og:title"
@@ -65,7 +65,28 @@
             </p>
             <hr />
 
-            $BODY
+            <h1 class="neo-title">Headers In ---: PRE tags</h1>
+<p>Thinking about how to deal with times when you want to show a neopolital header tag in side a <code class="language-txt neo-code">---: PRE</code> or <code class="language-txt neo-code">---: CODE</code> section.</p>
+<p>Right now, the way I&#x27;m doing it is to add a spece in front of the version of the header that should stay in the content. But, I don&#x27;t want to do that.</p>
+<p>I don&#x27;t want to have to escape it since that would mean putting something in the source that would have to be removed before running the file (or something that would show up in the source that wouldn&#x27;t show up in the output at a minmum)</p>
+<p>Current idea is to add metadata to the initial head tag that tells the parser to skip N number of header tags (the type doesn&#x27;t matter). Or, maybe the verbiage should be &quot;include&quot;? Whatever that ends up being the functioality would be something like:</p>
+<pre> ---: PRE
+ :::: skip-headers: 2
+
+ ---: CONTENT
+ 
+ This section would show up in the pre tag without
+ being parsed.
+
+ ---: PRE 
+
+ This section would show up in the pre tag without
+ being parsed. 
+
+ ---: CONTENT
+
+ This would be parsed as a regular section</pre>
+<p>The goal here is to be able to throw anything in the pre and code blocks without having to worry about any type of escaping</p>
         </main>
         <footer>
             made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>

@@ -1,3 +1,13 @@
+---: TITLE 
+
+neopolitan
+
+
+---: SUBTITLE
+
+neo for short
+
+
 ---: WARNING 
 :::: :class heads-up
 
@@ -26,17 +36,10 @@ around and let me know what you think
 `-a` 
 
 
----: TITLE 
-
-neopolitan
-
-
----: SUBTITLE
-
-neo for short
-
-
 ---: CONTENT
+
+
+## Intro
 
 Neopolitan is a plain-text file format. It's 
 inspired by Markdown, MDX, and Org-Mode. As great
@@ -51,13 +54,6 @@ time we have". Having stared down the
 abbys, I now do everything I can to attain
 and maintain flow states. That includes 
 creating a new file format. 
-
----: NOTE
-
-(TODO: edit this a little more and put 
-in some content about the desing goals 
-of speed and portablity 
-
 
 
 
@@ -313,12 +309,10 @@ of the left.
 - JSON metadata containers 
 
 - WIDGETS (which are really just JSON blobs
-with `:::: type:` directives 
+with `:::: type:` directives)
 
-
-
-
-
+I'll post updates on <<l|2|mastodon>> and <<l|3|twitter>>
+if you want to follow along.
 
 
 
@@ -331,7 +325,7 @@ with `:::: type:` directives
 
 
 
-I'm currnetly in the proces of going <l|1|MDN's full list of elements>>
+I'm currnetly in the proces of going <<l|1|MDN's full list of elements>>
 
 
 
