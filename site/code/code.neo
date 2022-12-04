@@ -48,6 +48,10 @@ into the document
 
 3. Out of band comments can be added to the code
 
+4. Arbitrarity lines of code can be output 
+multiple times without duplication
+
+
 
 ---: CONTENT
 
@@ -275,6 +279,107 @@ There are ways to do some automatic movement of the comments
 if you change line numbers. That's out of scope for 
 the first phase and might not be worth it at all. 
 
+---: Content
+
+### Output Lines Without Duplication 
+
+One of the other big tricks I'm after is the ability 
+to call out lines without duplicating them. For example,
+having a source block of live code that runs, but then 
+calling out individual lines (or sets of lines). 
+
+
+---: PRE
+
+ --: CODE
+ --; lang: python
+ --; set: echo
+
+ print('violet')
+ print('sepia')
+ print('tan')
+
+ --: CONTENT
+
+ Full notes go here with a description of
+ line 2 which renders via this:
+
+ --: CODELINES
+ --; set: echo 
+ --; lines: 2
+
+
+---: CONTENT
+
+The text file itself won't display the line. 
+It's only a reference that the parser is 
+responsible for outputting. References can 
+be assembled of ranges of lines with `3-12`, 
+and groups of individual lines and ranges like:
+`1,8-12,24`
+
+TBD on the line numbering output. Probably what makes
+the most sense is to apply a directive to determine
+what to use. Another possibility would be to send
+`data-` attributes that have the same line numbers
+as the source data as well as the line number as if
+they were assembled directly, but, the more I think about
+it the less sure I am about that which means mapping
+the line numbers feels like it should be the default
+and the first approach to implement.
+
+You'd also want to be able to add COMMENT blocks 
+to the references. I'll add that too. Maybe something 
+like `CODECOMMENT` and `LINESCOMMENT` which gets a little
+bouncy considering they are both pointed to lines. 
+TBD on that behavior. 
+
+
+### Internal Line Numbers
+
+This would be a feature implement by the parser but 
+the format would have to accommodate it. Basically, 
+what would be a good way to have text numbers inside
+the file itself so you can see them when you're working
+on them. Maybe a directive would work here:
+
+---: PRE
+ 
+ --: CODE
+ --; lang: python
+ --; line-numbers
+
+ 1| print('pink')
+ 2| print('brown')
+
+ --: RESULTS
+
+ pink
+ brown
+
+
+---: CONTENT
+
+Something to think about here is when you have multiple
+source blocks being assembled. Pretty sure you'd want
+to have the line number cascade down so they didn't always
+start over at 1. That way, when you run code, if there's
+an error in a later source block, you'd get line 48 instead of
+line 1. 
+
+The editor would have to be able to deal with this to have
+any chance of being useful. i.e. this is another case where
+the spec will define it, but if the tools doesn't make it 
+easy it would ever get used. 
+
+I was thinking another option would be to have the line
+number append to the end of the line. That might make
+the editor parsing a little easier, but it would still have
+to be made to do that and if you're adding the functionality
+it seems like that's half the battle so you might as well 
+finish it and put the line number in front as shown above. 
+
+
 
 ---: LINKS
 
@@ -284,3 +389,4 @@ the first phase and might not be worth it at all.
   }
 ]
   
+
