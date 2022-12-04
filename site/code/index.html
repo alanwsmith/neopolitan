@@ -83,6 +83,11 @@
 <p>I&#x27;ve been using Emacs <a href="https://orgmode.org/">Org Mode</a>. Some of the notes below talk about auto generating results. That&#x27;s something that would be done with an Org-Mode like source block execution tool (literate programming). That&#x27;s not required for the format. It&#x27;s just what would produce the RESULTS text blocks automatically.</p>
 <p>The output would be the same regardless of if the RESULTS blocks were made automatically or manually. The end goal is to have a tool in place automatically so I&#x27;m writing with that as the environment and a lot of this focuses on that generation.</p>
 <p>Another important feature will be syntax and section highlighting. The example below don&#x27;t have that which makes them more difficult to parse. Syntax highlighting will help that, but the the format is designed to make it as easily as possible to parse even in plain text without highlighting.</p>
+<h2>Org Mode</h2>
+<p>Org Mode has been a game changer for me with my notes. It lets you execute blocks of source code directly. Much of the thinking about the code section of this page is with an editor that has a similar functionality but for Neopolitan in mind. That&#x27;s not required for the language, but it will super charge it.</p>
+<p>Once I get the first version of the language my next step will be to create something comparable to the source code execution. (I have no desire to try to replicate all of Org Mode. It&#x27;s massive.)</p>
+<p>If you haven&#x27;t seen Org Mode in action, this is what it looks:</p>
+<img src="emacs-org-mode-source-blocks.gif" />
 <h2>Top Goal</h2>
 <p>A single document that includes live source code that can be documented line by line and assembled without duplication and the results output directly into the document</p>
 <h2>Goals</h2>
@@ -90,7 +95,7 @@
 <li>Code is executable in the document</li>
 <li>Output from the code goes into the document</li>
 <li>Out of band comments can be added to the code</li>
-<li>Arbitrarity lines of code can be output multiple times without duplication</li>
+<li>Arbitrary lines of code can be output multiple times without duplication</li>
 </ol>
 <h2>Requirements</h2>
 <ul>
