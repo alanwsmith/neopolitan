@@ -1,10 +1,10 @@
+
 ---: WARNING 
 :::: title: Head's Up
 
 Not all the content on this page is visible 
 yet. The parser ignores stuff it isn't setup
 for yet and there's a bunch of that. 
-
 
 
 ---: TITLE 
@@ -15,18 +15,150 @@ Specifications
 
 The nitty gritty of how things fit togehter
 
----: TODO
+---: CONTENT
 
-Stuff to add
+High level reference listing all headers and 
+optional directives (there are no required 
+directives)
 
-[] add a `title:` directive for most nodes that
-provides a title div to the section. 
+(Directives will be added as they become 
+apparent. Lots of things will be saved for
+attributes. e.g. there would be a `class:` 
+directive. That will be handled in 
+attributes with `:class`)
+
+(Maybe should reverse `:attribtue` and `directive:`
+so that it's `attribute:` and `:directive`? It
+feels like attribute would get more usage in which 
+case it feels like it's the one that should have the
+parens behind it.)
+
+Not sure if these are all gonna make it. This is 
+the gauntlet. 
+
+(Maybe directives and attrbutes should have different
+prealbmes. One could have `:::: thing:` and the other 
+would be `--; thing:`, I think I like that since
+it gives a clearer distincation and allows both
+types to have the `:` at the end of the string. 
+Yeah, trying that for now)
+
+Directive values are optional. e.g. `--; hidden`
+doesn't have a value but `--; lang: python` does.
+If there's a value, they'll be separated by the paren
+and any amount of white space.
+
+The `hidden` directive is available for every header. 
+It indicates that the output process should skip
+the particual block. The goal is to allow for internal
+notes in the document that don't get published. 
+
+The only section that doesn't have `hidden` is `--: META`
+which is never shown. 
+
+---: PRE
+
+ --: CODE 
+ --; hidden
+ --; lang: alfa
+ --; skip-headers: 2 # tells how many headers to skip
+ --; title: some title # shows up in a div with the code block (think about adding an id too)
+ --; eval: never # or some other way to prevent evaluation
+
+---: PRE
+
+ --: CONTENT # Outputs contents directly with no wrapper
+ --; hidden
+
+---: PRE
+
+ --: DIV # Outputs contents in a div wrapper with optional attributes
+ --; hidden
+
+---: PRE
+
+ --: EXAMPLE 
+ --; hidden
+
+---: PRE
+
+ --: FOOTNOTES
+ --; hidden
+
+---: PRE
+
+ --: HTML 
+ --; hidden
+
+---: PRE
+
+ --: IMG # TBD on this. Idea is to make it easy to format a caption/figure
+ --; hidden
+ --; src
+ --; alt
+ --; title
+ --; caption
 
 
+---: PRE
 
+ --: META # default is one att per line, but parsers can use whatever via the lang. 
+ --; lang: attributes
+
+
+---: PRE
+
+ --: NOTES # convience wrapper for div with `neo-notes` class
+ --; hidden
+
+
+---: PRE
+
+ --: PRE
+ --; hidden
+ --; skip-headers: #
+
+
+---: PRE
+
+ --: SUBTITLE
+ --; hidden
+
+
+---: PRE
+
+ --: SUMMARY
+ --; hidden
+
+
+---: PRE
+
+ --: TITLE
+ --; hidden
+
+
+---: PRE
+
+ --: TODO # Thinking about getting rid of this
+ --; hidden
+
+
+---: PRE
+
+ --: WARNING
+ --; hidden
+
+
+---: PRE
+
+ --: WIDGET
+ --; type: alfa 
+ --; hidden
 
 
 ---: CONTENT
+
+
 
 
 ## The Sections
@@ -117,7 +249,13 @@ if the item is done or not.
 The `<<code` snippets will default to 
 `languate-txt` if no language is provided
 
+---
 
+Should `---: CONTENT` have a wrapper? I'm 
+not sure what I put elsewhere, but right now
+I'm thinking no. It would just output directly
+whatever was in it. If you need a wrapper
+use `---: DIV`
 
 
 
@@ -222,5 +360,14 @@ easily fit in JSON. Could apply a header to it
 for direction to whatever is parsing, but the
 handlng of it is a details on the implementation 
 side 
+
+---
+
+Figure out if you want to be able to put PRE headers inside warnings?
+
+That seems frought and opens up to trying to nest stuff. Thinking it's
+better to put the onus on the author. 
+
+
 
 
