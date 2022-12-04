@@ -35,9 +35,9 @@
     </head>
     <body>
         <header>
-            <a href="/">Home</a> ~
-            <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
-            <a href="https://links.alanwsmith.com">links</a> ~
+            <a href="/">Neopolitan</a> ~
+            <a href="https://www.alanwsmith.com/">personal site</a> ~
+            <a href="https://links.alanwsmith.com">other sites</a> ~
             <a href="https://podcast.alanwsmith.com/">podcast</a> ~
             <a href="https://twitter.com/TheIdOfAlan">twitter</a> ~
             <a href="https://hachyderm.io/web/@TheIdOfAlan">mastodon</a>
@@ -90,6 +90,7 @@
 <li>Code is executable in the document</li>
 <li>Output from the code goes into the document</li>
 <li>Out of band comments can be added to the code</li>
+<li>Arbitrarity lines of code can be output multiple times without duplication</li>
 </ol>
 <h2>Requirements</h2>
 <ul>
@@ -216,6 +217,41 @@
 <p>Also thinking that maybe there are a couple format options for the HTML output that could be flagged by a directive. This is more than just adding an attribute it would spec the specific format of the HTML</p>
 <p>Also, because the directives are used, the comments could actually be placed anywhere in the file. (The first phase won&#x27;t have the ability to include other files, but I wouldn&#x27;t be surprised to see that evolve)</p>
 <p>There are ways to do some automatic movement of the comments if you change line numbers. That&#x27;s out of scope for the first phase and might not be worth it at all.</p>
+<pre> --: CODE
+ --; lang: python
+ --; set: echo
+
+ print(&#x27;violet&#x27;)
+ print(&#x27;sepia&#x27;)
+ print(&#x27;tan&#x27;)
+
+ --: CONTENT
+
+ Full notes go here with a description of
+ line 2 which renders via this:
+
+ --: CODELINES
+ --; set: echo 
+ --; lines: 2</pre>
+<p>The text file itself won&#x27;t display the line. It&#x27;s only a reference that the parser is responsible for outputting. References can be assembled of ranges of lines with <code class="language-txt neo-code">3-12</code>, and groups of individual lines and ranges like: <code class="language-txt neo-code">1,8-12,24</code></p>
+<p>TBD on the line numbering output. Probably what makes the most sense is to apply a directive to determine what to use. Another possibility would be to send <code class="language-txt neo-code">data-</code> attributes that have the same line numbers as the source data as well as the line number as if they were assembled directly, but, the more I think about it the less sure I am about that which means mapping the line numbers feels like it should be the default and the first approach to implement.</p>
+<p>You&#x27;d also want to be able to add COMMENT blocks to the references. I&#x27;ll add that too. Maybe something like <code class="language-txt neo-code">CODECOMMENT</code> and <code class="language-txt neo-code">LINESCOMMENT</code> which gets a little bouncy considering they are both pointed to lines. TBD on that behavior.</p>
+<h3>Internal Line Numbers</h3>
+<p>This would be a feature implement by the parser but the format would have to accommodate it. Basically, what would be a good way to have text numbers inside the file itself so you can see them when you&#x27;re working on them. Maybe a directive would work here:</p>
+<pre> --: CODE
+ --; lang: python
+ --; line-numbers
+
+ 1| print(&#x27;pink&#x27;)
+ 2| print(&#x27;brown&#x27;)
+
+ --: RESULTS
+
+ pink
+ brown</pre>
+<p>Something to think about here is when you have multiple source blocks being assembled. Pretty sure you&#x27;d want to have the line number cascade down so they didn&#x27;t always start over at 1. That way, when you run code, if there&#x27;s an error in a later source block, you&#x27;d get line 48 instead of line 1.</p>
+<p>The editor would have to be able to deal with this to have any chance of being useful. i.e. this is another case where the spec will define it, but if the tools doesn&#x27;t make it easy it would ever get used.</p>
+<p>I was thinking another option would be to have the line number append to the end of the line. That might make the editor parsing a little easier, but it would still have to be made to do that and if you&#x27;re adding the functionality it seems like that&#x27;s half the battle so you might as well finish it and put the line number in front as shown above.</p>
         </main>
         <footer>
             made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
