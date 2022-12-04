@@ -32,6 +32,26 @@ will help that, but the the format is designed to
 make it as easily as possible to parse even in plain
 text without highlighting. 
 
+## Org Mode
+
+Org Mode has been a game changer for me with my notes. It 
+lets you execute blocks of source code directly. Much of
+the thinking about the code section of this page is with 
+an editor that has a similar functionality but for Neopolitan 
+in mind. That's not required for the language, but it will
+super charge it. 
+
+Once I get the first version of the language my next step 
+will be to create something comparable to the source code execution.
+(I have no desire to try to replicate all of Org Mode. It's massive.)
+
+If you haven't seen Org Mode in action, this is what it looks:
+
+---: HTML 
+
+<img src="emacs-org-mode-source-blocks.gif" />
+
+---: CONTENT
 
 ## Top Goal
 
@@ -48,7 +68,7 @@ into the document
 
 3. Out of band comments can be added to the code
 
-4. Arbitrarity lines of code can be output 
+4. Arbitrary lines of code can be output 
 multiple times without duplication
 
 
@@ -388,5 +408,4 @@ finish it and put the line number in front as shown above.
     "href": "https://orgmode.org/"
   }
 ]
-  
 
