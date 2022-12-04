@@ -37,7 +37,7 @@ renders it's output directly below it like Emacs Org-Mode
 ---: PRE
 
  ---: CODE
- ---: lang: python
+ ;;;; lang: python
 
  print('Hello, World')
 
@@ -72,6 +72,10 @@ only got behind the last one by default.
 Not trying to duplicate that though. This format isn't
 only about code. It's content in general, with an
 80/20 style foundation of code functionality.
+
+---: CONTENT 
+
+## Ideas
 
 
 

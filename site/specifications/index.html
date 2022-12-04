@@ -77,38 +77,50 @@
 <p>(Maybe directives and attrbutes should have different prealbmes. One could have <code class="language-txt neo-code">:::: thing:</code> and the other would be <code class="language-txt neo-code">;;;; thing:</code>, I think I like that since it gives a clearer distincation and allows both types to have the <code class="language-txt neo-code">:</code> at the end of the string. Yeah, trying that for now)</p>
 <p>Directive values are optional. e.g. <code class="language-txt neo-code">;;;; hidden</code> doesn&#x27;t have a value but <code class="language-txt neo-code">;;;; lang: python</code> does. If there&#x27;s a value, they&#x27;ll be separated by the paren and any amount of white space.</p>
 <p>The <code class="language-txt neo-code">hidden</code> directive is available for every header. It indicates that the output process should skip the particual block. The goal is to allow for internal notes in the document that don&#x27;t get published.</p>
+<p>The only section that doesn&#x27;t have <code class="language-txt neo-code">hidden</code> is <code class="language-txt neo-code">---: META</code> which is never shown.</p>
 <pre> ---: CODE 
+ ;;;; hidden
  ;;;; lang: alfa
+ ;;;; skip-headers: #
+
+ ---: CONTENT # Outputs contents directly with no wrapper
  ;;;; hidden
 
- ---: CONTENT
+ ---: DIV # Outputs contents in a div wrapper with optional attributes
  ;;;; hidden
 
- ---: DIV
- ;;;; hidden
-
- ---: EXAMPLE
+ ---: EXAMPLE # Probably getting rid of this
  ;;;; hidden
 
  ---: FOOTNOTES
  ;;;; hidden
 
- ---: NOTE
+ ---: HTML 
+ ;;;; hidden
+
+ ---: META # defautl is one att per line, but parsers can use whatever via the lang. 
+ ;;;; lang: attributes
+
+ ---: NOTES # mainly 
  ;;;; hidden
 
  ---: PRE
  ;;;; hidden
+ ;;;; skip-headers: #
 
  ---: SUBTITLE
+ ;;;; hidden
+
+ ---: SUMMARY
  ;;;; hidden
 
  ---: TITLE
  ;;;; hidden
 
- ---: TODO
+ ---: TODO # Thinking about getting rid of this
  ;;;; hidden
- 
- ---: WARNING
+
+ ---: WARNING # Thinking about getting rid of this
  ;;;; hidden
 
  ---: WIDGET

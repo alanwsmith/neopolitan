@@ -1,3 +1,4 @@
+
 ---: WARNING 
 :::: title: Head's Up
 
@@ -52,40 +53,54 @@ It indicates that the output process should skip
 the particual block. The goal is to allow for internal
 notes in the document that don't get published. 
 
+The only section that doesn't have `hidden` is `---: META`
+which is never shown. 
+
 ---: PRE
 
  ---: CODE 
+ ;;;; hidden
  ;;;; lang: alfa
+ ;;;; skip-headers: #
+
+ ---: CONTENT # Outputs contents directly with no wrapper
  ;;;; hidden
 
- ---: CONTENT
+ ---: DIV # Outputs contents in a div wrapper with optional attributes
  ;;;; hidden
 
- ---: DIV
- ;;;; hidden
-
- ---: EXAMPLE
+ ---: EXAMPLE # Probably getting rid of this
  ;;;; hidden
 
  ---: FOOTNOTES
  ;;;; hidden
 
- ---: NOTE
+ ---: HTML 
+ ;;;; hidden
+
+ ---: META # defautl is one att per line, but parsers can use whatever via the lang. 
+ ;;;; lang: attributes
+
+ ---: NOTES # mainly 
  ;;;; hidden
 
  ---: PRE
  ;;;; hidden
+ ;;;; skip-headers: #
 
  ---: SUBTITLE
+ ;;;; hidden
+
+ ---: SUMMARY
  ;;;; hidden
 
  ---: TITLE
  ;;;; hidden
 
- ---: TODO
+ ---: TODO # Thinking about getting rid of this
  ;;;; hidden
- 
- ---: WARNING
+
+ ---: WARNING # Thinking about getting rid of this
  ;;;; hidden
 
  ---: WIDGET
@@ -93,18 +108,9 @@ notes in the document that don't get published.
  ;;;; hidden
 
 
----: TODO
-
-Stuff to add
-
-[] add a `title:` directive for most nodes that
-provides a title div to the section. 
-
-
-
-
-
 ---: CONTENT
+
+
 
 
 ## The Sections
@@ -195,7 +201,13 @@ if the item is done or not.
 The `<<code` snippets will default to 
 `languate-txt` if no language is provided
 
+---
 
+Should `---: CONTENT` have a wrapper? I'm 
+not sure what I put elsewhere, but right now
+I'm thinking no. It would just output directly
+whatever was in it. If you need a wrapper
+use `---: DIV`
 
 
 
@@ -300,5 +312,8 @@ easily fit in JSON. Could apply a header to it
 for direction to whatever is parsing, but the
 handlng of it is a details on the implementation 
 side 
+
+
+
 
 
