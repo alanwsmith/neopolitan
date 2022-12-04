@@ -68,8 +68,9 @@
                 <p>
                     Everything here is still an early draft. I'm doing the
                     building in public thing and a bunch of this is still
-                    brainstorming. Don't be surprised to file conflicts and
-                    inconsistencies and mis-spellings all over the place.
+                    brainstorming. Don't be surprised to find conflicts and
+                    inconsistencies and mis-spellings all over the place. All
+                    that stuff will work itself out as progress continues.
                 </p>
             </div>
 
@@ -77,17 +78,17 @@
 
             <h1>Neopolitan Code</h1>
 <p>Dealing with code blocks is one of the primary reasons I&#x27;m making neopolitan.</p>
-<p>Still thinking this thru. Here&#x27;s where I&#x27;m at at the moment. (these are scratch notes, so they aren&#x27;t super organized and may contain contrications as I think things thru).</p>
+<p>Still thinking this thru. Here&#x27;s where I&#x27;m at at the moment. (these are scratch notes, so they aren&#x27;t super organized and may contain contraindications as I think things thru).</p>
 <h2>Authoring Environment</h2>
-<p>I&#x27;ve been using Emacs <a href="https://orgmode.org/">Org Mode</a>. Some of the notes below talk about auto genearting results. That&#x27;s something that would be done with an Org-Mode like source block execution tool (literate programming). That&#x27;s not required for the format. It&#x27;s just what would produe the RESULTS text blocks automatically.</p>
+<p>I&#x27;ve been using Emacs <a href="https://orgmode.org/">Org Mode</a>. Some of the notes below talk about auto generating results. That&#x27;s something that would be done with an Org-Mode like source block execution tool (literate programming). That&#x27;s not required for the format. It&#x27;s just what would produce the RESULTS text blocks automatically.</p>
 <p>The output would be the same regardless of if the RESULTS blocks were made automatically or manually. The end goal is to have a tool in place automatically so I&#x27;m writing with that as the environment and a lot of this focuses on that generation.</p>
-<p>Another important feature will be syntax and seciton highlighting. The example below don&#x27;t have that which makes them more difficult to parse. Syntax highlighting will help that, but the the format is designed to make it as easily as possilbe to parse even in plain text without highlighting.</p>
+<p>Another important feature will be syntax and section highlighting. The example below don&#x27;t have that which makes them more difficult to parse. Syntax highlighting will help that, but the the format is designed to make it as easily as possible to parse even in plain text without highlighting.</p>
 <h2>Top Goal</h2>
-<p>A single documnet that includes live source code that can be documented line by line and assembled without duplication and the results output directly into the document</p>
+<p>A single document that includes live source code that can be documented line by line and assembled without duplication and the results output directly into the document</p>
 <h2>Goals</h2>
 <ol>
 <li>Code is executable in the document</li>
-<li>Ouput from the code goes into the document</li>
+<li>Output from the code goes into the document</li>
 <li>Out of band comments can be added to the code</li>
 </ol>
 <h2>Requirements</h2>
@@ -104,14 +105,14 @@
  Hello, World</pre>
 <ul>
 <li>You can add a <code class="language-txt neo-code">--;; lang:</code> directive to identify. the code type. It&#x27;s optional. If it&#x27;s not there the output will set the language as <code class="language-txt neo-code">txt</code>.</li>
-<li>Be default, if there&#x27;s a language and you run the source code it&#x27;ll output into a <code class="language-txt neo-code">---: RESULTS</code> section directoy below it</li>
+<li>Be default, if there&#x27;s a language and you run the source code it&#x27;ll output into a <code class="language-txt neo-code">---: RESULTS</code> section directory below it</li>
 <li>If there are multiple <code class="language-txt neo-code">---: CODE</code> blocks on a page they are all independent unless linked.</li>
-<li>It&#x27;s an implementation detail to determine how running the code works (e.g. if goes throu a REPL or whatever...) The part that&#x27;s part of the spec is that if source blocks are linked, the output will only got behind the last one by default.</li>
+<li>It&#x27;s an implementation detail to determine how running the code works (e.g. if goes through a REPL or whatever...) The part that&#x27;s part of the spec is that if source blocks are linked, the output will only got behind the last one by default.</li>
 <li>TODO: Dig into jupyter to see how they do stuff. Not trying to duplicate that though. This format isn&#x27;t only about code. It&#x27;s content in general, with an 80/20 style foundation of code functionality.</li>
 <li>It&#x27;s possible to show the output from each block and then a collective output. Something to investigate, but definitely a later phase.</li>
 </ul>
 <h2>Ideas</h2>
-<p>The way I work is to build stuff as I go so I can constantly evaluaute and re-evaluate how things are working vs making a heavy front end spec. (luxury of being a sole developer). These are some of the ideas on the plate for evaluation.</p>
+<p>The way I work is to build stuff as I go so I can constantly evaluate and re-evaluate how things are working vs making a heavy front end spec. (luxury of being a sole developer). These are some of the ideas on the plate for evaluation.</p>
 <h3>Assemble Blocks</h3>
 <ul>
 <li>Attache multiple code blocks via a directive</li>
@@ -211,7 +212,7 @@
  This is the comment for line 2 of
  the delta block</pre>
 <p>The results for the code block would show up before the comments by default, but you can move them wherever.</p>
-<p>I&#x27;m still working on the default output for how the line by line stuff would be associated, but the goal is to make it as flexile as possible. Of course, it&#x27;s up to the parser if other outputs want to be used.</p>
+<p>I&#x27;m still working on the default output for how the line by line stuff would be associated, but the goal is to make it as flexible as possible. Of course, it&#x27;s up to the parser if other outputs want to be used.</p>
 <p>Also thinking that maybe there are a couple format options for the HTML output that could be flagged by a directive. This is more than just adding an attribute it would spec the specific format of the HTML</p>
 <p>Also, because the directives are used, the comments could actually be placed anywhere in the file. (The first phase won&#x27;t have the ability to include other files, but I wouldn&#x27;t be surprised to see that evolve)</p>
 <p>There are ways to do some automatic movement of the comments if you change line numbers. That&#x27;s out of scope for the first phase and might not be worth it at all.</p>

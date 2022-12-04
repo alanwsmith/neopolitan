@@ -7,17 +7,17 @@ I'm making neopolitan.
 
 Still thinking this thru. Here's where I'm at at the
 moment. (these are scratch notes, so they aren't 
-super organized and may contain contrications
+super organized and may contain contraindications
 as I think things thru).
 
 ## Authoring Environment
 
 I've been using Emacs <<l|1|Org Mode>>. Some of the notes below
-talk about auto genearting results. That's something
+talk about auto generating results. That's something
 that would be done with an Org-Mode like source
 block execution tool (literate programming). That's
 not required for the format. It's just what would 
-produe the RESULTS text blocks automatically. 
+produce the RESULTS text blocks automatically. 
 
 The output would be the same regardless of if the
 RESULTS blocks were made automatically or manually. 
@@ -25,17 +25,17 @@ The end goal is to have a tool in place automatically
 so I'm writing with that as the environment and 
 a lot of this focuses on that generation. 
 
-Another important feature will be syntax and seciton 
+Another important feature will be syntax and section 
 highlighting. The example below don't have that which
 makes them more difficult to parse. Syntax highlighting 
 will help that, but the the format is designed to 
-make it as easily as possilbe to parse even in plain
+make it as easily as possible to parse even in plain
 text without highlighting. 
 
 
 ## Top Goal
 
-A single documnet that includes live source code 
+A single document that includes live source code 
 that can be documented line by line and assembled 
 without duplication and the results output directly
 into the document
@@ -44,7 +44,7 @@ into the document
 
 1. Code is executable in the document
 
-2. Ouput from the code goes into the document
+2. Output from the code goes into the document
 
 3. Out of band comments can be added to the code
 
@@ -77,13 +77,13 @@ output will set the language as `txt`.
 
 - Be default, if there's a language and you run
 the source code it'll output into a `---: RESULTS` 
-section directoy below it
+section directory below it
 
 - If there are multiple `---: CODE` blocks on a page
 they are all independent unless linked. 
 
 - It's an implementation detail to determine how 
-running the code works (e.g. if goes throu a REPL
+running the code works (e.g. if goes through a REPL
 or whatever...) The part that's part of the spec is 
 that if source blocks are linked, the output will
 only got behind the last one by default. 
@@ -103,7 +103,7 @@ but definitely a later phase.
 ## Ideas
 
 The way I work is to build stuff as I go so I 
-can constantly evaluaute and re-evaluate how things
+can constantly evaluate and re-evaluate how things
 are working vs making a heavy front end spec. (luxury 
 of being a sole developer). These are some of the ideas
 on the plate for evaluation. 
@@ -258,7 +258,7 @@ the comments by default, but you can move them wherever.
 
 I'm still working on the default output for how
 the line by line stuff would be associated, but the goal
-is to make it as flexile as possible. Of course, it's
+is to make it as flexible as possible. Of course, it's
 up to the parser if other outputs want to be used. 
 
 Also thinking that maybe there are a couple format
@@ -276,8 +276,6 @@ if you change line numbers. That's out of scope for
 the first phase and might not be worth it at all. 
 
 
-
-
 ---: LINKS
 
 [
@@ -286,5 +284,3 @@ the first phase and might not be worth it at all.
   }
 ]
   
-
-
