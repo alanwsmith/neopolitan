@@ -8,12 +8,34 @@ I'm making neopolitan.
 Still thinking this thru. Here's where I'm at at the
 moment. (these are scratch notes, so they aren't 
 super organized and may contain contrications
-as I think things thru). Most of the ideas are 
-from Emacs Org-Mode
+as I think things thru).
+
+## Authoring Environment
+
+I've been using Emacs <<l|1|Org Mode>>. Some of the notes below
+talk about auto genearting results. That's something
+that would be done with an Org-Mode like source
+block execution tool (literate programming). That's
+not required for the format. It's just what would 
+produe the RESULTS text blocks automatically. 
+
+The output would be the same regardless of if the
+RESULTS blocks were made automatically or manually. 
+The end goal is to have a tool in place automatically
+so I'm writing with that as the environment and 
+a lot of this focuses on that generation. 
+
+Another important feature will be syntax and seciton 
+highlighting. The example below don't have that which
+makes them more difficult to parse. Syntax highlighting 
+will help that, but the the format is designed to 
+make it as easily as possilbe to parse even in plain
+text without highlighting. 
+
 
 ## Top Goal
 
-A single documnet that includes livesource code 
+A single documnet that includes live source code 
 that can be documented line by line and assembled 
 without duplication and the results output directly
 into the document
@@ -36,28 +58,26 @@ renders it's output directly below it like Emacs Org-Mode
 
 ---: PRE
 
- ---: CODE
- ;;;; lang: python
+ --: CODE
+ --; lang: python
 
  print('Hello, World')
 
- ---: RESULTS
+ --: RESULTS
 
  Hello, World
 
 
 ---: CONTENT
 
-- Each source code block starts with a header like org-mode
 
-- In the header you can add `lang:`. Optional. (All
-those metadata pieces (directives? I forget what I'm
-called them) are optional. You should never have to 
-remember anything other than the header. 
+- You can add a `--;; lang:` directive to identify. 
+the code type. It's optional. If it's not there the 
+output will set the language as `txt`.
 
 - Be default, if there's a language and you run
 the source code it'll output into a `---: RESULTS` 
-section directoy below it: 
+section directoy below it
 
 - If there are multiple `---: CODE` blocks on a page
 they are all independent unless linked. 
@@ -73,30 +93,198 @@ Not trying to duplicate that though. This format isn't
 only about code. It's content in general, with an
 80/20 style foundation of code functionality.
 
+- It's possible to show the output from each block 
+and then a collective output. Something to investigate, 
+but definitely a later phase. 
+
+
 ---: CONTENT 
 
 ## Ideas
 
+The way I work is to build stuff as I go so I 
+can constantly evaluaute and re-evaluate how things
+are working vs making a heavy front end spec. (luxury 
+of being a sole developer). These are some of the ideas
+on the plate for evaluation. 
+
+
+### Assemble Blocks
+
+- Attache multiple code blocks via a directive
+
+---: PRE
+
+ --: CODE
+ --; lang: python
+ --; set: alfa 
+
+ print('green')
+
+
+ --: CONTENT
+
+ This is where a description would go
+
+
+ --: CODE
+ --; lang: python
+ --; set: alfa 
+
+ print('yellow')
+
+
+ --: RESULTS
+ --; set: alfa
+
+ green
+ yellow
+
+
+---: CONTENT
+
+### Reorder Source Blocks 
+
+Adding a number to the different source
+blocks assembles them in that order before
+executing to build the results block. 
+
+---: PRE
+
+ --: CODE
+ --; lang: python
+ --; set: bravo
+ --; num: 2
+
+ print('purple')
+
+ --: CONTENT 
+
+ some details 
+
+ --: CODE
+ --; lang: python
+ --; set: bravo
+ --; num: 1
+
+ print('blue')
+
+ --: RESULTS
+ --; set: bravo
+
+ blue
+ purple
+
+---: CONTENT
+
+### Reposition Results Block
+
+The `--: RESULTS` block goes directly after
+the last `--: CODE` block in the set be default. 
+It can be reposition anywhere in the document 
+by moving the header and the associated `--; set:`
+directive. 
+
+---: PRE
+
+ --: RESULTS
+ --; set: charlie 
+
+ crimson
+
+ --: CODE
+ --; lang: python
+ --; set: charlie 
+
+ print('crimson')
+
+
+---: CONTENT
+
+This example shows a single CODE block. The same thing
+would work with multiple code blocks and with or 
+without numbers. 
+
+
+### Line By Line Comments
+
+Considering a line by line reference method too. 
+This would work pretty well for smaller code blocks
+but would get to be a pain with larger ones. 
+
+That said, since you can assemble code blocks it
+feels like it would go pretty far. 
+
+The base idea is that there would be a second header
+designed to associated with the lines associate with. 
+Something like:
+
+---: PRE
+
+ --: CODE
+ --; lang: python
+ --; set: delta
+
+ print('orange')
+ print('black')
+
+ --: RESULTS 
+ --; set: delta
+
+ orange
+ black
+
+ --: COMMENT
+ --; set: delta
+ --; line: 1
+ 
+ This is a note about line one. It's a 
+ full content block. So you can do 
+ anything here you can with the normal 
+ content blocks. 
+
+ --: COMMENT
+ --; set: delta
+ --; line: 2
+ 
+ This is the comment for line 2 of
+ the delta block
+
+
+---: CONTENT
+
+The results for the code block would show up before
+the comments by default, but you can move them wherever. 
+
+I'm still working on the default output for how
+the line by line stuff would be associated, but the goal
+is to make it as flexile as possible. Of course, it's
+up to the parser if other outputs want to be used. 
+
+Also thinking that maybe there are a couple format
+options for the HTML output that could be flagged by a 
+directive. This is more than just adding an attribute
+it would spec the specific format of the HTML
+
+Also, because the directives are used, the comments
+could actually be placed anywhere in the file. (The 
+first phase won't have the ability to include other 
+files, but I wouldn't be surprised to see that evolve)
+
+There are ways to do some automatic movement of the comments
+if you change line numbers. That's out of scope for 
+the first phase and might not be worth it at all. 
 
 
 
 
+---: LINKS
 
-
-
-
-
-
----: CONTENT  
-:::: :class draft
-
-
-
-## Goal Thoughts 
-
-These are things that it seems like it would be nice
-to have but aren't requirements for the first iteration
-
-- 
+[
+  {
+    "href": "https://orgmode.org/"
+  }
+]
+  
 
 

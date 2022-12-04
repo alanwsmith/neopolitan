@@ -74,6 +74,21 @@
 <p>Instability and spelling error abound. If you&#x27;re cool with that, have a look around and let me know what you think <a href="https://hachyderm.io/web/@TheIdOfAlan">on mastodon</a> or <a href="https://twitter.com/TheIdOfAlan">twitter</a></p>
 <p><code class="language-txt neo-code">-a</code></p>
 </div>
+<div class="neo-warning">
+<h2>Update In Progress</h2>
+<p>I&#x27;m changing the way directives work. Instead of <code class="language-txt neo-code">:::: thing:</code>, they are going to use <code class="language-txt neo-code">;</code> to better separate them from attributes. (e.g attributes are now <code class="language-txt neo-code">:::: whatever:</code> and directives are <code class="language-txt neo-code">;;;; thing:</code>)</p>
+</div>
+<div class="neo-warning">
+<h2>Moving to two dashes</h2>
+<p>I&#x27;m moving to two dashes instead of three for the headers. When I first started it was easier for me to process three, but adding in directies with <code class="language-txt neo-code">;</code> add a lot of weight and as I&#x27;ve gotten more used to it I think two will work fine. (One, doesn&#x27;t give enough separation)</p>
+</div>
+<pre> # Inital Version:
+
+ ---: CONTENT
+
+ # Changing To This:
+
+ --: CONTENT</pre>
 <h2>Intro</h2>
 <p>Neopolitan is a plain-text file format. It&#x27;s inspired by Markdown, MDX, and Org-Mode. As great as those formats are, they don&#x27;t work for me. The have frictions that break my concentration and knock me out of the flow.</p>
 <p>Being in a state of flow is precious to me. I&#x27;ve been through some shit that&#x27;s done the cliche &quot;making me realize how little time we have&quot;. Having stared down the abbys, I now do everything I can to attain and maintain flow states. That includes creating a new file format.</p>

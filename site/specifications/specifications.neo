@@ -38,13 +38,13 @@ the gauntlet.
 
 (Maybe directives and attrbutes should have different
 prealbmes. One could have `:::: thing:` and the other 
-would be `;;;; thing:`, I think I like that since
+would be `--; thing:`, I think I like that since
 it gives a clearer distincation and allows both
 types to have the `:` at the end of the string. 
 Yeah, trying that for now)
 
-Directive values are optional. e.g. `;;;; hidden`
-doesn't have a value but `;;;; lang: python` does.
+Directive values are optional. e.g. `--; hidden`
+doesn't have a value but `--; lang: python` does.
 If there's a value, they'll be separated by the paren
 and any amount of white space.
 
@@ -53,59 +53,107 @@ It indicates that the output process should skip
 the particual block. The goal is to allow for internal
 notes in the document that don't get published. 
 
-The only section that doesn't have `hidden` is `---: META`
+The only section that doesn't have `hidden` is `--: META`
 which is never shown. 
 
 ---: PRE
 
- ---: CODE 
- ;;;; hidden
- ;;;; lang: alfa
- ;;;; skip-headers: #
+ --: CODE 
+ --; hidden
+ --; lang: alfa
+ --; skip-headers: 2 # tells how many headers to skip
+ --; title: some title # shows up in a div with the code block (think about adding an id too)
+ --; eval: never # or some other way to prevent evaluation
 
- ---: CONTENT # Outputs contents directly with no wrapper
- ;;;; hidden
+---: PRE
 
- ---: DIV # Outputs contents in a div wrapper with optional attributes
- ;;;; hidden
+ --: CONTENT # Outputs contents directly with no wrapper
+ --; hidden
 
- ---: EXAMPLE # Probably getting rid of this
- ;;;; hidden
+---: PRE
 
- ---: FOOTNOTES
- ;;;; hidden
+ --: DIV # Outputs contents in a div wrapper with optional attributes
+ --; hidden
 
- ---: HTML 
- ;;;; hidden
+---: PRE
 
- ---: META # defautl is one att per line, but parsers can use whatever via the lang. 
- ;;;; lang: attributes
+ --: EXAMPLE 
+ --; hidden
 
- ---: NOTES # mainly 
- ;;;; hidden
+---: PRE
 
- ---: PRE
- ;;;; hidden
- ;;;; skip-headers: #
+ --: FOOTNOTES
+ --; hidden
 
- ---: SUBTITLE
- ;;;; hidden
+---: PRE
 
- ---: SUMMARY
- ;;;; hidden
+ --: HTML 
+ --; hidden
 
- ---: TITLE
- ;;;; hidden
+---: PRE
 
- ---: TODO # Thinking about getting rid of this
- ;;;; hidden
+ --: IMG # TBD on this. Idea is to make it easy to format a caption/figure
+ --; hidden
+ --; src
+ --; alt
+ --; title
+ --; caption
 
- ---: WARNING # Thinking about getting rid of this
- ;;;; hidden
 
- ---: WIDGET
- ;;;: type: alfa 
- ;;;; hidden
+---: PRE
+
+ --: META # default is one att per line, but parsers can use whatever via the lang. 
+ --; lang: attributes
+
+
+---: PRE
+
+ --: NOTES # convience wrapper for div with `neo-notes` class
+ --; hidden
+
+
+---: PRE
+
+ --: PRE
+ --; hidden
+ --; skip-headers: #
+
+
+---: PRE
+
+ --: SUBTITLE
+ --; hidden
+
+
+---: PRE
+
+ --: SUMMARY
+ --; hidden
+
+
+---: PRE
+
+ --: TITLE
+ --; hidden
+
+
+---: PRE
+
+ --: TODO # Thinking about getting rid of this
+ --; hidden
+
+
+---: PRE
+
+ --: WARNING
+ --; hidden
+
+
+---: PRE
+
+ --: WIDGET
+ --; type: alfa 
+ --; hidden
 
 
 ---: CONTENT
@@ -313,6 +361,12 @@ for direction to whatever is parsing, but the
 handlng of it is a details on the implementation 
 side 
 
+---
+
+Figure out if you want to be able to put PRE headers inside warnings?
+
+That seems frought and opens up to trying to nest stuff. Thinking it's
+better to put the onus on the author. 
 
 
 

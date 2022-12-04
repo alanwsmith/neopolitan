@@ -8,6 +8,8 @@ neopolitan
 neo for short
 
 
+
+
 ---: WARNING 
 :::: :class heads-up
 
@@ -34,6 +36,45 @@ around and let me know what you think
 <<l|2|on mastodon>> or <<l|3|twitter>>
 
 `-a` 
+
+
+
+
+---: WARNING 
+:::: :class heads-up
+
+## Update In Progress
+
+I'm changing the way directives work. Instead of 
+`:::: thing:`, they are going to use `;` to better
+separate them from attributes. (e.g attributes are
+now `:::: whatever:` and directives are `;;;; thing:`)
+
+
+---: WARNING 
+:::: :class heads-up
+
+## Moving to two dashes 
+
+I'm moving to two dashes instead of 
+three for the headers. When I first started
+it was easier for me to process three, but 
+adding in directies with `;` add a lot of 
+weight and as I've gotten more used to it
+I think two will work fine. (One, doesn't
+give enough separation)
+
+
+
+---: PRE
+
+ # Inital Version:
+
+ ---: CONTENT
+
+ # Changing To This:
+
+ --: CONTENT
 
 
 ---: CONTENT

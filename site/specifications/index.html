@@ -64,6 +64,16 @@
                 <a href="/usage/index.html">usage</a>
             </p>
             <hr />
+            <div class="neo-warning">
+                <p>
+                    Everything here is still an early draft. I'm doing the
+                    building in public thing and a bunch of this is still
+                    brainstorming. Don't be surprised to file conflicts and
+                    inconsistencies and mis-spellings all over the place.
+                </p>
+            </div>
+
+            <hr />
 
             <div class="neo-warning">
 <p>Not all the content on this page is visible yet. The parser ignores stuff it isn&#x27;t setup for yet and there&#x27;s a bunch of that.</p>
@@ -74,58 +84,52 @@
 <p>(Directives will be added as they become apparent. Lots of things will be saved for attributes. e.g. there would be a <code class="language-txt neo-code">class:</code> directive. That will be handled in attributes with <code class="language-txt neo-code">:class</code>)</p>
 <p>(Maybe should reverse <code class="language-txt neo-code">:attribtue</code> and <code class="language-txt neo-code">directive:</code> so that it&#x27;s <code class="language-txt neo-code">attribute:</code> and <code class="language-txt neo-code">:directive</code>? It feels like attribute would get more usage in which case it feels like it&#x27;s the one that should have the parens behind it.)</p>
 <p>Not sure if these are all gonna make it. This is the gauntlet.</p>
-<p>(Maybe directives and attrbutes should have different prealbmes. One could have <code class="language-txt neo-code">:::: thing:</code> and the other would be <code class="language-txt neo-code">;;;; thing:</code>, I think I like that since it gives a clearer distincation and allows both types to have the <code class="language-txt neo-code">:</code> at the end of the string. Yeah, trying that for now)</p>
-<p>Directive values are optional. e.g. <code class="language-txt neo-code">;;;; hidden</code> doesn&#x27;t have a value but <code class="language-txt neo-code">;;;; lang: python</code> does. If there&#x27;s a value, they&#x27;ll be separated by the paren and any amount of white space.</p>
+<p>(Maybe directives and attrbutes should have different prealbmes. One could have <code class="language-txt neo-code">:::: thing:</code> and the other would be <code class="language-txt neo-code">--; thing:</code>, I think I like that since it gives a clearer distincation and allows both types to have the <code class="language-txt neo-code">:</code> at the end of the string. Yeah, trying that for now)</p>
+<p>Directive values are optional. e.g. <code class="language-txt neo-code">--; hidden</code> doesn&#x27;t have a value but <code class="language-txt neo-code">--; lang: python</code> does. If there&#x27;s a value, they&#x27;ll be separated by the paren and any amount of white space.</p>
 <p>The <code class="language-txt neo-code">hidden</code> directive is available for every header. It indicates that the output process should skip the particual block. The goal is to allow for internal notes in the document that don&#x27;t get published.</p>
-<p>The only section that doesn&#x27;t have <code class="language-txt neo-code">hidden</code> is <code class="language-txt neo-code">---: META</code> which is never shown.</p>
-<pre> ---: CODE 
- ;;;; hidden
- ;;;; lang: alfa
- ;;;; skip-headers: #
-
- ---: CONTENT # Outputs contents directly with no wrapper
- ;;;; hidden
-
- ---: DIV # Outputs contents in a div wrapper with optional attributes
- ;;;; hidden
-
- ---: EXAMPLE # Probably getting rid of this
- ;;;; hidden
-
- ---: FOOTNOTES
- ;;;; hidden
-
- ---: HTML 
- ;;;; hidden
-
- ---: META # defautl is one att per line, but parsers can use whatever via the lang. 
- ;;;; lang: attributes
-
- ---: NOTES # mainly 
- ;;;; hidden
-
- ---: PRE
- ;;;; hidden
- ;;;; skip-headers: #
-
- ---: SUBTITLE
- ;;;; hidden
-
- ---: SUMMARY
- ;;;; hidden
-
- ---: TITLE
- ;;;; hidden
-
- ---: TODO # Thinking about getting rid of this
- ;;;; hidden
-
- ---: WARNING # Thinking about getting rid of this
- ;;;; hidden
-
- ---: WIDGET
- ;;;: type: alfa 
- ;;;; hidden</pre>
+<p>The only section that doesn&#x27;t have <code class="language-txt neo-code">hidden</code> is <code class="language-txt neo-code">--: META</code> which is never shown.</p>
+<pre> --: CODE 
+ --; hidden
+ --; lang: alfa
+ --; skip-headers: 2 # tells how many headers to skip
+ --; title: some title # shows up in a div with the code block (think about adding an id too)
+ --; eval: never # or some other way to prevent evaluation</pre>
+<pre> --: CONTENT # Outputs contents directly with no wrapper
+ --; hidden</pre>
+<pre> --: DIV # Outputs contents in a div wrapper with optional attributes
+ --; hidden</pre>
+<pre> --: EXAMPLE 
+ --; hidden</pre>
+<pre> --: FOOTNOTES
+ --; hidden</pre>
+<pre> --: HTML 
+ --; hidden</pre>
+<pre> --: IMG # TBD on this. Idea is to make it easy to format a caption/figure
+ --; hidden
+ --; src
+ --; alt
+ --; title
+ --; caption</pre>
+<pre> --: META # default is one att per line, but parsers can use whatever via the lang. 
+ --; lang: attributes</pre>
+<pre> --: NOTES # convience wrapper for div with `neo-notes` class
+ --; hidden</pre>
+<pre> --: PRE
+ --; hidden
+ --; skip-headers: #</pre>
+<pre> --: SUBTITLE
+ --; hidden</pre>
+<pre> --: SUMMARY
+ --; hidden</pre>
+<pre> --: TITLE
+ --; hidden</pre>
+<pre> --: TODO # Thinking about getting rid of this
+ --; hidden</pre>
+<pre> --: WARNING
+ --; hidden</pre>
+<pre> --: WIDGET
+ --; type: alfa 
+ --; hidden</pre>
 <h2>The Sections</h2>
 <p>The core buidling block of neopolitan is the section. Documents start with a section and every piece of content is contained in one (and only one)</p>
 <h3>The CONTENT Section</h3>
