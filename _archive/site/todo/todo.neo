@@ -1,0 +1,75 @@
+---: TITLE
+
+TODO List
+
+---: SUBTITLE
+
+Things to make happen:
+
+---: H3
+
+Content Block Headers
+
+---: CONTENT 
+
+Some of these are just convience wrappers for divs with 
+classess assocaited with them to make it quicker to 
+write (e.g. NOTES, and NOTE)
+
+---: TODO:
+
+[] CODE -
+
+[] CONTENT
+
+[] DIV -< maybe don't do a DIV, but adding a class to CONTENT makes it a div wrapper
+
+[] EXAMPLE - 
+
+[] FOOTNOTES - This will have funciontality with a numbered list that will link
+to corresponding items in the content. 
+
+[] H# - Header levels
+
+[] HTML - raw html that isn't processed
+
+[] IMG - Setup for image 
+
+[] META - no output only used for processing
+
+[] NOTE - div wrapper with 'neo-notes' class
+
+[] NOTES - div wrapper with 'neo-notes' class
+
+[] PRE - pre tag with neo-pre
+
+[] SUBTITLE - Makes a div with a neo-subtitle class
+
+[] SUMMARY - Makes a div with a neo-summary class
+
+[] TITLE - Makes an H1 with a neo-title class
+
+[] TODO - Makes a div with a neo-todo class, maybe does something with content?
+
+[] WARNING - Makes a div with neo-warning class
+
+[] WIDGET - gets a name and a JSON object that it passes.
+
+
+
+---: TODO 
+
+[] Create list of headers
+
+[] Setup `---: PRE` with some type of `END` so you can 
+pass stuff to it. 
+
+[] Make sure TODO content sections can have multiple lines
+in the same bullet point.
+
+like this one. 
+
+
+
+
+

@@ -1,11 +1,9 @@
-
 ---: WARNING 
-:::: title: Head's Up
+---# title: Head's Up
 
 Not all the content on this page is visible 
 yet. The parser ignores stuff it isn't setup
 for yet and there's a bunch of that. 
-
 
 ---: TITLE 
 
@@ -14,6 +12,23 @@ Specifications
 ---: SUBTITLE
 
 The nitty gritty of how things fit togehter
+
+---: CONTENT
+
+These are the possible section headers:
+
+---: H2
+
+
+
+
+
+
+
+---: SUBTITLE 
+
+Old Notes
+
 
 ---: CONTENT
 
@@ -48,52 +63,44 @@ doesn't have a value but `--; lang: python` does.
 If there's a value, they'll be separated by the paren
 and any amount of white space.
 
-The `hidden` directive is available for every header. 
-It indicates that the output process should skip
-the particual block. The goal is to allow for internal
-notes in the document that don't get published. 
 
-The only section that doesn't have `hidden` is `--: META`
-which is never shown. 
+
+
+
+
+
 
 ---: PRE
 
- --: CODE 
- --; hidden
- --; lang: alfa
- --; skip-headers: 2 # tells how many headers to skip
- --; title: some title # shows up in a div with the code block (think about adding an id too)
- --; eval: never # or some other way to prevent evaluation
+ ---: CODE 
+ ---; lang: alfa
+ ---; skip-headers: 2 # tells how many headers to skip
+ ---; title: some title # shows up in a div with the code block (think about adding an id too)
+ ---; eval: never # or some other way to prevent evaluation
 
 ---: PRE
 
  --: CONTENT # Outputs contents directly with no wrapper
- --; hidden
 
 ---: PRE
 
  --: DIV # Outputs contents in a div wrapper with optional attributes
- --; hidden
 
 ---: PRE
 
  --: EXAMPLE 
- --; hidden
 
 ---: PRE
 
  --: FOOTNOTES
- --; hidden
 
 ---: PRE
 
  --: HTML 
- --; hidden
 
 ---: PRE
 
  --: IMG # TBD on this. Idea is to make it easy to format a caption/figure
- --; hidden
  --; src
  --; alt
  --; title
@@ -109,51 +116,46 @@ which is never shown.
 ---: PRE
 
  --: NOTES # convience wrapper for div with `neo-notes` class
- --; hidden
 
+---: PRE
+
+ --: NOTE # alias for NOTES
 
 ---: PRE
 
  --: PRE
- --; hidden
  --; skip-headers: #
 
 
 ---: PRE
 
  --: SUBTITLE
- --; hidden
 
 
 ---: PRE
 
  --: SUMMARY
- --; hidden
 
 
 ---: PRE
 
  --: TITLE
- --; hidden
 
 
 ---: PRE
 
  --: TODO # Thinking about getting rid of this
- --; hidden
 
 
 ---: PRE
 
  --: WARNING
- --; hidden
 
 
 ---: PRE
 
  --: WIDGET
  --; type: alfa 
- --; hidden
 
 
 ---: CONTENT

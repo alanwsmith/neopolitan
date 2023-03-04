@@ -48,33 +48,6 @@ I'm changing the directives syntax. Instead of
 `:::: thing:`, they are going to use `--;`.
 
 
----: WARNING 
-:::: :class heads-up
-
-## Moving to two dashes 
-
-I'm moving to two dashes instead of 
-three for the headers. When I first started
-it was easier for me to process three, but 
-adding in directies with `;` add a lot of 
-weight and as I've gotten more used to it
-I think two will work fine. (One, doesn't
-give enough separation)
-
-
-
----: PRE
-
- # Inital Version:
-
- ---: CONTENT
-
- # Changing To This:
-
- --: CONTENT
-
-
----: CONTENT
 
 
 ## Intro
