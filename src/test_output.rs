@@ -1,19 +1,24 @@
 #![allow(warnings)]
 use crate::builder::Builder;
 use crate::output;
+use std::include_str;
 
 #[test]
 fn basic_headline() {
-    // GIVEN
-    let b = Builder::new(
-        r#"-> title
+    let input =
+        include_str!("../test_sets/full/1/in.neo");
 
-Welcome To Neopolitan"#
-            .to_string(),
-    );
+    let b = Builder::new(input.to_string());
 
-    let expected =
-        r#"<h1>Welcome To Neopolitan</h1>"#
-            .to_string();
+    let expected = include_str!(
+        "../test_sets/full/1/target.html"
+    )
+    .to_string();
+
+    // let expected =
+    //     r#"<h1>Welcome To Neopolitan</h1>"#
+    //         .to_string();
+    //
+
     assert_eq!(expected, b.output());
 }

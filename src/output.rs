@@ -9,6 +9,7 @@ use nom::character::complete::alpha1;
 use nom::character::complete::multispace1;
 use nom::character::complete::not_line_ending;
 use nom::IResult;
+use std::include_str;
 
 impl Builder {
     pub fn output(&self) -> String {
@@ -28,9 +29,19 @@ impl Builder {
 
         env.add_template(
             "title",
-            "<h1>{{ title }}</h1>",
-        )
-        .unwrap();
+            include_str!(
+                "../test_sets/full/1/post.html"
+            ),
+        );
+
+        // env.add_template(
+        //     "title",
+        //     "<h1>{{ title }}</h1>
+
+        // ",
+        //         )
+        //         .unwrap();
+
         let tmpl =
             env.get_template("title").unwrap();
 
