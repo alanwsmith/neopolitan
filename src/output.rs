@@ -31,14 +31,6 @@ impl Builder {
 
         let mut env = Environment::new();
 
-        // let template_path_as_string =
-        //     template_path.as_string();
-
-        // env.add_template(
-        //     "title",
-        //     include_str!(template_path_as_string),
-        // );
-
         let template_stuff =
             fs::read_to_string(template_path)
                 .unwrap();
