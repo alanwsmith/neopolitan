@@ -2,6 +2,7 @@
 use crate::builder::Builder;
 use crate::output;
 use std::include_str;
+use std::path::PathBuf;
 
 #[test]
 fn basic_headline() {
@@ -15,5 +16,7 @@ fn basic_headline() {
     )
     .to_string();
 
-    assert_eq!(expected, b.output());
+    assert_eq!(expected, b.output(
+        PathBuf::from("/Users/alan/workshop/neopolitan/test_sets/full/1/post.html")
+    ));
 }

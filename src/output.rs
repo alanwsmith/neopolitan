@@ -9,10 +9,14 @@ use nom::character::complete::alpha1;
 use nom::character::complete::multispace1;
 use nom::character::complete::not_line_ending;
 use nom::IResult;
+use std::fs;
 use std::include_str;
+use std::path::PathBuf;
 
 impl Builder {
-    pub fn output(&self) -> String {
+    pub fn output(
+        &self, template_path: PathBuf,
+    ) -> String {
         let result: IResult<&str, &str> =
             tag("-> ")(&self.source.as_str());
 
@@ -27,15 +31,25 @@ impl Builder {
 
         let mut env = Environment::new();
 
+        // let template_path_as_string =
+        //     template_path.as_string();
+
+        // env.add_template(
+        //     "title",
+        //     include_str!(template_path_as_string),
+        // );
+
+        let template_stuff =
+            fs::read_to_string(template_path)
+                .unwrap();
+
         env.add_template(
-            "title",
-            include_str!(
-                "../test_sets/full/1/post.html"
-            ),
+            "template",
+            template_stuff.as_str(),
         );
 
         let tmpl =
-            env.get_template("title").unwrap();
+            env.get_template("template").unwrap();
 
         format!(
             "{}",
