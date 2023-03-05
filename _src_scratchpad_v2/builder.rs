@@ -1,10 +1,12 @@
 #![allow(warnings)]
 pub struct Builder {
-    pub source: String,
+    pub source: Option<String>,
 }
 
 impl Builder {
     pub fn new(source: String) -> Builder {
-        Builder { source }
+        Builder {
+            source: Some(source),
+        }
     }
 }

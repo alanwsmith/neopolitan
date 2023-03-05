@@ -1,4 +1,4 @@
-pub mod builder;
-pub mod output;
+pub mod lines;
+pub mod page_builder;
 #[cfg(test)]
-pub mod test_output;
+pub mod test_lines;
