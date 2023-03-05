@@ -3,7 +3,7 @@ use crate::builder::Builder;
 use crate::output;
 
 #[test]
-fn basic_build() {
+fn basic_headline() {
     // GIVEN
     let b = Builder::new(
         r#"-> title

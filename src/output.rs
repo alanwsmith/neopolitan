@@ -1,5 +1,9 @@
 #![allow(warnings)]
 use crate::builder::Builder;
+use minijinja::{
+    context,
+    Environment,
+};
 use nom::bytes::complete::tag;
 use nom::character::complete::alpha1;
 use nom::character::complete::multispace1;
@@ -19,6 +23,23 @@ impl Builder {
 
         let result: IResult<&str, &str> =
             not_line_ending(result.unwrap().0);
-        format!("<h1>{}</h1>", result.unwrap().1)
+
+        let mut env = Environment::new();
+
+        env.add_template(
+            "title",
+            "<h1>{{ title }}</h1>",
+        )
+        .unwrap();
+        let tmpl =
+            env.get_template("title").unwrap();
+
+        format!(
+            "{}",
+            tmpl.render(
+                context!(title => result.unwrap().1)
+            )
+            .unwrap()
+        )
     }
 }
