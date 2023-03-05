@@ -15,10 +15,5 @@ fn basic_headline() {
     )
     .to_string();
 
-    // let expected =
-    //     r#"<h1>Welcome To Neopolitan</h1>"#
-    //         .to_string();
-    //
-
     assert_eq!(expected, b.output());
 }

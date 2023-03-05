@@ -34,14 +34,6 @@ impl Builder {
             ),
         );
 
-        // env.add_template(
-        //     "title",
-        //     "<h1>{{ title }}</h1>
-
-        // ",
-        //         )
-        //         .unwrap();
-
         let tmpl =
             env.get_template("title").unwrap();
 
