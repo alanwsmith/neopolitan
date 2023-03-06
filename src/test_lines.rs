@@ -1,44 +1,44 @@
 use crate::page_builder::PageBuilder;
 
+// This returns the vec of lines that will
+// be assembed into the final page. It
+// takes the vec of raw lines produced
+// by .split()
+
 #[test]
-fn test_output_basic() {
+fn test_lines_basic() {
     // GIVEN
-    let source = r#"-> title
 
-Welcome To Neopolitan
-
--> c
-
-This is the first test.
-
-With a couple of paragraphs.
-
--> h3
-
-And another header
-
--> c
-
-And some more content
-
-That ends here
-"#
-    .to_string();
+    let source_lines = vec![
+        (
+            "title".to_string(),
+            "Welcome To Neopolitan".to_string(),
+        ),
+        (
+            "c".to_string(),
+            "This is the first test.".to_string(),
+        ),
+        (
+            "h2".to_string(),
+            "And another header".to_string(),
+        ),
+        (
+            "c".to_string(),
+            "And some more content".to_string(),
+        ),
+    ];
 
     let expected: Vec<String> = vec![
         "<h1>Welcome To Neopolitan</h1>"
             .to_string(),
         "<p>This is the first test.</p>"
             .to_string(),
-        "<p>With a couple of paragraphs.</p>"
-            .to_string(),
-        "<h3>And another header</h3>".to_string(),
+        "<h2>And another header</h2>".to_string(),
         "<p>And some more content</p>".to_string(),
-        "<p>The ends here</p>".to_string(),
     ];
 
     let pb = PageBuilder::new();
 
-    let lines = pb.lines(source);
+    let lines = pb.lines(source_lines);
     assert_eq!(expected, lines);
 }

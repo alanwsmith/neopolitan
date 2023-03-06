@@ -1,22 +1,30 @@
-#![allow(warnings)]
 use crate::page_builder::PageBuilder;
 
 impl PageBuilder {
     pub fn lines(
-        &self, source: String,
+        &self, blocks: Vec<(String, String)>,
     ) -> Vec<String> {
-        let output: Vec<String> =
-            vec![
-        "<h1>Welcome To Neopolitan</h1>"
-            .to_string(),
-        "<p>This is the first test.</p>"
-            .to_string(),
-        "<p>With a couple of paragraphs.</p>"
-            .to_string(),
-        "<h3>And another header</h3>".to_string(),
-        "<p>And some more content</p>".to_string(),
-        "<p>The ends here</p>".to_string(),
-    ];
-        output
+        let mut lines: Vec<String> = vec![];
+        for block in blocks {
+            if block.0 == "title" {
+                lines.push(
+                    format!("<h1>{}</h1>", block.1)
+                        .to_string(),
+                );
+            }
+            if block.0 == "c" {
+                lines.push(format!(
+                    "<p>{}</p>",
+                    block.1
+                ))
+            }
+            if block.0 == "h2" {
+                lines.push(
+                    format!("<h2>{}</h2>", block.1)
+                        .to_string(),
+                );
+            }
+        }
+        lines
     }
 }
