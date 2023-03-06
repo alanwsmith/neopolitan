@@ -1,12 +1,12 @@
 use crate::page_builder::PageBuilder;
 use nom::branch::alt;
-use nom::bytes::complete::tag;
-use nom::bytes::complete::take_until;
+// use nom::bytes::complete::tag;
+// use nom::bytes::complete::take_until;
 use nom::bytes::complete::take_until1;
 use nom::character::complete::multispace0;
 use nom::combinator::eof;
 use nom::combinator::not;
-use nom::combinator::opt;
+// use nom::combinator::opt;
 use nom::combinator::rest;
 use nom::IResult;
 
@@ -31,7 +31,7 @@ impl PageBuilder {
     pub fn parse_content<'a>(
         &'a self, next: &'a str,
     ) -> IResult<&str, &str> {
-        let (next, content) = multispace0(next)?;
+        let (next, _) = multispace0(next)?;
         not(eof)(next)?;
         let (next, content) =
             alt((take_until1("\n\n"), rest))(next)?;
