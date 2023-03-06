@@ -35,23 +35,8 @@ impl PageBuilder {
                 token.to_string(),
                 content.trim().to_string(),
             ));
-
-            // dbg!("-----------------");
-            // dbg!(token);
-            // dbg!(content);
-            // // // dbg!(next);
-            // // dbg!(next);
-
             send_source = next;
         }
-
-        // let lines = vec![
-        // ("title".to_string(), "This is the title".to_string()),
-        // ("c".to_string(), "This is some content\n\nWith a couple of lines".to_string()),
-        // ("h2".to_string(), "And an h2".to_string()),
-        // ("c".to_string(), "With some more content".to_string())
-        // ];
-
         lines
     }
 
@@ -68,7 +53,6 @@ impl PageBuilder {
             take_until1("\n\n-> "),
             rest,
         ))(data)?;
-
         Ok((data, (token, content)))
     }
 }
