@@ -5,18 +5,27 @@ impl PageBuilder {
         &self, blocks: Vec<(String, String)>,
     ) -> Vec<String> {
         let mut lines: Vec<String> = vec![];
-        for block in blocks {
-            if block.0 == "title" {
+        for block in blocks.iter() {
+            let token = &block.0;
+            let data = &block.1;
+
+            if token == "title" {
                 lines.push(
-                    format!("<h1>{}</h1>", block.1)
+                    format!("<h1>{}</h1>", data)
                         .to_string(),
                 );
             }
             if block.0 == "c" {
-                lines.push(format!(
-                    "<p>{}</p>",
-                    block.1
-                ))
+                let content_lines =
+                    self.content(data.to_string());
+                for content_line in content_lines {
+                    lines.push(content_line)
+                }
+
+                // lines.push(format!(
+                //     "<p>{}</p>",
+                //     block.1
+                // ))
             }
             if block.0 == "h2" {
                 lines.push(
