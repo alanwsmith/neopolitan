@@ -1,5 +1,8 @@
 use crate::page_builder::PageBuilder;
 
+// This can be removed when output()
+// is working
+
 impl PageBuilder {
     pub fn lines(
         &self, blocks: Vec<(String, String)>,
@@ -16,7 +19,7 @@ impl PageBuilder {
             }
             if token == "c" {
                 let content_lines =
-                    self.content(data);
+                    self.content_from(data);
                 for content_line in content_lines {
                     lines.push(content_line)
                 }
