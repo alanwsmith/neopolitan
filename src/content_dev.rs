@@ -13,7 +13,7 @@ use nom::combinator::rest;
 use nom::IResult;
 
 impl PageBuilder {
-    pub fn content(
+    pub fn content_dev(
         &self, source: String,
     ) -> Vec<String> {
         let mut lines: Vec<String> = vec![];
@@ -61,7 +61,7 @@ impl PageBuilder {
         lines
     }
 
-    pub fn parse_content<'a>(
+    pub fn parse_content_dev<'a>(
         &'a self, next: &'a str,
     ) -> IResult<&str, &str> {
         let (next, content) = multispace0(next)?;
