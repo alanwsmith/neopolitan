@@ -1,3 +1,4 @@
+#![allow(warnings)]
 use crate::page_builder::PageBuilder;
 
 impl PageBuilder {
