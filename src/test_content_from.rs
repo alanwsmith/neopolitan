@@ -9,7 +9,7 @@ fn basic_content_test() {
     ];
     assert_eq!(
         expected,
-        pb.content(source.as_str())
+        pb.content_from(source.as_str())
     );
 }
 
@@ -24,6 +24,6 @@ fn test_content_with_two_paragraphs() {
     ];
     assert_eq!(
         expected,
-        pb.content(source.as_str())
+        pb.content_from(source.as_str())
     );
 }

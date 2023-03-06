@@ -11,7 +11,7 @@ use nom::combinator::rest;
 use nom::IResult;
 
 impl PageBuilder {
-    pub fn content(
+    pub fn content_from(
         &self, source: &str,
     ) -> Vec<String> {
         let mut lines: Vec<String> = vec![];
