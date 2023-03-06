@@ -16,7 +16,7 @@ impl PageBuilder {
             }
             if token == "c" {
                 let content_lines =
-                    self.content(data.to_string());
+                    self.content(data);
                 for content_line in content_lines {
                     lines.push(content_line)
                 }

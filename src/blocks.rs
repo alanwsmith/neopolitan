@@ -17,19 +17,15 @@ use nom::sequence::tuple;
 use nom::IResult;
 
 impl PageBuilder {
-    pub fn split(
-        &self, source: &str,
-    ) -> Vec<(String, String)> {
-        //
-        // This is for spacing so I can see what's going on
-        //
+    pub fn blocks(&self) -> Vec<(String, String)> {
         let mut lines: Vec<(String, String)> =
             vec![];
 
-        let mut send_source = source.clone();
+        let mut send_source =
+            self.input.as_ref().unwrap().as_str();
 
         while let Ok((next, (token, content))) =
-            self.get_blocks(send_source)
+            self.split_blocks(&send_source)
         {
             lines.push((
                 token.to_string(),
@@ -40,7 +36,7 @@ impl PageBuilder {
         lines
     }
 
-    pub fn get_blocks<'a>(
+    pub fn split_blocks<'a>(
         &'a self, data: &'a str,
     ) -> IResult<&str, (&str, &str)> {
         let (data, _) = multispace0(data)?;

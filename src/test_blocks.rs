@@ -1,9 +1,12 @@
 use crate::page_builder::PageBuilder;
 
 #[test]
-fn test_split() {
-    // GIVEN
-    let source = r#"-> title
+fn test_blocks() {
+    // WHEN
+    let mut pb = PageBuilder::new();
+
+    pb.input = Some(String::from(
+        r#"-> title
 
 This is the title
 
@@ -21,10 +24,8 @@ And an h2
 
 With some more content
 
-"#;
-
-    // WHEN
-    let pb = PageBuilder::new();
+"#,
+    ));
 
     // THEN
     let expected = vec![
@@ -34,7 +35,7 @@ With some more content
         ("c".to_string(), "With some more content".to_string())
     ];
 
-    let result = pb.split(source);
+    let result = pb.blocks();
 
     assert_eq!(expected, result);
 }

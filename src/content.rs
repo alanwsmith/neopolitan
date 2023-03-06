@@ -12,10 +12,10 @@ use nom::IResult;
 
 impl PageBuilder {
     pub fn content(
-        &self, source: String,
+        &self, source: &str,
     ) -> Vec<String> {
         let mut lines: Vec<String> = vec![];
-        let mut send_source = source.as_str();
+        let mut send_source = source;
         while let Ok((next, content)) =
             self.parse_content(send_source)
         {

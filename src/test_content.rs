@@ -7,7 +7,10 @@ fn basic_content_test() {
     let expected: Vec<String> = vec![
         "<p>alfa line is here</p>".to_string(),
     ];
-    assert_eq!(expected, pb.content(source));
+    assert_eq!(
+        expected,
+        pb.content(source.as_str())
+    );
 }
 
 #[test]
@@ -19,5 +22,8 @@ fn test_content_with_two_paragraphs() {
         "<p>alfa line</p>".to_string(),
         "<p>bravo line</p>".to_string(),
     ];
-    assert_eq!(expected, pb.content(source));
+    assert_eq!(
+        expected,
+        pb.content(source.as_str())
+    );
 }
