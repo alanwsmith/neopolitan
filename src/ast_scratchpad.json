@@ -1,0 +1,52 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "title",
+      "attributes": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is the title"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attributes": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "this is"
+        },
+        {
+          "type": "inline_code",
+          "attributes": {},
+          "lang": "rust",
+          "value": "a code snippet"
+        },
+        {
+          "type": "text",
+          "value": "this is"
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "attributes": {
+        "id": "some_heading",
+        "class": "alfa bravo charlie"
+      },
+      "children": [
+        {
+          "type": "text",
+          "value": "This is an H3"
+        }
+      ]
+    }
+
+
+
+
+  ]
+}

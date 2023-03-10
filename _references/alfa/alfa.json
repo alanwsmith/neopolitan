@@ -1,0 +1,117 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "This is an H1",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3,
+              "offset": 2
+            },
+            "end": {
+              "line": 1,
+              "column": 16,
+              "offset": 15
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 16,
+          "offset": 15
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The rest of this content is filled out\nwith different tests. This is a paragraph\nthat spans multiple lines",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 17
+            },
+            "end": {
+              "line": 5,
+              "column": 26,
+              "offset": 123
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1,
+          "offset": 17
+        },
+        "end": {
+          "line": 5,
+          "column": 26,
+          "offset": 123
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "And anothe paragraph here",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 125
+            },
+            "end": {
+              "line": 7,
+              "column": 26,
+              "offset": 150
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 125
+        },
+        "end": {
+          "line": 7,
+          "column": 26,
+          "offset": 150
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 7,
+      "column": 26,
+      "offset": 150
+    }
+  }
+}
