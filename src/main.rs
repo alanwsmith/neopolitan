@@ -1,29 +1,14 @@
 #![allow(dead_code)]
 use logos::Logos;
-use std::fs;
-
-#[derive(Debug)]
-struct Title {}
-
-#[derive(Debug)]
-struct Paragraph {}
+// use std::fs;
 
 #[derive(Logos, Debug, PartialEq)]
-enum Token<'a> {
-    #[regex(r"(?i)-> TITLE")]
-    TitleTag,
-
-    #[regex(r"(?i)-> T[^I]")]
-    TextTag,
-
-    #[regex(r" ")]
-    Space,
-
-    #[regex(r"\n")]
-    Newline,
-
+enum Token {
     #[regex(r"\w+")]
-    Word(&'a str),
+    Word,
+
+    #[regex(r"\W+")]
+    Space,
 
     #[error]
     Error,
@@ -31,59 +16,173 @@ enum Token<'a> {
 
 #[derive(Debug)]
 struct Node {
-    kind: Kind,
-    children: Vec<Node>,
+    wood: Wood,
 }
 
 #[derive(Debug)]
-enum Kind {
-    Page(Page),
+enum Wood {
+    Root(Root),
+    Branch(Branch),
+    Leaf(Leaf),
+}
+
+#[derive(Debug)]
+struct Root {}
+
+#[derive(Debug)]
+enum Branch {
     Title(Title),
     Paragraph(Paragraph),
 }
 
 #[derive(Debug)]
-struct Page {}
+enum Leaf {
+    Text(Text),
+}
 
 #[derive(Debug)]
-enum Content {
-    Title(Title),
-    Paragraph(Paragraph),
-}
+struct Title {}
 
-fn parseit(
-    lex: &mut dyn Iterator<Item = Token>, node: &mut Node,
-) {
-    let new_node = Node {
-        kind: Kind::Page(Page {}),
-        children: vec![],
-    };
+#[derive(Debug)]
+struct Paragraph {}
 
-    node.children.push(new_node);
-
-    println!("HEREREERR");
-}
+#[derive(Debug)]
+struct Text {}
 
 fn main() {
     println!("Starting");
-
-    let input_alfa = fs::read_to_string(
-        "_test_files/scratchpad/alfa.neo",
-    )
-    .unwrap();
-
-    let mut page = Node {
-        kind: Kind::Page(Page {}),
-        children: vec![],
-    };
-
-    let mut lex = Token::lexer(&input_alfa).peekable();
-    parseit(&mut lex, &mut page);
-
-    dbg!(page);
-
-    println!("Done.");
+    let input = "the quick brown fox";
+    let root_wood = Wood::Root(Root {});
+    let root_node = Node { wood: root_wood };
+    j
 }
+
+// fn parseit(
+//     mut lex: &mut dyn Iterator<Item = Token>,
+//     node: &mut Node,
+// ) {
+//     match lex.next() {
+//         Some(Token::TitleTag) => {
+//             let mut new_text_node = Node {
+//                 kind: Kind::Text(Text { value: vec![] }),
+//             };
+//             let mut new_node = Node {
+//                 kind: Kind::Title(Title {
+//                     children: vec![new_text_node],
+//                 }),
+//             };
+//             parseit(&mut lex, &mut new_node);
+//             new_node.kind.children.push(new_node);
+//         }
+//         Some(Token::Word(_)) => {
+//             println!("Word");
+//         }
+//         Some(Token::Error) => println!("Error"),
+//         None => println!("None"),
+//     }
+//     // if let Some(x) = lex.next() {
+//     //     dbg!(x.slice())
+//     // }
+//     // TitleTag => println!("asdf"),
+//     // Error => println!("werwerwer")
+//     // }
+//     println!("HEREREERR");
+// }
+
+// fn main() {
+//     println!("Starting");
+//     let input_alfa = fs::read_to_string(
+//         "_test_files/scratchpad/alfa.neo",
+//     )
+//     .unwrap();
+//     let mut page = Node {
+//         kind: Kind::Page(Page { children: vec![] }),
+//     };
+//     let mut lex = Token::lexer(&input_alfa);
+//     parseit(&mut lex, &mut page);
+//     dbg!(page);
+//     println!("Done.");
+// }
+
+// #[derive(Debug)]
+// struct Title {
+//     children: Vec<Node>,
+// }
+
+// #[derive(Debug)]
+// struct Paragraph {}
+
+// #[derive(Debug)]
+// struct Text {
+//     value: Vec<String>,
+// }
+
+// #[derive(Logos, Debug, PartialEq)]
+// enum Token<'a> {
+//     #[regex(r"(?i)-> TITLE *\n *\n")]
+//     TitleTag,
+//     // #[regex(r"(?i)-> T[^I]")]
+//     // TextTag,
+//     // #[regex(r" ")]
+//     // Space,
+//     // #[regex(r"\n")]
+//     // Newline,
+//     #[regex(r"\w+")]
+//     Word(&'a str),
+//     #[error]
+//     Error,
+// }
+
+// #[derive(Debug)]
+// enum Kind {
+//     Page(Page),
+//     Title(Title),
+//     Paragraph(Paragraph),
+//     Text(Text),
+// }
+
+// #[derive(Debug)]
+// struct Page {
+//     children: Vec<Node>,
+// }
+
+// #[derive(Debug)]
+// enum Content {
+//     Title(Title),
+//     Paragraph(Paragraph),
+// }
+
+// fn parseit(
+//     mut lex: &mut dyn Iterator<Item = Token>,
+//     node: &mut Node,
+// ) {
+//     match lex.next() {
+//         Some(Token::TitleTag) => {
+//             let mut new_text_node = Node {
+//                 kind: Kind::Text(Text { value: vec![] }),
+//             };
+//             let mut new_node = Node {
+//                 kind: Kind::Title(Title {
+//                     children: vec![new_text_node],
+//                 }),
+//             };
+//             parseit(&mut lex, &mut new_node);
+//             new_node.kind.children.push(new_node);
+//         }
+//         Some(Token::Word(_)) => {
+//             println!("Word");
+//         }
+//         Some(Token::Error) => println!("Error"),
+//         None => println!("None"),
+//     }
+//     // if let Some(x) = lex.next() {
+//     //     dbg!(x.slice())
+//     // }
+//     // TitleTag => println!("asdf"),
+//     // Error => println!("werwerwer")
+//     // }
+//     println!("HEREREERR");
+// }
 
 // while let Some(x) = lex.next() {
 //     dbg!(x);
