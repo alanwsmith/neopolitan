@@ -1,0 +1,23 @@
+{
+  "type": "root",
+  "content": [
+    {
+      "type": "unordered_list",
+      "attributes": {},
+      "children": [
+        {
+          "type": "unordered_list_item",
+          "attributes": {},
+          "children": [
+            {
+              "type": "paragraph",
+              "attributes": {},
+              "children": [{ "type": "text", "value": "the quick brown fox" }]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": []
+}

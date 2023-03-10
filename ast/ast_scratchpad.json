@@ -43,10 +43,41 @@
           "value": "This is an H3"
         }
       ]
+    },
+    {
+      "type": "unordered_list",
+      "attributes": {},
+      "children": [
+        {
+          "type": "unordered_list_item",
+          "attributes": {},
+          "children": [
+            {
+              "type": "paragraph",
+              "attributes": {},
+              "children": [{ "type": "text", "value": "the quick brown fox" }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ordered_list",
+      "start": 1,
+      "attrubutes": {},
+      "children": [
+        {
+          "type": "ordered_list_item",
+          "attributes": {},
+          "children": [
+            {
+              "type": "paragraph",
+              "attributes": {},
+              "children": [{ "type": "text", "value": "the quick brown fox" }]
+            }
+          ]
+        }
+      ]
     }
-
-
-
-
   ]
 }

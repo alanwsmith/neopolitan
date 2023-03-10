@@ -1,0 +1,16 @@
+{
+  "type": "root",
+  "metadata": [
+    {
+      "type": "blurb",
+      "attributes": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is the blurb"
+        }
+      ]
+    }
+  ],
+  "content": []
+}
