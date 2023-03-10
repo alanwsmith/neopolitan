@@ -2,6 +2,12 @@
 use logos::Logos;
 use std::fs;
 
+#[derive(Debug)]
+struct Title {}
+
+#[derive(Debug)]
+struct Paragraph {}
+
 #[derive(Logos, Debug, PartialEq)]
 enum Token<'a> {
     #[regex(r"(?i)-> TITLE")]
@@ -31,14 +37,13 @@ struct Node {
 
 #[derive(Debug)]
 enum Kind {
+    Page(Page),
     Title(Title),
     Paragraph(Paragraph),
 }
 
 #[derive(Debug)]
-struct Page {
-    content: Vec<Content>,
-}
+struct Page {}
 
 #[derive(Debug)]
 enum Content {
@@ -46,17 +51,16 @@ enum Content {
     Paragraph(Paragraph),
 }
 
-#[derive(Debug)]
-struct Title {}
+fn parseit(
+    lex: &mut dyn Iterator<Item = Token>, node: &mut Node,
+) {
+    let new_node = Node {
+        kind: Kind::Page(Page {}),
+        children: vec![],
+    };
 
-#[derive(Debug)]
-struct Paragraph {}
+    node.children.push(new_node);
 
-fn parseit(lex: &mut dyn Iterator<Item = Token>) {
-    dbg!(lex.next());
-    dbg!(lex.next());
-    dbg!(lex.next());
-    dbg!(lex.next());
     println!("HEREREERR");
 }
 
@@ -68,32 +72,40 @@ fn main() {
     )
     .unwrap();
 
+    let mut page = Node {
+        kind: Kind::Page(Page {}),
+        children: vec![],
+    };
+
     let mut lex = Token::lexer(&input_alfa).peekable();
-    parseit(&mut lex);
+    parseit(&mut lex, &mut page);
 
-    // while let Some(x) = lex.next() {
-    //     dbg!(x);
-    //     dbg!(lex.peek());
-    // }
-
-    // dbg!(lex.peek().unwrap());
-    // dbg!(lex.next());
-    // dbg!(lex.peek());
-
-    // dbg!(tokens);
-    // let current_index: usize = 0;
-    // process_token(tokens, current_index);
-
-    // let mut p = Page { content: vec![] };
-
-    // for token in tokens.iter() {
-    //     // p.content.push(token)
-    //     // dbg!(&token);
-    // }
-    // dbg!(p);
+    dbg!(page);
 
     println!("Done.");
 }
+
+// while let Some(x) = lex.next() {
+//     dbg!(x);
+//     dbg!(lex.peek());
+// }
+
+// dbg!(lex.peek().unwrap());
+// dbg!(lex.next());
+// dbg!(lex.peek());
+
+// dbg!(tokens);
+// let current_index: usize = 0;
+// process_token(tokens, current_index);
+
+// let mut p = Page { content: vec![] };
+
+// for token in tokens.iter() {
+//     // p.content.push(token)
+//     // dbg!(&token);
+// }
+// dbg!(p);
+//
 
 // fn process_token<T: std::fmt::Debug>(
 //     tokens: Vec<T>, current_index: usize,
