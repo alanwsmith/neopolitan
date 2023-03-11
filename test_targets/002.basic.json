@@ -6,7 +6,7 @@
         "attributes": {},
         "children": [
           {
-            "Text": {
+            "PlainText": {
               "value": "This is a title"
             }
           }
@@ -18,7 +18,7 @@
         "attributes": {},
         "children": [
           {
-            "Text": {
+            "PlainText": {
               "value": "This is an H2"
             }
           }
