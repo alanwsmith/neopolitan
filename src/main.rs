@@ -8,6 +8,7 @@ use nom::Parser;
 use nom::bytes::complete::take_until;
 use nom::bytes::complete::take_until1;
 use nom::combinator::rest;
+use nom::character::complete::not_line_ending;
 
 #[derive(Debug)]
 struct Page {
@@ -29,10 +30,12 @@ enum Section {
     H3
 }
 
+
 #[derive(Debug)]
 enum Content {
-    Text
+    PlainText { value: String }
 }
+
 
 #[derive(Debug)]
 struct Title {
@@ -42,16 +45,24 @@ struct Title {
 
 
 fn title(data: &str) -> IResult<&str, Section> {
-    println!("{}", data);
-    Ok((data, Section::Title{children: vec![]}))
+    let (data, content) = text(data)?;
+    // println!("{}", data);
+    Ok((data, Section::Title{children: vec![content]}))
+}
+
+
+fn text(data: &str) -> IResult<&str, Content> {
+    let (data, _) = multispace0(data)?;
+    let (data, content) = not_line_ending(data)?;
+    Ok((data, Content::PlainText { value: content.trim().to_string()}))
 }
 
 
 fn section(data: &str) -> IResult<&str, Section> {
-    println!("============");
+    // println!("============");
     let (data, _) = multispace0(data)?;
-     println!("{}", data);
-    println!("------------");
+     // println!("{}", data);
+    // println!("------------");
      let (data, section_type) = alt((
             tag("-> P").map(|_| Marker::Paragraphs),
             tag("-> TITLE").map(|_| Marker::Title),
@@ -74,15 +85,17 @@ fn section(data: &str) -> IResult<&str, Section> {
          
 }
 
+
 // #[derive[Debug])
 fn parse(data: &str) -> IResult<&str, &str> {
     let (data, _) = multispace0(data)?;
     let (data, sections) = many1(section)(data)?;
     // dbg!(data);
     dbg!(sections);
-    println!("here");
+    // println!("here");
     Ok(("", ""))
 }
+
 
 fn main() {
     let data = r#"-> TITLE
@@ -102,5 +115,5 @@ This is the other line
 "#;
 
     let results = parse(data);
-    dbg!(results);
+    // dbg!(results);
 }
