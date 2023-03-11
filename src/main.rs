@@ -103,7 +103,7 @@ fn paragraphs(data: &str) -> IResult<&str, Section> {
 
 
        let (data, content) = many_till(paragraph, eof)(data)?;
-        dbg!(&content);
+        // dbg!(&content);
        // dbg!(&data);
 
     // println!("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -113,7 +113,7 @@ fn paragraphs(data: &str) -> IResult<&str, Section> {
     //     paras.push(Wrapper::Paragraph { children: vec![] });
     // }
 
-    Ok((data, Section::Paragraphs{children: vec![] }))
+    Ok((data, Section::Paragraphs{children: content.0 }))
 }
 
 
