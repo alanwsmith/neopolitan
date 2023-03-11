@@ -2,12 +2,14 @@
 use nom::IResult;
 use nom::branch::alt;
 use nom::character::complete::multispace0;
+use nom::multi::many0;
 use nom::multi::many1;
 use nom::bytes::complete::tag;
 use nom::Parser;
 use nom::bytes::complete::take_until;
 use nom::bytes::complete::take_until1;
 use nom::combinator::rest;
+use nom::combinator::eof;
 use nom::character::complete::not_line_ending;
 
 #[derive(Debug)]
@@ -26,10 +28,18 @@ enum Marker {
 #[derive(Debug)]
 enum Section {
     Title { children: Vec<Content>}, 
-    Paragraphs,
+    Paragraphs { children: Vec<Wrapper>},
     H3
 }
 
+#[derive(Debug)]
+enum Wrapper {
+    Paragraph
+}
+
+// #[derive(Debug)]
+// struct Paragraph {
+// }
 
 #[derive(Debug)]
 enum Content {
@@ -57,6 +67,32 @@ fn text(data: &str) -> IResult<&str, Content> {
     Ok((data, Content::PlainText { value: content.trim().to_string()}))
 }
 
+fn paragraph(data: &str) -> IResult<&str, Wrapper> {
+
+    let (data, _) = multispace0(data)?;
+    let (data, content) =         take_until1("\n\n")(data)?;
+
+    println!("dddddddddddddddddddddddddddddddddddd");
+     // Ok((data, Content::PlainText { value: "asdf".trim().to_string()}))
+    Ok((data, Wrapper::Paragraph))
+    
+}
+
+fn paragraphs(data: &str) -> IResult<&str, Section> {
+
+     // let (data, _) = multispace0(data)?;
+
+       let (data, content) = many1(paragraph)(data)?;
+    println!("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+    let mut paras: Vec<Wrapper> = vec![];
+    for para in data.split("\n\n") {
+        paras.push(Wrapper::Paragraph);
+    }
+
+    Ok((data, Section::Paragraphs{children: paras}))
+}
+
 
 fn section(data: &str) -> IResult<&str, Section> {
     // println!("============");
@@ -79,21 +115,21 @@ fn section(data: &str) -> IResult<&str, Section> {
 
      match section_type {
          Marker::Title => Ok((data, title(content).unwrap().1)),
+         Marker::Paragraphs => Ok((data, paragraphs(content).unwrap().1)),
          Marker::H3 => Ok((data, Section::H3)),
-         Marker::Paragraphs => Ok((data, Section::Paragraphs))
      }
-         
 }
 
 
 // #[derive[Debug])
-fn parse(data: &str) -> IResult<&str, &str> {
+fn parse(data: &str) -> IResult<&str, Vec<Section>> {
     let (data, _) = multispace0(data)?;
-    let (data, sections) = many1(section)(data)?;
     // dbg!(data);
-    dbg!(sections);
+    // dbg!(sections);
     // println!("here");
-    Ok(("", ""))
+    // Ok(("", ""))
+    // let (data, sections) = 
+        many1(section)(data)
 }
 
 
@@ -115,5 +151,5 @@ This is the other line
 "#;
 
     let results = parse(data);
-    // dbg!(results);
+     dbg!(results);
 }
