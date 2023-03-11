@@ -20,6 +20,8 @@ pub struct Page {
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub enum Section {
+    ATTRIBUTES,
+
     Title {
         attributes: HashMap<String, String>,
         children: Vec<Content>,
@@ -52,6 +54,7 @@ pub enum Section {
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub enum Marker {
+    ATTRIBUTES,
     Title,
     H1,
     H2,
@@ -155,16 +158,18 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         tag("-> H4").map(|_| Marker::H4),
         tag("-> H5").map(|_| Marker::H5),
         tag("-> H6").map(|_| Marker::H6),
+        tag("-> ATTRIBUTES").map(|_| Marker::ATTRIBUTES),
     ))(source)?;
     let (source, content) = alt((take_until1("\n\n-> "), rest))(source)?;
     match section_type {
-        Marker::Title => Ok((source, get_title(content).unwrap().1)),
+        Marker::ATTRIBUTES => Ok((source, Section::ATTRIBUTES)),
         Marker::H1 => Ok((source, h1(content).unwrap().1)),
         Marker::H2 => Ok((source, h2(content).unwrap().1)),
         Marker::H3 => Ok((source, h3(content).unwrap().1)),
         Marker::H4 => Ok((source, h4(content).unwrap().1)),
         Marker::H5 => Ok((source, h5(content).unwrap().1)),
         Marker::H6 => Ok((source, h6(content).unwrap().1)),
+        Marker::Title => Ok((source, get_title(content).unwrap().1)),
     }
 }
 
@@ -177,6 +182,31 @@ pub fn parse(source: &str) -> Page {
     let page = Page {
         attributes: HashMap::new(),
         children: get_sections(source).unwrap().1,
+    };
+    page
+}
+
+pub fn parse_dev(source: &str) -> Page {
+    let raw_sections = get_sections(source).unwrap().1;
+    let mut sections: Vec<Section> = vec![];
+
+    for raw_section in raw_sections {
+        match raw_section {
+            Section::ATTRIBUTES => {}
+            _ => {
+                sections.push(raw_section);
+            }
+        }
+    }
+
+    let mut attrs = HashMap::new();
+    attrs.insert("date".to_string(), "2023-03-12 17:07:23".to_string());
+    attrs.insert("id".to_string(), "1234asdf".to_string());
+    attrs.insert("type".to_string(), "test".to_string());
+    let page = Page {
+        attributes: attrs,
+        // children: get_sections(source).unwrap().1,
+        children: sections,
     };
     page
 }
