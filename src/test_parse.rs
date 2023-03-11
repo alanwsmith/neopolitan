@@ -15,7 +15,7 @@ mod tests {
                 .as_str(),
         )
         .unwrap();
-        let result = parse(source);
+        let result = parse(&source);
         dbg!(&expected);
         dbg!(&result);
         assert_eq!(expected, result);
