@@ -16,6 +16,10 @@ pub enum Section {
         attributes: HashMap<String, String>,
         children: Vec<Content>,
     },
+    H2 {
+        attributes: HashMap<String, String>,
+        children: Vec<Content>,
+    },
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -44,6 +48,31 @@ pub fn parse(source: &str) -> Page {
     let page = Page {
         attributes: HashMap::new(),
         children: get_sections(source).unwrap().1,
+    };
+    page
+}
+
+pub fn get_text_dev(_source: &str) -> Content {
+    Content::Text {
+        value: "This is an H2".to_string(),
+    }
+}
+
+pub fn get_h2(source: &str) -> Section {
+    Section::H2 {
+        attributes: HashMap::new(),
+        children: vec![get_text_dev(source)],
+    }
+}
+
+pub fn get_sections_dev(source: &str) -> IResult<&str, Vec<Section>> {
+    Ok(("", vec![get_title(source), get_h2(source)]))
+}
+
+pub fn parse_dev(source: &str) -> Page {
+    let page = Page {
+        attributes: HashMap::new(),
+        children: get_sections_dev(source).unwrap().1,
     };
     page
 }
