@@ -42,42 +42,17 @@ pub enum Content {
     PlainText { value: String },
 }
 
-// pub fn get_title(source: &str) -> Section {
-//     Section::Title {
-//         attributes: HashMap::new(),
-//         children: vec![get_text(source)],
-//     }
-// }
-
-// pub fn get_text(_source: &str) -> Content {
-//     Content::Text {
-//         value: "This is a title".to_string(),
-//     }
-// }
-
-// pub fn get_sections(source: &str) -> IResult<&str, Vec<Section>> {
-//     Ok(("", vec![get_title(source)]))
-// }
-
-// pub fn parse(source: &str) -> Page {
-//     let page = Page {
-//         attributes: HashMap::new(),
-//         children: get_sections(source).unwrap().1,
-//     };
-//     page
-// }
-
-pub fn get_title_dev(source: &str) -> IResult<&str, Section> {
+pub fn get_title(source: &str) -> IResult<&str, Section> {
     Ok((
         "",
         Section::Title {
             attributes: HashMap::new(),
-            children: vec![get_text_dev(source).unwrap().1],
+            children: vec![get_text(source).unwrap().1],
         },
     ))
 }
 
-pub fn get_text_dev(source: &str) -> IResult<&str, Content> {
+pub fn get_text(source: &str) -> IResult<&str, Content> {
     let (source, _) = multispace0(source)?;
     let (source, content) = not_line_ending(source)?;
     Ok((
@@ -88,19 +63,12 @@ pub fn get_text_dev(source: &str) -> IResult<&str, Content> {
     ))
 }
 
-// pub fn get_h2(source: &str) -> Section {
-//     Section::H2 {
-//         attributes: HashMap::new(),
-//         children: vec![get_text_dev(source).unwrap().1],
-//     }
-// }
-
-pub fn get_h2_dev(source: &str) -> IResult<&str, Section> {
+pub fn get_h2(source: &str) -> IResult<&str, Section> {
     Ok((
         "",
         Section::H2 {
             attributes: HashMap::new(),
-            children: vec![get_text_dev(source).unwrap().1],
+            children: vec![get_text(source).unwrap().1],
         },
     ))
 }
@@ -113,20 +81,20 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     ))(source)?;
     let (source, content) = alt((take_until1("\n\n-> "), rest))(source)?;
     match section_type {
-        Marker::Title => Ok((source, get_title_dev(content).unwrap().1)),
-        Marker::H2 => Ok((source, get_h2_dev(content).unwrap().1)),
+        Marker::Title => Ok((source, get_title(content).unwrap().1)),
+        Marker::H2 => Ok((source, get_h2(content).unwrap().1)),
     }
 }
 
-pub fn get_sections_dev(source: &str) -> IResult<&str, Vec<Section>> {
+pub fn get_sections(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, sections) = many_till(section, eof)(source)?;
     Ok((source, sections.0))
 }
 
-pub fn parse_dev(source: &str) -> Page {
+pub fn parse(source: &str) -> Page {
     let page = Page {
         attributes: HashMap::new(),
-        children: get_sections_dev(source).unwrap().1,
+        children: get_sections(source).unwrap().1,
     };
     page
 }

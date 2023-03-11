@@ -1,10 +1,8 @@
 #[cfg(test)]
 mod tests {
-    // use crate::parse::parse;
-    use crate::parse::parse_dev;
+    use crate::parse::parse;
+    // use crate::parse::parse_dev;
     use crate::parse::Page;
-    // juse serde::{Deserialize, Serialize};
-    // use serde_json::Result;
     use std::fs;
 
     #[test]
@@ -16,8 +14,7 @@ mod tests {
                 .as_str(),
         )
         .unwrap();
-        let result = parse_dev(&source);
-        // dbg!(&expected);
+        let result = parse(&source);
         dbg!(&result);
         assert_eq!(expected, result);
     }
