@@ -36,14 +36,14 @@ pub fn get_text(_source: &str) -> Content {
     }
 }
 
-// pub fn get_sections(data: &str) -> IResult<&str, Vec<Section>> {
-//     Ok(("", vec![]))
-// }
+pub fn get_sections(source: &str) -> IResult<&str, Vec<Section>> {
+    Ok(("", vec![get_title(source)]))
+}
 
 pub fn parse(source: &str) -> Page {
     let page = Page {
         attributes: HashMap::new(),
-        children: vec![get_title(source)],
+        children: get_sections(source).unwrap().1,
     };
     page
 }
