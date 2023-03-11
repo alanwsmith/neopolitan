@@ -1,3 +1,4 @@
+#![allow(warnings)]
 use nom::IResult;
 use nom::branch::alt;
 use nom::character::complete::multispace0;
@@ -13,23 +14,48 @@ struct Page {
   // sections: Vec<Section>
 }
 
+
 #[derive(Debug)]
-enum Section{
-    Title,
-    P,
+enum Marker {
+    Title, 
+        Paragraphs,
+        H3
+}
+
+#[derive(Debug)]
+enum Section {
+    Title { children: Vec<Content>}, 
+    Paragraphs,
     H3
 }
 
+#[derive(Debug)]
+enum Content {
+    Text
+}
+
+#[derive(Debug)]
+struct Title {
+    children: Vec<Content>,
+    attributes: Vec<(String, String)>
+}
+
+
+fn title(data: &str) -> IResult<&str, Section> {
+    println!("{}", data);
+    Ok((data, Section::Title{children: vec![]}))
+}
+
+
 fn section(data: &str) -> IResult<&str, Section> {
-    println!("------------");
+    println!("============");
     let (data, _) = multispace0(data)?;
-    // println!("{}", data);
+     println!("{}", data);
+    println!("------------");
      let (data, section_type) = alt((
-            tag("-> P").map(|_| Section::P),
-            tag("-> TITLE").map(|_| Section::Title),
-            tag("-> H3").map(|_| Section::H3),
-             // tag("-> TITLE\n\n"),
-             // tag("-> P\n\n"),
+            tag("-> P").map(|_| Marker::Paragraphs),
+            tag("-> TITLE").map(|_| Marker::Title),
+            tag("-> H3").map(|_| Marker::H3),
             ))(data)?;
      
      // println!("{}", data);
@@ -38,13 +64,12 @@ fn section(data: &str) -> IResult<&str, Section> {
         rest
         ))(data)?;
 
- println!("{}", content);
-
+     // println!("{}", content.trim());
 
      match section_type {
-         Section::Title => Ok((data, Section::Title)),
-         Section::H3 => Ok((data, Section::H3)),
-         Section::P => Ok((data, Section::P))
+         Marker::Title => Ok((data, title(content).unwrap().1)),
+         Marker::H3 => Ok((data, Section::H3)),
+         Marker::Paragraphs => Ok((data, Section::Paragraphs))
      }
          
 }
@@ -62,7 +87,7 @@ fn parse(data: &str) -> IResult<&str, &str> {
 fn main() {
     let data = r#"-> TITLE
 
-This is the TITLE
+This is the title 
 
 -> P
 

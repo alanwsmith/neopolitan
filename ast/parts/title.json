@@ -1,6 +1,6 @@
 {
   "type": "root",
-  "content": [
+  "children": [
     {
       "type": "title",
       "attributes": {},
@@ -12,5 +12,5 @@
       ]
     }
   ],
-  "metadata": []
+  "attributes": {}
 }
