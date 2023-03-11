@@ -18,4 +18,18 @@ mod tests {
         dbg!(&result);
         assert_eq!(expected, result);
     }
+
+    #[test]
+    fn test_003() {
+        let source = fs::read_to_string("./test_targets/003.basic.neo").unwrap();
+        let expected: Page = serde_json::from_str(
+            fs::read_to_string("./test_targets/003.basic.json")
+                .unwrap()
+                .as_str(),
+        )
+        .unwrap();
+        let result = parse(&source);
+        dbg!(&result);
+        assert_eq!(expected, result);
+    }
 }

@@ -24,7 +24,27 @@ pub enum Section {
         attributes: HashMap<String, String>,
         children: Vec<Content>,
     },
+    H1 {
+        attributes: HashMap<String, String>,
+        children: Vec<Content>,
+    },
     H2 {
+        attributes: HashMap<String, String>,
+        children: Vec<Content>,
+    },
+    H3 {
+        attributes: HashMap<String, String>,
+        children: Vec<Content>,
+    },
+    H4 {
+        attributes: HashMap<String, String>,
+        children: Vec<Content>,
+    },
+    H5 {
+        attributes: HashMap<String, String>,
+        children: Vec<Content>,
+    },
+    H6 {
         attributes: HashMap<String, String>,
         children: Vec<Content>,
     },
@@ -33,7 +53,12 @@ pub enum Section {
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub enum Marker {
     Title,
+    H1,
     H2,
+    H3,
+    H4,
+    H5,
+    H6,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -63,10 +88,57 @@ pub fn get_text(source: &str) -> IResult<&str, Content> {
     ))
 }
 
-pub fn get_h2(source: &str) -> IResult<&str, Section> {
+pub fn h1(source: &str) -> IResult<&str, Section> {
+    Ok((
+        "",
+        Section::H1 {
+            attributes: HashMap::new(),
+            children: vec![get_text(source).unwrap().1],
+        },
+    ))
+}
+
+pub fn h2(source: &str) -> IResult<&str, Section> {
     Ok((
         "",
         Section::H2 {
+            attributes: HashMap::new(),
+            children: vec![get_text(source).unwrap().1],
+        },
+    ))
+}
+pub fn h3(source: &str) -> IResult<&str, Section> {
+    Ok((
+        "",
+        Section::H3 {
+            attributes: HashMap::new(),
+            children: vec![get_text(source).unwrap().1],
+        },
+    ))
+}
+pub fn h4(source: &str) -> IResult<&str, Section> {
+    Ok((
+        "",
+        Section::H4 {
+            attributes: HashMap::new(),
+            children: vec![get_text(source).unwrap().1],
+        },
+    ))
+}
+pub fn h5(source: &str) -> IResult<&str, Section> {
+    Ok((
+        "",
+        Section::H5 {
+            attributes: HashMap::new(),
+            children: vec![get_text(source).unwrap().1],
+        },
+    ))
+}
+
+pub fn h6(source: &str) -> IResult<&str, Section> {
+    Ok((
+        "",
+        Section::H6 {
             attributes: HashMap::new(),
             children: vec![get_text(source).unwrap().1],
         },
@@ -77,12 +149,22 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (source, section_type) = alt((
         tag("-> TITLE").map(|_| Marker::Title),
+        tag("-> H1").map(|_| Marker::H1),
         tag("-> H2").map(|_| Marker::H2),
+        tag("-> H3").map(|_| Marker::H3),
+        tag("-> H4").map(|_| Marker::H4),
+        tag("-> H5").map(|_| Marker::H5),
+        tag("-> H6").map(|_| Marker::H6),
     ))(source)?;
     let (source, content) = alt((take_until1("\n\n-> "), rest))(source)?;
     match section_type {
         Marker::Title => Ok((source, get_title(content).unwrap().1)),
-        Marker::H2 => Ok((source, get_h2(content).unwrap().1)),
+        Marker::H1 => Ok((source, h1(content).unwrap().1)),
+        Marker::H2 => Ok((source, h2(content).unwrap().1)),
+        Marker::H3 => Ok((source, h3(content).unwrap().1)),
+        Marker::H4 => Ok((source, h4(content).unwrap().1)),
+        Marker::H5 => Ok((source, h5(content).unwrap().1)),
+        Marker::H6 => Ok((source, h6(content).unwrap().1)),
     }
 }
 
