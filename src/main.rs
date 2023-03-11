@@ -1,9 +1,8 @@
-#![allow(warnings)]
 use nom::IResult;
 use nom::branch::alt;
 use nom::character::complete::multispace0;
-use nom::multi::many0;
 use nom::multi::many1;
+use nom::multi::many_till;
 use nom::bytes::complete::tag;
 use nom::Parser;
 use nom::bytes::complete::take_until;
@@ -68,19 +67,45 @@ fn text(data: &str) -> IResult<&str, Content> {
 }
 
 fn paragraph(data: &str) -> IResult<&str, Wrapper> {
+     // println!("---------------");
+     // println!("{}", data);
+     //
 
-    let (data, _) = multispace0(data)?;
-    let (data, content) = take_until1("\n\n")(data)?;
-     // Ok((data, Content::PlainText { value: "asdf".trim().to_string()}))
-    Ok((data, Wrapper::Paragraph{ children: vec![] }))
-    
+      let (data, _) = multispace0(data)?;
+     let (data, content) = 
+         alt((take_until("\n\n"), rest))(data)?;
+
+
+        // println!("{}", data);
+        // println!("-------- {}", content);
+
+
+      // let (data, _) = opt(tag("\n\n"))(data)?;
+     // println!("{}", data);
+     // // println!("{}", data);
+      let (_, content) = text(content)?;
+
+    // println!("{:?}", content);
+    //    println!("{}", data);
+
+
+
+      // Ok((data, Content::PlainText { value: content.to_string()}))
+        Ok((data.trim(), Wrapper::Paragraph{ children: vec![
+           content
+        ] }))
+
 }
 
 fn paragraphs(data: &str) -> IResult<&str, Section> {
 
      // let (data, _) = multispace0(data)?;
 
-       let (data, content) = many1(paragraph)(data)?;
+
+       let (data, content) = many_till(paragraph, eof)(data)?;
+        dbg!(&content);
+       // dbg!(&data);
+
     // println!("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
     // let mut paras: Vec<Wrapper> = vec![];
@@ -88,7 +113,7 @@ fn paragraphs(data: &str) -> IResult<&str, Section> {
     //     paras.push(Wrapper::Paragraph { children: vec![] });
     // }
 
-    Ok((data, Section::Paragraphs{children: content }))
+    Ok((data, Section::Paragraphs{children: vec![] }))
 }
 
 
