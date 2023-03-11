@@ -34,7 +34,7 @@ enum Section {
 
 #[derive(Debug)]
 enum Wrapper {
-    Paragraph
+    Paragraph { children: Vec<Content> } 
 }
 
 // #[derive(Debug)]
@@ -70,11 +70,9 @@ fn text(data: &str) -> IResult<&str, Content> {
 fn paragraph(data: &str) -> IResult<&str, Wrapper> {
 
     let (data, _) = multispace0(data)?;
-    let (data, content) =         take_until1("\n\n")(data)?;
-
-    println!("dddddddddddddddddddddddddddddddddddd");
+    let (data, content) = take_until1("\n\n")(data)?;
      // Ok((data, Content::PlainText { value: "asdf".trim().to_string()}))
-    Ok((data, Wrapper::Paragraph))
+    Ok((data, Wrapper::Paragraph{ children: vec![] }))
     
 }
 
@@ -83,14 +81,14 @@ fn paragraphs(data: &str) -> IResult<&str, Section> {
      // let (data, _) = multispace0(data)?;
 
        let (data, content) = many1(paragraph)(data)?;
-    println!("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    // println!("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
-    let mut paras: Vec<Wrapper> = vec![];
-    for para in data.split("\n\n") {
-        paras.push(Wrapper::Paragraph);
-    }
+    // let mut paras: Vec<Wrapper> = vec![];
+    // for para in data.split("\n\n") {
+    //     paras.push(Wrapper::Paragraph { children: vec![] });
+    // }
 
-    Ok((data, Section::Paragraphs{children: paras}))
+    Ok((data, Section::Paragraphs{children: content }))
 }
 
 
