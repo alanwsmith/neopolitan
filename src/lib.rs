@@ -1,16 +1,5 @@
 pub mod content;
-pub mod get_attribute;
-pub mod get_paragraphs;
-pub mod get_raw_sections;
-pub mod get_sections;
-pub mod get_text;
-pub mod get_title;
-pub mod h;
-pub mod p;
 pub mod page;
 pub mod parse;
 pub mod parse_dev;
-pub mod prep_attributes;
-pub mod raw_section;
 pub mod section;
-pub mod test_parse;
