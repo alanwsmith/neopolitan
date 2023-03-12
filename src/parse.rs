@@ -1,4 +1,5 @@
 #![allow(warnings)]
+use crate::get_sections::get_sections;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until1;
@@ -247,12 +248,13 @@ pub fn prep_attributes(source: &str) -> IResult<&str, Section> {
     Ok((source, the_attrs))
 }
 
-pub fn get_sections(source: &str) -> IResult<&str, Vec<Section>> {
-    let (source, sections) = many_till(section, eof)(source)?;
-    Ok((source, sections.0))
-}
+// pub fn get_sections(source: &str) -> IResult<&str, Vec<Section>> {
+//     let (source, sections) = many_till(section, eof)(source)?;
+//     Ok((source, sections.0))
+// }
 
 pub fn get_sections_dev(source: &str) -> IResult<&str, Vec<Section>> {
+    // dbg!(source);
     let (source, sections) = many_till(section_dev, eof)(source)?;
     Ok((source, sections.0))
 }

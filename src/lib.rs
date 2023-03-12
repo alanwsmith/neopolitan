@@ -1,2 +1,9 @@
+pub mod get_attribute;
+pub mod get_sections;
+pub mod get_title;
+pub mod h;
+pub mod p;
 pub mod parse;
+pub mod prep_attributes;
+pub mod section;
 pub mod test_parse;
