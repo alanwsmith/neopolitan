@@ -1,5 +1,7 @@
 pub mod get_attribute;
+pub mod get_paragraphs;
 pub mod get_sections;
+pub mod get_text;
 pub mod get_title;
 pub mod h;
 pub mod p;

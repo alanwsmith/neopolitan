@@ -1,4 +1,4 @@
-use crate::parse::get_text;
+use crate::get_text::*;
 use crate::parse::Section;
 use nom::IResult;
 use std::collections::HashMap;
