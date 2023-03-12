@@ -15,7 +15,6 @@ pub fn get_paragraphs(source: &str) -> IResult<&str, Vec<Section>> {
 }
 
 pub fn split_paragraphs(source: &str) -> IResult<&str, Section> {
-    dbg!(&source);
     let (source, _) = multispace0(source)?;
     let (source, content) = alt((take_until1("\n\n"), rest))(source)?;
     let (source, _) = multispace0(source)?;
