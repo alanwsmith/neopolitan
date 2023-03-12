@@ -34,7 +34,6 @@ mod tests {
         let mut expected_path = "./test_targets/".to_string();
         expected_path.push_str(file_key);
         expected_path.push_str(".json");
-
         let source = fs::read_to_string(source_path).unwrap();
         let expected: Page =
             serde_json::from_str(fs::read_to_string(expected_path).unwrap().as_str()).unwrap();
