@@ -9,7 +9,7 @@ mod tests {
 
     #[test]
     fn test_archive() {
-        let tests: Vec<&str> = vec!["002.basic", "003.basic", "004.basic"];
+        let tests: Vec<&str> = vec!["002.basic", "003.basic", "004.basic", "005.basic"];
         for test in tests {
             let mut source_path = "./test_targets/".to_string();
             source_path.push_str(test);
@@ -24,34 +24,6 @@ mod tests {
             assert_eq!(expected, result);
         }
     }
-
-    // #[test]
-    // fn test_002() {
-    //     let source = fs::read_to_string("./test_targets/002.basic.neo").unwrap();
-    //     let expected: Page = serde_json::from_str(
-    //         fs::read_to_string("./test_targets/002.basic.json")
-    //             .unwrap()
-    //             .as_str(),
-    //     )
-    //     .unwrap();
-    //     let result = parse(&source);
-    //     // dbg!(&result);
-    //     assert_eq!(expected, result);
-    // }
-
-    // #[test]
-    // fn test_003() {
-    //     let source = fs::read_to_string("./test_targets/003.basic.neo").unwrap();
-    //     let expected: Page = serde_json::from_str(
-    //         fs::read_to_string("./test_targets/003.basic.json")
-    //             .unwrap()
-    //             .as_str(),
-    //     )
-    //     .unwrap();
-    //     let result = parse(&source);
-    //     // dbg!(&result);
-    //     assert_eq!(expected, result);
-    // }
 
     #[test]
     fn test_active() {
