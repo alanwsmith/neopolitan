@@ -7,6 +7,10 @@ pub enum Section {
         attributes: HashMap<String, String>,
         children: Vec<Content>,
     },
+    P {
+        attributes: HashMap<String, String>,
+        children: Vec<Content>,
+    },
 }
 
 // use crate::get_paragraphs::*;

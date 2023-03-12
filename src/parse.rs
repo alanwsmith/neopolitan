@@ -26,6 +26,5 @@ pub fn parse(source: &str) -> Page {
             }
         }
     }
-
     page
 }
