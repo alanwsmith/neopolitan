@@ -30,7 +30,7 @@ pub fn get_blocks(source: &str) -> IResult<&str, Vec<Block>> {
 }
 
 pub fn block_splitter(source: &str) -> IResult<&str, Block> {
-    dbg!(source);
+    // dbg!(source);
     let (source, _) = multispace0(source)?;
     let (source, block_type) = alt((
         tag("-> TITLE").map(|_| Marker::TITLE),
@@ -40,7 +40,9 @@ pub fn block_splitter(source: &str) -> IResult<&str, Block> {
     let (source, content) = alt((take_until1("\n\n-> "), rest))(source)?;
     let (source, _) = multispace0(source)?;
 
-    dbg!(source);
+    let content = content.trim();
+
+    // dbg!(source);
     match block_type {
         Marker::TITLE => Ok((
             source,
@@ -55,20 +57,4 @@ pub fn block_splitter(source: &str) -> IResult<&str, Block> {
             },
         )),
     }
-
-    // Ok((
-    //     source,
-    //     Block::TITLE {
-    //         source: "asdf".to_string(),
-    //     },
-    // ))
-
-    // }
-
-    // Ok((
-    //     source,
-    //     Block::TITLE {
-    //         source: "asdf".to_string(),
-    //     },
-    // ))
 }

@@ -5,21 +5,27 @@ use crate::section::Section;
 use std::collections::HashMap;
 
 pub fn parse_dev(source: &str) -> Page {
-    let page = Page {
+    let mut page = Page {
         attributes: HashMap::new(),
         children: vec![],
     };
-    dbg!(&page);
-    // Get the raw blocks to process
     let blocks = get_blocks(source).unwrap().1;
-    dbg!(blocks);
-    Page {
-        attributes: HashMap::new(),
-        children: vec![Section::TITLE {
-            attributes: HashMap::new(),
-            children: vec![Content::PlainText {
-                value: "This Is A Title".to_string(),
-            }],
-        }],
+    for block in blocks {
+        match block {
+            Block::TITLE { source } => {
+                page.children.push(Section::TITLE {
+                    attributes: HashMap::new(),
+                    children: vec![Content::PlainText {
+                        value: source.to_string(),
+                    }],
+                });
+                dbg!(source);
+            }
+            Block::P { source } => {
+                dbg!(source);
+            }
+        }
     }
+
+    page
 }
