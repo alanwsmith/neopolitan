@@ -53,17 +53,21 @@ mod tests {
     //     assert_eq!(expected, result);
     // }
 
-    // #[test]
-    // fn test_004() {
-    //     let source = fs::read_to_string("./test_targets/004.basic.neo").unwrap();
-    //     let expected: Page = serde_json::from_str(
-    //         fs::read_to_string("./test_targets/004.basic.json")
-    //             .unwrap()
-    //             .as_str(),
-    //     )
-    //     .unwrap();
-    //     let result = parse(&source);
-    //     // dbg!(&result);
-    //     assert_eq!(expected, result);
-    // }
+    #[test]
+    fn test_active() {
+        let file_key = "005.basic";
+        let mut source_path = "./test_targets/".to_string();
+        source_path.push_str(file_key);
+        source_path.push_str(".neo");
+        let mut expected_path = "./test_targets/".to_string();
+        expected_path.push_str(file_key);
+        expected_path.push_str(".json");
+
+        let source = fs::read_to_string(source_path).unwrap();
+        let expected: Page =
+            serde_json::from_str(fs::read_to_string(expected_path).unwrap().as_str()).unwrap();
+        let result = parse(&source);
+        // dbg!(&result);
+        assert_eq!(expected, result);
+    }
 }
