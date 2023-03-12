@@ -45,7 +45,7 @@ Second paragraph
                 },
             ],
         };
-        let result = parse_dev(source);
+        let result = parse(source);
         assert_eq!(expected, result);
     }
 }

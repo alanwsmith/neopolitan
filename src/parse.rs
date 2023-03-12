@@ -1,5 +1,6 @@
 use crate::content::Content;
 use crate::get_blocks::*;
+use crate::get_paragraphs::*;
 use crate::page::Page;
 use crate::section::Section;
 use std::collections::HashMap;
@@ -19,12 +20,18 @@ pub fn parse(source: &str) -> Page {
                         value: source.to_string(),
                     }],
                 });
-                dbg!(source);
             }
             Block::P { source } => {
-                dbg!(source);
+                // dbg!(&source);
+                let paragraphs: Vec<Section> = get_paragraphs(source.as_str()).unwrap().1;
+                // dbg!(paragraphs);
+
+                for paragraph in paragraphs {
+                    page.children.push(paragraph);
+                }
             }
         }
     }
+    dbg!(&page);
     page
 }

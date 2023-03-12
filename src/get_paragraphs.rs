@@ -8,7 +8,6 @@ use nom::combinator::rest;
 use nom::multi::many_till;
 use nom::IResult;
 use std::collections::HashMap;
-// use nom::Parser;
 
 pub fn get_paragraphs(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, paragraphs) = many_till(split_paragraphs, eof)(source)?;
