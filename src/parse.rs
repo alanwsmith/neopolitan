@@ -6,6 +6,7 @@ use nom::character::complete::multispace0;
 use nom::character::complete::not_line_ending;
 use nom::combinator::eof;
 use nom::combinator::rest;
+use nom::multi::many1;
 use nom::multi::many_till;
 use nom::IResult;
 use nom::Parser;
@@ -20,8 +21,9 @@ pub struct Page {
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub enum Section {
-    ATTRIBUTES,
-
+    ATTRIBUTES {
+        raw: HashMap<String, String>,
+    },
     Title {
         attributes: HashMap<String, String>,
         children: Vec<Content>,
@@ -162,7 +164,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     ))(source)?;
     let (source, content) = alt((take_until1("\n\n-> "), rest))(source)?;
     match section_type {
-        Marker::ATTRIBUTES => Ok((source, Section::ATTRIBUTES)),
+        // Marker::ATTRIBUTES => Ok((source, Section::ATTRIBUTES)),
+        Marker::ATTRIBUTES => Ok((source, prep_attributes(content).unwrap().1)),
         Marker::H1 => Ok((source, h1(content).unwrap().1)),
         Marker::H2 => Ok((source, h2(content).unwrap().1)),
         Marker::H3 => Ok((source, h3(content).unwrap().1)),
@@ -171,6 +174,29 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         Marker::H6 => Ok((source, h6(content).unwrap().1)),
         Marker::Title => Ok((source, get_title(content).unwrap().1)),
     }
+}
+
+pub fn get_attribute(source: &str) -> IResult<&str, (String, String)> {
+    dbg!(&source);
+    let (source, _) = multispace0(source)?;
+    let (source, _) = tag("-> ")(source)?;
+    let (source, key) = take_until1(": ")(source)?;
+    let (source, _) = tag(":")(source)?;
+    let (source, _) = multispace0(source)?;
+    let (source, value) = take_until1("\n")(source)?;
+    let (source, _) = multispace0(source)?;
+    Ok((source, (key.trim().to_string(), value.trim().to_string())))
+}
+
+pub fn prep_attributes(source: &str) -> IResult<&str, Section> {
+    let (source, pairs) = many_till(get_attribute, eof)(source)?;
+    let mut attrs: HashMap<String, String> = HashMap::new();
+    for pair in pairs.0.iter() {
+        attrs.insert(pair.0.to_string(), pair.1.to_string());
+    }
+    let the_attrs = Section::ATTRIBUTES { raw: attrs };
+    dbg!(&the_attrs);
+    Ok((source, the_attrs))
 }
 
 pub fn get_sections(source: &str) -> IResult<&str, Vec<Section>> {
@@ -189,23 +215,23 @@ pub fn parse(source: &str) -> Page {
 pub fn parse_dev(source: &str) -> Page {
     let raw_sections = get_sections(source).unwrap().1;
     let mut sections: Vec<Section> = vec![];
-
+    let mut attrs: HashMap<String, String> = HashMap::new();
     for raw_section in raw_sections {
         match raw_section {
-            Section::ATTRIBUTES => {}
+            Section::ATTRIBUTES { raw } => attrs = raw,
             _ => {
                 sections.push(raw_section);
             }
         }
     }
 
-    let mut attrs = HashMap::new();
-    attrs.insert("date".to_string(), "2023-03-12 17:07:23".to_string());
-    attrs.insert("id".to_string(), "1234asdf".to_string());
-    attrs.insert("type".to_string(), "test".to_string());
+    // let mut attrs = HashMap::new();
+    // attrs.insert("date".to_string(), "2023-03-12 17:07:23".to_string());
+    // attrs.insert("id".to_string(), "1234asdf".to_string());
+    // attrs.insert("type".to_string(), "test".to_string());
+
     let page = Page {
         attributes: attrs,
-        // children: get_sections(source).unwrap().1,
         children: sections,
     };
     page
