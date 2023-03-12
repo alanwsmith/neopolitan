@@ -10,14 +10,16 @@ use nom::Parser;
 
 #[derive(Debug, PartialEq)]
 pub enum Marker {
-    TITLE,
+    BLURB,
     P,
+    TITLE,
 }
 
 #[derive(Debug, PartialEq)]
 pub enum Block {
-    TITLE { source: String },
+    BLURB { source: String },
     P { source: String },
+    TITLE { source: String },
 }
 
 pub fn get_blocks(source: &str) -> IResult<&str, Vec<Block>> {
@@ -30,6 +32,7 @@ pub fn block_splitter(source: &str) -> IResult<&str, Block> {
     let (source, block_type) = alt((
         tag("-> TITLE").map(|_| Marker::TITLE),
         tag("-> P").map(|_| Marker::P),
+        tag("-> BLURB").map(|_| Marker::BLURB),
     ))(source)?;
     let (source, _) = multispace0(source)?;
     let (source, content) = alt((take_until1("\n\n-> "), rest))(source)?;
@@ -39,6 +42,12 @@ pub fn block_splitter(source: &str) -> IResult<&str, Block> {
         Marker::TITLE => Ok((
             source,
             Block::TITLE {
+                source: content.to_string(),
+            },
+        )),
+        Marker::BLURB => Ok((
+            source,
+            Block::BLURB {
                 source: content.to_string(),
             },
         )),

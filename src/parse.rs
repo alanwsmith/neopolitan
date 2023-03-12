@@ -22,16 +22,21 @@ pub fn parse(source: &str) -> Page {
                 });
             }
             Block::P { source } => {
-                // dbg!(&source);
                 let paragraphs: Vec<Section> = get_paragraphs(source.as_str()).unwrap().1;
-                // dbg!(paragraphs);
-
                 for paragraph in paragraphs {
                     page.children.push(paragraph);
                 }
             }
+            Block::BLURB { source } => {
+                page.attributes
+                    .insert("blurb".to_string(), source.to_string());
+            }
         }
     }
-    dbg!(&page);
+
+    // page.attributes
+    //     .insert("blurb".to_string(), "asdf".to_string());
+
+    // dbg!(&page);
     page
 }
