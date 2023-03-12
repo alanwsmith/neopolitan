@@ -56,6 +56,7 @@ pub enum Section {
         attributes: HashMap<String, String>,
         children: Vec<Content>,
     },
+    PARAGRAPHS {},
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -67,7 +68,7 @@ pub enum Marker {
     H4,
     H5,
     H6,
-    P,
+    PARAGRAPHS,
     Title,
 }
 
@@ -176,7 +177,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         tag("-> H5").map(|_| Marker::H5),
         tag("-> H6").map(|_| Marker::H6),
         tag("-> ATTRIBUTES").map(|_| Marker::ATTRIBUTES),
-        tag("-> P").map(|_| Marker::P),
+        tag("-> P").map(|_| Marker::PARAGRAPHS),
     ))(source)?;
     let (source, content) = alt((take_until1("\n\n-> "), rest))(source)?;
     match section_type {
@@ -188,9 +189,41 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         Marker::H4 => Ok((source, h4(content).unwrap().1)),
         Marker::H5 => Ok((source, h5(content).unwrap().1)),
         Marker::H6 => Ok((source, h6(content).unwrap().1)),
-        Marker::P => Ok((source, p(content).unwrap().1)),
+        Marker::PARAGRAPHS => Ok((source, p(content).unwrap().1)),
         Marker::Title => Ok((source, get_title(content).unwrap().1)),
     }
+}
+
+pub fn section_dev(source: &str) -> IResult<&str, Section> {
+    let (source, _) = multispace0(source)?;
+    let (source, section_type) = alt((
+        tag("-> TITLE").map(|_| Marker::Title),
+        tag("-> H1").map(|_| Marker::H1),
+        tag("-> H2").map(|_| Marker::H2),
+        tag("-> H3").map(|_| Marker::H3),
+        tag("-> H4").map(|_| Marker::H4),
+        tag("-> H5").map(|_| Marker::H5),
+        tag("-> H6").map(|_| Marker::H6),
+        tag("-> ATTRIBUTES").map(|_| Marker::ATTRIBUTES),
+        tag("-> PARAGRAPHS").map(|_| Marker::PARAGRAPHS),
+    ))(source)?;
+    let (source, content) = alt((take_until1("\n\n-> "), rest))(source)?;
+    match section_type {
+        // Marker::ATTRIBUTES => Ok((source, Section::ATTRIBUTES)),
+        Marker::ATTRIBUTES => Ok((source, prep_attributes(content).unwrap().1)),
+        Marker::H1 => Ok((source, h1(content).unwrap().1)),
+        Marker::H2 => Ok((source, h2(content).unwrap().1)),
+        Marker::H3 => Ok((source, h3(content).unwrap().1)),
+        Marker::H4 => Ok((source, h4(content).unwrap().1)),
+        Marker::H5 => Ok((source, h5(content).unwrap().1)),
+        Marker::H6 => Ok((source, h6(content).unwrap().1)),
+        Marker::PARAGRAPHS => Ok((source, get_paragraphs(content).unwrap().1)),
+        Marker::Title => Ok((source, get_title(content).unwrap().1)),
+    }
+}
+
+pub fn get_paragraphs(source: &str) -> IResult<&str, Section> {
+    Ok(("", Section::PARAGRAPHS {}))
 }
 
 pub fn get_attribute(source: &str) -> IResult<&str, (String, String)> {
@@ -219,6 +252,11 @@ pub fn get_sections(source: &str) -> IResult<&str, Vec<Section>> {
     Ok((source, sections.0))
 }
 
+pub fn get_sections_dev(source: &str) -> IResult<&str, Vec<Section>> {
+    let (source, sections) = many_till(section_dev, eof)(source)?;
+    Ok((source, sections.0))
+}
+
 pub fn parse(source: &str) -> Page {
     let raw_sections = get_sections(source).unwrap().1;
     let mut sections: Vec<Section> = vec![];
@@ -238,21 +276,52 @@ pub fn parse(source: &str) -> Page {
     page
 }
 
-// pub fn parse_dev(source: &str) -> Page {
-//     let raw_sections = get_sections(source).unwrap().1;
-//     let mut sections: Vec<Section> = vec![];
-//     let mut attrs: HashMap<String, String> = HashMap::new();
-//     for raw_section in raw_sections {
-//         match raw_section {
-//             Section::ATTRIBUTES { raw } => attrs = raw,
-//             _ => {
-//                 sections.push(raw_section);
-//             }
-//         }
-//     }
-//     let page = Page {
-//         attributes: attrs,
-//         children: sections,
-//     };
-//     page
-// }
+pub fn parse_dev(source: &str) -> Page {
+    // let raw_sections = get_sections_dev(source).unwrap().1;
+    // let mut sections: Vec<Section> = vec![];
+    // let mut attrs: HashMap<String, String> = HashMap::new();
+    // for raw_section in raw_sections {
+    //     match raw_section {
+    //         Section::ATTRIBUTES { raw } => attrs = raw,
+    //         _ => {
+    //             sections.push(raw_section);
+    //         }
+    //     }
+    // }
+
+    // let page = Page {
+    //     attributes: attrs,
+    //     children: sections,
+    // };
+
+    let page = Page {
+        attributes: HashMap::new(),
+        children: vec![
+            Section::Title {
+                attributes: HashMap::new(),
+                children: vec![Content::PlainText {
+                    value: "This is a paragraph test".to_string(),
+                }],
+            },
+            Section::P {
+                attributes: HashMap::new(),
+                children: vec![Content::PlainText {
+                    value: "This is the first paragraph".to_string(),
+                }],
+            },
+            Section::P {
+                attributes: HashMap::new(),
+                children: vec![Content::PlainText {
+                    value: "And a second one".to_string(),
+                }],
+            },
+            Section::P {
+                attributes: HashMap::new(),
+                children: vec![Content::PlainText {
+                    value: "And a third one".to_string(),
+                }],
+            },
+        ],
+    };
+    page
+}
