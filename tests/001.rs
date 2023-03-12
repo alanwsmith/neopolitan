@@ -1,28 +1,31 @@
 #![allow(unused_imports)]
 #[cfg(test)]
 mod tests {
+    use neopolitan::content::Content;
+    use neopolitan::page::Page;
     use neopolitan::parse::*;
+    use neopolitan::parse_dev::*;
+    use neopolitan::section::Section;
     use std::collections::HashMap;
 
     #[test]
     fn test_001() {
-        let source = r#"-> TITLE
+        let source = r#"
+-> TITLE
 
 This Is A Title
 
 "#;
         let expected = Page {
             attributes: HashMap::new(),
-            children: vec![Section::Title {
+            children: vec![Section::TITLE {
                 attributes: HashMap::new(),
                 children: vec![Content::PlainText {
                     value: "This Is A Title".to_string(),
                 }],
             }],
         };
-
         let result = parse_dev(source);
-
         assert_eq!(expected, result);
     }
 

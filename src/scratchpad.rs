@@ -1,179 +1,179 @@
-use nom::branch::alt;
-use nom::bytes::complete::tag;
-use nom::bytes::complete::take_until;
-use nom::bytes::complete::take_until1;
-use nom::character::complete::multispace0;
-use nom::character::complete::not_line_ending;
-use nom::combinator::eof;
-use nom::combinator::rest;
-use nom::multi::many1;
-use nom::multi::many_till;
-use nom::IResult;
-use nom::Parser;
-use serde::{Deserialize, Serialize};
-
-#[derive(Debug)]
-struct Page {
-    // sections: Vec<Section>
-}
-
-#[derive(Debug)]
-enum Marker {
-    Title,
-    Paragraphs,
-    H3,
-}
-
-#[derive(Debug)]
-enum Section {
-    Title { children: Vec<Content> },
-    Paragraphs { children: Vec<Wrapper> },
-    H3,
-}
-
-#[derive(Debug)]
-enum Wrapper {
-    Paragraph { children: Vec<Content> },
-}
+// use nom::branch::alt;
+// use nom::bytes::complete::tag;
+// use nom::bytes::complete::take_until;
+// use nom::bytes::complete::take_until1;
+// use nom::character::complete::multispace0;
+// use nom::character::complete::not_line_ending;
+// use nom::combinator::eof;
+// use nom::combinator::rest;
+// use nom::multi::many1;
+// use nom::multi::many_till;
+// use nom::IResult;
+// use nom::Parser;
+// use serde::{Deserialize, Serialize};
 
 // #[derive(Debug)]
-// struct Paragraph {
+// struct Page {
+//     // sections: Vec<Section>
 // }
 
-#[derive(Debug)]
-enum Content {
-    PlainText { value: String },
-}
+// #[derive(Debug)]
+// enum Marker {
+//     Title,
+//     Paragraphs,
+//     H3,
+// }
 
-#[derive(Debug)]
-struct Title {
-    children: Vec<Content>,
-    attributes: Vec<(String, String)>,
-}
+// #[derive(Debug)]
+// enum Section {
+//     Title { children: Vec<Content> },
+//     Paragraphs { children: Vec<Wrapper> },
+//     H3,
+// }
 
-fn title(data: &str) -> IResult<&str, Section> {
-    let (data, content) = text(data)?;
-    // println!("{}", data);
-    Ok((
-        data,
-        Section::Title {
-            children: vec![content],
-        },
-    ))
-}
+// #[derive(Debug)]
+// enum Wrapper {
+//     Paragraph { children: Vec<Content> },
+// }
 
-fn text(data: &str) -> IResult<&str, Content> {
-    let (data, _) = multispace0(data)?;
-    let (data, content) = not_line_ending(data)?;
-    Ok((
-        data,
-        Content::PlainText {
-            value: content.trim().to_string(),
-        },
-    ))
-}
+// // #[derive(Debug)]
+// // struct Paragraph {
+// // }
 
-fn paragraph(data: &str) -> IResult<&str, Wrapper> {
-    // println!("---------------");
-    // println!("{}", data);
-    //
+// #[derive(Debug)]
+// enum Content {
+//     PlainText { value: String },
+// }
 
-    let (data, _) = multispace0(data)?;
-    let (data, content) = alt((take_until("\n\n"), rest))(data)?;
+// #[derive(Debug)]
+// struct Title {
+//     children: Vec<Content>,
+//     attributes: Vec<(String, String)>,
+// }
 
-    // println!("{}", data);
-    // println!("-------- {}", content);
+// fn title(data: &str) -> IResult<&str, Section> {
+//     let (data, content) = text(data)?;
+//     // println!("{}", data);
+//     Ok((
+//         data,
+//         Section::Title {
+//             children: vec![content],
+//         },
+//     ))
+// }
 
-    // let (data, _) = opt(tag("\n\n"))(data)?;
-    // println!("{}", data);
-    // // println!("{}", data);
-    let (_, content) = text(content)?;
+// fn text(data: &str) -> IResult<&str, Content> {
+//     let (data, _) = multispace0(data)?;
+//     let (data, content) = not_line_ending(data)?;
+//     Ok((
+//         data,
+//         Content::PlainText {
+//             value: content.trim().to_string(),
+//         },
+//     ))
+// }
 
-    // println!("{:?}", content);
-    //    println!("{}", data);
+// fn paragraph(data: &str) -> IResult<&str, Wrapper> {
+//     // println!("---------------");
+//     // println!("{}", data);
+//     //
 
-    // Ok((data, Content::PlainText { value: content.to_string()}))
-    Ok((
-        data.trim(),
-        Wrapper::Paragraph {
-            children: vec![content],
-        },
-    ))
-}
+//     let (data, _) = multispace0(data)?;
+//     let (data, content) = alt((take_until("\n\n"), rest))(data)?;
 
-fn paragraphs(data: &str) -> IResult<&str, Section> {
-    // let (data, _) = multispace0(data)?;
+//     // println!("{}", data);
+//     // println!("-------- {}", content);
 
-    let (data, content) = many_till(paragraph, eof)(data)?;
-    // dbg!(&content);
-    // dbg!(&data);
+//     // let (data, _) = opt(tag("\n\n"))(data)?;
+//     // println!("{}", data);
+//     // // println!("{}", data);
+//     let (_, content) = text(content)?;
 
-    // println!("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+//     // println!("{:?}", content);
+//     //    println!("{}", data);
 
-    // let mut paras: Vec<Wrapper> = vec![];
-    // for para in data.split("\n\n") {
-    //     paras.push(Wrapper::Paragraph { children: vec![] });
-    // }
+//     // Ok((data, Content::PlainText { value: content.to_string()}))
+//     Ok((
+//         data.trim(),
+//         Wrapper::Paragraph {
+//             children: vec![content],
+//         },
+//     ))
+// }
 
-    Ok((
-        data,
-        Section::Paragraphs {
-            children: content.0,
-        },
-    ))
-}
+// fn paragraphs(data: &str) -> IResult<&str, Section> {
+//     // let (data, _) = multispace0(data)?;
 
-fn section(data: &str) -> IResult<&str, Section> {
-    // println!("============");
-    let (data, _) = multispace0(data)?;
-    // println!("{}", data);
-    // println!("------------");
-    let (data, section_type) = alt((
-        tag("-> P").map(|_| Marker::Paragraphs),
-        tag("-> TITLE").map(|_| Marker::Title),
-        tag("-> H3").map(|_| Marker::H3),
-    ))(data)?;
+//     let (data, content) = many_till(paragraph, eof)(data)?;
+//     // dbg!(&content);
+//     // dbg!(&data);
 
-    // println!("{}", data);
-    let (data, content) = alt((take_until1("\n\n-> "), rest))(data)?;
+//     // println!("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
-    // println!("{}", content.trim());
+//     // let mut paras: Vec<Wrapper> = vec![];
+//     // for para in data.split("\n\n") {
+//     //     paras.push(Wrapper::Paragraph { children: vec![] });
+//     // }
 
-    match section_type {
-        Marker::Title => Ok((data, title(content).unwrap().1)),
-        Marker::Paragraphs => Ok((data, paragraphs(content).unwrap().1)),
-        Marker::H3 => Ok((data, Section::H3)),
-    }
-}
+//     Ok((
+//         data,
+//         Section::Paragraphs {
+//             children: content.0,
+//         },
+//     ))
+// }
 
-// #[derive[Debug])
-fn parse(data: &str) -> IResult<&str, Vec<Section>> {
-    let (data, _) = multispace0(data)?;
-    // dbg!(data);
-    // dbg!(sections);
-    // println!("here");
-    // Ok(("", ""))
-    // let (data, sections) =
-    many1(section)(data)
-}
+// fn section(data: &str) -> IResult<&str, Section> {
+//     // println!("============");
+//     let (data, _) = multispace0(data)?;
+//     // println!("{}", data);
+//     // println!("------------");
+//     let (data, section_type) = alt((
+//         tag("-> P").map(|_| Marker::Paragraphs),
+//         tag("-> TITLE").map(|_| Marker::Title),
+//         tag("-> H3").map(|_| Marker::H3),
+//     ))(data)?;
 
-fn main() {
-    let data = r#"-> TITLE
+//     // println!("{}", data);
+//     let (data, content) = alt((take_until1("\n\n-> "), rest))(data)?;
 
-This is the title 
+//     // println!("{}", content.trim());
 
--> P
+//     match section_type {
+//         Marker::Title => Ok((data, title(content).unwrap().1)),
+//         Marker::Paragraphs => Ok((data, paragraphs(content).unwrap().1)),
+//         Marker::H3 => Ok((data, Section::H3)),
+//     }
+// }
 
-This is line one
+// // #[derive[Debug])
+// fn parse(data: &str) -> IResult<&str, Vec<Section>> {
+//     let (data, _) = multispace0(data)?;
+//     // dbg!(data);
+//     // dbg!(sections);
+//     // println!("here");
+//     // Ok(("", ""))
+//     // let (data, sections) =
+//     many1(section)(data)
+// }
 
-This is line two
+// fn main() {
+//     let data = r#"-> TITLE
 
--> H3
+// This is the title 
 
-This is the other line
+// -> P
 
-"#;
+// This is line one
 
-    let results = parse(data);
-    dbg!(results);
-}
+// This is line two
+
+// -> H3
+
+// This is the other line
+
+// "#;
+
+//     let results = parse(data);
+//     dbg!(results);
+// }
