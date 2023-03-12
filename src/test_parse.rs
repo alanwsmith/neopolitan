@@ -1,7 +1,8 @@
+#![allow(unused_imports)]
 #[cfg(test)]
 mod tests {
     use crate::parse::parse;
-    use crate::parse::parse_dev;
+    // use crate::parse::parse_dev;
     use crate::parse::Page;
     use std::fs;
 
@@ -42,8 +43,8 @@ mod tests {
                 .as_str(),
         )
         .unwrap();
-        let result = parse_dev(&source);
-        // dbg!(&result);
+        let result = parse(&source);
+        dbg!(&result);
         assert_eq!(expected, result);
     }
 }

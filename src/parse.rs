@@ -177,7 +177,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
 }
 
 pub fn get_attribute(source: &str) -> IResult<&str, (String, String)> {
-    dbg!(&source);
+    // dbg!(&source);
     let (source, _) = multispace0(source)?;
     let (source, _) = tag("-> ")(source)?;
     let (source, key) = take_until1(": ")(source)?;
@@ -195,7 +195,7 @@ pub fn prep_attributes(source: &str) -> IResult<&str, Section> {
         attrs.insert(pair.0.to_string(), pair.1.to_string());
     }
     let the_attrs = Section::ATTRIBUTES { raw: attrs };
-    dbg!(&the_attrs);
+    // dbg!(&the_attrs);
     Ok((source, the_attrs))
 }
 
@@ -204,7 +204,7 @@ pub fn get_sections(source: &str) -> IResult<&str, Vec<Section>> {
     Ok((source, sections.0))
 }
 
-pub fn parse(source: &str) -> Page {
+pub fn parse_old(source: &str) -> Page {
     let page = Page {
         attributes: HashMap::new(),
         children: get_sections(source).unwrap().1,
@@ -212,7 +212,7 @@ pub fn parse(source: &str) -> Page {
     page
 }
 
-pub fn parse_dev(source: &str) -> Page {
+pub fn parse(source: &str) -> Page {
     let raw_sections = get_sections(source).unwrap().1;
     let mut sections: Vec<Section> = vec![];
     let mut attrs: HashMap<String, String> = HashMap::new();
@@ -224,12 +224,6 @@ pub fn parse_dev(source: &str) -> Page {
             }
         }
     }
-
-    // let mut attrs = HashMap::new();
-    // attrs.insert("date".to_string(), "2023-03-12 17:07:23".to_string());
-    // attrs.insert("id".to_string(), "1234asdf".to_string());
-    // attrs.insert("type".to_string(), "test".to_string());
-
     let page = Page {
         attributes: attrs,
         children: sections,
