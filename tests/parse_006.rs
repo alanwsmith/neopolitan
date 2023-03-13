@@ -12,7 +12,7 @@ mod tests {
         let source = r#"
 -> CATEGORIES 
 
-- Rust
+- Rust     
 - Test
 "#;
 

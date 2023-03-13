@@ -10,17 +10,6 @@ use nom::IResult;
 // pub fn get_attributes(source: &str) -> IResult<&str, HashMap<String, String>> {
 pub fn get_attributes(source: &str) -> IResult<&str, Vec<(String, String)>> {
     let (_, attributes) = many_till(attribute_splitter, eof)(source)?;
-    // let mut attributes: Vec<(String, String)> = vec![];
-
-    // let (source, _) = multispace0(source)?;
-    // let (source, _) = tag("-> ")(source)?;
-    // let (source, key) = take_until1(":")(source)?;
-    // let (source, _) = tag(":")(source)?;
-    // let (source, _) = multispace0(source)?;
-    // let (_, value) = not_line_ending(source)?;
-
-    // attributes.push((key.to_string(), value.to_string()));
-
     Ok(("", attributes.0))
 }
 

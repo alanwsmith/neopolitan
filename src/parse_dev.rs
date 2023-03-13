@@ -43,12 +43,7 @@ pub fn parse_dev(source: &str) -> Page {
 
             Block::ATTRIBUTES { source } => {
                 let (_, attributes) = get_attributes(source.as_str()).unwrap();
-
-                // dbg!(&attributes);
-
                 for (key, value) in attributes.iter() {
-                    // dbg!(&key);
-                    // dbg!(&value);
                     page.attributes.insert(key.to_string(), value.to_string());
                 }
             }
