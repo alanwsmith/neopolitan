@@ -1,0 +1,15 @@
+{
+  "type": "root",
+  "content": [
+    {
+      "type": "paragraph",
+      "attributes": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "this is the basic text"
+        }
+      ]
+    }
+  ],"metadata": []
+}

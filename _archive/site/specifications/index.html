@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Neopolitan - A Plain-Text Document Format </title>
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:title"
+            content="Neopolitan - A Plain-Text Document Format"
+        />
+        <meta
+            property="og:description"
+            content="A plain-text document designed to last twenty years"
+        />
+        <meta
+            property="og:image"
+            content="https://res.cloudinary.com/awsimages/image/upload/w_1200,h_630,o_0,b_rgb:000000/c_fit,w_1020,h_430,co_rgb:eeeeee,l_text:Abhaya%20Libre_124_bold:Neopolitan%20-%20A%20Plain-Text%20Document%20Format/fl_layer_apply,g_north_west,x_65,y_65/co_rgb:666666,l_text:Inconsolata_36_bold:from%20alan%20w.%20smith/fl_layer_apply,g_south_east,x_65,y_45/1x1.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site:id" content="@TheIdOfAlan" />
+        <meta name="twitter:creator" content="@TheIdOfAlan" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="228x228"
+            href="/favicons/228x228.png"
+        />
+        <link
+            rel="apple-touch-icon-precomposed"
+            sizes="180x180"
+            href="/favicons/180x180.png"
+        />
+        <link rel="stylesheet" href="/styles/global.css" />
+    </head>
+    <body>
+        <header>
+            <a href="/">Neopolitan</a> ~
+            <a href="https://www.alanwsmith.com/">personal site</a> ~
+            <a href="https://links.alanwsmith.com">other sites</a> ~
+            <a href="https://podcast.alanwsmith.com/">podcast</a> ~
+            <a href="https://twitter.com/TheIdOfAlan">twitter</a> ~
+            <a href="https://hachyderm.io/web/@TheIdOfAlan">mastodon</a>
+        </header>
+
+        <main>
+            <p>
+                <a href="/index.html">home page</a> ~
+                <a href="/code/index.html">code</a> ~
+                <a href="/considerations/index.html">considerations</a> ~
+                <a href="/content-unit-tests/index.html">content-unit-tests</a>
+                ~
+                <a href="/headers-in-pre-tags/index.html"
+                    >headers-in-pre-tags</a
+                >
+                ~ <a href="/element-types/index.html">element-types</a> ~
+                <a href="/elements/index.html">elements</a> ~
+                <a href="/examples/index.html">examples</a> ~
+                <a href="/integration-test/index.html">integration-test</a> ~
+                <a href="/notes/index.html">notes</a> ~
+                <a href="/overview/index.html">overview</a> ~
+                <a href="/rationale/index.html">rationale</a> ~
+                <a href="/specifications/index.html">specifications</a> ~
+                <a href="/usage/index.html">usage</a>
+            </p>
+            <hr />
+            <div class="neo-warning">
+                <p>
+                    Everything here is still an early draft. I'm doing the
+                    building in public thing and a bunch of this is still
+                    brainstorming. Don't be surprised to find conflicts and
+                    inconsistencies and misspellings all over the place. All
+                    that stuff will work itself out as progress continues.
+                </p>
+            </div>
+
+            <hr />
+
+            <div class="neo-warning">
+<p>Not all the content on this page is visible yet. The parser ignores stuff it isn&#x27;t setup for yet and there&#x27;s a bunch of that.</p>
+</div>
+<h1 class="neo-title">Specifications</h1>
+<div class="neo-subtitle">The nitty gritty of how things fit togehter</div>
+<p>These are the possible section headers:</p>
+<div class="neo-subtitle">Old Notes</div>
+<p>High level reference listing all headers and optional directives (there are no required directives)</p>
+<p>(Directives will be added as they become apparent. Lots of things will be saved for attributes. e.g. there would be a <code class="language-txt neo-code">class:</code> directive. That will be handled in attributes with <code class="language-txt neo-code">:class</code>)</p>
+<p>(Maybe should reverse <code class="language-txt neo-code">:attribtue</code> and <code class="language-txt neo-code">directive:</code> so that it&#x27;s <code class="language-txt neo-code">attribute:</code> and <code class="language-txt neo-code">:directive</code>? It feels like attribute would get more usage in which case it feels like it&#x27;s the one that should have the parens behind it.)</p>
+<p>Not sure if these are all gonna make it. This is the gauntlet.</p>
+<p>(Maybe directives and attrbutes should have different prealbmes. One could have <code class="language-txt neo-code">:::: thing:</code> and the other would be <code class="language-txt neo-code">--; thing:</code>, I think I like that since it gives a clearer distincation and allows both types to have the <code class="language-txt neo-code">:</code> at the end of the string. Yeah, trying that for now)</p>
+<p>Directive values are optional. e.g. <code class="language-txt neo-code">--; hidden</code> doesn&#x27;t have a value but <code class="language-txt neo-code">--; lang: python</code> does. If there&#x27;s a value, they&#x27;ll be separated by the paren and any amount of white space.</p>
+<pre> ---: CODE 
+ ---; lang: alfa
+ ---; skip-headers: 2 # tells how many headers to skip
+ ---; title: some title # shows up in a div with the code block (think about adding an id too)
+ ---; eval: never # or some other way to prevent evaluation</pre>
+<pre> --: CONTENT # Outputs contents directly with no wrapper</pre>
+<pre> --: DIV # Outputs contents in a div wrapper with optional attributes</pre>
+<pre> --: EXAMPLE </pre>
+<pre> --: FOOTNOTES</pre>
+<pre> --: HTML </pre>
+<pre> --: IMG # TBD on this. Idea is to make it easy to format a caption/figure
+ --; src
+ --; alt
+ --; title
+ --; caption</pre>
+<pre> --: META # default is one att per line, but parsers can use whatever via the lang. 
+ --; lang: attributes</pre>
+<pre> --: NOTES # convience wrapper for div with `neo-notes` class</pre>
+<pre> --: NOTE # alias for NOTES</pre>
+<pre> --: PRE
+ --; skip-headers: #</pre>
+<pre> --: SUBTITLE</pre>
+<pre> --: SUMMARY</pre>
+<pre> --: TITLE</pre>
+<pre> --: TODO # Thinking about getting rid of this</pre>
+<pre> --: WARNING</pre>
+<pre> --: WIDGET
+ --; type: alfa </pre>
+<h2>The Sections</h2>
+<p>The core buidling block of neopolitan is the section. Documents start with a section and every piece of content is contained in one (and only one)</p>
+<h3>The CONTENT Section</h3>
+<ul>
+<li>Primary section</li>
+<li>Has all the translations in it between</li>
+<li>Can use any <code class="language-txt neo-code">&lt;&lt;</code> neotag</li>
+<li>Accepts <code class="language-txt neo-code">:::: :</code> attributes</li>
+<li>If no <code class="language-txt neo-code">:::: :</code> attributes are passed, no additional wrapper is put around the content.</li>
+<li>If a <code class="language-txt neo-code">:::: :</code> is added a default <code class="language-txt neo-code">&lt;section&gt;</code> tag is added around the content with the given attributes.</li>
+<li>Accepts a <code class="language-txt neo-code">:::: tag:</code> directive, the value of which must be a valid HTML tag which will be used as a wrapper for the contnet.</li>
+<li><code class="language-txt neo-code">:::: :</code> attributes can be used without <code class="language-txt neo-code">:::: tag:</code> headers and vice verse as well as using them at the same time.</li>
+<h3>The TITLE Section</h3>
+<ul>
+<li>Can go anywhere</li>
+<li>Gets output in <code class="language-txt neo-code">&lt;h1 class=&quot;neo-title&quot;&gt;&lt;/h1&gt;</code></li>
+<li>Since it&#x27;s an <code class="language-txt neo-code">&lt;h1&gt;</code> it should only be used on pages that don&#x27;t already have one and won&#x27;t have one added.</li>
+<li>The primary reason the TITLE secition exists is to provide an easy way to maintain the title in one location. By having a named, stand-alone aread it can be parsed out unambisiously. (It also looks nice when you&#x27;re editing your files)</li>
+</ul>
+        </main>
+        <footer>
+            made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
+            <br />
+            who has a <a href="https://www.alanwsmith.com">website</a> and a
+            <a href="https://podcast.alanwsmith.com/">podcast</a> <br />
+            among other <a href="https://links.alanwsmith.com">things</a>
+        </footer>
+    </body>
+</html>

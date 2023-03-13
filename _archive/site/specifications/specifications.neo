@@ -1,0 +1,375 @@
+---: WARNING 
+---# title: Head's Up
+
+Not all the content on this page is visible 
+yet. The parser ignores stuff it isn't setup
+for yet and there's a bunch of that. 
+
+---: TITLE 
+
+Specifications
+
+---: SUBTITLE
+
+The nitty gritty of how things fit togehter
+
+---: CONTENT
+
+These are the possible section headers:
+
+---: H2
+
+
+
+
+
+
+
+---: SUBTITLE 
+
+Old Notes
+
+
+---: CONTENT
+
+High level reference listing all headers and 
+optional directives (there are no required 
+directives)
+
+(Directives will be added as they become 
+apparent. Lots of things will be saved for
+attributes. e.g. there would be a `class:` 
+directive. That will be handled in 
+attributes with `:class`)
+
+(Maybe should reverse `:attribtue` and `directive:`
+so that it's `attribute:` and `:directive`? It
+feels like attribute would get more usage in which 
+case it feels like it's the one that should have the
+parens behind it.)
+
+Not sure if these are all gonna make it. This is 
+the gauntlet. 
+
+(Maybe directives and attrbutes should have different
+prealbmes. One could have `:::: thing:` and the other 
+would be `--; thing:`, I think I like that since
+it gives a clearer distincation and allows both
+types to have the `:` at the end of the string. 
+Yeah, trying that for now)
+
+Directive values are optional. e.g. `--; hidden`
+doesn't have a value but `--; lang: python` does.
+If there's a value, they'll be separated by the paren
+and any amount of white space.
+
+
+
+
+
+
+
+
+---: PRE
+
+ ---: CODE 
+ ---; lang: alfa
+ ---; skip-headers: 2 # tells how many headers to skip
+ ---; title: some title # shows up in a div with the code block (think about adding an id too)
+ ---; eval: never # or some other way to prevent evaluation
+
+---: PRE
+
+ --: CONTENT # Outputs contents directly with no wrapper
+
+---: PRE
+
+ --: DIV # Outputs contents in a div wrapper with optional attributes
+
+---: PRE
+
+ --: EXAMPLE 
+
+---: PRE
+
+ --: FOOTNOTES
+
+---: PRE
+
+ --: HTML 
+
+---: PRE
+
+ --: IMG # TBD on this. Idea is to make it easy to format a caption/figure
+ --; src
+ --; alt
+ --; title
+ --; caption
+
+
+---: PRE
+
+ --: META # default is one att per line, but parsers can use whatever via the lang. 
+ --; lang: attributes
+
+
+---: PRE
+
+ --: NOTES # convience wrapper for div with `neo-notes` class
+
+---: PRE
+
+ --: NOTE # alias for NOTES
+
+---: PRE
+
+ --: PRE
+ --; skip-headers: #
+
+
+---: PRE
+
+ --: SUBTITLE
+
+
+---: PRE
+
+ --: SUMMARY
+
+
+---: PRE
+
+ --: TITLE
+
+
+---: PRE
+
+ --: TODO # Thinking about getting rid of this
+
+
+---: PRE
+
+ --: WARNING
+
+
+---: PRE
+
+ --: WIDGET
+ --; type: alfa 
+
+
+---: CONTENT
+
+
+
+
+## The Sections
+
+The core buidling block of neopolitan is the 
+section. Documents start with a section and 
+every piece of content is contained in one 
+(and only one)
+
+### The CONTENT Section
+
+- Primary section 
+
+- Has all the translations in it between
+
+- Can use any `<<` neotag
+
+- Accepts `:::: :` attributes 
+
+- If no `:::: :` attributes are passed, no
+additional wrapper is put around the 
+content. 
+
+- If a `:::: :` is added a default `<section>`
+tag is added around the content with the
+given attributes. 
+
+- Accepts a `:::: tag:` directive, the value
+of which must be a valid HTML tag which 
+will be used as a wrapper for the contnet. 
+
+- `:::: :` attributes can be used without
+`:::: tag:` headers and vice verse as well
+as using them at the same time. 
+
+
+### The TITLE Section
+
+- Can go anywhere 
+
+- Gets output in `<h1 class="neo-title"></h1>`
+
+- Since it's an `<h1>` it should only be
+used on pages that don't already have one
+and won't have one added. 
+
+- The primary reason the TITLE secition 
+exists is to provide an easy way to maintain
+the title in one location. By having 
+a named, stand-alone aread it can be parsed
+out unambisiously. (It also looks nice
+when you're editing your files)
+
+
+
+
+
+
+---: NOTES
+
+Classes for `<<` tags
+
+Make the clases the name of the thing. For 
+example:
+
+- code: neo-code
+
+- link: neo-link
+
+- span: neo-span
+
+Practical effect is that every inline
+`<<` will have at least one class
+applied to it. 
+
+Maybe as an implementation deal that
+can be turned off? TBD on that, but probably
+the spec should allow for it. 
+
+The thing that will be part of the spec is
+the classe in the TODOs since they are the
+way that the determination is made about
+if the item is done or not. 
+
+
+---
+
+The `<<code` snippets will default to 
+`languate-txt` if no language is provided
+
+---
+
+Should `---: CONTENT` have a wrapper? I'm 
+not sure what I put elsewhere, but right now
+I'm thinking no. It would just output directly
+whatever was in it. If you need a wrapper
+use `---: DIV`
+
+
+
+
+
+
+
+
+
+---: NOTES
+
+- should it be possible to add a class to 
+CONTENT if there's no element defined? OR
+really, should that default to somethhing 
+like setion or should it just ignore it?
+Feels like it should default to section
+or something be. 
+
+- maybe have JSON blocks that you give
+a name for generis data transer? Not sure
+if that would be different from a widget
+
+- Some of these are just divs with 
+classes associated with them. The goal is 
+to make it easier to output, but also to 
+look at and parse when authoring or reading
+the neo document itself. 
+
+- any class that's generated as part of the
+default ouput of a seciton will have a preface
+of `neo-` in an effort to namespace. 
+
+- The link index starts at 1. 
+
+
+## Content Sections
+
+- CONTENT - main area
+
+- CODE - wrapped with `<pre><code>` the only 
+processing is escaping HTML.
+
+- DIV - Same as content but wrapped as a div. 
+
+- HTML - Straight in, straight out
+
+- PRE - Preformated blocks wrapped with `<pre>`
+tags. The only processing is for HTML escaping
+
+- TODO - Lets you check things off. 
+
+
+## Candidate Content Sections
+
+
+- EXAMPLE (maybe block quote would be better)
+
+- FOOTNOTES - probably makes the cut to 
+provide for linking. Probably set a flag to 
+turn links off too?  - This can be like a list 
+but multiline works fine - can be added
+anywhere in the page and there can 
+be any number of them, they just get appended
+to each other. That makes it easier to 
+see what's attached to whate while youre 
+writing. TBD on thow to make the number
+eaiser? maybe ou have to put in a title?
+But I don't want to have to reference that. 
+Maybe they auto increment, but then you 
+can override them? That seems like a good
+play. 
+
+Maybe there are both `FOOTNOTE` and `FOOTNOTES`
+and they just append down the page?
+
+Either way, they're made up of lists, so
+until there's a way to embed lists in lists
+overall, that won't be an option. 
+
+
+
+- NOTE
+
+- NOTES
+
+- REFERENCES
+
+- TODO 
+
+
+## Candidate Meta Sections
+
+
+- LINKS
+
+- META
+
+- WIDGET
+
+- DATA - For thing like CSV that don't 
+easily fit in JSON. Could apply a header to it
+for direction to whatever is parsing, but the
+handlng of it is a details on the implementation 
+side 
+
+---
+
+Figure out if you want to be able to put PRE headers inside warnings?
+
+That seems frought and opens up to trying to nest stuff. Thinking it's
+better to put the onus on the author. 
+
+
+
+

@@ -1,0 +1,15 @@
+{
+  "type": "root",
+  "metadata": [
+    {
+      "type": "category_list",
+      "children": [
+        {
+          "type": "category_list_item",
+          "value": "Some Category"
+        }
+      ]
+    }
+  ],
+  "content": []
+}

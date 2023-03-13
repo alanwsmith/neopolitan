@@ -1,0 +1,16 @@
+{
+  "type": "root",
+  "content": [
+    {
+      "type": "h5",
+      "attributes": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is an h5"
+        }
+      ]
+    }
+  ],
+  "metadata": []
+}

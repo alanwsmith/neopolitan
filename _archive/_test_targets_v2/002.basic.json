@@ -1,0 +1,29 @@
+{
+  "attributes": {},
+  "children": [
+    {
+      "Title": {
+        "attributes": {},
+        "children": [
+          {
+            "PlainText": {
+              "value": "This is a title"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "H2": {
+        "attributes": {},
+        "children": [
+          {
+            "PlainText": {
+              "value": "This is an H2"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

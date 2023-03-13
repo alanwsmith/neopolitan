@@ -1,208 +1,268 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Neopolitan - A Plain-Text Document Format </title>
-        <meta property="og:type" content="website" />
-        <meta
-            property="og:title"
-            content="Neopolitan - A Plain-Text Document Format"
-        />
-        <meta
-            property="og:description"
-            content="A plain-text document designed to last twenty years"
-        />
-        <meta
-            property="og:image"
-            content="https://res.cloudinary.com/awsimages/image/upload/w_1200,h_630,o_0,b_rgb:000000/c_fit,w_1020,h_430,co_rgb:eeeeee,l_text:Abhaya%20Libre_124_bold:Neopolitan%20-%20A%20Plain-Text%20Document%20Format/fl_layer_apply,g_north_west,x_65,y_65/co_rgb:666666,l_text:Inconsolata_36_bold:from%20alan%20w.%20smith/fl_layer_apply,g_south_east,x_65,y_45/1x1.png"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site:id" content="@TheIdOfAlan" />
-        <meta name="twitter:creator" content="@TheIdOfAlan" />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="228x228"
-            href="/favicons/228x228.png"
-        />
-        <link
-            rel="apple-touch-icon-precomposed"
-            sizes="180x180"
-            href="/favicons/180x180.png"
-        />
-        <link rel="stylesheet" href="/styles/global.css" />
-    </head>
-    <body>
-        <header>
-            <a href="/">Neopolitan</a> ~
-            <a href="https://www.alanwsmith.com/">personal site</a> ~
-            <a href="https://links.alanwsmith.com">other sites</a> ~
-            <a href="https://podcast.alanwsmith.com/">podcast</a> ~
-            <a href="https://twitter.com/TheIdOfAlan">twitter</a> ~
-            <a href="https://hachyderm.io/web/@TheIdOfAlan">mastodon</a>
-        </header>
+<html>
+  <head>
+    <title>neopolitan - a plain-text document format</title>
+<style>
+body {
+  font-size: 1.3rem;
+  padding-top: 20px;
+  padding-left: 28px;
+  background-color: #000;
+  color: #aaa;
+}
+.center {
+   display: grid;
+   place-items: center;
+   padding-right:20px;
+}
+</style>
+  </head>
+  <body>
+    <div class="center">
+    <pre><code>
+-> TITLE
 
-        <main>
-            <p>
-                <a href="/index.html">home page</a> ~
-                <a href="/code/index.html">code</a> ~
-                <a href="/considerations/index.html">considerations</a> ~
-                <a href="/content-unit-tests/index.html">content-unit-tests</a>
-                ~
-                <a href="/headers-in-pre-tags/index.html"
-                    >headers-in-pre-tags</a
-                >
-                ~ <a href="/element-types/index.html">element-types</a> ~
-                <a href="/elements/index.html">elements</a> ~
-                <a href="/examples/index.html">examples</a> ~
-                <a href="/integration-test/index.html">integration-test</a> ~
-                <a href="/notes/index.html">notes</a> ~
-                <a href="/overview/index.html">overview</a> ~
-                <a href="/rationale/index.html">rationale</a> ~
-                <a href="/specifications/index.html">specifications</a> ~
-                <a href="/usage/index.html">usage</a>
-            </p>
+Neopolitan 
 
-            <h1 class="neo-title">neopolitan</h1>
-<div class="neo-subtitle">neo for short</div>
-<div class="neo-warning">
-<h2>DRAFT</h2>
-<p>This site is the home of the neopolitan plain-text file format</p>
-<p>Or, it will be when I finish it. The first iteration is still under construction</p>
-<p>I&#x27;m pretty good at working in the abstract, but nothing tells you more about how something works (or doesn&#x27;t) than working with it. So, I&#x27;m doing the dog-fooding, drinking your own champaign, getting high on your own supply thing. This site is made from a collection of neopolitan docs run through a prototype parser.</p>
-<p>Instability and spelling error abound. If you&#x27;re cool with that, have a look around and let me know what you think <a href="https://hachyderm.io/web/@TheIdOfAlan">on mastodon</a> or <a href="https://twitter.com/TheIdOfAlan">twitter</a></p>
-<p><code class="language-txt neo-code">-a</code></p>
-</div>
-<div class="neo-warning">
-<h2>Update In Progress</h2>
-<p>I&#x27;m changing the directives syntax. Instead of <code class="language-txt neo-code">:::: thing:</code>, they are going to use <code class="language-txt neo-code">--;</code>.</p>
-</div>
-<div class="neo-warning">
-<h2>Moving to two dashes</h2>
-<p>I&#x27;m moving to two dashes instead of three for the headers. When I first started it was easier for me to process three, but adding in directies with <code class="language-txt neo-code">;</code> add a lot of weight and as I&#x27;ve gotten more used to it I think two will work fine. (One, doesn&#x27;t give enough separation)</p>
-</div>
-<pre> # Inital Version:
+-> SUBTITLE
 
- ---: CONTENT
+A plain-text document format designed to last twenty 
+years. 
 
- # Changing To This:
+-> H2
 
- --: CONTENT</pre>
-<h2>Intro</h2>
-<p>Neopolitan is a plain-text file format. It&#x27;s inspired by Markdown, MDX, and Org-Mode. As great as those formats are, they don&#x27;t work for me. The have frictions that break my concentration and knock me out of the flow.</p>
-<p>Being in a state of flow is precious to me. I&#x27;ve been through some shit that&#x27;s done the cliche &quot;making me realize how little time we have&quot;. Having stared down the abbys, I now do everything I can to attain and maintain flow states. That includes creating a new file format.</p>
-<h2>Overview</h2>
-<p>Neopolitan files are made of sections. Each sections starts with <code class="language-txt neo-code">---:</code> followd by the type of section. For example:</p>
-<pre> ---: CONTENT </pre>
-<h3>Processing</h3>
-<p>Each type of section has a distince set of rules for how to process what&#x27;s inside it. For example, <code class="language-neo neo-code">---: CONTENT</code> sections look a lot like markdown. This:</p>
-<pre> ---: CONTENT
+Overview
 
- ## Small Example Header
+None of the plain-text formats I've worked with fit 
+what I'm looking for to manage the content for my 
+site. It's time to see if I can make one I like. 
 
- Here&#x27;s a list
+This document is a draft of notes and thinking about
+the format. It'll change as I work with the format
+in production. 
 
- - It&#x27;s easy to tell the depth of a well.
+-> H2 
 
- - Two blue fish swam in the tank.
+Sections
 
- And one with numbers
+Section start with a `->`lang:neo` followed by a 
+keyword.  They generally map toward HTML tags. The 
+`TITLE`` tag is an H1 that also shows up in the 
+metadata for usage in the output. The 
+`SUBTITLE`` becomes a div with the class subtitle 
+one it. 
 
- 1. Cut the pie into large parts.
+-H2
 
- 2. The pencils have all been used.</pre>
-<p>Turns into this:</p>
-<div class="neo-example">
-<h4>Small Example Header</h4>
-<p>Here&#x27;s a list</p>
-<ul>
-<li>It&#x27;s easy to tell the depth of a well.</li>
-<li>Two blue fish swam in the tank.</li>
-</ul>
-<p>And one with numbers</p>
-<ol>
-<li>Cut the pie into large parts.</li>
-<li>The pencils have all been used.</li>
-</ol>
-</div>
-<h3>More Stuff</h3>
-<p>neopolitan offers an expanded set of options with the basic processing. For example, detail lists.</p>
-<pre>~ Alfa
+Paragraphs
 
-: The office paint was a dull sad tan.
+Most text blocks turn into paragraphs. They start 
+automatically after a `-> TITLE`lang:neo`, 
+`-> SUBTITLE`lang:neo`, or `-> H#`lang:neo` 
+which each end after a single line of text. 
 
-~ Bravo
+Blocks of paragraphs can also be started explicitly 
+with the `-> P`lang:neo` tag. In both cases the
+content is wrapped in `&lt;p&gt;`lang:html` tags
+in the output. 
 
-: We admire and love a good cook.
+-> H2
 
-: Ducks fly north but lack a compass.</pre>
-<p>Becomes</p>
-<div class="neo-example">
-<dl>
-<dt>Alfa</dt>
-<dd>The office paint was a dull sad tan.</dd>
-<dt>Bravo</dt>
-<dd>We admire and love a good cook.<br /><br />Ducks fly north but lack a compass.</dd>
-</dl>
-</div>
-<p>The display for the examples is done with section headers too, along with some other standard types. This:</p>
-<pre>  ---: NOTE
+Attributes
 
-  This is a note
+Attributes can be applied to any section by adding 
+a `->`` token followed by the desired key/value pair 
+(e.g.`-> class: highlighted`lang:neo`).
 
-  ---: EXAMPLE
+The next paragraph in the source code is an example. 
 
-  This is an example 
+-> P
+-> class: highlighted
 
-  ---: WARNING
+Not being able to apply styles and attributes to 
+individual blocks without falling back to HTML is
+one of the key reasons I'm making this format. 
 
-  This is a warning </pre>
-<p>Produces this:</p>
-<div class="neo-note">
-<p>This is a note</p>
-</div>
-<div class="neo-example">
-<p>This is an example</p>
-</div>
-<div class="neo-warning">
-<p>This is a warning</p>
-</div>
-<p>There is also a <code class="language-txt neo-code">---: DIV</code> which you can add classes to like this:</p>
-<pre>  ---: DIV
-  :::: :class alpha bravo
+-> H2
 
-  hotel foxtrot</pre>
-<p>Outputs the HTML:</p>
-<div class="neo-example">
-<p>&lt;div class=&quot;alpha bravo neo-div&quot;&gt;hotel foxtrot&lt;/div&gt;</p>
-</div>
-<p>The <code class="language-txt neo-code">neo-div</code> is a class that&#x27;s added automaticaly to various tags generated by neopolitan. They all start with <code class="language-txt neo-code">neo-</code> as a type of namespace.</p>
-<p>More than classes can be added to. Any number of arbitraty attirbutes can be added with this format:</p>
-<pre>  ---: PRE
-  :::: :id alpha 
-  :::: :class bravo 
-  :::: :data-key delta echo</pre>
-<p>That will output:</p>
-<div class="neo-example">
-<p>&lt;div id=&quot;alpha&quot; class=&quot;bravo neo-div&quot; data-key=&quot;delta echo&quot; &gt;</p>
-</div>
-<p>There&#x27;s other things too that I&#x27;m still getting put togehter.</p>
-<ul>
-<li><code class="language-txt neo-code">:::: type:</code> style directives (where the colon is on the right side of the word instead of the left.</li>
-<li><code class="language-txt neo-code">&lt;&lt;</code> format for links, code, spans, and tags</li>
-<li>JSON metadata containers</li>
-<li>WIDGETS (which are really just JSON blobs with <code class="language-txt neo-code">:::: type:</code> directives)</li>
-</ul>
-<p>I&#x27;ll post updates on <a href="https://hachyderm.io/web/@TheIdOfAlan">mastodon</a> and <a href="https://twitter.com/TheIdOfAlan">twitter</a> if you want to follow along.</p>
-        </main>
+Unordered Lists  
 
-        <footer>
-            made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
-            <br />
-            who has a <a href="https://www.alanwsmith.com">website</a> and a
-            <a href="https://podcast.alanwsmith.com/">podcast</a> <br />
-            among other <a href="https://links.alanwsmith.com">things</a>
-        </footer>
-    </body>
+Unordered lists begin with the `LIST`` keyword. 
+Right now there is no nesting. I rarely need that 
+so I'll just fall back to HTML. I'll deal with it 
+later if it becomes a big pain point. 
+
+Here's a list that includes additional styles 
+added to the second item. 
+
+-> LIST
+
+- Alfa Bravo
+-|class: extra|- Charlie Delta
+- Echo Foxtrot
+
+-> H2
+
+Ordered Lists
+
+Lists with numbers start with `-> OLIST`lang:neo`. 
+Dashes are used instead of numbers. That comes 
+from shuffling numbers back and forth. Numbering
+is done automatically in the output and can be
+adjusted to start at a specific number. 
+
+-> OLIST
+-> start: 3
+
+- Alfa 
+- Bravo
+- Charlie 
+
+-> H2
+
+Other stuff
+
+Here's some other things that are still in flux
+
+-> H2
+
+Attributes 
+
+A base `-> ATTRIBUTES`lang:neo` tag that holds key
+value pairs. Any pair can be used in the output 
+template or output file path. (e.g. `id`` is used
+in the filename creation)
+
+
+-> H2
+
+Inline links
+
+An &lt/&lt;link|inline link|https://www.example.com&gt;&gt;
+
+A &lt;&lt;link|reference link|1&gt;&gt;
+
+A &lt;&lt;link|styled link|2|class: highlight&gt;&gt;
+
+-> LINKS
+
+1: https://www.example.com/
+
+2: https://www.alanwsmith.com/
+
+-> P 
+
+Those `-> LINKS` sections can be scattered throughout  
+the document. 
+
+There's no change to the format between full links 
+and reference links. Anything that matches a reference 
+uses that reference. Otherwise it's put in as is. 
+
+-> H2
+
+Images 
+
+Inline images are done much like links. 
+
+Sample: &lt;&lt;img|1|alt text|class: alfa&gt;&gt;
+
+I expect most of the time they'll be done on their 
+own lines, but they can be put directly in text
+as shown above. If they are on their own line
+they aren't wrapped in a paragraph. They sit
+as siblings to the other content. 
+
+-> IMAGES  
+
+1: https://placekitten.com/200/280
+
+-> H2 
+
+Inline Code
+
+Inline code is done with three backticks. The code
+itself goes between the first two. Any attributes are
+placed between the second and third. Some might have 
+special processing (e.g. `lang``), anything that 
+doesn't have special processing is passed directly 
+to the HTML as attributes. 
+
+Multiple attributes are separated by a `|``. For 
+example:
+
+-> CODE 
+-> lang: neo 
+
+`print("Hello, World")`lang: python|class: alfa`
+
+-> P
+
+Spaces between the `:`` and value are optional. 
+
+-> H2
+
+Other stuff part 2
+
+-> LIST 
+
+- TODO - for to do lists
+
+- DIV - for div wrappers instead of paragraphs
+
+- HTML - for raw html 
+
+- NOTES - a div wrapper with a `class: notes` 
+pre applied 
+
+- FOOTNOTES - auto numbered footnotes that 
+link to their corresponding locations in the 
+document
+
+- DATA - has as `-> lang: json`` tag. Doesn't 
+show up in output. Is added in the document
+template directly for use in scripts on the 
+page. Need to think some about how this 
+will get put in and if there should be more
+than one of them. To start with, it'll
+just be the one. (should allow for `-> lang
+js`` as well. 
+
+- CODE EndOfCode Tags - for the times when 
+other headers would otherwise brake a 
+code block. 
+
+- CSS - styles that are copied directly to 
+the end of the page's style section to set 
+things without having to adjust code. 
+
+- BLOCKQUOTE - A blockquote. Maybe with an 
+optional attribution. 
+
+- QUOTE - For a quote and an attribution. 
+
+- HIDDEN - Stuff that's in the file that you 
+don't want output to the final content. (NOTE:
+don't relay on it for anything sensitive. Figure
+that at some point something might screw up and
+send it out.) Might not even do the field 
+since it could lead to that happening. 
+
+- TABLES - still working on how to handle
+these. Requirements include the ability to 
+style individual cells while still making the 
+content readable in the text file. 
+
+- Spans - e.g. `&lt;&lt;span|asdf|class:alfa&gt;&gt;
+
+- CATEGORIES - For identifying categories pages
+apply to. 
+
+- Strong and emphasis text - TBD on _text_, /text/
+*text* - Thinking I want to have underline as
+an option too. (beyond just strong and emphasis)
+
+    </code></pre>
+    </div>
+  </body>
 </html>
