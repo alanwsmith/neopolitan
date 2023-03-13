@@ -9,7 +9,7 @@ mod tests {
     use std::collections::HashMap;
 
     #[test]
-    fn test_004() {
+    fn test_008() {
         let source = r#"
 -> OLIST 
 
@@ -48,7 +48,7 @@ mod tests {
         };
 
         let expected = page;
-        let result = parse_dev(source);
+        let result = parse_switch(source);
         assert_eq!(expected, result);
     }
 }
