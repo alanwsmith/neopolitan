@@ -14,7 +14,10 @@ mod tests {
 -> LIST 
 
 - alfa bravo 
-- charlie delta 
+charlie delta 
+
+- echo foxtrot
+
 "#;
 
         // NOTE that Rust has a bunch of whitespace after it
@@ -30,7 +33,7 @@ mod tests {
                         children: vec![Section::P {
                             attributes: HashMap::new(),
                             children: vec![Section::PLAINTEXT {
-                                value: "alfa bravo".to_string(),
+                                value: "alfa bravo charlie delta".to_string(),
                             }],
                         }],
                     },
@@ -39,7 +42,7 @@ mod tests {
                         children: vec![Section::P {
                             attributes: HashMap::new(),
                             children: vec![Section::PLAINTEXT {
-                                value: "charlie delta".to_string(),
+                                value: "echo foxtrot".to_string(),
                             }],
                         }],
                     },

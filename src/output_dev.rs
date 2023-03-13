@@ -47,6 +47,8 @@ pub fn output_dev(source: Page) -> String {
                     }
                 }
             }
+
+            _ => {}
         }
     }
 

@@ -5,7 +5,6 @@ use nom::character::complete::not_line_ending;
 use nom::combinator::eof;
 use nom::multi::many_till;
 use nom::IResult;
-// use std::collections::HashMap;
 
 // pub fn get_attributes(source: &str) -> IResult<&str, HashMap<String, String>> {
 pub fn get_attributes(source: &str) -> IResult<&str, Vec<(String, String)>> {

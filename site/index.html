@@ -2,8 +2,267 @@
 <html>
   <head>
     <title>neopolitan - a plain-text document format</title>
+<style>
+body {
+  font-size: 1.3rem;
+  padding-top: 20px;
+  padding-left: 28px;
+  background-color: #000;
+  color: #aaa;
+}
+.center {
+   display: grid;
+   place-items: center;
+   padding-right:20px;
+}
+</style>
   </head>
   <body>
-    <p>Under construction</p>
+    <div class="center">
+    <pre><code>
+-> TITLE
+
+Neopolitan 
+
+-> SUBTITLE
+
+A plain-text document format designed to last twenty 
+years. 
+
+-> H2
+
+Overview
+
+None of the plain-text formats I've worked with fit 
+what I'm looking for to manage the content for my 
+site. It's time to see if I can make one I like. 
+
+This document is a draft of notes and thinking about
+the format. It'll change as I work with the format
+in production. 
+
+-> H2 
+
+Sections
+
+Section start with a `->`lang:neo` followed by a 
+keyword.  They generally map toward HTML tags. The 
+`TITLE`` tag is an H1 that also shows up in the 
+metadata for usage in the output. The 
+`SUBTITLE`` becomes a div with the class subtitle 
+one it. 
+
+-H2
+
+Paragraphs
+
+Most text blocks turn into paragraphs. They start 
+automatically after a `-> TITLE`lang:neo`, 
+`-> SUBTITLE`lang:neo`, or `-> H#`lang:neo` 
+which each end after a single line of text. 
+
+Blocks of paragraphs can also be started explicitly 
+with the `-> P`lang:neo` tag. In both cases the
+content is wrapped in `&lt;p&gt;`lang:html` tags
+in the output. 
+
+-> H2
+
+Attributes
+
+Attributes can be applied to any section by adding 
+a `->`` token followed by the desired key/value pair 
+(e.g.`-> class: highlighted`lang:neo`).
+
+The next paragraph in the source code is an example. 
+
+-> P
+-> class: highlighted
+
+Not being able to apply styles and attributes to 
+individual blocks without falling back to HTML is
+one of the key reasons I'm making this format. 
+
+-> H2
+
+Unordered Lists  
+
+Unordered lists begin with the `LIST`` keyword. 
+Right now there is no nesting. I rarely need that 
+so I'll just fall back to HTML. I'll deal with it 
+later if it becomes a big pain point. 
+
+Here's a list that includes additional styles 
+added to the second item. 
+
+-> LIST
+
+- Alfa Bravo
+-|class: extra|- Charlie Delta
+- Echo Foxtrot
+
+-> H2
+
+Ordered Lists
+
+Lists with numbers start with `-> OLIST`lang:neo`. 
+Dashes are used instead of numbers. That comes 
+from shuffling numbers back and forth. Numbering
+is done automatically in the output and can be
+adjusted to start at a specific number. 
+
+-> OLIST
+-> start: 3
+
+- Alfa 
+- Bravo
+- Charlie 
+
+-> H2
+
+Other stuff
+
+Here's some other things that are still in flux
+
+-> H2
+
+Attributes 
+
+A base `-> ATTRIBUTES`lang:neo` tag that holds key
+value pairs. Any pair can be used in the output 
+template or output file path. (e.g. `id`` is used
+in the filename creation)
+
+
+-> H2
+
+Inline links
+
+An &lt/&lt;link|inline link|https://www.example.com&gt;&gt;
+
+A &lt;&lt;link|reference link|1&gt;&gt;
+
+A &lt;&lt;link|styled link|2|class: highlight&gt;&gt;
+
+-> LINKS
+
+1: https://www.example.com/
+
+2: https://www.alanwsmith.com/
+
+-> P 
+
+Those `-> LINKS` sections can be scattered throughout  
+the document. 
+
+There's no change to the format between full links 
+and reference links. Anything that matches a reference 
+uses that reference. Otherwise it's put in as is. 
+
+-> H2
+
+Images 
+
+Inline images are done much like links. 
+
+Sample: &lt;&lt;img|1|alt text|class: alfa&gt;&gt;
+
+I expect most of the time they'll be done on their 
+own lines, but they can be put directly in text
+as shown above. If they are on their own line
+they aren't wrapped in a paragraph. They sit
+as siblings to the other content. 
+
+-> IMAGES  
+
+1: https://placekitten.com/200/280
+
+-> H2 
+
+Inline Code
+
+Inline code is done with three backticks. The code
+itself goes between the first two. Any attributes are
+placed between the second and third. Some might have 
+special processing (e.g. `lang``), anything that 
+doesn't have special processing is passed directly 
+to the HTML as attributes. 
+
+Multiple attributes are separated by a `|``. For 
+example:
+
+-> CODE 
+-> lang: neo 
+
+`print("Hello, World")`lang: python|class: alfa`
+
+-> P
+
+Spaces between the `:`` and value are optional. 
+
+-> H2
+
+Other stuff part 2
+
+-> LIST 
+
+- TODO - for to do lists
+
+- DIV - for div wrappers instead of paragraphs
+
+- HTML - for raw html 
+
+- NOTES - a div wrapper with a `class: notes` 
+pre applied 
+
+- FOOTNOTES - auto numbered footnotes that 
+link to their corresponding locations in the 
+document
+
+- DATA - has as `-> lang: json`` tag. Doesn't 
+show up in output. Is added in the document
+template directly for use in scripts on the 
+page. Need to think some about how this 
+will get put in and if there should be more
+than one of them. To start with, it'll
+just be the one. (should allow for `-> lang
+js`` as well. 
+
+- CODE EndOfCode Tags - for the times when 
+other headers would otherwise brake a 
+code block. 
+
+- CSS - styles that are copied directly to 
+the end of the page's style section to set 
+things without having to adjust code. 
+
+- BLOCKQUOTE - A blockquote. Maybe with an 
+optional attribution. 
+
+- QUOTE - For a quote and an attribution. 
+
+- HIDDEN - Stuff that's in the file that you 
+don't want output to the final content. (NOTE:
+don't relay on it for anything sensitive. Figure
+that at some point something might screw up and
+send it out.) Might not even do the field 
+since it could lead to that happening. 
+
+- TABLES - still working on how to handle
+these. Requirements include the ability to 
+style individual cells while still making the 
+content readable in the text file. 
+
+- Spans - e.g. `&lt;&lt;span|asdf|class:alfa&gt;&gt;
+
+- CATEGORIES - For identifying categories pages
+apply to. 
+
+- Strong and emphasis text - TBD on _text_, /text/
+*text* - Thinking I want to have underline as
+an option too. (beyond just strong and emphasis)
+
+    </code></pre>
+    </div>
   </body>
 </html>

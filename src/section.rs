@@ -3,6 +3,10 @@ use std::collections::HashMap;
 #[allow(non_camel_case_types)]
 #[derive(Debug, PartialEq)]
 pub enum Section {
+    // The PLACEHOLDER is just for dev while
+    // you need to work on other parts of the
+    // code base as prep
+    PLACEHOLDER,
     TITLE {
         attributes: HashMap<String, String>,
         children: Vec<Section>,
