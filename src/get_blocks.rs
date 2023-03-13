@@ -18,6 +18,7 @@ pub enum Marker {
     ATTRIBUTES,
     CATEGORIES,
     UNORDERED_LIST,
+    ORDERED_LIST,
 }
 
 #[allow(non_camel_case_types)]
@@ -29,6 +30,8 @@ pub enum Block {
     ATTRIBUTES { source: String },
     CATEGORIES { source: String },
     UNORDERED_LIST { source: String },
+    ORDERED_LIST { source: String },
+    PLACEHOLDER,
 }
 
 pub fn get_blocks(source: &str) -> IResult<&str, Vec<Block>> {
@@ -45,6 +48,7 @@ pub fn block_splitter(source: &str) -> IResult<&str, Block> {
         tag("-> ATTRIBUTES").map(|_| Marker::ATTRIBUTES),
         tag("-> CATEGORIES").map(|_| Marker::CATEGORIES),
         tag("-> LIST").map(|_| Marker::UNORDERED_LIST),
+        tag("-> OLIST").map(|_| Marker::ORDERED_LIST),
     ))(source)?;
     let (source, _) = multispace0(source)?;
     let (source, Section) = alt((take_until1("\n\n-> "), rest))(source)?;
@@ -84,6 +88,12 @@ pub fn block_splitter(source: &str) -> IResult<&str, Block> {
         Marker::UNORDERED_LIST => Ok((
             source,
             Block::UNORDERED_LIST {
+                source: Section.to_string(),
+            },
+        )),
+        Marker::ORDERED_LIST => Ok((
+            source,
+            Block::ORDERED_LIST {
                 source: Section.to_string(),
             },
         )),

@@ -23,6 +23,14 @@ pub enum Section {
         attributes: HashMap<String, String>,
         children: Vec<Section>,
     },
+    ORDERED_LIST {
+        attributes: HashMap<String, String>,
+        children: Vec<Section>,
+    },
+    ORDERED_LIST_ITEM {
+        attributes: HashMap<String, String>,
+        children: Vec<Section>,
+    },
     PLAINTEXT {
         value: String,
     },

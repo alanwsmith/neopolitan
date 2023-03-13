@@ -49,6 +49,15 @@ pub fn parse(source: &str) -> Page {
                     page.attributes.insert(key.to_string(), value.to_string());
                 }
             }
+            Block::ORDERED_LIST { source } => {
+                dbg!(source);
+                // let (_, list) = get_list(source.as_str()).unwrap();
+                // page.children.push(list);
+            }
+            Block::PLACEHOLDER {} => {
+                // let (_, list) = get_list(source.as_str()).unwrap();
+                // page.children.push(list);
+            }
         }
     }
     // dbg!(&page);
