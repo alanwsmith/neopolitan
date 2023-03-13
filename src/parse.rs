@@ -1,6 +1,7 @@
 use crate::get_attributes::get_attributes;
 use crate::get_blocks::*;
 use crate::get_categories::get_categories;
+use crate::get_list::get_list;
 use crate::get_paragraphs::*;
 use crate::page::Page;
 use crate::section::Section;
@@ -16,7 +17,8 @@ pub fn parse(source: &str) -> Page {
     for block in blocks {
         match block {
             Block::UNORDERED_LIST { source } => {
-                dbg!(source);
+                let (_, list) = get_list(source.as_str()).unwrap();
+                page.children.push(list);
             }
             Block::TITLE { source } => {
                 page.children.push(Section::TITLE {
@@ -42,7 +44,6 @@ pub fn parse(source: &str) -> Page {
                     page.categories.push(category);
                 }
             }
-
             Block::ATTRIBUTES { source } => {
                 let (_, attributes) = get_attributes(source.as_str()).unwrap();
                 for (key, value) in attributes.iter() {
@@ -61,6 +62,23 @@ pub fn parse(source: &str) -> Page {
         }
     }
     // dbg!(&page);
+
+    // let page = Page {
+    //     attributes: HashMap::new(),
+    //     children: vec![Section::UNORDERED_LIST {
+    //         attributes: HashMap::new(),
+    //         children: vec![Section::UNORDERED_LIST_ITEM {
+    //             attributes: HashMap::new(),
+    //             children: vec![Section::P {
+    //                 attributes: HashMap::new(),
+    //                 children: vec![Section::PLAINTEXT {
+    //                     value: "alfa bravo".to_string(),
+    //                 }],
+    //             }],
+    //         }],
+    //     }],
+    //     categories: vec![],
+    // };
 
     // let page = Page {
     //     attributes: HashMap::new(),

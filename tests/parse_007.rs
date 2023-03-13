@@ -48,7 +48,7 @@ mod tests {
         };
 
         let expected = page;
-        let result = parse_dev(source);
+        let result = parse_switch(source);
         assert_eq!(expected, result);
     }
 }
