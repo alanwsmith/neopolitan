@@ -20,6 +20,7 @@ mod tests {
         let mut page = Page {
             attributes: HashMap::new(),
             children: vec![],
+            categories: vec![],
         };
         page.attributes
             .insert("date".to_string(), "2023-03-03 04:05:06".to_string());

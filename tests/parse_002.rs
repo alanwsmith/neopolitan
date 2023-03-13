@@ -44,6 +44,7 @@ Second paragraph
                     }],
                 },
             ],
+            categories: vec![],
         };
         let result = parse_switch(source);
         assert_eq!(expected, result);

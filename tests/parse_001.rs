@@ -24,6 +24,7 @@ This Is A Title
                     value: "This Is A Title".to_string(),
                 }],
             }],
+            categories: vec![],
         };
         let result = parse_switch(source);
         assert_eq!(expected, result);

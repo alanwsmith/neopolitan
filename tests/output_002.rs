@@ -38,6 +38,7 @@ mod tests {
                     }],
                 },
             ],
+            categories: vec![],
         };
         let result = output_switch(source);
         assert_eq!(expected, result);

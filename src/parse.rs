@@ -1,3 +1,5 @@
+#![allow(unused_variables)]
+
 use crate::content::Content;
 use crate::get_attributes::get_attributes;
 use crate::get_blocks::*;
@@ -10,6 +12,7 @@ pub fn parse(source: &str) -> Page {
     let mut page = Page {
         attributes: HashMap::new(),
         children: vec![],
+        categories: vec![],
     };
     let blocks = get_blocks(source).unwrap().1;
     for block in blocks {
@@ -32,6 +35,7 @@ pub fn parse(source: &str) -> Page {
                 page.attributes
                     .insert("blurb".to_string(), source.to_string());
             }
+            Block::CATEGORIES { source } => {}
             Block::ATTRIBUTES { source } => {
                 let (_, attributes) = get_attributes(source.as_str()).unwrap();
 

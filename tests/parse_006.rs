@@ -1,31 +1,28 @@
 #![allow(unused_imports)]
 #[cfg(test)]
 mod tests {
-    use neopolitan::content::Content;
+
     use neopolitan::page::Page;
     use neopolitan::parse_dev::parse_dev;
     use neopolitan::parse_switch::parse_switch;
-    use neopolitan::section::Section;
     use std::collections::HashMap;
 
     #[test]
-    fn test_003() {
+    fn test_004() {
         let source = r#"
--> BLURB 
+-> CATEGORIES 
 
-This is the blurb
-
+- Rust
+- Test
 "#;
 
-        let mut page = Page {
+        let page = Page {
             attributes: HashMap::new(),
             children: vec![],
-            categories: vec![],
+            categories: vec!["Rust".to_string(), "Test".to_string()],
         };
-        page.attributes
-            .insert("blurb".to_string(), "This is the blurb".to_string());
         let expected = page;
-        let result = parse_switch(source);
+        let result = parse_dev(source);
         assert_eq!(expected, result);
     }
 }

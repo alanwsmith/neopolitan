@@ -22,6 +22,7 @@ mod tests {
                     value: "This Is A Title".to_string(),
                 }],
             }],
+            categories: vec![],
         };
 
         let result = output_switch(source);
