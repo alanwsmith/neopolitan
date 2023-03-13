@@ -33,10 +33,6 @@ pub fn parse(source: &str) -> Page {
             }
         }
     }
-
-    // page.attributes
-    //     .insert("blurb".to_string(), "asdf".to_string());
-
     // dbg!(&page);
     page
 }

@@ -39,17 +39,6 @@ mod tests {
                 },
             ],
         };
-
-        // let source = Page {
-        //     attributes: HashMap::new(),
-        //     children: vec![Section::TITLE {
-        //         attributes: HashMap::new(),
-        //         children: vec![Content::PLAINTEXT {
-        //             value: "This Is A Title".to_string(),
-        //         }],
-        //     }],
-        // };
-
         let result = output_switch(source);
         assert_eq!(expected, result);
     }
