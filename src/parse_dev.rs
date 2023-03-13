@@ -2,6 +2,7 @@ use crate::get_attributes::get_attributes;
 use crate::get_blocks::*;
 use crate::get_categories::get_categories;
 use crate::get_list::get_list;
+use crate::get_ordered_list::get_ordered_list;
 use crate::get_paragraphs::*;
 use crate::page::Page;
 use crate::section::Section;
@@ -51,28 +52,25 @@ pub fn parse_dev(source: &str) -> Page {
                 }
             }
             Block::ORDERED_LIST { source } => {
-                dbg!(source);
-                // let (_, list) = get_list(source.as_str()).unwrap();
-                // page.children.push(list);
+                dbg!(&source);
+                let (_, list) = get_ordered_list(source.as_str()).unwrap();
+                page.children.push(list);
             }
-            Block::PLACEHOLDER {} => {
-                // let (_, list) = get_list(source.as_str()).unwrap();
-                // page.children.push(list);
-            }
+            Block::PLACEHOLDER {} => {}
         }
     }
     // dbg!(&page);
 
     // let page = Page {
     //     attributes: HashMap::new(),
-    //     children: vec![Section::UNORDERED_LIST {
+    //     children: vec![Section::ORDERED_LIST {
     //         attributes: HashMap::new(),
-    //         children: vec![Section::UNORDERED_LIST_ITEM {
+    //         children: vec![Section::ORDERED_LIST_ITEM {
     //             attributes: HashMap::new(),
     //             children: vec![Section::P {
     //                 attributes: HashMap::new(),
     //                 children: vec![Section::PLAINTEXT {
-    //                     value: "alfa bravo".to_string(),
+    //                     value: "echo foxtrot".to_string(),
     //                 }],
     //             }],
     //         }],
