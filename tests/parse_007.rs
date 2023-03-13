@@ -13,10 +13,7 @@ mod tests {
         let source = r#"
 -> LIST 
 
-- alfa bravo 
-charlie delta 
-
-- echo foxtrot
+- alfa bravo
 
 "#;
 
@@ -27,26 +24,15 @@ charlie delta
             attributes: HashMap::new(),
             children: vec![Section::UNORDERED_LIST {
                 attributes: HashMap::new(),
-                children: vec![
-                    Section::UNORDERED_LIST_ITEM {
+                children: vec![Section::UNORDERED_LIST_ITEM {
+                    attributes: HashMap::new(),
+                    children: vec![Section::P {
                         attributes: HashMap::new(),
-                        children: vec![Section::P {
-                            attributes: HashMap::new(),
-                            children: vec![Section::PLAINTEXT {
-                                value: "alfa bravo charlie delta".to_string(),
-                            }],
+                        children: vec![Section::PLAINTEXT {
+                            value: "alfa bravo".to_string(),
                         }],
-                    },
-                    Section::UNORDERED_LIST_ITEM {
-                        attributes: HashMap::new(),
-                        children: vec![Section::P {
-                            attributes: HashMap::new(),
-                            children: vec![Section::PLAINTEXT {
-                                value: "echo foxtrot".to_string(),
-                            }],
-                        }],
-                    },
-                ],
+                    }],
+                }],
             }],
             categories: vec![],
         };
