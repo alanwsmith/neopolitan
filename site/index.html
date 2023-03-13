@@ -20,16 +20,15 @@ body {
   <body>
     <div class="center">
     <pre><code>
--> TITLE
+-&gt; TITLE
 
 Neopolitan 
 
--> SUBTITLE
+-&gt; SUBTITLE
 
-A plain-text document format designed to last twenty 
-years. 
+A plain-text document format for building web sites
 
--> H2
+-&gt; H2
 
 Overview
 
@@ -41,11 +40,11 @@ This document is a draft of notes and thinking about
 the format. It'll change as I work with the format
 in production. 
 
--> H2 
+-&gt; H2 
 
 Sections
 
-Section start with a `->`lang:neo` followed by a 
+Section start with a `-&gt;`lang:neo` followed by a 
 keyword.  They generally map toward HTML tags. The 
 `TITLE`` tag is an H1 that also shows up in the 
 metadata for usage in the output. The 
@@ -57,33 +56,33 @@ one it.
 Paragraphs
 
 Most text blocks turn into paragraphs. They start 
-automatically after a `-> TITLE`lang:neo`, 
-`-> SUBTITLE`lang:neo`, or `-> H#`lang:neo` 
+automatically after a `-&gt; TITLE`lang:neo`, 
+`-&gt; SUBTITLE`lang:neo`, or `-&gt; H#`lang:neo` 
 which each end after a single line of text. 
 
 Blocks of paragraphs can also be started explicitly 
-with the `-> P`lang:neo` tag. In both cases the
+with the `-&gt; P`lang:neo` tag. In both cases the
 content is wrapped in `&lt;p&gt;`lang:html` tags
 in the output. 
 
--> H2
+-&gt; H2
 
 Attributes
 
 Attributes can be applied to any section by adding 
-a `->`` token followed by the desired key/value pair 
-(e.g.`-> class: highlighted`lang:neo`).
+a `-&gt;`` token followed by the desired key/value pair 
+(e.g.`-&gt; class: highlighted`lang:neo`).
 
 The next paragraph in the source code is an example. 
 
--> P
--> class: highlighted
+-&gt; P
+-&gt; class: highlighted
 
 Not being able to apply styles and attributes to 
 individual blocks without falling back to HTML is
 one of the key reasons I'm making this format. 
 
--> H2
+-&gt; H2
 
 Unordered Lists  
 
@@ -95,71 +94,80 @@ later if it becomes a big pain point.
 Here's a list that includes additional styles 
 added to the second item. 
 
--> LIST
+-&gt; LIST
 
 - Alfa Bravo
 -|class: extra|- Charlie Delta
 - Echo Foxtrot
 
--> H2
+-&gt; H2
 
 Ordered Lists
 
-Lists with numbers start with `-> OLIST`lang:neo`. 
+Lists with numbers start with `-&gt; OLIST`lang:neo`. 
 Dashes are used instead of numbers. That comes 
 from shuffling numbers back and forth. Numbering
 is done automatically in the output and can be
 adjusted to start at a specific number. 
 
--> OLIST
--> start: 3
+-&gt; OLIST
+-&gt; start: 3
 
 - Alfa 
 - Bravo
 - Charlie 
 
--> H2
+-&gt; H2
 
 Other stuff
 
 Here's some other things that are still in flux
 
--> H2
+-&gt; H2
 
 Attributes 
 
-A base `-> ATTRIBUTES`lang:neo` tag that holds key
+A base `-&gt; ATTRIBUTES`lang:neo` tag that holds key
 value pairs. Any pair can be used in the output 
 template or output file path. (e.g. `id`` is used
 in the filename creation)
 
 
--> H2
+-&gt; H2
+
+Inline Tags
+
+Inline tags start and end with a pipe `|`lang:neo`  
+character touching the internal content. The 
+pipe is also used to separate the different
+parts of the tag. Adding a `\\`lang:neo` in front
+of a pipe escapes it so it can be used directly 
+in the content. Adding a `\\`lang:neo` in front
+
+
+-&gt; H2
 
 Inline links
 
-An &lt/&lt;link|inline link|https://www.example.com&gt;&gt;
+An &lt;&lt;link|inline link|https://www.example.com&gt;&gt;
 
 A &lt;&lt;link|reference link|1&gt;&gt;
 
 A &lt;&lt;link|styled link|2|class: highlight&gt;&gt;
 
--> LINKS
+-&gt; LINKS
 
 1: https://www.example.com/
 
 2: https://www.alanwsmith.com/
 
--> P 
-
-Those `-> LINKS` sections can be scattered throughout  
-the document. 
+-&gt; P 
 
 There's no change to the format between full links 
 and reference links. Anything that matches a reference 
 uses that reference. Otherwise it's put in as is. 
 
--> H2
+-&gt; H2
 
 Images 
 
@@ -173,11 +181,11 @@ as shown above. If they are on their own line
 they aren't wrapped in a paragraph. They sit
 as siblings to the other content. 
 
--> IMAGES  
+-&gt; IMAGES  
 
 1: https://placekitten.com/200/280
 
--> H2 
+-&gt; H2 
 
 Inline Code
 
@@ -191,20 +199,20 @@ to the HTML as attributes.
 Multiple attributes are separated by a `|``. For 
 example:
 
--> CODE 
--> lang: neo 
+-&gt; CODE 
+-&gt; lang: neo 
 
 `print("Hello, World")`lang: python|class: alfa`
 
--> P
+-&gt; P
 
 Spaces between the `:`` and value are optional. 
 
--> H2
+-&gt; H2
 
 Other stuff part 2
 
--> LIST 
+-&gt; LIST 
 
 - TODO - for to do lists
 
@@ -219,13 +227,13 @@ pre applied
 link to their corresponding locations in the 
 document
 
-- DATA - has as `-> lang: json`` tag. Doesn't 
+- DATA - has as `-&gt; lang: json`` tag. Doesn't 
 show up in output. Is added in the document
 template directly for use in scripts on the 
 page. Need to think some about how this 
 will get put in and if there should be more
 than one of them. To start with, it'll
-just be the one. (should allow for `-> lang
+just be the one. (should allow for `-&gt; lang
 js`` as well. 
 
 - CODE EndOfCode Tags - for the times when 
@@ -261,6 +269,58 @@ apply to.
 - Strong and emphasis text - TBD on _text_, /text/
 *text* - Thinking I want to have underline as
 an option too. (beyond just strong and emphasis)
+
+- DL, DT, and DD - Description lists and items 
+
+- FIGURE and FIGCAPTION - For figures. 
+
+- HR - Horizontal rules (tdb if three dashs (i.e.
+`---``) will also make a rule or just be for
+visible sectioning. Feels like it make the most
+sense to start with the later. 
+
+- &lt;&lt;cite&gt;&gt; - TBD on this one. 
+
+- &lt;&lt;dfn&gt;&gt; - for wrapping a word that's being defined
+in a defintion. (See the HTML spec for the example)
+
+- &lt;&lt;kbd&gt;&gt; - Denote text entry. 
+
+- &lt;&lt;mark&gt;&gt; - Represents text which is marked or 
+highlighted for reference or notation purposes due to 
+the marked passage's relevance in the enclosing context.
+
+- &lt;&lt;ruby&gt;&gt; - TBD on this one. Need to play with it 
+some. The MDN docs say: Represents small annotations 
+that are rendered above, below, or next to base text, 
+usually used for showing the pronunciation of East Asian 
+characters. It can also be used for annotating other kinds 
+of text, but this usage is less common. Might be something
+cool to do with it beyond the East Asian characters. 
+
+- &lt;&lt;s&gt;&gt; - Strikethru. (Could also do `-stirkethru-``). 
+Probably should be both. So you cany style it as well
+if you want. Note that you'd want to be able to nest
+strong, underline, emphasis and strike through both with
+the text shorthand and with the tags. 
+
+- RESULT - the resul of a code run. (Should probably be
+rendred in a `&lt;samp&gt;`lang:html` tag. 
+
+- &lt;&lt;sub&gt;&gt; - Specifies inline text which should 
+be displayed as subscript for solely typographical reasons. 
+Subscripts are typically rendered with a lowered baseline using 
+smaller text.
+
+- &lt;&lt;sup&gt;&gt; - Specifies inline text which is to be 
+displayed as superscript for solely typographical reasons. 
+Superscripts are usually rendered with a raised baseline using 
+smaller text.
+
+
+
+
+
 
     </code></pre>
     </div>
