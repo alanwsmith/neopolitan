@@ -3,8 +3,8 @@
 mod tests {
     use neopolitan::content::Content;
     use neopolitan::page::Page;
-    use neopolitan::parse::*;
-    use neopolitan::parse_dev::*;
+    use neopolitan::parse_dev::parse_dev;
+    use neopolitan::parse_switch::parse_switch;
     use neopolitan::section::Section;
     use std::collections::HashMap;
 
@@ -24,7 +24,7 @@ This is the blurb
         page.attributes
             .insert("blurb".to_string(), "This is the blurb".to_string());
         let expected = page;
-        let result = parse(source);
+        let result = parse_switch(source);
         assert_eq!(expected, result);
     }
 }

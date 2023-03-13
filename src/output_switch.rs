@@ -1,3 +1,4 @@
+#![allow(unused_imports)]
 use crate::output::output;
 use crate::output_dev::output_dev;
 use crate::page::Page;

@@ -3,8 +3,8 @@
 mod tests {
 
     use neopolitan::content::Content;
-    use neopolitan::output::output;
     use neopolitan::output_dev::output_dev;
+    use neopolitan::output_switch::output_switch;
     use neopolitan::page::Page;
     use neopolitan::section::Section;
     use std::collections::HashMap;
@@ -23,7 +23,7 @@ mod tests {
             }],
         };
 
-        let result = output_dev(source);
+        let result = output_switch(source);
         assert_eq!(expected, result);
     }
 }
