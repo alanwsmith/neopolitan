@@ -11,11 +11,11 @@ mod tests {
     #[test]
     fn test_008() {
         let source = r#"
--> OLIST 
+-> OLIST
 
-- echo foxtrot 
+- echo foxtrot
 
-- golf hotel 
+- golf hotel
 
 "#;
 

@@ -1,4 +1,5 @@
 #![allow(non_snake_case)]
+use crate::get_text::get_text;
 use crate::section::Section;
 use nom::branch::alt;
 use nom::bytes::complete::take_until1;
@@ -16,15 +17,14 @@ pub fn get_paragraphs(source: &str) -> IResult<&str, Vec<Section>> {
 
 pub fn split_paragraphs(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
-    let (source, Section) = alt((take_until1("\n\n"), rest))(source)?;
+    let (source, raw_text) = alt((take_until1("\n\n"), rest))(source)?;
     let (source, _) = multispace0(source)?;
+    let (_, text) = get_text(raw_text)?;
     Ok((
         source,
         Section::P {
             attributes: HashMap::new(),
-            children: vec![Section::PLAINTEXT {
-                value: Section.trim().to_string(),
-            }],
+            children: text,
         },
     ))
 }

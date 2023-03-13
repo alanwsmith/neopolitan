@@ -5,6 +5,7 @@ pub mod get_categories;
 pub mod get_list;
 pub mod get_ordered_list;
 pub mod get_paragraphs;
+pub mod get_text;
 pub mod output;
 pub mod output_dev;
 pub mod output_switch;
