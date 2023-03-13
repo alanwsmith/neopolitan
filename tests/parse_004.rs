@@ -2,6 +2,7 @@
 #[cfg(test)]
 mod tests {
 
+    use neopolitan::parse_switch::parse_switch;
     // use neopolitan::content::Content;
     use neopolitan::page::Page;
     use neopolitan::parse_dev::parse_dev;
@@ -23,7 +24,7 @@ mod tests {
         page.attributes
             .insert("date".to_string(), "2023-03-03 04:05:06".to_string());
         let expected = page;
-        let result = parse_dev(source);
+        let result = parse_switch(source);
         assert_eq!(expected, result);
     }
 }

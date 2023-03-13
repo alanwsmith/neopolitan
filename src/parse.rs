@@ -1,4 +1,5 @@
 use crate::content::Content;
+use crate::get_attributes::get_attributes;
 use crate::get_blocks::*;
 use crate::get_paragraphs::*;
 use crate::page::Page;
@@ -22,7 +23,7 @@ pub fn parse(source: &str) -> Page {
                 });
             }
             Block::P { source } => {
-                let paragraphs: Vec<Section> = get_paragraphs(source.as_str()).unwrap().1;
+                let (_, paragraphs) = get_paragraphs(source.as_str()).unwrap();
                 for paragraph in paragraphs {
                     page.children.push(paragraph);
                 }
@@ -32,11 +33,26 @@ pub fn parse(source: &str) -> Page {
                     .insert("blurb".to_string(), source.to_string());
             }
             Block::ATTRIBUTES { source } => {
-                page.attributes
-                    .insert("blurb".to_string(), source.to_string());
+                let (_, attributes) = get_attributes(source.as_str()).unwrap();
+
+                // dbg!(&attributes);
+
+                for (key, value) in attributes.iter() {
+                    // dbg!(&key);
+                    // dbg!(&value);
+                    page.attributes.insert(key.to_string(), value.to_string());
+                }
             }
         }
     }
     // dbg!(&page);
+
+    // let mut page = Page {
+    //     attributes: HashMap::new(),
+    //     children: vec![],
+    // };
+    // page.attributes
+    //     .insert("date".to_string(), "2023-03-03 04:05:06".to_string());
+
     page
 }
