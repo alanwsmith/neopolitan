@@ -16,13 +16,16 @@ mod tests {
 - Test
 "#;
 
+        // NOTE that Rust has a bunch of whitespace after it
+        // for the test
+
         let page = Page {
             attributes: HashMap::new(),
             children: vec![],
             categories: vec!["Rust".to_string(), "Test".to_string()],
         };
         let expected = page;
-        let result = parse_dev(source);
+        let result = parse_switch(source);
         assert_eq!(expected, result);
     }
 }
