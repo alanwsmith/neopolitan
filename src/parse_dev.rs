@@ -16,7 +16,7 @@ pub fn parse_dev(source: &str) -> Page {
             Block::TITLE { source } => {
                 page.children.push(Section::TITLE {
                     attributes: HashMap::new(),
-                    children: vec![Content::PlainText {
+                    children: vec![Content::PLAINTEXT {
                         value: source.to_string(),
                     }],
                 });

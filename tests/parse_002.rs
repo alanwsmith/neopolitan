@@ -27,19 +27,19 @@ Second paragraph
             children: vec![
                 Section::TITLE {
                     attributes: HashMap::new(),
-                    children: vec![Content::PlainText {
+                    children: vec![Content::PLAINTEXT {
                         value: "This Is A Title".to_string(),
                     }],
                 },
                 Section::P {
                     attributes: HashMap::new(),
-                    children: vec![Content::PlainText {
+                    children: vec![Content::PLAINTEXT {
                         value: "First paragraph".to_string(),
                     }],
                 },
                 Section::P {
                     attributes: HashMap::new(),
-                    children: vec![Content::PlainText {
+                    children: vec![Content::PLAINTEXT {
                         value: "Second paragraph".to_string(),
                     }],
                 },

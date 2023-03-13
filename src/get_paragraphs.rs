@@ -22,7 +22,7 @@ pub fn split_paragraphs(source: &str) -> IResult<&str, Section> {
         source,
         Section::P {
             attributes: HashMap::new(),
-            children: vec![Content::PlainText {
+            children: vec![Content::PLAINTEXT {
                 value: content.trim().to_string(),
             }],
         },
