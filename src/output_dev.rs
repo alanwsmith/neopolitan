@@ -1,5 +1,4 @@
 #![allow(warnings)]
-use crate::content::Content::*;
 use crate::page::Page;
 use crate::section::Section::*;
 
@@ -7,6 +6,15 @@ pub fn output_dev(source: Page) -> String {
     let mut output = "".to_string();
     for child in source.children {
         match child {
+            PLAINTEXT { value } => {}
+            UNORDERED_LIST_ITEM {
+                attributes,
+                children,
+            } => {}
+            UNORDERED_LIST {
+                attributes,
+                children,
+            } => {}
             TITLE {
                 attributes,
                 children,
@@ -19,6 +27,7 @@ pub fn output_dev(source: Page) -> String {
                             output.push_str(r#"</h1>"#);
                             output.push_str("\n");
                         }
+                        _ => {}
                     }
                 }
             }
@@ -34,6 +43,7 @@ pub fn output_dev(source: Page) -> String {
                             output.push_str(r#"</p>"#);
                             output.push_str("\n");
                         }
+                        _ => {}
                     }
                 }
             }

@@ -3,7 +3,6 @@
 mod tests {
 
     use neopolitan::parse_switch::parse_switch;
-    // use neopolitan::content::Content;
     use neopolitan::page::Page;
     use neopolitan::parse_dev::parse_dev;
     // use neopolitan::parse_switch::parse_switch;

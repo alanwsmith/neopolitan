@@ -1,3 +1,4 @@
+#![allow(non_snake_case)]
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until1;
@@ -8,6 +9,7 @@ use nom::multi::many_till;
 use nom::IResult;
 use nom::Parser;
 
+#[allow(non_camel_case_types)]
 #[derive(Debug, PartialEq)]
 pub enum Marker {
     BLURB,
@@ -15,8 +17,10 @@ pub enum Marker {
     TITLE,
     ATTRIBUTES,
     CATEGORIES,
+    UNORDERED_LIST,
 }
 
+#[allow(non_camel_case_types)]
 #[derive(Debug, PartialEq)]
 pub enum Block {
     BLURB { source: String },
@@ -24,6 +28,7 @@ pub enum Block {
     TITLE { source: String },
     ATTRIBUTES { source: String },
     CATEGORIES { source: String },
+    UNORDERED_LIST { source: String },
 }
 
 pub fn get_blocks(source: &str) -> IResult<&str, Vec<Block>> {
@@ -39,40 +44,47 @@ pub fn block_splitter(source: &str) -> IResult<&str, Block> {
         tag("-> BLURB").map(|_| Marker::BLURB),
         tag("-> ATTRIBUTES").map(|_| Marker::ATTRIBUTES),
         tag("-> CATEGORIES").map(|_| Marker::CATEGORIES),
+        tag("-> LIST").map(|_| Marker::UNORDERED_LIST),
     ))(source)?;
     let (source, _) = multispace0(source)?;
-    let (source, content) = alt((take_until1("\n\n-> "), rest))(source)?;
+    let (source, Section) = alt((take_until1("\n\n-> "), rest))(source)?;
     let (source, _) = multispace0(source)?;
-    let content = content.trim();
+    let Section = Section.trim();
     match block_type {
         Marker::TITLE => Ok((
             source,
             Block::TITLE {
-                source: content.to_string(),
+                source: Section.to_string(),
             },
         )),
         Marker::BLURB => Ok((
             source,
             Block::BLURB {
-                source: content.to_string(),
+                source: Section.to_string(),
             },
         )),
         Marker::P => Ok((
             source,
             Block::P {
-                source: content.to_string(),
+                source: Section.to_string(),
             },
         )),
         Marker::ATTRIBUTES => Ok((
             source,
             Block::ATTRIBUTES {
-                source: content.to_string(),
+                source: Section.to_string(),
             },
         )),
         Marker::CATEGORIES => Ok((
             source,
             Block::CATEGORIES {
-                source: content.to_string(),
+                source: Section.to_string(),
+            },
+        )),
+        Marker::UNORDERED_LIST => Ok((
+            source,
+            Block::UNORDERED_LIST {
+                source: Section.to_string(),
             },
         )),
     }

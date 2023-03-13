@@ -1,4 +1,3 @@
-use crate::content::Content;
 use crate::get_attributes::get_attributes;
 use crate::get_blocks::*;
 use crate::get_categories::get_categories;
@@ -16,10 +15,13 @@ pub fn parse(source: &str) -> Page {
     let blocks = get_blocks(source).unwrap().1;
     for block in blocks {
         match block {
+            Block::UNORDERED_LIST { source } => {
+                dbg!(source);
+            }
             Block::TITLE { source } => {
                 page.children.push(Section::TITLE {
                     attributes: HashMap::new(),
-                    children: vec![Content::PLAINTEXT {
+                    children: vec![Section::PLAINTEXT {
                         value: source.to_string(),
                     }],
                 });

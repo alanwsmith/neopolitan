@@ -1,7 +1,6 @@
 #![allow(unused_imports)]
 #[cfg(test)]
 mod tests {
-    use neopolitan::content::Content;
     use neopolitan::page::Page;
     use neopolitan::parse_dev::parse_dev;
     use neopolitan::parse_switch::parse_switch;
@@ -20,7 +19,7 @@ This Is A Title
             attributes: HashMap::new(),
             children: vec![Section::TITLE {
                 attributes: HashMap::new(),
-                children: vec![Content::PLAINTEXT {
+                children: vec![Section::PLAINTEXT {
                     value: "This Is A Title".to_string(),
                 }],
             }],
