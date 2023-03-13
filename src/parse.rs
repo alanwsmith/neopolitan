@@ -31,6 +31,10 @@ pub fn parse(source: &str) -> Page {
                 page.attributes
                     .insert("blurb".to_string(), source.to_string());
             }
+            Block::ATTRIBUTES { source } => {
+                page.attributes
+                    .insert("blurb".to_string(), source.to_string());
+            }
         }
     }
     // dbg!(&page);

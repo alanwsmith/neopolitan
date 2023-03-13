@@ -1,4 +1,5 @@
 pub mod content;
+pub mod get_attributes;
 pub mod get_blocks;
 pub mod get_paragraphs;
 pub mod output;

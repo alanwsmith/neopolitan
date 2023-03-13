@@ -13,6 +13,7 @@ pub enum Marker {
     BLURB,
     P,
     TITLE,
+    ATTRIBUTES,
 }
 
 #[derive(Debug, PartialEq)]
@@ -20,6 +21,7 @@ pub enum Block {
     BLURB { source: String },
     P { source: String },
     TITLE { source: String },
+    ATTRIBUTES { source: String },
 }
 
 pub fn get_blocks(source: &str) -> IResult<&str, Vec<Block>> {
@@ -33,6 +35,7 @@ pub fn block_splitter(source: &str) -> IResult<&str, Block> {
         tag("-> TITLE").map(|_| Marker::TITLE),
         tag("-> P").map(|_| Marker::P),
         tag("-> BLURB").map(|_| Marker::BLURB),
+        tag("-> ATTRIBUTES").map(|_| Marker::ATTRIBUTES),
     ))(source)?;
     let (source, _) = multispace0(source)?;
     let (source, content) = alt((take_until1("\n\n-> "), rest))(source)?;
@@ -54,6 +57,12 @@ pub fn block_splitter(source: &str) -> IResult<&str, Block> {
         Marker::P => Ok((
             source,
             Block::P {
+                source: content.to_string(),
+            },
+        )),
+        Marker::ATTRIBUTES => Ok((
+            source,
+            Block::ATTRIBUTES {
                 source: content.to_string(),
             },
         )),
