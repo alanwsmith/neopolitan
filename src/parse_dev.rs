@@ -23,7 +23,7 @@ pub fn parse_dev(source: &str) -> Page {
                 });
             }
             Block::P { source } => {
-                let paragraphs: Vec<Section> = get_paragraphs(source.as_str()).unwrap().1;
+                let (_, paragraphs) = get_paragraphs(source.as_str()).unwrap();
                 for paragraph in paragraphs {
                     page.children.push(paragraph);
                 }
@@ -33,7 +33,8 @@ pub fn parse_dev(source: &str) -> Page {
                     .insert("blurb".to_string(), source.to_string());
             }
             Block::ATTRIBUTES { source } => {
-                let attributes = get_attributes(source.as_str()).unwrap().1;
+                let (_, attributes) = get_attributes(source.as_str()).unwrap();
+
                 for (key, value) in attributes.iter() {
                     page.attributes.insert(key.to_string(), value.to_string());
                 }
