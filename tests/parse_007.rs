@@ -15,6 +15,8 @@ mod tests {
 
 - alfa bravo
 
+- charlie delta 
+
 "#;
 
         // NOTE that Rust has a bunch of whitespace after it
@@ -24,15 +26,26 @@ mod tests {
             attributes: HashMap::new(),
             children: vec![Section::UNORDERED_LIST {
                 attributes: HashMap::new(),
-                children: vec![Section::UNORDERED_LIST_ITEM {
-                    attributes: HashMap::new(),
-                    children: vec![Section::P {
+                children: vec![
+                    Section::UNORDERED_LIST_ITEM {
                         attributes: HashMap::new(),
-                        children: vec![Section::PLAINTEXT {
-                            value: "alfa bravo".to_string(),
+                        children: vec![Section::P {
+                            attributes: HashMap::new(),
+                            children: vec![Section::PLAINTEXT {
+                                value: "alfa bravo".to_string(),
+                            }],
                         }],
-                    }],
-                }],
+                    },
+                    Section::UNORDERED_LIST_ITEM {
+                        attributes: HashMap::new(),
+                        children: vec![Section::P {
+                            attributes: HashMap::new(),
+                            children: vec![Section::PLAINTEXT {
+                                value: "charlie delta".to_string(),
+                            }],
+                        }],
+                    },
+                ],
             }],
             categories: vec![],
         };
