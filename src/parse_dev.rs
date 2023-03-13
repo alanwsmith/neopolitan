@@ -19,8 +19,6 @@ pub fn parse_dev(source: &str) -> Page {
             Block::UNORDERED_LIST { source } => {
                 let (_, list) = get_list(source.as_str()).unwrap();
                 page.children.push(list);
-
-                // dbg!(source);
             }
             Block::TITLE { source } => {
                 page.children.push(Section::TITLE {

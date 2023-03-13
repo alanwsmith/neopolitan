@@ -19,9 +19,6 @@ mod tests {
 
 "#;
 
-        // NOTE that Rust has a bunch of whitespace after it
-        // for the test
-
         let page = Page {
             attributes: HashMap::new(),
             children: vec![Section::UNORDERED_LIST {
