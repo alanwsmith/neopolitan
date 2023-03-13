@@ -11,7 +11,8 @@ mod tests {
 
     #[test]
     fn test_004_basic_html_output() {
-        let expected = r#"<h1 class="title">This Is A Title</h1>"#;
+        let expected = r#"<h1 class="title">This Is A Title</h1>
+"#;
 
         let source = Page {
             attributes: HashMap::new(),
