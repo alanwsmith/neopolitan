@@ -36,7 +36,7 @@ Launch Requirements
 
 [x] CATEGORIRES 
 
-[] OLIST (Ordered list) Blocks
+[x] OLIST (Ordered list) Blocks
 
 [] Links in text (without references)
 
