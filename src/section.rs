@@ -34,6 +34,11 @@ pub enum Section {
     PLAINTEXT {
         value: String,
     },
+    LINK {
+        attributes: HashMap<String, String>,
+        url: String,
+        value: String,
+    },
 }
 
 // use crate::get_paragraphs::*;
