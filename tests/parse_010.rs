@@ -3,6 +3,7 @@
 mod tests {
 
     use neopolitan::get_text::get_text;
+    use neopolitan::get_text_dev::get_text_dev;
     use neopolitan::page::Page;
     use neopolitan::parse_dev::parse_dev;
     use neopolitan::parse_switch::parse_switch;
@@ -25,7 +26,7 @@ mod tests {
                 value: "link".to_string(),
             },
         ];
-        let result = get_text(source).unwrap().1;
-        // assert_eq!(expected, result);
+        let result = get_text_dev(source).unwrap().1;
+        assert_eq!(expected, result);
     }
 }
