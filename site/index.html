@@ -13,13 +13,240 @@ body {
 .center {
    display: grid;
    place-items: center;
-   padding-right:20px;
 }
 </style>
   </head>
   <body>
     <div class="center">
-      <a href="overview.txt">Overview</a> <br />(warning: it's a txt file your browser may render bright)
+      <pre>
+      -&gt; TITLE
+
+Welcome To Neopolitan 
+
+-&gt; SUBTITLE
+
+A plain-text format for websites
+
+-&gt; H2
+
+Overview
+
+My site is twenty years old. Realizing that, I
+started thinking about the next twenty. Something
+I&apos;d never done before. It changes a lot. 
+
+Generally speaking, I&apos;ll be writing vanilla HTML, 
+CSS, and JavaScript. More on that later. For now, 
+it&apos;s enough to say that, for my personal site, 
+frameworks have been a net negative. I&apos;m going
+back to the fundamentals. 
+
+Content management caught my attention as well. 
+I&apos;m a huge fan of plain-text. Markdown, MDX, 
+and Org-Mode all play a part in my system. 
+They&apos;re solid, but they each cause their own 
+type of friction. There are things I&apos;m not 
+doing because of them. 
+
+So, I&apos;m making my own format. 
+
+-&gt; H2
+
+Neopolitan Features
+
+Neopolitan is still in it&apos;s early stages 
+and very much in flux. I&apos;m using it in 
+and iterative design style process. That said, 
+the basic ideas are pretty well locked in. 
+
+-&gt; ASIDE 
+&gt;&gt; class: highlighted
+
+There&apos;s a bunch of code samples below that can 
+get hard to look at in the raw form if you&apos;re not 
+familiar with the format. The content above is 
+more what my average posts look like. 
+
+
+-&gt; LIST
+
+- This aim of neopolitan is not to be all things
+to all people. It&apos;s initial goal is to build
+my website. It&apos;s open source. I hope folks
+find it useful in the future, but I&apos;d 
+hold off trying to do anything with it until
+I&apos;ve at least got it in production myself. 
+
+- Neopolitan documents are composed of sections 
+that start with a `-&gt;`` token followed by 
+the name for the type of section. The type of 
+section determines how the content is processed. 
+For example, a `-&gt; TITLE`` section turns the first
+line after it into an `h1`` and the rest of 
+the content after it becomes paragraphs.
+
+- Optional attributes an be added to each section. 
+via a token with two `&gt;`` directly under the 
+opening `-&gt;`` line. The `&gt;&gt; class: highlighted`` 
+in the `-&gt; ASIDE`` section above is an example. 
+
+- Some sections are for display (like this 
+`-&gt; LIST``) while others are for metadata
+(like the `-&gt; ATTRIBUTES``, and `-&gt; CATEGORIES`) 
+below. 
+
+- Different inline tags are available for links, 
+code, spans, quotes, and others that will be 
+documented. The tags start with two `&lt;`` and end 
+with two `&gt;`` Here&apos;s a link as an example:
+
+-&gt; CODE 
+
+&lt;&lt;link|alfa|https://www.example.com/&gt;&gt;
+
+-&gt; LIST
+
+- Links can also use references. This is done using 
+some name or number in the tag then adding the
+same thing to a `-&gt; LINKS` section somewhere in 
+the document. For example:
+
+-&gt; CODE 
+
+&lt;&lt;link|bravo|1&gt;&gt;
+
+-&gt; P
+
+And then in a `-&gt; LINKS` section: 
+
+-&gt; CODE 
+
+1: https://www.example.com
+
+-&gt; LIST 
+
+- Optional attributes can be passed to inline 
+tags by separating them with a pipe. For example:
+
+-&gt; CODE 
+
+&lt;&lt;link|charlie|https://www.example.com/|class: primary&gt;&gt;
+
+-&gt; P 
+
+becomes:
+
+-&gt; CODE 
+
+&lt;a href=&quot;https://www.example.com/&quot; class=&quot;primary&quot;&gt;charlie&lt;/a&gt;
+
+-&gt; LIST 
+
+- Shorthands using backtics, underscores, etc... are in
+progress for code, strong, emphasis, etc... in addition 
+to the ability to make them with the inline tags. 
+
+- `-&gt; FOOTNOTES` section provide automatic numbering and links 
+to places in the document marked by `^` characters. Those 
+locations are numbered and link back in response. 
+
+-class: highlight|- Attributes can be applied to individual list 
+items by adding a second `-` and putting the attributes inside 
+pipes like this one. Multiple pipes work too. 
+`-|id: alfa|class: bravo|-`
+
+- Ordered lists have their own `-&gt; OLIST` section type. Dashes
+are used instead of numbers to make it easier to move things 
+without having to renumber them to look right in the source 
+document. (Most processes disregard the numbers, but it 
+always bugged my when they weren&apos;t right in the source.)
+
+- The start number of an ordered list can be defined with a 
+`&gt;&gt; start: #`` attribute. 
+
+- Image handling is a work in progress. 
+
+- Table handling is a work in progress. 
+
+- `-&gt; HIDDEN`` for stuff that&apos;s in the file that you 
+don&apos;t want output to the final content. (NOTE:
+don&apos;t rely on it for anything sensitive. Figure
+that at some point something might screw up and
+send it out.) 
+
+- `-&gt; RESULT` - the result of a code run. (Maybe
+rendered in a `&lt;samp&gt;`` tag)
+
+-&gt; H2
+
+Next Steps
+
+Most of the above is pretty well defined. The rest of this 
+below is a little more fluid. Their ideas I expect I&apos;ll 
+get to, but the priority is everything above. 
+
+That said, here&apos;s what a more complete vision includes. 
+
+-&gt; LIST
+
+- `DLIST` for description lists
+
+- `HTML`` section provide for raw HTML input
+
+- `DIV`` sections provide for adding content that&apos;s not 
+wrapped in `&lt;p&gt;`` tags
+
+- `BLOCKQUOTE`` sections for blockquotes. 
+
+- `CSS`` sections provide a way to add CSS directly 
+to the page. (They are added as the last CSS before the closing 
+`&lt;/head&gt;``.
+
+- `JS`` sections provide a way to inject scripts directly 
+into the page. (They are added as the last `&lt;script&gt;`` 
+before the closing `&lt;/head&gt;``)
+
+- I have an idea for `DATA` sections to house data for 
+a page, but TBD on that implementation. I need to work 
+with it first. 
+
+- `FIGURE/FIGCAPTION` - TBD on these
+
+- `HR` for adding a horizontal rule you can style with 
+attributes 
+
+
+-&gt; P 
+
+That&apos;s the basics. This is my first time doing something
+like this so I have no idea how long it&apos;ll take. I&apos;ve 
+started making some actual progress on a parser though. 
+So, I&apos;m optimistic. 
+
+I&apos;ll post updates here as I make progress. 
+
+You can also follow me on 
+&lt;&lt;link|mastodon|https://hachyderm.io/@TheIdOfAlan&gt;&gt;
+
+And I stream some of the work 
+&lt;&lt;link|on twitch|https://www.twitch.tv/theidofalan&gt;&gt;
+
+Stop by and say hi. 
+
+-a
+
+
+-&gt; CATEGORIES
+&gt;&gt; Neopolitan  
+
+-&gt; ATTRIBUTES
+&gt;&gt; date: 2023-03-11 13:07:46
+&gt;&gt; updated: 2023-03-12 19:23:12
+&gt;&gt; id: 2n4twoxoqgi4
+&gt;&gt; site: neo 
+&gt;&gt; type: post
+&gt;&gt; status: published
+      </pre>
     </div>
   </body>
 </html>
