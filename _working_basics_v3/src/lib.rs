@@ -14,4 +14,6 @@ pub mod page;
 pub mod parse;
 pub mod parse_dev;
 pub mod parse_switch;
+pub mod preprocess;
 pub mod section;
+pub mod text;
