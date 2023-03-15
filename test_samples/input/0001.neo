@@ -1,0 +1,39 @@
+-> TITLE
+
+Hello, Neopolitan
+
+-> P
+
+This is a basic sample to use 
+for testing the neopolitan 
+parser. 
+
+It'll change over time. 
+
+Here's *some strong* text
+
+And some /with emphasis/
+
+And _an underline_ string
+
+And <<link|a link|https://www.example.com/>> 
+
+And <<span|a span with style|class: highlighted>>
+
+And <<code|println!("inline code")|rust>>
+
+And other `println!("inline code");`rust`
+
+And `println!("styled inline code");`rust|class: highlighted`
+
+
+
+
+-> ATTRIBUTES
+>> date: 2023-03-15 03:07:22
+>> id: 2n2zgamiq4v6
+>> site: aws
+>> type: post
+>> status: published
+
+
