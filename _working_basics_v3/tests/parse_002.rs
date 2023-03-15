@@ -8,7 +8,7 @@ mod tests {
     use std::collections::HashMap;
 
     #[test]
-    fn test_001() {
+    fn test_002() {
         let source = r#"
 -> TITLE
 
@@ -16,7 +16,7 @@ This Is A Title
 
 -> P 
 
-First paragraph 
+First paragraph
 
 Second paragraph 
 

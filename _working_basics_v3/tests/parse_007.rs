@@ -13,15 +13,11 @@ mod tests {
         let source = r#"
 -> LIST 
 
-- alfa bravo 
-charlie delta 
+- alfa bravo
 
-- echo foxtrot
+- charlie delta 
 
 "#;
-
-        // NOTE that Rust has a bunch of whitespace after it
-        // for the test
 
         let page = Page {
             attributes: HashMap::new(),
@@ -33,7 +29,7 @@ charlie delta
                         children: vec![Section::P {
                             attributes: HashMap::new(),
                             children: vec![Section::PLAINTEXT {
-                                value: "alfa bravo charlie delta".to_string(),
+                                value: "alfa bravo".to_string(),
                             }],
                         }],
                     },
@@ -42,7 +38,7 @@ charlie delta
                         children: vec![Section::P {
                             attributes: HashMap::new(),
                             children: vec![Section::PLAINTEXT {
-                                value: "echo foxtrot".to_string(),
+                                value: "charlie delta".to_string(),
                             }],
                         }],
                     },
@@ -52,7 +48,7 @@ charlie delta
         };
 
         let expected = page;
-        let result = parse_dev(source);
+        let result = parse_switch(source);
         assert_eq!(expected, result);
     }
 }

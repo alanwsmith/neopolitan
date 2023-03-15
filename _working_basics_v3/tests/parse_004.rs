@@ -2,9 +2,9 @@
 #[cfg(test)]
 mod tests {
 
-    use neopolitan::parse_switch::parse_switch;
     use neopolitan::page::Page;
     use neopolitan::parse_dev::parse_dev;
+    use neopolitan::parse_switch::parse_switch;
     // use neopolitan::parse_switch::parse_switch;
     // use neopolitan::section::Section;
     use std::collections::HashMap;
@@ -12,7 +12,7 @@ mod tests {
     #[test]
     fn test_004() {
         let source = r#"
--> ATTRIBUTES 
+-> ATTRIBUTES
 -> date: 2023-03-03 04:05:06
 "#;
 

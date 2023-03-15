@@ -2,8 +2,26 @@
 
 Neopolitan
 
-My in progress content format I plan to 
-use for the next 20 years. 
+-> SUBTITLE 
+
+A plain-text format to build my websites
+
+-> H2
+
+Test Notes
+
+-> LIST
+
+- GOAL: To processor works with multiple
+passes. The first pass converts everything
+to `<<...>>`` tags. The second pass turns
+those things into an AST which is then 
+used for the output. 
+
+
+
+
+
 
 -> H2
 
