@@ -1,185 +1,185 @@
 -> TITLE
 
-Neopolitan 
+Welcome To Neopolitan 
 
 -> SUBTITLE
 
-A plain-text document format for building web sites
+A plain-text format for websites
 
 -> H2
 
 Overview
 
-None of the plain-text formats I've worked with fit 
-what I'm looking for to manage the content for my 
-site. This my attempt to make something better. 
+My site is twenty years old. Realizing that, I
+started thinking about the next twenty. Something
+I'd never done before. It changes a lot. 
 
-This document is a draft of notes and thinking about
-the format. It'll change as I work with the format
-in production. 
+Generally speaking, I'll be writing vanilla HTML, 
+CSS, and JavaScript. More on that later. For now, 
+it's enough to say that, for my personal site, 
+frameworks have been a net negative. I'm going
+back to the fundamentals. 
 
--> H2
+Content management caught my attention as well. 
+I'm a huge fan of plain-text. Markdown, MDX, 
+and Org-Mode all play a part in my system. 
+They're solid, but they each cause their own 
+type of friction. There are things I'm not 
+doing because of them. 
 
-Launch Requirements
-
--> TODO AST
-
-[x] TITLE Blocks 
-
-[x] P (Paragraphs) Blocks
-
-[x] LIST (Unordered list) Blocks 
-
-[x] ATTRIBUTES metadata 
-
-[x] BLURB 
-
-[x] CATEGORIRES 
-
-[x] OLIST (Ordered list) Blocks
-
-[] Links in text (without references)
-
-[] Strong in text 
-
-[] Emphasis in text
-
-[] Inline Code
-
-[] Images 
-
-[] TODO Lists 
-
-[] CODE blocks 
-
+So, I'm making my own format. 
 
 -> H2
 
-Possible Future Items 
+Neopolitan Features
 
-[] TABLE Blocks
+Neopolitan is still in it's early stages 
+and very much in flux. I'm using it in 
+and iterative design style process. That said, 
+the basic ideas are pretty well locked in. 
 
-[] Subtitle tag
+-> ASIDE 
+>> class: highlighted
 
-[] Nest Strong, Emphasis, and Underline 
+There's a bunch of code samples below that can 
+get hard to look at in the raw form if you're not 
+familiar with the format. The content above is 
+more what my average posts look like. 
 
-[] All the rest of the tags below
-
-[] Links in text with references 
-
-[] Define start number for ordered lists
-
-
-
-
-
--> H2 
-
-Draft Details
-
--> H3
-
-Sections
-
-Section start with a `->`lang:neo` followed by a 
-keyword.  They generally map toward HTML tags. The 
-`TITLE`` tag is an H1 that also shows up in the 
-metadata for usage in the output. The 
-`SUBTITLE`` becomes a div with the class subtitle 
-one it. 
-
--H2
-
-Paragraphs
-
-Most text blocks turn into paragraphs. They start 
-automatically after a `-> TITLE`lang:neo`, 
-`-> SUBTITLE`lang:neo`, or `-> H#`lang:neo` 
-which each end after a single line of text. 
-
-Blocks of paragraphs can also be started explicitly 
-with the `-> P`lang:neo` tag. In both cases the
-content is wrapped in `<p>`lang:html` tags
-in the output. 
-
--> H2
-
-Attributes
-
-Attributes can be applied to any section by adding 
-a `->`` token followed by the desired key/value pair 
-(e.g.`-> class: highlighted`lang:neo`).
-
-The next paragraph in the source code is an example. 
-
--> P
--> class: highlighted
-
-Not being able to apply styles and attributes to 
-individual blocks without falling back to HTML is
-one of the key reasons I'm making this format. 
-
--> H2
-
-Unordered Lists  
-
-Unordered lists begin with the `LIST`` keyword. 
-Right now there is no nesting. I rarely need that 
-so I'll just fall back to HTML. I'll deal with it 
-later if it becomes a big pain point. 
-
-Here's a list that includes additional styles 
-added to the second item. 
 
 -> LIST
 
-- Alfa Bravo
--|class: extra|- Charlie Delta
-- Echo Foxtrot
+- This aim of neopolitan is not to be all things
+to all people. It's initial goal is to build
+my website. It's open source. I hope folks
+find it useful in the future, but I'd 
+hold off trying to do anything with it until
+I've at least got it in production myself. 
 
--> H2
+- Neopolitan documents are composed of sections 
+that start with a `->`` token followed by 
+the name for the type of section. The type of 
+section determines how the content is processed. 
+For example, a `-> TITLE`` section turns the first
+line after it into an `h1`` and the rest of 
+the content after it becomes paragraphs.
 
-Ordered Lists
+- Optional attributes an be added to each section. 
+via a token with two `>`` directly under the 
+opening `->`` line. The `>> class: highlighted`` 
+in the `-> ASIDE`` section above is an example. 
 
-Lists with numbers start with `-> OLIST`lang:neo`. 
-Dashes are used instead of numbers. That comes 
-from shuffling numbers back and forth. Numbering
-is done automatically in the output and can be
-adjusted to start at a specific number. 
+- Some sections are for display (like this 
+`-> LIST``) while others are for metadata
+(like the `-> ATTRIBUTES``, and `-> CATEGORIES`) 
+below. 
 
--> OLIST
--> start: 3
+- Different inline tags are available for links, 
+code, spans, quotes, and others that will be 
+documented. The tags start with two `<`` and end 
+with two `>`` Here's a link as an example:
 
-- Alfa 
-- Bravo
-- Charlie 
+-> CODE 
 
--> H2
+<<link|alfa|https://www.example.com/>>
 
-Other stuff
+-> LIST
 
-Here's some other things that are still in flux
+- Links can also use references. This is done using 
+some name or number in the tag then adding the
+same thing to a `-> LINKS` section somewhere in 
+the document. For example:
 
--> H2
+-> CODE 
 
-Attributes 
+<<link|bravo|1>>
 
-A base `-> ATTRIBUTES`lang:neo` tag that holds key
-value pairs. Any pair can be used in the output 
-template or output file path. (e.g. `id`` is used
-in the filename creation)
+-> P
+
+And then in a `-> LINKS` section: 
+
+-> CODE 
+
+1: https://www.example.com
+
+-> LIST 
+
+- Optional attributes can be passed to inline 
+tags by separating them with a pipe. For example:
+
+-> CODE 
+
+<<link|charlie|https://www.example.com/|class: primary>>
+
+-> P 
+
+becomes:
+
+-> CODE 
+
+<a href="https://www.example.com/" class="primary">charlie</a>
+
+-> LIST 
+
+- Shorthands using backtics, underscores, etc... are in
+progress for code, strong, emphasis, etc... in addition 
+to the ability to make them with the inline tags. 
+
+-class: highlight|- Attributes can be applied to individual list 
+items by adding a second `-` and putting the attributes inside 
+pipes like this one. Multiple pipes work too. 
+`-|id: alfa|class: bravo|-`
+
+- Ordered lists have their own `-> OLIST` section type. Dashes
+are used instead of numbers to make it easier to move things 
+without having to renumber them to look right in the source 
+document. (Most processes disregard the numbers, but it 
+always bugged my when they weren't right in the source.)
+
+- The start number of an ordered list can be defined with a 
+`>> start: #`` attribute. 
+
+- `-> CSS`` sections provide a way to add CSS directly 
+to the page. (They are added as the last CSS before the closing 
+`</head>``.
+
+- `-> JS`` sections provide a way to inject scripts directly 
+into the page. (They are added as the last `<script>`` before 
+the closing `</head>``)
+
+- Image handling is a work in progress. 
+
+- Table handling is a work in progress. 
 
 
--> H2
 
-Inline Tags
+-> CATEGORIES
+>> Neopolitan  
 
-Inline tags start and end with a pipe `|`lang:neo`  
-character touching the internal content. The 
-pipe is also used to separate the different
-parts of the tag. Adding a `\\`lang:neo` in front
-of a pipe escapes it so it can be used directly 
-in the content. Adding a `\\`lang:neo` in front
+-> ATTRIBUTES
+>> date: 2023-03-11 13:07:46
+>> updated: 2023-03-12 19:23:12
+>> id: 2n4twoxoqgi4
+>> site: neo 
+>> type: post
+>> status: published
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -> H2
