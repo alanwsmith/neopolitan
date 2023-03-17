@@ -42,7 +42,7 @@ fn basic_integration() {
     let expected = Page {
         attributes: HashMap::new(),
         children: vec![
-            Section::TITLE {
+            Section::TitleSection {
                 children: vec![
                     Chunk::H1 {
                         attributes: HashMap::from([
@@ -61,7 +61,7 @@ fn basic_integration() {
                     },
                 ],
             },
-            Section::P {
+            Section::ParagraphSection {
                 children: vec![
                     Chunk::P {
                         attributes: HashMap::from([]),
@@ -77,7 +77,7 @@ fn basic_integration() {
                     },
                 ],
             },
-            Section::P {
+            Section::ParagraphSection {
                 children: vec![
                     Chunk::P {
                         attributes: HashMap::from([("class".to_string(), "main".to_string())]),

@@ -9,7 +9,7 @@ use std::collections::HashMap;
 #[test]
 fn test_basic_title() {
     let source = vec!["-> TITLE", "", "Alfa Bravo"].join("\n");
-    let expected = Section::TITLE {
+    let expected = Section::TitleSection {
         children: vec![Chunk::H1 {
             attributes: HashMap::from([("class".to_string(), "title".to_string())]),
             children: vec![Chunk::Text {
@@ -33,7 +33,7 @@ fn test_paragraphs_after_title() {
         "Foxtrot golf hotel",
     ]
     .join("\n");
-    let expected = Section::TITLE {
+    let expected = Section::TitleSection {
         children: vec![
             Chunk::H1 {
                 attributes: HashMap::from([("class".to_string(), "title".to_string())]),
@@ -62,7 +62,7 @@ fn test_paragraphs_after_title() {
 #[test]
 fn test_attribute_on_title() {
     let source = vec!["-> TITLE", ">> id: main", "", "Alfa Bravo"].join("\n");
-    let expected = Section::TITLE {
+    let expected = Section::TitleSection {
         children: vec![Chunk::H1 {
             attributes: HashMap::from([
                 ("id".to_string(), "main".to_string()),
@@ -80,7 +80,7 @@ fn test_attribute_on_title() {
 #[test]
 fn test_basic_paragraph() {
     let source = vec!["-> P", "", "The tree top"].join("\n");
-    let expected = Section::P {
+    let expected = Section::ParagraphSection {
         children: vec![Chunk::P {
             attributes: HashMap::from([]),
             children: vec![Chunk::Text {
@@ -95,7 +95,7 @@ fn test_basic_paragraph() {
 #[test]
 fn test_multiple_paragraphs() {
     let source = vec!["-> P", "", "Echo Foxtrot", "", "Our plans right now."].join("\n");
-    let expected = Section::P {
+    let expected = Section::ParagraphSection {
         children: vec![
             Chunk::P {
                 attributes: HashMap::from([]),
@@ -126,7 +126,7 @@ fn test_attributes_on_paragraphs() {
         "Twist the valve",
     ]
     .join("\n");
-    let expected = Section::P {
+    let expected = Section::ParagraphSection {
         children: vec![
             Chunk::P {
                 attributes: HashMap::from([("class".to_string(), "mighty".to_string())]),
@@ -149,7 +149,7 @@ fn test_attributes_on_paragraphs() {
 #[test]
 fn test_inline_code() {
     let source = vec!["-> P", "", "The `sand`rust` drifts"].join("\n");
-    let expected = Section::P {
+    let expected = Section::ParagraphSection {
         children: vec![Chunk::P {
             attributes: HashMap::from([]),
             children: vec![

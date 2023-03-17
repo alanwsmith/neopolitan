@@ -31,8 +31,8 @@ use std::collections::HashMap;
 
 #[derive(Debug, PartialEq)]
 pub enum Section {
-    TITLE { children: Vec<Chunk> },
-    P { children: Vec<Chunk> },
+    TitleSection { children: Vec<Chunk> },
+    ParagraphSection { children: Vec<Chunk> },
     PLACEHOLDER,
 }
 
@@ -47,11 +47,11 @@ fn attribute_splitter(source: &str) -> IResult<&str, &str> {
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (source, mut block) = alt((
-        tag("-> TITLE").map(|_| Section::TITLE { children: vec![] }),
-        tag("-> P").map(|_| Section::P { children: vec![] }),
+        tag("-> TITLE").map(|_| Section::TitleSection { children: vec![] }),
+        tag("-> P").map(|_| Section::ParagraphSection { children: vec![] }),
     ))(source)?;
     match block {
-        Section::TITLE { ref mut children } => {
+        Section::TitleSection { ref mut children } => {
             let (source, _) = space0(source)?;
             let (source, value) = line_ending(source)?;
             let (source, attributes) = many0(attribute_splitter)(source)?;
@@ -87,7 +87,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             }
             Ok((return_content, block))
         }
-        Section::P { ref mut children } => {
+        Section::ParagraphSection { ref mut children } => {
             let (source, _) = space0(source)?;
             let (source, value) = line_ending(source)?;
             let (source, attributes) = many0(attribute_splitter)(source)?;
