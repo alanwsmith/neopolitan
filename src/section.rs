@@ -99,13 +99,12 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             Ok((return_content, block))
         }
         Section::P { ref mut children } => {
-            // dbg!(source);
             // Chomp leading spaces
             let (source, _) = space0(source)?;
+            // Clear to the end of the line
             let (source, value) = line_ending(source)?;
             // Get the attributes
             let (source, attributes) = many0(attribute_splitter)(source)?;
-            // dbg!(&attributes);
             // Prep a map and throw the attributes in it
             let mut attribute_map: HashMap<String, String> = HashMap::from([]);
             for attribute in attributes {
@@ -113,20 +112,17 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 let (value, _) = tag(":")(remainder)?;
                 attribute_map.insert(key.trim().to_string(), value.trim().to_string());
             }
-            //
-            // dbg!(&source);
-            // dbg!(&attribute_map);
-            //
-            let (source, _) = space0(source)?;
-            // dbg!(source);
+            // Get the rest of the content
             let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
+            // Clear leading spaces
             let (content, _) = multispace0(content)?;
+            // Get the paragraphs
             let (remainder, mut paragraphs) =
                 separated_list0(tag("\n\n"), take_until("\n\n"))(content)?;
             paragraphs.push(remainder);
+            // Push paragraphs onto the vec
             for paragraph in paragraphs.iter() {
                 let mut local_attributes: HashMap<String, String> = HashMap::new();
-                // local_attributes.insert("class".to_string(), "mighty".to_string());
                 for (attribute_key, attribute_value) in &attribute_map {
                     local_attributes.insert(attribute_key.to_string(), attribute_value.to_string());
                 }
