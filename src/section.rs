@@ -78,10 +78,10 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 if paragraph.is_empty() {
                 } else {
                     children.push(Chunk::P {
-                        attributes: HashMap::new(),
-                        children: vec![Chunk::Text {
+                        attributes: None,
+                        children: Some(vec![Chunk::Text {
                             value: paragraph.trim().to_string(),
-                        }],
+                        }]),
                     });
                 }
             }
@@ -114,10 +114,17 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                         value: chunk_remainder.to_string(),
                     });
                 }
-                children.push(Chunk::P {
-                    attributes: local_attributes,
-                    children: chunks,
-                });
+                if local_attributes.is_empty() {
+                    children.push(Chunk::P {
+                        attributes: None,
+                        children: Some(chunks),
+                    });
+                } else {
+                    children.push(Chunk::P {
+                        attributes: Some(local_attributes),
+                        children: Some(chunks),
+                    });
+                }
             }
             Ok((return_content, block))
         }

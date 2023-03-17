@@ -14,8 +14,8 @@ pub enum Chunk {
         value: Option<String>,
     },
     P {
-        attributes: HashMap<String, String>,
-        children: Vec<Chunk>,
+        attributes: Option<HashMap<String, String>>,
+        children: Option<Vec<Chunk>>,
     },
     Text {
         value: String,

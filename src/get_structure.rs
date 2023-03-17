@@ -30,7 +30,7 @@ use std::collections::HashMap;
 pub fn get_structure(source: &str) -> IResult<&str, Page> {
     let (_, sections) = many_till(section, eof)(source).unwrap();
     let p = Page {
-        attributes: HashMap::new(),
+        attributes: None,
         children: sections.0,
     };
     Ok(("", p))

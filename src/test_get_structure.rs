@@ -37,10 +37,11 @@ fn basic_integration() {
         "The `chink`rust` in the wall.",
         "",
         "The `desk`python` and `both`javascript` chairs",
+        "",
     ]
     .join("\n");
     let expected = Page {
-        attributes: HashMap::new(),
+        attributes: None,
         children: vec![
             Section::TitleSection {
                 children: vec![
@@ -54,34 +55,37 @@ fn basic_integration() {
                         }],
                     },
                     Chunk::P {
-                        attributes: HashMap::from([]),
-                        children: vec![Chunk::Text {
+                        attributes: None,
+                        children: Some(vec![Chunk::Text {
                             value: "The quick brown fox\nand the lazy dog".to_string(),
-                        }],
+                        }]),
                     },
                 ],
             },
             Section::ParagraphSection {
                 children: vec![
                     Chunk::P {
-                        attributes: HashMap::from([]),
-                        children: vec![Chunk::Text {
+                        attributes: None,
+                        children: Some(vec![Chunk::Text {
                             value: "They took the axe and the\nsaw to the forest.".to_string(),
-                        }],
+                        }]),
                     },
                     Chunk::P {
-                        attributes: HashMap::from([]),
-                        children: vec![Chunk::Text {
+                        attributes: None,
+                        children: Some(vec![Chunk::Text {
                             value: "The bark of the pine tree.".to_string(),
-                        }],
+                        }]),
                     },
                 ],
             },
             Section::ParagraphSection {
                 children: vec![
                     Chunk::P {
-                        attributes: HashMap::from([("class".to_string(), "main".to_string())]),
-                        children: vec![
+                        attributes: Some(HashMap::from([(
+                            "class".to_string(),
+                            "main".to_string(),
+                        )])),
+                        children: Some(vec![
                             Chunk::Text {
                                 value: "The ".to_string(),
                             },
@@ -93,11 +97,14 @@ fn basic_integration() {
                             Chunk::Text {
                                 value: " in the wall.".to_string(),
                             },
-                        ],
+                        ]),
                     },
                     Chunk::P {
-                        attributes: HashMap::from([("class".to_string(), "main".to_string())]),
-                        children: vec![
+                        attributes: Some(HashMap::from([(
+                            "class".to_string(),
+                            "main".to_string(),
+                        )])),
+                        children: Some(vec![
                             Chunk::Text {
                                 value: "The ".to_string(),
                             },
@@ -117,7 +124,7 @@ fn basic_integration() {
                             Chunk::Text {
                                 value: " chairs".to_string(),
                             },
-                        ],
+                        ]),
                     },
                 ],
             },
