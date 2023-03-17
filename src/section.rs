@@ -44,13 +44,18 @@ fn attribute_splitter(source: &str) -> IResult<&str, &str> {
 }
 
 pub fn section(source: &str) -> IResult<&str, Section> {
+    dbg!("-- SECTION START");
     let (source, _) = multispace0(source)?;
     let (source, mut block) = alt((
         tag("-> TITLE").map(|_| Section::TITLE { children: vec![] }),
         tag("-> P").map(|_| Section::P { children: vec![] }),
     ))(source)?;
     match block {
+        //
+
+        //
         Section::TITLE { ref mut children } => {
+            dbg!("-- SECTION:TITLE");
             let (source, _) = space0(source)?;
             let (source, value) = line_ending(source)?;
             let (source, attributes) = many0(attribute_splitter)(source)?;
@@ -86,23 +91,28 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             }
             Ok((return_content, block))
         }
+        //
 
+        //
         Section::P { ref mut children } => {
+            let attribute_map = HashMap::new();
+            dbg!("-- SECTION:P");
+            dbg!(&source);
             let (source, _) = space0(source)?;
             let (source, value) = line_ending(source)?;
             let (source, _) = space0(source)?;
             let (text, value) = line_ending(source)?;
-            // dbg!(&text);
-            // dbg!(&value);
-            // dbg!(&source);
-            let attribute_map = HashMap::new();
+            dbg!(&source);
+            dbg!(&text);
+            dbg!(&value);
+            let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
             children.push(Chunk::P {
                 attributes: attribute_map,
                 children: vec![Chunk::Text {
                     value: text.trim().to_string(),
                 }],
             });
-            Ok((source, block))
+            Ok((return_content, block))
         }
         _ => {
             let section = Section::PLACEHOLDER;
