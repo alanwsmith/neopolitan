@@ -227,9 +227,12 @@ pub fn section_dev(source: &str) -> IResult<&str, Section> {
                     local_attributes.insert(attribute_key.to_string(), attribute_value.to_string());
                 }
                 let (chunk_remainder, mut chunks) = process_text(paragraph.trim())?;
-                chunks.push(Chunk::Text {
-                    value: chunk_remainder.to_string(),
-                });
+                if chunk_remainder.is_empty() {
+                } else {
+                    chunks.push(Chunk::Text {
+                        value: chunk_remainder.to_string(),
+                    });
+                }
                 // dbg!(&chunks);
                 // Process the text in the thing
                 // let (last_child, paragraph_children) = many0(process_text)(paragraph)?;

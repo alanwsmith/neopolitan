@@ -17,7 +17,7 @@ fn section_test_001() {
             }],
         }],
     };
-    let result = section(source.as_str()).unwrap().1;
+    let result = section_dev(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
 
@@ -55,7 +55,7 @@ fn section_test_002() {
             },
         ],
     };
-    let result = section(source.as_str()).unwrap().1;
+    let result = section_dev(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
 
@@ -73,22 +73,22 @@ fn section_test_003() {
             }],
         }],
     };
-    let result = section(source.as_str()).unwrap().1;
+    let result = section_dev(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
 
 #[test]
 fn section_test_004() {
-    let source = vec!["-> P", "", "Echo Foxtrot"].join("\n");
+    let source = vec!["-> P", "", "The tree top"].join("\n");
     let expected = Section::P {
         children: vec![Chunk::P {
             attributes: HashMap::from([]),
             children: vec![Chunk::Text {
-                value: "Echo Foxtrot".to_string(),
+                value: "The tree top".to_string(),
             }],
         }],
     };
-    let result = section(source.as_str()).unwrap().1;
+    let result = section_dev(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
 
@@ -111,7 +111,7 @@ fn section_test_005() {
             },
         ],
     };
-    let result = section(source.as_str()).unwrap().1;
+    let result = section_dev(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
 
@@ -142,7 +142,7 @@ fn section_test_006() {
             },
         ],
     };
-    let result = section(source.as_str()).unwrap().1;
+    let result = section_dev(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
 
