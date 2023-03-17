@@ -5,10 +5,8 @@ use std::collections::HashMap;
 
 #[test]
 fn test_get_structure_001() {
-    let source = r#"-> TITLE
+    let source = vec!["-> TITLE", "", "Alfa Bravo"].join("\n");
 
-Alfa Bravo
-"#;
     let expected = Section::TITLE {
         children: vec![Chunk::H1 {
             attributes: HashMap::new(),
@@ -17,6 +15,6 @@ Alfa Bravo
             }],
         }],
     };
-    let result = section(source).unwrap().1;
+    let result = section(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
