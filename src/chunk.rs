@@ -5,8 +5,8 @@ pub enum Chunk {
     // TODO: Change the non option stuff to
     // options.
     H1 {
-        attributes: HashMap<String, String>,
-        children: Vec<Chunk>,
+        attributes: Option<HashMap<String, String>>,
+        children: Option<Vec<Chunk>>,
     },
     InlineCode {
         attributes: Option<HashMap<String, String>>,

@@ -68,12 +68,21 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             let (remainder, mut paragraphs) =
                 separated_list0(tag("\n\n"), take_until("\n\n"))(remainder)?;
             paragraphs.push(remainder.trim());
-            children.push(Chunk::H1 {
-                attributes: attribute_map,
-                children: vec![Chunk::Text {
-                    value: title.trim().to_string(),
-                }],
-            });
+            if attribute_map.is_empty() {
+                children.push(Chunk::H1 {
+                    attributes: None,
+                    children: Some(vec![Chunk::Text {
+                        value: title.trim().to_string(),
+                    }]),
+                });
+            } else {
+                children.push(Chunk::H1 {
+                    attributes: Some(attribute_map),
+                    children: Some(vec![Chunk::Text {
+                        value: title.trim().to_string(),
+                    }]),
+                });
+            }
             for paragraph in paragraphs.iter() {
                 if paragraph.is_empty() {
                 } else {

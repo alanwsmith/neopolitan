@@ -46,13 +46,13 @@ fn basic_integration() {
             Section::TitleSection {
                 children: vec![
                     Chunk::H1 {
-                        attributes: HashMap::from([
+                        attributes: Some(HashMap::from([
                             ("id".to_string(), "main".to_string()),
                             ("class".to_string(), "title".to_string()),
-                        ]),
-                        children: vec![Chunk::Text {
+                        ])),
+                        children: Some(vec![Chunk::Text {
                             value: "Alfa Bravo".to_string(),
-                        }],
+                        }]),
                     },
                     Chunk::P {
                         attributes: None,
