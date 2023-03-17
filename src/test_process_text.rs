@@ -80,7 +80,7 @@ fn single_link() {
         },
     ];
     let expected_remainder = "";
-    let (remainder, result) = process_text_dev(source).unwrap();
+    let (remainder, result) = process_text(source).unwrap();
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }
