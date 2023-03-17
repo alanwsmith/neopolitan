@@ -42,7 +42,6 @@ enum Target {
 }
 
 fn text(source: &str) -> IResult<&str, Vec<Chunk>> {
-    dbg!(&source);
     let mut response: Vec<Chunk> = vec![];
     let (source, payload) = alt((
         tuple((
@@ -66,7 +65,6 @@ fn text(source: &str) -> IResult<&str, Vec<Chunk>> {
     ))(source)?;
     match payload.0 {
         Target::Code { pretext } => {
-            dbg!(&pretext);
             response.push(Chunk::Text {
                 value: pretext.to_string(),
             });
