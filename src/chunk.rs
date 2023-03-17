@@ -6,6 +6,10 @@ pub enum Chunk {
         attributes: HashMap<String, String>,
         children: Vec<Chunk>,
     },
+    P {
+        attributes: HashMap<String, String>,
+        children: Vec<Chunk>,
+    },
     Text {
         value: String,
     },

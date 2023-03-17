@@ -12,12 +12,14 @@ use nom::character::complete::multispace1;
 use nom::character::complete::not_line_ending;
 use nom::character::complete::space0;
 use nom::combinator::eof;
+use nom::combinator::not;
 use nom::combinator::rest;
 use nom::error::Error;
 use nom::error::ErrorKind;
 use nom::multi::many0;
 use nom::multi::many1;
 use nom::multi::many_till;
+use nom::multi::separated_list0;
 use nom::sequence::delimited;
 use nom::sequence::pair;
 use nom::sequence::preceded;
@@ -44,13 +46,29 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     match block {
         Section::TITLE { ref mut children } => {
             let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
-            *children = vec![Chunk::H1 {
+            let (remainder, title) = alt((take_until("\n\n"), rest))(content)?;
+            let (remainder, _) = multispace0(remainder)?;
+            let (remainder, mut paragraphs) =
+                separated_list0(tag("\n\n"), take_until("\n\n"))(remainder)?;
+            paragraphs.push(remainder.trim());
+            children.push(Chunk::H1 {
                 attributes: HashMap::new(),
                 children: vec![Chunk::Text {
-                    value: content.trim().to_string(),
+                    value: title.trim().to_string(),
                 }],
-            }];
-            Ok(("", block))
+            });
+            for paragraph in paragraphs.iter() {
+                if paragraph.is_empty() {
+                } else {
+                    children.push(Chunk::P {
+                        attributes: HashMap::new(),
+                        children: vec![Chunk::Text {
+                            value: paragraph.trim().to_string(),
+                        }],
+                    });
+                }
+            }
+            Ok((return_content, block))
         }
         _ => {
             let section = Section::PLACEHOLDER;
