@@ -145,3 +145,28 @@ fn section_test_006() {
     let result = section(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
+
+#[test]
+fn section_test_007() {
+    let source = vec!["-> P", "", "The `sand`rust` drifts"].join("\n");
+    let expected = Section::P {
+        children: vec![Chunk::P {
+            attributes: HashMap::from([]),
+            children: vec![
+                Chunk::Text {
+                    value: "The ".to_string(),
+                },
+                Chunk::InlineCode {
+                    language: Some("rust".to_string()),
+                    attributes: None,
+                    value: Some("sand".to_string()),
+                },
+                Chunk::Text {
+                    value: " drifts".to_string(),
+                },
+            ],
+        }],
+    };
+    let result = section_dev(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
