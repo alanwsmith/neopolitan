@@ -54,7 +54,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             let (source, _) = space0(source)?;
             let (source, value) = line_ending(source)?;
             let (source, attributes) = many0(attribute_splitter)(source)?;
-            let mut attribute_map: HashMap<String, String> = HashMap::new();
+            let mut attribute_map: HashMap<String, String> =
+                HashMap::from([("class".to_string(), "title".to_string())]);
             for attribute in attributes {
                 let (remainder, key) = take_until(":")(attribute)?;
                 let (value, _) = tag(":")(remainder)?;

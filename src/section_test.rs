@@ -11,7 +11,7 @@ fn section_test_001() {
     let source = vec!["-> TITLE", "", "Alfa Bravo"].join("\n");
     let expected = Section::TITLE {
         children: vec![Chunk::H1 {
-            attributes: HashMap::new(),
+            attributes: HashMap::from([("class".to_string(), "title".to_string())]),
             children: vec![Chunk::Text {
                 value: "Alfa Bravo".to_string(),
             }],
@@ -36,7 +36,7 @@ fn section_test_002() {
     let expected = Section::TITLE {
         children: vec![
             Chunk::H1 {
-                attributes: HashMap::new(),
+                attributes: HashMap::from([("class".to_string(), "title".to_string())]),
                 children: vec![Chunk::Text {
                     value: "Alfa Bravo".to_string(),
                 }],
@@ -64,7 +64,10 @@ fn section_test_003() {
     let source = vec!["-> TITLE", ">> id: main", "", "Alfa Bravo"].join("\n");
     let expected = Section::TITLE {
         children: vec![Chunk::H1 {
-            attributes: HashMap::from([("id".to_string(), "main".to_string())]),
+            attributes: HashMap::from([
+                ("id".to_string(), "main".to_string()),
+                ("class".to_string(), "title".to_string()),
+            ]),
             children: vec![Chunk::Text {
                 value: "Alfa Bravo".to_string(),
             }],

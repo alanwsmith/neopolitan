@@ -14,7 +14,7 @@ Alfa Bravo
         attributes: HashMap::new(),
         children: vec![Section::TITLE {
             children: vec![Chunk::H1 {
-                attributes: HashMap::new(),
+                attributes: HashMap::from([("class".to_string(), "title".to_string())]),
                 children: vec![Chunk::Text {
                     value: "Alfa Bravo".to_string(),
                 }],
