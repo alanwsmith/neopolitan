@@ -37,12 +37,10 @@ pub fn process_text_old(source: &str) -> IResult<&str, Vec<Chunk>> {
 
 pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
     let mut response: Vec<Chunk> = vec![];
-    // dbg!(&source);
     let (source, pretext) = alt((tuple((take_until("`"), rest)), tuple((rest, rest))))(source)?;
     response.push(Chunk::Text {
         value: pretext.0.to_string(),
     });
-    // dbg!(&pretext);
     if pretext.1.is_empty() {
         Ok((source, response))
     } else {
