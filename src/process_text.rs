@@ -32,6 +32,35 @@ pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
     let response: Vec<Chunk> = vec![Chunk::Text {
         value: "Open the crate".to_string(),
     }];
-
     Ok(("", response))
+}
+
+pub fn process_text_dev(source: &str) -> IResult<&str, Vec<Chunk>> {
+    let mut response: Vec<Chunk> = vec![];
+    let (source, pretext) = take_until("`")(source)?;
+    response.push(Chunk::Text {
+        value: pretext.to_string(),
+    });
+    let (source, _) = tag("`")(source)?;
+    let (source, text) = take_until("`")(source)?;
+    let (source, _) = tag("`")(source)?;
+    let (source, language) = take_until("`")(source)?;
+    response.push(Chunk::InlineCode {
+        value: Some(text.to_string()),
+        language: Some(language.to_string()),
+        attributes: None,
+    });
+    let (source, _) = take_until("`")(source)?;
+    let (remainder, _) = tag("`")(source)?;
+    let dev_response: Vec<Chunk> = vec![
+        Chunk::Text {
+            value: "The".to_string(),
+        },
+        Chunk::InlineCode {
+            attributes: None,
+            language: Some("rust".to_string()),
+            value: Some("frosty".to_string()),
+        },
+    ];
+    Ok((remainder, response))
 }
