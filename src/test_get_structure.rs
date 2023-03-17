@@ -42,6 +42,7 @@ fn basic_integration() {
         "",
         "Raise the <<link|sail|https://www.example.com/>> and steer",
         "",
+        "He <<link|ordered|1>> <<link|peach pie|2>>",
     ]
     .join("\n");
     let expected = Page {
@@ -133,22 +134,45 @@ fn basic_integration() {
                 ],
             },
             Section::ParagraphSection {
-                children: vec![Chunk::P {
-                    attributes: None,
-                    children: Some(vec![
-                        Chunk::Text {
-                            value: "Raise the ".to_string(),
-                        },
-                        Chunk::Link {
-                            attributes: None,
-                            url: Some("https://www.example.com/".to_string()),
-                            value: Some("sail".to_string()),
-                        },
-                        Chunk::Text {
-                            value: "and steer".to_string(),
-                        },
-                    ]),
-                }],
+                children: vec![
+                    Chunk::P {
+                        attributes: None,
+                        children: Some(vec![
+                            Chunk::Text {
+                                value: "Raise the ".to_string(),
+                            },
+                            Chunk::Link {
+                                attributes: None,
+                                url: Some("https://www.example.com/".to_string()),
+                                value: Some("sail".to_string()),
+                            },
+                            Chunk::Text {
+                                value: " and steer".to_string(),
+                            },
+                        ]),
+                    },
+                    Chunk::P {
+                        attributes: None,
+                        children: Some(vec![
+                            Chunk::Text {
+                                value: "He ".to_string(),
+                            },
+                            Chunk::Link {
+                                attributes: None,
+                                url: Some("1".to_string()),
+                                value: Some("ordered".to_string()),
+                            },
+                            Chunk::Text {
+                                value: " ".to_string(),
+                            },
+                            Chunk::Link {
+                                attributes: None,
+                                url: Some("2".to_string()),
+                                value: Some("peach pie".to_string()),
+                            },
+                        ]),
+                    },
+                ],
             },
         ],
     };

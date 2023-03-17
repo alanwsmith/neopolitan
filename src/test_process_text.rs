@@ -84,3 +84,30 @@ fn single_link() {
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }
+
+#[test]
+fn multiple_links() {
+    let source = "In a <<link|high|alfa>> <<link|wind|bravo>>";
+    let expected_result: Vec<Chunk> = vec![
+        Chunk::Text {
+            value: "In a ".to_string(),
+        },
+        Chunk::Link {
+            attributes: None,
+            url: Some("alfa".to_string()),
+            value: Some("high".to_string()),
+        },
+        Chunk::Text {
+            value: " ".to_string(),
+        },
+        Chunk::Link {
+            attributes: None,
+            url: Some("bravo".to_string()),
+            value: Some("wind".to_string()),
+        },
+    ];
+    let expected_remainder = "";
+    let (remainder, result) = process_text(source).unwrap();
+    assert_eq!(expected_result, result);
+    assert_eq!(expected_remainder, remainder);
+}
