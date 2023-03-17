@@ -62,3 +62,25 @@ fn two_inline_code_snippets() {
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }
+
+#[test]
+fn single_link() {
+    let source = "The <<link|paper|https://paper.example.com/>> box";
+    let expected_result: Vec<Chunk> = vec![
+        Chunk::Text {
+            value: "The ".to_string(),
+        },
+        Chunk::Link {
+            attributes: None,
+            url: Some("https://paper.example.com/".to_string()),
+            value: Some("paper".to_string()),
+        },
+        Chunk::Text {
+            value: " box".to_string(),
+        },
+    ];
+    let expected_remainder = "";
+    let (remainder, result) = process_text_dev(source).unwrap();
+    assert_eq!(expected_result, result);
+    assert_eq!(expected_remainder, remainder);
+}

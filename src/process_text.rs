@@ -57,3 +57,52 @@ pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
     let response = containers.0.concat();
     Ok(("", response))
 }
+
+pub fn process_text_dev(source: &str) -> IResult<&str, Vec<Chunk>> {
+    let (source, containers) = many_till(text_dev, eof)(source)?;
+    let response = containers.0.concat();
+
+    // // Shameless Green
+    // let response: Vec<Chunk> = vec![
+    //     Chunk::Text {
+    //         value: "The ".to_string(),
+    //     },
+    //     Chunk::Link {
+    //         attributes: None,
+    //         url: Some("https://paper.example.com/".to_string()),
+    //         value: Some("paper".to_string()),
+    //     },
+    //     Chunk::Text {
+    //         value: " box".to_string(),
+    //     },
+    // ];
+
+    Ok(("", response))
+}
+
+fn text_dev(source: &str) -> IResult<&str, Vec<Chunk>> {
+    dbg!(&source);
+    let mut response: Vec<Chunk> = vec![];
+    let (source, pretext) = alt((tuple((take_until("<<"), rest)), tuple((rest, rest))))(source)?;
+    response.push(Chunk::Text {
+        value: pretext.0.to_string(),
+    });
+    if pretext.1.is_empty() {
+        Ok((source, response))
+    } else {
+        let (source, _) = tag("<<")(pretext.1)?;
+        let (source, kind) = take_until("|")(source)?;
+        let (source, _) = tag("|")(source)?;
+        let (source, value) = take_until("|")(source)?;
+        let (source, _) = tag("|")(source)?;
+        let (source, url) = take_until(">>")(source)?;
+        let (source, _) = tag(">>")(source)?;
+
+        response.push(Chunk::Link {
+            value: Some(value.to_string()),
+            url: Some(url.to_string()),
+            attributes: None,
+        });
+        Ok((source, response))
+    }
+}
