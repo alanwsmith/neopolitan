@@ -6,4 +6,3 @@ pub mod page;
 pub mod section;
 #[cfg(test)]
 pub mod section_test;
-pub mod spacer;
