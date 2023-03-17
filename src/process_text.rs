@@ -37,30 +37,28 @@ pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
 
 pub fn process_text_dev(source: &str) -> IResult<&str, Vec<Chunk>> {
     let mut response: Vec<Chunk> = vec![];
-    let (source, pretext) = take_until("`")(source)?;
+    let (source, pretext) = alt((tuple((take_until("`"), rest)), tuple((rest, rest))))(source)?;
     response.push(Chunk::Text {
-        value: pretext.to_string(),
+        value: pretext.0.to_string(),
     });
-    let (source, _) = tag("`")(source)?;
-    let (source, text) = take_until("`")(source)?;
-    let (source, _) = tag("`")(source)?;
-    let (source, language) = take_until("`")(source)?;
-    response.push(Chunk::InlineCode {
-        value: Some(text.to_string()),
-        language: Some(language.to_string()),
-        attributes: None,
-    });
-    let (source, _) = take_until("`")(source)?;
-    let (remainder, _) = tag("`")(source)?;
-    let dev_response: Vec<Chunk> = vec![
-        Chunk::Text {
-            value: "The".to_string(),
-        },
-        Chunk::InlineCode {
+    dbg!(&pretext);
+
+    if pretext.1.is_empty() {
+        Ok((source, response))
+    } else {
+        let (source, current) = tag("`")(pretext.1)?;
+        let (source, code) = take_until("`")(source)?;
+        dbg!(&code);
+        let (source, current) = tag("`")(source)?;
+        let (source, language) = take_until("`")(source)?;
+        dbg!(&language);
+        let (source, current) = tag("`")(source)?;
+        dbg!(&source);
+        response.push(Chunk::InlineCode {
+            value: Some(code.to_string()),
+            language: Some(language.to_string()),
             attributes: None,
-            language: Some("rust".to_string()),
-            value: Some("frosty".to_string()),
-        },
-    ];
-    Ok((remainder, response))
+        });
+        Ok((source, response))
+    }
 }
