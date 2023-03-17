@@ -46,3 +46,18 @@ The new test file gets changed from `_dev``
 to `_switch`` and all the test files are 
 update to point to `_switch``. 
 
+
+
+-> H2
+
+Dev Notes
+
+-> LIST 
+
+- The `TITLE` turns into an `H1` with a 
+class of "title" applied to it. TBD on 
+what should happen if an explicit "class"
+is set. Mostly thinking it should just 
+override fully and if folks want to keep
+"title" in there they can have it as 
+part of their call. 
