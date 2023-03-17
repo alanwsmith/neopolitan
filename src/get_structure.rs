@@ -1,6 +1,7 @@
 #![allow(warnings)]
 use crate::chunk::Chunk;
 use crate::page::Page;
+use crate::section::section;
 use crate::section::Section;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -28,6 +29,8 @@ use nom::Parser;
 use std::collections::HashMap;
 
 pub fn get_structure(source: &str) -> IResult<&str, Page> {
+    // let (_, sections) $ many_till(section, eof)(source).unwrap();
+
     let p = Page {
         attributes: HashMap::new(),
         children: vec![Section::TITLE {
