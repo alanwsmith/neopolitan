@@ -1,8 +1,11 @@
 pub mod chunk;
+pub mod code;
 pub mod get_structure;
 pub mod page;
 pub mod process_text;
 pub mod section;
+#[cfg(test)]
+pub mod test_code;
 #[cfg(test)]
 pub mod test_get_structure;
 #[cfg(test)]

@@ -42,7 +42,7 @@ pub enum Section {
         attributes: Option<HashMap<String, String>>,
         children: Vec<Chunk>,
     },
-    PLACEHOLDER,
+    Placeholder,
 }
 
 fn attribute_splitter(source: &str) -> IResult<&str, &str> {
@@ -158,18 +158,18 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         } => {
             let (source, _) = space0(source)?;
             let (source, value) = line_ending(source)?;
-            let section = Section::CodeSection {
+            let block = Section::CodeSection {
                 language: None,
                 attributes: None,
                 children: vec![Chunk::Text {
                     value: source.trim().to_string(),
                 }],
             };
-            Ok(("", section))
+            Ok(("", block))
         }
         _ => {
-            let section = Section::PLACEHOLDER;
-            Ok(("", section))
+            let block = Section::Placeholder;
+            Ok(("", block))
         }
     }
 }
