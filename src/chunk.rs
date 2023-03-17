@@ -25,4 +25,5 @@ pub enum Chunk {
     Text {
         value: String,
     },
+    Placeholder,
 }
