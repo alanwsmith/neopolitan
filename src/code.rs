@@ -31,23 +31,27 @@ use nom::Parser;
 use std::collections::HashMap;
 
 pub fn code(source: &str) -> IResult<&str, Section> {
-    let response = Section::CodeSection {
-        attributes: None,
-        language: None,
-        children: vec![Chunk::Text {
-            value: source.trim().to_string(),
-        }],
-    };
-    Ok(("", response))
+    let (source, value) = multispace0(source)?;
+    let (source, value) = separated_list0(tag(">> "), take_until(">> "))(source)?;
+    if value.is_empty() {
+        let response = Section::CodeSection {
+            attributes: None,
+            language: None,
+            children: vec![Chunk::Text {
+                value: source.trim().to_string(),
+            }],
+        };
+        Ok(("", response))
+    } else {
+        let (source, language) = tag(">> ")(source)?;
+        let (source, language) = not_line_ending(source)?;
+        let response = Section::CodeSection {
+            attributes: None,
+            language: Some(language.to_string()),
+            children: vec![Chunk::Text {
+                value: source.trim().to_string(),
+            }],
+        };
+        Ok(("", response))
+    }
 }
-
-// pub fn code_dev(source: &str) -> IResult<&str, Section> {
-//     let response = Section::CodeSection {
-//         attributes: None,
-//         language: None,
-//         children: vec![Chunk::Text {
-//             value: source.trim().to_string(),
-//         }],
-//     };
-//     Ok(("", response))
-// }

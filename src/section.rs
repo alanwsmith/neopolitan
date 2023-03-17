@@ -1,5 +1,6 @@
 #![allow(warnings)]
 use crate::chunk::Chunk;
+use crate::code::*;
 use crate::page::Page;
 use crate::process_text::*;
 use nom::branch::alt;
@@ -156,16 +157,20 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             ref mut attributes,
             ref mut language,
         } => {
-            let (source, _) = space0(source)?;
-            let (source, value) = line_ending(source)?;
-            let block = Section::CodeSection {
-                language: None,
-                attributes: None,
-                children: vec![Chunk::Text {
-                    value: source.trim().to_string(),
-                }],
-            };
-            Ok(("", block))
+            dbg!(&source);
+            let (return_content, block) = code(source)?;
+
+            // let (source, _) = space0(source)?;
+            // let (source, value) = line_ending(source)?;
+            // let block = Section::CodeSection {
+            //     language: None,
+            //     attributes: None,
+            //     children: vec![Chunk::Text {
+            //         value: source.trim().to_string(),
+            //     }],
+            // };
+
+            Ok((return_content, block))
         }
         _ => {
             let block = Section::Placeholder;

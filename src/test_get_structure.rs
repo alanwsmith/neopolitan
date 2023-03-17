@@ -194,13 +194,13 @@ use std::collections::HashMap;
 //                     value: "fn main() {\n  let alfa = 1;\n}".to_string(),
 //                 }],
 //             },
-//             Section::CodeSection {
-//                 language: Some("rust".to_string()),
-//                 attributes: None,
-//                 children: vec![Chunk::Text {
-//                     value: "fn main() {\n  let alfa = 1;\n}".to_string(),
-//                 }],
-//             },
+//             // Section::CodeSection {
+//             //     language: Some("rust".to_string()),
+//             //     attributes: None,
+//             //     children: vec![Chunk::Text {
+//             //         value: "fn main() {\n  let bravo = 1;\n}".to_string(),
+//             //     }],
+//             // },
 //         ],
 //     };
 //     let result = get_structure(source.as_str()).unwrap().1;
