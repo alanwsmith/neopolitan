@@ -158,18 +158,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             ref mut language,
         } => {
             dbg!(&source);
-            let (return_content, block) = code(source)?;
-
-            // let (source, _) = space0(source)?;
-            // let (source, value) = line_ending(source)?;
-            // let block = Section::CodeSection {
-            //     language: None,
-            //     attributes: None,
-            //     children: vec![Chunk::Text {
-            //         value: source.trim().to_string(),
-            //     }],
-            // };
-
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = code(source)?;
             Ok((return_content, block))
         }
         _ => {
