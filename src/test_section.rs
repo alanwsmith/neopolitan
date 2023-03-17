@@ -142,6 +142,6 @@ fn section_test_006() {
             },
         ],
     };
-    let result = section_dev(source.as_str()).unwrap().1;
+    let result = section(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }

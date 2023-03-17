@@ -43,7 +43,7 @@ fn attribute_splitter(source: &str) -> IResult<&str, &str> {
     Ok((source, value))
 }
 
-pub fn section(source: &str) -> IResult<&str, Section> {
+pub fn section_old(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (source, mut block) = alt((
         tag("-> TITLE").map(|_| Section::TITLE { children: vec![] }),
@@ -139,7 +139,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     }
 }
 
-pub fn section_dev(source: &str) -> IResult<&str, Section> {
+pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (source, mut block) = alt((
         tag("-> TITLE").map(|_| Section::TITLE { children: vec![] }),
@@ -203,28 +203,29 @@ pub fn section_dev(source: &str) -> IResult<&str, Section> {
             let (source, attributes) = many0(attribute_splitter)(source)?;
             // dbg!(&attributes);
             // Prep a map and throw the attributes in it
-            let mut attribute_map: HashMap<String, String> =
-                HashMap::from([("class".to_string(), "title".to_string())]);
+            let mut attribute_map: HashMap<String, String> = HashMap::from([]);
             for attribute in attributes {
                 let (remainder, key) = take_until(":")(attribute)?;
                 let (value, _) = tag(":")(remainder)?;
                 attribute_map.insert(key.trim().to_string(), value.trim().to_string());
             }
             //
-            dbg!(source);
-            dbg!(attribute_map);
+            dbg!(&source);
+            dbg!(&attribute_map);
             //
             let (source, _) = space0(source)?;
             dbg!(source);
             let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
-
             let (content, _) = multispace0(content)?;
             let (remainder, mut paragraphs) =
                 separated_list0(tag("\n\n"), take_until("\n\n"))(content)?;
             paragraphs.push(remainder);
             for paragraph in paragraphs.iter() {
                 let mut local_attributes: HashMap<String, String> = HashMap::new();
-                local_attributes.insert("class".to_string(), "mighty".to_string());
+                // local_attributes.insert("class".to_string(), "mighty".to_string());
+                for (attribute_key, attribute_value) in &attribute_map {
+                    local_attributes.insert(attribute_key.to_string(), attribute_value.to_string());
+                }
                 children.push(Chunk::P {
                     attributes: local_attributes,
                     children: vec![Chunk::Text {

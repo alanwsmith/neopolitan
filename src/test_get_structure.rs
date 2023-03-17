@@ -52,6 +52,7 @@ fn test_get_structure_001() {
 //         ">> class: main",
 //         "",
 //         "A chink in the wall.",
+//         "",
 //     ]
 //     .join("\n");
 //     let expected = Page {
