@@ -28,19 +28,14 @@ use nom::IResult;
 use nom::Parser;
 use std::collections::HashMap;
 
-pub fn get_structure(source: &str) -> IResult<&str, Page> {
-    let (_, sections) = many_till(section, eof)(source).unwrap();
-
-    let p = Page {
-        attributes: HashMap::new(),
-        children: vec![Section::TITLE {
-            children: vec![Chunk::H1 {
-                attributes: HashMap::new(),
-                children: vec![Chunk::Text {
-                    value: "Alfa Bravo".to_string(),
-                }],
-            }],
-        }],
-    };
-    Ok(("", p))
+// This one makes sure there's two newlines
+// and then clears any extra ones. All of this
+// deals with extras spaces and tabs too.
+pub fn spacer(source: &str) -> IResult<&str, &str> {
+    let (source, _) = space0(source)?;
+    let (source, value) = line_ending(source)?;
+    let (source, _) = space0(source)?;
+    let (source, value) = line_ending(source)?;
+    let (source, _) = multispace0(source)?;
+    Ok((source, value))
 }

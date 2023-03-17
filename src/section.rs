@@ -1,6 +1,7 @@
 #![allow(warnings)]
 use crate::chunk::Chunk;
 use crate::page::Page;
+use crate::spacer::spacer;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -29,16 +30,31 @@ use std::collections::HashMap;
 #[derive(Debug, PartialEq)]
 pub enum Section {
     TITLE { children: Vec<Chunk> },
+    P { children: Vec<Chunk> },
+    PLACEHOLDER,
 }
 
 pub fn section(source: &str) -> IResult<&str, Section> {
-    let section = Section::TITLE {
-        children: vec![Chunk::H1 {
-            attributes: HashMap::new(),
-            children: vec![Chunk::Text {
-                value: "Alfa Bravo".to_string(),
-            }],
-        }],
-    };
-    Ok(("", section))
+    let (source, _) = multispace0(source)?;
+    let (source, mut block) = alt((
+        tag("-> TITLE").map(|_| Section::TITLE { children: vec![] }),
+        tag("-> P").map(|_| Section::P { children: vec![] }),
+    ))(source)?;
+    let (source, _) = spacer(source)?;
+    match block {
+        Section::TITLE { ref mut children } => {
+            let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
+            *children = vec![Chunk::H1 {
+                attributes: HashMap::new(),
+                children: vec![Chunk::Text {
+                    value: content.trim().to_string(),
+                }],
+            }];
+            Ok(("", block))
+        }
+        _ => {
+            let section = Section::PLACEHOLDER;
+            Ok(("", section))
+        }
+    }
 }
