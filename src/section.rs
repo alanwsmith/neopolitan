@@ -31,8 +31,17 @@ use std::collections::HashMap;
 
 #[derive(Debug, PartialEq)]
 pub enum Section {
-    TitleSection { children: Vec<Chunk> },
-    ParagraphSection { children: Vec<Chunk> },
+    TitleSection {
+        children: Vec<Chunk>,
+    },
+    ParagraphSection {
+        children: Vec<Chunk>,
+    },
+    CodeSection {
+        language: Option<String>,
+        attributes: Option<HashMap<String, String>>,
+        children: Vec<Chunk>,
+    },
     PLACEHOLDER,
 }
 
@@ -49,6 +58,11 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, mut block) = alt((
         tag("-> TITLE").map(|_| Section::TitleSection { children: vec![] }),
         tag("-> P").map(|_| Section::ParagraphSection { children: vec![] }),
+        tag("-> CODE").map(|_| Section::CodeSection {
+            attributes: None,
+            language: None,
+            children: vec![],
+        }),
     ))(source)?;
     match block {
         Section::TitleSection { ref mut children } => {
@@ -136,6 +150,22 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 }
             }
             Ok((return_content, block))
+        }
+        Section::CodeSection {
+            ref mut children,
+            ref mut attributes,
+            ref mut language,
+        } => {
+            let (source, _) = space0(source)?;
+            let (source, value) = line_ending(source)?;
+            let section = Section::CodeSection {
+                language: None,
+                attributes: None,
+                children: vec![Chunk::Text {
+                    value: source.trim().to_string(),
+                }],
+            };
+            Ok(("", section))
         }
         _ => {
             let section = Section::PLACEHOLDER;

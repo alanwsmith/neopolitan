@@ -43,6 +43,12 @@ fn basic_integration() {
         "Raise the <<link|sail|https://www.example.com/>> and steer",
         "",
         "He <<link|ordered|1>> <<link|peach pie|2>>",
+        "",
+        "-> CODE",
+        "",
+        "fn main() {",
+        "  let alfa = 1;",
+        "}",
     ]
     .join("\n");
     let expected = Page {
@@ -173,6 +179,13 @@ fn basic_integration() {
                         ]),
                     },
                 ],
+            },
+            Section::CodeSection {
+                language: None,
+                attributes: None,
+                children: vec![Chunk::Text {
+                    value: "fn main() {\n  let alfa = 1;\n}".to_string(),
+                }],
             },
         ],
     };
