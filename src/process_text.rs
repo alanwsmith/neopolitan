@@ -42,7 +42,6 @@ pub fn process_text_dev(source: &str) -> IResult<&str, Vec<Chunk>> {
         value: pretext.0.to_string(),
     });
     dbg!(&pretext);
-
     if pretext.1.is_empty() {
         Ok((source, response))
     } else {
