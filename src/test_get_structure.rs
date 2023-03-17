@@ -2,7 +2,7 @@
 // This is the basic integration test
 // location. GOAL: It has a few samples
 // that demonstrate the core features
-// of the format. Detailed variatsions are
+// of the format. Detailed variations are
 // checked via unit tests.
 /////////////////////////////////////////////
 
@@ -211,147 +211,101 @@ fn inline_code_snippets() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn basic_integration() {
-//     let source = vec![
-//         "-> P",
-//         ">> class: main",
-//         "",
-//         "The `chink`rust` in the wall.",
-//         "",
-//         "The `desk`python` and `both`javascript` chairs",
-//         "",
-//         "-> P",
-//         "",
-//         "Raise the <<link|sail|https://www.example.com/>> and steer",
-//         "",
-//         "He <<link|ordered|1>> <<link|peach pie|2>>",
-//         "",
-//         "-> CODE",
-//         "",
-//         "fn main() {",
-//         "  let alfa = 1;",
-//         "}",
-//         "",
-//         "-> CODE",
-//         ">> rust",
-//         "",
-//         "fn main() {",
-//         "  let bravo = 1;",
-//         "}",
-//     ]
-//     .join("\n");
+#[test]
+fn inline_links() {
+    let source = vec![
+        "-> P",
+        "",
+        "Raise the <<link|sail|https://www.example.com/>> and steer",
+        "",
+        "He <<link|ordered|1>> <<link|peach pie|2>>",
+        "",
+    ]
+    .join("\n");
+    let expected = Page {
+        attributes: None,
+        children: vec![Section::ParagraphSection {
+            children: vec![
+                Chunk::P {
+                    attributes: None,
+                    children: Some(vec![
+                        Chunk::Text {
+                            value: "Raise the ".to_string(),
+                        },
+                        Chunk::Link {
+                            attributes: None,
+                            url: Some("https://www.example.com/".to_string()),
+                            value: Some("sail".to_string()),
+                        },
+                        Chunk::Text {
+                            value: " and steer".to_string(),
+                        },
+                    ]),
+                },
+                Chunk::P {
+                    attributes: None,
+                    children: Some(vec![
+                        Chunk::Text {
+                            value: "He ".to_string(),
+                        },
+                        Chunk::Link {
+                            attributes: None,
+                            url: Some("1".to_string()),
+                            value: Some("ordered".to_string()),
+                        },
+                        Chunk::Text {
+                            value: " ".to_string(),
+                        },
+                        Chunk::Link {
+                            attributes: None,
+                            url: Some("2".to_string()),
+                            value: Some("peach pie".to_string()),
+                        },
+                    ]),
+                },
+            ],
+        }],
+    };
+    let result = get_structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
-//     let expected = Page {
-//         attributes: None,
-//         children: vec![
-//             Section::ParagraphSection {
-//                 children: vec![
-//                     Chunk::P {
-//                         attributes: Some(HashMap::from([(
-//                             "class".to_string(),
-//                             "main".to_string(),
-//                         )])),
-//                         children: Some(vec![
-//                             Chunk::Text {
-//                                 value: "The ".to_string(),
-//                             },
-//                             Chunk::InlineCode {
-//                                 attributes: None,
-//                                 language: Some("rust".to_string()),
-//                                 value: Some("chink".to_string()),
-//                             },
-//                             Chunk::Text {
-//                                 value: " in the wall.".to_string(),
-//                             },
-//                         ]),
-//                     },
-//                     Chunk::P {
-//                         attributes: Some(HashMap::from([(
-//                             "class".to_string(),
-//                             "main".to_string(),
-//                         )])),
-//                         children: Some(vec![
-//                             Chunk::Text {
-//                                 value: "The ".to_string(),
-//                             },
-//                             Chunk::InlineCode {
-//                                 attributes: None,
-//                                 language: Some("python".to_string()),
-//                                 value: Some("desk".to_string()),
-//                             },
-//                             Chunk::Text {
-//                                 value: " and ".to_string(),
-//                             },
-//                             Chunk::InlineCode {
-//                                 attributes: None,
-//                                 language: Some("javascript".to_string()),
-//                                 value: Some("both".to_string()),
-//                             },
-//                             Chunk::Text {
-//                                 value: " chairs".to_string(),
-//                             },
-//                         ]),
-//                     },
-//                 ],
-//             },
-//             Section::ParagraphSection {
-//                 children: vec![
-//                     Chunk::P {
-//                         attributes: None,
-//                         children: Some(vec![
-//                             Chunk::Text {
-//                                 value: "Raise the ".to_string(),
-//                             },
-//                             Chunk::Link {
-//                                 attributes: None,
-//                                 url: Some("https://www.example.com/".to_string()),
-//                                 value: Some("sail".to_string()),
-//                             },
-//                             Chunk::Text {
-//                                 value: " and steer".to_string(),
-//                             },
-//                         ]),
-//                     },
-//                     Chunk::P {
-//                         attributes: None,
-//                         children: Some(vec![
-//                             Chunk::Text {
-//                                 value: "He ".to_string(),
-//                             },
-//                             Chunk::Link {
-//                                 attributes: None,
-//                                 url: Some("1".to_string()),
-//                                 value: Some("ordered".to_string()),
-//                             },
-//                             Chunk::Text {
-//                                 value: " ".to_string(),
-//                             },
-//                             Chunk::Link {
-//                                 attributes: None,
-//                                 url: Some("2".to_string()),
-//                                 value: Some("peach pie".to_string()),
-//                             },
-//                         ]),
-//                     },
-//                 ],
-//             },
-//             Section::CodeSection {
-//                 language: None,
-//                 attributes: None,
-//                 children: vec![Chunk::Text {
-//                     value: "fn main() {\n  let alfa = 1;\n}".to_string(),
-//                 }],
-//             },
-//             Section::CodeSection {
-//                 language: Some("rust".to_string()),
-//                 attributes: None,
-//                 children: vec![Chunk::Text {
-//                     value: "fn main() {\n  let bravo = 1;\n}".to_string(),
-//                 }],
-//             },
-//         ],
-//     };
-//     let result = get_structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn code_block_without_language() {
+    let source = vec!["-> CODE", "", "fn main() {", "  let alfa = 1;", "}", ""].join("\n");
+    let expected = Page {
+        attributes: None,
+        children: vec![Section::CodeSection {
+            language: None,
+            attributes: None,
+            children: vec![Chunk::Text {
+                value: "fn main() {\n  let alfa = 1;\n}".to_string(),
+            }],
+        }],
+    };
+}
+
+#[test]
+fn code_block_with_language() {
+    let source = vec![
+        "-> CODE",
+        ">> rust",
+        "",
+        "fn main() {",
+        "  let bravo = 1;",
+        "}",
+    ]
+    .join("\n");
+    let expected = Page {
+        attributes: None,
+        children: vec![Section::CodeSection {
+            language: Some("rust".to_string()),
+            attributes: None,
+            children: vec![Chunk::Text {
+                value: "fn main() {\n  let bravo = 1;\n}".to_string(),
+            }],
+        }],
+    };
+    let result = get_structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
