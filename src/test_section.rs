@@ -114,3 +114,34 @@ fn section_test_005() {
     let result = section(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
+
+#[test]
+fn section_test_006() {
+    let source = vec![
+        "-> P",
+        ">> class: mighty",
+        "",
+        "The sand drifts",
+        "",
+        "Twist the valve",
+    ]
+    .join("\n");
+    let expected = Section::P {
+        children: vec![
+            Chunk::P {
+                attributes: HashMap::from([("class".to_string(), "mighty".to_string())]),
+                children: vec![Chunk::Text {
+                    value: "The sand drifts".to_string(),
+                }],
+            },
+            Chunk::P {
+                attributes: HashMap::from([("class".to_string(), "mighty".to_string())]),
+                children: vec![Chunk::Text {
+                    value: "Twist the valve".to_string(),
+                }],
+            },
+        ],
+    };
+    let result = section_dev(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}

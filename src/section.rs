@@ -51,9 +51,13 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     ))(source)?;
     match block {
         Section::TITLE { ref mut children } => {
+            // Remove leading spaces
             let (source, _) = space0(source)?;
+            // Chomp remaining spaces
             let (source, value) = line_ending(source)?;
+            // Get the attributes
             let (source, attributes) = many0(attribute_splitter)(source)?;
+            // Prep a map and throw the attributes in it
             let mut attribute_map: HashMap<String, String> =
                 HashMap::from([("class".to_string(), "title".to_string())]);
             for attribute in attributes {
@@ -61,18 +65,26 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 let (value, _) = tag(":")(remainder)?;
                 attribute_map.insert(key.trim().to_string(), value.trim().to_string());
             }
+            // Get the rest of the content
             let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
+            // Get the title
             let (remainder, title) = alt((take_until("\n\n"), rest))(content)?;
+            // Chomp spaces
             let (remainder, _) = multispace0(remainder)?;
+            // Get paragraphs
             let (remainder, mut paragraphs) =
                 separated_list0(tag("\n\n"), take_until("\n\n"))(remainder)?;
             paragraphs.push(remainder.trim());
+            // Push the title on
+            // TODO: Move this up to right after
+            // the title is captured.
             children.push(Chunk::H1 {
                 attributes: attribute_map,
                 children: vec![Chunk::Text {
                     value: title.trim().to_string(),
                 }],
             });
+            // Add any paragraphs
             for paragraph in paragraphs.iter() {
                 if paragraph.is_empty() {
                 } else {
@@ -87,10 +99,24 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             Ok((return_content, block))
         }
         Section::P { ref mut children } => {
+            dbg!(source);
+            // chomp leading spaces
             let (source, _) = space0(source)?;
             let (source, value) = line_ending(source)?;
             let (source, _) = space0(source)?;
             let (text, value) = line_ending(source)?;
+            //
+            // // Get the attributes
+            // let (source, attributes) = many0(attribute_splitter)(source)?;
+            // // Prep a map and throw the attributes in it
+            // let mut attribute_map: HashMap<String, String> =
+            //     HashMap::from([("class".to_string(), "title".to_string())]);
+            // for attribute in attributes {
+            //     let (remainder, key) = take_until(":")(attribute)?;
+            //     let (value, _) = tag(":")(remainder)?;
+            //     attribute_map.insert(key.trim().to_string(), value.trim().to_string());
+            // }
+            //
             let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
             let (content, _) = multispace0(content)?;
             let (remainder, mut paragraphs) =
@@ -105,6 +131,109 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 });
             }
             Ok((return_content, block))
+        }
+        _ => {
+            let section = Section::PLACEHOLDER;
+            Ok(("", section))
+        }
+    }
+}
+
+pub fn section_dev(source: &str) -> IResult<&str, Section> {
+    let (source, _) = multispace0(source)?;
+    let (source, mut block) = alt((
+        tag("-> TITLE").map(|_| Section::TITLE { children: vec![] }),
+        tag("-> P").map(|_| Section::P { children: vec![] }),
+    ))(source)?;
+    match block {
+        Section::TITLE { ref mut children } => {
+            // Remove leading spaces
+            let (source, _) = space0(source)?;
+            // Chomp remaining spaces
+            let (source, value) = line_ending(source)?;
+            // Get the attributes
+            let (source, attributes) = many0(attribute_splitter)(source)?;
+            // Prep a map and throw the attributes in it
+            let mut attribute_map: HashMap<String, String> =
+                HashMap::from([("class".to_string(), "title".to_string())]);
+            for attribute in attributes {
+                let (remainder, key) = take_until(":")(attribute)?;
+                let (value, _) = tag(":")(remainder)?;
+                attribute_map.insert(key.trim().to_string(), value.trim().to_string());
+            }
+            // Get the rest of the content
+            let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
+            // Get the title
+            let (remainder, title) = alt((take_until("\n\n"), rest))(content)?;
+            // Chomp spaces
+            let (remainder, _) = multispace0(remainder)?;
+            // Get paragraphs
+            let (remainder, mut paragraphs) =
+                separated_list0(tag("\n\n"), take_until("\n\n"))(remainder)?;
+            paragraphs.push(remainder.trim());
+            // Push the title on
+            // TODO: Move this up to right after
+            // the title is captured.
+            children.push(Chunk::H1 {
+                attributes: attribute_map,
+                children: vec![Chunk::Text {
+                    value: title.trim().to_string(),
+                }],
+            });
+            // Add any paragraphs
+            for paragraph in paragraphs.iter() {
+                if paragraph.is_empty() {
+                } else {
+                    children.push(Chunk::P {
+                        attributes: HashMap::new(),
+                        children: vec![Chunk::Text {
+                            value: paragraph.trim().to_string(),
+                        }],
+                    });
+                }
+            }
+            Ok((return_content, block))
+        }
+        Section::P { ref mut children } => {
+            dbg!(source);
+            // Chomp leading spaces
+            let (source, _) = space0(source)?;
+            let (source, value) = line_ending(source)?;
+            // Get the attributes
+            let (source, attributes) = many0(attribute_splitter)(source)?;
+            // dbg!(&attributes);
+            // Prep a map and throw the attributes in it
+            let mut attribute_map: HashMap<String, String> =
+                HashMap::from([("class".to_string(), "title".to_string())]);
+            for attribute in attributes {
+                let (remainder, key) = take_until(":")(attribute)?;
+                let (value, _) = tag(":")(remainder)?;
+                attribute_map.insert(key.trim().to_string(), value.trim().to_string());
+            }
+            //
+            dbg!(source);
+            dbg!(attribute_map);
+            //
+            let (source, _) = space0(source)?;
+            dbg!(source);
+            let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
+
+            let (content, _) = multispace0(content)?;
+            let (remainder, mut paragraphs) =
+                separated_list0(tag("\n\n"), take_until("\n\n"))(content)?;
+            paragraphs.push(remainder);
+            for paragraph in paragraphs.iter() {
+                let mut local_attributes: HashMap<String, String> = HashMap::new();
+                local_attributes.insert("class".to_string(), "mighty".to_string());
+                children.push(Chunk::P {
+                    attributes: local_attributes,
+                    children: vec![Chunk::Text {
+                        value: paragraph.trim().to_string(),
+                    }],
+                });
+            }
+
+            Ok(("", block))
         }
         _ => {
             let section = Section::PLACEHOLDER;
