@@ -2,7 +2,7 @@
   "type": "root",
   "children": [
     {
-      "type": "title",
+      "type": "h1",
       "attributes": {},
       "children": [
         {
