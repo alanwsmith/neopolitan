@@ -7,7 +7,7 @@ use std::collections::HashMap;
 // and then in both places.
 
 #[test]
-fn section_test_001() {
+fn test_basic_title() {
     let source = vec!["-> TITLE", "", "Alfa Bravo"].join("\n");
     let expected = Section::TITLE {
         children: vec![Chunk::H1 {
@@ -22,7 +22,7 @@ fn section_test_001() {
 }
 
 #[test]
-fn section_test_002() {
+fn test_paragraphs_after_title() {
     let source = vec![
         "-> TITLE",
         "",
@@ -60,7 +60,7 @@ fn section_test_002() {
 }
 
 #[test]
-fn section_test_003() {
+fn test_attribute_on_title() {
     let source = vec!["-> TITLE", ">> id: main", "", "Alfa Bravo"].join("\n");
     let expected = Section::TITLE {
         children: vec![Chunk::H1 {
@@ -78,7 +78,7 @@ fn section_test_003() {
 }
 
 #[test]
-fn section_test_004() {
+fn test_basic_paragraph() {
     let source = vec!["-> P", "", "The tree top"].join("\n");
     let expected = Section::P {
         children: vec![Chunk::P {
@@ -93,7 +93,7 @@ fn section_test_004() {
 }
 
 #[test]
-fn section_test_005() {
+fn test_multiple_paragraphs() {
     let source = vec!["-> P", "", "Echo Foxtrot", "", "Our plans right now."].join("\n");
     let expected = Section::P {
         children: vec![
@@ -116,7 +116,7 @@ fn section_test_005() {
 }
 
 #[test]
-fn section_test_006() {
+fn test_attributes_on_paragraphs() {
     let source = vec![
         "-> P",
         ">> class: mighty",
@@ -147,7 +147,7 @@ fn section_test_006() {
 }
 
 #[test]
-fn section_test_007() {
+fn test_inline_code() {
     let source = vec!["-> P", "", "The `sand`rust` drifts"].join("\n");
     let expected = Section::P {
         children: vec![Chunk::P {

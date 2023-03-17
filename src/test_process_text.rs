@@ -2,7 +2,7 @@ use crate::chunk::Chunk;
 use crate::process_text::*;
 
 #[test]
-fn process_text_test_001() {
+fn basic_text() {
     let source = "beside the shore";
     let expected: Vec<Chunk> = vec![Chunk::Text {
         value: "beside the shore".to_string(),
@@ -12,7 +12,7 @@ fn process_text_test_001() {
 }
 
 #[test]
-fn process_text_test_002() {
+fn one_inline_code_snippet() {
     let source = "The `frosty`rust` air";
     let expected_result: Vec<Chunk> = vec![
         Chunk::Text {
@@ -23,8 +23,41 @@ fn process_text_test_002() {
             language: Some("rust".to_string()),
             value: Some("frosty".to_string()),
         },
+        Chunk::Text {
+            value: " air".to_string(),
+        },
     ];
-    let expected_remainder = " air";
+    let expected_remainder = "";
+    let (remainder, result) = process_text(source).unwrap();
+    assert_eq!(expected_result, result);
+    assert_eq!(expected_remainder, remainder);
+}
+
+#[test]
+fn two_inline_code_snippets() {
+    let source = "A `castle`python` built `from`javascript` sand";
+    let expected_result: Vec<Chunk> = vec![
+        Chunk::Text {
+            value: "A ".to_string(),
+        },
+        Chunk::InlineCode {
+            attributes: None,
+            language: Some("python".to_string()),
+            value: Some("castle".to_string()),
+        },
+        Chunk::Text {
+            value: " built ".to_string(),
+        },
+        Chunk::InlineCode {
+            attributes: None,
+            language: Some("javascript".to_string()),
+            value: Some("from".to_string()),
+        },
+        Chunk::Text {
+            value: " sand".to_string(),
+        },
+    ];
+    let expected_remainder = "";
     let (remainder, result) = process_text(source).unwrap();
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);

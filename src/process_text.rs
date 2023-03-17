@@ -28,14 +28,8 @@ use nom::IResult;
 use nom::Parser;
 use std::collections::HashMap;
 
-pub fn process_text_old(source: &str) -> IResult<&str, Vec<Chunk>> {
-    let response: Vec<Chunk> = vec![Chunk::Text {
-        value: "Open the crate".to_string(),
-    }];
-    Ok(("", response))
-}
-
-pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
+fn text(source: &str) -> IResult<&str, Vec<Chunk>> {
+    dbg!(&source);
     let mut response: Vec<Chunk> = vec![];
     let (source, pretext) = alt((tuple((take_until("`"), rest)), tuple((rest, rest))))(source)?;
     response.push(Chunk::Text {
@@ -44,15 +38,11 @@ pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
     if pretext.1.is_empty() {
         Ok((source, response))
     } else {
-        dbg!(&source);
         let (source, current) = tag("`")(pretext.1)?;
         let (source, code) = take_until("`")(source)?;
-        dbg!(&code);
         let (source, current) = tag("`")(source)?;
         let (source, language) = take_until("`")(source)?;
-        dbg!(&language);
         let (source, current) = tag("`")(source)?;
-        dbg!(&source);
         response.push(Chunk::InlineCode {
             value: Some(code.to_string()),
             language: Some(language.to_string()),
@@ -60,4 +50,10 @@ pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
         });
         Ok((source, response))
     }
+}
+
+pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
+    let (source, containers) = many_till(text, eof)(source)?;
+    let response = containers.0.concat();
+    Ok(("", response))
 }

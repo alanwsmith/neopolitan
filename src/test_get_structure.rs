@@ -6,6 +6,7 @@
 // checked via unit tests.
 /////////////////////////////////////////////
 
+#![allow(warnings)]
 use crate::chunk::Chunk;
 use crate::get_structure::get_structure;
 use crate::page::Page;
@@ -13,25 +14,7 @@ use crate::section::Section;
 use std::collections::HashMap;
 
 #[test]
-fn test_get_structure_001() {
-    let source = vec!["-> TITLE", "", "Alfa Bravo"].join("\n");
-    let expected = Page {
-        attributes: HashMap::new(),
-        children: vec![Section::TITLE {
-            children: vec![Chunk::H1 {
-                attributes: HashMap::from([("class".to_string(), "title".to_string())]),
-                children: vec![Chunk::Text {
-                    value: "Alfa Bravo".to_string(),
-                }],
-            }],
-        }],
-    };
-    let result = get_structure(source.as_str()).unwrap().1;
-    assert_eq!(expected, result);
-}
-
-#[test]
-fn test_get_structure_002() {
+fn basic_integration() {
     let source = vec![
         "-> TITLE",
         ">> id: main",
@@ -53,6 +36,7 @@ fn test_get_structure_002() {
         "",
         "The `chink`rust` in the wall.",
         "",
+        "The `desk`python` and `both`javascript` chairs",
     ]
     .join("\n");
     let expected = Page {
@@ -94,22 +78,48 @@ fn test_get_structure_002() {
                 ],
             },
             Section::P {
-                children: vec![Chunk::P {
-                    attributes: HashMap::from([("class".to_string(), "main".to_string())]),
-                    children: vec![
-                        Chunk::Text {
-                            value: "The ".to_string(),
-                        },
-                        Chunk::InlineCode {
-                            attributes: None,
-                            language: Some("rust".to_string()),
-                            value: Some("chink".to_string()),
-                        },
-                        Chunk::Text {
-                            value: " in the wall.".to_string(),
-                        },
-                    ],
-                }],
+                children: vec![
+                    Chunk::P {
+                        attributes: HashMap::from([("class".to_string(), "main".to_string())]),
+                        children: vec![
+                            Chunk::Text {
+                                value: "The ".to_string(),
+                            },
+                            Chunk::InlineCode {
+                                attributes: None,
+                                language: Some("rust".to_string()),
+                                value: Some("chink".to_string()),
+                            },
+                            Chunk::Text {
+                                value: " in the wall.".to_string(),
+                            },
+                        ],
+                    },
+                    Chunk::P {
+                        attributes: HashMap::from([("class".to_string(), "main".to_string())]),
+                        children: vec![
+                            Chunk::Text {
+                                value: "The ".to_string(),
+                            },
+                            Chunk::InlineCode {
+                                attributes: None,
+                                language: Some("python".to_string()),
+                                value: Some("desk".to_string()),
+                            },
+                            Chunk::Text {
+                                value: " and ".to_string(),
+                            },
+                            Chunk::InlineCode {
+                                attributes: None,
+                                language: Some("javascript".to_string()),
+                                value: Some("both".to_string()),
+                            },
+                            Chunk::Text {
+                                value: " chairs".to_string(),
+                            },
+                        ],
+                    },
+                ],
             },
         ],
     };
