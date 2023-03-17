@@ -86,6 +86,24 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             }
             Ok((return_content, block))
         }
+
+        Section::P { ref mut children } => {
+            let (source, _) = space0(source)?;
+            let (source, value) = line_ending(source)?;
+            let (source, _) = space0(source)?;
+            let (text, value) = line_ending(source)?;
+            // dbg!(&text);
+            // dbg!(&value);
+            // dbg!(&source);
+            let attribute_map = HashMap::new();
+            children.push(Chunk::P {
+                attributes: attribute_map,
+                children: vec![Chunk::Text {
+                    value: text.trim().to_string(),
+                }],
+            });
+            Ok((source, block))
+        }
         _ => {
             let section = Section::PLACEHOLDER;
             Ok(("", section))

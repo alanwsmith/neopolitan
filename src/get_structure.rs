@@ -1,8 +1,7 @@
 #![allow(warnings)]
 use crate::chunk::Chunk;
 use crate::page::Page;
-use crate::section::section;
-use crate::section::Section;
+use crate::section::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
