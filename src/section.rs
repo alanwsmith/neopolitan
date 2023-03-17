@@ -1,6 +1,7 @@
 #![allow(warnings)]
 use crate::chunk::Chunk;
 use crate::page::Page;
+use crate::process_text::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -225,34 +226,42 @@ pub fn section_dev(source: &str) -> IResult<&str, Section> {
                 for (attribute_key, attribute_value) in &attribute_map {
                     local_attributes.insert(attribute_key.to_string(), attribute_value.to_string());
                 }
+                let (chunk_remainder, mut chunks) = process_text(paragraph.trim())?;
+                chunks.push(Chunk::Text {
+                    value: chunk_remainder.to_string(),
+                });
+                // dbg!(&chunks);
                 // Process the text in the thing
                 // let (last_child, paragraph_children) = many0(process_text)(paragraph)?;
                 children.push(Chunk::P {
                     attributes: local_attributes,
-                    children: vec![Chunk::Text {
-                        value: paragraph.trim().to_string(),
-                    }],
+                    // children: process_text(paragraph.trim()).unwrap().1, // children: vec![Chunk::Text {
+                    children: chunks,
                 });
+                // Attempt
+                // children.push(process_text(paragraph.trim().as_str()).unwrap().1);
+                // dbg!(process_text(paragraph.trim()));
             }
-            //Shameless Green
-            let block = Section::P {
-                children: vec![Chunk::P {
-                    attributes: HashMap::new(),
-                    children: vec![
-                        Chunk::Text {
-                            value: "The ".to_string(),
-                        },
-                        Chunk::InlineCode {
-                            attributes: None,
-                            language: Some("rust".to_string()),
-                            value: Some("sand".to_string()),
-                        },
-                        Chunk::Text {
-                            value: " drifts".to_string(),
-                        },
-                    ],
-                }],
-            };
+            ////Shameless Green
+            //let block = Section::P {
+            //    children: vec![Chunk::P {
+            //        attributes: HashMap::new(),
+            //        children: vec![
+            //            Chunk::Text {
+            //                value: "The ".to_string(),
+            //            },
+            //            Chunk::InlineCode {
+            //                attributes: None,
+            //                language: Some("rust".to_string()),
+            //                value: Some("sand".to_string()),
+            //            },
+            //            Chunk::Text {
+            //                value: " drifts".to_string(),
+            //            },
+            //        ],
+            //    }],
+            //};
+
             Ok((return_content, block))
         }
         _ => {

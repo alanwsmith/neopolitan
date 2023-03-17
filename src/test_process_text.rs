@@ -7,7 +7,7 @@ fn process_text_test_001() {
     let expected: Vec<Chunk> = vec![Chunk::Text {
         value: "beside the shore".to_string(),
     }];
-    let result = process_text_dev(source).unwrap().1;
+    let result = process_text(source).unwrap().1;
     assert_eq!(expected, result);
 }
 
@@ -25,7 +25,7 @@ fn process_text_test_002() {
         },
     ];
     let expected_remainder = " air";
-    let (remainder, result) = process_text_dev(source).unwrap();
+    let (remainder, result) = process_text(source).unwrap();
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }

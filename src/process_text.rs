@@ -28,14 +28,14 @@ use nom::IResult;
 use nom::Parser;
 use std::collections::HashMap;
 
-pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
+pub fn process_text_old(source: &str) -> IResult<&str, Vec<Chunk>> {
     let response: Vec<Chunk> = vec![Chunk::Text {
         value: "Open the crate".to_string(),
     }];
     Ok(("", response))
 }
 
-pub fn process_text_dev(source: &str) -> IResult<&str, Vec<Chunk>> {
+pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
     let mut response: Vec<Chunk> = vec![];
     let (source, pretext) = alt((tuple((take_until("`"), rest)), tuple((rest, rest))))(source)?;
     response.push(Chunk::Text {
