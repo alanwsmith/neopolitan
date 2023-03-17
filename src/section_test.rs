@@ -91,3 +91,26 @@ fn section_test_004() {
     let result = section(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
+
+#[test]
+fn section_test_005() {
+    let source = vec!["-> P", "", "Echo Foxtrot", "", "Our plans right now."].join("\n");
+    let expected = Section::P {
+        children: vec![
+            Chunk::P {
+                attributes: HashMap::from([]),
+                children: vec![Chunk::Text {
+                    value: "Echo Foxtrot".to_string(),
+                }],
+            },
+            Chunk::P {
+                attributes: HashMap::from([]),
+                children: vec![Chunk::Text {
+                    value: "Our plans right now.".to_string(),
+                }],
+            },
+        ],
+    };
+    let result = section_dev(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
