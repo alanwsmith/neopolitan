@@ -310,32 +310,32 @@ fn code_block_with_language() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn code_block_with_language_and_attributes() {
-//     let source = vec![
-//         "-> CODE",
-//         ">> rust",
-//         ">> class: river",
-//         ">> id: spring",
-//         "",
-//         "fn main() {",
-//         "  let charlie = 3;",
-//         "}",
-//     ]
-//     .join("\n");
-//     let expected = Page {
-//         attributes: None,
-//         children: vec![Section::CodeSection {
-//             language: Some("rust".to_string()),
-//             attributes: Some(HashMap::from([
-//                 ("class".to_string(), "river".to_string()),
-//                 ("id".to_string(), "spring".to_string()),
-//             ])),
-//             children: vec![Chunk::Text {
-//                 value: "fn main() {\n  let charlie = 3;\n}".to_string(),
-//             }],
-//         }],
-//     };
-//     let result = get_structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn code_block_with_language_and_attributes() {
+    let source = vec![
+        "-> CODE",
+        ">> rust",
+        ">> class: river",
+        ">> id: spring",
+        "",
+        "fn main() {",
+        "  let charlie = 3;",
+        "}",
+    ]
+    .join("\n");
+    let expected = Page {
+        attributes: None,
+        children: vec![Section::CodeSection {
+            language: Some("rust".to_string()),
+            attributes: Some(vec![
+                (Some("class".to_string()), Some("river".to_string())),
+                (Some("id".to_string()), Some("spring".to_string())),
+            ]),
+            children: vec![Chunk::Text {
+                value: "fn main() {\n  let charlie = 3;\n}".to_string(),
+            }],
+        }],
+    };
+    let result = get_structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
