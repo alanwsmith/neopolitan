@@ -43,6 +43,10 @@ pub enum Section {
         attributes: Option<Vec<(Option<String>, Option<String>)>>,
         children: Vec<Chunk>,
     },
+    NoteSection {
+        attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        children: Vec<Chunk>,
+    },
     Placeholder,
 }
 
@@ -57,14 +61,13 @@ fn attribute_splitter(source: &str) -> IResult<&str, &str> {
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (source, mut block) = alt((
-        tag("-> TITLE").map(|_| Section::TitleSection { children: vec![] }),
-        tag("-> P").map(|_| Section::ParagraphSection { children: vec![] }),
-        tag("-> CODE").map(|_| Section::CodeSection {
+        tag("-> NOTE").map(|_| Section::NoteSection {
             attributes: None,
-            language: None,
             children: vec![],
         }),
-        tag("-> CODEDEV").map(|_| Section::CodeSection {
+        tag("-> P").map(|_| Section::ParagraphSection { children: vec![] }),
+        tag("-> TITLE").map(|_| Section::TitleSection { children: vec![] }),
+        tag("-> CODE").map(|_| Section::CodeSection {
             attributes: None,
             language: None,
             children: vec![],
