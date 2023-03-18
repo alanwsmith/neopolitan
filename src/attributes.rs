@@ -44,6 +44,7 @@ pub fn attributes(source: &str) -> IResult<&str, Attributes> {
     let mut attribute_holder: Vec<(Option<String>, Option<String>)> = vec![];
     for part in parts.iter().skip(1) {
         let (a, b) = attribute(part)?;
+        // let (a, b) = attribute_dev(part)?;
         attribute_holder.push(b);
     }
     let result = Attributes {
@@ -59,9 +60,23 @@ fn part(source: &str) -> IResult<&str, &str> {
     Ok((source, content))
 }
 
-fn attribute(source: &str) -> IResult<&str, (Option<String>, Option<String>)> {
+pub fn attribute_old(source: &str) -> IResult<&str, (Option<String>, Option<String>)> {
     let (v, k) = take_until(":")(source)?;
     let (v, _) = tag(":")(v)?;
     let (v, _) = multispace0(v)?;
     Ok(("", (Some(k.trim().to_string()), Some(v.trim().to_string()))))
+}
+
+pub fn attribute(source: &str) -> IResult<&str, (Option<String>, Option<String>)> {
+    let (v, k) = alt((tuple((take_until(":"), rest)), tuple((rest, rest))))(source)?;
+    if k.1.is_empty() {
+        Ok((v, (Some(k.0.trim().to_string()), None)))
+    } else {
+        let (v, _) = tag(":")(k.1)?;
+        let (v, _) = multispace0(v)?;
+        Ok((
+            "",
+            (Some(k.0.trim().to_string()), Some(v.trim().to_string())),
+        ))
+    }
 }

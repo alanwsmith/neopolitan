@@ -42,3 +42,22 @@ fn basic_attributes() {
     let result = attributes(source);
     assert_eq!(expected, result.unwrap().1);
 }
+
+#[test]
+fn language_without_other_attribute() {
+    let source = "rust";
+    let expected = (Some("rust".to_string()), None);
+    let result = attribute(source);
+    assert_eq!(expected, result.unwrap().1);
+}
+
+// #[test]
+// fn full_attributes_langauge_without_other_stuff() {
+//     let source = ">> box: planks\n\nThe salt breeze";
+//     let expected = Attributes {
+//         values: Some(vec![(Some("box".to_string()), Some("planks".to_string()))]),
+//         remainder: Some("The salt breeze".to_string()),
+//     };
+//     let result = attributes(source);
+//     assert_eq!(expected, result.unwrap().1);
+// }
