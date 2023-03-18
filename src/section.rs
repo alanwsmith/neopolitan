@@ -40,11 +40,6 @@ pub enum Section {
     },
     CodeSection {
         language: Option<String>,
-        attributes: Option<HashMap<String, String>>,
-        children: Vec<Chunk>,
-    },
-    CodeSectionDev {
-        language: Option<String>,
         attributes: Option<Vec<(Option<String>, Option<String>)>>,
         children: Vec<Chunk>,
     },
@@ -69,7 +64,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             language: None,
             children: vec![],
         }),
-        tag("-> CODEDEV").map(|_| Section::CodeSectionDev {
+        tag("-> CODEDEV").map(|_| Section::CodeSection {
             attributes: None,
             language: None,
             children: vec![],
@@ -171,7 +166,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             let (_, block) = code(source)?;
             Ok((return_content, block))
         }
-        Section::CodeSectionDev {
+        Section::CodeSection {
             ref mut children,
             ref mut attributes,
             ref mut language,

@@ -12,7 +12,7 @@ use std::collections::HashMap;
 #[test]
 fn basic_code() {
     let source = "\n\nOn the islands";
-    let expected = Section::CodeSectionDev {
+    let expected = Section::CodeSection {
         attributes: None,
         language: None,
         children: vec![Chunk::Text {
@@ -26,7 +26,7 @@ fn basic_code() {
 #[test]
 fn code_with_language() {
     let source = ">> rust\n\nBring your best compass";
-    let expected = Section::CodeSectionDev {
+    let expected = Section::CodeSection {
         attributes: None,
         language: Some("rust".to_string()),
         children: vec![Chunk::Text {
@@ -40,7 +40,7 @@ fn code_with_language() {
 #[test]
 fn code_with_language_and_attributes() {
     let source = ">> rust\n>> fence: stone\n>> air: frosty\n\nTwo blue fish";
-    let expected = Section::CodeSectionDev {
+    let expected = Section::CodeSection {
         attributes: Some(vec![
             (Some("fence".to_string()), Some("stone".to_string())),
             (Some("air".to_string()), Some("frosty".to_string())),

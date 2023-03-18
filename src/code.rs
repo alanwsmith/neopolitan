@@ -64,7 +64,7 @@ pub fn code(source: &str) -> IResult<&str, Section> {
     match attributes {
         Some(x) => {
             if x.len() == 1 {
-                let response = Section::CodeSectionDev {
+                let response = Section::CodeSection {
                     attributes: None,
                     language: Some(x[0].0.as_ref().unwrap().to_string()),
                     children: vec![Chunk::Text {
@@ -73,7 +73,7 @@ pub fn code(source: &str) -> IResult<&str, Section> {
                 };
                 Ok(("", response))
             } else {
-                let response = Section::CodeSectionDev {
+                let response = Section::CodeSection {
                     attributes: Some(
                         x.clone()
                             .into_iter()
@@ -89,7 +89,7 @@ pub fn code(source: &str) -> IResult<&str, Section> {
             }
         }
         None => {
-            let response = Section::CodeSectionDev {
+            let response = Section::CodeSection {
                 attributes: None,
                 language: None,
                 children: vec![Chunk::Text {
@@ -104,7 +104,7 @@ pub fn code(source: &str) -> IResult<&str, Section> {
 // pub fn code_dev3(source: &str) -> IResult<&str, Section> {
 //     let (remainder, attributes) = attributes(source)?;
 //     if attributes.clone().unwrap().len() == 1 {
-//         let response = Section::CodeSectionDev {
+//         let response = Section::CodeSection {
 //             attributes: None,
 //             language: Some(
 //                 attributes.clone().unwrap()[0]
@@ -122,7 +122,7 @@ pub fn code(source: &str) -> IResult<&str, Section> {
 //         dbg!(&attributes);
 //         dbg!(&remainder);
 //         // let attribute_list: Vec<(Option<String>, Option<String>)> = vec![];
-//         let response = Section::CodeSectionDev {
+//         let response = Section::CodeSection {
 //             attributes: Some(
 //                 attributes
 //                     .clone()
@@ -149,7 +149,7 @@ pub fn code(source: &str) -> IResult<&str, Section> {
 // pub fn code_dev2(source: &str) -> IResult<&str, Section> {
 //     let (remainder, attributes) = attributes(source)?;
 //     let attribute_list: Vec<(Option<String>, Option<String>)> = vec![];
-//     let response = Section::CodeSectionDev {
+//     let response = Section::CodeSection {
 //         attributes: Some(
 //             attributes
 //                 .clone()

@@ -275,7 +275,7 @@ fn code_block_without_language() {
     let source = vec!["-> CODE", "", "fn main() {", "  let alfa = 1;", "}", ""].join("\n");
     let expected = Page {
         attributes: None,
-        children: vec![Section::CodeSectionDev {
+        children: vec![Section::CodeSection {
             language: None,
             attributes: None,
             children: vec![Chunk::Text {
@@ -298,7 +298,7 @@ fn code_block_with_language() {
     .join("\n");
     let expected = Page {
         attributes: None,
-        children: vec![Section::CodeSectionDev {
+        children: vec![Section::CodeSection {
             language: Some("rust".to_string()),
             attributes: None,
             children: vec![Chunk::Text {
