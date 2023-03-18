@@ -5,7 +5,6 @@ pub mod get_structure;
 pub mod list;
 pub mod note;
 pub mod page;
-pub mod process_text;
 pub mod section;
 #[cfg(test)]
 pub mod test_attributes;
@@ -16,6 +15,7 @@ pub mod test_get_structure;
 #[cfg(test)]
 pub mod test_note;
 #[cfg(test)]
-pub mod test_process_text;
-#[cfg(test)]
 pub mod test_section;
+#[cfg(test)]
+pub mod test_text;
+pub mod text;

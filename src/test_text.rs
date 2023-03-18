@@ -1,5 +1,5 @@
 use crate::chunk::Chunk;
-use crate::process_text::*;
+use crate::text::*;
 
 #[test]
 fn basic_text() {

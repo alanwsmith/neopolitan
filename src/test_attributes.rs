@@ -2,8 +2,8 @@
 use crate::attributes::*;
 use crate::chunk::Chunk;
 use crate::page::Page;
-use crate::process_text::*;
 use crate::section::*;
+use crate::text::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;

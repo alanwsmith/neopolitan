@@ -3,7 +3,7 @@ use crate::chunk::Chunk;
 use crate::code::*;
 use crate::list::*;
 use crate::note::*;
-use crate::process_text::*;
+use crate::text::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
