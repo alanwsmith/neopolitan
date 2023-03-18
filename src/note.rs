@@ -1,4 +1,5 @@
 #![allow(warnings)]
+use crate::attributes::attributes;
 use crate::chunk::Chunk;
 use crate::code::*;
 use crate::page::Page;
@@ -32,25 +33,41 @@ use nom::Parser;
 use std::collections::HashMap;
 
 pub fn note(source: &str) -> IResult<&str, Section> {
-    let (source, _) = not_line_ending(source)?;
-    let (source, _) = line_ending(source)?;
-    let (source, _) = not_line_ending(source)?;
-    let (source, _) = line_ending(source)?;
+    let (source, attributes) = attributes(source)?;
     let (remainder, mut note_parts) = many0(note_part)(source)?;
     &note_parts.push(remainder);
-    let block = Section::NoteSection {
-        attributes: None,
-        children: Some(
-            note_parts
-                .iter()
-                .map(|p| Chunk::P {
-                    attributes: None,
-                    children: Some(process_text(p).unwrap().1),
-                })
-                .collect(),
-        ),
-    };
-    Ok(("", block))
+    match attributes {
+        Some(x) => Ok((
+            "",
+            Section::NoteSection {
+                attributes: Some(x),
+                children: Some(
+                    note_parts
+                        .iter()
+                        .map(|p| Chunk::P {
+                            attributes: None,
+                            children: Some(process_text(p).unwrap().1),
+                        })
+                        .collect(),
+                ),
+            },
+        )),
+        None => Ok((
+            "",
+            Section::NoteSection {
+                attributes: None,
+                children: Some(
+                    note_parts
+                        .iter()
+                        .map(|p| Chunk::P {
+                            attributes: None,
+                            children: Some(process_text(p).unwrap().1),
+                        })
+                        .collect(),
+                ),
+            },
+        )),
+    }
 }
 
 fn note_part(source: &str) -> IResult<&str, &str> {
