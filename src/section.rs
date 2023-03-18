@@ -1,6 +1,7 @@
 use crate::attributes::*;
 use crate::chunk::Chunk;
 use crate::code::*;
+use crate::list::*;
 use crate::note::*;
 use crate::process_text::*;
 use nom::branch::alt;
@@ -22,20 +23,24 @@ use std::collections::HashMap;
 pub enum Section {
     // Probably change the non-option stuff
     // to options at some point
-    TitleSection {
-        children: Vec<Chunk>,
-    },
-    ParagraphSection {
-        children: Vec<Chunk>,
-    },
     CodeSection {
         language: Option<String>,
         attributes: Option<Vec<(Option<String>, Option<String>)>>,
         children: Vec<Chunk>,
     },
+    ListSection {
+        attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        children: Option<Vec<Chunk>>,
+    },
     NoteSection {
         attributes: Option<Vec<(Option<String>, Option<String>)>>,
         children: Option<Vec<Chunk>>,
+    },
+    ParagraphSection {
+        children: Vec<Chunk>,
+    },
+    TitleSection {
+        children: Vec<Chunk>,
     },
     Placeholder,
 }
@@ -57,6 +62,10 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         }),
         tag_no_case("-> P").map(|_| Section::ParagraphSection { children: vec![] }),
         tag_no_case("-> TITLE").map(|_| Section::TitleSection { children: vec![] }),
+        tag_no_case("-> LIST").map(|_| Section::ListSection {
+            attributes: None,
+            children: None,
+        }),
         tag_no_case("-> CODE").map(|_| Section::CodeSection {
             attributes: None,
             language: None,
@@ -139,6 +148,14 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         } => {
             let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
             let (_, block) = note(source)?;
+            Ok((return_content, block))
+        }
+        Section::ListSection {
+            children: _children,
+            attributes: _attributes,
+        } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = list(source)?;
             Ok((return_content, block))
         }
         _ => {

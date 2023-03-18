@@ -430,3 +430,36 @@ fn note_with_attributes() {
     let result = get_structure(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
+
+#[test]
+fn basic_list() {
+    let source = vec!["-> list", "", "- The long journey", "", "- A gold ring"].join("\n");
+    let expected = Page {
+        attributes: None,
+        children: vec![Section::ListSection {
+            attributes: None,
+            children: Some(vec![
+                Chunk::ListItem {
+                    attributes: None,
+                    children: Some(vec![Chunk::P {
+                        attributes: None,
+                        children: Some(vec![Chunk::Text {
+                            value: "The long journey".to_string(),
+                        }]),
+                    }]),
+                },
+                Chunk::ListItem {
+                    attributes: None,
+                    children: Some(vec![Chunk::P {
+                        attributes: None,
+                        children: Some(vec![Chunk::Text {
+                            value: "A gold ring".to_string(),
+                        }]),
+                    }]),
+                },
+            ]),
+        }],
+    };
+    let result = get_structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}

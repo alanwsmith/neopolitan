@@ -16,6 +16,10 @@ pub enum Chunk {
         url: Option<String>,
         value: Option<String>,
     },
+    ListItem {
+        attributes: Option<HashMap<String, String>>,
+        children: Option<Vec<Chunk>>,
+    },
     P {
         attributes: Option<Vec<(Option<String>, Option<String>)>>,
         children: Option<Vec<Chunk>>,
