@@ -174,7 +174,7 @@ fn test_inline_code() {
 #[test]
 fn section_code_test() {
     let source = vec!["-> CODE", "", "The logs fell"].join("\n");
-    let expected = Section::CodeSection {
+    let expected = Section::CodeSectionDev {
         attributes: None,
         language: None,
         children: vec![Chunk::Text {
@@ -188,7 +188,7 @@ fn section_code_test() {
 #[test]
 fn section_code_test_with_language() {
     let source = vec!["-> CODE", ">> rust", "", "a long list"].join("\n");
-    let expected = Section::CodeSection {
+    let expected = Section::CodeSectionDev {
         attributes: None,
         language: Some("rust".to_string()),
         children: vec![Chunk::Text {

@@ -275,7 +275,7 @@ fn code_block_without_language() {
     let source = vec!["-> CODE", "", "fn main() {", "  let alfa = 1;", "}", ""].join("\n");
     let expected = Page {
         attributes: None,
-        children: vec![Section::CodeSection {
+        children: vec![Section::CodeSectionDev {
             language: None,
             attributes: None,
             children: vec![Chunk::Text {
@@ -292,20 +292,50 @@ fn code_block_with_language() {
         ">> rust",
         "",
         "fn main() {",
-        "  let bravo = 1;",
+        "  let bravo = 2;",
         "}",
     ]
     .join("\n");
     let expected = Page {
         attributes: None,
-        children: vec![Section::CodeSection {
+        children: vec![Section::CodeSectionDev {
             language: Some("rust".to_string()),
             attributes: None,
             children: vec![Chunk::Text {
-                value: "fn main() {\n  let bravo = 1;\n}".to_string(),
+                value: "fn main() {\n  let bravo = 2;\n}".to_string(),
             }],
         }],
     };
     let result = get_structure(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
+
+// #[test]
+// fn code_block_with_language_and_attributes() {
+//     let source = vec![
+//         "-> CODE",
+//         ">> rust",
+//         ">> class: river",
+//         ">> id: spring",
+//         "",
+//         "fn main() {",
+//         "  let charlie = 3;",
+//         "}",
+//     ]
+//     .join("\n");
+//     let expected = Page {
+//         attributes: None,
+//         children: vec![Section::CodeSection {
+//             language: Some("rust".to_string()),
+//             attributes: Some(HashMap::from([
+//                 ("class".to_string(), "river".to_string()),
+//                 ("id".to_string(), "spring".to_string()),
+//             ])),
+//             children: vec![Chunk::Text {
+//                 value: "fn main() {\n  let charlie = 3;\n}".to_string(),
+//             }],
+//         }],
+//     };
+//     let result = get_structure(source.as_str()).unwrap().1;
+//     assert_eq!(expected, result);
+// }

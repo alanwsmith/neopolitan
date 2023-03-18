@@ -4,10 +4,15 @@ use crate::code::*;
 use crate::section::Section;
 use std::collections::HashMap;
 
+// NOTE: all the code that comes in
+// at this point will start with
+// two `\n\n`` if there isn't an
+// attribute
+
 #[test]
 fn basic_code() {
-    let source = "On the islands";
-    let expected = Section::CodeSection {
+    let source = "\n\nOn the islands";
+    let expected = Section::CodeSectionDev {
         attributes: None,
         language: None,
         children: vec![Chunk::Text {
@@ -21,7 +26,7 @@ fn basic_code() {
 #[test]
 fn code_with_language() {
     let source = ">> rust\n\nBring your best compass";
-    let expected = Section::CodeSection {
+    let expected = Section::CodeSectionDev {
         attributes: None,
         language: Some("rust".to_string()),
         children: vec![Chunk::Text {
@@ -45,6 +50,6 @@ fn code_with_language_and_attributes() {
             value: "Two blue fish".to_string(),
         }],
     };
-    let result = code_dev2(source);
+    let result = code(source);
     assert_eq!(expected, result.unwrap().1);
 }
