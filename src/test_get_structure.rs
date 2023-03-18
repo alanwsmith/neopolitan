@@ -414,7 +414,7 @@ fn note_width_code_sections() {
 
 #[test]
 fn note_with_attributes() {
-    let source = vec!["-> NOTE", ">> id: rose", "", "Lift the square"].join("\n");
+    let source = vec!["-> note", ">> id: rose", "", "Lift the square"].join("\n");
     let expected = Page {
         attributes: None,
         children: vec![Section::NoteSection {

@@ -5,6 +5,7 @@ use crate::note::*;
 use crate::process_text::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
+use nom::bytes::complete::tag_no_case;
 use nom::bytes::complete::take_until;
 use nom::character::complete::line_ending;
 use nom::character::complete::multispace0;
@@ -50,13 +51,13 @@ fn attribute_splitter(source: &str) -> IResult<&str, &str> {
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (source, mut block) = alt((
-        tag("-> NOTE").map(|_| Section::NoteSection {
+        tag_no_case("-> NOTE").map(|_| Section::NoteSection {
             attributes: None,
             children: None,
         }),
-        tag("-> P").map(|_| Section::ParagraphSection { children: vec![] }),
-        tag("-> TITLE").map(|_| Section::TitleSection { children: vec![] }),
-        tag("-> CODE").map(|_| Section::CodeSection {
+        tag_no_case("-> P").map(|_| Section::ParagraphSection { children: vec![] }),
+        tag_no_case("-> TITLE").map(|_| Section::TitleSection { children: vec![] }),
+        tag_no_case("-> CODE").map(|_| Section::CodeSection {
             attributes: None,
             language: None,
             children: vec![],
