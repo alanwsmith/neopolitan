@@ -35,30 +35,30 @@ use std::collections::HashMap;
 #[test]
 fn basic_attributes() {
     let source = ">> box: planks\n\nThe salt breeze";
-    let expected = Attributes {
-        values: Some(vec![(Some("box".to_string()), Some("planks".to_string()))]),
-    };
+    let expected = Some(vec![(Some("box".to_string()), Some("planks".to_string()))]);
     let result = attributes(source);
-    assert_eq!(expected, result.unwrap().1);
-}
-
-#[test]
-fn language_without_other_attribute() {
-    let source = "rust";
-    let expected = (Some("rust".to_string()), None);
-    let result = attribute(source);
     assert_eq!(expected, result.unwrap().1);
 }
 
 #[test]
 fn full_attributes_langauge_without_other_stuff() {
     let source = ">> python >> creek: wild\n\nRight hand side";
-    let expected = Attributes {
-        values: Some(vec![
-            (Some("python".to_string()), None),
-            (Some("creek".to_string()), Some("wild".to_string())),
-        ]),
-    };
+    let expected = Some(vec![
+        (Some("python".to_string()), None),
+        (Some("creek".to_string()), Some("wild".to_string())),
+    ]);
     let result = attributes(source);
+    assert_eq!(expected, result.unwrap().1);
+}
+
+////////////////////////////////////////////
+// This is just a singular attribute instead
+// of the collection of attributes like above
+
+#[test]
+fn language_without_other_attribute() {
+    let source = "rust";
+    let expected = (Some("rust".to_string()), None);
+    let result = attribute(source);
     assert_eq!(expected, result.unwrap().1);
 }
