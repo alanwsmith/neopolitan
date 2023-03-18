@@ -358,3 +358,30 @@ fn basic_note() {
     let result = get_structure(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
+
+#[test]
+fn note_with_multiple_lines() {
+    let source = vec!["-> NOTE", "", "Oak is strong", "", "and also gives shade"].join("\n");
+    let expected = Page {
+        attributes: None,
+        children: vec![Section::NoteSection {
+            attributes: None,
+            children: Some(vec![
+                Chunk::P {
+                    attributes: None,
+                    children: Some(vec![Chunk::Text {
+                        value: "Oak is strong".to_string(),
+                    }]),
+                },
+                Chunk::P {
+                    attributes: None,
+                    children: Some(vec![Chunk::Text {
+                        value: "and also gives shade".to_string(),
+                    }]),
+                },
+            ]),
+        }],
+    };
+    let result = get_structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}

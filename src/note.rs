@@ -36,17 +36,27 @@ pub fn note(source: &str) -> IResult<&str, Section> {
     let (source, _) = line_ending(source)?;
     let (source, _) = not_line_ending(source)?;
     let (source, _) = line_ending(source)?;
-
-    dbg!(&source);
-
+    let (remainder, mut note_parts) = many0(note_part)(source)?;
+    &note_parts.push(remainder);
     let block = Section::NoteSection {
         attributes: None,
-        children: Some(vec![Chunk::P {
-            attributes: None,
-            children: Some(vec![Chunk::Text {
-                value: source.to_string(),
-            }]),
-        }]),
+        children: Some(
+            note_parts
+                .iter()
+                .map(|p| Chunk::P {
+                    attributes: None,
+                    children: Some(vec![Chunk::Text {
+                        value: p.to_string(),
+                    }]),
+                })
+                .collect(),
+        ),
     };
     Ok(("", block))
+}
+
+fn note_part(source: &str) -> IResult<&str, &str> {
+    let (source, content) = take_until("\n\n")(source)?;
+    let (source, _) = tag("\n\n")(source)?;
+    Ok((source, content))
 }
