@@ -51,6 +51,14 @@ fn full_attributes_langauge_without_other_stuff() {
     assert_eq!(expected, result.unwrap().1);
 }
 
+#[test]
+fn no_attributes() {
+    let source = "\n\nThe pine tree";
+    let expected = None;
+    let result = attributes(source);
+    assert_eq!(expected, result.unwrap().1);
+}
+
 ////////////////////////////////////////////
 // This is just a singular attribute instead
 // of the collection of attributes like above

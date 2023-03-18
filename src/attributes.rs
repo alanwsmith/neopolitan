@@ -52,15 +52,32 @@ pub fn attributes_old(source: &str) -> IResult<&str, Attributes> {
 }
 
 pub fn attributes(source: &str) -> IResult<&str, Option<Vec<(Option<String>, Option<String>)>>> {
+    dbg!(&source);
     let (remainder, source) = take_until("\n\n")(source)?;
+    dbg!(&source);
+    dbg!(&remainder);
     let (final_part, mut parts) = many0(part)(source)?;
-    parts.push(final_part);
-    let mut attribute_holder: Vec<(Option<String>, Option<String>)> = vec![];
-    for part in parts.iter().skip(1) {
-        let (a, b) = attribute(part)?;
-        attribute_holder.push(b);
+    dbg!(&parts);
+    dbg!(&final_part);
+    if final_part.is_empty() {
+        parts.push(final_part);
+        dbg!(&parts);
+        let mut attribute_holder: Vec<(Option<String>, Option<String>)> = vec![];
+        for part in parts.iter().skip(1) {
+            let (a, b) = attribute(part)?;
+            attribute_holder.push(b);
+        }
+        Ok((remainder.trim(), None))
+    } else {
+        parts.push(final_part);
+        dbg!(&parts);
+        let mut attribute_holder: Vec<(Option<String>, Option<String>)> = vec![];
+        for part in parts.iter().skip(1) {
+            let (a, b) = attribute(part)?;
+            attribute_holder.push(b);
+        }
+        Ok((remainder.trim(), Some(attribute_holder)))
     }
-    Ok((remainder.trim(), Some(attribute_holder)))
 }
 
 fn part(source: &str) -> IResult<&str, &str> {
