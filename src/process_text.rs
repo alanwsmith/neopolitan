@@ -28,12 +28,19 @@ use nom::IResult;
 use nom::Parser;
 use std::collections::HashMap;
 
-pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
+pub fn process_text_dev(source: &str) -> IResult<&str, Option<Vec<Chunk>>> {
     let (source, _) = multispace0(source)?;
     let (source, containers) = many_till(text, eof)(source)?;
     let response = containers.0.concat();
-    Ok(("", response))
+    Ok(("", Some(response)))
 }
+
+// pub fn process_text(source: &str) -> IResult<&str, Vec<Chunk>> {
+//     let (source, _) = multispace0(source)?;
+//     let (source, containers) = many_till(text, eof)(source)?;
+//     let response = containers.0.concat();
+//     Ok(("", response))
+// }
 
 #[derive(Debug)]
 enum Target {

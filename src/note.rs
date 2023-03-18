@@ -46,7 +46,7 @@ pub fn note(source: &str) -> IResult<&str, Section> {
                         .iter()
                         .map(|p| Chunk::P {
                             attributes: None,
-                            children: Some(process_text(p).unwrap().1),
+                            children: process_text_dev(p).unwrap().1,
                         })
                         .collect(),
                 ),
@@ -61,7 +61,7 @@ pub fn note(source: &str) -> IResult<&str, Section> {
                         .iter()
                         .map(|p| Chunk::P {
                             attributes: None,
-                            children: Some(process_text(p).unwrap().1),
+                            children: process_text_dev(p).unwrap().1,
                         })
                         .collect(),
                 ),
