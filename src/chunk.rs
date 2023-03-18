@@ -20,12 +20,6 @@ pub enum Chunk {
         attributes: Option<Vec<(Option<String>, Option<String>)>>,
         children: Option<Vec<Chunk>>,
     },
-
-    POLD {
-        attributes: Option<HashMap<String, String>>,
-        children: Option<Vec<Chunk>>,
-    },
-
     Text {
         value: String,
     },

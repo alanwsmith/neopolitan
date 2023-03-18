@@ -2,10 +2,6 @@ use crate::chunk::Chunk;
 use crate::section::*;
 use std::collections::HashMap;
 
-// TODO: Add test with spaces after the
-// title and then on the empty line
-// and then in both places.
-
 #[test]
 fn test_basic_title() {
     let source = vec!["-> TITLE", "", "Alfa Bravo"].join("\n");

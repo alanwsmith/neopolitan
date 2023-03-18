@@ -1,33 +1,18 @@
-#![allow(warnings)]
 use crate::attributes::*;
 use crate::chunk::Chunk;
 use crate::code::*;
 use crate::note::*;
-use crate::page::Page;
 use crate::process_text::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
-use nom::character::complete::char;
 use nom::character::complete::line_ending;
 use nom::character::complete::multispace0;
-use nom::character::complete::multispace1;
 use nom::character::complete::not_line_ending;
 use nom::character::complete::space0;
-use nom::combinator::eof;
-use nom::combinator::not;
 use nom::combinator::rest;
-use nom::error::Error;
-use nom::error::ErrorKind;
 use nom::multi::many0;
-use nom::multi::many1;
-use nom::multi::many_till;
 use nom::multi::separated_list0;
-use nom::sequence::delimited;
-use nom::sequence::pair;
-use nom::sequence::preceded;
-use nom::sequence::tuple;
-use nom::Err;
 use nom::IResult;
 use nom::Parser;
 use std::collections::HashMap;
@@ -80,7 +65,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     match block {
         Section::TitleSection { ref mut children } => {
             let (source, _) = space0(source)?;
-            let (source, value) = line_ending(source)?;
+            let (source, _) = line_ending(source)?;
             let (source, attributes) = many0(attribute_splitter)(source)?;
             let mut attribute_map: HashMap<String, String> =
                 HashMap::from([("class".to_string(), "title".to_string())]);
@@ -124,77 +109,32 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             Ok((return_content, block))
         }
         Section::ParagraphSection { ref mut children } => {
-            // let (source, _) = space0(source)?;
-            // let (source, _) = line_ending(source)?;
-
-            dbg!(&source);
-            // let tmp_new_source = source.clone();
             let (source, attribute_list) = attributes(source)?;
-            // dbg!(&attribute_list);
-
-            /////////////////////
-            //let (source, attributes) = many0(attribute_splitter)(source)?;
-            //let mut attribute_map: HashMap<String, String> = HashMap::from([]);
-            //for attribute in attributes {
-            //    let (remainder, key) = take_until(":")(attribute)?;
-            //    let (value, _) = tag(":")(remainder)?;
-            //    attribute_map.insert(key.trim().to_string(), value.trim().to_string());
-            //}
-            /////////////////////
-
-            dbg!(&source);
             let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
-            dbg!(&content);
-
             let (content, _) = multispace0(content)?;
             let (remainder, mut paragraphs) =
                 separated_list0(tag("\n\n"), take_until("\n\n"))(content)?;
             paragraphs.push(remainder);
             for paragraph in paragraphs.iter() {
-                dbg!(&paragraphs);
                 children.push(Chunk::P {
                     attributes: attribute_list.clone(),
                     children: Some(process_text(paragraph).unwrap().1),
                 });
-                // let mut local_attributes: HashMap<String, String> = HashMap::new();
-                // for (attribute_key, attribute_value) in &attribute_map {
-                //     local_attributes.insert(attribute_key.to_string(), attribute_value.to_string());
-                // }
-
-                // let (chunk_remainder, mut chunks) = process_text(paragraph.trim())?;
-                // if chunk_remainder.is_empty() {
-                // } else {
-                //     chunks.push(Chunk::Text {
-                //         value: chunk_remainder.to_string(),
-                //     });
-                // }
-                //if local_attributes.is_empty() {
-                //    children.push(Chunk::P {
-                //        attributes: None,
-                //        children: Some(chunks),
-                //    });
-                //} else {
-                //    children.push(Chunk::P {
-                //        //attributes: Some(attribute_list.clone().unwrap()),
-                //        attributes: None,
-                //        children: Some(chunks),
-                //    });
-                //}
             }
             Ok((return_content, block))
         }
         Section::CodeSection {
-            ref mut children,
-            ref mut attributes,
-            ref mut language,
+            children: _children,
+            attributes: _attributes,
+            language: _language,
         } => {
             let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
             let (_, block) = code(source)?;
             Ok((return_content, block))
         }
         Section::NoteSection {
-            ref mut children,
-            ref mut attributes,
+            children: _children,
+            attributes: _attributes,
         } => {
             let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
             let (_, block) = note(source)?;
