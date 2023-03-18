@@ -1,4 +1,4 @@
--> TITLE 
+-> title 
 >> class: sample
 
 Neopolitan Sample One
@@ -7,10 +7,31 @@ This is a basic sample of the Neopolitan
 format to check functionality with 
 random texts. 
 
--> P
+-> p
 >> class: front 
 
+The curtain rose and the show was on. The 
+<<link|birch|https://www.example.com>> canoe 
+slid on the smooth planks. The source of 
+the huge river is the clear spring.
 
+Two blue fish swam in the tank.
+
+-> note 
+
+The ink stain dried on the finished page.
+The grass curled around the fence post.
+Cut the pie into large parts.
+
+A wisp of cloud hung in the blue air.
+Oak is strong and also gives shade.
+
+-> code
+>> rust 
+
+fn main() {
+  println!("alfa bravo");
+}
 
 
 
