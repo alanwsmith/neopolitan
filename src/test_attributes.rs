@@ -59,6 +59,13 @@ fn no_attributes() {
     assert_eq!(expected, result.unwrap().1);
 }
 
+#[test]
+fn check_return_values() {
+    let source = "\n\nThe pine tree\n\nRunning again";
+    let result = attributes(source);
+    assert_eq!("The pine tree\n\nRunning again", result.unwrap().0);
+}
+
 ////////////////////////////////////////////
 // This is just a singular attribute instead
 // of the collection of attributes like above
