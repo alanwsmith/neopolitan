@@ -1,6 +1,7 @@
 #![allow(warnings)]
 use crate::chunk::Chunk;
 use crate::code::*;
+use crate::note::*;
 use crate::page::Page;
 use crate::process_text::*;
 use nom::branch::alt;
@@ -32,6 +33,8 @@ use std::collections::HashMap;
 
 #[derive(Debug, PartialEq)]
 pub enum Section {
+    // Probably change the non-option stuff
+    // to options at some point
     TitleSection {
         children: Vec<Chunk>,
     },
@@ -45,7 +48,7 @@ pub enum Section {
     },
     NoteSection {
         attributes: Option<Vec<(Option<String>, Option<String>)>>,
-        children: Vec<Chunk>,
+        children: Option<Vec<Chunk>>,
     },
     Placeholder,
 }
@@ -63,7 +66,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, mut block) = alt((
         tag("-> NOTE").map(|_| Section::NoteSection {
             attributes: None,
-            children: vec![],
+            children: None,
         }),
         tag("-> P").map(|_| Section::ParagraphSection { children: vec![] }),
         tag("-> TITLE").map(|_| Section::TitleSection { children: vec![] }),
@@ -169,7 +172,14 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             let (_, block) = code(source)?;
             Ok((return_content, block))
         }
-
+        Section::NoteSection {
+            ref mut children,
+            ref mut attributes,
+        } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = note(source)?;
+            Ok((return_content, block))
+        }
         _ => {
             let block = Section::Placeholder;
             Ok(("", block))

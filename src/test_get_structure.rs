@@ -339,3 +339,22 @@ fn code_block_with_language_and_attributes() {
     let result = get_structure(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
+
+#[test]
+fn basic_note() {
+    let source = vec!["-> NOTE", "", "This is a note"].join("\n");
+    let expected = Page {
+        attributes: None,
+        children: vec![Section::NoteSection {
+            attributes: None,
+            children: Some(vec![Chunk::P {
+                attributes: None,
+                children: Some(vec![Chunk::Text {
+                    value: "This is a note".to_string(),
+                }]),
+            }]),
+        }],
+    };
+    let result = get_structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
