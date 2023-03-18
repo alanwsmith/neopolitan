@@ -37,7 +37,6 @@ fn basic_attributes() {
     let source = ">> box: planks\n\nThe salt breeze";
     let expected = Attributes {
         values: Some(vec![(Some("box".to_string()), Some("planks".to_string()))]),
-        remainder: Some("The salt breeze".to_string()),
     };
     let result = attributes(source);
     assert_eq!(expected, result.unwrap().1);
@@ -59,7 +58,6 @@ fn full_attributes_langauge_without_other_stuff() {
             (Some("python".to_string()), None),
             (Some("creek".to_string()), Some("wild".to_string())),
         ]),
-        remainder: Some("Right hand side".to_string()),
     };
     let result = attributes(source);
     assert_eq!(expected, result.unwrap().1);

@@ -34,7 +34,6 @@ use std::collections::HashMap;
 #[derive(Debug, PartialEq)]
 pub struct Attributes {
     pub values: Option<Vec<(Option<String>, Option<String>)>>,
-    pub remainder: Option<String>,
 }
 
 pub fn attributes(source: &str) -> IResult<&str, Attributes> {
@@ -48,9 +47,9 @@ pub fn attributes(source: &str) -> IResult<&str, Attributes> {
     }
     let result = Attributes {
         values: Some(attribute_holder),
-        remainder: Some(remainder.trim().to_string()),
+        //remainder: Some(remainder.trim().to_string()),
     };
-    Ok(("", result))
+    Ok((remainder.trim(), result))
 }
 
 fn part(source: &str) -> IResult<&str, &str> {
