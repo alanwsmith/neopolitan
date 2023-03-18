@@ -44,7 +44,6 @@ pub fn attributes(source: &str) -> IResult<&str, Attributes> {
     let mut attribute_holder: Vec<(Option<String>, Option<String>)> = vec![];
     for part in parts.iter().skip(1) {
         let (a, b) = attribute(part)?;
-        // let (a, b) = attribute_dev(part)?;
         attribute_holder.push(b);
     }
     let result = Attributes {
