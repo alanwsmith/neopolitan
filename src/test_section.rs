@@ -115,36 +115,43 @@ fn test_multiple_paragraphs() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn test_attributes_on_paragraphs() {
-//     let source = vec![
-//         "-> P",
-//         ">> class: mighty",
-//         "",
-//         "The sand drifts",
-//         "",
-//         "Twist the valve",
-//     ]
-//     .join("\n");
-//     let expected = Section::ParagraphSection {
-//         children: vec![
-//             Chunk::P {
-//                 attributes: Some(HashMap::from([("class".to_string(), "mighty".to_string())])),
-//                 children: Some(vec![Chunk::Text {
-//                     value: "The sand drifts".to_string(),
-//                 }]),
-//             },
-//             Chunk::P {
-//                 attributes: Some(HashMap::from([("class".to_string(), "mighty".to_string())])),
-//                 children: Some(vec![Chunk::Text {
-//                     value: "Twist the valve".to_string(),
-//                 }]),
-//             },
-//         ],
-//     };
-//     let result = section(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn test_attributes_on_paragraphs() {
+    let source = vec![
+        "-> P",
+        ">> class: mighty",
+        "",
+        "The sand drifts",
+        "",
+        "Twist the valve",
+    ]
+    .join("\n");
+    let expected = Section::ParagraphSection {
+        children: vec![
+            Chunk::P {
+                attributes: Some(vec![(
+                    Some("class".to_string()),
+                    Some("mighty".to_string()),
+                )]),
+                children: Some(vec![Chunk::Text {
+                    value: "The sand drifts".to_string(),
+                }]),
+            },
+            Chunk::P {
+                // attributes: None,
+                attributes: Some(vec![(
+                    Some("class".to_string()),
+                    Some("mighty".to_string()),
+                )]),
+                children: Some(vec![Chunk::Text {
+                    value: "Twist the valve".to_string(),
+                }]),
+            },
+        ],
+    };
+    let result = section(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
 #[test]
 fn test_inline_code() {

@@ -153,7 +153,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             for paragraph in paragraphs.iter() {
                 dbg!(&paragraphs);
                 children.push(Chunk::P {
-                    attributes: None,
+                    attributes: attribute_list.clone(),
                     children: Some(process_text(paragraph).unwrap().1),
                 });
                 // let mut local_attributes: HashMap<String, String> = HashMap::new();
