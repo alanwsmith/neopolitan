@@ -463,3 +463,25 @@ fn basic_list() {
     let result = get_structure(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
+
+#[test]
+fn list_with_attributes() {
+    let source = vec!["-> list", ">> id: echo", "", "- Draw the chart"].join("\n");
+    let expected = Page {
+        attributes: None,
+        children: vec![Section::ListSection {
+            attributes: None,
+            children: Some(vec![Chunk::ListItem {
+                attributes: Some(vec![(Some("id".to_string()), Some("echo".to_string()))]),
+                children: Some(vec![Chunk::P {
+                    attributes: None,
+                    children: Some(vec![Chunk::Text {
+                        value: "Draw the chart".to_string(),
+                    }]),
+                }]),
+            }]),
+        }],
+    };
+    let result = get_structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}

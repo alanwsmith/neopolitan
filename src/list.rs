@@ -33,17 +33,14 @@ use nom::Parser;
 use std::collections::HashMap;
 
 pub fn list(source: &str) -> IResult<&str, Section> {
-    dbg!(&source);
     let (source, attributes) = attributes(source)?;
-    dbg!(&source);
     let (remainder, mut parts) = many0(part)(source)?;
     parts.push(remainder.trim());
-    dbg!(&parts);
     let items: Vec<Chunk> = parts
         .iter()
         .skip(1)
         .map(|p| Chunk::ListItem {
-            attributes: None,
+            attributes: attributes.clone(),
             children: {
                 Some(vec![Chunk::P {
                     attributes: None,
@@ -57,12 +54,6 @@ pub fn list(source: &str) -> IResult<&str, Section> {
         children: Some(items),
     };
     Ok(("", response))
-}
-
-fn get_parts(source: &str) -> IResult<&str, Option<Vec<&str>>> {
-    let (remainder, mut parts) = many0(part)(source)?;
-    parts.push(remainder);
-    Ok(("", Some(parts)))
 }
 
 fn part(source: &str) -> IResult<&str, &str> {
