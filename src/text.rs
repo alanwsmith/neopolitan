@@ -37,9 +37,10 @@ pub fn text(source: &str) -> IResult<&str, Option<Vec<Chunk>>> {
 
 #[derive(Debug)]
 enum Target {
+    Code { pretext: String },
     Link { pretext: String },
     Rest { pretext: String },
-    Code { pretext: String },
+    Strong { pretext: String },
 }
 
 fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
@@ -53,6 +54,12 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
         )),
         tuple((
             take_until("`").map(|v: &str| Target::Code {
+                pretext: v.to_string(),
+            }),
+            rest,
+        )),
+        tuple((
+            take_until("*").map(|v: &str| Target::Strong {
                 pretext: v.to_string(),
             }),
             rest,
@@ -95,6 +102,21 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             response.push(Chunk::Link {
                 value: Some(value.to_string()),
                 url: Some(url.to_string()),
+                attributes: None,
+            });
+            Ok((source, response))
+        }
+        Target::Strong { pretext } => {
+            response.push(Chunk::Text {
+                value: pretext.to_string(),
+            });
+            let (source, current) = tag("*")(payload.1)?;
+            let (source, code) = take_until("*")(source)?;
+            let (source, current) = tag("*")(source)?;
+            let (source, language) = take_until("*")(source)?;
+            let (source, current) = tag("*")(source)?;
+            response.push(Chunk::Strong {
+                value: Some(code.to_string()),
                 attributes: None,
             });
             Ok((source, response))

@@ -27,7 +27,12 @@ pub enum Chunk {
         attributes: Option<Vec<(Option<String>, Option<String>)>>,
         children: Option<Vec<Chunk>>,
     },
+    Strong {
+        attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        value: Option<String>,
+    },
     Text {
+        // TODO: Change this to Option
         value: String,
     },
     Placeholder,

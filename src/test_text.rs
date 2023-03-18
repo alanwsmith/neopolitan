@@ -111,3 +111,24 @@ fn multiple_links() {
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }
+
+#[test]
+fn single_strong() {
+    let source = "The *dune** rose";
+    let expected_result: Option<Vec<Chunk>> = Some(vec![
+        Chunk::Text {
+            value: "The ".to_string(),
+        },
+        Chunk::Strong {
+            attributes: None,
+            value: Some("dune".to_string()),
+        },
+        Chunk::Text {
+            value: " rose".to_string(),
+        },
+    ]);
+    let expected_remainder = "";
+    let (remainder, result) = text(source).unwrap();
+    assert_eq!(expected_result, result);
+    assert_eq!(expected_remainder, remainder);
+}
