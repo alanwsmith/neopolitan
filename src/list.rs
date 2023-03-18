@@ -44,7 +44,7 @@ pub fn list(source: &str) -> IResult<&str, Section> {
             children: {
                 Some(vec![Chunk::P {
                     attributes: None,
-                    children: process_text_dev(p).unwrap().1,
+                    children: text(p).unwrap().1,
                 }])
             },
         })

@@ -7,7 +7,7 @@ fn basic_text() {
     let expected: Option<Vec<Chunk>> = Some(vec![Chunk::Text {
         value: "beside the shore".to_string(),
     }]);
-    let result = process_text_dev(source).unwrap().1;
+    let result = text(source).unwrap().1;
     assert_eq!(expected, result);
 }
 
@@ -28,7 +28,7 @@ fn one_inline_code_snippet() {
         },
     ]);
     let expected_remainder = "";
-    let (remainder, result) = process_text_dev(source).unwrap();
+    let (remainder, result) = text(source).unwrap();
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }
@@ -58,7 +58,7 @@ fn two_inline_code_snippets() {
         },
     ]);
     let expected_remainder = "";
-    let (remainder, result) = process_text_dev(source).unwrap();
+    let (remainder, result) = text(source).unwrap();
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }
@@ -80,7 +80,7 @@ fn single_link() {
         },
     ]);
     let expected_remainder = "";
-    let (remainder, result) = process_text_dev(source).unwrap();
+    let (remainder, result) = text(source).unwrap();
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }
@@ -107,7 +107,7 @@ fn multiple_links() {
         },
     ]);
     let expected_remainder = "";
-    let (remainder, result) = process_text_dev(source).unwrap();
+    let (remainder, result) = text(source).unwrap();
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }

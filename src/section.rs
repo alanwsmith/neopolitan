@@ -128,7 +128,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             for paragraph in paragraphs.iter() {
                 children.push(Chunk::P {
                     attributes: attribute_list.clone(),
-                    children: process_text_dev(paragraph).unwrap().1,
+                    children: text(paragraph).unwrap().1,
                 });
             }
             Ok((return_content, block))
