@@ -169,15 +169,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             let (_, block) = code(source)?;
             Ok((return_content, block))
         }
-        Section::CodeSection {
-            ref mut children,
-            ref mut attributes,
-            ref mut language,
-        } => {
-            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
-            let (_, block) = code(source)?;
-            Ok((return_content, block))
-        }
+
         _ => {
             let block = Section::Placeholder;
             Ok(("", block))
