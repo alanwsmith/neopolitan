@@ -45,9 +45,7 @@ pub fn note(source: &str) -> IResult<&str, Section> {
                 .iter()
                 .map(|p| Chunk::P {
                     attributes: None,
-                    children: Some(vec![Chunk::Text {
-                        value: p.to_string(),
-                    }]),
+                    children: Some(process_text(p).unwrap().1),
                 })
                 .collect(),
         ),
