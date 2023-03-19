@@ -91,7 +91,6 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             if attributes.as_ref().expect("check failed").is_empty() {
                 // no attributes so no language
             } else {
-                // dbg!(&attributes.as_ref().expect("check failed")[0]);
                 match &attributes.as_ref().expect("check failed")[0] {
                     // first attribute is stand along so
                     // it's speced to be a langauge
@@ -119,16 +118,11 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let (source, value) = take_until("|")(source)?;
             let (source, _) = tag("|")(source)?;
             let (source, raw_payload) = take_until(">>")(source)?;
-            // dbg!(&raw_payload);
             let (source, _) = tag(">>")(source)?;
             let payload = tag_attributes(raw_payload).unwrap();
-            // dbg!(&payload);
-
             response.push(Chunk::Link {
                 value: Some(value.to_string()),
-                // url: Some("https://paper.example.com/".to_string()),
                 url: Some(payload.0.to_string()),
-                // attributes: Some(vec![(Some("id".to_string()), Some("rider".to_string()))]),
                 attributes: payload.1,
             });
             Ok((source, response))
@@ -140,11 +134,13 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let (source, current) = tag("*")(payload.1)?;
             let (source, code) = take_until("*")(source)?;
             let (source, current) = tag("*")(source)?;
-            let (source, language) = take_until("*")(source)?;
+            let (source, raw_attributes) = take_until("*")(source)?;
             let (source, current) = tag("*")(source)?;
+            let attributes = text_attributes(raw_attributes).unwrap().1;
             response.push(Chunk::Strong {
                 value: Some(code.to_string()),
-                attributes: None,
+                // attributes: None,
+                attributes,
             });
             Ok((source, response))
         }

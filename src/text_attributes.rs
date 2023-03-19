@@ -40,11 +40,9 @@ pub fn text_attributes(
     let payload: Vec<(Option<String>, Option<String>)> = vec![];
     let (remainder, mut parts) = many0(part)(source)?;
     parts.push(remainder);
-
-    if parts.len() == 0 {
+    if parts[0].is_empty() {
         Ok(("", None))
     } else {
-        dbg!(&parts);
         let response: Vec<(Option<String>, Option<String>)> =
             parts.iter().map(|p| attribute(p).unwrap().1).collect();
         Ok(("", Some(response)))

@@ -40,10 +40,9 @@ pub fn tag_attributes(
     let payload: Vec<(Option<String>, Option<String>)> = vec![];
     let (remainder, mut parts) = many0(part)(source)?;
     parts.push(remainder);
-    if parts.len() == 0 {
-        Ok(("", None))
+    if parts.len() == 1 {
+        Ok((parts[0], None))
     } else {
-        // dbg!(&parts);
         let response: Vec<(Option<String>, Option<String>)> = parts
             .iter()
             .map(|p| attribute(p).unwrap().1)
