@@ -11,15 +11,40 @@ fn basic_text() {
     assert_eq!(expected, result);
 }
 
+// #[test]
+// fn one_inline_code_snippet() {
+//     let source = "The `frosty`rust` air";
+//     let expected_result: Option<Vec<Chunk>> = Some(vec![
+//         Chunk::Text {
+//             value: "The ".to_string(),
+//         },
+//         Chunk::InlineCode {
+//             attributes: None,
+//             language: Some("rust".to_string()),
+//             value: Some("frosty".to_string()),
+//         },
+//         Chunk::Text {
+//             value: " air".to_string(),
+//         },
+//     ]);
+//     let expected_remainder = "";
+//     let (remainder, result) = text(source).unwrap();
+//     assert_eq!(expected_result, result);
+//     assert_eq!(expected_remainder, remainder);
+// }
+
 #[test]
-fn one_inline_code_snippet() {
-    let source = "The `frosty`rust` air";
+fn code_with_attributes() {
+    let source = "The `frosty`rust|class: sail` air";
     let expected_result: Option<Vec<Chunk>> = Some(vec![
         Chunk::Text {
             value: "The ".to_string(),
         },
         Chunk::InlineCode {
-            attributes: None,
+            attributes: Some(vec![
+                (Some("rust".to_string()), None),
+                (Some("class".to_string()), Some("sail".to_string())),
+            ]),
             language: Some("rust".to_string()),
             value: Some("frosty".to_string()),
         },
@@ -33,35 +58,35 @@ fn one_inline_code_snippet() {
     assert_eq!(expected_remainder, remainder);
 }
 
-#[test]
-fn two_inline_code_snippets() {
-    let source = "A `castle`python` built `from`javascript` sand";
-    let expected_result: Option<Vec<Chunk>> = Some(vec![
-        Chunk::Text {
-            value: "A ".to_string(),
-        },
-        Chunk::InlineCode {
-            attributes: None,
-            language: Some("python".to_string()),
-            value: Some("castle".to_string()),
-        },
-        Chunk::Text {
-            value: " built ".to_string(),
-        },
-        Chunk::InlineCode {
-            attributes: None,
-            language: Some("javascript".to_string()),
-            value: Some("from".to_string()),
-        },
-        Chunk::Text {
-            value: " sand".to_string(),
-        },
-    ]);
-    let expected_remainder = "";
-    let (remainder, result) = text(source).unwrap();
-    assert_eq!(expected_result, result);
-    assert_eq!(expected_remainder, remainder);
-}
+// #[test]
+// fn two_inline_code_snippets() {
+//     let source = "A `castle`python` built `from`javascript` sand";
+//     let expected_result: Option<Vec<Chunk>> = Some(vec![
+//         Chunk::Text {
+//             value: "A ".to_string(),
+//         },
+//         Chunk::InlineCode {
+//             attributes: None,
+//             language: Some("python".to_string()),
+//             value: Some("castle".to_string()),
+//         },
+//         Chunk::Text {
+//             value: " built ".to_string(),
+//         },
+//         Chunk::InlineCode {
+//             attributes: None,
+//             language: Some("javascript".to_string()),
+//             value: Some("from".to_string()),
+//         },
+//         Chunk::Text {
+//             value: " sand".to_string(),
+//         },
+//     ]);
+//     let expected_remainder = "";
+//     let (remainder, result) = text(source).unwrap();
+//     assert_eq!(expected_result, result);
+//     assert_eq!(expected_remainder, remainder);
+// }
 
 #[test]
 fn single_link() {

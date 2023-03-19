@@ -1,6 +1,7 @@
 #![allow(warnings)]
 use crate::chunk::Chunk;
 use crate::page::Page;
+use crate::text_attributes::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -36,8 +37,8 @@ pub fn text(source: &str) -> IResult<&str, Option<Vec<Chunk>>> {
 }
 
 #[derive(Debug)]
-enum Target {
-    Code { pretext: String },
+enum Target<'a> {
+    Code { pretext: String, divider: &'a str },
     Link { pretext: String },
     Rest { pretext: String },
     Strong { pretext: String },
@@ -54,6 +55,7 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
         )),
         tuple((
             take_until("`").map(|v: &str| Target::Code {
+                divider: "`",
                 pretext: v.to_string(),
             }),
             rest,
@@ -72,19 +74,35 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
         )),
     ))(source)?;
     match payload.0 {
-        Target::Code { pretext } => {
+        Target::Code { pretext, divider } => {
             response.push(Chunk::Text {
                 value: pretext.to_string(),
             });
-            let (source, current) = tag("`")(payload.1)?;
-            let (source, code) = take_until("`")(source)?;
-            let (source, current) = tag("`")(source)?;
-            let (source, language) = take_until("`")(source)?;
-            let (source, current) = tag("`")(source)?;
+            let (source, current) = tag(divider)(payload.1)?;
+            let (source, code) = take_until(divider)(source)?;
+            let (source, current) = tag(divider)(source)?;
+            let (source, raw_attributes) = take_until(divider)(source)?;
+            let (source, current) = tag(divider)(source)?;
+            let attributes = text_attributes(raw_attributes).unwrap().1;
+            let mut language: Option<String> = None;
+            if attributes.as_ref().expect("check failed").is_empty() {
+                // no attributes so no language
+            } else {
+                dbg!(&attributes.as_ref().expect("check failed")[0]);
+                match &attributes.as_ref().expect("check failed")[0] {
+                    // first attribute is stand along so
+                    // it's speced to be a langauge
+                    (Some(lang), None) => {
+                        language = Some(lang.to_string());
+                    }
+                    _ => {}
+                }
+            }
+            let language = language;
             response.push(Chunk::InlineCode {
                 value: Some(code.to_string()),
-                language: Some(language.to_string()),
-                attributes: None,
+                language,
+                attributes,
             });
             Ok((source, response))
         }

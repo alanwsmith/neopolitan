@@ -18,4 +18,7 @@ pub mod test_note;
 pub mod test_section;
 #[cfg(test)]
 pub mod test_text;
+#[cfg(test)]
+pub mod test_text_attributes;
 pub mod text;
+pub mod text_attributes;

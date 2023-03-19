@@ -9,7 +9,7 @@ pub enum Chunk {
     },
     InlineCode {
         // TODO: Change attributes to Vec
-        attributes: Option<HashMap<String, String>>,
+        attributes: Option<Vec<(Option<String>, Option<String>)>>,
         language: Option<String>,
         value: Option<String>,
     },
