@@ -108,7 +108,7 @@ fn basic_integration() {
                             value: "The ".to_string(),
                         },
                         Chunk::InlineCode {
-                            attributes: None,
+                            attributes: Some(vec![(Some("rust".to_string()), None)]),
                             language: Some("rust".to_string()),
                             value: Some("chink".to_string()),
                         },
@@ -124,7 +124,7 @@ fn basic_integration() {
                             value: "The ".to_string(),
                         },
                         Chunk::InlineCode {
-                            attributes: None,
+                            attributes: Some(vec![(Some("python".to_string()), None)]),
                             language: Some("python".to_string()),
                             value: Some("desk".to_string()),
                         },
@@ -132,7 +132,7 @@ fn basic_integration() {
                             value: " and ".to_string(),
                         },
                         Chunk::InlineCode {
-                            attributes: None,
+                            attributes: Some(vec![(Some("javascript".to_string()), None)]),
                             language: Some("javascript".to_string()),
                             value: Some("both".to_string()),
                         },
@@ -171,7 +171,7 @@ fn inline_code_snippets() {
                             value: "The ".to_string(),
                         },
                         Chunk::InlineCode {
-                            attributes: None,
+                            attributes: Some(vec![(Some("rust".to_string()), None)]),
                             language: Some("rust".to_string()),
                             value: Some("chink".to_string()),
                         },
@@ -187,7 +187,7 @@ fn inline_code_snippets() {
                             value: "The ".to_string(),
                         },
                         Chunk::InlineCode {
-                            attributes: None,
+                            attributes: Some(vec![(Some("python".to_string()), None)]),
                             language: Some("python".to_string()),
                             value: Some("desk".to_string()),
                         },
@@ -195,7 +195,7 @@ fn inline_code_snippets() {
                             value: " and ".to_string(),
                         },
                         Chunk::InlineCode {
-                            attributes: None,
+                            attributes: Some(vec![(Some("javascript".to_string()), None)]),
                             language: Some("javascript".to_string()),
                             value: Some("both".to_string()),
                         },
@@ -400,7 +400,7 @@ fn note_width_code_sections() {
                         value: "Here is ".to_string(),
                     },
                     Chunk::InlineCode {
-                        attributes: None,
+                        attributes: Some(vec![(Some("rust".to_string()), None)]),
                         language: Some("rust".to_string()),
                         value: Some("some code".to_string()),
                     },

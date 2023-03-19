@@ -161,7 +161,7 @@ fn test_inline_code() {
                 },
                 Chunk::InlineCode {
                     language: Some("rust".to_string()),
-                    attributes: None,
+                    attributes: Some(vec![(Some("rust".to_string()), None)]),
                     value: Some("sand".to_string()),
                 },
                 Chunk::Text {

@@ -19,7 +19,7 @@ fn one_inline_code_snippet() {
             value: "The ".to_string(),
         },
         Chunk::InlineCode {
-            attributes: None,
+            attributes: Some(vec![(Some("rust".to_string()), None)]),
             language: Some("rust".to_string()),
             value: Some("frosty".to_string()),
         },
@@ -66,7 +66,7 @@ fn two_inline_code_snippets() {
             value: "A ".to_string(),
         },
         Chunk::InlineCode {
-            attributes: None,
+            attributes: Some(vec![(Some("python".to_string()), None)]),
             language: Some("python".to_string()),
             value: Some("castle".to_string()),
         },
@@ -74,7 +74,7 @@ fn two_inline_code_snippets() {
             value: " built ".to_string(),
         },
         Chunk::InlineCode {
-            attributes: None,
+            attributes: Some(vec![(Some("javascript".to_string()), None)]),
             language: Some("javascript".to_string()),
             value: Some("from".to_string()),
         },
@@ -87,6 +87,28 @@ fn two_inline_code_snippets() {
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }
+
+// #[test]
+// fn single_link_with_attributes() {
+//     let source = "The <<link|paper|https://paper.example.com/|>> box";
+//     let expected_result: Option<Vec<Chunk>> = Some(vec![
+//         Chunk::Text {
+//             value: "The ".to_string(),
+//         },
+//         Chunk::Link {
+//             attributes: None,
+//             url: Some("https://paper.example.com/".to_string()),
+//             value: Some("paper".to_string()),
+//         },
+//         Chunk::Text {
+//             value: " box".to_string(),
+//         },
+//     ]);
+//     let expected_remainder = "";
+//     let (remainder, result) = text(source).unwrap();
+//     assert_eq!(expected_result, result);
+//     assert_eq!(expected_remainder, remainder);
+// }
 
 #[test]
 fn single_link() {
