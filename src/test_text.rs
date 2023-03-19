@@ -88,27 +88,27 @@ fn two_inline_code_snippets() {
     assert_eq!(expected_remainder, remainder);
 }
 
-// #[test]
-// fn single_link_with_attributes() {
-//     let source = "The <<link|paper|https://paper.example.com/|>> box";
-//     let expected_result: Option<Vec<Chunk>> = Some(vec![
-//         Chunk::Text {
-//             value: "The ".to_string(),
-//         },
-//         Chunk::Link {
-//             attributes: None,
-//             url: Some("https://paper.example.com/".to_string()),
-//             value: Some("paper".to_string()),
-//         },
-//         Chunk::Text {
-//             value: " box".to_string(),
-//         },
-//     ]);
-//     let expected_remainder = "";
-//     let (remainder, result) = text(source).unwrap();
-//     assert_eq!(expected_result, result);
-//     assert_eq!(expected_remainder, remainder);
-// }
+#[test]
+fn single_link_with_attributes() {
+    let source = "The <<link|paper|https://paper.example.com/|id: rider>> box";
+    let expected_result: Option<Vec<Chunk>> = Some(vec![
+        Chunk::Text {
+            value: "The ".to_string(),
+        },
+        Chunk::Link {
+            attributes: Some(vec![(Some("id".to_string()), Some("rider".to_string()))]),
+            url: Some("https://paper.example.com/".to_string()),
+            value: Some("paper".to_string()),
+        },
+        Chunk::Text {
+            value: " box".to_string(),
+        },
+    ]);
+    let expected_remainder = "";
+    let (remainder, result) = text(source).unwrap();
+    assert_eq!(expected_result, result);
+    assert_eq!(expected_remainder, remainder);
+}
 
 #[test]
 fn single_link() {
@@ -179,3 +179,24 @@ fn single_strong() {
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }
+
+// #[test]
+// fn single_strong_with_attributes() {
+//     let source = "Two *blue*id: sun* fish ";
+//     let expected_result: Option<Vec<Chunk>> = Some(vec![
+//         Chunk::Text {
+//             value: "Two ".to_string(),
+//         },
+//         Chunk::Strong {
+//             attributes: Some(vec![(Some("id".to_string()), Some("fish".to_string()))]),
+//             value: Some("dune".to_string()),
+//         },
+//         Chunk::Text {
+//             value: " rose".to_string(),
+//         },
+//     ]);
+//     let expected_remainder = "";
+//     let (remainder, result) = text(source).unwrap();
+//     assert_eq!(expected_result, result);
+//     assert_eq!(expected_remainder, remainder);
+// }

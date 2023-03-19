@@ -1,6 +1,7 @@
 #![allow(warnings)]
 use crate::chunk::Chunk;
 use crate::page::Page;
+use crate::tag_attributes::*;
 use crate::text_attributes::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -117,12 +118,18 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let (source, _) = tag("|")(source)?;
             let (source, value) = take_until("|")(source)?;
             let (source, _) = tag("|")(source)?;
-            let (source, url) = take_until(">>")(source)?;
+            let (source, raw_payload) = take_until(">>")(source)?;
+            // dbg!(&raw_payload);
             let (source, _) = tag(">>")(source)?;
+            let payload = tag_attributes(raw_payload).unwrap();
+            // dbg!(&payload);
+
             response.push(Chunk::Link {
                 value: Some(value.to_string()),
-                url: Some(url.to_string()),
-                attributes: None,
+                // url: Some("https://paper.example.com/".to_string()),
+                url: Some(payload.0.to_string()),
+                // attributes: Some(vec![(Some("id".to_string()), Some("rider".to_string()))]),
+                attributes: payload.1,
             });
             Ok((source, response))
         }

@@ -6,6 +6,7 @@ pub mod list;
 pub mod note;
 pub mod page;
 pub mod section;
+pub mod tag_attributes;
 #[cfg(test)]
 pub mod test_attributes;
 #[cfg(test)]

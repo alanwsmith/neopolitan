@@ -14,8 +14,7 @@ pub enum Chunk {
         value: Option<String>,
     },
     Link {
-        // TODO: Change attributes to Vec
-        attributes: Option<HashMap<String, String>>,
+        attributes: Option<Vec<(Option<String>, Option<String>)>>,
         url: Option<String>,
         value: Option<String>,
     },
