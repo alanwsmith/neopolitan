@@ -1,6 +1,7 @@
+use serde::Serialize;
 use std::collections::HashMap;
 
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq, Serialize, Clone)]
 pub enum Chunk {
     H1 {
         // TODO: Change attributes to Vec

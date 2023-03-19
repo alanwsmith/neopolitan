@@ -66,6 +66,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
 
 [[package]]
+name = "minijinja"
+version = "0.30.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2819be6b8bd3236f0fdbf86b1ff2d1f42ef8ef939eed74f6bc3ecf2e6344cd96"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "minimal-lexical"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -77,6 +86,7 @@ version = "0.1.0"
 dependencies = [
  "eyre",
  "logos",
+ "minijinja",
  "nom",
  "serde",
  "serde_json",

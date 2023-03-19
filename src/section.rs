@@ -17,9 +17,10 @@ use nom::multi::many0;
 use nom::multi::separated_list0;
 use nom::IResult;
 use nom::Parser;
+use serde::Serialize;
 use std::collections::HashMap;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
 pub enum Section {
     // Probably change the non-option stuff
     // to options at some point
