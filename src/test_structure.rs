@@ -1,54 +1,38 @@
-// /////////////////////////////////////////////
-// // This is the basic integration test
-// // location. GOAL: It has a few samples
-// // that demonstrate the core features
-// // of the format. Detailed variations are
-// // checked via unit tests.
-// /////////////////////////////////////////////
+/////////////////////////////////////////////
+// This is the basic integration test
+// location. GOAL: It has a few samples
+// that demonstrate the core features
+// of the format. Detailed variations are
+// checked via unit tests.
+/////////////////////////////////////////////
 
-// #![allow(warnings)]
-// use crate::chunk::Chunk;
-// use crate::get_structure::get_structure;
-// use crate::page::Page;
-// use crate::section::Section;
-// use std::collections::HashMap;
+use crate::spec::*;
+use crate::structure::*;
+use crate::xob::*;
 
-// #[test]
-// fn basic_title_and_paragraph() {
-//     let source = vec![
-//         "-> TITLE",
-//         ">> id: main",
-//         "",
-//         "Alfa Bravo",
-//         "",
-//         "The brown fox\nand the lazy dog",
-//     ]
-//     .join("\n");
-//     let expected = Page {
-//         attributes: None,
-//         children: vec![Section::TitleSection {
-//             children: vec![
-//                 Chunk::H1 {
-//                     attributes: Some(HashMap::from([
-//                         ("id".to_string(), "main".to_string()),
-//                         ("class".to_string(), "title".to_string()),
-//                     ])),
-//                     children: Some(vec![Chunk::Text {
-//                         value: "Alfa Bravo".to_string(),
-//                     }]),
-//                 },
-//                 Chunk::P {
-//                     attributes: None,
-//                     children: Some(vec![Chunk::Text {
-//                         value: "The brown fox\nand the lazy dog".to_string(),
-//                     }]),
-//                 },
-//             ],
-//         }],
-//     };
-//     let result = get_structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn basic_title_and_paragraph() {
+    let source = vec!["-> TITLE", "", "Kickoff"].join("\n");
+    let expected = Xob {
+        spec: Spec::Wrapper,
+        attributes: None,
+        children: Some(vec![Xob {
+            spec: Spec::TitleSection,
+            attributes: None,
+            children: Some(vec![Xob {
+                spec: Spec::H1,
+                attributes: None,
+                children: Some(vec![Xob {
+                    spec: Spec::InlineText,
+                    attributes: None,
+                    children: None,
+                }]),
+            }]),
+        }]),
+    };
+    let result = structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result.unwrap());
+}
 
 // #[test]
 // fn multiple_paragraphs() {

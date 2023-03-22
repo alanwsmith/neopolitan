@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Neopolitan Sample</title></head>
+  <body>
+    {% for section in wrapper.c.children -%}
+      {% for block in section.children -%}
+        {% for content in block.children -%}
+        <h1>{{ content.value }}</h1>
+        {%- endfor %}
+      {%- endfor %}
+    {%- endfor %}
+    {{wrapper.c}}
+  </body>
+</html>
