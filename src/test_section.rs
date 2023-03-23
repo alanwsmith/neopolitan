@@ -19,57 +19,63 @@ fn test_basic_title() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn test_paragraphs_after_title() {
-//     let source = vec![
-//         "-> TITLE",
-//         "",
-//         "Alfa Bravo",
-//         "",
-//         "Charlie delta echo",
-//         "",
-//         "Foxtrot golf hotel",
-//     ]
-//     .join("\n");
-//     let expected = Section::TitleSection {
-//         children: vec![
-//             Chunk::H1 {
-//                 attributes: Some(HashMap::from([("class".to_string(), "title".to_string())])),
-//                 children: Some(vec![Chunk::Text {
-//                     value: "Alfa Bravo".to_string(),
-//                 }]),
-//             },
-//             Chunk::P {
-//                 attributes: None,
-//                 children: Some(vec![Chunk::Text {
-//                     value: "Charlie delta echo".to_string(),
-//                 }]),
-//             },
-//             Chunk::P {
-//                 attributes: None,
-//                 children: Some(vec![Chunk::Text {
-//                     value: "Foxtrot golf hotel".to_string(),
-//                 }]),
-//             },
-//         ],
-//     };
-//     let result = section(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn test_paragraphs_after_title() {
+    let source = vec![
+        "-> TITLE",
+        "",
+        "Alfa Bravo",
+        "",
+        "Charlie delta echo",
+        "",
+        "Foxtrot golf hotel",
+    ]
+    .join("\n");
+    let expected = Section::TitleSection {
+        attributes: None,
+        children: Some(vec![
+            Chunk::H1 {
+                attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
+                children: Some(vec![Chunk::Text {
+                    attributes: None,
+                    value: Some("Alfa Bravo".to_string()),
+                }]),
+            },
+            Chunk::P {
+                attributes: None,
+                children: Some(vec![Chunk::Text {
+                    attributes: None,
+                    value: Some("Charlie delta echo".to_string()),
+                }]),
+            },
+            Chunk::P {
+                attributes: None,
+                children: Some(vec![Chunk::Text {
+                    attributes: None,
+                    value: Some("Foxtrot golf hotel".to_string()),
+                }]),
+            },
+        ]),
+    };
+    let result = section(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
 // #[test]
 // fn test_attribute_on_title() {
 //     let source = vec!["-> TITLE", ">> id: main", "", "Alfa Bravo"].join("\n");
 //     let expected = Section::TitleSection {
-//         children: vec![Chunk::H1 {
-//             attributes: Some(HashMap::from([
-//                 ("id".to_string(), "main".to_string()),
-//                 ("class".to_string(), "title".to_string()),
-//             ])),
+//         attributes: None,
+//         children: Some(vec![Chunk::H1 {
+//             attributes: Some(vec![
+//                 (Some("id".to_string()), Some("main".to_string())),
+//                 (Some("class".to_string()), Some("title".to_string())),
+//             ]),
 //             children: Some(vec![Chunk::Text {
-//                 value: "Alfa Bravo".to_string(),
+//                 attributes: None,
+//                 value: Some("Alfa Bravo".to_string()),
 //             }]),
-//         }],
+//         }]),
 //     };
 //     let result = section(source.as_str()).unwrap().1;
 //     assert_eq!(expected, result);
