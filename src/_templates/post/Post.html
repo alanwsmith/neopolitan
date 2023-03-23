@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head><title>Neopolitan Sample</title></head>
+  <head>
+    <title>Neopolitan Sample</title>
+<style>
+body {
+  background-color: #000;
+  color: #aaa;
+}
+</style>
+
+  </head>
   <body>
     {% for section in wrapper.children -%}
-    {{ section}}
     {%- if section.type == "TitleSection" -%} 
-    -----------------------
     {%- include "TitleSection" -%}
-    -----------------------
     {%- endif -%}
     {%- endfor -%}
-    -----------------------
-
-    {{ wrapper }}
   </body>
 </html>

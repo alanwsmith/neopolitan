@@ -23,8 +23,10 @@ fn main() {
     let source = fs::read_to_string("src/_content/_sample_alfa.neo").unwrap();
     let structure = structure(source.as_str()).unwrap().1;
     let post_base = &env.get_template("Post").unwrap();
-    println!(
-        "{}",
-        post_base.render(context!(wrapper => &structure)).unwrap()
-    );
+
+    fs::write(
+        "site/sample.html",
+        post_base.render(context!(wrapper => &structure)).unwrap(),
+    )
+    .unwrap();
 }
