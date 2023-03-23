@@ -4,22 +4,21 @@ use neopolitan::structure::structure;
 use std::fs;
 
 fn main() {
+    let templates = vec!["H1", "P", "Post", "Text", "TitleSection"];
+
     let mut env = Environment::new();
 
-    let post_base_template = fs::read_to_string("src/_templates/post/base.html").unwrap();
-    &env.add_template("Post", post_base_template.as_str());
+    let mut string_vec_hack: Vec<(String, String)> = vec![];
+    templates.iter().for_each(|t| {
+        string_vec_hack.push((
+            t.to_string(),
+            fs::read_to_string(format!("src/_templates/post/{}.html", t)).unwrap(),
+        ));
+    });
 
-    let post_title_template = fs::read_to_string("src/_templates/post/title_section.html").unwrap();
-    &env.add_template("TitleSection", post_title_template.as_str());
-
-    let post_h1_template = fs::read_to_string("src/_templates/post/H1.html").unwrap();
-    &env.add_template("H1", post_h1_template.as_str());
-
-    let post_h1_template = fs::read_to_string("src/_templates/post/p.html").unwrap();
-    &env.add_template("P", post_h1_template.as_str());
-
-    let post_text_template = fs::read_to_string("src/_templates/post/Text.html").unwrap();
-    &env.add_template("Text", post_text_template.as_str());
+    string_vec_hack.iter().for_each(|s| {
+        env.add_template(&s.0, &s.1);
+    });
 
     let source = fs::read_to_string("src/_content/_sample_alfa.neo").unwrap();
     let structure = structure(source.as_str()).unwrap().1;
