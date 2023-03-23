@@ -138,68 +138,74 @@ fn multiple_paragraphs() {
 //     assert_eq!(expected, result);
 // }
 
-#[test]
-fn inline_code_snippets() {
-    let source = vec![
-        "-> P",
-        ">> class: main",
-        "",
-        "The `chink`rust` in the wall.",
-        "",
-        "The `desk`python` and `both`javascript` chairs",
-        "",
-    ]
-    .join("\n");
-    let expected = Page {
-        attributes: None,
-        children: vec![Section::ParagraphSection {
-            children: vec![
-                Chunk::P {
-                    attributes: Some(vec![(Some("class".to_string()), Some("main".to_string()))]),
-                    children: Some(vec![
-                        Chunk::Text {
-                            value: "The ".to_string(),
-                        },
-                        Chunk::InlineCode {
-                            attributes: Some(vec![(Some("rust".to_string()), None)]),
-                            language: Some("rust".to_string()),
-                            value: Some("chink".to_string()),
-                        },
-                        Chunk::Text {
-                            value: " in the wall.".to_string(),
-                        },
-                    ]),
-                },
-                Chunk::P {
-                    attributes: Some(vec![(Some("class".to_string()), Some("main".to_string()))]),
-                    children: Some(vec![
-                        Chunk::Text {
-                            value: "The ".to_string(),
-                        },
-                        Chunk::InlineCode {
-                            attributes: Some(vec![(Some("python".to_string()), None)]),
-                            language: Some("python".to_string()),
-                            value: Some("desk".to_string()),
-                        },
-                        Chunk::Text {
-                            value: " and ".to_string(),
-                        },
-                        Chunk::InlineCode {
-                            attributes: Some(vec![(Some("javascript".to_string()), None)]),
-                            language: Some("javascript".to_string()),
-                            value: Some("both".to_string()),
-                        },
-                        Chunk::Text {
-                            value: " chairs".to_string(),
-                        },
-                    ]),
-                },
-            ],
-        }],
-    };
-    let result = get_structure(source.as_str()).unwrap().1;
-    assert_eq!(expected, result);
-}
+// #[test]
+// fn inline_code_snippets() {
+//     let source = vec![
+//         "-> P",
+//         ">> class: main",
+//         "",
+//         "The `chink`rust` in the wall.",
+//         "",
+//         "The `desk`python` and `both`javascript` chairs",
+//         "",
+//     ]
+//     .join("\n");
+//     let expected = Some(Wrapper::Page {
+//         attributes: None,
+//         children: Some(vec![Section::ParagraphSection {
+//             attributes: None,
+//             children: Some(vec![
+//                 Chunk::P {
+//                     attributes: Some(vec![(Some("class".to_string()), Some("main".to_string()))]),
+//                     children: Some(vec![
+//                         Chunk::Text {
+//                             attributes: None,
+//                             value: Some("The ".to_string()),
+//                         },
+//                         Chunk::InlineCode {
+//                             attributes: Some(vec![(Some("rust".to_string()), None)]),
+//                             language: Some("rust".to_string()),
+//                             value: Some("chink".to_string()),
+//                         },
+//                         Chunk::Text {
+//                             attributes: None,
+//                             value: Some(" in the wall.".to_string()),
+//                         },
+//                     ]),
+//                 },
+//                 Chunk::P {
+//                     attributes: Some(vec![(Some("class".to_string()), Some("main".to_string()))]),
+//                     children: Some(vec![
+//                         Chunk::Text {
+//                             attributes: None,
+//                             value: Some("The ".to_string()),
+//                         },
+//                         Chunk::InlineCode {
+//                             attributes: Some(vec![(Some("python".to_string()), None)]),
+//                             language: Some("python".to_string()),
+//                             value: Some("desk".to_string()),
+//                         },
+//                         Chunk::Text {
+//                             attributes: None,
+//                             value: Some(" and ".to_string()),
+//                         },
+//                         Chunk::InlineCode {
+//                             attributes: Some(vec![(Some("javascript".to_string()), None)]),
+//                             language: Some("javascript".to_string()),
+//                             value: Some("both".to_string()),
+//                         },
+//                         Chunk::Text {
+//                             attributes: None,
+//                             value: Some(" chairs".to_string()),
+//                         },
+//                     ]),
+//                 },
+//             ]),
+//         }]),
+//     });
+//     let result = structure(source.as_str()).unwrap().1;
+//     assert_eq!(expected, result);
+// }
 
 #[test]
 fn inline_links() {
@@ -273,40 +279,41 @@ fn code_block_without_language() {
         children: Some(vec![Section::CodeSection {
             language: None,
             attributes: None,
-            children: vec![Chunk::Text {
+            children: Some(vec![Chunk::Text {
                 attributes: None,
                 value: Some("fn main() {\n  let alfa = 1;\n}".to_string()),
-            }],
+            }]),
         }]),
     });
     let result = structure(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn code_block_with_language() {
-//     let source = vec![
-//         "-> CODE",
-//         ">> rust",
-//         "",
-//         "fn main() {",
-//         "  let bravo = 2;",
-//         "}",
-//     ]
-//     .join("\n");
-//     let expected = Page {
-//         attributes: None,
-//         children: vec![Section::CodeSection {
-//             language: Some("rust".to_string()),
-//             attributes: None,
-//             children: vec![Chunk::Text {
-//                 value: "fn main() {\n  let bravo = 2;\n}".to_string(),
-//             }],
-//         }],
-//     };
-//     let result = get_structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn code_block_with_language() {
+    let source = vec![
+        "-> CODE",
+        ">> rust",
+        "",
+        "fn main() {",
+        "  let bravo = 2;",
+        "}",
+    ]
+    .join("\n");
+    let expected = Some(Wrapper::Page {
+        attributes: None,
+        children: Some(vec![Section::CodeSection {
+            language: Some("rust".to_string()),
+            attributes: None,
+            children: Some(vec![Chunk::Text {
+                attributes: None,
+                value: Some("fn main() {\n  let bravo = 2;\n}".to_string()),
+            }]),
+        }]),
+    });
+    let result = structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
 #[test]
 fn code_block_with_language_and_attributes() {
@@ -329,10 +336,10 @@ fn code_block_with_language_and_attributes() {
                 (Some("class".to_string()), Some("river".to_string())),
                 (Some("id".to_string()), Some("spring".to_string())),
             ]),
-            children: vec![Chunk::Text {
+            children: Some(vec![Chunk::Text {
                 attributes: None,
                 value: Some("fn main() {\n  let charlie = 3;\n}".to_string()),
-            }],
+            }]),
         }]),
     });
     let result = structure(source.as_str()).unwrap().1;

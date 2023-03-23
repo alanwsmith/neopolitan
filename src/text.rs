@@ -104,8 +104,8 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let language = language;
             response.push(Chunk::InlineCode {
                 value: Some(code.to_string()),
-                language: None,
-                attributes: None,
+                language,
+                attributes,
             });
             Ok((source, response))
         }

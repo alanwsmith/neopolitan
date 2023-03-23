@@ -40,10 +40,10 @@ pub fn code(source: &str) -> IResult<&str, Section> {
                 let response = Section::CodeSection {
                     attributes: None,
                     language: Some(x[0].0.as_ref().unwrap().to_string()),
-                    children: vec![Chunk::Text {
+                    children: Some(vec![Chunk::Text {
                         attributes: None,
                         value: Some(remainder.to_string()),
-                    }],
+                    }]),
                 };
                 Ok(("", response))
             } else {
@@ -55,10 +55,10 @@ pub fn code(source: &str) -> IResult<&str, Section> {
                             .collect::<Vec<(Option<String>, Option<String>)>>(),
                     ),
                     language: Some(x[0].0.as_ref().unwrap().to_string()),
-                    children: vec![Chunk::Text {
+                    children: Some(vec![Chunk::Text {
                         attributes: None,
                         value: Some(remainder.to_string()),
-                    }],
+                    }]),
                 };
                 Ok(("", response))
             }
@@ -67,10 +67,10 @@ pub fn code(source: &str) -> IResult<&str, Section> {
             let response = Section::CodeSection {
                 attributes: None,
                 language: None,
-                children: vec![Chunk::Text {
+                children: Some(vec![Chunk::Text {
                     attributes: None,
                     value: Some(remainder.to_string()),
-                }],
+                }]),
             };
             Ok(("", response))
         }

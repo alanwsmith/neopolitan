@@ -13,5 +13,7 @@ pub mod text_attributes;
 pub mod structure;
 #[cfg(test)]
 pub mod test_structure;
+#[cfg(test)]
+pub mod test_text;
 pub mod wrapper;
 // pub mod xob;

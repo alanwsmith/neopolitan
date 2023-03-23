@@ -28,7 +28,7 @@ pub enum Section {
     CodeSection {
         language: Option<String>,
         attributes: Option<Vec<(Option<String>, Option<String>)>>,
-        children: Vec<Chunk>,
+        children: Option<Vec<Chunk>>,
     },
     ListSection {
         attributes: Option<Vec<(Option<String>, Option<String>)>>,
@@ -79,7 +79,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         tag_no_case("-> CODE").map(|_| Section::CodeSection {
             attributes: None,
             language: None,
-            children: vec![],
+            children: Some(vec![]),
         }),
     ))(source)?;
     match block {
