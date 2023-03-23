@@ -6,32 +6,29 @@
 // checked via unit tests.
 /////////////////////////////////////////////
 
-use crate::spec::*;
+use crate::block::*;
+use crate::content::*;
+use crate::section::*;
 use crate::structure::*;
-use crate::xob::*;
+use crate::wrapper::*;
 
 #[test]
 fn basic_title_and_paragraph() {
     let source = vec!["-> TITLE", "", "Kickoff"].join("\n");
-    let expected = Xob {
-        spec: Spec::Wrapper,
-        attributes: None,
-        children: Some(vec![Xob {
-            spec: Spec::TitleSection,
+    let expected = Some(Wrapper::Page {
+        children: Some(vec![Section::Title {
             attributes: None,
-            children: Some(vec![Xob {
-                spec: Spec::H1,
+            children: Some(vec![Block::H1 {
                 attributes: None,
-                children: Some(vec![Xob {
-                    spec: Spec::InlineText,
+                children: Some(vec![Content::Text {
                     attributes: None,
-                    children: None,
+                    value: Some("Welcome To Neopolitan".to_string()),
                 }]),
             }]),
         }]),
-    };
+    });
     let result = structure(source.as_str()).unwrap().1;
-    assert_eq!(expected, result.unwrap());
+    assert_eq!(expected, result);
 }
 
 // #[test]

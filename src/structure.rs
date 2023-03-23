@@ -43,7 +43,6 @@ pub fn structure(source: &str) -> IResult<&str, Option<Wrapper>> {
             }]),
         }]),
     });
-
     Ok(("", response))
 }
 

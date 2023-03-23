@@ -2,7 +2,6 @@
 use minijinja::{context, Environment};
 use neopolitan::structure::structure;
 use std::fs;
-// use std::path::PathBuf;
 
 fn main() {
     let mut env = Environment::new();
