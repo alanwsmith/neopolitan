@@ -1,21 +1,23 @@
-// use crate::chunk::Chunk;
-// use crate::section::*;
+use crate::chunk::Chunk;
+use crate::section::*;
 // use std::collections::HashMap;
 
-// #[test]
-// fn test_basic_title() {
-//     let source = vec!["-> TITLE", "", "Alfa Bravo"].join("\n");
-//     let expected = Section::TitleSection {
-//         children: vec![Chunk::H1 {
-//             attributes: Some(HashMap::from([("class".to_string(), "title".to_string())])),
-//             children: Some(vec![Chunk::Text {
-//                 value: "Alfa Bravo".to_string(),
-//             }]),
-//         }],
-//     };
-//     let result = section(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn test_basic_title() {
+    let source = vec!["-> TITLE", "", "Alfa Bravo"].join("\n");
+    let expected = Section::TitleSection {
+        attributes: None,
+        children: Some(vec![Chunk::H1 {
+            attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
+            children: Some(vec![Chunk::Text {
+                attributes: None,
+                value: Some("Alfa Bravo".to_string()),
+            }]),
+        }]),
+    };
+    let result = section(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
 // #[test]
 // fn test_paragraphs_after_title() {

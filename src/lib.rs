@@ -9,6 +9,7 @@ pub mod section;
 pub mod tag_attributes;
 pub mod text;
 pub mod text_attributes;
+pub mod title;
 // pub mod spec;
 pub mod structure;
 #[cfg(test)]
@@ -17,6 +18,8 @@ pub mod test_attributes;
 pub mod test_code;
 #[cfg(test)]
 pub mod test_note;
+#[cfg(test)]
+pub mod test_section;
 #[cfg(test)]
 pub mod test_structure;
 #[cfg(test)]

@@ -1,9 +1,11 @@
+#![allow(warnings)]
 use crate::attributes::*;
 use crate::chunk::Chunk;
 use crate::code::*;
 use crate::list::*;
 use crate::note::*;
 use crate::text::*;
+use crate::title::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
@@ -83,57 +85,58 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         }),
     ))(source)?;
     match block {
-        Section::TitleSection {
-            ref mut children, ..
-        } => {
-            let (source, _) = space0(source)?;
-            let (source, _) = line_ending(source)?;
-            let (source, attributes) = many0(attribute_splitter)(source)?;
-            let mut attribute_map: HashMap<String, String> =
-                HashMap::from([("class".to_string(), "title".to_string())]);
-            for attribute in attributes {
-                let (remainder, key) = take_until(":")(attribute)?;
-                let (value, _) = tag(":")(remainder)?;
-                attribute_map.insert(key.trim().to_string(), value.trim().to_string());
-            }
-            let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
-            let (remainder, title) = alt((take_until("\n\n"), rest))(content)?;
-            let (remainder, _) = multispace0(remainder)?;
-            let (remainder, mut paragraphs) =
-                separated_list0(tag("\n\n"), take_until("\n\n"))(remainder)?;
-            paragraphs.push(remainder.trim());
-            if attribute_map.is_empty() {
-                children.as_mut().unwrap().push(Chunk::H1 {
-                    attributes: None,
-                    children: Some(vec![Chunk::Text {
-                        attributes: None,
-                        value: Some(title.trim().to_string()),
-                    }]),
-                });
-            } else {
-                children.as_mut().unwrap().push(Chunk::H1 {
-                    // attributes: Some(attribute_map),
-                    attributes: None,
-                    children: Some(vec![Chunk::Text {
-                        attributes: None,
-                        value: Some(title.trim().to_string()),
-                    }]),
-                });
-            }
-            for paragraph in paragraphs.iter() {
-                if paragraph.is_empty() {
-                } else {
-                    children.as_mut().unwrap().push(Chunk::P {
-                        attributes: None,
-                        children: Some(vec![Chunk::Text {
-                            attributes: None,
-                            value: Some(paragraph.trim().to_string()),
-                        }]),
-                    });
-                }
-            }
-            Ok((return_content, block))
-        }
+        // Section::TitleSection {
+        //     ref mut children, ..
+        // } => {
+        //     let (source, attribute_list) = attributes(source)?;
+        //     let (source, _) = space0(source)?;
+        //     let (source, _) = line_ending(source)?;
+        //     let (source, attributes) = many0(attribute_splitter)(source)?;
+        //     let mut attribute_map: HashMap<String, String> =
+        //         HashMap::from([("class".to_string(), "title".to_string())]);
+        //     for attribute in attributes {
+        //         let (remainder, key) = take_until(":")(attribute)?;
+        //         let (value, _) = tag(":")(remainder)?;
+        //         attribute_map.insert(key.trim().to_string(), value.trim().to_string());
+        //     }
+        //     let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
+        //     let (remainder, title) = alt((take_until("\n\n"), rest))(content)?;
+        //     let (remainder, _) = multispace0(remainder)?;
+        //     let (remainder, mut paragraphs) =
+        //         separated_list0(tag("\n\n"), take_until("\n\n"))(remainder)?;
+        //     paragraphs.push(remainder.trim());
+        //     if attribute_map.is_empty() {
+        //         children.as_mut().unwrap().push(Chunk::H1 {
+        //             attributes: None,
+        //             children: Some(vec![Chunk::Text {
+        //                 attributes: None,
+        //                 value: Some(title.trim().to_string()),
+        //             }]),
+        //         });
+        //     } else {
+        //         children.as_mut().unwrap().push(Chunk::H1 {
+        //             // attributes: Some(attribute_map),
+        //             attributes: None,
+        //             children: Some(vec![Chunk::Text {
+        //                 attributes: None,
+        //                 value: Some(title.trim().to_string()),
+        //             }]),
+        //         });
+        //     }
+        //     for paragraph in paragraphs.iter() {
+        //         if paragraph.is_empty() {
+        //         } else {
+        //             children.as_mut().unwrap().push(Chunk::P {
+        //                 attributes: None,
+        //                 children: Some(vec![Chunk::Text {
+        //                     attributes: None,
+        //                     value: Some(paragraph.trim().to_string()),
+        //                 }]),
+        //             });
+        //         }
+        //     }
+        //     Ok((return_content, block))
+        // }
         Section::ParagraphSection {
             ref mut children, ..
         } => {
@@ -149,6 +152,11 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                     children: text(paragraph).unwrap().1,
                 });
             }
+            Ok((return_content, block))
+        }
+        Section::TitleSection { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = title(source)?;
             Ok((return_content, block))
         }
         Section::CodeSection {
