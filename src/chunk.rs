@@ -1,11 +1,12 @@
 use serde::Deserialize;
 use serde::Serialize;
+use std::collections::HashMap;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize, Clone)]
 #[serde(tag = "type")]
 pub enum Chunk {
     H1 {
-        attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        attributes: HashMap<String, String>,
         children: Option<Vec<Chunk>>,
     },
     Text {

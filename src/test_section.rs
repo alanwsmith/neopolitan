@@ -8,7 +8,7 @@ fn test_basic_title() {
     let expected = Section::TitleSection {
         attributes: HashMap::new(),
         children: Some(vec![Chunk::H1 {
-            attributes: None,
+            attributes: HashMap::new(),
             children: Some(vec![Chunk::Text {
                 attributes: None,
                 value: Some("Alfa Bravo".to_string()),

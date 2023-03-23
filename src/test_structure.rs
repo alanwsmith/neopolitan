@@ -20,7 +20,7 @@ fn basic_title_and_paragraph() {
         children: Some(vec![Section::TitleSection {
             attributes: HashMap::new(),
             children: Some(vec![Chunk::H1 {
-                attributes: None,
+                attributes: HashMap::new(),
                 children: Some(vec![Chunk::Text {
                     attributes: None,
                     value: Some("Kickoff".to_string()),
