@@ -142,7 +142,7 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let attributes = text_attributes(raw_attributes).unwrap().1;
             response.push(Chunk::Strong {
                 value: Some(code.to_string()),
-                attributes: None,
+                attributes,
             });
             Ok((source, response))
         }

@@ -196,25 +196,25 @@ fn single_strong() {
     assert_eq!(expected_remainder, remainder);
 }
 
-// #[test]
-// fn strong_with_attributes() {
-//     let source = "Two *blue*id: sun* fish";
-//     let expected_result: Option<Vec<Chunk>> = Some(vec![
-//         Chunk::Text {
-//             attributes: None,
-//             value: Some("Two ".to_string()),
-//         },
-//         Chunk::Strong {
-//             attributes: Some(vec![(Some("id".to_string()), Some("sun".to_string()))]),
-//             value: Some("blue".to_string()),
-//         },
-//         Chunk::Text {
-//             attributes: None,
-//             value: Some(" fish".to_string()),
-//         },
-//     ]);
-//     let expected_remainder = "";
-//     let (remainder, result) = text(source).unwrap();
-//     assert_eq!(expected_result, result);
-//     assert_eq!(expected_remainder, remainder);
-// }
+#[test]
+fn strong_with_attributes() {
+    let source = "Two *blue*id: sun* fish";
+    let expected_result: Option<Vec<Chunk>> = Some(vec![
+        Chunk::Text {
+            attributes: None,
+            value: Some("Two ".to_string()),
+        },
+        Chunk::Strong {
+            attributes: Some(vec![(Some("id".to_string()), Some("sun".to_string()))]),
+            value: Some("blue".to_string()),
+        },
+        Chunk::Text {
+            attributes: None,
+            value: Some(" fish".to_string()),
+        },
+    ]);
+    let expected_remainder = "";
+    let (remainder, result) = text(source).unwrap();
+    assert_eq!(expected_result, result);
+    assert_eq!(expected_remainder, remainder);
+}
