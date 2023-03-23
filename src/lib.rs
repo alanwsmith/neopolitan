@@ -12,6 +12,10 @@ pub mod text_attributes;
 // pub mod spec;
 pub mod structure;
 #[cfg(test)]
+pub mod test_attributes;
+#[cfg(test)]
+pub mod test_note;
+#[cfg(test)]
 pub mod test_structure;
 #[cfg(test)]
 pub mod test_text;
