@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Neopolitan Sample</title></head>
+  <body>
+    {% for section in wrapper.c.children -%}
+    {%- if section.type == "Title" -%}
+      {%- include "Title" -%}
+    {%- endif -%}
+    {%- endfor -%}
+  </body>
+</html>
