@@ -8,7 +8,9 @@ fn test_basic_title() {
     let expected = Section::TitleSection {
         attributes: None,
         children: Some(vec![Chunk::H1 {
-            attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
+            attributes: None,
+
+            // Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
             children: Some(vec![Chunk::Text {
                 attributes: None,
                 value: Some("Alfa Bravo".to_string()),
@@ -35,7 +37,8 @@ fn test_paragraphs_after_title() {
         attributes: None,
         children: Some(vec![
             Chunk::H1 {
-                attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
+                attributes: None,
+                // Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
                 children: Some(vec![Chunk::Text {
                     attributes: None,
                     value: Some("Alfa Bravo".to_string()),
@@ -67,10 +70,7 @@ fn test_paragraphs_after_title() {
 //     let expected = Section::TitleSection {
 //         attributes: None,
 //         children: Some(vec![Chunk::H1 {
-//             attributes: Some(vec![
-//                 (Some("id".to_string()), Some("main".to_string())),
-//                 (Some("class".to_string()), Some("title".to_string())),
-//             ]),
+//             attributes: Some(vec![(Some("id".to_string()), Some("main".to_string()))]),
 //             children: Some(vec![Chunk::Text {
 //                 attributes: None,
 //                 value: Some("Alfa Bravo".to_string()),

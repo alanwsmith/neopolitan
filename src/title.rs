@@ -158,7 +158,8 @@ pub fn title(source: &str) -> IResult<&str, Section> {
         }
         None => {
             let mut chunks: Vec<Chunk> = vec![Chunk::H1 {
-                attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
+                // attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
+                attributes: None,
                 children: Some(vec![Chunk::Text {
                     attributes: None,
                     value: Some(title.to_string()),
