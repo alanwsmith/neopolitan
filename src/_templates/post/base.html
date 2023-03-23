@@ -2,10 +2,16 @@
 <html>
   <head><title>Neopolitan Sample</title></head>
   <body>
-    {% for section in wrapper.c.children -%}
-    {%- if section.type == "Title" -%}
-      {%- include "Title" -%}
+    {% for section in wrapper.children -%}
+    {{ section}}
+    {%- if section.type == "TitleSection" -%} 
+    -----------------------
+    {%- include "TitleSection" -%}
+    -----------------------
     {%- endif -%}
     {%- endfor -%}
+    -----------------------
+
+    {{ wrapper }}
   </body>
 </html>

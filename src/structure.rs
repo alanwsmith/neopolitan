@@ -32,7 +32,7 @@ use std::collections::HashMap;
 
 pub fn structure(source: &str) -> IResult<&str, Option<Wrapper>> {
     let (_, sections) = many_till(section, eof)(source).unwrap();
-    let p = Some(Wrapper::Page {
+    let p = Some(Wrapper::Post {
         attributes: None,
         children: Some(sections.0),
     });

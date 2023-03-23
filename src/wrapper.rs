@@ -3,9 +3,9 @@ use serde::Deserialize;
 use serde::Serialize;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize, Clone)]
-#[serde(tag = "t", content = "c")]
+#[serde(tag = "type")]
 pub enum Wrapper {
-    Page {
+    Post {
         attributes: Option<Vec<(String, String)>>,
         children: Option<Vec<Section>>,
     },

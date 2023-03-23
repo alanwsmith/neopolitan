@@ -14,7 +14,7 @@ use crate::wrapper::*;
 #[test]
 fn basic_title_and_paragraph() {
     let source = vec!["-> TITLE", "", "Kickoff"].join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::TitleSection {
             attributes: None,
@@ -43,7 +43,7 @@ fn multiple_paragraphs() {
         "",
     ]
     .join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::ParagraphSection {
             attributes: None,
@@ -81,7 +81,7 @@ fn basic_integration() {
         "",
     ]
     .join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::ParagraphSection {
             attributes: None,
@@ -150,7 +150,7 @@ fn inline_code_snippets() {
         "",
     ]
     .join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::ParagraphSection {
             attributes: None,
@@ -218,7 +218,7 @@ fn inline_links() {
         "",
     ]
     .join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::ParagraphSection {
             attributes: None,
@@ -274,7 +274,7 @@ fn inline_links() {
 #[test]
 fn code_block_without_language() {
     let source = vec!["-> CODE", "", "fn main() {", "  let alfa = 1;", "}", ""].join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::CodeSection {
             language: None,
@@ -300,7 +300,7 @@ fn code_block_with_language() {
         "}",
     ]
     .join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::CodeSection {
             language: Some("rust".to_string()),
@@ -328,7 +328,7 @@ fn code_block_with_language_and_attributes() {
         "}",
     ]
     .join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::CodeSection {
             language: Some("rust".to_string()),
@@ -349,7 +349,7 @@ fn code_block_with_language_and_attributes() {
 #[test]
 fn basic_note() {
     let source = vec!["-> NOTE", "", "This is a note"].join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::NoteSection {
             attributes: None,
@@ -369,7 +369,7 @@ fn basic_note() {
 #[test]
 fn note_with_multiple_lines() {
     let source = vec!["-> NOTE", "", "Oak is strong", "", "and also gives shade"].join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::NoteSection {
             attributes: None,
@@ -398,7 +398,7 @@ fn note_with_multiple_lines() {
 #[test]
 fn note_with_code_sections() {
     let source = vec!["-> NOTE", "", "Here is `some code`rust`"].join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::NoteSection {
             attributes: None,
@@ -425,7 +425,7 @@ fn note_with_code_sections() {
 #[test]
 fn note_with_attributes() {
     let source = vec!["-> note", ">> id: rose", "", "Lift the square"].join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::NoteSection {
             attributes: Some(vec![(Some("id".to_string()), Some("rose".to_string()))]),
@@ -445,7 +445,7 @@ fn note_with_attributes() {
 #[test]
 fn basic_list() {
     let source = vec!["-> list", "", "- The long journey", "", "- A gold ring"].join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::ListSection {
             attributes: None,
@@ -480,7 +480,7 @@ fn basic_list() {
 #[test]
 fn list_with_attributes() {
     let source = vec!["-> list", ">> id: echo", "", "- Draw the chart"].join("\n");
-    let expected = Some(Wrapper::Page {
+    let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::ListSection {
             attributes: None,

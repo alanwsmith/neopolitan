@@ -24,6 +24,7 @@ use serde::Serialize;
 use std::collections::HashMap;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize, Clone)]
+#[serde(tag = "type")]
 pub enum Section {
     // Probably change the non-option stuff
     // to options at some point
