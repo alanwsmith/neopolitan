@@ -14,6 +14,8 @@ pub mod structure;
 #[cfg(test)]
 pub mod test_attributes;
 #[cfg(test)]
+pub mod test_code;
+#[cfg(test)]
 pub mod test_note;
 #[cfg(test)]
 pub mod test_structure;
