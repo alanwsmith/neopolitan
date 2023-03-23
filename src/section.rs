@@ -30,19 +30,23 @@ pub enum Section {
     // to options at some point
     CodeSection {
         language: Option<String>,
-        attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        // attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        attributes: HashMap<String, String>,
         children: Option<Vec<Chunk>>,
     },
     ListSection {
-        attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        // attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        attributes: HashMap<String, String>,
         children: Option<Vec<Chunk>>,
     },
     NoteSection {
-        attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        // attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        attributes: HashMap<String, String>,
         children: Option<Vec<Chunk>>,
     },
     ParagraphSection {
-        attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        // attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        attributes: HashMap<String, String>,
         children: Option<Vec<Chunk>>,
     },
     TitleSection {
@@ -64,11 +68,11 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (source, mut block) = alt((
         tag_no_case("-> NOTE").map(|_| Section::NoteSection {
-            attributes: None,
+            attributes: HashMap::new(),
             children: None,
         }),
         tag_no_case("-> P").map(|_| Section::ParagraphSection {
-            attributes: None,
+            attributes: HashMap::new(),
             children: Some(vec![]),
         }),
         tag_no_case("-> TITLE").map(|_| Section::TitleSection {
@@ -76,11 +80,11 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             children: Some(vec![]),
         }),
         tag_no_case("-> LIST").map(|_| Section::ListSection {
-            attributes: None,
+            attributes: HashMap::new(),
             children: None,
         }),
         tag_no_case("-> CODE").map(|_| Section::CodeSection {
-            attributes: None,
+            attributes: HashMap::new(),
             language: None,
             children: Some(vec![]),
         }),
@@ -149,7 +153,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             paragraphs.push(remainder);
             for paragraph in paragraphs.iter() {
                 children.as_mut().unwrap().push(Chunk::P {
-                    attributes: attribute_list.clone(),
+                    // attributes: attribute_list.clone(),
+                    attributes: HashMap::new(),
                     children: text(paragraph).unwrap().1,
                 });
             }

@@ -40,17 +40,18 @@ pub fn list(source: &str) -> IResult<&str, Section> {
         .iter()
         .skip(1)
         .map(|p| Chunk::ListItem {
-            attributes: attributes.clone(),
+            // attributes: attributes.clone(),
+            attributes: HashMap::new(),
             children: {
                 Some(vec![Chunk::P {
-                    attributes: None,
+                    attributes: HashMap::new(),
                     children: text(p).unwrap().1,
                 }])
             },
         })
         .collect();
     let response = Section::ListSection {
-        attributes: None,
+        attributes: HashMap::new(),
         children: Some(items),
     };
     Ok(("", response))

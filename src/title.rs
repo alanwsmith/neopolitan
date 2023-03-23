@@ -122,7 +122,7 @@ pub fn title(source: &str) -> IResult<&str, Section> {
                 children: Some(vec![Chunk::H1 {
                     attributes: HashMap::new(),
                     children: Some(vec![Chunk::Text {
-                        attributes: None,
+                        attributes: HashMap::new(),
                         value: Some("Alfa Bravo".to_string()),
                     }]),
                 }]),
@@ -161,13 +161,13 @@ pub fn title(source: &str) -> IResult<&str, Section> {
                 // attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
                 attributes: HashMap::new(),
                 children: Some(vec![Chunk::Text {
-                    attributes: None,
+                    attributes: HashMap::new(),
                     value: Some(title.to_string()),
                 }]),
             }];
 
             chunks.extend(paragraph_texts.iter().map(|p| Chunk::P {
-                attributes: None,
+                attributes: HashMap::new(),
                 children: text(p).unwrap().1,
             }));
 

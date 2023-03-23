@@ -38,25 +38,26 @@ pub fn code(source: &str) -> IResult<&str, Section> {
         Some(x) => {
             if x.len() == 1 {
                 let response = Section::CodeSection {
-                    attributes: None,
+                    attributes: HashMap::new(),
                     language: Some(x[0].0.as_ref().unwrap().to_string()),
                     children: Some(vec![Chunk::Text {
-                        attributes: None,
+                        attributes: HashMap::new(),
                         value: Some(remainder.to_string()),
                     }]),
                 };
                 Ok(("", response))
             } else {
                 let response = Section::CodeSection {
-                    attributes: Some(
-                        x.clone()
-                            .into_iter()
-                            .skip(1)
-                            .collect::<Vec<(Option<String>, Option<String>)>>(),
-                    ),
+                    attributes: HashMap::new(),
+                    // attributes: Some(
+                    //     x.clone()
+                    //         .into_iter()
+                    //         .skip(1)
+                    //         .collect::<Vec<(Option<String>, Option<String>)>>(),
+                    // ),
                     language: Some(x[0].0.as_ref().unwrap().to_string()),
                     children: Some(vec![Chunk::Text {
-                        attributes: None,
+                        attributes: HashMap::new(),
                         value: Some(remainder.to_string()),
                     }]),
                 };
@@ -65,10 +66,10 @@ pub fn code(source: &str) -> IResult<&str, Section> {
         }
         None => {
             let response = Section::CodeSection {
-                attributes: None,
+                attributes: HashMap::new(),
                 language: None,
                 children: Some(vec![Chunk::Text {
-                    attributes: None,
+                    attributes: HashMap::new(),
                     value: Some(remainder.to_string()),
                 }]),
             };

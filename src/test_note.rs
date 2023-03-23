@@ -37,19 +37,19 @@ use std::collections::HashMap;
 fn note_with_multiple_lines() {
     let source = "\n\nThere was a sound\n\nThe leaves were dry";
     let expected = Section::NoteSection {
-        attributes: None,
+        attributes: HashMap::new(),
         children: Some(vec![
             Chunk::P {
-                attributes: None,
+                attributes: HashMap::new(),
                 children: Some(vec![Chunk::Text {
-                    attributes: None,
+                    attributes: HashMap::new(),
                     value: Some("There was a sound".to_string()),
                 }]),
             },
             Chunk::P {
-                attributes: None,
+                attributes: HashMap::new(),
                 children: Some(vec![Chunk::Text {
-                    attributes: None,
+                    attributes: HashMap::new(),
                     value: Some("The leaves were dry".to_string()),
                 }]),
             },
