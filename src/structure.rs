@@ -1,6 +1,6 @@
 #![allow(warnings)]
 // use crate::spec::Spec;
-use crate::block::*;
+use crate::chunk::*;
 use crate::content::*;
 use crate::section::*;
 use crate::wrapper::*;
@@ -34,36 +34,14 @@ pub fn structure(source: &str) -> IResult<&str, Option<Wrapper>> {
     let response = Some(Wrapper::Page {
         children: Some(vec![Section::Title {
             attributes: None,
-            children: Some(vec![Block::H1 {
+            children: Some(vec![Chunk::H1 {
                 attributes: None,
-                children: Some(vec![Content::Text {
+                children: Some(vec![Chunk::Text {
                     attributes: None,
-                    value: Some("Welcome To Neopolitan".to_string()),
+                    value: Some("Kickoff".to_string()),
                 }]),
             }]),
         }]),
     });
     Ok(("", response))
 }
-
-// pub fn structure(source: &str) -> IResult<&str, Option<Xob>> {
-//     let response = Some(Wrapper {
-//         spec: Wrapper::Page,
-//         attributes: None,
-//         children: Some(vec![Section {
-//             spec: Section::Title,
-//             attributes: None,
-//             extras: None,
-//             children: Some(vec![Chunk {
-//                 spec: Chunk::H1,
-//                 attributes: None,
-//                 children: Some(vec![Content {
-//                     spec: Content::Text,
-//                     attributes: None,
-//                     children: None,
-//                 }]),
-//             }]),
-//         }]),
-//     });
-//     Ok(("", response))
-// }

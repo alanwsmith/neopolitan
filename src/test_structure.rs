@@ -6,8 +6,7 @@
 // checked via unit tests.
 /////////////////////////////////////////////
 
-use crate::block::*;
-use crate::content::*;
+use crate::chunk::*;
 use crate::section::*;
 use crate::structure::*;
 use crate::wrapper::*;
@@ -18,11 +17,11 @@ fn basic_title_and_paragraph() {
     let expected = Some(Wrapper::Page {
         children: Some(vec![Section::Title {
             attributes: None,
-            children: Some(vec![Block::H1 {
+            children: Some(vec![Chunk::H1 {
                 attributes: None,
-                children: Some(vec![Content::Text {
+                children: Some(vec![Chunk::Text {
                     attributes: None,
-                    value: Some("Welcome To Neopolitan".to_string()),
+                    value: Some("Kickoff".to_string()),
                 }]),
             }]),
         }]),

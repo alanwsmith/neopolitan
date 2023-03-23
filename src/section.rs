@@ -1,4 +1,4 @@
-use crate::block::Block;
+use crate::chunk::Chunk;
 use serde::Deserialize;
 use serde::Serialize;
 
@@ -7,6 +7,6 @@ use serde::Serialize;
 pub enum Section {
     Title {
         attributes: Option<Vec<(Option<String>, Option<String>)>>,
-        children: Option<Vec<Block>>,
+        children: Option<Vec<Chunk>>,
     },
 }

@@ -1,4 +1,4 @@
-pub mod block;
+pub mod chunk;
 pub mod content;
 pub mod section;
 // pub mod spec;
