@@ -15,7 +15,8 @@ use crate::wrapper::*;
 fn basic_title_and_paragraph() {
     let source = vec!["-> TITLE", "", "Kickoff"].join("\n");
     let expected = Some(Wrapper::Page {
-        children: Some(vec![Section::Title {
+        attributes: None,
+        children: Some(vec![Section::TitleSection {
             attributes: None,
             children: Some(vec![Chunk::H1 {
                 attributes: None,
@@ -30,40 +31,43 @@ fn basic_title_and_paragraph() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn multiple_paragraphs() {
-//     let source = vec![
-//         "-> P",
-//         "",
-//         "They took the axe and the",
-//         "saw to the forest.",
-//         "",
-//         "The bark of the pine tree.",
-//         "",
-//     ]
-//     .join("\n");
-//     let expected = Page {
-//         attributes: None,
-//         children: vec![Section::ParagraphSection {
-//             children: vec![
-//                 Chunk::P {
-//                     attributes: None,
-//                     children: Some(vec![Chunk::Text {
-//                         value: "They took the axe and the\nsaw to the forest.".to_string(),
-//                     }]),
-//                 },
-//                 Chunk::P {
-//                     attributes: None,
-//                     children: Some(vec![Chunk::Text {
-//                         value: "The bark of the pine tree.".to_string(),
-//                     }]),
-//                 },
-//             ],
-//         }],
-//     };
-//     let result = get_structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn multiple_paragraphs() {
+    let source = vec![
+        "-> P",
+        "",
+        "They took the axe and the",
+        "saw to the forest.",
+        "",
+        "The bark of the pine tree.",
+        "",
+    ]
+    .join("\n");
+    let expected = Some(Wrapper::Page {
+        attributes: None,
+        children: Some(vec![Section::ParagraphSection {
+            attributes: None,
+            children: Some(vec![
+                Chunk::P {
+                    attributes: None,
+                    children: Some(vec![Chunk::Text {
+                        attributes: None,
+                        value: Some("They took the axe and the\nsaw to the forest.".to_string()),
+                    }]),
+                },
+                Chunk::P {
+                    attributes: None,
+                    children: Some(vec![Chunk::Text {
+                        attributes: None,
+                        value: Some("The bark of the pine tree.".to_string()),
+                    }]),
+                },
+            ]),
+        }]),
+    });
+    let result = structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
 // #[test]
 // fn basic_integration() {
@@ -77,15 +81,17 @@ fn basic_title_and_paragraph() {
 //         "",
 //     ]
 //     .join("\n");
-//     let expected = Page {
+//     let expected = Some(Wrapper::Page {
 //         attributes: None,
-//         children: vec![Section::ParagraphSection {
-//             children: vec![
+//         children: Some(vec![Section::ParagraphSection {
+//             attributes: None,
+//             children: Some(vec![
 //                 Chunk::P {
 //                     attributes: Some(vec![(Some("class".to_string()), Some("main".to_string()))]),
 //                     children: Some(vec![
 //                         Chunk::Text {
-//                             value: "The ".to_string(),
+//                             attributes: None,
+//                             value: Some("The ".to_string()),
 //                         },
 //                         Chunk::InlineCode {
 //                             attributes: Some(vec![(Some("rust".to_string()), None)]),
@@ -93,7 +99,8 @@ fn basic_title_and_paragraph() {
 //                             value: Some("chink".to_string()),
 //                         },
 //                         Chunk::Text {
-//                             value: " in the wall.".to_string(),
+//                             attributes: None,
+//                             value: Some(" in the wall.".to_string()),
 //                         },
 //                     ]),
 //                 },
@@ -101,7 +108,8 @@ fn basic_title_and_paragraph() {
 //                     attributes: Some(vec![(Some("class".to_string()), Some("main".to_string()))]),
 //                     children: Some(vec![
 //                         Chunk::Text {
-//                             value: "The ".to_string(),
+//                             attributes: None,
+//                             value: Some("The ".to_string()),
 //                         },
 //                         Chunk::InlineCode {
 //                             attributes: Some(vec![(Some("python".to_string()), None)]),
@@ -109,7 +117,8 @@ fn basic_title_and_paragraph() {
 //                             value: Some("desk".to_string()),
 //                         },
 //                         Chunk::Text {
-//                             value: " and ".to_string(),
+//                             attributes: None,
+//                             value: Some(" and ".to_string()),
 //                         },
 //                         Chunk::InlineCode {
 //                             attributes: Some(vec![(Some("javascript".to_string()), None)]),
@@ -117,14 +126,15 @@ fn basic_title_and_paragraph() {
 //                             value: Some("both".to_string()),
 //                         },
 //                         Chunk::Text {
-//                             value: " chairs".to_string(),
+//                             attributes: None,
+//                             value: Some(" chairs".to_string()),
 //                         },
 //                     ]),
 //                 },
-//             ],
-//         }],
-//     };
-//     let result = get_structure(source.as_str()).unwrap().1;
+//             ]),
+//         }]),
+//     });
+//     let result = structure(source.as_str()).unwrap().1;
 //     assert_eq!(expected, result);
 // }
 
@@ -444,24 +454,25 @@ fn basic_title_and_paragraph() {
 //     assert_eq!(expected, result);
 // }
 
-// #[test]
-// fn list_with_attributes() {
-//     let source = vec!["-> list", ">> id: echo", "", "- Draw the chart"].join("\n");
-//     let expected = Page {
-//         attributes: None,
-//         children: vec![Section::ListSection {
-//             attributes: None,
-//             children: Some(vec![Chunk::ListItem {
-//                 attributes: Some(vec![(Some("id".to_string()), Some("echo".to_string()))]),
-//                 children: Some(vec![Chunk::P {
-//                     attributes: None,
-//                     children: Some(vec![Chunk::Text {
-//                         value: "Draw the chart".to_string(),
-//                     }]),
-//                 }]),
-//             }]),
-//         }],
-//     };
-//     let result = get_structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn list_with_attributes() {
+    let source = vec!["-> list", ">> id: echo", "", "- Draw the chart"].join("\n");
+    let expected = Some(Wrapper::Page {
+        attributes: None,
+        children: Some(vec![Section::ListSection {
+            attributes: None,
+            children: Some(vec![Chunk::ListItem {
+                attributes: Some(vec![(Some("id".to_string()), Some("echo".to_string()))]),
+                children: Some(vec![Chunk::P {
+                    attributes: None,
+                    children: Some(vec![Chunk::Text {
+                        attributes: None,
+                        value: Some("Draw the chart".to_string()),
+                    }]),
+                }]),
+            }]),
+        }]),
+    });
+    let result = structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}

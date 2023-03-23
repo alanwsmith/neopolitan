@@ -31,17 +31,26 @@ use nom::Parser;
 use std::collections::HashMap;
 
 pub fn structure(source: &str) -> IResult<&str, Option<Wrapper>> {
-    let response = Some(Wrapper::Page {
-        children: Some(vec![Section::Title {
-            attributes: None,
-            children: Some(vec![Chunk::H1 {
-                attributes: None,
-                children: Some(vec![Chunk::Text {
-                    attributes: None,
-                    value: Some("Kickoff".to_string()),
-                }]),
-            }]),
-        }]),
+    let (_, sections) = many_till(section, eof)(source).unwrap();
+    let p = Some(Wrapper::Page {
+        attributes: None,
+        children: Some(sections.0),
     });
-    Ok(("", response))
+
+    Ok(("", p))
+
+    // let response = Some(Wrapper::Page {
+    //     attributes: None,
+    //     children: Some(vec![Section::TitleSection {
+    //         attributes: None,
+    //         children: Some(vec![Chunk::H1 {
+    //             attributes: None,
+    //             children: Some(vec![Chunk::Text {
+    //                 attributes: None,
+    //                 value: Some("Kickoff".to_string()),
+    //             }]),
+    //         }]),
+    //     }]),
+    // });
+    // Ok(("", response))
 }
