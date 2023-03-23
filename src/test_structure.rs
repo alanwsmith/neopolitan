@@ -10,6 +10,7 @@ use crate::chunk::*;
 use crate::section::*;
 use crate::structure::*;
 use crate::wrapper::*;
+use std::collections::HashMap;
 
 #[test]
 fn basic_title_and_paragraph() {
@@ -17,7 +18,7 @@ fn basic_title_and_paragraph() {
     let expected = Some(Wrapper::Post {
         attributes: None,
         children: Some(vec![Section::TitleSection {
-            attributes: None,
+            attributes: HashMap::new(),
             children: Some(vec![Chunk::H1 {
                 attributes: None,
                 children: Some(vec![Chunk::Text {

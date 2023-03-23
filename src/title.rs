@@ -30,7 +30,7 @@ use nom::sequence::tuple;
 use nom::Err;
 use nom::IResult;
 use nom::Parser;
-// use std::collections::HashMap;
+use std::collections::HashMap;
 
 pub fn title(source: &str) -> IResult<&str, Section> {
     let (remainder, mut attributes) = attributes(source)?;
@@ -118,7 +118,7 @@ pub fn title(source: &str) -> IResult<&str, Section> {
     match attributes {
         Some(x) => {
             let expected = Section::TitleSection {
-                attributes: None,
+                attributes: HashMap::new(),
                 children: Some(vec![Chunk::H1 {
                     attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
                     children: Some(vec![Chunk::Text {
@@ -172,7 +172,7 @@ pub fn title(source: &str) -> IResult<&str, Section> {
             }));
 
             let expected = Section::TitleSection {
-                attributes: None,
+                attributes: HashMap::new(),
                 children: Some(chunks),
             };
 

@@ -46,7 +46,7 @@ pub enum Section {
         children: Option<Vec<Chunk>>,
     },
     TitleSection {
-        attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        attributes: HashMap<String, String>,
         children: Option<Vec<Chunk>>,
     },
     Placeholder,
@@ -72,7 +72,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             children: Some(vec![]),
         }),
         tag_no_case("-> TITLE").map(|_| Section::TitleSection {
-            attributes: None,
+            attributes: HashMap::new(),
             children: Some(vec![]),
         }),
         tag_no_case("-> LIST").map(|_| Section::ListSection {
