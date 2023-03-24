@@ -28,11 +28,23 @@ use nom::IResult;
 use nom::Parser;
 use std::collections::HashMap;
 
-// this is the one for text attributes
-// the other one is for attributes for
-// sections: TODO: Rename the other
-// one to `section_attributes``
-//
+// NOTE: This is the origianl one that returns
+// a vec. It will go away when everyting is moved
+// over to using a hashmap
+
+pub fn text_attributes_dev(source: &str) -> IResult<&str, Option<HashMap<String, Option<String>>>> {
+    Ok(("", None))
+    // let payload: Vec<(Option<String>, Option<String>)> = vec![];
+    // let (remainder, mut parts) = many0(part)(source)?;
+    // parts.push(remainder);
+    // if parts[0].is_empty() {
+    //     Ok(("", None))
+    // } else {
+    //     let response: Vec<(Option<String>, Option<String>)> =
+    //         parts.iter().map(|p| attribute(p).unwrap().1).collect();
+    //     Ok(("", Some(response)))
+    // }
+}
 
 pub fn text_attributes(
     source: &str,

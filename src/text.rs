@@ -1,6 +1,7 @@
 #![allow(warnings)]
 use crate::chunk::Chunk;
 use crate::page::Page;
+use crate::parse_text_attributes::parse_text_attributes;
 use crate::tag_attributes::*;
 use crate::text_attributes::*;
 use nom::branch::alt;
@@ -76,6 +77,7 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
     ))(source)?;
     match payload.0 {
         Target::Code { pretext, divider } => {
+            // dbg!(&source);
             response.push(Chunk::Text {
                 attributes: None,
                 value: Some(pretext.to_string()),
@@ -85,28 +87,35 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let (source, current) = tag(divider)(source)?;
             let (source, raw_attributes) = take_until(divider)(source)?;
             let (source, current) = tag(divider)(source)?;
-            let attributes = text_attributes(raw_attributes).unwrap().1;
-            let mut language: Option<String> = None;
-            // TODO: See if there's a more direct way to
-            // do this
-            if attributes.as_ref().expect("check failed").is_empty() {
-                // no attributes so no language
-            } else {
-                match &attributes.as_ref().expect("check failed")[0] {
-                    // first attribute is stand along so
-                    // it's speced to be a langauge
-                    (Some(lang), None) => {
-                        language = Some(lang.to_string());
-                    }
-                    _ => {}
-                }
-            }
-            let language = language;
+
+            let (_, attributes) = parse_text_attributes(raw_attributes)?;
+            dbg!(&attributes);
+
+            // let attributes = text_attributes_dev(raw_attributes).unwrap().1;
+            // let mut language: Option<String> = None;
+
+            // // TODO: See if there's a more direct way to
+            // // do this
+            // if attributes.as_ref().expect("check failed").is_empty() {
+            //     // no attributes so no language
+            // } else {
+            //     match &attributes.as_ref().expect("check failed")[0] {
+            //         // first attribute is stand along so
+            //         // it's speced to be a langauge
+            //         (Some(lang), None) => {
+            //             language = Some(lang.to_string());
+            //         }
+            //         _ => {}
+            //     }
+            // }
+            // let language = language;
             response.push(Chunk::InlineCode {
+                language: Some("rust".to_string()),
+                //attributes: attributes.unwrap().1,
+                attributes,
                 value: Some(code.to_string()),
-                language,
-                attributes: None,
             });
+
             Ok((source, response))
         }
 

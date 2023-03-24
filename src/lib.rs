@@ -5,6 +5,7 @@ pub mod content;
 pub mod list;
 pub mod note;
 pub mod page;
+pub mod parse_text_attributes;
 pub mod section;
 pub mod tag_attributes;
 pub mod text;

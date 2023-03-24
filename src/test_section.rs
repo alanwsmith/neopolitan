@@ -165,30 +165,34 @@ fn test_attributes_on_paragraphs() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn test_inline_code() {
-//     let source = vec!["-> P", "", "The `sand`rust` drifts"].join("\n");
-//     let expected = Section::ParagraphSection {
-//         children: vec![Chunk::P {
-//             attributes: None,
-//             children: Some(vec![
-//                 Chunk::Text {
-//                     value: "The ".to_string(),
-//                 },
-//                 Chunk::InlineCode {
-//                     language: Some("rust".to_string()),
-//                     attributes: Some(vec![(Some("rust".to_string()), None)]),
-//                     value: Some("sand".to_string()),
-//                 },
-//                 Chunk::Text {
-//                     value: " drifts".to_string(),
-//                 },
-//             ]),
-//         }],
-//     };
-//     let result = section(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn test_inline_code() {
+    let source = vec!["-> P", "", "The `sand`rust` drifts"].join("\n");
+    let expected = Section::ParagraphSection {
+        attributes: None,
+        children: Some(vec![Chunk::P {
+            attributes: None,
+            children: Some(vec![
+                Chunk::Text {
+                    attributes: None,
+                    value: Some("The ".to_string()),
+                },
+                Chunk::InlineCode {
+                    language: Some("rust".to_string()),
+                    // attributes: Some(vec![(Some("rust".to_string()), None)]),
+                    attributes: Some(HashMap::from([("rust".to_string(), None)])),
+                    value: Some("sand".to_string()),
+                },
+                Chunk::Text {
+                    attributes: None,
+                    value: Some(" drifts".to_string()),
+                },
+            ]),
+        }]),
+    };
+    let result = section(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
 // #[test]
 // fn section_code_test() {
