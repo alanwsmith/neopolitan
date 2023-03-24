@@ -17,24 +17,28 @@ pub struct Attributes {
 pub fn attributes(source: &str) -> IResult<&str, Option<HashMap<String, Option<String>>>> {
     let (remainder, source) = take_until("\n\n")(source)?;
     let (_, parts) = many0(part)(source)?;
-    let mut response: HashMap<String, Option<String>> = HashMap::new();
-    parts.iter().for_each(|p| {
-        let (key, value) = attribute(p).unwrap();
-        response.insert(key.to_string(), value);
-    });
+    if parts.is_empty() {
+        Ok((remainder.trim(), None))
+    } else {
+        let mut response: HashMap<String, Option<String>> = HashMap::new();
+        parts.iter().for_each(|p| {
+            let (key, value) = attribute(p).unwrap();
+            response.insert(key.to_string(), value);
+        });
 
-    // if final_part.is_empty() {
-    //     Ok(("", None))
-    // } else {
-    //     // parts.push(final_part);
-    //     // dbg!(&parts);
-    //     let mut response: HashMap<String, Option<String>> = HashMap::new();
-    //     response.insert("box".to_string(), Some("planks".to_string()));
-    //     Ok(("", Some(response)))
-    // }
+        // if final_part.is_empty() {
+        //     Ok(("", None))
+        // } else {
+        //     // parts.push(final_part);
+        //     // dbg!(&parts);
+        //     let mut response: HashMap<String, Option<String>> = HashMap::new();
+        //     response.insert("box".to_string(), Some("planks".to_string()));
+        //     Ok(("", Some(response)))
+        // }
 
-    // response.insert("box".to_string(), Some("planks".to_string()));
-    Ok(("", Some(response)))
+        // response.insert("box".to_string(), Some("planks".to_string()));
+        Ok((remainder.trim(), Some(response)))
+    }
 }
 
 pub fn attribute(source: &str) -> IResult<&str, Option<String>> {
@@ -48,17 +52,8 @@ pub fn attribute(source: &str) -> IResult<&str, Option<String>> {
 // }
 
 fn part(source: &str) -> IResult<&str, &str> {
-    // dbg!(&source);
-    // dbg!("------------");
     let (remainder, content) = tag(">> ")(source)?;
-    // dbg!(&content);
-    // dbg!(&remainder);
     let (remainder, content) = alt((take_until("\n"), rest))(remainder)?;
-    // dbg!(&remainder);
-    // dbg!(&content);
-
-    // let (remainder, content) = take_until(">> ")(content)?;
-    // let (source, _) = tag(">> ")(source)?;
     Ok((remainder, content))
 }
 
