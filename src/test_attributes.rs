@@ -70,6 +70,14 @@ fn check_return_values() {
     assert_eq!("The pine tree\n\nRunning again", result.unwrap().0);
 }
 
+#[test]
+fn single_attribute_with_no_value() {
+    let source = ">> rust\n\nA tin can";
+    let expected = Some(HashMap::from([("rust".to_string(), None)]));
+    let result = attributes(source);
+    assert_eq!(expected, result.unwrap().1);
+}
+
 // ////////////////////////////////////////////
 // // This is just a singular attribute instead
 // // of the collection of attributes like above
