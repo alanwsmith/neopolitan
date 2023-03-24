@@ -63,7 +63,8 @@ pub fn attribute(source: &str) -> IResult<&str, Option<String>> {
 // }
 
 fn part(source: &str) -> IResult<&str, &str> {
-    let (remainder, content) = tag(">> ")(source)?;
+    let (remainder, _) = multispace0(source)?;
+    let (remainder, _) = tag(">> ")(remainder)?;
     let (remainder, content) = alt((take_until(">>"), rest))(remainder)?;
     Ok((remainder, content))
 }

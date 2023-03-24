@@ -33,8 +33,10 @@ use nom::Parser;
 use std::collections::HashMap;
 
 pub fn title(source: &str) -> IResult<&str, Section> {
-    let (source, _) = multispace0(source)?;
+    dbg!(&source);
     let (remainder, mut attributes) = attributes(source)?;
+    dbg!(&attributes);
+    dbg!(&remainder);
     let (remainder, title) = alt((take_until("\n\n"), rest))(remainder)?;
     let (remainder, _) = multispace0(remainder)?;
     let (remainder, mut paragraph_texts) =
