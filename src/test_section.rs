@@ -99,28 +99,31 @@ fn test_basic_paragraph() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn test_multiple_paragraphs() {
-//     let source = vec!["-> P", "", "Echo Foxtrot", "", "Our plans right now."].join("\n");
-//     let expected = Section::ParagraphSection {
-//         children: vec![
-//             Chunk::P {
-//                 attributes: None,
-//                 children: Some(vec![Chunk::Text {
-//                     value: "Echo Foxtrot".to_string(),
-//                 }]),
-//             },
-//             Chunk::P {
-//                 attributes: None,
-//                 children: Some(vec![Chunk::Text {
-//                     value: "Our plans right now.".to_string(),
-//                 }]),
-//             },
-//         ],
-//     };
-//     let result = section(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn test_multiple_paragraphs() {
+    let source = vec!["-> P", "", "Echo Foxtrot", "", "Our plans right now."].join("\n");
+    let expected = Section::ParagraphSection {
+        attributes: None,
+        children: Some(vec![
+            Chunk::P {
+                attributes: None,
+                children: Some(vec![Chunk::Text {
+                    attributes: None,
+                    value: Some("Echo Foxtrot".to_string()),
+                }]),
+            },
+            Chunk::P {
+                attributes: None,
+                children: Some(vec![Chunk::Text {
+                    attributes: None,
+                    value: Some("Our plans right now.".to_string()),
+                }]),
+            },
+        ]),
+    };
+    let result = section(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
 // #[test]
 // fn test_attributes_on_paragraphs() {
