@@ -140,7 +140,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         Section::ParagraphSection {
             ref mut children, ..
         } => {
-            let (source, attribute_list) = attributes(source)?;
+            let (source, attributes) = attributes(source)?;
             let (return_content, content) = alt((take_until("\n-> "), rest))(source)?;
             let (content, _) = multispace0(content)?;
             let (remainder, mut paragraphs) =
@@ -148,8 +148,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             paragraphs.push(remainder);
             for paragraph in paragraphs.iter() {
                 children.as_mut().unwrap().push(Chunk::P {
-                    // attributes: attribute_list.clone(),
-                    attributes: None,
+                    attributes: attributes.clone(),
                     children: text(paragraph).unwrap().1,
                 });
             }
