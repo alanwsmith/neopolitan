@@ -226,9 +226,9 @@ fn inline_links() {
     let source = vec![
         "-> P",
         "",
-        "Raise the <<link|sail|https://www.example.com/>> and steer",
+        "Raise the <<link|https://www.example.com/|sail>> and steer",
         "",
-        "He <<link|ordered|1>> <<link|peach pie|2>>",
+        "He <<link|1|ordered>> <<link|2|peach pie>>",
         "",
     ]
     .join("\n");

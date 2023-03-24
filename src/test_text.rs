@@ -100,7 +100,7 @@ fn two_inline_code_snippets() {
 
 #[test]
 fn single_link_with_attributes() {
-    let source = "The <<link|paper|https://paper.example.com/|id: rider>> box";
+    let source = "The <<link|https://paper.example.com/|paper|id: rider>> box";
     let expected_result: Option<Vec<Chunk>> = Some(vec![
         Chunk::Text {
             attributes: None,
@@ -127,7 +127,7 @@ fn single_link_with_attributes() {
 
 #[test]
 fn all_the_single_links() {
-    let source = "The <<link|paper|https://paper.example.com/>> box";
+    let source = "The <<link|https://paper.example.com/|paper>> box";
     let expected_result: Option<Vec<Chunk>> = Some(vec![
         Chunk::Text {
             attributes: None,
@@ -151,7 +151,7 @@ fn all_the_single_links() {
 
 #[test]
 fn multiple_links() {
-    let source = "In a <<link|high|alfa>> <<link|wind|bravo>>";
+    let source = "In a <<link|alfa|high>> <<link|bravo|wind>>";
     let expected_result: Option<Vec<Chunk>> = Some(vec![
         Chunk::Text {
             attributes: None,

@@ -109,8 +109,8 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let (source, _) = tag("<<")(payload.1)?;
             let (remainder, stuff) = take_until(">>")(source)?;
             let (_, stuff) = split(stuff, "|")?;
-            let value = Some(stuff[1].to_string());
-            let url = Some(stuff[2].to_string());
+            let value = Some(stuff[2].to_string());
+            let url = Some(stuff[1].to_string());
             let (remainder, _) = tag(">>")(remainder)?;
             if stuff.len() > 3 {
                 let (_, attributes) = parse_text_attributes(stuff[3])?;
