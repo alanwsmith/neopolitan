@@ -125,7 +125,6 @@ fn single_link_with_attributes() {
     assert_eq!(expected_remainder, remainder);
 }
 
-#[ignore]
 #[test]
 fn all_the_single_links() {
     let source = "The <<link|paper|https://paper.example.com/>> box";
@@ -150,7 +149,6 @@ fn all_the_single_links() {
     assert_eq!(expected_remainder, remainder);
 }
 
-#[ignore]
 #[test]
 fn multiple_links() {
     let source = "In a <<link|high|alfa>> <<link|wind|bravo>>";
