@@ -39,7 +39,8 @@ pub fn code(source: &str) -> IResult<&str, Section> {
             if x.len() == 1 {
                 let response = Section::CodeSection {
                     attributes: HashMap::new(),
-                    language: Some(x[0].0.as_ref().unwrap().to_string()),
+                    // language: Some(x[0].0.as_ref().unwrap().to_string()),
+                    language: None,
                     children: Some(vec![Chunk::Text {
                         attributes: HashMap::new(),
                         value: Some(remainder.to_string()),
@@ -55,7 +56,8 @@ pub fn code(source: &str) -> IResult<&str, Section> {
                     //         .skip(1)
                     //         .collect::<Vec<(Option<String>, Option<String>)>>(),
                     // ),
-                    language: Some(x[0].0.as_ref().unwrap().to_string()),
+                    //    language: Some(x[0].0.as_ref().unwrap().to_string()),
+                    language: None,
                     children: Some(vec![Chunk::Text {
                         attributes: HashMap::new(),
                         value: Some(remainder.to_string()),

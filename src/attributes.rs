@@ -14,7 +14,7 @@ pub struct Attributes {
     pub values: Option<Vec<(Option<String>, Option<String>)>>,
 }
 
-pub fn attributes_dev(source: &str) -> IResult<&str, Option<HashMap<String, Option<String>>>> {
+pub fn attributes(source: &str) -> IResult<&str, Option<HashMap<String, Option<String>>>> {
     let (remainder, source) = take_until("\n\n")(source)?;
     let (_, parts) = many0(part)(source)?;
     let mut response: HashMap<String, Option<String>> = HashMap::new();
@@ -43,9 +43,9 @@ pub fn attribute(source: &str) -> IResult<&str, Option<String>> {
     Ok((key, Some(value.to_string())))
 }
 
-pub fn attributes(source: &str) -> IResult<&str, Option<Vec<(Option<String>, Option<String>)>>> {
-    Ok(("", None))
-}
+// pub fn attributes(source: &str) -> IResult<&str, Option<Vec<(Option<String>, Option<String>)>>> {
+//     Ok(("", None))
+// }
 
 fn part(source: &str) -> IResult<&str, &str> {
     // dbg!(&source);
@@ -62,7 +62,7 @@ fn part(source: &str) -> IResult<&str, &str> {
     Ok((remainder, content))
 }
 
-// pub fn attribute(source: &str) -> IResult<&str, (Option<String>, Option<String>)> {
+// pub fn attribute_v2(source: &str) -> IResult<&str, (Option<String>, Option<String>)> {
 //     let (v, k) = alt((tuple((take_until(":"), rest)), tuple((rest, rest))))(source)?;
 //     if k.1.is_empty() {
 //         Ok((v, (Some(k.0.trim().to_string()), None)))

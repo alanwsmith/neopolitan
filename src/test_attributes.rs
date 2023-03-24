@@ -40,7 +40,7 @@ fn basic_attributes() {
         "box".to_string(),
         Some("planks".to_string()),
     )]));
-    let result = attributes_dev(source);
+    let result = attributes(source);
     assert_eq!(expected, result.unwrap().1);
 }
 
