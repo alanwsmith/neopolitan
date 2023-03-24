@@ -13,7 +13,6 @@ pub fn split<'a>(source: &'a str, separator: &'a str) -> IResult<&'a str, Vec<&'
 #[cfg(test)]
 mod tests {
     use crate::split::split;
-
     #[test]
     fn test_split() {
         assert_eq!(split("a|b|c", "|"), Ok(("", vec!["a", "b", "c"])));
