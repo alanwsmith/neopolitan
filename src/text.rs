@@ -111,17 +111,23 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let (_, stuff) = split(stuff, "|")?;
             let value = Some(stuff[1].to_string());
             let url = Some(stuff[2].to_string());
-            let attributes = None;
+            let (remainder, _) = tag(">>")(remainder)?;
             if stuff.len() > 3 {
                 let (_, attributes) = parse_text_attributes(stuff[3])?;
+                response.push(Chunk::Link {
+                    value,
+                    url,
+                    attributes,
+                });
+                Ok((remainder, response))
+            } else {
+                response.push(Chunk::Link {
+                    value,
+                    url,
+                    attributes: None,
+                });
+                Ok((remainder, response))
             }
-            let (remainder, _) = tag(">>")(remainder)?;
-            response.push(Chunk::Link {
-                value,
-                url,
-                attributes,
-            });
-            Ok((remainder, response))
         }
 
         Target::Strong { pretext } => {
