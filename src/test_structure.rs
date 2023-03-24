@@ -495,28 +495,29 @@ fn basic_list() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn list_with_attributes() {
-//     let source = vec!["-> list", ">> id: echo", "", "- Draw the chart"].join("\n");
-//     let expected = Some(Wrapper::Post {
-//         attributes: None,
-//         children: Some(vec![Section::ListSection {
-//             attributes: Some(HashMap::from([(
-//                 "id".to_string(),
-//                 Some("echo".to_string()),
-//             )])),
-//             children: Some(vec![Chunk::ListItem {
-//                 attributes: None,
-//                 children: Some(vec![Chunk::P {
-//                     attributes: None,
-//                     children: Some(vec![Chunk::Text {
-//                         attributes: None,
-//                         value: Some("Draw the chart".to_string()),
-//                     }]),
-//                 }]),
-//             }]),
-//         }]),
-//     });
-//     let result = structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[ignore]
+#[test]
+fn list_with_attributes() {
+    let source = vec!["-> list", ">> id: echo", "", "- Draw the chart"].join("\n");
+    let expected = Some(Wrapper::Post {
+        attributes: None,
+        children: Some(vec![Section::ListSection {
+            attributes: Some(HashMap::from([(
+                "id".to_string(),
+                Some("echo".to_string()),
+            )])),
+            children: Some(vec![Chunk::ListItem {
+                attributes: None,
+                children: Some(vec![Chunk::P {
+                    attributes: None,
+                    children: Some(vec![Chunk::Text {
+                        attributes: None,
+                        value: Some("Draw the chart".to_string()),
+                    }]),
+                }]),
+            }]),
+        }]),
+    });
+    let result = structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
