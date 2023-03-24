@@ -5,7 +5,7 @@ use std::collections::HashMap;
 // a vec. It will go away when everyting is moved
 // over to using a hashmap
 
-pub fn text_attributes(source: &str) -> IResult<&str, Option<HashMap<String, Option<String>>>> {
+pub fn text_attributes(_source: &str) -> IResult<&str, Option<HashMap<String, Option<String>>>> {
     Ok((
         "",
         Some(HashMap::from([(

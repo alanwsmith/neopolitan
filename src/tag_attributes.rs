@@ -16,7 +16,7 @@ use nom::IResult;
 pub fn tag_attributes(
     source: &str,
 ) -> IResult<&str, Option<Vec<(Option<String>, Option<String>)>>> {
-    let payload: Vec<(Option<String>, Option<String>)> = vec![];
+    // let payload: Vec<(Option<String>, Option<String>)> = vec![];
     let (remainder, mut parts) = many0(part)(source)?;
     parts.push(remainder);
     if parts.len() == 1 {
@@ -31,11 +31,11 @@ pub fn tag_attributes(
     }
 }
 
-fn get_parts(source: &str) -> IResult<&str, Option<Vec<&str>>> {
-    let (remainder, mut parts) = many0(part)(source)?;
-    parts.push(remainder);
-    Ok(("", Some(parts)))
-}
+// fn get_parts(source: &str) -> IResult<&str, Option<Vec<&str>>> {
+//     let (remainder, mut parts) = many0(part)(source)?;
+//     parts.push(remainder);
+//     Ok(("", Some(parts)))
+// }
 
 fn part(source: &str) -> IResult<&str, &str> {
     let (source, content) = take_until("|")(source)?;
