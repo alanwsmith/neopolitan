@@ -35,7 +35,6 @@ use std::collections::HashMap;
 #[test]
 fn basic_attributes() {
     let source = ">> box: planks\n\nThe salt breeze";
-    // let expected = Some(vec![(Some("box".to_string()), Some("planks".to_string()))]);
     let expected = Some(HashMap::from([(
         "box".to_string(),
         Some("planks".to_string()),
