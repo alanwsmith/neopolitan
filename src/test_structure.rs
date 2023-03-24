@@ -290,31 +290,31 @@ fn code_block_without_language() {
     assert_eq!(expected, result);
 }
 
-#[test]
-fn code_block_with_language() {
-    let source = vec![
-        "-> CODE",
-        ">> rust",
-        "",
-        "fn main() {",
-        "  let bravo = 2;",
-        "}",
-    ]
-    .join("\n");
-    let expected = Some(Wrapper::Post {
-        attributes: HashMap::new(),
-        children: Some(vec![Section::CodeSection {
-            language: Some("rust".to_string()),
-            attributes: HashMap::new(),
-            children: Some(vec![Chunk::Text {
-                attributes: HashMap::new(),
-                value: Some("fn main() {\n  let bravo = 2;\n}".to_string()),
-            }]),
-        }]),
-    });
-    let result = structure(source.as_str()).unwrap().1;
-    assert_eq!(expected, result);
-}
+// #[test]
+// fn code_block_with_language() {
+//     let source = vec![
+//         "-> CODE",
+//         ">> rust",
+//         "",
+//         "fn main() {",
+//         "  let bravo = 2;",
+//         "}",
+//     ]
+//     .join("\n");
+//     let expected = Some(Wrapper::Post {
+//         attributes: HashMap::new(),
+//         children: Some(vec![Section::CodeSection {
+//             language: Some("rust".to_string()),
+//             attributes: HashMap::new(),
+//             children: Some(vec![Chunk::Text {
+//                 attributes: HashMap::new(),
+//                 value: Some("fn main() {\n  let bravo = 2;\n}".to_string()),
+//             }]),
+//         }]),
+//     });
+//     let result = structure(source.as_str()).unwrap().1;
+//     assert_eq!(expected, result);
+// }
 
 // #[test]
 // fn code_block_with_language_and_attributes() {

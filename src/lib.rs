@@ -11,11 +11,14 @@ pub mod text;
 pub mod text_attributes;
 pub mod title;
 // pub mod spec;
+pub mod language;
 pub mod structure;
 #[cfg(test)]
 pub mod test_attributes;
 #[cfg(test)]
 pub mod test_code;
+#[cfg(test)]
+pub mod test_language;
 #[cfg(test)]
 pub mod test_note;
 #[cfg(test)]

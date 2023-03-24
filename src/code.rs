@@ -1,6 +1,7 @@
 #![allow(warnings)]
 use crate::attributes::*;
 use crate::chunk::Chunk;
+use crate::language::language;
 use crate::page::Page;
 use crate::section::*;
 use crate::text::*;
@@ -33,6 +34,7 @@ use nom::Parser;
 use std::collections::HashMap;
 
 pub fn code(source: &str) -> IResult<&str, Section> {
+    let language = language(source).unwrap().1;
     let (remainder, attributes) = attributes(source)?;
     match attributes {
         Some(x) => {
@@ -40,7 +42,7 @@ pub fn code(source: &str) -> IResult<&str, Section> {
                 let response = Section::CodeSection {
                     attributes: HashMap::new(),
                     // language: Some(x[0].0.as_ref().unwrap().to_string()),
-                    language: None,
+                    language,
                     children: Some(vec![Chunk::Text {
                         attributes: HashMap::new(),
                         value: Some(remainder.to_string()),
