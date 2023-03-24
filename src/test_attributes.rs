@@ -44,16 +44,16 @@ fn basic_attributes() {
     assert_eq!(expected, result.unwrap().1);
 }
 
-// #[test]
-// fn full_attributes_langauge_without_other_stuff() {
-//     let source = ">> python >> creek: wild\n\nRight hand side";
-//     let expected = Some(vec![
-//         (Some("python".to_string()), None),
-//         (Some("creek".to_string()), Some("wild".to_string())),
-//     ]);
-//     let result = attributes(source);
-//     assert_eq!(expected, result.unwrap().1);
-// }
+#[test]
+fn full_attributes_langauge_without_other_stuff() {
+    let source = ">> python >> creek: wild\n\nRight hand side";
+    let expected = Some(HashMap::from([
+        ("python".to_string(), None),
+        ("creek".to_string(), Some("wild".to_string())),
+    ]));
+    let result = attributes(source);
+    assert_eq!(expected, result.unwrap().1);
+}
 
 #[test]
 fn no_attributes() {
@@ -76,7 +76,7 @@ fn check_return_values() {
 
 // #[test]
 // fn language_without_other_attribute() {
-//     let source = "rust";
+//     let source = ">> rust";
 //     let expected = (Some("rust".to_string()), None);
 //     let result = attribute(source);
 //     assert_eq!(expected, result.unwrap().1);

@@ -42,9 +42,20 @@ pub fn attributes(source: &str) -> IResult<&str, Option<HashMap<String, Option<S
 }
 
 pub fn attribute(source: &str) -> IResult<&str, Option<String>> {
-    let (remainder, key) = take_until(": ")(source)?;
-    let (value, _) = tag(": ")(remainder)?;
-    Ok((key, Some(value.to_string())))
+    let (_, key) = alt((
+        tuple((take_until(": "), tag(": "), rest)),
+        tuple((rest, rest, rest)),
+    ))(source)?;
+    if key.2.is_empty() {
+        Ok((key.0.trim(), None))
+    } else {
+        Ok((key.0.trim(), Some(key.2.to_string())))
+    }
+    // dbg!(&remainder);
+    // dbg!(&key);
+    // take_until(": ")(source)?;
+    // let (value, _) = tag(": ")(remainder)?;
+    // Ok((key, Some(value.to_string())))
 }
 
 // pub fn attributes(source: &str) -> IResult<&str, Option<Vec<(Option<String>, Option<String>)>>> {
@@ -53,7 +64,7 @@ pub fn attribute(source: &str) -> IResult<&str, Option<String>> {
 
 fn part(source: &str) -> IResult<&str, &str> {
     let (remainder, content) = tag(">> ")(source)?;
-    let (remainder, content) = alt((take_until("\n"), rest))(remainder)?;
+    let (remainder, content) = alt((take_until(">>"), rest))(remainder)?;
     Ok((remainder, content))
 }
 
