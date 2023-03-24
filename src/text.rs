@@ -77,6 +77,7 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             rest,
         )),
     ))(source)?;
+
     match payload.0 {
         Target::Code { pretext, divider } => {
             // dbg!(&source);
@@ -89,38 +90,13 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let (source, current) = tag(divider)(source)?;
             let (source, raw_attributes) = take_until(divider)(source)?;
             let (source, current) = tag(divider)(source)?;
-            // dbg!(&raw_attributes);
             let (_, language) = inline_language(raw_attributes)?;
             let (_, attributes) = parse_text_attributes(raw_attributes)?;
-            // dbg!(&attributes);
-            // dbg!(&language);
-
-            // let attributes = text_attributes_dev(raw_attributes).unwrap().1;
-            // let mut language: Option<String> = None;
-
-            // // TODO: See if there's a more direct way to
-            // // do this
-            // if attributes.as_ref().expect("check failed").is_empty() {
-            //     // no attributes so no language
-            // } else {
-            //     match &attributes.as_ref().expect("check failed")[0] {
-            //         // first attribute is stand along so
-            //         // it's speced to be a langauge
-            //         (Some(lang), None) => {
-            //             language = Some(lang.to_string());
-            //         }
-            //         _ => {}
-            //     }
-            //
-            // }
-            // let language = language;
             response.push(Chunk::InlineCode {
                 language,
-                //attributes: attributes.unwrap().1,
                 attributes,
                 value: Some(code.to_string()),
             });
-
             Ok((source, response))
         }
 
@@ -141,10 +117,10 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
                 value: Some(value.to_string()),
                 url: Some(payload.0.to_string()),
                 attributes: None,
-                // attributes: payload.1,
             });
             Ok((source, response))
         }
+
         Target::Strong { pretext } => {
             response.push(Chunk::Text {
                 attributes: None,
@@ -158,7 +134,6 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let attributes = text_attributes(raw_attributes).unwrap().1;
             response.push(Chunk::Strong {
                 value: Some(code.to_string()),
-                // attributes
                 attributes: None,
             });
             Ok((source, response))
