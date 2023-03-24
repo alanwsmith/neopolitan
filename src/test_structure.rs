@@ -146,74 +146,80 @@ fn basic_integration() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn inline_code_snippets() {
-//     let source = vec![
-//         "-> P",
-//         ">> class: main",
-//         "",
-//         "The `chink`rust` in the wall.",
-//         "",
-//         "The `desk`python` and `both`javascript` chairs",
-//         "",
-//     ]
-//     .join("\n");
-//     let expected = Some(Wrapper::Post {
-//         attributes: None,
-//         children: Some(vec![Section::ParagraphSection {
-//             attributes: None,
-//             children: Some(vec![
-//                 Chunk::P {
-//                     attributes: Some(vec![(Some("class".to_string()), Some("main".to_string()))]),
-//                     children: Some(vec![
-//                         Chunk::Text {
-//                             attributes: None,
-//                             value: Some("The ".to_string()),
-//                         },
-//                         Chunk::InlineCode {
-//                             attributes: Some(vec![(Some("rust".to_string()), None)]),
-//                             language: Some("rust".to_string()),
-//                             value: Some("chink".to_string()),
-//                         },
-//                         Chunk::Text {
-//                             attributes: None,
-//                             value: Some(" in the wall.".to_string()),
-//                         },
-//                     ]),
-//                 },
-//                 Chunk::P {
-//                     attributes: Some(vec![(Some("class".to_string()), Some("main".to_string()))]),
-//                     children: Some(vec![
-//                         Chunk::Text {
-//                             attributes: None,
-//                             value: Some("The ".to_string()),
-//                         },
-//                         Chunk::InlineCode {
-//                             attributes: Some(vec![(Some("python".to_string()), None)]),
-//                             language: Some("python".to_string()),
-//                             value: Some("desk".to_string()),
-//                         },
-//                         Chunk::Text {
-//                             attributes: None,
-//                             value: Some(" and ".to_string()),
-//                         },
-//                         Chunk::InlineCode {
-//                             attributes: Some(vec![(Some("javascript".to_string()), None)]),
-//                             language: Some("javascript".to_string()),
-//                             value: Some("both".to_string()),
-//                         },
-//                         Chunk::Text {
-//                             attributes: None,
-//                             value: Some(" chairs".to_string()),
-//                         },
-//                     ]),
-//                 },
-//             ]),
-//         }]),
-//     });
-//     let result = structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn inline_code_snippets() {
+    let source = vec![
+        "-> P",
+        ">> class: main",
+        "",
+        "The `chink`rust` in the wall.",
+        "",
+        "The `desk`python` and `both`javascript` chairs",
+        "",
+    ]
+    .join("\n");
+    let expected = Some(Wrapper::Post {
+        attributes: None,
+        children: Some(vec![Section::ParagraphSection {
+            attributes: None,
+            children: Some(vec![
+                Chunk::P {
+                    attributes: Some(HashMap::from([(
+                        "class".to_string(),
+                        Some("main".to_string()),
+                    )])),
+                    children: Some(vec![
+                        Chunk::Text {
+                            attributes: None,
+                            value: Some("The ".to_string()),
+                        },
+                        Chunk::InlineCode {
+                            attributes: Some(HashMap::from([("rust".to_string(), None)])),
+                            language: Some("rust".to_string()),
+                            value: Some("chink".to_string()),
+                        },
+                        Chunk::Text {
+                            attributes: None,
+                            value: Some(" in the wall.".to_string()),
+                        },
+                    ]),
+                },
+                Chunk::P {
+                    attributes: Some(HashMap::from([(
+                        "class".to_string(),
+                        Some("main".to_string()),
+                    )])),
+                    children: Some(vec![
+                        Chunk::Text {
+                            attributes: None,
+                            value: Some("The ".to_string()),
+                        },
+                        Chunk::InlineCode {
+                            attributes: Some(HashMap::from([("python".to_string(), None)])),
+                            language: Some("python".to_string()),
+                            value: Some("desk".to_string()),
+                        },
+                        Chunk::Text {
+                            attributes: None,
+                            value: Some(" and ".to_string()),
+                        },
+                        Chunk::InlineCode {
+                            attributes: Some(HashMap::from([("javascript".to_string(), None)])),
+                            language: Some("javascript".to_string()),
+                            value: Some("both".to_string()),
+                        },
+                        Chunk::Text {
+                            attributes: None,
+                            value: Some(" chairs".to_string()),
+                        },
+                    ]),
+                },
+            ]),
+        }]),
+    });
+    let result = structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
 #[test]
 fn inline_links() {
