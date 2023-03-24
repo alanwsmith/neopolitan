@@ -107,40 +107,18 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
                 value: Some(pretext.to_string()),
             });
             let (source, _) = tag("<<")(payload.1)?;
-
             let (remainder, stuff) = take_until(">>")(source)?;
-            let (remainder, stuff) = split(stuff, "|")?;
-            dbg!(&stuff);
-            let value = stuff[1];
-            let url = stuff[2];
-            dbg!(&value);
-            dbg!(&url);
-            // let attributes = text_attributes(stuff[3]);
+            let (_, stuff) = split(stuff, "|")?;
+            let value = Some(stuff[1].to_string());
+            let url = Some(stuff[2].to_string());
             let (_, attributes) = parse_text_attributes(stuff[3])?;
-            dbg!(&attributes);
-
-            //
-            let (source, _) = take_until("|")(source)?;
-            let (source, _) = tag("|")(source)?;
-            let (source, _) = take_until("|")(source)?;
-            let (source, _) = tag("|")(source)?;
-            let (source, raw_payload) = take_until(">>")(source)?;
-            let (source, _) = tag(">>")(source)?;
-            // let (_, attributes) = parse_text_attributes(raw_payload)?;
-            // dbg!(&attributes);
-
-            // let payload = tag_attributes(raw_payload).unwrap();
+            let (remainder, _) = tag(">>")(remainder)?;
             response.push(Chunk::Link {
-                value: Some(value.to_string()),
-                url: Some(url.to_string()),
+                value,
+                url,
                 attributes,
-                // attributes: attributes.unwrap().1,
-                // attributes: Some(HashMap::from([(
-                //     "id".to_string(),
-                //     Some("rider".to_string()),
-                // )])),
             });
-            Ok((source, response))
+            Ok((remainder, response))
         }
 
         Target::Strong { pretext } => {
