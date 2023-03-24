@@ -6,7 +6,6 @@ use crate::page::Page;
 use crate::parse_text_attributes::parse_text_attributes;
 use crate::split::split;
 use crate::tag_attributes::*;
-use crate::text_attributes::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -140,7 +139,7 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let (source, current) = tag("*")(source)?;
             let (source, raw_attributes) = take_until("*")(source)?;
             let (source, current) = tag("*")(source)?;
-            let attributes = text_attributes(raw_attributes).unwrap().1;
+            let attributes = parse_text_attributes(raw_attributes).unwrap().1;
             response.push(Chunk::Strong {
                 value: Some(code.to_string()),
                 attributes: None,

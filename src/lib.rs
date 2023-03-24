@@ -26,6 +26,5 @@ pub mod test_structure;
 #[cfg(test)]
 pub mod test_text;
 pub mod text;
-pub mod text_attributes;
 pub mod title;
 pub mod wrapper;
