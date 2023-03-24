@@ -1,5 +1,7 @@
 #![allow(warnings)]
 use crate::chunk::Chunk;
+use crate::inline_language::*;
+use crate::language::*;
 use crate::page::Page;
 use crate::parse_text_attributes::parse_text_attributes;
 use crate::tag_attributes::*;
@@ -87,9 +89,11 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             let (source, current) = tag(divider)(source)?;
             let (source, raw_attributes) = take_until(divider)(source)?;
             let (source, current) = tag(divider)(source)?;
-
+            // dbg!(&raw_attributes);
+            let (_, language) = inline_language(raw_attributes)?;
             let (_, attributes) = parse_text_attributes(raw_attributes)?;
-            dbg!(&attributes);
+            // dbg!(&attributes);
+            // dbg!(&language);
 
             // let attributes = text_attributes_dev(raw_attributes).unwrap().1;
             // let mut language: Option<String> = None;
@@ -107,10 +111,11 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             //         }
             //         _ => {}
             //     }
+            //
             // }
             // let language = language;
             response.push(Chunk::InlineCode {
-                language: Some("rust".to_string()),
+                language,
                 //attributes: attributes.unwrap().1,
                 attributes,
                 value: Some(code.to_string()),

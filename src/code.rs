@@ -34,7 +34,7 @@ use nom::Parser;
 use std::collections::HashMap;
 
 pub fn code(source: &str) -> IResult<&str, Section> {
-    dbg!(&source);
+    // dbg!(&source);
     let language = language(source).unwrap().1;
     let (remainder, attributes) = attributes(source)?;
     // dbg!(&attributes);
