@@ -58,20 +58,20 @@ fn code_with_language_and_attributes() {
     assert_eq!(expected, result.unwrap().1);
 }
 
-// #[test]
-// fn code_with_attributes_but_no_language() {
-//     let source = ">> shop: red\n>> filter: run\n\nThree green hats";
-//     let expected = Section::CodeSection {
-//         attributes: Some(HashMap::from([
-//             ("shop".to_string(), Some("red".to_string())),
-//             ("filter".to_string(), Some("run".to_string())),
-//         ])),
-//         language: None,
-//         children: Some(vec![Chunk::Text {
-//             attributes: None,
-//             value: Some("Three green hats".to_string()),
-//         }]),
-//     };
-//     let result = code(source);
-//     assert_eq!(expected, result.unwrap().1);
-// }
+#[test]
+fn code_with_attributes_but_no_language() {
+    let source = ">> shop: red\n>> filter: run\n\nThree green hats";
+    let expected = Section::CodeSection {
+        attributes: Some(HashMap::from([
+            ("shop".to_string(), Some("red".to_string())),
+            ("filter".to_string(), Some("run".to_string())),
+        ])),
+        language: None,
+        children: Some(vec![Chunk::Text {
+            attributes: None,
+            value: Some("Three green hats".to_string()),
+        }]),
+    };
+    let result = code(source);
+    assert_eq!(expected, result.unwrap().1);
+}
