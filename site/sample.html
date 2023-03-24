@@ -3,6 +3,32 @@
   <head>
     <title>Neopolitan Sample</title>
 <style>
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+#root, #__next {
+  isolation: isolate;
+}
 body {
   background-color: #000;
   color: #aaa;
@@ -26,5 +52,7 @@ Cut the pie into large parts.</p>
 </p>
 <pre><code>fn main() {
   println!("alfa bravo");
-}</code></pre>List section</body>
+}</code></pre><li><p>The *desk** and both <a href="https://www.example.com/">chairs were</a> painted tan.</p>
+</li><li><p>The straw nest robins.</p>
+</li></body>
 </html>

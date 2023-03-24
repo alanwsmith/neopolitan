@@ -29,12 +29,8 @@ fn main() {
 }
 
 -> list 
->> id: bullets
 
-- The desk and both chairs 
-were painted tan.
+- The *desk** and both <<link|https://www.example.com/|chairs were>> painted tan.
 
-- The straw nest 
-*housed five*class: whatever*
-robins.
+- The straw nest robins.
 
