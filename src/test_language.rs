@@ -48,3 +48,19 @@ fn a_language_with_no_other_attributes() {
     let result = language(source);
     assert_eq!(expected, result.unwrap().1);
 }
+
+#[test]
+fn attributes_with_no_language() {
+    let source = ">> hey: there\n\njust an attribute";
+    let expected = None;
+    let result = language(source);
+    assert_eq!(expected, result.unwrap().1);
+}
+
+#[test]
+fn language_and_attributes() {
+    let source = ">> python\n>>diaply: ready\n\nThe golden bird";
+    let expected = Some("python".to_string());
+    let result = language(source);
+    assert_eq!(expected, result.unwrap().1);
+}

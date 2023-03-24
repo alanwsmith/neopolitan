@@ -41,6 +41,12 @@ pub fn language(source: &str) -> IResult<&str, Option<String>> {
     if content.1.is_empty() {
         Ok(("", None))
     } else {
-        Ok(("", Some(content.1.trim().to_string())))
+        let (a, b) = multispace0(content.1)?;
+        let (c, d) = alt((tuple((take_until(": "), tag(": "))), tuple((rest, rest))))(a)?;
+        if d.1.is_empty() {
+            Ok(("", Some(d.0.trim().to_string())))
+        } else {
+            Ok(("", None))
+        }
     }
 }
