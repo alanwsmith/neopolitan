@@ -291,62 +291,63 @@ fn code_block_without_language() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn code_block_with_language() {
-//     let source = vec![
-//         "-> CODE",
-//         ">> rust",
-//         "",
-//         "fn main() {",
-//         "  let bravo = 2;",
-//         "}",
-//     ]
-//     .join("\n");
-//     let expected = Some(Wrapper::Post {
-//         attributes: None,
-//         children: Some(vec![Section::CodeSection {
-//             language: Some("rust".to_string()),
-//             attributes: None,
-//             children: Some(vec![Chunk::Text {
-//                 attributes: None,
-//                 value: Some("fn main() {\n  let bravo = 2;\n}".to_string()),
-//             }]),
-//         }]),
-//     });
-//     let result = structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn code_block_with_language() {
+    let source = vec![
+        "-> CODE",
+        ">> rust",
+        "",
+        "fn main() {",
+        "  let bravo = 2;",
+        "}",
+    ]
+    .join("\n");
+    let expected = Some(Wrapper::Post {
+        attributes: None,
+        children: Some(vec![Section::CodeSection {
+            language: Some("rust".to_string()),
+            attributes: Some(HashMap::from([("rust".to_string(), None)])),
+            children: Some(vec![Chunk::Text {
+                attributes: None,
+                value: Some("fn main() {\n  let bravo = 2;\n}".to_string()),
+            }]),
+        }]),
+    });
+    let result = structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
-// #[test]
-// fn code_block_with_language_and_attributes() {
-//     let source = vec![
-//         "-> CODE",
-//         ">> rust",
-//         ">> class: river",
-//         ">> id: spring",
-//         "",
-//         "fn main() {",
-//         "  let charlie = 3;",
-//         "}",
-//     ]
-//     .join("\n");
-//     let expected = Some(Wrapper::Post {
-//         attributes: None,
-//         children: Some(vec![Section::CodeSection {
-//             language: Some("rust".to_string()),
-//             attributes: Some(vec![
-//                 (Some("class".to_string()), Some("river".to_string())),
-//                 (Some("id".to_string()), Some("spring".to_string())),
-//             ]),
-//             children: Some(vec![Chunk::Text {
-//                 attributes: None,
-//                 value: Some("fn main() {\n  let charlie = 3;\n}".to_string()),
-//             }]),
-//         }]),
-//     });
-//     let result = structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn code_block_with_language_and_attributes() {
+    let source = vec![
+        "-> CODE",
+        ">> rust",
+        ">> class: river",
+        ">> id: spring",
+        "",
+        "fn main() {",
+        "  let charlie = 3;",
+        "}",
+    ]
+    .join("\n");
+    let expected = Some(Wrapper::Post {
+        attributes: None,
+        children: Some(vec![Section::CodeSection {
+            language: Some("rust".to_string()),
+            attributes: Some(HashMap::from([
+                ("rust".to_string(), None),
+                ("class".to_string(), Some("river".to_string())),
+                ("id".to_string(), Some("spring".to_string())),
+            ])),
+            children: Some(vec![Chunk::Text {
+                attributes: None,
+                value: Some("fn main() {\n  let charlie = 3;\n}".to_string()),
+            }]),
+        }]),
+    });
+    let result = structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
 #[test]
 fn basic_note() {
@@ -397,52 +398,55 @@ fn note_with_multiple_lines() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn note_with_code_sections() {
-//     let source = vec!["-> NOTE", "", "Here is `some code`rust`"].join("\n");
-//     let expected = Some(Wrapper::Post {
-//         attributes: None,
-//         children: Some(vec![Section::NoteSection {
-//             attributes: None,
-//             children: Some(vec![Chunk::P {
-//                 attributes: None,
-//                 children: Some(vec![
-//                     Chunk::Text {
-//         attributes: None,
-//                         value: Some("Here is ".to_string()),
-//                     },
-//                     Chunk::InlineCode {
-//                         attributes: Some(vec![(Some("rust".to_string()), None)]),
-//                         language: Some("rust".to_string()),
-//                         value: Some("some code".to_string()),
-//                     },
-//                 ]),
-//             }]),
-//         }]),
-//     });
-//     let result = structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn note_with_code_sections() {
+    let source = vec!["-> NOTE", "", "Here is `some code`rust`"].join("\n");
+    let expected = Some(Wrapper::Post {
+        attributes: None,
+        children: Some(vec![Section::NoteSection {
+            attributes: None,
+            children: Some(vec![Chunk::P {
+                attributes: None,
+                children: Some(vec![
+                    Chunk::Text {
+                        attributes: None,
+                        value: Some("Here is ".to_string()),
+                    },
+                    Chunk::InlineCode {
+                        attributes: Some(HashMap::from([("rust".to_string(), None)])),
+                        language: Some("rust".to_string()),
+                        value: Some("some code".to_string()),
+                    },
+                ]),
+            }]),
+        }]),
+    });
+    let result = structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
-// #[test]
-// fn note_with_attributes() {
-//     let source = vec!["-> note", ">> id: rose", "", "Lift the square"].join("\n");
-//     let expected = Some(Wrapper::Post {
-//             attributes: None,
-//         children: Some(vec![Section::NoteSection {
-//             attributes: Some(vec![(Some("id".to_string()), Some("rose".to_string()))]),
-//             children: Some(vec![Chunk::P {
-//             attributes: None,
-//                 children: Some(vec![Chunk::Text {
-//                     attributes: None,
-//                     value: Some("Lift the square".to_string()),
-//                 }]),
-//             }]),
-//         }]),
-//     });
-//     let result = structure(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn note_with_attributes() {
+    let source = vec!["-> note", ">> id: rose", "", "Lift the square"].join("\n");
+    let expected = Some(Wrapper::Post {
+        attributes: None,
+        children: Some(vec![Section::NoteSection {
+            attributes: Some(HashMap::from([(
+                "id".to_string(),
+                Some("rose".to_string()),
+            )])),
+            children: Some(vec![Chunk::P {
+                attributes: None,
+                children: Some(vec![Chunk::Text {
+                    attributes: None,
+                    value: Some("Lift the square".to_string()),
+                }]),
+            }]),
+        }]),
+    });
+    let result = structure(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
 #[test]
 fn basic_list() {

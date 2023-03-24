@@ -34,6 +34,9 @@ use std::collections::HashMap;
 
 pub fn language(source: &str) -> IResult<&str, Option<String>> {
     let (remainder, content) = alt((take_until("\n\n"), rest))(source)?;
+    let (content, _) = multispace0(content)?;
+    dbg!(&content);
+    dbg!(&remainder);
     let (_, content) = alt((
         tuple((tag(">>"), not_line_ending, rest)),
         tuple((rest, rest, rest)),

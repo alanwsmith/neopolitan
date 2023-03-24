@@ -194,30 +194,32 @@ fn test_inline_code() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn section_code_test() {
-//     let source = vec!["-> CODE", "", "The logs fell"].join("\n");
-//     let expected = Section::CodeSection {
-//         attributes: None,
-//         language: None,
-//         children: vec![Chunk::Text {
-//             value: "The logs fell".to_string(),
-//         }],
-//     };
-//     let result = section(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn section_code_test() {
+    let source = vec!["-> CODE", "", "The logs fell"].join("\n");
+    let expected = Section::CodeSection {
+        attributes: None,
+        language: None,
+        children: Some(vec![Chunk::Text {
+            attributes: None,
+            value: Some("The logs fell".to_string()),
+        }]),
+    };
+    let result = section(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
-// #[test]
-// fn section_code_test_with_language() {
-//     let source = vec!["-> CODE", ">> rust", "", "a long list"].join("\n");
-//     let expected = Section::CodeSection {
-//         attributes: None,
-//         language: Some("rust".to_string()),
-//         children: vec![Chunk::Text {
-//             value: "a long list".to_string(),
-//         }],
-//     };
-//     let result = section(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn section_code_test_with_language() {
+    let source = vec!["-> CODE", ">> rust", "", "a long list"].join("\n");
+    let expected = Section::CodeSection {
+        attributes: Some(HashMap::from([("rust".to_string(), None)])),
+        language: Some("rust".to_string()),
+        children: Some(vec![Chunk::Text {
+            attributes: None,
+            value: Some("a long list".to_string()),
+        }]),
+    };
+    let result = section(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
