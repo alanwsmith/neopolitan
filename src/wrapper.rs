@@ -7,7 +7,7 @@ use std::collections::HashMap;
 #[serde(tag = "type")]
 pub enum Wrapper {
     Post {
-        attributes: HashMap<String, String>,
+        attributes: Option<HashMap<String, String>>,
         children: Option<Vec<Section>>,
     },
 }

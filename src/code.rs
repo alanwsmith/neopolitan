@@ -36,48 +36,62 @@ use std::collections::HashMap;
 pub fn code(source: &str) -> IResult<&str, Section> {
     let language = language(source).unwrap().1;
     let (remainder, attributes) = attributes(source)?;
-    match attributes {
-        Some(x) => {
-            if x.len() == 1 {
-                let response = Section::CodeSection {
-                    attributes: HashMap::new(),
-                    // language: Some(x[0].0.as_ref().unwrap().to_string()),
-                    language,
-                    children: Some(vec![Chunk::Text {
-                        attributes: HashMap::new(),
-                        value: Some(remainder.to_string()),
-                    }]),
-                };
-                Ok(("", response))
-            } else {
-                let response = Section::CodeSection {
-                    attributes: HashMap::new(),
-                    // attributes: Some(
-                    //     x.clone()
-                    //         .into_iter()
-                    //         .skip(1)
-                    //         .collect::<Vec<(Option<String>, Option<String>)>>(),
-                    // ),
-                    //    language: Some(x[0].0.as_ref().unwrap().to_string()),
-                    language: None,
-                    children: Some(vec![Chunk::Text {
-                        attributes: HashMap::new(),
-                        value: Some(remainder.to_string()),
-                    }]),
-                };
-                Ok(("", response))
-            }
-        }
-        None => {
-            let response = Section::CodeSection {
-                attributes: HashMap::new(),
-                language: None,
-                children: Some(vec![Chunk::Text {
-                    attributes: HashMap::new(),
-                    value: Some(remainder.to_string()),
-                }]),
-            };
-            Ok(("", response))
-        }
-    }
+    // dbg!(&attributes);
+
+    let response = Section::CodeSection {
+        attributes,
+        language,
+        children: Some(vec![Chunk::Text {
+            attributes: None,
+            value: Some(remainder.to_string()),
+        }]),
+    };
+    Ok(("", response))
+
+    // match attributes {
+    //     Some(x) => {
+    //         if x.len() == 1 {
+    //             let response = Section::CodeSection {
+    //                 attributes: attributes.unwrap(),
+    //                 // attributes: None,
+    //                 // language: Some(x[0].0.as_ref().unwrap().to_string()),
+    //                 language,
+    //                 children: Some(vec![Chunk::Text {
+    //                     attributes: None,
+    //                     value: Some(remainder.to_string()),
+    //                 }]),
+    //             };
+    //             Ok(("", response))
+    //         } else {
+    //             let response = Section::CodeSection {
+    //                 attributes: None,
+    //                 // attributes,
+    //                 // attributes: Some(
+    //                 //     x.clone()
+    //                 //         .into_iter()
+    //                 //         .skip(1)
+    //                 //         .collect::<Vec<(Option<String>, Option<String>)>>(),
+    //                 // ),
+    //                 //    language: Some(x[0].0.as_ref().unwrap().to_string()),
+    //                 language,
+    //                 children: Some(vec![Chunk::Text {
+    //                     attributes: None,
+    //                     value: Some(remainder.to_string()),
+    //                 }]),
+    //             };
+    //             Ok(("", response))
+    //         }
+    //     }
+    //     None => {
+    //         let response = Section::CodeSection {
+    //             attributes: None,
+    //             language: None,
+    //             children: Some(vec![Chunk::Text {
+    //                 attributes: None,
+    //                 value: Some(remainder.to_string()),
+    //             }]),
+    //         };
+    //         Ok(("", response))
+    //     }
+    // }
 }

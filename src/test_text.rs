@@ -6,7 +6,7 @@ use std::collections::HashMap;
 fn basic_text() {
     let source = "beside the shore";
     let expected: Option<Vec<Chunk>> = Some(vec![Chunk::Text {
-        attributes: HashMap::new(),
+        attributes: None,
         value: Some("beside the shore".to_string()),
     }]);
     let result = text(source).unwrap().1;
@@ -18,7 +18,7 @@ fn basic_text() {
 //     let source = "The `frosty`rust` air";
 //     let expected_result: Option<Vec<Chunk>> = Some(vec![
 //         Chunk::Text {
-//         attributes: HashMap::new(),
+//         attributes: None,
 //             value: Some("The ".to_string()),
 //         },
 //         Chunk::InlineCode {
@@ -27,7 +27,7 @@ fn basic_text() {
 //             value: Some("frosty".to_string()),
 //         },
 //         Chunk::Text {
-//         attributes: HashMap::new(),
+//         attributes: None,
 //             value: Some(" air".to_string()),
 //         },
 //     ]);
@@ -42,7 +42,7 @@ fn basic_text() {
 //     let source = "The `frosty`rust|class: sail` air";
 //     let expected_result: Option<Vec<Chunk>> = Some(vec![
 //         Chunk::Text {
-//         attributes: HashMap::new(),
+//         attributes: None,
 //             value: Some("The ".to_string()),
 //         },
 //         Chunk::InlineCode {
@@ -54,7 +54,7 @@ fn basic_text() {
 //             value: Some("frosty".to_string()),
 //         },
 //         Chunk::Text {
-//         attributes: HashMap::new(),
+//         attributes: None,
 //             value: Some(" air".to_string()),
 //         },
 //     ]);
@@ -179,15 +179,15 @@ fn single_strong() {
     let source = "The *dune** rose";
     let expected_result: Option<Vec<Chunk>> = Some(vec![
         Chunk::Text {
-            attributes: HashMap::new(),
+            attributes: None,
             value: Some("The ".to_string()),
         },
         Chunk::Strong {
-            attributes: HashMap::new(),
+            attributes: None,
             value: Some("dune".to_string()),
         },
         Chunk::Text {
-            attributes: HashMap::new(),
+            attributes: None,
             value: Some(" rose".to_string()),
         },
     ]);
@@ -202,15 +202,15 @@ fn strong_with_attributes() {
     let source = "Two *blue*id: sun* fish";
     let expected_result: Option<Vec<Chunk>> = Some(vec![
         Chunk::Text {
-            attributes: HashMap::new(),
+            attributes: None,
             value: Some("Two ".to_string()),
         },
         Chunk::Strong {
-            attributes: HashMap::new(),
+            attributes: None,
             value: Some("blue".to_string()),
         },
         Chunk::Text {
-            attributes: HashMap::new(),
+            attributes: None,
             value: Some(" fish".to_string()),
         },
     ]);

@@ -77,7 +77,7 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
     match payload.0 {
         Target::Code { pretext, divider } => {
             response.push(Chunk::Text {
-                attributes: HashMap::new(),
+                attributes: None,
                 value: Some(pretext.to_string()),
             });
             let (source, current) = tag(divider)(payload.1)?;
@@ -105,14 +105,14 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             response.push(Chunk::InlineCode {
                 value: Some(code.to_string()),
                 language,
-                attributes: HashMap::new(),
+                attributes: None,
             });
             Ok((source, response))
         }
 
         Target::Link { pretext } => {
             response.push(Chunk::Text {
-                attributes: HashMap::new(),
+                attributes: None,
                 value: Some(pretext.to_string()),
             });
             let (source, _) = tag("<<")(payload.1)?;
@@ -126,14 +126,14 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             response.push(Chunk::Link {
                 value: Some(value.to_string()),
                 url: Some(payload.0.to_string()),
-                attributes: HashMap::new(),
+                attributes: None,
                 // attributes: payload.1,
             });
             Ok((source, response))
         }
         Target::Strong { pretext } => {
             response.push(Chunk::Text {
-                attributes: HashMap::new(),
+                attributes: None,
                 value: Some(pretext.to_string()),
             });
             let (source, current) = tag("*")(payload.1)?;
@@ -145,13 +145,13 @@ fn text_parser(source: &str) -> IResult<&str, Vec<Chunk>> {
             response.push(Chunk::Strong {
                 value: Some(code.to_string()),
                 // attributes
-                attributes: HashMap::new(),
+                attributes: None,
             });
             Ok((source, response))
         }
         Target::Rest { pretext } => {
             response.push(Chunk::Text {
-                attributes: HashMap::new(),
+                attributes: None,
                 value: Some(pretext.to_string()),
             });
             Ok((source, response))

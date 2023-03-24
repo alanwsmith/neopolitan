@@ -118,11 +118,11 @@ pub fn title(source: &str) -> IResult<&str, Section> {
     match attributes {
         Some(x) => {
             let expected = Section::TitleSection {
-                attributes: HashMap::new(),
+                attributes: None,
                 children: Some(vec![Chunk::H1 {
-                    attributes: HashMap::new(),
+                    attributes: None,
                     children: Some(vec![Chunk::Text {
-                        attributes: HashMap::new(),
+                        attributes: None,
                         value: Some("Alfa Bravo".to_string()),
                     }]),
                 }]),
@@ -159,20 +159,20 @@ pub fn title(source: &str) -> IResult<&str, Section> {
         None => {
             let mut chunks: Vec<Chunk> = vec![Chunk::H1 {
                 // attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
-                attributes: HashMap::new(),
+                attributes: None,
                 children: Some(vec![Chunk::Text {
-                    attributes: HashMap::new(),
+                    attributes: None,
                     value: Some(title.to_string()),
                 }]),
             }];
 
             chunks.extend(paragraph_texts.iter().map(|p| Chunk::P {
-                attributes: HashMap::new(),
+                attributes: None,
                 children: text(p).unwrap().1,
             }));
 
             let expected = Section::TitleSection {
-                attributes: HashMap::new(),
+                attributes: None,
                 children: Some(chunks),
             };
 

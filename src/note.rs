@@ -41,12 +41,12 @@ pub fn note(source: &str) -> IResult<&str, Section> {
             "",
             Section::NoteSection {
                 // attributes: Some(x),
-                attributes: HashMap::new(),
+                attributes: None,
                 children: Some(
                     note_parts
                         .iter()
                         .map(|p| Chunk::P {
-                            attributes: HashMap::new(),
+                            attributes: None,
                             children: text(p).unwrap().1,
                         })
                         .collect(),
@@ -56,12 +56,12 @@ pub fn note(source: &str) -> IResult<&str, Section> {
         None => Ok((
             "",
             Section::NoteSection {
-                attributes: HashMap::new(),
+                attributes: None,
                 children: Some(
                     note_parts
                         .iter()
                         .map(|p| Chunk::P {
-                            attributes: HashMap::new(),
+                            attributes: None,
                             children: text(p).unwrap().1,
                         })
                         .collect(),
