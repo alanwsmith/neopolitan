@@ -77,15 +77,3 @@ fn single_attribute_with_no_value() {
     let result = attributes(source);
     assert_eq!(expected, result.unwrap().1);
 }
-
-// ////////////////////////////////////////////
-// // This is just a singular attribute instead
-// // of the collection of attributes like above
-
-// #[test]
-// fn language_without_other_attribute() {
-//     let source = ">> rust";
-//     let expected = (Some("rust".to_string()), None);
-//     let result = attribute(source);
-//     assert_eq!(expected, result.unwrap().1);
-// }
