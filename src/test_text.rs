@@ -1,3 +1,4 @@
+#![allow(warnings)]
 use crate::chunk::Chunk;
 use crate::text::*;
 use std::collections::HashMap;

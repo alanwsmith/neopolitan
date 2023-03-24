@@ -49,7 +49,7 @@ pub fn attribute(source: &str) -> IResult<&str, Option<String>> {
     if key.2.is_empty() {
         Ok((key.0.trim(), None))
     } else {
-        Ok((key.0.trim(), Some(key.2.to_string())))
+        Ok((key.0.trim(), Some(key.2.trim().to_string())))
     }
     // dbg!(&remainder);
     // dbg!(&key);

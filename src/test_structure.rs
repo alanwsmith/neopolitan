@@ -6,6 +6,7 @@
 // checked via unit tests.
 /////////////////////////////////////////////
 
+#![allow(warnings)]
 use crate::chunk::*;
 use crate::section::*;
 use crate::structure::*;

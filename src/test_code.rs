@@ -10,7 +10,7 @@ use std::collections::HashMap;
 // attribute
 
 #[test]
-fn basic_code() {
+fn code_with_no_language_or_attributes() {
     let source = "\n\nOn the islands";
     let expected = Section::CodeSection {
         attributes: None,
@@ -24,35 +24,36 @@ fn basic_code() {
     assert_eq!(expected, result.unwrap().1);
 }
 
-// #[test]
-// fn code_with_language() {
-//     let source = ">> rust\n\nBring your best compass";
-//     let expected = Section::CodeSection {
-//         attributes: None,
-//         language: Some("rust".to_string()),
-//         children: Some(vec![Chunk::Text {
-//             attributes: None,
-//             value: Some("Bring your best compass".to_string()),
-//         }]),
-//     };
-//     let result = code(source);
-//     assert_eq!(expected, result.unwrap().1);
-// }
+#[test]
+fn code_with_language_but_no_attributes() {
+    let source = ">> rust\n\nBring your best compass";
+    let expected = Section::CodeSection {
+        attributes: Some(HashMap::from([("rust".to_string(), None)])),
+        language: Some("rust".to_string()),
+        children: Some(vec![Chunk::Text {
+            attributes: None,
+            value: Some("Bring your best compass".to_string()),
+        }]),
+    };
+    let result = code(source);
+    assert_eq!(expected, result.unwrap().1);
+}
 
-// #[test]
-// fn code_with_language_and_attributes() {
-//     let source = ">> rust\n>> fence: stone\n>> air: frosty\n\nTwo blue fish";
-//     let expected = Section::CodeSection {
-//         attributes: HashMap::from([
-//             ("fence".to_string(), Some("stone".to_string())),
-//             ("air".to_string(), Some("frosty".to_string())),
-//         ]),
-//         language: Some("rust".to_string()),
-//         children: Some(vec![Chunk::Text {
-//             attributes: None,
-//             value: Some("Two blue fish".to_string()),
-//         }]),
-//     };
-//     let result = code(source);
-//     assert_eq!(expected, result.unwrap().1);
-// }
+#[test]
+fn code_with_language_and_attributes() {
+    let source = ">> rust\n>> fence: stone\n>> air: frosty\n\nTwo blue fish";
+    let expected = Section::CodeSection {
+        attributes: Some(HashMap::from([
+            ("rust".to_string(), None),
+            ("fence".to_string(), Some("stone".to_string())),
+            ("air".to_string(), Some("frosty".to_string())),
+        ])),
+        language: Some("rust".to_string()),
+        children: Some(vec![Chunk::Text {
+            attributes: None,
+            value: Some("Two blue fish".to_string()),
+        }]),
+    };
+    let result = code(source);
+    assert_eq!(expected, result.unwrap().1);
+}
