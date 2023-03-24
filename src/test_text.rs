@@ -98,7 +98,6 @@ fn two_inline_code_snippets() {
     assert_eq!(expected_remainder, remainder);
 }
 
-#[ignore]
 #[test]
 fn single_link_with_attributes() {
     let source = "The <<link|paper|https://paper.example.com/|id: rider>> box";
