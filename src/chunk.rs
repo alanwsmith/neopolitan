@@ -6,7 +6,7 @@ use std::collections::HashMap;
 #[serde(tag = "type")]
 pub enum Chunk {
     H1 {
-        attributes: Option<HashMap<String, String>>,
+        attributes: Option<HashMap<String, Option<String>>>,
         children: Option<Vec<Chunk>>,
     },
     Text {

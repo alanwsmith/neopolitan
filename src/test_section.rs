@@ -62,22 +62,25 @@ fn test_paragraphs_after_title() {
     assert_eq!(expected, result);
 }
 
-// #[test]
-// fn test_attribute_on_title() {
-//     let source = vec!["-> TITLE", ">> id: main", "", "Alfa Bravo"].join("\n");
-//     let expected = Section::TitleSection {
-//         attributes: None,
-//         children: Some(vec![Chunk::H1 {
-//             attributes: HashMap::from([("id".to_string(), "main".to_string())]),
-//             children: Some(vec![Chunk::Text {
-//                 attributes: None,
-//                 value: Some("Alfa Bravo".to_string()),
-//             }]),
-//         }]),
-//     };
-//     let result = section(source.as_str()).unwrap().1;
-//     assert_eq!(expected, result);
-// }
+#[test]
+fn test_attribute_on_title() {
+    let source = vec!["-> TITLE", ">> id: main", "", "Alfa Bravo"].join("\n");
+    let expected = Section::TitleSection {
+        attributes: None,
+        children: Some(vec![Chunk::H1 {
+            attributes: Some(HashMap::from([(
+                "id".to_string(),
+                Some("main".to_string()),
+            )])),
+            children: Some(vec![Chunk::Text {
+                attributes: None,
+                value: Some("Alfa Bravo".to_string()),
+            }]),
+        }]),
+    };
+    let result = section(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}
 
 #[test]
 fn test_basic_paragraph() {

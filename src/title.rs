@@ -33,6 +33,7 @@ use nom::Parser;
 use std::collections::HashMap;
 
 pub fn title(source: &str) -> IResult<&str, Section> {
+    let (source, _) = multispace0(source)?;
     let (remainder, mut attributes) = attributes(source)?;
     let (remainder, title) = alt((take_until("\n\n"), rest))(remainder)?;
     let (remainder, _) = multispace0(remainder)?;
@@ -41,6 +42,35 @@ pub fn title(source: &str) -> IResult<&str, Section> {
     if remainder != "" {
         paragraph_texts.push(remainder.trim());
     }
+    let mut chunks: Vec<Chunk> = vec![Chunk::H1 {
+        // attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
+        attributes,
+        children: Some(vec![Chunk::Text {
+            attributes: None,
+            value: Some(title.to_string()),
+        }]),
+    }];
+    chunks.extend(paragraph_texts.iter().map(|p| Chunk::P {
+        attributes: None,
+        children: text(p).unwrap().1,
+    }));
+    let expected = Section::TitleSection {
+        attributes: None,
+        children: Some(chunks),
+    };
+
+    // let expected = Section::TitleSection {
+    //     attributes: None,
+    //     children: Some(vec![Chunk::H1 {
+    //         attributes: None,
+    //         children: Some(vec![Chunk::Text {
+    //             attributes: None,
+    //             value: Some("Alfa Bravo".to_string()),
+    //         }]),
+    //     }]),
+    // };
+
+    Ok(("", expected))
 
     // dbg!(&attributes);
 
@@ -115,120 +145,119 @@ pub fn title(source: &str) -> IResult<&str, Section> {
     //     Ok((return_content, block))
     // }
 
-    match attributes {
-        Some(x) => {
-            let expected = Section::TitleSection {
-                attributes: None,
-                children: Some(vec![Chunk::H1 {
-                    attributes: None,
-                    children: Some(vec![Chunk::Text {
-                        attributes: None,
-                        value: Some("Alfa Bravo".to_string()),
-                    }]),
-                }]),
-            };
-            Ok(("", expected))
+    // match attributes {
+    //     Some(x) => {
+    //         let expected = Section::TitleSection {
+    //             attributes: None,
+    //             children: Some(vec![Chunk::H1 {
+    //                 attributes: None,
+    //                 children: Some(vec![Chunk::Text {
+    //                     attributes: None,
+    //                     value: Some("Alfa Bravo".to_string()),
+    //                 }]),
+    //             }]),
+    //         };
+    //         Ok(("", expected))
 
-            //             if x.len() == 1 {
-            //                 let response = Section::CodeSection {
-            //                     attributes: None,
-            //                     language: Some(x[0].0.as_ref().unwrap().to_string()),
-            //                     children: Some(vec![Chunk::Text {
-            //                         attributes: None,
-            //                         value: Some(remainder.to_string()),
-            //                     }]),
-            //                 };
-            //                 Ok(("", response))
-            //             } else {
-            //                 let response = Section::CodeSection {
-            //                     attributes: Some(
-            //                         x.clone()
-            //                             .into_iter()
-            //                             .skip(1)
-            //                             .collect::<Vec<(Option<String>, Option<String>)>>(),
-            //                     ),
-            //                     language: Some(x[0].0.as_ref().unwrap().to_string()),
-            //                     children: Some(vec![Chunk::Text {
-            //                         attributes: None,
-            //                         value: Some(remainder.to_string()),
-            //                     }]),
-            //                 };
-            //                 Ok(("", response))
-            //             }
-        }
-        None => {
-            let mut chunks: Vec<Chunk> = vec![Chunk::H1 {
-                // attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
-                attributes: None,
-                children: Some(vec![Chunk::Text {
-                    attributes: None,
-                    value: Some(title.to_string()),
-                }]),
-            }];
+    //             if x.len() == 1 {
+    //                 let response = Section::CodeSection {
+    //                     attributes: None,
+    //                     language: Some(x[0].0.as_ref().unwrap().to_string()),
+    //                     children: Some(vec![Chunk::Text {
+    //                         attributes: None,
+    //                         value: Some(remainder.to_string()),
+    //                     }]),
+    //                 };
+    //                 Ok(("", response))
+    //             } else {
+    //                 let response = Section::CodeSection {
+    //                     attributes: Some(
+    //                         x.clone()
+    //                             .into_iter()
+    //                             .skip(1)
+    //                             .collect::<Vec<(Option<String>, Option<String>)>>(),
+    //                     ),
+    //                     language: Some(x[0].0.as_ref().unwrap().to_string()),
+    //                     children: Some(vec![Chunk::Text {
+    //                         attributes: None,
+    //                         value: Some(remainder.to_string()),
+    //                     }]),
+    //                 };
+    //                 Ok(("", response))
+    //             }
+    // }
+    // None => {
 
-            chunks.extend(paragraph_texts.iter().map(|p| Chunk::P {
-                attributes: None,
-                children: text(p).unwrap().1,
-            }));
+    // let mut chunks: Vec<Chunk> = vec![Chunk::H1 {
+    //     // attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
+    //     attributes: None,
+    //     children: Some(vec![Chunk::Text {
+    //         attributes: None,
+    //         value: Some(title.to_string()),
+    //     }]),
+    // }];
+    // chunks.extend(paragraph_texts.iter().map(|p| Chunk::P {
+    //     attributes: None,
+    //     children: text(p).unwrap().1,
+    // }));
+    // let expected = Section::TitleSection {
+    //     attributes: None,
+    //     children: Some(chunks),
+    // };
 
-            let expected = Section::TitleSection {
-                attributes: None,
-                children: Some(chunks),
-            };
+    // let expected = Section::TitleSection {
+    //     attributes: None,
+    //     children: Some(vec![Chunk::H1 {
+    //         attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
+    //         children: Some(vec![Chunk::Text {
+    //             attributes: None,
+    //             value: Some(title.to_string()),
+    //         }]),
+    //     }]),
+    // };
 
-            // let expected = Section::TitleSection {
-            //     attributes: None,
-            //     children: Some(vec![Chunk::H1 {
-            //         attributes: Some(vec![(Some("class".to_string()), Some("title".to_string()))]),
-            //         children: Some(vec![Chunk::Text {
-            //             attributes: None,
-            //             value: Some(title.to_string()),
-            //         }]),
-            //     }]),
-            // };
+    // let expected = Section::TitleSection {
+    //     attributes: None,
+    //     children: Some(vec![
+    //         Chunk::H1 {
+    //             attributes: Some(vec![(
+    //                 Some("class".to_string()),
+    //                 Some("title".to_string()),
+    //             )]),
+    //             children: Some(vec![Chunk::Text {
+    //                 attributes: None,
+    //                 value: Some(title.to_string()),
+    //             }]),
+    //         },
+    //         Chunk::P {
+    //             attributes: None,
+    //             children: Some(vec![Chunk::Text {
+    //                 attributes: None,
+    //                 value: Some("Charlie delta echo".to_string()),
+    //             }]),
+    //         },
+    //         Chunk::P {
+    //             attributes: None,
+    //             children: Some(vec![Chunk::Text {
+    //                 attributes: None,
+    //                 value: Some("Foxtrot golf hotel".to_string()),
+    //             }]),
+    //         },
+    //     ]),
+    // };
 
-            // let expected = Section::TitleSection {
-            //     attributes: None,
-            //     children: Some(vec![
-            //         Chunk::H1 {
-            //             attributes: Some(vec![(
-            //                 Some("class".to_string()),
-            //                 Some("title".to_string()),
-            //             )]),
-            //             children: Some(vec![Chunk::Text {
-            //                 attributes: None,
-            //                 value: Some(title.to_string()),
-            //             }]),
-            //         },
-            //         Chunk::P {
-            //             attributes: None,
-            //             children: Some(vec![Chunk::Text {
-            //                 attributes: None,
-            //                 value: Some("Charlie delta echo".to_string()),
-            //             }]),
-            //         },
-            //         Chunk::P {
-            //             attributes: None,
-            //             children: Some(vec![Chunk::Text {
-            //                 attributes: None,
-            //                 value: Some("Foxtrot golf hotel".to_string()),
-            //             }]),
-            //         },
-            //     ]),
-            // };
+    // Ok(("", expected))
 
-            Ok(("", expected))
-
-            //             let response = Section::CodeSection {
-            //                 attributes: None,
-            //                 language: None,
-            //                 children: Some(vec![Chunk::Text {
-            //                     attributes: None,
-            //                     value: Some(remainder.to_string()),
-            //                 }]),
-            //             };
-            //             Ok(("", response))
-            //         }
-        } // Ok(("", expected))
-    }
+    //             let response = Section::CodeSection {
+    //                 attributes: None,
+    //                 language: None,
+    //                 children: Some(vec![Chunk::Text {
+    //                     attributes: None,
+    //                     value: Some(remainder.to_string()),
+    //                 }]),
+    //             };
+    //             Ok(("", response))
+    //         }
+    // } // Ok(("", expected))
+    // }
 }
