@@ -3,19 +3,15 @@ pub mod chunk;
 pub mod code;
 pub mod content;
 pub mod inline_language;
+pub mod language;
 pub mod list;
 pub mod note;
 pub mod page;
 pub mod parse_text_attributes;
 pub mod section;
 pub mod split;
-pub mod tag_attributes;
-pub mod text;
-pub mod text_attributes;
-pub mod title;
-// pub mod spec;
-pub mod language;
 pub mod structure;
+pub mod tag_attributes;
 #[cfg(test)]
 pub mod test_attributes;
 #[cfg(test)]
@@ -30,5 +26,7 @@ pub mod test_section;
 pub mod test_structure;
 #[cfg(test)]
 pub mod test_text;
+pub mod text;
+pub mod text_attributes;
+pub mod title;
 pub mod wrapper;
-// pub mod xob;
