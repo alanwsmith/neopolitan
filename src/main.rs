@@ -4,7 +4,8 @@ use neopolitan::structure::structure;
 use std::fs;
 
 fn main() {
-    let templates = vec!["H1", "P", "Post", "Text", "TitleSection"];
+    let templates = vec!["CodeSection", "H1", "InlineCode", "Link", "ListSection", "P", "ParagraphSection", 
+        "Post", "Strong", "Text", "TitleSection"];
 
     let mut env = Environment::new();
 
@@ -20,8 +21,9 @@ fn main() {
         env.add_template(&s.0, &s.1);
     });
 
-    let source = fs::read_to_string("src/_content/_sample_alfa.neo").unwrap();
+    let source = fs::read_to_string("src/_content/_sample.neo").unwrap();
     let structure = structure(source.as_str()).unwrap().1;
+     dbg!(&structure);
     let post_base = &env.get_template("Post").unwrap();
 
     fs::write(

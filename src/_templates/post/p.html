@@ -1,6 +1,13 @@
-<p>{%- for content in block.children -%}
+<p>
+{%- for content in block.children -%}
   {%- if content.type == "Text" -%}
-  {%- include "Text" -%}
+    {%- include "Text" -%}
+  {%- elif content.type == "Link" -%}
+    {%- include "Link" -%}
+  {%- elif content.type == "InlineCode" -%}
+    {%- include "InlineCode" -%}
+  {%- elif content.type == "Strong" -%}
+    {%- include "Strong" -%}
   {%- endif -%}
 {%- endfor -%}
 </p>

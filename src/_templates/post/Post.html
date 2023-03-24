@@ -9,12 +9,12 @@ body {
 }
 </style>
 
+    <script>
+    </script>
   </head>
   <body>
     {% for section in wrapper.children -%}
-    {%- if section.type == "TitleSection" -%} 
-    {%- include "TitleSection" -%}
-    {%- endif -%}
+        {%- include section.type  -%}
     {%- endfor -%}
   </body>
 </html>

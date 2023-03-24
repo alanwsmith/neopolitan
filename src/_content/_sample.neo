@@ -8,16 +8,11 @@ format to check functionality with
 random texts. 
 
 -> p
->> class: front 
 
 The curtain rose and the show was on. The 
-<<link|birch|https://www.example.com>> canoe 
+<<link|https://www.example.com|birch>> canoe 
 slid on the smooth planks. The source of 
 the huge river is the clear spring.
-
-Two blue fish swam in the tank.
-
--> note 
 
 The ink `stain dried`rust` on the finished page.
 The grass curled around the fence post.
