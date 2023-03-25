@@ -3,6 +3,7 @@ pub mod chunk;
 pub mod code;
 pub mod inline_language;
 pub mod language;
+pub mod link;
 pub mod list;
 pub mod note;
 pub mod page;

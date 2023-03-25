@@ -35,4 +35,5 @@ pub enum Chunk {
         language: Option<String>,
         value: Option<String>,
     },
+    Placeholder,
 }

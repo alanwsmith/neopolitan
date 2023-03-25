@@ -223,3 +223,35 @@ fn strong_with_attributes() {
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }
+
+#[test]
+fn two_types_of_things() {
+    let source = "Voice *meter** run <<link|https://www.example.com/|property>> setup";
+    let expected_result: Option<Vec<Chunk>> = Some(vec![
+        Chunk::Text {
+            attributes: None,
+            value: Some("Voice ".to_string()),
+        },
+        Chunk::Strong {
+            attributes: None,
+            value: Some("meter".to_string()),
+        },
+        Chunk::Text {
+            attributes: None,
+            value: Some(" run ".to_string()),
+        },
+        Chunk::Link {
+            attributes: None,
+            url: Some("https://www.example.com/".to_string()),
+            value: Some("property".to_string()),
+        },
+        Chunk::Text {
+            attributes: None,
+            value: Some(" setup".to_string()),
+        },
+    ]);
+    let expected_remainder = "";
+    let (remainder, result) = text(source).unwrap();
+    assert_eq!(expected_result, result);
+    assert_eq!(expected_remainder, remainder);
+}
