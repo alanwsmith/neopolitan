@@ -6,6 +6,7 @@ use crate::link::*;
 use crate::page::Page;
 use crate::parse_text_attributes::parse_text_attributes;
 use crate::split::split;
+use crate::strong::*;
 use crate::tag_attributes::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -20,6 +21,7 @@ use nom::character::complete::space0;
 use nom::combinator::eof;
 use nom::combinator::not;
 use nom::combinator::rest;
+use nom::combinator::success;
 use nom::error::Error;
 use nom::error::ErrorKind;
 use nom::multi::many0;
@@ -49,26 +51,39 @@ enum Target<'a> {
     //  Link { pretext: String },
     Link,
     Rest { pretext: String },
-    Strong { pretext: String },
+    // Strong { pretext: String },
+    Strong,
 }
 
 fn text_parser(source: &str) -> IResult<&str, Chunk> {
     // dbg!(&source);
     let mut response: Vec<Chunk> = vec![];
-    let (text_to_process, plain_text) = take_till(|c| c == '<')(source)?;
+    let (text_to_process, plain_text) = take_till(|c| c == '<' || c == '*')(source)?;
 
     dbg!(&text_to_process);
     dbg!(&plain_text);
 
     if plain_text.is_empty() {
-        let (remainder, payload) = alt((tuple((
-            tag("<<link").map(|v: &str| Target::Link),
-            take_until(">>"),
-            tag(">>"),
-        )),))(text_to_process)?;
+        let (remainder, payload) = alt((
+            tuple((
+                tag("<<link").map(|v: &str| Target::Link),
+                take_until(">>"),
+                tag(">>"),
+                success(""),
+                success(""),
+            )),
+            tuple((
+                tag("*").map(|v: &str| Target::Strong),
+                take_until("*"),
+                tag("*"),
+                take_until("*"),
+                tag("*"),
+            )),
+        ))(text_to_process)?;
 
         match payload.0 {
             Target::Link => link(payload.1, remainder),
+            Target::Strong => strong(payload.1, payload.3, remainder),
             _ => Ok((remainder, Chunk::Placeholder)),
         }
     } else {

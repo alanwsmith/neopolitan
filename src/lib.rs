@@ -10,6 +10,7 @@ pub mod page;
 pub mod parse_text_attributes;
 pub mod section;
 pub mod split;
+pub mod strong;
 pub mod structure;
 pub mod tag_attributes;
 #[cfg(test)]

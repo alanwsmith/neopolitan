@@ -2,13 +2,16 @@ use crate::chunk::Chunk;
 use crate::split::split;
 use nom::IResult;
 
-pub fn link<'a>(source: &'a str, remainder: &'a str) -> IResult<&'a str, Chunk> {
+pub fn strong<'a>(
+    source: &'a str,
+    _raw_attributes: &'a str,
+    remainder: &'a str,
+) -> IResult<&'a str, Chunk> {
     let (_, stuff) = split(source, "|")?;
     dbg!(&stuff);
-    let response = Chunk::Link {
+    let response = Chunk::Strong {
         attributes: None,
-        value: Some(stuff[1].to_string()),
-        url: Some(stuff[0].to_string()),
+        value: Some(stuff[0].to_string()),
     };
 
     //     Target::Link { pretext } => {
