@@ -1,4 +1,3 @@
-#![allow(warnings)]
 use crate::chunk::Chunk;
 use crate::code_inline::*;
 use crate::inline_language::*;
@@ -42,29 +41,20 @@ pub fn text(source: &str) -> IResult<&str, Option<Vec<Chunk>>> {
     let (source, _) = multispace0(source)?;
     let (source, containers) = many_till(text_parser, eof)(source)?;
     let response = containers.0;
-    dbg!(&response);
     Ok(("", Some(response)))
 }
 
 #[derive(Debug)]
 enum Target {
-    // Code { pretext: String, divider: &'a str },
     Code,
-    //  Link { pretext: String },
     Link,
-    Rest { pretext: String },
-    // Strong { pretext: String },
+    // Rest { pretext: String },
     Strong,
 }
 
 fn text_parser(source: &str) -> IResult<&str, Chunk> {
-    // dbg!(&source);
     let mut response: Vec<Chunk> = vec![];
     let (text_to_process, plain_text) = take_till(|c| c == '<' || c == '*' || c == '`')(source)?;
-
-    dbg!(&text_to_process);
-    dbg!(&plain_text);
-
     if plain_text.is_empty() {
         let (remainder, payload) = alt((
             tuple((
@@ -89,7 +79,6 @@ fn text_parser(source: &str) -> IResult<&str, Chunk> {
                 tag("`"),
             )),
         ))(text_to_process)?;
-
         match payload.0 {
             Target::Code => code_inline(payload.1, payload.3, remainder),
             Target::Link => link(payload.1, remainder),
@@ -105,130 +94,4 @@ fn text_parser(source: &str) -> IResult<&str, Chunk> {
             },
         ))
     }
-
-    // if remainder.is_empty() {
-    //     // dbg!("Here");
-    //     Ok((
-    //         "",
-    //         Chunk::Text {
-    //             attributes: None,
-    //             value: Some(value.to_string()),
-    //         },
-    //     ))
-    // } else {
-    //     let (remainder, payload) = alt((tuple((
-    //         tag("<<link").map(|v: &str| Target::Link),
-    //         take_until(">>"),
-    //         tag(">>"),
-    //     )),))(remainder)?;
-    //     // dbg!(&source);
-    //     // dbg!(&payload);
-    //     match payload.0 {
-    //         Target::Link => link(payload.1),
-    //         _ => Ok((remainder, Chunk::Placeholder)),
-    //     }
-    // }
-
-    // let (source, payload) = alt((
-    //     tuple((
-    //         take_until("<<link").map(|v: &str| Target::Link {
-    //             pretext: v.to_string(),
-    //         }),
-    //         rest,
-    //     )),
-    //     tuple((
-    //         take_until("`").map(|v: &str| Target::Code {
-    //             divider: "`",
-    //             pretext: v.to_string(),
-    //         }),
-    //         rest,
-    //     )),
-    //     tuple((
-    //         take_until("*").map(|v: &str| Target::Strong {
-    //             pretext: v.to_string(),
-    //         }),
-    //         rest,
-    //     )),
-    //     tuple((
-    //         rest.map(|v: &str| Target::Rest {
-    //             pretext: v.to_string(),
-    //         }),
-    //         rest,
-    //     )),
-    // ))(source)?;
-
-    // match payload.0 {
-    //     Target::Code { pretext, divider } => {
-    //         // dbg!(&source);
-    //         response.push(Chunk::Text {
-    //             attributes: None,
-    //             value: Some(pretext.to_string()),
-    //         });
-    //         let (source, current) = tag(divider)(payload.1)?;
-    //         let (source, code) = take_until(divider)(source)?;
-    //         let (source, current) = tag(divider)(source)?;
-    //         let (source, raw_attributes) = take_until(divider)(source)?;
-    //         let (source, current) = tag(divider)(source)?;
-    //         let (_, language) = inline_language(raw_attributes)?;
-    //         let (_, attributes) = parse_text_attributes(raw_attributes)?;
-    //         response.push(Chunk::InlineCode {
-    //             language,
-    //             attributes,
-    //             value: Some(code.to_string()),
-    //         });
-    //         Ok((source, response))
-    //     }
-    //     Target::Link { pretext } => {
-    //         response.push(Chunk::Text {
-    //             attributes: None,
-    //             value: Some(pretext.to_string()),
-    //         });
-    //         let (source, _) = tag("<<")(payload.1)?;
-    //         let (remainder, stuff) = take_until(">>")(source)?;
-    //         let (_, stuff) = split(stuff, "|")?;
-    //         let value = Some(stuff[2].to_string());
-    //         let url = Some(stuff[1].to_string());
-    //         let (remainder, _) = tag(">>")(remainder)?;
-    //         if stuff.len() > 3 {
-    //             let (_, attributes) = parse_text_attributes(stuff[3])?;
-    //             response.push(Chunk::Link {
-    //                 value,
-    //                 url,
-    //                 attributes,
-    //             });
-    //             Ok((remainder, response))
-    //         } else {
-    //             response.push(Chunk::Link {
-    //                 value,
-    //                 url,
-    //                 attributes: None,
-    //             });
-    //             Ok((remainder, response))
-    //         }
-    //     }
-    //     Target::Strong { pretext } => {
-    //         response.push(Chunk::Text {
-    //             attributes: None,
-    //             value: Some(pretext.to_string()),
-    //         });
-    //         let (source, current) = tag("*")(payload.1)?;
-    //         let (source, code) = take_until("*")(source)?;
-    //         let (source, current) = tag("*")(source)?;
-    //         let (source, raw_attributes) = take_until("*")(source)?;
-    //         let (source, current) = tag("*")(source)?;
-    //         let attributes = parse_text_attributes(raw_attributes).unwrap().1;
-    //         response.push(Chunk::Strong {
-    //             value: Some(code.to_string()),
-    //             attributes: None,
-    //         });
-    //         Ok((source, response))
-    //     }
-    //     Target::Rest { pretext } => {
-    //         response.push(Chunk::Text {
-    //             attributes: None,
-    //             value: Some(pretext.to_string()),
-    //         });
-    //         Ok((source, response))
-    //     }
-    // }
 }

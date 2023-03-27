@@ -5,7 +5,6 @@ use nom::IResult;
 
 pub fn link<'a>(source: &'a str, remainder: &'a str) -> IResult<&'a str, Chunk> {
     let (_, stuff) = split(source, "|")?;
-    dbg!(&stuff);
     if stuff.len() > 2 {
     let (_, attributes) = parse_text_attributes(stuff[2])?;
     let response = Chunk::Link {
