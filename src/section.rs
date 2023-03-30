@@ -1,12 +1,22 @@
 #![allow(warnings)]
 use crate::attributes::*;
+use crate::blurb::*;
+use crate::categories::*;
 use crate::chunk::Chunk;
 use crate::code::*;
+use crate::h1::*;
+use crate::h2::*;
+use crate::h3::*;
+use crate::h4::*;
+use crate::h5::*;
+use crate::h6::*;
 use crate::hr::*;
+use crate::image::image;
 use crate::list::*;
 use crate::note::*;
 use crate::text::*;
 use crate::title::*;
+use crate::video::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
@@ -27,13 +37,55 @@ use std::collections::HashMap;
 #[derive(Debug, PartialEq, Serialize, Deserialize, Clone)]
 #[serde(tag = "type")]
 pub enum Section {
+    AttributesSection {
+        children: Option<Vec<Chunk>>,
+    },
+    BlurbSection {
+        children: Option<Vec<Chunk>>,
+    },
+    CategoriesSection {
+        children: Option<Vec<Chunk>>,
+    },
     CodeSection {
         language: Option<String>,
         attributes: Option<HashMap<String, Option<String>>>,
         children: Option<Vec<Chunk>>,
     },
-
+    H1Section {
+        attributes: Option<HashMap<String, Option<String>>>,
+        children: Option<Vec<Chunk>>,
+    },
+    H2Section {
+        attributes: Option<HashMap<String, Option<String>>>,
+        children: Option<Vec<Chunk>>,
+    },
+    H3Section {
+        attributes: Option<HashMap<String, Option<String>>>,
+        children: Option<Vec<Chunk>>,
+    },
+    H4Section {
+        attributes: Option<HashMap<String, Option<String>>>,
+        children: Option<Vec<Chunk>>,
+    },
+    H5Section {
+        attributes: Option<HashMap<String, Option<String>>>,
+        children: Option<Vec<Chunk>>,
+    },
+    H6Section {
+        attributes: Option<HashMap<String, Option<String>>>,
+        children: Option<Vec<Chunk>>,
+    },
+    HRSection {
+        attributes: Option<HashMap<String, Option<String>>>,
+    },
+    ImageSection {
+        attributes: Option<HashMap<String, Option<String>>>,
+    },
     ListSection {
+        attributes: Option<HashMap<String, Option<String>>>,
+        children: Option<Vec<Chunk>>,
+    },
+    OrderedListSection {
         attributes: Option<HashMap<String, Option<String>>>,
         children: Option<Vec<Chunk>>,
     },
@@ -49,10 +101,10 @@ pub enum Section {
         attributes: Option<HashMap<String, Option<String>>>,
         children: Option<Vec<Chunk>>,
     },
-    Placeholder,
-    HRSection {
+    VideoSection {
         attributes: Option<HashMap<String, Option<String>>>,
     },
+    Placeholder,
 }
 
 fn attribute_splitter(source: &str) -> IResult<&str, &str> {
@@ -66,7 +118,40 @@ fn attribute_splitter(source: &str) -> IResult<&str, &str> {
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (source, mut block) = alt((
+        tag_no_case("-> attributes").map(|_| Section::AttributesSection { children: None }),
+        tag_no_case("-> blurb").map(|_| Section::BlurbSection { children: None }),
+        tag_no_case("-> CODE").map(|_| Section::CodeSection {
+            attributes: None,
+            language: None,
+            children: Some(vec![]),
+        }),
         tag_no_case("-> HR").map(|_| Section::HRSection { attributes: None }),
+        tag_no_case("-> H1").map(|_| Section::H1Section {
+            children: None,
+            attributes: None,
+        }),
+        tag_no_case("-> H2").map(|_| Section::H2Section {
+            children: None,
+            attributes: None,
+        }),
+        tag_no_case("-> H3").map(|_| Section::H3Section {
+            children: None,
+            attributes: None,
+        }),
+        tag_no_case("-> H4").map(|_| Section::H4Section {
+            children: None,
+            attributes: None,
+        }),
+        tag_no_case("-> H5").map(|_| Section::H5Section {
+            children: None,
+            attributes: None,
+        }),
+        tag_no_case("-> H6").map(|_| Section::H6Section {
+            children: None,
+            attributes: None,
+        }),
+        tag_no_case("-> image").map(|_| Section::ImageSection { attributes: None }),
+        // TODO:
         tag_no_case("-> NOTE").map(|_| Section::NoteSection {
             attributes: None,
             children: None,
@@ -79,15 +164,20 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             attributes: None,
             children: Some(vec![]),
         }),
+        // TODO:
         tag_no_case("-> LIST").map(|_| Section::ListSection {
             attributes: None,
             children: None,
         }),
-        tag_no_case("-> CODE").map(|_| Section::CodeSection {
+        // TODO:
+        tag_no_case("-> OLIST").map(|_| Section::OrderedListSection {
             attributes: None,
-            language: None,
-            children: Some(vec![]),
+            children: None,
         }),
+        // TODO:
+        tag_no_case("-> categories").map(|_| Section::CategoriesSection { children: None }),
+        // TODO:
+        tag_no_case("-> video").map(|_| Section::VideoSection { attributes: None }),
     ))(source)?;
     match block {
         // Section::TitleSection {
@@ -142,6 +232,89 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         //     }
         //     Ok((return_content, block))
         // }
+        Section::BlurbSection { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = blurb(source)?;
+            Ok((return_content, block))
+        }
+        Section::CategoriesSection { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = categories(source)?;
+            Ok((return_content, block))
+        }
+        Section::CodeSection {
+            children: _children,
+            attributes: _attributes,
+            language: _language,
+        } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = code(source)?;
+            Ok((return_content, block))
+        }
+        Section::H1Section { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = h1(source)?;
+            Ok((return_content, block))
+        }
+        Section::H2Section { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = h2(source)?;
+            Ok((return_content, block))
+        }
+        Section::H3Section { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = h3(source)?;
+            Ok((return_content, block))
+        }
+        Section::H4Section { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = h4(source)?;
+            Ok((return_content, block))
+        }
+        Section::H5Section { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = h5(source)?;
+            Ok((return_content, block))
+        }
+        Section::H6Section { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = h6(source)?;
+            Ok((return_content, block))
+        }
+        Section::HRSection { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = hr(source)?;
+            Ok((return_content, block))
+        }
+        Section::ImageSection { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = image(source)?;
+            Ok((return_content, block))
+        }
+        Section::ListSection {
+            children: _children,
+            attributes: _attributes,
+        } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = list(source)?;
+            Ok((return_content, block))
+        }
+        Section::NoteSection {
+            children: _children,
+            attributes: _attributes,
+        } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = note(source)?;
+            Ok((return_content, block))
+        }
+        Section::OrderedListSection {
+            children: _children,
+            attributes: _attributes,
+        } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = list(source)?;
+            Ok((return_content, block))
+        }
         Section::ParagraphSection {
             ref mut children, ..
         } => {
@@ -164,34 +337,11 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             let (_, block) = title(source)?;
             Ok((return_content, block))
         }
-        Section::HRSection { .. } => {
-            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
-            let (_, block) = hr(source)?;
-            Ok((return_content, block))
-        }
-        Section::CodeSection {
-            children: _children,
-            attributes: _attributes,
-            language: _language,
-        } => {
-            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
-            let (_, block) = code(source)?;
-            Ok((return_content, block))
-        }
-        Section::NoteSection {
-            children: _children,
+        Section::VideoSection {
             attributes: _attributes,
         } => {
             let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
-            let (_, block) = note(source)?;
-            Ok((return_content, block))
-        }
-        Section::ListSection {
-            children: _children,
-            attributes: _attributes,
-        } => {
-            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
-            let (_, block) = list(source)?;
+            let (_, block) = video(source)?;
             Ok((return_content, block))
         }
         _ => {

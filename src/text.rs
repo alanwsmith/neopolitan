@@ -1,7 +1,7 @@
 #![allow(warnings)]
-
 use crate::chunk::Chunk;
 use crate::code_inline::*;
+use crate::em::*;
 use crate::inline_language::*;
 use crate::language::*;
 use crate::link::*;
@@ -49,6 +49,8 @@ pub fn text(source: &str) -> IResult<&str, Option<Vec<Chunk>>> {
 #[derive(Debug)]
 enum Target {
     Code,
+    CodeInlineTagsNoAttributes,
+    Em,
     Link,
     // Rest { pretext: String },
     Strong,
@@ -60,7 +62,21 @@ fn text_parser(source: &str) -> IResult<&str, Chunk> {
     if plain_text.is_empty() {
         let (remainder, payload) = alt((
             tuple((
+                tag("<<code|").map(|v: &str| Target::CodeInlineTagsNoAttributes),
+                take_until(">>"),
+                tag(">>"),
+                success(""),
+                success(""),
+            )),
+            tuple((
                 tag("<<link").map(|v: &str| Target::Link),
+                take_until(">>"),
+                tag(">>"),
+                success(""),
+                success(""),
+            )),
+            tuple((
+                tag("<<em").map(|v: &str| Target::Em),
                 take_until(">>"),
                 tag(">>"),
                 success(""),
@@ -82,7 +98,11 @@ fn text_parser(source: &str) -> IResult<&str, Chunk> {
             )),
         ))(text_to_process)?;
         match payload.0 {
+            Target::CodeInlineTagsNoAttributes => {
+                code_inline_tags_no_attributes(payload.1, payload.3, remainder)
+            }
             Target::Code => code_inline(payload.1, payload.3, remainder),
+            Target::Em => strong(payload.1, payload.3, remainder),
             Target::Link => link(payload.1, remainder),
             Target::Strong => strong(payload.1, payload.3, remainder),
             _ => Ok((remainder, Chunk::Placeholder)),

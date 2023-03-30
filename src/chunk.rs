@@ -5,10 +5,17 @@ use std::collections::HashMap;
 #[derive(Debug, PartialEq, Serialize, Deserialize, Clone)]
 #[serde(tag = "type")]
 pub enum Chunk {
+    Em {
+        attributes: Option<HashMap<String, Option<String>>>,
+        value: Option<String>,
+    },
     H1 {
         attributes: Option<HashMap<String, Option<String>>>,
         children: Option<Vec<Chunk>>,
     },
+    // Image {
+    //     attributes: Option<HashMap<String, Option<String>>>,
+    // },
     Text {
         attributes: Option<HashMap<String, Option<String>>>,
         value: Option<String>,

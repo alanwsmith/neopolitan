@@ -255,3 +255,30 @@ fn two_types_of_things() {
     assert_eq!(expected_result, result);
     assert_eq!(expected_remainder, remainder);
 }
+
+#[test]
+fn code_tags_without_attributes() {
+    let source = "The <<code|hot>>` water";
+    let expected_result: Option<Vec<Chunk>> = Some(vec![
+        Chunk::Text {
+            attributes: None,
+            value: Some("The ".to_string()),
+        },
+        Chunk::InlineCode {
+            attributes: Some(HashMap::from([
+                ("rust".to_string(), None),
+                ("class".to_string(), Some("sail".to_string())),
+            ])),
+            language: None,
+            value: Some("hot".to_string()),
+        },
+        Chunk::Text {
+            attributes: None,
+            value: Some(" water".to_string()),
+        },
+    ]);
+    let expected_remainder = "";
+    let (remainder, result) = text(source).unwrap();
+    assert_eq!(expected_result, result);
+    assert_eq!(expected_remainder, remainder);
+}
