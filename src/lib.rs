@@ -2,6 +2,7 @@ pub mod attributes;
 pub mod chunk;
 pub mod code;
 pub mod code_inline;
+pub mod hr;
 pub mod inline_language;
 pub mod language;
 pub mod link;

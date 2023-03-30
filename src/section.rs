@@ -2,6 +2,7 @@
 use crate::attributes::*;
 use crate::chunk::Chunk;
 use crate::code::*;
+use crate::hr::*;
 use crate::list::*;
 use crate::note::*;
 use crate::text::*;
@@ -49,6 +50,9 @@ pub enum Section {
         children: Option<Vec<Chunk>>,
     },
     Placeholder,
+    HRSection {
+        attributes: Option<HashMap<String, Option<String>>>,
+    },
 }
 
 fn attribute_splitter(source: &str) -> IResult<&str, &str> {
@@ -62,6 +66,7 @@ fn attribute_splitter(source: &str) -> IResult<&str, &str> {
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (source, mut block) = alt((
+        tag_no_case("-> HR").map(|_| Section::HRSection { attributes: None }),
         tag_no_case("-> NOTE").map(|_| Section::NoteSection {
             attributes: None,
             children: None,
@@ -157,6 +162,11 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         Section::TitleSection { .. } => {
             let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
             let (_, block) = title(source)?;
+            Ok((return_content, block))
+        }
+        Section::HRSection { .. } => {
+            let (return_content, source) = alt((take_until("\n-> "), rest))(source)?;
+            let (_, block) = hr(source)?;
             Ok((return_content, block))
         }
         Section::CodeSection {

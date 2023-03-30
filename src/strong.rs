@@ -8,7 +8,6 @@ pub fn strong<'a>(
     remainder: &'a str,
 ) -> IResult<&'a str, Chunk> {
     let (_, stuff) = split(source, "|")?;
-    dbg!(&stuff);
     let response = Chunk::Strong {
         attributes: None,
         value: Some(stuff[0].to_string()),

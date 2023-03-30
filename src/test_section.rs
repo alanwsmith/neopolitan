@@ -223,3 +223,11 @@ fn section_code_test_with_language() {
     let result = section(source.as_str()).unwrap().1;
     assert_eq!(expected, result);
 }
+
+#[test]
+fn horizontal_rule() {
+    let source = vec!["-> hr", "", "a long list"].join("\n");
+    let expected = Section::HRSection { attributes: None };
+    let result = section(source.as_str()).unwrap().1;
+    assert_eq!(expected, result);
+}

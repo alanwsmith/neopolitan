@@ -1,3 +1,5 @@
+#![allow(warnings)]
+
 use crate::chunk::Chunk;
 use crate::code_inline::*;
 use crate::inline_language::*;
