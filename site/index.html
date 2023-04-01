@@ -1,252 +1,279 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>neopolitan - a plain-text document format</title>
-<style>
-body {
-  font-size: 1.3rem;
-  padding-top: 20px;
-  padding-left: 28px;
-  background-color: #000;
-  color: #aaa;
-}
-.center {
-   display: grid;
-   place-items: center;
-}
-</style>
-  </head>
-  <body>
-    <div class="center">
-      <pre>
--&gt; TITLE
 
-Welcome To Neopolitan 
+<head>
+  <title>neopolitan - a plain-text document format</title>
+  <style>
+    body {
+      font-size: 1.3rem;
+      padding-top: 20px;
+      padding-left: 28px;
+      background-color: #000;
+      color: #aaa;
+    }
 
--&gt; SUBTITLE
+    .center {
+      display: grid;
+      place-items: center;
+    }
+  </style>
+</head>
 
-A plain-text format for websites
+<body>
+  <div class="center">
+    <pre>
 
--&gt; H2
+      -&gt; title
 
-Overview
+      Welcome To Neopolitan
 
-My site is twenty years old. Realizing that, I
-started thinking about the next twenty. Something
-I&apos;d never done before. It changes a lot. 
 
-Generally speaking, I&apos;ll be writing vanilla HTML, 
-CSS, and JavaScript. More on that later. For now, 
-it&apos;s enough to say that, for my personal site, 
-frameworks have been a net negative. I&apos;m going
-back to the fundamentals. 
+      -&gt; subtitle
 
-Content management caught my attention as well. 
-I&apos;m a huge fan of plain-text. Markdown, MDX, 
-and Org-Mode all play a part in my system. 
-They&apos;re solid, but they each cause their own 
-type of friction. There are things I&apos;m not 
-doing because of them. 
+      a plain-text website format
 
-So, I&apos;m making my own format. 
 
--&gt; H2
+      -&gt; h2
 
-Neopolitan Features
+      Overview
 
-Neopolitan is still in it&apos;s early stages 
-and very much in flux. I&apos;m using it in 
-and iterative design style process. That said, 
-the basic ideas are pretty well locked in. 
+      My site is twenty years old. Realizing that
+      started me thinking about the next twenty. The
+      perspective shift changed the way I think
+      making and maintaining sites.
 
--&gt; ASIDE 
-&gt;&gt; class: highlighted
+      Generally speaking, I'll be writing vanilla HTML,
+      CSS, and JavaScript. I'll write more about that
+      elsewhere. For now, it's enough to say frameworks
+      have been a net negative for me. I'm bowing out
+      of that game.
 
-There&apos;s a bunch of code samples below that can 
-get hard to look at in the raw form if you&apos;re not 
-familiar with the format. The content above is 
-more what my average posts look like. 
+      Content management also caught my attention.
+      I'm a huge fan of plain-text. My current system
+      is around nine thousand Markdown, MDX, and Org-Mode
+      files. They're solid formats, but each causes
+      its own type of friction. For example, I don't
+      use description lists because they aren't native
+      to the MDX parser I'm using.
 
+      So, I'm making my own format.
 
--&gt; LIST
 
-- This aim of neopolitan is not to be all things
-to all people. It&apos;s initial goal is to build
-my website. It&apos;s open source. I hope folks
-find it useful in the future, but I&apos;d 
-hold off trying to do anything with it until
-I&apos;ve at least got it in production myself. 
+      -&gt; h2
 
-- Neopolitan documents are composed of sections 
-that start with a `-&gt;`` token followed by 
-the name for the type of section. The type of 
-section determines how the content is processed. 
-For example, a `-&gt; TITLE`` section turns the first
-line after it into an `h1`` and the rest of 
-the content after it becomes paragraphs.
+      Neopolitan Features
 
-- Optional attributes an be added to each section. 
-via a token with two `&gt;`` directly under the 
-opening `-&gt;`` line. The `&gt;&gt; class: highlighted`` 
-in the `-&gt; ASIDE`` section above is an example. 
+      The format is still in its early stages
+      and very much in flux. That said, the
+      basic ideas are mostly in place.
 
-- Some sections are for display (like this 
-`-&gt; LIST``) while others are for metadata
-(like the `-&gt; ATTRIBUTES``, and `-&gt; CATEGORIES`) 
-below. 
 
-- Different inline tags are available for links, 
-code, spans, quotes, and others that will be 
-documented. The tags start with two `&lt;`` and end 
-with two `&gt;`` Here&apos;s a link as an example:
+      -&gt; aside
+      &gt;&gt; class: highlighted
 
--&gt; CODE 
+      There's a bunch of code samples below. The
+      format is more about text content. Parsing
+      through collections of short samples took
+      me a little getting used to.
 
-&lt;&lt;link|alfa|https://www.example.com/&gt;&gt;
 
--&gt; LIST
+      -&gt; list
 
-- Links can also use references. This is done using 
-some name or number in the tag then adding the
-same thing to a `-&gt; LINKS` section somewhere in 
-the document. For example:
+      - My goal is not to make a document format
+      that's all things to all people. It's to make
+      a format that makes it quick, easy, and
+      pleasurable to post on my site.
 
--&gt; CODE 
+      - I'm open-sourcing the work and love the idea
+      that maybe someday other folks would be
+      interested but for now this is more of working
+      in public thing than it is trying to launch
+      a new format.
 
-&lt;&lt;link|bravo|1&gt;&gt;
+      - Neopolitan documents are composed of sections
+      that start with a `-&gt;`` token followed by
+      the name for the type of section. The type of
+      section determines how the content is processed.
+      For example, a `-&gt; title`` section turns the first
+      line after it into an `h1`` and the rest of
+      the content after it becomes paragraphs.
 
--&gt; P
+      - Optional attributes an be added to each section.
+      via a token with two `&gt;`` directly under the
+      opening `-&gt;`` line. The `&gt;&gt; class: highlighted``
+      in the `-&gt; aside`` section above is an example.
 
-And then in a `-&gt; LINKS` section: 
+      - Some sections are for display (like this
+      `-&gt; list``) while others are for metadata
+      (like the `-&gt; attributes``, and `-&gt; categories`)
+      below.
 
--&gt; CODE 
+      - Different inline tags are available for links,
+      code, spans, quotes, etc... The tags start with
+      two `&lt;`` and end with two `&gt;`` Here's a link as
+      an example:
 
-1: https://www.example.com
 
--&gt; LIST 
+      -&gt; code
+      &gt;&gt; neo
 
-- Optional attributes can be passed to inline 
-tags by separating them with a pipe. For example:
+      &lt;&lt;link|https://www.example.com/|alfa text&gt;&gt;
 
--&gt; CODE 
 
-&lt;&lt;link|charlie|https://www.example.com/|class: primary&gt;&gt;
+      -&gt; list
 
--&gt; P 
+      - Links can also use references. This is done using
+      some name or number in the tag then adding the
+      same thing to a `-&gt; links` section somewhere in
+      the document. For example:
 
-becomes:
 
--&gt; CODE 
+      -&gt; code
+      &gt;&gt; neo
 
-&lt;a href=&quot;https://www.example.com/&quot; class=&quot;primary&quot;&gt;charlie&lt;/a&gt;
+      &lt;&lt;link|1|bravo text&gt;&gt;
 
--&gt; LIST 
 
-- Shorthands using backtics, underscores, etc... are in
-progress for code, strong, emphasis, etc... in addition 
-to the ability to make them with the inline tags. 
+      -&gt; p
 
-- `-&gt; FOOTNOTES` section provide automatic numbering and links 
-to places in the document marked by `^` characters. Those 
-locations are numbered and link back in response. 
+      And then in a `-&gt; links` section:
 
--class: highlight|- Attributes can be applied to individual list 
-items by adding a second `-` and putting the attributes inside 
-pipes like this one. Multiple pipes work too. 
-`-|id: alfa|class: bravo|-`
 
-- Ordered lists have their own `-&gt; OLIST` section type. Dashes
-are used instead of numbers to make it easier to move things 
-without having to renumber them to look right in the source 
-document. (Most processes disregard the numbers, but it 
-always bugged my when they weren&apos;t right in the source.)
+      -&gt; code
+      &gt;&gt; neo
 
-- The start number of an ordered list can be defined with a 
-`&gt;&gt; start: #`` attribute. 
+      1: https://www.example.com
 
-- Image handling is a work in progress. 
 
-- Table handling is a work in progress. 
+      -&gt; list
 
-- `-&gt; HIDDEN`` for stuff that&apos;s in the file that you 
-don&apos;t want output to the final content. (NOTE:
-don&apos;t rely on it for anything sensitive. Figure
-that at some point something might screw up and
-send it out.) 
+      - Optional attributes can be passed to inline
+      tags by separating them with a pipe. For example:
 
-- `-&gt; RESULT` - the result of a code run. (Maybe
-rendered in a `&lt;samp&gt;`` tag)
 
--&gt; H2
+      -&gt; code
+      &gt;&gt; neo
 
-Next Steps
+      &lt;&lt;link|charlie|https://www.example.com/|class: primary&gt;&gt;
 
-Most of the above is pretty well defined. The rest of this 
-below is a little more fluid. Their ideas I expect I&apos;ll 
-get to, but the priority is everything above. 
 
-That said, here&apos;s what a more complete vision includes. 
+      -&gt; p
 
--&gt; LIST
+      becomes:
 
-- `DLIST` for description lists
 
-- `HTML`` section provide for raw HTML input
+      -&gt; code
+      &gt;&gt; html
 
-- `DIV`` sections provide for adding content that&apos;s not 
-wrapped in `&lt;p&gt;`` tags
+      &lt;a href="https://www.example.com/" class="primary"&gt;charlie&lt;/a&gt;
 
-- `BLOCKQUOTE`` sections for blockquotes. 
 
-- `CSS`` sections provide a way to add CSS directly 
-to the page. (They are added as the last CSS before the closing 
-`&lt;/head&gt;``.
+      -&gt; list
 
-- `JS`` sections provide a way to inject scripts directly 
-into the page. (They are added as the last `&lt;script&gt;`` 
-before the closing `&lt;/head&gt;``)
+      - Shorthands using backtics, underscores, etc... are in
+      progress for code, strong, emphasis, etc... in addition
+      to the ability to make them with the inline tags.
 
-- I have an idea for `DATA` sections to house data for 
-a page, but TBD on that implementation. I need to work 
-with it first. 
+      - `-&gt; footnotes` section provide automatic numbering and links
+      to places in the document marked by `^` characters. Those
+      locations are numbered and link back in response.
 
-- `FIGURE/FIGCAPTION` - TBD on these
+      -|class: highlight| Attributes can be applied to individual list
+      items by adding like on this line. Multiple attributes can
+      be added like this: `-|id: alfa|class: bravo|-``
 
-- `HR` for adding a horizontal rule you can style with 
-attributes 
+      - Ordered lists have their own `-&gt; olist` section type. Dashes
+      are used instead of numbers to make it easier to move things
+      without having to renumber them to look right in the source
+      document. (Most processes disregard the numbers, but it
+      always bugged my when they weren't right in the source.)
 
+      - The start number of an ordered list can be defined with a
+      `&gt;&gt; start: #`` attribute.
 
--&gt; P 
+      - image handling is a work in progress.
 
-That&apos;s the basics. This is my first time doing something
-like this so I have no idea how long it&apos;ll take. I&apos;ve 
-started making some actual progress on a parser though. 
-So, I&apos;m optimistic. 
+      - table handling is a work in progress.
 
-I&apos;ll post updates here as I make progress. 
+      - `-&gt; hidden`` for stuff that's in the file that you
+      don't want output to the final content. (NOTE:
+      don't rely on it for anything sensitive. Figure
+      that at some point something might screw up and
+      send it out.)
 
-You can also follow me on 
-&lt;&lt;link|mastodon|https://hachyderm.io/@TheIdOfAlan&gt;&gt;
+      - `-&gt; results` - the result of a code run. (Maybe
+      rendered in a `&lt;samp&gt;`` tag)
 
-And I stream some of the work 
-&lt;&lt;link|on twitch|https://www.twitch.tv/theidofalan&gt;&gt;
+      -&gt; h2
 
-Stop by and say hi. 
+      Next Steps
 
--a
+      Most of the above is pretty well defined. The rest of this
+      below is a little more fluid. Their ideas I expect I'll
+      get to, but the priority is everything above.
 
+      That said, here's what the more complete vision includes.
 
--&gt; CATEGORIES
-&gt;&gt; Neopolitan  
+      -&gt; list
 
--&gt; ATTRIBUTES
-&gt;&gt; date: 2023-03-11 13:07:46
-&gt;&gt; updated: 2023-03-12 19:23:12
-&gt;&gt; id: 2n4twoxoqgi4
-&gt;&gt; site: neo 
-&gt;&gt; type: post
-&gt;&gt; status: published
-      </pre>
-    </div>
-  </body>
+      - `dlist`` for description lists
+
+      - `html`` section provide for raw HTML input
+
+      - `div`` sections provide for adding content that's not
+      wrapped in `&lt;p&gt;`` tags
+
+      - `blockquote`` sections for blockquotes.
+
+      - `css`` sections provide a way to add CSS directly
+      to the page. (They are added as the last CSS before the closing
+      `&lt;/head&gt;``.
+
+      - `js`` sections provide a way to inject scripts directly
+      into the page. (They are added as the last `&lt;script&gt;`` before
+      the closing `&lt;/head&gt;``)
+
+      - I have an idea for `DATA` sections to house data for
+      a page, but TBD on that implementation. I need to work
+      with it first.
+
+      - `figure/figcaption` - TBD on these
+
+      - `hr` for adding a horizontal rule you can style with
+      attributes
+
+
+      -&gt; p
+
+      That's the basics.
+
+      I'll post updates here as I make progress.
+
+      You can also follow me on &lt;&lt;link|mastodon|https://hachyderm.io/@TheIdOfAlan&gt;&gt;
+
+      And I stream some of the work &lt;&lt;link|on twitch|https://www.twitch.tv/theidofalan&gt;&gt;
+
+      Stop by and say hi.
+
+      -a
+
+
+      -&gt; categories
+      &gt;&gt; Neopolitan
+
+      -&gt; attributes
+      &gt;&gt; date: 2023-03-11 13:07:46
+      &gt;&gt; updated: 2023-03-12 19:23:12
+      &gt;&gt; id: 2n4twoxoqgi4
+      &gt;&gt; site: neo
+      &gt;&gt; type: post
+      &gt;&gt; status: published
+
+
+
+
+    </pre>
+  </div>
+</body>
+
 </html>
