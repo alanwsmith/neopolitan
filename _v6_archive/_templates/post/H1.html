@@ -1,0 +1,7 @@
+<h1>{%- for content in block.children -%}
+  {%- if content.type == "Text" -%}
+  {%- include "Text" -%}
+  {%- endif -%}
+{%- endfor -%}
+</h1>
+

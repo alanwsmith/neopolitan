@@ -1,0 +1,36 @@
+-> title 
+>> class: sample
+
+Neopolitan Sample One
+
+This is a basic sample of the Neopolitan 
+format to check functionality with 
+random texts. 
+
+-> p
+
+The curtain rose and the show was on. The 
+<<link|https://www.example.com|birch>> canoe 
+slid on the smooth planks. The source of 
+the huge river is the clear spring.
+
+The ink `stain dried`rust` on the finished page.
+The grass curled around the fence post.
+Cut the pie into large parts.
+
+A wisp of cloud hung in the blue air.
+*Oak** is strong and also gives shade.
+
+-> code
+>> rust 
+
+fn main() {
+  println!("alfa bravo");
+}
+
+-> list 
+
+- The *desk** and both <<link|https://www.example.com/|chairs were>> painted tan.
+
+- The straw nest robins.
+
