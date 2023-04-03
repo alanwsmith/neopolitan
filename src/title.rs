@@ -3,8 +3,7 @@ use crate::content::Content;
 use crate::section::Section;
 use nom::IResult;
 
-pub fn title(source: &str) -> IResult<&str, Section> {
-    dbg!(&source);
+pub fn title(_source: &str) -> IResult<&str, Section> {
     Ok((
         "",
         Section::Title {
@@ -12,7 +11,7 @@ pub fn title(source: &str) -> IResult<&str, Section> {
             children: Some(vec![Block::P {
                 attributes: None,
                 children: Some(vec![Content::Text {
-                    value: Some("Here it is".to_string()),
+                    value: Some("Hello, World".to_string()),
                 }]),
             }]),
         },
@@ -33,7 +32,7 @@ mod tests {
                 children: Some(vec![Block::P {
                     attributes: None,
                     children: Some(vec![Content::Text {
-                        value: Some("Here it is".to_string()),
+                        value: Some("Hello, World".to_string()),
                     }]),
                 }]),
             },
