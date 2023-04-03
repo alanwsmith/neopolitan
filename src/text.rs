@@ -15,7 +15,7 @@ mod tests {
     use super::*;
     use crate::content::Content;
     #[test]
-    fn basic_title_response() {
+    fn basic_text_response() {
         let source = "Here it is";
         let expected = Ok((
             "",
