@@ -1,7 +1,0 @@
-{%- for block in section.children -%}
-  {%- if block.type == "H1" -%}
-    {%- include "H1" -%}
-  {% elif block.type == "P" -%}
-  {% include "P" -%}
-  {%- endif -%}
-{%- endfor -%}

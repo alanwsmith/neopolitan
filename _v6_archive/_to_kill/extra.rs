@@ -1,3 +1,0 @@
-pub enum Extra {
-    TitleSection,
-}
