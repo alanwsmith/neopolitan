@@ -1,0 +1,26 @@
+#![allow(unused_variables)]
+#![allow(unused_imports)]
+use crate::block::Block;
+use crate::content::Content;
+use crate::p::p;
+use crate::section::Section;
+use nom::branch::alt;
+use nom::bytes::complete::take_until;
+use nom::character::complete::multispace0;
+use nom::combinator::eof;
+use nom::combinator::rest;
+use nom::multi::many_till;
+use nom::IResult;
+
+pub fn p_section(source: &str) -> IResult<&str, Section> {
+    let (source, _) = multispace0(source)?;
+    let (source, captured) = alt((take_until("->"), rest))(source)?;
+    let (_, paragraphs) = many_till(p, eof)(captured)?;
+    Ok((
+        source,
+        Section::P {
+            attributes: None,
+            children: Some(paragraphs.0),
+        },
+    ))
+}

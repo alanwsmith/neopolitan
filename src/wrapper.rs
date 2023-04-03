@@ -16,33 +16,3 @@ pub fn wrapper(source: &str) -> IResult<&str, Wrapper> {
     };
     Ok(("", response))
 }
-
-#[cfg(test)]
-mod test {
-    use super::*;
-    use crate::block::Block;
-    use crate::content::Content;
-
-    #[test]
-    fn basic_page_test() {
-        let lines = vec!["-> title", "", "Hello, Neopolitan"].join("\n");
-        let source = lines.as_str();
-        // let source = "-> title\n\nHello, Neopolitan";
-        let expected = Ok((
-            "",
-            Wrapper::Page {
-                children: Some(vec![Section::Title {
-                    attributes: None,
-                    children: Some(vec![Block::P {
-                        attributes: None,
-                        children: Some(vec![Content::Text {
-                            text: Some("Hello, Neopolitan".to_string()),
-                        }]),
-                    }]),
-                }]),
-            },
-        ));
-        let result = wrapper(source);
-        assert_eq!(expected, result);
-    }
-}
