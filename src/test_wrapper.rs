@@ -1,53 +1,9 @@
-use crate::block::block::*;
-use crate::content::content::*;
-use crate::section::section::*;
+use crate::block::block::Block;
+use crate::content::content::Content;
+use crate::section::section::Section;
 use crate::wrapper::*;
 
 // This is the primary integration test file
-
-#[test]
-fn hello_world() {
-    let lines = vec!["-> title", "", "Hello, Neopolitan"].join("\n");
-    let source = lines.as_str();
-    let expected = Ok((
-        "",
-        Wrapper::Page {
-            children: Some(vec![Section::Title {
-                attributes: None,
-                children: Some(vec![Block::P {
-                    attributes: None,
-                    children: Some(vec![Content::Text {
-                        text: Some("Hello, Neopolitan".to_string()),
-                    }]),
-                }]),
-            }]),
-        },
-    ));
-    let result = wrapper(source);
-    assert_eq!(expected, result);
-}
-
-#[test]
-fn p_section() {
-    let lines = vec!["-> p", "", "The blue sky"].join("\n");
-    let source = lines.as_str();
-    let expected = Ok((
-        "",
-        Wrapper::Page {
-            children: Some(vec![Section::P {
-                attributes: None,
-                children: Some(vec![Block::P {
-                    attributes: None,
-                    children: Some(vec![Content::Text {
-                        text: Some("The blue sky".to_string()),
-                    }]),
-                }]),
-            }]),
-        },
-    ));
-    let result = wrapper(source);
-    assert_eq!(expected, result);
-}
 
 // The colt reared and threw the tall rider.
 // It snowed, rained, and hailed the same morning.
@@ -56,7 +12,7 @@ fn p_section() {
 // Lift the square stone over the fence.
 
 #[test]
-fn title_and_paragraphs() {
+fn integration_alfa() {
     let lines = vec![
         "-> title",
         "",
@@ -65,6 +21,7 @@ fn title_and_paragraphs() {
         "-> p",
         "",
         "The road shimmered",
+        "in the rain",
     ]
     .join("\n");
     let source = lines.as_str();
@@ -86,7 +43,7 @@ fn title_and_paragraphs() {
                     children: Some(vec![Block::P {
                         attributes: None,
                         children: Some(vec![Content::Text {
-                            text: Some("The road shimmered".to_string()),
+                            text: Some("The road shimmered\nin the rain".to_string()),
                         }]),
                     }]),
                 },
