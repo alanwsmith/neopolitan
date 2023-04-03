@@ -1,5 +1,5 @@
 use crate::content::link::link;
-use crate::content::text::text;
+// use crate::content::text::text;
 use nom::branch::alt;
 use nom::bytes::complete::tag_no_case;
 use nom::combinator::rest;
@@ -18,11 +18,6 @@ pub enum Content {
         url: Option<String>,
         text: Option<String>,
     },
-}
-
-pub fn content(source: &str) -> IResult<&str, Vec<Content>> {
-    let (a, b) = text(source)?;
-    Ok((a, vec![b]))
 }
 
 #[cfg(test)]
@@ -54,12 +49,12 @@ mod tests {
                 text: Some("bravo link".to_string()),
             }],
         ));
-        let result = content_dev(source);
+        let result = content(source);
         assert_eq!(expected, result);
     }
 }
 
-pub fn content_dev(source: &str) -> IResult<&str, Vec<Content>> {
+pub fn content(source: &str) -> IResult<&str, Vec<Content>> {
     let (a, b) = alt((
         tag_no_case("<<link|").map(|_| Content::Link {
             source: None,

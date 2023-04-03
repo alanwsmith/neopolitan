@@ -1,4 +1,5 @@
 pub mod blurb;
+pub mod list;
 pub mod p;
 pub mod section;
 #[cfg(test)]

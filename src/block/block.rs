@@ -4,6 +4,10 @@ use std::collections::HashMap;
 
 #[derive(Debug, PartialEq)]
 pub enum Block {
+    ListItem {
+        attributes: Option<HashMap<String, String>>,
+        children: Option<Vec<Block>>,
+    },
     P {
         attributes: Option<HashMap<String, String>>,
         children: Option<Vec<Content>>,
