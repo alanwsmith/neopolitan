@@ -1,7 +1,11 @@
 use crate::content::content::Content;
+use nom::branch::alt;
+use nom::bytes::complete::take_until;
+use nom::combinator::rest;
 use nom::IResult;
 
 pub fn text(source: &str) -> IResult<&str, Content> {
+    let (a, b) = alt((take_until(" <<"), rest))(source)?;
     Ok((
         "",
         Content::Text {

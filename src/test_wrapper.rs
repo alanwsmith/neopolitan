@@ -20,7 +20,7 @@ fn integration_alfa() {
         "",
         "-> p",
         "",
-        "The road shimmered",
+        "The <<link|localhost:3000|road>> shimmered",
         "in the rain",
         "",
         "Lift the",
@@ -59,14 +59,48 @@ fn integration_alfa() {
                     children: Some(vec![
                         Block::P {
                             attributes: None,
-                            children: Some(vec![Content::Text {
-                                text: Some("The road shimmered\nin the rain".to_string()),
-                            }]),
+                            children: Some(vec![
+                                Content::Text {
+                                    text: Some("The ".to_string()), // road shimmered\nin the rain".to_string()),
+                                },
+                                Content::Link {
+                                    source: None,
+                                    attributes: None,
+                                    url: Some("localhost:3000".to_string()),
+                                    text: Some("road".to_string()),
+                                },
+                                Content::Text {
+                                    text: Some("shimmered\nin the rain".to_string()), // road shimmered\nin the rain".to_string()),
+                                },
+                            ]),
                         },
                         Block::P {
                             attributes: None,
                             children: Some(vec![Content::Text {
                                 text: Some("Lift the\nsquare stone\nover the\nfence.".to_string()),
+                            }]),
+                        },
+                    ]),
+                },
+                Section::List {
+                    attributes: None,
+                    children: Some(vec![
+                        Block::ListItem {
+                            attributes: None,
+                            children: Some(vec![Block::P {
+                                attributes: None,
+                                children: Some(vec![Content::Text {
+                                    text: Some("alfa bravo".to_string()),
+                                }]),
+                            }]),
+                        },
+                        Block::ListItem {
+                            attributes: None,
+                            children: Some(vec![Block::P {
+                                attributes: None,
+                                children: Some(vec![Content::Text {
+                                    text: Some("charlie delta\necho foxtrot".to_string()),
+                                }]),
                             }]),
                         },
                     ]),

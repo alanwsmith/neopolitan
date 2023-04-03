@@ -19,6 +19,7 @@ pub enum Content {
         text: Option<String>,
     },
 }
+
 pub fn content(source: &str) -> IResult<&str, Vec<Content>> {
     let (a, b) = alt((
         tag_no_case("<<link|").map(|_| Content::Link {
@@ -40,18 +41,55 @@ pub fn content(source: &str) -> IResult<&str, Vec<Content>> {
             text: _,
         } => link(a).unwrap(),
     })?;
-
     Ok((a, vec![b]))
+}
 
-    // dbg!(b);
-    // // text(source)?;
+pub fn content_dev(source: &str) -> IResult<&str, Content> {
+    let (a, b) = alt((
+        tag_no_case("<<link|").map(|_| Content::Link {
+            source: None,
+            attributes: None,
+            url: None,
+            text: None,
+        }),
+        rest.map(|x: &str| Content::Text {
+            text: Some(x.to_string()),
+        }),
+    ))(source)
+    .map(|(a, b)| match b {
+        Content::Text { text: _ } => (a, b),
+        Content::Link {
+            source: _,
+            attributes: _,
+            url: _,
+            text: _,
+        } => link(a).unwrap(),
+    })?;
+
+    Ok((a, b))
+
     // Ok((
-    //     "",
-    //     vec![Content::Link {
-    //         source: None,
-    //         attributes: None,
-    //         url: Some("https://www.example.com".to_string()),
-    //         text: Some("alfa bravo".to_string()),
-    //     }],
+    //     a,
+    //     Content::Text {
+    //         text: Some("the ".to_string()),
+    //     },
+    // ))
+
+    // Ok((
+    //     a,
+    //     vec![
+    //         Content::Text {
+    //             text: Some("the ".to_string()),
+    //         },
+    //         Content::Link {
+    //             source: None,
+    //             attributes: None,
+    //             url: Some("localhost:9090".to_string()),
+    //             text: Some("the ".to_string()),
+    //         },
+    //         Content::Text {
+    //             text: Some(" plank".to_string()),
+    //         },
+    //     ],
     // ))
 }

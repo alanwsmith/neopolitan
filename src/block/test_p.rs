@@ -1,5 +1,5 @@
 use crate::block::block::Block;
-use crate::block::p::p;
+use crate::block::p::*;
 use crate::content::content::Content;
 
 #[test]
@@ -48,5 +48,33 @@ fn multiple_lines() {
         },
     ));
     let result = p(source);
+    assert_eq!(expected, result);
+}
+
+#[test]
+fn inline_link() {
+    let lines = ["the <<link|localhost:9090|wood>> plank"].join("\n");
+    let source = lines.as_str();
+    let expected = Ok((
+        "",
+        Block::P {
+            attributes: None,
+            children: Some(vec![
+                Content::Text {
+                    text: Some("the ".to_string()),
+                },
+                Content::Link {
+                    source: None,
+                    attributes: None,
+                    url: Some("localhost:9090".to_string()),
+                    text: Some("the ".to_string()),
+                },
+                Content::Text {
+                    text: Some(" plank".to_string()),
+                },
+            ]),
+        },
+    ));
+    let result = p_dev(source);
     assert_eq!(expected, result);
 }
