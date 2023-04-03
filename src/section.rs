@@ -49,7 +49,6 @@ pub fn section(source: &str) -> IResult<&str, Section> {
 mod tests {
     use super::*;
     use crate::content::*;
-
     #[test]
     fn test1() {
         let source = "-> title\n\nHere it is";

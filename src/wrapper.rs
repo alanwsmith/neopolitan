@@ -25,7 +25,9 @@ mod test {
 
     #[test]
     fn basic_page_test() {
-        let source = "-> title\n\nHello, Neopolitan";
+        let lines = vec!["-> title", "", "Hello, Neopolitan"].join("\n");
+        let source = lines.as_str();
+        // let source = "-> title\n\nHello, Neopolitan";
         let expected = Ok((
             "",
             Wrapper::Page {
