@@ -1,7 +1,7 @@
 #![allow(warnings)]
 use neopolitan::block::Block;
 use neopolitan::content::Content;
-use neopolitan::section::Section;
+use neopolitan::section::*;
 use neopolitan::title::title;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -40,32 +40,6 @@ fn parse(source: &str) -> IResult<&str, Wrapper> {
         }]),
     };
     Ok(("", page))
-}
-
-fn section(source: &str) -> IResult<&str, Section> {
-    let (a, b) = alt((
-        tuple((tag("->"), space1, tag_no_case("title"), space0, newline)).map(|(_, _, _, _, _)| {
-            Section::Title {
-                attributes: None,
-                children: None,
-            }
-        }),
-        tuple((tag("->"), space1, tag_no_case("title"), space0, newline)).map(|(_, _, _, _, _)| {
-            Section::Title {
-                attributes: None,
-                children: None,
-            }
-        }),
-    ))(source)
-    .map(|(a, b)| match b {
-        Section::Title {
-            attributes,
-            children,
-        } => title(a).unwrap(),
-        Section::Placeholder => (a, b),
-    })?;
-    // dbg!(&b);
-    Ok(("", b))
 }
 
 #[test]
