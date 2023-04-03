@@ -8,7 +8,7 @@ pub mod section;
 // pub mod test_p;
 // #[cfg(test)]
 // pub mod test_title;
-// #[cfg(test)]
+#[cfg(test)]
 pub mod test_wrapper;
 // pub mod text;
 // pub mod title;
