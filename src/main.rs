@@ -1,4 +1,8 @@
 #![allow(warnings)]
+use neopolitan::block::Block;
+use neopolitan::content::Content;
+use neopolitan::section::Section;
+use neopolitan::title::title;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
@@ -16,28 +20,6 @@ use std::collections::HashMap;
 #[derive(Debug, PartialEq)]
 enum Wrapper {
     Page { children: Option<Vec<Section>> },
-}
-
-#[derive(Debug, PartialEq)]
-enum Section {
-    Title {
-        attributes: Option<HashMap<String, String>>,
-        children: Option<Vec<Block>>,
-    },
-    Placeholder,
-}
-
-#[derive(Debug, PartialEq)]
-enum Block {
-    P {
-        attributes: Option<HashMap<String, String>>,
-        children: Option<Vec<Content>>,
-    },
-}
-
-#[derive(Debug, PartialEq)]
-enum Content {
-    Text { value: Option<String> },
 }
 
 fn main() {
@@ -75,48 +57,15 @@ fn section(source: &str) -> IResult<&str, Section> {
             }
         }),
     ))(source)
-    .map(|(a, b)| {
-        match b {
-            Section::Title {
-                attributes,
-                children,
-            } => {
-                let children: Vec<Block> = vec![];
-                (
-                    a,
-                    Section::Title {
-                        attributes,
-                        children: Some(children),
-                    },
-                )
-
-                // children = Some(vec![]);
-                // dbg!(&a);
-                // dbg!(&b);
-                // (a, b)
-            }
-            Section::Placeholder => (a, b),
-        }
-        // dbg!(&b);
-        // (a, b)
-    })?;
-    // let (a, b) = tag_no_case("title")(source)
-
-    // dbg!(&source);
-    // dbg!(&a);
-    dbg!(&b);
-    Ok(("", b))
-}
-
-fn title(source: &str) -> IResult<&str, Section> {
-    dbg!(&source);
-    Ok((
-        "",
+    .map(|(a, b)| match b {
         Section::Title {
-            attributes: None,
-            children: None,
-        },
-    ))
+            attributes,
+            children,
+        } => title(a).unwrap(),
+        Section::Placeholder => (a, b),
+    })?;
+    // dbg!(&b);
+    Ok(("", b))
 }
 
 #[test]
