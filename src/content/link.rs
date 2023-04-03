@@ -1,4 +1,4 @@
-use crate::content::Content;
+use crate::content::content::*;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
 use nom::IResult;
@@ -25,7 +25,7 @@ pub fn link(source: &str) -> IResult<&str, Content> {
 mod tests {
 
     use super::*;
-    use crate::content::Content;
+    use crate::content::content::*;
 
     #[test]
     fn basic_link() {

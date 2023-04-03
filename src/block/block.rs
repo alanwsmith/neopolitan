@@ -1,4 +1,4 @@
-use crate::content::Content;
+use crate::content::content::Content;
 use nom::IResult;
 use std::collections::HashMap;
 

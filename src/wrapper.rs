@@ -1,5 +1,5 @@
-use crate::section::section;
-use crate::section::Section;
+use crate::section::section::section;
+use crate::section::section::Section;
 use nom::combinator::eof;
 use nom::multi::many_till;
 use nom::IResult;

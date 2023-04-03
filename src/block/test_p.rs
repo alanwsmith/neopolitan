@@ -1,6 +1,6 @@
-use crate::block::Block;
-use crate::content::Content;
-use crate::p::p;
+use crate::block::block::Block;
+use crate::block::p::p;
+use crate::content::content::Content;
 
 #[test]
 fn basic() {

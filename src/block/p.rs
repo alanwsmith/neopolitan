@@ -1,5 +1,5 @@
-use crate::block::Block;
-use crate::content::*;
+use crate::block::block::Block;
+use crate::content::content::*;
 use nom::branch::alt;
 use nom::bytes::complete::take_until;
 use nom::character::complete::multispace0;

@@ -1,7 +1,7 @@
-use crate::block::Block;
-use crate::content::Content;
-use crate::section::Section;
-use crate::title::*;
+use crate::block::block::Block;
+use crate::content::content::Content;
+use crate::section::section::Section;
+use crate::section::title::*;
 
 #[test]
 fn to_paragraphs() {

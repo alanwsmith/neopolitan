@@ -1,5 +1,5 @@
-use crate::link::link;
-use crate::text::text;
+use crate::content::link::link;
+use crate::content::text::text;
 use nom::branch::alt;
 use nom::bytes::complete::tag_no_case;
 use nom::combinator::rest;

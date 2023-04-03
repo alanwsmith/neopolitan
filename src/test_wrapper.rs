@@ -1,6 +1,6 @@
-use crate::block::*;
-use crate::content::*;
-use crate::section::*;
+use crate::block::block::*;
+use crate::content::content::*;
+use crate::section::section::*;
 use crate::wrapper::*;
 
 // This is the primary integration test file

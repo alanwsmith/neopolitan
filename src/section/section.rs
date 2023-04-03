@@ -1,6 +1,6 @@
-use crate::block::Block;
-use crate::p_section::*;
-use crate::title::title;
+use crate::block::block::Block;
+use crate::section::p::*;
+use crate::section::title::title;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
@@ -58,7 +58,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::content::*;
+    use crate::content::content::*;
     #[test]
     fn test1() {
         let source = "-> title\n\nHere it is";

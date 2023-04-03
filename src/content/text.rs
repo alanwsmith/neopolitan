@@ -1,4 +1,4 @@
-use crate::content::Content;
+use crate::content::content::Content;
 use nom::IResult;
 
 pub fn text(source: &str) -> IResult<&str, Content> {
@@ -13,7 +13,7 @@ pub fn text(source: &str) -> IResult<&str, Content> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::content::Content;
+    use crate::content::content::Content;
     #[test]
     fn basic_text_response() {
         let source = "Here it is";

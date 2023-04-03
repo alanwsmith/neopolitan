@@ -1,9 +1,9 @@
 #![allow(unused_variables)]
 #![allow(unused_imports)]
-use crate::block::Block;
-use crate::content::Content;
-use crate::p::p;
-use crate::section::Section;
+use crate::block::block::Block;
+use crate::block::p::p;
+use crate::content::content::Content;
+use crate::section::section::Section;
 use nom::branch::alt;
 use nom::bytes::complete::take_until;
 use nom::character::complete::multispace0;
