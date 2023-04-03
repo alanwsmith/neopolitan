@@ -12,19 +12,6 @@ use nom::combinator::rest;
 use nom::multi::many_till;
 use nom::IResult;
 
-// pub fn title(source: &str) -> IResult<&str, Section> {
-//     return title_dev(source);
-//     let (source, _) = multispace0(source)?;
-//     let (_source, paragraphs) = many_till(p, eof)(source)?;
-//     Ok((
-//         "",
-//         Section::Title {
-//             attributes: None,
-//             children: Some(paragraphs.0),
-//         },
-//     ))
-// }
-
 pub fn title(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (source, captured) = alt((take_until("->"), rest))(source)?;

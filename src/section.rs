@@ -26,7 +26,7 @@ pub enum Section {
 }
 
 pub fn section(source: &str) -> IResult<&str, Section> {
-    let (_, b) = alt((
+    let (a, b) = alt((
         tuple((tag("->"), space1, tag_no_case("p"), space0, newline)).map(|(_, _, _, _, _)| {
             Section::P {
                 attributes: None,
@@ -52,7 +52,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         Section::Placeholder => (a, b),
         _ => (a, b),
     })?;
-    Ok(("", b))
+    Ok((a, b))
 }
 
 #[cfg(test)]
