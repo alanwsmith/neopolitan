@@ -50,7 +50,6 @@ mod tests {
     use super::*;
     use crate::content::*;
 
-    #[ignore]
     #[test]
     fn test1() {
         let source = "-> title\n\nHere it is";

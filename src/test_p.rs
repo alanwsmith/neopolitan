@@ -17,3 +17,19 @@ fn basic() {
     let result = p(source);
     assert_eq!(expected, result);
 }
+
+#[test]
+fn no_lines_at_end() {
+    let source = "charlie delta";
+    let expected = Ok((
+        "",
+        Block::P {
+            attributes: None,
+            children: Some(vec![Content::Text {
+                text: Some("charlie delta".to_string()),
+            }]),
+        },
+    ));
+    let result = p(source);
+    assert_eq!(expected, result);
+}
