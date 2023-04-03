@@ -2,7 +2,7 @@ use crate::enums::*;
 use crate::parse::parse;
 
 #[test]
-fn basic_test() {
+fn alfa() {
     let lines = vec![
         "-> title",
         "",
