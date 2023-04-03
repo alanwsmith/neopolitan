@@ -1,14 +1,10 @@
 use crate::block::Block;
 use crate::content::Content;
-use crate::p::p;
 use crate::section::Section;
-use nom::character::complete::multispace0;
-use nom::combinator::eof;
-use nom::multi::many_till;
-use nom::IResult;
+use crate::title::*;
 
 #[test]
-fn dev_title_test() {
+fn to_paragraphs() {
     let source = "\nHello, World\n\nquick brown fox";
     let expected = Ok((
         "",
@@ -35,10 +31,10 @@ fn dev_title_test() {
 }
 
 #[test]
-fn basic_title_response() {
-    let source = "\nHello, World";
+fn single_line() {
+    let source = "\nHello, World\n\n-> p\n\nmore content";
     let expected = Ok((
-        "",
+        "-> p\n\nmore content",
         Section::Title {
             attributes: None,
             children: Some(vec![Block::P {
