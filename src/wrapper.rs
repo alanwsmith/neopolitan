@@ -19,7 +19,6 @@ pub fn wrapper(source: &str) -> IResult<&str, Wrapper> {
 
 #[cfg(test)]
 mod test {
-
     use super::*;
     use crate::block::Block;
     use crate::content::Content;
