@@ -11,7 +11,7 @@ pub fn title(source: &str) -> IResult<&str, Section> {
             children: Some(vec![Block::P {
                 attributes: None,
                 children: Some(vec![Content::Text {
-                    text: Some(source.to_string()),
+                    text: Some(source.trim().to_string()),
                 }]),
             }]),
         },
@@ -24,7 +24,7 @@ mod tests {
     use crate::section::Section;
     #[test]
     fn basic_title_response() {
-        let source = "Hello, World";
+        let source = "\nHello, World";
         let expected = Ok((
             "",
             Section::Title {
