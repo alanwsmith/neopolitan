@@ -21,6 +21,15 @@ fn integration_alfa() {
         "",
         "The road shimmered",
         "in the rain",
+        "",
+        "Lift the",
+        "square stone",
+        "over the",
+        "fence.",
+        "",
+        "-> blurb",
+        "",
+        "A quick test run",
     ]
     .join("\n");
     let source = lines.as_str();
@@ -39,10 +48,27 @@ fn integration_alfa() {
                 },
                 Section::P {
                     attributes: None,
+                    children: Some(vec![
+                        Block::P {
+                            attributes: None,
+                            children: Some(vec![Content::Text {
+                                text: Some("The road shimmered\nin the rain".to_string()),
+                            }]),
+                        },
+                        Block::P {
+                            attributes: None,
+                            children: Some(vec![Content::Text {
+                                text: Some("Lift the\nsquare stone\nover the\nfence.".to_string()),
+                            }]),
+                        },
+                    ]),
+                },
+                Section::Blurb {
+                    attributes: None,
                     children: Some(vec![Block::P {
                         attributes: None,
                         children: Some(vec![Content::Text {
-                            text: Some("The road shimmered\nin the rain".to_string()),
+                            text: Some("A quick test run".to_string()),
                         }]),
                     }]),
                 },
