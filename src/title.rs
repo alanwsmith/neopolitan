@@ -3,7 +3,7 @@ use crate::content::Content;
 use crate::section::Section;
 use nom::IResult;
 
-pub fn title(_source: &str) -> IResult<&str, Section> {
+pub fn title(source: &str) -> IResult<&str, Section> {
     Ok((
         "",
         Section::Title {
@@ -11,7 +11,7 @@ pub fn title(_source: &str) -> IResult<&str, Section> {
             children: Some(vec![Block::P {
                 attributes: None,
                 children: Some(vec![Content::Text {
-                    value: Some("Hello, World".to_string()),
+                    text: Some(source.to_string()),
                 }]),
             }]),
         },
@@ -24,7 +24,7 @@ mod tests {
     use crate::section::Section;
     #[test]
     fn basic_title_response() {
-        let source = "\nHello world";
+        let source = "Hello, World";
         let expected = Ok((
             "",
             Section::Title {
@@ -32,7 +32,7 @@ mod tests {
                 children: Some(vec![Block::P {
                     attributes: None,
                     children: Some(vec![Content::Text {
-                        value: Some("Hello, World".to_string()),
+                        text: Some("Hello, World".to_string()),
                     }]),
                 }]),
             },

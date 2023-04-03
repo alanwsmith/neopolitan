@@ -1,16 +1,11 @@
-#![allow(warnings)]
 use crate::block::Block;
-use crate::content::Content;
 use crate::title::title;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
-use nom::character::complete::multispace0;
 use nom::character::complete::newline;
 use nom::character::complete::space0;
 use nom::character::complete::space1;
-use nom::combinator::eof;
-use nom::multi::many_till;
 use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
@@ -26,7 +21,7 @@ pub enum Section {
 }
 
 pub fn section(source: &str) -> IResult<&str, Section> {
-    let (a, b) = alt((
+    let (_, b) = alt((
         tuple((tag("->"), space1, tag_no_case("title"), space0, newline)).map(|(_, _, _, _, _)| {
             Section::Title {
                 attributes: None,
@@ -42,10 +37,33 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     ))(source)
     .map(|(a, b)| match b {
         Section::Title {
-            attributes,
-            children,
+            attributes: _,
+            children: _,
         } => title(a).unwrap(),
         Section::Placeholder => (a, b),
     })?;
     Ok(("", b))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::content::*;
+
+    #[ignore]
+    #[test]
+    fn test1() {
+        let source = "-> title\n\nHere it is";
+        let expected = Section::Title {
+            attributes: None,
+            children: Some(vec![Block::P {
+                attributes: None,
+                children: Some(vec![Content::Text {
+                    text: Some("Here it is".to_string()),
+                }]),
+            }]),
+        };
+        let (_, result) = section(source).unwrap();
+        assert_eq!(expected, result);
+    }
 }

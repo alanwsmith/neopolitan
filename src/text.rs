@@ -5,7 +5,7 @@ pub fn text(source: &str) -> IResult<&str, Content> {
     Ok((
         "",
         Content::Text {
-            value: Some(source.to_string()),
+            text: Some(source.to_string()),
         },
     ))
 }
@@ -20,7 +20,7 @@ mod tests {
         let expected = Ok((
             "",
             Content::Text {
-                value: Some("Here it is".to_string()),
+                text: Some("Here it is".to_string()),
             },
         ));
         let result = text(source);

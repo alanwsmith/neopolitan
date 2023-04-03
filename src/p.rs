@@ -30,7 +30,7 @@ mod tests {
             Block::P {
                 attributes: None,
                 children: Some(vec![Content::Text {
-                    value: Some("alfa bravo".to_string()),
+                    text: Some("alfa bravo".to_string()),
                 }]),
             },
         ));
