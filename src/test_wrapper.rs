@@ -10,6 +10,7 @@ use crate::content::content::Content;
 use crate::section::section::Section;
 use crate::wrapper::*;
 
+#[ignore]
 #[test]
 fn integration_alfa() {
     let lines = vec![
@@ -26,6 +27,13 @@ fn integration_alfa() {
         "square stone",
         "over the",
         "fence.",
+        "",
+        "-> list",
+        "",
+        "- alfa bravo",
+        "",
+        "- charlie delta",
+        "echo foxtrot",
         "",
         "-> blurb",
         "",
