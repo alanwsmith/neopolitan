@@ -8,7 +8,7 @@ pub fn parse(source: &str) -> IResult<&str, Wrapper> {
     dbg!(source);
     let (_, sections) = many_till(section, eof)(source)?;
     let expected = Wrapper::Page {
-        children: sections.0,
+        children: Some(sections.0),
     };
     Ok(("", expected))
 }

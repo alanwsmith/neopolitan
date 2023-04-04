@@ -1,6 +1,15 @@
 use crate::enums::*;
 use crate::parse::parse;
 
+// #[test]
+// fn bravo() {
+//     let lines = vec!["-> title", ">> id: bravo", ""].join("\n");
+//     let source = lines.as_str();
+//     let expected = Wrapper::Page {
+//     }
+//     parse(source);
+// }
+
 #[test]
 fn alfa() {
     let lines = vec![
@@ -18,10 +27,11 @@ fn alfa() {
     .join("\n");
     let source = lines.as_str();
     let expected = Wrapper::Page {
-        children: vec![
+        children: Some(vec![
             Section::Title {
-                children: vec![Block::P {
-                    children: vec![
+                attributes: None,
+                children: Some(vec![Block::P {
+                    children: Some(vec![
                         Content::Text {
                             text: "quick".to_string(),
                         },
@@ -34,13 +44,13 @@ fn alfa() {
                         Content::Text {
                             text: "fox".to_string(),
                         },
-                    ],
-                }],
+                    ]),
+                }]),
             },
             Section::Paragraphs {
-                children: vec![
+                children: Some(vec![
                     Block::P {
-                        children: vec![
+                        children: Some(vec![
                             Content::Text {
                                 text: "the".to_string(),
                             },
@@ -52,10 +62,10 @@ fn alfa() {
                             Content::Text {
                                 text: "cover".to_string(),
                             },
-                        ],
+                        ]),
                     },
                     Block::P {
-                        children: vec![
+                        children: Some(vec![
                             Content::Text {
                                 text: "random".to_string(),
                             },
@@ -71,11 +81,11 @@ fn alfa() {
                             Content::Text {
                                 text: "content".to_string(),
                             },
-                        ],
+                        ]),
                     },
-                ],
+                ]),
             },
-        ],
+        ]),
     };
     let result = parse(source).unwrap().1;
     assert_eq!(expected, result);
