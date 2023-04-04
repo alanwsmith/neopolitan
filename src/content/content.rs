@@ -1,3 +1,4 @@
+use crate::attribute::*;
 use crate::content::link::link;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -12,9 +13,9 @@ use nom::Parser;
 #[derive(Debug, PartialEq)]
 pub enum Content {
     Link {
-        attributes: Option<Vec<(String, String)>>,
-        text: String,
-        url: String,
+        attributes: Option<Vec<Attribute>>,
+        text: Option<String>,
+        url: Option<String>,
     },
     Text {
         text: String,

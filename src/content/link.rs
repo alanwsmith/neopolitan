@@ -18,8 +18,8 @@ pub fn link<'a>(
         "",
         Content::Link {
             attributes: None,
-            url: source.1.to_string(),
-            text: source.3.to_string(),
+            url: Some(source.1.to_string()),
+            text: Some(source.3.to_string()),
         },
     ))
 }

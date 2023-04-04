@@ -1,3 +1,4 @@
+pub mod attribute;
 pub mod block;
 pub mod content;
 pub mod parse;

@@ -33,8 +33,8 @@ fn alfa() {
                         Content::Space,
                         Content::Link {
                             attributes: None,
-                            text: "brown".to_string(),
-                            url: "example.com".to_string(),
+                            text: Some("brown".to_string()),
+                            url: Some("example.com".to_string()),
                         },
                         Content::Space,
                         Content::Text {
