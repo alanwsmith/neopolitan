@@ -22,6 +22,7 @@ pub enum Section {
         children: Option<Vec<Block>>,
     },
     Paragraphs {
+        attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
 }

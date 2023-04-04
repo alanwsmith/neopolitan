@@ -48,6 +48,7 @@ fn alfa() {
                 }]),
             },
             Section::Paragraphs {
+                attributes: None,
                 children: Some(vec![
                     Block::P {
                         children: Some(vec![

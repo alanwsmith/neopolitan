@@ -84,6 +84,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         tuple((tag("-> p\n\n"), alt((take_until("\n\n-> "), rest)))).map(|t| {
             let (_, b) = many_till(block, eof)(t.1).unwrap();
             Section::Paragraphs {
+                attributes: None,
                 children: Some(b.0),
             }
         }),
