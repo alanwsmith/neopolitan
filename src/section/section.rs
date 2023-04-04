@@ -42,8 +42,9 @@ pub enum Section {
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (remainder, sec) = alt((
-        tuple((tag("-> title\n"), alt((take_until("\n\n-> "), rest)))).map(|t| title(t.1)),
-        tuple((tag("-> p\n\n"), alt((take_until("\n\n-> "), rest)))).map(|t| p(t.1)),
+        tuple((tag("-> title\n"), alt((take_until("\n\n-> "), rest))))
+            .map(|t| title(t.1).unwrap().1),
+        tuple((tag("-> p\n"), alt((take_until("\n\n-> "), rest)))).map(|t| p(t.1).unwrap().1),
     ))(source)?;
-    Ok((remainder, sec.unwrap().1))
+    Ok((remainder, sec))
 }

@@ -5,7 +5,7 @@ use crate::section::section::*;
 use crate::section::section_attributes::*;
 use crate::wrapper::wrapper::*;
 
-#[ignore]
+// #[ignore]
 #[test]
 fn charlie() {
     let lines = vec![
@@ -16,6 +16,7 @@ fn charlie() {
         "",
         "-> p",
         ">> alfa: bravo charlie",
+        ">> delta: echo",
         "",
         "the book cover",
         "",
@@ -51,7 +52,16 @@ fn charlie() {
                 }]),
             },
             Section::Paragraphs {
-                attributes: None,
+                attributes: Some(vec![
+                    SectionAttribute::Attribute {
+                        key: Some("alfa".to_string()),
+                        value: Some("bravo charlie".to_string()),
+                    },
+                    SectionAttribute::Attribute {
+                        key: Some("delta".to_string()),
+                        value: Some("echo".to_string()),
+                    },
+                ]),
                 children: Some(vec![
                     Block::P {
                         children: Some(vec![
