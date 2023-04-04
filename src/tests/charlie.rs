@@ -22,6 +22,11 @@ fn charlie() {
         "",
         "random string",
         "with content",
+        "",
+        "-> p",
+        "",
+        "the long boat",
+        "",
     ]
     .join("\n");
     let source = lines.as_str();
@@ -98,6 +103,24 @@ fn charlie() {
                         ]),
                     },
                 ]),
+            },
+            Section::Paragraphs {
+                attributes: None,
+                children: Some(vec![Block::P {
+                    children: Some(vec![
+                        Content::Text {
+                            text: "the".to_string(),
+                        },
+                        Content::Space,
+                        Content::Text {
+                            text: "long".to_string(),
+                        },
+                        Content::Space,
+                        Content::Text {
+                            text: "boat".to_string(),
+                        },
+                    ]),
+                }]),
             },
         ]),
     };
