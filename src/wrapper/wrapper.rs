@@ -83,13 +83,13 @@ pub enum Wrapper {
 //     Ok((remainder, sec))
 // }
 
-pub fn block(source: &str) -> IResult<&str, Block> {
-    // dbg!(source);
-    let (remainder, content) = many_till(content, alt((tag("\n\n"), eof)))(source)?;
-    Ok((
-        remainder,
-        Block::P {
-            children: Some(content.0),
-        },
-    ))
-}
+// pub fn block(source: &str) -> IResult<&str, Block> {
+//     // dbg!(source);
+//     let (remainder, content) = many_till(content, alt((tag("\n\n"), eof)))(source)?;
+//     Ok((
+//         remainder,
+//         Block::P {
+//             children: Some(content.0),
+//         },
+//     ))
+// }
