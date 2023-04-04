@@ -67,16 +67,10 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             // still not sure this is the right way to go about this.
             let (a, _) = multispace0::<&str, Error<&str>>(s).unwrap();
             let (_, b) = many_till(block, eof)(a).unwrap();
-            if b.0.is_empty() {
-                Section::Title {
-                    attributes,
-                    children: None,
-                }
-            } else {
-                Section::Title {
-                    attributes,
-                    children: Some(b.0),
-                }
+            let children = if b.0.is_empty() { None } else { Some(b.0) };
+            Section::Title {
+                attributes,
+                children,
             }
         }),
         tuple((tag("-> p\n\n"), alt((take_until("\n\n-> "), rest)))).map(|t| {
