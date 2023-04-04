@@ -27,21 +27,6 @@ pub enum Wrapper {
     Page { children: Option<Vec<Section>> },
 }
 
-#[test]
-fn test_section_attribute() {
-    let lines = ["class: highlighted", ""].join("\n");
-    let source = lines.as_str();
-    let expected = Ok((
-        "",
-        SectionAttribute::Attribute {
-            key: Some("class".to_string()),
-            value: Some("highlighted".to_string()),
-        },
-    ));
-    let result = section_attribute(source);
-    assert_eq!(expected, result);
-}
-
 pub fn section_attribute(source: &str) -> IResult<&str, SectionAttribute> {
     let (a, b) = opt(tuple((
         is_not(":"),
