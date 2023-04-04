@@ -5,14 +5,14 @@ use crate::section::section::*;
 use crate::section::section_attributes::*;
 use crate::wrapper::wrapper::*;
 
-// #[ignore]
+#[ignore]
 #[test]
 fn charlie() {
     let lines = vec![
         "-> title",
         ">> id: opening",
         "",
-        "quick <<link|example.com|brown>> fox",
+        "quick <<link|example.com|brown|class: active>> fox",
         "",
         "-> p",
         ">> alfa: bravo charlie",
@@ -46,6 +46,7 @@ fn charlie() {
                         },
                         Content::Space,
                         Content::Link {
+                            attributes: None,
                             text: "brown".to_string(),
                             url: "example.com".to_string(),
                         },

@@ -11,8 +11,14 @@ use nom::Parser;
 
 #[derive(Debug, PartialEq)]
 pub enum Content {
-    Link { text: String, url: String },
-    Text { text: String },
+    Link {
+        attributes: Option<Vec<(String, String)>>,
+        text: String,
+        url: String,
+    },
+    Text {
+        text: String,
+    },
     Space,
 }
 
