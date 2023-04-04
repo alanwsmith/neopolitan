@@ -2,17 +2,20 @@ use crate::block::block::*;
 use crate::content::content::*;
 use crate::parse::parse;
 use crate::section::section::*;
-// use crate::section::section_attributes::*;
+use crate::section::section_attributes::*;
 use crate::wrapper::wrapper::*;
 
+#[ignore]
 #[test]
-fn alfa() {
+fn charlie() {
     let lines = vec![
         "-> title",
+        ">> id: opening",
         "",
         "quick <<link|example.com|brown>> fox",
         "",
         "-> p",
+        ">> alfa: bravo charlie",
         "",
         "the book cover",
         "",
@@ -24,7 +27,12 @@ fn alfa() {
     let expected = Wrapper::Page {
         children: Some(vec![
             Section::Title {
-                attributes: None,
+                attributes: Some(vec![
+                    (SectionAttribute::Attribute {
+                        key: Some("id".to_string()),
+                        value: Some("opening".to_string()),
+                    }),
+                ]),
                 children: Some(vec![Block::P {
                     children: Some(vec![
                         Content::Text {
