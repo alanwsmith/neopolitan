@@ -1,13 +1,14 @@
-use crate::enums::*;
+use crate::block::block::Block;
+use crate::section::section::*;
+use crate::section::section_attributes::SectionAttribute;
+// use crate::wrapper::wrapper::content;
+use crate::content::content::*;
 use nom::branch::alt;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
-use nom::bytes::complete::tag_no_case;
-use nom::bytes::complete::take_till;
 use nom::bytes::complete::take_until;
 use nom::character::complete::line_ending;
 use nom::character::complete::multispace0;
-use nom::character::complete::multispace1;
 use nom::character::complete::not_line_ending;
 use nom::character::complete::space1;
 use nom::combinator::eof;
@@ -20,6 +21,11 @@ use nom::sequence::preceded;
 use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
+
+#[derive(Debug, PartialEq)]
+pub enum Wrapper {
+    Page { children: Option<Vec<Section>> },
+}
 
 #[test]
 fn test_section_attribute() {
@@ -100,28 +106,4 @@ pub fn block(source: &str) -> IResult<&str, Block> {
             children: Some(content.0),
         },
     ))
-}
-
-pub fn content(source: &str) -> IResult<&str, Content> {
-    // dbg!(source);
-    let (remainder, content) = alt((
-        tuple((
-            // I'm not sure if this is the right way to
-            // setup the type as &str, but it works so far.
-            tag_no_case::<&str, &str, Error<&str>>("<<link|"),
-            take_until("|"),
-            tag("|"),
-            take_until(">>"),
-            tag(">>"),
-        ))
-        .map(|t| Content::Link {
-            url: t.1.to_string(),
-            text: t.3.to_string(),
-        }),
-        multispace1.map(|_| Content::Space),
-        take_till(|c| c == ' ' || c == '\n' || c == '\t').map(|t: &str| Content::Text {
-            text: t.to_string(),
-        }),
-    ))(source)?;
-    Ok((remainder, content))
 }
