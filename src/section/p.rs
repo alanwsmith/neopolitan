@@ -10,7 +10,7 @@ use nom::multi::many_till;
 use nom::sequence::preceded;
 use nom::IResult;
 
-pub fn title(source: &str) -> IResult<&str, Section> {
+pub fn p(source: &str) -> IResult<&str, Section> {
     let (s, att_capture) = many0(preceded(tag(">> "), section_attribute))(source).unwrap();
     let attributes = if att_capture.is_empty() {
         None
@@ -23,7 +23,7 @@ pub fn title(source: &str) -> IResult<&str, Section> {
     let children = if b.0.is_empty() { None } else { Some(b.0) };
     Ok((
         x,
-        Section::Title {
+        Section::Paragraphs {
             attributes,
             children,
         },
