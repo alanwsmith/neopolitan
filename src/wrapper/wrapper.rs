@@ -58,34 +58,39 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (remainder, sec) = alt((
         tuple((tag("-> title\n"), alt((take_until("\n\n-> "), rest)))).map(|t| {
-            let (s, d) = many0(preceded(tag(">> "), section_attribute))(t.1).unwrap();
-
-            dbg!(s);
-            dbg!(d);
-
+            let (s, att_capture) = many0(preceded(tag(">> "), section_attribute))(t.1).unwrap();
+            let attributes = if att_capture.is_empty() {
+                None
+            } else {
+                Some(att_capture)
+            };
             // still not sure this is the right way to go about this.
-            let (a, _attributes) = tag::<&str, &str, Error<&str>>("\n")(t.1).unwrap();
+            let (a, _) = multispace0::<&str, Error<&str>>(s).unwrap();
             let (_, b) = many_till(block, eof)(a).unwrap();
-            Section::Title {
-                attributes: None,
-                children: Some(b.0),
+            if b.0.is_empty() {
+                Section::Title {
+                    attributes,
+                    children: None,
+                }
+            } else {
+                Section::Title {
+                    attributes,
+                    children: Some(b.0),
+                }
             }
         }),
-        ////
-        //tuple((tag("-> title\n\n"), alt((take_until("\n\n-> "), rest)))).map(|t| {
-        //    let (_, b) = many_till(block, eof)(t.1).unwrap();
-        //    Section::Title {
-        //        attributes: None,
-        //        children: b.0,
-        //    }
-        //}),
-
-        //
         tuple((tag("-> p\n\n"), alt((take_until("\n\n-> "), rest)))).map(|t| {
             let (_, b) = many_till(block, eof)(t.1).unwrap();
-            Section::Paragraphs {
-                attributes: None,
-                children: Some(b.0),
+            if b.0.is_empty() {
+                Section::Paragraphs {
+                    attributes: None,
+                    children: None,
+                }
+            } else {
+                Section::Paragraphs {
+                    attributes: None,
+                    children: Some(b.0),
+                }
             }
         }),
     ))(source)?;
