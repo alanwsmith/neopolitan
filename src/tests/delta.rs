@@ -1,5 +1,6 @@
 // use crate::block::block::*;
 // use crate::content::content::*;
+use crate::attribute::*;
 use crate::block::block::*;
 use crate::content::content::*;
 use crate::parse::parse;
@@ -13,6 +14,10 @@ fn delta() {
         "",
         "alfa <<b|bravo>> charlie",
         "<<b|delta>> <<b|echo>> <<b|foxtrot>>",
+        "<<b|golf|class: advanced>>",
+        "<<code|quick brown>>",
+        "<<code|slow fox|lang: rust>>",
+        "<<code|slow fox|rust>>",
     ]
     .join("\n");
     let source = lines.as_str();
@@ -47,6 +52,35 @@ fn delta() {
                     Content::B {
                         attributes: None,
                         text: Some("foxtrot".to_string()),
+                    },
+                    Content::Space,
+                    Content::B {
+                        attributes: Some(vec![Attribute::Basic {
+                            key: Some("class".to_string()),
+                            value: Some("advanced".to_string()),
+                        }]),
+                        text: Some("golf".to_string()),
+                    },
+                    Content::Space,
+                    Content::Code {
+                        attributes: None,
+                        text: Some("quick brown".to_string()),
+                    },
+                    Content::Space,
+                    Content::Code {
+                        attributes: Some(vec![Attribute::Basic {
+                            key: Some("lang".to_string()),
+                            value: Some("rust".to_string()),
+                        }]),
+                        text: Some("slow fox".to_string()),
+                    },
+                    Content::Space,
+                    Content::Code {
+                        attributes: Some(vec![Attribute::Basic {
+                            key: Some("rust".to_string()),
+                            value: None,
+                        }]),
+                        text: Some("slow fox".to_string()),
                     },
                 ]),
             }]),
