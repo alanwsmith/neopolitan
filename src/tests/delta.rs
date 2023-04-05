@@ -8,7 +8,13 @@ use crate::wrapper::wrapper::*;
 
 #[test]
 fn delta() {
-    let lines = vec!["-> p", "", "alfa <<b|bravo>> charlie"].join("\n");
+    let lines = vec![
+        "-> p",
+        "",
+        "alfa <<b|bravo>> charlie",
+        "<<b|delta>> <<b|echo>> <<b|foxtrot>>",
+    ]
+    .join("\n");
     let source = lines.as_str();
     let expected = Wrapper::Page {
         children: Some(vec![Section::Paragraphs {
@@ -26,6 +32,21 @@ fn delta() {
                     Content::Space,
                     Content::Text {
                         text: Some("charlie".to_string()),
+                    },
+                    Content::Space,
+                    Content::B {
+                        attributes: None,
+                        text: Some("delta".to_string()),
+                    },
+                    Content::Space,
+                    Content::B {
+                        attributes: None,
+                        text: Some("echo".to_string()),
+                    },
+                    Content::Space,
+                    Content::B {
+                        attributes: None,
+                        text: Some("foxtrot".to_string()),
                     },
                 ]),
             }]),
