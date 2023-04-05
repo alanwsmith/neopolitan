@@ -1,4 +1,5 @@
 use crate::attribute::*;
+use crate::content::b::b;
 use crate::content::link::link;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -12,6 +13,10 @@ use nom::Parser;
 
 #[derive(Debug, PartialEq)]
 pub enum Content {
+    B {
+        attributes: Option<Vec<Attribute>>,
+        text: Option<String>,
+    },
     Link {
         attributes: Option<Vec<Attribute>>,
         text: Option<String>,
@@ -26,6 +31,7 @@ pub enum Content {
 pub fn content(source: &str) -> IResult<&str, Content> {
     // dbg!(source);
     let (remainder, content) = alt((
+        tuple((tag_no_case("<<b|"), take_until(">>"), tag(">>"))).map(|t| b(t).unwrap().1),
         tuple((
             tag_no_case("<<link|"),
             take_until("|"),

@@ -1,3 +1,4 @@
+pub mod b;
 pub mod content;
 pub mod link;
 #[cfg(test)]
