@@ -1,6 +1,7 @@
 use crate::attribute::*;
 use crate::content::b::b;
 use crate::content::code::code;
+use crate::content::code_shorthand::*;
 use crate::content::em::em;
 use crate::content::i::i;
 use crate::content::kbd::kbd;
@@ -28,6 +29,10 @@ pub enum Content {
         text: Option<String>,
     },
     Code {
+        attributes: Option<Vec<Attribute>>,
+        text: Option<String>,
+    },
+    CodeShorthand {
         attributes: Option<Vec<Attribute>>,
         text: Option<String>,
     },
@@ -83,6 +88,14 @@ pub fn content(source: &str) -> IResult<&str, Content> {
     let (remainder, content) = alt((
         tuple((tag_no_case("<<b|"), take_until(">>"), tag(">>"))).map(|t| b(t).unwrap().1),
         tuple((tag_no_case("<<code|"), take_until(">>"), tag(">>"))).map(|t| code(t).unwrap().1),
+        tuple((
+            tag_no_case("`"),
+            take_until("`"),
+            tag("`"),
+            take_until("`"),
+            tag("`"),
+        ))
+        .map(|t| code_shorthand(t).unwrap().1),
         tuple((
             tag_no_case("<<link|"),
             take_until("|"),
