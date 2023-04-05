@@ -19,6 +19,14 @@ fn delta() {
         "<<code|slow fox|lang: rust>>",
         "<<code|slow fox|rust>>",
         "<<em|some flower seeds>>",
+        "<<i|red ink>>",
+        "<<kbd|ctrl>>",
+        "<<span|the worn floor>>",
+        "<<strike|the worn floor>>",
+        "<<strong|the worn floor>>",
+        "<<sub|the worn floor>>",
+        "<<sup|the worn floor>>",
+        "<<u|the worn floor>>",
     ]
     .join("\n");
     let source = lines.as_str();
@@ -88,6 +96,46 @@ fn delta() {
                         attributes: None,
                         text: Some("some flower seeds".to_string()),
                     },
+                    Content::Space,
+                    Content::I {
+                        attributes: None,
+                        text: Some("red ink".to_string()),
+                    },
+                    Content::Space,
+                    Content::Kbd {
+                        attributes: None,
+                        text: Some("ctrl".to_string()),
+                    },
+                    Content::Space,
+                    Content::Span {
+                        attributes: None,
+                        text: Some("the worn floor".to_string()),
+                    },
+                    Content::Space,
+                    Content::Strike {
+                        attributes: None,
+                        text: Some("the worn floor".to_string()),
+                    },
+                    Content::Space,
+                    Content::Strong {
+                        attributes: None,
+                        text: Some("the worn floor".to_string()),
+                    },
+                    Content::Space,
+                    Content::Sub {
+                        attributes: None,
+                        text: Some("the worn floor".to_string()),
+                    },
+                    Content::Space,
+                    Content::Sup {
+                        attributes: None,
+                        text: Some("the worn floor".to_string()),
+                    },
+                    Content::Space,
+                    Content::U {
+                        attributes: None,
+                        text: Some("the worn floor".to_string()),
+                    },
                 ]),
             }]),
         }]),
@@ -95,35 +143,3 @@ fn delta() {
     let result = parse(source).unwrap().1;
     assert_eq!(expected, result);
 }
-
-// Bring your best compass to the third class.
-// A fresh start will work such wonders.
-// He wrote his last novel there at the inn.
-// It is hard to erase blue or red ink.
-// Write at once or you may forget it.
-// The doorknob was made of bright clean brass.
-// They took the axe and the saw to the forest.
-// Jazz and swing fans like fast music.
-// The map had an X that meant nothing.
-// Some ads serve to cheat buyers.
-// On the islands the sea breeze is soft and mild.
-// Add salt before you fry the egg.
-// The houses are built of red clay bricks.
-// Ducks fly north but lack a compass.
-// He used the lathe to make brass objects.
-// The vane on top of the pole revolved in the wind.
-// Let it burn, it gives us warmth and comfort.
-// A castle built from sand fails to endure.
-// Tack the strip of carpet to the worn floor.
-// Pour the stew from the pot into the plate.
-// Each penny shone like new.
-// The dirt piles were lines along the road.
-// The logs fell and tumbled into the clear stream.
-// Just hoist it up and take it away,
-// Our plans right now are hazy.
-// It takes a good trap to capture a bear.
-// Feed the white mouse some flower seeds.
-// The thaw came early and freed the stream.
-// He took the lead and kept it the whole distance.
-// The key you designed will fit the lock.
-// This plank was made for walking on.
