@@ -43,7 +43,7 @@ fn charlie() {
                 children: Some(vec![Block::P {
                     children: Some(vec![
                         Content::Text {
-                            text: "quick".to_string(),
+                            text: Some("quick".to_string()),
                         },
                         Content::Space,
                         Content::Link {
@@ -56,7 +56,7 @@ fn charlie() {
                         },
                         Content::Space,
                         Content::Text {
-                            text: "fox".to_string(),
+                            text: Some("fox".to_string()),
                         },
                     ]),
                 }]),
@@ -76,34 +76,34 @@ fn charlie() {
                     Block::P {
                         children: Some(vec![
                             Content::Text {
-                                text: "the".to_string(),
+                                text: Some("the".to_string()),
                             },
                             Content::Space,
                             Content::Text {
-                                text: "book".to_string(),
+                                text: Some("book".to_string()),
                             },
                             Content::Space,
                             Content::Text {
-                                text: "cover".to_string(),
+                                text: Some("cover".to_string()),
                             },
                         ]),
                     },
                     Block::P {
                         children: Some(vec![
                             Content::Text {
-                                text: "random".to_string(),
+                                text: Some("random".to_string()),
                             },
                             Content::Space,
                             Content::Text {
-                                text: "string".to_string(),
+                                text: Some("string".to_string()),
                             },
                             Content::Space,
                             Content::Text {
-                                text: "with".to_string(),
+                                text: Some("with".to_string()),
                             },
                             Content::Space,
                             Content::Text {
-                                text: "content".to_string(),
+                                text: Some("content".to_string()),
                             },
                         ]),
                     },
@@ -114,15 +114,15 @@ fn charlie() {
                 children: Some(vec![Block::P {
                     children: Some(vec![
                         Content::Text {
-                            text: "the".to_string(),
+                            text: Some("the".to_string()),
                         },
                         Content::Space,
                         Content::Text {
-                            text: "long".to_string(),
+                            text: Some("long".to_string()),
                         },
                         Content::Space,
                         Content::Text {
-                            text: "boat".to_string(),
+                            text: Some("boat".to_string()),
                         },
                     ]),
                 }]),

@@ -16,7 +16,7 @@ fn delta() {
             children: Some(vec![Block::P {
                 children: Some(vec![
                     Content::Text {
-                        text: "alfa".to_string(),
+                        text: Some("alfa".to_string()),
                     },
                     Content::Space,
                     Content::B {
@@ -25,7 +25,7 @@ fn delta() {
                     },
                     Content::Space,
                     Content::Text {
-                        text: "charlie".to_string(),
+                        text: Some("charlie".to_string()),
                     },
                 ]),
             }]),

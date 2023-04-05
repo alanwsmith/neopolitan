@@ -23,7 +23,7 @@ pub enum Content {
         url: Option<String>,
     },
     Text {
-        text: String,
+        text: Option<String>,
     },
     Space,
 }
@@ -42,7 +42,7 @@ pub fn content(source: &str) -> IResult<&str, Content> {
         .map(|t| link(t).unwrap().1),
         multispace1.map(|_| Content::Space),
         take_till(|c| c == ' ' || c == '\n' || c == '\t').map(|t: &str| Content::Text {
-            text: t.to_string(),
+            text: Some(t.to_string()),
         }),
     ))(source)?;
     Ok((remainder, content))
