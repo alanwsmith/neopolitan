@@ -31,6 +31,6 @@ fn link_with_attributes() {
             text: Some("alfa".to_string()),
         },
     ));
-    let result = link_dev(source);
+    let result = link(source);
     assert_eq!(expected, result);
 }

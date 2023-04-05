@@ -17,23 +17,7 @@ use nom::Parser;
 pub fn link<'a>(
     source: (&'a str, &'a str, &'a str, &'a str, &'a str),
 ) -> IResult<&'a str, Content> {
-    Ok((
-        "",
-        Content::Link {
-            attributes: None,
-            url: Some(source.1.to_string()),
-            text: Some(source.3.to_string()),
-        },
-    ))
-}
-
-pub fn link_dev<'a>(
-    source: (&'a str, &'a str, &'a str, &'a str, &'a str),
-) -> IResult<&'a str, Content> {
-    // let (a, b) =
-    //many0(tuple((take_until(token), tag(token), not_line_ending)).map(|x| x.2))(source)?;
     let (_, items) = separated_list0(tag("|"), is_not("|"))(source.3)?;
-    dbg!(&items);
     if items.len() > 1 {
         let attributes: Option<Vec<Attribute>> = Some(
             items
@@ -42,7 +26,6 @@ pub fn link_dev<'a>(
                 .map(|a| attribute(a).unwrap().1)
                 .collect(),
         );
-        dbg!(&attributes);
         Ok((
             "",
             Content::Link {
@@ -61,14 +44,4 @@ pub fn link_dev<'a>(
             },
         ))
     }
-}
-
-pub fn attribute(source: &str) -> IResult<&str, Attribute> {
-    Ok((
-        "",
-        Attribute::Basic {
-            key: Some("class".to_string()),
-            value: Some("important".to_string()),
-        },
-    ))
 }
