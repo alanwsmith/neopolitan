@@ -9,14 +9,9 @@ pub fn code_shorthand<'a>(
     source: (&'a str, &'a str, &'a str, &'a str, &'a str),
 ) -> IResult<&'a str, Content> {
     let (_, items) = separated_list0(tag("|"), is_not("|"))(source.3)?;
-    if items.len() > 1 {
-        let attributes: Option<Vec<Attribute>> = Some(
-            items
-                .iter()
-                .skip(1)
-                .map(|a| attribute(a).unwrap().1)
-                .collect(),
-        );
+    if items.len() > 0 {
+        let attributes: Option<Vec<Attribute>> =
+            Some(items.iter().map(|a| attribute(a).unwrap().1).collect());
         Ok((
             "",
             Content::CodeShorthand {
