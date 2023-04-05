@@ -6,7 +6,7 @@ use crate::section::section::*;
 use crate::section::section_attributes::*;
 use crate::wrapper::wrapper::*;
 
-#[ignore]
+// #[ignore]
 #[test]
 fn charlie() {
     let lines = vec![
