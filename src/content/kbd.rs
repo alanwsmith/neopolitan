@@ -14,7 +14,7 @@ use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
 
-pub fn code<'a>(source: (&'a str, &'a str, &'a str)) -> IResult<&'a str, Content> {
+pub fn kbd<'a>(source: (&'a str, &'a str, &'a str)) -> IResult<&'a str, Content> {
     let (_, items) = separated_list0(tag("|"), is_not("|"))(source.1)?;
     if items.len() > 1 {
         let attributes: Option<Vec<Attribute>> = Some(
@@ -26,7 +26,7 @@ pub fn code<'a>(source: (&'a str, &'a str, &'a str)) -> IResult<&'a str, Content
         );
         Ok((
             "",
-            Content::Code {
+            Content::Kbd {
                 attributes,
                 text: Some(items[0].to_string()),
             },
@@ -34,7 +34,7 @@ pub fn code<'a>(source: (&'a str, &'a str, &'a str)) -> IResult<&'a str, Content
     } else {
         Ok((
             "",
-            Content::Code {
+            Content::Kbd {
                 attributes: None,
                 text: Some(items[0].to_string()),
             },
