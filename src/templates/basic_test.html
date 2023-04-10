@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    body {
+      background-color: black;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+  {% include "test_title.html" %}
+
+  {% for section in payload.children %}
+  {% if section.type == "Paragraphs" %}
+  {% for block in section.children %}
+  <p>
+    {% for token in block.children %}
+    {% if token.type == "Text" %}
+    {{token.text}}
+    {% elif token.type == "Space" %}
+    {% elif token.type == "Link" %}
+    <a href="{{token.url}}">{{token.text}}</a>
+    {% elif token.type == "CodeShorthand" %}
+    <code>{{token.text}}</code>
+    {% elif token.type == "Strong" %}
+    <strong>{{token.text}}</strong>
+    {% endif %}
+    {% endfor %}
+  </p>
+  <p>
+    {{block}}
+  </p>
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
+
+</body>
+
+</html>

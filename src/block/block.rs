@@ -5,8 +5,10 @@ use nom::bytes::complete::tag;
 use nom::combinator::eof;
 use nom::multi::many_till;
 use nom::IResult;
+use serde::Serialize;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
 pub enum Block {
     P { children: Option<Vec<Content>> },
     CodeBlock { children: Option<String> },

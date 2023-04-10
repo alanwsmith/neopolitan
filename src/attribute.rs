@@ -2,8 +2,9 @@ use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
 use nom::multi::separated_list0;
 use nom::IResult;
+use serde::Serialize;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
 pub enum Attribute {
     Basic {
         key: Option<String>,

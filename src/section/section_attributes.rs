@@ -8,8 +8,9 @@ use nom::combinator::opt;
 use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
+use serde::Serialize;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
 pub enum SectionAttribute {
     Attribute {
         key: Option<String>,

@@ -21,8 +21,10 @@ use nom::character::complete::multispace1;
 use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
+use serde::Serialize;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
 pub enum Content {
     B {
         attributes: Option<Vec<Attribute>>,

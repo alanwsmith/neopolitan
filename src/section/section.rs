@@ -25,8 +25,10 @@ use nom::sequence::preceded;
 use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
+use serde::Serialize;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
 pub enum Section {
     Title {
         // has to be a vec because order matters
