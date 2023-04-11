@@ -2,9 +2,11 @@
 
 Welcome To Neopolitan
 
+
 -> subtitle
 
-A plain-text format to build my site
+a plain-text website format
+
 
 -> h2
 
@@ -21,4 +23,30 @@ elsewhere. For now, it's enough to say frameworks
 have been a net negative for me. I'm bowing out 
 of that game.
 
+Content management also caught my attention.
+I'm a huge fan of plain-text. My current system
+is around nine thousand Markdown, MDX, and Org-Mode
+files. They're solid formats, but each causes
+its own type of friction. For example, I don't
+use description lists because they aren't native 
+to the MDX parser I'm using.
 
+So, I'm making my own format.
+
+
+-> h2
+
+Neopolitan Features
+
+The format is still in its early stages
+and very much in flux. That said, the 
+basic ideas are mostly in place.
+
+
+-> aside
+>> class: highlighted
+
+There's a bunch of code samples below. The
+format is more about text content. Parsing
+through collections of short samples took
+me a little getting used to.

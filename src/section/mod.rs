@@ -1,5 +1,11 @@
+pub mod aside;
 pub mod code_section;
+pub mod h1;
 pub mod h2;
+pub mod h3;
+pub mod h4;
+pub mod h5;
+pub mod h6;
 pub mod p;
 pub mod section;
 pub mod section_attributes;

@@ -7,6 +7,10 @@
       background-color: black;
       color: #aaa;
     }
+
+    .aside {
+      font-style: italic;
+    }
   </style>
 </head>
 
@@ -77,6 +81,26 @@
   {% endif %}
   {% endfor %}
 
+  <!-- aside-->
+  {% for section in payload.children %}
+  {% if section.type == "AsideSection" %}
+  {% for block in section.children %}
+  {% if loop.first %}
+  <div class="aside">
+    {% for token in block.children %}
+    {{ token.text }}
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>
+    {% for token in block.children %}
+    {{ token.text }}
+    {% endfor %}
+  </p>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
 
   <!-- sections -->
 
