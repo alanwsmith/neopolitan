@@ -11,6 +11,7 @@ use nom::Parser;
 use serde::Serialize;
 
 #[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
 pub enum SectionAttribute {
     Attribute {
         key: Option<String>,

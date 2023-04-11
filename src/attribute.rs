@@ -5,6 +5,7 @@ use nom::IResult;
 use serde::Serialize;
 
 #[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
 pub enum Attribute {
     Basic {
         key: Option<String>,

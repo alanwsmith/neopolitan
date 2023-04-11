@@ -84,9 +84,14 @@
   <!-- aside-->
   {% for section in payload.children %}
   {% if section.type == "AsideSection" %}
+  {{ section.attributes}}
   {% for block in section.children %}
   {% if loop.first %}
-  <div class="aside">
+  <div 
+      class="aside{% for attribute in section.attributes %}{% if attribute.key == "class" %} {{attribute.value}}{%endif %}{% endfor %}"
+      {% for attribute in section.attributes %}{% if attribute.key != "class" %}{{attribute.key}}="{{attribute.value}}"{%endif %}{% endfor %}
+    >
+
     {% for token in block.children %}
     {{ token.text }}
     {% endfor %}
@@ -133,6 +138,9 @@
   <pre>
     {% for section in payload.children %}
     {{ section.type }}
+    {% for attribute in section.attributes %}
+    {{attribute}}
+    {% endfor %}
     {% for block in section.children %}
     {% for token in block.children %}
     {{ token }}
