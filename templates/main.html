@@ -34,7 +34,7 @@
   {% endfor %}
 
 
-  <!-- title -->
+  <!-- subtitle -->
   {% for section in payload.children %}
   {% if section.type == "Subtitle" %}
   {% for block in section.children %}
@@ -44,6 +44,28 @@
     {{ token.text }}
     {% endfor %}
   </div>
+  {% else %}
+  <p>
+    {% for token in block.children %}
+    {{ token.text }}
+    {% endfor %}
+  </p>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
+
+
+  <!-- h2 -->
+  {% for section in payload.children %}
+  {% if section.type == "H2Section" %}
+  {% for block in section.children %}
+  {% if loop.first %}
+  <h2 class="subtitle">
+    {% for token in block.children %}
+    {{ token.text }}
+    {% endfor %}
+  </h2>
   {% else %}
   <p>
     {% for token in block.children %}
