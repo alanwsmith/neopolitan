@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    body {
+      background-color: black;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- title -->
+  {% for section in payload.children %}
+  {% if section.type == "Title" %}
+  {% for block in section.children %}
+  {% if loop.first %}
+  <h1>
+    {% for token in block.children %}
+    {{ token.text }}
+    {% endfor %}
+  </h1>
+  {% else %}
+  <p>
+    {% for token in block.children %}
+    {{ token.text }}
+    {% endfor %}
+  </p>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
+
+
+  <!-- title -->
+  {% for section in payload.children %}
+  {% if section.type == "Subtitle" %}
+  {% for block in section.children %}
+  {% if loop.first %}
+  <div class="subtitle">
+    {% for token in block.children %}
+    {{ token.text }}
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>
+    {% for token in block.children %}
+    {{ token.text }}
+    {% endfor %}
+  </p>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
+
+
+  <!-- sections -->
+
+  {% for section in payload.children %}
+  {% if section.type == "Paragraphs" %}
+  {% for block in section.children %}
+  <p>
+    {% for token in block.children %}
+    {% if token.type == "Text" %}
+    {{token.text}}
+    {% elif token.type == "Space" %}
+    {% elif token.type == "Link" %}
+    <a href="{{token.url}}">{{token.text}}</a>
+    {% elif token.type == "CodeShorthand" %}
+    <code>{{token.text}}</code>
+    {% elif token.type == "Strong" %}
+    <strong>{{token.text}}</strong>
+    {% endif %}
+    {% endfor %}
+  </p>
+  <p>
+    {{block}}
+  </p>
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
+
+  <hr />
+
+  <pre>
+    {% for section in payload.children %}
+    {{ section.type }}
+    {% for block in section.children %}
+    {% for token in block.children %}
+    {{ token }}
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+  </pre>
+
+</body>
+
+</html>

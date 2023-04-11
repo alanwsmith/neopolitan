@@ -6,6 +6,7 @@ use crate::section::code_section::*;
 use crate::section::p::*;
 use crate::section::section_attributes::*;
 use crate::section::section_attributes::*;
+use crate::section::subtitle::*;
 use crate::section::title::*;
 use nom::branch::alt;
 use nom::bytes::complete::is_not;
@@ -40,6 +41,10 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    Subtitle {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     CodeSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Block>,
@@ -52,6 +57,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         tuple((tag("-> title\n"), alt((take_until("\n\n-> "), rest))))
             .map(|t| title(t.1).unwrap().1),
         tuple((tag("-> p\n"), alt((take_until("\n\n-> "), rest)))).map(|t| p(t.1).unwrap().1),
+        tuple((tag("-> subtitle\n"), alt((take_until("\n\n-> "), rest))))
+            .map(|t| subtitle(t.1).unwrap().1),
         tuple((tag("-> code\n"), alt((take_until("\n\n-> "), rest))))
             .map(|t| code_section(t.1).unwrap().1),
     ))(source)?;

@@ -1,13 +1,22 @@
 -> title
 
-Neopolitan 
+Welcome To Neopolitan
 
 -> subtitle
 
-A plain-text format for my website
+A plain-text format to build my site
 
--> This output is coming from neopolitan 
-itself
+Overview
 
+My site is twenty years old. Realizing that
+started me thinking about the next twenty. The 
+perspective shift changed the way I think 
+making and maintaining sites.
+
+Generally speaking, I'll be writing vanilla HTML,
+CSS, and JavaScript. I'll write more about that
+elsewhere. For now, it's enough to say frameworks 
+have been a net negative for me. I'm bowing out 
+of that game.
 
 
