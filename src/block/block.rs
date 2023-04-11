@@ -11,7 +11,7 @@ use serde::Serialize;
 #[serde(tag = "type")]
 pub enum Block {
     P { children: Option<Vec<Content>> },
-    CodeBlock { children: Option<String> },
+    CodeBlock { text: Option<String> },
 }
 
 pub fn block(source: &str) -> IResult<&str, Block> {

@@ -16,7 +16,7 @@ fn foxtrot() {
         children: Some(vec![Section::CodeSection {
             attributes: None,
             children: Some(Block::CodeBlock {
-                children: Some("some code\nmore code".to_string()),
+                text: Some("some code\nmore code".to_string()),
             }),
         }]),
     };
@@ -35,7 +35,7 @@ fn foxtrot2_attributes() {
                 value: Some("rust".to_string()),
             }]),
             children: Some(Block::CodeBlock {
-                children: Some("some code\nmore code".to_string()),
+                text: Some("some code\nmore code".to_string()),
             }),
         }]),
     };

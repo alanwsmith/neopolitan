@@ -15,6 +15,29 @@
 </head>
 
 <body>
+    {% macro code(data) %}
+    <pre><code class="
+
+      {% for attribute in data.attributes %}
+      {% if loop.first and attribute.value == None %}
+      language-{{attribute.key}}
+      {% endif %}
+      {% if attribute.key == "class" %}
+      {{ attribute.value }}
+      {% endif %}
+      {% endfor %}
+      
+      "
+
+    >{{data.children.text}}</code></pre>
+    {{ data.attributes }}
+    {%- endmacro %}
+
+  {% for section in payload.children %}
+  {% if section.type == "CodeSection" %}
+    {{ code(section) }}
+  {% endif %}
+  {% endfor %}
 
   <!-- title -->
   {% for section in payload.children %}
@@ -65,7 +88,7 @@
   {% if section.type == "H2Section" %}
   {% for block in section.children %}
   {% if loop.first %}
-  <h2 class="subtitle">
+  <h2>
     {% for token in block.children %}
     {{ token.text }}
     {% endfor %}
@@ -84,14 +107,12 @@
   <!-- aside-->
   {% for section in payload.children %}
   {% if section.type == "AsideSection" %}
-  {{ section.attributes}}
   {% for block in section.children %}
   {% if loop.first %}
   <div 
       class="aside{% for attribute in section.attributes %}{% if attribute.key == "class" %} {{attribute.value}}{%endif %}{% endfor %}"
       {% for attribute in section.attributes %}{% if attribute.key != "class" %}{{attribute.key}}="{{attribute.value}}"{%endif %}{% endfor %}
     >
-
     {% for token in block.children %}
     {{ token.text }}
     {% endfor %}

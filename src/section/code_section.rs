@@ -25,9 +25,10 @@ pub fn code_section(source: &str) -> IResult<&str, Section> {
         None
     } else {
         Some(Block::CodeBlock {
-            children: Some(source.trim().to_string()),
+            text: Some(source.trim().to_string()),
         })
     };
+
     Ok((
         source,
         Section::CodeSection {
@@ -35,4 +36,5 @@ pub fn code_section(source: &str) -> IResult<&str, Section> {
             children,
         },
     ))
+
 }

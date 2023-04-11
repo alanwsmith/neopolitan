@@ -42,7 +42,6 @@ The format is still in its early stages
 and very much in flux. That said, the 
 basic ideas are mostly in place.
 
-
 -> aside
 >> id: firstAside
 >> class: highlighted
@@ -51,3 +50,25 @@ There's a bunch of code samples below. The
 format is more about text content. Parsing
 through collections of short samples took
 me a little getting used to.
+
+-> h3
+
+Samples
+
+Below are some samples that will 
+be overwritten when the actual content.
+
+-> code
+>> rust
+
+this is a test with code
+
+and some more code
+
+-> h2
+
+Next Steps
+
+Most of the above is pretty well defined. The rest of this
+below is a little more fluid. Their ideas I expect I'll
+get to, but the priority is everything above.
