@@ -1,0 +1,13 @@
+{% macro h2 (data) %}
+  {% for block in data.children %}
+    {% if loop.first %}
+      <h2>
+        {%- for token in block.children %} {{ token.text }}{% endfor -%}
+      </h2>
+    {% else %}
+      <p>
+        {%- for token in block.children %} {{ token.text }}{% endfor -%}
+      </p>
+    {% endif %}
+  {% endfor %}
+{% endmacro %}

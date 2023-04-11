@@ -1,108 +1,37 @@
+{% from "aside.html" import aside %}
+{% from "code.html" import code %}
+{% from "h2.html" import h2 %}
+{% from "subtitle.html" import subtitle %}
+{% from "title.html" import title %}
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <style>
     body {
       background-color: black;
       color: #aaa;
     }
-
     .aside {
       font-style: italic;
     }
   </style>
 </head>
-
 <body>
-    {% macro code(data) %}
-    <pre><code class="
 
-      {% for attribute in data.attributes %}
-      {% if loop.first and attribute.value == None %}
-      language-{{attribute.key}}
-      {% endif %}
-      {% if attribute.key == "class" %}
-      {{ attribute.value }}
-      {% endif %}
-      {% endfor %}
-      
-      "
-
-    >{{data.children.text}}</code></pre>
-    {{ data.attributes }}
-    {%- endmacro %}
-
-  {% for section in payload.children %}
-  {% if section.type == "CodeSection" %}
-    {{ code(section) }}
-  {% endif %}
-  {% endfor %}
-
-  <!-- title -->
-  {% for section in payload.children %}
-  {% if section.type == "Title" %}
-  {% for block in section.children %}
-  {% if loop.first %}
-  <h1>
-    {% for token in block.children %}
-    {{ token.text }}
-    {% endfor %}
-  </h1>
-  {% else %}
-  <p>
-    {% for token in block.children %}
-    {{ token.text }}
-    {% endfor %}
-  </p>
-  {% endif %}
-  {% endfor %}
-  {% endif %}
-  {% endfor %}
-
-
-  <!-- subtitle -->
-  {% for section in payload.children %}
-  {% if section.type == "Subtitle" %}
-  {% for block in section.children %}
-  {% if loop.first %}
-  <div class="subtitle">
-    {% for token in block.children %}
-    {{ token.text }}
-    {% endfor %}
-  </div>
-  {% else %}
-  <p>
-    {% for token in block.children %}
-    {{ token.text }}
-    {% endfor %}
-  </p>
-  {% endif %}
-  {% endfor %}
-  {% endif %}
-  {% endfor %}
-
-
-  <!-- h2 -->
-  {% for section in payload.children %}
-  {% if section.type == "H2Section" %}
-  {% for block in section.children %}
-  {% if loop.first %}
-  <h2>
-    {% for token in block.children %}
-    {{ token.text }}
-    {% endfor %}
-  </h2>
-  {% else %}
-  <p>
-    {% for token in block.children %}
-    {{ token.text }}
-    {% endfor %}
-  </p>
-  {% endif %}
-  {% endfor %}
-  {% endif %}
-  {% endfor %}
+{% for section in payload.children %}
+{% if section.type == "AsideSection" %}
+  {{ aside(section) }}
+{% elif section.type == "Code" %}
+  {{ code(section) }}
+{% elif section.type == "H2Section" %}
+  {{ h2(section) }}
+{% elif section.type == "Title" %}
+  {{ title(section) }}
+{% elif section.type == "Subtitle" %}
+  {{ subtitle(section) }}
+{% endif %}
+{% endfor %}
 
   <!-- aside-->
   {% for section in payload.children %}
@@ -129,7 +58,6 @@
   {% endfor %}
 
   <!-- sections -->
-
   {% for section in payload.children %}
   {% if section.type == "Paragraphs" %}
   {% for block in section.children %}

@@ -1,0 +1,13 @@
+{% macro subtitle(data) %}
+{% for block in data.children %}
+{% if loop.first %}
+<div class="subtitle">
+  {% for token in block.children %} {{ token.text }}{% endfor %}
+</div>
+{% else %}
+<p>
+  {% for token in block.children %} {{ token.text }}{% endfor %}
+</p>
+{% endif %}
+{% endfor %}
+{% endmacro %}

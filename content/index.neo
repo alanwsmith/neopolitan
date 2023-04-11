@@ -2,11 +2,9 @@
 
 Welcome To Neopolitan
 
-
 -> subtitle
 
 a plain-text website format
-
 
 -> h2
 
@@ -32,7 +30,6 @@ use description lists because they aren't native
 to the MDX parser I'm using.
 
 So, I'm making my own format.
-
 
 -> h2
 
