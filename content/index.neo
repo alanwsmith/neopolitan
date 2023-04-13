@@ -4,27 +4,73 @@ Welcome To Neopolitan
 
 -> subtitle
 
-a plain-text website format
+A plain-text format for my website 
 
 -> h2
 
 Overview
 
-My site is twenty years old. Realizing that
-started me thinking about the next twenty. The 
-perspective shift changed the way I think 
-making and maintaining sites.
+My site is twenty years old. Pondering the 
+past two decades started me thinking about the next 
+two. It changed my perspective on making and maintaining 
+my site has changed because of it. "What foundation do 
+I want to setup for the next two decades?" is a
+very different question from "What do I want to do 
+for my next redesign?" 
 
-Generally speaking, I'll be writing vanilla HTML,
-CSS, and JavaScript. I'll write more about that
-elsewhere. For now, it's enough to say frameworks 
-have been a net negative for me. I'm bowing out 
-of that game.
+On my time horizon, the key isn't the tech stack. It's 
+the content. 
 
-Content management also caught my attention.
-I'm a huge fan of plain-text. My current system
-is around nine thousand Markdown, MDX, and Org-Mode
-files. They're solid formats, but each causes
+-> h2
+
+Post Count
+
+I've moved my site a half dozen times. Each one
+involved a painful content migration. They're rarely
+fun. They're even less so when you've crossed
+a thousand posts. I'm at 1,566.
+
+I've gone from raw HTML to Wordpress back to HTML 
+to a half dozen DB schemas to Markdown to MDX to 
+Org-Mode. Every approach involves friction that 
+slows me down both from making posts an experimenting
+with my site on a larger level.
+
+For example:
+
+-> list
+
+
+- a b 
+
+c d
+
+- e f 
+
+
+
+-> p
+
+
+I don't know all the different ways I'll build
+my side over the next two decades, but I know the  
+
+
+
+
+
+The first examination is the code. I'm switching to 
+vanilla HTML, CSS, and JavaScript. There's a lot
+to be written about that later. For now, suffice it 
+to say that, for my personal site, frameworks have been a net 
+negative for me. I'm bowing out of that game. 
+
+-> h3
+
+
+I'm a huge fan of plain-text. My Grimoire has
+nine thousand Markdown, MDX, and Org-Mode files 
+in it. They're solid formats, but each causes
 its own type of friction. For example, I don't
 use description lists because they aren't native 
 to the MDX parser I'm using.
@@ -48,7 +94,7 @@ format is more about text content. Parsing
 through collections of short samples took
 me a little getting used to.
 
--> h3
+-> h2
 
 Samples
 
@@ -69,3 +115,22 @@ Next Steps
 Most of the above is pretty well defined. The rest of this
 below is a little more fluid. Their ideas I expect I'll
 get to, but the priority is everything above.
+
+-> h2
+
+Examples
+
+This is a test list
+
+-> list
+
+- a 
+
+- b
+
+- c
+
+-> p
+
+and that's the end of the list
+

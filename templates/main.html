@@ -1,102 +1,77 @@
 {% from "aside.html" import aside %}
 {% from "code.html" import code %}
+{% from "h1.html" import h1 %}
 {% from "h2.html" import h2 %}
+{% from "h3.html" import h3 %}
+{% from "h4.html" import h4 %}
+{% from "h5.html" import h5 %}
+{% from "h6.html" import h6 %}
+{% from "list.html" import list%}
 {% from "subtitle.html" import subtitle %}
+{% from "paragraphs.html" import paragraphs %}
 {% from "title.html" import title %}
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <style>
     body {
       background-color: black;
       color: #aaa;
     }
+
     .aside {
       font-style: italic;
     }
+
+    main {
+      max-width: 80ch;
+      margin: 0 auto;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    pre {
+      background-color: #333;
+    }
   </style>
 </head>
+
 <body>
 
-{% for section in payload.children %}
-{% if section.type == "AsideSection" %}
-  {{ aside(section) }}
-{% elif section.type == "Code" %}
-  {{ code(section) }}
-{% elif section.type == "H2Section" %}
-  {{ h2(section) }}
-{% elif section.type == "Title" %}
-  {{ title(section) }}
-{% elif section.type == "Subtitle" %}
-  {{ subtitle(section) }}
-{% endif %}
-{% endfor %}
-
-  <!-- aside-->
-  {% for section in payload.children %}
-  {% if section.type == "AsideSection" %}
-  {% for block in section.children %}
-  {% if loop.first %}
-  <div 
-      class="aside{% for attribute in section.attributes %}{% if attribute.key == "class" %} {{attribute.value}}{%endif %}{% endfor %}"
-      {% for attribute in section.attributes %}{% if attribute.key != "class" %}{{attribute.key}}="{{attribute.value}}"{%endif %}{% endfor %}
-    >
-    {% for token in block.children %}
-    {{ token.text }}
-    {% endfor %}
-  </div>
-  {% else %}
-  <p>
-    {% for token in block.children %}
-    {{ token.text }}
-    {% endfor %}
-  </p>
-  {% endif %}
-  {% endfor %}
-  {% endif %}
-  {% endfor %}
-
-  <!-- sections -->
-  {% for section in payload.children %}
-  {% if section.type == "Paragraphs" %}
-  {% for block in section.children %}
-  <p>
-    {% for token in block.children %}
-    {% if token.type == "Text" %}
-    {{token.text}}
-    {% elif token.type == "Space" %}
-    {% elif token.type == "Link" %}
-    <a href="{{token.url}}">{{token.text}}</a>
-    {% elif token.type == "CodeShorthand" %}
-    <code>{{token.text}}</code>
-    {% elif token.type == "Strong" %}
-    <strong>{{token.text}}</strong>
+  <main>
+    {% for section in payload.children %}
+    {% if section.type == "AsideSection" %}
+    {{ aside(section) }}
+    {% elif section.type == "CodeSection" %}
+    {{ code(section) }}
+    {% elif section.type == "H1Section" %}
+    {{ h1(section) }}
+    {% elif section.type == "H2Section" %}
+    {{ h2(section) }}
+    {% elif section.type == "H3Section" %}
+    {{ h3(section) }}
+    {% elif section.type == "H4Section" %}
+    {{ h4(section) }}
+    {% elif section.type == "H5Section" %}
+    {{ h5(section) }}
+    {% elif section.type == "H6Section" %}
+    {{ h6(section) }}
+    {% elif section.type == "List" %}
+    {{ list(section) }}
+    {% elif section.type == "Paragraphs" %}
+    {{ paragraphs(section) }}
+    {% elif section.type == "Subtitle" %}
+    {{ subtitle(section) }}
+    {% elif section.type == "Title" %}
+    {{ title(section) }}
     {% endif %}
     {% endfor %}
-  </p>
-  <p>
-    {{block}}
-  </p>
-  {% endfor %}
-  {% endif %}
-  {% endfor %}
-
-  <hr />
-
-  <pre>
-    {% for section in payload.children %}
-    {{ section.type }}
-    {% for attribute in section.attributes %}
-    {{attribute}}
-    {% endfor %}
-    {% for block in section.children %}
-    {% for token in block.children %}
-    {{ token }}
-    {% endfor %}
-    {% endfor %}
-    {% endfor %}
-  </pre>
+  </main>
 
 </body>
 

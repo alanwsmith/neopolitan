@@ -1,0 +1,17 @@
+{% macro list (data) %}
+<pre>
+  {{data}}
+</pre>
+<ul>
+  {% for list_item in data.children %}
+  <li>{%- for block in list_item.children %}
+    <p>
+      {% for token in block.children %}
+      {{ token.text }}
+      {% endfor %}
+    </p>
+    {% endfor -%}
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}

@@ -4,72 +4,647 @@
 
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <style>
     body {
       background-color: black;
       color: #aaa;
     }
+
     .aside {
       font-style: italic;
     }
+
+    main {
+      max-width: 80ch;
+      margin: 0 auto;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    pre {
+      background-color: #333;
+    }
   </style>
 </head>
+
 <body>
 
-
-
-  
+  <main>
+    
+    
+    
   
     
       <h1> Welcome  To  Neopolitan</h1>
     
   
 
-
-
-
-  
+    
+    
+    
+    
 
 
 <div class="subtitle">
-   a  plain-text  website  format
+   A  plain-text  format  for  my  website
 </div>
 
 
 
-
-
-
-  
+    
+    
+    
+    
   
     
       <h2> Overview</h2>
     
   
     
-      <p> My  site  is  twenty  years  old.  Realizing  that  started  me  thinking  about  the  next  twenty.  The  perspective  shift  changed  the  way  I  think  making  and  maintaining  sites.</p>
-    
-  
-    
-      <p> Generally  speaking,  I&#x27;ll  be  writing  vanilla  HTML,  CSS,  and  JavaScript.  I&#x27;ll  write  more  about  that  elsewhere.  For  now,  it&#x27;s  enough  to  say  frameworks  have  been  a  net  negative  for  me.  I&#x27;m  bowing  out  of  that  game.</p>
-    
-  
-    
-      <p> Content  management  also  caught  my  attention.  I&#x27;m  a  huge  fan  of  plain-text.  My  current  system  is  around  nine  thousand  Markdown,  MDX,  and  Org-Mode  files.  They&#x27;re  solid  formats,  but  each  causes  its  own  type  of  friction.  For  example,  I  don&#x27;t  use  description  lists  because  they  aren&#x27;t  native  to  the  MDX  parser  I&#x27;m  using.</p>
-    
-  
-    
-      <p> So,  I&#x27;m  making  my  own  format.</p>
+      <p> My  site  is  twenty  years  old.  Pondering  the  past  two  decades  started  me  thinking  about  the  next  two.  It  changed  my  perspective  on  making  and  maintaining  my  site  has  changed  because  of  it.  &quot;What  foundation  do  I  want  to  setup  for  the  next  two  decades?&quot;  is  a  very  different  question  from  &quot;What  do  I  want  to  do  for  my  next  redesign?&quot;  On  my  time  horizon,  the  key  isn&#x27;t  the  tech  stack.  It&#x27;s  the  content.</p>
     
   
 
-
-
-
+    
+    
+    
+    
   
+    
+      <h2> Post  Count</h2>
+    
+  
+    
+      <p> I&#x27;ve  moved  my  site  a  half  dozen  times.  Each  one  involved  a  painful  content  migration.  They&#x27;re  rarely  fun.  They&#x27;re  even  less  so  when  you&#x27;ve  crossed  a  thousand  posts.  I&#x27;m  at  1,566.</p>
+    
+  
+    
+      <p> I&#x27;ve  gone  from  raw  HTML  to  Wordpress  back  to  HTML  to  a  half  dozen  DB  schemas  to  Markdown  to  MDX  to  Org-Mode.  Every  approach  involves  friction  that  slows  me  down  both  from  making  posts  an  experimenting  with  my  site  on  a  larger  level.</p>
+    
+  
+    
+      <p> For  example:</p>
+    
+  
+
+    
+    
+    
+    
+<pre>
+  {&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;b&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;c&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;d&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;UnorderedListItem&quot;}, {&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;e&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;f&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;UnorderedListItem&quot;}], &quot;type&quot;: &quot;List&quot;}
+</pre>
+<ul>
+  
+  <li>
+    <p>
+      
+      a
+      
+      
+      
+      b
+      
+      
+      
+      c
+      
+      
+      
+      d
+      
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+      e
+      
+      
+      
+      f
+      
+    </p>
+    </li>
+  
+</ul>
+
+    
+    
+    
+    
+  
+  <p>
+    
+    
+    I
+    
+    
+    
+    
+    
+    
+    don&#x27;t
+    
+    
+    
+    
+    
+    
+    know
+    
+    
+    
+    
+    
+    
+    all
+    
+    
+    
+    
+    
+    
+    the
+    
+    
+    
+    
+    
+    
+    different
+    
+    
+    
+    
+    
+    
+    ways
+    
+    
+    
+    
+    
+    
+    I&#x27;ll
+    
+    
+    
+    
+    
+    
+    build
+    
+    
+    
+    
+    
+    
+    my
+    
+    
+    
+    
+    
+    
+    side
+    
+    
+    
+    
+    
+    
+    over
+    
+    
+    
+    
+    
+    
+    the
+    
+    
+    
+    
+    
+    
+    next
+    
+    
+    
+    
+    
+    
+    two
+    
+    
+    
+    
+    
+    
+    decades,
+    
+    
+    
+    
+    
+    
+    but
+    
+    
+    
+    
+    
+    
+    I
+    
+    
+    
+    
+    
+    
+    know
+    
+    
+    
+    
+    
+    
+    the
+    
+    
+    
+    
+    
+    
+    The
+    
+    
+    
+    
+    
+    
+    first
+    
+    
+    
+    
+    
+    
+    examination
+    
+    
+    
+    
+    
+    
+    is
+    
+    
+    
+    
+    
+    
+    the
+    
+    
+    
+    
+    
+    
+    code.
+    
+    
+    
+    
+    
+    
+    I&#x27;m
+    
+    
+    
+    
+    
+    
+    switching
+    
+    
+    
+    
+    
+    
+    to
+    
+    
+    
+    
+    
+    
+    vanilla
+    
+    
+    
+    
+    
+    
+    HTML,
+    
+    
+    
+    
+    
+    
+    CSS,
+    
+    
+    
+    
+    
+    
+    and
+    
+    
+    
+    
+    
+    
+    JavaScript.
+    
+    
+    
+    
+    
+    
+    There&#x27;s
+    
+    
+    
+    
+    
+    
+    a
+    
+    
+    
+    
+    
+    
+    lot
+    
+    
+    
+    
+    
+    
+    to
+    
+    
+    
+    
+    
+    
+    be
+    
+    
+    
+    
+    
+    
+    written
+    
+    
+    
+    
+    
+    
+    about
+    
+    
+    
+    
+    
+    
+    that
+    
+    
+    
+    
+    
+    
+    later.
+    
+    
+    
+    
+    
+    
+    For
+    
+    
+    
+    
+    
+    
+    now,
+    
+    
+    
+    
+    
+    
+    suffice
+    
+    
+    
+    
+    
+    
+    it
+    
+    
+    
+    
+    
+    
+    to
+    
+    
+    
+    
+    
+    
+    say
+    
+    
+    
+    
+    
+    
+    that,
+    
+    
+    
+    
+    
+    
+    for
+    
+    
+    
+    
+    
+    
+    my
+    
+    
+    
+    
+    
+    
+    personal
+    
+    
+    
+    
+    
+    
+    site,
+    
+    
+    
+    
+    
+    
+    frameworks
+    
+    
+    
+    
+    
+    
+    have
+    
+    
+    
+    
+    
+    
+    been
+    
+    
+    
+    
+    
+    
+    a
+    
+    
+    
+    
+    
+    
+    net
+    
+    
+    
+    
+    
+    
+    negative
+    
+    
+    
+    
+    
+    
+    for
+    
+    
+    
+    
+    
+    
+    me.
+    
+    
+    
+    
+    
+    
+    I&#x27;m
+    
+    
+    
+    
+    
+    
+    bowing
+    
+    
+    
+    
+    
+    
+    out
+    
+    
+    
+    
+    
+    
+    of
+    
+    
+    
+    
+    
+    
+    that
+    
+    
+    
+    
+    
+    
+    game.
+    
+    
+      </p>
+  
+
+    
+    
+    
+    
+
+
+<h3> I&#x27;m  a  huge  fan  of  plain-text.  My  Grimoire  has  nine  thousand  Markdown,  MDX,  and  Org-Mode  files  in  it.  They&#x27;re  solid  formats,  but  each  causes  its  own  type  of  friction.  For  example,  I  don&#x27;t  use  description  lists  because  they  aren&#x27;t  native  to  the  MDX  parser  I&#x27;m  using.</h3>
+
+
+
+<p> So,  I&#x27;m  making  my  own  format.</p>
+
+
+
+    
+    
+    
+    
   
     
       <h2> Neopolitan  Features</h2>
@@ -80,28 +655,47 @@
     
   
 
-
-
-
-  
+    
+    
+    
+    
 <div 
       class="aside highlighted"
       id="firstAside"
 >
-
   
     <p> There&#x27;s  a  bunch  of  code  samples  below.  The  format  is  more  about  text  content.  Parsing  through  collections  of  short  samples  took  me  a  little  getting  used  to.</p>
   
 </div>
 
-
-
-
-
-
-
-
+    
+    
+    
+    
   
+    
+      <h2> Samples</h2>
+    
+  
+    
+      <p> Below  are  some  samples  that  will  be  overwritten  when  the  actual  content.</p>
+    
+  
+
+    
+    
+    
+    
+<pre><code class="
+  
+  language-rust"
+>this is a test with code
+
+and some more code</code></pre>
+    
+    
+    
+    
   
     
       <h2> Next  Steps</h2>
@@ -112,36 +706,88 @@
     
   
 
+    
+    
+    
+    
+  
+    
+      <h2> Examples</h2>
+    
+  
+    
+      <p> This  is  a  test  list</p>
+    
+  
 
+    
+    
+    
+    
+<pre>
+  {&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;b&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;UnorderedListItem&quot;}, {&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;c&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;UnorderedListItem&quot;}], &quot;type&quot;: &quot;List&quot;}
+</pre>
+<ul>
+  
+  <li>
+    <p>
+      
+      a
+      
+      
+      
+      -
+      
+      
+      
+      b
+      
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+      c
+      
+    </p>
+    </li>
+  
+</ul>
 
-
-  <!-- aside-->
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <div 
-      class="aside highlighted"
-      id="firstAside"
-    >
-    
-    There&#x27;s
     
     
     
-    a
+    
+  
+  <p>
+    
+    
+    and
     
     
     
-    bunch
+    
+    
+    
+    that&#x27;s
+    
+    
+    
+    
+    
+    
+    the
+    
+    
+    
+    
+    
+    
+    end
+    
+    
+    
     
     
     
@@ -149,1078 +795,25 @@
     
     
     
-    code
     
     
     
-    samples
+    the
     
     
     
-    below.
     
     
     
-    The
+    list
     
     
-    
-    format
-    
-    
-    
-    is
-    
-    
-    
-    more
-    
-    
-    
-    about
-    
-    
-    
-    text
-    
-    
-    
-    content.
-    
-    
-    
-    Parsing
-    
-    
-    
-    through
-    
-    
-    
-    collections
-    
-    
-    
-    of
-    
-    
-    
-    short
-    
-    
-    
-    samples
-    
-    
-    
-    took
-    
-    
-    
-    me
-    
-    
-    
-    a
-    
-    
-    
-    little
-    
-    
-    
-    getting
-    
-    
-    
-    used
-    
-    
-    
-    to.
-    
-  </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      </p>
   
 
-  <!-- sections -->
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-  <hr />
-
-  <pre>
     
-    Title
     
-    
-    
-    {&quot;text&quot;: &quot;Welcome&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;To&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;Neopolitan&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    Subtitle
-    
-    
-    
-    {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;plain-text&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;website&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;format&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    H2Section
-    
-    
-    
-    {&quot;text&quot;: &quot;Overview&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    {&quot;text&quot;: &quot;My&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;site&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;twenty&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;years&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;old.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;Realizing&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;started&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;me&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;thinking&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;about&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;next&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;twenty.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;perspective&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;shift&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;changed&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;way&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;I&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;think&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;making&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;maintaining&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;sites.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    {&quot;text&quot;: &quot;Generally&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;speaking,&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;I&#x27;ll&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;be&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;writing&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;vanilla&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;HTML,&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;CSS,&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;JavaScript.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;I&#x27;ll&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;write&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;more&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;about&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;elsewhere.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;For&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;now,&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;it&#x27;s&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;enough&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;say&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;frameworks&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;have&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;been&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;net&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;negative&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;for&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;me.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;I&#x27;m&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;bowing&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;out&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;game.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    {&quot;text&quot;: &quot;Content&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;management&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;also&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;caught&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;my&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;attention.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;I&#x27;m&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;huge&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;fan&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;plain-text.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;My&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;current&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;system&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;around&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;nine&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;thousand&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;Markdown,&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;MDX,&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;Org-Mode&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;files.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;They&#x27;re&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;solid&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;formats,&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;but&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;each&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;causes&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;its&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;own&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;type&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;friction.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;For&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;example,&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;I&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;don&#x27;t&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;use&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;description&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;lists&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;because&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;they&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;aren&#x27;t&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;native&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;MDX&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;parser&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;I&#x27;m&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;using.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    {&quot;text&quot;: &quot;So,&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;I&#x27;m&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;making&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;my&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;own&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;format.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    H2Section
-    
-    
-    
-    {&quot;text&quot;: &quot;Neopolitan&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;Features&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    {&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;format&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;still&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;in&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;its&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;early&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;stages&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;very&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;much&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;in&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;flux.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;That&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;said,&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;basic&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;ideas&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;are&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;mostly&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;in&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;place.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    AsideSection
-    
-    {&quot;key&quot;: &quot;id&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;firstAside&quot;}
-    
-    {&quot;key&quot;: &quot;class&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;highlighted&quot;}
-    
-    
-    
-    {&quot;text&quot;: &quot;There&#x27;s&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;bunch&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;code&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;samples&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;below.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;format&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;more&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;about&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;text&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;content.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;Parsing&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;through&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;collections&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;short&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;samples&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;took&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;me&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;little&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;getting&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;used&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;to.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    H3Section
-    
-    
-    
-    {&quot;text&quot;: &quot;Samples&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    {&quot;text&quot;: &quot;Below&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;are&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;some&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;samples&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;will&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;be&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;overwritten&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;when&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;actual&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;content.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    CodeSection
-    
-    {&quot;key&quot;: &quot;rust&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: None}
-    
-    
-    
-    
-    
-    
-    
-    H2Section
-    
-    
-    
-    {&quot;text&quot;: &quot;Next&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;Steps&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-    {&quot;text&quot;: &quot;Most&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;above&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;pretty&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;well&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;defined.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;rest&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;this&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;below&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;little&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;more&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;fluid.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;Their&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;ideas&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;I&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;expect&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;I&#x27;ll&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;get&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;to,&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;but&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;priority&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;everything&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    {&quot;type&quot;: &quot;Space&quot;}
-    
-    {&quot;text&quot;: &quot;above.&quot;, &quot;type&quot;: &quot;Text&quot;}
-    
-    
-    
-  </pre>
+  </main>
 
 </body>
 

@@ -1,4 +1,5 @@
 // use crate::enums::Content;
+use crate::section::section_attributes::*;
 use crate::content::content::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -12,6 +13,10 @@ use serde::Serialize;
 pub enum Block {
     P { children: Option<Vec<Content>> },
     CodeBlock { text: Option<String> },
+    UnorderedListItem {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>> ,
+    }
 }
 
 pub fn block(source: &str) -> IResult<&str, Block> {
