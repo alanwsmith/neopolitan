@@ -1,5 +1,5 @@
 use crate::section::section::*;
-use crate::section::section_attributes::*;
+use crate::section::attributes_for_section::*;
 use nom::bytes::complete::tag;
 use nom::multi::many0;
 use nom::sequence::preceded;

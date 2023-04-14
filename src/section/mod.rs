@@ -14,7 +14,7 @@ pub mod list;
 pub mod note;
 pub mod p;
 pub mod section;
-pub mod section_attributes;
+pub mod attributes_for_section;
 pub mod subtitle;
 pub mod title;
 pub mod vimeo;

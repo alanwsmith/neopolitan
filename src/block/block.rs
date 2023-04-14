@@ -1,5 +1,5 @@
 // use crate::enums::Content;
-use crate::section::section_attributes::*;
+use crate::section::attributes_for_section::*;
 use crate::content::content::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;

@@ -5,7 +5,7 @@
 // use crate::content::content::*;
 use crate::parse::parse;
 use crate::section::section::*;
-use crate::section::section_attributes::*;
+use crate::section::attributes_for_section::*;
 use crate::wrapper::wrapper::*;
 
 #[test]

@@ -3,7 +3,7 @@ use crate::block::block::*;
 // use crate::block::block_of_code::*;
 // use crate::block::block_of_code;
 use crate::section::section::*;
-use crate::section::section_attributes::*;
+use crate::section::attributes_for_section::*;
 use nom::bytes::complete::tag;
 // use nom::combinator::eof;
 use nom::multi::many0;

@@ -2,7 +2,7 @@
 use crate::block::unordered_list_item::*;
 // use crate::content::content::*;
 use crate::section::section::*;
-use crate::section::section_attributes::*;
+use crate::section::attributes_for_section::*;
 use nom::bytes::complete::tag;
 use nom::combinator::eof;
 use nom::multi::many0;
