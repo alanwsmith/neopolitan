@@ -1,27 +1,41 @@
+-> comment
+
+This is the content source file for the neopolitan 
+site home page. It's written in the format. The 
+output is produced by my example implementation process. 
+
+These two paragraphs won't show up in the final 
+HTML beause they're in a comment section. Being
+able to use comments is one of the reasons I made
+the format. Keep reading below if you're interested
+in the rest. (There won't be any other comments
+so there won't be any other difference in the text 
+if you read this file or the HTML output.)
+
+
 -> title
 
 Welcome To Neopolitan
+
 
 -> subtitle
 
 A plain-text format for my website
 
-x-> comment
-
-This file is the source for the home
-page of the neopolitan site. It demonstrates
-the basic features of the format.
 
 -> h3
 
 Vimeo Example
 
+
 -> vimeo
 >> 3817271
+
 
 -> h3
 
 YouTube Example
+
 
 -> code
 
@@ -31,9 +45,11 @@ YouTube Example
 -> youtube
 >> 9jlQiHHMlkA
 
+
 -> note
 
 TODO: HTML escaping is not currently in place
+
 
 -> note
 
@@ -52,6 +68,7 @@ still in flight.
 New Item Checklist
 
 These are the steps to add a new section 
+
 
 -> list
 
@@ -81,8 +98,6 @@ style
 - [] Update the contents. 
 
 
-
-
 -> h2
 
 Introduction
@@ -95,6 +110,7 @@ for the next two decades?" is a very different question from
 
 On that time horizon, my thoughts don't go to the tech, they
 go to the content.
+
 
 -> h2
 
@@ -116,6 +132,7 @@ keep me from posting the way I'd like.
 
 So, I'm making my own format. I'm calling it Neopolitan.
 
+
 -> h2
 
 The Basics
@@ -131,10 +148,18 @@ indications of which ones are already set.
 
 -> list
 
+
 - [x] aside - The HTML <<link|
 <aside>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside>> 
 tag
+
+- [] attributes - A collection of key, value pairs for
+the page. I use it for the ID, date, status, etc... The 
+permitted and parsed values are left as an implementaiton 
+detail. My implementation is straight attirbutes like the
+rest of the sections but YAML or other formats could
+be used with a corresponding implementation engine. 
 
 - [x] blockquote - The HTML <<link|
 <blockquote>|
@@ -150,9 +175,9 @@ data for links into the page.
 attrivutes.
 
 - [x] code - Code blocks like fenced code blocks but you can add 
-an arbitrary number of attributes. 
+an arbitrary number of attributes.
 
-- [] comment - Parsed like text sections but with the 
+- [x] comment - Parsed like text sections but with the 
 expectation that it won't output unless the implementation
 is specifically designed to do so.
 
@@ -433,7 +458,10 @@ to be written about that later. For now, suffice it
 to say that, for my personal site, frameworks have been a net 
 negative for me. I'm bowing out of that game. 
 
+
 -> h3
+
+Plain-text
 
 
 I'm a huge fan of plain-text. My Grimoire has
@@ -444,6 +472,7 @@ use description lists because they aren't native
 to the MDX parser I'm using.
 
 So, I'm making my own format.
+
 
 -> h2
 
@@ -517,6 +546,55 @@ to thing about how that would work.
 
 Holding (attributes aren't being parsed yet so this
 is hacked out)
+
+-> h2
+
+Philosophies
+
+This is where I'm coming from with the thoughts
+and ideas behind the format
+
+-> h4
+
+HTML Focused
+
+My primary output target is HTML. Most HTML
+tags have native counterparts to support that. 
+This largely stems from the fact that I want
+to use description lists but those aren't
+included in the deafult markdown I use. 
+
+-> h4
+
+AST Over Output
+
+This project can be broken into two parts:
+
+-> list
+
+- The format and the AST
+
+- The output
+
+-> p
+
+The specification only deals with the AST
+and the output. The project includes and
+example output renderer but based on what
+I've seen with Markdown trying to define 
+an implementation via a spec isn't likely
+to work out well.
+
+See <<link|XKCD 927|https://xkcd.com/927/>> 
+for reference
+
+
+
+
+
+Insignificant Whitespace
+
+
 
 
 x> attributes

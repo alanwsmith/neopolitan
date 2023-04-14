@@ -22,39 +22,31 @@
 <html lang="en">
 
 <head>
-  <style>
-    body {
-      background-color: black;
-      color: #aaa;
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    .aside {
-      font-style: italic;
-    }
+  <title>Neopolitan - A plain-text format for my website</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
 
-    main {
-      max-width: 80ch;
-      margin: 0 auto;
-    }
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
 
-    .subtitle {
-      font-size: 1.2rem;
-      font-weight: 900;
-    }
+  <link rel="stylesheet" href="/styles/global.css" />
 
-    pre {
-      background-color: #333;
-    }
-
-    .note {
-      background-color: #333;
-    }
-  </style>
 </head>
 
 <body>
 
   <main>
+    
+    
     
     
     
@@ -73,18 +65,6 @@
 <div class="subtitle">
    A  plain-text  format  for  my  website
 </div>
-
-
-
-<p>
-   x-&gt;  comment
-</p>
-
-
-
-<p>
-   This  file  is  the  source  for  the  home  page  of  the  neopolitan  site.  It  demonstrates  the  basic  features  of  the  format.
-</p>
 
 
 
@@ -1369,9 +1349,408 @@ tag
       
 <!--
 <div>
-  {&quot;children&quot;: [{&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blockquote&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;HTML&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: None, &quot;text&quot;: &quot;\n&lt;blockquote&gt;&quot;, &quot;type&quot;: &quot;Link&quot;, &quot;url&quot;: &quot;\nhttps:&#x2f;&#x2f;developer.mozilla.org&#x2f;en-US&#x2f;docs&#x2f;Web&#x2f;HTML&#x2f;Element&#x2f;blockquote&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;tag&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;attributes&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;A&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;collection&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;key,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;pairs&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;for&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;page.&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;I&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;use&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;it&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;for&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;ID,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;date,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;status,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;etc...&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;permitted&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;parsed&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;values&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;are&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;left&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;as&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;an&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;implementaiton&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;detail.&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;My&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;implementation&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;straight&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;attirbutes&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;like&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;rest&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;sections&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;but&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;YAML&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;or&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;other&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;formats&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;could&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;be&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;used&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;with&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;corresponding&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;implementation&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;engine.&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blockquote&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;HTML&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: None, &quot;text&quot;: &quot;\n&lt;blockquote&gt;&quot;, &quot;type&quot;: &quot;Link&quot;, &quot;url&quot;: &quot;\nhttps:&#x2f;&#x2f;developer.mozilla.org&#x2f;en-US&#x2f;docs&#x2f;Web&#x2f;HTML&#x2f;Element&#x2f;blockquote&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;tag&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
 </div>
 -->
+
+
+[]
+
+
+
+
+
+
+attributes
+
+
+
+
+
+
+-
+
+
+
+
+
+
+A
+
+
+
+
+
+
+collection
+
+
+
+
+
+
+of
+
+
+
+
+
+
+key,
+
+
+
+
+
+
+value
+
+
+
+
+
+
+pairs
+
+
+
+
+
+
+for
+
+
+
+
+
+
+the
+
+
+
+
+
+
+page.
+
+
+
+
+
+
+I
+
+
+
+
+
+
+use
+
+
+
+
+
+
+it
+
+
+
+
+
+
+for
+
+
+
+
+
+
+the
+
+
+
+
+
+
+ID,
+
+
+
+
+
+
+date,
+
+
+
+
+
+
+status,
+
+
+
+
+
+
+etc...
+
+
+
+
+
+
+The
+
+
+
+
+
+
+permitted
+
+
+
+
+
+
+and
+
+
+
+
+
+
+parsed
+
+
+
+
+
+
+values
+
+
+
+
+
+
+are
+
+
+
+
+
+
+left
+
+
+
+
+
+
+as
+
+
+
+
+
+
+an
+
+
+
+
+
+
+implementaiton
+
+
+
+
+
+
+detail.
+
+
+
+
+
+
+My
+
+
+
+
+
+
+implementation
+
+
+
+
+
+
+is
+
+
+
+
+
+
+straight
+
+
+
+
+
+
+attirbutes
+
+
+
+
+
+
+like
+
+
+
+
+
+
+the
+
+
+
+
+
+
+rest
+
+
+
+
+
+
+of
+
+
+
+
+
+
+the
+
+
+
+
+
+
+sections
+
+
+
+
+
+
+but
+
+
+
+
+
+
+YAML
+
+
+
+
+
+
+or
+
+
+
+
+
+
+other
+
+
+
+
+
+
+formats
+
+
+
+
+
+
+could
+
+
+
+
+
+
+be
+
+
+
+
+
+
+used
+
+
+
+
+
+
+with
+
+
+
+
+
+
+a
+
+
+
+
+
+
+corresponding
+
+
+
+
+
+
+implementation
+
+
+
+
+
+
+engine.
+
+
+
+
+
+
+-
+
+
+
+
 
 
 [x]
@@ -1723,7 +2102,7 @@ attrivutes.
       
 <!--
 <div>
-  {&quot;children&quot;: [{&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;code&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Code&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blocks&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;like&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;fenced&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;code&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blocks&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;but&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;you&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;can&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;add&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;an&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;arbitrary&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;number&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;attributes.&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;comment&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Parsed&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;like&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;text&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;sections&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;but&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;with&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;expectation&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;it&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;won&#x27;t&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;output&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;unless&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;implementation&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;specifically&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;designed&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;do&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;so.&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;code&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Code&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blocks&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;like&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;fenced&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;code&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blocks&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;but&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;you&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;can&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;add&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;an&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;arbitrary&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;number&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;attributes.&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
 </div>
 -->
 
@@ -1851,17 +2230,20 @@ attributes.
 
 
 
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;comment&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Parsed&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;like&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;text&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;sections&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;but&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;with&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;expectation&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;it&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;won&#x27;t&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;output&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;unless&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;implementation&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;specifically&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;designed&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;do&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;so.&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
 
 
-
--
-
-
-
-
-
-
-[]
+[x]
 
 
 
@@ -7154,7 +7536,11 @@ game.
     
 
 
-<h3> I&#x27;m  a  huge  fan  of  plain-text.  My  Grimoire  has  nine  thousand  Markdown,  MDX,  and  Org-Mode  files  in  it.  They&#x27;re  solid  formats,  but  each  causes  its  own  type  of  friction.  For  example,  I  don&#x27;t  use  description  lists  because  they  aren&#x27;t  native  to  the  MDX  parser  I&#x27;m  using.</h3>
+<h3> Plain-text</h3>
+
+
+
+<p>  I&#x27;m  a  huge  fan  of  plain-text.  My  Grimoire  has  nine  thousand  Markdown,  MDX,  and  Org-Mode  files  in  it.  They&#x27;re  solid  formats,  but  each  causes  its  own  type  of  friction.  For  example,  I  don&#x27;t  use  description  lists  because  they  aren&#x27;t  native  to  the  MDX  parser  I&#x27;m  using.</p>
 
 
 
@@ -7600,6 +7986,503 @@ hacked
 
 out)
 
+
+
+</p>
+
+
+    
+    
+    
+    
+  
+    
+      <h2> Philosophies</h2>
+    
+  
+    
+      <p> This  is  where  I&#x27;m  coming  from  with  the  thoughts  and  ideas  behind  the  format</p>
+    
+  
+
+    
+    
+    
+    
+
+
+<h4> HTML  Focused</h4>
+
+
+
+<p> My  primary  output  target  is  HTML.  Most  HTML  tags  have  native  counterparts  to  support  that.  This  largely  stems  from  the  fact  that  I  want  to  use  description  lists  but  those  aren&#x27;t  included  in  the  deafult  markdown  I  use.</p>
+
+
+
+    
+    
+    
+    
+
+
+<h4> AST  Over  Output</h4>
+
+
+
+<p> This  project  can  be  broken  into  two  parts:</p>
+
+
+
+    
+    
+    
+    
+<ul>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;format&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;AST&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+The
+
+
+
+
+
+
+format
+
+
+
+
+
+
+and
+
+
+
+
+
+
+the
+
+
+
+
+
+
+AST
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;output&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+The
+
+
+
+
+
+
+output
+
+
+
+    </p>
+    </li>
+  
+</ul>
+
+    
+    
+    
+    
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;specification&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;only&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;deals&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;with&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;AST&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;output.&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;project&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;includes&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;example&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;output&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;renderer&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;but&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;based&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;on&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;what&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;I&#x27;ve&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;seen&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;with&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Markdown&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;trying&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;define&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;an&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;implementation&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;via&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;spec&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;isn&#x27;t&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;likely&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;work&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;out&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;well.&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+The
+
+
+
+
+
+
+specification
+
+
+
+
+
+
+only
+
+
+
+
+
+
+deals
+
+
+
+
+
+
+with
+
+
+
+
+
+
+the
+
+
+
+
+
+
+AST
+
+
+
+
+
+
+and
+
+
+
+
+
+
+the
+
+
+
+
+
+
+output.
+
+
+
+
+
+
+The
+
+
+
+
+
+
+project
+
+
+
+
+
+
+includes
+
+
+
+
+
+
+and
+
+
+
+
+
+
+example
+
+
+
+
+
+
+output
+
+
+
+
+
+
+renderer
+
+
+
+
+
+
+but
+
+
+
+
+
+
+based
+
+
+
+
+
+
+on
+
+
+
+
+
+
+what
+
+
+
+
+
+
+I&#x27;ve
+
+
+
+
+
+
+seen
+
+
+
+
+
+
+with
+
+
+
+
+
+
+Markdown
+
+
+
+
+
+
+trying
+
+
+
+
+
+
+to
+
+
+
+
+
+
+define
+
+
+
+
+
+
+an
+
+
+
+
+
+
+implementation
+
+
+
+
+
+
+via
+
+
+
+
+
+
+a
+
+
+
+
+
+
+spec
+
+
+
+
+
+
+isn&#x27;t
+
+
+
+
+
+
+likely
+
+
+
+
+
+
+to
+
+
+
+
+
+
+work
+
+
+
+
+
+
+out
+
+
+
+
+
+
+well.
+
+
+
+</p>
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;See&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: None, &quot;text&quot;: &quot;XKCD 927&quot;, &quot;type&quot;: &quot;Link&quot;, &quot;url&quot;: &quot;https:&#x2f;&#x2f;xkcd.com&#x2f;927&#x2f;&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;for&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;reference&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+See
+
+
+
+
+
+
+<a href="https:&#x2f;&#x2f;xkcd.com&#x2f;927&#x2f;">XKCD 927</a>
+
+
+
+
+
+
+for
+
+
+
+
+
+
+reference
+
+
+
+</p>
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+</p>
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+</p>
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Insignificant&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Whitespace&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Insignificant
+
+
+
+
+
+
+Whitespace
+
+
+
+</p>
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
 
 
 </p>
