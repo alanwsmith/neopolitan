@@ -4,7 +4,7 @@ use crate::content::link::*;
 
 #[test]
 fn link_basic() {
-    let source = ("<<link|", "localhost", "|", "alfa", ">>");
+    let source = ("<<link|", "alfa", "|", "localhost", ">>");
     let expected = Ok((
         "",
         Content::Link {
@@ -19,7 +19,7 @@ fn link_basic() {
 
 #[test]
 fn link_with_attributes() {
-    let source = ("<<link|", "localhost", "|", "alfa|class: important", ">>");
+    let source = ("<<link|", "alfa", "|", "localhost|class: important", ">>");
     let expected = Ok((
         "",
         Content::Link {

@@ -10,7 +10,7 @@ fn alfa() {
     let lines = vec![
         "-> title",
         "",
-        "quick <<link|example.com|brown>> fox",
+        "quick <<link|brown|example.com>> fox",
         "",
         "-> p",
         "",

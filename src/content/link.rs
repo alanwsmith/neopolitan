@@ -30,8 +30,8 @@ pub fn link<'a>(
             "",
             Content::Link {
                 attributes,
-                url: Some(source.1.to_string()),
-                text: Some(items[0].to_string()),
+                url: Some(items[0].to_string()),
+                text: Some(source.1.to_string()),
             },
         ))
     } else {
@@ -39,8 +39,8 @@ pub fn link<'a>(
             "",
             Content::Link {
                 attributes: None,
-                url: Some(source.1.to_string()),
-                text: Some(items[0].to_string()),
+                url: Some(items[0].to_string()),
+                text: Some(source.1.to_string()),
             },
         ))
     }

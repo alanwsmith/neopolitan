@@ -13,7 +13,7 @@ fn charlie() {
         "-> title",
         ">> id: opening",
         "",
-        "quick <<link|example.com|brown|class: active>> fox",
+        "quick <<link|brown|example.com|class: active>> fox",
         "",
         "-> p",
         ">> alfa: bravo charlie",
