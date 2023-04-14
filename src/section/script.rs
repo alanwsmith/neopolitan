@@ -6,7 +6,7 @@ use nom::multi::many0;
 use nom::sequence::preceded;
 use nom::IResult;
 
-pub fn css(source: &str) -> IResult<&str, Section> {
+pub fn script(source: &str) -> IResult<&str, Section> {
     let (source, att_capture) = many0(preceded(tag(">> "), section_attribute))(source).unwrap();
     let attributes = if att_capture.is_empty() {
         None
@@ -22,7 +22,7 @@ pub fn css(source: &str) -> IResult<&str, Section> {
     };
     Ok((
         source,
-        Section::CSSSection {
+        Section::ScriptSection {
             attributes,
             children,
         },
@@ -39,13 +39,13 @@ mod test {
 
     #[test]
     fn basic_css() {
-        let lines = vec!["-> css", "", "body { background-color: black; }"].join("\n");
+        let lines = vec!["-> script", "", "console.log(`here`)"].join("\n");
         let source = lines.as_str();
         let expected = Wrapper::Page {
-            children: Some(vec![Section::CSSSection {
+            children: Some(vec![Section::ScriptSection {
                 attributes: None,
                 children: Some(Block::RawContent {
-                    text: Some("body { background-color: black; }".to_string()),
+                    text: Some("console.log(`here`)".to_string()),
                 }),
             }]),
         };
