@@ -6,20 +6,24 @@ Welcome To Neopolitan
 
 A plain-text format for my website 
 
+
+x> note
+
+This page is an early draft.  
+
+
 -> h2
 
-Overview
+Introduction
 
-My site is twenty years old. Pondering the 
-past two decades started me thinking about the next 
-two. It changed my perspective on making and maintaining 
-my site has changed because of it. "What foundation do 
-I want to setup for the next two decades?" is a
-very different question from "What do I want to do 
-for my next redesign?" 
+My site is twenty years old. Pondering those decades got 
+me thinking about the next two. It's changed my perspective on 
+making and maintaining my site. "What foundation do I want 
+for the next two decades?" is a very different question from 
+"What do I want to do for my next redesign?"
 
-On my time horizon, the key isn't the tech stack. It's 
-the content. 
+On that time horizon, my thoughts don't go to the tech, they
+go to the content.
 
 -> h2
 
@@ -27,12 +31,276 @@ Post Count
 
 I've moved my site a half dozen times. Each one
 involved a painful content migration. They're rarely
-fun. They're even less so when you've crossed
-a thousand posts. I'm at 1,566.
+fun. Even less so with a thousand posts. Or, in my case, 
+1,566.
 
-I've gone from raw HTML to Wordpress back to HTML 
-to a half dozen DB schemas to Markdown to MDX to 
-Org-Mode. Every approach involves friction that 
+I've gone from raw HTML to Perl scripts to Wordpress to 
+PHP with various DB schemas to Markdown to MDX to 
+Org-Mode. 
+
+After switching to plain-text with Markdown I'm not
+interested in anything else. But, those formats don't 
+work for me. I keep running into frictions that
+keep me from posting the way I'd like.
+
+So, I'm making my own format. I'm calling it Neopolitan.
+
+-> h2
+
+The Basics
+
+The general idea is to use sections (which start
+with a `->`neo` token) to define areas of content. 
+The type of section defines how the content inside
+it will behave.
+
+These are the section types I'm planning along with 
+indications of which ones are already set.
+
+-> list
+
+- [] aside
+
+- [] blockquote
+
+- [] blurb
+
+- [] button
+
+- [] canvas
+
+- [] code
+
+- [] css
+
+- [] details
+
+- [] dlist
+
+- [] div
+
+- [] figure
+
+- [] form
+
+- [] footnote
+
+- [] h1-h6
+
+- [] html
+
+- [] iframe
+
+- [] image
+
+- [] list
+
+- [] menu
+
+- [] nav
+
+- [] note
+
+- [] notes
+
+- [] object
+
+- [] olist
+
+- [] p
+
+- [] picture
+
+- [] pre
+
+- [] reference
+
+- [] script
+
+- [] subtitle
+
+- [] startcode/endcode
+
+- [] table 
+
+- [] textarea
+
+- [] tiktok 
+
+- [] title
+
+- [] todo
+
+- [] video
+
+- [] vimeo
+
+- [] warning
+
+- [] widget
+
+- [] youtube 
+
+
+-> h3
+
+Inline Tags
+
+Most of the section types hold text content. That
+text content is split into `<p>`` tags by default
+and the text inside of them is parsed for inline 
+tags and shorthand codes. 
+
+Inline tags start with two `<<`` and end with 
+a closing `>>`` set. Here's the list with 
+`x`` indicating the ones that are implemented
+and `.`` indicating that are still under 
+consideration. (This is basically the list
+of html elements)
+
+-> list
+
+- [.] abbr - Abbreviation
+
+- [.] audio - Audio 
+
+- [x] b - Bring attention
+
+- [.] button - Button 
+
+- [.] cite - Cite 
+
+- [x] code [c] - Code
+
+- [.] data - Data
+
+- [.] del - Del
+
+- [.] dfn - Definition
+
+- [x] em - Emphasis
+
+- [x] i - Idiomatic text 
+
+- [.] img - Image 
+
+- [.] input - Input 
+
+- [.] ins - Insert 
+
+- [x] kbd [k] - Keyboard input 
+
+- [.] label - Label 
+
+- [.] legend - Legend 
+
+- [x] link [l] - Link
+
+- [.] meter - Leter
+
+- [.] object - Object 
+
+- [.] progress - Progress 
+
+- [.] q - Quotation 
+
+- [.] samp - Sample Output 
+
+- [.] small - Small text (side comment) 
+
+- [x] strike - Strikethru 
+
+- [x] span - Span
+
+- [x] strong [s] - Strong
+
+- [x] sub - Subscript
+
+- [x] sup - Superscript
+
+- [.] time - Time
+
+- [x] u - Unarticulated Annotation
+
+- [.] var - Variable
+
+- [.] wbr - Line Break Opportunity
+
+
+
+
+-> p
+
+
+
+
+Neopolitan
+
+Here's what I'm thinking
+
+-> list
+
+- Focused on text based content
+
+- Plain-text
+
+- White-space is not meaningful except for using 
+blank lines between sections and blocks
+
+- A variety of section types
+
+- Individual sections for metadata
+
+- Arbitrary attributes can be added to sections 
+including code blocks.
+
+- Arbitrary attributes can be added to inline 
+tags
+
+- A collection of sections and inline tags that
+provides all <<link|standard HTML elements|
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html>>
+
+- The spec defines the AST, not the final output. 
+That's left up to the rendering engine.
+
+- Footnotes
+
+- References
+
+- Result blocks in addition to code blocks (with 
+the goal of getting my editor to generate them
+automatically like Org-Mode)
+
+
+
+-> h2
+
+Under Consideration
+
+Some other things I have in mind:
+
+-> list
+
+- A `widget`` section type that's used to pass
+data to the rendered page (via whatever method
+the implementation 
+
+- A `css`` section type designed to include CSS
+that should be added as the last `<style>`html`
+tag in the `<head>`html` of the document
+
+- A `script` section type designed to include
+a `<script></script>`html` in the head of the
+document
+
+- Includes sections that include other files
+
+
+-> p
+
+
+Every approach involves friction that 
 slows me down both from making posts an experimenting
 with my site on a larger level.
 
@@ -132,4 +400,27 @@ This is a test list
 -> p
 
 and that's the end of the list
+
+
+
+-> h3
+
+Other ideas
+
+-> list
+
+- An `-> og` tag to put in open graph values? Need 
+to thing about how that would work.
+
+-> p
+
+Holding (attributes aren't being parsed yet so this
+is hacked out)
+
+x> attributes
+>> date: 2023-04-03 12:10:46
+>> id: 2nvihspm8vaa
+>> site: aws
+>> type: post
+>> status: deaft 
 
