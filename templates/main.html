@@ -1,4 +1,5 @@
 {% from "aside.html" import aside %}
+{% from "_macros/date.html" import date %}
 {% from "blockquote.html" import blockquote %}
 {% from "code.html" import code %}
 {% from "div.html" import div %}
@@ -43,7 +44,9 @@
 </head>
 
 <body>
-
+  <header>
+    {{ date(payload) }}
+  </header>
   <main>
     {% for section in payload.children %}
     {% if section.type == "AsideSection" %}

@@ -12,6 +12,19 @@ in the rest. (There won't be any other comments
 so there won't be any other difference in the text 
 if you read this file or the HTML output.)
 
+-> h3
+
+TODOs
+
+-> list
+
+- [] Convert Code to have a RawBlock instead of
+Block so now processing is applied.
+
+- [] Setup attributes to have RawBlock
+
+
+
 
 -> title
 
@@ -20,7 +33,7 @@ Welcome To Neopolitan
 
 -> subtitle
 
-A plain-text format for my website
+A plain-text website format
 
 
 -> h3
@@ -154,12 +167,12 @@ indications of which ones are already set.
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside>> 
 tag
 
-- [] attributes - A collection of key, value pairs for
+- [x] attributes - A collection of key, value metadata pairs for
 the page. I use it for the ID, date, status, etc... The 
 permitted and parsed values are left as an implementaiton 
 detail. My implementation is straight attirbutes like the
 rest of the sections but YAML or other formats could
-be used with a corresponding implementation engine. 
+be used with a corresponding implementation engine.
 
 - [x] blockquote - The HTML <<link|
 <blockquote>|
@@ -183,7 +196,11 @@ is specifically designed to do so.
 
 - [p2] css - A place to put CSS that will be inlined in the page
 
-- [p2] `custom-`` - The 
+- [p2] `custom`` - A way to make custom section tags outside of the
+standard set. Definition, creation, parsing, and output are all
+details left up to the individual implementation. The expectation 
+is that the first attribute will be just a key with the name
+of the thing to do. 
 
 - [p2] details - The HTML <<link|
 details|
@@ -200,7 +217,6 @@ description list
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
 >> wrapper that can be used to add attributes to sections 
 of content
-
 
 - [p2] figure - The HTML figure element
 
@@ -262,7 +278,15 @@ contained in a div.
 
 - [x] warning - A div block with a warning class on it
 
-- [p2] widget 
+- [p2] wc - A web component. The first attribute is just
+a key with no value. It's the name that is used to create
+the web component. Attributes are inserted directly 
+and the content is output in between the components
+tags. No additional processing is done to the content.
+
+- [p2] widget - The first attribute is the name of the
+widget which is use by the processor to render the
+content. 
 
 - [x] youtube - A youtube embed
 
@@ -549,58 +573,10 @@ is hacked out)
 
 -> h2
 
-Philosophies
-
-This is where I'm coming from with the thoughts
-and ideas behind the format
-
--> h4
-
-HTML Focused
-
-My primary output target is HTML. Most HTML
-tags have native counterparts to support that. 
-This largely stems from the fact that I want
-to use description lists but those aren't
-included in the deafult markdown I use. 
-
--> h4
-
-AST Over Output
-
-This project can be broken into two parts:
-
--> list
-
-- The format and the AST
-
-- The output
-
--> p
-
-The specification only deals with the AST
-and the output. The project includes and
-example output renderer but based on what
-I've seen with Markdown trying to define 
-an implementation via a spec isn't likely
-to work out well.
-
-See <<link|XKCD 927|https://xkcd.com/927/>> 
-for reference
-
-
-
-
-
-Insignificant Whitespace
-
-
-
-
-x> attributes
+-> attributes
 >> date: 2023-04-03 12:10:46
 >> id: 2nvihspm8vaa
 >> site: aws
 >> type: post
->> status: deaft 
+>> status: draft 
 

@@ -17,25 +17,21 @@ fn mike() {
     let expected = Wrapper::Page {
         children: Some(vec![
             Section::YouTubeSection {
-            attributes: Some(vec![
-                (SectionAttribute::Attribute {
-                    key: Some("asdf1234".to_string()),
-                    value: None,
-                }),
-            ]),
-        },
-        Section::VimeoSection {
-        attributes: Some(vec![
-            (SectionAttribute::Attribute {
-                key: Some("3817271".to_string()),
-                value: None,
-            }),
-        ]),
-    }
-        
-        
-        
-        
+                attributes: Some(vec![
+                    (SectionAttribute::Attribute {
+                        key: Some("asdf1234".to_string()),
+                        value: None,
+                    }),
+                ]),
+            },
+            Section::VimeoSection {
+                attributes: Some(vec![
+                    (SectionAttribute::Attribute {
+                        key: Some("3817271".to_string()),
+                        value: None,
+                    }),
+                ]),
+            },
         ]),
     };
     let result = parse(source).unwrap().1;

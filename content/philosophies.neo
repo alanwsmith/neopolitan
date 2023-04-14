@@ -1,0 +1,93 @@
+-> title
+
+Neopoliltan Philosophies
+
+-> h2
+
+Overview
+
+These are the thoughts, influences, and
+decisions that lead to neopolitan's design. 
+
+-> h2
+
+The Philosophies
+
+-> h3
+
+HTML Focused
+
+My primary output target is HTML. Most HTML
+tags have native counterparts to support that. 
+This largely stems from the fact that I want
+to use description lists but those aren't
+included in the default markdown I use. 
+
+-> h4
+
+AST Over Output
+
+This project can be broken into two parts:
+
+-> list
+
+- The format and the AST
+
+- The output
+
+-> p
+
+The specification only deals with the AST
+and the output. The project includes and
+example output renderer but based on what
+I've seen with Markdown trying to define 
+an implementation via a spec isn't likely
+to work out well.
+
+See <<link|XKCD 927|https://xkcd.com/927/>> 
+for reference
+
+
+-> h3
+
+Insignificant Whitespace
+
+-> h3
+
+Section Types
+
+There are different types of sections:
+
+- Basic Processed Content (e.g. `-> p`neo`)
+
+- List Processed Content (e.g. `-> list`neo`)
+
+- Raw Content (e.g. `-> code`neo`)
+
+- Metadata Driven content (e.g. `-> youtube`neo`)
+
+- Basic Metadata (e.g. `-> attributes`neo`)
+
+- Custom sections (e.g. `-> wc`neo` and `-> c`neo`)
+
+
+-> h3
+
+Attributes Are Key Values By Default
+
+The attributes section of my implementation
+contains only key/value pairs. The AST
+leave the option of using other formats
+in the content section as well. 
+
+
+-> categories
+>> Neopolitan 
+
+-> attributes
+>> date: 2023-04-14 14:39:42
+>> id: 2oqfas7uyfv8
+>> site: neopolitan 
+>> type: post
+>> status: draft 
+
