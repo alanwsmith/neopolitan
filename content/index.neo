@@ -195,7 +195,7 @@ contained in a div.
 
 - [.] picture
 
-- [] pre
+- [x] pre
 
 - [x] reference
 
@@ -221,7 +221,7 @@ contained in a div.
 
 - [x] warning - A div block with a warning class on it
 
-- [.] wc - A web component. The first attribute is just
+- [x] wc - A web component. The first attribute is just
 a key with no value. It's the name that is used to create
 the web component. Attributes are inserted directly 
 and the content is output in between the components
