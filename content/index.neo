@@ -4,7 +4,20 @@ Welcome To Neopolitan
 
 -> subtitle
 
-A plain-text format for my website 
+A plain-text format for my website
+
+x-> comment
+
+This file is the source for the home
+page of the neopolitan site. It demonstrates
+the basic features of the format.
+
+-> h3
+
+Vimeo Example
+
+-> vimeo
+>> 3817271
 
 -> h3
 
@@ -145,6 +158,8 @@ is specifically designed to do so.
 
 - [p2] css - A place to put CSS that will be inlined in the page
 
+- [p2] `custom-`` - The 
+
 - [p2] details - The HTML <<link|
 details|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details>>
@@ -218,13 +233,13 @@ contained in a div.
 
 - [p2] video
 
-- [] vimeo - A vimeo embed
+- [x] vimeo - A vimeo embed
 
 - [x] warning - A div block with a warning class on it
 
 - [p2] widget 
 
-- [] youtube - A youtube embed
+- [x] youtube - A youtube embed
 
 
 -> h3

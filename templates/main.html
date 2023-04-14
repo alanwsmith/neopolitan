@@ -13,6 +13,7 @@
 {% from "subtitle.html" import subtitle %}
 {% from "paragraphs.html" import paragraphs %}
 {% from "title.html" import title %}
+{% from "vimeo.html" import vimeo %}
 {% from "warning.html" import warning %}
 {% from "youtube.html" import youtube %}
 
@@ -85,6 +86,8 @@
     {{ subtitle(section) }}
     {% elif section.type == "Title" %}
     {{ title(section) }}
+    {% elif section.type == "VimeoSection" %}
+    {{ vimeo(section) }}
     {% elif section.type == "WarningSection" %}
     {{ warning(section) }}
     {% elif section.type == "YouTubeSection" %}

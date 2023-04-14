@@ -19,6 +19,7 @@ use crate::section::section_attributes::*;
 use crate::section::section_attributes::*;
 use crate::section::subtitle::*;
 use crate::section::title::*;
+use crate::section::vimeo::*;
 use crate::section::warning::*;
 use crate::section::youtube::*;
 use nom::branch::alt;
@@ -106,6 +107,9 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    VimeoSection {
+        attributes: Option<Vec<SectionAttribute>>,
+    },
     WarningSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
@@ -138,6 +142,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         tuple((tag("-> subtitle\n"), alt((take_until("\n\n-> "), rest))))
             .map(|t| subtitle(t.1).unwrap().1),
         tuple((tag("-> list\n"), alt((take_until("\n\n-> "), rest)))).map(|t| list(t.1).unwrap().1),
+        tuple((tag("-> vimeo\n"), alt((take_until("\n\n-> "), rest))))
+            .map(|t| vimeo(t.1).unwrap().1),
         tuple((tag("-> warning\n"), alt((take_until("\n\n-> "), rest))))
             .map(|t| warning(t.1).unwrap().1),
         tuple((tag("-> youtube\n"), alt((take_until("\n\n-> "), rest))))
