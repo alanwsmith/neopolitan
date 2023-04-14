@@ -1,4 +1,3 @@
-// use crate::enums::Content;
 use crate::section::attributes_for_section::*;
 use crate::content::content::*;
 use nom::branch::alt;
@@ -20,7 +19,6 @@ pub enum Block {
 }
 
 pub fn block(source: &str) -> IResult<&str, Block> {
-    // dbg!(source);
     let (remainder, content) = many_till(content, alt((tag("\n\n"), eof)))(source)?;
     Ok((
         remainder,

@@ -86,7 +86,6 @@ pub enum Content {
 }
 
 pub fn content(source: &str) -> IResult<&str, Content> {
-    // dbg!(source);
     let (remainder, content) = alt((
         tuple((tag_no_case("<<b|"), take_until(">>"), tag(">>"))).map(|t| b(t).unwrap().1),
         tuple((tag_no_case("<<code|"), take_until(">>"), tag(">>"))).map(|t| code(t).unwrap().1),

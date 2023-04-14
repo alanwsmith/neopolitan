@@ -1,14 +1,7 @@
-// use crate::block::block::*;
-// use crate::content::content::*;
-// use crate::attribute::*;
-// use crate::block::block::*;
-// use crate::content::content::*;
 use crate::parse::parse;
 use crate::section::section::*;
 use crate::section::attributes_for_section::*;
 use crate::wrapper::wrapper::*;
-
-// <iframe title="vimeo-player" src="https://player.vimeo.com/video/3817271" width="640" height="360" frameborder="0"    allowfullscreen></iframe>
 
 #[test]
 fn mike() {

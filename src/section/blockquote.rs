@@ -9,7 +9,6 @@ use nom::sequence::preceded;
 use nom::IResult;
 
 pub fn blockquote(source: &str) -> IResult<&str, Section> {
-    // dbg!(source);
     let (source, att_capture) = many0(preceded(tag(">> "), section_attribute))(source).unwrap();
     let attributes = if att_capture.is_empty() {
         None

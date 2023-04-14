@@ -5,7 +5,6 @@ use nom::character::complete::line_ending;
 use nom::character::complete::not_line_ending;
 use nom::character::complete::space1;
 use nom::combinator::eof;
-// use nom::combinator::opt;
 use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
@@ -19,24 +18,6 @@ pub enum SectionAttribute {
         value: Option<String>,
     },
 }
-
-// pub fn section_attribute_old(source: &str) -> IResult<&str, SectionAttribute> {
-//     // return section_attribute_dev(source);
-//     let (a, b) = opt(tuple((
-//         is_not(":"),
-//         tag(":"),
-//         space1,
-//         not_line_ending,
-//         line_ending,
-//     )))(source)?;
-//     Ok((
-//         a,
-//         SectionAttribute::Attribute {
-//             key: Some(b.unwrap().0.to_string()),
-//             value: Some(b.unwrap().3.to_string()),
-//         },
-//     ))
-// }
 
 #[test]
 fn test_section_attribute() {
