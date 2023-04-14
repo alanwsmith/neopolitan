@@ -24,6 +24,7 @@ pub mod reference;
 pub mod script;
 pub mod section;
 pub mod subtitle;
+pub mod tiktok;
 pub mod title;
 pub mod vimeo;
 pub mod warning;

@@ -24,6 +24,7 @@ use crate::section::pre::*;
 use crate::section::reference::*;
 use crate::section::script::*;
 use crate::section::subtitle::*;
+use crate::section::tiktok::*;
 use crate::section::title::*;
 use crate::section::vimeo::*;
 use crate::section::warning::*;
@@ -139,6 +140,9 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    TikTokSection {
+        attributes: Option<Vec<SectionAttribute>>,
+    },
     Title {
         // has to be a vec because order matters
         // for the code sections
@@ -220,6 +224,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 .map(|t| reference(t.1).unwrap().1),
             tuple((tag("-> script\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| script(t.1).unwrap().1),
+            tuple((tag("-> tiktok\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| tiktok(t.1).unwrap().1),
             tuple((tag("-> wc\n"), alt((take_until("\n\n-> "), rest)))).map(|t| wc(t.1).unwrap().1),
             tuple((tag("-> widget\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| widget(t.1).unwrap().1),
