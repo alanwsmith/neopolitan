@@ -18,15 +18,17 @@ TODOs
 
 -> list
 
-- [] Convert Code to have a RawBlock instead of
-Block so now processing is applied.
-
-- [] Setup attributes to have RawBlock
-
-- [] Add html escaping
+- [] Add html escaping (that should be done on 
+the front end, tbd if minijinji is already 
+doing it.
 
 - [] Fix bug where whitespace at the end of a 
 section name cause a panic
+
+- [] Fix bug where whatspace at the end of 
+a block of content causes the next one to 
+be appended directly instead of making its
+own block
 
 
 -> title
@@ -146,7 +148,8 @@ tag
 - [.] dlist - The HTML <<link|
 <dl>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl>> 
-description list
+description list - TBD: Use a `>`` to identify the detail 
+items after the `-`` for the initial description
 
 - [x] div - A <<link|
 <div>|
@@ -192,7 +195,7 @@ contained in a div.
 
 - [.] pre
 
-- [] reference
+- [x] reference
 
 - [.] script
 
