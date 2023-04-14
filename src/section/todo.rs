@@ -144,4 +144,33 @@ mod test {
         let result = parse(source).unwrap().1;
         assert_eq!(expected, result);
     }
+
+    //   #[ignore]
+    #[test]
+    fn todo_with_status() {
+        let lines = vec!["-> todo", "", "[x] todo alfa"].join("\n");
+        let source = lines.as_str();
+        let expected = Wrapper::Page {
+            children: Some(vec![Section::ToDoSection {
+                attributes: None,
+                children: Some(vec![Block::ToDoItem {
+                    status: Some("x".to_string()),
+                    attributes: None,
+                    children: Some(vec![Block::P {
+                        children: Some(vec![
+                            Content::Text {
+                                text: Some("todo".to_string()),
+                            },
+                            Content::Space,
+                            Content::Text {
+                                text: Some("alfa".to_string()),
+                            },
+                        ]),
+                    }]),
+                }]),
+            }]),
+        };
+        let result = parse(source).unwrap().1;
+        assert_eq!(expected, result);
+    }
 }

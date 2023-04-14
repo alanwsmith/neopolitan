@@ -2,21 +2,32 @@ use crate::block::block::*;
 use crate::content::content::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
+use nom::bytes::complete::take_until;
 use nom::character::complete::multispace0;
 use nom::combinator::eof;
 use nom::combinator::peek;
 use nom::multi::many_till;
 use nom::sequence::tuple;
 use nom::IResult;
+// use nom::Parser;
 
 pub fn todo_item(source: &str) -> IResult<&str, Block> {
-    let (remainder, _) = tuple((multispace0, tag("[] "), multispace0))(source)?;
+    let (remainder, b) = tuple((multispace0, tag("["), take_until("]"), tag("] ")))(source)
+        .map(|(x, z)| (x, z.2))?;
+
+    dbg!(&b);
+    let status: Option<String> = if b.is_empty() {
+        None
+    } else {
+        Some(b.to_string())
+    };
+
     let (remainder, content) =
         many_till(unordered_list_content, alt((tag("\n\n"), eof)))(remainder)?;
     Ok((
         remainder,
         Block::ToDoItem {
-            status: None,
+            status,
             attributes: None,
             children: Some(content.0),
         },
