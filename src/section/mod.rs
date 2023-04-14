@@ -30,6 +30,7 @@ pub mod subtitle;
 pub mod textarea;
 pub mod tiktok;
 pub mod title;
+pub mod todo;
 pub mod vimeo;
 pub mod warning;
 pub mod wc;

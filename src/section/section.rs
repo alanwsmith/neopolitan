@@ -30,6 +30,7 @@ use crate::section::subtitle::*;
 use crate::section::textarea::*;
 use crate::section::tiktok::*;
 use crate::section::title::*;
+use crate::section::todo::*;
 use crate::section::vimeo::*;
 use crate::section::warning::*;
 use crate::section::wc::*;
@@ -167,6 +168,10 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    ToDoSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     VimeoSection {
         attributes: Option<Vec<SectionAttribute>>,
     },
@@ -259,6 +264,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 .map(|t| textarea(t.1).unwrap().1),
             tuple((tag("-> tiktok\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| tiktok(t.1).unwrap().1),
+            tuple((tag("-> todo\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| todo(t.1).unwrap().1),
             tuple((tag("-> wc\n"), alt((take_until("\n\n-> "), rest)))).map(|t| wc(t.1).unwrap().1),
             tuple((tag("-> widget\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| widget(t.1).unwrap().1),

@@ -27,6 +27,11 @@ pub enum Block {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    ToDoItem {
+        status: Option<String>,
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     UnorderedListItem {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
