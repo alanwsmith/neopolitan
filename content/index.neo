@@ -8,9 +8,11 @@ A plain-text format for my website
 
 -> note
 
+TODO: HTML escaping is not currently in place
+
+-> note
+
 Testing of section types goes here:
-
-
 
 -> note
 
@@ -56,7 +58,6 @@ style
 - [] Copy the `templates/paragraphs.html` to the new section name
 
 - [] Update the contents. 
-
 
 
 
@@ -119,22 +120,30 @@ tag
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote>>
 tag
 
-- [] blurb - Not rendered on the page. Used as meta 
+- [p2] blurb - Not rendered on the page. Used as meta 
 data for links into the page. 
 
-- [] button - TBD on this one
+- [p2] button - TBD on this one
 
-- [] canvas
+- [p2] canvas - TBD. probably just a tag with the way to pass
+attrivutes.
 
-- [] code
+- [x] code - Code blocks like fenced code blocks but you can add 
+an arbitrary number of attributes. 
 
-- [] css
+- [p2] css - A place to put CSS that will be inlined in the page
 
-- [] details
+- [p2] details - The HTML <<link|
+details|
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details>>
+tag
 
-- [] dlist
+- [p2] dlist - The HTML <<link|
+<dl>|
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl>> 
+description list
 
-- [] div
+- [] div 
 
 - [] figure
 
