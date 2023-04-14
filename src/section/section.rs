@@ -13,6 +13,7 @@ use crate::section::h3::*;
 use crate::section::h4::*;
 use crate::section::h5::*;
 use crate::section::h6::*;
+use crate::section::html::*;
 use crate::section::list::*;
 use crate::section::note::note;
 use crate::section::p::*;
@@ -86,6 +87,10 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    HTMLSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Block>,
+    },
     NoteSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
@@ -123,37 +128,47 @@ pub enum Section {
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (remainder, sec) = alt((
-        tuple((tag("-> aside\n"), alt((take_until("\n\n-> "), rest))))
-            .map(|t| aside(t.1).unwrap().1),
-        tuple((tag("-> attributes\n"), alt((take_until("\n\n-> "), rest))))
-            .map(|t| attributes(t.1).unwrap().1),
-        tuple((tag("-> blockquote\n"), alt((take_until("\n\n-> "), rest))))
-            .map(|t| blockquote(t.1).unwrap().1),
-        tuple((tag("-> code\n"), alt((take_until("\n\n-> "), rest))))
-            .map(|t| code_section(t.1).unwrap().1),
-        tuple((tag("-> comment\n"), alt((take_until("\n\n-> "), rest))))
-            .map(|t| comment(t.1).unwrap().1),
-            tuple((tag("-> div\n"), alt((take_until("\n\n-> "), rest)))).map(|t| div(t.1).unwrap().1),
-            tuple((tag("-> footnote\n"), alt((take_until("\n\n-> "), rest)))).map(|t| footnote(t.1).unwrap().1),
-        tuple((tag("-> h1\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h1(t.1).unwrap().1),
-        tuple((tag("-> h2\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h2(t.1).unwrap().1),
-        tuple((tag("-> h3\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h3(t.1).unwrap().1),
-        tuple((tag("-> h4\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h4(t.1).unwrap().1),
-        tuple((tag("-> h5\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h5(t.1).unwrap().1),
-        tuple((tag("-> h6\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h6(t.1).unwrap().1),
-        tuple((tag("-> note\n"), alt((take_until("\n\n-> "), rest)))).map(|t| note(t.1).unwrap().1),
-        tuple((tag("-> title\n"), alt((take_until("\n\n-> "), rest))))
-            .map(|t| title(t.1).unwrap().1),
-        tuple((tag("-> p\n"), alt((take_until("\n\n-> "), rest)))).map(|t| p(t.1).unwrap().1),
-        tuple((tag("-> subtitle\n"), alt((take_until("\n\n-> "), rest))))
-            .map(|t| subtitle(t.1).unwrap().1),
-        tuple((tag("-> list\n"), alt((take_until("\n\n-> "), rest)))).map(|t| list(t.1).unwrap().1),
-        tuple((tag("-> vimeo\n"), alt((take_until("\n\n-> "), rest))))
-            .map(|t| vimeo(t.1).unwrap().1),
-        tuple((tag("-> warning\n"), alt((take_until("\n\n-> "), rest))))
-            .map(|t| warning(t.1).unwrap().1),
-        tuple((tag("-> youtube\n"), alt((take_until("\n\n-> "), rest))))
-            .map(|t| youtube(t.1).unwrap().1),
+        alt((
+            tuple((tag("-> aside\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| aside(t.1).unwrap().1),
+            tuple((tag("-> attributes\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| attributes(t.1).unwrap().1),
+            tuple((tag("-> blockquote\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| blockquote(t.1).unwrap().1),
+            tuple((tag("-> code\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| code_section(t.1).unwrap().1),
+            tuple((tag("-> comment\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| comment(t.1).unwrap().1),
+            tuple((tag("-> div\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| div(t.1).unwrap().1),
+            tuple((tag("-> footnote\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| footnote(t.1).unwrap().1),
+            tuple((tag("-> note\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| note(t.1).unwrap().1),
+            tuple((tag("-> title\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| title(t.1).unwrap().1),
+            tuple((tag("-> p\n"), alt((take_until("\n\n-> "), rest)))).map(|t| p(t.1).unwrap().1),
+            tuple((tag("-> subtitle\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| subtitle(t.1).unwrap().1),
+            tuple((tag("-> list\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| list(t.1).unwrap().1),
+            tuple((tag("-> vimeo\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| vimeo(t.1).unwrap().1),
+            tuple((tag("-> warning\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| warning(t.1).unwrap().1),
+            tuple((tag("-> youtube\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| youtube(t.1).unwrap().1),
+        )),
+        alt((
+            tuple((tag("-> h1\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h1(t.1).unwrap().1),
+            tuple((tag("-> h2\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h2(t.1).unwrap().1),
+            tuple((tag("-> h3\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h3(t.1).unwrap().1),
+            tuple((tag("-> h4\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h4(t.1).unwrap().1),
+            tuple((tag("-> h5\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h5(t.1).unwrap().1),
+            tuple((tag("-> h6\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h6(t.1).unwrap().1),
+            tuple((tag("-> html\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| html(t.1).unwrap().1),
+        )),
     ))(source)?;
     Ok((remainder, sec))
 }
