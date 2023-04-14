@@ -5,6 +5,7 @@ use crate::section::attributes_for_section::*;
 use crate::section::blockquote::blockquote;
 use crate::section::code_section::*;
 use crate::section::comment::*;
+use crate::section::css::*;
 use crate::section::div::*;
 use crate::section::footnote::*;
 use crate::section::h1::*;
@@ -55,6 +56,10 @@ pub enum Section {
         children: Option<Block>,
     },
     CommentSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Block>,
+    },
+    CSSSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Block>,
     },
@@ -173,6 +178,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 .map(|t| youtube(t.1).unwrap().1),
         )),
         alt((
+            tuple((tag("-> css\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| css(t.1).unwrap().1),
             tuple((tag("-> footnote\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| footnote(t.1).unwrap().1),
             tuple((tag("-> h1\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h1(t.1).unwrap().1),

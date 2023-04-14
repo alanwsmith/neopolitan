@@ -135,7 +135,7 @@ an arbitrary number of attributes.
 expectation that it won't output unless the implementation
 is specifically designed to do so.
 
-- [.] css - A place to put CSS that will be inlined in the page
+- [x] css - A place to put CSS that will be inlined in the page
 
 - [.] `custom`` - A way to make custom section tags outside of the
 standard set. Definition, creation, parsing, and output are all
@@ -143,19 +143,16 @@ details left up to the individual implementation. The expectation
 is that the first attribute will be just a key with the name
 of the thing to do. 
 
-- [.] details - The HTML <<link|
-details|
+- [.] details - The HTML <<link|details|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details>>
 tag
 
-- [.] dlist - The HTML <<link|
-<dl>|
+- [.] dlist - The HTML <<link|<dl>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl>> 
 description list - TBD: Use a `>`` to identify the detail 
 items after the `-`` for the initial description
 
-- [x] div - A <<link|
-<div>|
+- [x] div - A <<link|<div>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
 >> wrapper that can be used to add attributes to sections 
 of content
@@ -202,7 +199,7 @@ contained in a div.
 
 - [x] reference
 
-- [.] script
+- [] script
 
 - [x] subtitle
 
@@ -216,7 +213,7 @@ contained in a div.
 
 - [x] title
 
-- [.] todo
+- [] todo
 
 - [.] video
 
