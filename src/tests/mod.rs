@@ -1,4 +1,3 @@
-pub mod _example_output;
 pub mod alfa;
 pub mod bravo;
 pub mod charlie;

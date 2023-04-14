@@ -238,53 +238,55 @@ of html elements)
 
 -> list
 
-- [.] abbr - Abbreviation
+- [] ^ - footnote marker - for use with footnote sections
 
-- [.] audio - Audio 
+- [p2] abbr - Abbreviation
+
+- [p2] audio - Audio 
 
 - [x] b - Bring attention
 
-- [.] button - Button 
+- [p2] button - Button 
 
-- [.] cite - Cite 
+- [p2] cite - Cite 
 
 - [x] code [c] - Code
 
-- [.] data - Data
+- [p2] data - Data
 
-- [.] del - Del
+- [p2] del - Del
 
-- [.] dfn - Definition
+- [p2] dfn - Definition
 
 - [x] em - Emphasis
 
 - [x] i - Idiomatic text 
 
-- [.] img - Image 
+- [p2] img - Image 
 
-- [.] input - Input 
+- [p2] input - Input 
 
-- [.] ins - Insert 
+- [p2] ins - Insert 
 
 - [x] kbd [k] - Keyboard input 
 
-- [.] label - Label 
+- [p2] label - Label 
 
-- [.] legend - Legend 
+- [p2] legend - Legend 
 
 - [x] link [l] - Link
 
-- [.] meter - Leter
+- [p2] meter - Leter
 
-- [.] object - Object 
+- [p2] object - Object 
 
-- [.] progress - Progress 
+- [p2] progress - Progress 
 
-- [.] q - Quotation 
+- [p2] q - Quotation 
 
-- [.] samp - Sample Output 
+- [p2] samp - Sample Output 
 
-- [.] small - Small text (side comment) 
+- [p2] small - Small text (side comment) 
 
 - [x] strike - Strikethru 
 
@@ -296,14 +298,13 @@ of html elements)
 
 - [x] sup - Superscript
 
-- [.] time - Time
+- [p2] time - Time
 
 - [x] u - Unarticulated Annotation
 
-- [.] var - Variable
+- [p2] var - Variable
 
-- [.] wbr - Line Break Opportunity
-
+- [p2] wbr - Line Break Opportunity
 
 
 
