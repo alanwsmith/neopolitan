@@ -1,0 +1,21 @@
+{% macro text(data) %}
+<!--
+<div>
+  {{data}}
+</div>
+-->
+{% for token in data.children %}
+{% if token.type == "Text" %}
+{{token.text}}
+{% elif token.type == "Space" %}
+{% elif token.type == "Em" %}
+<em>{{token.text}}</em>
+{% elif token.type == "Link" %}
+<a href="{{token.url}}">{{token.text}}</a>
+{% elif token.type == "CodeShorthand" %}
+<code>{{token.text}}</code>
+{% elif token.type == "Strong" %}
+<strong>{{token.text}}</strong>
+{% endif %}
+{% endfor %}
+{% endmacro %}
