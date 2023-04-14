@@ -1,6 +1,6 @@
 use crate::block::unordered_list_item::*;
-use crate::section::section::*;
 use crate::section::attributes_for_section::*;
+use crate::section::section::*;
 use nom::bytes::complete::tag;
 use nom::combinator::eof;
 use nom::multi::many0;
@@ -24,4 +24,121 @@ pub fn list(source: &str) -> IResult<&str, Section> {
             children,
         },
     ))
+}
+
+#[cfg(test)]
+mod test {
+
+    use crate::block::block::*;
+    use crate::content::content::*;
+    use crate::parse::parse;
+    use crate::section::section::*;
+    use crate::wrapper::wrapper::*;
+
+    #[test]
+    fn basic_list() {
+        let lines = vec!["-> list", "", "- item alfa", "", "- item bravo"].join("\n");
+        let source = lines.as_str();
+        let expected = Wrapper::Page {
+            children: Some(vec![Section::List {
+                attributes: None,
+                children: Some(vec![
+                    Block::UnorderedListItem {
+                        attributes: None,
+                        children: Some(vec![Block::P {
+                            children: Some(vec![
+                                Content::Text {
+                                    text: Some("item".to_string()),
+                                },
+                                Content::Space,
+                                Content::Text {
+                                    text: Some("alfa".to_string()),
+                                },
+                            ]),
+                        }]),
+                    },
+                    Block::UnorderedListItem {
+                        attributes: None,
+                        children: Some(vec![Block::P {
+                            children: Some(vec![
+                                Content::Text {
+                                    text: Some("item".to_string()),
+                                },
+                                Content::Space,
+                                Content::Text {
+                                    text: Some("bravo".to_string()),
+                                },
+                            ]),
+                        }]),
+                    },
+                ]),
+            }]),
+        };
+        let result = parse(source).unwrap().1;
+        assert_eq!(expected, result);
+    }
+
+    #[test]
+    fn multi_item_list() {
+        let lines = vec![
+            "-> list",
+            "",
+            "- item alfa",
+            "apple",
+            "",
+            "bravo",
+            "",
+            "- item charlie",
+        ]
+        .join("\n");
+        let source = lines.as_str();
+        let expected = Wrapper::Page {
+            children: Some(vec![Section::List {
+                attributes: None,
+                children: Some(vec![
+                    Block::UnorderedListItem {
+                        attributes: None,
+                        children: Some(vec![
+                            Block::P {
+                                children: Some(vec![
+                                    Content::Text {
+                                        text: Some("item".to_string()),
+                                    },
+                                    Content::Space,
+                                    Content::Text {
+                                        text: Some("alfa".to_string()),
+                                    },
+                                    Content::Space,
+                                    Content::Text {
+                                        text: Some("apple".to_string()),
+                                    },
+                                ]),
+                            },
+                            Block::P {
+                                children: Some(vec![Content::Text {
+                                    text: Some("bravo".to_string()),
+                                }]),
+                            },
+                        ]),
+                    },
+                    Block::UnorderedListItem {
+                        attributes: None,
+                        children: Some(vec![Block::P {
+                            children: Some(vec![
+                                Content::Text {
+                                    text: Some("item".to_string()),
+                                },
+                                Content::Space,
+                                Content::Text {
+                                    text: Some("charlie".to_string()),
+                                },
+                            ]),
+                        }]),
+                    },
+                ]),
+            }]),
+        };
+        let result = parse(source).unwrap().1;
+        assert_eq!(expected, result);
+    }
 }
