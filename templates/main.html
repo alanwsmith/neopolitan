@@ -1,6 +1,7 @@
 {% from "aside.html" import aside %}
 {% from "blockquote.html" import blockquote %}
 {% from "code.html" import code %}
+{% from "div.html" import div %}
 {% from "h1.html" import h1 %}
 {% from "h2.html" import h2 %}
 {% from "h3.html" import h3 %}
@@ -57,6 +58,8 @@
     {{ blockquote(section) }}
     {% elif section.type == "CodeSection" %}
     {{ code(section) }}
+    {% elif section.type == "DivSection" %}
+    {{ div(section) }}
     {% elif section.type == "H1Section" %}
     {{ h1(section) }}
     {% elif section.type == "H2Section" %}

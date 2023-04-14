@@ -14,6 +14,11 @@ TODO: HTML escaping is not currently in place
 
 Testing of section types goes here:
 
+-> div
+
+THIS IS THE DIV
+
+
 -> note
 
 white space at the end of section tags causes

@@ -5,6 +5,7 @@ use crate::content::content::*;
 use crate::section::aside::*;
 use crate::section::blockquote::blockquote;
 use crate::section::code_section::*;
+use crate::section::div::*;
 use crate::section::h1::*;
 use crate::section::h2::*;
 use crate::section::h3::*;
@@ -46,6 +47,10 @@ pub enum Section {
         children: Option<Vec<Block>>,
     },
     BlockquoteSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    DivSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -110,6 +115,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             .map(|t| blockquote(t.1).unwrap().1),
         tuple((tag("-> code\n"), alt((take_until("\n\n-> "), rest))))
             .map(|t| code_section(t.1).unwrap().1),
+            tuple((tag("-> div\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| div(t.1).unwrap().1),
         tuple((tag("-> h1\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h1(t.1).unwrap().1),
         tuple((tag("-> h2\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h2(t.1).unwrap().1),
         tuple((tag("-> h3\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h3(t.1).unwrap().1),
