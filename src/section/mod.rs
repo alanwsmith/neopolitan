@@ -4,6 +4,7 @@ pub mod attributes_for_section;
 pub mod blockquote;
 pub mod blurb;
 pub mod code_section;
+pub mod code_start_end;
 pub mod comment;
 pub mod css;
 pub mod div;

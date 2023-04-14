@@ -5,6 +5,7 @@ use crate::section::attributes_for_section::*;
 use crate::section::blockquote::blockquote;
 use crate::section::blurb::*;
 use crate::section::code_section::*;
+use crate::section::code_start_end::*;
 use crate::section::comment::*;
 use crate::section::css::*;
 use crate::section::div::*;
@@ -63,6 +64,10 @@ pub enum Section {
         children: Option<Vec<Block>>,
     },
     CodeSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Block>,
+    },
+    CodeStartEndSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Block>,
     },
@@ -181,6 +186,12 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (remainder, sec) = alt((
         alt((
+            tuple((
+                tag("-> startcode\n"),
+                take_until("\n\n-> endcode"),
+                tag("\n\n-> endcode"),
+            ))
+            .map(|t| code_start_end(t.1).unwrap().1),
             tuple((tag("-> aside\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| aside(t.1).unwrap().1),
             tuple((tag("-> attributes\n"), alt((take_until("\n\n-> "), rest))))
