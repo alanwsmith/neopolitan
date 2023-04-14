@@ -55,7 +55,7 @@ pub enum Section {
     },
     CommentSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        children: Option<Block>,
     },
     H1Section {
         attributes: Option<Vec<SectionAttribute>>,

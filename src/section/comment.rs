@@ -15,8 +15,13 @@ pub fn comment(source: &str) -> IResult<&str, Section> {
     } else {
         Some(att_capture)
     };
-    let (source, b) = many_till(block, eof)(source.trim()).unwrap();
-    let children = if b.0.is_empty() { None } else { Some(b.0) };
+    let children = if source.trim().is_empty() {
+        None
+    } else {
+        Some(Block::RawContent {
+            text: Some(source.trim().to_string()),
+        })
+    };
     Ok((
         source,
         Section::CommentSection {

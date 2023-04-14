@@ -12,6 +12,7 @@ use serde::Serialize;
 pub enum Block {
     P { children: Option<Vec<Content>> },
     CodeBlock { text: Option<String> },
+    RawContent { text: Option<String> },
     UnorderedListItem {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>> ,
