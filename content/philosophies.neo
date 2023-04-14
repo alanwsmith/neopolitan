@@ -123,6 +123,23 @@ contains only key/value pairs. The AST
 leave the option of using other formats
 in the content section as well. 
 
+-> h3
+
+No Form Section
+
+I was considering a `-> form`` section
+but decided against it. Better to just
+roll out to an `-> html` section for that
+based of the complexity. 
+
+
+-> h3
+
+No iFrame Section
+
+Just roll out to `-> html`
+
+
 
 -> categories
 >> Neopolitan 

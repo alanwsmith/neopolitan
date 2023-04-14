@@ -153,8 +153,6 @@ of content
 
 - [.] figure - The HTML figure element
 
-- [.] form - TBD on form setups
-
 - [x] footnote - Individaul sections for each footnote that get 
 tied into the content by referencing the first attribut which 
 is just a key (and can include spaces)
@@ -162,8 +160,6 @@ is just a key (and can include spaces)
 - [x] h1-h6
 
 - [x] html
-
-- [.] iframe
 
 - [x] image
 
