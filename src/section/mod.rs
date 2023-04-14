@@ -7,6 +7,7 @@ pub mod h4;
 pub mod h5;
 pub mod h6;
 pub mod list;
+pub mod note;
 pub mod p;
 pub mod section;
 pub mod section_attributes;

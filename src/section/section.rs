@@ -11,6 +11,7 @@ use crate::section::h4::*;
 use crate::section::h5::*;
 use crate::section::h6::*;
 use crate::section::list::*;
+use crate::section::note::note;
 use crate::section::p::*;
 use crate::section::section_attributes::*;
 use crate::section::section_attributes::*;
@@ -71,6 +72,10 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    NoteSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     Paragraphs {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
@@ -104,6 +109,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         tuple((tag("-> h4\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h4(t.1).unwrap().1),
         tuple((tag("-> h5\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h5(t.1).unwrap().1),
         tuple((tag("-> h6\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h6(t.1).unwrap().1),
+        tuple((tag("-> note\n"), alt((take_until("\n\n-> "), rest)))).map(|t| note(t.1).unwrap().1),
         tuple((tag("-> title\n"), alt((take_until("\n\n-> "), rest))))
             .map(|t| title(t.1).unwrap().1),
         tuple((tag("-> p\n"), alt((take_until("\n\n-> "), rest)))).map(|t| p(t.1).unwrap().1),

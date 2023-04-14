@@ -6,7 +6,8 @@
 {% from "h4.html" import h4 %}
 {% from "h5.html" import h5 %}
 {% from "h6.html" import h6 %}
-{% from "list.html" import list%}
+{% from "list.html" import list %}
+{% from "note.html" import note %}
 {% from "subtitle.html" import subtitle %}
 {% from "paragraphs.html" import paragraphs %}
 {% from "title.html" import title %}
@@ -38,6 +39,10 @@
     pre {
       background-color: #333;
     }
+
+    .note {
+      background-color: #333;
+    }
   </style>
 </head>
 
@@ -63,6 +68,8 @@
     {{ h6(section) }}
     {% elif section.type == "List" %}
     {{ list(section) }}
+    {% elif section.type == "NoteSection" %}
+    {{ note(section) }}
     {% elif section.type == "Paragraphs" %}
     {{ paragraphs(section) }}
     {% elif section.type == "Subtitle" %}

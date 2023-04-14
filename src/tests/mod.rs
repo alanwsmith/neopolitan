@@ -7,3 +7,4 @@ pub mod echo;
 pub mod foxtrot;
 pub mod golf;
 pub mod hotel;
+pub mod indigo;

@@ -7,9 +7,10 @@ Welcome To Neopolitan
 A plain-text format for my website 
 
 
-x> note
+-> note
 
-This page is an early draft.  
+This page is an early draft. Some stuff is 
+still in flight. 
 
 
 -> h2
@@ -57,9 +58,10 @@ it will behave.
 These are the section types I'm planning along with 
 indications of which ones are already set.
 
+
 -> list
 
-- [] aside
+- [x] aside
 
 - [] blockquote
 
@@ -85,7 +87,7 @@ indications of which ones are already set.
 
 - [] footnote
 
-- [] h1-h6
+- [x] h1-h6
 
 - [] html
 
@@ -93,13 +95,13 @@ indications of which ones are already set.
 
 - [] image
 
-- [] list
+- [x] list
 
 - [] menu
 
 - [] nav
 
-- [] note
+- [x] note
 
 - [] notes
 
@@ -107,7 +109,7 @@ indications of which ones are already set.
 
 - [] olist
 
-- [] p
+- [x] p
 
 - [] picture
 
@@ -117,7 +119,7 @@ indications of which ones are already set.
 
 - [] script
 
-- [] subtitle
+- [x] subtitle
 
 - [] startcode/endcode
 
@@ -127,7 +129,7 @@ indications of which ones are already set.
 
 - [] tiktok 
 
-- [] title
+- [x] title
 
 - [] todo
 
@@ -416,6 +418,7 @@ to thing about how that would work.
 
 Holding (attributes aren't being parsed yet so this
 is hacked out)
+
 
 x> attributes
 >> date: 2023-04-03 12:10:46
