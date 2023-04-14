@@ -8,12 +8,8 @@ A plain-text format for my website
 
 -> note
 
-Testing
+Testing of section types goes here:
 
-
--> blockquote
-
-This is the blockquote
 
 
 -> note
@@ -113,13 +109,20 @@ indications of which ones are already set.
 
 -> list
 
-- [x] aside
+- [x] aside - The HTML <<link|
+<aside>|
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside>> 
+tag
 
-- [] blockquote
+- [x] blockquote - The HTML <<link|
+<blockquote>|
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote>>
+tag
 
-- [] blurb
+- [] blurb - Not rendered on the page. Used as meta 
+data for links into the page. 
 
-- [] button
+- [] button - TBD on this one
 
 - [] canvas
 
