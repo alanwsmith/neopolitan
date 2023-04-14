@@ -3,6 +3,7 @@ use crate::section::aside::*;
 use crate::section::attributes::*;
 use crate::section::attributes_for_section::*;
 use crate::section::blockquote::blockquote;
+use crate::section::blurb::*;
 use crate::section::code_section::*;
 use crate::section::comment::*;
 use crate::section::css::*;
@@ -53,6 +54,10 @@ pub enum Section {
         children: Option<Block>,
     },
     BlockquoteSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    BlurbSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -144,8 +149,6 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
     },
     Title {
-        // has to be a vec because order matters
-        // for the code sections
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -202,6 +205,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 .map(|t| youtube(t.1).unwrap().1),
         )),
         alt((
+            tuple((tag("-> blurb\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| blurb(t.1).unwrap().1),
             tuple((tag("-> css\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| css(t.1).unwrap().1),
             tuple((tag("-> footnote\n"), alt((take_until("\n\n-> "), rest))))

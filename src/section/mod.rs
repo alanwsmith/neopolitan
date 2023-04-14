@@ -2,6 +2,7 @@ pub mod aside;
 pub mod attributes;
 pub mod attributes_for_section;
 pub mod blockquote;
+pub mod blurb;
 pub mod code_section;
 pub mod comment;
 pub mod css;
