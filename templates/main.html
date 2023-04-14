@@ -13,6 +13,8 @@
 {% from "subtitle.html" import subtitle %}
 {% from "paragraphs.html" import paragraphs %}
 {% from "title.html" import title %}
+{% from "warning.html" import warning %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,6 +84,8 @@
     {{ subtitle(section) }}
     {% elif section.type == "Title" %}
     {{ title(section) }}
+    {% elif section.type == "WarningSection" %}
+    {{ warning(section) }}
     {% endif %}
     {% endfor %}
   </main>

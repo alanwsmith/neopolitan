@@ -14,9 +14,9 @@ TODO: HTML escaping is not currently in place
 
 Testing of section types goes here:
 
--> div
+-> warning
 
-THIS IS THE DIV
+THIS IS THE WARNING
 
 
 -> note
@@ -155,11 +155,9 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
 of content
 
 
+- [p2] figure - The HTML figure element
 
-
-- [] figure
-
-- [] form
+- [p2] form - TBD on form setups
 
 - [] footnote
 
@@ -167,57 +165,59 @@ of content
 
 - [] html
 
-- [] iframe
+- [p2] iframe - 
 
-- [] image
+- [p2] image
 
 - [x] list
 
-- [] menu
+- [p2] menu
 
-- [] nav
+- [p2] nav
 
-- [x] note
+- [x] note - A basic div wrapper with a `note`` attribute and 
+any other attributes that are passed in
 
-- [] notes
+- [] notes - A list style notes section
 
-- [] object
+- [p2] object
 
-- [] olist
+- [] olist - An ordered list
 
-- [x] p
+- [x] p - Basic text paragraph tags that are not otherwise 
+contained in a div. 
 
-- [] picture
+- [p2] picture
 
-- [] pre
+- [p2] pre
 
 - [] reference
 
-- [] script
+- [p2] script
 
 - [x] subtitle
 
 - [] startcode/endcode
 
-- [] table 
+- [p2] table 
 
-- [] textarea
+- [p2] textarea
 
-- [] tiktok 
+- [p2] tiktok 
 
 - [x] title
 
-- [] todo
+- [p2] todo
 
-- [] video
+- [p2] video
 
-- [] vimeo
+- [] vimeo - A vimeo embed
 
-- [] warning
+- [x] warning - A div block with a warning class on it
 
-- [] widget
+- [p2] widget 
 
-- [] youtube 
+- [] youtube - A youtube embed
 
 
 -> h3
