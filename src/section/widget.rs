@@ -6,7 +6,7 @@ use nom::multi::many0;
 use nom::sequence::preceded;
 use nom::IResult;
 
-pub fn code_section(source: &str) -> IResult<&str, Section> {
+pub fn widget(source: &str) -> IResult<&str, Section> {
     let (source, att_capture) = many0(preceded(tag(">> "), section_attribute))(source).unwrap();
     let attributes = if att_capture.is_empty() {
         None
@@ -22,7 +22,7 @@ pub fn code_section(source: &str) -> IResult<&str, Section> {
     };
     Ok((
         source,
-        Section::CodeSection {
+        Section::WidgetSection {
             attributes,
             children,
         },
@@ -40,33 +40,17 @@ mod test {
     use crate::wrapper::wrapper::*;
 
     #[test]
-    fn basic_code() {
-        let lines = vec!["-> code", "", "some code", "more code"].join("\n");
+    fn basic_widget() {
+        let lines = vec!["-> widget", ">> Widget Name", "", "some stuff here"].join("\n");
         let source = lines.as_str();
         let expected = Wrapper::Page {
-            children: Some(vec![Section::CodeSection {
-                attributes: None,
-                children: Some(Block::RawContent {
-                    text: Some("some code\nmore code".to_string()),
-                }),
-            }]),
-        };
-        let result = parse(source).unwrap().1;
-        assert_eq!(expected, result);
-    }
-
-    #[test]
-    fn code_with_attribute() {
-        let lines = vec!["-> code", ">> rust", "", "some code", "more code"].join("\n");
-        let source = lines.as_str();
-        let expected = Wrapper::Page {
-            children: Some(vec![Section::CodeSection {
+            children: Some(vec![Section::WidgetSection {
                 attributes: Some(vec![SectionAttribute::Attribute {
-                    key: Some("rust".to_string()),
+                    key: Some("Widget Name".to_string()),
                     value: None,
                 }]),
                 children: Some(Block::RawContent {
-                    text: Some("some code\nmore code".to_string()),
+                    text: Some("some stuff here".to_string()),
                 }),
             }]),
         };

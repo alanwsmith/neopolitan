@@ -26,4 +26,5 @@ pub mod subtitle;
 pub mod title;
 pub mod vimeo;
 pub mod warning;
+pub mod widget;
 pub mod youtube;

@@ -117,7 +117,7 @@ be used with a corresponding implementation engine.
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote>>
 tag
 
-- [.] blurb - Not rendered on the page. Used as meta 
+- [] blurb - Not rendered on the page. Used as meta 
 data for links into the page. 
 
 - [.] button - TBD on this one
@@ -171,7 +171,7 @@ is just a key (and can include spaces)
 
 - [.] iframe
 
-- [.] image
+- [] image
 
 - [x] list
 
@@ -195,11 +195,11 @@ contained in a div.
 
 - [.] picture
 
-- [.] pre
+- [] pre
 
 - [x] reference
 
-- [] script
+- [x] script
 
 - [x] subtitle
 
@@ -207,9 +207,9 @@ contained in a div.
 
 - [.] table 
 
-- [.] textarea
+- [] textarea
 
-- [.] tiktok 
+- [] tiktok 
 
 - [x] title
 
@@ -227,7 +227,7 @@ the web component. Attributes are inserted directly
 and the content is output in between the components
 tags. No additional processing is done to the content.
 
-- [.] widget - The first attribute is the name of the
+- [x] widget - The first attribute is the name of the
 widget which is use by the processor to render the
 content. 
 
