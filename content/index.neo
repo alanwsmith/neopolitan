@@ -182,7 +182,9 @@ is just a key (and can include spaces)
 - [x] note - A basic div wrapper with a `note`` attribute and 
 any other attributes that are passed in
 
-- [] notes - A list style notes section
+- [x] notes - A list style notes section. Same as an unordered
+lists but with a div around it in the output (based on 
+implementation)
 
 - [.] object
 

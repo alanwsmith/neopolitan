@@ -16,6 +16,7 @@ use crate::section::h6::*;
 use crate::section::html::*;
 use crate::section::list::*;
 use crate::section::note::note;
+use crate::section::notes::*;
 use crate::section::p::*;
 use crate::section::reference::*;
 use crate::section::subtitle::*;
@@ -92,7 +93,15 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Block>,
     },
+    List {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     NoteSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    NotesSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -111,10 +120,6 @@ pub enum Section {
     Title {
         // has to be a vec because order matters
         // for the code sections
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    List {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -173,6 +178,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             tuple((tag("-> h6\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h6(t.1).unwrap().1),
             tuple((tag("-> html\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| html(t.1).unwrap().1),
+            tuple((tag("-> notes\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| notes(t.1).unwrap().1),
             tuple((tag("-> reference\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| reference(t.1).unwrap().1),
         )),

@@ -15,6 +15,7 @@ pub mod h6;
 pub mod html;
 pub mod list;
 pub mod note;
+pub mod notes;
 pub mod p;
 pub mod reference;
 pub mod section;
