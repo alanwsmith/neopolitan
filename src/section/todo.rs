@@ -145,7 +145,6 @@ mod test {
         assert_eq!(expected, result);
     }
 
-    //   #[ignore]
     #[test]
     fn todo_with_status() {
         let lines = vec!["-> todo", "", "[x] todo alfa"].join("\n");

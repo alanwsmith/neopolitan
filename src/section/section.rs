@@ -264,11 +264,15 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 .map(|t| textarea(t.1).unwrap().1),
             tuple((tag("-> tiktok\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| tiktok(t.1).unwrap().1),
-            tuple((tag("-> todo\n"), alt((take_until("\n\n-> "), rest))))
-                .map(|t| todo(t.1).unwrap().1),
             tuple((tag("-> wc\n"), alt((take_until("\n\n-> "), rest)))).map(|t| wc(t.1).unwrap().1),
             tuple((tag("-> widget\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| widget(t.1).unwrap().1),
+        )),
+        alt((
+            tuple((tag("-> todo\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| todo(t.1).unwrap().1),
+            tuple((tag("-> todos\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| todo(t.1).unwrap().1),
         )),
     ))(source)?;
     Ok((remainder, sec))
