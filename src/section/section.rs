@@ -16,6 +16,7 @@ use crate::section::h4::*;
 use crate::section::h5::*;
 use crate::section::h6::*;
 use crate::section::html::*;
+use crate::section::image::*;
 use crate::section::list::*;
 use crate::section::note::*;
 use crate::section::notes::*;
@@ -106,6 +107,10 @@ pub enum Section {
         children: Option<Vec<Block>>,
     },
     HTMLSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Block>,
+    },
+    ImageSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Block>,
     },
@@ -219,6 +224,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             tuple((tag("-> h6\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h6(t.1).unwrap().1),
             tuple((tag("-> html\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| html(t.1).unwrap().1),
+            tuple((tag("-> image\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| image(t.1).unwrap().1),
             tuple((tag("-> notes\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| notes(t.1).unwrap().1),
             tuple((tag("-> olist\n"), alt((take_until("\n\n-> "), rest))))

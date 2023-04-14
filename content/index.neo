@@ -137,12 +137,6 @@ is specifically designed to do so.
 
 - [x] css - A place to put CSS that will be inlined in the page
 
-- [.] `custom`` - A way to make custom section tags outside of the
-standard set. Definition, creation, parsing, and output are all
-details left up to the individual implementation. The expectation 
-is that the first attribute will be just a key with the name
-of the thing to do. 
-
 - [.] details - The HTML <<link|details|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details>>
 tag
@@ -171,7 +165,7 @@ is just a key (and can include spaces)
 
 - [.] iframe
 
-- [] image
+- [x] image
 
 - [x] list
 
