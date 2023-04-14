@@ -16,6 +16,7 @@ pub mod html;
 pub mod list;
 pub mod note;
 pub mod p;
+pub mod reference;
 pub mod section;
 pub mod subtitle;
 pub mod title;

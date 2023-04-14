@@ -17,6 +17,7 @@ use crate::section::html::*;
 use crate::section::list::*;
 use crate::section::note::note;
 use crate::section::p::*;
+use crate::section::reference::*;
 use crate::section::subtitle::*;
 use crate::section::title::*;
 use crate::section::vimeo::*;
@@ -99,6 +100,10 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    ReferenceSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     Subtitle {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
@@ -141,8 +146,6 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 .map(|t| comment(t.1).unwrap().1),
             tuple((tag("-> div\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| div(t.1).unwrap().1),
-            tuple((tag("-> footnote\n"), alt((take_until("\n\n-> "), rest))))
-                .map(|t| footnote(t.1).unwrap().1),
             tuple((tag("-> note\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| note(t.1).unwrap().1),
             tuple((tag("-> title\n"), alt((take_until("\n\n-> "), rest))))
@@ -160,6 +163,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 .map(|t| youtube(t.1).unwrap().1),
         )),
         alt((
+            tuple((tag("-> footnote\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| footnote(t.1).unwrap().1),
             tuple((tag("-> h1\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h1(t.1).unwrap().1),
             tuple((tag("-> h2\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h2(t.1).unwrap().1),
             tuple((tag("-> h3\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h3(t.1).unwrap().1),
@@ -168,6 +173,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             tuple((tag("-> h6\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h6(t.1).unwrap().1),
             tuple((tag("-> html\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| html(t.1).unwrap().1),
+            tuple((tag("-> reference\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| reference(t.1).unwrap().1),
         )),
     ))(source)?;
     Ok((remainder, sec))

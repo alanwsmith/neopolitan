@@ -23,7 +23,10 @@ Block so now processing is applied.
 
 - [] Setup attributes to have RawBlock
 
+- [] Add html escaping
 
+- [] Fix bug where whitespace at the end of a 
+section name cause a panic
 
 
 -> title
@@ -34,40 +37,6 @@ Welcome To Neopolitan
 -> subtitle
 
 A plain-text website format
-
-
--> h3
-
-Vimeo Example
-
-
--> vimeo
->> 3817271
-
-
--> h3
-
-YouTube Example
-
-
--> code
-
-\-> youtube
->> 9jlQiHHMlkA
-
--> youtube
->> 9jlQiHHMlkA
-
-
--> note
-
-TODO: HTML escaping is not currently in place
-
-
--> note
-
-white space at the end of section tags causes
-panics at the moment. 
 
 
 -> note
@@ -126,7 +95,6 @@ indications of which ones are already set.
 
 -> list
 
-
 - [x] aside - The HTML <<link|
 <aside>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside>> 
@@ -144,12 +112,12 @@ be used with a corresponding implementation engine.
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote>>
 tag
 
-- [p2] blurb - Not rendered on the page. Used as meta 
+- [.] blurb - Not rendered on the page. Used as meta 
 data for links into the page. 
 
-- [p2] button - TBD on this one
+- [.] button - TBD on this one
 
-- [p2] canvas - TBD. probably just a tag with the way to pass
+- [.] canvas - TBD. probably just a tag with the way to pass
 attrivutes.
 
 - [] checklist - Desinged for checkboxes that are empty each 
@@ -162,20 +130,20 @@ an arbitrary number of attributes.
 expectation that it won't output unless the implementation
 is specifically designed to do so.
 
-- [p2] css - A place to put CSS that will be inlined in the page
+- [.] css - A place to put CSS that will be inlined in the page
 
-- [p2] `custom`` - A way to make custom section tags outside of the
+- [.] `custom`` - A way to make custom section tags outside of the
 standard set. Definition, creation, parsing, and output are all
 details left up to the individual implementation. The expectation 
 is that the first attribute will be just a key with the name
 of the thing to do. 
 
-- [p2] details - The HTML <<link|
+- [.] details - The HTML <<link|
 details|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details>>
 tag
 
-- [p2] dlist - The HTML <<link|
+- [.] dlist - The HTML <<link|
 <dl>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl>> 
 description list
@@ -186,9 +154,9 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
 >> wrapper that can be used to add attributes to sections 
 of content
 
-- [p2] figure - The HTML figure element
+- [.] figure - The HTML figure element
 
-- [p2] form - TBD on form setups
+- [.] form - TBD on form setups
 
 - [x] footnote - Individaul sections for each footnote that get 
 tied into the content by referencing the first attribut which 
@@ -196,65 +164,65 @@ is just a key (and can include spaces)
 
 - [x] h1-h6
 
-- [] html
+- [x] html
 
-- [p2] iframe - 
+- [.] iframe
 
-- [p2] image
+- [.] image
 
 - [x] list
 
-- [p2] menu
+- [.] menu
 
-- [p2] nav
+- [.] nav
 
 - [x] note - A basic div wrapper with a `note`` attribute and 
 any other attributes that are passed in
 
 - [] notes - A list style notes section
 
-- [p2] object
+- [.] object
 
 - [] olist - An ordered list
 
 - [x] p - Basic text paragraph tags that are not otherwise 
 contained in a div. 
 
-- [p2] picture
+- [.] picture
 
-- [p2] pre
+- [.] pre
 
 - [] reference
 
-- [p2] script
+- [.] script
 
 - [x] subtitle
 
 - [] startcode/endcode
 
-- [p2] table 
+- [.] table 
 
-- [p2] textarea
+- [.] textarea
 
-- [p2] tiktok 
+- [.] tiktok 
 
 - [x] title
 
-- [p2] todo
+- [.] todo
 
-- [p2] video
+- [.] video
 
 - [x] vimeo - A vimeo embed
 
 - [x] warning - A div block with a warning class on it
 
-- [p2] wc - A web component. The first attribute is just
+- [.] wc - A web component. The first attribute is just
 a key with no value. It's the name that is used to create
 the web component. Attributes are inserted directly 
 and the content is output in between the components
 tags. No additional processing is done to the content.
 
-- [p2] widget - The first attribute is the name of the
+- [.] widget - The first attribute is the name of the
 widget which is use by the processor to render the
 content. 
 
