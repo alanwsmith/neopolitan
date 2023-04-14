@@ -1,6 +1,6 @@
 use crate::block::block::*;
-use crate::section::section::*;
 use crate::section::attributes_for_section::*;
+use crate::section::section::*;
 use nom::bytes::complete::tag;
 use nom::combinator::eof;
 use nom::multi::many0;
@@ -24,4 +24,46 @@ pub fn subtitle(source: &str) -> IResult<&str, Section> {
             children,
         },
     ))
+}
+
+#[cfg(test)]
+
+mod test {
+    use crate::block::block::*;
+    use crate::content::content::*;
+    use crate::parse::parse;
+    use crate::section::section::*;
+    use crate::wrapper::wrapper::*;
+
+    #[test]
+    fn basic_subtitle() {
+        let lines = vec!["-> subtitle", "", "this is a subtitle"].join("\n");
+        let source = lines.as_str();
+        let expected = Wrapper::Page {
+            children: Some(vec![Section::Subtitle {
+                attributes: None,
+                children: Some(vec![Block::P {
+                    children: Some(vec![
+                        Content::Text {
+                            text: Some("this".to_string()),
+                        },
+                        Content::Space,
+                        Content::Text {
+                            text: Some("is".to_string()),
+                        },
+                        Content::Space,
+                        Content::Text {
+                            text: Some("a".to_string()),
+                        },
+                        Content::Space,
+                        Content::Text {
+                            text: Some("subtitle".to_string()),
+                        },
+                    ]),
+                }]),
+            }]),
+        };
+        let result = parse(source).unwrap().1;
+        assert_eq!(expected, result);
+    }
 }
