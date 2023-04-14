@@ -11,7 +11,7 @@ fn foxtrot() {
     let expected = Wrapper::Page {
         children: Some(vec![Section::CodeSection {
             attributes: None,
-            children: Some(Block::CodeBlock {
+            children: Some(Block::RawContent {
                 text: Some("some code\nmore code".to_string()),
             }),
         }]),
@@ -30,7 +30,7 @@ fn foxtrot2_attributes() {
                 key: Some("language".to_string()),
                 value: Some("rust".to_string()),
             }]),
-            children: Some(Block::CodeBlock {
+            children: Some(Block::RawContent {
                 text: Some("some code\nmore code".to_string()),
             }),
         }]),

@@ -16,7 +16,7 @@ pub fn code_section(source: &str) -> IResult<&str, Section> {
     let children = if source.trim().is_empty() {
         None
     } else {
-        Some(Block::CodeBlock {
+        Some(Block::RawContent {
             text: Some(source.trim().to_string()),
         })
     };
