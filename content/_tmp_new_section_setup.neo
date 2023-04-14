@@ -1,0 +1,34 @@
+-> title
+
+How To Add A Section To The Rust Process
+
+-> olist
+
+- Copy an existing section file to the new
+name that has a similar base functionality. 
+
+- Rename the function and update the tests. 
+
+- Add the new filename to `src/section/mod.rs`
+which will case a fail
+
+- Add the enum to section/section.rs
+
+- Add the crate
+
+
+
+
+-> blurb
+
+-> categories
+>> Miscellaneous
+
+-> attributes
+>> date: 2023-04-14 16:17:09
+>> id: 2oqr1cxs9dhz
+>> site: aws
+>> type: post
+>> status: unpublished
+
+

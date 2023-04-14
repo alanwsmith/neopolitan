@@ -47,10 +47,36 @@ to work out well.
 See <<link|XKCD 927|https://xkcd.com/927/>> 
 for reference
 
+-> h3
+
+Footnotes And References
+
+Use the first line after them as the name
+which is what's tied into the key from the
+content. (e.g. `>> Some Name`` connects to
+`<<^ Some Name >>`. 
+
+Surrounding white space is trimmed. 
+
+Internal spaces are allowed but must match
+as the value is used as a direct key. 
+
 
 -> h3
 
 Insignificant Whitespace
+
+It doesn't matter in most places except for:
+
+-> list
+
+- Blank lines that act as separators between
+sections and list items
+
+- Key names in footnotes and
+references
+
+
 
 -> h3
 

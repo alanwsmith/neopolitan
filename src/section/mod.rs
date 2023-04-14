@@ -4,6 +4,7 @@ pub mod blockquote;
 pub mod code_section;
 pub mod comment;
 pub mod div;
+pub mod footnote;
 pub mod h1;
 pub mod h2;
 pub mod h3;

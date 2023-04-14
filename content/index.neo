@@ -78,41 +78,6 @@ still in flight.
 
 -> h2
 
-New Item Checklist
-
-These are the steps to add a new section 
-
-
--> list
-
-- [] copy `tests/juliette.rs`` to a new file for paragraph 
-style
-
-- [] update the content of the test with the new section names 
-
-- [] add the new file name to `tests/mod.rs``
-
-- [] update the test to fail with whatever is under test
-
-- [] copy `sections/p.rs`` or `sections/list.rs`` to the  new name
-
-- [] change the function name in the copied contents
-
-- [] add the new file to `sections/mod.rs``
-
-- [] Add the enum to `sections/section.rs``
-
-- [] Add the nom call to `sections/section.rs``
-
-- [] Add the use::whatever to `sections/section.rs``
-
-- [] Copy the `templates/paragraphs.html` to the new section name
-
-- [] Update the contents. 
-
-
--> h2
-
 Introduction
 
 My site is twenty years old. Pondering those decades got 
@@ -187,6 +152,9 @@ data for links into the page.
 - [p2] canvas - TBD. probably just a tag with the way to pass
 attrivutes.
 
+- [] checklist - Desinged for checkboxes that are empty each 
+time you visit the page or it's refreshed. 
+
 - [x] code - Code blocks like fenced code blocks but you can add 
 an arbitrary number of attributes.
 
@@ -222,7 +190,9 @@ of content
 
 - [p2] form - TBD on form setups
 
-- [] footnote
+- [x] footnote - Individaul sections for each footnote that get 
+tied into the content by referencing the first attribut which 
+is just a key (and can include spaces)
 
 - [x] h1-h6
 
