@@ -60,22 +60,32 @@
 
 
 <div class="subtitle">
-   A  plain-text  format  for  my  website
+   A  plain-text  format  for  my  website  x&gt;  note
 </div>
 
 
 
+<p>
+   This  page  is  an  early  draft.
+</p>
+
+
+
     
     
     
     
   
     
-      <h2> Overview</h2>
+      <h2> Introduction</h2>
     
   
     
-      <p> My  site  is  twenty  years  old.  Pondering  the  past  two  decades  started  me  thinking  about  the  next  two.  It  changed  my  perspective  on  making  and  maintaining  my  site  has  changed  because  of  it.  &quot;What  foundation  do  I  want  to  setup  for  the  next  two  decades?&quot;  is  a  very  different  question  from  &quot;What  do  I  want  to  do  for  my  next  redesign?&quot;  On  my  time  horizon,  the  key  isn&#x27;t  the  tech  stack.  It&#x27;s  the  content.</p>
+      <p> My  site  is  twenty  years  old.  Pondering  those  decades  got  me  thinking  about  the  next  two.  It&#x27;s  changed  my  perspective  on  making  and  maintaining  my  site.  &quot;What  foundation  do  I  want  for  the  next  two  decades?&quot;  is  a  very  different  question  from  &quot;What  do  I  want  to  do  for  my  next  redesign?&quot;</p>
+    
+  
+    
+      <p> On  that  time  horizon,  my  thoughts  don&#x27;t  go  to  the  tech,  they  go  to  the  content.</p>
     
   
 
@@ -89,15 +99,15 @@
     
   
     
-      <p> I&#x27;ve  moved  my  site  a  half  dozen  times.  Each  one  involved  a  painful  content  migration.  They&#x27;re  rarely  fun.  They&#x27;re  even  less  so  when  you&#x27;ve  crossed  a  thousand  posts.  I&#x27;m  at  1,566.</p>
+      <p> I&#x27;ve  moved  my  site  a  half  dozen  times.  Each  one  involved  a  painful  content  migration.  They&#x27;re  rarely  fun.  Even  less  so  with  a  thousand  posts.  Or,  in  my  case,  1,566.</p>
     
   
     
-      <p> I&#x27;ve  gone  from  raw  HTML  to  Wordpress  back  to  HTML  to  a  half  dozen  DB  schemas  to  Markdown  to  MDX  to  Org-Mode.  Every  approach  involves  friction  that  slows  me  down  both  from  making  posts  an  experimenting  with  my  site  on  a  larger  level.</p>
+      <p> I&#x27;ve  gone  from  raw  HTML  to  Perl  scripts  to  Wordpress  to  PHP  with  various  DB  schemas  to  Markdown  to  MDX  to  Org-Mode.  After  switching  to  plain-text  with  Markdown  I&#x27;m  not  interested  in  anything  else.  But,  those  formats  don&#x27;t  work  for  me.  I  keep  running  into  frictions  that  keep  me  from  posting  the  way  I&#x27;d  like.</p>
     
   
     
-      <p> For  example:</p>
+      <p> So,  I&#x27;m  making  my  own  format.  I&#x27;m  calling  it  Neopolitan.</p>
     
   
 
@@ -105,38 +115,3178 @@
     
     
     
-<pre>
-  {&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;b&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}, {&quot;children&quot;: [{&quot;text&quot;: &quot;cd&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;UnorderedListItem&quot;}, {&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;e&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;f&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;UnorderedListItem&quot;}], &quot;type&quot;: &quot;List&quot;}
-</pre>
+  
+    
+      <h2> The  Basics</h2>
+    
+  
+    
+      <p> The  general  idea  is  to  use  sections  (which  start  with  a  -&gt;  token)  to  define  areas  of  content.  The  type  of  section  defines  how  the  content  inside  it  will  behave.</p>
+    
+  
+    
+      <p> These  are  the  section  types  I&#x27;m  planning  along  with  indications  of  which  ones  are  already  set.</p>
+    
+  
+
+    
+    
+    
+    
 <ul>
   
   <li>
     <p>
       
-      a
-      
-      
-      
-      b
-      
-    </p>
-    
-    <p>
-      
-      cd
-      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;aside&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+aside
+
+
+
     </p>
     </li>
   
   <li>
     <p>
       
-      e
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blockquote&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+blockquote
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
       
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blurb&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+blurb
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
       
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;button&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+button
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
       
-      f
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;canvas&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+canvas
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
       
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;code&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+code
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;css&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+css
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;details&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+details
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;dlist&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+dlist
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;div&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+div
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;figure&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+figure
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;form&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+form
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;footnote&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+footnote
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;h1-h6&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+h1-h6
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;html&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+html
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;iframe&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+iframe
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;image&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+image
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;list&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+list
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;menu&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+menu
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;nav&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+nav
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;note&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+note
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;notes&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+notes
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;object&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+object
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;olist&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+olist
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;p&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+p
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;picture&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+picture
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;pre&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+pre
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;reference&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+reference
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;script&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+script
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;subtitle&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+subtitle
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;startcode&#x2f;endcode&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+startcode&#x2f;endcode
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;table&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;textarea&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+table
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[]
+
+
+
+
+
+
+textarea
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;tiktok&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;title&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+tiktok
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[]
+
+
+
+
+
+
+title
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;todo&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+todo
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;video&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+video
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;vimeo&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+vimeo
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;warning&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+warning
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;widget&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+widget
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;youtube&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[]
+
+
+
+
+
+
+youtube
+
+
+
+    </p>
+    </li>
+  
+</ul>
+
+    
+    
+    
+    
+
+
+<h3> Inline  Tags</h3>
+
+
+
+<p> Most  of  the  section  types  hold  text  content.  That  text  content  is  split  into  &lt;p&gt;  tags  by  default  and  the  text  inside  of  them  is  parsed  for  inline  tags  and  shorthand  codes.  Inline  tags  start  with  two  &lt;&lt;  and  end  with  a  closing  &gt;&gt;  set.  Here&#x27;s  the  list  with  x  indicating  the  ones  that  are  implemented  and  .  indicating  that  are  still  under  consideration.  (This  is  basically  the  list  of  html  elements)</p>
+
+
+
+    
+    
+    
+    
+<ul>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;abbr&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Abbreviation&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[.]
+
+
+
+
+
+
+abbr
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Abbreviation
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;audio&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Audio&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;b&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Bring&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;attention&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[.]
+
+
+
+
+
+
+audio
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Audio
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[x]
+
+
+
+
+
+
+b
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Bring
+
+
+
+
+
+
+attention
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;button&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Button&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;cite&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Cite&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;code&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[c]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Code&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[.]
+
+
+
+
+
+
+button
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Button
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[.]
+
+
+
+
+
+
+cite
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Cite
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[x]
+
+
+
+
+
+
+code
+
+
+
+
+
+
+[c]
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Code
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;data&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Data&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[.]
+
+
+
+
+
+
+data
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Data
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;del&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Del&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[.]
+
+
+
+
+
+
+del
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Del
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;dfn&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Definition&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[.]
+
+
+
+
+
+
+dfn
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Definition
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;em&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Emphasis&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[x]
+
+
+
+
+
+
+em
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Emphasis
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;i&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Idiomatic&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;text&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;img&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Image&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;input&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Input&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;ins&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Insert&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;kbd&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[k]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Keyboard&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;input&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;label&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Label&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;legend&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Legend&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;link&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[l]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Link&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[x]
+
+
+
+
+
+
+i
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Idiomatic
+
+
+
+
+
+
+text
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[.]
+
+
+
+
+
+
+img
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Image
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[.]
+
+
+
+
+
+
+input
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Input
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[.]
+
+
+
+
+
+
+ins
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Insert
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[x]
+
+
+
+
+
+
+kbd
+
+
+
+
+
+
+[k]
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Keyboard
+
+
+
+
+
+
+input
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[.]
+
+
+
+
+
+
+label
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Label
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[.]
+
+
+
+
+
+
+legend
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Legend
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[x]
+
+
+
+
+
+
+link
+
+
+
+
+
+
+[l]
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Link
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;meter&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Leter&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[.]
+
+
+
+
+
+
+meter
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Leter
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;object&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Object&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;progress&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Progress&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;q&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Quotation&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;samp&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Sample&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Output&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;small&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Small&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;text&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;(side&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;comment)&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;strike&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Strikethru&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;span&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Span&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[.]
+
+
+
+
+
+
+object
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Object
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[.]
+
+
+
+
+
+
+progress
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Progress
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[.]
+
+
+
+
+
+
+q
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Quotation
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[.]
+
+
+
+
+
+
+samp
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Sample
+
+
+
+
+
+
+Output
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[.]
+
+
+
+
+
+
+small
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Small
+
+
+
+
+
+
+text
+
+
+
+
+
+
+(side
+
+
+
+
+
+
+comment)
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[x]
+
+
+
+
+
+
+strike
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Strikethru
+
+
+
+
+
+
+-
+
+
+
+
+
+
+[x]
+
+
+
+
+
+
+span
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Span
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;strong&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;[s]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Strong&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[x]
+
+
+
+
+
+
+strong
+
+
+
+
+
+
+[s]
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Strong
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;sub&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Subscript&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[x]
+
+
+
+
+
+
+sub
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Subscript
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;sup&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Superscript&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[x]
+
+
+
+
+
+
+sup
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Superscript
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;time&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Time&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[.]
+
+
+
+
+
+
+time
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Time
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[x]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;u&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Unarticulated&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Annotation&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[x]
+
+
+
+
+
+
+u
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Unarticulated
+
+
+
+
+
+
+Annotation
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;var&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Variable&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[.]
+
+
+
+
+
+
+var
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Variable
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;[.]&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;wbr&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Line&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Break&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Opportunity&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+[.]
+
+
+
+
+
+
+wbr
+
+
+
+
+
+
+-
+
+
+
+
+
+
+Line
+
+
+
+
+
+
+Break
+
+
+
+
+
+
+Opportunity
+
+
+
+    </p>
+    </li>
+  
+</ul>
+
+    
+    
+    
+    
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Neopolitan&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Neopolitan
+
+
+
+</p>
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Here&#x27;s&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;what&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;I&#x27;m&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;thinking&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Here&#x27;s
+
+
+
+
+
+
+what
+
+
+
+
+
+
+I&#x27;m
+
+
+
+
+
+
+thinking
+
+
+
+</p>
+
+
+    
+    
+    
+    
+<ul>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Focused&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;on&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;text&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;based&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;content&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Focused
+
+
+
+
+
+
+on
+
+
+
+
+
+
+text
+
+
+
+
+
+
+based
+
+
+
+
+
+
+content
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Plain-text&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Plain-text
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;White-space&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;not&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;meaningful&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;except&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;for&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;using&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blank&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;lines&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;between&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;sections&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blocks&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+White-space
+
+
+
+
+
+
+is
+
+
+
+
+
+
+not
+
+
+
+
+
+
+meaningful
+
+
+
+
+
+
+except
+
+
+
+
+
+
+for
+
+
+
+
+
+
+using
+
+
+
+
+
+
+blank
+
+
+
+
+
+
+lines
+
+
+
+
+
+
+between
+
+
+
+
+
+
+sections
+
+
+
+
+
+
+and
+
+
+
+
+
+
+blocks
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;A&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;variety&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;section&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;types&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+A
+
+
+
+
+
+
+variety
+
+
+
+
+
+
+of
+
+
+
+
+
+
+section
+
+
+
+
+
+
+types
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Individual&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;sections&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;for&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;metadata&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Individual
+
+
+
+
+
+
+sections
+
+
+
+
+
+
+for
+
+
+
+
+
+
+metadata
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Arbitrary&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;attributes&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;can&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;be&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;added&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;sections&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;including&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;code&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blocks.&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Arbitrary
+
+
+
+
+
+
+attributes
+
+
+
+
+
+
+can
+
+
+
+
+
+
+be
+
+
+
+
+
+
+added
+
+
+
+
+
+
+to
+
+
+
+
+
+
+sections
+
+
+
+
+
+
+including
+
+
+
+
+
+
+code
+
+
+
+
+
+
+blocks.
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Arbitrary&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;attributes&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;can&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;be&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;added&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;inline&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;tags&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Arbitrary
+
+
+
+
+
+
+attributes
+
+
+
+
+
+
+can
+
+
+
+
+
+
+be
+
+
+
+
+
+
+added
+
+
+
+
+
+
+to
+
+
+
+
+
+
+inline
+
+
+
+
+
+
+tags
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;A&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;collection&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;sections&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;inline&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;tags&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;provides&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;all&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: None, &quot;text&quot;: &quot;\nhttps:&#x2f;&#x2f;developer.mozilla.org&#x2f;en-US&#x2f;docs&#x2f;Web&#x2f;HTML&#x2f;Element&#x2f;html&quot;, &quot;type&quot;: &quot;Link&quot;, &quot;url&quot;: &quot;standard HTML elements&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+A
+
+
+
+
+
+
+collection
+
+
+
+
+
+
+of
+
+
+
+
+
+
+sections
+
+
+
+
+
+
+and
+
+
+
+
+
+
+inline
+
+
+
+
+
+
+tags
+
+
+
+
+
+
+that
+
+
+
+
+
+
+provides
+
+
+
+
+
+
+all
+
+
+
+
+
+
+<a href="standard HTML elements">
+https:&#x2f;&#x2f;developer.mozilla.org&#x2f;en-US&#x2f;docs&#x2f;Web&#x2f;HTML&#x2f;Element&#x2f;html</a>
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;spec&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;defines&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;AST,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;not&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;final&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;output.&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;That&#x27;s&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;left&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;up&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;rendering&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;engine.&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+The
+
+
+
+
+
+
+spec
+
+
+
+
+
+
+defines
+
+
+
+
+
+
+the
+
+
+
+
+
+
+AST,
+
+
+
+
+
+
+not
+
+
+
+
+
+
+the
+
+
+
+
+
+
+final
+
+
+
+
+
+
+output.
+
+
+
+
+
+
+That&#x27;s
+
+
+
+
+
+
+left
+
+
+
+
+
+
+up
+
+
+
+
+
+
+to
+
+
+
+
+
+
+the
+
+
+
+
+
+
+rendering
+
+
+
+
+
+
+engine.
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Footnotes&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Footnotes
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;References&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+References
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Result&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blocks&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;in&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;addition&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;code&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blocks&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;(with&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;goal&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;getting&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;my&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;editor&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;generate&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;them&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;automatically&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;like&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Org-Mode)&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Result
+
+
+
+
+
+
+blocks
+
+
+
+
+
+
+in
+
+
+
+
+
+
+addition
+
+
+
+
+
+
+to
+
+
+
+
+
+
+code
+
+
+
+
+
+
+blocks
+
+
+
+
+
+
+(with
+
+
+
+
+
+
+the
+
+
+
+
+
+
+goal
+
+
+
+
+
+
+of
+
+
+
+
+
+
+getting
+
+
+
+
+
+
+my
+
+
+
+
+
+
+editor
+
+
+
+
+
+
+to
+
+
+
+
+
+
+generate
+
+
+
+
+
+
+them
+
+
+
+
+
+
+automatically
+
+
+
+
+
+
+like
+
+
+
+
+
+
+Org-Mode)
+
+
+
     </p>
     </li>
   
@@ -147,492 +3297,1222 @@
     
     
   
-  <p>
     
+      <h2> Under  Consideration</h2>
     
-    I
-    
-    
-    
-    
-    
-    
-    don&#x27;t
-    
-    
-    
-    
-    
-    
-    know
-    
-    
-    
-    
-    
-    
-    all
-    
-    
-    
-    
-    
-    
-    the
-    
-    
-    
-    
-    
-    
-    different
-    
-    
-    
-    
-    
-    
-    ways
-    
-    
-    
-    
-    
-    
-    I&#x27;ll
-    
-    
-    
-    
-    
-    
-    build
-    
-    
-    
-    
-    
-    
-    my
-    
-    
-    
-    
-    
-    
-    side
-    
-    
-    
-    
-    
-    
-    over
-    
-    
-    
-    
-    
-    
-    the
-    
-    
-    
-    
-    
-    
-    next
-    
-    
-    
-    
-    
-    
-    two
-    
-    
-    
-    
-    
-    
-    decades,
-    
-    
-    
-    
-    
-    
-    but
-    
-    
-    
-    
-    
-    
-    I
-    
-    
-    
-    
-    
-    
-    know
-    
-    
-    
-    
-    
-    
-    the
-    
-    
-      </p>
   
-  <p>
     
-      </p>
+      <p> Some  other  things  I  have  in  mind:</p>
+    
   
-  <p>
+
     
-      </p>
+    
+    
+    
+<ul>
   
-  <p>
-    
-    
-    The
-    
-    
-    
-    
-    
-    
-    first
-    
-    
-    
-    
-    
-    
-    examination
-    
-    
-    
-    
-    
-    
-    is
-    
-    
-    
-    
-    
-    
-    the
-    
-    
-    
-    
-    
-    
-    code.
-    
-    
-    
-    
-    
-    
-    I&#x27;m
-    
-    
-    
-    
-    
-    
-    switching
-    
-    
-    
-    
-    
-    
-    to
-    
-    
-    
-    
-    
-    
-    vanilla
-    
-    
-    
-    
-    
-    
-    HTML,
-    
-    
-    
-    
-    
-    
-    CSS,
-    
-    
-    
-    
-    
-    
-    and
-    
-    
-    
-    
-    
-    
-    JavaScript.
-    
-    
-    
-    
-    
-    
-    There&#x27;s
-    
-    
-    
-    
-    
-    
-    a
-    
-    
-    
-    
-    
-    
-    lot
-    
-    
-    
-    
-    
-    
-    to
-    
-    
-    
-    
-    
-    
-    be
-    
-    
-    
-    
-    
-    
-    written
-    
-    
-    
-    
-    
-    
-    about
-    
-    
-    
-    
-    
-    
-    that
-    
-    
-    
-    
-    
-    
-    later.
-    
-    
-    
-    
-    
-    
-    For
-    
-    
-    
-    
-    
-    
-    now,
-    
-    
-    
-    
-    
-    
-    suffice
-    
-    
-    
-    
-    
-    
-    it
-    
-    
-    
-    
-    
-    
-    to
-    
-    
-    
-    
-    
-    
-    say
-    
-    
-    
-    
-    
-    
-    that,
-    
-    
-    
-    
-    
-    
-    for
-    
-    
-    
-    
-    
-    
-    my
-    
-    
-    
-    
-    
-    
-    personal
-    
-    
-    
-    
-    
-    
-    site,
-    
-    
-    
-    
-    
-    
-    frameworks
-    
-    
-    
-    
-    
-    
-    have
-    
-    
-    
-    
-    
-    
-    been
-    
-    
-    
-    
-    
-    
-    a
-    
-    
-    
-    
-    
-    
-    net
-    
-    
-    
-    
-    
-    
-    negative
-    
-    
-    
-    
-    
-    
-    for
-    
-    
-    
-    
-    
-    
-    me.
-    
-    
-    
-    
-    
-    
-    I&#x27;m
-    
-    
-    
-    
-    
-    
-    bowing
-    
-    
-    
-    
-    
-    
-    out
-    
-    
-    
-    
-    
-    
-    of
-    
-    
-    
-    
-    
-    
-    that
-    
-    
-    
-    
-    
-    
-    game.
-    
-    
-      </p>
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;A&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: None, &quot;text&quot;: &quot;widget&quot;, &quot;type&quot;: &quot;CodeShorthand&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;section&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;type&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that&#x27;s&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;used&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;pass&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;data&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;rendered&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;page&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;(via&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;whatever&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;method&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;implementation&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;A&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: None, &quot;text&quot;: &quot;css&quot;, &quot;type&quot;: &quot;CodeShorthand&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;section&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;type&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;designed&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;include&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;CSS&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;should&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;be&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;added&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;as&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;last&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: [{&quot;key&quot;: &quot;html&quot;, &quot;type&quot;: &quot;Basic&quot;, &quot;value&quot;: None}], &quot;text&quot;: &quot;&lt;style&gt;&quot;, &quot;type&quot;: &quot;CodeShorthand&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;tag&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;in&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: [{&quot;key&quot;: &quot;html&quot;, &quot;type&quot;: &quot;Basic&quot;, &quot;value&quot;: None}], &quot;text&quot;: &quot;&lt;head&gt;&quot;, &quot;type&quot;: &quot;CodeShorthand&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;document&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+A
+
+
+
+
+
+
+<code>widget</code>
+
+
+
+
+
+
+section
+
+
+
+
+
+
+type
+
+
+
+
+
+
+that&#x27;s
+
+
+
+
+
+
+used
+
+
+
+
+
+
+to
+
+
+
+
+
+
+pass
+
+
+
+
+
+
+data
+
+
+
+
+
+
+to
+
+
+
+
+
+
+the
+
+
+
+
+
+
+rendered
+
+
+
+
+
+
+page
+
+
+
+
+
+
+(via
+
+
+
+
+
+
+whatever
+
+
+
+
+
+
+method
+
+
+
+
+
+
+the
+
+
+
+
+
+
+implementation
+
+
+
+
+
+
+-
+
+
+
+
+
+
+A
+
+
+
+
+
+
+<code>css</code>
+
+
+
+
+
+
+section
+
+
+
+
+
+
+type
+
+
+
+
+
+
+designed
+
+
+
+
+
+
+to
+
+
+
+
+
+
+include
+
+
+
+
+
+
+CSS
+
+
+
+
+
+
+that
+
+
+
+
+
+
+should
+
+
+
+
+
+
+be
+
+
+
+
+
+
+added
+
+
+
+
+
+
+as
+
+
+
+
+
+
+the
+
+
+
+
+
+
+last
+
+
+
+
+
+
+<code>&lt;style&gt;</code>
+
+
+
+
+
+
+tag
+
+
+
+
+
+
+in
+
+
+
+
+
+
+the
+
+
+
+
+
+
+<code>&lt;head&gt;</code>
+
+
+
+
+
+
+of
+
+
+
+
+
+
+the
+
+
+
+
+
+
+document
+
+
+
+    </p>
+    </li>
   
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;A&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: [{&quot;key&quot;: &quot;section type designed to include\na&quot;, &quot;type&quot;: &quot;Basic&quot;, &quot;value&quot;: None}], &quot;text&quot;: &quot;script&quot;, &quot;type&quot;: &quot;CodeShorthand&quot;}, {&quot;text&quot;: &quot;&lt;script&gt;&lt;&#x2f;script&gt;`html`&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;in&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;head&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;document&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+A
+
+
+
+
+
+
+<code>script</code>
+
+
+
+&lt;script&gt;&lt;&#x2f;script&gt;`html`
+
+
+
+
+
+
+in
+
+
+
+
+
+
+the
+
+
+
+
+
+
+head
+
+
+
+
+
+
+of
+
+
+
+
+
+
+the
+
+
+
+
+
+
+document
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Includes&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;sections&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;include&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;other&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;files&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Includes
+
+
+
+
+
+
+sections
+
+
+
+
+
+
+that
+
+
+
+
+
+
+include
+
+
+
+
+
+
+other
+
+
+
+
+
+
+files
+
+
+
+    </p>
+    </li>
+  
+</ul>
+
+    
+    
+    
+    
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Every&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;approach&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;involves&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;friction&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;slows&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;me&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;down&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;both&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;from&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;making&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;posts&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;an&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;experimenting&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;with&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;my&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;site&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;on&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;larger&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;level.&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Every
+
+
+
+
+
+
+approach
+
+
+
+
+
+
+involves
+
+
+
+
+
+
+friction
+
+
+
+
+
+
+that
+
+
+
+
+
+
+slows
+
+
+
+
+
+
+me
+
+
+
+
+
+
+down
+
+
+
+
+
+
+both
+
+
+
+
+
+
+from
+
+
+
+
+
+
+making
+
+
+
+
+
+
+posts
+
+
+
+
+
+
+an
+
+
+
+
+
+
+experimenting
+
+
+
+
+
+
+with
+
+
+
+
+
+
+my
+
+
+
+
+
+
+site
+
+
+
+
+
+
+on
+
+
+
+
+
+
+a
+
+
+
+
+
+
+larger
+
+
+
+
+
+
+level.
+
+
+
+</p>
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;For&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;example:&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+For
+
+
+
+
+
+
+example:
+
+
+
+</p>
+
+
+    
+    
+    
+    
+<ul>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;b&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+a
+
+
+
+
+
+
+b
+
+
+
+    </p>
+    
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;cd&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+cd
+
+
+
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;e&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;f&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+e
+
+
+
+
+
+
+f
+
+
+
+    </p>
+    </li>
+  
+</ul>
+
+    
+    
+    
+    
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;I&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;don&#x27;t&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;know&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;all&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;different&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;ways&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;I&#x27;ll&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;build&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;my&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;side&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;over&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;next&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;two&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;decades,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;but&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;I&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;know&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+I
+
+
+
+
+
+
+don&#x27;t
+
+
+
+
+
+
+know
+
+
+
+
+
+
+all
+
+
+
+
+
+
+the
+
+
+
+
+
+
+different
+
+
+
+
+
+
+ways
+
+
+
+
+
+
+I&#x27;ll
+
+
+
+
+
+
+build
+
+
+
+
+
+
+my
+
+
+
+
+
+
+side
+
+
+
+
+
+
+over
+
+
+
+
+
+
+the
+
+
+
+
+
+
+next
+
+
+
+
+
+
+two
+
+
+
+
+
+
+decades,
+
+
+
+
+
+
+but
+
+
+
+
+
+
+I
+
+
+
+
+
+
+know
+
+
+
+
+
+
+the
+
+
+
+</p>
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+</p>
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+</p>
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;first&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;examination&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;code.&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;I&#x27;m&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;switching&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;vanilla&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;HTML,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;CSS,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;JavaScript.&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;There&#x27;s&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;lot&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;be&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;written&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;about&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;later.&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;For&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;now,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;suffice&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;it&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;say&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;for&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;my&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;personal&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;site,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;frameworks&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;have&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;been&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;net&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;negative&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;for&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;me.&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;I&#x27;m&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;bowing&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;out&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;game.&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+The
+
+
+
+
+
+
+first
+
+
+
+
+
+
+examination
+
+
+
+
+
+
+is
+
+
+
+
+
+
+the
+
+
+
+
+
+
+code.
+
+
+
+
+
+
+I&#x27;m
+
+
+
+
+
+
+switching
+
+
+
+
+
+
+to
+
+
+
+
+
+
+vanilla
+
+
+
+
+
+
+HTML,
+
+
+
+
+
+
+CSS,
+
+
+
+
+
+
+and
+
+
+
+
+
+
+JavaScript.
+
+
+
+
+
+
+There&#x27;s
+
+
+
+
+
+
+a
+
+
+
+
+
+
+lot
+
+
+
+
+
+
+to
+
+
+
+
+
+
+be
+
+
+
+
+
+
+written
+
+
+
+
+
+
+about
+
+
+
+
+
+
+that
+
+
+
+
+
+
+later.
+
+
+
+
+
+
+For
+
+
+
+
+
+
+now,
+
+
+
+
+
+
+suffice
+
+
+
+
+
+
+it
+
+
+
+
+
+
+to
+
+
+
+
+
+
+say
+
+
+
+
+
+
+that,
+
+
+
+
+
+
+for
+
+
+
+
+
+
+my
+
+
+
+
+
+
+personal
+
+
+
+
+
+
+site,
+
+
+
+
+
+
+frameworks
+
+
+
+
+
+
+have
+
+
+
+
+
+
+been
+
+
+
+
+
+
+a
+
+
+
+
+
+
+net
+
+
+
+
+
+
+negative
+
+
+
+
+
+
+for
+
+
+
+
+
+
+me.
+
+
+
+
+
+
+I&#x27;m
+
+
+
+
+
+
+bowing
+
+
+
+
+
+
+out
+
+
+
+
+
+
+of
+
+
+
+
+
+
+that
+
+
+
+
+
+
+game.
+
+
+
+</p>
+
 
     
     
@@ -731,32 +4611,53 @@ and some more code</code></pre>
     
     
     
-<pre>
-  {&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;b&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;UnorderedListItem&quot;}, {&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;c&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;UnorderedListItem&quot;}], &quot;type&quot;: &quot;List&quot;}
-</pre>
 <ul>
   
   <li>
     <p>
       
-      a
-      
-      
-      
-      -
-      
-      
-      
-      b
-      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;-&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;b&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+a
+
+
+
+
+
+
+-
+
+
+
+
+
+
+b
+
+
+
     </p>
     </li>
   
   <li>
     <p>
       
-      c
-      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;c&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+c
+
+
+
     </p>
     </li>
   
@@ -766,57 +4667,443 @@ and some more code</code></pre>
     
     
     
+
+<p>
   
-  <p>
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;and&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that&#x27;s&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;end&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;of&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;list&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+and
+
+
+
+
+
+
+that&#x27;s
+
+
+
+
+
+
+the
+
+
+
+
+
+
+end
+
+
+
+
+
+
+of
+
+
+
+
+
+
+the
+
+
+
+
+
+
+list
+
+
+
+</p>
+
+
     
     
-    and
+    
+    
+
+
+<h3> Other  ideas</h3>
+
+
+
     
     
     
     
-    
-    
-    that&#x27;s
-    
-    
-    
-    
-    
-    
-    the
-    
-    
-    
-    
-    
-    
-    end
-    
-    
-    
-    
-    
-    
-    of
-    
-    
-    
-    
-    
-    
-    the
-    
-    
-    
-    
-    
-    
-    list
-    
-    
-      </p>
+<ul>
   
+  <li>
+    <p>
+      
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;An&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;`-&gt;&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;og`&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;tag&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;put&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;in&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;open&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;graph&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;values?&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Need&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;thing&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;about&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;how&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;that&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;would&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;work.&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+An
+
+
+
+
+
+
+`-&gt;
+
+
+
+
+
+
+og`
+
+
+
+
+
+
+tag
+
+
+
+
+
+
+to
+
+
+
+
+
+
+put
+
+
+
+
+
+
+in
+
+
+
+
+
+
+open
+
+
+
+
+
+
+graph
+
+
+
+
+
+
+values?
+
+
+
+
+
+
+Need
+
+
+
+
+
+
+to
+
+
+
+
+
+
+thing
+
+
+
+
+
+
+about
+
+
+
+
+
+
+how
+
+
+
+
+
+
+that
+
+
+
+
+
+
+would
+
+
+
+
+
+
+work.
+
+
+
+    </p>
+    </li>
+  
+</ul>
+
+    
+    
+    
+    
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;Holding&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;(attributes&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;aren&#x27;t&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;being&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;parsed&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;yet&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;so&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;this&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;hacked&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;out)&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+Holding
+
+
+
+
+
+
+(attributes
+
+
+
+
+
+
+aren&#x27;t
+
+
+
+
+
+
+being
+
+
+
+
+
+
+parsed
+
+
+
+
+
+
+yet
+
+
+
+
+
+
+so
+
+
+
+
+
+
+this
+
+
+
+
+
+
+is
+
+
+
+
+
+
+hacked
+
+
+
+
+
+
+out)
+
+
+
+</p>
+
+<p>
+  
+<!--
+<div>
+  {&quot;children&quot;: [{&quot;text&quot;: &quot;x&gt;&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;attributes&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;&gt;&gt;&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;date:&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;2023-04-03&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;12:10:46&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;&gt;&gt;&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;id:&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;2nvihspm8vaa&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;&gt;&gt;&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;site:&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;aws&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;&gt;&gt;&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;type:&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;post&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;&gt;&gt;&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;status:&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;deaft&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}
+</div>
+-->
+
+
+x&gt;
+
+
+
+
+
+
+attributes
+
+
+
+
+
+
+&gt;&gt;
+
+
+
+
+
+
+date:
+
+
+
+
+
+
+2023-04-03
+
+
+
+
+
+
+12:10:46
+
+
+
+
+
+
+&gt;&gt;
+
+
+
+
+
+
+id:
+
+
+
+
+
+
+2nvihspm8vaa
+
+
+
+
+
+
+&gt;&gt;
+
+
+
+
+
+
+site:
+
+
+
+
+
+
+aws
+
+
+
+
+
+
+&gt;&gt;
+
+
+
+
+
+
+type:
+
+
+
+
+
+
+post
+
+
+
+
+
+
+&gt;&gt;
+
+
+
+
+
+
+status:
+
+
+
+
+
+
+deaft
+
+
+
+</p>
+
 
     
     
