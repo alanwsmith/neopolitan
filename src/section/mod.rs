@@ -19,6 +19,7 @@ pub mod note;
 pub mod notes;
 pub mod olist;
 pub mod p;
+pub mod pre;
 pub mod reference;
 pub mod script;
 pub mod section;

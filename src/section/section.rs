@@ -20,6 +20,7 @@ use crate::section::note::*;
 use crate::section::notes::*;
 use crate::section::olist::*;
 use crate::section::p::*;
+use crate::section::pre::*;
 use crate::section::reference::*;
 use crate::section::script::*;
 use crate::section::subtitle::*;
@@ -121,6 +122,10 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    PreSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Block>,
+    },
     ReferenceSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
@@ -204,6 +209,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 .map(|t| notes(t.1).unwrap().1),
             tuple((tag("-> olist\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| olist(t.1).unwrap().1),
+            tuple((tag("-> pre\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| pre(t.1).unwrap().1),
             tuple((tag("-> reference\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| reference(t.1).unwrap().1),
             tuple((tag("-> script\n"), alt((take_until("\n\n-> "), rest))))
