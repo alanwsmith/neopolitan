@@ -11,8 +11,8 @@ use nom::sequence::preceded;
 use nom::IResult;
 
 pub fn list(source: &str) -> IResult<&str, Section> {
-    dbg!("AAAAA");
-    dbg!(&source);
+    // dbg!("AAAAA");
+    // dbg!(&source);
     let (source, att_capture) = many0(preceded(tag(">> "), section_attribute))(source).unwrap();
     let _attributes = if att_capture.is_empty() {
         None
@@ -22,10 +22,10 @@ pub fn list(source: &str) -> IResult<&str, Section> {
     // let (source, b) = many_till(block, eof)(source.trim()).unwrap();
     let (source, b) = many_till(unordered_list_item, eof)(source.trim()).unwrap();
     let children = if b.0.is_empty() { None } else { Some(b.0) };
-    dbg!("BBBBB");
-    dbg!(&source);
-    dbg!("CCCCC");
-    dbg!(&children);
+    // dbg!("BBBBB");
+    // dbg!(&source);
+    // dbg!("CCCCC");
+    // dbg!(&children);
     Ok((
         source,
         Section::List {
