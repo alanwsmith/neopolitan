@@ -1,4 +1,5 @@
 pub mod aside;
+pub mod blockquote;
 pub mod code_section;
 pub mod h1;
 pub mod h2;

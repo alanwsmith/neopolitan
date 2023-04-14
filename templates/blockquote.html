@@ -1,0 +1,8 @@
+{% from "text.html" import text %}
+{% macro blockquote(data) %}
+{% for block in data.children %}
+<blockquote>
+  {{ text(block) }}
+</blockquote>
+{% endfor %}
+{% endmacro %}

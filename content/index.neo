@@ -6,11 +6,63 @@ Welcome To Neopolitan
 
 A plain-text format for my website 
 
+-> note
+
+Testing
+
+
+-> blockquote
+
+This is the blockquote
+
+
+-> note
+
+white space at the end of section tags causes
+panics at the moment. 
+
 
 -> note
 
 This page is an early draft. Some stuff is 
 still in flight. 
+
+
+-> h2
+
+New Item Checklist
+
+These are the steps to add a new section 
+
+-> list
+
+- [] copy `tests/juliette.rs`` to a new file for paragraph 
+style
+
+- [] update the content of the test with the new section names 
+
+- [] add the new file name to `tests/mod.rs``
+
+- [] update the test to fail with whatever is under test
+
+- [] copy `sections/p.rs`` or `sections/list.rs`` to the  new name
+
+- [] change the function name in the copied contents
+
+- [] add the new file to `sections/mod.rs``
+
+- [] Add the enum to `sections/section.rs``
+
+- [] Add the nom call to `sections/section.rs``
+
+- [] Add the use::whatever to `sections/section.rs``
+
+- [] Copy the `templates/paragraphs.html` to the new section name
+
+- [] Update the contents. 
+
+
+
 
 
 -> h2
