@@ -79,26 +79,26 @@ mod test {
         assert_eq!(expected, result);
     }
 
-    #[ignore]
     #[test]
     fn multi_item_list() {
         let lines = vec![
-            "-> list",
+            "-> todo",
             "",
-            "- item alfa",
+            "[] item alfa",
             "apple",
             "",
             "bravo",
             "",
-            "- item charlie",
+            "[] item charlie",
         ]
         .join("\n");
         let source = lines.as_str();
         let expected = Wrapper::Page {
-            children: Some(vec![Section::List {
+            children: Some(vec![Section::ToDoSection {
                 attributes: None,
                 children: Some(vec![
-                    Block::UnorderedListItem {
+                    Block::ToDoItem {
+                        status: None,
                         attributes: None,
                         children: Some(vec![
                             Block::P {
@@ -123,7 +123,8 @@ mod test {
                             },
                         ]),
                     },
-                    Block::UnorderedListItem {
+                    Block::ToDoItem {
+                        status: None,
                         attributes: None,
                         children: Some(vec![Block::P {
                             children: Some(vec![

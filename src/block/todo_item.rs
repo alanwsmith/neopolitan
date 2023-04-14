@@ -10,7 +10,7 @@ use nom::sequence::tuple;
 use nom::IResult;
 
 pub fn todo_item(source: &str) -> IResult<&str, Block> {
-    let (remainder, _) = tuple((multispace0, tag("[] ")))(source)?;
+    let (remainder, _) = tuple((multispace0, tag("[] "), multispace0))(source)?;
     let (remainder, content) =
         many_till(unordered_list_content, alt((tag("\n\n"), eof)))(remainder)?;
     Ok((
