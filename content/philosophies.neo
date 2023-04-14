@@ -107,6 +107,12 @@ There are different types of sections:
 
 - Custom sections (e.g. `-> wc`neo` and `-> c`neo`)
 
+-> h3
+
+Everything is a string
+
+There's no attempt in the AST to convert to
+numbers. Everything is a string. 
 
 -> h3
 

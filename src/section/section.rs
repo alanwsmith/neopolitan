@@ -27,6 +27,7 @@ use crate::section::pre::*;
 use crate::section::reference::*;
 use crate::section::script::*;
 use crate::section::subtitle::*;
+use crate::section::textarea::*;
 use crate::section::tiktok::*;
 use crate::section::title::*;
 use crate::section::vimeo::*;
@@ -155,6 +156,10 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    TextareaSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Block>,
+    },
     TikTokSection {
         attributes: Option<Vec<SectionAttribute>>,
     },
@@ -186,6 +191,9 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     let (source, _) = multispace0(source)?;
     let (remainder, sec) = alt((
         alt((
+            // note that this one is different from all the rest
+            // since it has an explict stopping tag that's
+            // not the start of the next section
             tuple((
                 tag("-> startcode\n"),
                 take_until("\n\n-> endcode"),
@@ -247,6 +255,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 .map(|t| reference(t.1).unwrap().1),
             tuple((tag("-> script\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| script(t.1).unwrap().1),
+            tuple((tag("-> textarea\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| textarea(t.1).unwrap().1),
             tuple((tag("-> tiktok\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| tiktok(t.1).unwrap().1),
             tuple((tag("-> wc\n"), alt((take_until("\n\n-> "), rest)))).map(|t| wc(t.1).unwrap().1),
