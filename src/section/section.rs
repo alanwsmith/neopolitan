@@ -20,6 +20,7 @@ use crate::section::section_attributes::*;
 use crate::section::subtitle::*;
 use crate::section::title::*;
 use crate::section::warning::*;
+use crate::section::youtube::*;
 use nom::branch::alt;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
@@ -109,6 +110,9 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    YouTubeSection {
+        attributes: Option<Vec<SectionAttribute>>,
+    },
 }
 
 pub fn section(source: &str) -> IResult<&str, Section> {
@@ -120,8 +124,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             .map(|t| blockquote(t.1).unwrap().1),
         tuple((tag("-> code\n"), alt((take_until("\n\n-> "), rest))))
             .map(|t| code_section(t.1).unwrap().1),
-            tuple((tag("-> div\n"), alt((take_until("\n\n-> "), rest))))
-                .map(|t| div(t.1).unwrap().1),
+        tuple((tag("-> div\n"), alt((take_until("\n\n-> "), rest)))).map(|t| div(t.1).unwrap().1),
         tuple((tag("-> h1\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h1(t.1).unwrap().1),
         tuple((tag("-> h2\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h2(t.1).unwrap().1),
         tuple((tag("-> h3\n"), alt((take_until("\n\n-> "), rest)))).map(|t| h3(t.1).unwrap().1),
@@ -135,9 +138,10 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         tuple((tag("-> subtitle\n"), alt((take_until("\n\n-> "), rest))))
             .map(|t| subtitle(t.1).unwrap().1),
         tuple((tag("-> list\n"), alt((take_until("\n\n-> "), rest)))).map(|t| list(t.1).unwrap().1),
-        tuple((tag("-> warning\n"), alt((take_until("\n\n-> "), rest)))).map(|t| warning(t.1).unwrap().1),
-
-    
+        tuple((tag("-> warning\n"), alt((take_until("\n\n-> "), rest))))
+            .map(|t| warning(t.1).unwrap().1),
+        tuple((tag("-> youtube\n"), alt((take_until("\n\n-> "), rest))))
+            .map(|t| youtube(t.1).unwrap().1),
     ))(source)?;
     Ok((remainder, sec))
 }

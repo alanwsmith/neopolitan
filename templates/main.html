@@ -14,6 +14,7 @@
 {% from "paragraphs.html" import paragraphs %}
 {% from "title.html" import title %}
 {% from "warning.html" import warning %}
+{% from "youtube.html" import youtube %}
 
 
 <!DOCTYPE html>
@@ -86,6 +87,8 @@
     {{ title(section) }}
     {% elif section.type == "WarningSection" %}
     {{ warning(section) }}
+    {% elif section.type == "YouTubeSection" %}
+    {{ youtube(section) }}
     {% endif %}
     {% endfor %}
   </main>

@@ -16,3 +16,4 @@ pub mod section_attributes;
 pub mod subtitle;
 pub mod title;
 pub mod warning;
+pub mod youtube;

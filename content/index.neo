@@ -6,18 +6,21 @@ Welcome To Neopolitan
 
 A plain-text format for my website 
 
+-> h3
+
+YouTube Example
+
+-> code
+
+\-> youtube
+>> 9jlQiHHMlkA
+
+-> youtube
+>> 9jlQiHHMlkA
+
 -> note
 
 TODO: HTML escaping is not currently in place
-
--> note
-
-Testing of section types goes here:
-
--> warning
-
-THIS IS THE WARNING
-
 
 -> note
 
@@ -135,6 +138,10 @@ attrivutes.
 
 - [x] code - Code blocks like fenced code blocks but you can add 
 an arbitrary number of attributes. 
+
+- [] comment - Parsed like text sections but with the 
+expectation that it won't output unless the implementation
+is specifically designed to do so.
 
 - [p2] css - A place to put CSS that will be inlined in the page
 
