@@ -23,6 +23,10 @@ pub enum Block {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    OrderedListItem {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     UnorderedListItem {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,

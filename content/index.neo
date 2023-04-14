@@ -30,6 +30,9 @@ a block of content causes the next one to
 be appended directly instead of making its
 own block
 
+- [] Rename `List` to `ListSection`
+
+
 
 -> title
 
@@ -188,7 +191,7 @@ implementation)
 
 - [.] object
 
-- [] olist - An ordered list
+- [x] olist - An ordered list
 
 - [x] p - Basic text paragraph tags that are not otherwise 
 contained in a div. 
