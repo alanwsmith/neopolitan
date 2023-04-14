@@ -148,7 +148,14 @@ tag
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl>> 
 description list
 
-- [] div 
+- [x] div - A <<link|
+<div>|
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
+>> wrapper that can be used to add attributes to sections 
+of content
+
+
+
 
 - [] figure
 
