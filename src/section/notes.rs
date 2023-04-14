@@ -78,11 +78,10 @@ mod test {
         assert_eq!(expected, result);
     }
 
-    #[ignore]
     #[test]
     fn multi_item_list() {
         let lines = vec![
-            "-> list",
+            "-> notes",
             "",
             "- note alfa",
             "apple",
@@ -94,7 +93,7 @@ mod test {
         .join("\n");
         let source = lines.as_str();
         let expected = Wrapper::Page {
-            children: Some(vec![Section::NoteSection {
+            children: Some(vec![Section::NotesSection {
                 attributes: None,
                 children: Some(vec![
                     Block::NotesItem {
