@@ -39,7 +39,7 @@ pub enum Section {
     },
     AttributesSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        children: Option<Block>,
     },
     BlockquoteSection {
         attributes: Option<Vec<SectionAttribute>>,

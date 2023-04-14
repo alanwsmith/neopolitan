@@ -1,5 +1,6 @@
-use crate::section::section::*;
+use crate::block::block::*;
 use crate::section::attributes_for_section::*;
+use crate::section::section::*;
 use nom::bytes::complete::tag;
 use nom::multi::many0;
 use nom::sequence::preceded;
@@ -13,43 +14,73 @@ pub fn attributes(source: &str) -> IResult<&str, Section> {
     } else {
         Some(att_capture)
     };
+    let children = if source.trim().is_empty() {
+        None
+    } else {
+        Some(Block::RawContent {
+            text: Some(source.trim().to_string()),
+        })
+    };
     Ok((
         source,
         Section::AttributesSection {
             attributes,
-            // Note, this is hard coded to None for my
-            // implementation because I'm only using key
-            // value pairs in the attributes. It's avaialbe
-            // for usage though in the AST for other data
-            // formats
-            children: None,
+            children,
         },
     ))
 }
 
 #[cfg(test)]
 mod tests {
-use crate::parse::parse;
-use crate::section::section::*;
-use crate::section::attributes_for_section::*;
-use crate::wrapper::wrapper::*;
+    use crate::block::block::*;
+    use crate::parse::parse;
+    use crate::section::attributes_for_section::*;
+    use crate::section::section::*;
+    use crate::wrapper::wrapper::*;
 
-#[test]
-fn basic_attributes() {
-    let lines = vec!["-> attributes", ">> somekey: some value"].join("\n");
-    let source = lines.as_str();
-    let expected = Wrapper::Page {
-        children: Some(vec![Section::AttributesSection {
-            attributes: Some(vec![
-                (SectionAttribute::Attribute {
-                    key: Some("somekey".to_string()),
-                    value: Some("some value".to_string()),
+    #[test]
+    fn basic_attributes() {
+        let lines = vec!["-> attributes", ">> somekey: some value"].join("\n");
+        let source = lines.as_str();
+        let expected = Wrapper::Page {
+            children: Some(vec![Section::AttributesSection {
+                attributes: Some(vec![
+                    (SectionAttribute::Attribute {
+                        key: Some("somekey".to_string()),
+                        value: Some("some value".to_string()),
+                    }),
+                ]),
+                children: None,
+            }]),
+        };
+        let result = parse(source).unwrap().1;
+        assert_eq!(expected, result);
+    }
+
+    #[test]
+    fn attributes_with_content() {
+        let lines = vec![
+            "-> attributes",
+            ">> somekey: some value",
+            "",
+            "attribute content",
+        ]
+        .join("\n");
+        let source = lines.as_str();
+        let expected = Wrapper::Page {
+            children: Some(vec![Section::AttributesSection {
+                attributes: Some(vec![
+                    (SectionAttribute::Attribute {
+                        key: Some("somekey".to_string()),
+                        value: Some("some value".to_string()),
+                    }),
+                ]),
+                children: Some(Block::RawContent {
+                    text: Some("attribute content".to_string()),
                 }),
-            ]),
-            children: None,
-        }]),
-    };
-    let result = parse(source).unwrap().1;
-    assert_eq!(expected, result);
-}
+            }]),
+        };
+        let result = parse(source).unwrap().1;
+        assert_eq!(expected, result);
+    }
 }
