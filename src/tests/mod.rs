@@ -5,5 +5,3 @@ pub mod delta;
 pub mod echo;
 pub mod golf;
 pub mod hotel;
-pub mod indigo;
-pub mod juliette;
