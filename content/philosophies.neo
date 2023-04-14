@@ -49,6 +49,17 @@ for reference
 
 -> h3
 
+Raw Text In The AST
+
+I'm not doing an convertion for HTML 
+escaping in the process that makes the AST. 
+I'm leaving that to the output processor. 
+That's an implementation detail, but I
+prefer splitting the two that way. 
+
+
+-> h3
+
 Footnotes And References
 
 Use the first line after them as the name
