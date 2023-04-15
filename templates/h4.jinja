@@ -1,13 +1,13 @@
-{% macro h4 (data) %}
-{% for block in data.children %}
-{% if loop.first %}
-<h4>
-  {%- for token in block.children %} {{ token.text }}{% endfor -%}
-</h4>
-{% else %}
-<p>
-  {%- for token in block.children %} {{ token.text }}{% endfor -%}
-</p>
-{% endif %}
-{% endfor %}
-{% endmacro %}
+{% from "text.jinja" import text -%}
+{% macro h4 (data) -%}
+{%- for block in data.children -%}
+{%- if loop.first -%}
+<h4
+  {%- for attribute in data.attributes -%}
+    {{ " " }}{{ attribute.key }}="{{attribute.value}}"
+{%- endfor -%}>{{- text(block) -}}</h4>
+{% else -%}
+<p>{{- text(block) -}}</p>
+{% endif -%}
+{%- endfor -%}
+{%- endmacro -%}

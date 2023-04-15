@@ -64,7 +64,7 @@ is specifically designed to do so.
 
 - <<link|css|examples/css/index.html>> - A place to put CSS that will be inlined in the page
 
-- [] <<link|div|/examples/div/index.html>> - A <<link|<div>|
+- <<link|div|/examples/div/index.html>> - A <<link|<div>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
 >> wrapper that can be used to add attributes to sections 
 of content
@@ -91,39 +91,39 @@ implementation)
 
 - [] <<link|olist|/examples/olist/index.html>> - An ordered list
 
-- [] p - Basic text paragraph tags that are not otherwise 
+- [] <<link|p|/examples/p/index.html>> - Basic text paragraph tags that are not otherwise 
 contained in a div. 
 
-- [] pre
+- [] <<link|pre|/examples/pre/index.html>> - A pre tag
 
 - <<link|results|/examples/results/index.html>> - Used to 
 show output from `-> code`neo` blocks
 
-- [] subtitle
+- [] <<link|subtitle|/examples/subtitle/index.html>>
 
-- [] startcode/endcode
+- [] <<link|startcode/endcode|/examples/startcode_endcode/index.html>>
 
-- [] textarea
+- [] <<link|textarea|/examples/textarea/index.html>>
 
-- [] tiktok 
+- [] <<link|tiktok|/examples/tiktok/index.html>>
 
-- [] title
+- [] <<link|title|/examples/title/index.html>>
 
-- [] vimeo - A vimeo embed
+- [] <<link|vimeo|/examples/vimeo/index.html>> - A vimeo embed
 
-- [] warning - A div block with a warning class on it
+- [] <<link|warning|/examples/warning/index.html>> - A div block with a warning class on it
 
-- [] wc - A web component. The first attribute is just
+- [] <<link|wc|/examples/wc/index.html>> - A web component. The first attribute is just
 a key with no value. It's the name that is used to create
 the web component. Attributes are inserted directly 
 and the content is output in between the components
 tags. No additional processing is done to the content.
 
-- [] widget - The first attribute is the name of the
+- [] <<link|widget|/examples/widget/index.html>> - The first attribute is the name of the
 widget which is use by the processor to render the
 content. 
 
-- [] youtube - A youtube embed
+- [] <<link|youtube|/examples/youtube/index.html> -  A youtube embed
 
 
 -> h2

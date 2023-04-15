@@ -1,0 +1,53 @@
+-> title
+
+Section: headings
+
+These are the `h1`` - `h6`` HTML heading tags. 
+
+The first set of text (up until an empty line) 
+is placed in a corresponding heading tag. 
+The following blocks of text get placed in 
+`<p>`html` tags.  These examples show headings
+3 and 4. The same output applies to the 
+other numbers as well. 
+
+-> startneoexample
+
+-> h3
+
+Raise the sail and steer the ship northward
+
+Remove the dart. No 
+cement will hold hard wood.
+
+We have a new base for shipping.
+
+-> endneoexample
+
+
+-> startneoexample
+
+-> h4
+>> id: echo
+>> class: kilo
+
+Say it slowly but make it ring clear
+
+-> endneoexample
+
+
+-> note
+
+Everything in the heading section is 
+contained in a single chunk in the AST. 
+That provides for templates that would
+group the content under a div or similar.
+
+-> attributes
+>> date: 2023-04-15 18:00:06
+>> id: 2otsfamxsmbf
+>> site: neo 
+>> type: example 
+>> status: published
+
+

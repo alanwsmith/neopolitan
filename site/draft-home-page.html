@@ -42,8 +42,7 @@
 </h1><div class="subtitle">
   A plain-text website format
 </div>
-<div class="note"><p>These are some draft notes for the home page and the rest of the site</p></div>
-<h2>Introduction</h2>
+<div class="note"><p>These are some draft notes for the home page and the rest of the site</p></div><h2>Introduction</h2>
 <p>My site is twenty years old. Pondering those past two decades got me thinking about the next two. It changed my approach to making and maintaining my site. &quot;What foundation do I want for the next two decades?&quot; is a very different question from &quot;What do I want to do for my next redesign?&quot;</p>
 <p>On that time horizon, my thoughts don&#x27;t go to the tech, they go to the content.</p>
 <h2>Post Count</h2>
@@ -52,15 +51,8 @@
 <h2>The Basics</h2>
 <p>The general idea is to use sections (which start with a <code>-&gt;</code> token) to define areas of content. The type of section defines how the content inside it will behave.</p>
 <p>These are the section types I&#x27;m planning along with indications of which ones are already set.</p>
-
-
-<h3> Inline  Tags</h3>
-
-
-
-<p> Most  of  the  section  types  hold  text  content.  That  text  content  is  split  into  &lt;p&gt;  tags  by  default  and  the  text  inside  of  them  is  parsed  for  inline  tags  and  shorthand  codes.  Inline  tags  start  with  two  &lt;&lt;  and  end  with  a  closing  &gt;&gt;  set.  Here&#x27;s  the  list  with  x  indicating  the  ones  that  are  implemented  and  .  indicating  that  are  still  under  consideration.  (This  is  basically  the  list  of  html  elements)</p>
-
-
+<h3>Inline Tags</h3>
+<p>Most of the section types hold text content. That text content is split into <code>&lt;p&gt;</code> tags by default and the text inside of them is parsed for inline tags and shorthand codes. Inline tags start with two <code>&lt;&lt;</code> and end with a closing <code>&gt;&gt;</code> set. Here&#x27;s the list with <code>x</code> indicating the ones that are implemented and <code>.</code> indicating that are still under consideration. (This is basically the list of html elements)</p>
 
 <ul>
   
@@ -260,9 +252,9 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">standard HTML el
     </li>
   
 </ul>
-
 <h2>Under Consideration</h2>
 <p>Some other things I have in mind:</p>
+
 <ul>
   
   <li>
@@ -332,33 +324,22 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">standard HTML el
   The first examination is the code. I&#x27;m switching to vanilla HTML, CSS, and JavaScript. There&#x27;s a lot to be written about that later. For now, suffice it to say that, for my personal site, frameworks have been a net negative for me. I&#x27;m bowing out of that game.
 </p>
 
-
-
-
-<h3> Plain-text</h3>
-
-
-
-<p>  I&#x27;m  a  huge  fan  of  plain-text.  My  Grimoire  has  nine  thousand  Markdown,  MDX,  and  Org-Mode  files  in  it.  They&#x27;re  solid  formats,  but  each  causes  its  own  type  of  friction.  For  example,  I  don&#x27;t  use  description  lists  because  they  aren&#x27;t  native  to  the  MDX  parser  I&#x27;m  using.</p>
-
-
-
-<p> So,  I&#x27;m  making  my  own  format.</p>
-
-
-
+<h3>Plain-text</h3>
+<p> I&#x27;m a huge fan of plain-text. My Grimoire has nine thousand Markdown, MDX, and Org-Mode files in it. They&#x27;re solid formats, but each causes its own type of friction. For example, I don&#x27;t use description lists because they aren&#x27;t native to the MDX parser I&#x27;m using.</p>
+<p>So, I&#x27;m making my own format.</p>
 <h2>Neopolitan Features</h2>
-<p>The format is still in its early stages and very much in flux. That said, the basic ideas are mostly in place.</p><aside id="firstAside" class="highlighted">
+<p>The format is still in its early stages and very much in flux. That said, the basic ideas are mostly in place.</p>
+<aside id="firstAside" class="highlighted">
   <p>There&#x27;s a bunch of code samples below. The format is more about text content. Parsing through collections of short samples took me a little getting used to.</p>
-</aside>
-<h2>Samples</h2>
-<p>Below are some samples that will be overwritten when the actual content.</p><pre><code class="language-rust">this is a test with code
+</aside><h2>Samples</h2>
+<p>Below are some samples that will be overwritten when the actual content.</p>
+<pre><code class="language-rust">this is a test with code
 
-and some more code</code></pre>
-<h2>Next Steps</h2>
+and some more code</code></pre><h2>Next Steps</h2>
 <p>Most of the above is pretty well defined. The rest of this below is a little more fluid. Their ideas I expect I&#x27;ll get to, but the priority is everything above.</p>
 <h2>Examples</h2>
 <p>This is a test list</p>
+
 <ul>
   
   <li>
@@ -380,12 +361,7 @@ and some more code</code></pre>
   and that&#x27;s the end of the list
 </p>
 
-
-
-
-<h3> Other  ideas</h3>
-
-
+<h3>Other ideas</h3>
 
 <ul>
   
@@ -402,7 +378,7 @@ and some more code</code></pre>
   Holding (attributes aren&#x27;t being parsed yet so this is hacked out)
 </p>
 
-
-<h2>-&gt; attributes &gt;&gt; date: 2023-04-03 12:10:46 &gt;&gt; id: 2nvihspm8vaa &gt;&gt; site: aws &gt;&gt; type: post &gt;&gt; status: draft</h2></main>
+<h2>-&gt; attributes &gt;&gt; date: 2023-04-03 12:10:46 &gt;&gt; id: 2nvihspm8vaa &gt;&gt; site: aws &gt;&gt; type: post &gt;&gt; status: draft</h2>
+</main>
 </body>
 </html>
