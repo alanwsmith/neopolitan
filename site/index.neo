@@ -77,7 +77,7 @@ the output without further processing
 - [] <<link|image|/examples/image/index.html>> - An image call with the alt text coming
 from the body of the section
 
-- [] <<link|list|/examples/image/index.html>> - Unordered lists
+- [] <<link|list|/examples/list/index.html>> - Unordered lists
 
 - <<link|neoexample|/examples/neoexample/index.html>> - A
 display for examples on the neopolitan documentation site

@@ -10,7 +10,7 @@ use nom::IResult;
 
 pub fn list(source: &str) -> IResult<&str, Section> {
     let (source, att_capture) = many0(preceded(tag(">> "), section_attribute))(source).unwrap();
-    let _attributes = if att_capture.is_empty() {
+    let attributes = if att_capture.is_empty() {
         None
     } else {
         Some(att_capture)
@@ -20,7 +20,7 @@ pub fn list(source: &str) -> IResult<&str, Section> {
     Ok((
         source,
         Section::List {
-            attributes: None,
+            attributes,
             children,
         },
     ))

@@ -1,0 +1,42 @@
+-> title
+
+Section: list
+
+Basic unordered lists with the abbility to
+apply attributes. 
+
+-> startneoexample
+
+-> list
+
+- There are more than two factors here.
+
+The grass curled around the fence post.
+
+- A wisp of cloud hung in the blue air.
+
+-> endneoexample
+
+
+-> startneoexample
+
+-> list
+>> id: sierra
+>> class: oscar
+
+- The salt breeze came across from the sea.
+
+- Two blue fish swam in the tank.
+
+-> endneoexample
+
+
+
+-> attributes
+>> date: 2023-04-15 18:49:58
+>> id: 2otyj9utrer4
+>> site: neo 
+>> type: example 
+>> status: published
+
+
