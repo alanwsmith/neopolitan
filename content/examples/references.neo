@@ -15,11 +15,17 @@ into footnotes.
 -> startcode
 >> neo
 
--> reference
+x-> reference
 >> title: something
 >> url: https://www.example.com/
 >> author: some person
 
 -> endcode
 
+
+-> p
+
+This lines has to exist until the bug is 
+fixed that causes a panic if `endcode``
+is the last thing in the file
 

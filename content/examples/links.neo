@@ -2,7 +2,7 @@
 
 Links and Link References
 
--> Note
+-> note
 
 This is still a draft
 
@@ -11,7 +11,7 @@ This is still a draft
 Links are done with one of the following
 options
 
--> code
+-> startcode
 >> neo
 
 # not yet implemend
@@ -29,12 +29,14 @@ options
 # not yet implemend
 <<link|TEXT|URL|KEY: VALUE|KEY: ETC...>>
 
+-> endcode
+
 -> p
 
 The links can span multiple lines like
 this:
 
--> code
+-> startcode
 >> neo
 
 >text>
@@ -46,6 +48,8 @@ or
 https://www.example.com/|
 key: value|
 key: value>>
+
+-> endcode
 
 -> h2
 
@@ -63,6 +67,8 @@ to links stored in a `-> links`` section
 -> links
 
 - ref_name: 
+
+-> endcode
 
 -> p
 

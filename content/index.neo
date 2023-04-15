@@ -32,6 +32,8 @@ own block
 
 - [] Rename `List` to `ListSection`
 
+- [] Fix bug where a panic happens if
+`endcode`` is the last thing in a file
 
 
 -> title
@@ -124,6 +126,8 @@ data for links into the page.
 
 - [.] canvas - TBD. probably just a tag with the way to pass
 attrivutes.
+
+- [] categories - A metadata section for categorising the page
 
 - [] checklist - Desinged for checkboxes that are empty each 
 time you visit the page or it's refreshed. 

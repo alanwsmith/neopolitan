@@ -1,58 +1,3 @@
--> title
-
-Welcome To Neopolitan
-
-
--> subtitle
-
-a plain-text website format
-
-
--> h2
-
-Overview
-
-My site is twenty years old. Realizing that
-started me thinking about the next twenty. The 
-perspective shift changed the way I think 
-making and maintaining sites.
-
-Generally speaking, I'll be writing vanilla HTML,
-CSS, and JavaScript. I'll write more about that
-elsewhere. For now, it's enough to say frameworks 
-have been a net negative for me. I'm bowing out 
-of that game.
-
-Content management also caught my attention.
-I'm a huge fan of plain-text. My current system
-is around nine thousand Markdown, MDX, and Org-Mode
-files. They're solid formats, but each causes
-its own type of friction. For example, I don't
-use description lists because they aren't native 
-to the MDX parser I'm using.
-
-So, I'm making my own format.
-
-
--> h2
-
-Neopolitan Features
-
-The format is still in its early stages
-and very much in flux. That said, the 
-basic ideas are mostly in place.
-
-
--> aside
->> id: firstAside
->> class: highlighted
-
-There's a bunch of code samples below. The
-format is more about text content. Parsing
-through collections of short samples took
-me a little getting used to.
-
-
 -> list
 
 - My goal is not to make a document format 
@@ -154,7 +99,7 @@ to the ability to make them with the inline tags.
 to places in the document marked by `^` characters. Those
 locations are numbered and link back in response.
 
--|class: highlight| Attributes can be applied to individual list
+- Attributes can be applied to individual list
 items by adding like on this line. Multiple attributes can
 be added like this: `-|id: alfa|class: bravo|-``
 
@@ -231,11 +176,9 @@ And I stream some of the work <<link|on twitch|https://www.twitch.tv/theidofalan
 
 Stop by and say hi.
 
--a
+a
 
-
--> categories
->> Neopolitan
+-> startcode
 
 -> attributes
 >> date: 2023-03-11 13:07:46
@@ -245,4 +188,8 @@ Stop by and say hi.
 >> type: post
 >> status: published
 
+-> endcode
 
+-> p
+
+placeholder

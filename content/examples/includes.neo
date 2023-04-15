@@ -33,6 +33,10 @@ in an `includes`` directory next to the
 
 -> endcode
 
+-> p
 
+This line needs to exist until the bug
+is fixed where a panic happens when 
+`endcode`` is the last thing in the file
 
 
