@@ -74,10 +74,10 @@ of content
 - <<link|html|/examples/html/index.html>> - for raw html blocks that go directly to 
 the output without further processing
 
-- [] <<link|image|/examples/image/index.html>> - An image call with the alt text coming
+- <<link|image|/examples/image/index.html>> - An image call with the alt text coming
 from the body of the section
 
-- [] <<link|list|/examples/list/index.html>> - Unordered lists
+- <<link|list|/examples/list/index.html>> - Unordered lists
 
 - <<link|neoexample|/examples/neoexample/index.html>> - A
 display for examples on the neopolitan documentation site

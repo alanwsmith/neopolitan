@@ -217,6 +217,26 @@ No iFrame Section
 
 Just roll out to `-> html`
 
+-> h3
+
+Convenience Sections
+
+Several sections exist purely for convenience. For
+example, it wouldn't be that hard to make
+a `-> div`` section with a `>> class: warning`` 
+on it, but I do that so often it's nicer to 
+have a `-> warning`` section.
+
+This also goes for sections that are nothing
+more than aliases for standard HTML tags. For
+example, adding a `<textarea>`` with any necessary
+attributes is not much more work than making
+a `-> textarea`` section. But, the section keeps
+the look consistent with the rest of the page
+and I think it looks nicer than that HTML tag.
+
+
+
 
 -> attributes
 >> date: 2023-04-14 14:39:42

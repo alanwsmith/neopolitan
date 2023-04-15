@@ -37,6 +37,60 @@
       </nav>
 
     </header>
-  <main></main>
+  <main><h1>
+  Section: image
+</h1><p>
+  A section that uses attributes for the main image call and uses the content area for the alt text.
+</p><p>
+  The first attribute line is used to set the <code>src</code> path of the image by default:
+</p>
+<div class="neoexample">
+<h6>Example</h6>
+<pre><code class=""
+>-&gt; image
+&gt;&gt; alfa.jpg
+
+Example alfa</code></pre>
+
+<h6>Result</h6>
+<pre class="language-html"><code>&lt;img src=&quot;alfa.jpg&quot; alt=&quot;Example alfa&quot;&gt;</code></pre>
+</div>
+
+<p>
+  Other attributes can be passed as well:
+</p>
+
+
+<div class="neoexample">
+<h6>Example</h6>
+<pre><code class=""
+>-&gt; image
+&gt;&gt; bravo.jpg
+&gt;&gt; id: img_bravo 
+&gt;&gt; class: charlie 
+
+Example bravo</code></pre>
+
+<h6>Result</h6>
+<pre class="language-html"><code>&lt;img src=&quot;bravo.jpg&quot; id=&quot;img_bravo &quot; class=&quot;charlie &quot; alt=&quot;Example bravo&quot;&gt;</code></pre>
+</div>
+
+<p>
+  It&#x27;s also possible to use <code>src: path.jpg</code> to set the path. If you do that the first line must have a key as well as a value. For example:
+</p>
+
+
+<div class="neoexample">
+<h6>Example</h6>
+<pre><code class=""
+>-&gt; image
+&gt;&gt; id: img_delta
+&gt;&gt; src: delta.jpg
+
+Example delta</code></pre>
+
+<h6>Result</h6>
+<pre class="language-html"><code>&lt;img id=&quot;img_delta&quot; src=&quot;delta.jpg&quot; alt=&quot;Example delta&quot;&gt;</code></pre>
+</div></main>
 </body>
 </html>

@@ -118,6 +118,9 @@
 <p>I&#x27;m using Minijinja for the template engine. This is an implementation detail that isn&#x27;t required. I&#x27;m also using the <code>.jinja</code> file extension instead of <code>.html</code>. I&#x27;m going with that because my auto-formatter kepts messing with the templates in a way that altered the spacing. I haven&#x27;t found a maintained jinja extension for neovim tree-sitter. Something to add to the list.</p>
 <h3>No iFrame Section</h3>
 <p>Just roll out to `-&gt; html`</p>
+<h3>Convenience Sections</h3>
+<p>Several sections exist purely for convenience. For example, it wouldn&#x27;t be that hard to make a <code>-&gt; div</code> section with a <code>&gt;&gt; class: warning</code> on it, but I do that so often it&#x27;s nicer to have a <code>-&gt; warning</code> section.</p>
+<p>This also goes for sections that are nothing more than aliases for standard HTML tags. For example, adding a <code>&lt;textarea&gt;</code> with any necessary attributes is not much more work than making a <code>-&gt; textarea</code> section. But, the section keeps the look consistent with the rest of the page and I think it looks nicer than that HTML tag.</p>
 </main>
 </body>
 </html>

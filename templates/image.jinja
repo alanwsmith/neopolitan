@@ -1,0 +1,15 @@
+{%- macro image(data) -%}
+{%- autoescape false -%}
+<img
+  {%- for attribute in data.attributes -%} 
+ {% if loop.first and attribute.value == None -%}
+ {{- " " -}}
+src="{{attribute.key}}"
+{%- else -%}
+{{- " " -}}{{attribute.key}}="{{attribute.value}}"
+    {%- endif -%}
+  {%- endfor -%}
+{{- " " -}}
+alt="{{data.children.text}}">
+{%- endautoescape -%}
+{%- endmacro %}
