@@ -11,17 +11,8 @@ use std::path::PathBuf;
 use walkdir::{DirEntry, Error, WalkDir};
 
 fn main() {
-    // let env = create_env("./templates");
-    //
-
     do_copy("./content", "./site").unwrap();
-
-    // let source = fs::read_to_string("./content/index.neo").unwrap();
-    // let payload = parse(source.as_str()).unwrap().1;
-    // let output = render_template(payload, env, "main.html");
-    // fs::write("./site/index.html", output).unwrap();
-
-    dbg!("done");
+    println!("PROCESS COMPLETE");
 }
 
 fn create_env(path: &str) -> Environment<'static> {
