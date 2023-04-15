@@ -40,21 +40,27 @@
 
     </header>
   <main><h1>
-  code section
+  results section
 </h1><p>
-  These are code blocks similar to code fence blocks in Markdown.
+  The idea with this one is to use it after code blocks to show their corresponding output. I considered using the <code>&lt;samp&gt;</code> tag for my implementation but code highlighters are generally geared for <code>&lt;pre&gt;&lt;code&gt;</code> blocks.
 </p>
-<h2>Basic Example</h2>
+<h2>Example</h2>
 <pre><code class=""
->-&gt; code
+>-&gt; results
 
-console.log(`Hello, World`)</code></pre>
-<pre><code class="
-    
-      language-html"
-></code></pre>
-<h2>Language Identification</h2>
-<p>If the first section attribute is a key without a value it specifieds the</p></main>
+The colt reared and threw the tall rider.
+The wide road shimmered in the hot sun.</code></pre>
+<pre><code class=""
+>&lt;pre class=&quot;results&quot;&gt;&lt;code&gt;
+The colt reared and threw the tall rider.
+The wide road shimmered in the hot sun.
+&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code></pre>
+
+<p>
+  TODO: Setup <code>-&gt; startresults ... -&gt; endresults</code> functionality so that <code>-&gt; results</code> tags can be shown in those blocks.
+</p>
+
+</main>
 
 
 </body>

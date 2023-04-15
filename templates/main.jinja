@@ -11,6 +11,7 @@
 {%- from "h6.jinja" import h6 -%}
 {%- from "list.jinja" import list -%}
 {%- from "note.jinja" import note -%}
+{%- from "results.jinja" import results -%}
 {%- from "subtitle.jinja" import subtitle -%}
 {%- from "paragraphs.jinja" import paragraphs -%}
 {%- from "title.jinja" import title -%}
@@ -90,6 +91,8 @@
     {{ note(section) }}
     {%- elif section.type == "Paragraphs" -%}
     {{ paragraphs(section) }}
+    {%- elif section.type == "ResultsSection" -%}
+    {{ results(section) }}
     {%- elif section.type == "Subtitle" -%}
     {{ subtitle(section) }}
     {%- elif section.type == "Title" -%}

@@ -43,7 +43,7 @@
   Neopoliltan Philosophies
 </h1>
 <h2>Overview</h2>
-<p>These are the thoughts, influences, and decisions that lead to neopolitan's design.</p>
+<p>These are the thoughts, influences, and decisions that lead to neopolitan&#x27;s design.</p>
 <h2>The Philosophies</h2>
 
 
@@ -51,7 +51,7 @@
 
 
 
-<p> My  primary  output  target  is  HTML.  Most  HTML  tags  have  native  counterparts  to  support  that.  This  largely  stems  from  the  fact  that  I  want  to  use  description  lists  but  those  aren't  included  in  the  default  markdown  I  use.</p>
+<p> My  primary  output  target  is  HTML.  Most  HTML  tags  have  native  counterparts  to  support  that.  This  largely  stems  from  the  fact  that  I  want  to  use  description  lists  but  those  aren&#x27;t  included  in  the  default  markdown  I  use.</p>
 
 
 
@@ -83,7 +83,7 @@
 
 
 <p>
-  The specification only deals with the AST and the output. The project includes and example output renderer but based on what I've seen with Markdown trying to define an implementation via a spec isn't likely to work out well.
+  The specification only deals with the AST and the output. The project includes and example output renderer but based on what I&#x27;ve seen with Markdown trying to define an implementation via a spec isn&#x27;t likely to work out well.
 </p>
 
 <p>
@@ -97,7 +97,7 @@
 
 
 
-<p> I'm  not  doing  an  conversion  for  HTML  escaping  in  the  process  that  makes  the  AST.  I'm  leaving  that  to  the  output  processor.  That's  an  implementation  detail,  but  I  prefer  splitting  the  two  that  way.</p>
+<p> I&#x27;m  not  doing  an  conversion  for  HTML  escaping  in  the  process  that  makes  the  AST.  I&#x27;m  leaving  that  to  the  output  processor.  That&#x27;s  an  implementation  detail,  but  I  prefer  splitting  the  two  that  way.</p>
 
 
 
@@ -107,7 +107,7 @@
 
 
 
-<p> Use  the  first  line  after  them  as  the  name  which  is  what's  tied  into  the  key  from  the  content.  (e.g.  >> Some Name  connects  to  `<<^  Some  Name  >>`.  Surrounding  white  space  is  trimmed.  Internal  spaces  are  allowed  but  must  match  as  the  value  is  used  as  a  direct  key.</p>
+<p> Use  the  first  line  after  them  as  the  name  which  is  what&#x27;s  tied  into  the  key  from  the  content.  (e.g.  &gt;&gt; Some Name  connects  to  `&lt;&lt;^  Some  Name  &gt;&gt;`.  Surrounding  white  space  is  trimmed.  Internal  spaces  are  allowed  but  must  match  as  the  value  is  used  as  a  direct  key.</p>
 
 
 
@@ -117,7 +117,7 @@
 
 
 
-<p> It  doesn't  matter  in  most  places  except  for:</p>
+<p> It  doesn&#x27;t  matter  in  most  places  except  for:</p>
 
 
 
@@ -147,27 +147,27 @@
 
 
 
-<p> -  Basic  Processed  Content  (e.g.  -> p )</p>
+<p> -  Basic  Processed  Content  (e.g.  -&gt; p )</p>
 
 
 
-<p> -  List  Processed  Content  (e.g.  -> list )</p>
+<p> -  List  Processed  Content  (e.g.  -&gt; list )</p>
 
 
 
-<p> -  Raw  Content  (e.g.  -> code )</p>
+<p> -  Raw  Content  (e.g.  -&gt; code )</p>
 
 
 
-<p> -  Metadata  Driven  content  (e.g.  -> youtube )</p>
+<p> -  Metadata  Driven  content  (e.g.  -&gt; youtube )</p>
 
 
 
-<p> -  Basic  Metadata  (e.g.  -> attributes )</p>
+<p> -  Basic  Metadata  (e.g.  -&gt; attributes )</p>
 
 
 
-<p> -  Custom  sections  (e.g.  -> wc  and  -> c )</p>
+<p> -  Custom  sections  (e.g.  -&gt; wc  and  -&gt; c )</p>
 
 
 
@@ -177,7 +177,7 @@
 
 
 
-<p> There's  no  attempt  in  the  AST  to  convert  to  numbers.  Everything  is  a  string.</p>
+<p> There&#x27;s  no  attempt  in  the  AST  to  convert  to  numbers.  Everything  is  a  string.</p>
 
 
 
@@ -187,7 +187,7 @@
 
 
 
-<p> The  attributes  section  of  my  implementation  contains  only  key/value  pairs.  The  AST  leave  the  option  of  using  other  formats  in  the  content  section  as  well.</p>
+<p> The  attributes  section  of  my  implementation  contains  only  key&#x2f;value  pairs.  The  AST  leave  the  option  of  using  other  formats  in  the  content  section  as  well.</p>
 
 
 
@@ -197,7 +197,7 @@
 
 
 
-<p> I  was  considering  a  -> form  section  but  decided  against  it.  Better  to  just  roll  out  to  an  `->  html`  section  for  that  based  of  the  complexity.</p>
+<p> I  was  considering  a  -&gt; form  section  but  decided  against  it.  Better  to  just  roll  out  to  an  `-&gt;  html`  section  for  that  based  of  the  complexity.</p>
 
 
 
@@ -222,12 +222,12 @@
 
 
 <pre><code class=""
->-> code
->> rust
->> class: alfa</code></pre>
+>-&gt; code
+&gt;&gt; rust
+&gt;&gt; class: alfa</code></pre>
 
 <p>
-  The <code>rust</code> line would get a separate starting token indicating that that string wouldn't go directly to the output but was a processor instruction (which would let it know to add <code>language-rust</code> to the HTML attribute list).
+  The <code>rust</code> line would get a separate starting token indicating that that string wouldn&#x27;t go directly to the output but was a processor instruction (which would let it know to add <code>language-rust</code> to the HTML attribute list).
 </p>
 
 <p>
@@ -236,12 +236,12 @@
 
 
 <pre><code class=""
->-> code
+>-&gt; code
 ++ rust
->> class: alfa</code></pre>
+&gt;&gt; class: alfa</code></pre>
 
 <p>
-  I decided against that because it would require remembering which things were directives and which weren't. For my implementation, it's the responsibility of the processor to make the determination.
+  I decided against that because it would require remembering which things were directives and which weren&#x27;t. For my implementation, it&#x27;s the responsibility of the processor to make the determination.
 </p>
 
 
@@ -251,7 +251,7 @@
 
 
 
-<p> I'm  using  Minijinja  for  the  template  engine.  This  is  an  implementation  detail  that  isn't  required.  I'm  also  using  the  .jinja  file  extension  instead  of  .html .  I'm  going  with  that  because  my  auto-formatter  kepts  messing  with  the  templates  in  a  way  that  altered  the  spacing.  I  haven't  found  a  maintained  jinja  extension  for  neovim  tree-sitter.  Something  to  add  to  the  list.</p>
+<p> I&#x27;m  using  Minijinja  for  the  template  engine.  This  is  an  implementation  detail  that  isn&#x27;t  required.  I&#x27;m  also  using  the  .jinja  file  extension  instead  of  .html .  I&#x27;m  going  with  that  because  my  auto-formatter  kepts  messing  with  the  templates  in  a  way  that  altered  the  spacing.  I  haven&#x27;t  found  a  maintained  jinja  extension  for  neovim  tree-sitter.  Something  to  add  to  the  list.</p>
 
 
 
@@ -261,7 +261,7 @@
 
 
 
-<p> Just  roll  out  to  `->  html`</p>
+<p> Just  roll  out  to  `-&gt;  html`</p>
 
 
 </main>
