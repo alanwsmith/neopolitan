@@ -2,6 +2,7 @@
 {%- from "_macros/date.jinja" import date -%}
 {%- from "blockquote.jinja" import blockquote -%}
 {%- from "code.jinja" import code -%}
+{%- from "css.jinja" import css -%}
 {%- from "div.jinja" import div -%}
 {%- from "h1.jinja" import h1 -%}
 {%- from "h2.jinja" import h2 -%}
@@ -29,6 +30,8 @@
 {{ code(section) }}
 {%- elif section.type == "CodeStartEndSection" -%}
 {{ code(section) }}
+{%- elif section.type == "CSSSection" -%}
+{{ css(section) }}
 {%- elif section.type == "DivSection" -%}
 {{ div(section) }}
 {%- elif section.type == "H1Section" -%}

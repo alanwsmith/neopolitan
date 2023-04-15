@@ -47,17 +47,6 @@ dbg!("World")
 -> endneoexample
 
 
--> code
->> rust
->> class: foxtrot
-
-dbg!("Hello")
-dbg!(", ")
-dbg!("World")
-
-
-
-
 
 -> attributes
 >> date: 2023-04-15 09:40:44

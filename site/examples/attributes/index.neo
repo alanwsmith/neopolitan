@@ -1,6 +1,6 @@
 -> title
 
-attributes section
+Section: attributes 
 
 -> p
 
@@ -27,7 +27,7 @@ Example
 -> attributes
 >> date: 2023-04-15 03:28:24
 >> id: 2osaexpae3om
->> site: neopolitan 
+>> site: neo 
 >> type: example 
 >> status: published
 
@@ -42,7 +42,7 @@ are the actual metadata version for this page.
 -> attributes
 >> date: 2023-04-15 03:25:38
 >> id: 2osac7bmwyvh
->> site: neopolitan
+>> site: neo
 >> type: example 
 >> status: published
 

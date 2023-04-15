@@ -2,6 +2,7 @@
 {%- from "_macros/date.jinja" import date -%}
 {%- from "blockquote.jinja" import blockquote -%}
 {%- from "code.jinja" import code -%}
+{%- from "css.jinja" import css -%}
 {%- from "div.jinja" import div -%}
 {%- from "h1.jinja" import h1 -%}
 {%- from "h2.jinja" import h2 -%}
@@ -38,6 +39,15 @@
   <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
   <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
   <link rel="stylesheet" href="/styles/global.css" />
+
+{% autoescape false %}
+{%- for section in payload.children -%}
+{%- if section.type == "CSSSection" -%}
+{{ css(section) }}
+{%- endif -%}
+{%- endfor -%}
+{% endautoescape %}
+
 </head>
 
 <body>

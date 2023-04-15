@@ -58,38 +58,38 @@ Used as meta data for links into the page.
 - <<link|code|/examples/code/index.html>> - Code blocks like fenced 
 code blocks but you can add an arbitrary attributes to them.
 
-- [] comment - Parsed like text sections in the AST but with the
+- <<link|comment|/examples/comment/index.html>> - Parsed like text sections in the AST but with the
 expectation that they won't output unless the implementation
 is specifically designed to do so.
 
-- [] css - A place to put CSS that will be inlined in the page
+- <<link|css|examples/css/index.html>> - A place to put CSS that will be inlined in the page
 
-- [] div - A <<link|<div>|
+- [] <<link|div|/examples/div/index.html>> - A <<link|<div>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
 >> wrapper that can be used to add attributes to sections 
 of content
 
-- [] h1-h6
+- [] <<link|h1-h6|/examples/headings/index.html>> - HTML heading tags
 
-- [] html - for raw html blocks that go directly to 
+- [] <<link|html|/examples/html/index.html>> - for raw html blocks that go directly to 
 the output without further processing
 
-- [] image - An image call with the alt text coming
+- [] <<link|image|/examples/image/index.html>> - An image call with the alt text coming
 from the body of the section
 
-- [] list - Unordered lists
+- [] <<link|list|/examples/image/index.html>> - Unordered lists
 
 - <<link|neoexample|/examples/neoexample/index.html>> - A
 display for examples on the neopolitan documentation site
 
-- [] note - A basic div wrapper with a `note`` attribute and 
+- [] <<link|note|/examples/note/index.html>> - A basic div wrapper with a `note`` attribute and 
 any other attributes that are passed in
 
-- [] notes - A list style notes section. Same as an unordered
+- [] <<link|notes|/examples/notes/index.html>> - A list style notes section. Same as an unordered
 lists but with a div around it in the output (based on 
 implementation)
 
-- [] olist - An ordered list
+- [] <<link|olist|/examples/olist/index.html>> - An ordered list
 
 - [] p - Basic text paragraph tags that are not otherwise 
 contained in a div. 
