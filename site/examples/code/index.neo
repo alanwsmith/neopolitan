@@ -3,33 +3,57 @@
 code section
 
 These are code blocks similar to code fence
-blocks in Markdown. 
+blocks in Markdown. If the first attribute
+has no value it is treated as the language
+and added as a `language-`` class to the
+`<pre>`` element
 
--> h2
 
-Basic Example
-
-
--> startcode
+-> startneoexample
 
 -> code
 
-console.log(`Hello, World`)
+console.log("Hello")
+console.log(", ")
+console.log("World")
 
--> endcode
-
--> results
->> html
-
+-> endneoexample
 
 
--> h2
+-> startneoexample
 
-Language Identification
+-> code
+>> python 
 
-If the first section attribute is a key
-without a value it specifieds the 
+print("Hello")
+print(", ")
+print("World")
 
+-> endneoexample
+
+
+
+-> startneoexample
+
+-> code
+>> rust
+>> class: foxtrot
+
+dbg!("Hello")
+dbg!(", ")
+dbg!("World")
+
+
+-> endneoexample
+
+
+-> code
+>> rust
+>> class: foxtrot
+
+dbg!("Hello")
+dbg!(", ")
+dbg!("World")
 
 
 

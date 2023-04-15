@@ -1,5 +1,5 @@
-{% from "text.jinja" import text %}
-{% macro blockquote(data) %}
+{%- from "text.jinja" import text -%}
+{%- macro blockquote(data) -%}
 <blockquote
   {%- for attribute in data.attributes %} {{attribute.key}}="
 {%- autoescape false -%}

@@ -42,10 +42,16 @@
   Links are done with one of the following options
 </p>
 
+<pre><code class="language-neo"># not yet implemend
+&gt;text&gt;URL&gt;
 
-<pre><code class="
-  "
-># not yet implemend
+# not yet implemend
+&lt;&lt;l|TEXT|URL&gt;&gt;
+
+# not yet implemend
+&lt;&lt;l|TEXT|URL|KEY: VALUE|KEY: ETC...&gt;&gt;
+
+# not yet implemend
 &lt;&lt;link|TEXT|URL&gt;&gt;
 
 # not yet implemend
@@ -55,11 +61,7 @@
   The links can span multiple lines like this:
 </p>
 
-
-<pre><code class="
-  
-  language-neo"
->&gt;text&gt;
+<pre><code class="language-neo">&gt;text&gt;
 https:&#x2f;&#x2f;www.example.com&#x2f;&gt;
 
 or
@@ -69,17 +71,11 @@ https:&#x2f;&#x2f;www.example.com&#x2f;|
 key: value|
 key: value&gt;&gt;</code></pre>
 <h2>Reference Links</h2>
-<p>The links don&#x27;t have to have the URL in them directly, they can be reference to links stored in a <code>-&gt; links</code> section</p>
-<pre><code class="
-  
-  language-neo
-
-&lt;&lt;l|some text|ref_name&gt;&gt;
+<p>The links don&#x27;t have to have the URL in them directly, they can be reference to links stored in a <code>-&gt; links</code> section</p><pre><code class="language-neo">&lt;&lt;l|some text|ref_name&gt;&gt;
 
 -&gt; links
 
-- ref_name"
-></code></pre>
+- ref_name:</code></pre>
 
 <p>
   As long as it mathces it&#x27;ll be used for the link.
