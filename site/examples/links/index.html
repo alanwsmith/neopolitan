@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Neopolitan - A plain-text format for my website</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+
+  <link rel="stylesheet" href="/styles/global.css" />
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1>
+  Links and Link References
+</h1><div class="note"><p>This is still a draft</p></div>
+
+<p>
+  Links are done with one of the following options
+</p>
+
+
+<pre><code class="
+  "
+># not yet implemend
+<<link|TEXT|URL>>
+
+# not yet implemend
+<<link|TEXT|URL|KEY: VALUE|KEY: ETC...>></code></pre>
+
+<p>
+  The links can span multiple lines like this:
+</p>
+
+
+<pre><code class="
+  
+  language-neo"
+>>text>
+https://www.example.com/>
+
+or
+
+<<link|
+https://www.example.com/|
+key: value|
+key: value>></code></pre>
+<h2>Reference Links</h2>
+<p>The links don't have to have the URL in them directly, they can be reference to links stored in a <code>-> links</code> section</p>
+<pre><code class="
+  
+  language-neo
+
+<<l|some text|ref_name>>
+
+-> links
+
+- ref_name"
+></code></pre>
+
+<p>
+  As long as it mathces it'll be used for the link.
+</p>
+
+</main>
+
+
+</body>
+
+</html>

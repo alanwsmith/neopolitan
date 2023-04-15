@@ -1,0 +1,45 @@
+-> title
+
+code section
+
+These are code blocks similar to code fence
+blocks in Markdown. 
+
+-> h2
+
+Basic Example
+
+
+-> startcode
+
+-> code
+
+console.log(`Hello, World`)
+
+-> endcode
+
+-> results
+>> html
+
+
+
+-> h2
+
+Language Identification
+
+If the first section attribute is a key
+without a value it specifieds the 
+
+
+
+
+
+
+-> attributes
+>> date: 2023-04-15 09:40:44
+>> id: 2ostvynrgh7u
+>> site: neo 
+>> type: example 
+>> status: published
+
+

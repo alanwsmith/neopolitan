@@ -1,0 +1,52 @@
+-> title
+
+aside section
+
+-> h2
+
+Example Without Attributes
+
+-> startcode
+
+-> aside
+
+Tear a thin sheet from the yellow pad.
+
+Glue the sheet to the dark blue background.
+
+-> endcode
+
+-> results
+
+<aside>
+  <p>Tear a thin sheet from the yellow pad.</p>
+  <p>Glue the sheet to the dark blue background.</p>
+</aside>
+
+
+-> h2
+
+Output
+
+-> aside
+>> class: alfa 
+
+An aside with an attribute
+
+with some more
+stuff
+
+and some more
+
+
+
+
+
+-> attributes
+>> date: 2023-04-15 03:30:26
+>> id: 2osatrptaxvb
+>> site: neopolitan 
+>> type: example 
+>> status: published
+
+

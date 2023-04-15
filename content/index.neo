@@ -21,11 +21,10 @@ Introduction
 
 -> p
 
-My site is twenty years old. Pondering those past two decades got 
-me thinking about the next two. It's changed the approach. I find 
-myself asking "What do I want to use for the next twenty years?" 
-instead of "What do I want to do for my next redesign?" The 
-answers are very different.
+My site is twenty years old. Pondering those decades got 
+me thinking about the next two. I find myself asking "What do 
+I want to use for the next twenty years?" instead of "What do 
+I want to do for my next redesign?" The answers are very different.
 
 ... TKTKTK See the <<link|drafts page|/draft-home-page.html>> for 
 more of the work in progress intro ...
@@ -41,22 +40,22 @@ The checkboxes are for me to know which ones still need samples
 
 -> list
 
-- <<link|aside|/examples/aside.html>> - The HTML <<link|
+- <<link|aside|/examples/aside/index.html>> - The HTML <<link|
 <aside>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside>> 
 tag
 
-- <<link|attributes|/examples/attributes.html>> - Metadata for the page
+- <<link|attributes|/examples/attributes/index.html>> - Metadata for the page
 
-- <<link|blockquote|/examples/blockquote.html>> - The HTML <<link|
+- <<link|blockquote|/examples/blockquote/index.html>> - The HTML <<link|
 <blockquote>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote>>
 tag
 
-- <<link|blurb|/examples/blurb.html">> - Not rendered on the page. 
+- <<link|blurb|/examples/blurb/index.html">> - Not rendered on the page. 
 Used as meta data for links into the page.
 
-- <<link|code|/examples/code.html>> - Code blocks like fenced 
+- <<link|code|/examples/code/index.html>> - Code blocks like fenced 
 code blocks but you can add an arbitrary attributes to them.
 
 - [] comment - Parsed like text sections in the AST but with the

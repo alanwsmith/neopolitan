@@ -1,0 +1,77 @@
+-> title
+
+blockquote section
+
+For the HTML <blockquote> tag.
+
+-> h2
+
+Example Without Attributes
+
+-> startcode
+
+-> blockquote 
+
+A blockquote without attributes
+
+-> endcode
+
+-> h3
+
+Results
+
+-> startcode
+>> html
+
+<blockquote>
+  <p>A blockquote without attributes</p>
+</blockquote>
+
+-> endcode
+
+-> h2
+
+Example with attributes
+
+-> startcode
+
+-> blockquote
+>> cite: https://www.example.com/
+
+A blockquote with attributes
+
+-> endcode
+
+-> h3
+
+Results
+
+-> startcode
+
+<blockquote cite="https://www.example.com">
+  <p>A blockquote with attributes</p>
+</blockquote>
+
+-> endcode
+
+
+-> h2
+
+Output
+
+-> blockquote
+>> cite: https://www.example.com/
+
+A blockquote with attributes
+
+and some more stuff
+
+
+
+-> attributes
+>> date: 2023-04-15 03:33:43
+>> id: 2osbizo0r6nx
+>> site: neo
+>> type: example 
+>> status: published
+

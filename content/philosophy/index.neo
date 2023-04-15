@@ -1,0 +1,227 @@
+-> title
+
+Neopoliltan Philosophies
+
+-> h2
+
+Overview
+
+These are the thoughts, influences, and
+decisions that lead to neopolitan's design. 
+
+-> h2
+
+The Philosophies
+
+-> h3
+
+HTML Focused
+
+My primary output target is HTML. Most HTML
+tags have native counterparts to support that. 
+This largely stems from the fact that I want
+to use description lists but those aren't
+included in the default markdown I use. 
+
+-> h4
+
+AST Over Output
+
+This project can be broken into two parts:
+
+-> list
+
+- The format and the AST
+
+- The output
+
+-> p
+
+The specification only deals with the AST
+and the output. The project includes and
+example output renderer but based on what
+I've seen with Markdown trying to define 
+an implementation via a spec isn't likely
+to work out well.
+
+See <<link|XKCD 927|https://xkcd.com/927/>> 
+for reference
+
+-> h3
+
+Raw Text In The AST
+
+I'm not doing an conversion for HTML 
+escaping in the process that makes the AST. 
+I'm leaving that to the output processor. 
+That's an implementation detail, but I
+prefer splitting the two that way. 
+
+
+-> h3
+
+Footnotes And References
+
+Use the first line after them as the name
+which is what's tied into the key from the
+content. (e.g. `>> Some Name`` connects to
+`<<^ Some Name >>`. 
+
+Surrounding white space is trimmed. 
+
+Internal spaces are allowed but must match
+as the value is used as a direct key. 
+
+
+-> h3
+
+Insignificant Whitespace
+
+It doesn't matter in most places except for:
+
+-> list
+
+- Blank lines that act as separators between
+sections and list items
+
+- Key names in footnotes and
+references
+
+
+
+-> h3
+
+Section Types
+
+There are different types of sections:
+
+- Basic Processed Content (e.g. `-> p`neo`)
+
+- List Processed Content (e.g. `-> list`neo`)
+
+- Raw Content (e.g. `-> code`neo`)
+
+- Metadata Driven content (e.g. `-> youtube`neo`)
+
+- Basic Metadata (e.g. `-> attributes`neo`)
+
+- Custom sections (e.g. `-> wc`neo` and `-> c`neo`)
+
+-> h3
+
+Everything is a string
+
+There's no attempt in the AST to convert to
+numbers. Everything is a string. 
+
+-> h3
+
+Attributes Are Key Values By Default
+
+The attributes section of my implementation
+contains only key/value pairs. The AST
+leave the option of using other formats
+in the content section as well. 
+
+-> h3
+
+No Form Section
+
+I was considering a `-> form`` section
+but decided against it. Better to just
+roll out to an `-> html` section for that
+based of the complexity. 
+
+-> h3
+
+Sections For Styling
+
+Several sections (like notes and notes)
+are simply alternate versions of other 
+sections (paragraphs and lists for example). 
+The intent it to provide different element
+types to make them easier to categorize
+and style
+
+-> h3
+
+Only One Style For Attributes
+
+I considered two types of attributes for
+sections. One that would go directly into
+the HTML and one that was for directives
+that would only be used for processing. 
+
+For example, instead of:
+
+-> startcode
+
+-> code
+>> rust
+>> class: alfa
+
+-> endcode
+
+-> p
+
+The `rust`` line would get a separate 
+starting token indicating that that 
+string wouldn't go directly to the output
+but was a processor instruction (which
+would let it know to add `language-rust``
+to the HTML attribute list).
+
+It would have looked something like this:
+
+-> startcode
+
+-> code
+++ rust
+>> class: alfa
+
+-> endcode
+
+-> p
+
+I decided against that because it would
+require remembering which things were
+directives and which weren't. 
+
+For my implementation, it's the 
+responsibility of the processor to make
+the determination. 
+
+
+-> h3
+
+Minijinja Templates
+
+I'm using Minijinja for the template 
+engine. This is an implementation 
+detail that isn't required. 
+
+I'm also using the `.jinja`` file
+extension instead of `.html``. I'm
+going with that because my auto-formatter
+kepts messing with the templates in a way
+that altered the spacing. 
+
+I haven't found a maintained jinja
+extension for neovim tree-sitter. Something
+to add to the list. 
+
+
+-> h3
+
+No iFrame Section
+
+Just roll out to `-> html`
+
+
+-> attributes
+>> date: 2023-04-14 14:39:42
+>> id: 2oqfas7uyfv8
+>> site: neo
+>> type: post 
+>> status: published 
+

@@ -62,7 +62,7 @@ fn do_copy(source_dir: &str, dest_dir: &str) -> Result<(), Error> {
                 println!("PROCESSING: {}", p.as_os_str().to_str().unwrap());
                 let source = fs::read_to_string(p.as_os_str().to_str().unwrap()).unwrap();
                 let payload = parse(source.as_str()).unwrap().1;
-                let output = render_template(payload, env.clone(), "main.html");
+                let output = render_template(payload, env.clone(), "main.jinja");
                 fs::write(html_path, output).unwrap();
             }
             // NOTE: for now, just always copy the source files over to

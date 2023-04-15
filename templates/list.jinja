@@ -1,0 +1,13 @@
+{% from "text.jinja" import text %}
+{% macro list (data) %}
+<ul>
+  {% for list_item in data.children %}
+  <li>{%- for block in list_item.children %}
+    <p>
+      {{ text(block) }}
+    </p>
+    {% endfor -%}
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}

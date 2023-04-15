@@ -30,7 +30,7 @@
             <a href="/index.html">Neopolitan</a>
           </li>
           <li>
-            <a href="/philosophies/index.html">Philosophies</a>
+            <a href="/philosophy/index.html">Philosophy</a>
           </li>
           <li>
             <a href="/todo/index.html">TODOs</a>
@@ -44,25 +44,25 @@
   
   <li>
     <p>
-      My goal is not to make a document format that&#x27;s all things to all people. It&#x27;s to make a format that makes it quick, easy, and pleasurable to post on my site. - I&#x27;m open-sourcing the work and love the idea that maybe someday other folks would be interested but for now this is more of working in public thing than it is trying to launch a new format.
+      My goal is not to make a document format that's all things to all people. It's to make a format that makes it quick, easy, and pleasurable to post on my site. - I'm open-sourcing the work and love the idea that maybe someday other folks would be interested but for now this is more of working in public thing than it is trying to launch a new format.
     </p>
     </li>
   
   <li>
     <p>
-      Neopolitan documents are composed of sections that start with a <code>-&gt;</code> token followed by the name for the type of section. The type of section determines how the content is processed. For example, a <code>-&gt; title</code> section turns the first line after it into an <code>h1</code> and the rest of the content after it becomes paragraphs.
+      Neopolitan documents are composed of sections that start with a <code>-></code> token followed by the name for the type of section. The type of section determines how the content is processed. For example, a <code>-> title</code> section turns the first line after it into an <code>h1</code> and the rest of the content after it becomes paragraphs.
     </p>
     </li>
   
   <li>
     <p>
-      Optional attributes an be added to each section. via a token with two <code>&gt;</code> directly under the opening <code>-&gt;</code> line. The <code>&gt;&gt; class: highlighted</code> in the <code>-&gt; aside</code> section above is an example.
+      Optional attributes an be added to each section. via a token with two <code>></code> directly under the opening <code>-></code> line. The <code>>> class: highlighted</code> in the <code>-> aside</code> section above is an example.
     </p>
     </li>
   
   <li>
     <p>
-      Some sections are for display (like this <code>-&gt; list</code>) while others are for metadata (like the <code>-&gt; attributes</code>, and <code>-&gt; categories</code>&lt;`` and end with two <code>&gt;</code> Here&#x27;s a link as an example:
+      Some sections are for display (like this <code>-> list</code>) while others are for metadata (like the <code>-> attributes</code>, and <code>-> categories</code><`` and end with two <code>></code> Here's a link as an example:
     </p>
     </li>
   
@@ -71,12 +71,12 @@
 <pre><code class="
   
   language-neo"
->&lt;&lt;link|https:&#x2f;&#x2f;www.example.com&#x2f;|alfa text&gt;&gt;</code></pre>
+><<link|https://www.example.com/|alfa text>></code></pre>
 <ul>
   
   <li>
     <p>
-      Links can also use references. This is done using some name or number in the tag then adding the same thing to a `-&gt; links` section somewhere in the document. For example:
+      Links can also use references. This is done using some name or number in the tag then adding the same thing to a `-> links` section somewhere in the document. For example:
     </p>
     </li>
   
@@ -85,10 +85,10 @@
 <pre><code class="
   
   language-neo"
->&lt;&lt;link|1|bravo text&gt;&gt;</code></pre>
+><<link|1|bravo text>></code></pre>
 
 <p>
-  And then in a `-&gt; links` section:
+  And then in a `-> links` section:
 </p>
 
 
@@ -108,7 +108,7 @@
 <pre><code class="
   
   language-neo"
->&lt;&lt;link|charlie|https:&#x2f;&#x2f;www.example.com&#x2f;|class: primary&gt;&gt;</code></pre>
+><<link|charlie|https://www.example.com/|class: primary>></code></pre>
 
 <p>
   becomes:
@@ -118,7 +118,7 @@
 <pre><code class="
   
   language-html"
->&lt;a href=&quot;https:&#x2f;&#x2f;www.example.com&#x2f;&quot; class=&quot;primary&quot;&gt;charlie&lt;&#x2f;a&gt;</code></pre>
+><a href="https://www.example.com/" class="primary">charlie</a></code></pre>
 <ul>
   
   <li>
@@ -129,7 +129,7 @@
   
   <li>
     <p>
-      <code>-&gt; footnotes</code>^` characters. Those locations are numbered and link back in response.
+      <code>-> footnotes</code>^` characters. Those locations are numbered and link back in response.
     </p>
     </li>
   
@@ -141,7 +141,7 @@
   
   <li>
     <p>
-      Ordered lists have their own <code>-&gt; olist</code>&gt;&gt; start: #`` attribute.
+      Ordered lists have their own <code>-> olist</code>>> start: #`` attribute.
     </p>
     </li>
   
@@ -159,21 +159,21 @@
   
   <li>
     <p>
-      <code>-&gt; hidden</code> for stuff that&#x27;s in the file that you don&#x27;t want output to the final content. (NOTE: don&#x27;t rely on it for anything sensitive. Figure that at some point something might screw up and send it out.)
+      <code>-> hidden</code> for stuff that's in the file that you don't want output to the final content. (NOTE: don't rely on it for anything sensitive. Figure that at some point something might screw up and send it out.)
     </p>
     </li>
   
   <li>
     <p>
-      <code>-&gt; results</code>&lt;samp&gt;`` tag)
+      <code>-> results</code><samp>`` tag)
     </p>
     </li>
   
 </ul>
 
 <h2>Next Steps</h2>
-<p>Most of the above is pretty well defined. The rest of this below is a little more fluid. Their ideas I expect I&#x27;ll get to, but the priority is everything above.</p>
-<p>That said, here&#x27;s what the more complete vision includes.</p>
+<p>Most of the above is pretty well defined. The rest of this below is a little more fluid. Their ideas I expect I'll get to, but the priority is everything above.</p>
+<p>That said, here's what the more complete vision includes.</p>
 <ul>
   
   <li>
@@ -190,7 +190,7 @@
   
   <li>
     <p>
-      <code>div</code> sections provide for adding content that&#x27;s not wrapped in <code>&lt;p&gt;</code> tags
+      <code>div</code> sections provide for adding content that's not wrapped in <code><p></code> tags
     </p>
     </li>
   
@@ -202,19 +202,19 @@
   
   <li>
     <p>
-      <code>css</code> sections provide a way to add CSS directly to the page. (They are added as the last CSS before the closing <code>&lt;&#x2f;head&gt;</code>.
+      <code>css</code> sections provide a way to add CSS directly to the page. (They are added as the last CSS before the closing <code></head></code>.
     </p>
     </li>
   
   <li>
     <p>
-      <code>js</code> sections provide a way to inject scripts directly into the page. (They are added as the last <code>&lt;script&gt;</code> before the closing <code>&lt;&#x2f;head&gt;</code>)
+      <code>js</code> sections provide a way to inject scripts directly into the page. (They are added as the last <code><script></code> before the closing <code></head></code>)
     </p>
     </li>
   
   <li>
     <p>
-      I have an idea for <code>DATA</code>figure&#x2f;figcaption` - TBD on these
+      I have an idea for <code>DATA</code>figure/figcaption` - TBD on these
     </p>
     </li>
   
@@ -228,11 +228,11 @@
 
 
 <p>
-  That&#x27;s the basics.
+  That's the basics.
 </p>
 
 <p>
-  I&#x27;ll post updates here as I make progress.
+  I'll post updates here as I make progress.
 </p>
 
 <p>
@@ -253,13 +253,13 @@
 
 
 <pre><code class=""
->-&gt; attributes
-&gt;&gt; date: 2023-03-11 13:07:46
-&gt;&gt; updated: 2023-03-12 19:23:12
-&gt;&gt; id: 2n4twoxoqgi4
-&gt;&gt; site: neo
-&gt;&gt; type: post
-&gt;&gt; status: published</code></pre>
+>-> attributes
+>> date: 2023-03-11 13:07:46
+>> updated: 2023-03-12 19:23:12
+>> id: 2n4twoxoqgi4
+>> site: neo
+>> type: post
+>> status: published</code></pre>
 
 <p>
   placeholder

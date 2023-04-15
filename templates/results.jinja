@@ -1,0 +1,14 @@
+{% macro results(data) %}
+<pre><code class="
+  {%- for attribute in data.attributes %}
+    {% if loop.first and attribute.value == None %}
+      language-{{attribute.key}}
+    {%- endif -%}
+    {%- if attribute.key == "class" -%} 
+    {{- " " -}}
+    {{- attribute.value -}}
+    {%- endif -%}
+  {%- endfor -%}
+  "
+>{{data.children.text}}</code></pre>
+{%- endmacro %}

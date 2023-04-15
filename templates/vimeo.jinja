@@ -1,0 +1,7 @@
+{% from "text.jinja" import text %}
+{% macro vimeo(data) %}
+<div class="vimeoVideo">
+  <iframe title="vimeo-player" src="https://player.vimeo.com/video/{{ data.attributes[0].key }}" width="640"
+    height="360" frameborder="0" allowfullscreen></iframe>
+</div>
+{% endmacro %}

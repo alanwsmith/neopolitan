@@ -1,0 +1,38 @@
+-> title
+
+blurb section
+
+Used as metadata to post on other pages
+that link in to the page. 
+
+-> h2
+
+Example
+
+-> startcode
+
+-> blurb 
+
+This is a blurb to use to link
+into the page
+
+-> endcode
+
+-> h3
+
+Results
+
+There is no output directly on the page.
+The contents of the seciton can be used
+in the template engine to provide more 
+detailed links into the page. 
+
+
+-> attributes
+>> date: 2023-04-15 09:34:01
+>> id: 2ost7jret3pu
+>> site: neo 
+>> type: example 
+>> status: published
+
+

@@ -1,0 +1,13 @@
+{% from "text.jinja" import text %}
+{% macro blockquote(data) %}
+<blockquote
+  {%- for attribute in data.attributes %} {{attribute.key}}="
+{%- autoescape false -%}
+  {{attribute.value}}
+  {%- endautoescape -%}
+  "{% endfor %}>
+{% for block in data.children -%}
+  <p>{{ text(block) }}</p>
+{% endfor -%}
+</blockquote>
+{% endmacro %}

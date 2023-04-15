@@ -1,0 +1,8 @@
+{% from "text.jinja" import text %}
+{% macro paragraphs(data) %}
+{% for block in data.children %}
+<p>
+  {{ text(block) }}
+</p>
+{% endfor %}
+{% endmacro %}
