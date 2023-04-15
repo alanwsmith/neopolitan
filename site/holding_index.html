@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Neopolitan - A plain-text format for my website</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
   <meta property="og:description"
     content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
-
   <meta property="og:image" content="" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site:id" content="@TheIdOfAlan" />
   <meta name="twitter:creator" content="@TheIdOfAlan" />
   <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
   <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
-
   <link rel="stylesheet" href="/styles/global.css" />
-
 </head>
 
 <body>
@@ -39,7 +34,7 @@
       </nav>
 
     </header>
-  <main>
+  <main><div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -67,11 +62,11 @@
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: CodeSection</div>
 <pre><code class="
   
   language-neo"
->&lt;&lt;link|https:&#x2f;&#x2f;www.example.com&#x2f;|alfa text&gt;&gt;</code></pre>
+>&lt;&lt;link|https:&#x2f;&#x2f;www.example.com&#x2f;|alfa text&gt;&gt;</code></pre><div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -81,20 +76,20 @@
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: CodeSection</div>
 <pre><code class="
   
   language-neo"
->&lt;&lt;link|1|bravo text&gt;&gt;</code></pre>
+>&lt;&lt;link|1|bravo text&gt;&gt;</code></pre><div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   And then in a `-&gt; links` section:
 </p>
 
-
+<div class="debug">DEBUG: Section type: CodeSection</div>
 <pre><code class="
   "
-></code></pre>
+></code></pre><div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -104,21 +99,21 @@
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: CodeSection</div>
 <pre><code class="
   
   language-neo"
->&lt;&lt;link|charlie|https:&#x2f;&#x2f;www.example.com&#x2f;|class: primary&gt;&gt;</code></pre>
+>&lt;&lt;link|charlie|https:&#x2f;&#x2f;www.example.com&#x2f;|class: primary&gt;&gt;</code></pre><div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   becomes:
 </p>
 
-
+<div class="debug">DEBUG: Section type: CodeSection</div>
 <pre><code class="
   
   language-html"
->&lt;a href=&quot;https:&#x2f;&#x2f;www.example.com&#x2f;&quot; class=&quot;primary&quot;&gt;charlie&lt;&#x2f;a&gt;</code></pre>
+>&lt;a href=&quot;https:&#x2f;&#x2f;www.example.com&#x2f;&quot; class=&quot;primary&quot;&gt;charlie&lt;&#x2f;a&gt;</code></pre><div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -170,10 +165,10 @@
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: H2Section</div>
 <h2>Next Steps</h2>
 <p>Most of the above is pretty well defined. The rest of this below is a little more fluid. Their ideas I expect I&#x27;ll get to, but the priority is everything above.</p>
-<p>That said, here&#x27;s what the more complete vision includes.</p>
+<p>That said, here&#x27;s what the more complete vision includes.</p><div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -225,7 +220,7 @@
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   That&#x27;s the basics.
@@ -251,7 +246,7 @@
   a
 </p>
 
-
+<div class="debug">DEBUG: Section type: CodeStartEndSection</div>
 <pre><code class=""
 >-&gt; attributes
 &gt;&gt; date: 2023-03-11 13:07:46
@@ -259,7 +254,7 @@
 &gt;&gt; id: 2n4twoxoqgi4
 &gt;&gt; site: neo
 &gt;&gt; type: post
-&gt;&gt; status: published</code></pre>
+&gt;&gt; status: published</code></pre><div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   placeholder

@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Neopolitan - A plain-text format for my website</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
   <meta property="og:description"
     content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
-
   <meta property="og:image" content="" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site:id" content="@TheIdOfAlan" />
   <meta name="twitter:creator" content="@TheIdOfAlan" />
   <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
   <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
-
   <link rel="stylesheet" href="/styles/global.css" />
-
 </head>
 
 <body>
@@ -39,28 +34,28 @@
       </nav>
 
     </header>
-  <main><h1>
+  <main><div class="debug">DEBUG: Section type: Title</div><h1>
   results section
 </h1><p>
   The idea with this one is to use it after code blocks to show their corresponding output. I considered using the <code>&lt;samp&gt;</code> tag for my implementation but code highlighters are generally geared for <code>&lt;pre&gt;&lt;code&gt;</code> blocks.
-</p>
-<h2>Example</h2>
+</p><div class="debug">DEBUG: Section type: H2Section</div>
+<h2>Example</h2><div class="debug">DEBUG: Section type: CodeStartEndSection</div>
 <pre><code class=""
 >-&gt; results
 
 The colt reared and threw the tall rider.
-The wide road shimmered in the hot sun.</code></pre>
+The wide road shimmered in the hot sun.</code></pre><div class="debug">DEBUG: Section type: ResultsSection</div>
 <pre><code class=""
 >&lt;pre class=&quot;results&quot;&gt;&lt;code&gt;
 The colt reared and threw the tall rider.
 The wide road shimmered in the hot sun.
-&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code></pre>
+&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code></pre><div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   TODO: Setup <code>-&gt; startresults ... -&gt; endresults</code> functionality so that <code>-&gt; results</code> tags can be shown in those blocks.
 </p>
 
-</main>
+<div class="debug">DEBUG: Section type: ReferenceSection</div><div class="debug">DEBUG: Section type: AttributesSection</div></main>
 
 
 </body>

@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Neopolitan - A plain-text format for my website</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
   <meta property="og:description"
     content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
-
   <meta property="og:image" content="" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site:id" content="@TheIdOfAlan" />
   <meta name="twitter:creator" content="@TheIdOfAlan" />
   <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
   <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
-
   <link rel="stylesheet" href="/styles/global.css" />
-
 </head>
 
 <body>
@@ -39,12 +34,12 @@
       </nav>
 
     </header>
-  <main><h1>
+  <main><div class="debug">DEBUG: Section type: Title</div><h1>
   Neopoliltan Philosophies
-</h1>
+</h1><div class="debug">DEBUG: Section type: H2Section</div>
 <h2>Overview</h2>
-<p>These are the thoughts, influences, and decisions that lead to neopolitan&#x27;s design.</p>
-<h2>The Philosophies</h2>
+<p>These are the thoughts, influences, and decisions that lead to neopolitan&#x27;s design.</p><div class="debug">DEBUG: Section type: H2Section</div>
+<h2>The Philosophies</h2><div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> HTML  Focused</h3>
@@ -54,7 +49,7 @@
 <p> My  primary  output  target  is  HTML.  Most  HTML  tags  have  native  counterparts  to  support  that.  This  largely  stems  from  the  fact  that  I  want  to  use  description  lists  but  those  aren&#x27;t  included  in  the  default  markdown  I  use.</p>
 
 
-
+<div class="debug">DEBUG: Section type: H4Section</div>
 
 
 <h4> AST  Over  Output</h4>
@@ -64,7 +59,7 @@
 <p> This  project  can  be  broken  into  two  parts:</p>
 
 
-
+<div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -80,7 +75,7 @@
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   The specification only deals with the AST and the output. The project includes and example output renderer but based on what I&#x27;ve seen with Markdown trying to define an implementation via a spec isn&#x27;t likely to work out well.
@@ -90,7 +85,7 @@
   See <a href="https://xkcd.com/927/">XKCD 927</a> for reference
 </p>
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Raw  Text  In  The  AST</h3>
@@ -100,7 +95,7 @@
 <p> I&#x27;m  not  doing  an  conversion  for  HTML  escaping  in  the  process  that  makes  the  AST.  I&#x27;m  leaving  that  to  the  output  processor.  That&#x27;s  an  implementation  detail,  but  I  prefer  splitting  the  two  that  way.</p>
 
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Footnotes  And  References</h3>
@@ -110,7 +105,7 @@
 <p> Use  the  first  line  after  them  as  the  name  which  is  what&#x27;s  tied  into  the  key  from  the  content.  (e.g.  &gt;&gt; Some Name  connects  to  `&lt;&lt;^  Some  Name  &gt;&gt;`.  Surrounding  white  space  is  trimmed.  Internal  spaces  are  allowed  but  must  match  as  the  value  is  used  as  a  direct  key.</p>
 
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Insignificant  Whitespace</h3>
@@ -120,7 +115,7 @@
 <p> It  doesn&#x27;t  matter  in  most  places  except  for:</p>
 
 
-
+<div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -136,7 +131,7 @@
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Section  Types</h3>
@@ -170,7 +165,7 @@
 <p> -  Custom  sections  (e.g.  -&gt; wc  and  -&gt; c )</p>
 
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Everything  is  a  string</h3>
@@ -180,7 +175,7 @@
 <p> There&#x27;s  no  attempt  in  the  AST  to  convert  to  numbers.  Everything  is  a  string.</p>
 
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Attributes  Are  Key  Values  By  Default</h3>
@@ -190,7 +185,7 @@
 <p> The  attributes  section  of  my  implementation  contains  only  key&#x2f;value  pairs.  The  AST  leave  the  option  of  using  other  formats  in  the  content  section  as  well.</p>
 
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> No  Form  Section</h3>
@@ -200,7 +195,7 @@
 <p> I  was  considering  a  -&gt; form  section  but  decided  against  it.  Better  to  just  roll  out  to  an  `-&gt;  html`  section  for  that  based  of  the  complexity.</p>
 
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Sections  For  Styling</h3>
@@ -210,7 +205,7 @@
 <p> Several  sections  (like  notes  and  notes)  are  simply  alternate  versions  of  other  sections  (paragraphs  and  lists  for  example).  The  intent  it  to  provide  different  element  types  to  make  them  easier  to  categorize  and  style</p>
 
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Only  One  Style  For  Attributes</h3>
@@ -220,11 +215,11 @@
 <p> I  considered  two  types  of  attributes  for  sections.  One  that  would  go  directly  into  the  HTML  and  one  that  was  for  directives  that  would  only  be  used  for  processing.  For  example,  instead  of:</p>
 
 
-
+<div class="debug">DEBUG: Section type: CodeStartEndSection</div>
 <pre><code class=""
 >-&gt; code
 &gt;&gt; rust
-&gt;&gt; class: alfa</code></pre>
+&gt;&gt; class: alfa</code></pre><div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   The <code>rust</code> line would get a separate starting token indicating that that string wouldn&#x27;t go directly to the output but was a processor instruction (which would let it know to add <code>language-rust</code> to the HTML attribute list).
@@ -234,17 +229,17 @@
   It would have looked something like this:
 </p>
 
-
+<div class="debug">DEBUG: Section type: CodeStartEndSection</div>
 <pre><code class=""
 >-&gt; code
 ++ rust
-&gt;&gt; class: alfa</code></pre>
+&gt;&gt; class: alfa</code></pre><div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   I decided against that because it would require remembering which things were directives and which weren&#x27;t. For my implementation, it&#x27;s the responsibility of the processor to make the determination.
 </p>
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Minijinja  Templates</h3>
@@ -254,7 +249,7 @@
 <p> I&#x27;m  using  Minijinja  for  the  template  engine.  This  is  an  implementation  detail  that  isn&#x27;t  required.  I&#x27;m  also  using  the  .jinja  file  extension  instead  of  .html .  I&#x27;m  going  with  that  because  my  auto-formatter  kepts  messing  with  the  templates  in  a  way  that  altered  the  spacing.  I  haven&#x27;t  found  a  maintained  jinja  extension  for  neovim  tree-sitter.  Something  to  add  to  the  list.</p>
 
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> No  iFrame  Section</h3>
@@ -264,7 +259,7 @@
 <p> Just  roll  out  to  `-&gt;  html`</p>
 
 
-</main>
+<div class="debug">DEBUG: Section type: AttributesSection</div></main>
 
 
 </body>

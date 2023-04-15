@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Neopolitan - A plain-text format for my website</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
   <meta property="og:description"
     content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
-
   <meta property="og:image" content="" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site:id" content="@TheIdOfAlan" />
   <meta name="twitter:creator" content="@TheIdOfAlan" />
   <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
   <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
-
   <link rel="stylesheet" href="/styles/global.css" />
-
 </head>
 
 <body>
@@ -39,28 +34,28 @@
       </nav>
 
     </header>
-  <main><h1>
+  <main><div class="debug">DEBUG: Section type: Title</div><h1>
   Links and Link References
-</h1><div class="note"><p>This is still a draft</p></div>
+</h1><div class="debug">DEBUG: Section type: NoteSection</div><div class="note"><p>This is still a draft</p></div><div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   Links are done with one of the following options
 </p>
 
-
+<div class="debug">DEBUG: Section type: CodeStartEndSection</div>
 <pre><code class="
   "
 ># not yet implemend
 &lt;&lt;link|TEXT|URL&gt;&gt;
 
 # not yet implemend
-&lt;&lt;link|TEXT|URL|KEY: VALUE|KEY: ETC...&gt;&gt;</code></pre>
+&lt;&lt;link|TEXT|URL|KEY: VALUE|KEY: ETC...&gt;&gt;</code></pre><div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   The links can span multiple lines like this:
 </p>
 
-
+<div class="debug">DEBUG: Section type: CodeStartEndSection</div>
 <pre><code class="
   
   language-neo"
@@ -72,9 +67,9 @@ or
 &lt;&lt;link|
 https:&#x2f;&#x2f;www.example.com&#x2f;|
 key: value|
-key: value&gt;&gt;</code></pre>
+key: value&gt;&gt;</code></pre><div class="debug">DEBUG: Section type: H2Section</div>
 <h2>Reference Links</h2>
-<p>The links don&#x27;t have to have the URL in them directly, they can be reference to links stored in a <code>-&gt; links</code> section</p>
+<p>The links don&#x27;t have to have the URL in them directly, they can be reference to links stored in a <code>-&gt; links</code> section</p><div class="debug">DEBUG: Section type: CodeStartEndSection</div>
 <pre><code class="
   
   language-neo
@@ -84,7 +79,7 @@ key: value&gt;&gt;</code></pre>
 -&gt; links
 
 - ref_name"
-></code></pre>
+></code></pre><div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   As long as it mathces it&#x27;ll be used for the link.

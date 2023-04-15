@@ -1,9 +1,13 @@
 #![allow(warnings)]
 use minijinja::context;
+use minijinja::AutoEscape;
 use minijinja::Environment;
 use minijinja::Source;
-use minijinja::AutoEscape;
+use neopolitan::block::block::Block::RawContent;
+use neopolitan::create_env::create_env;
 use neopolitan::parse::parse;
+use neopolitan::render_template::render_template;
+use neopolitan::section::section::*;
 use neopolitan::wrapper::wrapper::*;
 use std::fs;
 use std::fs::create_dir_all;
@@ -13,26 +17,6 @@ use walkdir::{DirEntry, Error, WalkDir};
 fn main() {
     do_copy("./content", "./site").unwrap();
     println!("PROCESS COMPLETE");
-}
-
-fn create_env(path: &str) -> Environment<'static> {
-    let mut env = Environment::new();
-    env.set_source(Source::from_path(path));
-    env.set_auto_escape_callback(|name| {
-    if matches!(name.rsplit('.').next().unwrap_or(""), "html" | "jinja") {
-        AutoEscape::Html
-    } else {
-        AutoEscape::None
-    }
-});
-    env
-}
-
-fn render_template(payload: Wrapper, env: Environment, template: &str) -> String {
-    let tmpl = env.get_template(template).unwrap();
-    tmpl.render(context!(payload => &payload))
-        .unwrap()
-        .to_string()
 }
 
 fn is_hidden(entry: &DirEntry) -> bool {
@@ -60,7 +44,80 @@ fn do_copy(source_dir: &str, dest_dir: &str) -> Result<(), Error> {
                 let html_path = dest_path.with_extension("html");
                 println!("PROCESSING: {}", p.as_os_str().to_str().unwrap());
                 let source = fs::read_to_string(p.as_os_str().to_str().unwrap()).unwrap();
-                let payload = parse(source.as_str()).unwrap().1;
+                let mut payload = parse(source.as_str()).unwrap().1;
+
+                // NOTE: This has been problematic to implement. trying
+                // another way.
+                // // NOTE: This is a hack for the neoexample sections
+                // // to add parsed content for the documentation.
+                // // Will examine to see if it cause performance issues.
+                // // Also, I'm not sure this is an idiomati way to
+                // // add data to an enum.
+                // payload = match payload {
+                //     Wrapper::Page { children } => {
+                //         let mut new_children: Vec<Section> = vec![];
+                //         for sec in children.unwrap() {
+                //             match sec {
+                //                 Section::NeoExampleStartEndSection {
+                //                     children,
+                //                     raw,
+                //                     attributes,
+                //                 } => {
+                //                     // let mut new_raw: Option<Block>;
+                //                     let raw_content = raw.as_ref().unwrap();
+                //                     match raw_content {
+                //                         RawContent { text } => {
+                //                             let sub_page = parse((text.as_ref().unwrap()));
+                //                             // dbg!(sub_page);
+                //                             match sub_page.unwrap().1 {
+                //                                 Wrapper::Page { children } => {
+                //                                     for tmp_sec in children.as_ref().unwrap() {
+                //                                         match tmp_sec {
+                //                                             Section::AsideSection {
+                //                                                 children,
+                //                                                 ..
+                //                                             } => {
+                //                                                 new_children.push(
+                //                                                               Section::NeoExampleStartEndSection {
+                //                                                                   attributes,
+                //                                                                   children: None,
+                //                                                                   raw,
+                //                                                               },
+                //                                                     );
+                //                                                 // dbg! {children};
+                //                                                 ()
+                //                                             }
+                //                                             _ => (), //         children,
+                //                                                      //         raw,
+                //                                                      //         attributes,
+                //                                                      //     } => {
+                //                                                      //         new_children.push(
+                //                                                      //         Section::NeoExampleStartEndSection {
+                //                                                      //             attributes,
+                //                                                      //             children: None,
+                //                                                      //             raw,
+                //                                                      //         },
+                //                                                      //     );
+                //                                                      //         ()
+                //                                                      //     }
+                //                                         }
+                //                                     }
+                //                                 }
+                //                             }
+                //                             ()
+                //                         }
+                //                         _ => (),
+                //                     }
+                //                 }
+                //                 _ => new_children.push(sec),
+                //             }
+                //         }
+                //         Wrapper::Page {
+                //             children: Some(new_children),
+                //         }
+                //     }
+                // };
+
                 let output = render_template(payload, env.clone(), "main.jinja");
                 fs::write(html_path, output).unwrap();
             }

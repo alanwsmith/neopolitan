@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Neopolitan - A plain-text format for my website</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
   <meta property="og:description"
     content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
-
   <meta property="og:image" content="" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site:id" content="@TheIdOfAlan" />
   <meta name="twitter:creator" content="@TheIdOfAlan" />
   <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
   <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
-
   <link rel="stylesheet" href="/styles/global.css" />
-
 </head>
 
 <body>
@@ -39,50 +34,50 @@
       </nav>
 
     </header>
-  <main><h1>
+  <main><div class="debug">DEBUG: Section type: Title</div><h1>
   blockquote section
 </h1><p>
   For the HTML &lt;blockquote&gt; tag.
-</p>
-<h2>Example Without Attributes</h2>
+</p><div class="debug">DEBUG: Section type: H2Section</div>
+<h2>Example Without Attributes</h2><div class="debug">DEBUG: Section type: CodeStartEndSection</div>
 <pre><code class=""
 >-&gt; blockquote 
 
-A blockquote without attributes</code></pre>
+A blockquote without attributes</code></pre><div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Results</h3>
 
 
-
+<div class="debug">DEBUG: Section type: CodeStartEndSection</div>
 <pre><code class="
   
   language-html"
 >&lt;blockquote&gt;
   &lt;p&gt;A blockquote without attributes&lt;&#x2f;p&gt;
-&lt;&#x2f;blockquote&gt;</code></pre>
-<h2>Example with attributes</h2>
+&lt;&#x2f;blockquote&gt;</code></pre><div class="debug">DEBUG: Section type: H2Section</div>
+<h2>Example with attributes</h2><div class="debug">DEBUG: Section type: CodeStartEndSection</div>
 <pre><code class=""
 >-&gt; blockquote
 &gt;&gt; cite: https:&#x2f;&#x2f;www.example.com&#x2f;
 
-A blockquote with attributes</code></pre>
+A blockquote with attributes</code></pre><div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Results</h3>
 
 
-
+<div class="debug">DEBUG: Section type: CodeStartEndSection</div>
 <pre><code class=""
 >&lt;blockquote cite=&quot;https:&#x2f;&#x2f;www.example.com&quot;&gt;
   &lt;p&gt;A blockquote with attributes&lt;&#x2f;p&gt;
-&lt;&#x2f;blockquote&gt;</code></pre>
-<h2>Output</h2>
+&lt;&#x2f;blockquote&gt;</code></pre><div class="debug">DEBUG: Section type: H2Section</div>
+<h2>Output</h2><div class="debug">DEBUG: Section type: BlockquoteSection</div>
 <blockquote cite="https://www.example.com/">
 <p>A blockquote with attributes</p>
 <p>and some more stuff</p>
 </blockquote>
-</main>
+<div class="debug">DEBUG: Section type: AttributesSection</div></main>
 
 
 </body>

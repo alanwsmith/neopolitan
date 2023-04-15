@@ -14,7 +14,7 @@ necessary. If you're interested, take a look
 at the source file (TODO: link the source file)
 
 
-> startneoexample
+-> startneoexample
 
 -> aside
 >> class: alfa
@@ -22,7 +22,7 @@ at the source file (TODO: link the source file)
 This is an `-> aside`neo` example with an 
 `alfa`` class set as an attribute.
 
-> endneoexample
+-> endneoexample
 
 
 

@@ -29,7 +29,6 @@ pub fn blockquote(source: &str) -> IResult<&str, Section> {
 #[cfg(test)]
 
 mod test {
-
     use crate::block::block::*;
     use crate::content::content::*;
     use crate::parse::parse;

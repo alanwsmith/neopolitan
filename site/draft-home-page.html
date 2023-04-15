@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Neopolitan - A plain-text format for my website</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
   <meta property="og:description"
     content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
-
   <meta property="og:image" content="" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site:id" content="@TheIdOfAlan" />
   <meta name="twitter:creator" content="@TheIdOfAlan" />
   <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
   <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
-
   <link rel="stylesheet" href="/styles/global.css" />
-
 </head>
 
 <body>
@@ -39,21 +34,21 @@
       </nav>
 
     </header>
-  <main><h1>
+  <main><div class="debug">DEBUG: Section type: Title</div><h1>
   Drafts
-</h1><div class="subtitle">
+</h1><div class="debug">DEBUG: Section type: Subtitle</div><div class="subtitle">
   A plain-text website format
 </div>
-<div class="note"><p>These are some draft notes for the home page and the rest of the site</p></div>
+<div class="debug">DEBUG: Section type: NoteSection</div><div class="note"><p>These are some draft notes for the home page and the rest of the site</p></div><div class="debug">DEBUG: Section type: H2Section</div>
 <h2>Introduction</h2>
 <p>My site is twenty years old. Pondering those past two decades got me thinking about the next two. It changed my approach to making and maintaining my site. &quot;What foundation do I want for the next two decades?&quot; is a very different question from &quot;What do I want to do for my next redesign?&quot;</p>
-<p>On that time horizon, my thoughts don&#x27;t go to the tech, they go to the content.</p>
+<p>On that time horizon, my thoughts don&#x27;t go to the tech, they go to the content.</p><div class="debug">DEBUG: Section type: H2Section</div>
 <h2>Post Count</h2>
 <p>I&#x27;ve moved my site a half dozen times. Each one involved a painful content migration. I&#x27;ve gone from raw HTML to Perl scripts to Wordpress to PHP with various DB schemas to Markdown to MDX to Org-Mode to a mix of all of the above. After switching to plain-text with Markdown I&#x27;m not interested in anything else. But, those formats don&#x27;t work for me. I keep running into frictions that keep me from posting the way I&#x27;d like.</p>
-<p>So, I&#x27;m making my own format. It&#x27;s called Neopolitan.</p>
+<p>So, I&#x27;m making my own format. It&#x27;s called Neopolitan.</p><div class="debug">DEBUG: Section type: H2Section</div>
 <h2>The Basics</h2>
 <p>The general idea is to use sections (which start with a <code>-&gt;</code> token) to define areas of content. The type of section defines how the content inside it will behave.</p>
-<p>These are the section types I&#x27;m planning along with indications of which ones are already set.</p>
+<p>These are the section types I&#x27;m planning along with indications of which ones are already set.</p><div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Inline  Tags</h3>
@@ -63,7 +58,7 @@
 <p> Most  of  the  section  types  hold  text  content.  That  text  content  is  split  into  &lt;p&gt;  tags  by  default  and  the  text  inside  of  them  is  parsed  for  inline  tags  and  shorthand  codes.  Inline  tags  start  with  two  &lt;&lt;  and  end  with  a  closing  &gt;&gt;  set.  Here&#x27;s  the  list  with  x  indicating  the  ones  that  are  implemented  and  .  indicating  that  are  still  under  consideration.  (This  is  basically  the  list  of  html  elements)</p>
 
 
-
+<div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -175,7 +170,7 @@
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   Neopolitan
@@ -185,7 +180,7 @@
   Here&#x27;s what I&#x27;m thinking
 </p>
 
-
+<div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -262,9 +257,9 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">standard HTML el
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: H2Section</div>
 <h2>Under Consideration</h2>
-<p>Some other things I have in mind:</p>
+<p>Some other things I have in mind:</p><div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -286,7 +281,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">standard HTML el
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   Every approach involves friction that slows me down both from making posts an experimenting with my site on a larger level.
@@ -296,7 +291,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">standard HTML el
   For example:
 </p>
 
-
+<div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -316,7 +311,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">standard HTML el
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   I don&#x27;t know all the different ways I&#x27;ll build my side over the next two decades, but I know the
@@ -334,7 +329,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">standard HTML el
   The first examination is the code. I&#x27;m switching to vanilla HTML, CSS, and JavaScript. There&#x27;s a lot to be written about that later. For now, suffice it to say that, for my personal site, frameworks have been a net negative for me. I&#x27;m bowing out of that game.
 </p>
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Plain-text</h3>
@@ -348,21 +343,21 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">standard HTML el
 <p> So,  I&#x27;m  making  my  own  format.</p>
 
 
-
+<div class="debug">DEBUG: Section type: H2Section</div>
 <h2>Neopolitan Features</h2>
-<p>The format is still in its early stages and very much in flux. That said, the basic ideas are mostly in place.</p><aside id="firstAside" class="highlighted"><p>There&#x27;s a bunch of code samples below. The format is more about text content. Parsing through collections of short samples took me a little getting used to.</p></aside>
+<p>The format is still in its early stages and very much in flux. That said, the basic ideas are mostly in place.</p><div class="debug">DEBUG: Section type: AsideSection</div><aside id="firstAside" class="highlighted"><p>There&#x27;s a bunch of code samples below. The format is more about text content. Parsing through collections of short samples took me a little getting used to.</p></aside><div class="debug">DEBUG: Section type: H2Section</div>
 <h2>Samples</h2>
-<p>Below are some samples that will be overwritten when the actual content.</p>
+<p>Below are some samples that will be overwritten when the actual content.</p><div class="debug">DEBUG: Section type: CodeSection</div>
 <pre><code class="
   
   language-rust"
 >this is a test with code
 
-and some more code</code></pre>
+and some more code</code></pre><div class="debug">DEBUG: Section type: H2Section</div>
 <h2>Next Steps</h2>
-<p>Most of the above is pretty well defined. The rest of this below is a little more fluid. Their ideas I expect I&#x27;ll get to, but the priority is everything above.</p>
+<p>Most of the above is pretty well defined. The rest of this below is a little more fluid. Their ideas I expect I&#x27;ll get to, but the priority is everything above.</p><div class="debug">DEBUG: Section type: H2Section</div>
 <h2>Examples</h2>
-<p>This is a test list</p>
+<p>This is a test list</p><div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -378,19 +373,19 @@ and some more code</code></pre>
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   and that&#x27;s the end of the list
 </p>
 
-
+<div class="debug">DEBUG: Section type: H3Section</div>
 
 
 <h3> Other  ideas</h3>
 
 
-
+<div class="debug">DEBUG: Section type: List</div>
 <ul>
   
   <li>
@@ -400,13 +395,13 @@ and some more code</code></pre>
     </li>
   
 </ul>
-
+<div class="debug">DEBUG: Section type: Paragraphs</div>
 
 <p>
   Holding (attributes aren&#x27;t being parsed yet so this is hacked out)
 </p>
 
-
+<div class="debug">DEBUG: Section type: H2Section</div>
 <h2>-&gt; attributes &gt;&gt; date: 2023-04-03 12:10:46 &gt;&gt; id: 2nvihspm8vaa &gt;&gt; site: aws &gt;&gt; type: post &gt;&gt; status: draft</h2></main>
 
 

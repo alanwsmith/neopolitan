@@ -1,7 +1,6 @@
 use crate::block::block::Block;
 use crate::section::aside::*;
 use crate::section::attributes::*;
-use crate::section::results::*;
 use crate::section::attributes_for_section::*;
 use crate::section::blockquote::*;
 use crate::section::blurb::*;
@@ -20,12 +19,14 @@ use crate::section::h6::*;
 use crate::section::html::*;
 use crate::section::image::*;
 use crate::section::list::*;
+use crate::section::neo_example_start_end::*;
 use crate::section::note::*;
 use crate::section::notes::*;
 use crate::section::olist::*;
 use crate::section::p::*;
 use crate::section::pre::*;
 use crate::section::reference::*;
+use crate::section::results::*;
 use crate::section::script::*;
 use crate::section::subtitle::*;
 use crate::section::textarea::*;
@@ -50,6 +51,10 @@ use serde::Serialize;
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum Section {
+    // This placeholder is for dev to stub out
+    // things that are in progress
+    Placeholder,
+    // These are the actual section types
     AsideSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
@@ -125,6 +130,11 @@ pub enum Section {
     List {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
+    },
+    NeoExampleStartEndSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        raw: Option<Block>,
+        html: Option<String>,
     },
     NoteSection {
         attributes: Option<Vec<SectionAttribute>>,
@@ -280,6 +290,12 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 .map(|t| todo(t.1).unwrap().1),
             tuple((tag("-> results\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| results(t.1).unwrap().1),
+            tuple((
+                tag("-> startneoexample\n"),
+                take_until("\n\n-> endneoexample"),
+                tag("\n\n-> endneoexample"),
+            ))
+            .map(|t| neo_example_start_end(t.1).unwrap().1),
         )),
     ))(source)?;
     Ok((remainder, sec))
