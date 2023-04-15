@@ -1,0 +1,42 @@
+-> title
+
+Includes
+
+-> notes
+
+- GOAL: These aren't implemented yet. Get them
+setup after messing around with them a bit.
+
+- This is a draft.
+
+- This is implementation dependent. 
+
+-> p
+
+Includes provide a way to pull in the same 
+pieces of structure and functionality. 
+
+-> list
+
+- In my implementaiton, includes are stored
+in an `includes`` directory next to the
+`site``, and `content`` directories. 
+
+- Includes are called with:
+
+
+-> startcode
+
+-> include
+>> path: the_file.html
+
+
+-> endcode
+
+-> p
+
+This line needs to exist until the bug
+is fixed where a panic happens when 
+`endcode`` is the last thing in the file
+
+

@@ -58,13 +58,17 @@ fn do_copy(source_dir: &str, dest_dir: &str) -> Result<(), Error> {
             }
         } else {
             if p.extension().unwrap() == "neo" {
+                let html_path = dest_path.with_extension("html");
                 println!("PROCESSING: {}", p.as_os_str().to_str().unwrap());
                 let source = fs::read_to_string(p.as_os_str().to_str().unwrap()).unwrap();
                 let payload = parse(source.as_str()).unwrap().1;
-                // dbg!((p.display().to_string(), dest_path.display().to_string()));
-            } else {
-                fs::copy(p, dest_path);
+                let output = render_template(payload, env.clone(), "main.html");
+                fs::write(html_path, output).unwrap();
             }
+            // NOTE: for now, just always copy the source files over to
+            // easy examples. That will be put behind a config flag
+            // with the default being off.
+            fs::copy(p, dest_path);
         }
     }
     Ok(())

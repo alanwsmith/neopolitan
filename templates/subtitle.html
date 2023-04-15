@@ -1,13 +1,14 @@
-{% macro subtitle(data) %}
-{% for block in data.children %}
-{% if loop.first %}
+{%- from "text.html" import text -%}
+{%- macro subtitle(data) -%}
+{%- for block in data.children -%}
+{%- if loop.first -%}
 <div class="subtitle">
-  {% for token in block.children %} {{ token.text }}{% endfor %}
+  {{ text(block) }}
 </div>
 {% else %}
 <p>
-  {% for token in block.children %} {{ token.text }}{% endfor %}
+  {{ text(block) }}
 </p>
-{% endif %}
-{% endfor %}
-{% endmacro %}
+{%- endif -%}
+{%- endfor -%}
+{%- endmacro -%}

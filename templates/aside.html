@@ -1,11 +1,10 @@
-{% macro aside(data) %}
-<div class="aside{% for attribute in data.attributes %}{% if attribute.key == " class" %} {{attribute.value}}{%endif
-  %}{% endfor %}" {% for attribute in data.attributes %}{% if attribute.key !="class"
-  %}{{attribute.key}}="{{attribute.value}}" {%endif %}{% endfor %}>
-  {% for block in data.children %}
-  <p>
-    {%- for token in block.children %} {{ token.text }}{% endfor -%}
-  </p>
-  {% endfor %}
+{%- from "text.html" import text -%}
+{%- macro aside(data) -%}
+<div class="aside{%- for attribute in data.attributes -%}{%- if attribute.key == " class" -%} {{attribute.value}}{%endif
+  -%}{%- endfor -%}" {%- for attribute in data.attributes -%}{%- if attribute.key !="class"
+  -%}{{attribute.key}}="{{attribute.value}}" {%endif -%}{%- endfor -%}>
+  {%- for block in data.children -%}
+  <p>{{ text(block) }}</p>
+  {%- endfor -%}
 </div>
-{% endmacro %}
+{%- endmacro -%}

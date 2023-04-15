@@ -1,13 +1,10 @@
-{% macro h2 (data) %}
-  {% for block in data.children %}
-    {% if loop.first %}
-      <h2>
-        {%- for token in block.children %} {{ token.text }}{% endfor -%}
-      </h2>
-    {% else %}
-      <p>
-        {%- for token in block.children %} {{ token.text }}{% endfor -%}
-      </p>
-    {% endif %}
-  {% endfor %}
-{% endmacro %}
+{%- from "text.html" import text -%}
+{%- macro h2 (data) -%}
+{%- for block in data.children -%}
+{%- if loop.first %}
+<h2>{{ text(block) }}</h2>
+{%- else %}
+<p>{{ text(block) }}</p>
+{%- endif -%}
+{%- endfor -%}
+{%- endmacro -%}
