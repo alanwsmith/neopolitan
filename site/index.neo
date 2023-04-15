@@ -41,17 +41,12 @@ The checkboxes are for me to know which ones still need samples
 
 -> list
 
-- [] aside - The HTML <<link|
+- <<link|aside|/examples/aside.html>> - The HTML <<link|
 <aside>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside>> 
 tag
 
-- [] attributes - A collection of key, value metadata pairs for
-the page. I use it for the ID, date, status, etc... The 
-permitted and parsed values are left as an implementation 
-detail. My implementation is straight attributes like the
-rest of the sections but YAML or other formats could
-be used with a corresponding implementation engine.
+- <<link|attributes|/examples/attributes.html>> - Metadata for the page
 
 - [] blockquote - The HTML <<link|
 <blockquote>|

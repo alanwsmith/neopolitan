@@ -18,9 +18,15 @@ An aside with no attributes
 
 Results
 
--> aside
+-> startcode
+>> html
 
-An aside with no attributes
+<aside>
+  <p>An aside with no attributes</p>
+</aside>
+
+-> endcode
+
 
 -> h2
 
@@ -30,9 +36,9 @@ Example With Attributes
 -> startcode
 
 -> aside
->> class: example
+>> class: alfa 
 
-An asside with an attribute
+An aside with an attribute
 
 -> endcode
 
@@ -41,11 +47,21 @@ An asside with an attribute
 
 Results
 
--> aside
->> class: example
+-> startcode
 
-An asside with an attribute
+<aside class="alfa">
+  <p>An aside with an attributes</p>
+</aside>
 
--> p
 
-Placeholder
+-> endcode
+
+
+-> attributes
+>> date: 2023-04-15 03:30:26
+>> id: 2osatrptaxvb
+>> site: neopolitan 
+>> type: example 
+>> status: published
+
+

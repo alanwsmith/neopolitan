@@ -2,7 +2,9 @@
     --main-chocolate: #240a05;
     --main-vanilla: #fefaec;
     --main-strawberry: #f9a1bc;
+    --color-4: #444;
     --max-width: 68ch;
+    --border-radius-1: 0.3rem;
 }
 
 /* latin-ext */
@@ -189,6 +191,13 @@ pre {
   font-size: 0.92rem;
 }
 
+pre {
+  background-color: var(--color-4);
+  padding: 0.7rem;
+  border-radius: var(--border-radius-1);
+  margin-bottom: 1.3rem;
+}
+
 .subtitle {
   font-size: 1.2rem;
   color: var(--main-vanilla);
@@ -203,7 +212,11 @@ pre {
 
 p {
   margin-bottom: 1.3rem;
+}
 
+.example {
+  background: lightyellow;
+  font-style: italic;
 }
 
 
