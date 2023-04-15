@@ -14,8 +14,6 @@ use nom::IResult;
 pub fn todo_item(source: &str) -> IResult<&str, Block> {
     let (remainder, b) = tuple((multispace0, tag("["), take_until("]"), tag("] ")))(source)
         .map(|(x, z)| (x, z.2))?;
-
-    dbg!(&b);
     let status: Option<String> = if b.is_empty() {
         None
     } else {
