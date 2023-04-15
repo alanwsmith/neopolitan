@@ -23,6 +23,22 @@
 </head>
 
 <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/philosophies/index.html">Philosophies</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
   <main><h1>
   Neopoliltan Philosophies
 </h1>
@@ -71,7 +87,7 @@
 </p>
 
 <p>
-  See <a href="https:&#x2f;&#x2f;xkcd.com&#x2f;927&#x2f;">XKCD 927</a> for reference
+  See <a href="https://xkcd.com/927/">XKCD 927</a> for reference
 </p>
 
 
@@ -81,7 +97,7 @@
 
 
 
-<p> I&#x27;m  not  doing  an  convertion  for  HTML  escaping  in  the  process  that  makes  the  AST.  I&#x27;m  leaving  that  to  the  output  processor.  That&#x27;s  an  implementation  detail,  but  I  prefer  splitting  the  two  that  way.</p>
+<p> I&#x27;m  not  doing  an  conversion  for  HTML  escaping  in  the  process  that  makes  the  AST.  I&#x27;m  leaving  that  to  the  output  processor.  That&#x27;s  an  implementation  detail,  but  I  prefer  splitting  the  two  that  way.</p>
 
 
 
@@ -193,6 +209,40 @@
 
 <p> Several  sections  (like  notes  and  notes)  are  simply  alternate  versions  of  other  sections  (paragraphs  and  lists  for  example).  The  intent  it  to  provide  different  element  types  to  make  them  easier  to  categorize  and  style</p>
 
+
+
+
+
+<h3> Only  One  Style  For  Attributes</h3>
+
+
+
+<p> I  considered  two  types  of  attributes  for  sections.  One  that  would  go  directly  into  the  HTML  and  one  that  was  for  directives  that  would  only  be  used  for  processing.  For  example,  instead  of:</p>
+
+
+
+<pre><code class=""
+>-&gt; code
+&gt;&gt; rust
+&gt;&gt; class: alfa</code></pre>
+
+<p>
+  The <code>rust</code> line would get a separate starting token indicating that that string wouldn&#x27;t go directly to the output but was a processor instruction (which would let it know to add <code>language-rust</code> to the HTML attribute list).
+</p>
+
+<p>
+  It would have looked something like this:
+</p>
+
+
+<pre><code class=""
+>-&gt; code
+++ rust
+&gt;&gt; class: alfa</code></pre>
+
+<p>
+  I decided against that because it would require remembering which things were directives and which weren&#x27;t. For my implementation, it&#x27;s the responsibility of the processor to make the determination.
+</p>
 
 
 

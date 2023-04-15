@@ -44,6 +44,22 @@
 </head>
 
 <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/philosophies/index.html">Philosophies</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
   <main>
     {%- for section in payload.children -%}
     {%- if section.type == "AsideSection" -%}

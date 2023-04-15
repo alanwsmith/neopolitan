@@ -51,7 +51,7 @@ for reference
 
 Raw Text In The AST
 
-I'm not doing an convertion for HTML 
+I'm not doing an conversion for HTML 
 escaping in the process that makes the AST. 
 I'm leaving that to the output processor. 
 That's an implementation detail, but I
@@ -143,6 +143,56 @@ The intent it to provide different element
 types to make them easier to categorize
 and style
 
+-> h3
+
+Only One Style For Attributes
+
+I considered two types of attributes for
+sections. One that would go directly into
+the HTML and one that was for directives
+that would only be used for processing. 
+
+For example, instead of:
+
+-> startcode
+
+-> code
+>> rust
+>> class: alfa
+
+-> endcode
+
+-> p
+
+The `rust`` line would get a separate 
+starting token indicating that that 
+string wouldn't go directly to the output
+but was a processor instruction (which
+would let it know to add `language-rust``
+to the HTML attribute list).
+
+It would have looked something like this:
+
+-> startcode
+
+-> code
+++ rust
+>> class: alfa
+
+-> endcode
+
+-> p
+
+I decided against that because it would
+require remembering which things were
+directives and which weren't. 
+
+For my implementation, it's the 
+responsibility of the processor to make
+the determination. 
+
+
+
 
 -> h3
 
@@ -154,7 +204,7 @@ Just roll out to `-> html`
 -> attributes
 >> date: 2023-04-14 14:39:42
 >> id: 2oqfas7uyfv8
->> site: neopolitan 
->> type: post
->> status: draft 
+>> site: neo
+>> type: post 
+>> status: published 
 

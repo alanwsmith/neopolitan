@@ -1,8 +1,9 @@
 use crate::block::block::Block;
 use crate::section::aside::*;
 use crate::section::attributes::*;
+use crate::section::results::*;
 use crate::section::attributes_for_section::*;
-use crate::section::blockquote::blockquote;
+use crate::section::blockquote::*;
 use crate::section::blurb::*;
 use crate::section::code_section::*;
 use crate::section::code_start_end::*;
@@ -149,6 +150,10 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    ResultsSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Block>,
+    },
     ScriptSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Block>,
@@ -273,6 +278,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 .map(|t| todo(t.1).unwrap().1),
             tuple((tag("-> todos\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| todo(t.1).unwrap().1),
+            tuple((tag("-> results\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| results(t.1).unwrap().1),
         )),
     ))(source)?;
     Ok((remainder, sec))

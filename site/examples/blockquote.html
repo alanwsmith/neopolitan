@@ -40,32 +40,48 @@
 
     </header>
   <main><h1>
-  Includes
-</h1>
-
-<p>
-  Includes provide a way to pull in the same pieces of structure and functionality.
+  blockquote section
+</h1><p>
+  For the HTML &lt;blockquote&gt; tag.
 </p>
+<h2>Example Without Attributes</h2>
+<pre><code class=""
+>-&gt; blockquote 
+
+A blockquote without attributes</code></pre>
 
 
-<ul>
+<h3> Results</h3>
+
+
+
+<pre><code class="
   
-  <li>
-    <p>
-      In my implementaiton, includes are stored in an <code>includes</code> directory next to the <code>site</code>, and <code>content</code> directories. - Includes are called with:
-    </p>
-    </li>
-  
-</ul>
+  language-html"
+>&lt;blockquote&gt;
+  &lt;p&gt;A blockquote without attributes&lt;&#x2f;p&gt;
+&lt;&#x2f;blockquote&gt;</code></pre>
+<h2>Example with attributes</h2>
+<pre><code class=""
+>-&gt; blockquote
+&gt;&gt; cite: https:&#x2f;&#x2f;www.example.com&#x2f;
+
+A blockquote with attributes</code></pre>
+
+
+<h3> Results</h3>
+
+
 
 <pre><code class=""
->-&gt; include
-&gt;&gt; path: the_file.html</code></pre>
-
-<p>
-  This line needs to exist until the bug is fixed where a panic happens when <code>endcode</code> is the last thing in the file
-</p>
-
+>&lt;blockquote cite=&quot;https:&#x2f;&#x2f;www.example.com&quot;&gt;
+  &lt;p&gt;A blockquote with attributes&lt;&#x2f;p&gt;
+&lt;&#x2f;blockquote&gt;</code></pre>
+<h2>Output</h2>
+<blockquote cite="https://www.example.com/">
+<p>A blockquote with attributes</p>
+<p>and some more stuff</p>
+</blockquote>
 </main>
 
 

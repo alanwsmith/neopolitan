@@ -14,7 +14,7 @@ doing it.
 [] Fix bug where whitespace at the end of a 
 section name cause a panic
 
-[] Fix bug where whatspace at the end of 
+[] Fix bug where whitespace at the end of 
 a block of content causes the next one to 
 be appended directly instead of making its
 own block
@@ -23,4 +23,17 @@ own block
 
 [] Fix bug where a panic happens if
 `endcode`` is the last thing in a file
+
+[] Setup so you don't have to add a `-> p``
+after an `-> endcode``. Just have it to
+automatically. 
+
+
+-> attributes
+>> date: 2023-04-15 10:06:07
+>> id: 2osx1iiz9brc
+>> site: neo 
+>> type: post
+>> status: published
+
 

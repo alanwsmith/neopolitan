@@ -1,6 +1,6 @@
 -> title
 
-Neopolitan
+Welcome To Neopolitan
 
 -> subtitle
 
@@ -8,7 +8,7 @@ A plain-text format for websites
 
 -> note
 
-This site is an early draft. I normally wouldn't 
+This site is an early draft. I wouldn't normally 
 publish something this rough but I'm doing the 
 "build in public" thing and using this site as a 
 live test bed.
@@ -48,20 +48,20 @@ tag
 
 - <<link|attributes|/examples/attributes.html>> - Metadata for the page
 
-- [] blockquote - The HTML <<link|
+- <<link|blockquote|/examples/blockquote.html>> - The HTML <<link|
 <blockquote>|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote>>
 tag
 
-- [] blurb - Not rendered on the page. Used as meta 
-data for links into the page. 
+- <<link|blurb|/examples/blurb.html">> - Not rendered on the page. 
+Used as meta data for links into the page.
 
-- [] code - Code blocks like fenced code blocks but you can add 
-an arbitrary attributes to them. 
+- <<link|code|/examples/code.html>> - Code blocks like fenced 
+code blocks but you can add an arbitrary attributes to them.
 
 - [] comment - Parsed like text sections in the AST but with the
 expectation that they won't output unless the implementation
-is specifically designed to do so. 
+is specifically designed to do so.
 
 - [] css - A place to put CSS that will be inlined in the page
 

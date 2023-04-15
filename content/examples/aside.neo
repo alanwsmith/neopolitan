@@ -4,46 +4,11 @@ aside section
 
 -> h2
 
-Example Without Attributes
-
--> startcode
-
--> aside
-
-An aside with no attributes
-
--> endcode
-
--> h3
-
-Results
-
--> startcode
->> html
-
-<aside>
-  <p>An aside with no attributes</p>
-</aside>
-
--> endcode
-
 
 -> h2
 
-Example With Attributes
+Example Without Attributes
 
-
--> startcode
-
--> aside
->> class: alfa 
-
-An aside with an attribute
-
--> endcode
-
-
--> h3
 
 Results
 
@@ -55,6 +20,23 @@ Results
 
 
 -> endcode
+
+-> h2
+
+Output
+
+-> aside
+>> class: alfa 
+
+An aside with an attribute
+
+with some more
+stuff
+
+and some more
+
+
+
 
 
 -> attributes

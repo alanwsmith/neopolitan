@@ -1,8 +1,13 @@
 {% from "text.html" import text %}
 {% macro blockquote(data) %}
-{% for block in data.children %}
-<blockquote>
-  {{ text(block) }}
+<blockquote
+  {%- for attribute in data.attributes %} {{attribute.key}}="
+{%- autoescape false -%}
+  {{attribute.value}}
+  {%- endautoescape -%}
+  "{% endfor %}>
+{% for block in data.children -%}
+  <p>{{ text(block) }}</p>
+{% endfor -%}
 </blockquote>
-{% endfor %}
 {% endmacro %}

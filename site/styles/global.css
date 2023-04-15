@@ -1,5 +1,6 @@
 :root {
     --main-chocolate: #240a05;
+    --color-1: #fefaec;
     --main-vanilla: #fefaec;
     --main-strawberry: #f9a1bc;
     --color-4: #444;
@@ -117,7 +118,7 @@ h6 {
 
 
 h1 {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   border-bottom: 1px solid;
 }
 h2 {
@@ -144,19 +145,44 @@ body {
   font-size: 1.1rem;
   font-weight: 300;
 }
+
 header {
-  padding-top: 18px;
-  padding-bottom: 4px;
+  padding-top: 0.9rem;
+  padding-bottom: 0.5rem;
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  border-bottom: 1px solid #888;
 }
+
+nav > ul {
+    list-style-type: none;
+    padding-left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+nav > ul > li {
+    display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+nav > ul > li:nth-last-child(n+2)::after {
+    display: inline-block;
+    color: var(--color-1);
+    content: '|';
+    font-size: 80%;
+    font-weight: bold;
+    padding: 0 3px;
+}
+
+
 main {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
 }
+
 footer {
   width: 100%;
   max-width: var(--max-width);
@@ -166,8 +192,11 @@ footer {
   padding-bottom: 12px;
   font-size: 0.9rem;
 }
+
 p {
   max-width: 68ch;
+  margin-top: 0.6rem;
+  margin-bottom: 0.7rem;
 }
 
 code {
@@ -199,7 +228,7 @@ pre {
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--main-vanilla);
 }
 
@@ -208,10 +237,6 @@ pre {
   margin: 1.4rem;
   padding: 1rem;
   border-radius: 0.4rem;
-}
-
-p {
-  margin-bottom: 1.3rem;
 }
 
 .example {

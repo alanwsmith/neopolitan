@@ -23,12 +23,28 @@
 </head>
 
 <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/philosophies/index.html">Philosophies</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
   <main><h1>
-  Neopolitan
+  Welcome To Neopolitan
 </h1><div class="subtitle">
   A plain-text format for websites
 </div>
-<div class="note"><p>This site is an early draft. I normally wouldn&#x27;t publish something this rough but I&#x27;m doing the &quot;build in public&quot; thing and using this site as a live test bed.</p><p>Please pardon the mess.</p></div>
+<div class="note"><p>This site is an early draft. I wouldn&#x27;t normally publish something this rough but I&#x27;m doing the &quot;build in public&quot; thing and using this site as a live test bed.</p><p>Please pardon the mess.</p></div>
 <h2>Introduction</h2>
 
 <p>
@@ -36,7 +52,7 @@
 </p>
 
 <p>
-  ... TKTKTK See the <a href="&#x2f;draft-home-page.html">drafts page</a> for more of the work in progress intro ...
+  ... TKTKTK See the <a href="/draft-home-page.html">drafts page</a> for more of the work in progress intro ...
 </p>
 
 
@@ -47,36 +63,54 @@
   
   <li>
     <p>
-      <a href="&#x2f;examples&#x2f;aside.html">aside</a> - The HTML <a href="
-https:&#x2f;&#x2f;developer.mozilla.org&#x2f;en-US&#x2f;docs&#x2f;Web&#x2f;HTML&#x2f;Element&#x2f;aside">
+      <a href="/examples/aside.html">aside</a> - The HTML <a href="
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside">
 &lt;aside&gt;</a> tag
     </p>
     </li>
   
   <li>
     <p>
-      <a href="&#x2f;examples&#x2f;attributes.html">attributes</a> - Metadata for the page
+      <a href="/examples/attributes.html">attributes</a> - Metadata for the page
     </p>
     </li>
   
   <li>
     <p>
-      [] blockquote - The HTML <a href="
-https:&#x2f;&#x2f;developer.mozilla.org&#x2f;en-US&#x2f;docs&#x2f;Web&#x2f;HTML&#x2f;Element&#x2f;blockquote">
+      <a href="/examples/blockquote.html">blockquote</a> - The HTML <a href="
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
 &lt;blockquote&gt;</a> tag
     </p>
     </li>
   
   <li>
     <p>
-      [] blurb - Not rendered on the page. Used as meta data for links into the page. - [] code - Code blocks like fenced code blocks but you can add an arbitrary attributes to them. - [] comment - Parsed like text sections in the AST but with the expectation that they won&#x27;t output unless the implementation is specifically designed to do so. - [] css - A place to put CSS that will be inlined in the page
+      <a href="/examples/blurb.html"">blurb</a> - Not rendered on the page. Used as meta data for links into the page.
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      <a href="/examples/code.html">code</a> - Code blocks like fenced code blocks but you can add an arbitrary attributes to them.
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      [] comment - Parsed like text sections in the AST but with the expectation that they won&#x27;t output unless the implementation is specifically designed to do so.
+    </p>
+    </li>
+  
+  <li>
+    <p>
+      [] css - A place to put CSS that will be inlined in the page
     </p>
     </li>
   
   <li>
     <p>
       [] div - A <a href="
-https:&#x2f;&#x2f;developer.mozilla.org&#x2f;en-US&#x2f;docs&#x2f;Web&#x2f;HTML&#x2f;Element&#x2f;div
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
 ">&lt;div&gt;</a> wrapper that can be used to add attributes to sections of content
     </p>
     </li>
@@ -217,9 +251,9 @@ https:&#x2f;&#x2f;developer.mozilla.org&#x2f;en-US&#x2f;docs&#x2f;Web&#x2f;HTML&
 
 <h2>Under Consideration</h2>
 <p>These are other items I&#x27;m looking at adding. The mostly correspond with the base HTML tags. - button - I&#x27;m keeping this one on the list as a reminder but am not planning to do it unless I hit a solid use case for it. I expect the widgets or web components to be a better approach. - canvas - Would basically just be to drop an element on a page with some attributes. Same basic approach as an image. - details - The HTML <a href="
-https:&#x2f;&#x2f;developer.mozilla.org&#x2f;en-US&#x2f;docs&#x2f;Web&#x2f;HTML&#x2f;Element&#x2f;details">details</a> tag</p>
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details">details</a> tag</p>
 <p>- dlist - The HTML <a href="
-https:&#x2f;&#x2f;developer.mozilla.org&#x2f;en-US&#x2f;docs&#x2f;Web&#x2f;HTML&#x2f;Element&#x2f;dl">&lt;dl&gt;</a> description list - TBD: Use a <code>&gt;</code> to identify the detail items after the <code>-</code> for the initial description</p>
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl">&lt;dl&gt;</a> description list - TBD: Use a <code>&gt;</code> to identify the detail items after the <code>-</code> for the initial description</p>
 <p>- figure - The HTML figure element</p>
 <p>- menu - the menu tag</p>
 <p>- nav - the nav tag</p>
