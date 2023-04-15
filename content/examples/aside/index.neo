@@ -2,43 +2,31 @@
 
 aside section
 
--> h2
-
-Example Without Attributes
-
--> startcode
+-> startneoexample
 
 -> aside
 
-Tear a thin sheet from the yellow pad.
+Tear a thin sheet from 
+the yellow pad.
 
-Glue the sheet to the dark blue background.
+Glue the sheet to the 
+dark blue background.
 
--> endcode
-
--> results
-
-<aside>
-  <p>Tear a thin sheet from the yellow pad.</p>
-  <p>Glue the sheet to the dark blue background.</p>
-</aside>
+-> endneoexample
 
 
--> h2
 
-Output
+-> startneoexample
 
 -> aside
->> class: alfa 
+>> class: alfa
 
-An aside with an attribute
+Paper will dry out when wet.
 
-with some more
-stuff
+A flat pack takes less 
+luggage space.
 
-and some more
-
-
+-> endneoexample
 
 
 

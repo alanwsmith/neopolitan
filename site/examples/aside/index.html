@@ -34,24 +34,42 @@
       </nav>
 
     </header>
-  <main><div class="debug">DEBUG: Section type: Title</div><h1>
+  <main><h1>
   aside section
-</h1><div class="debug">DEBUG: Section type: H2Section</div>
-<h2>Example Without Attributes</h2><div class="debug">DEBUG: Section type: CodeStartEndSection</div>
+</h1>
+<div class="neoexample">
+<h6>Example</h6>
 <pre><code class=""
 >-&gt; aside
 
-Tear a thin sheet from the yellow pad.
+Tear a thin sheet from 
+the yellow pad.
 
-Glue the sheet to the dark blue background.</code></pre><div class="debug">DEBUG: Section type: ResultsSection</div>
-<pre><code class=""
->&lt;aside&gt;
+Glue the sheet to the 
+dark blue background.</code></pre>
+
+<h6>Result</h6>
+<pre class="language-html"><code>&lt;aside&gt;
   &lt;p&gt;Tear a thin sheet from the yellow pad.&lt;&#x2f;p&gt;
   &lt;p&gt;Glue the sheet to the dark blue background.&lt;&#x2f;p&gt;
-&lt;&#x2f;aside&gt;</code></pre><div class="debug">DEBUG: Section type: H2Section</div>
-<h2>Output</h2><div class="debug">DEBUG: Section type: AsideSection</div><aside class="alfa "><p>An aside with an attribute</p><p>with some more stuff</p><p>and some more</p></aside><div class="debug">DEBUG: Section type: AttributesSection</div></main>
+&lt;&#x2f;aside&gt;</code></pre>
+</div>
+<div class="neoexample">
+<h6>Example</h6>
+<pre><code class=""
+>-&gt; aside
+&gt;&gt; class: alfa
 
+Paper will dry out when wet.
 
+A flat pack takes less 
+luggage space.</code></pre>
+
+<h6>Result</h6>
+<pre class="language-html"><code>&lt;aside class=&quot;alfa&quot;&gt;
+  &lt;p&gt;Paper will dry out when wet.&lt;&#x2f;p&gt;
+  &lt;p&gt;A flat pack takes less luggage space.&lt;&#x2f;p&gt;
+&lt;&#x2f;aside&gt;</code></pre>
+</div></main>
 </body>
-
 </html>

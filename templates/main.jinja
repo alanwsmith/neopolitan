@@ -59,7 +59,6 @@
     </header>
   <main>
     {%- for section in payload.children -%}
-    <div class="debug">DEBUG: Section type: {{ section.type }}</div>
     {%- if section.type == "AsideSection" -%}
     {{ aside(section) }}
     {%- elif section.type == "BlockquoteSection" -%}
@@ -105,8 +104,5 @@
     {%- endif -%}
     {%- endfor -%}
   </main>
-
-
 </body>
-
 </html>

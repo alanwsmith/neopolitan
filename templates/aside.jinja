@@ -2,11 +2,7 @@
 {%- macro aside(data) -%}
 <aside 
   {%- for attribute in data.attributes %} {{attribute.key}}="{{attribute.value}}"{% endfor %}>
-  {%- for block in data.children -%}
-  <p>{{ text(block) }}</p>
-  {%- endfor -%}
+  {%- for block in data.children %}
+  <p>{{ text(block) }}</p>{%- endfor %}
 </aside>
 {%- endmacro -%}
-
-
-

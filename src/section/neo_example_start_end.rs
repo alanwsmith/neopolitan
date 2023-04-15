@@ -68,7 +68,7 @@ mod test {
         let expected = Wrapper::Page {
             children: Some(vec![Section::NeoExampleStartEndSection {
                 attributes: None,
-                html: Some("<aside><p>the text</p></aside>".to_string()),
+                html: Some("<aside>\n  <p>the text</p>\n</aside>".to_string()),
                 raw: Some(Block::RawContent {
                     text: Some("-> aside\n\nthe text".to_string()),
                 }),
