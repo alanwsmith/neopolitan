@@ -1,0 +1,15 @@
+{%- from "text.jinja" import text -%}
+{%- macro notes (data) -%}
+<div class="notes">
+  <ul>
+    {%- for note in data.children %}
+    <li>{%- for block in note.children %}
+      <p>
+        {{ text(block) }}
+      </p>
+      {%- endfor %}
+    </li>
+    {%- endfor %}
+  </ul>
+</div>
+{%- endmacro -%}

@@ -4,6 +4,9 @@ Neopolitan TODOs
 
 -> todo
 
+[] Remove the `wc`` web component. Just use
+the `html`` section for that
+
 [] Setup TODO lists to actually show up
 
 

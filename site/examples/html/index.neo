@@ -1,0 +1,31 @@
+-> title
+
+Section: html
+
+A raw HTML section. Whatever you 
+put in goes directly into the output file.
+
+-> startneoexample
+
+-> html
+
+<p class="tango">
+Cut the pie into large parts.
+</p>
+
+-> endneoexample
+
+-> notes
+
+- Attributes are available, but they don't
+do anything in the reference implementation. 
+
+
+-> attributes
+>> date: 2023-04-15 18:19:40
+>> id: 2otv2iemzcah
+>> site: neo 
+>> type: example 
+>> status: published
+
+

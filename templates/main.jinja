@@ -10,9 +10,11 @@
 {%- from "h4.jinja" import h4 -%}
 {%- from "h5.jinja" import h5 -%}
 {%- from "h6.jinja" import h6 -%}
+{%- from "html.jinja" import html -%}
 {%- from "list.jinja" import list -%}
 {%- from "neoexample.jinja" import neoexample -%}
 {%- from "note.jinja" import note -%}
+{%- from "notes.jinja" import notes -%}
 {%- from "results.jinja" import results -%}
 {%- from "subtitle.jinja" import subtitle -%}
 {%- from "paragraphs.jinja" import paragraphs -%}
@@ -91,12 +93,16 @@
     {{ h5(section) }}
     {%- elif section.type == "H6Section" -%}
     {{ h6(section) }}
+    {%- elif section.type == "HTMLSection" -%}
+    {{ html(section) }}
     {%- elif section.type == "List" -%}
     {{ list(section) }}
     {%- elif section.type == "NeoExampleStartEndSection" -%}
     {{ neoexample(section) }}
     {%- elif section.type == "NoteSection" -%}
     {{ note(section) }}
+    {%- elif section.type == "NotesSection" -%}
+    {{ notes(section) }}
     {%- elif section.type == "Paragraphs" -%}
     {{ paragraphs(section) }}
     {%- elif section.type == "ResultsSection" -%}

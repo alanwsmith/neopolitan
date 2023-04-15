@@ -69,9 +69,9 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
 >> wrapper that can be used to add attributes to sections 
 of content
 
-- [] <<link|h1-h6|/examples/headings/index.html>> - HTML heading tags
+- <<link|h1-h6|/examples/headings/index.html>> - HTML heading tags
 
-- [] <<link|html|/examples/html/index.html>> - for raw html blocks that go directly to 
+- <<link|html|/examples/html/index.html>> - for raw html blocks that go directly to 
 the output without further processing
 
 - [] <<link|image|/examples/image/index.html>> - An image call with the alt text coming
@@ -85,7 +85,7 @@ display for examples on the neopolitan documentation site
 - [] <<link|note|/examples/note/index.html>> - A basic div wrapper with a `note`` attribute and 
 any other attributes that are passed in
 
-- [] <<link|notes|/examples/notes/index.html>> - A list style notes section. Same as an unordered
+- <<link|notes|/examples/notes/index.html>> - A list style notes section. Same as an unordered
 lists but with a div around it in the output (based on 
 implementation)
 
@@ -112,12 +112,6 @@ show output from `-> code`neo` blocks
 - [] <<link|vimeo|/examples/vimeo/index.html>> - A vimeo embed
 
 - [] <<link|warning|/examples/warning/index.html>> - A div block with a warning class on it
-
-- [] <<link|wc|/examples/wc/index.html>> - A web component. The first attribute is just
-a key with no value. It's the name that is used to create
-the web component. Attributes are inserted directly 
-and the content is output in between the components
-tags. No additional processing is done to the content.
 
 - [] <<link|widget|/examples/widget/index.html>> - The first attribute is the name of the
 widget which is use by the processor to render the
