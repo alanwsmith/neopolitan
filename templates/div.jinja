@@ -1,7 +1,12 @@
-{% from "text.jinja" import text %}
-{% macro div(data) %}
-<div>
-{% for block in data.children %}
-  {{ text(block) }}
-{% endfor %}</div>
-{% endmacro %}
+{% from "text.jinja" import text -%}
+{%- macro div(data) -%}
+<div
+
+  {%- for attribute in data.attributes -%}
+  {{ " " }}{{ attribute.key }}="{{attribute.value}}"
+{%- endfor -%}>
+{%- for block in data.children %}
+  <p>{{ text(block) }}</p>
+{%- endfor %}
+</div>
+{%- endmacro -%}
