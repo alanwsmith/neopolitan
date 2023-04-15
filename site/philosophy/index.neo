@@ -235,7 +235,25 @@ a `-> textarea`` section. But, the section keeps
 the look consistent with the rest of the page
 and I think it looks nicer than that HTML tag.
 
+-> h3
 
+Either HTML or Neopolitan
+
+You can't put HTML in any section other
+than an `-> html`neo` section. That prevents
+issues with escaping and parsing characters
+that are meaningful in HTML (e.g. `<``, `>``, 
+etc...)
+
+Most HTML tags have neopolitan tags mapped 
+to them. Anything that doesn't or needs more
+nuance can be handled with an `-> html`neo`
+section. 
+
+If you're trying to do something that that
+doesn't handle, you're beyond the scope
+of the format and will have to find your
+own solution.
 
 
 -> attributes

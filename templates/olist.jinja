@@ -1,0 +1,12 @@
+{%- from "text.jinja" import text -%}
+{%- macro olist (data) -%}
+<ol
+{%- for attribute in data.attributes %}{{ " " }}{{attribute.key}}="{{attribute.value}}"{% endfor -%}>
+  {%- for item in data.children %}
+  <li>{%- for block in item.children %}
+    <p>{{ text(block) }}</p>
+    {%- endfor %}
+  </li>
+  {%- endfor %}
+</ol>
+{%- endmacro -%}

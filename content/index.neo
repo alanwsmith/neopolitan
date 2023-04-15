@@ -82,17 +82,17 @@ from the body of the section
 - <<link|neoexample|/examples/neoexample/index.html>> - A
 display for examples on the neopolitan documentation site
 
-- [] <<link|note|/examples/note/index.html>> - A basic div wrapper with a `note`` attribute and 
+- <<link|note|/examples/note/index.html>> - A basic div wrapper with a `note`` attribute and 
 any other attributes that are passed in
 
 - <<link|notes|/examples/notes/index.html>> - A list style notes section. Same as an unordered
 lists but with a div around it in the output (based on 
 implementation)
 
-- [] <<link|olist|/examples/olist/index.html>> - An ordered list
+- <<link|olist|/examples/olist/index.html>> - An ordered list
 
 - [] <<link|p|/examples/p/index.html>> - Basic text paragraph tags that are not otherwise 
-contained in a div. 
+contained in a div.
 
 - [] <<link|pre|/examples/pre/index.html>> - A pre tag
 
@@ -117,7 +117,7 @@ show output from `-> code`neo` blocks
 widget which is use by the processor to render the
 content. 
 
-- [] <<link|youtube|/examples/youtube/index.html> -  A youtube embed
+- [] <<link|youtube|/examples/youtube/index.html>> -  A youtube embed
 
 
 -> h2

@@ -16,6 +16,7 @@
 {%- from "neoexample.jinja" import neoexample -%}
 {%- from "note.jinja" import note -%}
 {%- from "notes.jinja" import notes -%}
+{%- from "olist.jinja" import olist -%}
 {%- from "results.jinja" import results -%}
 {%- from "subtitle.jinja" import subtitle -%}
 {%- from "paragraphs.jinja" import paragraphs -%}
@@ -61,6 +62,8 @@
 {{ note(section) }}
 {%- elif section.type == "NotesSection" -%}
 {{ notes(section) }}
+{%- elif section.type == "OrderedListSection" -%}
+{{ olist(section) }}
 {%- elif section.type == "Paragraphs" -%}
 {{ paragraphs(section) }}
 {%- elif section.type == "ResultsSection" -%}

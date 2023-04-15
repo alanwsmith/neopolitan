@@ -1,0 +1,30 @@
+-> title
+
+Section: olist
+
+An ordered list
+
+-> startneoexample
+
+-> olist
+
+- The dry wax protects the 
+deep scratch.
+
+The marsh will freeze when 
+cold enough.
+
+- Twist the valve and release 
+hot steam.
+
+-> endneoexample
+
+
+-> attributes
+>> date: 2023-04-15 19:37:35
+>> id: 2ou4we8zxrdh
+>> site: neo
+>> type: example
+>> status: published
+
+

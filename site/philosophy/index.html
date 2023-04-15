@@ -121,6 +121,9 @@
 <h3>Convenience Sections</h3>
 <p>Several sections exist purely for convenience. For example, it wouldn&#x27;t be that hard to make a <code>-&gt; div</code> section with a <code>&gt;&gt; class: warning</code> on it, but I do that so often it&#x27;s nicer to have a <code>-&gt; warning</code> section.</p>
 <p>This also goes for sections that are nothing more than aliases for standard HTML tags. For example, adding a <code>&lt;textarea&gt;</code> with any necessary attributes is not much more work than making a <code>-&gt; textarea</code> section. But, the section keeps the look consistent with the rest of the page and I think it looks nicer than that HTML tag.</p>
+<h3>Either HTML or Neopolitan</h3>
+<p>You can&#x27;t put HTML in any section other than an <code>-&gt; html</code> section. That prevents issues with escaping and parsing characters that are meaningful in HTML (e.g. <code>&lt;</code>, <code>&gt;</code>, etc...)</p>
+<p>Most HTML tags have neopolitan tags mapped to them. Anything that doesn&#x27;t or needs more nuance can be handled with an <code>-&gt; html</code> section. If you&#x27;re trying to do something that that doesn&#x27;t handle, you&#x27;re beyond the scope of the format and will have to find your own solution.</p>
 </main>
 </body>
 </html>
