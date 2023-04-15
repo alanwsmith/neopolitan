@@ -79,6 +79,9 @@ from the body of the section
 
 - [] list - Unordered lists
 
+- <<link|neoexample|/examples/neoexample/index.html>> - A
+display for examples on the neopolitan documentation site
+
 - [] note - A basic div wrapper with a `note`` attribute and 
 any other attributes that are passed in
 

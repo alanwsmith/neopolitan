@@ -1,0 +1,36 @@
+-> title
+
+Section: neoexample
+
+This section is for producing examples on the
+neopolitan website. It takes a neopolitan sample 
+as input and outputs the sample itself as well
+as the rendered HTML inside a code block so
+it can be examined. 
+
+I haven't setup a way for it to display itself
+because this is the only page where that's
+necessary. If you're interested, take a look
+at the source file (TODO: link the source file)
+
+
+> startneoexample
+
+-> aside
+>> class: alfa
+
+This is an `-> aside`neo` example with an 
+`alfa`` class set as an attribute.
+
+> endneoexample
+
+
+
+-> attributes
+>> date: 2023-04-15 12:00:05
+>> id: 2otasdc8knf0
+>> site: neo 
+>> type: post
+>> status: published
+
+
