@@ -2,6 +2,7 @@
 use minijinja::context;
 use minijinja::Environment;
 use minijinja::Source;
+use minijinja::AutoEscape;
 use neopolitan::parse::parse;
 use neopolitan::wrapper::wrapper::*;
 use std::fs;
@@ -26,6 +27,13 @@ fn main() {
 fn create_env(path: &str) -> Environment<'static> {
     let mut env = Environment::new();
     env.set_source(Source::from_path(path));
+    env.set_auto_escape_callback(|name| {
+    if matches!(name.rsplit('.').next().unwrap_or(""), "html" | "jinja") {
+        AutoEscape::Html
+    } else {
+        AutoEscape::None
+    }
+});
     env
 }
 
