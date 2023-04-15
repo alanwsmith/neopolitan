@@ -132,6 +132,17 @@ but decided against it. Better to just
 roll out to an `-> html` section for that
 based of the complexity. 
 
+-> h3
+
+Sections For Styling
+
+Several sections (like notes and notes)
+are simply alternate versions of other 
+sections (paragraphs and lists for example). 
+The intent it to provide different element
+types to make them easier to categorize
+and style
+
 
 -> h3
 

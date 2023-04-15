@@ -24,54 +24,34 @@
 
 <body>
   <main><h1>
-  Links and Link References
-</h1><div class="note"><p>This is still a draft</p></div>
+  aside section
+</h1>
+<h2>Example Without Attributes</h2>
+<pre><code class=""
+>-&gt; aside
+
+An aside with no attributes</code></pre>
+
+
+<h3> Results</h3>
+
+
+<div class="aside"><p>An aside with no attributes</p></div>
+<h2>Example With Attributes</h2>
+<pre><code class=""
+>-&gt; aside
+&gt;&gt; class: example
+
+An asside with an attribute</code></pre>
+
+
+<h3> Results</h3>
+
+
+<div class="aside"><p>An asside with an attribute</p></div>
 
 <p>
-  Links are done with one of the following options
-</p>
-
-
-<pre><code class="
-  "
-># not yet implemend
-&lt;&lt;link|TEXT|URL&gt;&gt;
-
-# not yet implemend
-&lt;&lt;link|TEXT|URL|KEY: VALUE|KEY: ETC...&gt;&gt;</code></pre>
-
-<p>
-  The links can span multiple lines like this:
-</p>
-
-
-<pre><code class="
-  
-  language-neo"
->&gt;text&gt;
-https:&#x2f;&#x2f;www.example.com&#x2f;&gt;
-
-or
-
-&lt;&lt;link|
-https:&#x2f;&#x2f;www.example.com&#x2f;|
-key: value|
-key: value&gt;&gt;</code></pre>
-<h2>Reference Links</h2>
-<p>The links don&#x27;t have to have the URL in them directly, they can be reference to links stored in a <code>-&gt; links</code> section</p>
-<pre><code class="
-  
-  language-neo
-
-&lt;&lt;l|some text|ref_name&gt;&gt;
-
--&gt; links
-
-- ref_name"
-></code></pre>
-
-<p>
-  As long as it mathces it&#x27;ll be used for the link.
+  Placeholder
 </p>
 
 </main>

@@ -1,0 +1,51 @@
+-> title
+
+aside section
+
+-> h2
+
+Example Without Attributes
+
+-> startcode
+
+-> aside
+
+An aside with no attributes
+
+-> endcode
+
+-> h3
+
+Results
+
+-> aside
+
+An aside with no attributes
+
+-> h2
+
+Example With Attributes
+
+
+-> startcode
+
+-> aside
+>> class: example
+
+An asside with an attribute
+
+-> endcode
+
+
+-> h3
+
+Results
+
+-> aside
+>> class: example
+
+An asside with an attribute
+
+-> p
+
+Placeholder

@@ -52,6 +52,8 @@
     {{ blockquote(section) }}
     {%- elif section.type == "CodeSection" -%}
     {{ code(section) }}
+    {%- elif section.type == "CodeStartEndSection" -%}
+    {{ code(section) }}
     {%- elif section.type == "DivSection" -%}
     {{ div(section) }}
     {%- elif section.type == "H1Section" -%}
@@ -85,6 +87,7 @@
     {%- endif -%}
     {%- endfor -%}
   </main>
+
 
 </body>
 
