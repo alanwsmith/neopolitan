@@ -43,13 +43,19 @@ fn do_copy(source_dir: &str, dest_dir: &str) -> Result<(), Error> {
         } else {
             if p.extension().unwrap() == "neo" {
                 let html_path = dest_path.with_extension("html");
-                println!("PROCESSING: {}", p.as_os_str().to_str().unwrap());
+                println!("File: {}", p.as_os_str().to_str().unwrap());
                 let source = fs::read_to_string(p.as_os_str().to_str().unwrap()).unwrap();
                 let mut payload = parse(source.as_str()).unwrap().1;
                 let mut source_type = get_type(&payload);
                 source_type.push_str(".jinja");
-                let output = render_template(payload, env.clone(), source_type.as_str());
-                fs::write(html_path, output).unwrap();
+                let should_publish = should_publish(&payload);
+                if should_publish == "y".to_string() {
+                    println!("- Rendering");
+                    let output = render_template(payload, env.clone(), source_type.as_str());
+                    fs::write(html_path, output).unwrap();
+                } else {
+                    println!("- Skipping");
+                }
             }
             // NOTE: for now, just always copy the source files over to
             // easy examples. That will be put behind a config flag
@@ -70,6 +76,31 @@ fn get_type(payload: &Wrapper) -> String {
                             match section_attribute {
                                 Attribute { key, value } => {
                                     if key.as_ref().unwrap() == "type" {
+                                        return value.as_ref().unwrap().trim().to_string();
+                                    }
+                                }
+                                _ => {}
+                            }
+                        }
+                    }
+                    _ => {}
+                }
+            }
+        }
+    }
+    "default".to_string()
+}
+
+fn should_publish(payload: &Wrapper) -> String {
+    match &payload {
+        Wrapper::Page { children } => {
+            for section in children.as_ref().unwrap() {
+                match section {
+                    Section::AttributesSection { attributes, .. } => {
+                        for section_attribute in attributes.as_ref().unwrap() {
+                            match section_attribute {
+                                Attribute { key, value } => {
+                                    if key.as_ref().unwrap() == "publish" {
                                         return value.as_ref().unwrap().trim().to_string();
                                     }
                                 }
