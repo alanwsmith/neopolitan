@@ -20,6 +20,7 @@
 {%- from "pre.jinja" import pre -%}
 {%- from "results.jinja" import results -%}
 {%- from "subtitle.jinja" import subtitle -%}
+{%- from "textarea.jinja" import textarea -%}
 {%- from "todo.jinja" import todo -%}
 {%- from "paragraphs.jinja" import paragraphs -%}
 {%- from "title.jinja" import title -%}
@@ -74,6 +75,8 @@
 {{ results(section) }}
 {%- elif section.type == "Subtitle" -%}
 {{ subtitle(section) }}
+{%- elif section.type == "TextareaSection" -%}
+{{ textarea(section) }}
 {%- elif section.type == "Title" -%}
 {{ title(section) }}
 {%- elif section.type == "ToDoSection" -%}

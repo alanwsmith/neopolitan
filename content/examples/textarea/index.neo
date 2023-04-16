@@ -3,11 +3,38 @@
 Seciton: textarea
 
 
+-> h2
 
--> blurb
+Overview
 
--> categories
->> Miscellaneous
+A convenience section for adding a `<textarea>`html`
+element
+
+
+-> startneoexample
+
+-> textarea
+
+Rice is often served in round bowls.
+
+-> endneoexample
+
+-> notes
+
+- And with attributes
+
+-> startneoexample
+
+-> textarea
+>> id: victor
+>> class: whiskey
+
+Cap the jar 
+
+Guess the results
+
+-> endneoexample
+
 
 -> attributes
 >> date: 2023-04-16 00:31:04

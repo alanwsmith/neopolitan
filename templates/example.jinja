@@ -22,6 +22,7 @@
 {%- from "todo.jinja" import todo -%}
 {%- from "subtitle.jinja" import subtitle -%}
 {%- from "paragraphs.jinja" import paragraphs -%}
+{%- from "textarea.jinja" import textarea -%}
 {%- from "title.jinja" import title -%}
 {%- from "vimeo.jinja" import vimeo -%}
 {%- from "warning.jinja" import warning -%}
@@ -119,6 +120,8 @@
     {{ results(section) }}
     {%- elif section.type == "Subtitle" -%}
     {{ subtitle(section) }}
+    {%- elif section.type == "TextareaSection" -%}
+    {{ textarea(section) }}
     {%- elif section.type == "Title" -%}
     {{ title(section) }}
     {%- elif section.type == "ToDoSection" -%}

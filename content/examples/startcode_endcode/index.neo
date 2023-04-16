@@ -2,11 +2,40 @@
 
 Section: startcode/endcode
 
+-> h2
 
--> blurb
+Overview
 
--> categories
->> Miscellaneous
+-> notes
+
+- Neopolitan sections start with a `-> `neo` 
+token and continue until they see anoter one
+or hit the end if a file
+
+- `code`neo` section work the same way which means
+you can't put an neopolitan example that contains
+a header in it (it would just end the code section
+and start a new one of whatever the new type is)
+
+- The `startcode`neo` section ignore other `-> `neo`
+tags until it hits a `-> endcode`neo`. That provides
+the way to show examples of neopolitan headers
+
+-> startneoexample
+
+-> startcode
+
+-> h1
+
+asdf
+
+-> endcode
+
+-> endneoexample
+
+
+
+
 
 -> attributes
 >> date: 2023-04-16 00:30:44
