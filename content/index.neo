@@ -109,11 +109,7 @@ show output from `-> code`neo` blocks
 
 - <<link|vimeo|/examples/vimeo/index.html>> - A vimeo embed
 
-- [] <<link|warning|/examples/warning/index.html>> - A div block with a warning class on it
-
-- [] <<link|widget|/examples/widget/index.html>> - The first attribute is the name of the
-widget which is use by the processor to render the
-content.
+- <<link|warning|/examples/warning/index.html>> - A div block with a warning class on it
 
 - <<link|youtube|/examples/youtube/index.html>> -  A youtube embed
 
@@ -175,10 +171,12 @@ items after the `-`` for the initial description
 
 - [] picture
 
-
-
 - [.] table 
 
 - [.] video
+
+- [] <<link|widget|/examples/widget/index.html>> - The first attribute is the name of the
+widget which is use by the processor to render the
+content.
 
 
