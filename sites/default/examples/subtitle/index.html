@@ -39,7 +39,7 @@
     </header>
   <main><h1 class="title">
   <p>Section: subtitle</p>
-</h1><div>{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;Section:&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;subtitle&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;Title&quot;}</div><div class="notes">
+</h1><div class="notes">
   <ul>
     <li>
       <p>
@@ -52,7 +52,23 @@
       </p>
     </li>
   </ul>
-</div><div>{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;first&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;source&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;paragraph&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;wrapped&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;in&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;div&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;with&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;\&quot;subtitle\&quot;&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;class&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;NotesItem&quot;}, {&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;Any&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;following&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;paragraphs&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;are&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;treated&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;as&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;regular,&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;separate&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: [{&quot;key&quot;: &quot;html&quot;, &quot;type&quot;: &quot;Basic&quot;, &quot;value&quot;: None}], &quot;text&quot;: &quot;&lt;p&gt;&quot;, &quot;type&quot;: &quot;CodeShorthand&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;elements&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;NotesItem&quot;}], &quot;type&quot;: &quot;NotesSection&quot;}</div><div>{&quot;type&quot;: &quot;Placeholder&quot;}</div><div class="notes">
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; subtitle
+
+Flax makes a fine brand of paper.
+
+The small red neon lamp went out.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div class=&quot;subtitle&quot;&gt;
+  &lt;p&gt;Flax makes a fine brand of paper.&lt;&#x2f;p&gt;
+&lt;&#x2f;div&gt;
+
+&lt;p&gt;The small red neon lamp went out.&lt;&#x2f;p&gt;</code></pre>
+</div><div class="notes">
   <ul>
     <li>
       <p>
@@ -65,7 +81,24 @@
       </p>
     </li>
   </ul>
-</div><div>{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;Attributes&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;can&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;be&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;added&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;with&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;key&#x2f;value&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;pairs&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;on&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: [{&quot;key&quot;: &quot;neo&quot;, &quot;type&quot;: &quot;Basic&quot;, &quot;value&quot;: None}], &quot;text&quot;: &quot;&gt;&gt;&quot;, &quot;type&quot;: &quot;CodeShorthand&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;lines&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;NotesItem&quot;}, {&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;Attributes&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;are&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;only&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;applied&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: [{&quot;key&quot;: &quot;html&quot;, &quot;type&quot;: &quot;Basic&quot;, &quot;value&quot;: None}], &quot;text&quot;: &quot;&lt;div&gt;&quot;, &quot;type&quot;: &quot;CodeShorthand&quot;}, {&quot;text&quot;: &quot;.&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;The&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: [{&quot;key&quot;: &quot;html&quot;, &quot;type&quot;: &quot;Basic&quot;, &quot;value&quot;: None}], &quot;text&quot;: &quot;&lt;p&gt;&quot;, &quot;type&quot;: &quot;CodeShorthand&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;elements&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;are&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;left&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;alone&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;NotesItem&quot;}], &quot;type&quot;: &quot;NotesSection&quot;}</div><div>{&quot;type&quot;: &quot;Placeholder&quot;}</div><div class="notes">
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; subtitle
+&gt;&gt; id: tango
+
+The fan whirled its round blades softly.
+
+A brown leather bag hung from its strap.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div class=&quot;subtitle&quot; id=&quot;tango&quot;&gt;
+  &lt;p&gt;The fan whirled its round blades softly.&lt;&#x2f;p&gt;
+&lt;&#x2f;div&gt;
+
+&lt;p&gt;A brown leather bag hung from its strap.&lt;&#x2f;p&gt;</code></pre>
+</div><div class="notes">
   <ul>
     <li>
       <p>
@@ -73,6 +106,23 @@
       </p>
     </li>
   </ul>
-</div><div>{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;If&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: None, &quot;text&quot;: &quot;&gt;&gt; class&quot;, &quot;type&quot;: &quot;CodeShorthand&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;attribute&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;is&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;used&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;it&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;gets&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;added&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;to&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;existing&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;attributes&quot;: None, &quot;text&quot;: &quot;subtitle&quot;, &quot;type&quot;: &quot;CodeShorthand&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;class.&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;NotesItem&quot;}], &quot;type&quot;: &quot;NotesSection&quot;}</div><div>{&quot;type&quot;: &quot;Placeholder&quot;}</div><div>{&quot;attributes&quot;: [{&quot;key&quot;: &quot;date&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;2023-04-15 22:04:27&quot;}, {&quot;key&quot;: &quot;id&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;2oumnbfn63uo&quot;}, {&quot;key&quot;: &quot;type&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;example &quot;}, {&quot;key&quot;: &quot;publish&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;y&quot;}], &quot;children&quot;: None, &quot;type&quot;: &quot;AttributesSection&quot;}</div></main>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; subtitle
+&gt;&gt; class: echo
+
+A fence cuts through the corner lot.
+
+The hinge on the door creaked with old age.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div class=&quot;subtitle echo&quot;&gt;
+  &lt;p&gt;A fence cuts through the corner lot.&lt;&#x2f;p&gt;
+&lt;&#x2f;div&gt;
+
+&lt;p&gt;The hinge on the door creaked with old age.&lt;&#x2f;p&gt;</code></pre>
+</div></main>
 </body>
 </html>

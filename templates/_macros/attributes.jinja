@@ -1,0 +1,26 @@
+{%- macro attributes(data) -%} {# 
+
+  This is the base template for attrbiutes. 
+  It outputs key value pairs and key only 
+  values directly and without any 
+  alteration. 
+
+  #}
+
+  {%- if data.attributes != None -%}
+    {%- for attribute in data.attributes -%}
+      {{- " " -}}
+      {{- attribute.key -}}
+      {%- if attribute.value != None -%}
+        ="{{ attribute.value }}"
+      {%- endif %}
+    {%- endfor -%}
+  {%- endif -%}
+
+{%- endmacro -%}
+
+
+
+
+
+

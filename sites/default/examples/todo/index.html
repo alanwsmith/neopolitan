@@ -40,6 +40,120 @@
   <main><h1 class="title">
   <p>Section: todo</p>
 </h1>
-<p>Basic TODO lists</p><div>{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;Section:&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;todo&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}, {&quot;children&quot;: [{&quot;text&quot;: &quot;Basic&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;TODO&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;lists&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;Title&quot;}</div><div>{&quot;type&quot;: &quot;Placeholder&quot;}</div><div>{&quot;attributes&quot;: [{&quot;key&quot;: &quot;date&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;2023-04-16 13:48:29&quot;}, {&quot;key&quot;: &quot;id&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;2owdbcoz3qxs&quot;}, {&quot;key&quot;: &quot;type&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;example &quot;}, {&quot;key&quot;: &quot;published&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;y&quot;}], &quot;children&quot;: None, &quot;type&quot;: &quot;AttributesSection&quot;}</div></main>
+<p>Basic TODO lists</p>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; todo
+
+[x] Use a pencil to write the first draft
+
+This is a second line for the first item
+
+[x] Open the crate but don&#x27;t break the glass
+
+[] Split the log with a quick, sharp blow</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div&gt;
+  &lt;ul&gt;
+    &lt;li class=&quot;status-x&quot;&gt;
+      &lt;p&gt;&lt;input type=&quot;checkbox&quot; checked disabled&#x2f;&gt;
+         Use a pencil to write the first draft&lt;&#x2f;p&gt;
+      &lt;p&gt;This is a second line for the first item&lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+    &lt;li class=&quot;status-x&quot;&gt;
+      &lt;p&gt;&lt;input type=&quot;checkbox&quot; checked disabled&#x2f;&gt;
+         Open the crate but don&amp;#x27;t break the glass&lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+    &lt;li class=&quot;status-none&quot;&gt;
+      &lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&#x2f;&gt;
+         Split the log with a quick, sharp blow&lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+  &lt;&#x2f;ul&gt;
+&lt;&#x2f;div&gt;</code></pre>
+</div><p>As an implementaiton detail</p>
+
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; todo
+
+[done] Tend the sheep while the dog wanders.
+
+Throw out the used paper cup and plate.
+
+[skip] Tuck the sheet under the edge of the mat.
+
+[] Turn on the lantern which gives us light.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div&gt;
+  &lt;ul&gt;
+    &lt;li class=&quot;status-done&quot;&gt;
+      &lt;p&gt;&lt;input type=&quot;checkbox&quot; checked disabled&#x2f;&gt;
+         Tend the sheep while the dog wanders.&lt;&#x2f;p&gt;
+      &lt;p&gt;Throw out the used paper cup and plate.&lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+    &lt;li class=&quot;status-skip&quot;&gt;
+      &lt;p&gt;&lt;input type=&quot;checkbox&quot; checked disabled&#x2f;&gt;
+         Tuck the sheet under the edge of the mat.&lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+    &lt;li class=&quot;status-none&quot;&gt;
+      &lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&#x2f;&gt;
+         Turn on the lantern which gives us light.&lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+  &lt;&#x2f;ul&gt;
+&lt;&#x2f;div&gt;</code></pre>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; todo
+&gt;&gt; id: asdf
+&gt;&gt; class: delta 
+
+[done] Tend the sheep while the dog wanders.
+
+Throw out the used paper cup and plate.
+
+[skip] Tuck the sheet under the edge of the mat.
+
+[] Turn on the lantern which gives us light.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div id=&quot;asdf&quot; class=&quot;delta &quot;&gt;
+  &lt;ul id=&quot;asdf&quot; class=&quot;delta &quot;&gt;
+    &lt;li class=&quot;status-done&quot;&gt;
+      &lt;p&gt;&lt;input type=&quot;checkbox&quot; checked disabled&#x2f;&gt;
+         Tend the sheep while the dog wanders.&lt;&#x2f;p&gt;
+      &lt;p&gt;Throw out the used paper cup and plate.&lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+    &lt;li class=&quot;status-skip&quot;&gt;
+      &lt;p&gt;&lt;input type=&quot;checkbox&quot; checked disabled&#x2f;&gt;
+         Tuck the sheet under the edge of the mat.&lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+    &lt;li class=&quot;status-none&quot;&gt;
+      &lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&#x2f;&gt;
+         Turn on the lantern which gives us light.&lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+  &lt;&#x2f;ul&gt;
+&lt;&#x2f;div&gt;</code></pre>
+</div><div class="notes">
+  <ul>
+    <li>
+      <p>
+        The value in the status area (e.g. <code>x</code>, <code>done</code>, <code>skip</code>, etc...) is appended to the class for the item directly. Spaces would create a separate class token.
+      </p>
+    </li>
+  </ul>
+</div><div>
+  <ul>
+    <li class="status-none">
+      <p><input type="checkbox" disabled/>
+         Update so that brackets with empty spaces also show status of none in the AST. (That is, both <code>[]</code> and <code>[ ]</code>, or even <code>[     ]</code> should all return as <code>None</code> in the AST and <code>status-none</code> in the output</p>
+    </li>
+  </ul>
+</div></main>
 </body>
 </html>

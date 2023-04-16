@@ -39,7 +39,7 @@
     </header>
   <main><h1 class="title">
   <p>Section: vimeo</p>
-</h1><div>{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;Section:&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;vimeo&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;Title&quot;}</div><div class="notes">
+</h1><div class="notes">
   <ul>
     <li>
       <p>
@@ -47,6 +47,59 @@
       </p>
     </li>
   </ul>
-</div><div>{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;Convenience&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;seciton&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;for&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;a&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Vimeo&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;video&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;embed&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;NotesItem&quot;}], &quot;type&quot;: &quot;NotesSection&quot;}</div><div>{&quot;type&quot;: &quot;Placeholder&quot;}</div><div>{&quot;type&quot;: &quot;Placeholder&quot;}</div><div>{&quot;type&quot;: &quot;Placeholder&quot;}</div><div>{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;-&gt;&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;categories&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;&gt;&gt;&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;Miscellaneous&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;BlurbSection&quot;}</div><div>{&quot;attributes&quot;: [{&quot;key&quot;: &quot;date&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;2023-04-15 23:26:37&quot;}, {&quot;key&quot;: &quot;id&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;2ouwn74cr9yj&quot;}, {&quot;key&quot;: &quot;type&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;example &quot;}, {&quot;key&quot;: &quot;publish&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;y&quot;}], &quot;children&quot;: None, &quot;type&quot;: &quot;AttributesSection&quot;}</div></main>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; vimeo
+&gt;&gt; 718558198</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div class=&quot;vimeoVideo&quot;&gt;
+  &lt;iframe 
+    src=&quot;https:&#x2f;&#x2f;player.vimeo.com&#x2f;video&#x2f;718558198&quot; 
+    title=&quot;vimeo-player&quot; 
+    width=&quot;640&quot;
+    height=&quot;360&quot; 
+    frameborder=&quot;0&quot; 
+    allowfullscreen&gt;&lt;&#x2f;iframe&gt;
+&lt;&#x2f;div&gt;</code></pre>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; vimeo
+&gt;&gt; 718558198
+&gt;&gt; id: delta</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div class=&quot;vimeoVideo&quot; id=&quot;delta&quot;&gt;
+  &lt;iframe 
+    src=&quot;https:&#x2f;&#x2f;player.vimeo.com&#x2f;video&#x2f;718558198&quot; 
+    title=&quot;vimeo-player&quot; 
+    width=&quot;640&quot;
+    height=&quot;360&quot; 
+    frameborder=&quot;0&quot; 
+    allowfullscreen&gt;&lt;&#x2f;iframe&gt;
+&lt;&#x2f;div&gt;</code></pre>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; vimeo
+&gt;&gt; 718558198
+&gt;&gt; class: charlie</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div class=&quot;vimeoVideo charlie&quot;&gt;
+  &lt;iframe 
+    src=&quot;https:&#x2f;&#x2f;player.vimeo.com&#x2f;video&#x2f;718558198&quot; 
+    title=&quot;vimeo-player&quot; 
+    width=&quot;640&quot;
+    height=&quot;360&quot; 
+    frameborder=&quot;0&quot; 
+    allowfullscreen&gt;&lt;&#x2f;iframe&gt;
+&lt;&#x2f;div&gt;</code></pre>
+</div></main>
 </body>
 </html>

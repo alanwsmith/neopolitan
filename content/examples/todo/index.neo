@@ -6,15 +6,69 @@ Basic TODO lists
 
 -> startneoexample
 
--> todo 
+-> todo
 
-[x] alfa
+[x] Use a pencil to write the first draft
 
-[x] bravo
+This is a second line for the first item
 
-[] charlie
+[x] Open the crate but don't break the glass
+
+[] Split the log with a quick, sharp blow
 
 -> endneoexample
+
+
+-> p
+
+As an implementaiton detail
+
+
+-> startneoexample
+
+-> todo
+
+[done] Tend the sheep while the dog wanders.
+
+Throw out the used paper cup and plate.
+
+[skip] Tuck the sheet under the edge of the mat.
+
+[] Turn on the lantern which gives us light.
+
+-> endneoexample
+
+
+-> startneoexample
+
+-> todo
+>> id: asdf
+>> class: delta 
+
+[done] Tend the sheep while the dog wanders.
+
+Throw out the used paper cup and plate.
+
+[skip] Tuck the sheet under the edge of the mat.
+
+[] Turn on the lantern which gives us light.
+
+-> endneoexample
+
+-> notes
+
+- The value in the status area (e.g. `x``, `done``,
+`skip``, etc...) is appended to the class for
+the item directly. Spaces would create a separate
+class token. 
+
+-> todo
+
+[] Update so that brackets with empty spaces also
+show status of none in the AST. (That is, both
+`[]`` and `[ ]``, or even `[     ]`` should 
+all return as `None`` in the AST and `status-none``
+in the output
 
 
 -> attributes

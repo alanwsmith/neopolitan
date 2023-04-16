@@ -40,6 +40,33 @@
   <main><h1 class="title">
   <p>Section: blockquote</p>
 </h1>
-<p>For the HTML &lt;blockquote&gt; tag.</p><div>{&quot;attributes&quot;: None, &quot;children&quot;: [{&quot;children&quot;: [{&quot;text&quot;: &quot;Section:&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;blockquote&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}, {&quot;children&quot;: [{&quot;text&quot;: &quot;For&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;the&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;HTML&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;&lt;blockquote&gt;&quot;, &quot;type&quot;: &quot;Text&quot;}, {&quot;type&quot;: &quot;Space&quot;}, {&quot;text&quot;: &quot;tag.&quot;, &quot;type&quot;: &quot;Text&quot;}], &quot;type&quot;: &quot;P&quot;}], &quot;type&quot;: &quot;Title&quot;}</div><div>{&quot;type&quot;: &quot;Placeholder&quot;}</div><div>{&quot;type&quot;: &quot;Placeholder&quot;}</div><div>{&quot;attributes&quot;: [{&quot;key&quot;: &quot;date&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;2023-04-15 03:33:43&quot;}, {&quot;key&quot;: &quot;id&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;2osbizo0r6nx&quot;}, {&quot;key&quot;: &quot;type&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;example &quot;}, {&quot;key&quot;: &quot;publish&quot;, &quot;type&quot;: &quot;Attribute&quot;, &quot;value&quot;: &quot;y&quot;}], &quot;children&quot;: None, &quot;type&quot;: &quot;AttributesSection&quot;}</div></main>
+<p>For the HTML &lt;blockquote&gt; tag.</p>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; blockquote
+
+The sheep were led home by a dog.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;blockquote&gt;
+&lt;p&gt;The sheep were led home by a dog.&lt;&#x2f;p&gt;
+&lt;&#x2f;blockquote&gt;
+</code></pre>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; blockquote
+&gt;&gt; class: bravo
+
+The straw nest housed five robins.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;blockquote class=&quot;bravo&quot;&gt;
+&lt;p&gt;The straw nest housed five robins.&lt;&#x2f;p&gt;
+&lt;&#x2f;blockquote&gt;
+</code></pre>
+</div></main>
 </body>
 </html>

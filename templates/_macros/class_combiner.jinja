@@ -1,0 +1,14 @@
+{%- macro class_combiner(base_class, data) -%}
+class="{{base_class}}
+{%- if data != None -%}
+{{- " " -}}
+{%- for attribute in data -%}
+
+{{ attribute.key }}
+{%- endfor -%}
+{%- endif -%}
+
+
+"
+{{data}}
+{%- endmacro -%}
