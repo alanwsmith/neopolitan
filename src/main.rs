@@ -15,10 +15,68 @@ use std::fs::create_dir_all;
 use std::path::PathBuf;
 use walkdir::{DirEntry, Error, WalkDir};
 
-fn main() {
-    do_copy("./content", "./site").unwrap();
-    println!("PROCESS COMPLETE");
+#[derive(Debug)]
+pub struct SourceFile {
+    path: Option<String>,
+    source: Option<String>,
+    parsed: Option<Wrapper>,
 }
+
+#[derive(Debug)]
+pub struct Universe {
+    dest_dir: Option<String>,
+    pages: Option<Vec<SourceFile>>,
+    source_dir: Option<String>,
+}
+
+impl Universe {
+    pub fn load_pages(&mut self) -> Result<(), Error> {
+        let walker = WalkDir::new(&self.source_dir.as_ref().unwrap()).into_iter();
+        for entry in walker.filter_entry(|e| !is_hidden(e)) {
+            let p = entry?.path().to_path_buf();
+            match p.extension() {
+                Some(v) => {
+                    if v == "neo" {
+                        let mut sf = SourceFile {
+                            path: Some(p.as_os_str().to_str().unwrap().to_string()),
+                            source: None,
+                            parsed: None,
+                        };
+                        sf.source =
+                            Some(fs::read_to_string(p.as_os_str().to_str().unwrap()).unwrap());
+                        sf.parsed = Some(parse(sf.source.as_ref().unwrap().as_str()).unwrap().1);
+                        self.pages.as_mut().unwrap().push(sf);
+                    }
+                }
+                None => (),
+            }
+        }
+        Ok(())
+    }
+}
+
+impl Universe {
+    pub fn generate_pages(&self) {
+        for page in self.pages.as_ref().unwrap() {
+            dbg!(&page.path);
+        }
+    }
+}
+
+fn main() {
+    let mut u = Universe {
+        pages: Some(vec![]),
+        source_dir: Some(String::from("./content")),
+        dest_dir: Some(String::from("./site")),
+    };
+    u.load_pages();
+    u.generate_pages();
+    println!("------------ PROCESS COMPLETE --------------");
+}
+
+// pub fn load_universe(source_dir: &str) -> Universe {
+//     let u = Universe { pages: None }
+// }
 
 fn is_hidden(entry: &DirEntry) -> bool {
     entry

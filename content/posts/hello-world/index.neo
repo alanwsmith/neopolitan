@@ -5,12 +5,11 @@ Hello, World
 This is the traditional first post to 
 see if things are wired up properly. 
 
-
+this is a line
 
 -> attributes
 >> date: 2023-04-16 00:38:15
 >> id: 2ouf5cr8gblg
 >> type: post
->> published: y
-
+>> publish: y
 
