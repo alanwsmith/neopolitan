@@ -1,14 +1,4 @@
-{% macro results(data) %}
-<pre><code class="
-  {%- for attribute in data.attributes %}
-    {% if loop.first and attribute.value == None %}
-      language-{{attribute.key}}
-    {%- endif -%}
-    {%- if attribute.key == "class" -%} 
-    {{- " " -}}
-    {{- attribute.value -}}
-    {%- endif -%}
-  {%- endfor -%}
-  "
->{{data.children.text}}</code></pre>
-{%- endmacro %}
+{%- from "_macros/attributes.jinja" import attributes_with_class -%}
+{%- macro results(data) -%}
+<pre {{- attributes_with_class(data, "results") -}}><code>{{data.children.text}}</code></pre>
+{%- endmacro -%}

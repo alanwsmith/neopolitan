@@ -3,38 +3,38 @@
 results section
 
 The idea with this one is to use it after
-code blocks to show their corresponding output. 
+code blocks to show their corresponding output.
 
 I considered using the `<samp>`html` tag for my
 implementation but code highlighters are
 generally geared for `<pre><code>`html` blocks. 
 
--> h2
 
-Example
 
--> startcode
+-> startneoexample
 
 -> results
 
 The colt reared and threw the tall rider.
 The wide road shimmered in the hot sun.
 
--> endcode
+-> endneoexample
+
+
+
+-> startneoexample
 
 -> results
+>> id: sierra
+>> class: tango
 
-<pre class="results"><code>
-The colt reared and threw the tall rider.
-The wide road shimmered in the hot sun.
-</code></pre>
+Fish evade the net.
+Five years with a shaggy dog.
+
+-> endneoexample
 
 
--> p
 
-TODO: Setup `-> startresults ... -> endresults`neo`
-functionality so that `-> results`neo` tags can be shown 
-in those blocks.
 
 
 -> reference

@@ -1,11 +1,11 @@
-{%- macro attributes(data) -%} {# 
+{%- macro attributes(data) -%}{#-
 
   This is the base template for attrbiutes. 
   It outputs key value pairs and key only 
   values directly and without any 
   alteration. 
 
-  #}
+  -#}
 
   {%- if data.attributes != None -%}
     {%- for attribute in data.attributes -%}
@@ -19,8 +19,40 @@
 
 {%- endmacro -%}
 
+{#- ###################################################### -#}
 
+{%- macro attributes_with_class(data, base_class) -%} {#-
+  
+  This one takes an initial class which gets returned
+  along with any additional classes in the attributes
+  that get added to it. The rest of the attributes
+  get returned as well
 
+  -#}
 
+  {{- " " -}}
+  class="{{base_class}}
+
+  {%- if data.attributes != None -%}
+    {%- for attribute in data.attributes -%}
+      {%- if attribute.key == "class" %}
+        {{- " " -}}
+        {{- attribute.value -}}
+      {%- endif %}
+    {%- endfor -%}
+  {%- endif -%}
+  "
+
+  {%- for attribute in data.attributes -%}
+    {%- if attribute.key != "class" %}
+      {{- " " -}}
+      {{- attribute.key -}}
+      {%- if attribute.value != None -%}
+        ="{{ attribute.value }}"
+      {%- endif %}
+    {%- endif %}
+  {%- endfor -%}
+
+{%- endmacro -%}
 
 

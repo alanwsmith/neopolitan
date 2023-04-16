@@ -1,32 +1,9 @@
 {%- from "text.jinja" import text -%}
+{%- from "_macros/attributes.jinja" import attributes_with_class -%}
 {%- macro subtitle(data) -%}
 {%- for block in data.children -%}
 {%- if loop.first -%}
-<div
-
-{%- if data.attributes != None -%}
-  {{- " " -}}
-  class="subtitle
-  {%- for attribute in data.attributes -%}
-    {%- if attribute.key == "class" %} 
-      {{- " " -}}
-      {{- attribute.value -}}
-    {%- endif -%}
-  {%- endfor -%}
-  "
-{%- else -%}
-  {{- " " -}}
-  class="subtitle"
-{%- endif -%}
-
-{%- for attribute in data.attributes -%}
-  {%- if attribute.key != "class" %} 
-  {{- " " -}}
-      {{- attribute.key -}}="
-      {{- attribute.value -}}"
-  {%- endif -%}
-{%- endfor -%}
->
+<div {{- attributes_with_class(data, "subtitle") -}}>
   <p>{{ text(block) }}</p>
 </div>
 {% else %}

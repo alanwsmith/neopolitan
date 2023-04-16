@@ -1,4 +1,5 @@
 {%- from "text.jinja" import text -%}
+{%- from "_macros/attributes.jinja" import attributes_with_class -%}
 {%- macro warningx(data) -%}
 <div class="warning">
   {%- for block in data.children %}
@@ -8,24 +9,7 @@
 {% endmacro %}
 
 {%- macro warning(data) -%}
-<div 
-  {{- " " -}}
-  class="warning
-  {%- for attribute in data.attributes -%}
-    {%- if attribute.key == "class" %} 
-      {{- " " -}}
-      {{- attribute.value -}}
-    {%- endif -%}
-  {%- endfor -%}
-  "
-{%- for attribute in data.attributes -%}
-  {%- if attribute.key != "class" %} 
-  {{- " " -}}
-      {{- attribute.key -}}="
-      {{- attribute.value -}}"
-  {%- endif -%}
-{%- endfor -%}
->
+<div {{- attributes_with_class(data, "warning") -}}>
 {%- for block in data.children %}
   <p>{{ text(block) }}</p>{%- endfor %}
 </div>

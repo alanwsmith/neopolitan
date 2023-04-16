@@ -2,73 +2,105 @@
 
 Section: todo
 
-Basic TODO lists
+-> notes
+
+- TODO lists created with `[]`` separators
+to define each list item
+
+- The output is a `<div>`html` that has a 
+class of `todo`` wrapping a `<ul>`html`
+unordered list with the items
+
+- Input checkboxes are placed before 
+each item
+
+- The checkboxes are checked if there's
+any character inside the `[]`` brackets
+
+- The checkboxes are disabled so they
+can't be changed on the output page
+
 
 -> startneoexample
 
 -> todo
 
-[x] Use a pencil to write the first draft
+[x] Write the first draft
 
-This is a second line for the first item
+[x] Open the crate
 
-[x] Open the crate but don't break the glass
-
-[] Split the log with a quick, sharp blow
+[] Split the log 
 
 -> endneoexample
 
 
--> p
+-> notes
 
-As an implementaiton detail
+- New items are started with a `[]`` following
+an empty line
 
-
--> startneoexample
-
--> todo
-
-[done] Tend the sheep while the dog wanders.
-
-Throw out the used paper cup and plate.
-
-[skip] Tuck the sheet under the edge of the mat.
-
-[] Turn on the lantern which gives us light.
-
--> endneoexample
+- Multiple paragraphs can be added to a single
+item by separating them with an empty line
 
 
 -> startneoexample
 
 -> todo
->> id: asdf
->> class: delta 
 
-[done] Tend the sheep while the dog wanders.
+[x] Tend the sheep
 
-Throw out the used paper cup and plate.
+Throw the paper
 
-[skip] Tuck the sheet under the edge of the mat.
+[x] Tuck the sheet
 
-[] Turn on the lantern which gives us light.
+[] Turn on the lantern 
 
 -> endneoexample
 
 -> notes
 
-- The value in the status area (e.g. `x``, `done``,
-`skip``, etc...) is appended to the class for
-the item directly. Spaces would create a separate
-class token. 
+- The value inside the `[]`` is appened to `status-``
+and set as the class for the `<li>`html` in the 
+output. 
+
+- If there's no value the class is set to `status-none``
+
+
+-> startneoexample
 
 -> todo
 
-[] Update so that brackets with empty spaces also
-show status of none in the AST. (That is, both
-`[]`` and `[ ]``, or even `[     ]`` should 
-all return as `None`` in the AST and `status-none``
-in the output
+[done] Bring your compass
+
+[skip] Cap the jar
+
+[] Cut the pie
+
+
+-> endneoexample
+
+-> notes
+
+- Any attributes added to the section get
+added to the `<div>`html` in the output
+
+- If any classes are defined, they are 
+added to the existing `todo`` class
+
+
+-> startneoexample
+
+-> todo
+>> id: alfa
+>> class: bravo
+
+[] Guess the results
+
+[] Heave the line 
+
+[] Hold the hammer
+
+-> endneoexample
 
 
 -> attributes

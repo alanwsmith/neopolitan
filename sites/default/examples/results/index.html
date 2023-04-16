@@ -28,6 +28,9 @@
             <a href="/index.html">Neopolitan</a>
           </li>
           <li>
+            <a href="/attributes/index.html">Attributes</a>
+          </li>
+          <li>
             <a href="/philosophy/index.html">Philosophy</a>
           </li>
           <li>
@@ -40,16 +43,33 @@
   <main><h1 class="title">
   <p>results section</p>
 </h1>
-<p>The idea with this one is to use it after code blocks to show their corresponding output. I considered using the <code>&lt;samp&gt;</code> tag for my implementation but code highlighters are generally geared for <code>&lt;pre&gt;&lt;code&gt;</code> blocks.</p><h2>Example</h2>
-<pre><code>-&gt; results
+<p>The idea with this one is to use it after code blocks to show their corresponding output.</p>
+<p>I considered using the <code>&lt;samp&gt;</code> tag for my implementation but code highlighters are generally geared for <code>&lt;pre&gt;&lt;code&gt;</code> blocks.</p>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; results
 
 The colt reared and threw the tall rider.
 The wide road shimmered in the hot sun.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;pre class=&quot;results&quot;&gt;&lt;code&gt;The colt reared and threw the tall rider.
+The wide road shimmered in the hot sun.&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code></pre>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
 <pre><code class=""
->&lt;pre class=&quot;results&quot;&gt;&lt;code&gt;
-The colt reared and threw the tall rider.
-The wide road shimmered in the hot sun.
-&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code></pre><p>TODO: Setup <code>-&gt; startresults ... -&gt; endresults</code> functionality so that <code>-&gt; results</code> tags can be shown in those blocks.</p>
-</main>
+>-&gt; results
+&gt;&gt; id: sierra
+&gt;&gt; class: tango
+
+Fish evade the net.
+Five years with a shaggy dog.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;pre class=&quot;results tango&quot; id=&quot;sierra&quot;&gt;&lt;code&gt;Fish evade the net.
+Five years with a shaggy dog.&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code></pre>
+</div></main>
 </body>
 </html>
