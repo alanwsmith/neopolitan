@@ -20,13 +20,13 @@ fn main() {
     let mut u = Universe {
         assets_dir: Some(String::from("./assets")),
         dest_dir: Some(String::from("./sites/default")),
-        current_source_index: 0,
+        // current_source_index: 0,
         pages: Some(vec![]),
         source_dir: Some(String::from("./content")),
     };
     u.load_pages();
     u.copy_assets();
-    // u.generate_pages();
+    u.generate_pages();
     println!("------------ PROCESS COMPLETE --------------");
 }
 

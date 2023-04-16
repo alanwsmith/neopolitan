@@ -269,6 +269,33 @@ the documnet. And ones that return
 straight HTML
 
 
+-> h3
+
+Multiple Sites
+
+There is only one set of content but 
+it can go to multiple sites via a
+`site`` or `sites`` attribute. (where
+`sites`` can got to multiple output
+sites. 
+
+Content will go to a `sites/default`
+directory if no `site`` or `sites``
+attribute is found. 
+
+I set it up this way because I have
+multiple sites and edit content
+in a single location via my Gimoire. 
+
+While the directory strucutrue for
+the content gets mapped to the output
+files there isn't a level to determine
+the site. That's only done by the 
+attributes. 
+
+
+
+
 
 -> attributes
 >> date: 2023-04-14 14:39:42

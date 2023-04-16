@@ -20,13 +20,14 @@
 {%- from "pre.jinja" import pre -%}
 {%- from "results.jinja" import results -%}
 {%- from "subtitle.jinja" import subtitle -%}
+{%- from "todo.jinja" import todo -%}
 {%- from "paragraphs.jinja" import paragraphs -%}
 {%- from "title.jinja" import title -%}
 {%- from "vimeo.jinja" import vimeo -%}
 {%- from "warning.jinja" import warning -%}
 {%- from "youtube.jinja" import youtube -%}
 
-{%- for section in payload.children -%}
+{%- for section in universe.pages[current_index].parsed.children -%}
 {%- if section.type == "AsideSection" -%}
 {{ aside(section) }}
 {%- elif section.type == "BlockquoteSection" -%}
@@ -75,6 +76,8 @@
 {{ subtitle(section) }}
 {%- elif section.type == "Title" -%}
 {{ title(section) }}
+{%- elif section.type == "ToDoSection" -%}
+{{ todo(section) }}
 {%- elif section.type == "VimeoSection" -%}
 {{ vimeo(section) }}
 {%- elif section.type == "WarningSection" -%}

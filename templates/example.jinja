@@ -19,6 +19,7 @@
 {%- from "olist.jinja" import olist -%}
 {%- from "pre.jinja" import pre -%}
 {%- from "results.jinja" import results -%}
+{%- from "todo.jinja" import todo -%}
 {%- from "subtitle.jinja" import subtitle -%}
 {%- from "paragraphs.jinja" import paragraphs -%}
 {%- from "title.jinja" import title -%}
@@ -120,6 +121,8 @@
     {{ subtitle(section) }}
     {%- elif section.type == "Title" -%}
     {{ title(section) }}
+    {%- elif section.type == "ToDoSection" -%}
+    {{ todo(section) }}
     {%- elif section.type == "VimeoSection" -%}
     {{ vimeo(section) }}
     {%- elif section.type == "WarningSection" -%}

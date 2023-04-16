@@ -2,9 +2,13 @@
 
 Welcome To Neopolitan
 
+-> startneoexample
+
 -> subtitle
 
 A plain-text format for websites
+
+-> endneoexample
 
 -> note
 
@@ -107,6 +111,8 @@ show output from `-> code`neo` blocks
 
 - <<link|title|/examples/title/index.html>>
 
+- <<link|todo|/examples/todo/index.html>> - TODO lists
+
 - <<link|vimeo|/examples/vimeo/index.html>> - A vimeo embed
 
 - <<link|warning|/examples/warning/index.html>> - A div block with a warning class on it
@@ -136,7 +142,6 @@ is just a key (and can include spaces)
 
 - script
 
-- todo
 
 -> h2
 

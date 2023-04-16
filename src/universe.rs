@@ -12,7 +12,7 @@ use walkdir::{DirEntry, Error, WalkDir};
 #[derive(Debug, PartialEq, Serialize)]
 pub struct Universe {
     pub assets_dir: Option<String>,
-    pub current_source_index: u32,
+    // pub current_source_index: u32,
     pub dest_dir: Option<String>,
     pub pages: Option<Vec<SourceFile>>,
     pub source_dir: Option<String>,
@@ -20,9 +20,9 @@ pub struct Universe {
 
 #[derive(Debug, PartialEq, Serialize)]
 pub struct SourceFile {
-    parsed: Option<Wrapper>,
-    path: Option<String>,
-    source: Option<String>,
+    pub parsed: Option<Wrapper>,
+    pub path: Option<String>,
+    pub source: Option<String>,
 }
 
 impl Universe {

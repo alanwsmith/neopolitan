@@ -1,0 +1,26 @@
+-> title
+
+Section: todo
+
+Basic TODO lists
+
+-> startneoexample
+
+-> todo 
+
+[x] alfa
+
+[x] bravo
+
+[] charlie
+
+-> endneoexample
+
+
+-> attributes
+>> date: 2023-04-16 13:48:29
+>> id: 2owdbcoz3qxs
+>> type: example 
+>> published: y
+
+
