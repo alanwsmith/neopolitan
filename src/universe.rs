@@ -6,6 +6,7 @@ use crate::render_template::render_template;
 use crate::wrapper::wrapper::*;
 use serde::Serialize;
 use std::fs;
+use std::fs::create_dir_all;
 use std::path::PathBuf;
 use walkdir::{DirEntry, Error, WalkDir};
 
@@ -61,6 +62,8 @@ impl Universe {
                 .unwrap();
             let mut dest_path = PathBuf::from(&self.dest_dir.as_ref().unwrap());
             dest_path.push(source_path);
+            let output_dir = dest_path.parent();
+            create_dir_all(&output_dir.unwrap()).unwrap();
             let html_path = dest_path.with_extension("html");
             dbg!(&html_path);
             let output = render_template(self, page.0 as u32, env.clone(), "default.jinja");

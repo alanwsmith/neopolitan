@@ -50,10 +50,16 @@ the 9K grimoire dataset
 
 [] Add indexes
 
+[] For the multiple sites thing. For each
+content file, create a directory in 
+the correspoding location under the
+assets root directory to make it easy to
+store and find related files
+
+
 -> attributes
 >> date: 2023-04-15 10:06:07
 >> id: 2osx1iiz9brc
->> site: neo 
 >> type: post
 >> status: published
 

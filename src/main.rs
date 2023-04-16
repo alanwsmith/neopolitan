@@ -20,7 +20,7 @@ fn main() {
     let mut u = Universe {
         pages: Some(vec![]),
         source_dir: Some(String::from("./content")),
-        dest_dir: Some(String::from("./site")),
+        dest_dir: Some(String::from("./sites/default")),
         current_source_index: 0,
     };
     u.load_pages();
@@ -121,5 +121,5 @@ fn should_publish(payload: &Wrapper) -> String {
             }
         }
     }
-    "default".to_string()
+    "n".to_string()
 }
