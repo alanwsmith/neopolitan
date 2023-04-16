@@ -103,6 +103,8 @@
 <h3>Either HTML or Neopolitan</h3>
 <p>You can&#x27;t put HTML in any section other than an <code>-&gt; html</code> section. That prevents issues with escaping and parsing characters that are meaningful in HTML (e.g. <code>&lt;</code>, <code>&gt;</code>, etc...)</p>
 <p>Most HTML tags have neopolitan tags mapped to them. Anything that doesn&#x27;t or needs more nuance can be handled with an <code>-&gt; html</code> section. If you&#x27;re trying to do something that that doesn&#x27;t handle, you&#x27;re beyond the scope of the format and will have to find your own solution.</p>
+<h3>Unix Like Process Call Outs</h3>
+<p>Provide a section to call out to other processes to load JSON and serialize it in. Also provide processes that return neopolitan content prior to parsing the documnet. And ones that return straight HTML</p>
 </main>
 </body>
 </html>

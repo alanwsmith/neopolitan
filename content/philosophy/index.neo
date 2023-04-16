@@ -255,6 +255,20 @@ doesn't handle, you're beyond the scope
 of the format and will have to find your
 own solution.
 
+-> h3
+
+Unix Like Process Call Outs
+
+Provide a section to call out to other 
+processes to load JSON and serialize
+it in. 
+
+Also provide processes that return
+neopolitan content prior to parsing
+the documnet. And ones that return
+straight HTML
+
+
 
 -> attributes
 >> date: 2023-04-14 14:39:42

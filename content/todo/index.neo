@@ -4,6 +4,14 @@ Neopolitan TODOs
 
 -> todo
 
+[] Setup for multisite
+
+[] Setup external process callouts for 
+JSON - which is serialized into the top
+of the document as a var, and HTML
+and neopolitan which are dropped directly
+into the document prior to parsing
+
 [] Add start and end times to youtube
 video embeds
 
@@ -31,6 +39,16 @@ after an `-> endcode``. Just have it to
 automatically. 
 
 [] Add a `<<br>>`neo` tag
+
+[] Setup so that only files that changed 
+are parsed (along with any index pages
+they are on.) This is complicated so
+tbd on working on it. will see if it becomes
+a bottle neck otherwite probably not a 
+lot of benefit. will be able to tell with
+the 9K grimoire dataset
+
+[] Add indexes
 
 -> attributes
 >> date: 2023-04-15 10:06:07
