@@ -1,28 +1,71 @@
 use crate::create_env::create_env;
 use crate::parse::parse;
 use crate::render_template::render_template;
-// use crate::universe::universe::*;
-// use crate::universe::Universe;
 use crate::wrapper::wrapper::*;
 use serde::Serialize;
 use std::fs;
+use std::fs::copy;
 use std::fs::create_dir_all;
 use std::path::PathBuf;
 use walkdir::{DirEntry, Error, WalkDir};
 
 #[derive(Debug, PartialEq, Serialize)]
 pub struct Universe {
+    pub assets_dir: Option<String>,
+    pub current_source_index: u32,
     pub dest_dir: Option<String>,
     pub pages: Option<Vec<SourceFile>>,
     pub source_dir: Option<String>,
-    pub current_source_index: u32,
 }
 
 #[derive(Debug, PartialEq, Serialize)]
 pub struct SourceFile {
+    parsed: Option<Wrapper>,
     path: Option<String>,
     source: Option<String>,
-    parsed: Option<Wrapper>,
+}
+
+impl Universe {
+    pub fn copy_assets(&self) -> Result<(), Error> {
+        let walker = WalkDir::new(&self.assets_dir.as_ref().unwrap()).into_iter();
+        for entry in walker.filter_entry(|e| !is_hidden(e)) {
+            let initial_path = entry?.path().to_path_buf();
+            let source_path = initial_path
+                .strip_prefix(&self.assets_dir.as_ref().unwrap())
+                .unwrap();
+            let mut dest_path = PathBuf::from(&self.dest_dir.as_ref().unwrap());
+            dest_path.push(source_path);
+            dbg!(&source_path);
+            dbg!(&dest_path);
+            if initial_path.is_dir() {
+                let output_dir = dest_path.parent();
+                create_dir_all(&output_dir.unwrap()).unwrap();
+            } else {
+                copy(initial_path, dest_path).unwrap();
+            }
+        }
+        Ok(())
+    }
+}
+
+impl Universe {
+    pub fn generate_pages(&self) {
+        let env = create_env("./templates");
+        for page in self.pages.as_ref().unwrap().iter().enumerate() {
+            let initial_path = PathBuf::from(&page.1.path.as_ref().unwrap());
+            let source_path = initial_path
+                .strip_prefix(&self.source_dir.as_ref().unwrap())
+                .unwrap();
+            let mut dest_path = PathBuf::from(&self.dest_dir.as_ref().unwrap());
+            dest_path.push(source_path);
+            let output_dir = dest_path.parent();
+            create_dir_all(&output_dir.unwrap()).unwrap();
+            let html_path = dest_path.with_extension("html");
+            dbg!(&html_path);
+            let output = render_template(self, page.0 as u32, env.clone(), "default.jinja");
+            fs::write(html_path, output).unwrap();
+        }
+    }
 }
 
 impl Universe {
@@ -48,27 +91,6 @@ impl Universe {
             }
         }
         Ok(())
-    }
-}
-
-impl Universe {
-    pub fn generate_pages(&self) {
-        let env = create_env("./templates");
-        for page in self.pages.as_ref().unwrap().iter().enumerate() {
-            // self.current_source_index = page.0 as u32;
-            let initial_path = PathBuf::from(&page.1.path.as_ref().unwrap());
-            let source_path = initial_path
-                .strip_prefix(&self.source_dir.as_ref().unwrap())
-                .unwrap();
-            let mut dest_path = PathBuf::from(&self.dest_dir.as_ref().unwrap());
-            dest_path.push(source_path);
-            let output_dir = dest_path.parent();
-            create_dir_all(&output_dir.unwrap()).unwrap();
-            let html_path = dest_path.with_extension("html");
-            dbg!(&html_path);
-            let output = render_template(self, page.0 as u32, env.clone(), "default.jinja");
-            fs::write(html_path, output).unwrap();
-        }
     }
 }
 
