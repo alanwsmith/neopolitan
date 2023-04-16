@@ -9,120 +9,70 @@ use neopolitan::parse::parse;
 use neopolitan::render_template::render_template;
 use neopolitan::section::attributes_for_section::SectionAttribute::Attribute;
 use neopolitan::section::section::*;
+use neopolitan::universe::Universe;
 use neopolitan::wrapper::wrapper::*;
 use std::fs;
 use std::fs::create_dir_all;
 use std::path::PathBuf;
 use walkdir::{DirEntry, Error, WalkDir};
 
-#[derive(Debug)]
-pub struct SourceFile {
-    path: Option<String>,
-    source: Option<String>,
-    parsed: Option<Wrapper>,
-}
-
-#[derive(Debug)]
-pub struct Universe {
-    dest_dir: Option<String>,
-    pages: Option<Vec<SourceFile>>,
-    source_dir: Option<String>,
-}
-
-impl Universe {
-    pub fn load_pages(&mut self) -> Result<(), Error> {
-        let walker = WalkDir::new(&self.source_dir.as_ref().unwrap()).into_iter();
-        for entry in walker.filter_entry(|e| !is_hidden(e)) {
-            let p = entry?.path().to_path_buf();
-            match p.extension() {
-                Some(v) => {
-                    if v == "neo" {
-                        let mut sf = SourceFile {
-                            path: Some(p.as_os_str().to_str().unwrap().to_string()),
-                            source: None,
-                            parsed: None,
-                        };
-                        sf.source =
-                            Some(fs::read_to_string(p.as_os_str().to_str().unwrap()).unwrap());
-                        sf.parsed = Some(parse(sf.source.as_ref().unwrap().as_str()).unwrap().1);
-                        self.pages.as_mut().unwrap().push(sf);
-                    }
-                }
-                None => (),
-            }
-        }
-        Ok(())
-    }
-}
-
-impl Universe {
-    pub fn generate_pages(&self) {
-        for page in self.pages.as_ref().unwrap() {
-            dbg!(&page.path);
-        }
-    }
-}
-
 fn main() {
     let mut u = Universe {
         pages: Some(vec![]),
         source_dir: Some(String::from("./content")),
         dest_dir: Some(String::from("./site")),
+        current_source_index: 0,
     };
     u.load_pages();
     u.generate_pages();
     println!("------------ PROCESS COMPLETE --------------");
 }
 
-// pub fn load_universe(source_dir: &str) -> Universe {
-//     let u = Universe { pages: None }
+// fn is_hidden(entry: &DirEntry) -> bool {
+//     entry
+//         .file_name()
+//         .to_str()
+//         .map(|s| s.starts_with("."))
+//         .unwrap_or(false)
 // }
 
-fn is_hidden(entry: &DirEntry) -> bool {
-    entry
-        .file_name()
-        .to_str()
-        .map(|s| s.starts_with("."))
-        .unwrap_or(false)
-}
-
-fn do_copy(source_dir: &str, dest_dir: &str) -> Result<(), Error> {
-    let env = create_env("./templates");
-    let walker = WalkDir::new(source_dir).into_iter();
-    for entry in walker.filter_entry(|e| !is_hidden(e)) {
-        let p = entry?.path().to_path_buf();
-        let sub_path = &p.strip_prefix(source_dir);
-        let mut dest_path = PathBuf::from(dest_dir);
-        dest_path.push(sub_path.as_ref().unwrap());
-        if p.is_dir() {
-            if !dest_path.exists() {
-                create_dir_all(dest_path).unwrap();
-            }
-        } else {
-            if p.extension().unwrap() == "neo" {
-                let html_path = dest_path.with_extension("html");
-                println!("File: {}", p.as_os_str().to_str().unwrap());
-                let source = fs::read_to_string(p.as_os_str().to_str().unwrap()).unwrap();
-                let mut payload = parse(source.as_str()).unwrap().1;
-                let mut source_type = get_type(&payload);
-                source_type.push_str(".jinja");
-                let should_publish = should_publish(&payload);
-                if should_publish == "y".to_string() {
-                    println!("- Rendering");
-                    let output = render_template(payload, env.clone(), source_type.as_str());
-                    fs::write(html_path, output).unwrap();
-                } else {
-                    println!("- Skipping");
-                }
-            }
-            // NOTE: for now, just always copy the source files over to
-            // easy examples. That will be put behind a config flag
-            // with the default being off.
-            fs::copy(p, dest_path);
-        }
-    }
-    Ok(())
-}
+// fn do_copy(source_dir: &str, dest_dir: &str) -> Result<(), Error> {
+//     let env = create_env("./templates");
+//     let walker = WalkDir::new(source_dir).into_iter();
+//     for entry in walker.filter_entry(|e| !is_hidden(e)) {
+//         let p = entry?.path().to_path_buf();
+//         let sub_path = &p.strip_prefix(source_dir);
+//         let mut dest_path = PathBuf::from(dest_dir);
+//         dest_path.push(sub_path.as_ref().unwrap());
+//         if p.is_dir() {
+//             if !dest_path.exists() {
+//                 create_dir_all(dest_path).unwrap();
+//             }
+//         } else {
+//             if p.extension().unwrap() == "neo" {
+//                 let html_path = dest_path.with_extension("html");
+//                 println!("File: {}", p.as_os_str().to_str().unwrap());
+//                 let source = fs::read_to_string(p.as_os_str().to_str().unwrap()).unwrap();
+//                 let mut payload = parse(source.as_str()).unwrap().1;
+//                 let mut source_type = get_type(&payload);
+//                 source_type.push_str(".jinja");
+//                 let should_publish = should_publish(&payload);
+//                 if should_publish == "y".to_string() {
+//                     println!("- Rendering");
+//                     let output = render_template(payload, env.clone(), source_type.as_str());
+//                     fs::write(html_path, output).unwrap();
+//                 } else {
+//                     println!("- Skipping");
+//                 }
+//             }
+//             // NOTE: for now, just always copy the source files over to
+//             // easy examples. That will be put behind a config flag
+//             // with the default being off.
+//             fs::copy(p, dest_path);
+//         }
+//     }
+//     Ok(())
+// }
 
 fn get_type(payload: &Wrapper) -> String {
     match &payload {

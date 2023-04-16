@@ -7,4 +7,5 @@ pub mod render_template;
 pub mod section;
 #[cfg(test)]
 pub mod tests;
+pub mod universe;
 pub mod wrapper;
