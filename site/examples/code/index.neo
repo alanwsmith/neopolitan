@@ -53,6 +53,4 @@ dbg!("World")
 >> id: 2ostvynrgh7u
 >> site: neo 
 >> type: example 
->> status: published
-
-
+>> publish: y

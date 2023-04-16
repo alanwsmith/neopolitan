@@ -47,11 +47,10 @@ existing `title`` class
 -> endneoexample
 
 
+
 -> attributes
 >> date: 2023-04-15 22:57:04
 >> id: 2ousmf1vi4xe
 >> site: neo 
 >> type: example 
->> status: published
-
-
+>> publish: y

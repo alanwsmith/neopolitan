@@ -24,7 +24,5 @@ pressed into wine.
 >> date: 2023-04-15 18:32:15
 >> id: 2otwzxwhiqvc
 >> site: neo 
->> type: example
->> status: published
-
-
+>> type: example 
+>> publish: y

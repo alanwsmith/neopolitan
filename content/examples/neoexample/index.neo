@@ -30,7 +30,5 @@ This is an `-> aside`neo` example with an
 >> date: 2023-04-15 12:00:05
 >> id: 2otasdc8knf0
 >> site: neo 
->> type: post
->> status: published
-
-
+>> type: example 
+>> publish: y

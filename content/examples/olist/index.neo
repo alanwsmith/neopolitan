@@ -31,8 +31,6 @@ not accurate in the source file. Hence, dashes.)
 -> attributes
 >> date: 2023-04-15 19:37:35
 >> id: 2ou4we8zxrdh
->> site: neo
->> type: example
->> status: published
-
-
+>> site: neo 
+>> type: example 
+>> publish: y

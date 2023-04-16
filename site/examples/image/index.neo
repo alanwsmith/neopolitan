@@ -54,6 +54,4 @@ Example delta
 >> id: 2ou0iiceisy5
 >> site: neo 
 >> type: example 
->> status: published
-
-
+>> publish: y

@@ -23,7 +23,5 @@ A gray mare walked before the colt.
 >> date: 2023-04-15 17:11:29
 >> id: 2otmkapymyo5
 >> site: neo 
->> type: post
->> status: published
-
-
+>> type: example
+>> publish: y
