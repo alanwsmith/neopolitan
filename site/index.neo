@@ -91,33 +91,31 @@ implementation)
 
 - <<link|olist|/examples/olist/index.html>> - An ordered list
 
-- [] <<link|p|/examples/p/index.html>> - Basic text paragraph tags that are not otherwise 
+- <<link|p|/examples/p/index.html>> - Basic text paragraph tags that are not otherwise 
 contained in a div.
 
-- [] <<link|pre|/examples/pre/index.html>> - A pre tag
+- <<link|pre|/examples/pre/index.html>> - A pre tag
 
 - <<link|results|/examples/results/index.html>> - Used to 
 show output from `-> code`neo` blocks
 
-- [] <<link|subtitle|/examples/subtitle/index.html>>
+- <<link|subtitle|/examples/subtitle/index.html>>
 
 - [] <<link|startcode/endcode|/examples/startcode_endcode/index.html>>
 
 - [] <<link|textarea|/examples/textarea/index.html>>
 
-- [] <<link|tiktok|/examples/tiktok/index.html>>
+- <<link|title|/examples/title/index.html>>
 
-- [] <<link|title|/examples/title/index.html>>
-
-- [] <<link|vimeo|/examples/vimeo/index.html>> - A vimeo embed
+- <<link|vimeo|/examples/vimeo/index.html>> - A vimeo embed
 
 - [] <<link|warning|/examples/warning/index.html>> - A div block with a warning class on it
 
 - [] <<link|widget|/examples/widget/index.html>> - The first attribute is the name of the
 widget which is use by the processor to render the
-content. 
+content.
 
-- [] <<link|youtube|/examples/youtube/index.html>> -  A youtube embed
+- <<link|youtube|/examples/youtube/index.html>> -  A youtube embed
 
 
 -> h2

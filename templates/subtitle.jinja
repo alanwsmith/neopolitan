@@ -2,13 +2,35 @@
 {%- macro subtitle(data) -%}
 {%- for block in data.children -%}
 {%- if loop.first -%}
-<div class="subtitle">
-  {{ text(block) }}
+<div
+
+{%- if data.attributes != None -%}
+  {{- " " -}}
+  class="subtitle
+  {%- for attribute in data.attributes -%}
+    {%- if attribute.key == "class" %} 
+      {{- " " -}}
+      {{- attribute.value -}}
+    {%- endif -%}
+  {%- endfor -%}
+  "
+{%- else -%}
+  {{- " " -}}
+  class="subtitle"
+{%- endif -%}
+
+{%- for attribute in data.attributes -%}
+  {%- if attribute.key != "class" %} 
+  {{- " " -}}
+      {{- attribute.key -}}="
+      {{- attribute.value -}}"
+  {%- endif -%}
+{%- endfor -%}
+>
+  <p>{{ text(block) }}</p>
 </div>
 {% else %}
-<p>
-  {{ text(block) }}
-</p>
+<p>{{ text(block) }}</p>
 {%- endif -%}
 {%- endfor -%}
 {%- endmacro -%}

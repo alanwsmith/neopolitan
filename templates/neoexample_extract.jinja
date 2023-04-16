@@ -17,6 +17,7 @@
 {%- from "note.jinja" import note -%}
 {%- from "notes.jinja" import notes -%}
 {%- from "olist.jinja" import olist -%}
+{%- from "pre.jinja" import pre -%}
 {%- from "results.jinja" import results -%}
 {%- from "subtitle.jinja" import subtitle -%}
 {%- from "paragraphs.jinja" import paragraphs -%}
@@ -66,6 +67,8 @@
 {{ olist(section) }}
 {%- elif section.type == "Paragraphs" -%}
 {{ paragraphs(section) }}
+{%- elif section.type == "PreSection" -%}
+{{ pre(section) }}
 {%- elif section.type == "ResultsSection" -%}
 {{ results(section) }}
 {%- elif section.type == "Subtitle" -%}

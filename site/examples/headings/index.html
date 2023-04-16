@@ -37,13 +37,12 @@
       </nav>
 
     </header>
-  <main><h1>
-  Section: headings
-</h1><p>
-  These are the <code>h1</code> - <code>h6</code> HTML heading tags. The first set of text (up until an empty line) is placed in a corresponding heading tag. The following blocks of text get placed in <code>&lt;p&gt;</code> tags. These examples show headings 3 and 4. The same output applies to the other numbers as well.
-</p>
+  <main><h1 class="title">
+  <p>Section: headings</p>
+</h1>
+<p>These are the <code>h1</code> - <code>h6</code> HTML heading tags. The first set of text (up until an empty line) is placed in a corresponding heading tag. The following blocks of text get placed in <code>&lt;p&gt;</code> tags. These examples show headings 3 and 4. The same output applies to the other numbers as well.</p>
 <div class="neoexample">
-<h6>Example</h6>
+<h6>Source</h6>
 <pre><code class=""
 >-&gt; h3
 
@@ -54,14 +53,14 @@ cement will hold hard wood.
 
 We have a new base for shipping.</code></pre>
 
-<h6>Result</h6>
+<h6>Output</h6>
 <pre class="language-html"><code>&lt;h3&gt;Raise the sail and steer the ship northward&lt;&#x2f;h3&gt;
 &lt;p&gt;Remove the dart. No cement will hold hard wood.&lt;&#x2f;p&gt;
 &lt;p&gt;We have a new base for shipping.&lt;&#x2f;p&gt;
 </code></pre>
 </div>
 <div class="neoexample">
-<h6>Example</h6>
+<h6>Source</h6>
 <pre><code class=""
 >-&gt; h4
 &gt;&gt; id: echo
@@ -69,7 +68,7 @@ We have a new base for shipping.</code></pre>
 
 Say it slowly but make it ring clear</code></pre>
 
-<h6>Result</h6>
+<h6>Output</h6>
 <pre class="language-html"><code>&lt;h4 id=&quot;echo&quot; class=&quot;kilo&quot;&gt;Say it slowly but make it ring clear&lt;&#x2f;h4&gt;
 </code></pre>
 </div><div class="note"><p>Everything in the heading section is contained in a single chunk in the AST. That provides for templates that would group the content under a div or similar.</p></div></main>

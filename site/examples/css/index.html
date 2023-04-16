@@ -37,13 +37,12 @@
       </nav>
 
     </header>
-  <main><h1>
-  Section: css
-</h1><p>
-  The <code>-&gt; css</code> section is allows for arbitrary CSS to be added to a page. Each section adds a <code>&lt;style&gt;</code> element just before the closing <code>&lt;&#x2f;head&gt;</code> tag in the HTML. Multiple sections output from the top down in the order they appear in the source file.
-</p>
+  <main><h1 class="title">
+  <p>Section: css</p>
+</h1>
+<p>The <code>-&gt; css</code> section is allows for arbitrary CSS to be added to a page. Each section adds a <code>&lt;style&gt;</code> element just before the closing <code>&lt;&#x2f;head&gt;</code> tag in the HTML. Multiple sections output from the top down in the order they appear in the source file.</p>
 <div class="neoexample">
-<h6>Example</h6>
+<h6>Source</h6>
 <pre><code class=""
 >-&gt; css
 
@@ -51,7 +50,7 @@ pre {
   border: 2px solid red;
 }</code></pre>
 
-<h6>Result</h6>
+<h6>Output</h6>
 <pre class="language-html"><code>&lt;style&gt;
 pre {
   border: 2px solid red;

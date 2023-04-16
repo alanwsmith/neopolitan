@@ -1,0 +1,70 @@
+-> title
+
+Section: title
+
+-> notes
+
+- A convenience for an `<h1>`html` with a `title``
+class applied to it. 
+
+- The first paragraph of text is included in the 
+`h1``
+
+- Following paragrpahs become regular `<p>`html`
+elements
+
+-> startneoexample
+
+-> title
+
+The clothes dried on a thin wooden rack
+
+The stems of the tall glasses cracked and broke
+
+-> endneoexample
+
+
+-> notes
+
+- Attributes can be added via `>>`neo` lines
+
+
+-> startneoexample
+
+-> title
+>> id: bravo
+
+Fly by night, and you waste little time.
+
+The chair looked strong but had no bottom.
+
+-> endneoexample
+
+-> notes
+
+- If a `class`` attribute is added it is 
+combined with the existing `title`` class
+
+-> startneoexample
+
+-> title
+>> class: delta
+
+We like to see clear weather
+
+Tuck the sheet under the edge of the mat
+
+-> endneoexample
+
+
+
+
+
+-> attributes
+>> date: 2023-04-15 22:29:44
+>> id: 2oups9wvzmh0
+>> site: neo 
+>> type: example 
+>> status: published
+
+

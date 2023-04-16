@@ -1,0 +1,61 @@
+-> title
+
+Section: pre
+
+-> notes
+
+- Preformatted content
+
+- Translates to the HTML `<pre>`html` element
+
+- The text is passed through the standard 
+HTML escape process
+
+- No other alterations are made
+
+- Leading and trailing whitespace is 
+trimmed so the text connects directly with
+the opening and closing `pre`html` tags
+
+
+-> startneoexample
+
+-> pre
+
+The kite flew wildly in 
+the high wind.
+
+The <strong>tin box</strong> held 
+priceless stones.
+
+-> endneoexample
+
+-> notes
+
+- Accepts key/value pairs on `>>`neo` lines
+which become attribute names and values in
+the output
+
+
+-> startneoexample
+
+-> pre
+>> class: echo
+
+Shut the hatch before the waves 
+push it in.
+
+Crack the walnut with your sharp 
+side teeth.
+
+-> endneoexample
+
+
+-> attributes
+>> date: 2023-04-15 21:50:24
+>> id: 2oukfc7wkzcw
+>> site: neo 
+>> type: example 
+>> status: published
+
+

@@ -2,13 +2,35 @@
 {%- macro title(data) -%}
 {%- for block in data.children -%}
 {%- if loop.first -%}
-<h1>
-  {{ text(block) }}
-</h1>
+<h1
+
+{%- if data.attributes != None -%}
+  {{- " " -}}
+  class="title
+  {%- for attribute in data.attributes -%}
+    {%- if attribute.key == "class" %} 
+      {{- " " -}}
+      {{- attribute.value -}}
+    {%- endif -%}
+  {%- endfor -%}
+  "
 {%- else -%}
-<p>
-  {{ text(block) }}
-</p>
+  {{- " " -}}
+  class="title"
+{%- endif -%}
+
+{%- for attribute in data.attributes -%}
+  {%- if attribute.key != "class" %} 
+  {{- " " -}}
+      {{- attribute.key -}}="
+      {{- attribute.value -}}"
+  {%- endif -%}
+{%- endfor -%}
+>
+  <p>{{ text(block) }}</p>
+</h1>
+{%- else %}
+<p>{{ text(block) }}</p>
 {%- endif -%}
 {%- endfor -%}
 {%- endmacro -%}

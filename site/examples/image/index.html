@@ -37,32 +37,25 @@
       </nav>
 
     </header>
-  <main><h1>
-  Section: image
-</h1><p>
-  A section that uses attributes for the main image call and uses the content area for the alt text.
-</p><p>
-  The first attribute line is used to set the <code>src</code> path of the image by default:
-</p>
+  <main><h1 class="title">
+  <p>Section: image</p>
+</h1>
+<p>A section that uses attributes for the main image call and uses the content area for the alt text.</p>
+<p>The first attribute line is used to set the <code>src</code> path of the image by default:</p>
 <div class="neoexample">
-<h6>Example</h6>
+<h6>Source</h6>
 <pre><code class=""
 >-&gt; image
 &gt;&gt; alfa.jpg
 
 Example alfa</code></pre>
 
-<h6>Result</h6>
+<h6>Output</h6>
 <pre class="language-html"><code>&lt;img src=&quot;alfa.jpg&quot; alt=&quot;Example alfa&quot;&gt;</code></pre>
-</div>
-
-<p>
-  Other attributes can be passed as well:
-</p>
-
+</div><p>Other attributes can be passed as well:</p>
 
 <div class="neoexample">
-<h6>Example</h6>
+<h6>Source</h6>
 <pre><code class=""
 >-&gt; image
 &gt;&gt; bravo.jpg
@@ -71,17 +64,12 @@ Example alfa</code></pre>
 
 Example bravo</code></pre>
 
-<h6>Result</h6>
+<h6>Output</h6>
 <pre class="language-html"><code>&lt;img src=&quot;bravo.jpg&quot; id=&quot;img_bravo &quot; class=&quot;charlie &quot; alt=&quot;Example bravo&quot;&gt;</code></pre>
-</div>
-
-<p>
-  It&#x27;s also possible to use <code>src: path.jpg</code> to set the path. If you do that the first line must have a key as well as a value. For example:
-</p>
-
+</div><p>It&#x27;s also possible to use <code>src: path.jpg</code> to set the path. If you do that the first line must have a key as well as a value. For example:</p>
 
 <div class="neoexample">
-<h6>Example</h6>
+<h6>Source</h6>
 <pre><code class=""
 >-&gt; image
 &gt;&gt; id: img_delta
@@ -89,7 +77,7 @@ Example bravo</code></pre>
 
 Example delta</code></pre>
 
-<h6>Result</h6>
+<h6>Output</h6>
 <pre class="language-html"><code>&lt;img id=&quot;img_delta&quot; src=&quot;delta.jpg&quot; alt=&quot;Example delta&quot;&gt;</code></pre>
 </div></main>
 </body>

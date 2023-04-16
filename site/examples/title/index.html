@@ -37,6 +37,84 @@
       </nav>
 
     </header>
-  <main></main>
+  <main><h1 class="title">
+  <p>Section: title</p>
+</h1><div class="notes">
+  <ul>
+    <li>
+      <p>
+        A convenience for an <code>&lt;h1&gt;</code> with a <code>title</code> class applied to it. - The first paragraph of text is included in the <code>h1</code>
+      </p>
+    </li>
+    <li>
+      <p>
+        Following paragrpahs become regular <code>&lt;p&gt;</code> elements
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; title
+
+The clothes dried on a thin wooden rack
+
+The stems of the tall glasses cracked and broke</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;h1 class=&quot;title&quot;&gt;
+  &lt;p&gt;The clothes dried on a thin wooden rack&lt;&#x2f;p&gt;
+&lt;&#x2f;h1&gt;
+&lt;p&gt;The stems of the tall glasses cracked and broke&lt;&#x2f;p&gt;</code></pre>
+</div><div class="notes">
+  <ul>
+    <li>
+      <p>
+        Attributes can be added via <code>&gt;&gt;</code> lines
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; title
+&gt;&gt; id: bravo
+
+Fly by night, and you waste little time.
+
+The chair looked strong but had no bottom.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;h1 class=&quot;title&quot; id=&quot;bravo&quot;&gt;
+  &lt;p&gt;Fly by night, and you waste little time.&lt;&#x2f;p&gt;
+&lt;&#x2f;h1&gt;
+&lt;p&gt;The chair looked strong but had no bottom.&lt;&#x2f;p&gt;</code></pre>
+</div><div class="notes">
+  <ul>
+    <li>
+      <p>
+        If a <code>class</code> attribute is added it is combined with the existing <code>title</code> class
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; title
+&gt;&gt; class: delta
+
+We like to see clear weather
+
+Tuck the sheet under the edge of the mat</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;h1 class=&quot;title delta&quot;&gt;
+  &lt;p&gt;We like to see clear weather&lt;&#x2f;p&gt;
+&lt;&#x2f;h1&gt;
+&lt;p&gt;Tuck the sheet under the edge of the mat&lt;&#x2f;p&gt;</code></pre>
+</div></main>
 </body>
 </html>

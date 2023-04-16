@@ -37,28 +37,17 @@
       </nav>
 
     </header>
-  <main><h1>
-  Footnotes
-</h1><p>
-  Footnotes have two parts. In the content section the footnote anchor is defined with:
-</p><pre><code class="language-neo">&lt;&lt;^some name&gt;&gt;</code></pre>
-
-<p>
-  The conent for the footnotes is defult with a <code>-&gt; footnote</code> tag. In order to associate with the content properly an <code>id:</code> attribute with the same name (`some name`` in the example above). Any other arbitrary data can be added as well. For my implementaiton. If there is a <code>url:</code> attribute it&#x27;s used at the end of the content with a <code>link</code>
-</p>
-
+  <main><h1 class="title">
+  <p>Footnotes</p>
+</h1>
+<p>Footnotes have two parts. In the content section the footnote anchor is defined with:</p><pre><code class="language-neo">&lt;&lt;^some name&gt;&gt;</code></pre><p>The conent for the footnotes is defult with a <code>-&gt; footnote</code> tag. In order to associate with the content properly an <code>id:</code> attribute with the same name (`some name`` in the example above). Any other arbitrary data can be added as well. For my implementaiton. If there is a <code>url:</code> attribute it&#x27;s used at the end of the content with a <code>link</code></p>
 <pre><code>-&gt; footnote
 &gt;&gt; id: some name
 
 This is the text of the footnote that is
 processed so you can &lt;&lt;strong|add emphasis|&gt;&gt;
 or whatever. Probably don&#x27;t try to add 
-footnotes to footnotes though.</code></pre>
-
-<p>
-  Footnotes can also to anywhere in the document. They are collected an put into a section at the end of the document by default.
-</p>
-
+footnotes to footnotes though.</code></pre><p>Footnotes can also to anywhere in the document. They are collected an put into a section at the end of the document by default.</p>
 </main>
 </body>
 </html>

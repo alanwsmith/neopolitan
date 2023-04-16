@@ -37,6 +37,74 @@
       </nav>
 
     </header>
-  <main></main>
+  <main><h1 class="title">
+  <p>Section: p</p>
+</h1><div class="notes">
+  <ul>
+    <li>
+      <p>
+        Basic paragraphs
+      </p>
+    </li>
+    <li>
+      <p>
+        Each paragraph is separated by an empty line
+      </p>
+    </li>
+    <li>
+      <p>
+        Multiple connected lines are combined into a single <code>&lt;p&gt;</code> element
+      </p>
+    </li>
+    <li>
+      <p>
+        There&#x27;s no section wrapper. Each paragraphs becomes it&#x27;s own <code>&lt;p&gt;</code> element in the HTML output.
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; p
+
+Greet the new guests. A thin 
+stripe runs down the middle.
+
+Lush fern grow on the lofty rocks.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;p&gt;Greet the new guests. A thin stripe runs down the middle.&lt;&#x2f;p&gt;
+&lt;p&gt;Lush fern grow on the lofty rocks.&lt;&#x2f;p&gt;
+</code></pre>
+</div><div class="notes">
+  <ul>
+    <li>
+      <p>
+        Attributes can be added with <code>&gt;&gt;</code> lines
+      </p>
+    </li>
+    <li>
+      <p>
+        Attributes are added to every <code>&lt;p&gt;</code> element in the output (if attributes need to be applied to a single paragraph put it in its own section)
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; p
+&gt;&gt; class: lima
+
+A steep trail is painful for our feet.
+
+Green moss grows on the northern side.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;p class=&quot;lima&quot;&gt;A steep trail is painful for our feet.&lt;&#x2f;p&gt;
+&lt;p class=&quot;lima&quot;&gt;Green moss grows on the northern side.&lt;&#x2f;p&gt;
+</code></pre>
+</div></main>
 </body>
 </html>

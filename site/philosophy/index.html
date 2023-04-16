@@ -37,8 +37,8 @@
       </nav>
 
     </header>
-  <main><h1>
-  Neopoliltan Philosophies
+  <main><h1 class="title">
+  <p>Neopoliltan Philosophies</p>
 </h1><h2>Overview</h2>
 <p>These are the thoughts, influences, and decisions that lead to neopolitan&#x27;s design.</p>
 <h2>The Philosophies</h2>
@@ -53,16 +53,8 @@
   <li>
     <p>The output</p>
   </li>
-</ul>
-
-<p>
-  The specification only deals with the AST and the output. The project includes and example output renderer but based on what I&#x27;ve seen with Markdown trying to define an implementation via a spec isn&#x27;t likely to work out well.
-</p>
-
-<p>
-  See <a href="https://xkcd.com/927/">XKCD 927</a> for reference
-</p>
-
+</ul><p>The specification only deals with the AST and the output. The project includes and example output renderer but based on what I&#x27;ve seen with Markdown trying to define an implementation via a spec isn&#x27;t likely to work out well.</p>
+<p>See <a href="https://xkcd.com/927/">XKCD 927</a> for reference</p>
 <h3>Raw Text In The AST</h3>
 <p>I&#x27;m not doing an conversion for HTML escaping in the process that makes the AST. I&#x27;m leaving that to the output processor. That&#x27;s an implementation detail, but I prefer splitting the two that way.</p>
 <h3>Footnotes And References</h3>
@@ -96,24 +88,11 @@
 <p>I considered two types of attributes for sections. One that would go directly into the HTML and one that was for directives that would only be used for processing. For example, instead of:</p>
 <pre><code>-&gt; code
 &gt;&gt; rust
-&gt;&gt; class: alfa</code></pre>
-
-<p>
-  The <code>rust</code> line would get a separate starting token indicating that that string wouldn&#x27;t go directly to the output but was a processor instruction (which would let it know to add <code>language-rust</code> to the HTML attribute list).
-</p>
-
-<p>
-  It would have looked something like this:
-</p>
-
+&gt;&gt; class: alfa</code></pre><p>The <code>rust</code> line would get a separate starting token indicating that that string wouldn&#x27;t go directly to the output but was a processor instruction (which would let it know to add <code>language-rust</code> to the HTML attribute list).</p>
+<p>It would have looked something like this:</p>
 <pre><code>-&gt; code
 ++ rust
-&gt;&gt; class: alfa</code></pre>
-
-<p>
-  I decided against that because it would require remembering which things were directives and which weren&#x27;t. For my implementation, it&#x27;s the responsibility of the processor to make the determination.
-</p>
-
+&gt;&gt; class: alfa</code></pre><p>I decided against that because it would require remembering which things were directives and which weren&#x27;t. For my implementation, it&#x27;s the responsibility of the processor to make the determination.</p>
 <h3>Minijinja Templates</h3>
 <p>I&#x27;m using Minijinja for the template engine. This is an implementation detail that isn&#x27;t required. I&#x27;m also using the <code>.jinja</code> file extension instead of <code>.html</code>. I&#x27;m going with that because my auto-formatter kepts messing with the templates in a way that altered the spacing. I haven&#x27;t found a maintained jinja extension for neovim tree-sitter. Something to add to the list.</p>
 <h3>No iFrame Section</h3>

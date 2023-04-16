@@ -1,9 +1,32 @@
-{% from "text.jinja" import text %}
-{% macro youtube(data) %}
-<div class="youtubeVideo">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ data.attributes[0].key }}"
+{%- from "text.jinja" import text -%}
+{%- macro youtube(data) -%}
+<div 
+  {{- " " -}}
+  class="youtubeVideo
+  {%- for attribute in data.attributes -%}
+    {%- if attribute.key == "class" %} 
+      {{- " " -}}
+      {{- attribute.value -}}
+    {%- endif -%}
+  {%- endfor -%}
+  "
+{%- for attribute in data.attributes -%}
+  {%- if attribute.key != "class" and loop.index > 1 %} 
+  {{- " " -}}
+      {{- attribute.key -}}="
+      {{- attribute.value -}}"
+  {%- endif -%}
+{%- endfor -%}
+>
+  <iframe 
+    src="https://www.youtube.com/embed/{{ data.attributes[0].key }}"
+    width="560" height="315" 
     title="YouTube video player" frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allow="accelerometer; autoplay; clipboard-write; 
+    encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen></iframe>
 </div>
-{% endmacro %}
+{%- endmacro -%}
+
+
+

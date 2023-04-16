@@ -4,6 +4,9 @@ Neopolitan TODOs
 
 -> todo
 
+[] Add start and end times to youtube
+video embeds
+
 [] Setup TODO lists to actually show up
 
 [] Add html escaping (that should be done on 
@@ -27,6 +30,7 @@ own block
 after an `-> endcode``. Just have it to
 automatically. 
 
+[] Add a `<<br>>`neo` tag
 
 -> attributes
 >> date: 2023-04-15 10:06:07

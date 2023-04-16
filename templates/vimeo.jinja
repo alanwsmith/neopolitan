@@ -1,7 +1,32 @@
-{% from "text.jinja" import text %}
-{% macro vimeo(data) %}
-<div class="vimeoVideo">
-  <iframe title="vimeo-player" src="https://player.vimeo.com/video/{{ data.attributes[0].key }}" width="640"
-    height="360" frameborder="0" allowfullscreen></iframe>
+{%- from "text.jinja" import text -%}
+{%- macro vimeo(data) -%}
+<div 
+  {{- " " -}}
+  class="vimeoVideo
+  {%- for attribute in data.attributes -%}
+    {%- if attribute.key == "class" %} 
+      {{- " " -}}
+      {{- attribute.value -}}
+    {%- endif -%}
+  {%- endfor -%}
+  "
+{%- for attribute in data.attributes -%}
+  {%- if attribute.key != "class" and loop.index > 1 %} 
+  {{- " " -}}
+      {{- attribute.key -}}="
+      {{- attribute.value -}}"
+  {%- endif -%}
+{%- endfor -%}
+>
+  <iframe 
+    src="https://player.vimeo.com/video/{{ data.attributes[0].key }}" 
+    title="vimeo-player" 
+    width="640"
+    height="360" 
+    frameborder="0" 
+    allowfullscreen></iframe>
 </div>
-{% endmacro %}
+{%- endmacro -%}
+
+
+

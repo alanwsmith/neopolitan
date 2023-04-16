@@ -38,32 +38,80 @@
 
     </header>
   <main><h1 class="title">
-  <p>Includes</p>
+  <p>Section: pre</p>
 </h1><div class="notes">
   <ul>
     <li>
       <p>
-        GOAL: These aren&#x27;t implemented yet. Get them setup after messing around with them a bit.
+        Preformatted content
       </p>
     </li>
     <li>
       <p>
-        This is a draft.
+        Translates to the HTML <code>&lt;pre&gt;</code> element
       </p>
     </li>
     <li>
       <p>
-        This is implementation dependent.
+        The text is passed through the standard HTML escape process
+      </p>
+    </li>
+    <li>
+      <p>
+        No other alterations are made
+      </p>
+    </li>
+    <li>
+      <p>
+        Leading and trailing whitespace is trimmed so the text connects directly with the opening and closing <code>pre</code> tags
       </p>
     </li>
   </ul>
-</div><p>Includes provide a way to pull in the same pieces of structure and functionality.</p>
-<ul>
-  <li>
-    <p>In my implementaiton, includes are stored in an <code>includes</code> directory next to the <code>site</code>, and <code>content</code> directories. - Includes are called with:</p>
-  </li>
-</ul><pre><code>-&gt; include
-&gt;&gt; path: the_file.html</code></pre><p>This line needs to exist until the bug is fixed where a panic happens when <code>endcode</code> is the last thing in the file</p>
-</main>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; pre
+
+The kite flew wildly in 
+the high wind.
+
+The &lt;strong&gt;tin box&lt;&#x2f;strong&gt; held 
+priceless stones.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;pre&gt;The kite flew wildly in 
+the high wind.
+
+The &amp;lt;strong&amp;gt;tin box&amp;lt;&amp;#x2f;strong&amp;gt; held 
+priceless stones.&lt;&#x2f;pre&gt;</code></pre>
+</div><div class="notes">
+  <ul>
+    <li>
+      <p>
+        Accepts key&#x2f;value pairs on <code>&gt;&gt;</code> lines which become attribute names and values in the output
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; pre
+&gt;&gt; class: echo
+
+Shut the hatch before the waves 
+push it in.
+
+Crack the walnut with your sharp 
+side teeth.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;pre class=&quot;echo&quot;&gt;Shut the hatch before the waves 
+push it in.
+
+Crack the walnut with your sharp 
+side teeth.&lt;&#x2f;pre&gt;</code></pre>
+</div></main>
 </body>
 </html>

@@ -1,0 +1,11 @@
+{%- macro pre(data) -%}
+<pre
+  {%- for attribute in data.attributes -%}
+  {{- " " -}}
+  {{attribute.key}}="{{ attribute.value -}}"
+  {%- endfor -%}
+>{{data.children.text}}</pre>
+{%- endmacro %}
+
+
+
