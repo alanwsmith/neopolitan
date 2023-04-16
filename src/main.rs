@@ -7,6 +7,7 @@ use neopolitan::block::block::Block::RawContent;
 use neopolitan::create_env::create_env;
 use neopolitan::parse::parse;
 use neopolitan::render_template::render_template;
+use neopolitan::section::attributes_for_section::SectionAttribute::Attribute;
 use neopolitan::section::section::*;
 use neopolitan::wrapper::wrapper::*;
 use std::fs;
@@ -45,7 +46,9 @@ fn do_copy(source_dir: &str, dest_dir: &str) -> Result<(), Error> {
                 println!("PROCESSING: {}", p.as_os_str().to_str().unwrap());
                 let source = fs::read_to_string(p.as_os_str().to_str().unwrap()).unwrap();
                 let mut payload = parse(source.as_str()).unwrap().1;
-                let output = render_template(payload, env.clone(), "main.jinja");
+                let mut source_type = get_type(&payload);
+                source_type.push_str(".jinja");
+                let output = render_template(payload, env.clone(), source_type.as_str());
                 fs::write(html_path, output).unwrap();
             }
             // NOTE: for now, just always copy the source files over to
@@ -55,4 +58,29 @@ fn do_copy(source_dir: &str, dest_dir: &str) -> Result<(), Error> {
         }
     }
     Ok(())
+}
+
+fn get_type(payload: &Wrapper) -> String {
+    match &payload {
+        Wrapper::Page { children } => {
+            for section in children.as_ref().unwrap() {
+                match section {
+                    Section::AttributesSection { attributes, .. } => {
+                        for section_attribute in attributes.as_ref().unwrap() {
+                            match section_attribute {
+                                Attribute { key, value } => {
+                                    if key.as_ref().unwrap() == "type" {
+                                        return value.as_ref().unwrap().trim().to_string();
+                                    }
+                                }
+                                _ => {}
+                            }
+                        }
+                    }
+                    _ => {}
+                }
+            }
+        }
+    }
+    "default".to_string()
 }
