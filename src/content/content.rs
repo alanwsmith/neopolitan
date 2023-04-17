@@ -1,11 +1,12 @@
 use crate::attribute::*;
-use crate::content::b::b;
+// use crate::content::b::b;
 use crate::content::code::code;
 use crate::content::code_shorthand::*;
 use crate::content::em::em;
 use crate::content::i::i;
 use crate::content::kbd::kbd;
 use crate::content::link::link;
+use crate::content::neo_tag::neo_tag;
 use crate::content::span::span;
 use crate::content::strike::*;
 use crate::content::strong::*;
@@ -83,11 +84,13 @@ pub enum Content {
         attributes: Option<Vec<Attribute>>,
         text: Option<String>,
     },
+    Placeholder,
 }
 
 pub fn content(source: &str) -> IResult<&str, Content> {
     let (remainder, content) = alt((
-        tuple((tag_no_case("<<b|"), take_until(">>"), tag(">>"))).map(|t| b(t).unwrap().1),
+        tuple((tag_no_case("<<"), take_until(">>"), tag(">>"))).map(|t| neo_tag(t).unwrap().1),
+        // tuple((tag_no_case("<<b|"), take_until(">>"), tag(">>"))).map(|t| b(t).unwrap().1),
         tuple((tag_no_case("<<code|"), take_until(">>"), tag(">>"))).map(|t| code(t).unwrap().1),
         tuple((
             tag_no_case("`"),

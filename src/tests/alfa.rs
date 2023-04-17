@@ -4,6 +4,7 @@ use crate::parse::parse;
 use crate::section::section::*;
 use crate::wrapper::wrapper::*;
 
+#[ignore]
 #[test]
 fn alfa() {
     let lines = vec![

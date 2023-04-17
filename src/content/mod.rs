@@ -6,6 +6,7 @@ pub mod em;
 pub mod i;
 pub mod kbd;
 pub mod link;
+pub mod neo_tag;
 pub mod span;
 pub mod strike;
 pub mod strong;

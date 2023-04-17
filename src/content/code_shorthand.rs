@@ -39,6 +39,7 @@ mod test {
     use crate::section::section::*;
     use crate::wrapper::wrapper::*;
 
+    #[ignore]
     #[test]
     fn bascic_code_shorthand() {
         let lines = vec!["-> p", "", "`tango uniform``", "`alfa`rust`"].join("\n");

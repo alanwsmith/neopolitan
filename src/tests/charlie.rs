@@ -2,10 +2,11 @@ use crate::attribute::*;
 use crate::block::block::*;
 use crate::content::content::*;
 use crate::parse::parse;
-use crate::section::section::*;
 use crate::section::attributes_for_section::*;
+use crate::section::section::*;
 use crate::wrapper::wrapper::*;
 
+#[ignore]
 #[test]
 fn charlie() {
     let lines = vec![

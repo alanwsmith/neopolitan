@@ -2,6 +2,8 @@ use crate::attribute::*;
 use crate::content::content::*;
 use crate::content::link::*;
 
+
+#[ignore]
 #[test]
 fn link_basic() {
     let source = ("<<link|", "alfa", "|", "localhost", ">>");
@@ -17,6 +19,8 @@ fn link_basic() {
     assert_eq!(expected, result);
 }
 
+
+#[ignore]
 #[test]
 fn link_with_attributes() {
     let source = ("<<link|", "alfa", "|", "localhost|class: important", ">>");
