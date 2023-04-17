@@ -4,6 +4,8 @@ Neopolitan TODOs
 
 -> todo
 
+[] add language feature to inline code block
+
 [] Setup so files exist in one directory then 
 become folders on the output (except for the 
 index.neo file which would turn directly into
