@@ -6,6 +6,7 @@ use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
 use nom::bytes::complete::take_until;
 use nom::character::complete::multispace0;
+use nom::combinator::opt;
 use nom::combinator::rest;
 use nom::multi::separated_list0;
 use nom::sequence::tuple;
@@ -26,6 +27,36 @@ pub fn neo_tag_attributes(source: &str) -> IResult<&str, Option<Vec<Attribute>>>
     } else {
         Ok(("", None))
     }
+}
+
+pub fn split_attribute(source: &str) -> IResult<&str, Option<Attribute>> {
+    let (remainder, _) = opt(tag(":"))(source)?;
+    let (_, items) = separated_list0(tag(":"), is_not(":"))(remainder)?;
+    if items.len() > 1 {
+        Ok((
+            "",
+            Some(Attribute::Basic {
+                key: Some(items[0].trim().to_string()),
+                value: Some(items[1].trim().to_string()),
+            }),
+        ))
+    } else {
+        Ok(("", None))
+    }
+}
+
+pub fn neo_tag_link_attributes(source: &str) -> IResult<&str, Option<Vec<Attribute>>> {
+    let (_, parts) = separated_list0(tag("|"), is_not("|"))(source)?;
+    let mut atts: Vec<Attribute> = vec![Attribute::Basic {
+        key: Some(parts[1].to_string()),
+        value: None,
+    }];
+    if parts.len() > 2 {
+        parts.iter().skip(2).for_each(|a| {
+            atts.push(split_attribute(a).unwrap().1.unwrap());
+        });
+    }
+    Ok(("", Some(atts)))
 }
 
 pub fn neo_tag<'a>(source: (&'a str, &'a str, &'a str)) -> IResult<&'a str, Content> {
@@ -52,7 +83,7 @@ pub fn neo_tag<'a>(source: (&'a str, &'a str, &'a str)) -> IResult<&'a str, Cont
             text: Some(parts.0.to_string()),
         }),
         tuple((multispace0, tag_no_case("link"), multispace0)).map(|_| Content::Link {
-            attributes: neo_tag_attributes(parts.2).unwrap().1,
+            attributes: neo_tag_link_attributes(parts.2).unwrap().1,
             text: Some(parts.0.to_string()),
         }),
         tuple((multispace0, tag_no_case("span"), multispace0)).map(|_| Content::Span {
@@ -215,10 +246,33 @@ mod test {
 
     #[test]
     fn link() {
-        let source = ("", "sierra|link", "");
+        let source = ("", "sierra|link|https://www.example.com/", "");
         let expected = Content::Link {
             text: Some("sierra".to_string()),
-            attributes: None,
+            attributes: Some(vec![Attribute::Basic {
+                key: Some("https://www.example.com/".to_string()),
+                value: None,
+            }]),
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
+
+    #[test]
+    fn link_with_attributes() {
+        let source = ("", "tango|link|https://www.example.com/|class: random", "");
+        let expected = Content::Link {
+            text: Some("tango".to_string()),
+            attributes: Some(vec![
+                Attribute::Basic {
+                    key: Some("https://www.example.com/".to_string()),
+                    value: None,
+                },
+                Attribute::Basic {
+                    key: Some("class".to_string()),
+                    value: Some("random".to_string()),
+                },
+            ]),
         };
         let result = neo_tag(source);
         assert_eq!(expected, result.unwrap().1);

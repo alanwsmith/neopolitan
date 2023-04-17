@@ -108,7 +108,6 @@ pub fn content(source: &str) -> IResult<&str, Content> {
         ))
         .map(|t| code_shorthand(t).unwrap().1),
 
-
         tuple((
             tag_no_case("_"),
             take_until("_"),

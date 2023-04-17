@@ -3,8 +3,8 @@
 {%- from "_macros/attributes.jinja" import link_attributes -%}
 {%- macro text(data) -%}
   {%- for token in data.children -%}
-    {%- if token.type == "Text" -%}
-      {{token.text}}
+    {%- if token.type == "Space" -%}
+      {{ " " }}
     {%- elif token.type == "CodeShorthand" -%}
       <code {{- code_attributes(token) -}}>{{token.text}}</code>
     {%- elif token.type == "Em" -%}
@@ -12,19 +12,15 @@
     {%- elif token.type == "EmShorthand" -%}
       <em {{- attributes(token) -}}>{{token.text}}</em>
     {%- elif token.type == "Link" -%}
-    {{token}}
-    <p>
-    {{ link_attributes(token)}}
-    </p>
       <a href="{% autoescape false %}{{token.url}}{% endautoescape %}">{{token.text}}</a>
-    {%- elif token.type == "Space" -%}
-      {{ " " }}
     {%- elif token.type == "Strike" -%}
       <strike {{- attributes(token) -}}>{{token.text}}</strong>
     {%- elif token.type == "Strong" -%}
       <strong {{- attributes(token) -}}>{{token.text}}</strong>
     {%- elif token.type == "StrongShorthand" -%}
       <strong {{- attributes(token) -}}>{{token.text}}</strong>
+    {%- elif token.type == "Text" -%}
+      {{token.text}}
     {%- endif -%}
   {%- endfor -%}
 {%- endmacro -%}
