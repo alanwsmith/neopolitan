@@ -3,6 +3,7 @@ use crate::content::content::Content;
 use nom::branch::alt;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
+use nom::bytes::complete::tag_no_case;
 use nom::bytes::complete::take_until;
 use nom::character::complete::multispace0;
 use nom::combinator::rest;
@@ -31,15 +32,47 @@ pub fn neo_tag_attributes(source: &str) -> IResult<&str, Option<Vec<Attribute>>>
 pub fn neo_tag<'a>(source: (&'a str, &'a str, &'a str)) -> IResult<&'a str, Content> {
     let (_, parts) = tuple((take_until("|"), tag("|"), rest))(source.1)?;
     let (a, b) = alt((
-        tuple((multispace0, tag("b"), multispace0)).map(|_| Content::B {
+        tuple((multispace0, tag_no_case("b"), multispace0)).map(|_| Content::B {
             attributes: neo_tag_attributes(parts.2).unwrap().1,
             text: Some(parts.0.to_string()),
         }),
-        tuple((multispace0, tag("code"), multispace0)).map(|_| Content::Code {
+        tuple((multispace0, tag_no_case("code"), multispace0)).map(|_| Content::Code {
             attributes: neo_tag_attributes(parts.2).unwrap().1,
             text: Some(parts.0.to_string()),
         }),
-        tuple((multispace0, tag("strong"), multispace0)).map(|_| Content::Strong {
+        tuple((multispace0, tag_no_case("em"), multispace0)).map(|_| Content::Em {
+            attributes: neo_tag_attributes(parts.2).unwrap().1,
+            text: Some(parts.0.to_string()),
+        }),
+        tuple((multispace0, tag_no_case("i"), multispace0)).map(|_| Content::I {
+            attributes: neo_tag_attributes(parts.2).unwrap().1,
+            text: Some(parts.0.to_string()),
+        }),
+        tuple((multispace0, tag_no_case("kbd"), multispace0)).map(|_| Content::Kbd {
+            attributes: neo_tag_attributes(parts.2).unwrap().1,
+            text: Some(parts.0.to_string()),
+        }),
+        tuple((multispace0, tag_no_case("span"), multispace0)).map(|_| Content::Span {
+            attributes: neo_tag_attributes(parts.2).unwrap().1,
+            text: Some(parts.0.to_string()),
+        }),
+        tuple((multispace0, tag_no_case("strike"), multispace0)).map(|_| Content::Strike {
+            attributes: neo_tag_attributes(parts.2).unwrap().1,
+            text: Some(parts.0.to_string()),
+        }),
+        tuple((multispace0, tag_no_case("strong"), multispace0)).map(|_| Content::Strong {
+            attributes: neo_tag_attributes(parts.2).unwrap().1,
+            text: Some(parts.0.to_string()),
+        }),
+        tuple((multispace0, tag_no_case("sub"), multispace0)).map(|_| Content::Sub {
+            attributes: neo_tag_attributes(parts.2).unwrap().1,
+            text: Some(parts.0.to_string()),
+        }),
+        tuple((multispace0, tag_no_case("sup"), multispace0)).map(|_| Content::Sup {
+            attributes: neo_tag_attributes(parts.2).unwrap().1,
+            text: Some(parts.0.to_string()),
+        }),
+        tuple((multispace0, tag_no_case("u"), multispace0)).map(|_| Content::U {
             attributes: neo_tag_attributes(parts.2).unwrap().1,
             text: Some(parts.0.to_string()),
         }),
@@ -145,18 +178,60 @@ mod test {
         assert_eq!(expected, result.unwrap().1);
     }
 
-    // "<<code|quick brown>>",
-    // "<<code|slow fox|lang: rust>>",
-    // "<<code|slow fox|rust>>",
-    // "<<em|some flower seeds>>",
-    // "<<i|red ink>>",
-    // "<<kbd|ctrl>>",
-    // "<<span|the worn floor>>",
-    // "<<strike|the worn floor>>",
-    // "<<strong|the worn floor>>",
-    // "<<sub|the worn floor>>",
-    // "<<sup|the worn floor>>",
-    // "<<u|the worn floor>>",
+    #[test]
+    fn em() {
+        let source = ("", "kilo|em", "");
+        let expected = Content::Em {
+            text: Some("kilo".to_string()),
+            attributes: None,
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
+
+    #[test]
+    fn i() {
+        let source = ("", "lima|i", "");
+        let expected = Content::I {
+            text: Some("lima".to_string()),
+            attributes: None,
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
+
+    #[test]
+    fn kbd() {
+        let source = ("", "mike|kbd", "");
+        let expected = Content::Kbd {
+            text: Some("mike".to_string()),
+            attributes: None,
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
+
+    #[test]
+    fn span() {
+        let source = ("", "november|span", "");
+        let expected = Content::Span {
+            text: Some("november".to_string()),
+            attributes: None,
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
+
+    #[test]
+    fn strike() {
+        let source = ("", "oscar|strike", "");
+        let expected = Content::Strike {
+            text: Some("oscar".to_string()),
+            attributes: None,
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
 
     #[test]
     fn strong() {
@@ -168,6 +243,39 @@ mod test {
                 value: Some("delta".to_string()),
             }]),
             text: Some("bravo".to_string()),
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
+
+    #[test]
+    fn sub() {
+        let source = ("", "papa|sub", "");
+        let expected = Content::Sub {
+            text: Some("papa".to_string()),
+            attributes: None,
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
+
+    #[test]
+    fn sup() {
+        let source = ("", "quebec|sup", "");
+        let expected = Content::Sup {
+            text: Some("quebec".to_string()),
+            attributes: None,
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
+
+    #[test]
+    fn u() {
+        let source = ("", "romeo|u", "");
+        let expected = Content::U {
+            text: Some("romeo".to_string()),
+            attributes: None,
         };
         let result = neo_tag(source);
         assert_eq!(expected, result.unwrap().1);

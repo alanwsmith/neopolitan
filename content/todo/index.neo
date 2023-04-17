@@ -69,6 +69,13 @@ the correspoding location under the
 assets root directory to make it easy to
 store and find related files
 
+[] Add options for multiple tags like:
+`<<alfa|strong_strike>>`neo`. Probably
+if it's a link that would have to go
+first and the URL would have to be the
+first thing. 
+
+
 
 -> attributes
 >> date: 2023-04-15 10:06:07
