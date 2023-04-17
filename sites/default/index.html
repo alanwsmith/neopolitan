@@ -45,7 +45,7 @@
 </h1><div class="subtitle">
   <p>A plain-text format for websites</p>
 </div>
-<div class="note highlighted"><p>This site is an early draft. I wouldn&#x27;t normally publish something this rough but I&#x27;m doing the &quot;build in public&quot; thing using this site as a live test bed.</p><p>Please pardon the mess.</p></div><h2>Introduction</h2>
+<div class="note highlighted"><p>I&#x27;m designing Neopolitan in the build-in-public style. Most things are solidified but there&#x27;s still a lot of work in progress. It&#x27;s far enough along that I&#x27;m building this site with it, but I&#x27;d hold off doing anything more than playing with it at this point.</p></div><h2>Introduction</h2>
 <p> My site is twenty years old. Pondering those decades got me thinking about the next two. I find myself asking &quot;What do I want to use for the next twenty years?&quot; instead of &quot;What do I want to do for my next redesign?&quot; The answers are very different.</p>
 <h2>The Format</h2>
 <p>I&#x27;ve moved my site a half dozen times. Each one involved a painful content migration. I&#x27;ve gone from raw HTML to Perl scripts to Wordpress to PHP with various DB schemas to Markdown to MDX to Org-Mode to a mix of all of the above.</p>
@@ -61,12 +61,11 @@ A plain-text format for websites
 -&gt; note
 &gt;&gt; class: highlighted
 
-This site is an early draft. I wouldn&#x27;t normally 
-publish something this rough but I&#x27;m doing the 
-&quot;build in public&quot; thing using this site as a live 
-test bed.
-
-Please pardon the mess.
+I&#x27;m designing Neopolitan in the build-in-public style.
+Most things are solidified but there&#x27;s still a lot 
+of work in progress. It&#x27;s far enough along that 
+I&#x27;m building this site with it, but I&#x27;d hold off doing
+anything more than playing with it at this point. 
 
 -&gt; h2
 
@@ -81,7 +80,12 @@ next redesign?&quot; The answers are very different.
 -&gt; attributes
 &gt;&gt; date: 2023-04-16 19:06:40
 &gt;&gt; type: default 
-&gt;&gt; published: y</code></pre><h2>Content Sections</h2>
+&gt;&gt; published: y</code></pre><h2>The AST (Work In Progress)</h2>
+<p>The specification for Neopolitin isn&#x27;t HTML output. It&#x27;s an AST. The documnets have an explicit way to be parsed but the final output is an implementation detail.</p>
+<h2>The Engine</h2>
+<p>I designed Neopolitan to use for my site. The format alone isn&#x27;t much use without a process to turn it into web pages. I built one that I&#x27;m using for this site. It&#x27;s not so much of a reference as it is a demonstration of what can be done with the format. The source code is in <a href="
+https://github.com/alanwsmith/neopolitan">this repo</a></p>
+<h2>Content Sections</h2>
 <p>Neopolitan documents are divided into sections. Each one starts with a <code class="language-neo">-&gt;</code> token followed by the name of the section. The type of section determines what happens with the content inside it. For example, the <code class="language-neo">-&gt; h2</code> section becomes an <code class="language-html">&lt;h2&gt;</code> element:</p>
 
 <div class="neoexample">

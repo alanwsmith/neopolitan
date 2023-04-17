@@ -9,12 +9,11 @@ A plain-text format for websites
 -> note
 >> class: highlighted
 
-This site is an early draft. I wouldn't normally publish 
-something this rough but I'm doing the "build in public" 
-thing using this site as a live test bed.
-
-Please pardon the mess.
-
+I'm designing Neopolitan in the build-in-public style.
+Most things are solidified but there's still a lot 
+of work in progress. It's far enough along that 
+I'm building this site with it, but I'd hold off doing
+anything more than playing with it at this point. 
 
 -> h2
 
@@ -55,12 +54,11 @@ A plain-text format for websites
 -> note
 >> class: highlighted
 
-This site is an early draft. I wouldn't normally 
-publish something this rough but I'm doing the 
-"build in public" thing using this site as a live 
-test bed.
-
-Please pardon the mess.
+I'm designing Neopolitan in the build-in-public style.
+Most things are solidified but there's still a lot 
+of work in progress. It's far enough along that 
+I'm building this site with it, but I'd hold off doing
+anything more than playing with it at this point. 
 
 -> h2
 
@@ -78,6 +76,38 @@ next redesign?" The answers are very different.
 >> published: y
 
 -> endcode
+
+
+-> h2
+
+The AST (Work In Progress)
+
+The specification for Neopolitin isn't HTML 
+output. It's an AST. The documnets have an 
+explicit way to be parsed but the final
+output is an implementation detail. 
+
+
+-> h2
+
+The Engine
+
+I designed Neopolitan to use for my site. The 
+format alone isn't much use without a process
+to turn it into web pages. I built one that
+I'm using for this site. It's not so much of 
+a reference as it is a demonstration of what
+can be done with the format. 
+
+The source code is in >this repo>
+https://github.com/alanwsmith/neopolitan> 
+
+
+
+
+
+
+
 
 -> h2
 

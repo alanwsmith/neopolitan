@@ -44,16 +44,94 @@
   <p>Neopolitan TODOs</p>
 </h1><div class="todo">
   <ul>
-    <li class="status-none">
+    <li class="status-x">
       <p>
-        <input type="checkbox" disabled/>
-        Global footnotes (and possibly references)
+        <input type="checkbox" checked disabled/>
+        Finish implementing TODO lists so this list shows up
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        Add language feature to inline code blocks
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        Add html escaping (that should be done on the front end, tbd if minijinji is already doing it.
       </p>
     </li>
     <li class="status-none">
       <p>
         <input type="checkbox" disabled/>
-        add language feature to inline code block
+        Add multiple levels for lists
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Add categories to the universe
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Add files lists to the universe
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Add lists of types of files to the universe
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Add an <code>order</code> attribute capability. The idea is to be able to assemble a book or documentation. [] Define standard attributes? Maybe just recommendations? Or, better, just a demo. Though, make standard ones for you. [] Create a TOC output like the mdBook Summary.md thing that turns into a nav of links
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Create index page style components from the universe lists
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Output pages into their own directories as <code>index.html</code> files
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Fix bug where whitespace at the end of a section name cause a panic
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Fix bug where whitespace at the end of a block of content causes the next one to be appended directly instead of making its own block
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Flush output directories on each build
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Setup for multi-site usage
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Global footnotes (and possibly references)
       </p>
     </li>
     <li class="status-none">
@@ -77,12 +155,6 @@
     <li class="status-none">
       <p>
         <input type="checkbox" disabled/>
-        Setup for multisite
-      </p>
-    </li>
-    <li class="status-none">
-      <p>
-        <input type="checkbox" disabled/>
         Setup external process callouts for JSON - which is serialized into the top of the document as a var, and HTML and neopolitan which are dropped directly into the document prior to parsing
       </p>
     </li>
@@ -90,30 +162,6 @@
       <p>
         <input type="checkbox" disabled/>
         Add start and end times to youtube video embeds
-      </p>
-    </li>
-    <li class="status-none">
-      <p>
-        <input type="checkbox" disabled/>
-        Setup TODO lists to actually show up
-      </p>
-    </li>
-    <li class="status-none">
-      <p>
-        <input type="checkbox" disabled/>
-        Add html escaping (that should be done on the front end, tbd if minijinji is already doing it.
-      </p>
-    </li>
-    <li class="status-none">
-      <p>
-        <input type="checkbox" disabled/>
-        Fix bug where whitespace at the end of a section name cause a panic
-      </p>
-    </li>
-    <li class="status-none">
-      <p>
-        <input type="checkbox" disabled/>
-        Fix bug where whitespace at the end of a block of content causes the next one to be appended directly instead of making its own block
       </p>
     </li>
     <li class="status-none">
@@ -137,7 +185,7 @@
     <li class="status-none">
       <p>
         <input type="checkbox" disabled/>
-        Setup so that only files that changed are parsed (along with any index pages they are on.) This is complicated so tbd on working on it. will see if it becomes a bottle neck otherwite probably not a lot of benefit. will be able to tell with the 9K grimoire dataset
+        Setup so that only files that changed are parsed (along with any index pages they are on.) This is complicated so tbd on working on it. Will see if it becomes a bottle neck otherwise probably not a lot of benefit. Will be able to tell with the 9K grimoire dataset
       </p>
     </li>
     <li class="status-none">
@@ -149,13 +197,16 @@
     <li class="status-none">
       <p>
         <input type="checkbox" disabled/>
-        For the multiple sites thing. For each content file, create a directory in the correspoding location under the assets root directory to make it easy to store and find related files
+        For the multiple sites thing. For each content file, create a directory in the corresponding location under the assets root directory to make it easy to store and find related files
       </p>
     </li>
     <li class="status-none">
       <p>
         <input type="checkbox" disabled/>
-        Add options for multiple tags like: <code class="language-neo">&lt;&lt;alfa|strong_strike&gt;&gt;</code>. Probably if it&#x27;s a link that would have to go first and the URL would have to be the first thing.
+        Add options for multiple tags calls like: <code class="language-neo">&lt;&lt;alfa|strong_strike&gt;&gt;</code>. Probably if it&#x27;s a link that would have to go first and the URL would have to be the first thing. [] Verify tables from this page work
+      </p>
+      <p>
+        podcasts- Episode Tracking.txt - 01C0YDNKR8J5D0
       </p>
     </li>
   </ul>
