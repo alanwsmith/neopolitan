@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for my website</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/attributes/index.html">Attributes</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1 class="title">
+  <p>Footnotes</p>
+</h1>
+<p>Footnotes have two parts. In the content section the footnote anchor is defined with:</p><pre><code class="language-neo">&lt;&lt;^some name&gt;&gt;</code></pre><p>The conent for the footnotes is defult with a <code class="language-neo">-&gt; footnote</code> tag. In order to associate with the content properly an <code>id:</code> attribute with the same name (`some name`` in the example above). Any other arbitrary data can be added as well. For my implementaiton. If there is a <code>url:</code> attribute it&#x27;s used at the end of the content with a <code>link</code></p>
+<pre><code>-&gt; footnote
+&gt;&gt; id: some name
+
+This is the text of the footnote that is
+processed so you can &lt;&lt;strong|add emphasis|&gt;&gt;
+or whatever. Probably don&#x27;t try to add 
+footnotes to footnotes though.</code></pre><p>Footnotes can also to anywhere in the document. They are collected an put into a section at the end of the document by default.</p>
+</main>
+</body>
+</html>

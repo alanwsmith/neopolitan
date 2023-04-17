@@ -32,7 +32,6 @@
 
   {{- " " -}}
   class="{{base_class}}
-
   {%- if data.attributes != None -%}
     {%- for attribute in data.attributes -%}
       {%- if attribute.key == "class" %}
@@ -42,7 +41,6 @@
     {%- endfor -%}
   {%- endif -%}
   "
-
   {%- for attribute in data.attributes -%}
     {%- if attribute.key != "class" %}
       {{- " " -}}
@@ -52,25 +50,23 @@
       {%- endif %}
     {%- endif %}
   {%- endfor -%}
-
 {%- endmacro -%}
 
 {#- ###################################################### -#}
 
 {%- macro link_attributes(data) -%}{#-
-
   This is for getting the href from the first
   attribute key and then returning the rest
   as is
-
   -#}
-
     {%- for attribute in data.attributes -%}
       {{- " " -}}
       {%- if loop.first -%}
+      href="
         {%- autoescape false %}
           {{- attribute.key -}}
         {%- endautoescape -%}
+        "
       {%- else -%}
         {{- attribute.key -}}
         {%- if attribute.value != None -%}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for my website</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/attributes/index.html">Attributes</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1 class="title">
+  <p>Section: html</p>
+</h1>
+<p>A raw HTML section. Whatever you put in goes directly into the output file.</p>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; html
+
+&lt;p class=&quot;tango&quot;&gt;
+Cut the pie into large parts.
+&lt;&#x2f;p&gt;</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;p class=&quot;tango&quot;&gt;
+Cut the pie into large parts.
+&lt;&#x2f;p&gt;</code></pre>
+</div><div class="notes">
+  <ul>
+    <li>
+      <p>
+        Attributes are available, but they don&#x27;t do anything in the reference implementation.
+      </p>
+    </li>
+  </ul>
+</div></main>
+</body>
+</html>

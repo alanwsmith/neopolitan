@@ -17,7 +17,7 @@
       <em {{- attributes(token) -}}>{{token.text}}</em>
 
     {%- elif token.type == "Link" -%}
-      <a href="{% autoescape false %}{{token.url}}{% endautoescape %}">{{token.text}}</a>
+      <a {{- link_attributes(token) -}}>{{token.text}}</a>
 
     {%- elif token.type == "LinkShorthand" -%}
       <a {{- link_attributes(token) -}}>{{token.text}}</a>

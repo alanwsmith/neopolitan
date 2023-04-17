@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for my website</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/attributes/index.html">Attributes</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1 class="title">
+  <p>Seciton: textarea</p>
+</h1><h2>Overview</h2>
+<p>A convenience section for adding a <code class="language-html">&lt;textarea&gt;</code> element</p>
+
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; textarea
+
+Rice is often served in round bowls.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;textarea&gt;Rice is often served in round bowls.&lt;&#x2f;textarea&gt;</code></pre>
+</div><div class="notes">
+  <ul>
+    <li>
+      <p>
+        And with attributes
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; textarea
+&gt;&gt; id: victor
+&gt;&gt; class: whiskey
+
+Cap the jar 
+
+Guess the results</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;textarea id=&quot;victor&quot; class=&quot;whiskey&quot;&gt;Cap the jar 
+
+Guess the results&lt;&#x2f;textarea&gt;</code></pre>
+</div></main>
+</body>
+</html>
