@@ -35,9 +35,9 @@ pub fn neo_tag<'a>(source: (&'a str, &'a str, &'a str)) -> IResult<&'a str, Cont
             attributes: neo_tag_attributes(parts.2).unwrap().1,
             text: Some(parts.0.to_string()),
         }),
-        tuple((multispace0, tag("strong"), multispace0)).map(|_| Content::Strong {
-            attributes: None,
-            text: None,
+        tuple((multispace0, tag("b"), multispace0)).map(|_| Content::B {
+            attributes: neo_tag_attributes(parts.2).unwrap().1,
+            text: Some(parts.0.to_string()),
         }),
     ))(parts.2)?;
     Ok((a, b))
@@ -51,7 +51,19 @@ mod test {
     use crate::content::neo_tag::neo_tag;
 
     #[test]
-    fn basic_neo_tag() {
+    fn b() {
+        // let lines = vec!["alfa <<bravo|strong|class: delta>> charlie"].join("\n");
+        let source = ("", "alfa|b", "");
+        let expected = Content::B {
+            attributes: None,
+            text: Some("alfa".to_string()),
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
+
+    #[test]
+    fn strong() {
         // let lines = vec!["alfa <<bravo|strong|class: delta>> charlie"].join("\n");
         let source = ("", "bravo|strong|class: delta", "");
         let expected = Content::Strong {
@@ -64,4 +76,20 @@ mod test {
         let result = neo_tag(source);
         assert_eq!(expected, result.unwrap().1);
     }
+
+    // "alfa <<b|bravo>> charlie",
+    // "<<b|delta>> <<b|echo>> <<b|foxtrot>>",
+    // "<<b|golf|class: advanced>>",
+    // "<<code|quick brown>>",
+    // "<<code|slow fox|lang: rust>>",
+    // "<<code|slow fox|rust>>",
+    // "<<em|some flower seeds>>",
+    // "<<i|red ink>>",
+    // "<<kbd|ctrl>>",
+    // "<<span|the worn floor>>",
+    // "<<strike|the worn floor>>",
+    // "<<strong|the worn floor>>",
+    // "<<sub|the worn floor>>",
+    // "<<sup|the worn floor>>",
+    // "<<u|the worn floor>>",
 }
