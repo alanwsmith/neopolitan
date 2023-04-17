@@ -233,7 +233,7 @@ Shorthand versions of `code``, `em``, `link``, and
 
 _bravo__
 
-[not yet implemented]: TODO: >charlie>https://www.example.com/>
+>charlie>https://www.example.com/>
 
 *delta**
 

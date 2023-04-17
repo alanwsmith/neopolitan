@@ -7,6 +7,7 @@ pub mod em_shorthand;
 pub mod i;
 pub mod kbd;
 pub mod link;
+pub mod link_shorthand;
 pub mod neo_tag;
 pub mod span;
 pub mod strike;

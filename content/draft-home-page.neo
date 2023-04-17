@@ -9,7 +9,7 @@ and the text inside of them is parsed for inline
 tags and shorthand codes. 
 
 Inline tags start with two `<<`` and end with 
-a closing `>>`` set. Here's the list with 
+a closing ``` set. Here's the list with 
 `x`` indicating the ones that are implemented
 and `.`` indicating that are still under 
 consideration. (This is basically the list
@@ -274,12 +274,7 @@ Other ideas
 - An `-> og` tag to put in open graph values? Need 
 to thing about how that would work.
 
--> p
 
-Holding (attributes aren't being parsed yet so this
-is hacked out)
-
--> h2
 
 -> attributes
 >> date: 2023-04-03 12:10:46

@@ -42,6 +42,8 @@ of content
 
 - <<h1-h6|link|/examples/headings/index.html>> - HTML heading tags
 
+- head - raw content to put in the head of the document
+
 - <<html|link|/examples/html/index.html>> - for raw html blocks that go directly to 
 the output without further processing
 
