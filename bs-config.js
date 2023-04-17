@@ -1,5 +1,5 @@
 module.exports = {
-    browser: ['safari'],
+    browser: ['firefox'],
     injectChanges: false,
     ghostMode: false,
     minify: false,
@@ -7,7 +7,7 @@ module.exports = {
     port: 3000,
     reloadOnRestart: true,
     server: {
-        baseDir: 'site',
+        baseDir: 'sites/default',
         index: 'index.html',
         serveStaticOptions: {
             extensions: ['html'],

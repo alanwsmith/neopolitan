@@ -1,0 +1,39 @@
+-> title
+
+Section: aside
+
+-> startneoexample
+
+-> aside
+
+Tear a thin sheet from 
+the yellow pad.
+
+Glue the sheet to the 
+dark blue background.
+
+-> endneoexample
+
+
+
+-> startneoexample
+
+-> aside
+>> class: alfa
+
+Paper will dry out when wet.
+
+A flat pack takes less 
+luggage space.
+
+-> endneoexample
+
+
+
+-> attributes
+>> date: 2023-04-15 03:30:26
+>> id: 2osatrptaxvb
+>> type: example 
+>> publish: y
+
+

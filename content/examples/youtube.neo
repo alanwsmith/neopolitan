@@ -1,0 +1,56 @@
+-> title
+
+Section: youtube
+
+-> notes
+
+- Convenience method for a YouTube embed
+wrapped in a div with a class of `youtubeVideo``
+
+- The embed code is taken directly from the 
+YouTube share button
+
+- The first `>>`neo` attribute line is the ID
+of the video for the embed
+
+-> startneoexample
+
+-> youtube
+>> uh9i3be2wIE
+
+-> endneoexample
+
+-> notes
+
+- Attributes can be added
+
+-> startneoexample
+
+-> youtube
+>> gnUYoQ1pwes
+>> id: victor
+
+-> endneoexample
+
+-> notes
+
+- If a class is added it gets appended to the
+existing `title`` class
+
+
+-> startneoexample
+
+-> youtube
+>> HgzGwKwLmgM
+>> class: queen
+
+-> endneoexample
+
+
+
+-> attributes
+>> date: 2023-04-15 22:57:04
+>> id: 2ousmf1vi4xe
+>> site: neo 
+>> type: example 
+>> publish: y

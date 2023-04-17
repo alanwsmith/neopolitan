@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for my website</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/attributes/index.html">Attributes</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1 class="title">
+  <p>Section: list</p>
+</h1>
+<p>Basic unordered lists with the abbility to apply attributes.</p>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; list
+
+- There are more than two factors here.
+
+The grass curled around the fence post.
+
+- A wisp of cloud hung in the blue air.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;There are more than two factors here.&lt;&#x2f;p&gt;
+    &lt;p&gt;The grass curled around the fence post.&lt;&#x2f;p&gt;
+  &lt;&#x2f;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A wisp of cloud hung in the blue air.&lt;&#x2f;p&gt;
+  &lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;</code></pre>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; list
+&gt;&gt; id: sierra
+&gt;&gt; class: oscar
+
+- The salt breeze came across from the sea.
+
+- Two blue fish swam in the tank.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;ul id=&quot;sierra&quot; class=&quot;oscar&quot;&gt;
+  &lt;li&gt;
+    &lt;p&gt;The salt breeze came across from the sea.&lt;&#x2f;p&gt;
+  &lt;&#x2f;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Two blue fish swam in the tank.&lt;&#x2f;p&gt;
+  &lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;</code></pre>
+</div></main>
+</body>
+</html>

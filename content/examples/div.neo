@@ -1,0 +1,45 @@
+-> title
+
+Section: div
+
+Div sections provide a way to apply styles, ids
+or other attributes to chunks of content. Or, 
+to simply act as separators. 
+
+Here's an example without any attributes. 
+
+-> startneoexample
+
+-> div
+
+The ripe taste of cheese improves 
+with age.
+
+The bark of the pine tree was shiny 
+and dark.
+
+
+-> endneoexample
+
+-> p
+
+And here's one with id and class attributes
+
+-> startneoexample
+
+-> div
+>> id: callout
+>> class: delta
+
+A cold dip restores health and zest.
+
+The ramp led up to the wide highway.
+
+
+-> endneoexample
+
+-> attributes
+>> date: 2023-04-15 17:42:28
+>> id: 2otqwb33ajqg
+>> type: example
+>> publish: y

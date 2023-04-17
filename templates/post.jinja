@@ -1,0 +1,133 @@
+{%- from "aside.jinja" import aside -%}
+{%- from "_macros/date.jinja" import date -%}
+{%- from "blockquote.jinja" import blockquote -%}
+{%- from "code.jinja" import code -%}
+{%- from "css.jinja" import css -%}
+{%- from "div.jinja" import div -%}
+{%- from "h1.jinja" import h1 -%}
+{%- from "h2.jinja" import h2 -%}
+{%- from "h3.jinja" import h3 -%}
+{%- from "h4.jinja" import h4 -%}
+{%- from "h5.jinja" import h5 -%}
+{%- from "h6.jinja" import h6 -%}
+{%- from "html.jinja" import html -%}
+{%- from "image.jinja" import image -%}
+{%- from "list.jinja" import list -%}
+{%- from "neoexample.jinja" import neoexample -%}
+{%- from "note.jinja" import note -%}
+{%- from "notes.jinja" import notes -%}
+{%- from "olist.jinja" import olist -%}
+{%- from "pre.jinja" import pre -%}
+{%- from "results.jinja" import results -%}
+{%- from "subtitle.jinja" import subtitle -%}
+{%- from "paragraphs.jinja" import paragraphs -%}
+{%- from "title.jinja" import title -%}
+{%- from "vimeo.jinja" import vimeo -%}
+{%- from "warning.jinja" import warning -%}
+{%- from "youtube.jinja" import youtube -%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for my website</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+{% autoescape false %}
+{%- for section in payload.children -%}
+{%- if section.type == "CSSSection" -%}
+{{ css(section) }}
+{%- endif -%}
+{%- endfor -%}
+{% endautoescape %}
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main>
+    {%- for section in payload.children -%}
+    {%- if section.type == "AsideSection" -%}
+    {{ aside(section) }}
+    {%- elif section.type == "BlockquoteSection" -%}
+    {{ blockquote(section) }}
+    {%- elif section.type == "CodeSection" -%}
+    {{ code(section) }}
+    {%- elif section.type == "CodeStartEndSection" -%}
+    {{ code(section) }}
+    {%- elif section.type == "DivSection" -%}
+    {{ div(section) }}
+    {%- elif section.type == "H1Section" -%}
+    {{ h1(section) }}
+    {%- elif section.type == "H2Section" -%}
+    {{ h2(section) }}
+    {%- elif section.type == "H3Section" -%}
+    {{ h3(section) }}
+    {%- elif section.type == "H4Section" -%}
+    {{ h4(section) }}
+    {%- elif section.type == "H5Section" -%}
+    {{ h5(section) }}
+    {%- elif section.type == "H6Section" -%}
+    {{ h6(section) }}
+    {%- elif section.type == "HTMLSection" -%}
+    {{ html(section) }}
+    {%- elif section.type == "ImageSection" -%}
+    {{ image(section) }}
+    {%- elif section.type == "List" -%}
+    {{ list(section) }}
+    {%- elif section.type == "NeoExampleStartEndSection" -%}
+    {{ neoexample(section) }}
+    {%- elif section.type == "NoteSection" -%}
+    {{ note(section) }}
+    {%- elif section.type == "NotesSection" -%}
+    {{ notes(section) }}
+    {%- elif section.type == "OrderedListSection" -%}
+    {{ olist(section) }}
+    {%- elif section.type == "Paragraphs" -%}
+    {{ paragraphs(section) }}
+    {%- elif section.type == "PreSection" -%}
+    {{ pre(section) }}
+    {%- elif section.type == "ResultsSection" -%}
+    {{ results(section) }}
+    {%- elif section.type == "Subtitle" -%}
+    {{ subtitle(section) }}
+    {%- elif section.type == "Title" -%}
+    {{ title(section) }}
+    {%- elif section.type == "VimeoSection" -%}
+    {{ vimeo(section) }}
+    {%- elif section.type == "WarningSection" -%}
+    {{ warning(section) }}
+    {%- elif section.type == "YouTubeSection" -%}
+    {{ youtube(section) }}
+    {%- endif -%}
+    {%- endfor -%}
+  </main>
+</body>
+</html>

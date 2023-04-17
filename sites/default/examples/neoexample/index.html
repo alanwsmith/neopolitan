@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for my website</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/attributes/index.html">Attributes</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1 class="title">
+  <p>Section: neoexample</p>
+</h1>
+<p>This section is for producing examples on the neopolitan website. It takes a neopolitan sample as input and outputs the sample itself as well as the rendered HTML inside a code block so it can be examined. I haven&#x27;t setup a way for it to display itself because this is the only page where that&#x27;s necessary. If you&#x27;re interested, take a look at the source file (TODO: link the source file)</p>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; aside
+&gt;&gt; class: alfa
+
+This is an `-&gt; aside`neo` example with an 
+`alfa`` class set as an attribute.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;aside class=&quot;alfa&quot;&gt;
+  &lt;p&gt;This is an &lt;code class=&quot;language-neo&quot;&gt;-&amp;gt; aside&lt;&#x2f;code&gt; example with an &lt;code&gt;alfa&lt;&#x2f;code&gt; class set as an attribute.&lt;&#x2f;p&gt;
+&lt;&#x2f;aside&gt;</code></pre>
+</div></main>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{%- from "text.jinja" import text -%}
+{%- from "_macros/attributes.jinja" import attributes_with_class -%}
+{%- macro warningx(data) -%}
+<div class="warning">
+  {%- for block in data.children %}
+  <p>{{ text(block) }}</p>
+  {%- endfor %}
+</div>
+{% endmacro %}
+
+{%- macro warning(data) -%}
+<div {{- attributes_with_class(data, "warning") -}}>
+{%- for block in data.children %}
+  <p>{{ text(block) }}</p>{%- endfor %}
+</div>
+{%- endmacro -%}

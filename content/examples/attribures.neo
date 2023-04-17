@@ -1,0 +1,47 @@
+-> title
+
+Section: attributes 
+
+-> p
+
+
+The `-> attributes`` section does not output
+directly on the page. It contains metadata
+in the form of key/value pairs that can be
+used as output material or for processing
+purposes.
+
+I use it for the ID, date, status, etc... The 
+permitted and parsed values are left as an implementation 
+detail. My implementation is straight attributes like the
+rest of the sections but YAML or other formats could
+be used with a corresponding implementation engine.
+
+
+-> h2
+
+Example
+
+-> startcode
+
+-> attributes
+>> date: 2023-04-15 03:28:24
+>> id: 2osaexpae3om
+>> site: neo 
+>> type: example 
+>> status: published
+
+-> endcode
+
+-> comment
+
+To avoid confusion, the above attributes are 
+what shows up on the page. The below attributes
+are the actual metadata version for this page. 
+
+-> attributes
+>> date: 2023-04-15 03:25:38
+>> id: 2osac7bmwyvh
+>> type: example 
+>> publish: y
+

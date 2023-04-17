@@ -1,0 +1,88 @@
+-> title
+
+Neopolitan TODOs
+
+-> todo
+
+[] Global footnotes (and possibly references)
+
+[] add language feature to inline code block
+
+[] Setup so files exist in one directory then 
+become folders on the output (except for the 
+index.neo file which would turn directly into
+index.html for the current directory)
+
+[] Add note about the custom `startneoexample`neo`
+section.
+
+[] Setup TODO items so that spaces in the 
+`[]`` still show up as none
+
+[] Setup for multisite
+
+[] Setup external process callouts for 
+JSON - which is serialized into the top
+of the document as a var, and HTML
+and neopolitan which are dropped directly
+into the document prior to parsing
+
+[] Add start and end times to youtube
+video embeds
+
+[] Setup TODO lists to actually show up
+
+[] Add html escaping (that should be done on 
+the front end, tbd if minijinji is already 
+doing it.
+
+[] Fix bug where whitespace at the end of a 
+section name cause a panic
+
+[] Fix bug where whitespace at the end of 
+a block of content causes the next one to 
+be appended directly instead of making its
+own block
+
+[] Rename `List` to `ListSection`
+
+[] Fix bug where a panic happens if
+`endcode`` is the last thing in a file
+
+[] Setup so you don't have to add a `-> p``
+after an `-> endcode``. Just have it to
+automatically. 
+
+[] Add a `<<br>>`neo` tag
+
+[] Setup so that only files that changed 
+are parsed (along with any index pages
+they are on.) This is complicated so
+tbd on working on it. will see if it becomes
+a bottle neck otherwite probably not a 
+lot of benefit. will be able to tell with
+the 9K grimoire dataset
+
+[] Add indexes
+
+[] For the multiple sites thing. For each
+content file, create a directory in 
+the correspoding location under the
+assets root directory to make it easy to
+store and find related files
+
+[] Add options for multiple tags like:
+`<<alfa|strong_strike>>`neo`. Probably
+if it's a link that would have to go
+first and the URL would have to be the
+first thing. 
+
+
+
+-> attributes
+>> date: 2023-04-15 10:06:07
+>> id: 2osx1iiz9brc
+>> type: post
+>> status: published
+
+

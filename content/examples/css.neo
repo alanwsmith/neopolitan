@@ -1,0 +1,29 @@
+-> title
+
+Section: css
+
+The `-> css`neo` section is allows for arbitrary 
+CSS to be added to a page. Each section adds
+a `<style>`html` element just before the closing
+`</head>`html` tag in the HTML. Multiple sections
+output from the top down in the order they 
+appear in the source file. 
+
+
+-> startneoexample
+
+-> css
+
+pre {
+  border: 2px solid red;
+}
+
+-> endneoexample
+
+
+
+-> attributes
+>> date: 2023-04-15 17:18:13
+>> id: 2otnzjsbe4du
+>> type: example 
+>> publish: y

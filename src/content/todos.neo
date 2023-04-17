@@ -1,0 +1,76 @@
+-> title 
+
+TODOs
+
+TODOs are a list style section. They 
+an be started with either `-> todo`neo`
+or `-> todos`neo`. For example:
+
+-> startcode
+>> neo
+
+-> todo
+
+[x] Write up this page
+
+[x] Publish this page
+
+[] Revisit the page in the future
+
+-> endcode
+
+-> p
+
+In my implementation the above renders like
+this:
+
+-> todo
+
+[x] Write up this page
+
+[x] Publish this page
+
+[] Revisit the page in the future
+
+
+
+-> h2
+
+Details
+
+-> list
+
+- Items are started with a `[`neo` character
+as the first character of a line that follows
+an empty line. 
+
+- If there are no text characters in between the
+`[`neo` and `]`` the items status is `None`` in the
+AST.
+
+- If there is any text the status is set to that value. 
+
+- I set it up like that because I like to be able to 
+mark more that a binary done or not done. For example:
+
+-> startcode
+
+-> todo
+
+[DONE] Press the pants and sew a button on the vest
+
+[] Take the winding path to reach the lake.
+
+[SKIP] Hoist the load to your left shoulder.
+
+-> endcode
+
+-> p
+
+Determing how to handle that is an implementation 
+detail. 
+
+
+
+
+

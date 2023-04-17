@@ -1,0 +1,49 @@
+-> title
+
+Section: vimeo
+
+-> notes
+
+- Convenience seciton for a Vimeo video embed
+
+-> startneoexample
+
+-> vimeo
+>> 718558198
+
+-> endneoexample
+
+
+
+-> startneoexample
+
+-> vimeo
+>> 718558198
+>> id: delta
+
+-> endneoexample
+
+
+-> startneoexample
+
+-> vimeo
+>> 718558198
+>> class: charlie 
+
+-> endneoexample
+
+
+
+
+
+
+-> blurb
+
+-> categories
+>> Miscellaneous
+
+-> attributes
+>> date: 2023-04-15 23:26:37
+>> id: 2ouwn74cr9yj
+>> type: example 
+>> publish: y

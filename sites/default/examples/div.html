@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for my website</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/attributes/index.html">Attributes</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1 class="title">
+  <p>Section: div</p>
+</h1>
+<p>Div sections provide a way to apply styles, ids or other attributes to chunks of content. Or, to simply act as separators. Here&#x27;s an example without any attributes.</p>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; div
+
+The ripe taste of cheese improves 
+with age.
+
+The bark of the pine tree was shiny 
+and dark.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div&gt;
+  &lt;p&gt;The ripe taste of cheese improves with age.&lt;&#x2f;p&gt;
+  &lt;p&gt;The bark of the pine tree was shiny and dark.&lt;&#x2f;p&gt;
+&lt;&#x2f;div&gt;</code></pre>
+</div><p>And here&#x27;s one with id and class attributes</p>
+
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; div
+&gt;&gt; id: callout
+&gt;&gt; class: delta
+
+A cold dip restores health and zest.
+
+The ramp led up to the wide highway.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div id=&quot;callout&quot; class=&quot;delta&quot;&gt;
+  &lt;p&gt;A cold dip restores health and zest.&lt;&#x2f;p&gt;
+  &lt;p&gt;The ramp led up to the wide highway.&lt;&#x2f;p&gt;
+&lt;&#x2f;div&gt;</code></pre>
+</div></main>
+</body>
+</html>

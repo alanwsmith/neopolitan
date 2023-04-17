@@ -1,0 +1,7 @@
+{%- from "text.jinja" import text -%}
+{%- from "_macros/attributes.jinja" import attributes_with_class -%}
+{%- macro note(data) -%}
+<div {{- attributes_with_class(data, "note") -}}>{%- for block in data.children -%}
+  <p>{{ text(block) }}</p>{%- endfor -%}
+</div>
+{%- endmacro -%}

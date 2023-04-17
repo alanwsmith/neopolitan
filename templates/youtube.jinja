@@ -1,0 +1,16 @@
+{%- from "text.jinja" import text -%}
+{%- from "_macros/attributes.jinja" import attributes_with_class -%}
+{%- macro youtube(data) -%}
+<div {{- attributes_with_class(data, "youtubeVideo") -}}>
+  <iframe 
+    src="https://www.youtube.com/embed/{{ data.attributes[0].key }}"
+    width="560" height="315" 
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; 
+    encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>
+</div>
+{%- endmacro -%}
+
+
+

@@ -1,0 +1,4 @@
+{%- from "_macros/attributes.jinja" import attributes -%}
+{%- macro textarea(data) -%}
+<textarea {{- attributes(data) -}}>{{data.children.text}}</textarea>
+{%- endmacro -%}

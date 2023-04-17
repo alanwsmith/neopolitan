@@ -1,0 +1,11 @@
+{% from "text.jinja" import text -%}
+{%- from "_macros/attributes.jinja" import attributes -%}
+{% macro h3 (data) -%}
+{%- for block in data.children -%}
+{%- if loop.first -%}
+<h3{{- attributes(data) -}}>{{- text(block) -}}</h3>
+{% else -%}
+<p>{{- text(block) -}}</p>
+{% endif -%}
+{%- endfor -%}
+{%- endmacro -%}

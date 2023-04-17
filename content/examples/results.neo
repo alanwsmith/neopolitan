@@ -1,0 +1,52 @@
+-> title
+
+results section
+
+The idea with this one is to use it after
+code blocks to show their corresponding output.
+
+I considered using the `<samp>`html` tag for my
+implementation but code highlighters are
+generally geared for `<pre><code>`html` blocks. 
+
+
+
+-> startneoexample
+
+-> results
+
+The colt reared and threw the tall rider.
+The wide road shimmered in the hot sun.
+
+-> endneoexample
+
+
+
+-> startneoexample
+
+-> results
+>> id: sierra
+>> class: tango
+
+Fish evade the net.
+Five years with a shaggy dog.
+
+-> endneoexample
+
+
+
+
+
+-> reference
+>> title: MDN - HTML <samp> tag
+>> id: sample tag
+>> url: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp
+
+
+
+
+-> attributes
+>> date: 2023-04-15 11:26:12
+>> id: 2ot6lk4xp04x
+>> type: example 
+>> publish: y

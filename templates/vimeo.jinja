@@ -1,0 +1,16 @@
+{%- from "text.jinja" import text -%}
+{%- from "_macros/attributes.jinja" import attributes_with_class -%}
+{%- macro vimeo(data) -%}
+<div {{- attributes_with_class(data, "vimeoVideo") -}}>
+  <iframe 
+    src="https://player.vimeo.com/video/{{ data.attributes[0].key }}" 
+    title="vimeo-player" 
+    width="640"
+    height="360" 
+    frameborder="0" 
+    allowfullscreen></iframe>
+</div>
+{%- endmacro -%}
+
+
+

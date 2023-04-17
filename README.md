@@ -1,10 +1,19 @@
--> TITLE
+-> title 
 
 Neopolitan
 
--> SUBTITLE 
+-> subtitle 
 
 A plain-text format to build my websites
+
+-> note
+
+The main list of TODOs is in my Grimoire
+under `neo- Spec.org``. This needs to be
+rolled into that. That page will act
+as the source and this page will link to
+it. 
+
 
 -> h2
 

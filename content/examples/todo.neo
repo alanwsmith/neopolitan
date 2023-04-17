@@ -1,0 +1,112 @@
+-> title
+
+Section: todo
+
+-> notes
+
+- TODO lists created with `[]`` separators
+to define each list item
+
+- The output is a `<div>`html` that has a 
+class of `todo`` wrapping a `<ul>`html`
+unordered list with the items
+
+- Input checkboxes are placed before 
+each item
+
+- The checkboxes are checked if there's
+any character inside the `[]`` brackets
+
+- The checkboxes are disabled so they
+can't be changed on the output page
+
+
+-> startneoexample
+
+-> todo
+
+[x] Write the first draft
+
+[x] Open the crate
+
+[] Split the log 
+
+-> endneoexample
+
+
+-> notes
+
+- New items are started with a `[]`` following
+an empty line
+
+- Multiple paragraphs can be added to a single
+item by separating them with an empty line
+
+
+-> startneoexample
+
+-> todo
+
+[x] Tend the sheep
+
+Throw the paper
+
+[x] Tuck the sheet
+
+[] Turn on the lantern 
+
+-> endneoexample
+
+-> notes
+
+- The value inside the `[]`` is appened to `status-``
+and set as the class for the `<li>`html` in the 
+output. 
+
+- If there's no value the class is set to `status-none``
+
+
+-> startneoexample
+
+-> todo
+
+[done] Bring your compass
+
+[skip] Cap the jar
+
+[] Cut the pie
+
+
+-> endneoexample
+
+-> notes
+
+- Any attributes added to the section get
+added to the `<div>`html` in the output
+
+- If any classes are defined, they are 
+added to the existing `todo`` class
+
+
+-> startneoexample
+
+-> todo
+>> id: alfa
+>> class: bravo
+
+[] Guess the results
+
+[] Heave the line 
+
+[] Hold the hammer
+
+-> endneoexample
+
+
+-> attributes
+>> date: 2023-04-16 13:48:29
+>> id: 2owdbcoz3qxs
+>> type: example 
+>> published: y
+
+

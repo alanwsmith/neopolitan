@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for my website</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/attributes/index.html">Attributes</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo/index.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h3>Inline Tags</h3>
+<p>Most of the section types hold text content. That text content is split into <code>&lt;p&gt;</code> tags by default and the text inside of them is parsed for inline tags and shorthand codes. Inline tags start with two <code>&lt;&lt;</code> and end with a closing <code></code> set. Here&#x27;s the list with <code>x</code> indicating the ones that are implemented and <code>.</code> indicating that are still under consideration. (This is basically the list of html elements)</p>
+<ul>
+  <li>
+    <p>[] ^ - footnote marker - for use with footnote sections</p>
+  </li>
+  <li>
+    <p>[p2] abbr - Abbreviation</p>
+  </li>
+  <li>
+    <p>[p2] audio - Audio - [x] b - Bring attention</p>
+  </li>
+  <li>
+    <p>[p2] button - Button - [p2] cite - Cite - [x] code [c] - Code</p>
+  </li>
+  <li>
+    <p>[p2] data - Data</p>
+  </li>
+  <li>
+    <p>[p2] del - Del</p>
+  </li>
+  <li>
+    <p>[p2] dfn - Definition</p>
+  </li>
+  <li>
+    <p>[x] em - Emphasis</p>
+  </li>
+  <li>
+    <p>[x] i - Idiomatic text - [p2] img - Image - [p2] input - Input - [p2] ins - Insert - [x] kbd [k] - Keyboard input - [p2] label - Label - [p2] legend - Legend - [x] link [l] - Link</p>
+  </li>
+  <li>
+    <p>[p2] meter - Leter</p>
+  </li>
+  <li>
+    <p>[p2] object - Object - [p2] progress - Progress - [p2] q - Quotation - [p2] samp - Sample Output - [p2] small - Small text (side comment) - [x] strike - Strikethru - [x] span - Span</p>
+  </li>
+  <li>
+    <p>[x] strong [s] - Strong</p>
+  </li>
+  <li>
+    <p>[x] sub - Subscript</p>
+  </li>
+  <li>
+    <p>[x] sup - Superscript</p>
+  </li>
+  <li>
+    <p>[p2] time - Time</p>
+  </li>
+  <li>
+    <p>[x] u - Unarticulated Annotation</p>
+  </li>
+  <li>
+    <p>[p2] var - Variable</p>
+  </li>
+  <li>
+    <p>[p2] wbr - Line Break Opportunity</p>
+  </li>
+</ul><p>Neopolitan</p>
+<p>Here&#x27;s what I&#x27;m thinking</p>
+<ul>
+  <li>
+    <p>Focused on text based content</p>
+  </li>
+  <li>
+    <p>Plain-text</p>
+  </li>
+  <li>
+    <p>White-space is not meaningful except for using blank lines between sections and blocks</p>
+  </li>
+  <li>
+    <p>A variety of section types</p>
+  </li>
+  <li>
+    <p>Individual sections for metadata</p>
+  </li>
+  <li>
+    <p>Arbitrary attributes can be added to sections including code blocks.</p>
+  </li>
+  <li>
+    <p>Arbitrary attributes can be added to inline tags</p>
+  </li>
+  <li>
+    <p>A collection of sections and inline tags that provides all <a href="
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">standard HTML elements</a></p>
+  </li>
+  <li>
+    <p>The spec defines the AST, not the final output. That&#x27;s left up to the rendering engine.</p>
+  </li>
+  <li>
+    <p>Footnotes</p>
+  </li>
+  <li>
+    <p>References</p>
+  </li>
+  <li>
+    <p>Result blocks in addition to code blocks (with the goal of getting my editor to generate them automatically like Org-Mode)</p>
+  </li>
+</ul><h2>Under Consideration</h2>
+<p>Some other things I have in mind:</p>
+<ul>
+  <li>
+    <p>A <code>widget</code> section type that&#x27;s used to pass data to the rendered page (via whatever method the implementation - A <code>css</code> section type designed to include CSS that should be added as the last <code class="language-html">&lt;style&gt;</code> tag in the <code class="language-html">&lt;head&gt;</code> of the document</p>
+  </li>
+  <li>
+    <p>A <code class="language-section type designed to include
+a">script</code>&lt;script&gt;&lt;&#x2f;script&gt;`html` in the head of the document</p>
+  </li>
+  <li>
+    <p>Includes sections that include other files</p>
+  </li>
+</ul><p>Every approach involves friction that slows me down both from making posts an experimenting with my site on a larger level.</p>
+<p>For example:</p>
+<ul>
+  <li>
+    <p>a b</p>
+    <p>cd</p>
+  </li>
+  <li>
+    <p>e f</p>
+  </li>
+</ul><p>I don&#x27;t know all the different ways I&#x27;ll build my side over the next two decades, but I know the</p>
+<p></p>
+<p></p>
+<p>The first examination is the code. I&#x27;m switching to vanilla HTML, CSS, and JavaScript. There&#x27;s a lot to be written about that later. For now, suffice it to say that, for my personal site, frameworks have been a net negative for me. I&#x27;m bowing out of that game.</p>
+<h3>Plain-text</h3>
+<p> I&#x27;m a huge fan of plain-text. My Grimoire has nine thousand Markdown, MDX, and Org-Mode files in it. They&#x27;re solid formats, but each causes its own type of friction. For example, I don&#x27;t use description lists because they aren&#x27;t native to the MDX parser I&#x27;m using.</p>
+<p>So, I&#x27;m making my own format.</p>
+<h2>Neopolitan Features</h2>
+<p>The format is still in its early stages and very much in flux. That said, the basic ideas are mostly in place.</p>
+<aside id="firstAside" class="highlighted">
+  <p>There&#x27;s a bunch of code samples below. The format is more about text content. Parsing through collections of short samples took me a little getting used to.</p>
+</aside><h2>Samples</h2>
+<p>Below are some samples that will be overwritten when the actual content.</p>
+<pre><code class="language-rust">this is a test with code
+
+and some more code</code></pre><h2>Next Steps</h2>
+<p>Most of the above is pretty well defined. The rest of this below is a little more fluid. Their ideas I expect I&#x27;ll get to, but the priority is everything above.</p>
+<h2>Examples</h2>
+<p>This is a test list</p>
+<ul>
+  <li>
+    <p>a - b</p>
+  </li>
+  <li>
+    <p>c</p>
+  </li>
+</ul><p>and that&#x27;s the end of the list</p>
+<h3>Other ideas</h3>
+<ul>
+  <li>
+    <p>An `-&gt; og` tag to put in open graph values? Need to thing about how that would work.</p>
+  </li>
+</ul></main>
+</body>
+</html>

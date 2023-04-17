@@ -1,0 +1,11 @@
+{% macro date(data) %}
+{% for section in data.children %}
+{% if section.type == "AttributesSection" %}
+{% for attribute in section.attributes %}
+{% if attribute.key == "date" %}
+{{ attribute.value }}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endmacro %}

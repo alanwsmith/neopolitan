@@ -1,0 +1,56 @@
+-> title
+
+Section: image
+
+A section that uses attributes for the main
+image call and uses the content area for the 
+alt text.
+
+The first attribute line is used to set the
+`src`` path of the image by default:
+
+-> startneoexample
+
+-> image
+>> alfa.jpg
+
+Example alfa
+
+-> endneoexample
+
+-> p
+
+Other attributes can be passed as well:
+
+-> startneoexample
+
+-> image
+>> bravo.jpg
+>> id: img_bravo 
+>> class: charlie 
+
+Example bravo
+
+-> endneoexample
+
+-> p
+
+It's also possible to use `src: path.jpg`` to set the
+path. If you do that the first line must have a key
+as well as a value. For example:
+
+-> startneoexample
+
+-> image
+>> id: img_delta
+>> src: delta.jpg
+
+Example delta
+
+-> endneoexample
+
+-> attributes
+>> date: 2023-04-15 19:06:21
+>> id: 2ou0iiceisy5
+>> type: example 
+>> publish: y

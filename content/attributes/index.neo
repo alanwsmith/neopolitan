@@ -1,0 +1,129 @@
+-> title
+
+Section Attributes
+
+
+-> h2
+
+Overview
+
+-> notes
+
+- Every section accepts attributes
+
+- Attributes are defined on lines starting
+with `>>`neo` directly after the section line
+starting with `->`neo`. 
+
+- Keys are separated from values with a `:`neo`
+character
+
+- The keys and values are output directly to the
+primary HTML tag for the section. For example:
+
+-> startneoexample
+
+-> h4
+>> id: alfa
+>> data-widget: bravo
+
+Open the crate 
+
+-> endneoexample
+
+-> notes
+
+- If there is no value, the key is passed by 
+itself
+
+-> startneoexample
+
+-> h4
+>> hidden
+
+Pile the coal
+
+-> endneoexample
+
+
+-> h2
+
+Special Handling Shortcuts
+
+-> notes
+
+- The `code`neo`, `image`neo`, `vimeo`neo`, and
+`youtube`neo` sections treat the first attribute
+line in a special manner if there's no key
+
+- The `code`neo` section uses a key only first
+attribute line to define the language of the section
+
+-> startneoexample
+
+-> code
+>> rust
+
+println!("Hello, World");
+
+-> endneoexample
+
+-> notes
+
+- `image`neo` sections use the first item as the 
+`src`html` path
+
+
+-> startneoexample
+
+-> image
+>> https://placekitten.com/200/300
+
+A cute kitten
+
+-> endneoexample
+
+-> notes
+
+- The `youtube`neo` and `vimeo`neo` sections use
+the first line as the ID to embed:
+
+-> startneoexample
+
+-> youtube
+>> gnUYoQ1pwes
+
+-> endneoexample
+
+
+-> h2
+
+Additioal Classes
+
+-> notes
+
+- Several sections (note, notes, results, 
+subtitle, title, todo, vimeo, warning, youtube) have 
+predefined HTML classes in their attributes
+ 
+- Passing a key/value pair with a class in the 
+section header adds the class to the ones
+that's already there
+
+-> startneoexample
+
+-> note
+>> class: echo
+
+Take the winding path 
+
+-> endneoexample
+
+
+-> attributes
+>> date: 2023-04-16 16:49:30
+>> id: 2owzctvzorbf
+>> type: default 
+>> published: y
+
+

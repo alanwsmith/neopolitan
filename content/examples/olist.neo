@@ -1,0 +1,35 @@
+-> title
+
+Section: olist
+
+An ordered list
+
+-> startneoexample
+
+-> olist
+
+- The dry wax protects the 
+deep scratch.
+
+The marsh will freeze when 
+cold enough.
+
+- Twist the valve and release 
+hot steam.
+
+-> endneoexample
+
+-> p
+
+Dashes are used instead of numbers to make
+it easier to move stuff up and down. (The
+numbering could be updated automatically 
+on output, but it always bugs me when it's
+not accurate in the source file. Hence, dashes.)
+
+
+-> attributes
+>> date: 2023-04-15 19:37:35
+>> id: 2ou4we8zxrdh
+>> type: example 
+>> publish: y

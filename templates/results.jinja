@@ -1,0 +1,4 @@
+{%- from "_macros/attributes.jinja" import attributes_with_class -%}
+{%- macro results(data) -%}
+<pre {{- attributes_with_class(data, "results") -}}><code>{{data.children.text}}</code></pre>
+{%- endmacro -%}

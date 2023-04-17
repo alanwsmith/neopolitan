@@ -1,0 +1,8 @@
+{%- from "text.jinja" import text -%}
+{%- macro paragraphs(data) -%}
+{%- for block in data.children -%}
+<p
+  {%- for attribute in data.attributes %} {{attribute.key}}="{{attribute.value}}"{% endfor -%}
+>{{ text(block) }}</p>
+{% endfor -%}
+{%- endmacro -%}
