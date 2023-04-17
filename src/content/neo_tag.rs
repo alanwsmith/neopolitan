@@ -63,13 +63,13 @@ mod test {
     }
 
     #[test]
-    fn strong() {
+    fn b_with_one_attribute() {
         // let lines = vec!["alfa <<bravo|strong|class: delta>> charlie"].join("\n");
-        let source = ("", "bravo|strong|class: delta", "");
-        let expected = Content::Strong {
+        let source = ("", "bravo|b|class: charlie", "");
+        let expected = Content::B {
             attributes: Some(vec![Attribute::Basic {
                 key: Some("class".to_string()),
-                value: Some("delta".to_string()),
+                value: Some("charlie".to_string()),
             }]),
             text: Some("bravo".to_string()),
         };
@@ -77,7 +77,6 @@ mod test {
         assert_eq!(expected, result.unwrap().1);
     }
 
-    // "alfa <<b|bravo>> charlie",
     // "<<b|delta>> <<b|echo>> <<b|foxtrot>>",
     // "<<b|golf|class: advanced>>",
     // "<<code|quick brown>>",
@@ -92,4 +91,19 @@ mod test {
     // "<<sub|the worn floor>>",
     // "<<sup|the worn floor>>",
     // "<<u|the worn floor>>",
+
+    #[test]
+    fn strong() {
+        // let lines = vec!["alfa <<bravo|strong|class: delta>> charlie"].join("\n");
+        let source = ("", "bravo|strong|class: delta", "");
+        let expected = Content::Strong {
+            attributes: Some(vec![Attribute::Basic {
+                key: Some("class".to_string()),
+                value: Some("delta".to_string()),
+            }]),
+            text: Some("bravo".to_string()),
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
 }
