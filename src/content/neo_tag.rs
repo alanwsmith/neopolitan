@@ -14,7 +14,6 @@ use nom::Parser;
 
 pub fn neo_tag_attributes(source: &str) -> IResult<&str, Option<Vec<Attribute>>> {
     let (_, parts) = separated_list0(tag("|"), is_not("|"))(source)?;
-    dbg!(&parts);
     if parts.len() > 1 {
         let attributes: Option<Vec<Attribute>> = Some(
             parts
@@ -49,6 +48,10 @@ pub fn neo_tag<'a>(source: (&'a str, &'a str, &'a str)) -> IResult<&'a str, Cont
             text: Some(parts.0.to_string()),
         }),
         tuple((multispace0, tag_no_case("kbd"), multispace0)).map(|_| Content::Kbd {
+            attributes: neo_tag_attributes(parts.2).unwrap().1,
+            text: Some(parts.0.to_string()),
+        }),
+        tuple((multispace0, tag_no_case("link"), multispace0)).map(|_| Content::Link {
             attributes: neo_tag_attributes(parts.2).unwrap().1,
             text: Some(parts.0.to_string()),
         }),
@@ -204,6 +207,17 @@ mod test {
         let source = ("", "mike|kbd", "");
         let expected = Content::Kbd {
             text: Some("mike".to_string()),
+            attributes: None,
+        };
+        let result = neo_tag(source);
+        assert_eq!(expected, result.unwrap().1);
+    }
+
+    #[test]
+    fn link() {
+        let source = ("", "sierra|link", "");
+        let expected = Content::Link {
+            text: Some("sierra".to_string()),
             attributes: None,
         };
         let result = neo_tag(source);

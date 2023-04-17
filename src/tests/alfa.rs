@@ -1,16 +1,17 @@
+#![allow(warnings)]
+use crate::attribute::*;
 use crate::block::block::*;
 use crate::content::content::*;
 use crate::parse::parse;
 use crate::section::section::*;
 use crate::wrapper::wrapper::*;
 
-#[ignore]
 #[test]
 fn alfa() {
     let lines = vec![
         "-> title",
         "",
-        "quick <<link|brown|example.com>> fox",
+        "quick <<brown|link|example.com>> fox",
         "",
         "-> p",
         "",
@@ -32,9 +33,11 @@ fn alfa() {
                         },
                         Content::Space,
                         Content::Link {
-                            attributes: None,
+                            attributes: Some(vec![Attribute::Basic {
+                                key: Some("example.com".to_string()),
+                                value: None,
+                            }]),
                             text: Some("brown".to_string()),
-                            url: Some("example.com".to_string()),
                         },
                         Content::Space,
                         Content::Text {

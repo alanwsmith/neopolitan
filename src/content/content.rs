@@ -1,18 +1,18 @@
 use crate::attribute::*;
 // use crate::content::b::b;
-use crate::content::code::code;
+// use crate::content::code::code;
 use crate::content::code_shorthand::*;
-use crate::content::em::em;
-use crate::content::i::i;
-use crate::content::kbd::kbd;
-use crate::content::link::link;
+// use crate::content::em::em;
+// use crate::content::i::i;
+// use crate::content::kbd::kbd;
+// use crate::content::link::link;
 use crate::content::neo_tag::neo_tag;
-use crate::content::span::span;
-use crate::content::strike::*;
-use crate::content::strong::*;
-use crate::content::sub::*;
-use crate::content::sup::*;
-use crate::content::u::*;
+// use crate::content::span::span;
+// use crate::content::strike::*;
+// use crate::content::strong::*;
+// use crate::content::sub::*;
+// use crate::content::sup::*;
+// use crate::content::u::*;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
@@ -54,7 +54,6 @@ pub enum Content {
     Link {
         attributes: Option<Vec<Attribute>>,
         text: Option<String>,
-        url: Option<String>,
     },
     Space,
     Span {
@@ -90,8 +89,6 @@ pub enum Content {
 pub fn content(source: &str) -> IResult<&str, Content> {
     let (remainder, content) = alt((
         tuple((tag_no_case("<<"), take_until(">>"), tag(">>"))).map(|t| neo_tag(t).unwrap().1),
-        // tuple((tag_no_case("<<b|"), take_until(">>"), tag(">>"))).map(|t| b(t).unwrap().1),
-        tuple((tag_no_case("<<code|"), take_until(">>"), tag(">>"))).map(|t| code(t).unwrap().1),
         tuple((
             tag_no_case("`"),
             take_until("`"),
@@ -100,25 +97,6 @@ pub fn content(source: &str) -> IResult<&str, Content> {
             tag("`"),
         ))
         .map(|t| code_shorthand(t).unwrap().1),
-        tuple((
-            tag_no_case("<<link|"),
-            take_until("|"),
-            tag("|"),
-            take_until(">>"),
-            tag(">>"),
-        ))
-        .map(|t| link(t).unwrap().1),
-        tuple((tag_no_case("<<em|"), take_until(">>"), tag(">>"))).map(|t| em(t).unwrap().1),
-        tuple((tag_no_case("<<i|"), take_until(">>"), tag(">>"))).map(|t| i(t).unwrap().1),
-        tuple((tag_no_case("<<kbd|"), take_until(">>"), tag(">>"))).map(|t| kbd(t).unwrap().1),
-        tuple((tag_no_case("<<span|"), take_until(">>"), tag(">>"))).map(|t| span(t).unwrap().1),
-        tuple((tag_no_case("<<strike|"), take_until(">>"), tag(">>")))
-            .map(|t| strike(t).unwrap().1),
-        tuple((tag_no_case("<<strong|"), take_until(">>"), tag(">>")))
-            .map(|t| strong(t).unwrap().1),
-        tuple((tag_no_case("<<sub|"), take_until(">>"), tag(">>"))).map(|t| sub(t).unwrap().1),
-        tuple((tag_no_case("<<sup|"), take_until(">>"), tag(">>"))).map(|t| sup(t).unwrap().1),
-        tuple((tag_no_case("<<u|"), take_until(">>"), tag(">>"))).map(|t| u(t).unwrap().1),
         multispace1.map(|_| Content::Space),
         take_till(|c| c == ' ' || c == '\n' || c == '\t').map(|t: &str| Content::Text {
             text: Some(t.to_string()),
