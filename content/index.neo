@@ -252,9 +252,45 @@ tags:
 
 -> p
 
-`echo`class: highlighted`
+`echo`id: foxtrot|class: highlighted`
 
 -> endneoexample
+
+
+-> h2
+
+Inline Code Language Shorthand
+
+
+-> startneoexample
+
+-> p
+
+`delta`rust`
+
+`echo`rust|id: sierra`
+
+-> endneoexample
+
+-> warning
+
+Adding an explicit `class`` along with
+the language currenly results in two
+`class`` attributes being added to the
+output. That is, this would be a problem:
+
+-> code
+>> neo
+
+`echo`rust|class: highlighted`
+
+
+
+
+
+
+
+
 
 
 

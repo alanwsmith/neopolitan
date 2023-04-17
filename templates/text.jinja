@@ -1,11 +1,12 @@
 {%- from "_macros/attributes.jinja" import attributes -%}
+{%- from "_macros/attributes.jinja" import code_attributes -%}
 {%- from "_macros/attributes.jinja" import link_attributes -%}
 {%- macro text(data) -%}
   {%- for token in data.children -%}
     {%- if token.type == "Text" -%}
       {{token.text}}
     {%- elif token.type == "CodeShorthand" -%}
-      <code {{- attributes(token) -}}>{{token.text}}</code>
+      <code {{- code_attributes(token) -}}>{{token.text}}</code>
     {%- elif token.type == "Em" -%}
       <em {{- attributes(token) -}}>{{token.text}}</em>
     {%- elif token.type == "EmShorthand" -%}

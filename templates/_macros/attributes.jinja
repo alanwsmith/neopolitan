@@ -77,4 +77,29 @@
 
 {%- endmacro -%}
 
+
+{#- ###################################################### -#}
+
+{%- macro code_attributes(data) -%}{#-
+
+  This is for getting the href from the first
+  attribute key and then returning the rest
+  as is
+
+  -#}
+
+    {%- for attribute in data.attributes -%}
+      {{- " " -}}
+      {%- if loop.first and attribute.value == None -%}
+        class="language-{{- attribute.key -}}"
+      {%- else -%}
+        {{- attribute.key -}}
+        {%- if attribute.value != None -%}
+          ="{{ attribute.value }}"
+        {%- endif -%}
+      {% endif %}
+    {%- endfor -%}
+
+{%- endmacro -%}
+
 {#- ###################################################### -#}
