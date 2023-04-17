@@ -15,14 +15,6 @@ thing using this site as a live test bed.
 
 Please pardon the mess.
 
--> note
-
-This is a <<link test|link|https://example.com/>>
-
-And some <<attributes|link|https://example.com/|class: highlight>>
-
-NOTE: Because the urls can have `:``, they have to be parsed
-differently. 
 
 -> h2
 
