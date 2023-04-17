@@ -5,7 +5,7 @@ use nom::bytes::complete::tag;
 use nom::multi::separated_list0;
 use nom::IResult;
 
-pub fn code_shorthand<'a>(
+pub fn strong_shorthand<'a>(
     source: (&'a str, &'a str, &'a str, &'a str, &'a str),
 ) -> IResult<&'a str, Content> {
     let (_, items) = separated_list0(tag("|"), is_not("|"))(source.3)?;
@@ -14,7 +14,7 @@ pub fn code_shorthand<'a>(
             Some(items.iter().map(|a| attribute(a).unwrap().1).collect());
         Ok((
             "",
-            Content::CodeShorthand {
+            Content::StrongShorthand {
                 attributes,
                 text: Some(source.1.to_string()),
             },
@@ -22,7 +22,7 @@ pub fn code_shorthand<'a>(
     } else {
         Ok((
             "",
-            Content::CodeShorthand {
+            Content::StrongShorthand {
                 attributes: None,
                 text: Some(source.1.to_string()),
             },
@@ -40,20 +40,20 @@ mod test {
     use crate::wrapper::wrapper::*;
 
     #[test]
-    fn basic_code_shorthand() {
-        let lines = vec!["-> p", "", "`tango uniform``", "`alfa`rust`"].join("\n");
+    fn basic_strong_shorthand() {
+        let lines = vec!["-> p", "", "*tango uniform**", "*alfa*rust*"].join("\n");
         let source = lines.as_str();
         let expected = Wrapper::Page {
             children: Some(vec![Section::Paragraphs {
                 attributes: None,
                 children: Some(vec![Block::P {
                     children: Some(vec![
-                        Content::CodeShorthand {
+                        Content::StrongShorthand {
                             attributes: None,
                             text: Some("tango uniform".to_string()),
                         },
                         Content::Space,
-                        Content::CodeShorthand {
+                        Content::StrongShorthand {
                             attributes: Some(vec![Attribute::Basic {
                                 key: Some("rust".to_string()),
                                 value: None,

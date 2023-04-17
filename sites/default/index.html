@@ -45,8 +45,16 @@
 </h1><div class="subtitle">
   <p>A plain-text format for websites</p>
 </div>
-<div class="note highlighted"><p>This site is an early draft. I wouldn&#x27;t normally publish something this rough but I&#x27;m doing the &quot;build in public&quot; thing using this site as a live test bed.</p><p>Please pardon the mess.</p></div><h2>Introduction</h2>
-<p>My site is twenty years old. Pondering those decades got me thinking about the next two. I find myself asking &quot;What do I want to use for the next twenty years?&quot; instead of &quot;What do I want to do for my next redesign?&quot; The answers are very different.</p>
+<div class="note highlighted"><p>This site is an early draft. I wouldn&#x27;t normally publish something this rough but I&#x27;m doing the &quot;build in public&quot; thing using this site as a live test bed.</p><p>Please pardon the mess.</p></div><div class="note"><p>This is a {&quot;attributes&quot;: [{&quot;key&quot;: &quot;https&quot;, &quot;type&quot;: &quot;Basic&quot;, &quot;value&quot;: &quot;&#x2f;&#x2f;example.com&#x2f;&quot;}], &quot;text&quot;: &quot;link test&quot;, &quot;type&quot;: &quot;Link&quot;}
+    <p>
+     https="&#x2f;&#x2f;example.com&#x2f;"
+    </p>
+      <a href="">link test</a></p><p>And some {&quot;attributes&quot;: [{&quot;key&quot;: &quot;https&quot;, &quot;type&quot;: &quot;Basic&quot;, &quot;value&quot;: &quot;&#x2f;&#x2f;example.com&#x2f;&quot;}, {&quot;key&quot;: &quot;class&quot;, &quot;type&quot;: &quot;Basic&quot;, &quot;value&quot;: &quot;highlight&quot;}], &quot;text&quot;: &quot;attributes&quot;, &quot;type&quot;: &quot;Link&quot;}
+    <p>
+     https="&#x2f;&#x2f;example.com&#x2f;" class="highlight"
+    </p>
+      <a href="">attributes</a></p><p>NOTE: Because the urls can have <code>:</code>, they have to be parsed differently.</p></div><h2>Introduction</h2>
+<p> My site is twenty years old. Pondering those decades got me thinking about the next two. I find myself asking &quot;What do I want to use for the next twenty years?&quot; instead of &quot;What do I want to do for my next redesign?&quot; The answers are very different.</p>
 <h2>The Format</h2>
 <p>I&#x27;ve moved my site a half dozen times. Each one involved a painful content migration. I&#x27;ve gone from raw HTML to Perl scripts to Wordpress to PHP with various DB schemas to Markdown to MDX to Org-Mode to a mix of all of the above.</p>
 <p>I want aspects of each of those rolled into a single format. I haven&#x27;t found anything like that. So, I&#x27;m rolling my own. It&#x27;s called Neopolitan and it looks like this:</p>
@@ -115,7 +123,11 @@ Bring your best compass</code></pre>
   &lt;&#x2f;li&gt;
 &lt;&#x2f;ul&gt;</code></pre>
 </div><h2>Full Section List</h2>
-<p>The full section list is <a href="">here</a></p>
+<p>The full section list is {&quot;attributes&quot;: [{&quot;key&quot;: &quot;&#x2f;sections&#x2f;index.html&quot;, &quot;type&quot;: &quot;Basic&quot;, &quot;value&quot;: None}], &quot;text&quot;: &quot;here&quot;, &quot;type&quot;: &quot;Link&quot;}
+    <p>
+     &#x2f;sections&#x2f;index.html
+    </p>
+      <a href="">here</a></p>
 <h2>HTML Equivalents</h2>
 <p>Most HTML tags have equivalent sections. Take, <code neo>-&gt; aside</code>, for example, which works like this:</p>
 
@@ -202,17 +214,17 @@ The &lt;&lt;tree top|strike|id: alfa|class: bravo&gt;&gt; waved</code></pre>
 
 `alfa``
 
-[not yet implemented]: _bravo__
+_bravo__
 
 [not yet implemented]: TODO: &gt;charlie&gt;https:&#x2f;&#x2f;www.example.com&#x2f;&gt;
 
-[not yet implemented]: *delta**</code></pre>
+*delta**</code></pre>
 
 <h6>Output</h6>
 <pre class="language-html"><code>&lt;p&gt;&lt;code&gt;alfa&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
-&lt;p&gt;[not yet implemented]: _bravo__&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;em&gt;bravo&lt;&#x2f;em&gt;&lt;&#x2f;p&gt;
 &lt;p&gt;[not yet implemented]: TODO: &amp;gt;charlie&amp;gt;https:&amp;#x2f;&amp;#x2f;www.example.com&amp;#x2f;&amp;gt;&lt;&#x2f;p&gt;
-&lt;p&gt;[not yet implemented]: *delta**&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;strong&gt;delta&lt;&#x2f;strong&gt;&lt;&#x2f;p&gt;
 </code></pre>
 </div><h2>Inline Shorthand Attributes</h2>
 <p>Attributes can also be added to the shorthand tags:</p>

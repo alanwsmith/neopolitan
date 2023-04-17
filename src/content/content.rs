@@ -2,6 +2,8 @@ use crate::attribute::*;
 // use crate::content::b::b;
 // use crate::content::code::code;
 use crate::content::code_shorthand::*;
+use crate::content::em_shorthand::em_shorthand;
+use crate::content::strong_shorthand::strong_shorthand;
 // use crate::content::em::em;
 // use crate::content::i::i;
 // use crate::content::kbd::kbd;
@@ -43,6 +45,10 @@ pub enum Content {
         attributes: Option<Vec<Attribute>>,
         text: Option<String>,
     },
+    EmShorthand {
+        attributes: Option<Vec<Attribute>>,
+        text: Option<String>,
+    },
     I {
         attributes: Option<Vec<Attribute>>,
         text: Option<String>,
@@ -65,6 +71,10 @@ pub enum Content {
         text: Option<String>,
     },
     Strong {
+        attributes: Option<Vec<Attribute>>,
+        text: Option<String>,
+    },
+    StrongShorthand {
         attributes: Option<Vec<Attribute>>,
         text: Option<String>,
     },
@@ -97,6 +107,28 @@ pub fn content(source: &str) -> IResult<&str, Content> {
             tag("`"),
         ))
         .map(|t| code_shorthand(t).unwrap().1),
+
+
+        tuple((
+            tag_no_case("_"),
+            take_until("_"),
+            tag("_"),
+            take_until("_"),
+            tag("_"),
+        ))
+        .map(|t| em_shorthand(t).unwrap().1),
+
+        tuple((
+            tag_no_case("*"),
+            take_until("*"),
+            tag("*"),
+            take_until("*"),
+            tag("*"),
+        ))
+        .map(|t| strong_shorthand(t).unwrap().1),
+
+
+
         multispace1.map(|_| Content::Space),
         take_till(|c| c == ' ' || c == '\n' || c == '\t').map(|t: &str| Content::Text {
             text: Some(t.to_string()),

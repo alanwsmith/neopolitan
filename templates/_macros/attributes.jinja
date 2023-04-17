@@ -55,4 +55,26 @@
 
 {%- endmacro -%}
 
+{#- ###################################################### -#}
 
+{%- macro link_attributes(data) -%}{#-
+
+  This is for getting the href from the first
+  attribute key and then returning the rest
+  as is
+
+  -#}
+
+  {%- if data.attributes != None -%}
+    {%- for attribute in data.attributes -%}
+      {{- " " -}}
+      {{- attribute.key -}}
+      {%- if attribute.value != None -%}
+        ="{{ attribute.value }}"
+      {%- endif %}
+    {%- endfor -%}
+  {%- endif -%}
+
+{%- endmacro -%}
+
+{#- ###################################################### -#}

@@ -15,9 +15,19 @@ thing using this site as a live test bed.
 
 Please pardon the mess.
 
+-> note
+
+This is a <<link test|link|https://example.com/>>
+
+And some <<attributes|link|https://example.com/|class: highlight>>
+
+NOTE: Because the urls can have `:``, they have to be parsed
+differently. 
+
 -> h2
 
 Introduction
+
 
 My site is twenty years old. Pondering those decades got 
 me thinking about the next two. I find myself asking "What do 
@@ -221,11 +231,11 @@ Shorthand versions of `code``, `em``, `link``, and
 
 `alfa``
 
-[not yet implemented]: _bravo__
+_bravo__
 
 [not yet implemented]: TODO: >charlie>https://www.example.com/>
 
-[not yet implemented]: *delta**
+*delta**
 
 -> endneoexample
 
