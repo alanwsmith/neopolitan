@@ -143,14 +143,13 @@ mod test {
         assert_eq!(expected, result.unwrap().1);
     }
 
-    #[ignore]
     #[test]
     fn code_with_single_key_for_language() {
         let source = ("", "golf|code|rust", "");
         let expected = Content::Code {
             attributes: Some(vec![Attribute::Basic {
-                key: Some("class".to_string()),
-                value: Some("delta".to_string()),
+                key: Some("rust".to_string()),
+                value: None,
             }]),
             text: Some("golf".to_string()),
         };
@@ -235,7 +234,6 @@ mod test {
 
     #[test]
     fn strong() {
-        // let lines = vec!["alfa <<bravo|strong|class: delta>> charlie"].join("\n");
         let source = ("", "bravo|strong|class: delta", "");
         let expected = Content::Strong {
             attributes: Some(vec![Attribute::Basic {
