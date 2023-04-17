@@ -11,6 +11,8 @@
       <a href="{% autoescape false %}{{token.url}}{% endautoescape %}">{{token.text}}</a>
     {%- elif token.type == "Space" -%}
       {{ " " }}
+    {%- elif token.type == "Strike" -%}
+      <strike {{- attributes(token) -}}>{{token.text}}</strong>
     {%- elif token.type == "Strong" -%}
       <strong {{- attributes(token) -}}>{{token.text}}</strong>
     {%- endif -%}

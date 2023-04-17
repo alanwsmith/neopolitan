@@ -36,6 +36,10 @@ of content
 
 - dlist - The HTML <dl> tag
 
+- ext - Call to an external process
+
+- figure - The HTML figure element
+
 - <<h1-h6|link|/examples/headings/index.html>> - HTML heading tags
 
 - <<html|link|/examples/html/index.html>> - for raw html blocks that go directly to 
@@ -46,6 +50,10 @@ from the body of the section
 
 - <<list|link|/examples/list/index.html>> - Unordered lists
 
+- menu - the HTML <menu> tag
+
+- nav - the HTML <nav> tag
+
 - <<neoexample|link|/examples/neoexample/index.html>> - A
 display for examples on the neopolitan documentation site
 
@@ -54,10 +62,14 @@ display for examples on the neopolitan documentation site
 
 - <<notes|link|/examples/notes/index.html>> - A list style notes section
 
+- object - The HTML <objet> tag
+
 - <<olist|link|/examples/olist/index.html>> - An ordered list
 
 - <<p|link|/examples/p/index.html>> - Basic text paragraph tags that are not otherwise 
 contained in a div.
+
+- picture - The HTML <picture> element
 
 - <<pre|link|/examples/pre/index.html>> - A pre tag
 
@@ -72,19 +84,23 @@ show output from `-> code`neo` blocks
 
 - <<subtitle|link|/examples/subtitle/index.html>>
 
+- table - Tables 
+
 - <<textarea|link|/examples/textarea/index.html>>
 
 - <<title|link|/examples/title/index.html>>
 
 - <<todo|link|/examples/todo/index.html>> - TODO lists
 
+- video - The HTML <video> element
+
 - <<vimeo|link|/examples/vimeo/index.html>> - A vimeo embed
 
 - <<warning|link|/examples/warning/index.html>> - A div block with a warning class on it
 
+- widget - An area to pass data to the client or build processes for custom functionality
+
 - <<youtube|link|/examples/youtube/index.html>> -  A youtube embed
-
-
 
 
 -> attributes
@@ -92,5 +108,4 @@ show output from `-> code`neo` blocks
 >> id: 2owqbxf62dp2
 >> type: default 
 >> published: y
-
 
