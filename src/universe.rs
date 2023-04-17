@@ -73,6 +73,7 @@ impl Universe {
         let walker = WalkDir::new(&self.source_dir.as_ref().unwrap()).into_iter();
         for entry in walker.filter_entry(|e| !is_hidden(e)) {
             let p = entry?.path().to_path_buf();
+            println!("LOADING: {}", p.display());
             match p.extension() {
                 Some(v) => {
                     if v == "neo" {

@@ -40,21 +40,7 @@
       </nav>
 
     </header>
-  <main><h1 class="title">
-  <p>Drafts</p>
-</h1><div class="subtitle">
-  <p>A plain-text website format</p>
-</div>
-<div class="note"><p>These are some draft notes for the home page and the rest of the site</p></div><h2>Introduction</h2>
-<p>My site is twenty years old. Pondering those past two decades got me thinking about the next two. It changed my approach to making and maintaining my site. &quot;What foundation do I want for the next two decades?&quot; is a very different question from &quot;What do I want to do for my next redesign?&quot;</p>
-<p>On that time horizon, my thoughts don&#x27;t go to the tech, they go to the content.</p>
-<h2>Post Count</h2>
-<p>I&#x27;ve moved my site a half dozen times. Each one involved a painful content migration. I&#x27;ve gone from raw HTML to Perl scripts to Wordpress to PHP with various DB schemas to Markdown to MDX to Org-Mode to a mix of all of the above. After switching to plain-text with Markdown I&#x27;m not interested in anything else. But, those formats don&#x27;t work for me. I keep running into frictions that keep me from posting the way I&#x27;d like.</p>
-<p>So, I&#x27;m making my own format. It&#x27;s called Neopolitan.</p>
-<h2>The Basics</h2>
-<p>The general idea is to use sections (which start with a <code>-&gt;</code> token) to define areas of content. The type of section defines how the content inside it will behave.</p>
-<p>These are the section types I&#x27;m planning along with indications of which ones are already set.</p>
-<h3>Inline Tags</h3>
+  <main><h3>Inline Tags</h3>
 <p>Most of the section types hold text content. That text content is split into <code>&lt;p&gt;</code> tags by default and the text inside of them is parsed for inline tags and shorthand codes. Inline tags start with two <code>&lt;&lt;</code> and end with a closing <code>&gt;&gt;</code> set. Here&#x27;s the list with <code>x</code> indicating the ones that are implemented and <code>.</code> indicating that are still under consideration. (This is basically the list of html elements)</p>
 <ul>
   <li>
@@ -136,8 +122,7 @@
     <p>Arbitrary attributes can be added to inline tags</p>
   </li>
   <li>
-    <p>A collection of sections and inline tags that provides all <a href="
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">standard HTML elements</a></p>
+    <p>A collection of sections and inline tags that provides all <a href="">standard HTML elements</a></p>
   </li>
   <li>
     <p>The spec defines the AST, not the final output. That&#x27;s left up to the rendering engine.</p>
@@ -155,10 +140,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">standard HTML el
 <p>Some other things I have in mind:</p>
 <ul>
   <li>
-    <p>A <code>widget</code> section type that&#x27;s used to pass data to the rendered page (via whatever method the implementation - A <code>css</code> section type designed to include CSS that should be added as the last <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code> of the document</p>
+    <p>A <code>widget</code> section type that&#x27;s used to pass data to the rendered page (via whatever method the implementation - A <code>css</code> section type designed to include CSS that should be added as the last <code html>&lt;style&gt;</code> tag in the <code html>&lt;head&gt;</code> of the document</p>
   </li>
   <li>
-    <p>A <code>script</code>&lt;script&gt;&lt;&#x2f;script&gt;`html` in the head of the document</p>
+    <p>A <code section type designed to include
+a>script</code>&lt;script&gt;&lt;&#x2f;script&gt;`html` in the head of the document</p>
   </li>
   <li>
     <p>Includes sections that include other files</p>

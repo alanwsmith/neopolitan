@@ -1,17 +1,18 @@
+{%- from "_macros/attributes.jinja" import attributes -%}
 {%- macro text(data) -%}
   {%- for token in data.children -%}
     {%- if token.type == "Text" -%}
       {{token.text}}
     {%- elif token.type == "CodeShorthand" -%}
-      <code>{{token.text}}</code>
+      <code {{- attributes(token) -}}>{{token.text}}</code>
     {%- elif token.type == "Em" -%}
-      <em>{{token.text}}</em>
+      <em {{- attributes(token) -}}>{{token.text}}</em>
     {%- elif token.type == "Link" -%}
       <a href="{% autoescape false %}{{token.url}}{% endautoescape %}">{{token.text}}</a>
     {%- elif token.type == "Space" -%}
       {{ " " }}
     {%- elif token.type == "Strong" -%}
-      <strong>{{token.text}}</strong>
+      <strong {{- attributes(token) -}}>{{token.text}}</strong>
     {%- endif -%}
   {%- endfor -%}
 {%- endmacro -%}

@@ -1,61 +1,3 @@
--> title
-
-Drafts
-
--> subtitle
-
-A plain-text website format
-
-
--> note
-
-These are some draft notes for the home page 
-and the rest of the site
-
-
--> h2
-
-Introduction
-
-My site is twenty years old. Pondering those past two decades got 
-me thinking about the next two. It changed my approach to 
-making and maintaining my site. "What foundation do I want 
-for the next two decades?" is a very different question from 
-"What do I want to do for my next redesign?"
-
-On that time horizon, my thoughts don't go to the tech, they
-go to the content.
-
-
--> h2
-
-Post Count
-
-I've moved my site a half dozen times. Each one
-involved a painful content migration. I've gone from 
-raw HTML to Perl scripts to Wordpress to PHP with 
-various DB schemas to Markdown to MDX to Org-Mode 
-to a mix of all of the above. 
-
-After switching to plain-text with Markdown I'm not
-interested in anything else. But, those formats don't 
-work for me. I keep running into frictions that
-keep me from posting the way I'd like.
-
-So, I'm making my own format. It's called Neopolitan.
-
--> h2
-
-The Basics
-
-The general idea is to use sections (which start
-with a `->`neo` token) to define areas of content. 
-The type of section defines how the content inside
-it will behave.
-
-These are the section types I'm planning along with 
-indications of which ones are already set.
-
 
 -> h3
 
@@ -174,7 +116,7 @@ including code blocks.
 tags
 
 - A collection of sections and inline tags that
-provides all <<link|standard HTML elements|
+provides all <<standard HTML elements|link|
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html>>
 
 - The spec defines the AST, not the final output. 

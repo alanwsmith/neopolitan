@@ -117,7 +117,7 @@ to define list items:
 
 Full Section List
 
-The full section list is <<link|here|/sections/index.html>>
+The full section list is <<here|link|/sections/index.html>>
 
 
 
@@ -191,7 +191,7 @@ etc...
 
 -> p
 
-The <<strong|colt>> reared.
+The <<colt|strong>> reared.
 
 -> endneoexample
 
@@ -207,7 +207,7 @@ show up in the output)
 
 -> p
 
-The <<em|tree top|class: alfa>> waved
+The <<tree top|em|class: alfa>> waved
 
 -> endneoexample
 
@@ -245,7 +245,7 @@ Under Consideration
 
 - [.] video
 
-- [] <<link|widget|/examples/widget/index.html>> - The first attribute is the name of the
+- [] <<widget|link|/examples/widget/index.html>> - The first attribute is the name of the
 widget which is use by the processor to render the
 content.
 

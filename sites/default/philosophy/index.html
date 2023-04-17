@@ -57,7 +57,7 @@
     <p>The output</p>
   </li>
 </ul><p>The specification only deals with the AST and the output. The project includes and example output renderer but based on what I&#x27;ve seen with Markdown trying to define an implementation via a spec isn&#x27;t likely to work out well.</p>
-<p>See <a href="https://xkcd.com/927/">XKCD 927</a> for reference</p>
+<p>See <a href="">XKCD 927</a> for reference</p>
 <h3>Raw Text In The AST</h3>
 <p>I&#x27;m not doing an conversion for HTML escaping in the process that makes the AST. I&#x27;m leaving that to the output processor. That&#x27;s an implementation detail, but I prefer splitting the two that way.</p>
 <h3>Footnotes And References</h3>
@@ -73,12 +73,12 @@
   </li>
 </ul><h3>Section Types</h3>
 <p>There are different types of sections:</p>
-<p>- Basic Processed Content (e.g. <code>-&gt; p</code>)</p>
-<p>- List Processed Content (e.g. <code>-&gt; list</code>)</p>
-<p>- Raw Content (e.g. <code>-&gt; code</code>)</p>
-<p>- Metadata Driven content (e.g. <code>-&gt; youtube</code>)</p>
-<p>- Basic Metadata (e.g. <code>-&gt; attributes</code>)</p>
-<p>- Custom sections (e.g. <code>-&gt; wc</code> and <code>-&gt; c</code>)</p>
+<p>- Basic Processed Content (e.g. <code neo>-&gt; p</code>)</p>
+<p>- List Processed Content (e.g. <code neo>-&gt; list</code>)</p>
+<p>- Raw Content (e.g. <code neo>-&gt; code</code>)</p>
+<p>- Metadata Driven content (e.g. <code neo>-&gt; youtube</code>)</p>
+<p>- Basic Metadata (e.g. <code neo>-&gt; attributes</code>)</p>
+<p>- Custom sections (e.g. <code neo>-&gt; wc</code> and <code neo>-&gt; c</code>)</p>
 <h3>Everything is a string</h3>
 <p>There&#x27;s no attempt in the AST to convert to numbers. Everything is a string.</p>
 <h3>Attributes Are Key Values By Default</h3>
@@ -104,12 +104,12 @@
 <p>Several sections exist purely for convenience. For example, it wouldn&#x27;t be that hard to make a <code>-&gt; div</code> section with a <code>&gt;&gt; class: warning</code> on it, but I do that so often it&#x27;s nicer to have a <code>-&gt; warning</code> section.</p>
 <p>This also goes for sections that are nothing more than aliases for standard HTML tags. For example, adding a <code>&lt;textarea&gt;</code> with any necessary attributes is not much more work than making a <code>-&gt; textarea</code> section. But, the section keeps the look consistent with the rest of the page and I think it looks nicer than that HTML tag.</p>
 <h3>Either HTML or Neopolitan</h3>
-<p>You can&#x27;t put HTML in any section other than an <code>-&gt; html</code> section. That prevents issues with escaping and parsing characters that are meaningful in HTML (e.g. <code>&lt;</code>, <code>&gt;</code>, etc...)</p>
-<p>Most HTML tags have neopolitan tags mapped to them. Anything that doesn&#x27;t or needs more nuance can be handled with an <code>-&gt; html</code> section. If you&#x27;re trying to do something that that doesn&#x27;t handle, you&#x27;re beyond the scope of the format and will have to find your own solution.</p>
+<p>You can&#x27;t put HTML in any section other than an <code neo>-&gt; html</code> section. That prevents issues with escaping and parsing characters that are meaningful in HTML (e.g. <code>&lt;</code>, <code>&gt;</code>, etc...)</p>
+<p>Most HTML tags have neopolitan tags mapped to them. Anything that doesn&#x27;t or needs more nuance can be handled with an <code neo>-&gt; html</code> section. If you&#x27;re trying to do something that that doesn&#x27;t handle, you&#x27;re beyond the scope of the format and will have to find your own solution.</p>
 <h3>Unix Like Process Call Outs</h3>
 <p>Provide a section to call out to other processes to load JSON and serialize it in. Also provide processes that return neopolitan content prior to parsing the documnet. And ones that return straight HTML</p>
 <h3>Multiple Sites</h3>
-<p>There is only one set of content but it can go to multiple sites via a <code>site</code> or <code>sites</code> attribute. (where <code>sites</code> can got to multiple output sites. Content will go to a <code>sites&#x2f;default</code>site`` or <code>sites</code> attribute is found. I set it up this way because I have multiple sites and edit content in a single location via my Gimoire. While the directory strucutrue for the content gets mapped to the output files there isn&#x27;t a level to determine the site. That&#x27;s only done by the attributes.</p>
+<p>There is only one set of content but it can go to multiple sites via a <code>site</code> or <code>sites</code> attribute. (where <code>sites</code> can got to multiple output sites. Content will go to a <code directory if no>sites&#x2f;default</code>site`` or <code>sites</code> attribute is found. I set it up this way because I have multiple sites and edit content in a single location via my Gimoire. While the directory strucutrue for the content gets mapped to the output files there isn&#x27;t a level to determine the site. That&#x27;s only done by the attributes.</p>
 </main>
 </body>
 </html>

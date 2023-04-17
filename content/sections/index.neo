@@ -7,13 +7,13 @@ linked aren't yet implemented)
 
 -> list
 
-- <<link|aside|/examples/aside/index.html>> The HTML <aside> tag
+- <<aside|link|/examples/aside/index.html>> The HTML <aside> tag
 
-- <<link|attributes|/examples/attributes/index.html>> - Metadata for the page
+- <<attributes|link|/examples/attributes/index.html>> - Metadata for the page
 
-- <<link|blockquote|/examples/blockquote/index.html>> - The HTML <blockquote> tag
+- <<blockquote|link|/examples/blockquote/index.html>> - The HTML <blockquote> tag
 
-- <<link|blurb|/examples/blurb/index.html">> - Passed to other pages for incoming links
+- <<blurb|link|/examples/blurb/index.html">> - Passed to other pages for incoming links
 
 - canvas - Basic canvas element with included attributes
 
@@ -21,68 +21,68 @@ linked aren't yet implemented)
 
 - checklist - Like a TODO list, but it resets every time the page is visited
 
-- <<link|code|/examples/code/index.html>> - Code blocks like fenced 
+- <<code|link|/examples/code/index.html>> - Code blocks like fenced 
 code blocks but you can add an arbitrary attributes to them.
 
-- <<link|comment|/examples/comment/index.html>> - Section that's not output
+- <<comment|link|/examples/comment/index.html>> - Section that's not output
 
-- <<link|css|examples/css/index.html>> - A place to put CSS that will be inlined in the page
+- <<css|link|examples/css/index.html>> - A place to put CSS that will be inlined in the page
 
 - details - The details disclosure element: <details>
 
-- <<link|div|/examples/div/index.html>> - A <div>
+- <<div|link|/examples/div/index.html>> - A <div>
   wrapper that can be used to add attributes to sections 
 of content
 
 - dlist - The HTML <dl> tag
 
-- <<link|h1-h6|/examples/headings/index.html>> - HTML heading tags
+- <<h1-h6|link|/examples/headings/index.html>> - HTML heading tags
 
-- <<link|html|/examples/html/index.html>> - for raw html blocks that go directly to 
+- <<html|link|/examples/html/index.html>> - for raw html blocks that go directly to 
 the output without further processing
 
-- <<link|image|/examples/image/index.html>> - An image call with the alt text coming
+- <<image|link|/examples/image/index.html>> - An image call with the alt text coming
 from the body of the section
 
-- <<link|list|/examples/list/index.html>> - Unordered lists
+- <<list|link|/examples/list/index.html>> - Unordered lists
 
-- <<link|neoexample|/examples/neoexample/index.html>> - A
+- <<neoexample|link|/examples/neoexample/index.html>> - A
 display for examples on the neopolitan documentation site
 
-- <<link|note|/examples/note/index.html>> - A div wrapper with a 
+- <<note|link|/examples/note/index.html>> - A div wrapper with a 
   `class="note"`html` attribute
 
-- <<link|notes|/examples/notes/index.html>> - A list style notes section
+- <<notes|link|/examples/notes/index.html>> - A list style notes section
 
-- <<link|olist|/examples/olist/index.html>> - An ordered list
+- <<olist|link|/examples/olist/index.html>> - An ordered list
 
-- <<link|p|/examples/p/index.html>> - Basic text paragraph tags that are not otherwise 
+- <<p|link|/examples/p/index.html>> - Basic text paragraph tags that are not otherwise 
 contained in a div.
 
-- <<link|pre|/examples/pre/index.html>> - A pre tag
+- <<pre|link|/examples/pre/index.html>> - A pre tag
 
 - reference - For documenting external resources
 
-- <<link|results|/examples/results/index.html>> - Used to 
+- <<results|link|/examples/results/index.html>> - Used to 
 show output from `-> code`neo` blocks
 
-- <<link|startcode/endcode|/examples/startcode_endcode/index.html>>
+- <<startcode/endcode|link|/examples/startcode_endcode/index.html>>
 
 - script - A raw section that adds script tags to the header of the page
 
-- <<link|subtitle|/examples/subtitle/index.html>>
+- <<subtitle|link|/examples/subtitle/index.html>>
 
-- <<link|textarea|/examples/textarea/index.html>>
+- <<textarea|link|/examples/textarea/index.html>>
 
-- <<link|title|/examples/title/index.html>>
+- <<title|link|/examples/title/index.html>>
 
-- <<link|todo|/examples/todo/index.html>> - TODO lists
+- <<todo|link|/examples/todo/index.html>> - TODO lists
 
-- <<link|vimeo|/examples/vimeo/index.html>> - A vimeo embed
+- <<vimeo|link|/examples/vimeo/index.html>> - A vimeo embed
 
-- <<link|warning|/examples/warning/index.html>> - A div block with a warning class on it
+- <<warning|link|/examples/warning/index.html>> - A div block with a warning class on it
 
-- <<link|youtube|/examples/youtube/index.html>> -  A youtube embed
+- <<youtube|link|/examples/youtube/index.html>> -  A youtube embed
 
 
 
