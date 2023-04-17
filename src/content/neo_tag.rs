@@ -47,12 +47,8 @@ pub fn neo_tag<'a>(source: (&'a str, &'a str, &'a str)) -> IResult<&'a str, Cont
 mod test {
 
     use crate::attribute::*;
-    use crate::block::block::*;
     use crate::content::content::*;
     use crate::content::neo_tag::neo_tag;
-    use crate::parse::parse;
-    use crate::section::section::*;
-    use crate::wrapper::wrapper::*;
 
     #[test]
     fn basic_neo_tag() {
