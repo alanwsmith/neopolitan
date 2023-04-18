@@ -1,0 +1,179 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Section:"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "vimeo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NotesSection",
+      "attributes": null,
+      "children": [
+        {
+          "type": "NotesItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Convenience"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "seciton"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "for"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "a"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Vimeo"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "video"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "embed"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> vimeo\n>> 718558198"
+      },
+      "html": "<div class=\"vimeoVideo\" 718558198>\n  <iframe \n    src=\"https://player.vimeo.com/video/718558198\" \n    title=\"vimeo-player\" \n    width=\"640\"\n    height=\"360\" \n    frameborder=\"0\" \n    allowfullscreen></iframe>\n</div>"
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> vimeo\n>> 718558198\n>> id: delta"
+      },
+      "html": "<div class=\"vimeoVideo\" 718558198 id=\"delta\">\n  <iframe \n    src=\"https://player.vimeo.com/video/718558198\" \n    title=\"vimeo-player\" \n    width=\"640\"\n    height=\"360\" \n    frameborder=\"0\" \n    allowfullscreen></iframe>\n</div>"
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> vimeo\n>> 718558198\n>> class: charlie"
+      },
+      "html": "<div class=\"vimeoVideo charlie\" 718558198>\n  <iframe \n    src=\"https://player.vimeo.com/video/718558198\" \n    title=\"vimeo-player\" \n    width=\"640\"\n    height=\"360\" \n    frameborder=\"0\" \n    allowfullscreen></iframe>\n</div>"
+    },
+    {
+      "type": "BlurbSection",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "->"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "categories"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": ">>"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Miscellaneous"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-15 23:26:37"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2ouwn74cr9yj"
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "publish",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

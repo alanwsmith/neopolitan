@@ -1,0 +1,322 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "code"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "These"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "are"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "code"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "blocks"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "similar"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "code"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "fence"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "blocks"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Markdown."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "If"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "first"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "attribute"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "has"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "no"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "value"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "treated"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "as"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "language"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "and"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "added"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "as"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": "language-"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "class"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": "<pre>"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "element"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> code\n\nconsole.log(\"Hello\")\nconsole.log(\", \")\nconsole.log(\"World\")"
+      },
+      "html": "<pre><code>console.log(&quot;Hello&quot;)\nconsole.log(&quot;, &quot;)\nconsole.log(&quot;World&quot;)</code></pre>"
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> code\n>> python \n\nprint(\"Hello\")\nprint(\", \")\nprint(\"World\")"
+      },
+      "html": "<pre><code class=\"language-python \">print(&quot;Hello&quot;)\nprint(&quot;, &quot;)\nprint(&quot;World&quot;)</code></pre>"
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> code\n>> rust\n>> class: foxtrot\n\ndbg!(\"Hello\")\ndbg!(\", \")\ndbg!(\"World\")"
+      },
+      "html": "<pre><code class=\"language-rust foxtrot\">dbg!(&quot;Hello&quot;)\ndbg!(&quot;, &quot;)\ndbg!(&quot;World&quot;)</code></pre>"
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-15 09:40:44"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2ostvynrgh7u"
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "publish",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

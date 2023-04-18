@@ -1,0 +1,428 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Metadata"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Sections"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "H2Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Implemented"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "-"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "LinkShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "/examples/attributes.html",
+                  "value": null
+                }
+              ],
+              "text": "attributes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "-"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Metadata"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "page"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "-"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "LinkShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "/examples/blurb.html",
+                  "value": null
+                }
+              ],
+              "text": "blurb"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "-"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Passed"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "other"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "pages"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "incoming"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "links"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "-"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "LinkShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "/examples/categories.html",
+                  "value": null
+                }
+              ],
+              "text": "categories"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "-"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "A"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "metadata"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "page"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "categories"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "-"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "LinkShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "/examples/footnote.html",
+                  "value": null
+                }
+              ],
+              "text": "footnote"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "For"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "when"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "you"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "want"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "write"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "more"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "but"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "not"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "inline"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "-"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "LinkShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "/examples/reference.html",
+                  "value": null
+                }
+              ],
+              "text": "reference"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "-"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "For"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "documenting"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "external"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "resources"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-18 00:22:21"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2oahodms0j0z"
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "default"
+        },
+        {
+          "type": "Attribute",
+          "key": "published",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

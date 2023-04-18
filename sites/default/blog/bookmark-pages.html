@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for websites</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+          <li>
+            <a href="/content-sections.html">Content Sections</a>
+          </li>
+          <li>
+            <a href="/metadata-sections.html">Metadata Sections</a>
+          </li>
+          <li>
+            <a href="/functional-sections.html">Functional Sections</a>
+          </li>
+          <li>
+            <a href="/section-attributes.html">Section Attributes</a>
+          </li>
+          <li>
+            <a href="/inline-tags.html">Inline Tags</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1 class="title">
+  <p>Considering Bookmarks</p>
+</h1><h2>Introduction</h2>
+<p>I use <a href="https://pinboard.in/u:alanWsmith">pinboard</a> for my bookmarks. I throw a bunch of stuff in there. It doesn&#x27;t get a lot of use. I look things up from time to time. It&#x27;s kind of a pain though and the search isn&#x27;t always that great.</p>
+<h2>Consolidation</h2>
+<p>All of my other content is in my Grimoire. Its got its own very good, very fast search engine. Alex Riviere (aka fimion) mentioned the idea of incorporating bookmarks into personal websites and those ideas clicked in my head. Every document doesn&#x27;t need to be a stand alone piece of content. They can be part of what amounts to a flat-file database that get assemled when the site is generated For example, here&#x27;s a basic format I&#x27;m think about for bookmarks:</p>
+<pre><code>-&gt; reference
+&gt;&gt; title: Sara Joy&#x27;s Home Page
+&gt;&gt; url: https:&#x2f;&#x2f;sarajoy.dev&#x2f;
+
+-&gt; categories
+&gt;&gt; Personal Websites
+
+-&gt; attributes
+&gt;&gt; date: 2023-04-17 15:26:55
+&gt;&gt; id: 2ozehshsng3z
+&gt;&gt; site: neo 
+&gt;&gt; type: bookmark 
+&gt;&gt; published: y</code></pre><h2>Expansion</h2>
+<p>And, an optional `-&gt; list` section can be added for more info:</p>
+<pre><code>-&gt; reference
+&gt;&gt; title: Sara Joy&#x27;s Home Page
+&gt;&gt; url: https:&#x2f;&#x2f;sarajoy.dev&#x2f;
+
+-&gt; list
+
+- Beautiful home page
+
+- Great scorll effect where it looks like 
+tabs are movig up the page
+
+- Where I learned about the &quot;now&quot; pages and 
+&gt;nownownow.com&gt;https:&#x2f;&#x2f;nownownow.com&#x2f;about&gt;
+
+-&gt; categories
+&gt;&gt; Personal Websites
+
+-&gt; attributes
+&gt;&gt; date: 2023-04-17 15:26:55
+&gt;&gt; id: 2ozehshsng3z
+&gt;&gt; site: neo 
+&gt;&gt; type: bookmark 
+&gt;&gt; published: y</code></pre><div class="todo">
+  <ul>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Write up and link to a post on your Grimoire (aka notes app).
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Put in footnote reference to <a href="https://www.meilisearch.com/">meilisearch</a>
+      </p>
+    </li>
+  </ul>
+</div><h2>Previously</h2>
+<p><a href="/blog/is-this-thing-on.html">Is This Thing On?</a></p>
+</main>
+  <footer>
+  from <a href="https://www.alanwsmith.com/">alan w. smith</a>
+  </footer>
+</body>
+</html>

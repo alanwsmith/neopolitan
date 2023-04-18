@@ -1,0 +1,551 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Links"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "and"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Link"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "References"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NoteSection",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "This"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "still"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "draft"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Paragraphs",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Links"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "are"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "done"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "one"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "of"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "following"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "options"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "neo",
+          "value": null
+        }
+      ],
+      "children": {
+        "type": "RawContent",
+        "text": "# not yet implemend\n>text>URL>\n\n# not yet implemend\n<<l|TEXT|URL>>\n\n# not yet implemend\n<<l|TEXT|URL|KEY: VALUE|KEY: ETC...>>\n\n# not yet implemend\n<<link|TEXT|URL>>\n\n# not yet implemend\n<<link|TEXT|URL|KEY: VALUE|KEY: ETC...>>"
+      }
+    },
+    {
+      "type": "Paragraphs",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "links"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "can"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "span"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "multiple"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "lines"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "like"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "this:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "neo",
+          "value": null
+        }
+      ],
+      "children": {
+        "type": "RawContent",
+        "text": ">text>\nhttps://www.example.com/>\n\nor\n\n<<link|\nhttps://www.example.com/|\nkey: value|\nkey: value>>"
+      }
+    },
+    {
+      "type": "H2Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Reference"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Links"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "links"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "don't"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "have"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "have"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "URL"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "them"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "directly,"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "they"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "can"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "be"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "reference"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "links"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "stored"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": "-> links"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "neo",
+          "value": null
+        }
+      ],
+      "children": {
+        "type": "RawContent",
+        "text": "<<l|some text|ref_name>>\n\n-> links\n\n- ref_name:"
+      }
+    },
+    {
+      "type": "Paragraphs",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "As"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "long"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "as"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "mathces"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it'll"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "be"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "used"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "link."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-16 00:29:35"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2oue1qldubkc"
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "publish",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

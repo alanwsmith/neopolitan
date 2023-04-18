@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for websites</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+          <li>
+            <a href="/content-sections.html">Content Sections</a>
+          </li>
+          <li>
+            <a href="/metadata-sections.html">Metadata Sections</a>
+          </li>
+          <li>
+            <a href="/functional-sections.html">Functional Sections</a>
+          </li>
+          <li>
+            <a href="/section-attributes.html">Section Attributes</a>
+          </li>
+          <li>
+            <a href="/inline-tags.html">Inline Tags</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1 class="title">
+  <p>Section Attributes</p>
+</h1><h2>Overview</h2>
+<div class="notes">
+  <ul>
+    <li>
+      <p>
+        Every section accepts attributes
+      </p>
+    </li>
+    <li>
+      <p>
+        Attributes are defined on lines starting with <code class="language-neo">&gt;&gt;</code> directly after the section line starting with <code class="language-neo">-&gt;</code>. - Keys are separated from values with a <code class="language-neo">:</code> character
+      </p>
+    </li>
+    <li>
+      <p>
+        The keys and values are output directly to the primary HTML tag for the section. For example:
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; h4
+&gt;&gt; id: alfa
+&gt;&gt; data-widget: bravo
+
+Open the crate</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;h4 id=&quot;alfa&quot; data-widget=&quot;bravo&quot;&gt;Open the crate&lt;&#x2f;h4&gt;
+</code></pre>
+</div><div class="notes">
+  <ul>
+    <li>
+      <p>
+        If there is no value, the key is passed by itself
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; h4
+&gt;&gt; hidden
+
+Pile the coal</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;h4 hidden&gt;Pile the coal&lt;&#x2f;h4&gt;
+</code></pre>
+</div><h2>Special Handling Shortcuts</h2>
+<div class="notes">
+  <ul>
+    <li>
+      <p>
+        The <code class="language-neo">code</code>, <code class="language-neo">image</code>, <code class="language-neo">vimeo</code>, and <code class="language-neo">youtube</code> sections treat the first attribute line in a special manner if there&#x27;s no key
+      </p>
+    </li>
+    <li>
+      <p>
+        The <code class="language-neo">code</code> section uses a key only first attribute line to define the language of the section
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; code
+&gt;&gt; rust
+
+println!(&quot;Hello, World&quot;);</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;pre&gt;&lt;code class=&quot;language-rust&quot;&gt;println!(&amp;quot;Hello, World&amp;quot;);&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code></pre>
+</div><div class="notes">
+  <ul>
+    <li>
+      <p>
+        <code class="language-neo">image</code> sections use the first item as the <code class="language-html">src</code> path
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; image
+&gt;&gt; https:&#x2f;&#x2f;placekitten.com&#x2f;200&#x2f;300
+
+A cute kitten</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;img src=&quot;https:&#x2f;&#x2f;placekitten.com&#x2f;200&#x2f;300&quot; alt=&quot;A cute kitten&quot;&gt;</code></pre>
+</div><div class="notes">
+  <ul>
+    <li>
+      <p>
+        The <code class="language-neo">youtube</code> and <code class="language-neo">vimeo</code> sections use the first line as the ID to embed:
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; youtube
+&gt;&gt; gnUYoQ1pwes</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div class=&quot;youtubeVideo&quot; gnUYoQ1pwes&gt;
+  &lt;iframe 
+    src=&quot;https:&#x2f;&#x2f;www.youtube.com&#x2f;embed&#x2f;gnUYoQ1pwes&quot;
+    width=&quot;560&quot; height=&quot;315&quot; 
+    title=&quot;YouTube video player&quot; frameborder=&quot;0&quot;
+    allow=&quot;accelerometer; autoplay; clipboard-write; 
+    encrypted-media; gyroscope; picture-in-picture; web-share&quot;
+    allowfullscreen&gt;&lt;&#x2f;iframe&gt;
+&lt;&#x2f;div&gt;</code></pre>
+</div><h2>Additioal Classes</h2>
+<div class="notes">
+  <ul>
+    <li>
+      <p>
+        Several sections (note, notes, results, subtitle, title, todo, vimeo, warning, youtube) have predefined HTML classes in their attributes - Passing a key&#x2f;value pair with a class in the section header adds the class to the ones that&#x27;s already there
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; note
+&gt;&gt; class: echo
+
+Take the winding path</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div class=&quot;note echo&quot;&gt;&lt;p&gt;Take the winding path&lt;&#x2f;p&gt;&lt;&#x2f;div&gt;</code></pre>
+</div></main>
+  <footer>
+  from <a href="https://www.alanwsmith.com/">alan w. smith</a>
+  </footer>
+</body>
+</html>

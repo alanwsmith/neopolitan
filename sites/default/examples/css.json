@@ -1,0 +1,400 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Section:"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "css"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "neo",
+                  "value": null
+                }
+              ],
+              "text": "-> css"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "allows"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "arbitrary"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "CSS"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "be"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "added"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "page."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Each"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "adds"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "html",
+                  "value": null
+                }
+              ],
+              "text": "<style>"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "element"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "just"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "before"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "closing"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "html",
+                  "value": null
+                }
+              ],
+              "text": "</head>"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "tag"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "HTML."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Multiple"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "sections"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "output"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "from"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "top"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "down"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "order"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "they"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "appear"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "source"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "file."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> css\n\npre {\n  border: 2px solid red;\n}"
+      },
+      "html": ""
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-15 17:18:13"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2otnzjsbe4du"
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "publish",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

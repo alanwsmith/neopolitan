@@ -1,0 +1,304 @@
+-> title
+
+Section: table
+
+Tables aren't implemented yet. I'm still 
+working on the format. This is the scratchpad
+I'm using for that.
+
+My main thinking here is that auto formatters
+would be used most of the time. So, leaning
+towards more complicated text feels be okay.
+
+Another possibility would be to add a second
+basic table type. That makes some sense, but
+I'm wary of have two approaches. 
+
+While it's possible to break out to HTML, I'd
+like to avoid that for tables with reasonable
+complexity so that format can be used for more
+than just HTML. 
+
+
+-> h2
+
+Goals
+
+-> list
+
+- Multiple lines
+
+- Ability to style 
+
+- Headers and footers
+
+- Colspan and rowspan
+
+-> h3
+
+Draft 
+
+Markers to shows where cells start to provide
+for multi line content
+
+-> startcode
+
+-> table
+
++ This is a header     | header 1        | header 3 
+  with a second line   |                 |
+- regular sells look   | and can also    | data 1
+  like this            | have more data  |
+- another cell         | with data       | data 2
+- and another          | goes here       | and here
+~ and the footer       | footer 2        | footer 3
+
+-> endcode
+
+
+
+-> h3
+
+Draft 
+
+A basic format. Multiple lines, but no styles 
+or spans. Mainly a starting point
+
+
+-> startcode
+
+-> table
+
++ This is a header     | header 1        | header 3 
+  with a second line   |                 |
+
+- regular sells look   | and can also    | data 1
+  like this            | have more data  |
+
+- another cell         | with data       | data 2
+
+- and another          | goes here       | and here
+
+~ and the footer       | footer 2        | footer 3
+
+-> endcode
+
+
+-> h3
+
+Draft 
+
+This version adds in the ability to add attributes for 
+each cell. It pushing things way out though
+
+
+-> startcode
+
+-> table
+
++|colspan: 2|> This is a header with a colspan                 |> header 3 
+
+-|>            regular sells look  |rowspan: 2> and can also   |> data 1
+               like this           |            with more data |
+
+-|>            another cell                                    |> data 2
+
+-|>            and another         |>           goes here      |> and here
+
+~|>            and the footer      |>           footer 2       |> footer 3
+
+-> endcode
+
+
+-> h3
+
+Draft
+
+The idea here is to pre in reference markers for the 
+attributes to apply to a cell
+
+-> startcode
+
+-> starttable
+
++|1> This is a header with a colspan on it  |> header 3 
+
+-|>  regular sells look  |2> and can also   |> data 1
+     like this           |   with more data |
+
+-|>  another cell                           |> data 2
+
+-|>  and another         |>  goes here      |> and here
+
+~|>  and the footer      |>  footer 2       |> footer 3
+
+
+-> 1
+>> colspan: 2
+>> class: primary
+
+-> 2
+>> id: targetCell
+>> class: highlighted
+>> rowspan: 2
+
+-> endtable
+
+-> endcode
+
+
+
+-> h3
+
+Draft
+
+
+-> startcode
+
+-> table
+
+|+| This is a header      || header 2       || header 3 
+
+|-| regular sells look    || and can also   || data 2
+    like this             || with more data ||
+
+|-| another cell          || a cell         || data 3
+
+|-| and another           || goes here      || and here
+
+|~| and the footer        || footer 2       || footer 3
+
+
+-> endcode
+
+
+-> h3
+
+Draft
+
+
+-> startcode
+
+-> table
+
++ || This is a header      || header 2       || header 3 
+
+- || regular sells look    || and can also   || data 2
+  || like this             || with more data ||
+
+- || another cell          || a cell         || data 3
+
+- || and another           || goes here      || and here
+
+~ || and the footer        || footer 2       || footer 3
+
+-> endcode
+
+
+-> h3
+
+Draft
+
+
+-> startcode
+
+-> starttable
+
++ |1| This is a header with a colspan         || header 3 
+
+- || regular sells look    |2| and can also   || data 2
+  || like this             || with more data  ||
+
+- || another cell                             || data 3
+
+- || and another           || goes here       || and here
+
+~ || and the footer        || footer 2        || footer 3
+
+
+-> 1
+>> colspan: 2
+>> class: primary
+
+-> 2
+>> rowspan: 2
+>> id: cellTarget
+
+-> endtable
+
+-> endcode
+
+
+-> h3
+
+Draft
+
+What if the tables were vertical in the source
+files?
+
+-> startcode
+
+-> table
+
++ start a new row with a plus
+
+- cells are done with new lines
+
+- might work for smaller tables
+
++ but it would make it hard to parse
+
+- if there were a bunch of lines
+
+- like the utility of the data
+
++ in the file itself would 
+
+- be of less use because it
+
+- would be harder to follow
+
+-> endcode
+
+
+
+-> h3
+
+Draft
+
+
+-> startcode
+
+-> starttable
+
++ |1| This is a header with a colspan         || header 3 
+- || cell with multiple  |2| cell with an id  || data 2
+  || lines               ||                   || 
+- || another cell        || data 3            || data 4
+- || and another         || goes here         || and here
+~ || and the footer      || footer 2          || footer 3
+
+-> 1
+>> colspan: 2
+>> class: primary
+
+-> 2
+>> id: cellTarget
+
+-> endtable
+
+-> endcode
+
+
+
+
+
+
+-> attributes
+>> date: 2023-04-17 18:53:25
+>> id: 2ozdosmz5wtx
+>> site: neo 
+>> type: example 
+>> published: y
+
+

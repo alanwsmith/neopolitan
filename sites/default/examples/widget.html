@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neopolitan - A plain-text format for my website</title>
+  <title>Neopolitan - A plain-text format for websites</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
   <meta property="og:description"
@@ -28,13 +28,28 @@
             <a href="/index.html">Neopolitan</a>
           </li>
           <li>
-            <a href="/attributes/index.html">Attributes</a>
+            <a href="/blog/index.html">Blog</a>
           </li>
           <li>
             <a href="/philosophy/index.html">Philosophy</a>
           </li>
           <li>
-            <a href="/todo/index.html">TODOs</a>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+          <li>
+            <a href="/content-sections.html">Content Sections</a>
+          </li>
+          <li>
+            <a href="/metadata-sections.html">Metadata Sections</a>
+          </li>
+          <li>
+            <a href="/functional-sections.html">Functional Sections</a>
+          </li>
+          <li>
+            <a href="/section-attributes.html">Section Attributes</a>
+          </li>
+          <li>
+            <a href="/inline-tags.html">Inline Tags</a>
           </li>
         </ul>
       </nav>
@@ -42,6 +57,11 @@
     </header>
   <main><h1 class="title">
   <p>Section: widget</p>
-</h1></main>
+</h1>
+<p>The basic idea for the widget is to allow for anything that isn&#x27;t otherwise handled directly in Neopolitan. They&#x27;re a bit like web components but they aren&#x27;t sent to the browser directly. The processing engine is responsible for handling them.</p>
+<p>If customization of the processing engine isn&#x27;t possible calls to external services that handle arbitrary data can be made in <code class="language-neo">-&gt; ext</code> sections: <a href="/examples/ext.html">link</a></p></main>
+  <footer>
+  from <a href="https://www.alanwsmith.com/">alan w. smith</a>
+  </footer>
 </body>
 </html>

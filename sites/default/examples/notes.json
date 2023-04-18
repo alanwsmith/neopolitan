@@ -1,0 +1,199 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Section:"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "notes"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "A"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "list"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "like"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "notes."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "It's"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": "<ul>"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "an"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "explicit"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": "notes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "class"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "applied"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "as"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "convience"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "approach."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> notes\n\n- The music played on while they talked.\n\nDispense with a vest on a day like this.\n\n-  The bunch of grapes was \npressed into wine."
+      },
+      "html": "<div class=\"notes\">\n  <ul>\n    <li>\n      <p>\n        The music played on while they talked.\n      </p>\n      <p>\n        Dispense with a vest on a day like this.\n      </p>\n    </li>\n    <li>\n      <p>\n         The bunch of grapes was pressed into wine.\n      </p>\n    </li>\n  </ul>\n</div>"
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-15 18:32:15"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2otwzxwhiqvc"
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "publish",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

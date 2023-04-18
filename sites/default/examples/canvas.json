@@ -1,0 +1,165 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Section:"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "canvas"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Basic"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "output"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "of"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "canvas"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "element"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "content"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "area"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "tunring"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "into"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "alt"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "text."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-17 20:37:07"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2ozq0ldzoayg"
+        },
+        {
+          "type": "Attribute",
+          "key": "site",
+          "value": "neo "
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "published",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

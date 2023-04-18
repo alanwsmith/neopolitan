@@ -1,0 +1,110 @@
+-> title
+
+Considering Bookmarks
+
+-> h2
+
+Introduction
+
+I use <<pinboard|link|https://pinboard.in/u:alanWsmith>>
+for my bookmarks. I throw a bunch of stuff in there. 
+It doesn't get a lot of use. I look things up
+from time to time. It's kind of a pain though and
+the search isn't always that great.
+
+-> h2
+
+Consolidation
+
+All of my other content is in my Grimoire. Its got 
+its own very good, very fast search engine. Alex Riviere
+(aka fimion) mentioned the idea of incorporating bookmarks
+into personal websites and those ideas clicked in my 
+head. 
+
+Every document doesn't need to be a stand alone
+piece of content. They can be part of what amounts
+to a flat-file database that get assemled when the site
+is generated 
+
+For example, here's a basic format I'm think about
+for bookmarks:
+
+-> startcode
+
+-> reference
+>> title: Sara Joy's Home Page
+>> url: https://sarajoy.dev/
+
+-> categories
+>> Personal Websites
+
+-> attributes
+>> date: 2023-04-17 15:26:55
+>> id: 2ozehshsng3z
+>> site: neo 
+>> type: bookmark 
+>> published: y
+
+-> endcode
+
+-> h2
+
+Expansion
+
+And, an optional `-> list` section can be
+added for more info:
+
+
+-> startcode
+
+-> reference
+>> title: Sara Joy's Home Page
+>> url: https://sarajoy.dev/
+
+-> list
+
+- Beautiful home page
+
+- Great scorll effect where it looks like 
+tabs are movig up the page
+
+- Where I learned about the "now" pages and 
+>nownownow.com>https://nownownow.com/about>
+
+-> categories
+>> Personal Websites
+
+-> attributes
+>> date: 2023-04-17 15:26:55
+>> id: 2ozehshsng3z
+>> site: neo 
+>> type: bookmark 
+>> published: y
+
+-> endcode
+
+
+
+-> todo
+
+[] Write up and link to a post on your
+Grimoire (aka notes app).
+
+[] Put in footnote reference to 
+>meilisearch>https://www.meilisearch.com/>
+
+-> h2
+
+Previously
+
+>Is This Thing On?>/blog/is-this-thing-on.html>
+
+-> attributes
+>> date: 2023-04-17 15:24:52
+>> id: 2oze21rdpvur
+>> type: blog 
+>> draft: y
+>> published: y
+
+

@@ -1,0 +1,38 @@
+-> title
+
+Section: reference
+
+References are used to point to other
+resources and documents that don't fit
+into footnotes. The idea is to 
+aggregate them in the output and. 
+
+I'm not sure if they'll have links back 
+into the document the same say footnotes
+do because I'm not sure what the difference
+would be at that point. 
+
+Might end up with reference to references
+though? For example you could have one file
+that contains a bunch of reference and then
+just refer to them by ID to pull them 
+into other documents. 
+
+
+-> startneoexample
+>> neo
+
+-> reference
+>> title: something
+>> url: https://www.example.com/
+>> author: some person
+
+-> endneoexample
+
+
+-> attributes
+>> date: 2023-04-16 00:30:26
+>> id: 2oue8ktncgsj
+>> type: example 
+>> publish: y
+

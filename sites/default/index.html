@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neopolitan - A plain-text format for my website</title>
+  <title>Neopolitan - A plain-text format for websites</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
   <meta property="og:description"
@@ -28,13 +28,28 @@
             <a href="/index.html">Neopolitan</a>
           </li>
           <li>
-            <a href="/attributes/index.html">Attributes</a>
+            <a href="/blog/index.html">Blog</a>
           </li>
           <li>
             <a href="/philosophy/index.html">Philosophy</a>
           </li>
           <li>
-            <a href="/todo/index.html">TODOs</a>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+          <li>
+            <a href="/content-sections.html">Content Sections</a>
+          </li>
+          <li>
+            <a href="/metadata-sections.html">Metadata Sections</a>
+          </li>
+          <li>
+            <a href="/functional-sections.html">Functional Sections</a>
+          </li>
+          <li>
+            <a href="/section-attributes.html">Section Attributes</a>
+          </li>
+          <li>
+            <a href="/inline-tags.html">Inline Tags</a>
           </li>
         </ul>
       </nav>
@@ -45,11 +60,11 @@
 </h1><div class="subtitle">
   <p>A plain-text format for websites</p>
 </div>
-<div class="note highlighted"><p>This site is an early draft. I wouldn&#x27;t normally publish something this rough but I&#x27;m doing the &quot;build in public&quot; thing using this site as a live test bed.</p><p>Please pardon the mess.</p></div><h2>Introduction</h2>
-<p> My site is twenty years old. Pondering those decades got me thinking about the next two. I find myself asking &quot;What do I want to use for the next twenty years?&quot; instead of &quot;What do I want to do for my next redesign?&quot; The answers are very different.</p>
+<div class="note"><p>NOTE: I&#x27;m doing the &quot;launch before you&#x27;re ready - build in public&quot; thing. The ideas are mostly in place but the content and the demo implementation are still in the works.</p></div><h2>Introduction</h2>
+<p>My site is twenty years old. Pondering those decades got me thinking about the next two. I find myself asking &quot;What do I want to use for the next twenty years?&quot; instead of &quot;What do I want to do for my next redesign?&quot; The answers are very different.</p>
 <h2>The Format</h2>
 <p>I&#x27;ve moved my site a half dozen times. Each one involved a painful content migration. I&#x27;ve gone from raw HTML to Perl scripts to Wordpress to PHP with various DB schemas to Markdown to MDX to Org-Mode to a mix of all of the above.</p>
-<p>I want aspects of each of those rolled into a single format. I haven&#x27;t found anything like that. So, I&#x27;m rolling my own. It&#x27;s called Neopolitan and it looks like this:</p>
+<p>I want aspects of each of those rolled into a single format. And, I don&#x27;t want to have to change it again. I haven&#x27;t found anything that pulls that off. So, I&#x27;m rolling my own. It&#x27;s called Neopolitan and it looks like this:</p>
 <pre><code class="language-neo">-&gt; title
 
 Welcome To Neopolitan
@@ -59,30 +74,30 @@ Welcome To Neopolitan
 A plain-text format for websites
 
 -&gt; note
-&gt;&gt; class: highlighted
 
-This site is an early draft. I wouldn&#x27;t normally 
-publish something this rough but I&#x27;m doing the 
-&quot;build in public&quot; thing using this site as a live 
-test bed.
-
-Please pardon the mess.
+NOTE: I&#x27;m doing the &quot;launch before you&#x27;re ready - 
+build in public&quot; thing. Most of the ideas here are
+in place but some content is still a work in progress. 
 
 -&gt; h2
 
 Introduction
 
 My site is twenty years old. Pondering those decades 
-got me thinking about the next two. I find myself 
-asking &quot;What do I want to use for the next twenty 
-years?&quot; instead of &quot;What do I want to do for my 
-next redesign?&quot; The answers are very different.
+got me thinking about the next two. I find myself asking 
+&quot;What do I want to use for the next twenty years?&quot; instead 
+of &quot;What do I want to do for my next redesign?&quot; The answers 
+are very different.
 
 -&gt; attributes
 &gt;&gt; date: 2023-04-16 19:06:40
 &gt;&gt; type: default 
-&gt;&gt; published: y</code></pre><h2>Content Sections</h2>
-<p>Neopolitan documents are divided into sections. Each one starts with a <code class="language-neo">-&gt;</code> token followed by the name of the section. The type of section determines what happens with the content inside it. For example, the <code class="language-neo">-&gt; h2</code> section becomes an <code class="language-html">&lt;h2&gt;</code> element:</p>
+&gt;&gt; published: y</code></pre><h2>Dogfooding</h2>
+<p>I&#x27;m not a particular fan of the term &quot;dogfooding&quot;. &quot;Drink your own champagne&quot; is worse. Either way, that&#x27;s what I&#x27;m doing. This site is built from the Neopolitan documents and a demo site generator. The sample above is an example. It&#x27;s what built the first part of this page.</p>
+<h2>The Specification</h2>
+<p>I&#x27;m still working on the spec. It&#x27;ll cover all the details of the format. It won&#x27;t have requirements for output though. Those details should reside in the hands of the implementer. Plus, making standards is a tricky game^xkcd^^.</p>
+<h2>Some Details</h2>
+<p>Neopolitan documents are divided into sections. Each one starts with a <code class="language-neo">-&gt;</code> token followed by the section type name. The type determines what happens with the content inside it. For example, the <code class="language-neo">-&gt; h2</code> section becomes an <code class="language-html">&lt;h2&gt;</code> element:</p>
 
 <div class="neoexample">
 <h6>Source</h6>
@@ -114,149 +129,29 @@ Bring your best compass</code></pre>
     &lt;p&gt;Shut the hatch&lt;&#x2f;p&gt;
   &lt;&#x2f;li&gt;
 &lt;&#x2f;ul&gt;</code></pre>
-</div><h2>Full Section List</h2>
-<p>The full section list is <a href="/sections/index.html">here</a></p>
-<h2>HTML Equivalents</h2>
-<p>Most HTML tags have equivalent sections. Take, <code class="language-neo">-&gt; aside</code>, for example, which works like this:</p>
+</div><div class="note"><p>These examples are based off my demo implementation. The specific HTML is just what I&#x27;m using. I think it&#x27;s a solid choice, but it&#x27;s in no way a mandate.</p></div><h2>Full Section List</h2>
+<p>There are 46 section types. Some are for content. Others are for metadata. There are sections that put content in the head of the document and others designed to call out to external processes.</p>
+<p>Details can be found on the <a href="/sections/index.html">full list</a>.</p>
+<h2>Section Attributes</h2>
+<p>One of my main frustrations with other formats is the lack of an ability to add attributes to content. Neopolitan addresses that directly. It&#x27;s a huge factor behind the design. Each content section accepts attributes defined by lines starting with <code>&gt;&gt;</code> tokens directly after the <code>-&gt;</code> section call. Here&#x27;s the same <code class="language-neo">-&gt; h2</code> example from above with an <code>id</code> and a <code>class</code> added:</p>
 
 <div class="neoexample">
 <h6>Source</h6>
 <pre><code class=""
->-&gt; aside
+>-&gt; h2
+&gt;&gt; id: alfa
+&gt;&gt; class: bravo charlie
 
-Tear a thin sheet from the yellow pad.</code></pre>
-
-<h6>Output</h6>
-<pre class="language-html"><code>&lt;aside&gt;
-  &lt;p&gt;Tear a thin sheet from the yellow pad.&lt;&#x2f;p&gt;
-&lt;&#x2f;aside&gt;</code></pre>
-</div><h2>Raw HTML</h2>
-<p>A raw <code class="language-neo">-&gt; html</code> section provides the ability to pass raw HTML directly to the final output</p>
-
-<div class="neoexample">
-<h6>Source</h6>
-<pre><code class=""
->-&gt; html
-
-&lt;form&gt;
-    &lt;label for=&quot;name&quot;&gt;Enter your name: &lt;&#x2f;label&gt;
-    &lt;input type=&quot;text&quot; name=&quot;name&quot; id=&quot;name&quot; required&gt;
-&lt;&#x2f;form&gt;</code></pre>
+Bring your best compass</code></pre>
 
 <h6>Output</h6>
-<pre class="language-html"><code>&lt;form&gt;
-    &lt;label for=&quot;name&quot;&gt;Enter your name: &lt;&#x2f;label&gt;
-    &lt;input type=&quot;text&quot; name=&quot;name&quot; id=&quot;name&quot; required&gt;
-&lt;&#x2f;form&gt;</code></pre>
-</div><h2>Meta Content</h2>
-<p>Section with differen types of metadata are included as well. For example, <code>-&gt; attributes</code> sections provide key&#x2f;value pairs at the page level to the processing engine. <code>-&gt; css</code> and <code>-&gt; script</code> sections push their content into the head of the document to provide increased customization.</p>
-
-<div class="neoexample">
-<h6>Source</h6>
-<pre><code class=""
->-&gt; css
-
-.highlight {
-  background: white;
-}</code></pre>
-
-<h6>Output</h6>
-<pre class="language-html"><code>&lt;style&gt;
-.highlight {
-  background: white;
-}
-&lt;&#x2f;style&gt;</code></pre>
-</div><h2>Inline Tags</h2>
-<p>Several inline tags are provided for styling, linking, etc...</p>
-
-<div class="neoexample">
-<h6>Source</h6>
-<pre><code class=""
->-&gt; p
-
-The &lt;&lt;colt|strong&gt;&gt; reared.</code></pre>
-
-<h6>Output</h6>
-<pre class="language-html"><code>&lt;p&gt;The &lt;strong&gt;colt&lt;&#x2f;strong&gt; reared.&lt;&#x2f;p&gt;
+<pre class="language-html"><code>&lt;h2 id=&quot;alfa&quot; class=&quot;bravo charlie&quot;&gt;Bring your best compass&lt;&#x2f;h2&gt;
 </code></pre>
-</div><h2>Inline Tag Attributes</h2>
-<p>Key&#x2f;value pairs passed to inline tags output as attributes:</p>
-
-<div class="neoexample">
-<h6>Source</h6>
-<pre><code class=""
->-&gt; p
-
-The &lt;&lt;tree top|strike|id: alfa|class: bravo&gt;&gt; waved</code></pre>
-
-<h6>Output</h6>
-<pre class="language-html"><code>&lt;p&gt;The &lt;strike id=&quot;alfa&quot; class=&quot;bravo&quot;&gt;tree top&lt;&#x2f;strong&gt; waved&lt;&#x2f;p&gt;
-</code></pre>
-</div><h2>Inline Shorthand</h2>
-<p>Shorthand versions of <code>code</code>, <code>em</code>, <code>link</code>, and <code>strong</code> look like this:</p>
-
-<div class="neoexample">
-<h6>Source</h6>
-<pre><code class=""
->-&gt; p
-
-`alfa``
-
-_bravo__
-
-&gt;charlie&gt;https:&#x2f;&#x2f;www.example.com&#x2f;&gt;
-
-*delta**</code></pre>
-
-<h6>Output</h6>
-<pre class="language-html"><code>&lt;p&gt;&lt;code&gt;alfa&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
-&lt;p&gt;&lt;em&gt;bravo&lt;&#x2f;em&gt;&lt;&#x2f;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;www.example.com&#x2f;&quot;&gt;charlie&lt;&#x2f;a&gt;&lt;&#x2f;p&gt;
-&lt;p&gt;&lt;strong&gt;delta&lt;&#x2f;strong&gt;&lt;&#x2f;p&gt;
-</code></pre>
-</div><h2>Inline Shorthand Attributes</h2>
-<p>Attributes can also be added to the shorthand tags:</p>
-
-<div class="neoexample">
-<h6>Source</h6>
-<pre><code class=""
->-&gt; p
-
-`echo`id: foxtrot|class: highlighted`</code></pre>
-
-<h6>Output</h6>
-<pre class="language-html"><code>&lt;p&gt;&lt;code id=&quot;foxtrot&quot; class=&quot;highlighted&quot;&gt;echo&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
-</code></pre>
-</div><h2>Inline Code Language Shorthand</h2>
-
-<div class="neoexample">
-<h6>Source</h6>
-<pre><code class=""
->-&gt; p
-
-`delta`rust`
-
-`echo`rust|id: sierra`</code></pre>
-
-<h6>Output</h6>
-<pre class="language-html"><code>&lt;p&gt;&lt;code class=&quot;language-rust&quot;&gt;delta&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
-&lt;p&gt;&lt;code class=&quot;language-rust&quot; id=&quot;sierra&quot;&gt;echo&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
-</code></pre>
-</div><div class="warning">
-  <p>Adding an explicit <code>class</code> along with the language currenly results in two <code>class</code> attributes being added to the output. That is, this would be a problem:</p>
-</div>
-<div class="neoexample">
-<h6>Source</h6>
-<pre><code class=""
->-&gt; p
-
-`echo`rust|class: highlighted`</code></pre>
-
-<h6>Output</h6>
-<pre class="language-html"><code>&lt;p&gt;&lt;code class=&quot;language-rust&quot; class=&quot;highlighted&quot;&gt;echo&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
-</code></pre>
-</div><h2>An AST Not An Output</h2>
-<p>The HTML outputs shown above are from my processing implementation. They&#x27;re an optional starting point, not a spec. Neopolitan output is an implementation details. The thing that has the spec is the AST that&#x27;s generated by parsing a document.</p>
+</div><h2>Further Exploration</h2>
+<p>That&#x27;ll give you an initial idea of the format. More details are availalbe from the links in the to nav. This project is open source and in <a href="https://github.com/alanwsmith/neopolitan">a repo</a>. The demo engine I&#x27;m using to build this site is in there along with the content. It&#x27;s not ready for prime time yet but feel free to play with it if you&#x27;re interested.</p>
 </main>
+  <footer>
+  from <a href="https://www.alanwsmith.com/">alan w. smith</a>
+  </footer>
 </body>
 </html>

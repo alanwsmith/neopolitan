@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for websites</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+          <li>
+            <a href="/content-sections.html">Content Sections</a>
+          </li>
+          <li>
+            <a href="/metadata-sections.html">Metadata Sections</a>
+          </li>
+          <li>
+            <a href="/functional-sections.html">Functional Sections</a>
+          </li>
+          <li>
+            <a href="/section-attributes.html">Section Attributes</a>
+          </li>
+          <li>
+            <a href="/inline-tags.html">Inline Tags</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1 class="title">
+  <p>Section: table</p>
+</h1>
+<p>Tables aren&#x27;t implemented yet. I&#x27;m still working on the format. This is the scratchpad I&#x27;m using for that.</p>
+<p>My main thinking here is that auto formatters would be used most of the time. So, leaning towards more complicated text feels be okay.</p>
+<p>Another possibility would be to add a second basic table type. That makes some sense, but I&#x27;m wary of have two approaches. While it&#x27;s possible to break out to HTML, I&#x27;d like to avoid that for tables with reasonable complexity so that format can be used for more than just HTML.</p><h2>Goals</h2>
+<ul>
+  <li>
+    <p>Multiple lines</p>
+  </li>
+  <li>
+    <p>Ability to style - Headers and footers</p>
+  </li>
+  <li>
+    <p>Colspan and rowspan</p>
+  </li>
+</ul><h3>Draft Markers to shows where cells start to provide for multi line content</h3>
+<pre><code>-&gt; table
+
++ This is a header     | header 1        | header 3 
+  with a second line   |                 |
+- regular sells look   | and can also    | data 1
+  like this            | have more data  |
+- another cell         | with data       | data 2
+- and another          | goes here       | and here
+~ and the footer       | footer 2        | footer 3</code></pre><h3>Draft A basic format. Multiple lines, but no styles or spans. Mainly a starting point</h3>
+<pre><code>-&gt; table
+
++ This is a header     | header 1        | header 3 
+  with a second line   |                 |
+
+- regular sells look   | and can also    | data 1
+  like this            | have more data  |
+
+- another cell         | with data       | data 2
+
+- and another          | goes here       | and here
+
+~ and the footer       | footer 2        | footer 3</code></pre><h3>Draft This version adds in the ability to add attributes for each cell. It pushing things way out though</h3>
+<pre><code>-&gt; table
+
++|colspan: 2|&gt; This is a header with a colspan                 |&gt; header 3 
+
+-|&gt;            regular sells look  |rowspan: 2&gt; and can also   |&gt; data 1
+               like this           |            with more data |
+
+-|&gt;            another cell                                    |&gt; data 2
+
+-|&gt;            and another         |&gt;           goes here      |&gt; and here
+
+~|&gt;            and the footer      |&gt;           footer 2       |&gt; footer 3</code></pre><h3>Draft</h3>
+<p>The idea here is to pre in reference markers for the attributes to apply to a cell</p>
+<pre><code>-&gt; starttable
+
++|1&gt; This is a header with a colspan on it  |&gt; header 3 
+
+-|&gt;  regular sells look  |2&gt; and can also   |&gt; data 1
+     like this           |   with more data |
+
+-|&gt;  another cell                           |&gt; data 2
+
+-|&gt;  and another         |&gt;  goes here      |&gt; and here
+
+~|&gt;  and the footer      |&gt;  footer 2       |&gt; footer 3
+
+
+-&gt; 1
+&gt;&gt; colspan: 2
+&gt;&gt; class: primary
+
+-&gt; 2
+&gt;&gt; id: targetCell
+&gt;&gt; class: highlighted
+&gt;&gt; rowspan: 2
+
+-&gt; endtable</code></pre><h3>Draft</h3>
+<pre><code>-&gt; table
+
+|+| This is a header      || header 2       || header 3 
+
+|-| regular sells look    || and can also   || data 2
+    like this             || with more data ||
+
+|-| another cell          || a cell         || data 3
+
+|-| and another           || goes here      || and here
+
+|~| and the footer        || footer 2       || footer 3</code></pre><h3>Draft</h3>
+<pre><code>-&gt; table
+
++ || This is a header      || header 2       || header 3 
+
+- || regular sells look    || and can also   || data 2
+  || like this             || with more data ||
+
+- || another cell          || a cell         || data 3
+
+- || and another           || goes here      || and here
+
+~ || and the footer        || footer 2       || footer 3</code></pre><h3>Draft</h3>
+<pre><code>-&gt; starttable
+
++ |1| This is a header with a colspan         || header 3 
+
+- || regular sells look    |2| and can also   || data 2
+  || like this             || with more data  ||
+
+- || another cell                             || data 3
+
+- || and another           || goes here       || and here
+
+~ || and the footer        || footer 2        || footer 3
+
+
+-&gt; 1
+&gt;&gt; colspan: 2
+&gt;&gt; class: primary
+
+-&gt; 2
+&gt;&gt; rowspan: 2
+&gt;&gt; id: cellTarget
+
+-&gt; endtable</code></pre><h3>Draft</h3>
+<p>What if the tables were vertical in the source files?</p>
+<pre><code>-&gt; table
+
++ start a new row with a plus
+
+- cells are done with new lines
+
+- might work for smaller tables
+
++ but it would make it hard to parse
+
+- if there were a bunch of lines
+
+- like the utility of the data
+
++ in the file itself would 
+
+- be of less use because it
+
+- would be harder to follow</code></pre><h3>Draft</h3>
+<pre><code>-&gt; starttable
+
++ |1| This is a header with a colspan         || header 3 
+- || cell with multiple  |2| cell with an id  || data 2
+  || lines               ||                   || 
+- || another cell        || data 3            || data 4
+- || and another         || goes here         || and here
+~ || and the footer      || footer 2          || footer 3
+
+-&gt; 1
+&gt;&gt; colspan: 2
+&gt;&gt; class: primary
+
+-&gt; 2
+&gt;&gt; id: cellTarget
+
+-&gt; endtable</code></pre></main>
+  <footer>
+  from <a href="https://www.alanwsmith.com/">alan w. smith</a>
+  </footer>
+</body>
+</html>

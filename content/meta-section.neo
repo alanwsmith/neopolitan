@@ -1,0 +1,35 @@
+-> title
+
+Meta Sections
+
+
+-> h2
+
+Meta Content
+
+Section with differen types of metadata are included
+as well. For example, `-> attributes`` sections provide 
+key/value pairs at the page level to the processing 
+engine. The `-> css`` and `-> script`` sections are 
+designed to push their content into the head of the 
+document.
+
+-> startneoexample
+
+-> css
+
+.highlight {
+  background: white;
+}
+
+-> endneoexample
+
+
+
+-> attributes
+>> date: 2023-04-18 00:15:51
+>> id: 2oagbeonbcqy
+>> type: default 
+>> published: y 
+
+

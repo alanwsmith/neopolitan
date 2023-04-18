@@ -1,0 +1,629 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Section:"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "p"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NotesSection",
+      "attributes": null,
+      "children": [
+        {
+          "type": "NotesItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Basic"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "paragraphs"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "NotesItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Each"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "paragraph"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "is"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "separated"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "by"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "an"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "empty"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "line"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "NotesItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Multiple"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "connected"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "lines"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "are"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "combined"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "into"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "a"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "single"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "CodeShorthand",
+                  "attributes": [
+                    {
+                      "type": "Basic",
+                      "key": "html",
+                      "value": null
+                    }
+                  ],
+                  "text": "<p>"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "element"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "NotesItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "There's"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "no"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "section"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "wrapper."
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Each"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "paragraphs"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "becomes"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "it's"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "own"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "CodeShorthand",
+                  "attributes": [
+                    {
+                      "type": "Basic",
+                      "key": "html",
+                      "value": null
+                    }
+                  ],
+                  "text": "<p>"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "element"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "in"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "the"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "HTML"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "output."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> p\n\nGreet the new guests. A thin \nstripe runs down the middle.\n\nLush fern grow on the lofty rocks."
+      },
+      "html": "<p>Greet the new guests. A thin stripe runs down the middle.</p>\n<p>Lush fern grow on the lofty rocks.</p>\n"
+    },
+    {
+      "type": "NotesSection",
+      "attributes": null,
+      "children": [
+        {
+          "type": "NotesItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Attributes"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "can"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "be"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "added"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "with"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "CodeShorthand",
+                  "attributes": null,
+                  "text": ">>"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "lines"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "NotesItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Attributes"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "are"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "added"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "to"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "every"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "CodeShorthand",
+                  "attributes": [
+                    {
+                      "type": "Basic",
+                      "key": "html",
+                      "value": null
+                    }
+                  ],
+                  "text": "<p>"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "element"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "in"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "the"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "output"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "(if"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "attributes"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "need"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "to"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "be"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "applied"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "to"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "a"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "single"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "paragraph"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "put"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "it"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "in"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "its"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "own"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "section)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> p\n>> class: lima\n\nA steep trail is painful for our feet.\n\nGreen moss grows on the northern side."
+      },
+      "html": "<p class=\"lima\">A steep trail is painful for our feet.</p>\n<p class=\"lima\">Green moss grows on the northern side.</p>\n"
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-15 21:32:51"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2ouixmgzgqtq"
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "publish",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

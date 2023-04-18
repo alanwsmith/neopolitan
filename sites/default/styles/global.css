@@ -4,7 +4,7 @@
     --main-vanilla: #fefaec;
     --main-strawberry: #f9a1bc;
     --color-4: #444;
-    --max-width: 68ch;
+    --max-width: 65ch;
     --border-radius-1: 0.4rem;
 }
 
@@ -118,6 +118,7 @@ h4,
 h5,
 h6 {
   color: var(--main-strawberry);
+  font-weight: 700;
 }
 
 
@@ -147,8 +148,8 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  font-size: 1.1rem;
-  font-weight: 300;
+  font-size: 1.15rem;
+  font-weight: 400;
 }
 
 header {
@@ -221,15 +222,14 @@ ul {
 }
 
 pre {
-  line-height: 1.4;
-  font-size: 0.92rem;
-}
-
-pre {
   background-color: var(--color-4);
-  padding: 0.7rem;
+  border: 1px solid var(--color-1);
   border-radius: var(--border-radius-1);
-  margin-bottom: 1.3rem;
+  font-size: 0.92rem;
+  line-height: 1.2;
+  margin-bottom: 1.9rem;
+  margin-top: 1.9rem;
+  padding: 1.3rem;
 }
 
 .subtitle {
@@ -249,10 +249,10 @@ pre {
 }
 
 .neoexample {
-  padding: 1.2rem;
   border: 1px solid var(--color-1);
-  margin-bottom: 1.3rem;
   border-radius: var(--border-radius-1);
-
+  margin-bottom: 1.9rem;
+  margin-top: 1.9rem;
+  padding: 1.2rem;
 }
 

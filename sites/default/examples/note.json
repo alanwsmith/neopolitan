@@ -1,0 +1,134 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Section:"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "note"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "A"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "div"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "wrapper"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "neo",
+                  "value": null
+                }
+              ],
+              "text": "note"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "class"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "on"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> note\n\nDraw the chart with heavy black lines."
+      },
+      "html": "<div class=\"note\"><p>Draw the chart with heavy black lines.</p></div>"
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-15 19:27:52"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2ou3ktwuvpvg"
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "publish",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

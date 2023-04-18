@@ -1,0 +1,188 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Section:"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "comment"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Comment"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "sections"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "don't"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "output"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "HTML."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "They're"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "only"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "source"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "files"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "and"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "look"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "like"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "this:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "neo",
+          "value": null
+        }
+      ],
+      "children": {
+        "type": "RawContent",
+        "text": "-> comment\n\nThe bloom of the rose lasts a few days.\n\nA gray mare walked before the colt."
+      }
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-15 17:11:29"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2otmkapymyo5"
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example"
+        },
+        {
+          "type": "Attribute",
+          "key": "publish",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

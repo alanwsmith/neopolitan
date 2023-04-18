@@ -1,0 +1,42 @@
+-> title 
+
+Neopolitan
+
+-> subtitle 
+
+A plain-text format websites
+
+-> h2
+
+The Format
+
+Neopolitan is a plain-text format designed
+for websites. It's built from the parts of
+Markdown, MDX, Org-Mode, Raw HTML, and 
+other formats that I like the most. The goal 
+is to use it for the next 20 years regardless
+of what tech I use for my site. 
+
+The homepage for the format is:
+
+>neopolitan.alanwsmith.com>>
+
+You can read more about the format there. 
+
+-> h2
+
+The Demo (Work In Progress)
+
+This repo contains the documentation
+for the format along with the builder
+I use for my site. Neopolitan's spec is 
+an AST instead of an explict output. 
+So, my process is more of a demonstration 
+of than a reference implentation. 
+
+While the code in this repo is designed 
+for the sites I run it's built in a 
+relatively generic (but opinionated)
+manner. Feel free to use it. Or, fork
+it or make your own engine all together. 
+

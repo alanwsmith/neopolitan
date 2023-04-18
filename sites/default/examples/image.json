@@ -1,0 +1,592 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Section:"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "image"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "A"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "uses"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "attributes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "main"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "image"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "call"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "and"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "uses"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "content"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "area"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "alt"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "text."
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "first"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "attribute"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "line"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "used"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "set"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": "src"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "path"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "of"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "image"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "by"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "default:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> image\n>> alfa.jpg\n\nExample alfa"
+      },
+      "html": "<img src=\"alfa.jpg\" alt=\"Example alfa\">"
+    },
+    {
+      "type": "Paragraphs",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Other"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "attributes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "can"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "be"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "passed"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "as"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "well:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> image\n>> bravo.jpg\n>> id: img_bravo \n>> class: charlie \n\nExample bravo"
+      },
+      "html": "<img src=\"bravo.jpg\" id=\"img_bravo \" class=\"charlie \" alt=\"Example bravo\">"
+    },
+    {
+      "type": "Paragraphs",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "It's"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "also"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "possible"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "use"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": "src: path.jpg"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "set"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "path."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "If"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "you"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "do"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "first"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "line"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "must"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "have"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "key"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "as"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "well"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "as"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "value."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "For"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "example:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> image\n>> id: img_delta\n>> src: delta.jpg\n\nExample delta"
+      },
+      "html": "<img id=\"img_delta\" src=\"delta.jpg\" alt=\"Example delta\">"
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-15 19:06:21"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2ou0iiceisy5"
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "publish",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

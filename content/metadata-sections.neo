@@ -1,0 +1,25 @@
+-> title
+
+Metadata Sections
+
+-> h2
+
+Implemented
+
+- >attributes>/examples/attributes.html> - Metadata for the page
+
+- >blurb>/examples/blurb.html> - Passed to other pages for incoming links
+
+- >categories>/examples/categories.html> - A metadata section for page categories
+
+- >footnote>/examples/footnote.html> For when you want to write more but not inline
+
+- >reference>/examples/reference.html> - For documenting external resources
+
+
+-> attributes
+>> date: 2023-04-18 00:22:21
+>> id: 2oahodms0j0z
+>> type: default
+>> published: y
+

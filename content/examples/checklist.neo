@@ -1,0 +1,33 @@
+-> title
+
+Section: checklist
+
+Like a TODO list but the checkboxes
+are cleared each time the page is loaded
+so you can use it like a runbook.
+
+-> startneoexample
+
+-> checklist
+
+[] Make a checklist page
+
+[] Write some stuff on it
+
+[] Commit the canges
+
+-> endneoexample
+
+
+
+
+
+
+-> attributes
+>> date: 2023-04-17 20:39:54
+>> id: 2ozqllyxinr7
+>> site: neo 
+>> type: example 
+>> published: y
+
+
