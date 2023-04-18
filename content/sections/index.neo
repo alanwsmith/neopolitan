@@ -18,6 +18,8 @@ These are the available section types
 
 - >blurb>/examples/blurb.html> - Passed to other pages for incoming links
 
+- >categories>/examples/categories.html> - A metadata section for page categories
+
 - >code>/examples/code.html> - Code blocks like fenced code blocks but with attributes.
 
 - >comment>/examples/comment.html> - Section that's not output
@@ -80,7 +82,6 @@ These are currently in progress
 
 - canvas - >wip>/examples/canvas.html> Basic canvas element with included attributes
 
-- categories - >wip>/examples/categories.html> A metadata section for page categories
 
 - checklist - >wip>/examples/checklist.html> Like a TODO list, but it resets every time the page is visited
 

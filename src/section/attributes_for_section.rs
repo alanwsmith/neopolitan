@@ -20,6 +20,9 @@ pub enum SectionAttribute {
         key: Option<String>,
         value: Option<String>,
     },
+    Category {
+        category: Option<String>,
+    },
 }
 
 pub fn section_attribute(source: &str) -> IResult<&str, SectionAttribute> {

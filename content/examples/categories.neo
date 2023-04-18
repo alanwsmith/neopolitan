@@ -6,6 +6,11 @@ Metadata for the page that's passed
 to the universe for aggregation, 
 linking, etc...
 
+Usage is an implementation detail
+that's left to the process building
+the site
+
+
 -> attributes
 >> date: 2023-04-17 20:38:41
 >> id: 2ozqcbaipa5t
