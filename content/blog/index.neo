@@ -12,16 +12,13 @@ For now, we're doing it the old-fashioned way.
 
 - >Considering Bookmarks>/blog/bookmark-pages.html>
 
+- >A Checklist Example>/blog/checklist-example.html>
 
--> comment
-
--#> categories
->> Miscellaneous
 
 -> attributes
 >> date: 2023-04-17 03:54:27
 >> id: 2oxs4cn4kwkn
->> type: index 
+>> type: default 
 >> published: y
 
 

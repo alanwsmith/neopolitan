@@ -30,42 +30,6 @@ to give us more things to play with.
 
 -> h3
 
-AST Over Output
-
-This project can be broken into two parts:
-
--> list
-
-- The format and the AST
-
-- The output
-
--> p
-
-The specification only deals with the 
-format and the AST. The project includes an 
-example output renderer but it's not part 
-of the standard. It's a demonstration. 
-
-That's not to say it's a toy. I'm using it
-as the produciton tool to build this site
-as well as my personal site once I get my
-9,000 note Grimiore converted. 
-
-
--> h3
-
-Raw Text In The AST
-
-I'm not doing an conversion for HTML 
-escaping in the process that makes the AST. 
-I'm leaving that to the output processor. 
-That's an implementation detail, but I
-prefer splitting the two that way. 
-
-
--> h3
-
 Footnotes And References
 
 Use the first line after them as the name
@@ -81,53 +45,11 @@ as the value is used as a direct key.
 
 -> h3
 
-Insignificant Whitespace
+Whitespace Is Insignificant
 
-It doesn't matter in most places except for:
-
--> list
-
-- Blank lines that act as separators between
-sections and list items
-
-- Key names in footnotes and
-references
-
-
-
--> h3
-
-Section Types
-
-There are different types of sections:
-
-- Basic Processed Content (e.g. `-> p`neo`)
-
-- List Processed Content (e.g. `-> list`neo`)
-
-- Raw Content (e.g. `-> code`neo`)
-
-- Metadata Driven content (e.g. `-> youtube`neo`)
-
-- Basic Metadata (e.g. `-> attributes`neo`)
-
-- Custom sections (e.g. `-> wc`neo` and `-> c`neo`)
-
--> h3
-
-Everything is a string
-
-There's no attempt in the AST to convert to
-numbers. Everything is a string. 
-
--> h3
-
-Attributes Are Key Values By Default
-
-The attributes section of my implementation
-contains only key/value pairs. The AST
-leave the option of using other formats
-in the content section as well. 
+It doesn't matter in most places except for
+blank lines that act as separators between
+sections and items
 
 -> h3
 
@@ -142,8 +64,8 @@ based of the complexity.
 
 Sections For Styling
 
-Several sections (like notes and notes)
-are simply alternate versions of other 
+Several sections (like `-> note`` and `-> 
+notes``) are simply alternate versions of other 
 sections (paragraphs and lists for example). 
 The intent it to provide different element
 types to make them easier to categorize
@@ -219,12 +141,6 @@ to add to the list.
 
 -> h3
 
-No iFrame Section
-
-Just roll out to `-> html`
-
--> h3
-
 Convenience Sections
 
 Several sections exist purely for convenience. For
@@ -246,10 +162,11 @@ and I think it looks nicer than that HTML tag.
 Either HTML or Neopolitan
 
 You can't put HTML in any section other
-than an `-> html`neo` section. That prevents
-issues with escaping and parsing characters
-that are meaningful in HTML (e.g. `<``, `>``, 
-etc...)
+than an `-> html`neo` section and have it work. 
+That prevents issues with escaping and parsing 
+characters that are meaningful in HTML (e.g. 
+trying to determine if a <<<|kbd>> is a literal
+character or the start of an HTML tag. 
 
 Most HTML tags have neopolitan tags mapped 
 to them. Anything that doesn't or needs more
@@ -258,8 +175,7 @@ section.
 
 If you're trying to do something that that
 doesn't handle, you're beyond the scope
-of the format and will have to find your
-own solution.
+of the format. 
 
 -> h3
 
@@ -271,7 +187,7 @@ it in.
 
 Also provide processes that return
 neopolitan content prior to parsing
-the documnet. And ones that return
+the document. And ones that return
 straight HTML
 
 
@@ -291,9 +207,9 @@ attribute is found.
 
 I set it up this way because I have
 multiple sites and edit content
-in a single location via my Gimoire. 
+in a single location via my Grimoire. 
 
-While the directory strucutrue for
+While the directory structure for
 the content gets mapped to the output
 files there isn't a level to determine
 the site. That's only done by the 
@@ -303,6 +219,6 @@ attributes.
 -> attributes
 >> date: 2023-04-14 14:39:42
 >> id: 2oqfas7uyfv8
->> type: post 
->> status: published 
+>> type: default 
+>> published: y
 

@@ -1,9 +1,11 @@
 :root {
-    --main-chocolate: #240a05;
     --color-1: #fefaec;
+    --color-2: #240a05;
+    --color-3: #f9a1bc;
+    --color-4: #393939;
     --main-vanilla: #fefaec;
+    --main-chocolate: #240a05;
     --main-strawberry: #f9a1bc;
-    --color-4: #444;
     --max-width: 65ch;
     --border-radius-1: 0.4rem;
 }
@@ -128,8 +130,8 @@ h1 {
   margin-bottom: 1rem;
 }
 h2 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 0.4rem;
 }
 
 #root,
@@ -158,6 +160,14 @@ header {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
+}
+
+kbd {
+  background-color: var(--color-4);
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+  border-radius: 0.1rem;
+  border: 1px solid black;
 }
 
 nav > ul {
@@ -218,30 +228,14 @@ li {
 }
 
 ul {
-  padding-top: 20px;
+  padding-top: 8px;
+  padding-bottom: 10px;
 }
 
-pre {
-  background-color: var(--color-4);
-  border: 1px solid var(--color-1);
-  border-radius: var(--border-radius-1);
-  font-size: 0.92rem;
-  line-height: 1.2;
-  margin-bottom: 1.9rem;
-  margin-top: 1.9rem;
-  padding: 1.3rem;
-}
 
 .subtitle {
   font-size: 1.3rem;
   color: var(--main-vanilla);
-}
-
-.note {
-  border: 1px solid var(--main-strawberry);
-  margin: 1.4rem;
-  padding: 1rem;
-  border-radius: 0.4rem;
 }
 
 .debug {
@@ -249,10 +243,54 @@ pre {
 }
 
 .neoexample {
-  border: 1px solid var(--color-1);
+  border: 1px solid var(--color-2);
   border-radius: var(--border-radius-1);
   margin-bottom: 1.9rem;
   margin-top: 1.9rem;
-  padding: 1.2rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+
+
+.note {
+  border: 1px solid var(--main-strawberry);
+  margin: 1.4rem;
+  padding: 0rem;
+  border-radius: 0.4rem;
+}
+
+.noteline {
+  background-color: var(--color-3);
+  border-top-left-radius: var(--border-radius-1);
+  border-top-right-radius: var(--border-radius-1);
+  color: var(--color-2);
+  padding-left: 0.7rem;
+}
+
+.notetext {
+  padding: 0.7rem;
+}
+
+pre {
+  padding: 1.3rem;
+}
+
+.pre-wrapper {
+  background-color: var(--color-4);
+  border: 1px solid var(--color-1);
+  border-radius: var(--border-radius-1);
+  font-size: 0.92rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.pre-spacer {
+  background-color: var(--color-1);
+  color: var(--color-2);
+  border-top-left-radius: var(--border-radius-1);
+  border-top-right-radius: var(--border-radius-1);
+  min-height: 1.3rem;
+  padding-left: 1.3rem;
 }
 

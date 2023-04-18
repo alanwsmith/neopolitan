@@ -8,10 +8,10 @@ A plain-text format for websites
 
 -> note
 
-NOTE: I'm doing the "launch before you're ready - 
+I'm doing the "launch before you're ready - 
 build in public" thing. The ideas are mostly in place
 but the content and the demo implementation  
-are still in the works. 
+are still a work in progress. 
 
 -> h2
 
@@ -27,7 +27,7 @@ are very different.
 
 The Format
 
-I've moved my site a half dozen times. Each one
+I've moved my site a half dozen times. Each shift 
 involved a painful content migration. I've gone from 
 raw HTML to Perl scripts to Wordpress to PHP with 
 various DB schemas to Markdown to MDX to Org-Mode 
@@ -41,6 +41,7 @@ It's called Neopolitan and it looks like this:
 
 -> startcode
 >> neo
+>> file: index.neo
 
 -> title
 
@@ -52,9 +53,11 @@ A plain-text format for websites
 
 -> note
 
-NOTE: I'm doing the "launch before you're ready - 
-build in public" thing. Most of the ideas here are
-in place but some content is still a work in progress. 
+I'm doing the "launch before you're ready - 
+build in public" thing. The ideas are mostly in place
+but the content and the demo implementation  
+are still a work in progress. 
+
 
 -> h2
 
@@ -78,12 +81,12 @@ are very different.
 
 Dogfooding
 
-I'm not a particular  fan of the term "dogfooding".
+I'm not a particular fan of the term "dogfooding".
 "Drink your own champagne" is worse. Either way, 
 that's what I'm doing. This site is built from the 
 Neopolitan documents and a demo site generator. 
 The sample above is an example. It's what
-built the first part of this page.
+built the top of this page.
 
 
 -> h2
@@ -107,7 +110,7 @@ of my favorites from XKCD
 
 -> h2
 
-Some Details
+The Sections
 
 Neopolitan documents are divided into sections. 
 Each one starts with a `->`neo` token followed
@@ -148,14 +151,22 @@ it's a solid choice, but it's in no way a mandate.
 
 -> h2
 
-Full Section List
+Section Types
 
 There are 46 section types. Some are for content.
 Others are for metadata. There are sections that put
 content in the head of the document and others
 designed to call out to external processes.
 
-Details can be found on the <<full list|link|/sections/index.html>>.
+Details can be found on these pages:
+
+-> list
+
+- >Content Sections>/content-sections.html>
+
+- >Metadata Sections>/metadata-sections.html>
+
+- >Functional Sections>/functional-sections.html>
 
 -> h2
 

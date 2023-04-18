@@ -1207,7 +1207,7 @@
       ]
     },
     {
-      "type": "H2Section",
+      "type": "H3Section",
       "attributes": null,
       "children": [
         {
@@ -1232,6 +1232,37 @@
                 }
               ],
               "text": "Is This Thing On?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "H3Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Next"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "LinkShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "/blog/checklist-example.html",
+                  "value": null
+                }
+              ],
+              "text": "Checklist Example"
             }
           ]
         }

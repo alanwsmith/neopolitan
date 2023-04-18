@@ -1,6 +1,6 @@
 {% macro neoexample(data) %}
 <div class="neoexample">
-<h6>Source</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class="
   {%- for attribute in data.attributes %}
   {% if loop.first and attribute.value == None %}
@@ -11,8 +11,10 @@
   {%- endfor -%}
   "
 >{{data.raw.text}}</code></pre>
+</div>
 
-<h6>Output</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
 <pre class="language-html"><code>{{data.html}}</code></pre>
+</div>
 </div>
 {%- endmacro %}

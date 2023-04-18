@@ -1389,7 +1389,7 @@
       ]
     },
     {
-      "type": "H2Section",
+      "type": "H3Section",
       "attributes": null,
       "children": [
         {
@@ -1425,14 +1425,6 @@
           ]
         }
       ]
-    },
-    {
-      "type": "CommentSection",
-      "attributes": null,
-      "children": {
-        "type": "RawContent",
-        "text": "-#> categories\n>> Blog"
-      }
     },
     {
       "type": "AttributesSection",

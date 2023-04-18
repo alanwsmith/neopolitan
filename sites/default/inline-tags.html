@@ -58,36 +58,251 @@
   <main><h1 class="title">
   <p>Inline Tags And Shorthands</p>
 </h1><h2>Inline Tags</h2>
-<p>Several inline tags are provided for styling, linking, etc...</p>
+<p>Several inline tags are provided for styling, linking, etc... The main format is:</p>
+<ul>
+  <li>
+    <p>Two opening <kbd>&lt;</kbd> <kbd>&lt;</kbd> characters - The text to alter</p>
+  </li>
+  <li>
+    <p>A <code>|</code> pipe character</p>
+  </li>
+  <li>
+    <p>The type of effect to apply</p>
+  </li>
+  <li>
+    <p>Two closing <kbd>&gt;</kbd> <kbd>&gt;</kbd> characters</p>
+  </li>
+</ul><p>For example:</p>
 
 <div class="neoexample">
-<h6>Source</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class=""
 >-&gt; p
 
 The &lt;&lt;colt|strong&gt;&gt; reared.</code></pre>
+</div>
 
-<h6>Output</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
 <pre class="language-html"><code>&lt;p&gt;The &lt;strong&gt;colt&lt;&#x2f;strong&gt; reared.&lt;&#x2f;p&gt;
 </code></pre>
+</div>
+</div><h2>Availability</h2>
+<p>The follow inline tags are available. (the check marks show which ones I&#x27;ve implemented in the demo site builder so far)</p>
+<div class="todo">
+  <ul>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        abbr - Abbreviation
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        audio - Audio [x] b - Bring attention
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        button - Button
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        cite - Cite
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        code - Code
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        data - Data
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        del - Del
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        dfn - Definition
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        em - Emphasis
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        i - Idiomatic text
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        img - Image
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        input - Input
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        ins - Insert
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        kbd - Keyboard input
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        label - Label
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        legend - Legend
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        link - Link
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        meter - Meter
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        object - Object
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        progress - Progress
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        q - Quotation
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        samp - Sample Output
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        small - Small text (side comment)
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        strike - Strikethru
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        span - Span
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        strong - Strong
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        sub - Subscript
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        sup - Superscript
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        time - Time
+      </p>
+    </li>
+    <li class="status-x">
+      <p>
+        <input type="checkbox" checked disabled/>
+        u - Unarticulated Annotation
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        var - Variable
+      </p>
+    </li>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        wbr - Line Break Opportunity
+      </p>
+    </li>
+  </ul>
 </div><h2>Inline Tag Attributes</h2>
 <p>Key&#x2f;value pairs passed to inline tags output as attributes:</p>
 
 <div class="neoexample">
-<h6>Source</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class=""
 >-&gt; p
 
 The &lt;&lt;tree top|strike|id: alfa|class: bravo&gt;&gt; waved</code></pre>
+</div>
 
-<h6>Output</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
 <pre class="language-html"><code>&lt;p&gt;The &lt;strike id=&quot;alfa&quot; class=&quot;bravo&quot;&gt;tree top&lt;&#x2f;strong&gt; waved&lt;&#x2f;p&gt;
 </code></pre>
+</div>
 </div><h2>Inline Shorthand</h2>
 <p>Shorthand versions of <code>code</code>, <code>em</code>, <code>strong</code>, and <code>link</code> look like this:</p>
 
 <div class="neoexample">
-<h6>Source</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class=""
 >-&gt; p
 
@@ -98,70 +313,114 @@ _bravo__
 *delta**
 
 &gt;charlie&gt;https:&#x2f;&#x2f;www.example.com&#x2f;&gt;</code></pre>
+</div>
 
-<h6>Output</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
 <pre class="language-html"><code>&lt;p&gt;&lt;code&gt;alfa&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
 &lt;p&gt;&lt;em&gt;bravo&lt;&#x2f;em&gt;&lt;&#x2f;p&gt;
 &lt;p&gt;&lt;strong&gt;delta&lt;&#x2f;strong&gt;&lt;&#x2f;p&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;www.example.com&#x2f;&quot;&gt;charlie&lt;&#x2f;a&gt;&lt;&#x2f;p&gt;
 </code></pre>
+</div>
 </div><h2>Inline Shorthand Attributes</h2>
 <p>Attributes can also be added to the shorthand tags:</p>
 
 <div class="neoexample">
-<h6>Source</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class=""
 >-&gt; p
 
 `echo`id: foxtrot|class: highlighted`</code></pre>
+</div>
 
-<h6>Output</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
 <pre class="language-html"><code>&lt;p&gt;&lt;code id=&quot;foxtrot&quot; class=&quot;highlighted&quot;&gt;echo&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
 </code></pre>
+</div>
 </div><h2>Inline Attributes</h2>
 <p>Adding attributes to inline tags is also possible:</p>
 
 <div class="neoexample">
-<h6>Source</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class=""
 >-&gt; p
 
 alfa `bravo`class: charlie` delta</code></pre>
+</div>
 
-<h6>Output</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
 <pre class="language-html"><code>&lt;p&gt;alfa &lt;code class=&quot;charlie&quot;&gt;bravo&lt;&#x2f;code&gt; delta&lt;&#x2f;p&gt;
 </code></pre>
+</div>
 </div><h2>Inline Code Language Shorthand</h2>
 <p>If a key is passed as the first argument to a code shorthand without a value it&#x27;s treated as a language and turned into a <code class="language-html">language-x</code> class in the HTML.</p>
 
 <div class="neoexample">
-<h6>Source</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class=""
 >-&gt; p
 
 `delta`rust`
 
 `echo`rust|id: sierra`</code></pre>
+</div>
 
-<h6>Output</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
 <pre class="language-html"><code>&lt;p&gt;&lt;code class=&quot;language-rust&quot;&gt;delta&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
 &lt;p&gt;&lt;code class=&quot;language-rust&quot; id=&quot;sierra&quot;&gt;echo&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
 </code></pre>
+</div>
 </div><div class="warning">
   <p>NOTE: Adding an explicit <code>class</code> along with the language currently results in two <code>class</code> attributes being added to the output. That is, this would be a problem:</p>
 </div>
 <div class="neoexample">
-<h6>Source</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class=""
 >-&gt; p
 
 `echo`rust|class: highlighted`</code></pre>
+</div>
 
-<h6>Output</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
 <pre class="language-html"><code>&lt;p&gt;&lt;code class=&quot;language-rust&quot; class=&quot;highlighted&quot;&gt;echo&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
 </code></pre>
+</div>
 </div></main>
   <footer>
+
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+          <li>
+            <a href="/content-sections.html">Content Sections</a>
+          </li>
+          <li>
+            <a href="/metadata-sections.html">Metadata Sections</a>
+          </li>
+          <li>
+            <a href="/functional-sections.html">Functional Sections</a>
+          </li>
+          <li>
+            <a href="/section-attributes.html">Section Attributes</a>
+          </li>
+          <li>
+            <a href="/inline-tags.html">Inline Tags</a>
+          </li>
+        </ul>
+      </nav>
+
+
   from <a href="https://www.alanwsmith.com/">alan w. smith</a>
   </footer>
 </body>

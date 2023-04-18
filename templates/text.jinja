@@ -7,6 +7,12 @@
     {%- if token.type == "Space" -%}
       {{ " " }}
 
+    {%- elif token.type == "B" -%}
+      <b {{- code_attributes(token) -}}>{{token.text}}</b>
+
+    {%- elif token.type == "Code" -%}
+      <code {{- code_attributes(token) -}}>{{token.text}}</code>
+
     {%- elif token.type == "CodeShorthand" -%}
       <code {{- code_attributes(token) -}}>{{token.text}}</code>
 
@@ -16,11 +22,20 @@
     {%- elif token.type == "EmShorthand" -%}
       <em {{- attributes(token) -}}>{{token.text}}</em>
 
+    {%- elif token.type == "I" -%}
+      <i {{- attributes(token) -}}>{{token.text}}</i>
+
+    {%- elif token.type == "Kbd" -%}
+      <kbd {{- attributes(token) -}}>{{token.text}}</kbd>
+
     {%- elif token.type == "Link" -%}
       <a {{- link_attributes(token) -}}>{{token.text}}</a>
 
     {%- elif token.type == "LinkShorthand" -%}
       <a {{- link_attributes(token) -}}>{{token.text}}</a>
+
+    {%- elif token.type == "Span" -%}
+      <span {{- attributes(token) -}}>{{token.text}}</span>
 
     {%- elif token.type == "Strike" -%}
       <strike {{- attributes(token) -}}>{{token.text}}</strong>
@@ -28,11 +43,20 @@
     {%- elif token.type == "Strong" -%}
       <strong {{- attributes(token) -}}>{{token.text}}</strong>
 
+    {%- elif token.type == "Sub" -%}
+      <sub {{- attributes(token) -}}>{{token.text}}</sub>
+    
+    {%- elif token.type == "Sup" -%}
+      <sup {{- attributes(token) -}}>{{token.text}}</sup>
+
     {%- elif token.type == "StrongShorthand" -%}
       <strong {{- attributes(token) -}}>{{token.text}}</strong>
 
     {%- elif token.type == "Text" -%}
       {{token.text}}
+
+    {%- elif token.type == "U" -%}
+      <u {{- attributes(token) -}}>{{token.text}}</u>
 
     {%- endif -%}
   {%- endfor -%}

@@ -128,103 +128,168 @@
       "attributes": null,
       "raw": {
         "type": "RawContent",
-        "text": "-> html\n\n<p class=\"tango\">\nCut the pie into large parts.\n</p>"
+        "text": "-> html\n\n<p class=\"tango\">\n  Cut the pie into large parts.\n</p>"
       },
-      "html": "<p class=\"tango\">\nCut the pie into large parts.\n</p>"
+      "html": "<p class=\"tango\">\n  Cut the pie into large parts.\n</p>"
     },
     {
-      "type": "NotesSection",
+      "type": "NoteSection",
       "attributes": null,
       "children": [
         {
-          "type": "NotesItem",
-          "attributes": null,
+          "type": "P",
           "children": [
             {
-              "type": "P",
-              "children": [
-                {
-                  "type": "Text",
-                  "text": "Attributes"
-                },
-                {
-                  "type": "Space"
-                },
-                {
-                  "type": "Text",
-                  "text": "are"
-                },
-                {
-                  "type": "Space"
-                },
-                {
-                  "type": "Text",
-                  "text": "available,"
-                },
-                {
-                  "type": "Space"
-                },
-                {
-                  "type": "Text",
-                  "text": "but"
-                },
-                {
-                  "type": "Space"
-                },
-                {
-                  "type": "Text",
-                  "text": "they"
-                },
-                {
-                  "type": "Space"
-                },
-                {
-                  "type": "Text",
-                  "text": "don't"
-                },
-                {
-                  "type": "Space"
-                },
-                {
-                  "type": "Text",
-                  "text": "do"
-                },
-                {
-                  "type": "Space"
-                },
-                {
-                  "type": "Text",
-                  "text": "anything"
-                },
-                {
-                  "type": "Space"
-                },
-                {
-                  "type": "Text",
-                  "text": "in"
-                },
-                {
-                  "type": "Space"
-                },
-                {
-                  "type": "Text",
-                  "text": "the"
-                },
-                {
-                  "type": "Space"
-                },
-                {
-                  "type": "Text",
-                  "text": "reference"
-                },
-                {
-                  "type": "Space"
-                },
-                {
-                  "type": "Text",
-                  "text": "implementation."
-                }
-              ]
+              "type": "Text",
+              "text": "Adding"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": ">>"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "attributes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "perfectly"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "acceptable."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "don't."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "just"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "do"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "everything"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "HTML"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "since"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I'm"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "messing"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "anyway."
             }
           ]
         }

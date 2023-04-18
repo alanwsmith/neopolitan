@@ -72,7 +72,7 @@
     <p>Colspan and rowspan</p>
   </li>
 </ul><h3>Draft Markers to shows where cells start to provide for multi line content</h3>
-<pre><code>-&gt; table
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; table
 
 + This is a header     | header 1        | header 3 
   with a second line   |                 |
@@ -80,8 +80,8 @@
   like this            | have more data  |
 - another cell         | with data       | data 2
 - and another          | goes here       | and here
-~ and the footer       | footer 2        | footer 3</code></pre><h3>Draft A basic format. Multiple lines, but no styles or spans. Mainly a starting point</h3>
-<pre><code>-&gt; table
+~ and the footer       | footer 2        | footer 3</code></pre></div><h3>Draft A basic format. Multiple lines, but no styles or spans. Mainly a starting point</h3>
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; table
 
 + This is a header     | header 1        | header 3 
   with a second line   |                 |
@@ -93,8 +93,8 @@
 
 - and another          | goes here       | and here
 
-~ and the footer       | footer 2        | footer 3</code></pre><h3>Draft This version adds in the ability to add attributes for each cell. It pushing things way out though</h3>
-<pre><code>-&gt; table
+~ and the footer       | footer 2        | footer 3</code></pre></div><h3>Draft This version adds in the ability to add attributes for each cell. It pushing things way out though</h3>
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; table
 
 +|colspan: 2|&gt; This is a header with a colspan                 |&gt; header 3 
 
@@ -105,9 +105,9 @@
 
 -|&gt;            and another         |&gt;           goes here      |&gt; and here
 
-~|&gt;            and the footer      |&gt;           footer 2       |&gt; footer 3</code></pre><h3>Draft</h3>
+~|&gt;            and the footer      |&gt;           footer 2       |&gt; footer 3</code></pre></div><h3>Draft</h3>
 <p>The idea here is to pre in reference markers for the attributes to apply to a cell</p>
-<pre><code>-&gt; starttable
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; starttable
 
 +|1&gt; This is a header with a colspan on it  |&gt; header 3 
 
@@ -130,8 +130,8 @@
 &gt;&gt; class: highlighted
 &gt;&gt; rowspan: 2
 
--&gt; endtable</code></pre><h3>Draft</h3>
-<pre><code>-&gt; table
+-&gt; endtable</code></pre></div><h3>Draft</h3>
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; table
 
 |+| This is a header      || header 2       || header 3 
 
@@ -142,8 +142,8 @@
 
 |-| and another           || goes here      || and here
 
-|~| and the footer        || footer 2       || footer 3</code></pre><h3>Draft</h3>
-<pre><code>-&gt; table
+|~| and the footer        || footer 2       || footer 3</code></pre></div><h3>Draft</h3>
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; table
 
 + || This is a header      || header 2       || header 3 
 
@@ -154,8 +154,8 @@
 
 - || and another           || goes here      || and here
 
-~ || and the footer        || footer 2       || footer 3</code></pre><h3>Draft</h3>
-<pre><code>-&gt; starttable
+~ || and the footer        || footer 2       || footer 3</code></pre></div><h3>Draft</h3>
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; starttable
 
 + |1| This is a header with a colspan         || header 3 
 
@@ -177,9 +177,9 @@
 &gt;&gt; rowspan: 2
 &gt;&gt; id: cellTarget
 
--&gt; endtable</code></pre><h3>Draft</h3>
+-&gt; endtable</code></pre></div><h3>Draft</h3>
 <p>What if the tables were vertical in the source files?</p>
-<pre><code>-&gt; table
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; table
 
 + start a new row with a plus
 
@@ -197,8 +197,8 @@
 
 - be of less use because it
 
-- would be harder to follow</code></pre><h3>Draft</h3>
-<pre><code>-&gt; starttable
+- would be harder to follow</code></pre></div><h3>Draft</h3>
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; starttable
 
 + |1| This is a header with a colspan         || header 3 
 - || cell with multiple  |2| cell with an id  || data 2
@@ -214,8 +214,42 @@
 -&gt; 2
 &gt;&gt; id: cellTarget
 
--&gt; endtable</code></pre></main>
+-&gt; endtable</code></pre></div></main>
   <footer>
+
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+          <li>
+            <a href="/content-sections.html">Content Sections</a>
+          </li>
+          <li>
+            <a href="/metadata-sections.html">Metadata Sections</a>
+          </li>
+          <li>
+            <a href="/functional-sections.html">Functional Sections</a>
+          </li>
+          <li>
+            <a href="/section-attributes.html">Section Attributes</a>
+          </li>
+          <li>
+            <a href="/inline-tags.html">Inline Tags</a>
+          </li>
+        </ul>
+      </nav>
+
+
   from <a href="https://www.alanwsmith.com/">alan w. smith</a>
   </footer>
 </body>

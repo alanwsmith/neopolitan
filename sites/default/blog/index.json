@@ -177,16 +177,30 @@
               ]
             }
           ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "LinkShorthand",
+                  "attributes": [
+                    {
+                      "type": "Basic",
+                      "key": "/blog/checklist-example.html",
+                      "value": null
+                    }
+                  ],
+                  "text": "A Checklist Example"
+                }
+              ]
+            }
+          ]
         }
       ]
-    },
-    {
-      "type": "CommentSection",
-      "attributes": null,
-      "children": {
-        "type": "RawContent",
-        "text": "-#> categories\n>> Miscellaneous"
-      }
     },
     {
       "type": "AttributesSection",
@@ -204,7 +218,7 @@
         {
           "type": "Attribute",
           "key": "type",
-          "value": "index "
+          "value": "default "
         },
         {
           "type": "Attribute",
