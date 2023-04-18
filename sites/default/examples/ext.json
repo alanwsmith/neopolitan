@@ -1,0 +1,434 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Section:"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "ext"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Used"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "make"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "calls"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "external"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "processes."
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Details"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "on"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "call"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "process"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "are"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "dependent"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "on"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "specific"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "implementation."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "My"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "initial"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "version"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "make"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "call"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "attributes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "directly"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "then"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "use"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "an"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "$OUTPUT$"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "token"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "identify"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "where"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "content"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "should"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "go"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "raw"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that's"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "passed"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "directly"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "output"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "file."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": null,
+      "children": {
+        "type": "RawContent",
+        "text": "-> ext\n>> /bin/ls\n>> -la\n>> ~/Desktop\n\n<pre>\n$OUTPUT$\n</pre>"
+      }
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-17 20:28:23"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2ozowzfsp60y"
+        },
+        {
+          "type": "Attribute",
+          "key": "site",
+          "value": "neo "
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "published",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

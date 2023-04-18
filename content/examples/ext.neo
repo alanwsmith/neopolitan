@@ -1,0 +1,36 @@
+-> title
+
+Section: ext
+
+Used to make calls to external processes.
+
+Details on the call process are dependent
+on the specific implementation. My initial
+version is to make a call with attributes
+directly then use an $OUTPUT$ token to
+identify where the content should go
+in a raw section that's passed directly
+to the output file. 
+
+-> startcode
+
+-> ext
+>> /bin/ls
+>> -la
+>> ~/Desktop
+
+<pre>
+$OUTPUT$
+</pre>
+
+-> endcode
+
+
+-> attributes
+>> date: 2023-04-17 20:28:23
+>> id: 2ozowzfsp60y
+>> site: neo 
+>> type: example 
+>> published: y
+
+

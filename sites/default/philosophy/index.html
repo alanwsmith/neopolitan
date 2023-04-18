@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neopolitan - A plain-text format for my website</title>
+  <title>Neopolitan - A plain-text format for websites</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
   <meta property="og:description"
@@ -28,13 +28,19 @@
             <a href="/index.html">Neopolitan</a>
           </li>
           <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/sections/index.html">Sections</a>
+          </li>
+          <li>
             <a href="/attributes/index.html">Attributes</a>
           </li>
           <li>
             <a href="/philosophy/index.html">Philosophy</a>
           </li>
           <li>
-            <a href="/todo/index.html">TODOs</a>
+            <a href="/todo-list.html">TODOs</a>
           </li>
         </ul>
       </nav>
@@ -42,12 +48,11 @@
     </header>
   <main><h1 class="title">
   <p>Neopoliltan Philosophies</p>
-</h1><h2>Overview</h2>
-<p>These are the thoughts, influences, and decisions that lead to neopolitan&#x27;s design.</p>
-<h2>The Philosophies</h2>
+</h1><div class="note"><p>These are very much draft notes on the thoughts, influences, and decisions behind Neopolitan&#x27;s design. Things will get added deleted and changed as development continues.</p></div><h2>The Philosophies</h2>
+<p>In no particular order...</p>
 <h3>HTML Focused</h3>
-<p>My primary output target is HTML. Most HTML tags have native counterparts to support that. This largely stems from the fact that I want to use description lists but those aren&#x27;t included in the default markdown I use.</p>
-<h4>AST Over Output</h4>
+<p>My primary output target is HTML. Most HTML tags have native counterparts to support that. If a tool doesn&#x27;t support a thing that thing doesn&#x27;t get used. I&#x27;m working to include a wide set to give us more things to play with.</p>
+<h3>AST Over Output</h3>
 <p>This project can be broken into two parts:</p>
 <ul>
   <li>
@@ -56,8 +61,7 @@
   <li>
     <p>The output</p>
   </li>
-</ul><p>The specification only deals with the AST and the output. The project includes and example output renderer but based on what I&#x27;ve seen with Markdown trying to define an implementation via a spec isn&#x27;t likely to work out well.</p>
-<p>See <a href="https://xkcd.com/927/">XKCD 927</a> for reference</p>
+</ul><p>The specification only deals with the format and the AST. The project includes an example output renderer but it&#x27;s not part of the standard. It&#x27;s a demonstration. That&#x27;s not to say it&#x27;s a toy. I&#x27;m using it as the produciton tool to build this site as well as my personal site once I get my 9,000 note Grimiore converted.</p>
 <h3>Raw Text In The AST</h3>
 <p>I&#x27;m not doing an conversion for HTML escaping in the process that makes the AST. I&#x27;m leaving that to the output processor. That&#x27;s an implementation detail, but I prefer splitting the two that way.</p>
 <h3>Footnotes And References</h3>
@@ -111,5 +115,8 @@
 <h3>Multiple Sites</h3>
 <p>There is only one set of content but it can go to multiple sites via a <code>site</code> or <code>sites</code> attribute. (where <code>sites</code> can got to multiple output sites. Content will go to a <code class="language-directory if no">sites&#x2f;default</code>site`` or <code>sites</code> attribute is found. I set it up this way because I have multiple sites and edit content in a single location via my Gimoire. While the directory strucutrue for the content gets mapped to the output files there isn&#x27;t a level to determine the site. That&#x27;s only done by the attributes.</p>
 </main>
+  <footer>
+  from <a href="https://www.alanwsmith.com/">alan w. smith</a>
+  </footer>
 </body>
 </html>

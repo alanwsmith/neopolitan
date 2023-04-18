@@ -2,7 +2,16 @@
 
 Section: widget
 
+The basic idea for the widget is to allow for anything 
+that isn't otherwise handled directly in Neopolitan. 
+They're a bit like web components but they aren't sent
+to the browser directly. The processing engine is
+responsible for handling them.
 
+If customization of the processing engine isn't 
+possible calls to external services that handle
+arbitrary data can be made in `-> ext`neo` sections: 
+<<link|link|/examples/ext.html>>
 
 
 -> attributes

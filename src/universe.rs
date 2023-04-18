@@ -61,9 +61,12 @@ impl Universe {
             let output_dir = dest_path.parent();
             create_dir_all(&output_dir.unwrap()).unwrap();
             let html_path = dest_path.with_extension("html");
+            let ast_path = dest_path.with_extension("json");
             dbg!(&html_path);
             let output = render_template(self, page.0 as u32, env.clone(), "default.jinja");
             fs::write(html_path, output).unwrap();
+            let json_ast = serde_json::to_string_pretty(&page.1.parsed);
+            fs::write(ast_path, json_ast.unwrap()).unwrap();
         }
     }
 }

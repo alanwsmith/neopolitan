@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neopolitan - A plain-text format for my website</title>
+  <title>Neopolitan - A plain-text format for websites</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
   <meta property="og:description"
@@ -28,13 +28,19 @@
             <a href="/index.html">Neopolitan</a>
           </li>
           <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/sections/index.html">Sections</a>
+          </li>
+          <li>
             <a href="/attributes/index.html">Attributes</a>
           </li>
           <li>
             <a href="/philosophy/index.html">Philosophy</a>
           </li>
           <li>
-            <a href="/todo/index.html">TODOs</a>
+            <a href="/todo-list.html">TODOs</a>
           </li>
         </ul>
       </nav>
@@ -42,137 +48,114 @@
     </header>
   <main><h1 class="title">
   <p>Neopolitan Sections</p>
-</h1>
-<p>These are the available section types (things that aren&#x27;t linked aren&#x27;t yet implemented)</p><ul>
+</h1><h2>Implemented</h2>
+<p>These are the available section types</p>
+<ul>
   <li>
-    <p><a href="/examples/aside/index.html">aside</a> The HTML &lt;aside&gt; tag</p>
+    <p><a href="/examples/aside.html">aside</a> - The HTML &lt;aside&gt; tag</p>
   </li>
   <li>
-    <p><a href="/examples/attributes/index.html">attributes</a> - Metadata for the page</p>
+    <p><a href="/examples/attributes.html">attributes</a> - Metadata for the page</p>
   </li>
   <li>
-    <p><a href="/examples/blockquote/index.html">blockquote</a> - The HTML &lt;blockquote&gt; tag</p>
+    <p><a href="/examples/blockquote.html">blockquote</a> - The HTML &lt;blockquote&gt; tag</p>
   </li>
   <li>
-    <p><a href="/examples/blurb/index.html"">blurb</a> - Passed to other pages for incoming links</p>
+    <p><a href="/examples/blurb.html">blurb</a> - Passed to other pages for incoming links</p>
   </li>
   <li>
-    <p>canvas - Basic canvas element with included attributes</p>
+    <p><a href="/examples/code.html">code</a> - Code blocks like fenced code blocks but with attributes.</p>
   </li>
   <li>
-    <p>categories - A metadata section for page categories</p>
+    <p><a href="/examples/comment.html">comment</a> - Section that&#x27;s not output</p>
   </li>
   <li>
-    <p>checklist - Like a TODO list, but it resets every time the page is visited</p>
+    <p><a href="/examples/css.html">css</a> - A place to put CSS that will be inlined in the page</p>
   </li>
   <li>
-    <p><a href="/examples/code/index.html">code</a> - Code blocks like fenced code blocks but you can add an arbitrary attributes to them.</p>
+    <p><a href="/examples/div.html">div</a> - A &lt;div&gt; wrapper that can be used to add attributes to sections of content</p>
   </li>
   <li>
-    <p><a href="/examples/comment/index.html">comment</a> - Section that&#x27;s not output</p>
+    <p><a href="/examples/headings.html">h1-h6</a> - HTML heading tags</p>
   </li>
   <li>
-    <p><a href="examples/css/index.html">css</a> - A place to put CSS that will be inlined in the page</p>
+    <p><a href="/examples/html.html">html</a> - for raw html blocks that go directly to the output without further processing</p>
   </li>
   <li>
-    <p>details - The details disclosure element: &lt;details&gt;</p>
+    <p><a href="/examples/image.html">image</a> - An image call with the alt text coming from the body of the section</p>
   </li>
   <li>
-    <p><a href="/examples/div/index.html">div</a> - A &lt;div&gt; wrapper that can be used to add attributes to sections of content</p>
+    <p><a href="/examples/list.html">list</a> - Unordered lists</p>
   </li>
   <li>
-    <p>dlist - The HTML &lt;dl&gt; tag</p>
+    <p><a href="/examples/neoexample.html">neoexample</a> - A display for examples on the neopolitan documentation site</p>
   </li>
   <li>
-    <p>ext - Call to an external process</p>
+    <p><a href="/examples/note.html">note</a> - A div wrapper with a <code class="language-html">class=&quot;note&quot;</code> attribute</p>
   </li>
   <li>
-    <p>figure - The HTML figure element</p>
+    <p><a href="/examples/notes.html">notes</a> - A list style notes section</p>
   </li>
   <li>
-    <p><a href="/examples/headings/index.html">h1-h6</a> - HTML heading tags</p>
+    <p><a href="/examples/olist.html">olist</a> - An ordered list</p>
   </li>
   <li>
-    <p>head - raw content to put in the head of the document</p>
+    <p><a href="/examples/p.html">p</a> - Basic text paragraph tags that are not otherwise contained in a div.</p>
   </li>
   <li>
-    <p><a href="/examples/html/index.html">html</a> - for raw html blocks that go directly to the output without further processing</p>
+    <p><a href="/examples/pre.html">pre</a> - A pre tag</p>
   </li>
   <li>
-    <p><a href="/examples/image/index.html">image</a> - An image call with the alt text coming from the body of the section</p>
+    <p><a href="/examples/results.html">results</a> - Used to show output from <code class="language-neo">-&gt; code</code> blocks</p>
   </li>
   <li>
-    <p><a href="/examples/list/index.html">list</a> - Unordered lists</p>
+    <p><a href="/examples/startcode_endcode.html">startcode&#x2f;endcode</a></p>
   </li>
   <li>
-    <p>menu - the HTML &lt;menu&gt; tag</p>
+    <p><a href="/examples/subtitle.html">subtitle</a></p>
   </li>
   <li>
-    <p>nav - the HTML &lt;nav&gt; tag</p>
+    <p><a href="/examples/textarea.html">textarea</a></p>
   </li>
   <li>
-    <p><a href="/examples/neoexample/index.html">neoexample</a> - A display for examples on the neopolitan documentation site</p>
+    <p><a href="/examples/title.html">title</a></p>
   </li>
   <li>
-    <p><a href="/examples/note/index.html">note</a> - A div wrapper with a <code class="language-html">class=&quot;note&quot;</code> attribute</p>
+    <p><a href="/examples/todo.html">todo</a> - TODO lists</p>
   </li>
   <li>
-    <p><a href="/examples/notes/index.html">notes</a> - A list style notes section</p>
+    <p><a href="/examples/vimeo.html">vimeo</a> - A vimeo embed</p>
   </li>
   <li>
-    <p>object - The HTML &lt;objet&gt; tag</p>
+    <p><a href="/examples/warning.html">warning</a> - A div block with a warning class on it</p>
   </li>
   <li>
-    <p><a href="/examples/olist/index.html">olist</a> - An ordered list</p>
+    <p><a href="/examples/youtube.html">youtube</a> - A youtube embed</p>
   </li>
-  <li>
-    <p><a href="/examples/p/index.html">p</a> - Basic text paragraph tags that are not otherwise contained in a div.</p>
-  </li>
-  <li>
-    <p>picture - The HTML &lt;picture&gt; element</p>
-  </li>
-  <li>
-    <p><a href="/examples/pre/index.html">pre</a> - A pre tag</p>
-  </li>
-  <li>
-    <p>reference - For documenting external resources</p>
-  </li>
-  <li>
-    <p><a href="/examples/results/index.html">results</a> - Used to show output from <code class="language-neo">-&gt; code</code> blocks</p>
-  </li>
-  <li>
-    <p><a href="/examples/startcode_endcode/index.html">startcode&#x2f;endcode</a></p>
-  </li>
-  <li>
-    <p>script - A raw section that adds script tags to the header of the page</p>
-  </li>
-  <li>
-    <p><a href="/examples/subtitle/index.html">subtitle</a></p>
-  </li>
-  <li>
-    <p>table - Tables - <a href="/examples/textarea/index.html">textarea</a></p>
-  </li>
-  <li>
-    <p><a href="/examples/title/index.html">title</a></p>
-  </li>
-  <li>
-    <p><a href="/examples/todo/index.html">todo</a> - TODO lists</p>
-  </li>
-  <li>
-    <p>video - The HTML &lt;video&gt; element</p>
-  </li>
-  <li>
-    <p><a href="/examples/vimeo/index.html">vimeo</a> - A vimeo embed</p>
-  </li>
-  <li>
-    <p><a href="/examples/warning/index.html">warning</a> - A div block with a warning class on it</p>
-  </li>
-  <li>
-    <p>widget - An area to pass data to the client or build processes for custom functionality</p>
-  </li>
-  <li>
-    <p><a href="/examples/youtube/index.html">youtube</a> - A youtube embed</p>
-  </li>
-</ul></main>
+</ul><h2>In Progress</h2>
+<p>These are currently in progress</p>
+<p>- canvas - <a href="/examples/canvas.html">wip</a> Basic canvas element with included attributes</p>
+<p>- categories - <a href="/examples/categories.html">wip</a> A metadata section for page categories</p>
+<p>- checklist - <a href="/examples/checklist.html">wip</a> Like a TODO list, but it resets every time the page is visited</p>
+<p>- details - <a href="/examples/details.html">wip</a> The details disclosure element: &lt;details&gt;</p>
+<p>- dlist - <a href="/examples/dlist.html">wip</a> The HTML &lt;dl&gt; tag</p>
+<p>- ext - <a href="examples/ext.html">wip</a> Call to an external process</p>
+<p>- figure - <a href=" The HTML figure element
+
+- footnote - ">wip&#x2f;examples&#x2f;figure.html</a>wip&gt;&#x2f;examples&#x2f;footnote.html&gt; For when you want to write more later</p>
+<p>- head - <a href="/examples/head.html">wip</a> raw content to put in the head of the document</p>
+<p>- includes - For including the content of one file inside another. Will have to figure out how things like <code>-&gt; css</code> would work with that. - menu - the HTML &lt;menu&gt; tag</p>
+<p>- nav - the HTML &lt;nav&gt; tag</p>
+<p>- object - The HTML &lt;objet&gt; tag</p>
+<p>- picture - The HTML &lt;picture&gt; element</p>
+<p>- reference - For documenting external resources</p>
+<p>- script - A raw section that adds script tags to the header of the page</p>
+<p>- table - <a href="/examples/table.html">wip</a> - Still working to define the format for these</p>
+<p>- video - The HTML &lt;video&gt; element</p>
+<p>- widget - <a href="/examples/widget.html">wip</a> An area to pass data to the client or build processes for custom functionality</p>
+</main>
+  <footer>
+  from <a href="https://www.alanwsmith.com/">alan w. smith</a>
+  </footer>
 </body>
 </html>

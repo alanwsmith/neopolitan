@@ -1,0 +1,1552 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Section:"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "table"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Tables"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "aren't"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "implemented"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "yet."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I'm"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "still"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "working"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "on"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "format."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "This"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "scratchpad"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I'm"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "using"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that."
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "My"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "main"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "thinking"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "here"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "auto"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "formatters"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "would"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "be"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "used"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "most"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "of"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "time."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "So,"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "leaning"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "towards"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "more"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "complicated"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "text"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "feels"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "be"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "okay."
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Another"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "possibility"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "would"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "be"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "add"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "second"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "basic"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "table"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "type."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "That"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "makes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "some"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "sense,"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "but"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I'm"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "wary"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "of"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "have"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "two"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "approaches."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "While"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it's"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "possible"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "break"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "out"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "HTML,"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I'd"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "like"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "avoid"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "tables"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "reasonable"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "complexity"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "so"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "format"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "can"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "be"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "used"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "more"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "than"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "just"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "HTML."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "H2Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Goals"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "List",
+      "attributes": null,
+      "children": [
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Multiple"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "lines"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Ability"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "to"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "style"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Headers"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "and"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "footers"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Colspan"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "and"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "rowspan"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "H3Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Draft"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Markers"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "shows"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "where"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "cells"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "start"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "provide"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "multi"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "line"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "content"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": null,
+      "children": {
+        "type": "RawContent",
+        "text": "-> table\n\n+ This is a header     | header 1        | header 3 \n  with a second line   |                 |\n- regular sells look   | and can also    | data 1\n  like this            | have more data  |\n- another cell         | with data       | data 2\n- and another          | goes here       | and here\n~ and the footer       | footer 2        | footer 3"
+      }
+    },
+    {
+      "type": "H3Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Draft"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "A"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "basic"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "format."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Multiple"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "lines,"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "but"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "no"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "styles"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "or"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "spans."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Mainly"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "starting"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "point"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": null,
+      "children": {
+        "type": "RawContent",
+        "text": "-> table\n\n+ This is a header     | header 1        | header 3 \n  with a second line   |                 |\n\n- regular sells look   | and can also    | data 1\n  like this            | have more data  |\n\n- another cell         | with data       | data 2\n\n- and another          | goes here       | and here\n\n~ and the footer       | footer 2        | footer 3"
+      }
+    },
+    {
+      "type": "H3Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Draft"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "This"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "version"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "adds"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "ability"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "add"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "attributes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "each"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "cell."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "It"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "pushing"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "things"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "way"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "out"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "though"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": null,
+      "children": {
+        "type": "RawContent",
+        "text": "-> table\n\n+|colspan: 2|> This is a header with a colspan                 |> header 3 \n\n-|>            regular sells look  |rowspan: 2> and can also   |> data 1\n               like this           |            with more data |\n\n-|>            another cell                                    |> data 2\n\n-|>            and another         |>           goes here      |> and here\n\n~|>            and the footer      |>           footer 2       |> footer 3"
+      }
+    },
+    {
+      "type": "H3Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Draft"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "idea"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "here"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "pre"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "reference"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "markers"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "attributes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "apply"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "cell"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": null,
+      "children": {
+        "type": "RawContent",
+        "text": "-> starttable\n\n+|1> This is a header with a colspan on it  |> header 3 \n\n-|>  regular sells look  |2> and can also   |> data 1\n     like this           |   with more data |\n\n-|>  another cell                           |> data 2\n\n-|>  and another         |>  goes here      |> and here\n\n~|>  and the footer      |>  footer 2       |> footer 3\n\n\n-> 1\n>> colspan: 2\n>> class: primary\n\n-> 2\n>> id: targetCell\n>> class: highlighted\n>> rowspan: 2\n\n-> endtable"
+      }
+    },
+    {
+      "type": "H3Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Draft"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": null,
+      "children": {
+        "type": "RawContent",
+        "text": "-> table\n\n|+| This is a header      || header 2       || header 3 \n\n|-| regular sells look    || and can also   || data 2\n    like this             || with more data ||\n\n|-| another cell          || a cell         || data 3\n\n|-| and another           || goes here      || and here\n\n|~| and the footer        || footer 2       || footer 3"
+      }
+    },
+    {
+      "type": "H3Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Draft"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": null,
+      "children": {
+        "type": "RawContent",
+        "text": "-> table\n\n+ || This is a header      || header 2       || header 3 \n\n- || regular sells look    || and can also   || data 2\n  || like this             || with more data ||\n\n- || another cell          || a cell         || data 3\n\n- || and another           || goes here      || and here\n\n~ || and the footer        || footer 2       || footer 3"
+      }
+    },
+    {
+      "type": "H3Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Draft"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": null,
+      "children": {
+        "type": "RawContent",
+        "text": "-> starttable\n\n+ |1| This is a header with a colspan         || header 3 \n\n- || regular sells look    |2| and can also   || data 2\n  || like this             || with more data  ||\n\n- || another cell                             || data 3\n\n- || and another           || goes here       || and here\n\n~ || and the footer        || footer 2        || footer 3\n\n\n-> 1\n>> colspan: 2\n>> class: primary\n\n-> 2\n>> rowspan: 2\n>> id: cellTarget\n\n-> endtable"
+      }
+    },
+    {
+      "type": "H3Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Draft"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "What"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "if"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "tables"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "were"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "vertical"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "source"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "files?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": null,
+      "children": {
+        "type": "RawContent",
+        "text": "-> table\n\n+ start a new row with a plus\n\n- cells are done with new lines\n\n- might work for smaller tables\n\n+ but it would make it hard to parse\n\n- if there were a bunch of lines\n\n- like the utility of the data\n\n+ in the file itself would \n\n- be of less use because it\n\n- would be harder to follow"
+      }
+    },
+    {
+      "type": "H3Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Draft"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CodeStartEndSection",
+      "attributes": null,
+      "children": {
+        "type": "RawContent",
+        "text": "-> starttable\n\n+ |1| This is a header with a colspan         || header 3 \n- || cell with multiple  |2| cell with an id  || data 2\n  || lines               ||                   || \n- || another cell        || data 3            || data 4\n- || and another         || goes here         || and here\n~ || and the footer      || footer 2          || footer 3\n\n-> 1\n>> colspan: 2\n>> class: primary\n\n-> 2\n>> id: cellTarget\n\n-> endtable"
+      }
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-17 18:53:25"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2ozdosmz5wtx"
+        },
+        {
+          "type": "Attribute",
+          "key": "site",
+          "value": "neo "
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "published",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

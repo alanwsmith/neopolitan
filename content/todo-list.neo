@@ -13,6 +13,16 @@ shows up
 the front end, tbd if minijinji is already 
 doing it.
 
+[] Setup includes 
+
+[] Load categories
+
+[] Make global link references
+
+[] Make data files that can house stuff
+like the global links and the global 
+footnotes and references
+
 [] Add multiple levels for lists
 
 [] Add categories to the universe
@@ -35,6 +45,12 @@ of links
 
 [] Create index page style components from
 the universe lists
+
+[] Setup so code shorthand can include
+links (or vice verse)
+
+[] Setup so that links inside parens
+work e.g. `(<<link|link|/examples/ext.html>>)``
 
 [] Output pages into their own directories
 as `index.html`` files
@@ -109,6 +125,9 @@ first thing.
 [] Verify tables from this page work
 
 podcasts- Episode Tracking.txt - 01C0YDNKR8J5D0
+
+[] Add link checking
+
 
 
 -> attributes

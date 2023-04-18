@@ -1,0 +1,355 @@
+{
+  "type": "Page",
+  "children": [
+    {
+      "type": "Title",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "results"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "idea"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "this"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "one"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "use"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "after"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "code"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "blocks"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "show"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "their"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "corresponding"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "output."
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "I"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "considered"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "using"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "html",
+                  "value": null
+                }
+              ],
+              "text": "<samp>"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "tag"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "my"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "implementation"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "but"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "code"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "highlighters"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "are"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "generally"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "geared"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "html",
+                  "value": null
+                }
+              ],
+              "text": "<pre><code>"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "blocks."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> results\n\nThe colt reared and threw the tall rider.\nThe wide road shimmered in the hot sun."
+      },
+      "html": "<pre class=\"results\"><code>The colt reared and threw the tall rider.\nThe wide road shimmered in the hot sun.</code></pre>"
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> results\n>> id: sierra\n>> class: tango\n\nFish evade the net.\nFive years with a shaggy dog."
+      },
+      "html": "<pre class=\"results tango\" id=\"sierra\"><code>Fish evade the net.\nFive years with a shaggy dog.</code></pre>"
+    },
+    {
+      "type": "ReferenceSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "title",
+          "value": "MDN - HTML <samp> tag"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "sample tag"
+        },
+        {
+          "type": "Attribute",
+          "key": "url",
+          "value": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp"
+        }
+      ],
+      "children": null
+    },
+    {
+      "type": "AttributesSection",
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "date",
+          "value": "2023-04-15 11:26:12"
+        },
+        {
+          "type": "Attribute",
+          "key": "id",
+          "value": "2ot6lk4xp04x"
+        },
+        {
+          "type": "Attribute",
+          "key": "type",
+          "value": "example "
+        },
+        {
+          "type": "Attribute",
+          "key": "publish",
+          "value": "y"
+        }
+      ],
+      "children": null
+    }
+  ]
+}

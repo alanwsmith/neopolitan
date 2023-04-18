@@ -2,107 +2,120 @@
 
 Neopolitan Sections
 
-These are the available section types (things that aren't 
-linked aren't yet implemented)
+-> h2
+
+Implemented
+
+These are the available section types
 
 -> list
 
-- <<aside|link|/examples/aside/index.html>> The HTML <aside> tag
+- >aside>/examples/aside.html> - The HTML <aside> tag
 
-- <<attributes|link|/examples/attributes/index.html>> - Metadata for the page
+- >attributes>/examples/attributes.html> - Metadata for the page
 
-- <<blockquote|link|/examples/blockquote/index.html>> - The HTML <blockquote> tag
+- >blockquote>/examples/blockquote.html> - The HTML <blockquote> tag
 
-- <<blurb|link|/examples/blurb/index.html">> - Passed to other pages for incoming links
+- >blurb>/examples/blurb.html> - Passed to other pages for incoming links
 
-- canvas - Basic canvas element with included attributes
+- >code>/examples/code.html> - Code blocks like fenced code blocks but with attributes.
 
-- categories - A metadata section for page categories
+- >comment>/examples/comment.html> - Section that's not output
 
-- checklist - Like a TODO list, but it resets every time the page is visited
+- >css>/examples/css.html> - A place to put CSS that will be inlined in the page
 
-- <<code|link|/examples/code/index.html>> - Code blocks like fenced 
-code blocks but you can add an arbitrary attributes to them.
+- >div>/examples/div.html> - A <div> wrapper that can 
+be used to add attributes to sections of content
 
-- <<comment|link|/examples/comment/index.html>> - Section that's not output
+- >h1-h6>/examples/headings.html> - HTML heading tags
 
-- <<css|link|examples/css/index.html>> - A place to put CSS that will be inlined in the page
-
-- details - The details disclosure element: <details>
-
-- <<div|link|/examples/div/index.html>> - A <div>
-  wrapper that can be used to add attributes to sections 
-of content
-
-- dlist - The HTML <dl> tag
-
-- ext - Call to an external process
-
-- figure - The HTML figure element
-
-- <<h1-h6|link|/examples/headings/index.html>> - HTML heading tags
-
-- head - raw content to put in the head of the document
-
-- <<html|link|/examples/html/index.html>> - for raw html blocks that go directly to 
+- >html>/examples/html.html> - for raw html blocks that go directly to 
 the output without further processing
 
-- <<image|link|/examples/image/index.html>> - An image call with the alt text coming
+- >image>/examples/image.html> - An image call with the alt text coming
 from the body of the section
 
-- <<list|link|/examples/list/index.html>> - Unordered lists
+- >list>/examples/list.html> - Unordered lists
+
+- >neoexample>/examples/neoexample.html> - A
+display for examples on the neopolitan documentation site
+
+- >note>/examples/note.html> - A div wrapper with a 
+  `class="note"`html` attribute
+
+- >notes>/examples/notes.html> - A list style notes section
+
+- >olist>/examples/olist.html> - An ordered list
+
+- >p>/examples/p.html> - Basic text paragraph tags that are not otherwise 
+contained in a div.
+
+- >pre>/examples/pre.html> - A pre tag
+
+- >results>/examples/results.html> - Used to 
+show output from `-> code`neo` blocks
+
+- >startcode/endcode>/examples/startcode_endcode.html>
+
+- >subtitle>/examples/subtitle.html>
+
+- >textarea>/examples/textarea.html>
+
+- >title>/examples/title.html>
+
+- >todo>/examples/todo.html> - TODO lists
+
+- >vimeo>/examples/vimeo.html> - A vimeo embed
+
+- >warning>/examples/warning.html> - A div block with a warning class on it
+
+- >youtube>/examples/youtube.html> -  A youtube embed
+
+
+-> h2
+
+In Progress
+
+These are currently in progress
+
+- canvas - >wip>/examples/canvas.html> Basic canvas element with included attributes
+
+- categories - >wip>/examples/categories.html> A metadata section for page categories
+
+- checklist - >wip>/examples/checklist.html> Like a TODO list, but it resets every time the page is visited
+
+- details - >wip>/examples/details.html> The details disclosure element: <details>
+
+- dlist - >wip>/examples/dlist.html> The HTML <dl> tag
+
+- ext - >wip>examples/ext.html> Call to an external process
+
+- figure - >wip/examples/figure.html> The HTML figure element
+
+- footnote - >wip>/examples/footnote.html> For when you want to write more later
+
+- head - >wip>/examples/head.html> raw content to put in the head of the document
+
+- includes - For including the content of one file inside another. Will have to 
+figure out how things like `-> css`` would work with that. 
 
 - menu - the HTML <menu> tag
 
 - nav - the HTML <nav> tag
 
-- <<neoexample|link|/examples/neoexample/index.html>> - A
-display for examples on the neopolitan documentation site
-
-- <<note|link|/examples/note/index.html>> - A div wrapper with a 
-  `class="note"`html` attribute
-
-- <<notes|link|/examples/notes/index.html>> - A list style notes section
-
 - object - The HTML <objet> tag
-
-- <<olist|link|/examples/olist/index.html>> - An ordered list
-
-- <<p|link|/examples/p/index.html>> - Basic text paragraph tags that are not otherwise 
-contained in a div.
 
 - picture - The HTML <picture> element
 
-- <<pre|link|/examples/pre/index.html>> - A pre tag
-
 - reference - For documenting external resources
-
-- <<results|link|/examples/results/index.html>> - Used to 
-show output from `-> code`neo` blocks
-
-- <<startcode/endcode|link|/examples/startcode_endcode/index.html>>
 
 - script - A raw section that adds script tags to the header of the page
 
-- <<subtitle|link|/examples/subtitle/index.html>>
-
-- table - Tables 
-
-- <<textarea|link|/examples/textarea/index.html>>
-
-- <<title|link|/examples/title/index.html>>
-
-- <<todo|link|/examples/todo/index.html>> - TODO lists
+- table - >wip>/examples/table.html> - Still working to define the format for these
 
 - video - The HTML <video> element
 
-- <<vimeo|link|/examples/vimeo/index.html>> - A vimeo embed
-
-- <<warning|link|/examples/warning/index.html>> - A div block with a warning class on it
-
-- widget - An area to pass data to the client or build processes for custom functionality
-
-- <<youtube|link|/examples/youtube/index.html>> -  A youtube embed
+- widget - >wip>/examples/widget.html> An area to pass data to the client or build processes for custom functionality
 
 
 -> attributes
