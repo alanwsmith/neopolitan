@@ -3638,6 +3638,27 @@
             },
             {
               "type": "Text",
+              "text": "from"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "links"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
               "text": "in"
             },
             {
@@ -3666,70 +3687,35 @@
             },
             {
               "type": "Text",
-              "text": "The"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "LinkShorthand",
-              "attributes": [
-                {
-                  "type": "Basic",
-                  "key": "/sections/index.html",
-                  "value": null
-                }
-              ],
-              "text": "sections page"
+              "text": "This"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "has"
+              "text": "project"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "a"
+              "text": "is"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "list"
+              "text": "open"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "of"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "everything"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "that's"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "done"
+              "text": "source"
             },
             {
               "type": "Space"
@@ -3743,6 +3729,129 @@
             },
             {
               "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "LinkShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "https://github.com/alanwsmith/neopolitan",
+                  "value": null
+                }
+              ],
+              "text": "a repo"
+            },
+            {
+              "type": "Text",
+              "text": "."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "demo"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "engine"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I'm"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "using"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "build"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "this"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "site"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "there"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "along"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
               "text": "the"
             },
             {
@@ -3750,21 +3859,126 @@
             },
             {
               "type": "Text",
-              "text": "items"
+              "text": "content."
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "that"
+              "text": "It's"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "remain."
+              "text": "not"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "ready"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "prime"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "time"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "yet"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "but"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "feel"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "free"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "play"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "if"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "you're"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "interested."
             }
           ]
         }
