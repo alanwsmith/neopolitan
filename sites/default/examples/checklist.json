@@ -75,7 +75,7 @@
             },
             {
               "type": "Text",
-              "text": "area"
+              "text": "are"
             },
             {
               "type": "Space"
@@ -185,6 +185,15 @@
           ]
         }
       ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> checklist\n\n[] Make a checklist page\n\n[] Write some stuff on it\n\n[] Commit the canges"
+      },
+      "html": "<div class=\"checklist\">\n  <ul>\n    <li>\n      <p>\n        <input type=\"checkbox\"/>\n        Make a checklist page\n      </p>\n    </li>\n    <li>\n      <p>\n        <input type=\"checkbox\"/>\n        Write some stuff on it\n      </p>\n    </li>\n    <li>\n      <p>\n        <input type=\"checkbox\"/>\n        Commit the canges\n      </p>\n    </li>\n  </ul>\n</div>"
     },
     {
       "type": "AttributesSection",

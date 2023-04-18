@@ -3,8 +3,24 @@
 Section: checklist
 
 Like a TODO list but the checkboxes
-area cleared each time the page is loaded
+are cleared each time the page is loaded
 so you can use it like a runbook.
+
+-> startneoexample
+
+-> checklist
+
+[] Make a checklist page
+
+[] Write some stuff on it
+
+[] Commit the canges
+
+-> endneoexample
+
+
+
+
 
 
 -> attributes

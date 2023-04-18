@@ -1,6 +1,7 @@
 {%- from "aside.jinja" import aside -%}
 {%- from "_macros/date.jinja" import date -%}
 {%- from "blockquote.jinja" import blockquote -%}
+{%- from "checklist.jinja" import checklist -%}
 {%- from "code.jinja" import code -%}
 {%- from "css.jinja" import css -%}
 {%- from "div.jinja" import div -%}
@@ -89,6 +90,8 @@
     {{ aside(section) }}
     {%- elif section.type == "BlockquoteSection" -%}
     {{ blockquote(section) }}
+    {%- elif section.type == "ChecklistSection" -%}
+    {{ checklist(section) }}
     {%- elif section.type == "CodeSection" -%}
     {{ code(section) }}
     {%- elif section.type == "CodeStartEndSection" -%}

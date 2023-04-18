@@ -2614,7 +2614,7 @@
         "type": "RawContent",
         "text": "-> css\n\n.highlight {\n  background: white;\n}"
       },
-      "html": "<style>\n.highlight {\n  background: white;\n}\n</style>"
+      "html": ""
     },
     {
       "type": "H2Section",

@@ -47,17 +47,18 @@
 
     </header>
   <main><h1 class="title">
-  <p>Section: css</p>
+  <p>Section: reference</p>
 </h1>
-<p>The <code class="language-neo">-&gt; css</code> section is allows for arbitrary CSS to be added to a page. Each section adds a <code class="language-html">&lt;style&gt;</code> element just before the closing <code class="language-html">&lt;&#x2f;head&gt;</code> tag in the HTML. Multiple sections output from the top down in the order they appear in the source file.</p>
+<p>References are used to point to other resources and documents that don&#x27;t fit into footnotes. The idea is to aggregate them in the output and. I&#x27;m not sure if they&#x27;ll have links back into the document the same say footnotes do because I&#x27;m not sure what the difference would be at that point. Might end up with reference to references though? For example you could have one file that contains a bunch of reference and then just refer to them by ID to pull them into other documents.</p>
 <div class="neoexample">
 <h6>Source</h6>
-<pre><code class=""
->-&gt; css
-
-pre {
-  border: 2px solid red;
-}</code></pre>
+<pre><code class="
+  
+  language-neo"
+>-&gt; reference
+&gt;&gt; title: something
+&gt;&gt; url: https:&#x2f;&#x2f;www.example.com&#x2f;
+&gt;&gt; author: some person</code></pre>
 
 <h6>Output</h6>
 <pre class="language-html"><code></code></pre>

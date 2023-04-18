@@ -347,6 +347,197 @@
                   "attributes": [
                     {
                       "type": "Basic",
+                      "key": "/examples/categories.html",
+                      "value": null
+                    }
+                  ],
+                  "text": "categories"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "A"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "metadata"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "section"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "for"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "page"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "categories"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "LinkShorthand",
+                  "attributes": [
+                    {
+                      "type": "Basic",
+                      "key": "/examples/checklist.html",
+                      "value": null
+                    }
+                  ],
+                  "text": "checklist"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Like"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "a"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "TODO"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "list,"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "but"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "it"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "resets"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "every"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "time"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "the"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "page"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "is"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "visited"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "LinkShorthand",
+                  "attributes": [
+                    {
+                      "type": "Basic",
                       "key": "/examples/code.html",
                       "value": null
                     }
@@ -719,6 +910,98 @@
                 {
                   "type": "Text",
                   "text": "content"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "LinkShorthand",
+                  "attributes": [
+                    {
+                      "type": "Basic",
+                      "key": "/examples/footnote.html",
+                      "value": null
+                    }
+                  ],
+                  "text": "footnote"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "For"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "when"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "you"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "want"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "to"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "write"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "more"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "but"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "not"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "inline"
                 }
               ]
             }
@@ -1530,6 +1813,63 @@
                   "attributes": [
                     {
                       "type": "Basic",
+                      "key": "/examples/reference.html",
+                      "value": null
+                    }
+                  ],
+                  "text": "reference"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "For"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "documenting"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "external"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "resources"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "LinkShorthand",
+                  "attributes": [
+                    {
+                      "type": "Basic",
                       "key": "/examples/results.html",
                       "value": null
                     }
@@ -2068,212 +2408,8 @@
           "type": "P",
           "children": [
             {
-              "type": "Text",
-              "text": "-"
-            },
-            {
               "type": "Space"
             },
-            {
-              "type": "Text",
-              "text": "categories"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "-"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "LinkShorthand",
-              "attributes": [
-                {
-                  "type": "Basic",
-                  "key": "/examples/categories.html",
-                  "value": null
-                }
-              ],
-              "text": "wip"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "A"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "metadata"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "section"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "for"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "page"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "categories"
-            }
-          ]
-        },
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "-"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "checklist"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "-"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "LinkShorthand",
-              "attributes": [
-                {
-                  "type": "Basic",
-                  "key": "/examples/checklist.html",
-                  "value": null
-                }
-              ],
-              "text": "wip"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Like"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "a"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "TODO"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "list,"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "but"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "it"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "resets"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "every"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "time"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "page"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "is"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "visited"
-            }
-          ]
-        },
-        {
-          "type": "P",
-          "children": [
             {
               "type": "Text",
               "text": "-"
@@ -2509,77 +2645,48 @@
               "attributes": [
                 {
                   "type": "Basic",
-                  "key": " The HTML figure element\n\n- footnote - ",
+                  "key": "/examples/figure.html",
                   "value": null
                 }
               ],
-              "text": "wip/examples/figure.html"
-            },
-            {
-              "type": "Text",
-              "text": "wip>/examples/footnote.html>"
+              "text": "wip"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "For"
+              "text": "The"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "when"
+              "text": "HTML"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "you"
+              "text": "figure"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "want"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "to"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "write"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "more"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "later"
+              "text": "element"
             }
           ]
         },
         {
           "type": "P",
           "children": [
+            {
+              "type": "Space"
+            },
             {
               "type": "Text",
               "text": "-"
@@ -2696,7 +2803,28 @@
             },
             {
               "type": "Text",
-              "text": "includes"
+              "text": "include"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "-"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "LinkShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "/examples/include.html",
+                  "value": null
+                }
+              ],
+              "text": "wip"
             },
             {
               "type": "Space"
@@ -2717,7 +2845,7 @@
             },
             {
               "type": "Text",
-              "text": "including"
+              "text": "putting"
             },
             {
               "type": "Space"
@@ -2766,103 +2894,13 @@
             },
             {
               "type": "Text",
-              "text": "another."
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Will"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "have"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "to"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "figure"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "out"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "how"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "things"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "like"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "CodeShorthand",
-              "attributes": null,
-              "text": "-> css"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "would"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "work"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "with"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "that."
-            },
-            {
-              "type": "Space"
-            },
+              "text": "another"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
             {
               "type": "Text",
               "text": "-"
@@ -3061,57 +3099,6 @@
             {
               "type": "Text",
               "text": "element"
-            }
-          ]
-        },
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "-"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "reference"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "-"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "For"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "documenting"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "external"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "resources"
             }
           ]
         },

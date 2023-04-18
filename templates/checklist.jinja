@@ -1,0 +1,19 @@
+{%- from "text.jinja" import text -%}
+{%- from "_macros/attributes.jinja" import attributes_with_class -%}
+{%- macro checklist(data) -%}
+<div {{- attributes_with_class(data, "checklist") -}}>
+  <ul>
+    {%- for item in data.children %}
+    <li>{%- for block in item.children %}
+      <p>
+      {%- if loop.first %}
+        <input type="checkbox"/>
+      {%- endif %}
+        {{ text(block) }}
+      </p>
+      {%- endfor %}
+    </li>
+    {%- endfor %}
+  </ul>
+</div>
+{%- endmacro -%}

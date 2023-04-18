@@ -1,0 +1,93 @@
+-> title
+
+Checklist Example
+
+I really like checklists. Ever since reading
+The Checklist Manifesto^cm^^ they've really clicked 
+with me. The place where that falls down is
+they're kinda a pain to setup. I'm sure 
+there's a billion apps out there for them, 
+but I want to make them in my grimoire.
+
+So, I made them. These are the same thing
+as TODO lists but instead of marking 
+things in the source file you do it on 
+the web page. Every time you load the 
+page it starts fresh.
+
+As an example, here's one for the steps
+I go through to add a new section to the
+Neopolitan processor I'm using to build
+this site:
+
+-> checklist
+
+[] Create the file for the new category
+in `src/sections``
+
+[] Add a test for the new category 
+that fails
+
+[] Add a new Block:: enum if necessary for the 
+content type in
+
+`src/block/block.rs``
+
+[] Add a new Section:: enum for the section
+type in
+
+`src/section/section.rs``
+
+[] Add the `nom`` parsing tag for the new
+section (e.g. `-> checklist``) to:
+
+`src/section/section.rs``
+
+[] Add the use statement for the new
+file (e.g. `use crate::section::checklist::*;`)
+to:
+
+`src/section/section.rs``
+
+[] Stub the new function like:
+
+-> code
+>> rust
+
+pub fn checklist(source: &str) -> IResult<&str, Section> {
+    Ok(("", Section::Placeholder))
+}
+
+-> checklist
+
+[] Make the tests pass
+
+
+-> note
+
+Refreshing the page doesn't seem to clear the checkboxes
+in Firefox. I use Chrome so that doesn't bother me. 
+
+
+-> todo
+
+[] Make a footnote with a link to the Checklist Manifesto
+
+
+-> footnote
+>> id: cm
+>> title: The Checklist Manifesto
+>> url: https://www.amazon.com/Checklist-Manifesto-How-Things-Right/dp/0312430000
+
+
+
+
+
+-> attributes
+>> date: 2023-04-17 21:40:07
+>> id: 2ozxfluvd3ma
+>> site: neo 
+>> type: blog 
+>> published: y
+
+

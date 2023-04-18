@@ -49,7 +49,42 @@
   <main><h1 class="title">
   <p>Section: checklist</p>
 </h1>
-<p>Like a TODO list but the checkboxes area cleared each time the page is loaded so you can use it like a runbook.</p></main>
+<p>Like a TODO list but the checkboxes are cleared each time the page is loaded so you can use it like a runbook.</p>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; checklist
+
+[] Make a checklist page
+
+[] Write some stuff on it
+
+[] Commit the canges</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;div class=&quot;checklist&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;p&gt;
+        &lt;input type=&quot;checkbox&quot;&#x2f;&gt;
+        Make a checklist page
+      &lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+    &lt;li&gt;
+      &lt;p&gt;
+        &lt;input type=&quot;checkbox&quot;&#x2f;&gt;
+        Write some stuff on it
+      &lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+    &lt;li&gt;
+      &lt;p&gt;
+        &lt;input type=&quot;checkbox&quot;&#x2f;&gt;
+        Commit the canges
+      &lt;&#x2f;p&gt;
+    &lt;&#x2f;li&gt;
+  &lt;&#x2f;ul&gt;
+&lt;&#x2f;div&gt;</code></pre>
+</div></main>
   <footer>
   from <a href="https://www.alanwsmith.com/">alan w. smith</a>
   </footer>

@@ -5,6 +5,7 @@ use crate::section::attributes_for_section::*;
 use crate::section::blockquote::*;
 use crate::section::blurb::*;
 use crate::section::categories::*;
+use crate::section::checklist::*;
 use crate::section::code_section::*;
 use crate::section::code_start_end::*;
 use crate::section::comment::*;
@@ -72,6 +73,10 @@ pub enum Section {
     },
     CategoriesSection {
         categories: Option<Vec<SectionAttribute>>,
+    },
+    ChecklistSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
     },
     CodeSection {
         attributes: Option<Vec<SectionAttribute>>,
@@ -278,6 +283,8 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         alt((
             tuple((tag("-> categories\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| categories(t.1).unwrap().1),
+            tuple((tag("-> checklist\n"), alt((take_until("\n\n-> "), rest))))
+                .map(|t| checklist(t.1).unwrap().1),
             tuple((tag("-> todo\n"), alt((take_until("\n\n-> "), rest))))
                 .map(|t| todo(t.1).unwrap().1),
             tuple((tag("-> todos\n"), alt((take_until("\n\n-> "), rest))))

@@ -47,21 +47,33 @@
 
     </header>
   <main><h1 class="title">
-  <p>Section: css</p>
-</h1>
-<p>The <code class="language-neo">-&gt; css</code> section is allows for arbitrary CSS to be added to a page. Each section adds a <code class="language-html">&lt;style&gt;</code> element just before the closing <code class="language-html">&lt;&#x2f;head&gt;</code> tag in the HTML. Multiple sections output from the top down in the order they appear in the source file.</p>
-<div class="neoexample">
-<h6>Source</h6>
-<pre><code class=""
->-&gt; css
-
-pre {
-  border: 2px solid red;
-}</code></pre>
-
-<h6>Output</h6>
-<pre class="language-html"><code></code></pre>
-</div></main>
+  <p>Includes</p>
+</h1><div class="notes">
+  <ul>
+    <li>
+      <p>
+        GOAL: These aren&#x27;t implemented yet. Get them setup after messing around with them a bit.
+      </p>
+    </li>
+    <li>
+      <p>
+        This is a draft.
+      </p>
+    </li>
+    <li>
+      <p>
+        This is implementation dependent.
+      </p>
+    </li>
+  </ul>
+</div><p>Includes provide a way to pull in the same pieces of structure and functionality.</p>
+<ul>
+  <li>
+    <p>In my implementaiton, includes are stored in an <code>includes</code> directory next to the <code>site</code>, and <code>content</code> directories. - Includes are called with:</p>
+  </li>
+</ul><pre><code>-&gt; include
+&gt;&gt; path: the_file.html</code></pre><p>This line needs to exist until the bug is fixed where a panic happens when <code>endcode</code> is the last thing in the file</p>
+</main>
   <footer>
   from <a href="https://www.alanwsmith.com/">alan w. smith</a>
   </footer>

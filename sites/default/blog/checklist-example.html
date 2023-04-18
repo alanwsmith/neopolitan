@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for websites</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/sections/index.html">Sections</a>
+          </li>
+          <li>
+            <a href="/attributes/index.html">Attributes</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1 class="title">
+  <p>Checklist Example</p>
+</h1>
+<p>I really like checklists. Ever since reading The Checklist Manifesto^cm^^ they&#x27;ve really clicked with me. The place where that falls down is they&#x27;re kinda a pain to setup. I&#x27;m sure there&#x27;s a billion apps out there for them, but I want to make them in my grimoire.</p>
+<p>So, I made them. These are the same thing as TODO lists but instead of marking things in the source file you do it on the web page. Every time you load the page it starts fresh.</p>
+<p>As an example, here&#x27;s one for the steps I go through to add a new section to the Neopolitan processor I&#x27;m using to build this site:</p><div class="checklist">
+  <ul>
+    <li>
+      <p>
+        <input type="checkbox"/>
+        Create the file for the new category in <code>src&#x2f;sections</code>
+      </p>
+    </li>
+    <li>
+      <p>
+        <input type="checkbox"/>
+        Add a test for the new category that fails
+      </p>
+    </li>
+    <li>
+      <p>
+        <input type="checkbox"/>
+        Add a new Block:: enum if necessary for the content type in
+      </p>
+      <p>
+        <code>src&#x2f;block&#x2f;block.rs</code>
+      </p>
+    </li>
+    <li>
+      <p>
+        <input type="checkbox"/>
+        Add a new Section:: enum for the section type in
+      </p>
+      <p>
+        <code>src&#x2f;section&#x2f;section.rs</code>
+      </p>
+    </li>
+    <li>
+      <p>
+        <input type="checkbox"/>
+        Add the <code>nom</code> parsing tag for the new section (e.g. <code>-&gt; checklist</code>) to:
+      </p>
+      <p>
+        <code>src&#x2f;section&#x2f;section.rs</code>
+      </p>
+    </li>
+    <li>
+      <p>
+        <input type="checkbox"/>
+        Add the use statement for the new file (e.g. <code )
+to="">use crate::section::checklist::*;</code>src&#x2f;section&#x2f;section.rs``
+      </p>
+    </li>
+    <li>
+      <p>
+        <input type="checkbox"/>
+        Stub the new function like:
+      </p>
+    </li>
+  </ul>
+</div><pre><code class="language-rust">pub fn checklist(source: &amp;str) -&gt; IResult&lt;&amp;str, Section&gt; {
+    Ok((&quot;&quot;, Section::Placeholder))
+}</code></pre><div class="checklist">
+  <ul>
+    <li>
+      <p>
+        <input type="checkbox"/>
+        Make the tests pass
+      </p>
+    </li>
+  </ul>
+</div><div class="note"><p>Refreshing the page doesn&#x27;t seem to clear the checkboxes in Firefox. I use Chrome so that doesn&#x27;t bother me.</p></div><div class="todo">
+  <ul>
+    <li class="status-none">
+      <p>
+        <input type="checkbox" disabled/>
+        Make a footnote with a link to the Checklist Manifesto
+      </p>
+    </li>
+  </ul>
+</div></main>
+  <footer>
+  from <a href="https://www.alanwsmith.com/">alan w. smith</a>
+  </footer>
+</body>
+</html>

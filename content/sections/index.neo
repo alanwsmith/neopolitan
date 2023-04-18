@@ -20,6 +20,8 @@ These are the available section types
 
 - >categories>/examples/categories.html> - A metadata section for page categories
 
+- >checklist>/examples/checklist.html> - Like a TODO list, but it resets every time the page is visited
+
 - >code>/examples/code.html> - Code blocks like fenced code blocks but with attributes.
 
 - >comment>/examples/comment.html> - Section that's not output
@@ -28,6 +30,8 @@ These are the available section types
 
 - >div>/examples/div.html> - A <div> wrapper that can 
 be used to add attributes to sections of content
+
+- >footnote>/examples/footnote.html> For when you want to write more but not inline
 
 - >h1-h6>/examples/headings.html> - HTML heading tags
 
@@ -53,6 +57,8 @@ display for examples on the neopolitan documentation site
 contained in a div.
 
 - >pre>/examples/pre.html> - A pre tag
+
+- >reference>/examples/reference.html> - For documenting external resources
 
 - >results>/examples/results.html> - Used to 
 show output from `-> code`neo` blocks
@@ -83,22 +89,18 @@ These are currently in progress
 - canvas - >wip>/examples/canvas.html> Basic canvas element with included attributes
 
 
-- checklist - >wip>/examples/checklist.html> Like a TODO list, but it resets every time the page is visited
-
 - details - >wip>/examples/details.html> The details disclosure element: <details>
 
 - dlist - >wip>/examples/dlist.html> The HTML <dl> tag
 
 - ext - >wip>examples/ext.html> Call to an external process
 
-- figure - >wip/examples/figure.html> The HTML figure element
+- figure - >wip>/examples/figure.html> The HTML figure element
 
-- footnote - >wip>/examples/footnote.html> For when you want to write more later
 
 - head - >wip>/examples/head.html> raw content to put in the head of the document
 
-- includes - For including the content of one file inside another. Will have to 
-figure out how things like `-> css`` would work with that. 
+- include - >wip>/examples/include.html> - For putting the content of one file inside another
 
 - menu - the HTML <menu> tag
 
@@ -107,8 +109,6 @@ figure out how things like `-> css`` would work with that.
 - object - The HTML <objet> tag
 
 - picture - The HTML <picture> element
-
-- reference - For documenting external resources
 
 - script - A raw section that adds script tags to the header of the page
 

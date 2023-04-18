@@ -10,13 +10,12 @@ use serde::Serialize;
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum Block {
-    P {
-        children: Option<Vec<Content>>,
+    ChecklistItem {
+        status: Option<String>,
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
     },
     CodeBlock {
-        text: Option<String>,
-    },
-    RawContent {
         text: Option<String>,
     },
     NotesItem {
@@ -26,6 +25,12 @@ pub enum Block {
     OrderedListItem {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
+    },
+    P {
+        children: Option<Vec<Content>>,
+    },
+    RawContent {
+        text: Option<String>,
     },
     ToDoItem {
         status: Option<String>,

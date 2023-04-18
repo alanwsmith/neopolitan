@@ -368,7 +368,7 @@
         "type": "RawContent",
         "text": "-> css\n\npre {\n  border: 2px solid red;\n}"
       },
-      "html": "<style>\npre {\n  border: 2px solid red;\n}\n</style>"
+      "html": ""
     },
     {
       "type": "AttributesSection",
