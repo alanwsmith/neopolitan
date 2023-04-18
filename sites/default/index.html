@@ -51,7 +51,7 @@
 </h1><div class="subtitle">
   <p>A plain-text format for websites</p>
 </div>
-<div class="note"><p>NOTE: I&#x27;m doing the &quot;launch before you&#x27;re ready - build in pulic&quot; thing. The ideas are mostly in place but the content and the demo implementation are still in the works.</p></div><h2>Introduction</h2>
+<div class="note"><p>NOTE: I&#x27;m doing the &quot;launch before you&#x27;re ready - build in public&quot; thing. The ideas are mostly in place but the content and the demo implementation are still in the works.</p></div><h2>Introduction</h2>
 <p>My site is twenty years old. Pondering those decades got me thinking about the next two. I find myself asking &quot;What do I want to use for the next twenty years?&quot; instead of &quot;What do I want to do for my next redesign?&quot; The answers are very different.</p>
 <h2>The Format</h2>
 <p>I&#x27;ve moved my site a half dozen times. Each one involved a painful content migration. I&#x27;ve gone from raw HTML to Perl scripts to Wordpress to PHP with various DB schemas to Markdown to MDX to Org-Mode to a mix of all of the above.</p>
@@ -67,7 +67,7 @@ A plain-text format for websites
 -&gt; note
 
 NOTE: I&#x27;m doing the &quot;launch before you&#x27;re ready - 
-build in pulic&quot; thing. Most of the ideas here are
+build in public&quot; thing. Most of the ideas here are
 in place but some content is still a work in progress. 
 
 -&gt; h2
@@ -87,9 +87,8 @@ are very different.
 &gt;&gt; published: y</code></pre><h2>Dogfooding</h2>
 <p>I&#x27;m not a particular fan of the term &quot;dogfooding&quot;. &quot;Drink your own champagne&quot; is worse. Either way, that&#x27;s what I&#x27;m doing. This site is built from the Neopolitan documents and a site generation tool I&#x27;m putting together for a demo implementation.</p>
 <p>The sample content above is an example. It&#x27;s what built the first part of this page.</p>
-<h2>The AST (Work In Progress)</h2>
-<p>The specification for Neopolitin isn&#x27;t HTML output. It&#x27;s an AST. The documnets have an explicit way to be parsed but the final output is an implementation detail.</p>
-<p>You can see the AST for any page by replacing the <code>.html</code> extension in the url with <code>.json</code>. If you&#x27;re on a page that isn&#x27;t showing <code>.html</code> add <code>index.json</code> to the end. provides the ability to pass raw HTML directly to the final output</p>
+<h2>The Specification</h2>
+<p>I&#x27;m still working on how best to spec the format. Gotta finish building it first. But, I&#x27;m pretty sure of one thing: the spec won&#x27;t include output formats. If other formats have taught us anything it&#x27;s that that ways lies dragons^xkcd^^.</p>
 
 <div class="neoexample">
 <h6>Source</h6>

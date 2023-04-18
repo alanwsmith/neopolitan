@@ -9,7 +9,7 @@ A plain-text format for websites
 -> note
 
 NOTE: I'm doing the "launch before you're ready - 
-build in pulic" thing. The ideas are mostly in place
+build in public" thing. The ideas are mostly in place
 but the content and the demo implementation  
 are still in the works. 
 
@@ -53,7 +53,7 @@ A plain-text format for websites
 -> note
 
 NOTE: I'm doing the "launch before you're ready - 
-build in pulic" thing. Most of the ideas here are
+build in public" thing. Most of the ideas here are
 in place but some content is still a work in progress. 
 
 -> h2
@@ -91,20 +91,22 @@ built the first part of this page.
 
 -> h2
 
-The AST (Work In Progress)
+The Specification
 
-The specification for Neopolitin isn't HTML 
-output. It's an AST. The documnets have an 
-explicit way to be parsed but the final
-output is an implementation detail.
+I'm still working on how best to spec the format. 
+Gotta finish building it first. But, I'm pretty 
+sure of one thing: the spec won't include 
+output formats. If other formats have 
+taught us anything it's that that ways lies 
+dragons^xkcd^^. 
 
-You can see the AST for any page by replacing 
-the `.html`` extension in the url with `.json``.
-If you're on a page that isn't showing `.html``
-add `index.json`` to the end. 
+-> footnote
+>> xkcd
+>> title: XKCD - Standards
+>> url: https://xkcd.com/927/
 
-provides the ability to 
-pass raw HTML directly to the final output
+
+
 
 -> startneoexample
 
@@ -256,6 +258,7 @@ implementation. They're an optional starting point,
 not a spec. Parsing files into the AST is what's
 standardized. What you do with it from there is
 up to you. 
+
 
 
 -> attributes
