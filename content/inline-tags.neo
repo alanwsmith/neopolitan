@@ -1,0 +1,149 @@
+-> title
+
+Inline Tags And Shorthands
+
+
+
+
+
+-> h2
+
+Inline Tags
+
+Several inline tags are provided for styling, linking, 
+etc...
+
+-> startneoexample
+
+-> p
+
+The <<colt|strong>> reared.
+
+-> endneoexample
+
+-> h2
+
+Inline Tag Attributes
+
+Key/value pairs passed to inline tags output
+as attributes:
+
+-> startneoexample
+
+-> p
+
+The <<tree top|strike|id: alfa|class: bravo>> waved
+
+-> endneoexample
+
+
+-> h2
+
+Inline Shorthand
+
+Shorthand versions of `code``, `em``, 
+`strong``, and `link`` look like this:
+
+-> startneoexample
+
+-> p
+
+`alfa``
+
+_bravo__
+
+*delta**
+
+>charlie>https://www.example.com/>
+
+-> endneoexample
+
+
+-> h2
+
+Inline Shorthand Attributes
+
+Attributes can also be added to the shorthand 
+tags:
+
+
+-> startneoexample
+
+-> p
+
+`echo`id: foxtrot|class: highlighted`
+
+-> endneoexample
+
+
+
+
+-> h2
+
+Inline Attributes
+
+Adding attributes to inline tags is also possible:
+
+-> startneoexample
+
+-> p
+
+alfa `bravo`class: charlie` delta
+
+-> endneoexample
+
+
+
+
+-> h2
+
+Inline Code Language Shorthand
+
+If a key is passed as the first argument to a 
+code shorthand without a value it's treated
+as a language and turned into a 
+`language-x`html` class in the HTML.
+
+
+-> startneoexample
+
+-> p
+
+`delta`rust`
+
+`echo`rust|id: sierra`
+
+-> endneoexample
+
+-> warning
+
+NOTE: Adding an explicit `class`` along with
+the language currently results in two
+`class`` attributes being added to the
+output. That is, this would be a problem:
+
+-> startneoexample
+
+-> p
+
+`echo`rust|class: highlighted`
+
+-> endneoexample
+
+
+
+
+
+
+
+
+
+
+-> attributes
+>> date: 2023-04-18 00:13:26
+>> id: 2oagjsrhu2p4
+>> site: neo 
+>> type: default 
+>> published: y
+
+

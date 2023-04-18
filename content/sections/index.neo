@@ -10,74 +10,8 @@ These are the available section types
 
 -> list
 
-- >aside>/examples/aside.html> - The HTML <aside> tag
 
-- >attributes>/examples/attributes.html> - Metadata for the page
 
-- >blockquote>/examples/blockquote.html> - The HTML <blockquote> tag
-
-- >blurb>/examples/blurb.html> - Passed to other pages for incoming links
-
-- >categories>/examples/categories.html> - A metadata section for page categories
-
-- >checklist>/examples/checklist.html> - Like a TODO list, but it resets every time the page is visited
-
-- >code>/examples/code.html> - Code blocks like fenced code blocks but with attributes.
-
-- >comment>/examples/comment.html> - Section that's not output
-
-- >css>/examples/css.html> - A place to put CSS that will be inlined in the page
-
-- >div>/examples/div.html> - A <div> wrapper that can 
-be used to add attributes to sections of content
-
-- >footnote>/examples/footnote.html> For when you want to write more but not inline
-
-- >h1-h6>/examples/headings.html> - HTML heading tags
-
-- >html>/examples/html.html> - for raw html blocks that go directly to 
-the output without further processing
-
-- >image>/examples/image.html> - An image call with the alt text coming
-from the body of the section
-
-- >list>/examples/list.html> - Unordered lists
-
-- >neoexample>/examples/neoexample.html> - A
-display for examples on the neopolitan documentation site
-
-- >note>/examples/note.html> - A div wrapper with a 
-  `class="note"`html` attribute
-
-- >notes>/examples/notes.html> - A list style notes section
-
-- >olist>/examples/olist.html> - An ordered list
-
-- >p>/examples/p.html> - Basic text paragraph tags that are not otherwise 
-contained in a div.
-
-- >pre>/examples/pre.html> - A pre tag
-
-- >reference>/examples/reference.html> - For documenting external resources
-
-- >results>/examples/results.html> - Used to 
-show output from `-> code`neo` blocks
-
-- >startcode/endcode>/examples/startcode_endcode.html>
-
-- >subtitle>/examples/subtitle.html>
-
-- >textarea>/examples/textarea.html>
-
-- >title>/examples/title.html>
-
-- >todo>/examples/todo.html> - TODO lists
-
-- >vimeo>/examples/vimeo.html> - A vimeo embed
-
-- >warning>/examples/warning.html> - A div block with a warning class on it
-
-- >youtube>/examples/youtube.html> -  A youtube embed
 
 
 -> h2
@@ -85,39 +19,6 @@ show output from `-> code`neo` blocks
 In Progress
 
 These are currently in progress
-
-- canvas - >wip>/examples/canvas.html> Basic canvas element with included attributes
-
-
-- details - >wip>/examples/details.html> The details disclosure element: <details>
-
-- dlist - >wip>/examples/dlist.html> The HTML <dl> tag
-
-- ext - >wip>examples/ext.html> Call to an external process
-
-- figure - >wip>/examples/figure.html> The HTML figure element
-
-
-- head - >wip>/examples/head.html> raw content to put in the head of the document
-
-- include - >wip>/examples/include.html> - For putting the content of one file inside another
-
-- menu - the HTML <menu> tag
-
-- nav - the HTML <nav> tag
-
-- object - The HTML <objet> tag
-
-- picture - The HTML <picture> element
-
-- script - A raw section that adds script tags to the header of the page
-
-- table - >wip>/examples/table.html> - Still working to define the format for these
-
-- video - The HTML <video> element
-
-- widget - >wip>/examples/widget.html> An area to pass data to the client or build processes for custom functionality
-
 
 -> attributes
 >> date: 2023-04-16 19:09:13

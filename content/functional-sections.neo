@@ -1,0 +1,40 @@
+-> title
+
+Functional Sections
+
+-> h2
+
+Implemented
+
+- >comment>/examples/comment.html> - Section that's not output
+
+- >css>/examples/css.html> - A place to put CSS that will be inlined in the page
+
+- >html>/examples/html.html> - for raw html blocks that go directly to 
+the output without further processing
+
+- >neoexample>/examples/neoexample.html> - A
+display for examples on the neopolitan documentation site
+
+
+-> h2
+
+In Progress
+
+- ext - >wip>examples/ext.html> Call to an external process
+
+- head - >wip>/examples/head.html> raw content to put in the head of the document
+
+- include - >wip>/examples/include.html> - For putting the content of one file inside another
+
+- script - A raw section that adds script tags to the header of the page
+
+- widget - >wip>/examples/widget.html> An area to pass data to the client or build processes for custom functionality
+
+
+
+-> attributes
+>> date: 2023-04-18 00:23:52
+>> id: 2oaha1helefl
+>> type: default
+>> published: y

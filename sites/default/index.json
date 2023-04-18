@@ -1231,14 +1231,7 @@
             },
             {
               "type": "Text",
-              "text": "own"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "format."
+              "text": "own."
             },
             {
               "type": "Space"
@@ -1259,14 +1252,21 @@
             },
             {
               "type": "Text",
-              "text": "Neopolitan."
+              "text": "Neopolitan"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "It"
+              "text": "and"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it"
             },
             {
               "type": "Space"
@@ -1304,7 +1304,7 @@
       ],
       "children": {
         "type": "RawContent",
-        "text": "-> title\n\nWelcome To Neopolitan\n\n-> subtitle\n\nA plain-text format for websites\n\n-> note\n\nNOTE: I'm doing the \"launch before you're ready - \nbuild in public\" thing. Most of the ideas here are\nin place but some content is still a work in progress. \n\n-> h2\n\nIntroduction\n\nMy site is twenty years old. Pondering those decades \ngot me thinking about the next two. I find myself asking \n\"What do I want to use for the next twenty years?\" instead \nof \"What do I want to do for my next redesign?\" The answers \nare very different.\n\n-> attributes\n>> date: 2023-04-16 19:06:40\n>> id: 2owpsh3a381\n>> type: default \n>> published: y"
+        "text": "-> title\n\nWelcome To Neopolitan\n\n-> subtitle\n\nA plain-text format for websites\n\n-> note\n\nNOTE: I'm doing the \"launch before you're ready - \nbuild in public\" thing. Most of the ideas here are\nin place but some content is still a work in progress. \n\n-> h2\n\nIntroduction\n\nMy site is twenty years old. Pondering those decades \ngot me thinking about the next two. I find myself asking \n\"What do I want to use for the next twenty years?\" instead \nof \"What do I want to do for my next redesign?\" The answers \nare very different.\n\n-> attributes\n>> date: 2023-04-16 19:06:40\n>> type: default \n>> published: y"
       }
     },
     {
@@ -1542,62 +1542,6 @@
             },
             {
               "type": "Text",
-              "text": "site"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "generation"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "tool"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "I'm"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "putting"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "together"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "for"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "a"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
               "text": "demo"
             },
             {
@@ -1605,13 +1549,18 @@
             },
             {
               "type": "Text",
-              "text": "implementation."
-            }
-          ]
-        },
-        {
-          "type": "P",
-          "children": [
+              "text": "site"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "generator."
+            },
+            {
+              "type": "Space"
+            },
             {
               "type": "Text",
               "text": "The"
@@ -1622,13 +1571,6 @@
             {
               "type": "Text",
               "text": "sample"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "content"
             },
             {
               "type": "Space"
@@ -1778,28 +1720,56 @@
             },
             {
               "type": "Text",
-              "text": "how"
+              "text": "the"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "best"
+              "text": "spec."
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "to"
+              "text": "It'll"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "spec"
+              "text": "cover"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "all"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "details"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "of"
             },
             {
               "type": "Space"
@@ -1820,98 +1790,7 @@
             },
             {
               "type": "Text",
-              "text": "Gotta"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "finish"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "building"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "it"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "first."
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "But,"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "I'm"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "pretty"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "sure"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "of"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "one"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "thing:"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "spec"
+              "text": "It"
             },
             {
               "type": "Space"
@@ -1925,7 +1804,21 @@
             },
             {
               "type": "Text",
-              "text": "include"
+              "text": "have"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "requirements"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
             },
             {
               "type": "Space"
@@ -1939,98 +1832,126 @@
             },
             {
               "type": "Text",
-              "text": "formats."
+              "text": "though."
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "If"
+              "text": "Those"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "other"
+              "text": "details"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "formats"
+              "text": "should"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "have"
+              "text": "reside"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "taught"
+              "text": "in"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "us"
+              "text": "the"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "anything"
+              "text": "hands"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "it's"
+              "text": "of"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "that"
+              "text": "the"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "that"
+              "text": "implementer."
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "ways"
+              "text": "Plus,"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "lies"
+              "text": "making"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "dragons^xkcd^^."
+              "text": "standards"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "tricky"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "game^xkcd^^."
             }
           ]
         }
@@ -2055,64 +1976,83 @@
           "value": "https://xkcd.com/927/"
         }
       ],
-      "children": null
-    },
-    {
-      "type": "NeoExampleStartEndSection",
-      "attributes": null,
-      "raw": {
-        "type": "RawContent",
-        "text": "-> html\n\n<form>\n    <label for=\"name\">Enter your name: </label>\n    <input type=\"text\" name=\"name\" id=\"name\" required>\n</form>"
-      },
-      "html": "<form>\n    <label for=\"name\">Enter your name: </label>\n    <input type=\"text\" name=\"name\" id=\"name\" required>\n</form>"
-    },
-    {
-      "type": "H2Section",
-      "attributes": null,
       "children": [
         {
           "type": "P",
           "children": [
             {
               "type": "Text",
-              "text": "Meta"
+              "text": "I'm"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "Content"
-            }
-          ]
-        },
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "Section"
+              "text": "not"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "with"
+              "text": "good"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "differen"
+              "text": "at"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "types"
+              "text": "top"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "ten"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "lists,"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "but"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "this"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "one"
             },
             {
               "type": "Space"
@@ -2126,7 +2066,66 @@
             },
             {
               "type": "Text",
-              "text": "metadata"
+              "text": "my"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "favorites"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "from"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "XKCD"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "H2Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Some"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Details"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Neopolitan"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "documents"
             },
             {
               "type": "Space"
@@ -2140,21 +2139,189 @@
             },
             {
               "type": "Text",
-              "text": "included"
+              "text": "divided"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "as"
+              "text": "into"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "well."
+              "text": "sections."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Each"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "one"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "starts"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "neo",
+                  "value": null
+                }
+              ],
+              "text": "->"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "token"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "followed"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "by"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "type"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "name."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "type"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "determines"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "what"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "happens"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "content"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "inside"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it."
             },
             {
               "type": "Space"
@@ -2174,9 +2341,96 @@
               "type": "Space"
             },
             {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "neo",
+                  "value": null
+                }
+              ],
+              "text": "-> h2"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "becomes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "an"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "html",
+                  "value": null
+                }
+              ],
+              "text": "<h2>"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "element:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> h2\n\nBring your best compass"
+      },
+      "html": "<h2>Bring your best compass</h2>\n"
+    },
+    {
+      "type": "Paragraphs",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "While"
+            },
+            {
+              "type": "Space"
+            },
+            {
               "type": "CodeShorthand",
               "attributes": null,
-              "text": "-> attributes"
+              "text": "-> list"
             },
             {
               "type": "Space"
@@ -2190,49 +2444,22 @@
             },
             {
               "type": "Text",
-              "text": "provide"
+              "text": "use"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": "-"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "key/value"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "pairs"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "at"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "page"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "level"
+              "text": "characters"
             },
             {
               "type": "Space"
@@ -2246,58 +2473,52 @@
             },
             {
               "type": "Text",
-              "text": "the"
+              "text": "define"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "processing"
+              "text": "list"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "engine."
+              "text": "items:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> list\n\n- Raise the sail\n\n- Shut the hatch"
+      },
+      "html": "<ul>\n  <li>\n    <p>Raise the sail</p>\n  </li>\n  <li>\n    <p>Shut the hatch</p>\n  </li>\n</ul>"
+    },
+    {
+      "type": "NoteSection",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "These"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "The"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "CodeShorthand",
-              "attributes": null,
-              "text": "-> css"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "and"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "CodeShorthand",
-              "attributes": null,
-              "text": "-> script"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "sections"
+              "text": "examples"
             },
             {
               "type": "Space"
@@ -2311,28 +2532,339 @@
             },
             {
               "type": "Text",
-              "text": "designed"
+              "text": "based"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "to"
+              "text": "off"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "push"
+              "text": "my"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "their"
+              "text": "demo"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "implementation."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "specific"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "HTML"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "just"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "what"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I'm"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "using."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "think"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it's"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "solid"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "choice,"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "but"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "it's"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "no"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "way"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "mandate."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "H2Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Full"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "List"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "There"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "are"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "46"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "types."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Some"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "are"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "content."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Others"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "are"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "for"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "metadata."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "There"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "are"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "sections"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "put"
             },
             {
               "type": "Space"
@@ -2346,7 +2878,7 @@
             },
             {
               "type": "Text",
-              "text": "into"
+              "text": "in"
             },
             {
               "type": "Space"
@@ -2381,164 +2913,28 @@
             },
             {
               "type": "Text",
-              "text": "document."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "NeoExampleStartEndSection",
-      "attributes": null,
-      "raw": {
-        "type": "RawContent",
-        "text": "-> css\n\n.highlight {\n  background: white;\n}"
-      },
-      "html": ""
-    },
-    {
-      "type": "H2Section",
-      "attributes": null,
-      "children": [
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "Inline"
+              "text": "document"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "Tags"
-            }
-          ]
-        },
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "Several"
+              "text": "and"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "inline"
+              "text": "others"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "tags"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "are"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "provided"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "for"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "styling,"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "linking,"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "etc..."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "NeoExampleStartEndSection",
-      "attributes": null,
-      "raw": {
-        "type": "RawContent",
-        "text": "-> p\n\nThe <<colt|strong>> reared."
-      },
-      "html": "<p>The <strong>colt</strong> reared.</p>\n"
-    },
-    {
-      "type": "H2Section",
-      "attributes": null,
-      "children": [
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "Inline"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Tag"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Attributes"
-            }
-          ]
-        },
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "Key/value"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "pairs"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "passed"
+              "text": "designed"
             },
             {
               "type": "Space"
@@ -2552,66 +2948,35 @@
             },
             {
               "type": "Text",
-              "text": "inline"
+              "text": "call"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "tags"
+              "text": "out"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "output"
+              "text": "to"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "as"
+              "text": "external"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "attributes:"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "NeoExampleStartEndSection",
-      "attributes": null,
-      "raw": {
-        "type": "RawContent",
-        "text": "-> p\n\nThe <<tree top|strike|id: alfa|class: bravo>> waved"
-      },
-      "html": "<p>The <strike id=\"alfa\" class=\"bravo\">tree top</strong> waved</p>\n"
-    },
-    {
-      "type": "H2Section",
-      "attributes": null,
-      "children": [
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "Inline"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Shorthand"
+              "text": "processes."
             }
           ]
         },
@@ -2620,140 +2985,7 @@
           "children": [
             {
               "type": "Text",
-              "text": "Shorthand"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "versions"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "of"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "CodeShorthand",
-              "attributes": null,
-              "text": "code"
-            },
-            {
-              "type": "Text",
-              "text": ","
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "CodeShorthand",
-              "attributes": null,
-              "text": "em"
-            },
-            {
-              "type": "Text",
-              "text": ","
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "CodeShorthand",
-              "attributes": null,
-              "text": "strong"
-            },
-            {
-              "type": "Text",
-              "text": ","
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "and"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "CodeShorthand",
-              "attributes": null,
-              "text": "link"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "look"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "like"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "this:"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "NeoExampleStartEndSection",
-      "attributes": null,
-      "raw": {
-        "type": "RawContent",
-        "text": "-> p\n\n`alfa``\n\n_bravo__\n\n*delta**\n\n>charlie>https://www.example.com/>"
-      },
-      "html": "<p><code>alfa</code></p>\n<p><em>bravo</em></p>\n<p><strong>delta</strong></p>\n<p><a href=\"https://www.example.com/\">charlie</a></p>\n"
-    },
-    {
-      "type": "H2Section",
-      "attributes": null,
-      "children": [
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "Inline"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Shorthand"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Attributes"
-            }
-          ]
-        },
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "Attributes"
+              "text": "Details"
             },
             {
               "type": "Space"
@@ -2767,13 +2999,6 @@
             },
             {
               "type": "Text",
-              "text": "also"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
               "text": "be"
             },
             {
@@ -2781,124 +3006,14 @@
             },
             {
               "type": "Text",
-              "text": "added"
+              "text": "found"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "to"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "shorthand"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "tags:"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "NeoExampleStartEndSection",
-      "attributes": null,
-      "raw": {
-        "type": "RawContent",
-        "text": "-> p\n\n`echo`id: foxtrot|class: highlighted`"
-      },
-      "html": "<p><code id=\"foxtrot\" class=\"highlighted\">echo</code></p>\n"
-    },
-    {
-      "type": "H2Section",
-      "attributes": null,
-      "children": [
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "Inline"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Code"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Language"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Shorthand"
-            }
-          ]
-        },
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "If"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "a"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "key"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "is"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "passed"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "as"
+              "text": "on"
             },
             {
               "type": "Space"
@@ -2911,390 +3026,23 @@
               "type": "Space"
             },
             {
-              "type": "Text",
-              "text": "first"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "argument"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "to"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "a"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "code"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "shorthand"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "without"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "a"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "value"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "it's"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "treated"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "as"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "a"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "language"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "and"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "turned"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "into"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "a"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "CodeShorthand",
+              "type": "Link",
               "attributes": [
                 {
                   "type": "Basic",
-                  "key": "html",
+                  "key": "/sections/index.html",
                   "value": null
                 }
               ],
-              "text": "language-x"
-            },
-            {
-              "type": "Space"
+              "text": "full list"
             },
             {
               "type": "Text",
-              "text": "class"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "in"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "HTML."
+              "text": "."
             }
           ]
         }
       ]
-    },
-    {
-      "type": "NeoExampleStartEndSection",
-      "attributes": null,
-      "raw": {
-        "type": "RawContent",
-        "text": "-> p\n\n`delta`rust`\n\n`echo`rust|id: sierra`"
-      },
-      "html": "<p><code class=\"language-rust\">delta</code></p>\n<p><code class=\"language-rust\" id=\"sierra\">echo</code></p>\n"
-    },
-    {
-      "type": "WarningSection",
-      "attributes": null,
-      "children": [
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "NOTE:"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Adding"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "an"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "explicit"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "CodeShorthand",
-              "attributes": null,
-              "text": "class"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "along"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "with"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "language"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "currently"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "results"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "in"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "two"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "CodeShorthand",
-              "attributes": null,
-              "text": "class"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "attributes"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "being"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "added"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "to"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "output."
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "That"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "is,"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "this"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "would"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "be"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "a"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "problem:"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "NeoExampleStartEndSection",
-      "attributes": null,
-      "raw": {
-        "type": "RawContent",
-        "text": "-> p\n\n`echo`rust|class: highlighted`"
-      },
-      "html": "<p><code class=\"language-rust\" class=\"highlighted\">echo</code></p>\n"
     },
     {
       "type": "H2Section",
@@ -3305,35 +3053,14 @@
           "children": [
             {
               "type": "Text",
-              "text": "An"
+              "text": "Section"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "AST"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Not"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "An"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Output"
+              "text": "Attributes"
             }
           ]
         },
@@ -3342,49 +3069,14 @@
           "children": [
             {
               "type": "Text",
-              "text": "The"
+              "text": "One"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "HTML"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "outputs"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "shown"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "above"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "are"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "from"
+              "text": "of"
             },
             {
               "type": "Space"
@@ -3398,147 +3090,14 @@
             },
             {
               "type": "Text",
-              "text": "processing"
+              "text": "main"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "implementation."
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "They're"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "an"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "optional"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "starting"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "point,"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "not"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "a"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "spec."
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "Parsing"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "files"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "into"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "AST"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "is"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "what's"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "standardized."
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "What"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "you"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "do"
+              "text": "frustrations"
             },
             {
               "type": "Space"
@@ -3552,21 +3111,14 @@
             },
             {
               "type": "Text",
-              "text": "it"
+              "text": "other"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "from"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "there"
+              "text": "formats"
             },
             {
               "type": "Space"
@@ -3580,7 +3132,35 @@
             },
             {
               "type": "Text",
-              "text": "up"
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "lack"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "of"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "an"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "ability"
             },
             {
               "type": "Space"
@@ -3594,7 +3174,597 @@
             },
             {
               "type": "Text",
-              "text": "you."
+              "text": "add"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "attributes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "content."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Neopolitan"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "addresses"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "directly."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "It's"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "huge"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "factor"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "behind"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "design."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Each"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "content"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "accepts"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "attributes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "defined"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "by"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "lines"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "starting"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": ">>"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "tokens"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "directly"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "after"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": "->"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "section"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "call."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Here's"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "same"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "neo",
+                  "value": null
+                }
+              ],
+              "text": "-> h2"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "example"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "from"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "above"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "with"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "an"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": "id"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "and"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "CodeShorthand",
+              "attributes": null,
+              "text": "class"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "added:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NeoExampleStartEndSection",
+      "attributes": null,
+      "raw": {
+        "type": "RawContent",
+        "text": "-> h2\n>> id: alfa\n>> class: bravo charlie\n\nBring your best compass"
+      },
+      "html": "<h2 id=\"alfa\" class=\"bravo charlie\">Bring your best compass</h2>\n"
+    },
+    {
+      "type": "H2Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Further"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "Exploration"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "That'll"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "give"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "you"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "an"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "initial"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "idea"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "of"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "format."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "More"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "details"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "are"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "availalbe"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "to"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "nav."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "LinkShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "/sections/index.html",
+                  "value": null
+                }
+              ],
+              "text": "sections page"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "has"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "list"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "of"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "everything"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that's"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "done"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "and"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "items"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "remain."
             }
           ]
         }

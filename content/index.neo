@@ -35,8 +35,8 @@ to a mix of all of the above.
 
 I want aspects of each of those rolled into a single format. 
 And, I don't want to have to change it again. I haven't 
-found anything that pulls that off. So, I'm rolling my own
-format. It's called Neopolitan. It looks like this:
+found anything that pulls that off. So, I'm rolling my own. 
+It's called Neopolitan and it looks like this:
 
 
 -> startcode
@@ -68,7 +68,6 @@ are very different.
 
 -> attributes
 >> date: 2023-04-16 19:06:40
->> id: 2owpsh3a381
 >> type: default 
 >> published: y
 
@@ -82,10 +81,8 @@ Dogfooding
 I'm not a particular  fan of the term "dogfooding".
 "Drink your own champagne" is worse. Either way, 
 that's what I'm doing. This site is built from the 
-Neopolitan documents and a site generation tool 
-I'm putting together for a demo implementation.
-
-The sample content above is an example. It's what
+Neopolitan documents and a demo site generator. 
+The sample above is an example. It's what
 built the first part of this page.
 
 
@@ -93,171 +90,119 @@ built the first part of this page.
 
 The Specification
 
-I'm still working on how best to spec the format. 
-Gotta finish building it first. But, I'm pretty 
-sure of one thing: the spec won't include 
-output formats. If other formats have 
-taught us anything it's that that ways lies 
-dragons^xkcd^^. 
+I'm still working on the spec. It'll cover all
+the details of the format. It won't have 
+requirements for output though. Those details
+should reside in the hands of the implementer.
+Plus, making standards is a tricky game^xkcd^^. 
 
 -> footnote
 >> xkcd
 >> title: XKCD - Standards
 >> url: https://xkcd.com/927/
 
-
-
-
--> startneoexample
-
--> html
-
-<form>
-    <label for="name">Enter your name: </label>
-    <input type="text" name="name" id="name" required>
-</form>
-
--> endneoexample
-
+I'm not good at top ten lists, but this is one
+of my favorites from XKCD
 
 
 -> h2
 
-Meta Content
+Some Details
 
-Section with differen types of metadata are included
-as well. For example, `-> attributes`` sections provide 
-key/value pairs at the page level to the processing 
-engine. The `-> css`` and `-> script`` sections are 
-designed to push their content into the head of the 
-document.
+Neopolitan documents are divided into sections. 
+Each one starts with a `->`neo` token followed
+by the section type name. The type 
+determines what happens with the content inside
+it. For example, the `-> h2`neo` section becomes
+an `<h2>`html` element:
 
 -> startneoexample
-
--> css
-
-.highlight {
-  background: white;
-}
-
--> endneoexample
 
 -> h2
 
-Inline Tags
+Bring your best compass 
 
-Several inline tags are provided for styling, linking, 
-etc...
-
--> startneoexample
+-> endneoexample
 
 -> p
 
-The <<colt|strong>> reared.
+While `-> list`` sections use `-`` characters
+to define list items:
+
+-> startneoexample
+
+-> list
+
+- Raise the sail
+
+- Shut the hatch 
+
+-> endneoexample
+
+-> note
+
+These examples are based off my demo implementation. 
+The specific HTML is just what I'm using. I think
+it's a solid choice, but it's in no way a mandate. 
+
+
+-> h2
+
+Full Section List
+
+There are 46 section types. Some are for content.
+Others are for metadata. There are sections that put
+content in the head of the document and others
+designed to call out to external processes.
+
+Details can be found on the <<full list|link|/sections/index.html>>.
+
+-> h2
+
+Section Attributes
+
+One of my main frustrations with other formats is the lack 
+of an ability to add attributes to content. Neopolitan addresses
+that directly. It's a huge factor behind the design. Each 
+content section accepts attributes defined by lines starting
+with `>>`` tokens directly after the `->`` section call. 
+
+Here's the same `-> h2`neo` example from above with an
+`id`` and a `class`` added:
+
+
+-> startneoexample
+
+-> h2
+>> id: alfa
+>> class: bravo charlie
+
+Bring your best compass 
 
 -> endneoexample
 
 -> h2
 
-Inline Tag Attributes
+Further Exploration
 
-Key/value pairs passed to inline tags output
-as attributes:
-
--> startneoexample
-
--> p
-
-The <<tree top|strike|id: alfa|class: bravo>> waved
-
--> endneoexample
-
-
--> h2
-
-Inline Shorthand
-
-Shorthand versions of `code``, `em``, 
-`strong``, and `link`` look like this:
-
--> startneoexample
-
--> p
-
-`alfa``
-
-_bravo__
-
-*delta**
-
->charlie>https://www.example.com/>
-
--> endneoexample
-
-
--> h2
-
-Inline Shorthand Attributes
-
-Attributes can also be added to the shorthand 
-tags:
-
-
--> startneoexample
-
--> p
-
-`echo`id: foxtrot|class: highlighted`
-
--> endneoexample
-
-
--> h2
-
-Inline Code Language Shorthand
-
-If a key is passed as the first argument to a 
-code shorthand without a value it's treated
-as a language and turned into a 
-`language-x`html` class in the HTML.
-
-
--> startneoexample
-
--> p
-
-`delta`rust`
-
-`echo`rust|id: sierra`
-
--> endneoexample
-
--> warning
-
-NOTE: Adding an explicit `class`` along with
-the language currently results in two
-`class`` attributes being added to the
-output. That is, this would be a problem:
-
--> startneoexample
-
--> p
-
-`echo`rust|class: highlighted`
-
--> endneoexample
+That'll give you an initial idea of the format. More details
+are availalbe in the to nav. The >sections page>/sections/index.html>
+has a list of everything that's done and the items that remain. 
 
 
 
--> h2
 
-An AST Not An Output
 
-The HTML outputs shown above are from my processing 
-implementation. They're an optional starting point, 
-not a spec. Parsing files into the AST is what's
-standardized. What you do with it from there is
-up to you. 
+
+
+
+
+
+
+
+
+
+
 
 
 

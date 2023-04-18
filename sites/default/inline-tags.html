@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neopolitan - A plain-text format for websites</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neopolitan - A plain-text format for my website" />
+  <meta property="og:description"
+    content="Details on the open-source, plain-text format I'm setting up to manage the content for my site" />
+  <meta property="og:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site:id" content="@TheIdOfAlan" />
+  <meta name="twitter:creator" content="@TheIdOfAlan" />
+  <link rel="icon" type="image/png" sizes="228x228" href="/favicons/228x228.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicons/180x180.png" />
+  <link rel="stylesheet" href="/styles/global.css" />
+
+
+
+</head>
+
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/sections/index.html">Sections</a>
+          </li>
+          <li>
+            <a href="/attributes/index.html">Attributes</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+  <main><h1 class="title">
+  <p>Inline Tags And Shorthands</p>
+</h1><h2>Inline Tags</h2>
+<p>Several inline tags are provided for styling, linking, etc...</p>
+
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; p
+
+The &lt;&lt;colt|strong&gt;&gt; reared.</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;p&gt;The &lt;strong&gt;colt&lt;&#x2f;strong&gt; reared.&lt;&#x2f;p&gt;
+</code></pre>
+</div><h2>Inline Tag Attributes</h2>
+<p>Key&#x2f;value pairs passed to inline tags output as attributes:</p>
+
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; p
+
+The &lt;&lt;tree top|strike|id: alfa|class: bravo&gt;&gt; waved</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;p&gt;The &lt;strike id=&quot;alfa&quot; class=&quot;bravo&quot;&gt;tree top&lt;&#x2f;strong&gt; waved&lt;&#x2f;p&gt;
+</code></pre>
+</div><h2>Inline Shorthand</h2>
+<p>Shorthand versions of <code>code</code>, <code>em</code>, <code>strong</code>, and <code>link</code> look like this:</p>
+
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; p
+
+`alfa``
+
+_bravo__
+
+*delta**
+
+&gt;charlie&gt;https:&#x2f;&#x2f;www.example.com&#x2f;&gt;</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;p&gt;&lt;code&gt;alfa&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;em&gt;bravo&lt;&#x2f;em&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;strong&gt;delta&lt;&#x2f;strong&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;www.example.com&#x2f;&quot;&gt;charlie&lt;&#x2f;a&gt;&lt;&#x2f;p&gt;
+</code></pre>
+</div><h2>Inline Shorthand Attributes</h2>
+<p>Attributes can also be added to the shorthand tags:</p>
+
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; p
+
+`echo`id: foxtrot|class: highlighted`</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;p&gt;&lt;code id=&quot;foxtrot&quot; class=&quot;highlighted&quot;&gt;echo&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
+</code></pre>
+</div><h2>Inline Attributes</h2>
+<p>Adding attributes to inline tags is also possible:</p>
+
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; p
+
+alfa `bravo`class: charlie` delta</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;p&gt;alfa &lt;code class=&quot;charlie&quot;&gt;bravo&lt;&#x2f;code&gt; delta&lt;&#x2f;p&gt;
+</code></pre>
+</div><h2>Inline Code Language Shorthand</h2>
+<p>If a key is passed as the first argument to a code shorthand without a value it&#x27;s treated as a language and turned into a <code class="language-html">language-x</code> class in the HTML.</p>
+
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; p
+
+`delta`rust`
+
+`echo`rust|id: sierra`</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;p&gt;&lt;code class=&quot;language-rust&quot;&gt;delta&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;code class=&quot;language-rust&quot; id=&quot;sierra&quot;&gt;echo&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
+</code></pre>
+</div><div class="warning">
+  <p>NOTE: Adding an explicit <code>class</code> along with the language currently results in two <code>class</code> attributes being added to the output. That is, this would be a problem:</p>
+</div>
+<div class="neoexample">
+<h6>Source</h6>
+<pre><code class=""
+>-&gt; p
+
+`echo`rust|class: highlighted`</code></pre>
+
+<h6>Output</h6>
+<pre class="language-html"><code>&lt;p&gt;&lt;code class=&quot;language-rust&quot; class=&quot;highlighted&quot;&gt;echo&lt;&#x2f;code&gt;&lt;&#x2f;p&gt;
+</code></pre>
+</div></main>
+  <footer>
+  from <a href="https://www.alanwsmith.com/">alan w. smith</a>
+  </footer>
+</body>
+</html>
