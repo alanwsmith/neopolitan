@@ -94,11 +94,17 @@ Grimoire (aka notes app).
 [] Put in footnote reference to 
 >meilisearch>https://www.meilisearch.com/>
 
--> h2
+-> h3
 
 Previously
 
 >Is This Thing On?>/blog/is-this-thing-on.html>
+
+-> h3
+
+Next
+
+>Checklist Example>/blog/checklist-example.html>
 
 -> attributes
 >> date: 2023-04-17 15:24:52

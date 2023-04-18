@@ -895,7 +895,7 @@
         "type": "RawContent",
         "text": "-> code\n>> rust\n\nprintln!(\"Hello, World\");"
       },
-      "html": "<pre><code class=\"language-rust\">println!(&quot;Hello, World&quot;);</code></pre>"
+      "html": "<div class=\"pre-wrapper\"><div class=\"pre-spacer\"></div><pre><code class=\"language-rust\">println!(&quot;Hello, World&quot;);</code></pre></div>"
     },
     {
       "type": "NotesSection",
@@ -1455,7 +1455,7 @@
         "type": "RawContent",
         "text": "-> note\n>> class: echo\n\nTake the winding path"
       },
-      "html": "<div class=\"note echo\"><p>Take the winding path</p></div>"
+      "html": "<div class=\"note echo\">\n  <div class=\"noteline\">note</div>\n  <div class=\"notetext\"><p>Take the winding path</p></div>\n</div>"
     },
     {
       "type": "AttributesSection",

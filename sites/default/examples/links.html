@@ -57,8 +57,11 @@
     </header>
   <main><h1 class="title">
   <p>Links and Link References</p>
-</h1><div class="note"><p>This is still a draft</p></div><p>Links are done with one of the following options</p>
-<pre><code class="language-neo"># not yet implemend
+</h1><div class="note">
+  <div class="noteline">note</div>
+  <div class="notetext"><p>This is still a draft</p></div>
+</div><p>Links are done with one of the following options</p>
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code class="language-neo"># not yet implemend
 &gt;text&gt;URL&gt;
 
 # not yet implemend
@@ -71,8 +74,8 @@
 &lt;&lt;link|TEXT|URL&gt;&gt;
 
 # not yet implemend
-&lt;&lt;link|TEXT|URL|KEY: VALUE|KEY: ETC...&gt;&gt;</code></pre><p>The links can span multiple lines like this:</p>
-<pre><code class="language-neo">&gt;text&gt;
+&lt;&lt;link|TEXT|URL|KEY: VALUE|KEY: ETC...&gt;&gt;</code></pre></div><p>The links can span multiple lines like this:</p>
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code class="language-neo">&gt;text&gt;
 https:&#x2f;&#x2f;www.example.com&#x2f;&gt;
 
 or
@@ -80,15 +83,49 @@ or
 &lt;&lt;link|
 https:&#x2f;&#x2f;www.example.com&#x2f;|
 key: value|
-key: value&gt;&gt;</code></pre><h2>Reference Links</h2>
+key: value&gt;&gt;</code></pre></div><h2>Reference Links</h2>
 <p>The links don&#x27;t have to have the URL in them directly, they can be reference to links stored in a <code>-&gt; links</code> section</p>
-<pre><code class="language-neo">&lt;&lt;l|some text|ref_name&gt;&gt;
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code class="language-neo">&lt;&lt;l|some text|ref_name&gt;&gt;
 
 -&gt; links
 
-- ref_name:</code></pre><p>As long as it mathces it&#x27;ll be used for the link.</p>
+- ref_name:</code></pre></div><p>As long as it mathces it&#x27;ll be used for the link.</p>
 </main>
   <footer>
+
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+          <li>
+            <a href="/content-sections.html">Content Sections</a>
+          </li>
+          <li>
+            <a href="/metadata-sections.html">Metadata Sections</a>
+          </li>
+          <li>
+            <a href="/functional-sections.html">Functional Sections</a>
+          </li>
+          <li>
+            <a href="/section-attributes.html">Section Attributes</a>
+          </li>
+          <li>
+            <a href="/inline-tags.html">Inline Tags</a>
+          </li>
+        </ul>
+      </nav>
+
+
   from <a href="https://www.alanwsmith.com/">alan w. smith</a>
   </footer>
 </body>

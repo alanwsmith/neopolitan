@@ -119,6 +119,274 @@
             {
               "type": "Text",
               "text": "etc..."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "main"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "format"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "List",
+      "attributes": null,
+      "children": [
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Two"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "opening"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Kbd",
+                  "attributes": null,
+                  "text": "<"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Kbd",
+                  "attributes": null,
+                  "text": "<"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "characters"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "The"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "text"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "to"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "alter"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "A"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "CodeShorthand",
+                  "attributes": null,
+                  "text": "|"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "pipe"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "character"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "The"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "type"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "of"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "effect"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "to"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "apply"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Two"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "closing"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Kbd",
+                  "attributes": null,
+                  "text": ">"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Kbd",
+                  "attributes": null,
+                  "text": ">"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "characters"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Paragraphs",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "For"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "example:"
             }
           ]
         }
@@ -132,6 +400,1234 @@
         "text": "-> p\n\nThe <<colt|strong>> reared."
       },
       "html": "<p>The <strong>colt</strong> reared.</p>\n"
+    },
+    {
+      "type": "H2Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Availability"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "follow"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "inline"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "tags"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "are"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "available."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "(the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "check"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "marks"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "show"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "which"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "ones"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I've"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "implemented"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "demo"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "site"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "builder"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "so"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "far)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ToDoSection",
+      "attributes": null,
+      "children": [
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "abbr"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Abbreviation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "audio"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Audio"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "[x]"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "b"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Bring"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "attention"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "button"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Button"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "cite"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Cite"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": "x",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "code"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Code"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "data"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Data"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "del"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Del"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "dfn"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Definition"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": "x",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "em"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Emphasis"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": "x",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "i"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Idiomatic"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "img"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Image"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "input"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Input"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "ins"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Insert"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": "x",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "kbd"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Keyboard"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "input"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "label"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Label"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "legend"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Legend"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": "x",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "link"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "meter"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Meter"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "object"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Object"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "progress"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Progress"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "q"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Quotation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "samp"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Sample"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Output"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "small"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Small"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "text"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "(side"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "comment)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": "x",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "strike"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Strikethru"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": "x",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "span"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Span"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": "x",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "strong"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": "x",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "sub"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Subscript"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": "x",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "sup"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Superscript"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "time"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Time"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": "x",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "u"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Unarticulated"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Annotation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "var"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Variable"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ToDoItem",
+          "status": null,
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "wbr"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "-"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Line"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Break"
+                },
+                {
+                  "type": "Space"
+                },
+                {
+                  "type": "Text",
+                  "text": "Opportunity"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "H2Section",

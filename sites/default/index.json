@@ -82,13 +82,6 @@
           "children": [
             {
               "type": "Text",
-              "text": "NOTE:"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
               "text": "I'm"
             },
             {
@@ -278,6 +271,20 @@
             },
             {
               "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "work"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
               "text": "in"
             },
             {
@@ -285,14 +292,7 @@
             },
             {
               "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "works."
+              "text": "progress."
             }
           ]
         }
@@ -739,7 +739,7 @@
             },
             {
               "type": "Text",
-              "text": "one"
+              "text": "shift"
             },
             {
               "type": "Space"
@@ -1300,11 +1300,16 @@
           "type": "Attribute",
           "key": "neo",
           "value": null
+        },
+        {
+          "type": "Attribute",
+          "key": "file",
+          "value": "index.neo"
         }
       ],
       "children": {
         "type": "RawContent",
-        "text": "-> title\n\nWelcome To Neopolitan\n\n-> subtitle\n\nA plain-text format for websites\n\n-> note\n\nNOTE: I'm doing the \"launch before you're ready - \nbuild in public\" thing. Most of the ideas here are\nin place but some content is still a work in progress. \n\n-> h2\n\nIntroduction\n\nMy site is twenty years old. Pondering those decades \ngot me thinking about the next two. I find myself asking \n\"What do I want to use for the next twenty years?\" instead \nof \"What do I want to do for my next redesign?\" The answers \nare very different.\n\n-> attributes\n>> date: 2023-04-16 19:06:40\n>> type: default \n>> published: y"
+        "text": "-> title\n\nWelcome To Neopolitan\n\n-> subtitle\n\nA plain-text format for websites\n\n-> note\n\nI'm doing the \"launch before you're ready - \nbuild in public\" thing. The ideas are mostly in place\nbut the content and the demo implementation  \nare still a work in progress. \n\n\n-> h2\n\nIntroduction\n\nMy site is twenty years old. Pondering those decades \ngot me thinking about the next two. I find myself asking \n\"What do I want to use for the next twenty years?\" instead \nof \"What do I want to do for my next redesign?\" The answers \nare very different.\n\n-> attributes\n>> date: 2023-04-16 19:06:40\n>> type: default \n>> published: y"
       }
     },
     {
@@ -1633,14 +1638,7 @@
             },
             {
               "type": "Text",
-              "text": "first"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "part"
+              "text": "top"
             },
             {
               "type": "Space"
@@ -2102,14 +2100,14 @@
           "children": [
             {
               "type": "Text",
-              "text": "Some"
+              "text": "The"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "Details"
+              "text": "Sections"
             }
           ]
         },
@@ -2722,13 +2720,6 @@
           "children": [
             {
               "type": "Text",
-              "text": "Full"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
               "text": "Section"
             },
             {
@@ -2736,7 +2727,7 @@
             },
             {
               "type": "Text",
-              "text": "List"
+              "text": "Types"
             }
           ]
         },
@@ -3020,25 +3011,86 @@
             },
             {
               "type": "Text",
-              "text": "the"
+              "text": "these"
             },
             {
               "type": "Space"
             },
             {
-              "type": "Link",
-              "attributes": [
-                {
-                  "type": "Basic",
-                  "key": "/sections/index.html",
-                  "value": null
-                }
-              ],
-              "text": "full list"
-            },
-            {
               "type": "Text",
-              "text": "."
+              "text": "pages:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "List",
+      "attributes": null,
+      "children": [
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "LinkShorthand",
+                  "attributes": [
+                    {
+                      "type": "Basic",
+                      "key": "/content-sections.html",
+                      "value": null
+                    }
+                  ],
+                  "text": "Content Sections"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "LinkShorthand",
+                  "attributes": [
+                    {
+                      "type": "Basic",
+                      "key": "/metadata-sections.html",
+                      "value": null
+                    }
+                  ],
+                  "text": "Metadata Sections"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "UnorderedListItem",
+          "attributes": null,
+          "children": [
+            {
+              "type": "P",
+              "children": [
+                {
+                  "type": "LinkShorthand",
+                  "attributes": [
+                    {
+                      "type": "Basic",
+                      "key": "/functional-sections.html",
+                      "value": null
+                    }
+                  ],
+                  "text": "Functional Sections"
+                }
+              ]
             }
           ]
         }

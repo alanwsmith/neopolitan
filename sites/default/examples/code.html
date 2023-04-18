@@ -60,21 +60,23 @@
 </h1>
 <p>These are code blocks similar to code fence blocks in Markdown. If the first attribute has no value it is treated as the language and added as a <code>language-</code> class to the <code>&lt;pre&gt;</code> element</p>
 <div class="neoexample">
-<h6>Source</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class=""
 >-&gt; code
 
 console.log(&quot;Hello&quot;)
 console.log(&quot;, &quot;)
 console.log(&quot;World&quot;)</code></pre>
+</div>
 
-<h6>Output</h6>
-<pre class="language-html"><code>&lt;pre&gt;&lt;code&gt;console.log(&amp;quot;Hello&amp;quot;)
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
+<pre class="language-html"><code>&lt;div class=&quot;pre-wrapper&quot;&gt;&lt;div class=&quot;pre-spacer&quot;&gt;&lt;&#x2f;div&gt;&lt;pre&gt;&lt;code&gt;console.log(&amp;quot;Hello&amp;quot;)
 console.log(&amp;quot;, &amp;quot;)
-console.log(&amp;quot;World&amp;quot;)&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code></pre>
+console.log(&amp;quot;World&amp;quot;)&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;&lt;&#x2f;div&gt;</code></pre>
+</div>
 </div>
 <div class="neoexample">
-<h6>Source</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class=""
 >-&gt; code
 &gt;&gt; python 
@@ -82,14 +84,16 @@ console.log(&amp;quot;World&amp;quot;)&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code>
 print(&quot;Hello&quot;)
 print(&quot;, &quot;)
 print(&quot;World&quot;)</code></pre>
+</div>
 
-<h6>Output</h6>
-<pre class="language-html"><code>&lt;pre&gt;&lt;code class=&quot;language-python &quot;&gt;print(&amp;quot;Hello&amp;quot;)
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
+<pre class="language-html"><code>&lt;div class=&quot;pre-wrapper&quot;&gt;&lt;div class=&quot;pre-spacer&quot;&gt;&lt;&#x2f;div&gt;&lt;pre&gt;&lt;code class=&quot;language-python &quot;&gt;print(&amp;quot;Hello&amp;quot;)
 print(&amp;quot;, &amp;quot;)
-print(&amp;quot;World&amp;quot;)&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code></pre>
+print(&amp;quot;World&amp;quot;)&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;&lt;&#x2f;div&gt;</code></pre>
+</div>
 </div>
 <div class="neoexample">
-<h6>Source</h6>
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class=""
 >-&gt; code
 &gt;&gt; rust
@@ -98,13 +102,49 @@ print(&amp;quot;World&amp;quot;)&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code></pre>
 dbg!(&quot;Hello&quot;)
 dbg!(&quot;, &quot;)
 dbg!(&quot;World&quot;)</code></pre>
+</div>
 
-<h6>Output</h6>
-<pre class="language-html"><code>&lt;pre&gt;&lt;code class=&quot;language-rust foxtrot&quot;&gt;dbg!(&amp;quot;Hello&amp;quot;)
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
+<pre class="language-html"><code>&lt;div class=&quot;pre-wrapper&quot;&gt;&lt;div class=&quot;pre-spacer&quot;&gt;&lt;&#x2f;div&gt;&lt;pre&gt;&lt;code class=&quot;language-rust foxtrot&quot;&gt;dbg!(&amp;quot;Hello&amp;quot;)
 dbg!(&amp;quot;, &amp;quot;)
-dbg!(&amp;quot;World&amp;quot;)&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;</code></pre>
+dbg!(&amp;quot;World&amp;quot;)&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;&lt;&#x2f;div&gt;</code></pre>
+</div>
 </div></main>
   <footer>
+
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+          <li>
+            <a href="/content-sections.html">Content Sections</a>
+          </li>
+          <li>
+            <a href="/metadata-sections.html">Metadata Sections</a>
+          </li>
+          <li>
+            <a href="/functional-sections.html">Functional Sections</a>
+          </li>
+          <li>
+            <a href="/section-attributes.html">Section Attributes</a>
+          </li>
+          <li>
+            <a href="/inline-tags.html">Inline Tags</a>
+          </li>
+        </ul>
+      </nav>
+
+
   from <a href="https://www.alanwsmith.com/">alan w. smith</a>
   </footer>
 </body>

@@ -73,17 +73,17 @@ below.
 code, spans, quotes, etc... The tags start with
 two">-&gt; categories</code>&lt;`` and end with two <code>&gt;</code> Here&#x27;s a link as an example:</p>
   </li>
-</ul><pre><code class="language-neo">&lt;&lt;link|https:&#x2f;&#x2f;www.example.com&#x2f;|alfa text&gt;&gt;</code></pre><ul>
+</ul><div class="pre-wrapper"><div class="pre-spacer"></div><pre><code class="language-neo">&lt;&lt;link|https:&#x2f;&#x2f;www.example.com&#x2f;|alfa text&gt;&gt;</code></pre></div><ul>
   <li>
     <p>Links can also use references. This is done using some name or number in the tag then adding the same thing to a `-&gt; links` section somewhere in the document. For example:</p>
   </li>
-</ul><pre><code class="language-neo">&lt;&lt;link|1|bravo text&gt;&gt;</code></pre><p>And then in a `-&gt; links` section:</p>
-<pre><code class="language-neo">1: https:&#x2f;&#x2f;www.example.com</code></pre><ul>
+</ul><div class="pre-wrapper"><div class="pre-spacer"></div><pre><code class="language-neo">&lt;&lt;link|1|bravo text&gt;&gt;</code></pre></div><p>And then in a `-&gt; links` section:</p>
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code class="language-neo">1: https:&#x2f;&#x2f;www.example.com</code></pre></div><ul>
   <li>
     <p>Optional attributes can be passed to inline tags by separating them with a pipe. For example:</p>
   </li>
-</ul><pre><code class="language-neo">&lt;&lt;link|charlie|https:&#x2f;&#x2f;www.example.com&#x2f;|class: primary&gt;&gt;</code></pre><p>becomes:</p>
-<pre><code class="language-html">&lt;a href=&quot;https:&#x2f;&#x2f;www.example.com&#x2f;&quot; class=&quot;primary&quot;&gt;charlie&lt;&#x2f;a&gt;</code></pre><ul>
+</ul><div class="pre-wrapper"><div class="pre-spacer"></div><pre><code class="language-neo">&lt;&lt;link|charlie|https:&#x2f;&#x2f;www.example.com&#x2f;|class: primary&gt;&gt;</code></pre></div><p>becomes:</p>
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code class="language-html">&lt;a href=&quot;https:&#x2f;&#x2f;www.example.com&#x2f;&quot; class=&quot;primary&quot;&gt;charlie&lt;&#x2f;a&gt;</code></pre></div><ul>
   <li>
     <p>Shorthands using backtics, underscores, etc... are in progress for code, strong, emphasis, etc... in addition to the ability to make them with the inline tags.</p>
   </li>
@@ -151,15 +151,49 @@ with it first.
 <p>And I stream some of the work <a href="https://www.twitch.tv/theidofalan">on twitch</a></p>
 <p>Stop by and say hi.</p>
 <p>a</p>
-<pre><code>-&gt; attributes
+<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; attributes
 &gt;&gt; date: 2023-03-11 13:07:46
 &gt;&gt; updated: 2023-03-12 19:23:12
 &gt;&gt; id: 2n4twoxoqgi4
 &gt;&gt; site: neo
 &gt;&gt; type: post
-&gt;&gt; status: published</code></pre><p>placeholder</p>
+&gt;&gt; status: published</code></pre></div><p>placeholder</p>
 </main>
   <footer>
+
+      <nav>
+        <ul>
+          <li>
+            <a href="/index.html">Neopolitan</a>
+          </li>
+          <li>
+            <a href="/blog/index.html">Blog</a>
+          </li>
+          <li>
+            <a href="/philosophy/index.html">Philosophy</a>
+          </li>
+          <li>
+            <a href="/todo-list.html">TODOs</a>
+          </li>
+          <li>
+            <a href="/content-sections.html">Content Sections</a>
+          </li>
+          <li>
+            <a href="/metadata-sections.html">Metadata Sections</a>
+          </li>
+          <li>
+            <a href="/functional-sections.html">Functional Sections</a>
+          </li>
+          <li>
+            <a href="/section-attributes.html">Section Attributes</a>
+          </li>
+          <li>
+            <a href="/inline-tags.html">Inline Tags</a>
+          </li>
+        </ul>
+      </nav>
+
+
   from <a href="https://www.alanwsmith.com/">alan w. smith</a>
   </footer>
 </body>

@@ -1690,6 +1690,37 @@
       "children": null
     },
     {
+      "type": "H3Section",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "Previously"
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "LinkShorthand",
+              "attributes": [
+                {
+                  "type": "Basic",
+                  "key": "/blog/bookmark-pages.html",
+                  "value": null
+                }
+              ],
+              "text": "Considering Bookmarks"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "type": "AttributesSection",
       "attributes": [
         {

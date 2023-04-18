@@ -272,7 +272,7 @@
         "type": "RawContent",
         "text": "-> code\n\nconsole.log(\"Hello\")\nconsole.log(\", \")\nconsole.log(\"World\")"
       },
-      "html": "<pre><code>console.log(&quot;Hello&quot;)\nconsole.log(&quot;, &quot;)\nconsole.log(&quot;World&quot;)</code></pre>"
+      "html": "<div class=\"pre-wrapper\"><div class=\"pre-spacer\"></div><pre><code>console.log(&quot;Hello&quot;)\nconsole.log(&quot;, &quot;)\nconsole.log(&quot;World&quot;)</code></pre></div>"
     },
     {
       "type": "NeoExampleStartEndSection",
@@ -281,7 +281,7 @@
         "type": "RawContent",
         "text": "-> code\n>> python \n\nprint(\"Hello\")\nprint(\", \")\nprint(\"World\")"
       },
-      "html": "<pre><code class=\"language-python \">print(&quot;Hello&quot;)\nprint(&quot;, &quot;)\nprint(&quot;World&quot;)</code></pre>"
+      "html": "<div class=\"pre-wrapper\"><div class=\"pre-spacer\"></div><pre><code class=\"language-python \">print(&quot;Hello&quot;)\nprint(&quot;, &quot;)\nprint(&quot;World&quot;)</code></pre></div>"
     },
     {
       "type": "NeoExampleStartEndSection",
@@ -290,7 +290,7 @@
         "type": "RawContent",
         "text": "-> code\n>> rust\n>> class: foxtrot\n\ndbg!(\"Hello\")\ndbg!(\", \")\ndbg!(\"World\")"
       },
-      "html": "<pre><code class=\"language-rust foxtrot\">dbg!(&quot;Hello&quot;)\ndbg!(&quot;, &quot;)\ndbg!(&quot;World&quot;)</code></pre>"
+      "html": "<div class=\"pre-wrapper\"><div class=\"pre-spacer\"></div><pre><code class=\"language-rust foxtrot\">dbg!(&quot;Hello&quot;)\ndbg!(&quot;, &quot;)\ndbg!(&quot;World&quot;)</code></pre></div>"
     },
     {
       "type": "AttributesSection",

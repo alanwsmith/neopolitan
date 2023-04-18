@@ -102,7 +102,7 @@
         "type": "RawContent",
         "text": "-> note\n\nDraw the chart with heavy black lines."
       },
-      "html": "<div class=\"note\"><p>Draw the chart with heavy black lines.</p></div>"
+      "html": "<div class=\"note\">\n  <div class=\"noteline\">note</div>\n  <div class=\"notetext\"><p>Draw the chart with heavy black lines.</p></div>\n</div>"
     },
     {
       "type": "AttributesSection",

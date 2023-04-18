@@ -2,16 +2,29 @@
 
 Inline Tags And Shorthands
 
-
-
-
-
 -> h2
 
 Inline Tags
 
 Several inline tags are provided for styling, linking, 
-etc...
+etc... The main format is:
+
+-> list
+
+- Two opening <<<|kbd>> <<<|kbd>> characters 
+
+- The text to alter
+
+- A `|`` pipe character
+
+- The type of effect to apply
+
+- Two closing <<>|kbd>> <<>|kbd>> characters
+
+-> p
+
+For example:
+
 
 -> startneoexample
 
@@ -20,6 +33,90 @@ etc...
 The <<colt|strong>> reared.
 
 -> endneoexample
+
+
+-> h2
+
+Availability
+
+The follow inline tags are available. (the check
+marks show which ones I've implemented in the 
+demo site builder so far)
+
+
+-> todo
+
+
+
+[] abbr - Abbreviation
+
+[] audio - Audio 
+
+[x] b - Bring attention
+
+[] button - Button
+
+[] cite - Cite
+
+[x] code - Code
+
+[] data - Data
+
+[] del - Del
+
+[] dfn - Definition
+
+[x] em - Emphasis
+
+[x] i - Idiomatic text
+
+[] img - Image
+
+[] input - Input
+
+[] ins - Insert
+
+[x] kbd - Keyboard input
+
+[] label - Label
+
+[] legend - Legend
+
+[x] link - Link
+
+[] meter - Meter
+
+[] object - Object
+
+[] progress - Progress
+
+[] q - Quotation
+
+[] samp - Sample Output
+
+[] small - Small text (side comment)
+
+[x] strike - Strikethru
+
+[x] span - Span
+
+[x] strong - Strong
+
+[x] sub - Subscript
+
+[x] sup - Superscript
+
+[] time - Time
+
+[x] u - Unarticulated Annotation
+
+[] var - Variable
+
+[] wbr - Line Break Opportunity
+
+
+
+
 
 -> h2
 

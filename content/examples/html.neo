@@ -10,15 +10,16 @@ put in goes directly into the output file.
 -> html
 
 <p class="tango">
-Cut the pie into large parts.
+  Cut the pie into large parts.
 </p>
 
 -> endneoexample
 
--> notes
+-> note
 
-- Attributes are available, but they don't
-do anything in the reference implementation. 
+Adding `>>`` section attributes is perfectly
+acceptable. I don't. I just do everything in 
+the HTML since I'm messing with it anyway. 
 
 
 -> attributes
