@@ -1,10 +1,12 @@
 {%- macro code(data) -%}
-<div class="pre-wrapper"><div class="pre-spacer">
+<div class="pre-wrapper">
+  <div class="pre-spacer">
   {%- for attribute in data.attributes -%}
-  {%- if attribute.key == "file" %} {{ attribute.value -}}
+  {%- if attribute.key == "name" %} {{ attribute.value -}}
   {%- endif -%}
   {%- endfor -%}
-</div><pre><code 
+  </div>
+  <pre><code 
 {%- if data.attributes != None -%}
 {{- " " -}}
 class="
@@ -17,7 +19,8 @@ class="
   {%- endfor -%}
   "
 {%- endif -%}
->{{data.children.text}}</code></pre></div>
+>{{data.children.text}}</code></pre>
+</div>
 {%- endmacro %}
 
 

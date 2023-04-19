@@ -62,13 +62,17 @@
 </div>
 <div class="note">
   <div class="noteline">note</div>
-  <div class="notetext"><p>I&#x27;m doing the &quot;launch before you&#x27;re ready - build in public&quot; thing. The ideas are mostly in place but the content and the demo implementation are still a work in progress.</p></div>
+  <div class="notetext"><p>I&#x27;m doing the &quot;launch before you&#x27;re ready - build in public&quot; thing. The ideas are in place. The reference implementation and documentation are still works in progress.</p></div>
 </div><h2>Introduction</h2>
-<p>My site is twenty years old. Pondering those decades got me thinking about the next two. I find myself asking &quot;What do I want to use for the next twenty years?&quot; instead of &quot;What do I want to do for my next redesign?&quot; The answers are very different.</p>
+<p>My site is twenty years old. Thinking back on the past two decades got me thinking forward to the next two. Instead of, &quot;What do I want to use for my next redesign?&quot; I&#x27;m asking, &quot;What do I want to use for the next twenty years?&quot;</p>
+<p>The answers are very different.</p>
 <h2>The Format</h2>
-<p>I&#x27;ve moved my site a half dozen times. Each shift involved a painful content migration. I&#x27;ve gone from raw HTML to Perl scripts to Wordpress to PHP with various DB schemas to Markdown to MDX to Org-Mode to a mix of all of the above.</p>
-<p>I want aspects of each of those rolled into a single format. And, I don&#x27;t want to have to change it again. I haven&#x27;t found anything that pulls that off. So, I&#x27;m rolling my own. It&#x27;s called Neopolitan and it looks like this:</p>
-<div class="pre-wrapper"><div class="pre-spacer"> index.neo</div><pre><code class="language-neo">-&gt; title
+<p>I&#x27;ve moved my site a half dozen times. Each shift involved a painful content migration. I&#x27;ve gone from raw HTML to Perl to Wordpress to PHP to Ruby to Markdown to MDX to Org-Mode to a mix of all of the above.</p>
+<p>There are aspects to each I like. What I&#x27;m after is a format that&#x27;s easy to use and gives me the best parts of each. I also never want to change formats again, regardless of how often I change the tech I&#x27;m riding on.</p>
+<p>None of the formats I&#x27;ve seen pull that off. So, I designed a new one. It&#x27;s called Neopolitan and it looks like this:</p>
+<div class="pre-wrapper">
+  <div class="pre-spacer"> index.neo</div>
+  <pre><code class="language-neo">-&gt; title
 
 Welcome To Neopolitan
 
@@ -78,11 +82,10 @@ A plain-text format for websites
 
 -&gt; note
 
-I&#x27;m doing the &quot;launch before you&#x27;re ready - 
-build in public&quot; thing. The ideas are mostly in place
-but the content and the demo implementation  
-are still a work in progress. 
-
+I&#x27;m doing the &quot;launch before you&#x27;re ready - build 
+in public&quot; thing. The ideas are mostly in place. The 
+content and reference implementation are still a 
+work in progress. 
 
 -&gt; h2
 
@@ -97,12 +100,31 @@ are very different.
 -&gt; attributes
 &gt;&gt; date: 2023-04-16 19:06:40
 &gt;&gt; type: default 
-&gt;&gt; published: y</code></pre></div><h2>Dogfooding</h2>
-<p>I&#x27;m not a particular fan of the term &quot;dogfooding&quot;. &quot;Drink your own champagne&quot; is worse. Either way, that&#x27;s what I&#x27;m doing. This site is built from the Neopolitan documents and a demo site generator. The sample above is an example. It&#x27;s what built the top of this page.</p>
-<h2>The Specification</h2>
-<p>I&#x27;m still working on the spec. It&#x27;ll cover all the details of the format. It won&#x27;t have requirements for output though. Those details should reside in the hands of the implementer. Plus, making standards is a tricky game^xkcd^^.</p>
-<h2>The Sections</h2>
-<p>Neopolitan documents are divided into sections. Each one starts with a <code class="language-neo">-&gt;</code> token followed by the section type name. The type determines what happens with the content inside it. For example, the <code class="language-neo">-&gt; h2</code> section becomes an <code class="language-html">&lt;h2&gt;</code> element:</p>
+&gt;&gt; published: y</code></pre>
+</div><h2>The Specification</h2>
+<p>The full spec is still under construction. In the mean time, the basics work like this:</p>
+<p>Neopolitan documents are based off two things:</p>
+<ol>
+  <li>
+    <p>Section tokens which look like this:</p>
+    <p><code>-&gt;</code></p>
+  </li>
+  <li>
+    <p>Attribute tokens which look like this:</p>
+    <p><code>&gt;&gt;</code></p>
+  </li>
+</ol><h2>The Sections</h2>
+<p>The <code>-&gt;</code> section tokes are followed by the name for the type of section they&#x27;re starting. Examples include:</p>
+<div class="pre-wrapper">
+  <div class="pre-spacer"> Section Types</div>
+  <pre><code class="">-&gt; title
+
+-&gt; list
+
+-&gt; blockquote
+
+-&gt; table</code></pre>
+</div><p>The section types determine how content is treated. The <code>-&gt; h2</code> sections turn into <code class="language-html">&lt;h2&gt;</code> elements, for example.</p>
 
 <div class="neoexample">
 <div class="pre-wrapper"><div class="pre-spacer">Source</div>
@@ -116,34 +138,28 @@ Bring your best compass</code></pre>
 <pre class="language-html"><code>&lt;h2&gt;Bring your best compass&lt;&#x2f;h2&gt;
 </code></pre>
 </div>
-</div><p>While <code>-&gt; list</code> sections use <code>-</code> characters to define list items:</p>
+</div><h2>Default Section Types</h2>
+<p>There are 46 defined section types. Some map directly to HTML elements. Others are used for metadata and functionality like calling out to external processes. That number feels high, but in practice most pages stick to a small subset. But, having access to the rest is a delight.</p>
+<p>Take the aside tag:</p>
 
 <div class="neoexample">
 <div class="pre-wrapper"><div class="pre-spacer">Source</div>
 <pre><code class=""
->-&gt; list
+>-&gt; aside
 
-- Raise the sail
-
-- Shut the hatch</code></pre>
+There when you need it</code></pre>
 </div>
 
 <div class="pre-wrapper"><div class="pre-spacer">Output</div>
-<pre class="language-html"><code>&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Raise the sail&lt;&#x2f;p&gt;
-  &lt;&#x2f;li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Shut the hatch&lt;&#x2f;p&gt;
-  &lt;&#x2f;li&gt;
-&lt;&#x2f;ul&gt;</code></pre>
+<pre class="language-html"><code>&lt;aside&gt;
+  &lt;p&gt;There when you need it&lt;&#x2f;p&gt;
+&lt;&#x2f;aside&gt;</code></pre>
 </div>
-</div><div class="note">
-  <div class="noteline">note</div>
-  <div class="notetext"><p>These examples are based off my demo implementation. The specific HTML is just what I&#x27;m using. I think it&#x27;s a solid choice, but it&#x27;s in no way a mandate.</p></div>
-</div><h2>Section Types</h2>
-<p>There are 46 section types. Some are for content. Others are for metadata. There are sections that put content in the head of the document and others designed to call out to external processes.</p>
-<p>Details can be found on these pages:</p>
+</div><p>I didn&#x27;t even know that tag existed until I started putting this together.</p>
+<h2>Increased Usage</h2>
+<p>There are tons of features in HTML I don&#x27;t see used. My hypothesis is that that&#x27;s because we write in formats that don&#x27;t support them natively. Neopolitan&#x27;s goal is to provide a full set of easy to use building blocks that map to everything HTML can do.</p>
+<p>More tools with which to build a richer web.</p>
+<p>Details on the section types can be found here:</p>
 <ul>
   <li>
     <p><a href="/content-sections.html">Content Sections</a></p>
@@ -154,8 +170,8 @@ Bring your best compass</code></pre>
   <li>
     <p><a href="/functional-sections.html">Functional Sections</a></p>
   </li>
-</ul><h2>Section Attributes</h2>
-<p>One of my main frustrations with other formats is the lack of an ability to add attributes to content. Neopolitan addresses that directly. It&#x27;s a huge factor behind the design. Each content section accepts attributes defined by lines starting with <code>&gt;&gt;</code> tokens directly after the <code>-&gt;</code> section call. Here&#x27;s the same <code class="language-neo">-&gt; h2</code> example from above with an <code>id</code> and a <code>class</code> added:</p>
+</ul><h2>The Attributes</h2>
+<p>The attributes are where things get interesting. Any number can be added to sections. Those attributes get transposed directly to the output HTML. Here&#x27;s the same <code class="language-neo">-&gt; h2</code> example from above with a class and an id added.</p>
 
 <div class="neoexample">
 <div class="pre-wrapper"><div class="pre-spacer">Source</div>
@@ -171,7 +187,100 @@ Bring your best compass</code></pre>
 <pre class="language-html"><code>&lt;h2 id=&quot;alfa&quot; class=&quot;bravo charlie&quot;&gt;Bring your best compass&lt;&#x2f;h2&gt;
 </code></pre>
 </div>
-</div><h2>Further Exploration</h2>
+</div><h2>More With Attributes</h2>
+<p>The attributes aren&#x27;t restricted to direct translation. They can be used as metadata for the processing engine or to add supplemental content.</p>
+<p>For example, I use a <code>name</code> attribute with my <code>-&gt; code</code> sections to add a header or filename above the code block.</p>
+
+<div class="neoexample">
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
+<pre><code class=""
+>-&gt; code
+&gt;&gt; name: FOXTROT 
+
+console.log(&quot;DELTA&quot;)</code></pre>
+</div>
+
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
+<pre class="language-html"><code>&lt;div class=&quot;pre-wrapper&quot;&gt;
+  &lt;div class=&quot;pre-spacer&quot;&gt; FOXTROT &lt;&#x2f;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;&quot;&gt;console.log(&amp;quot;DELTA&amp;quot;)&lt;&#x2f;code&gt;&lt;&#x2f;pre&gt;
+&lt;&#x2f;div&gt;</code></pre>
+</div>
+</div><div class="pre-wrapper">
+  <div class="pre-spacer"> FOXTROT </div>
+  <pre><code class="">console.log(&quot;DELTA&quot;)</code></pre>
+</div><p>The ability to add attributes was a core driving factors behind making Neopolitan. I was tired of feeling limited by what I could do without having to jump out of the content and into the code.</p>
+<p>Even from that position, I&#x27;m surprised how powerful the feature is. It&#x27;s not just about content, but metadata too. I&#x27;m making a single file that&#x27;s a collection of frequent footnotes. Notes about my Grimoire, various XKCDs, etc...</p>
+<p>By adding an id attribute as metadata the collection becomes avaialbe in everywhere.</p>
+<p>A footnote looks like this:</p>
+<div class="pre-wrapper">
+  <div class="pre-spacer"> Neopolitan Footnote</div>
+  <pre><code class="">-&gt; footnote
+&gt;&gt; id: g:806
+&gt;&gt; title: XKCD - Tech Support 
+&gt;&gt; url: https:&#x2f;&#x2f;xkcd.com&#x2f;806&#x2f;</code></pre>
+</div><p>And I can drop it in any file like this:</p>
+<div class="pre-wrapper">
+  <div class="pre-spacer"> Footnote Usage</div>
+  <pre><code class="">Raise the sail^g:806^^</code></pre>
+</div><p>The three <code>^</code> characters look a little verbose but they have a purpose. Attributes can be added to inline tags a well.</p>
+<h2>Inline Tags And Attributes</h2>
+<p>Marking up content is done with inline tags. They start with two <code>&lt;&lt;</code> characters and end with a closeing <code>&gt;&gt;</code> pair.</p>
+
+<div class="neoexample">
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
+<pre><code class=""
+>-&gt; p
+
+the &lt;&lt;quick|em&gt;&gt; brown fox</code></pre>
+</div>
+
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
+<pre class="language-html"><code>&lt;p&gt;the &lt;em&gt;quick&lt;&#x2f;em&gt; brown fox&lt;&#x2f;p&gt;
+</code></pre>
+</div>
+</div><p>Attributes can be added by appending them with pipe separators. Here&#x27;s what that looks like with a <code class="language-html">class</code> and and <code class="language-html">id</code>:</p>
+
+<div class="neoexample">
+<div class="pre-wrapper"><div class="pre-spacer">Source</div>
+<pre><code class=""
+>-&gt; p
+
+the &lt;&lt;quick|em|id: alfa|class: bravo&gt;&gt; brown fox</code></pre>
+</div>
+
+<div class="pre-wrapper"><div class="pre-spacer">Output</div>
+<pre class="language-html"><code>&lt;p&gt;the &lt;em id=&quot;alfa&quot; class=&quot;bravo&quot;&gt;quick&lt;&#x2f;em&gt; brown fox&lt;&#x2f;p&gt;
+</code></pre>
+</div>
+</div><h2>Shorthand Tags</h2>
+<p>Inline tags are provided for corresponding HTML tags. There are a few shorthand features as well. The standard link tag looks like this:</p>
+<div class="pre-wrapper">
+  <div class="pre-spacer"></div>
+  <pre><code>an &lt;&lt;example|link|https:&#x2f;&#x2f;www.example.com&#x2f;&gt;&gt;</code></pre>
+</div><p>The shorthand for the same sample looks like this:</p>
+<div class="pre-wrapper">
+  <div class="pre-spacer"></div>
+  <pre><code>an &gt;example&gt;https:&#x2f;&#x2f;www.example.com&#x2f;&gt;</code></pre>
+</div><h2>Reference Implementation</h2>
+<p>I&#x27;m building a reference implementation that&#x27;ll help me knock down the sharp edges and write up the full spec. A few high level details I know it&#x27;ll include are:</p>
+<ol>
+  <li>
+    <p>The spec <em>will</em> define the format and what a parser is expected to handle</p>
+  </li>
+  <li>
+    <p>The spec <em>will</em> define the core set of required sections</p>
+  </li>
+  <li>
+    <p>The spec <em>will not</em> define the output. That is, the output of the reference implementation is not a required target</p>
+  </li>
+  <li>
+    <p>The spec <em>will</em> allow for custom section types with the expectation that not only parsers customized to process them will work with them</p>
+  </li>
+</ol><p>The goal is to provide a solid foundation to work off of while ensuring extensibility is built in.</p>
+<h2>Dogfooding</h2>
+<p>I&#x27;m not a particular fan of the term &quot;dogfooding&quot;. &quot;Drink your own champagne&quot; is worse. Either way, that&#x27;s what I&#x27;m doing. This site is built from the Neopolitan documents and a reference site generator implementation. If you&#x27;d like to see the Neopolitan document that created any given webpage replace &quot;.html&quot; with &quot;.neo&quot; in the URL.</p>
+<h2>Further Exploration</h2>
 <p>That&#x27;ll give you an initial idea of the format. More details are availalbe from the links in the to nav. This project is open source and in <a href="https://github.com/alanwsmith/neopolitan">a repo</a>. The demo engine I&#x27;m using to build this site is in there along with the content. It&#x27;s not ready for prime time yet but feel free to play with it if you&#x27;re interested.</p>
 </main>
   <footer>

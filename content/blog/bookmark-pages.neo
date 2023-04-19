@@ -19,30 +19,29 @@ Consolidation
 All of my other content is in my Grimoire. Its got 
 its own very good, very fast search engine. Alex Riviere
 (aka fimion) mentioned the idea of incorporating bookmarks
-into personal websites and those ideas clicked in my 
-head. 
+into personal websites and an ideas clicked in my 
+head.
 
 Every document doesn't need to be a stand alone
 piece of content. They can be part of what amounts
 to a flat-file database that get assemled when the site
-is generated 
+is generated.
 
 For example, here's a basic format I'm think about
 for bookmarks:
 
 -> startcode
+>> file: simple bookmark
 
 -> reference
 >> title: Sara Joy's Home Page
 >> url: https://sarajoy.dev/
-
--> categories
->> Personal Websites
+>> category: Personal Websites
+>> category: Design 
 
 -> attributes
 >> date: 2023-04-17 15:26:55
 >> id: 2ozehshsng3z
->> site: neo 
 >> type: bookmark 
 >> published: y
 
@@ -52,38 +51,50 @@ for bookmarks:
 
 Expansion
 
-And, an optional `-> list` section can be
-added for more info:
-
+The content area can be use for more non-structured
+information as well:
 
 -> startcode
+>> file detailed bookmark
 
 -> reference
 >> title: Sara Joy's Home Page
 >> url: https://sarajoy.dev/
+>> category: Personal Websites
+>> category: Design 
+
+I follow Sara on <<Mastodon
 
 -> list
 
 - Beautiful home page
 
-- Great scorll effect where it looks like 
+- Great scroll effect where it looks like 
 tabs are movig up the page
 
 - Where I learned about the "now" pages and 
 >nownownow.com>https://nownownow.com/about>
 
--> categories
->> Personal Websites
 
 -> attributes
 >> date: 2023-04-17 15:26:55
->> id: 2ozehshsng3z
->> site: neo 
+>> id: 2ozehsh3ng3z
 >> type: bookmark 
 >> published: y
 
 -> endcode
 
+
+-> p
+
+These files could get their own pages but
+they could also be collected and used
+as cards on other pages. 
+
+The more I think about the metadata in 
+the attributes the more ideas I have about
+what the format can provide. It's way
+more of a feature that I realized. 
 
 
 -> todo
@@ -95,6 +106,7 @@ Grimoire (aka notes app).
 >meilisearch>https://www.meilisearch.com/>
 
 -> h3
+>> class: blog-footer
 
 Previously
 

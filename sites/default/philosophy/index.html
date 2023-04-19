@@ -75,13 +75,19 @@
 notes</code>) are simply alternate versions of other sections (paragraphs and lists for example). The intent it to provide different element types to make them easier to categorize and style</p>
 <h3>Only One Style For Attributes</h3>
 <p>I considered two types of attributes for sections. One that would go directly into the HTML and one that was for directives that would only be used for processing. For example, instead of:</p>
-<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; code
+<div class="pre-wrapper">
+  <div class="pre-spacer"></div>
+  <pre><code>-&gt; code
 &gt;&gt; rust
-&gt;&gt; class: alfa</code></pre></div><p>The <code>rust</code> line would get a separate starting token indicating that that string wouldn&#x27;t go directly to the output but was a processor instruction (which would let it know to add <code>language-rust</code> to the HTML attribute list).</p>
+&gt;&gt; class: alfa</code></pre>
+</div><p>The <code>rust</code> line would get a separate starting token indicating that that string wouldn&#x27;t go directly to the output but was a processor instruction (which would let it know to add <code>language-rust</code> to the HTML attribute list).</p>
 <p>It would have looked something like this:</p>
-<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; code
+<div class="pre-wrapper">
+  <div class="pre-spacer"></div>
+  <pre><code>-&gt; code
 ++ rust
-&gt;&gt; class: alfa</code></pre></div><p>I decided against that because it would require remembering which things were directives and which weren&#x27;t. For my implementation, it&#x27;s the responsibility of the processor to make the determination.</p>
+&gt;&gt; class: alfa</code></pre>
+</div><p>I decided against that because it would require remembering which things were directives and which weren&#x27;t. For my implementation, it&#x27;s the responsibility of the processor to make the determination.</p>
 <h3>Minijinja Templates</h3>
 <p>I&#x27;m using Minijinja for the template engine. This is an implementation detail that isn&#x27;t required. I&#x27;m also using the <code>.jinja</code> file extension instead of <code>.html</code>. I&#x27;m going with that because my auto-formatter kepts messing with the templates in a way that altered the spacing. I haven&#x27;t found a maintained jinja extension for neovim tree-sitter. Something to add to the list.</p>
 <h3>Convenience Sections</h3>

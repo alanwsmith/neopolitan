@@ -20,20 +20,19 @@
               "text": "Blog"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "type": "NoteSection",
+      "attributes": null,
+      "children": [
         {
           "type": "P",
           "children": [
             {
               "type": "Text",
-              "text": "Eventually,"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "this"
+              "text": "This"
             },
             {
               "type": "Space"
@@ -47,63 +46,98 @@
             },
             {
               "type": "Text",
-              "text": "will"
+              "text": "is"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "be"
+              "text": "currently"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "updated"
+              "text": "built"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "automatcially."
+              "text": "by"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "For"
+              "text": "hand."
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "now,"
+              "text": "Producing"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "we're"
+              "text": "index"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "doing"
+              "text": "and"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "it"
+              "text": "table"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "of"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "contents"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "pages"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "is"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "on"
             },
             {
               "type": "Space"
@@ -117,14 +151,7 @@
             },
             {
               "type": "Text",
-              "text": "old-fashioned"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "way."
+              "text": "roadmap."
             }
           ]
         }
