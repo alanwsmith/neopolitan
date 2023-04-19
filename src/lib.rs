@@ -1,4 +1,5 @@
 pub mod block;
+pub mod parse;
 pub mod section;
 pub mod snippet;
 pub mod source_file;

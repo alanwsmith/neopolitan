@@ -1,7 +1,4 @@
 use crate::section::section::*;
-use nom::combinator::eof;
-use nom::multi::many_till;
-use nom::IResult;
 
 #[derive(Debug, PartialEq)]
 pub struct SourceFile {
@@ -21,6 +18,7 @@ impl SourceFile {
 #[cfg(test)]
 mod test {
     use crate::block::block::*;
+    use crate::parse::parse::*;
     use crate::snippet::snippet::*;
     use crate::source_file::source_file::*;
 
@@ -57,9 +55,4 @@ mod test {
         sf.sections = parse(sf.raw_data.unwrap().as_str()).unwrap().1;
         assert_eq!(expected, sf.sections);
     }
-}
-
-pub fn parse(source: &str) -> IResult<&str, Option<Vec<Section>>> {
-    let (_, sections) = many_till(section, eof)(source)?;
-    Ok(("", Some(sections.0)))
 }
