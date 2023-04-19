@@ -1,3 +1,1 @@
-pub mod alfa;
-pub mod bravo;
-pub mod charlie;
+pub mod integration_alfa;
