@@ -681,7 +681,7 @@
         "type": "RawContent",
         "text": "-> startcode\n\n-> h1\n\nasdf\n\n-> endcode"
       },
-      "html": "<div class=\"pre-wrapper\"><div class=\"pre-spacer\"></div><pre><code>-&gt; h1\n\nasdf</code></pre></div>"
+      "html": "<div class=\"pre-wrapper\">\n  <div class=\"pre-spacer\"></div>\n  <pre><code>-&gt; h1\n\nasdf</code></pre>\n</div>"
     },
     {
       "type": "AttributesSection",

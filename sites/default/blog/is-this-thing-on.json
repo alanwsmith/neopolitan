@@ -501,6 +501,13 @@
             },
             {
               "type": "Text",
+              "text": "reference"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
               "text": "site"
             },
             {
@@ -508,7 +515,7 @@
             },
             {
               "type": "Text",
-              "text": "builder"
+              "text": "generator"
             },
             {
               "type": "Space"
@@ -522,72 +529,28 @@
             },
             {
               "type": "Text",
-              "text": "writing"
+              "text": "building."
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "as"
+              "text": "That"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "a"
+              "text": "means"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "demonstration"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "implementation"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "of"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "using"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "format."
-            }
-          ]
-        },
-        {
-          "type": "P",
-          "children": [
-            {
-              "type": "Text",
-              "text": "Things"
+              "text": "things"
             },
             {
               "type": "Space"
@@ -622,13 +585,6 @@
             },
             {
               "type": "Text",
-              "text": "pretty"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
               "text": "sparse"
             },
             {
@@ -650,28 +606,7 @@
             },
             {
               "type": "Text",
-              "text": "start"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "as"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "a"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "result."
+              "text": "start."
             },
             {
               "type": "Space"
@@ -714,10 +649,12 @@
             {
               "type": "Text",
               "text": "though."
-            },
-            {
-              "type": "Space"
-            },
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
             {
               "type": "Text",
               "text": "There's"
@@ -1262,118 +1199,6 @@
             {
               "type": "Text",
               "text": "say."
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "In"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "mean"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "time,"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "check"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "out"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "LinkShorthand",
-              "attributes": [
-                {
-                  "type": "Basic",
-                  "key": "/",
-                  "value": null
-                }
-              ],
-              "text": "home page"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "and"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "I"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "hope"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "you"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "enjoy"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "the"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "site."
             }
           ]
         },
@@ -1390,7 +1215,13 @@
     },
     {
       "type": "H3Section",
-      "attributes": null,
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "class",
+          "value": "blog-footer"
+        }
+      ],
       "children": [
         {
           "type": "P",

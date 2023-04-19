@@ -590,7 +590,7 @@
             },
             {
               "type": "Text",
-              "text": "those"
+              "text": "an"
             },
             {
               "type": "Space"
@@ -626,10 +626,12 @@
             {
               "type": "Text",
               "text": "head."
-            },
-            {
-              "type": "Space"
-            },
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
             {
               "type": "Text",
               "text": "Every"
@@ -842,11 +844,13 @@
             },
             {
               "type": "Text",
-              "text": "generated"
-            },
-            {
-              "type": "Space"
-            },
+              "text": "generated."
+            }
+          ]
+        },
+        {
+          "type": "P",
+          "children": [
             {
               "type": "Text",
               "text": "For"
@@ -927,10 +931,16 @@
     },
     {
       "type": "CodeStartEndSection",
-      "attributes": null,
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "file",
+          "value": "simple bookmark"
+        }
+      ],
       "children": {
         "type": "RawContent",
-        "text": "-> reference\n>> title: Sara Joy's Home Page\n>> url: https://sarajoy.dev/\n\n-> categories\n>> Personal Websites\n\n-> attributes\n>> date: 2023-04-17 15:26:55\n>> id: 2ozehshsng3z\n>> site: neo \n>> type: bookmark \n>> published: y"
+        "text": "-> reference\n>> title: Sara Joy's Home Page\n>> url: https://sarajoy.dev/\n>> category: Personal Websites\n>> category: Design \n\n-> attributes\n>> date: 2023-04-17 15:26:55\n>> id: 2ozehshsng3z\n>> type: bookmark \n>> published: y"
       }
     },
     {
@@ -951,42 +961,21 @@
           "children": [
             {
               "type": "Text",
-              "text": "And,"
+              "text": "The"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "an"
+              "text": "content"
             },
             {
               "type": "Space"
             },
             {
               "type": "Text",
-              "text": "optional"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "`->"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "list`"
-            },
-            {
-              "type": "Space"
-            },
-            {
-              "type": "Text",
-              "text": "section"
+              "text": "area"
             },
             {
               "type": "Space"
@@ -1007,7 +996,7 @@
             },
             {
               "type": "Text",
-              "text": "added"
+              "text": "use"
             },
             {
               "type": "Space"
@@ -1028,7 +1017,28 @@
             },
             {
               "type": "Text",
-              "text": "info:"
+              "text": "non-structured"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "information"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "as"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "well:"
             }
           ]
         }
@@ -1036,11 +1046,375 @@
     },
     {
       "type": "CodeStartEndSection",
-      "attributes": null,
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "file detailed bookmark",
+          "value": null
+        }
+      ],
       "children": {
         "type": "RawContent",
-        "text": "-> reference\n>> title: Sara Joy's Home Page\n>> url: https://sarajoy.dev/\n\n-> list\n\n- Beautiful home page\n\n- Great scorll effect where it looks like \ntabs are movig up the page\n\n- Where I learned about the \"now\" pages and \n>nownownow.com>https://nownownow.com/about>\n\n-> categories\n>> Personal Websites\n\n-> attributes\n>> date: 2023-04-17 15:26:55\n>> id: 2ozehshsng3z\n>> site: neo \n>> type: bookmark \n>> published: y"
+        "text": "-> reference\n>> title: Sara Joy's Home Page\n>> url: https://sarajoy.dev/\n>> category: Personal Websites\n>> category: Design \n\nI follow Sara on <<Mastodon\n\n-> list\n\n- Beautiful home page\n\n- Great scroll effect where it looks like \ntabs are movig up the page\n\n- Where I learned about the \"now\" pages and \n>nownownow.com>https://nownownow.com/about>\n\n\n-> attributes\n>> date: 2023-04-17 15:26:55\n>> id: 2ozehsh3ng3z\n>> type: bookmark \n>> published: y"
       }
+    },
+    {
+      "type": "Paragraphs",
+      "attributes": null,
+      "children": [
+        {
+          "type": "P",
+          "children": [
+            {
+              "type": "Text",
+              "text": "These"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "files"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "could"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "get"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "their"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "own"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "pages"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "but"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "they"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "could"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "also"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "be"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "collected"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "and"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "used"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "as"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "cards"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "on"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "other"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "pages."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "The"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "more"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "think"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "about"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "metadata"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "in"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "attributes"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "more"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "ideas"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "have"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "about"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "what"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "the"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "format"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "can"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "provide."
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "It's"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "way"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "more"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "of"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "a"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "feature"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "that"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "I"
+            },
+            {
+              "type": "Space"
+            },
+            {
+              "type": "Text",
+              "text": "realized."
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "ToDoSection",
@@ -1208,7 +1582,13 @@
     },
     {
       "type": "H3Section",
-      "attributes": null,
+      "attributes": [
+        {
+          "type": "Attribute",
+          "key": "class",
+          "value": "blog-footer"
+        }
+      ],
       "children": [
         {
           "type": "P",

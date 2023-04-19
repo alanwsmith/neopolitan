@@ -895,7 +895,7 @@
         "type": "RawContent",
         "text": "-> code\n>> rust\n\nprintln!(\"Hello, World\");"
       },
-      "html": "<div class=\"pre-wrapper\"><div class=\"pre-spacer\"></div><pre><code class=\"language-rust\">println!(&quot;Hello, World&quot;);</code></pre></div>"
+      "html": "<div class=\"pre-wrapper\">\n  <div class=\"pre-spacer\"></div>\n  <pre><code class=\"language-rust\">println!(&quot;Hello, World&quot;);</code></pre>\n</div>"
     },
     {
       "type": "NotesSection",

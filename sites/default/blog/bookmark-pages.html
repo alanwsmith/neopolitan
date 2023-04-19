@@ -60,44 +60,52 @@
 </h1><h2>Introduction</h2>
 <p>I use <a href="https://pinboard.in/u:alanWsmith">pinboard</a> for my bookmarks. I throw a bunch of stuff in there. It doesn&#x27;t get a lot of use. I look things up from time to time. It&#x27;s kind of a pain though and the search isn&#x27;t always that great.</p>
 <h2>Consolidation</h2>
-<p>All of my other content is in my Grimoire. Its got its own very good, very fast search engine. Alex Riviere (aka fimion) mentioned the idea of incorporating bookmarks into personal websites and those ideas clicked in my head. Every document doesn&#x27;t need to be a stand alone piece of content. They can be part of what amounts to a flat-file database that get assemled when the site is generated For example, here&#x27;s a basic format I&#x27;m think about for bookmarks:</p>
-<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; reference
+<p>All of my other content is in my Grimoire. Its got its own very good, very fast search engine. Alex Riviere (aka fimion) mentioned the idea of incorporating bookmarks into personal websites and an ideas clicked in my head.</p>
+<p>Every document doesn&#x27;t need to be a stand alone piece of content. They can be part of what amounts to a flat-file database that get assemled when the site is generated.</p>
+<p>For example, here&#x27;s a basic format I&#x27;m think about for bookmarks:</p>
+<div class="pre-wrapper">
+  <div class="pre-spacer"></div>
+  <pre><code class="">-&gt; reference
 &gt;&gt; title: Sara Joy&#x27;s Home Page
 &gt;&gt; url: https:&#x2f;&#x2f;sarajoy.dev&#x2f;
-
--&gt; categories
-&gt;&gt; Personal Websites
+&gt;&gt; category: Personal Websites
+&gt;&gt; category: Design 
 
 -&gt; attributes
 &gt;&gt; date: 2023-04-17 15:26:55
 &gt;&gt; id: 2ozehshsng3z
-&gt;&gt; site: neo 
 &gt;&gt; type: bookmark 
-&gt;&gt; published: y</code></pre></div><h2>Expansion</h2>
-<p>And, an optional `-&gt; list` section can be added for more info:</p>
-<div class="pre-wrapper"><div class="pre-spacer"></div><pre><code>-&gt; reference
+&gt;&gt; published: y</code></pre>
+</div><h2>Expansion</h2>
+<p>The content area can be use for more non-structured information as well:</p>
+<div class="pre-wrapper">
+  <div class="pre-spacer"></div>
+  <pre><code class="language-file detailed bookmark">-&gt; reference
 &gt;&gt; title: Sara Joy&#x27;s Home Page
 &gt;&gt; url: https:&#x2f;&#x2f;sarajoy.dev&#x2f;
+&gt;&gt; category: Personal Websites
+&gt;&gt; category: Design 
+
+I follow Sara on &lt;&lt;Mastodon
 
 -&gt; list
 
 - Beautiful home page
 
-- Great scorll effect where it looks like 
+- Great scroll effect where it looks like 
 tabs are movig up the page
 
 - Where I learned about the &quot;now&quot; pages and 
 &gt;nownownow.com&gt;https:&#x2f;&#x2f;nownownow.com&#x2f;about&gt;
 
--&gt; categories
-&gt;&gt; Personal Websites
 
 -&gt; attributes
 &gt;&gt; date: 2023-04-17 15:26:55
-&gt;&gt; id: 2ozehshsng3z
-&gt;&gt; site: neo 
+&gt;&gt; id: 2ozehsh3ng3z
 &gt;&gt; type: bookmark 
-&gt;&gt; published: y</code></pre></div><div class="todo">
+&gt;&gt; published: y</code></pre>
+</div><p>These files could get their own pages but they could also be collected and used as cards on other pages. The more I think about the metadata in the attributes the more ideas I have about what the format can provide. It&#x27;s way more of a feature that I realized.</p>
+<div class="todo">
   <ul>
     <li class="status-none">
       <p>
@@ -112,7 +120,7 @@ tabs are movig up the page
       </p>
     </li>
   </ul>
-</div><h3>Previously</h3>
+</div><h3 class="blog-footer">Previously</h3>
 <p><a href="/blog/is-this-thing-on.html">Is This Thing On?</a></p>
 <h3>Next</h3>
 <p><a href="/blog/checklist-example.html">Checklist Example</a></p>

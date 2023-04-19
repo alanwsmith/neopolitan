@@ -20,12 +20,11 @@ And, yes. This thing is on.
 I'm doing the Launch-Before-You're-Ready and
 Build-In-Public thing. Everything on this site 
 is built with Neopolitan documents and the
-site builder I'm writing as a demonstration
-implementation of using the format.
+reference site generator I'm building. That means
+things are going to be sparse at the start. I really 
+like the approach though.
 
-Things are going to be pretty sparse at the
-start as a result. I really like the approach 
-though. There's nothing like using something
+There's nothing like using something
 you're building to point out the sharp edges.
 
 
@@ -41,13 +40,12 @@ to give me content to work with as I continue
 progress on the format and the engine.
 
 The >next post>/blog/bookmark-pages.html> on bookmarks actually has
-something to say. In the mean time, check
-out the >home page>/> and I hope you enjoy
-the site.
+something to say.
 
 -a
 
 -> h3
+>> class: blog-footer
 
 Next Up
 
