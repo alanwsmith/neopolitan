@@ -1,5 +1,4 @@
 use nom::branch::alt;
-use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
 use nom::character::complete::multispace0;
@@ -134,12 +133,8 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
         .map(|x| {
             dbg!(x.8);
             let (url, attrs) = link_attributes(x.8).unwrap();
-            // dbg!(url);
-
             Snippet::Link {
-                // url: Some("https://alfa.example.com/".to_string()),
                 url: Some(url.to_string()),
-                // attributes: inline_attributes(x.6).unwrap().1,
                 attributes: attrs,
                 text: Some(x.2.to_string()),
             }
@@ -322,27 +317,4 @@ mod test {
         let result = snippet(source);
         assert_eq!(expected, result);
     }
-
-    // #[test]
-    // pub fn link_inline_with_attributes() {
-    //     let source = " <<the pail|link|https://www.example.com/>> in water";
-    //     let expected = Ok((
-    //         " in water",
-    //         Snippet::Link{
-    //             attributes: Some(vec![
-    //                 SnippetAttribute::Attribute {
-    //                     key: Some("class".to_string()),
-    //                     value: Some("hotel".to_string()),
-    //                 },
-    //                 SnippetAttribute::Attribute {
-    //                     key: Some("id".to_string()),
-    //                     value: Some("kilo".to_string()),
-    //                 },
-    //             ]),
-    //             text: Some("weave the carpet".to_string()),
-    //         },
-    //     ));
-    //     let result = snippet(source);
-    //     assert_eq!(expected, result);
-    // }
 }
