@@ -305,6 +305,24 @@ mod test {
         assert_eq!(expected, result);
     }
 
+    #[test]
+    pub fn link_with_attributes() {
+        let source = " <<winding path|link|https://bravo.example.com/|class: delta>> at sunset";
+        let expected = Ok((
+            " at sunset",
+            Snippet::Link {
+                url: Some("https://bravo.example.com/".to_string()),
+                attributes: Some(vec![SnippetAttribute::Attribute {
+                    key: Some("class".to_string()),
+                    value: Some("delta".to_string()),
+                }]),
+                text: Some("winding path".to_string()),
+            },
+        ));
+        let result = snippet(source);
+        assert_eq!(expected, result);
+    }
+
     // #[test]
     // pub fn link_inline_with_attributes() {
     //     let source = " <<the pail|link|https://www.example.com/>> in water";
