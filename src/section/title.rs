@@ -22,7 +22,7 @@ pub fn title(source: &str) -> IResult<&str, Section> {
 
 pub fn title_dev(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
-    dbg!(&attributes);
+    // dbg!(&attributes);
 
     // dbg!(source);
     let (remainder, _) = multispace0(remainder)?;

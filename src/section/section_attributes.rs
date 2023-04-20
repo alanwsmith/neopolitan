@@ -59,8 +59,13 @@ pub fn section_attributes(source: &str) -> IResult<&str, Option<Vec<SectionAttri
     let (a, b) = many0(section_attribute)(source)?;
     // dbg!(&a);
     // dbg!(&b);
+    //
 
-    Ok((a, Some(b)))
+    if b.is_empty() {
+        Ok((a, None))
+    } else {
+        Ok((a, Some(b)))
+    }
 
     // Ok((
     //     "",
@@ -120,7 +125,17 @@ fn test_section_attribute() {
     assert_eq!(expected, result);
 }
 
+#[test]
+fn no_attributes() {
+    let lines = ["Twist the valve"].join("\n");
+    let source = lines.as_str();
+    let expected = Ok(("Twist the valve", None));
+    let result = section_attributes(source);
+    assert_eq!(expected, result);
+}
+
 // #[test]
+//
 // fn test_section_attribute_only_key() {
 //     let lines = ["rust", ""].join("\n");
 //     let source = lines.as_str();
