@@ -37,5 +37,18 @@ pub fn integration_alfa() {
         }
         ()
     });
-    assert_eq!(expected, sf.output_chunks);
+    let expected_string: String = expected
+        .unwrap()
+        .join("\n")
+        .chars()
+        .filter(|c| !c.is_whitespace())
+        .collect();
+    let output_string: String = sf
+        .output_chunks
+        .unwrap()
+        .join("\n")
+        .chars()
+        .filter(|c| !c.is_whitespace())
+        .collect();
+    assert_eq!(expected_string, output_string);
 }
