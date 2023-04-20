@@ -1,16 +1,7 @@
-<aside class="
+<aside 
   {%- for attribute in attributes -%}
-    {%- if attribute.key == "class" -%}
-      {{- " " -}}
-      {{ attribute.value }}
-    {%- endif -%}
-  {%- endfor -%}
-  "
-  {%- for attribute in attributes -%}
-    {%- if attribute.key != "class" -%}
-      {{- " " -}}
-      {{attribute.key}}="{{attribute.value}}"
-    {%- endif -%}
+    {{- " " -}}
+    {{attribute.key}}="{{attribute.value}}"
   {%- endfor -%}
   >
   {%- for child in children -%}
