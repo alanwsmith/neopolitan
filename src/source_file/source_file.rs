@@ -1,16 +1,19 @@
 use crate::section::section::*;
+use serde::Serialize;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
 pub struct SourceFile {
-    raw_data: Option<String>,
-    sections: Option<Vec<Section>>,
+    pub output_chunks: Option<Vec<String>>,
+    pub parsed: Option<Vec<Section>>,
+    pub raw_data: Option<String>,
 }
 
 impl SourceFile {
     pub fn new() -> SourceFile {
         SourceFile {
+            output_chunks: None,
+            parsed: None,
             raw_data: None,
-            sections: None,
         }
     }
 }
@@ -35,8 +38,8 @@ mod test {
             }]),
         }]);
         sf.raw_data = Some(lines.join("\n").to_string());
-        sf.sections = parse(sf.raw_data.unwrap().as_str()).unwrap().1;
-        assert_eq!(expected, sf.sections);
+        sf.parsed = parse(sf.raw_data.unwrap().as_str()).unwrap().1;
+        assert_eq!(expected, sf.parsed);
     }
 
     #[test]
@@ -59,7 +62,7 @@ mod test {
             ]),
         }]);
         sf.raw_data = Some(lines.join("\n").to_string());
-        sf.sections = parse(sf.raw_data.unwrap().as_str()).unwrap().1;
-        assert_eq!(expected, sf.sections);
+        sf.parsed = parse(sf.raw_data.unwrap().as_str()).unwrap().1;
+        assert_eq!(expected, sf.parsed);
     }
 }

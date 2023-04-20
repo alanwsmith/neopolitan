@@ -10,8 +10,10 @@ use nom::combinator::rest;
 use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
+use serde::Serialize;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
 pub enum Section {
     TitleSection {
         attributes: Option<Vec<(Option<String>, Option<String>)>>,

@@ -9,8 +9,10 @@ use nom::error::Error;
 use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
+use serde::Serialize;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
 pub enum Snippet {
     Plain {
         text: Option<String>,

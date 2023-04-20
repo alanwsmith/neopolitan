@@ -1,0 +1,7 @@
+<h1 class="title">
+  {%- for child in children -%}
+    {%- for snippet in child.snippets -%} 
+      {{ snippet.text }}
+    {%- endfor -%}
+  {%- endfor -%}
+</h1>

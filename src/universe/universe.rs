@@ -1,8 +1,12 @@
 #![allow(warnings)]
-pub struct Universe {}
+use minijinja::Environment;
 
-impl Universe {
-    pub fn new() -> Universe {
-        Universe {}
+pub struct Universe<'a> {
+    pub env: Option<Environment<'a>>,
+}
+
+impl Universe<'_> {
+    pub fn new() -> Universe<'static> {
+        Universe { env: None }
     }
 }

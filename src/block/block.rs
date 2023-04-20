@@ -5,8 +5,10 @@ use nom::combinator::eof;
 use nom::combinator::rest;
 use nom::multi::many_till;
 use nom::IResult;
+use serde::Serialize;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
 pub enum Block {
     Text { snippets: Option<Vec<Snippet>> },
     Placeholder,

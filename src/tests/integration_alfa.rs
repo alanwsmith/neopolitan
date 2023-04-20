@@ -1,20 +1,41 @@
 #![allow(warnings)]
+use crate::block::block::*;
+use crate::parse::parse::parse;
+use crate::section::section::*;
 use crate::source_file::source_file::SourceFile;
+use crate::universe::create_env::*;
 use crate::universe::universe::Universe;
+use minijinja::context;
+// use minijinja::Environment;
 
 #[test]
 pub fn integration_alfa() {
-    let u = Universe::new();
-    let lines = [
-        "-> title",
-        "",
-        "Fasten two pins",
-        "",
-        "Pitch the straw",
-        "",
-        "Smell the rose",
-    ];
+    let mut u = Universe::new();
+    u.env = Some(create_env("./src/tests/templates"));
+    let lines = ["-> title", "", "Pick The Rose"];
+    let expected = Some(vec![r#"<h1 class="title">Pick The Rose</h1>"#.to_string()]);
     let source = lines.join("\n");
-    let sf = SourceFile::new();
-    assert_eq!(1, 1);
+    let mut sf = SourceFile::new();
+    sf.raw_data = Some(source.to_string());
+    sf.parsed = parse(sf.raw_data.unwrap().as_str()).unwrap().1;
+    sf.output_chunks = Some(vec![]);
+    sf.parsed.unwrap().iter().for_each(|section| {
+        match section {
+            Section::TitleSection {
+                attributes,
+                children,
+            } => {
+                let structure = u.env.as_ref().unwrap().get_template("title.j2").unwrap();
+                sf.output_chunks.as_mut().unwrap().push(
+                    structure
+                        .render(context!(attributes, children))
+                        .unwrap()
+                        .to_string(),
+                );
+            }
+            _ => {}
+        }
+        ()
+    });
+    assert_eq!(expected, sf.output_chunks);
 }
