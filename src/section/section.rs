@@ -23,19 +23,6 @@ pub enum Section {
     Placeholder,
 }
 
-// pub fn section_old(source: &str) -> IResult<&str, Section> {
-//     let (remainder, _) = multispace0(source)?;
-//     let (remainder, _) = tag("-> ")(remainder)?;
-//     let (_, section) = alt((tuple((
-//         tag("title"),
-//         not_line_ending,
-//         line_ending,
-//         alt((take_until("\n\n-> "), rest)),
-//     ))
-//     .map(|t| title(t.3).unwrap().1),))(remainder)?;
-//     Ok(("", section))
-// }
-
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (remainder, _) = multispace0(source)?;
     let (remainder, _) = tag("-> ")(remainder)?;
@@ -45,7 +32,6 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         line_ending,
         alt((take_until("\n\n-> "), rest)),
     ))
-    .map(|t| title_dev(t.3).unwrap().1),))(remainder)?;
-
+    .map(|t| title(t.3).unwrap().1),))(remainder)?;
     Ok(("", section))
 }
