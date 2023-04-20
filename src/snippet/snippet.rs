@@ -43,15 +43,21 @@ pub enum SnippetAttribute {
 }
 
 pub fn inline_attributes(source: &str) -> IResult<&str, Option<Vec<SnippetAttribute>>> {
+    let mut attributes: Vec<SnippetAttribute> = vec![];
     let (_a, b) = separated_list0(tag("|"), alt((take_until("|"), rest)))(source)?;
-    let (_a, b) = separated_list0(tag(":"), alt((take_until(":"), rest)))(b[1])?;
-    Ok((
-        "",
-        Some(vec![SnippetAttribute::Attribute {
+    let _ = &b.iter().skip(1).for_each(|x| {
+        let (_a, b) = separated_list0(
+            tag::<&str, &str, Error<&str>>(":"),
+            alt((take_until(":"), rest)),
+        )(&x)
+        .unwrap();
+        attributes.push(SnippetAttribute::Attribute {
             key: Some(b[0].trim().to_string()),
             value: Some(b[1].trim().to_string()),
-        }]),
-    ))
+        });
+        ()
+    });
+    Ok(("", Some(attributes)))
 }
 
 pub fn snippet(source: &str) -> IResult<&str, Snippet> {
@@ -172,6 +178,46 @@ mod test {
                     key: Some("class".to_string()),
                     value: Some("echo".to_string()),
                 }]),
+                text: Some("weave the carpet".to_string()),
+            },
+        ));
+        let result = snippet(source);
+        assert_eq!(expected, result);
+    }
+
+    #[test]
+    pub fn abbr_with_attribute_and_extra_text() {
+        let source = " <<weave the carpet|abbr|class: echo>> in blue";
+        let expected = Ok((
+            " in blue",
+            Snippet::Abbr {
+                attributes: Some(vec![SnippetAttribute::Attribute {
+                    key: Some("class".to_string()),
+                    value: Some("echo".to_string()),
+                }]),
+                text: Some("weave the carpet".to_string()),
+            },
+        ));
+        let result = snippet(source);
+        assert_eq!(expected, result);
+    }
+
+    #[test]
+    pub fn abbr_with_multiple_attributes() {
+        let source = " <<weave the carpet|abbr|class: hotel|id: kilo>> in blue";
+        let expected = Ok((
+            " in blue",
+            Snippet::Abbr {
+                attributes: Some(vec![
+                    SnippetAttribute::Attribute {
+                        key: Some("class".to_string()),
+                        value: Some("hotel".to_string()),
+                    },
+                    SnippetAttribute::Attribute {
+                        key: Some("id".to_string()),
+                        value: Some("kilo".to_string()),
+                    },
+                ]),
                 text: Some("weave the carpet".to_string()),
             },
         ));
