@@ -67,31 +67,20 @@ impl Universe<'_> {
             output_path.push(sub_path.as_ref().unwrap());
             output_path.set_extension("html");
             create_dir_all(output_path.parent().unwrap());
-            dbg!(&output_path);
-
             let wrapper = self
                 .env
                 .as_ref()
                 .unwrap()
-                .get_template("components/note.j2")
+                .get_template("default.j2")
                 .unwrap();
-
-            // dbg!(&output_file.output(&self).unwrap());
-
-            dbg!(&wrapper.render(context!(a => vec!["e"], s => "wer")));
-
-            let ot = wrapper
+            let out = wrapper
                 .render(context!(
                 content =>
-                "asdfasdfasdf"
-                // output_file.output(&self).unwrap()
-
-                // output_file.output(self).unwrap()
+                 output_file.output(self).unwrap()
                     ))
                 .unwrap()
                 .to_string();
-            // dbg!(&ot);
-            fs::write(output_path, ot).unwrap();
+            fs::write(output_path, out).unwrap();
         }
     }
 }
