@@ -7,7 +7,6 @@ use crate::universe::create_env::*;
 use crate::universe::universe::Universe;
 use minijinja::context;
 
-#[ignore]
 #[test]
 pub fn title_with_attributes() {
     let mut u = Universe::new();
