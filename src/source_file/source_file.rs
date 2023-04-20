@@ -28,30 +28,30 @@ impl SourceFile {
             .unwrap()
             .iter()
             .for_each(|section| match section {
-                //         Section::NoteSection {
-                //             attributes,
-                //             children,
-                //         } => {
-                //             let structure = u.env.as_ref().unwrap().get_template("note.j2").unwrap();
-                //             sf.output_chunks.as_mut().unwrap().push(
-                //                 structure
-                //                     .render(context!(attributes, children))
-                //                     .unwrap()
-                //                     .to_string(),
-                //             );
-                //         }
-                //         Section::SubtitleSection {
-                //             attributes,
-                //             children,
-                //         } => {
-                //             let structure = u.env.as_ref().unwrap().get_template("subtitle.j2").unwrap();
-                //             sf.output_chunks.as_mut().unwrap().push(
-                //                 structure
-                //                     .render(context!(attributes, children))
-                //                     .unwrap()
-                //                     .to_string(),
-                //             );
-                //         }
+                Section::AsideSection {
+                    attributes,
+                    children,
+                } => {
+                    let structure = u.env.as_ref().unwrap().get_template("aside.j2").unwrap();
+                    output_string.push_str(
+                        structure
+                            .render(context!(attributes, children))
+                            .unwrap()
+                            .as_str(),
+                    )
+                }
+                Section::NoteSection {
+                    attributes,
+                    children,
+                } => {
+                    let structure = u.env.as_ref().unwrap().get_template("note.j2").unwrap();
+                    output_string.push_str(
+                        structure
+                            .render(context!(attributes, children))
+                            .unwrap()
+                            .as_str(),
+                    )
+                }
                 Section::SubtitleSection {
                     attributes,
                     children,
@@ -76,19 +76,9 @@ impl SourceFile {
                             .as_str(),
                     )
                 }
-
-                //             sf.output_chunks.as_mut().unwrap().push(
-                //                 structure
-                //                     .render(context!(attributes, children))
-                //                     .unwrap()
-                //                     .to_string(),
-                //             );
                 _ => {}
             });
-
-        // dbg!(output_string);
         Some(output_string)
-        // Some(r#"<h1 class="title"><p>Shut the hatch</p></h1>"#.to_string())
     }
 }
 
