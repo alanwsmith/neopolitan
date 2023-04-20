@@ -1,0 +1,409 @@
+-> title
+
+Welcome To Neopolitan
+
+-> subtitle
+
+A plain-text format for websites
+
+-> note
+
+I'm doing the "launch before you're ready - 
+build in public" thing. The ideas are in place.
+The reference implementation and documentation are still 
+works in progress. 
+
+-> h2
+
+Introduction
+
+My site is twenty years old. Thinking back on the past
+two decades got me thinking forward to the next two. 
+Instead of, "What do I want to use for my next 
+redesign?" I'm asking, "What do I want to 
+use for the next twenty years?"
+
+The answers are very different.
+
+-> h2
+
+The Format
+
+I've moved my site a half dozen times. Each shift 
+involved a painful content migration. I've gone from 
+raw HTML to Perl to Wordpress to PHP to Ruby to 
+Markdown to MDX to Org-Mode to a mix of all of the above.
+
+There are aspects to each I like. What I'm after is a 
+format that's easy to use and gives me the best parts 
+of each. I also never want to change formats again, 
+regardless of how often I change the tech I'm riding on.
+
+None of the formats I've seen pull that off. So, I
+designed a new one. It's called Neopolitan and it 
+looks like this:
+
+-> startcode
+>> neo
+>> name: index.neo
+
+-> title
+
+Welcome To Neopolitan
+
+-> subtitle
+
+A plain-text format for websites
+
+-> note
+
+I'm doing the "launch before you're ready - build 
+in public" thing. The ideas are mostly in place. The 
+content and reference implementation are still a 
+work in progress. 
+
+-> h2
+
+Introduction
+
+My site is twenty years old. Pondering those decades 
+got me thinking about the next two. I find myself asking 
+"What do I want to use for the next twenty years?" instead 
+of "What do I want to do for my next redesign?" The answers 
+are very different.
+
+-> attributes
+>> date: 2023-04-16 19:06:40
+>> type: default 
+>> published: y
+
+-> endcode
+
+
+
+-> h2
+
+The Specification
+
+The full spec is still under construction. 
+In the mean time, the basics work like this:
+
+Neopolitan documents are based off two things:
+
+-> olist
+
+- Section tokens which look like this:
+
+`->``
+
+- Attribute tokens which look like this:
+
+`>>``
+
+
+-> h2
+
+The Sections
+
+The `->`` section tokes are followed by the 
+name for the type of section they're starting.
+Examples include: 
+
+
+-> startcode
+>> name: Section Types
+
+-> title
+
+-> list
+
+-> blockquote
+
+-> table
+
+-> endcode
+
+-> p
+
+
+The section types determine how content
+is treated. The `-> h2`` sections turn into 
+`<h2>`html` elements, for example.
+
+
+-> startneoexample
+
+-> h2
+
+Bring your best compass 
+
+-> endneoexample
+
+
+-> h2
+
+Default Section Types
+
+There are 46 defined section types. Some map
+directly to HTML elements. Others are used for 
+metadata and functionality like calling out to 
+external processes. That number feels high, but
+in practice most pages stick to a small subset. 
+But, having access to the rest is a delight.
+
+Take the aside tag:
+
+-> startneoexample
+
+-> aside
+
+There when you need it
+
+-> endneoexample
+
+-> p
+
+I didn't even know that tag existed until I started
+putting this together.
+
+-> h2
+
+Increased Usage
+
+There are tons of features in HTML 
+I don't see used. My hypothesis is that 
+that's because we write in formats that don't 
+support them natively. Neopolitan's goal is 
+to provide a full set of easy to use building 
+blocks that map to everything HTML can do.
+
+More tools with which to build a richer web.
+
+Details on the section types can be found here:
+
+-> list
+
+- >Content Sections>/content-sections.html>
+
+- >Metadata Sections>/metadata-sections.html>
+
+- >Functional Sections>/functional-sections.html>
+
+
+-> h2
+
+The Attributes
+
+The attributes are where things get interesting. 
+Any number can be added to sections. Those attributes
+get transposed directly to the output HTML. 
+Here's the same `-> h2`neo` example from above 
+with a class and an id added. 
+
+
+-> startneoexample
+
+-> h2
+>> id: alfa
+>> class: bravo charlie
+
+Bring your best compass 
+
+-> endneoexample
+
+-> h2
+
+More With Attributes
+
+The attributes aren't restricted to direct 
+translation. They can be used as metadata for
+the processing engine or to add supplemental 
+content.
+
+For example, I use a `name`` attribute with 
+my `-> code`` sections to add a header or filename
+above the code block. 
+
+-> startneoexample
+
+-> code
+>> name: FOXTROT 
+
+console.log("DELTA")
+
+-> endneoexample
+
+-> code
+>> name: FOXTROT 
+
+console.log("DELTA")
+
+-> p
+
+The ability to add attributes was a core driving 
+factors behind making Neopolitan. I was tired
+of feeling limited by what I could do without
+having to jump out of the content and into the
+code.
+
+Even from that position, I'm surprised how
+powerful the feature is. It's not just about
+content, but metadata too. I'm making a single 
+file that's a collection of frequent footnotes. 
+Notes about my Grimoire, various XKCDs, 
+etc...
+
+By adding an id attribute as metadata the  
+collection becomes avaialbe in everywhere.
+
+A footnote looks like this:
+
+-> startcode
+>> name: Neopolitan Footnote
+
+-> footnote
+>> id: g:806
+>> title: XKCD - Tech Support 
+>> url: https://xkcd.com/806/
+
+-> endcode
+
+-> p
+
+And I can drop it in any file like this:
+
+-> startcode
+>> name: Footnote Usage
+
+Raise the sail^g:806^^
+
+-> endcode
+
+-> p
+
+The three `^`` characters look a little verbose 
+but they have a purpose. Attributes can 
+be added to inline tags a well. 
+
+-> h2
+
+Inline Tags And Attributes
+
+Marking up content is done with 
+inline tags. They start with two `<<`` characters
+and end with a closeing `>>`` pair. 
+
+-> startneoexample
+
+-> p
+
+the <<quick|em>> brown fox
+
+-> endneoexample
+
+-> p
+
+Attributes can be added by appending them
+with pipe separators. Here's what
+that looks like with a `class`html` and
+and `id`html`:
+
+-> startneoexample
+
+-> p
+
+the <<quick|em|id: alfa|class: bravo>> brown fox
+
+-> endneoexample
+
+-> h2
+
+
+Shorthand Tags
+
+Inline tags are provided for corresponding 
+HTML tags. There are a few shorthand features as well.
+The standard link tag looks like this:
+
+-> startcode
+
+an <<example|link|https://www.example.com/>> 
+
+-> endcode
+
+-> p
+
+The shorthand for the same sample looks like this:
+
+-> startcode
+
+an >example>https://www.example.com/>
+
+-> endcode
+
+
+-> h2
+
+Reference Implementation
+
+I'm building a reference implementation that'll
+help me knock down the sharp edges and write
+up the full spec. A few high level details 
+I know it'll include are:
+
+-> olist
+
+- The spec <<will|em>> define the format and what
+a parser is expected to handle
+
+- The spec <<will|em>> define the core set of 
+required sections
+
+- The spec <<will not|em>> define the output. That is, 
+the output of the reference implementation is not
+a required target
+
+- The spec <<will|em>> allow for custom section 
+types with the expectation that not only parsers
+customized to process them will work with them
+
+-> p
+
+The goal is to provide a solid foundation to 
+work off of while ensuring extensibility is 
+built in. 
+
+
+-> h2
+
+Dogfooding
+
+I'm not a particular fan of the term "dogfooding".
+"Drink your own champagne" is worse. Either way, 
+that's what I'm doing. This site is built from the 
+Neopolitan documents and a reference site generator
+implementation. 
+
+If you'd like to see the Neopolitan document that
+created any given webpage replace ".html" with 
+".neo" in the URL.
+
+-> h2
+
+Further Exploration
+
+That'll give you an initial idea of the format. More details
+are availalbe from the links in the to nav. This project is
+open source and in >a repo>https://github.com/alanwsmith/neopolitan>. 
+The demo engine I'm using to build this site is in there
+along with the content. It's not ready for prime time yet
+but feel free to play with it if you're interested. 
+
+
+-> attributes
+>> date: 2023-04-16 19:06:40
+>> id: 2owpsh3aov3w
+>> type: default 
+>> published: y
+
+

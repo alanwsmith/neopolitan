@@ -38,8 +38,8 @@ mod test {
         let mut u = Universe::new();
         u.env = Some(create_env("./src/tests/templates"));
         let mut sf = SourceFile::new();
-        sf.raw_data = Some(source);
-        sf.parsed = parse(sf.raw_data.as_ref().unwrap().as_str()).unwrap().1;
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
         let output = sf.output(&u);
         assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
@@ -60,8 +60,8 @@ mod test {
         let mut u = Universe::new();
         u.env = Some(create_env("./src/tests/templates"));
         let mut sf = SourceFile::new();
-        sf.raw_data = Some(source);
-        sf.parsed = parse(sf.raw_data.as_ref().unwrap().as_str()).unwrap().1;
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
         let output = sf.output(&u);
         assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
@@ -79,8 +79,8 @@ mod test {
         let mut u = Universe::new();
         u.env = Some(create_env("./src/tests/templates"));
         let mut sf = SourceFile::new();
-        sf.raw_data = Some(source);
-        sf.parsed = parse(sf.raw_data.as_ref().unwrap().as_str()).unwrap().1;
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
         let output = sf.output(&u);
         assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
@@ -98,8 +98,8 @@ mod test {
         let mut u = Universe::new();
         u.env = Some(create_env("./src/tests/templates"));
         let mut sf = SourceFile::new();
-        sf.raw_data = Some(source);
-        sf.parsed = parse(sf.raw_data.as_ref().unwrap().as_str()).unwrap().1;
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
         let output = sf.output(&u);
         assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
@@ -122,8 +122,8 @@ mod test {
         let mut u = Universe::new();
         u.env = Some(create_env("./src/tests/templates"));
         let mut sf = SourceFile::new();
-        sf.raw_data = Some(source);
-        sf.parsed = parse(sf.raw_data.as_ref().unwrap().as_str()).unwrap().1;
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
         let output = sf.output(&u);
         assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }

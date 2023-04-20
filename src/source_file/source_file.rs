@@ -3,20 +3,21 @@ use crate::source_file::joiner::joiner;
 use crate::universe::universe::Universe;
 use minijinja::context;
 use serde::Serialize;
+use std::path::PathBuf;
 
 #[derive(Debug, PartialEq, Serialize)]
 pub struct SourceFile {
-    pub output_chunks: Option<Vec<String>>,
+    pub input_path: Option<PathBuf>,
     pub parsed: Option<Vec<Section>>,
-    pub raw_data: Option<String>,
+    pub raw: Option<String>,
 }
 
 impl SourceFile {
     pub fn new() -> SourceFile {
         SourceFile {
-            output_chunks: None,
+            input_path: None,
             parsed: None,
-            raw_data: None,
+            raw: None,
         }
     }
 }
@@ -127,8 +128,8 @@ mod test {
         let mut u = Universe::new();
         u.env = Some(create_env("./src/tests/templates"));
         let mut sf = SourceFile::new();
-        sf.raw_data = Some(lines.join("\n").to_string());
-        sf.parsed = parse(sf.raw_data.as_ref().unwrap().as_str()).unwrap().1;
+        sf.raw = Some(lines.join("\n").to_string());
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
         let output = sf.output(&u);
         assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
@@ -148,8 +149,8 @@ mod test {
                 }]),
             }]),
         }]);
-        sf.raw_data = Some(lines.join("\n").to_string());
-        sf.parsed = parse(sf.raw_data.unwrap().as_str()).unwrap().1;
+        sf.raw = Some(lines.join("\n").to_string());
+        sf.parsed = parse(sf.raw.unwrap().as_str()).unwrap().1;
         assert_eq!(expected, sf.parsed);
     }
 
@@ -172,8 +173,8 @@ mod test {
                 },
             ]),
         }]);
-        sf.raw_data = Some(lines.join("\n").to_string());
-        sf.parsed = parse(sf.raw_data.unwrap().as_str()).unwrap().1;
+        sf.raw = Some(lines.join("\n").to_string());
+        sf.parsed = parse(sf.raw.unwrap().as_str()).unwrap().1;
         assert_eq!(expected, sf.parsed);
     }
 
@@ -192,8 +193,8 @@ mod test {
                 }]),
             }]),
         }]);
-        sf.raw_data = Some(lines.join("\n").to_string());
-        sf.parsed = parse_dev(sf.raw_data.unwrap().as_str()).unwrap().1;
+        sf.raw = Some(lines.join("\n").to_string());
+        sf.parsed = parse_dev(sf.raw.unwrap().as_str()).unwrap().1;
         assert_eq!(expected, sf.parsed);
     }
 }

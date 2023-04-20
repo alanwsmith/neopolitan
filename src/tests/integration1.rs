@@ -16,8 +16,8 @@ pub fn integration1() {
     u.env = Some(create_env("./src/tests/templates"));
     let source = fs::read_to_string("./src/tests/integration1.neo").unwrap();
     let mut sf = SourceFile::new();
-    sf.raw_data = Some(source);
-    sf.parsed = parse(sf.raw_data.as_ref().unwrap().as_str()).unwrap().1;
+    sf.raw = Some(source);
+    sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
     let tmpl = u
         .env
         .as_ref()

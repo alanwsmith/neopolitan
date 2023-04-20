@@ -1,26 +1,7 @@
 -> title
 
-Neopolitan Blog
+Is This Thing On?
 
-
--> note
-
-This page is currently built by hand. Producing 
-index and table of contents pages is on the roadmap.
-
--> list
-
-- >Is This Thing On?>/blog/is-this-thing-on.html>
-
-- >Considering Bookmarks>/blog/bookmark-pages.html>
-
-- >A Checklist Example>/blog/checklist-example.html>
-
-
--> attributes
->> date: 2023-04-17 03:54:27
->> id: 2oxs4cn4kwkn
->> type: default 
->> published: y
-
+You're supposed to do hello world, but we're
+changing it up. 
 
