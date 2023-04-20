@@ -1,0 +1,19 @@
+{%- for part in parts -%}
+  {%- if loop.first -%}
+    <h3
+      {%- for attribute in attributes -%}
+        {{- attribute -}}
+      {%- endfor -%}
+    >
+      {%- autoescape false -%}
+        {{- part -}}
+      {%- endautoescape -%}
+    </h3>
+  {%- else -%}
+    <p>
+      {%- autoescape false -%}
+        {{- part -}}
+      {%- endautoescape -%}
+    </p>
+  {%- endif -%}
+{%- endfor -%}

@@ -48,6 +48,7 @@ impl SourceFile {
                             .as_str(),
                     )
                 }
+
                 Section::BlockquoteSection {
                     attributes,
                     children,
@@ -66,6 +67,121 @@ impl SourceFile {
                             .as_str(),
                     )
                 }
+
+                Section::H1Section {
+                    attributes,
+                    children,
+                } => {
+                    let structure = u
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template("components/h1.j2")
+                        .unwrap();
+                    let parts = joiner(children);
+                    output_string.push_str(
+                        structure
+                            .render(context!(attributes, parts))
+                            .unwrap()
+                            .as_str(),
+                    )
+                }
+
+                Section::H2Section {
+                    attributes,
+                    children,
+                } => {
+                    let structure = u
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template("components/h2.j2")
+                        .unwrap();
+                    let parts = joiner(children);
+                    output_string.push_str(
+                        structure
+                            .render(context!(attributes, parts))
+                            .unwrap()
+                            .as_str(),
+                    )
+                }
+
+                Section::H3Section {
+                    attributes,
+                    children,
+                } => {
+                    let structure = u
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template("components/h3.j2")
+                        .unwrap();
+                    let parts = joiner(children);
+                    output_string.push_str(
+                        structure
+                            .render(context!(attributes, parts))
+                            .unwrap()
+                            .as_str(),
+                    )
+                }
+
+                Section::H4Section {
+                    attributes,
+                    children,
+                } => {
+                    let structure = u
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template("components/h4.j2")
+                        .unwrap();
+                    let parts = joiner(children);
+                    output_string.push_str(
+                        structure
+                            .render(context!(attributes, parts))
+                            .unwrap()
+                            .as_str(),
+                    )
+                }
+
+                Section::H5Section {
+                    attributes,
+                    children,
+                } => {
+                    let structure = u
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template("components/h5.j2")
+                        .unwrap();
+                    let parts = joiner(children);
+                    output_string.push_str(
+                        structure
+                            .render(context!(attributes, parts))
+                            .unwrap()
+                            .as_str(),
+                    )
+                }
+
+                Section::H6Section {
+                    attributes,
+                    children,
+                } => {
+                    let structure = u
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template("components/h6.j2")
+                        .unwrap();
+                    let parts = joiner(children);
+                    output_string.push_str(
+                        structure
+                            .render(context!(attributes, parts))
+                            .unwrap()
+                            .as_str(),
+                    )
+                }
+
                 Section::NoteSection {
                     attributes,
                     children,
@@ -84,6 +200,7 @@ impl SourceFile {
                             .as_str(),
                     )
                 }
+
                 Section::SubtitleSection {
                     attributes,
                     children,
@@ -102,6 +219,7 @@ impl SourceFile {
                             .as_str(),
                     )
                 }
+
                 Section::TitleSection {
                     attributes,
                     children,

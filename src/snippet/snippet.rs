@@ -131,7 +131,7 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
             tag(">>"),
         ))
         .map(|x| {
-            dbg!(x.8);
+            // dbg!(x.8);
             let (url, attrs) = link_attributes(x.8).unwrap();
             Snippet::Link {
                 url: Some(url.to_string()),

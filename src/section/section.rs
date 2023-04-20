@@ -1,6 +1,12 @@
 use crate::block::block::*;
 use crate::section::aside::*;
 use crate::section::blockquote::*;
+use crate::section::h1::*;
+use crate::section::h2::*;
+use crate::section::h3::*;
+use crate::section::h4::*;
+use crate::section::h5::*;
+use crate::section::h6::*;
 use crate::section::note::*;
 use crate::section::section_attributes::SectionAttribute;
 use crate::section::subtitle::*;
@@ -25,6 +31,30 @@ pub enum Section {
         children: Option<Vec<Block>>,
     },
     BlockquoteSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    H1Section {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    H2Section {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    H3Section {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    H4Section {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    H5Section {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    H6Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -61,6 +91,48 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| blockquote(t.3).unwrap().1),
+        tuple((
+            tag("h1"),
+            not_line_ending,
+            line_ending,
+            alt((take_until("\n\n-> "), rest)),
+        ))
+        .map(|t| h1(t.3).unwrap().1),
+        tuple((
+            tag("h2"),
+            not_line_ending,
+            line_ending,
+            alt((take_until("\n\n-> "), rest)),
+        ))
+        .map(|t| h2(t.3).unwrap().1),
+        tuple((
+            tag("h3"),
+            not_line_ending,
+            line_ending,
+            alt((take_until("\n\n-> "), rest)),
+        ))
+        .map(|t| h3(t.3).unwrap().1),
+        tuple((
+            tag("h4"),
+            not_line_ending,
+            line_ending,
+            alt((take_until("\n\n-> "), rest)),
+        ))
+        .map(|t| h4(t.3).unwrap().1),
+        tuple((
+            tag("h5"),
+            not_line_ending,
+            line_ending,
+            alt((take_until("\n\n-> "), rest)),
+        ))
+        .map(|t| h5(t.3).unwrap().1),
+        tuple((
+            tag("h6"),
+            not_line_ending,
+            line_ending,
+            alt((take_until("\n\n-> "), rest)),
+        ))
+        .map(|t| h6(t.3).unwrap().1),
         tuple((
             tag("note"),
             not_line_ending,
