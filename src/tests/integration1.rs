@@ -22,7 +22,7 @@ pub fn integration1() {
         .env
         .as_ref()
         .unwrap()
-        .get_template("wrappers/default.j2")
+        .get_template("wrappers/test-wrapper-alfa.j2")
         .unwrap();
     let content = &sf.output(&u).unwrap();
     let output = tmpl.render(context!(content)).unwrap().to_string();
