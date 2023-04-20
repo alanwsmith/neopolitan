@@ -6,6 +6,7 @@ use nom::character::complete::multispace0;
 use nom::character::complete::multispace1;
 use nom::combinator::rest;
 use nom::error::Error;
+use nom::multi::separated_list0;
 use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
@@ -14,7 +15,8 @@ use serde::Serialize;
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum Snippet {
-    Plain {
+    Abbr {
+        attributes: Option<Vec<SnippetAttribute>>,
         text: Option<String>,
     },
     Kbd {
@@ -25,6 +27,9 @@ pub enum Snippet {
         attributes: Option<Vec<SnippetAttribute>>,
         text: Option<String>,
         url: Option<String>,
+    },
+    Plain {
+        text: Option<String>,
     },
 }
 
@@ -37,57 +42,37 @@ pub enum SnippetAttribute {
     },
 }
 
-pub fn snippet_old(source: &str) -> IResult<&str, Snippet> {
-    let (remainder, captured) = alt((
-        tuple((
-            multispace1::<&str, Error<&str>>,
-            tag("<<"),
-            is_not("|"),
-            tag("|"),
-            multispace0,
-            tag("kbd"),
-            take_until(">>"),
-            tag(">>"),
-        ))
-        .map(|x| Snippet::Kbd {
-            attributes: None,
-            text: Some(x.2.to_string()),
-        }),
-        tuple((
-            multispace1::<&str, Error<&str>>,
-            multispace1,
-            tag("<<"),
-            is_not("|"),
-            tag("|"),
-            multispace0,
-            tag("kbd"),
-            take_until(">>"),
-            tag(">>"),
-        ))
-        .map(|x| Snippet::Kbd {
-            attributes: None,
-            text: Some(x.2.to_string()),
-        }),
-        rest.map(|x: &str| Snippet::Plain {
-            text: Some(x.to_string()),
-        }),
-    ))(source)?;
-    // dbg!(captured);
-    // This is for individual sections of a block like
-    // raw plain text, code, strong, links, etc...
-    // dbg!(source);
+pub fn inline_attributes(source: &str) -> IResult<&str, Option<Vec<SnippetAttribute>>> {
+    let (_a, b) = separated_list0(tag("|"), alt((take_until("|"), rest)))(source)?;
+    let (_a, b) = separated_list0(tag(":"), alt((take_until(":"), rest)))(b[1])?;
     Ok((
-        remainder,
-        captured,
-        // Snippet::Kbd {
-        //     attributes: None,
-        //     text: Some("weave the carpet".to_string()),
-        // },
+        "",
+        Some(vec![SnippetAttribute::Attribute {
+            key: Some(b[0].trim().to_string()),
+            value: Some(b[1].trim().to_string()),
+        }]),
     ))
 }
 
 pub fn snippet(source: &str) -> IResult<&str, Snippet> {
     let (remainder, captured) = alt((
+        tuple((
+            multispace1::<&str, Error<&str>>,
+            tag("<<"),
+            is_not("|"),
+            tag("|"),
+            multispace0,
+            tag("abbr"),
+            take_until(">>"),
+            tag(">>"),
+        ))
+        .map(|x| {
+            dbg!(x.6);
+            Snippet::Abbr {
+                attributes: inline_attributes(x.6).unwrap().1,
+                text: Some(x.2.to_string()),
+            }
+        }),
         tuple((
             multispace1::<&str, Error<&str>>,
             tag("<<"),
@@ -174,6 +159,23 @@ mod test {
             },
         ));
         let result = snippet("Bring your <<best|kbd>> compass");
+        assert_eq!(expected, result);
+    }
+
+    #[test]
+    pub fn abbr_with_attribute() {
+        let source = " <<weave the carpet|abbr|class: echo>>";
+        let expected = Ok((
+            "",
+            Snippet::Abbr {
+                attributes: Some(vec![SnippetAttribute::Attribute {
+                    key: Some("class".to_string()),
+                    value: Some("echo".to_string()),
+                }]),
+                text: Some("weave the carpet".to_string()),
+            },
+        ));
+        let result = snippet(source);
         assert_eq!(expected, result);
     }
 }
