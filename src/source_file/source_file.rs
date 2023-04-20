@@ -40,6 +40,23 @@ impl SourceFile {
                             .as_str(),
                     )
                 }
+                Section::BlockquoteSection {
+                    attributes,
+                    children,
+                } => {
+                    let structure = u
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template("blockquote.j2")
+                        .unwrap();
+                    output_string.push_str(
+                        structure
+                            .render(context!(attributes, children))
+                            .unwrap()
+                            .as_str(),
+                    )
+                }
                 Section::NoteSection {
                     attributes,
                     children,

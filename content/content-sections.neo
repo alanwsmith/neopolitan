@@ -6,9 +6,9 @@ Content Sections
 
 Implemented
 
-- [] >aside>/examples/aside.html> - The HTML <aside> tag
+- [x] >aside>/examples/aside.html> - The HTML <aside> tag
 
-- []>blockquote>/examples/blockquote.html> - The HTML <blockquote> tag
+- [x]>blockquote>/examples/blockquote.html> - The HTML <blockquote> tag
 
 - []>checklist>/examples/checklist.html> - Like a TODO list, but it resets every time the page is visited
 
@@ -24,7 +24,7 @@ from the body of the section
 
 - []>list>/examples/list.html> - Unordered lists
 
-- []>note>/examples/note.html> - A div wrapper with a 
+- [x]>note>/examples/note.html> - A div wrapper with a 
   `class="note"`html` attribute
 
 - []>notes>/examples/notes.html> - A list style notes section

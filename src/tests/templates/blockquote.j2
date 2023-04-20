@@ -1,0 +1,14 @@
+<blockquote 
+  {%- for attribute in attributes -%}
+    {{- " " -}}
+    {{attribute.key}}="{{attribute.value}}"
+  {%- endfor -%}
+  >
+  {%- for child in children -%}
+    <p>
+      {%- for snippet in child.snippets -%} 
+        {{ snippet.text }}
+      {%- endfor -%}
+    </p>
+  {%- endfor -%}
+</blockquote>

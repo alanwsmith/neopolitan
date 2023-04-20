@@ -1,5 +1,6 @@
 use crate::block::block::*;
 use crate::section::aside::*;
+use crate::section::blockquote::*;
 use crate::section::note::*;
 use crate::section::section_attributes::SectionAttribute;
 use crate::section::subtitle::*;
@@ -20,6 +21,10 @@ use serde::Serialize;
 #[serde(tag = "type")]
 pub enum Section {
     AsideSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    BlockquoteSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -49,6 +54,13 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| aside(t.3).unwrap().1),
+        tuple((
+            tag("blockquote"),
+            not_line_ending,
+            line_ending,
+            alt((take_until("\n\n-> "), rest)),
+        ))
+        .map(|t| blockquote(t.3).unwrap().1),
         tuple((
             tag("note"),
             not_line_ending,
