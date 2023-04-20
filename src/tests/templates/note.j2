@@ -1,0 +1,23 @@
+<div class="note
+  {%- for attribute in attributes -%}
+    {%- if attribute.key == "class" -%}
+      {{- " " -}}
+      {{ attribute.value }}
+    {%- endif -%}
+  {%- endfor -%}
+  "
+  {%- for attribute in attributes -%}
+    {%- if attribute.key != "class" -%}
+      {{- " " -}}
+      {{attribute.key}}="{{attribute.value}}"
+    {%- endif -%}
+  {%- endfor -%}
+  >
+  {%- for child in children -%}
+    <p>
+      {%- for snippet in child.snippets -%} 
+        {{ snippet.text }}
+      {%- endfor -%}
+    </p>
+  {%- endfor -%}
+</div>

@@ -1,5 +1,3 @@
-#![allow(warnings)]
-use crate::block::block::*;
 use crate::parse::parse::parse;
 use crate::section::section::*;
 use crate::source_file::source_file::SourceFile;
@@ -8,12 +6,22 @@ use crate::universe::universe::Universe;
 use minijinja::context;
 
 #[test]
-pub fn title_with_attributes() {
+pub fn note_with_class() {
     let mut u = Universe::new();
     u.env = Some(create_env("./src/tests/templates"));
-    let lines = ["-> title", ">> id: alfa", "Pick The Rose"];
+    let lines = [
+        "-> note",
+        ">> class: sierra",
+        "",
+        "Slide the tray",
+        "",
+        "Set the piece",
+    ];
     let expected = Some(vec![
-        r#"<h1 class="title" id="alfa">Pick The Rose</h1>"#.to_string()
+        r#"<div class="note sierra">"#.to_string(),
+        r#"<p>Slide the tray</p>"#.to_string(),
+        r#"<p>Set the piece</p>"#.to_string(),
+        r#"</div>"#.to_string(),
     ]);
     let source = lines.join("\n");
     let mut sf = SourceFile::new();
@@ -22,11 +30,11 @@ pub fn title_with_attributes() {
     sf.output_chunks = Some(vec![]);
     sf.parsed.unwrap().iter().for_each(|section| {
         match section {
-            Section::TitleSection {
+            Section::NoteSection {
                 attributes,
                 children,
             } => {
-                let structure = u.env.as_ref().unwrap().get_template("title.j2").unwrap();
+                let structure = u.env.as_ref().unwrap().get_template("note.j2").unwrap();
                 sf.output_chunks.as_mut().unwrap().push(
                     structure
                         .render(context!(attributes, children))
@@ -34,7 +42,6 @@ pub fn title_with_attributes() {
                         .to_string(),
                 );
             }
-
             _ => {}
         }
         ()

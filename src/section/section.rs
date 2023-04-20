@@ -1,4 +1,5 @@
 use crate::block::block::*;
+use crate::section::note::*;
 use crate::section::section_attributes::SectionAttribute;
 use crate::section::subtitle::*;
 use crate::section::title::*;
@@ -17,11 +18,15 @@ use serde::Serialize;
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum Section {
-    TitleSection {
+    NoteSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
     SubtitleSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    TitleSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -31,7 +36,14 @@ pub enum Section {
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (remainder, _) = multispace0(source)?;
     let (remainder, _) = tag("-> ")(remainder)?;
-    let (_, section) = alt((
+    let (remainder, section) = alt((
+        tuple((
+            tag("note"),
+            not_line_ending,
+            line_ending,
+            alt((take_until("\n\n-> "), rest)),
+        ))
+        .map(|t| note(t.3).unwrap().1),
         tuple((
             tag("title"),
             not_line_ending,
@@ -47,5 +59,5 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         ))
         .map(|t| subtitle(t.3).unwrap().1),
     ))(remainder)?;
-    Ok(("", section))
+    Ok((remainder, section))
 }
