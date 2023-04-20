@@ -1,5 +1,6 @@
 use crate::block::block::Block;
 use crate::snippet::snippet::Snippet;
+use crate::snippet::snippet::SnippetAttribute;
 
 pub fn joiner(children: &Option<Vec<Block>>) -> Vec<String> {
     let mut joined: Vec<String> = vec![];
@@ -14,8 +15,23 @@ pub fn joiner(children: &Option<Vec<Block>>) -> Vec<String> {
                             assembler.push(new_thing.to_string());
                             ()
                         }
-                        Snippet::Kbd { text, .. } => {
+                        Snippet::Kbd { text, attributes } => {
                             let mut content = String::from("<kbd");
+                            match attributes {
+                                Some(attrs) => {
+                                    attrs.iter().for_each(|x| match x {
+                                        SnippetAttribute::Attribute { key, value } => {
+                                            content.push_str(" ");
+                                            content.push_str(key.as_ref().unwrap().as_str());
+                                            content.push_str(r#"=""#);
+                                            content.push_str(value.as_ref().unwrap().as_str());
+                                            content.push_str(r#"""#);
+                                            ()
+                                        }
+                                    });
+                                }
+                                None => (),
+                            }
                             content.push_str(">");
                             content.push_str(text.as_ref().unwrap());
                             content.push_str("</kbd>");
@@ -24,7 +40,6 @@ pub fn joiner(children: &Option<Vec<Block>>) -> Vec<String> {
                         }
                         _ => (),
                     }
-                    // dbg!(snippet);
                 }
                 ()
             }
@@ -39,6 +54,7 @@ pub fn joiner(children: &Option<Vec<Block>>) -> Vec<String> {
 mod test {
     use crate::block::block::Block;
     use crate::snippet::snippet::Snippet;
+    use crate::snippet::snippet::SnippetAttribute;
     use crate::source_file::joiner::joiner;
 
     #[test]
@@ -49,6 +65,36 @@ mod test {
             }]),
         }]);
         let expected: Vec<String> = vec![r#"asdf"#.to_string()];
+        let result = joiner(&source);
+        assert_eq!(expected, result);
+    }
+
+    #[test]
+    pub fn kbd() {
+        let source = Some(vec![Block::Text {
+            snippets: Some(vec![Snippet::Kbd {
+                attributes: None,
+                text: Some("heavy black lines".to_string()),
+            }]),
+        }]);
+        let expected: Vec<String> = vec![r#"<kbd>heavy black lines</kbd>"#.to_string()];
+        let result = joiner(&source);
+        assert_eq!(expected, result);
+    }
+
+    #[test]
+    pub fn kbd_with_attributes() {
+        let source = Some(vec![Block::Text {
+            snippets: Some(vec![Snippet::Kbd {
+                attributes: Some(vec![SnippetAttribute::Attribute {
+                    key: Some("class".to_string()),
+                    value: Some("foxtrot".to_string()),
+                }]),
+                text: Some("heavy black lines".to_string()),
+            }]),
+        }]);
+        let expected: Vec<String> =
+            vec![r#"<kbd class="foxtrot">heavy black lines</kbd>"#.to_string()];
         let result = joiner(&source);
         assert_eq!(expected, result);
     }

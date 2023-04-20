@@ -18,13 +18,22 @@ pub enum Snippet {
         text: Option<String>,
     },
     Kbd {
-        attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        attributes: Option<Vec<SnippetAttribute>>,
         text: Option<String>,
     },
     Link {
-        attributes: Option<Vec<(Option<String>, Option<String>)>>,
+        attributes: Option<Vec<SnippetAttribute>>,
         text: Option<String>,
         url: Option<String>,
+    },
+}
+
+#[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
+pub enum SnippetAttribute {
+    Attribute {
+        key: Option<String>,
+        value: Option<String>,
     },
 }
 
