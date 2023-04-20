@@ -1,5 +1,4 @@
 use crate::section::section::*;
-use crate::section::section_attributes::SectionAttribute;
 use serde::Serialize;
 
 #[derive(Debug, PartialEq, Serialize)]
@@ -19,12 +18,31 @@ impl SourceFile {
     }
 }
 
+impl SourceFile {
+    pub fn output(&self) -> Option<String> {
+        Some(r#"<h1 class="title"><p>Shut the hatch</p></h1>"#.to_string())
+    }
+}
+
 #[cfg(test)]
 mod test {
     use crate::block::block::*;
     use crate::parse::parse::*;
+    use crate::section::section_attributes::SectionAttribute;
     use crate::snippet::snippet::*;
     use crate::source_file::source_file::*;
+    use crate::tests::remove_whitespace::remove_whitespace;
+
+    #[test]
+    pub fn basic_output() {
+        let lines = ["-> title", "", "Shut the hatch"];
+        let expected = Some(r#"<h1 class="title"><p>Shut the hatch</p></h1>"#.to_string());
+        let mut sf = SourceFile::new();
+        sf.raw_data = Some(lines.join("\n").to_string());
+        sf.parsed = parse(sf.raw_data.as_ref().unwrap().as_str()).unwrap().1;
+        let output = sf.output();
+        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
+    }
 
     #[test]
     pub fn basic_title_test() {

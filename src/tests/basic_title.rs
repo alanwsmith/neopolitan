@@ -9,7 +9,7 @@ use minijinja::context;
 // use minijinja::Environment;
 
 #[test]
-pub fn integration_alfa() {
+pub fn basic_title() {
     let mut u = Universe::new();
     u.env = Some(create_env("./src/tests/templates"));
     let lines = ["-> title", "", "Pick The Rose"];
