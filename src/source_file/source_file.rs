@@ -1,4 +1,5 @@
 use crate::section::section::*;
+use crate::section::section_attributes::SectionAttribute;
 use serde::Serialize;
 
 #[derive(Debug, PartialEq, Serialize)]
@@ -63,6 +64,26 @@ mod test {
         }]);
         sf.raw_data = Some(lines.join("\n").to_string());
         sf.parsed = parse(sf.raw_data.unwrap().as_str()).unwrap().1;
+        assert_eq!(expected, sf.parsed);
+    }
+
+    #[test]
+    pub fn attributes() {
+        let mut sf = SourceFile::new();
+        let lines = ["-> title", ">> id: bravo", "Set The Piece"];
+        let expected = Some(vec![Section::TitleSection {
+            attributes: Some(vec![SectionAttribute::Attribute {
+                key: Some("id".to_string()),
+                value: Some("bravo".to_string()),
+            }]),
+            children: Some(vec![Block::Text {
+                snippets: Some(vec![Snippet::Plain {
+                    text: Some("Set The Piece".to_string()),
+                }]),
+            }]),
+        }]);
+        sf.raw_data = Some(lines.join("\n").to_string());
+        sf.parsed = parse_dev(sf.raw_data.unwrap().as_str()).unwrap().1;
         assert_eq!(expected, sf.parsed);
     }
 }
