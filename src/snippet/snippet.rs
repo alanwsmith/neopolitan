@@ -91,7 +91,7 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
         tuple((
             multispace1::<&str, Error<&str>>,
             tag("<<"),
-            is_not("|"),
+            take_until("|"),
             tag("|"),
             multispace0,
             tag("abbr"),
@@ -108,7 +108,7 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
         tuple((
             multispace1::<&str, Error<&str>>,
             tag("<<"),
-            is_not("|"),
+            take_until("|"),
             tag("|"),
             multispace0,
             tag("kbd"),
@@ -147,9 +147,9 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
         tuple((
             multispace1::<&str, Error<&str>>,
             tag(">"),
-            is_not(">"),
+            take_until(">"),
             tag(">"),
-            is_not(">"),
+            take_until(">"),
             tag(">"),
         ))
         .map(|x| Snippet::Link {
