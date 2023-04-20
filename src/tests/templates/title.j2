@@ -1,8 +1,18 @@
 {%- for child in children -%}
   {%- if loop.first -%}
-    <h1 class="title"
+    <h1 class="title
       {%- for attribute in attributes -%}
-        {{attribute.key}}="{{attribute.value}}"
+        {%- if attribute.key == "class" -%}
+          {{- " " -}}
+          {{ attribute.value }}
+        {%- endif -%}
+      {%- endfor -%}
+    "
+      {%- for attribute in attributes -%}
+        {%- if attribute.key != "class" -%}
+          {{- " " -}}
+          {{attribute.key}}="{{attribute.value}}"
+        {%- endif -%}
       {%- endfor -%}
     >
       {%- for snippet in child.snippets -%} 
