@@ -22,7 +22,7 @@ impl SourceFile {
 }
 
 impl SourceFile {
-    pub fn output(&self, u: Universe) -> Option<String> {
+    pub fn output(&self, u: &Universe) -> Option<String> {
         let mut output_string = String::from("");
         self.parsed
             .as_ref()
@@ -34,9 +34,10 @@ impl SourceFile {
                     children,
                 } => {
                     let structure = u.env.as_ref().unwrap().get_template("aside.j2").unwrap();
+                    let parts = joiner(children);
                     output_string.push_str(
                         structure
-                            .render(context!(attributes, children))
+                            .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
                     )
@@ -51,9 +52,10 @@ impl SourceFile {
                         .unwrap()
                         .get_template("blockquote.j2")
                         .unwrap();
+                    let parts = joiner(children);
                     output_string.push_str(
                         structure
-                            .render(context!(attributes, children))
+                            .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
                     )
@@ -63,9 +65,10 @@ impl SourceFile {
                     children,
                 } => {
                     let structure = u.env.as_ref().unwrap().get_template("note.j2").unwrap();
+                    let parts = joiner(children);
                     output_string.push_str(
                         structure
-                            .render(context!(attributes, children))
+                            .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
                     )
@@ -75,9 +78,10 @@ impl SourceFile {
                     children,
                 } => {
                     let structure = u.env.as_ref().unwrap().get_template("subtitle.j2").unwrap();
+                    let parts = joiner(children);
                     output_string.push_str(
                         structure
-                            .render(context!(attributes, children))
+                            .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
                     )
@@ -91,7 +95,6 @@ impl SourceFile {
                     output_string.push_str(
                         structure
                             .render(context!(attributes, parts))
-                            // .render(context!(attributes, children))
                             .unwrap()
                             .as_str(),
                     )
@@ -126,7 +129,7 @@ mod test {
         let mut sf = SourceFile::new();
         sf.raw_data = Some(lines.join("\n").to_string());
         sf.parsed = parse(sf.raw_data.as_ref().unwrap().as_str()).unwrap().1;
-        let output = sf.output(u);
+        let output = sf.output(&u);
         assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
 

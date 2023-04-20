@@ -55,7 +55,7 @@ mod test {
         let mut sf = SourceFile::new();
         sf.raw_data = Some(source);
         sf.parsed = parse(sf.raw_data.as_ref().unwrap().as_str()).unwrap().1;
-        let output = sf.output(u);
+        let output = sf.output(&u);
         assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
 }

@@ -13,11 +13,9 @@
     {%- endif -%}
   {%- endfor -%}
   >
-  {%- for child in children -%}
+  {%- for part in parts -%}
     <p>
-      {%- for snippet in child.snippets -%} 
-        {{ snippet.text }}
-      {%- endfor -%}
+    {{- part -}}
     </p>
   {%- endfor -%}
 </div>

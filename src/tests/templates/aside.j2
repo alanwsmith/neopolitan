@@ -4,14 +4,9 @@
     {{attribute.key}}="{{attribute.value}}"
   {%- endfor -%}
   >
-  {%- for child in children -%}
+  {%- for part in parts -%}
     <p>
-      {%- for snippet in child.snippets -%} 
-      {%- if not loop.first %}
-      {{- " " -}}
-      {%- endif -%}
-        {{ snippet.text }}
-      {%- endfor -%}
+    {{- part -}} 
     </p>
   {%- endfor -%}
 </aside>

@@ -1,4 +1,4 @@
-{%- for child in children -%}
+{%- for part in parts -%}
   {%- if loop.first -%}
     <div class="subtitle
       {%- for attribute in attributes -%}
@@ -15,15 +15,11 @@
         {%- endif -%}
       {%- endfor -%}
     >
-      {%- for snippet in child.snippets -%} 
-        {{ snippet.text }}
-      {%- endfor -%}
+    {{- part -}}
     </div>
   {%- else -%}
     <p>
-      {%- for snippet in child.snippets -%} 
-        {{ snippet.text }}
-      {%- endfor -%}
+    {{- part -}}
     </p>
   {%- endif -%}
 {%- endfor -%}
