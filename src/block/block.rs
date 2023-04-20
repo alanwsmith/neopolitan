@@ -13,9 +13,9 @@ pub enum Block {
 }
 
 pub fn block(source: &str) -> IResult<&str, Block> {
-    let (_, captured) = alt((take_until("\n\n"), rest))(source)?;
+    let (remainder, captured) = alt((take_until("\n\n"), rest))(source)?;
     // dbg!(captured);
-    let (remainder, snippets) = many_till(snippet, eof)(captured)?;
+    let (_, snippets) = many_till(snippet, eof)(captured)?;
     let return_block = Block::Text {
         snippets: Some(snippets.0),
     };

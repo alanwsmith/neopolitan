@@ -45,11 +45,18 @@ mod test {
         let lines = ["-> title", "", "Dip the pail once", "", "Draw the chart"];
         let expected = Some(vec![Section::TitleSection {
             attributes: None,
-            children: Some(vec![Block::Text {
-                snippets: Some(vec![Snippet::Plain {
-                    text: Some("Dip the pail once".to_string()),
-                }]),
-            }]),
+            children: Some(vec![
+                Block::Text {
+                    snippets: Some(vec![Snippet::Plain {
+                        text: Some("Dip the pail once".to_string()),
+                    }]),
+                },
+                Block::Text {
+                    snippets: Some(vec![Snippet::Plain {
+                        text: Some("Draw the chart".to_string()),
+                    }]),
+                },
+            ]),
         }]);
         sf.raw_data = Some(lines.join("\n").to_string());
         sf.sections = parse(sf.raw_data.unwrap().as_str()).unwrap().1;
