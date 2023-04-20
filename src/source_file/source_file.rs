@@ -1,4 +1,5 @@
 use crate::section::section::*;
+use crate::source_file::joiner::joiner;
 use crate::universe::universe::Universe;
 use minijinja::context;
 use serde::Serialize;
@@ -86,9 +87,11 @@ impl SourceFile {
                     children,
                 } => {
                     let structure = u.env.as_ref().unwrap().get_template("title.j2").unwrap();
+                    let parts = joiner(children);
                     output_string.push_str(
                         structure
-                            .render(context!(attributes, children))
+                            .render(context!(attributes, parts))
+                            // .render(context!(attributes, children))
                             .unwrap()
                             .as_str(),
                     )

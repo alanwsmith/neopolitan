@@ -7,6 +7,9 @@
   {%- for child in children -%}
     <p>
       {%- for snippet in child.snippets -%} 
+      {%- if not loop.first %}
+      {{- " " -}}
+      {%- endif -%}
         {{ snippet.text }}
       {%- endfor -%}
     </p>

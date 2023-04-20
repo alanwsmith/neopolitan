@@ -28,7 +28,7 @@ pub enum Snippet {
     },
 }
 
-pub fn snippet(source: &str) -> IResult<&str, Snippet> {
+pub fn snippet_old(source: &str) -> IResult<&str, Snippet> {
     let (remainder, captured) = alt((
         tuple((
             multispace1::<&str, Error<&str>>,
@@ -64,7 +64,7 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
         }),
     ))(source)?;
     // dbg!(captured);
-    // This is for individaul sections of a block like
+    // This is for individual sections of a block like
     // raw plain text, code, strong, links, etc...
     // dbg!(source);
     Ok((
@@ -77,7 +77,7 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
     ))
 }
 
-pub fn snippet_dev(source: &str) -> IResult<&str, Snippet> {
+pub fn snippet(source: &str) -> IResult<&str, Snippet> {
     let (remainder, captured) = alt((
         tuple((
             multispace1::<&str, Error<&str>>,
@@ -105,6 +105,9 @@ pub fn snippet_dev(source: &str) -> IResult<&str, Snippet> {
             attributes: None,
             text: Some(x.2.to_string()),
             url: Some(x.4.to_string()),
+        }),
+        take_until(" <<").map(|x: &str| Snippet::Plain {
+            text: Some(x.to_string()),
         }),
         rest.map(|x: &str| Snippet::Plain {
             text: Some(x.to_string()),
@@ -149,7 +152,19 @@ mod test {
                 text: Some("salt peanuts".to_string()),
             },
         ));
-        let result = snippet_dev(" >salt peanuts>https://www.example.com/> red ink");
+        let result = snippet(" >salt peanuts>https://www.example.com/> red ink");
+        assert_eq!(expected, result);
+    }
+
+    #[test]
+    pub fn text_stop_at_tag() {
+        let expected = Ok((
+            " <<best|kbd>> compass",
+            Snippet::Plain {
+                text: Some("Bring your".to_string()),
+            },
+        ));
+        let result = snippet("Bring your <<best|kbd>> compass");
         assert_eq!(expected, result);
     }
 }
