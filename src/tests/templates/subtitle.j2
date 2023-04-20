@@ -1,0 +1,29 @@
+{%- for child in children -%}
+  {%- if loop.first -%}
+    <div class="subtitle
+      {%- for attribute in attributes -%}
+        {%- if attribute.key == "class" -%}
+          {{- " " -}}
+          {{ attribute.value }}
+        {%- endif -%}
+      {%- endfor -%}
+    "
+      {%- for attribute in attributes -%}
+        {%- if attribute.key != "class" -%}
+          {{- " " -}}
+          {{attribute.key}}="{{attribute.value}}"
+        {%- endif -%}
+      {%- endfor -%}
+    >
+      {%- for snippet in child.snippets -%} 
+        {{ snippet.text }}
+      {%- endfor -%}
+    </div>
+  {%- else -%}
+    <p>
+      {%- for snippet in child.snippets -%} 
+        {{ snippet.text }}
+      {%- endfor -%}
+    </p>
+  {%- endif -%}
+{%- endfor -%}
