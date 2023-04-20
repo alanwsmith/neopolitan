@@ -45,19 +45,45 @@ pub enum SnippetAttribute {
 pub fn inline_attributes(source: &str) -> IResult<&str, Option<Vec<SnippetAttribute>>> {
     let mut attributes: Vec<SnippetAttribute> = vec![];
     let (_a, b) = separated_list0(tag("|"), alt((take_until("|"), rest)))(source)?;
-    let _ = &b.iter().skip(1).for_each(|x| {
-        let (_a, b) = separated_list0(
-            tag::<&str, &str, Error<&str>>(":"),
-            alt((take_until(":"), rest)),
-        )(&x)
-        .unwrap();
-        attributes.push(SnippetAttribute::Attribute {
-            key: Some(b[0].trim().to_string()),
-            value: Some(b[1].trim().to_string()),
+    if b.len() > 1 {
+        let _ = &b.iter().skip(1).for_each(|x| {
+            let (_a, b) = separated_list0(
+                tag::<&str, &str, Error<&str>>(":"),
+                alt((take_until(":"), rest)),
+            )(&x)
+            .unwrap();
+            attributes.push(SnippetAttribute::Attribute {
+                key: Some(b[0].trim().to_string()),
+                value: Some(b[1].trim().to_string()),
+            });
+            ()
         });
-        ()
-    });
-    Ok(("", Some(attributes)))
+        Ok(("", Some(attributes)))
+    } else {
+        Ok(("", None))
+    }
+}
+
+pub fn link_attributes(source: &str) -> IResult<&str, Option<Vec<SnippetAttribute>>> {
+    let mut attributes: Vec<SnippetAttribute> = vec![];
+    let (_, b) = separated_list0(tag("|"), alt((take_until("|"), rest)))(source)?;
+    if b.len() > 1 {
+        let _ = &b.iter().skip(1).for_each(|x| {
+            let (_a, b) = separated_list0(
+                tag::<&str, &str, Error<&str>>(":"),
+                alt((take_until(":"), rest)),
+            )(&x)
+            .unwrap();
+            attributes.push(SnippetAttribute::Attribute {
+                key: Some(b[0].trim().to_string()),
+                value: Some(b[1].trim().to_string()),
+            });
+            ()
+        });
+        Ok((b[0], Some(attributes)))
+    } else {
+        Ok((b[0], None))
+    }
 }
 
 pub fn snippet(source: &str) -> IResult<&str, Snippet> {
@@ -73,7 +99,7 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
             tag(">>"),
         ))
         .map(|x| {
-            dbg!(x.6);
+            // dbg!(x.6);
             Snippet::Abbr {
                 attributes: inline_attributes(x.6).unwrap().1,
                 text: Some(x.2.to_string()),
@@ -92,6 +118,31 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
         .map(|x| Snippet::Kbd {
             attributes: None,
             text: Some(x.2.to_string()),
+        }),
+        tuple((
+            multispace1::<&str, Error<&str>>,
+            tag("<<"),
+            take_until("|"),
+            tag("|"),
+            multispace0,
+            tag("link"),
+            multispace0,
+            tag("|"),
+            take_until(">>"),
+            tag(">>"),
+        ))
+        .map(|x| {
+            dbg!(x.8);
+            let (url, attrs) = link_attributes(x.8).unwrap();
+            // dbg!(url);
+
+            Snippet::Link {
+                // url: Some("https://alfa.example.com/".to_string()),
+                url: Some(url.to_string()),
+                // attributes: inline_attributes(x.6).unwrap().1,
+                attributes: attrs,
+                text: Some(x.2.to_string()),
+            }
         }),
         tuple((
             multispace1::<&str, Error<&str>>,
@@ -169,6 +220,20 @@ mod test {
     }
 
     #[test]
+    pub fn abbr_without_attribute() {
+        let source = " <<weave the carpet|abbr>>";
+        let expected = Ok((
+            "",
+            Snippet::Abbr {
+                attributes: None,
+                text: Some("weave the carpet".to_string()),
+            },
+        ));
+        let result = snippet(source);
+        assert_eq!(expected, result);
+    }
+
+    #[test]
     pub fn abbr_with_attribute() {
         let source = " <<weave the carpet|abbr|class: echo>>";
         let expected = Ok((
@@ -224,4 +289,42 @@ mod test {
         let result = snippet(source);
         assert_eq!(expected, result);
     }
+
+    #[test]
+    pub fn link_inline() {
+        let source = " <<the pail|link|https://alfa.example.com/>> in water";
+        let expected = Ok((
+            " in water",
+            Snippet::Link {
+                url: Some("https://alfa.example.com/".to_string()),
+                attributes: None,
+                text: Some("the pail".to_string()),
+            },
+        ));
+        let result = snippet(source);
+        assert_eq!(expected, result);
+    }
+
+    // #[test]
+    // pub fn link_inline_with_attributes() {
+    //     let source = " <<the pail|link|https://www.example.com/>> in water";
+    //     let expected = Ok((
+    //         " in water",
+    //         Snippet::Link{
+    //             attributes: Some(vec![
+    //                 SnippetAttribute::Attribute {
+    //                     key: Some("class".to_string()),
+    //                     value: Some("hotel".to_string()),
+    //                 },
+    //                 SnippetAttribute::Attribute {
+    //                     key: Some("id".to_string()),
+    //                     value: Some("kilo".to_string()),
+    //                 },
+    //             ]),
+    //             text: Some("weave the carpet".to_string()),
+    //         },
+    //     ));
+    //     let result = snippet(source);
+    //     assert_eq!(expected, result);
+    // }
 }
