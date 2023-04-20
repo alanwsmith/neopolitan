@@ -1,7 +1,15 @@
-<h1 class="title">
-  {%- for child in children -%}
-    {%- for snippet in child.snippets -%} 
-      {{ snippet.text }}
-    {%- endfor -%}
-  {%- endfor -%}
-</h1>
+{%- for child in children -%}
+  {%- if loop.first -%}
+    <h1 class="title">
+      {%- for snippet in child.snippets -%} 
+        {{ snippet.text }}
+      {%- endfor -%}
+    </h1>
+  {%- else -%}
+    <p>
+      {%- for snippet in child.snippets -%} 
+        {{ snippet.text }}
+      {%- endfor -%}
+    </p>
+  {%- endif -%}
+{%- endfor -%}
