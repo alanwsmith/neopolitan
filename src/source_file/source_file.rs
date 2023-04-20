@@ -34,7 +34,12 @@ impl SourceFile {
                     attributes,
                     children,
                 } => {
-                    let structure = u.env.as_ref().unwrap().get_template("aside.j2").unwrap();
+                    let structure = u
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template("components/aside.j2")
+                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
                         structure
@@ -51,7 +56,7 @@ impl SourceFile {
                         .env
                         .as_ref()
                         .unwrap()
-                        .get_template("blockquote.j2")
+                        .get_template("components/blockquote.j2")
                         .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
@@ -65,7 +70,12 @@ impl SourceFile {
                     attributes,
                     children,
                 } => {
-                    let structure = u.env.as_ref().unwrap().get_template("note.j2").unwrap();
+                    let structure = u
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template("components/note.j2")
+                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
                         structure
@@ -78,7 +88,12 @@ impl SourceFile {
                     attributes,
                     children,
                 } => {
-                    let structure = u.env.as_ref().unwrap().get_template("subtitle.j2").unwrap();
+                    let structure = u
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template("components/subtitle.j2")
+                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
                         structure
@@ -91,7 +106,12 @@ impl SourceFile {
                     attributes,
                     children,
                 } => {
-                    let structure = u.env.as_ref().unwrap().get_template("title.j2").unwrap();
+                    let structure = u
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template("components/title.j2")
+                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
                         structure
@@ -126,7 +146,7 @@ mod test {
         let lines = ["-> title", "", "Shut the hatch"];
         let expected = Some(r#"<h1 class="title">Shut the hatch</h1>"#.to_string());
         let mut u = Universe::new();
-        u.env = Some(create_env("./src/tests/templates"));
+        u.env = Some(create_env("./site/templates"));
         let mut sf = SourceFile::new();
         sf.raw = Some(lines.join("\n").to_string());
         sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;

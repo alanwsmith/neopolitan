@@ -1,8 +1,10 @@
 #![allow(warnings)]
 use crate::parse::parse::parse;
 use crate::source_file::source_file::SourceFile;
+use minijinja::context;
 use minijinja::Environment;
 use std::fs;
+use std::fs::create_dir_all;
 use std::path::PathBuf;
 use walkdir::{DirEntry, Error, WalkDir};
 
@@ -64,8 +66,32 @@ impl Universe<'_> {
                 .strip_prefix(&self.source_dir.as_ref().unwrap());
             output_path.push(sub_path.as_ref().unwrap());
             output_path.set_extension("html");
+            create_dir_all(output_path.parent().unwrap());
             dbg!(&output_path);
-            fs::write(output_path, output_file.output(self).unwrap()).unwrap();
+
+            let wrapper = self
+                .env
+                .as_ref()
+                .unwrap()
+                .get_template("components/note.j2")
+                .unwrap();
+
+            // dbg!(&output_file.output(&self).unwrap());
+
+            dbg!(&wrapper.render(context!(a => vec!["e"], s => "wer")));
+
+            let ot = wrapper
+                .render(context!(
+                content =>
+                "asdfasdfasdf"
+                // output_file.output(&self).unwrap()
+
+                // output_file.output(self).unwrap()
+                    ))
+                .unwrap()
+                .to_string();
+            // dbg!(&ot);
+            fs::write(output_path, ot).unwrap();
         }
     }
 }

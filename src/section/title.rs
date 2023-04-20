@@ -36,7 +36,7 @@ mod test {
                 .to_string(),
         );
         let mut u = Universe::new();
-        u.env = Some(create_env("./src/tests/templates"));
+        u.env = Some(create_env("./site/templates"));
         let mut sf = SourceFile::new();
         sf.raw = Some(source);
         sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
@@ -58,7 +58,7 @@ mod test {
             .to_string(),
         );
         let mut u = Universe::new();
-        u.env = Some(create_env("./src/tests/templates"));
+        u.env = Some(create_env("./site/templates"));
         let mut sf = SourceFile::new();
         sf.raw = Some(source);
         sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
@@ -77,7 +77,7 @@ mod test {
                 .to_string(),
         );
         let mut u = Universe::new();
-        u.env = Some(create_env("./src/tests/templates"));
+        u.env = Some(create_env("./site/templates"));
         let mut sf = SourceFile::new();
         sf.raw = Some(source);
         sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
@@ -96,7 +96,7 @@ mod test {
                 .to_string(),
         );
         let mut u = Universe::new();
-        u.env = Some(create_env("./src/tests/templates"));
+        u.env = Some(create_env("./site/templates"));
         let mut sf = SourceFile::new();
         sf.raw = Some(source);
         sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
@@ -120,7 +120,7 @@ mod test {
                 .to_string(),
         );
         let mut u = Universe::new();
-        u.env = Some(create_env("./src/tests/templates"));
+        u.env = Some(create_env("./site/templates"));
         let mut sf = SourceFile::new();
         sf.raw = Some(source);
         sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
