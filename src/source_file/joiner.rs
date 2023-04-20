@@ -14,7 +14,7 @@ pub fn joiner(children: &Option<Vec<Block>>) -> Vec<String> {
                             assembler.push(new_thing.to_string());
                             ()
                         }
-                        Snippet::Kbd { attributes, text } => {
+                        Snippet::Kbd { text, .. } => {
                             let mut content = String::from("<kbd");
                             content.push_str(">");
                             content.push_str(text.as_ref().unwrap());
@@ -32,8 +32,24 @@ pub fn joiner(children: &Option<Vec<Block>>) -> Vec<String> {
         }
         joined.push(assembler.join("\n"));
     });
-
-    // dbg!(children);
-    // "asdf".to_string()
     joined
+}
+
+#[cfg(test)]
+mod test {
+    use crate::block::block::Block;
+    use crate::snippet::snippet::Snippet;
+    use crate::source_file::joiner::joiner;
+
+    #[test]
+    pub fn basic_joiner() {
+        let source = Some(vec![Block::Text {
+            snippets: Some(vec![Snippet::Plain {
+                text: Some("asdf".to_string()),
+            }]),
+        }]);
+        let expected: Vec<String> = vec![r#"asdf"#.to_string()];
+        let result = joiner(&source);
+        assert_eq!(expected, result);
+    }
 }
