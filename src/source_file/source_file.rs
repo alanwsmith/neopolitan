@@ -88,7 +88,7 @@ mod test {
     #[test]
     pub fn attributes() {
         let mut sf = SourceFile::new();
-        let lines = ["-> title", ">> id: bravo", "Set The Piece"];
+        let lines = ["-> title", ">> id: bravo", "", "Set The Piece"];
         let expected = Some(vec![Section::TitleSection {
             attributes: Some(vec![SectionAttribute::Attribute {
                 key: Some("id".to_string()),
