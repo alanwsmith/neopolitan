@@ -18,3 +18,42 @@ pub fn subtitle(source: &str) -> IResult<&str, Section> {
         },
     ))
 }
+
+#[cfg(test)]
+mod test {
+    use crate::parse::parse::*;
+    use crate::source_file::source_file::*;
+    use crate::tests::remove_whitespace::remove_whitespace;
+    use crate::universe::create_env::create_env;
+    use crate::universe::universe::Universe;
+
+    #[test]
+    pub fn subtitle_with_class_and_another_attribute() {
+        let source = [
+            "-> subtitle",
+            ">> class: echo",
+            ">> id: alfa",
+            "",
+            "Open your book",
+            "",
+            "Read the page",
+        ]
+        .join("\n")
+        .to_string();
+        let expected = Some(
+            vec![
+                r#"<div class="subtitle echo" id="alfa">Open your book</div>"#,
+                r#"<p>Read the page</p>"#,
+            ]
+            .join("\n")
+            .to_string(),
+        );
+        let mut u = Universe::new();
+        u.env = Some(create_env("./src/tests/templates"));
+        let mut sf = SourceFile::new();
+        sf.raw_data = Some(source);
+        sf.parsed = parse(sf.raw_data.as_ref().unwrap().as_str()).unwrap().1;
+        let output = sf.output(u);
+        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
+    }
+}

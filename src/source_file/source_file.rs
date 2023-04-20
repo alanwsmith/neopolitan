@@ -52,6 +52,18 @@ impl SourceFile {
                 //                     .to_string(),
                 //             );
                 //         }
+                Section::SubtitleSection {
+                    attributes,
+                    children,
+                } => {
+                    let structure = u.env.as_ref().unwrap().get_template("subtitle.j2").unwrap();
+                    output_string.push_str(
+                        structure
+                            .render(context!(attributes, children))
+                            .unwrap()
+                            .as_str(),
+                    )
+                }
                 Section::TitleSection {
                     attributes,
                     children,
@@ -63,14 +75,14 @@ impl SourceFile {
                             .unwrap()
                             .as_str(),
                     )
-
-                    //             sf.output_chunks.as_mut().unwrap().push(
-                    //                 structure
-                    //                     .render(context!(attributes, children))
-                    //                     .unwrap()
-                    //                     .to_string(),
-                    //             );
                 }
+
+                //             sf.output_chunks.as_mut().unwrap().push(
+                //                 structure
+                //                     .render(context!(attributes, children))
+                //                     .unwrap()
+                //                     .to_string(),
+                //             );
                 _ => {}
             });
 
