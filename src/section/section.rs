@@ -1,22 +1,32 @@
 use crate::block::block::*;
 
 use crate::section::aside::*;
+use crate::section::attributes::*;
 use crate::section::blockquote::*;
+use crate::section::blurb::*;
 use crate::section::canvas::*;
+use crate::section::categories::*;
 use crate::section::checklist::*;
 use crate::section::code::*;
+use crate::section::comment::*;
+use crate::section::css::*;
 use crate::section::details::*;
 use crate::section::div::*;
 use crate::section::dlist::*;
+use crate::section::ext::*;
 use crate::section::figure::*;
+use crate::section::footnote::*;
 use crate::section::h1::*;
 use crate::section::h2::*;
 use crate::section::h3::*;
 use crate::section::h4::*;
 use crate::section::h5::*;
 use crate::section::h6::*;
+use crate::section::head::*;
 use crate::section::hr::*;
+use crate::section::html::*;
 use crate::section::image::*;
+use crate::section::include::*;
 use crate::section::list::*;
 use crate::section::menu::*;
 use crate::section::nav::*;
@@ -27,7 +37,9 @@ use crate::section::olist::*;
 use crate::section::p::*;
 use crate::section::picture::*;
 use crate::section::pre::*;
+use crate::section::reference::*;
 use crate::section::results::*;
+use crate::section::script::*;
 use crate::section::startcode::*;
 use crate::section::subtitle::*;
 use crate::section::table::*;
@@ -37,23 +49,10 @@ use crate::section::todo::*;
 use crate::section::video::*;
 use crate::section::vimeo::*;
 use crate::section::warning::*;
-use crate::section::youtube::*;
-use crate::section::attributes::*;
-use crate::section::blurb::*;
-use crate::section::categories::*;
-use crate::section::comment::*;
-use crate::section::css::*;
-use crate::section::ext::*;
-use crate::section::footnote::*;
-use crate::section::head::*;
-use crate::section::html::*;
-use crate::section::include::*;
-use crate::section::reference::*;
-use crate::section::script::*;
 use crate::section::widget::*;
+use crate::section::youtube::*;
 // AUTO GENERATED START: calls //
 // AUTO GENERATED END: calls //
-
 
 use crate::section::section_attributes::SectionAttribute;
 use nom::branch::alt;
@@ -223,77 +222,61 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-    
-
-AttributesSection
- {
+    AttributesSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-BlurbSection
- {
+    BlurbSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-CategoriesSection
- {
+    CategoriesSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-CommentSection
- {
+    CommentSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-CSSSection
- {
+    CSSSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-ExternalSection
- {
+    ExternalSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-FootnoteSection
- {
+    FootnoteSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-HeadSection
- {
+    HeadSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-HTMLSection
- {
+    HTMLSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-IncludeSection
- {
+    IncludeSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-ReferenceSection
- {
+    ReferenceSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-ScriptSection
- {
+    ScriptSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-WidgetSection
- {
+    WidgetSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
 
     // AUTO GENERATED START: enum //
-// AUTO GENERATED END: enum //
-
+    // AUTO GENERATED END: enum //
     Placeholder,
 }
 
@@ -573,104 +556,99 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| video(t.3).unwrap().1),
-
-            
-tuple((
-            tag("-> attributes"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| attributes(t.3).unwrap().1),
-tuple((
-            tag("-> blurb"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| blurb(t.3).unwrap().1),
-tuple((
-            tag("-> categories"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| categories(t.3).unwrap().1),
-tuple((
-            tag("-> comment"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| comment(t.3).unwrap().1),
-tuple((
-            tag("-> css"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| css(t.3).unwrap().1),
-tuple((
-            tag("-> ext"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| ext(t.3).unwrap().1),
-tuple((
-            tag("-> footnote"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| footnote(t.3).unwrap().1),
-tuple((
-            tag("-> head"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| head(t.3).unwrap().1),
-tuple((
-            tag("-> html"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| html(t.3).unwrap().1),
-tuple((
-            tag("-> include"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| include(t.3).unwrap().1),
-tuple((
-            tag("-> reference"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| reference(t.3).unwrap().1),
-tuple((
-            tag("-> script"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| script(t.3).unwrap().1),
-tuple((
-            tag("-> widget"),
-            not_line_ending,
-            line_ending,
-            alt((take_until("\n\n-> "), rest)),
-        ))
-        .map(|t| widget(t.3).unwrap().1),
-
-
-// AUTO GENERATED START: tags //
-// AUTO GENERATED END: tags //
-
+            tuple((
+                tag("-> attributes"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| attributes(t.3).unwrap().1),
+            tuple((
+                tag("-> blurb"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| blurb(t.3).unwrap().1),
+            tuple((
+                tag("-> categories"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| categories(t.3).unwrap().1),
+            tuple((
+                tag("-> comment"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| comment(t.3).unwrap().1),
+            tuple((
+                tag("-> css"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| css(t.3).unwrap().1),
+            tuple((
+                tag("-> ext"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| ext(t.3).unwrap().1),
+            tuple((
+                tag("-> footnote"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| footnote(t.3).unwrap().1),
+            tuple((
+                tag("-> head"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| head(t.3).unwrap().1),
+            tuple((
+                tag("-> html"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| html(t.3).unwrap().1),
+            tuple((
+                tag("-> include"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| include(t.3).unwrap().1),
+            tuple((
+                tag("-> reference"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| reference(t.3).unwrap().1),
+            tuple((
+                tag("-> script"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| script(t.3).unwrap().1),
+            tuple((
+                tag("-> widget"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| widget(t.3).unwrap().1),
+            // AUTO GENERATED START: tags //
+            // AUTO GENERATED END: tags //
         )),
     ))(remainder)?;
     Ok((remainder, section))

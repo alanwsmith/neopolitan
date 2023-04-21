@@ -1,1 +1,11 @@
-TEMPLATE_TODO: p
+{%- for part in parts -%}
+  <p
+    {%- for attribute in attributes -%}
+    {%- autoescape false -%}
+      {{- attribute -}}
+    {%- endautoescape -%}
+    {%- endfor -%}
+  >
+      {{- part -}}
+  </p>
+{%- endfor -%}
