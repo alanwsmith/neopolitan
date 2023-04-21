@@ -1,4 +1,5 @@
 use crate::block::block::*;
+// AUTO GENERATED START: calls //
 use crate::section::aside::*;
 use crate::section::blockquote::*;
 use crate::section::h1::*;
@@ -8,9 +9,10 @@ use crate::section::h4::*;
 use crate::section::h5::*;
 use crate::section::h6::*;
 use crate::section::note::*;
-use crate::section::section_attributes::SectionAttribute;
 use crate::section::subtitle::*;
 use crate::section::title::*;
+// AUTO GENERATED END: calls //
+use crate::section::section_attributes::SectionAttribute;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -26,6 +28,9 @@ use serde::Serialize;
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum Section {
+
+    // AUTO GENERATED START: enum //
+
     AsideSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
@@ -70,6 +75,11 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+
+
+    // AUTO GENERATED END: enum //
+
+
     Placeholder,
 }
 
@@ -77,6 +87,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     let (remainder, _) = multispace0(source)?;
     let (remainder, _) = tag("-> ")(remainder)?;
     let (remainder, section) = alt((
+        // AUTO GENERATED START: tags //
         tuple((
             tag("aside"),
             not_line_ending,
@@ -154,6 +165,10 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| subtitle(t.3).unwrap().1),
+
+        // AUTO GENERATED END: tags //
+
+
     ))(remainder)?;
     Ok((remainder, section))
 }
