@@ -4,310 +4,104 @@ Section Examples
 
 -> h3
 
-aside
+attributes
 
--> aside
-
-Raise the sail and steer the ship northward.
-
-Pick a card and slip it under the pack.
-
-
--> h3
-
-blockquote
-
--> blockquote
-
-Open your book to the first page.
-
-Mark the spot with a sign painted red.
-
-
--> h3
-
-canvas
-
--> canvas
+-> attributes
 
 x
 
 -> h3
 
-checklist
+blurb
 
--> checklist
-
-x
-
--> h3
-
-code
-
--> code
+-> blurb
 
 x
 
 -> h3
 
-details
+categories
 
--> details
-
-x
-
--> h3
-
-div
-
--> div
+-> categories
 
 x
 
 -> h3
 
-dlist
+comment
 
--> dlist
-
-x
-
--> h3
-
-figure
-
--> figure
+-> comment
 
 x
 
 -> h3
 
-h1
+css
 
--> h1
-
-Add salt before you fry the egg.
-
--> h3
-
-h2
-
--> h2
-
-Fasten two pins on each side.
-
--> h3
-
-h3
-
--> h3
-
-Heave the line over the port side.
-
--> h3
-
-h4
-
--> h4
-
-Hurdle the pit with the long pole.
-
--> h3
-
-h5
-
--> h5
-
-Glue the sheet to the dark blue background.
-
--> h3
-
-h6
-
--> h6
-
-Tack the strip of carpet to the floor.
-
--> h3
-
-hr
-
--> hr
+-> css
 
 x
 
 -> h3
 
-image
+ext
 
--> image
-
-x
-
--> h3
-
-list
-
--> list
+-> ext
 
 x
 
 -> h3
 
-menu
+footnote
 
--> menu
-
-x
-
--> h3
-
-nav
-
--> nav
+-> footnote
 
 x
 
 -> h3
 
-note
+head
 
--> note
-
-x
-
--> h3
-
-notes
-
--> notes
+-> head
 
 x
 
 -> h3
 
-object
+html
 
--> object
-
-x
-
--> h3
-
-olist
-
--> olist
+-> html
 
 x
 
 -> h3
 
-p
+include
 
--> p
-
-x
-
--> h3
-
-picture
-
--> picture
+-> include
 
 x
 
 -> h3
 
-pre
+reference
 
--> pre
-
-x
-
--> h3
-
-results
-
--> results
+-> reference
 
 x
 
 -> h3
 
-startcode
+script
 
--> startcode
-
-x
-
--> h3
-
-subtitle
-
--> subtitle
-
-Turn on the lantern which gives us light.
-
--> h3
-
-table
-
--> table
+-> script
 
 x
 
 -> h3
 
-textarea
+widget
 
--> textarea
-
-x
-
--> h3
-
-title
-
--> title
-
-Tuck the sheet under the edge of the mat.
-
--> h3
-
-todo
-
--> todo
-
-x
-
--> h3
-
-vimeo
-
--> vimeo
-
-x
-
--> h3
-
-warning
-
--> warning
-
-x
-
--> h3
-
-youtube
-
--> youtube
-
-x
-
--> h3
-
-video
-
--> video
+-> widget
 
 x

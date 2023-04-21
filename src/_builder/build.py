@@ -4,74 +4,36 @@ import os.path
 
 from string import Template
 
-items_alfa = [
-    ("aside", "AsideSection"),
-    ("blockquote", "BlockquoteSection"),
-    ("canvas", "CanvasSection"),
-    ("h1", "H1Section"),
-    ("h2", "H2Section"),
-    ("h3", "H3Section"),
-    ("h4", "H4Section"),
-    ("h5", "H5Section"),
-    ("h6", "H6Section"),
-    ("note", "NoteSection"),
-    ("subtitle", "SubtitleSection"),
-    ("title", "TitleSection")
-]
-
-section_extras = [
-    ("section", ),
-    ("section_attributes", ),
-]
-
-# Title style outputs that have a top element
-# followed by paragraphs
-
-title_style_sections = [
-    ("h1", "H1Section"),
-    ("h2", "H2Section"),
-    ("h3", "H3Section"),
-    ("h4", "H4Section"),
-    ("h5", "H5Section"),
-    ("h6", "H6Section"),
-    ("title", "TitleSection")
-]
-
-# full section list
-full_section_list = [
-    ("aside", "AsideSection"),
-    ("blockquote", "BlockquoteSection"),
-    ("canvas", "CanvasSection"),
-    ("h1", "H1Section"),
-    ("h2", "H2Section"),
-    ("h3", "H3Section"),
-    ("h4", "H4Section"),
-    ("h5", "H5Section"),
-    ("h6", "H6Section"),
-    ("note", "NoteSection"),
-    ("subtitle", "SubtitleSection"),
-    ("title", "TitleSection")
-]
 
 
 base_files = {
-        "aside": {"key": "AsideSection"},
+        "aside": {"key": "AsideSection", "example": "\nShut the hatch"},
+        "attributes": {"key": "AttributesSection"},
         "blockquote": {"key": "BlockquoteSection"},
+        "blurb": {"key": "BlurbSection"},
         "canvas": {"key": "CanvasSection"},
+        "categories": {"key": "CategoriesSection"},
         "checklist": {"key": "ChecklistSection"},
         "code": {"key": "CodeSection"},
+        "comment": {"key": "CommentSection"},
+        "css": {"key": "CSSSection"},
         "details": {"key": "DetailsSection"},
         "div": {"key": "DivSection"},
         "dlist": {"key": "DescriptionListSection"},
+        "ext": {"key": "ExternalSection"},
         "figure": {"key": "FigureSection"},
+        "footnote": {"key": "FootnoteSection"},
         "h1": {"key": "H1Section"},
         "h2": {"key": "H2Section"},
         "h3": {"key": "H3Section"},
         "h4": {"key": "H4Section"},
         "h5": {"key": "H5Section"},
         "h6": {"key": "H6Section"},
+        "head": {"key": "HeadSection"},
         "hr": {"key": "HRSection"},
+        "html": {"key": "HTMLSection"},
         "image": {"key": "ImageSection"},
+        "include": {"key": "IncludeSection"},
         "list": {"key": "ListSection"},
         "menu": {"key": "MenuSection"},
         "nav": {"key": "NavSection"},
@@ -82,7 +44,9 @@ base_files = {
         "p": {"key": "ParagraphsSection"},
         "picture": {"key": "PictureSection"},
         "pre": {"key": "PreSection"},
+        "reference": {"key": "ReferenceSection"},
         "results": {"key": "ResultsSection"},
+        "script": {"key": "ScriptSection"},
         "startcode": {"key": "CodeStartEndSection"},
         "subtitle": {"key": "SubtitleSection"},
         "table": {"key": "TableSection"},
@@ -93,7 +57,9 @@ base_files = {
         "warning": {"key": "WarningSection"},
         "youtube": {"key": "YouTubeSection"},
         "video": {"key": "VideoSection"},
-        }
+        "widget": {"key": "WidgetSection"},
+
+}
 
 def generate_section_files():
     for tag in base_files.keys():
@@ -273,12 +239,14 @@ if __name__ == "__main__":
     # everything. use with care if you need to 
     # redo batches of things
     #generate_section_files()
-    #update_section_mod_file()
     #update_source_file()
     #update_section_file()
     #make_templates()
-    # make_example()
+    #make_example()
 
+    # Remember that this needs to write everything
+    # note just new ones if you add them
+    update_section_mod_file()
 
 from datetime import datetime 
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
