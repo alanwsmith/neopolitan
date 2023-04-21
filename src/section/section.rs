@@ -58,12 +58,6 @@ pub enum Section {
 
 
 
-
-
-
-
-
-
 // AUTO GENERATED START: enum //
 AsideSection
  {

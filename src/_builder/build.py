@@ -56,42 +56,42 @@ full_section_list = [
 
 base_files = {
         "aside": {"key": "AsideSection"},
-        "blockquote": {"key": "BlockquoteSeciton"},
-        "canvas": {"key": "CanvasSeciton"},
-        "checklist": {"key": "ChecklistSeciton"},
-        "code": {"key": "CodeSeciton"},
-        "details": {"key": "DetailsSeciton"},
-        "div": {"key": "DivSeciton"},
-        "dlist": {"key": "DescriptionListSeciton"},
-        "figure": {"key": "FigureSeciton"},
-        "h1": {"key": "H1Seciton"},
-        "h2": {"key": "H2Seciton"},
-        "h3": {"key": "H3Seciton"},
-        "h4": {"key": "H4Seciton"},
-        "h5": {"key": "H5Seciton"},
-        "h6": {"key": "H6Seciton"},
-        "image": {"key": "ImageSeciton"},
-        "list": {"key": "ListSeciton"},
-        "menu": {"key": "MenuSeciton"},
-        "nav": {"key": "NavSeciton"},
-        "note": {"key": "NoteSeciton"},
-        "notes": {"key": "NotesSeciton"},
-        "object": {"key": "ObjectSeciton"},
-        "olist": {"key": "OrderedListSeciton"},
-        "p": {"key": "ParagraphsSeciton"},
-        "picture": {"key": "PictureSeciton"},
-        "pre": {"key": "PreSeciton"},
-        "results": {"key": "ResultsSeciton"},
-        "startcode": {"key": "CodeStartEndSeciton"},
-        "subtitle": {"key": "SubtitleSeciton"},
-        "table": {"key": "TableSeciton"},
-        "textarea": {"key": "TextareaSeciton"},
-        "title": {"key": "TitleSeciton"},
-        "todo": {"key": "TodoSeciton"},
-        "vimeo": {"key": "VimeoSeciton"},
-        "warning": {"key": "WarningSeciton"},
-        "youtube": {"key": "YouTubeSeciton"},
-        "video": {"key": "VideoSeciton"},
+        "blockquote": {"key": "BlockquoteSection"},
+        "canvas": {"key": "CanvasSection"},
+        "checklist": {"key": "ChecklistSection"},
+        "code": {"key": "CodeSection"},
+        "details": {"key": "DetailsSection"},
+        "div": {"key": "DivSection"},
+        "dlist": {"key": "DescriptionListSection"},
+        "figure": {"key": "FigureSection"},
+        "h1": {"key": "H1Section"},
+        "h2": {"key": "H2Section"},
+        "h3": {"key": "H3Section"},
+        "h4": {"key": "H4Section"},
+        "h5": {"key": "H5Section"},
+        "h6": {"key": "H6Section"},
+        "image": {"key": "ImageSection"},
+        "list": {"key": "ListSection"},
+        "menu": {"key": "MenuSection"},
+        "nav": {"key": "NavSection"},
+        "note": {"key": "NoteSection"},
+        "notes": {"key": "NotesSection"},
+        "object": {"key": "ObjectSection"},
+        "olist": {"key": "OrderedListSection"},
+        "p": {"key": "ParagraphsSection"},
+        "picture": {"key": "PictureSection"},
+        "pre": {"key": "PreSection"},
+        "results": {"key": "ResultsSection"},
+        "startcode": {"key": "CodeStartEndSection"},
+        "subtitle": {"key": "SubtitleSection"},
+        "table": {"key": "TableSection"},
+        "textarea": {"key": "TextareaSection"},
+        "title": {"key": "TitleSection"},
+        "todo": {"key": "TodoSection"},
+        "vimeo": {"key": "VimeoSection"},
+        "warning": {"key": "WarningSection"},
+        "youtube": {"key": "YouTubeSection"},
+        "video": {"key": "VideoSection"},
         }
 
 def generate_section_files():
@@ -116,7 +116,6 @@ def generate_section_files():
             print(f"Already exists: {output_path}")
 
 
-
 def update_section_mod_file():
     output_path = "../section/mod.rs"
     if not os.path.isfile(output_path):
@@ -128,44 +127,38 @@ def update_section_mod_file():
 
 
 
+def update_source_file():
+    with open("../source_file/source_file.rs", "r") as _src:
+        indata = _src.read()
+        parts_a = indata.split("// AUTO GENERATED START: Sections //")
+        parts_b = parts_a[1].split("// AUTO GENERATED END: Sections //")
+    with open("../source_file/source_file2.rs", "w") as _out:
+        _out.write(parts_a[0])
+        _out.write("\n// AUTO GENERATED START: Sections //\n")
+        for tag in base_files.keys():
+            values = base_files[tag]
+            enum = values["key"]
+            _out.write(f"""              Section::{enum}""")
+            _out.write("""{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/""")
+            _out.write(tag)
+            _out.write(""".j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+""")
+        _out.write("\n// AUTO GENERATED END: Sections //\n")
+        _out.write(parts_b[1])
 
-
-# def update_source_file():
-#     with open("../source_file/source_file.rs", "r") as _src:
-#         indata = _src.read()
-#         parts_a = indata.split("// AUTO GENERATED START: Sections //")
-#         parts_b = parts_a[1].split("// AUTO GENERATED END: Sections //")
-#     with open("../source_file/source_file.rs", "w") as _out:
-#         _out.write(parts_a[0])
-#         _out.write("\n\n// AUTO GENERATED START: Sections //\n\n")
-#         for item in items_alfa:
-#             _out.write(f"""              Section::{item[1]}""")
-#             _out.write("""{
-#                 attributes,
-#                 children,
-#             } => {
-#                 let parts = joiner(children);
-#                 output_string.push_str(
-#                     &base
-#                         .get_template("components/""")
-#             _out.write(item[0])
-#             _out.write(""".j2")
-#                         .unwrap()
-#                         .render(context!(attributes, parts))
-#                         .unwrap()
-#                         .as_str(),
-#                 );
-#             }
-# """)
-#         _out.write("\n\n// AUTO GENERATED END: Sections //\n\n")
-#         _out.write(parts_b[1])
-
-# def update_mod_file():
-#     with open("../section/mod.rs", "w") as _out:
-#         for item in section_extras:
-#             _out.write(f"pub mod {item[0]};\n")
-#         for item in items_alfa:
-#             _out.write(f"pub mod {item[0]};\n")
 
 # def write_title_style_files():
 #     for item in title_style_sections: 
@@ -267,6 +260,7 @@ def update_section_mod_file():
 if __name__ == "__main__":
     generate_section_files()
     update_section_mod_file()
+    update_source_file()
 
 
 
