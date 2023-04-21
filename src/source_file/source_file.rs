@@ -31,6 +31,12 @@ impl SourceFile {
             .unwrap()
             .iter()
             .for_each(|section| match section {
+
+                // AUTO GENERATED START: Sections //
+
+
+
+
                               Section::AsideSection{
                     attributes,
                     children,
@@ -185,6 +191,11 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
+
+
+
+                // AUTO GENERATED END: Sections //
+
 
                 _ => {}
             });
