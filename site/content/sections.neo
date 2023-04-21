@@ -4,9 +4,25 @@ Section Examples
 
 -> h3
 
+aside
+
+-> aside
+
+x
+
+-> h3
+
 attributes
 
 -> attributes
+
+x
+
+-> h3
+
+blockquote
+
+-> blockquote
 
 x
 
@@ -20,9 +36,33 @@ x
 
 -> h3
 
+canvas
+
+-> canvas
+
+x
+
+-> h3
+
 categories
 
 -> categories
+
+x
+
+-> h3
+
+checklist
+
+-> checklist
+
+x
+
+-> h3
+
+code
+
+-> code
 
 x
 
@@ -44,9 +84,41 @@ x
 
 -> h3
 
+details
+
+-> details
+
+x
+
+-> h3
+
+div
+
+-> div
+
+x
+
+-> h3
+
+dlist
+
+-> dlist
+
+x
+
+-> h3
+
 ext
 
 -> ext
+
+x
+
+-> h3
+
+figure
+
+-> figure
 
 x
 
@@ -60,9 +132,65 @@ x
 
 -> h3
 
+h1
+
+-> h1
+
+x
+
+-> h3
+
+h2
+
+-> h2
+
+x
+
+-> h3
+
+h3
+
+-> h3
+
+x
+
+-> h3
+
+h4
+
+-> h4
+
+x
+
+-> h3
+
+h5
+
+-> h5
+
+x
+
+-> h3
+
+h6
+
+-> h6
+
+x
+
+-> h3
+
 head
 
 -> head
+
+x
+
+-> h3
+
+hr
+
+-> hr
 
 x
 
@@ -76,9 +204,97 @@ x
 
 -> h3
 
+image
+
+-> image
+
+x
+
+-> h3
+
 include
 
 -> include
+
+x
+
+-> h3
+
+list
+
+-> list
+
+x
+
+-> h3
+
+menu
+
+-> menu
+
+x
+
+-> h3
+
+nav
+
+-> nav
+
+x
+
+-> h3
+
+note
+
+-> note
+
+x
+
+-> h3
+
+notes
+
+-> notes
+
+x
+
+-> h3
+
+object
+
+-> object
+
+x
+
+-> h3
+
+olist
+
+-> olist
+
+x
+
+-> h3
+
+p
+
+-> p
+
+x
+
+-> h3
+
+picture
+
+-> picture
+
+x
+
+-> h3
+
+pre
+
+-> pre
 
 x
 
@@ -92,9 +308,97 @@ x
 
 -> h3
 
+results
+
+-> results
+
+x
+
+-> h3
+
 script
 
 -> script
+
+x
+
+-> h3
+
+startcode
+
+-> startcode
+
+x
+
+-> h3
+
+subtitle
+
+-> subtitle
+
+x
+
+-> h3
+
+table
+
+-> table
+
+x
+
+-> h3
+
+textarea
+
+-> textarea
+
+x
+
+-> h3
+
+title
+
+-> title
+
+x
+
+-> h3
+
+todo
+
+-> todo
+
+x
+
+-> h3
+
+vimeo
+
+-> vimeo
+
+x
+
+-> h3
+
+warning
+
+-> warning
+
+x
+
+-> h3
+
+youtube
+
+-> youtube
+
+x
+
+-> h3
+
+video
+
+-> video
 
 x
 

@@ -242,11 +242,11 @@ if __name__ == "__main__":
     #update_source_file()
     #update_section_file()
     #make_templates()
-    #make_example()
 
-    # Remember that this needs to write everything
+    # Remember these need to write everything
     # note just new ones if you add them
-    update_section_mod_file()
+    # update_section_mod_file()
+    # make_example()
 
 from datetime import datetime 
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")

@@ -565,7 +565,6 @@ impl SourceFile {
                 }
                 
                 
-// AUTO GENERATED START: Sections //
               Section::AttributesSection{
                 attributes,
                 children,
@@ -749,6 +748,7 @@ impl SourceFile {
                 );
             }
 
+// AUTO GENERATED START: Sections //
 // AUTO GENERATED END: Sections //
 
                 _ => {}

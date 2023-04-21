@@ -38,8 +38,6 @@ use crate::section::video::*;
 use crate::section::vimeo::*;
 use crate::section::warning::*;
 use crate::section::youtube::*;
-
-// AUTO GENERATED START: calls //
 use crate::section::attributes::*;
 use crate::section::blurb::*;
 use crate::section::categories::*;
@@ -53,6 +51,7 @@ use crate::section::include::*;
 use crate::section::reference::*;
 use crate::section::script::*;
 use crate::section::widget::*;
+// AUTO GENERATED START: calls //
 // AUTO GENERATED END: calls //
 
 
@@ -225,7 +224,7 @@ pub enum Section {
         children: Option<Vec<Block>>,
     },
     
-// AUTO GENERATED START: enum //
+
 AttributesSection
  {
         attributes: Option<Vec<SectionAttribute>>,
@@ -291,6 +290,8 @@ WidgetSection
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+
+    // AUTO GENERATED START: enum //
 // AUTO GENERATED END: enum //
 
     Placeholder,
@@ -574,7 +575,6 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             .map(|t| video(t.3).unwrap().1),
 
             
-// AUTO GENERATED START: tags //
 tuple((
             tag("-> attributes"),
             not_line_ending,
@@ -666,6 +666,9 @@ tuple((
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| widget(t.3).unwrap().1),
+
+
+// AUTO GENERATED START: tags //
 // AUTO GENERATED END: tags //
 
         )),
