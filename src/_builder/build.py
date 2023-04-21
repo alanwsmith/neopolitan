@@ -117,8 +117,27 @@ def update_section_file():
         parts_f = parts_e[1].split("// AUTO GENERATED END: tags //")
 
         use_statements = []
+        enums = []
+        tags = []
+
         for item in full_section_list:
             use_statements.append(f"use crate::section::{item[0]}::*;")
+
+            enums.append(item[1])
+            enums.append(""" {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },""")
+
+            tags.append(
+        f"""tuple((
+            tag("{item[0]}"),
+            not_line_ending,
+            line_ending,
+            alt((take_until("\\n\\n-> "), rest)),
+        ))
+        .map(|t| {item[0]}(t.3).unwrap().1),"""
+                    )
 
             print(item)
 
@@ -141,7 +160,7 @@ def update_section_file():
             "// AUTO GENERATED START: enum //"
         )
         output_sections.append(
-            "HEREHREHRE"
+            "\n".join(enums)
         )
         output_sections.append(
             "// AUTO GENERATED END: enum //"
@@ -153,7 +172,7 @@ def update_section_file():
             "// AUTO GENERATED START: tags //"
         )
         output_sections.append(
-            "HEREHREHRE"
+            "\n".join(tags)
         )
         output_sections.append(
             "// AUTO GENERATED END: tags //"
@@ -196,4 +215,9 @@ update_source_file()
 update_section_file()
 update_mod_file()
 write_title_style_files()
+
+
+from datetime import datetime 
+timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+print(timestamp)
 print("done")
