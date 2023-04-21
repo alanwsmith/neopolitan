@@ -31,8 +31,7 @@ impl SourceFile {
             .unwrap()
             .iter()
             .for_each(|section| match section {
-                // AUTO GENERATED START: Sections //
-                Section::AsideSection {
+                              Section::AsideSection{
                     attributes,
                     children,
                 } => {
@@ -46,8 +45,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
-                Section::BlockquoteSection {
+              Section::BlockquoteSection{
                     attributes,
                     children,
                 } => {
@@ -61,8 +59,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
-                Section::H1Section {
+              Section::H1Section{
                     attributes,
                     children,
                 } => {
@@ -76,8 +73,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
-                Section::H2Section {
+              Section::H2Section{
                     attributes,
                     children,
                 } => {
@@ -91,8 +87,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
-                Section::H3Section {
+              Section::H3Section{
                     attributes,
                     children,
                 } => {
@@ -106,8 +101,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
-                Section::H4Section {
+              Section::H4Section{
                     attributes,
                     children,
                 } => {
@@ -121,8 +115,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
-                Section::H5Section {
+              Section::H5Section{
                     attributes,
                     children,
                 } => {
@@ -136,8 +129,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
-                Section::H6Section {
+              Section::H6Section{
                     attributes,
                     children,
                 } => {
@@ -151,8 +143,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
-                Section::NoteSection {
+              Section::NoteSection{
                     attributes,
                     children,
                 } => {
@@ -166,8 +157,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
-                Section::SubtitleSection {
+              Section::SubtitleSection{
                     attributes,
                     children,
                 } => {
@@ -181,8 +171,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
-                Section::TitleSection {
+              Section::TitleSection{
                     attributes,
                     children,
                 } => {
@@ -197,7 +186,6 @@ impl SourceFile {
                     );
                 }
 
-                // AUTO GENERATED END: Sections //
                 _ => {}
             });
         Some(output_string)
