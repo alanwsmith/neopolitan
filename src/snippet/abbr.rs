@@ -50,4 +50,15 @@ mod test {
         let results = abbr_dev("Pile the coal", r#"class: alfa"#);
         assert_eq!(expected, results);
     }
+
+    #[test]
+    fn two_attribute() {
+        let expected = Snippet::Abbr {
+            string: Some(
+                r#"<abbr id="echo" class="delta foxtrot">Pile the coal</abbr>"#.to_string(),
+            ),
+        };
+        let results = abbr_dev("Pile the coal", r#"id: echo|class: delta foxtrot"#);
+        assert_eq!(expected, results);
+    }
 }
