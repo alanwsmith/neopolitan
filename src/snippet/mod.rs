@@ -1,3 +1,4 @@
+pub mod get_attributes;
 pub mod snippet;
 pub mod abbr;
 pub mod audio;

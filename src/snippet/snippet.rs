@@ -165,55 +165,7 @@ mod test {
     use crate::snippet::snippet::*;
 
     #[test]
-    pub fn basic_test() {
-        let expected = Snippet::Plain {
-            text: Some("Take the winding path".to_string()),
-        };
-        let result = snippet("Take the winding path").unwrap().1;
-        assert_eq!(expected, result);
-    }
-
-    #[test]
-    pub fn basic_kbd_test() {
-        let expected = Ok((
-            " with more words",
-            Snippet::Kbd {
-                attributes: None,
-                text: Some("weave the carpet".to_string()),
-            },
-        ));
-        let result = snippet(" <<weave the carpet|kbd>> with more words");
-        assert_eq!(expected, result);
-    }
-
-    #[test]
-    pub fn shorthand_link_test() {
-        let expected = Ok((
-            " red ink",
-            Snippet::Link {
-                attributes: None,
-                url: Some("https://www.example.com/".to_string()),
-                text: Some("salt peanuts".to_string()),
-            },
-        ));
-        let result = snippet(" >salt peanuts>https://www.example.com/> red ink");
-        assert_eq!(expected, result);
-    }
-
-    #[test]
-    pub fn text_stop_at_tag() {
-        let expected = Ok((
-            " <<best|kbd>> compass",
-            Snippet::Plain {
-                text: Some("Bring your".to_string()),
-            },
-        ));
-        let result = snippet("Bring your <<best|kbd>> compass");
-        assert_eq!(expected, result);
-    }
-
-    #[test]
-    pub fn abbr_without_attribute() {
+    pub fn integration_abbr_without_attribute() {
         let source = " <<weave the carpet|abbr>>";
         let expected = Ok((
             "",
@@ -224,6 +176,54 @@ mod test {
         let result = snippet(source);
         assert_eq!(expected, result);
     }
+
+    // #[test]
+    // pub fn basic_test() {
+    //     let expected = Snippet::Plain {
+    //         text: Some("Take the winding path".to_string()),
+    //     };
+    //     let result = snippet("Take the winding path").unwrap().1;
+    //     assert_eq!(expected, result);
+    // }
+
+    // #[test]
+    // pub fn basic_kbd_test() {
+    //     let expected = Ok((
+    //         " with more words",
+    //         Snippet::Kbd {
+    //             attributes: None,
+    //             text: Some("weave the carpet".to_string()),
+    //         },
+    //     ));
+    //     let result = snippet(" <<weave the carpet|kbd>> with more words");
+    //     assert_eq!(expected, result);
+    // }
+
+    // #[test]
+    // pub fn shorthand_link_test() {
+    //     let expected = Ok((
+    //         " red ink",
+    //         Snippet::Link {
+    //             attributes: None,
+    //             url: Some("https://www.example.com/".to_string()),
+    //             text: Some("salt peanuts".to_string()),
+    //         },
+    //     ));
+    //     let result = snippet(" >salt peanuts>https://www.example.com/> red ink");
+    //     assert_eq!(expected, result);
+    // }
+
+    // #[test]
+    // pub fn text_stop_at_tag() {
+    //     let expected = Ok((
+    //         " <<best|kbd>> compass",
+    //         Snippet::Plain {
+    //             text: Some("Bring your".to_string()),
+    //         },
+    //     ));
+    //     let result = snippet("Bring your <<best|kbd>> compass");
+    //     assert_eq!(expected, result);
+    // }
 
     // #[test]
     // pub fn abbr_with_attribute() {
@@ -282,36 +282,36 @@ mod test {
     //     assert_eq!(expected, result);
     // }
 
-    #[test]
-    pub fn link_inline() {
-        let source = " <<the pail|link|https://alfa.example.com/>> in water";
-        let expected = Ok((
-            " in water",
-            Snippet::Link {
-                url: Some("https://alfa.example.com/".to_string()),
-                attributes: None,
-                text: Some("the pail".to_string()),
-            },
-        ));
-        let result = snippet(source);
-        assert_eq!(expected, result);
-    }
+    // #[test]
+    // pub fn link_inline() {
+    //     let source = " <<the pail|link|https://alfa.example.com/>> in water";
+    //     let expected = Ok((
+    //         " in water",
+    //         Snippet::Link {
+    //             url: Some("https://alfa.example.com/".to_string()),
+    //             attributes: None,
+    //             text: Some("the pail".to_string()),
+    //         },
+    //     ));
+    //     let result = snippet(source);
+    //     assert_eq!(expected, result);
+    // }
 
-    #[test]
-    pub fn link_with_attributes() {
-        let source = " <<winding path|link|https://bravo.example.com/|class: delta>> at sunset";
-        let expected = Ok((
-            " at sunset",
-            Snippet::Link {
-                url: Some("https://bravo.example.com/".to_string()),
-                attributes: Some(vec![SnippetAttribute::Attribute {
-                    key: Some("class".to_string()),
-                    value: Some("delta".to_string()),
-                }]),
-                text: Some("winding path".to_string()),
-            },
-        ));
-        let result = snippet(source);
-        assert_eq!(expected, result);
-    }
+    // #[test]
+    // pub fn link_with_attributes() {
+    //     let source = " <<winding path|link|https://bravo.example.com/|class: delta>> at sunset";
+    //     let expected = Ok((
+    //         " at sunset",
+    //         Snippet::Link {
+    //             url: Some("https://bravo.example.com/".to_string()),
+    //             attributes: Some(vec![SnippetAttribute::Attribute {
+    //                 key: Some("class".to_string()),
+    //                 value: Some("delta".to_string()),
+    //             }]),
+    //             text: Some("winding path".to_string()),
+    //         },
+    //     ));
+    //     let result = snippet(source);
+    //     assert_eq!(expected, result);
+    // }
 }

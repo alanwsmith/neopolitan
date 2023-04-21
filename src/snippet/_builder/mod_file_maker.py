@@ -14,7 +14,13 @@ def make_mod_file():
     con = sqlite3.connect(db_path)
     cur = con.cursor()
     with open(mod_file_path, "w") as _out:
+        #
+        # Hard coded
+        #
+        _out.write("pub mod get_attributes;\n")
         _out.write("pub mod snippet;\n")
+        #
+        #
         sql = 'SELECT tag FROM inline_tags'
         for row in cur.execute(sql):
             print(row[0])
