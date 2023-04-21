@@ -1,9 +1,6 @@
-<aside 
-  {%- for attribute in attributes -%}
-    {{- " " -}}
-    {{attribute.key}}="{{attribute.value}}"
-  {%- endfor -%}
-  >
+<aside {%- autoescape false -%}
+{{- attributes_string -}}
+{%- endautoescape -%}>
   {%- for part in parts -%}
     <p>
     {{- part -}} 
