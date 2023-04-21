@@ -25,219 +25,179 @@ impl SourceFile {
 impl SourceFile {
     pub fn output(&self, u: &Universe) -> Option<String> {
         let mut output_string = String::from("");
+        let base = u.env.as_ref().unwrap();
         self.parsed
             .as_ref()
             .unwrap()
             .iter()
             .for_each(|section| match section {
+                // AUTO GENERATED START: Sections //
                 Section::AsideSection {
                     attributes,
                     children,
                 } => {
-                    let structure = u
-                        .env
-                        .as_ref()
-                        .unwrap()
-                        .get_template("components/aside.j2")
-                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
-                        structure
+                        &base
+                            .get_template("components/aside.j2")
+                            .unwrap()
                             .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
-                    )
+                    );
                 }
 
                 Section::BlockquoteSection {
                     attributes,
                     children,
                 } => {
-                    let structure = u
-                        .env
-                        .as_ref()
-                        .unwrap()
-                        .get_template("components/blockquote.j2")
-                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
-                        structure
+                        &base
+                            .get_template("components/blockquote.j2")
+                            .unwrap()
                             .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
-                    )
+                    );
                 }
 
                 Section::H1Section {
                     attributes,
                     children,
                 } => {
-                    let structure = u
-                        .env
-                        .as_ref()
-                        .unwrap()
-                        .get_template("components/h1.j2")
-                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
-                        structure
+                        &base
+                            .get_template("components/h1.j2")
+                            .unwrap()
                             .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
-                    )
+                    );
                 }
 
                 Section::H2Section {
                     attributes,
                     children,
                 } => {
-                    let structure = u
-                        .env
-                        .as_ref()
-                        .unwrap()
-                        .get_template("components/h2.j2")
-                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
-                        structure
+                        &base
+                            .get_template("components/h2.j2")
+                            .unwrap()
                             .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
-                    )
+                    );
                 }
 
                 Section::H3Section {
                     attributes,
                     children,
                 } => {
-                    let structure = u
-                        .env
-                        .as_ref()
-                        .unwrap()
-                        .get_template("components/h3.j2")
-                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
-                        structure
+                        &base
+                            .get_template("components/h3.j2")
+                            .unwrap()
                             .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
-                    )
+                    );
                 }
 
                 Section::H4Section {
                     attributes,
                     children,
                 } => {
-                    let structure = u
-                        .env
-                        .as_ref()
-                        .unwrap()
-                        .get_template("components/h4.j2")
-                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
-                        structure
+                        &base
+                            .get_template("components/h4.j2")
+                            .unwrap()
                             .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
-                    )
+                    );
                 }
 
                 Section::H5Section {
                     attributes,
                     children,
                 } => {
-                    let structure = u
-                        .env
-                        .as_ref()
-                        .unwrap()
-                        .get_template("components/h5.j2")
-                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
-                        structure
+                        &base
+                            .get_template("components/h5.j2")
+                            .unwrap()
                             .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
-                    )
+                    );
                 }
 
                 Section::H6Section {
                     attributes,
                     children,
                 } => {
-                    let structure = u
-                        .env
-                        .as_ref()
-                        .unwrap()
-                        .get_template("components/h6.j2")
-                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
-                        structure
+                        &base
+                            .get_template("components/h6.j2")
+                            .unwrap()
                             .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
-                    )
+                    );
                 }
 
                 Section::NoteSection {
                     attributes,
                     children,
                 } => {
-                    let structure = u
-                        .env
-                        .as_ref()
-                        .unwrap()
-                        .get_template("components/note.j2")
-                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
-                        structure
+                        &base
+                            .get_template("components/note.j2")
+                            .unwrap()
                             .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
-                    )
+                    );
                 }
 
                 Section::SubtitleSection {
                     attributes,
                     children,
                 } => {
-                    let structure = u
-                        .env
-                        .as_ref()
-                        .unwrap()
-                        .get_template("components/subtitle.j2")
-                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
-                        structure
+                        &base
+                            .get_template("components/subtitle.j2")
+                            .unwrap()
                             .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
-                    )
+                    );
                 }
 
                 Section::TitleSection {
                     attributes,
                     children,
                 } => {
-                    let structure = u
-                        .env
-                        .as_ref()
-                        .unwrap()
-                        .get_template("components/title.j2")
-                        .unwrap();
                     let parts = joiner(children);
                     output_string.push_str(
-                        structure
+                        &base
+                            .get_template("components/title.j2")
+                            .unwrap()
                             .render(context!(attributes, parts))
                             .unwrap()
                             .as_str(),
-                    )
+                    );
                 }
+
+                // AUTO GENERATED END: Sections //
                 _ => {}
             });
         Some(output_string)
