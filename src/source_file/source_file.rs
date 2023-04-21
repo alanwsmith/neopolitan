@@ -94,6 +94,16 @@ impl SourceFile {
 
 
 
+
+
+
+
+
+
+
+
+
+
 // AUTO GENERATED START: Sections //
 
               Section::AsideSection{
@@ -253,6 +263,16 @@ impl SourceFile {
 
 
 // AUTO GENERATED END: Sections //
+
+
+
+
+
+
+
+
+
+
 
 
 

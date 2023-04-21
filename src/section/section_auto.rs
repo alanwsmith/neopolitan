@@ -1,7 +1,16 @@
 use crate::block::block::*;
-
 // AUTO GENERATED START: calls //
-HERHERHER
+use crate::section::aside::*;
+use crate::section::blockquote::*;
+use crate::section::h1::*;
+use crate::section::h2::*;
+use crate::section::h3::*;
+use crate::section::h4::*;
+use crate::section::h5::*;
+use crate::section::h6::*;
+use crate::section::note::*;
+use crate::section::subtitle::*;
+use crate::section::title::*;
 // AUTO GENERATED END: calls //
 
 use crate::section::section_attributes::SectionAttribute;

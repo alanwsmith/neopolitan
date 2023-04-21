@@ -39,6 +39,16 @@ title_style_sections = [
 # full section list
 full_section_list = [
     ("aside", "AsideSection"),
+    ("blockquote", "BlockquoteSection"),
+    ("h1", "H1Section"),
+    ("h2", "H2Section"),
+    ("h3", "H3Section"),
+    ("h4", "H4Section"),
+    ("h5", "H5Section"),
+    ("h6", "H6Section"),
+    ("note", "NoteSection"),
+    ("subtitle", "SubtitleSection"),
+    ("title", "TitleSection")
 ]
 
 def update_source_file():
@@ -106,6 +116,11 @@ def update_section_file():
         parts_e = parts_d[1].split("// AUTO GENERATED START: tags //")
         parts_f = parts_e[1].split("// AUTO GENERATED END: tags //")
 
+        use_statements = []
+        for item in full_section_list:
+            use_statements.append(f"use crate::section::{item[0]}::*;")
+
+            print(item)
 
         output_sections.append(
             parts_a[0]
@@ -114,7 +129,7 @@ def update_section_file():
             "// AUTO GENERATED START: calls //"
         )
         output_sections.append(
-            "HERHERHER"
+                "\n".join(use_statements)
         )
         output_sections.append(
             "// AUTO GENERATED END: calls //"
@@ -147,8 +162,7 @@ def update_section_file():
             parts_f[1]
         )
 
-
-        print(parts_b)
+        # print(parts_b)
         # parts_c = 
 
     with open("../section/section_auto.rs", "w") as _out:
