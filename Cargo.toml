@@ -7,6 +7,7 @@ edition = "2021"
 
 [dependencies]
 eyre = "0.6.8"
+html-escape = "0.2.13"
 logos = "0.12.1"
 minijinja = { version = "0.30.7", features = ["source"] }
 nom = "7.1.3"

@@ -41,49 +41,6 @@ pub enum SnippetAttribute {
     },
 }
 
-pub fn inline_attributes(source: &str) -> IResult<&str, Option<Vec<SnippetAttribute>>> {
-    let mut attributes: Vec<SnippetAttribute> = vec![];
-    let (_a, b) = separated_list0(tag("|"), alt((take_until("|"), rest)))(source)?;
-    if b.len() > 1 {
-        let _ = &b.iter().skip(1).for_each(|x| {
-            let (_a, b) = separated_list0(
-                tag::<&str, &str, Error<&str>>(":"),
-                alt((take_until(":"), rest)),
-            )(&x)
-            .unwrap();
-            attributes.push(SnippetAttribute::Attribute {
-                key: Some(b[0].trim().to_string()),
-                value: Some(b[1].trim().to_string()),
-            });
-            ()
-        });
-        Ok(("", Some(attributes)))
-    } else {
-        Ok(("", None))
-    }
-}
-
-pub fn link_attributes(source: &str) -> IResult<&str, Option<Vec<SnippetAttribute>>> {
-    let mut attributes: Vec<SnippetAttribute> = vec![];
-    let (_, b) = separated_list0(tag("|"), alt((take_until("|"), rest)))(source)?;
-    if b.len() > 1 {
-        let _ = &b.iter().skip(1).for_each(|x| {
-            let (_a, b) = separated_list0(
-                tag::<&str, &str, Error<&str>>(":"),
-                alt((take_until(":"), rest)),
-            )(&x)
-            .unwrap();
-            attributes.push(SnippetAttribute::Attribute {
-                key: Some(b[0].trim().to_string()),
-                value: Some(b[1].trim().to_string()),
-            });
-            ()
-        });
-        Ok((b[0], Some(attributes)))
-    } else {
-        Ok((b[0], None))
-    }
-}
 
 pub fn snippet(source: &str) -> IResult<&str, Snippet> {
     let (remainder, captured) = alt((
@@ -160,6 +117,53 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
         }),
     ))(source)?;
     Ok((remainder, captured))
+}
+
+
+
+
+pub fn inline_attributes(source: &str) -> IResult<&str, Option<Vec<SnippetAttribute>>> {
+    let mut attributes: Vec<SnippetAttribute> = vec![];
+    let (_a, b) = separated_list0(tag("|"), alt((take_until("|"), rest)))(source)?;
+    if b.len() > 1 {
+        let _ = &b.iter().skip(1).for_each(|x| {
+            let (_a, b) = separated_list0(
+                tag::<&str, &str, Error<&str>>(":"),
+                alt((take_until(":"), rest)),
+            )(&x)
+            .unwrap();
+            attributes.push(SnippetAttribute::Attribute {
+                key: Some(b[0].trim().to_string()),
+                value: Some(b[1].trim().to_string()),
+            });
+            ()
+        });
+        Ok(("", Some(attributes)))
+    } else {
+        Ok(("", None))
+    }
+}
+
+pub fn link_attributes(source: &str) -> IResult<&str, Option<Vec<SnippetAttribute>>> {
+    let mut attributes: Vec<SnippetAttribute> = vec![];
+    let (_, b) = separated_list0(tag("|"), alt((take_until("|"), rest)))(source)?;
+    if b.len() > 1 {
+        let _ = &b.iter().skip(1).for_each(|x| {
+            let (_a, b) = separated_list0(
+                tag::<&str, &str, Error<&str>>(":"),
+                alt((take_until(":"), rest)),
+            )(&x)
+            .unwrap();
+            attributes.push(SnippetAttribute::Attribute {
+                key: Some(b[0].trim().to_string()),
+                value: Some(b[1].trim().to_string()),
+            });
+            ()
+        });
+        Ok((b[0], Some(attributes)))
+    } else {
+        Ok((b[0], None))
+    }
 }
 
 #[cfg(test)]

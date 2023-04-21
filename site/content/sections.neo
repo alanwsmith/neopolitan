@@ -1,480 +1,105 @@
 -> title
 
-Section Examples
+Sections
 
--> h2
+- <<aside|link|/sections/aside.html>>
 
-Implemented
+- <<attributes|link|/sections/attributes.html>>
 
--> h3
+- <<blockquote|link|/sections/blockquote.html>>
 
-DONE: aside
+- <<blurb|link|/sections/blurb.html>>
 
--> startneoexample
+- <<canvas|link|/sections/canvas.html>>
 
--> aside
+- <<categories|link|/sections/categories.html>>
 
-x
+- <<checklist|link|/sections/checklist.html>>
 
--> endneoexample
+- <<code|link|/sections/code.html>>
 
+- <<comment|link|/sections/comment.html>>
 
--> h3
+- <<css|link|/sections/css.html>>
 
-DONE: blockquote
+- <<details|link|/sections/details.html>>
 
--> startneoexample
+- <<div|link|/sections/div.html>>
 
+- <<dlist|link|/sections/dlist.html>>
 
--> blockquote
+- <<ext|link|/sections/ext.html>>
 
-x
+- <<figure|link|/sections/figure.html>>
 
--> endneoexample
+- <<footnote|link|/sections/footnote.html>>
 
+- <<h1|link|/sections/h1.html>>
 
+- <<h2|link|/sections/h2.html>>
 
--> h3
+- <<h3|link|/sections/h3.html>>
 
-DONE: h1
+- <<h4|link|/sections/h4.html>>
 
--> startneoexample
+- <<h5|link|/sections/h5.html>>
 
--> h1
+- <<h6|link|/sections/h6.html>>
 
-x
+- <<head|link|/sections/head.html>>
 
--> endneoexample
+- <<hr|link|/sections/hr.html>>
 
+- <<html|link|/sections/html.html>>
 
--> h3
+- <<image|link|/sections/image.html>>
 
-DONE: h2
+- <<include|link|/sections/include.html>>
 
--> startneoexample
+- <<list|link|/sections/list.html>>
 
--> h2
+- <<menu|link|/sections/menu.html>>
 
-x
+- <<nav|link|/sections/nav.html>>
 
--> endneoexample
+- <<note|link|/sections/note.html>>
 
+- <<notes|link|/sections/notes.html>>
 
--> h3
+- <<object|link|/sections/object.html>>
 
-DONE: h3
+- <<olist|link|/sections/olist.html>>
 
+- <<p|link|/sections/p.html>>
 
--> startneoexample
+- <<picture|link|/sections/picture.html>>
 
--> h3
+- <<pre|link|/sections/pre.html>>
 
-x
+- <<reference|link|/sections/reference.html>>
 
--> endneoexample
+- <<results|link|/sections/results.html>>
 
+- <<script|link|/sections/script.html>>
 
--> h3
+- <<startcode|link|/sections/startcode.html>>
 
-DONE: h4
+- <<subtitle|link|/sections/subtitle.html>>
 
+- <<table|link|/sections/table.html>>
 
--> startneoexample
+- <<textarea|link|/sections/textarea.html>>
 
--> h4
+- <<title|link|/sections/title.html>>
 
-x
+- <<todo|link|/sections/todo.html>>
 
--> endneoexample
+- <<video|link|/sections/video.html>>
 
+- <<vimeo|link|/sections/vimeo.html>>
 
--> h3
+- <<warning|link|/sections/warning.html>>
 
-DONE: h5
+- <<widget|link|/sections/widget.html>>
 
-
--> startneoexample
-
--> h5
-
-x
-
--> endneoexample
-
-
--> h3
-
-DONE: h6
-
-
--> startneoexample
-
--> h6
-
-x
-
--> endneoexample
-
-
--> h3
-
-DONE: note
-
--> note
-
-x
-
--> h3
-
-DONE: subtitle
-
--> subtitle
-
-x
-
--> h3
-
-DONE: title
-
--> title
-
-x
-
-
--> h2
-
-Next
-
-
-
--> h3
-
-p
-
--> p
-
-x
-
--> h3
-
-startcode
-
--> startcode
-
-x
-
--> h3
-
-code
-
--> code
-
-x
-
--> h3
-
-pre
-
--> pre
-
-x
-
--> h3
-
-results
-
--> results
-
-x
-
--> h3
-
-comment
-
--> comment
-
-x
-
-
--> h3
-
-div
-
--> div
-
-x
-
-
--> h3
-
-list
-
--> list
-
-x
-
-
--> h3
-
-notes
-
--> notes
-
-x
-
--> h3
-
-olist
-
--> olist
-
-x
-
-
--> h3
-
-todo
-
--> todo
-
-x
-
--> h3
-
-checklist
-
--> checklist
-
-x
-
-
-
--> h2
-
-Later
-
--> h3
-
-attributes
-
--> attributes
-
-x
-
--> h3
-
-blurb
-
--> blurb
-
-x
-
--> h3
-
-canvas
-
--> canvas
-
-x
-
--> h3
-
-categories
-
--> categories
-
-x
-
--> h3
-
-css
-
--> css
-
-x
-
--> h3
-
-details
-
--> details
-
-x
-
--> h3
-
-dlist
-
--> dlist
-
-x
-
--> h3
-
-ext
-
--> ext
-
-x
-
--> h3
-
-figure
-
--> figure
-
-x
-
--> h3
-
-footnote
-
--> footnote
-
-x
-
--> h3
-
-head
-
--> head
-
-x
-
--> h3
-
-hr
-
--> hr
-
-x
-
--> h3
-
-html
-
--> html
-
-x
-
--> h3
-
-image
-
--> image
-
-x
-
--> h3
-
-include
-
--> include
-
-x
-
--> h3
-
-menu
-
--> menu
-
-x
-
--> h3
-
-nav
-
--> nav
-
-x
-
--> h3
-
-object
-
--> object
-
-x
-
--> h3
-
-picture
-
--> picture
-
-x
-
--> h3
-
-reference
-
--> reference
-
-x
-
-
--> h3
-
-script
-
--> script
-
-x
-
--> h3
-
-table
-
--> table
-
-x
-
--> h3
-
-textarea
-
--> textarea
-
-x
-
-
--> h3
-
-vimeo
-
--> vimeo
-
-x
-
--> h3
-
-warning
-
--> warning
-
-x
-
--> h3
-
-youtube
-
--> youtube
-
-x
-
--> h3
-
-video
-
--> video
-
-x
-
--> h3
-
-widget
-
--> widget
-
-x
+- <<youtube|link|/sections/youtube.html>>

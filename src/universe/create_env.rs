@@ -12,7 +12,8 @@ pub fn create_env(path: &str) -> Environment<'static> {
             name.rsplit('.').next().unwrap_or(""),
             "html" | "jinja" | "j2"
         ) {
-            AutoEscape::Html
+            // AutoEscape::Html
+            AutoEscape::None
         } else {
             AutoEscape::None
         }
