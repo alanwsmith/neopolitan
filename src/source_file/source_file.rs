@@ -33,8 +33,8 @@ impl SourceFile {
             .for_each(|section| match section {
 
 
-// AUTO GENERATED START: Sections //
 
+// AUTO GENERATED START: Sections //
               Section::AsideSection{
                 attributes,
                 children,
@@ -71,6 +71,90 @@ impl SourceFile {
                 output_string.push_str(
                     &base
                         .get_template("components/canvas.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::ChecklistSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/checklist.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::CodeSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/code.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::DetailsSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/details.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::DivSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/div.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::DescriptionListSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/dlist.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::FigureSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/figure.j2")
                         .unwrap()
                         .render(context!(attributes, parts))
                         .unwrap()
@@ -161,6 +245,62 @@ impl SourceFile {
                         .as_str(),
                 );
             }
+              Section::ImageSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/image.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::ListSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/list.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::MenuSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/menu.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::NavSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/nav.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::NoteSection{
                 attributes,
                 children,
@@ -169,6 +309,118 @@ impl SourceFile {
                 output_string.push_str(
                     &base
                         .get_template("components/note.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::NotesSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/notes.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::ObjectSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/object.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::OrderedListSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/olist.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::ParagraphsSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/p.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::PictureSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/picture.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::PreSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/pre.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::ResultsSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/results.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::CodeStartEndSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/startcode.j2")
                         .unwrap()
                         .render(context!(attributes, parts))
                         .unwrap()
@@ -189,6 +441,34 @@ impl SourceFile {
                         .as_str(),
                 );
             }
+              Section::TableSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/table.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::TextareaSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/textarea.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::TitleSection{
                 attributes,
                 children,
@@ -203,9 +483,79 @@ impl SourceFile {
                         .as_str(),
                 );
             }
-
+              Section::TodoSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/todo.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::VimeoSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/vimeo.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::WarningSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/warning.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::YouTubeSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/youtube.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::VideoSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/video.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
 
 // AUTO GENERATED END: Sections //
+
 
 
 

@@ -1,16 +1,14 @@
 -> title
 
-Sections
+Section Examples
 
 -> h3
 
 aside
 
-
 -> aside
 
-This is an aside
-
+x
 
 -> h3
 
@@ -18,9 +16,7 @@ blockquote
 
 -> blockquote
 
-This is a blockquote
-
-
+x
 
 -> h3
 
@@ -28,79 +24,276 @@ canvas
 
 -> canvas
 
-This is a canvas
-
-
-
-
-
+x
 
 -> h3
 
-Back to the list
+checklist
 
-- []canvas - >wip>/examples/canvas.html> Basic canvas element with included attributes
+-> checklist
 
-- []>checklist>/examples/checklist.html> - Like a TODO list, but it resets every time the page is visited
+x
 
-- []>code>/examples/code.html> - Code blocks like fenced code blocks but with attributes.
+-> h3
 
-- []details - >wip>/examples/details.html> The details disclosure element: <details>
+code
 
-- []>div>/examples/div.html> - A <div> wrapper that can 
-be used to add attributes to sections of content
+-> code
 
-- []dlist - >wip>/examples/dlist.html> The HTML <dl> tag
+x
 
-- []figure - >wip>/examples/figure.html> The HTML figure element
+-> h3
 
-- []>h1-h6>/examples/headings.html> - HTML heading tags
+details
 
-- []>image>/examples/image.html> - An image call with the alt text coming
-from the body of the section
+-> details
 
-- []>list>/examples/list.html> - Unordered lists
+x
 
-- []menu - the HTML <menu> tag
+-> h3
 
-- []nav - the HTML <nav> tag
+div
 
-- [x]>note>/examples/note.html> - A div wrapper with a 
-  `class="note"`html` attribute
+-> div
 
-- []>notes>/examples/notes.html> - A list style notes section
+x
 
-- []object - The HTML <objet> tag
+-> h3
 
-- []>olist>/examples/olist.html> - An ordered list
+dlist
 
-- []>p>/examples/p.html> - Basic text paragraph tags that are not otherwise 
-contained in a div.
+-> dlist
 
-- []picture - The HTML <picture> element
+x
 
-- []>pre>/examples/pre.html> - A pre tag
+-> h3
 
-- []>results>/examples/results.html> - Used to 
-show output from `-> code`neo` blocks
+figure
 
-- []>startcode/endcode>/examples/startcode_endcode.html>
+-> figure
 
-- [x]>subtitle>/examples/subtitle.html>
+x
 
-- []table - >wip>/examples/table.html> - Still working to define the format for these
+-> h3
 
-- []>textarea>/examples/textarea.html>
+h1
 
-- [x]>title>/examples/title.html>
+-> h1
 
-- []>todo>/examples/todo.html> - TODO lists
+x
 
-- []>vimeo>/examples/vimeo.html> - A vimeo embed
+-> h3
 
-- []>warning>/examples/warning.html> - A div block with a warning class on it
+h2
 
-- []>youtube>/examples/youtube.html> -  A youtube embed
+-> h2
 
-- []video - The HTML <video> element
+x
 
+-> h3
+
+h3
+
+-> h3
+
+x
+
+-> h3
+
+h4
+
+-> h4
+
+x
+
+-> h3
+
+h5
+
+-> h5
+
+x
+
+-> h3
+
+h6
+
+-> h6
+
+x
+
+-> h3
+
+image
+
+-> image
+
+x
+
+-> h3
+
+list
+
+-> list
+
+x
+
+-> h3
+
+menu
+
+-> menu
+
+x
+
+-> h3
+
+nav
+
+-> nav
+
+x
+
+-> h3
+
+note
+
+-> note
+
+x
+
+-> h3
+
+notes
+
+-> notes
+
+x
+
+-> h3
+
+object
+
+-> object
+
+x
+
+-> h3
+
+olist
+
+-> olist
+
+x
+
+-> h3
+
+p
+
+-> p
+
+x
+
+-> h3
+
+picture
+
+-> picture
+
+x
+
+-> h3
+
+pre
+
+-> pre
+
+x
+
+-> h3
+
+results
+
+-> results
+
+x
+
+-> h3
+
+startcode
+
+-> startcode
+
+x
+
+-> h3
+
+subtitle
+
+-> subtitle
+
+x
+
+-> h3
+
+table
+
+-> table
+
+x
+
+-> h3
+
+textarea
+
+-> textarea
+
+x
+
+-> h3
+
+title
+
+-> title
+
+x
+
+-> h3
+
+todo
+
+-> todo
+
+x
+
+-> h3
+
+vimeo
+
+-> vimeo
+
+x
+
+-> h3
+
+warning
+
+-> warning
+
+x
+
+-> h3
+
+youtube
+
+-> youtube
+
+x
+
+-> h3
+
+video
+
+-> video
+
+x

@@ -132,7 +132,7 @@ def update_source_file():
         indata = _src.read()
         parts_a = indata.split("// AUTO GENERATED START: Sections //")
         parts_b = parts_a[1].split("// AUTO GENERATED END: Sections //")
-    with open("../source_file/source_file2.rs", "w") as _out:
+    with open("../source_file/source_file.rs", "w") as _out:
         _out.write(parts_a[0])
         _out.write("\n// AUTO GENERATED START: Sections //\n")
         for tag in base_files.keys():
@@ -235,14 +235,48 @@ def update_section_file():
         _out.write("\n".join(output_sections))
 
 
+def make_templates():
+    for tag in base_files.keys():
+        output_path = f"../../site/templates/components/{tag}.j2"
+        if not os.path.isfile(output_path):
+            with open(output_path, "w") as _out:
+                _out.write(f"TEMPLATE_TODO: {tag}")
+
+
+def make_example():
+    with open("../../site/content/sections.neo", "w") as _out:
+        lines = ["-> title"]
+        lines.append("")
+        lines.append("Section Examples")
+        lines.append("")
+        for tag in base_files.keys():
+            lines.append("-> h3")
+            lines.append("")
+            lines.append(f"{tag}")
+            lines.append("")
+            lines.append(f"-> {tag}")
+            lines.append("")
+            lines.append("x")
+            lines.append("")
+
+        _out.write("\n".join(lines))
+
+
+
 
 
 if __name__ == "__main__":
-    generate_section_files()
-    update_section_mod_file()
-    update_source_file()
-    update_section_file()
-
+    print("Probably don't use this. it was for initial generation")
+    
+    # These will overrides somethings but not
+    # everything. use with care if you need to 
+    # redo batches of things
+    #generate_section_files()
+    #update_section_mod_file()
+    #update_source_file()
+    #update_section_file()
+    #make_templates()
+    # make_example()
 
 
 from datetime import datetime 
