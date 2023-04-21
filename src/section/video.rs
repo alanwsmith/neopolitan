@@ -12,7 +12,7 @@ pub fn video(source: &str) -> IResult<&str, Section> {
     let (remainder, blocks) = many_till(block, eof)(remainder)?;
     Ok((
         remainder,
-        Section::VideoSeciton {
+        Section::VideoSection {
             attributes,
             children: Some(blocks.0),
         },

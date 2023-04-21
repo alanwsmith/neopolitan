@@ -12,7 +12,7 @@ pub fn image(source: &str) -> IResult<&str, Section> {
     let (remainder, blocks) = many_till(block, eof)(remainder)?;
     Ok((
         remainder,
-        Section::ImageSeciton {
+        Section::ImageSection {
             attributes,
             children: Some(blocks.0),
         },

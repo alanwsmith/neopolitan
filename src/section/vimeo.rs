@@ -12,7 +12,7 @@ pub fn vimeo(source: &str) -> IResult<&str, Section> {
     let (remainder, blocks) = many_till(block, eof)(remainder)?;
     Ok((
         remainder,
-        Section::VimeoSeciton {
+        Section::VimeoSection {
             attributes,
             children: Some(blocks.0),
         },

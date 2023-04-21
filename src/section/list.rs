@@ -12,7 +12,7 @@ pub fn list(source: &str) -> IResult<&str, Section> {
     let (remainder, blocks) = many_till(block, eof)(remainder)?;
     Ok((
         remainder,
-        Section::ListSeciton {
+        Section::ListSection {
             attributes,
             children: Some(blocks.0),
         },

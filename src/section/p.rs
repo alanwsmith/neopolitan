@@ -12,7 +12,7 @@ pub fn p(source: &str) -> IResult<&str, Section> {
     let (remainder, blocks) = many_till(block, eof)(remainder)?;
     Ok((
         remainder,
-        Section::ParagraphsSeciton {
+        Section::ParagraphsSection {
             attributes,
             children: Some(blocks.0),
         },
