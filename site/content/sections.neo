@@ -2,27 +2,218 @@
 
 Section Examples
 
+-> h2
+
+Implemented
+
 -> h3
 
-aside
+DONE: aside
 
 -> aside
 
 x
+
+
+-> h3
+
+DONE: blockquote
+
+-> blockquote
+
+x
+
+
+-> h3
+
+DONE: h1
+
+-> h1
+
+x
+
+-> h3
+
+DONE: h2
+
+-> h2
+
+x
+
+-> h3
+
+DONE: h3
+
+-> h3
+
+x
+
+-> h3
+
+DONE: h4
+
+-> h4
+
+x
+
+-> h3
+
+DONE: h5
+
+-> h5
+
+x
+
+-> h3
+
+DONE: h6
+
+-> h6
+
+x
+
+-> h3
+
+DONE: note
+
+-> note
+
+x
+
+-> h3
+
+DONE: subtitle
+
+-> subtitle
+
+x
+
+-> h3
+
+DONE: title
+
+-> title
+
+x
+
+
+-> h2
+
+Next
+
+
+
+-> h3
+
+p
+
+-> p
+
+x
+
+-> h3
+
+startcode
+
+-> startcode
+
+x
+
+-> h3
+
+code
+
+-> code
+
+x
+
+-> h3
+
+pre
+
+-> pre
+
+x
+
+-> h3
+
+results
+
+-> results
+
+x
+
+-> h3
+
+comment
+
+-> comment
+
+x
+
+
+-> h3
+
+div
+
+-> div
+
+x
+
+
+-> h3
+
+list
+
+-> list
+
+x
+
+
+-> h3
+
+notes
+
+-> notes
+
+x
+
+-> h3
+
+olist
+
+-> olist
+
+x
+
+
+-> h3
+
+todo
+
+-> todo
+
+x
+
+-> h3
+
+checklist
+
+-> checklist
+
+x
+
+
+
+-> h2
+
+Later
 
 -> h3
 
 attributes
 
 -> attributes
-
-x
-
--> h3
-
-blockquote
-
--> blockquote
 
 x
 
@@ -52,30 +243,6 @@ x
 
 -> h3
 
-checklist
-
--> checklist
-
-x
-
--> h3
-
-code
-
--> code
-
-x
-
--> h3
-
-comment
-
--> comment
-
-x
-
--> h3
-
 css
 
 -> css
@@ -87,14 +254,6 @@ x
 details
 
 -> details
-
-x
-
--> h3
-
-div
-
--> div
 
 x
 
@@ -127,54 +286,6 @@ x
 footnote
 
 -> footnote
-
-x
-
--> h3
-
-h1
-
--> h1
-
-x
-
--> h3
-
-h2
-
--> h2
-
-x
-
--> h3
-
-h3
-
--> h3
-
-x
-
--> h3
-
-h4
-
--> h4
-
-x
-
--> h3
-
-h5
-
--> h5
-
-x
-
--> h3
-
-h6
-
--> h6
 
 x
 
@@ -220,14 +331,6 @@ x
 
 -> h3
 
-list
-
--> list
-
-x
-
--> h3
-
 menu
 
 -> menu
@@ -244,41 +347,9 @@ x
 
 -> h3
 
-note
-
--> note
-
-x
-
--> h3
-
-notes
-
--> notes
-
-x
-
--> h3
-
 object
 
 -> object
-
-x
-
--> h3
-
-olist
-
--> olist
-
-x
-
--> h3
-
-p
-
--> p
 
 x
 
@@ -292,49 +363,18 @@ x
 
 -> h3
 
-pre
-
--> pre
-
-x
-
--> h3
-
 reference
 
 -> reference
 
 x
 
--> h3
-
-results
-
--> results
-
-x
 
 -> h3
 
 script
 
 -> script
-
-x
-
--> h3
-
-startcode
-
--> startcode
-
-x
-
--> h3
-
-subtitle
-
--> subtitle
 
 x
 
@@ -354,21 +394,6 @@ textarea
 
 x
 
--> h3
-
-title
-
--> title
-
-x
-
--> h3
-
-todo
-
--> todo
-
-x
 
 -> h3
 
