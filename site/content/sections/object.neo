@@ -1,0 +1,14 @@
+-> title
+
+Seciton: object
+
+
+
+-> startneoexample
+
+-> object
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample

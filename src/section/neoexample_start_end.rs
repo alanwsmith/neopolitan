@@ -39,13 +39,11 @@ pub fn neoexample_start_end(source: &str) -> IResult<&str, Section> {
         .unwrap()
         .to_string();
 
-    dbg!(out);
-
     Ok((
         remainder,
         Section::NeoExampleStartEndSection {
             attributes,
-            html: None,
+            html: Some(out.to_string()),
             raw: Some(raw.to_string()),
         },
     ))

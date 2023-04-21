@@ -4,8 +4,6 @@ import os.path
 
 from string import Template
 
-
-
 base_files = {
         "aside": {"key": "AsideSection", "example": "\nShut the hatch"},
         "attributes": {"key": "AttributesSection"},
@@ -58,7 +56,6 @@ base_files = {
         "youtube": {"key": "YouTubeSection"},
         "video": {"key": "VideoSection"},
         "widget": {"key": "WidgetSection"},
-
 }
 
 def generate_section_files():
@@ -228,8 +225,28 @@ def make_example():
 
         _out.write("\n".join(lines))
 
+def make_neo_examples():
+    for tag in base_files.keys():
+        output_path = f"../../site/content/sections/{tag}.neo"
+        if not os.path.isfile(output_path):
+            lines = []
+            lines.append("-> title")
+            lines.append("")
+            lines.append(f"Seciton: {tag}")
+            lines.append("")
+            lines.append("")
+            lines.append("")
+            lines.append("-> startneoexample")
+            lines.append("")
+            lines.append(f"-> {tag}")
+            lines.append(">> class: foxtrot")
+            lines.append("")
+            lines.append("the quick brown fox")
+            lines.append("")
+            lines.append("-> endneoexample")
 
-
+            with open(output_path, "w") as _out:
+                _out.write("\n".join(lines))
 
 
 if __name__ == "__main__":
@@ -247,6 +264,10 @@ if __name__ == "__main__":
     # note just new ones if you add them
     # update_section_mod_file()
     # make_example()
+
+    make_neo_examples()
+
+
 
 from datetime import datetime 
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
