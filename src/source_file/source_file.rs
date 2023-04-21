@@ -1,5 +1,6 @@
 use crate::section::section::*;
 use crate::source_file::attributes_basic::*;
+use crate::source_file::attributes_with_class::*;
 use crate::source_file::joiner::joiner;
 use crate::universe::universe::Universe;
 use minijinja::context;
@@ -488,11 +489,12 @@ impl SourceFile {
                     children,
                 } => {
                     let parts = joiner(children);
+                    let attributes_string = attributes_with_class(attributes, "title");
                     output_string.push_str(
                         &base
                             .get_template("components/title.j2")
                             .unwrap()
-                            .render(context!(attributes, parts))
+                            .render(context!(attributes_string, parts))
                             .unwrap()
                             .as_str(),
                     );

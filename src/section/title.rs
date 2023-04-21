@@ -72,7 +72,7 @@ mod test {
             .join("\n")
             .to_string();
         let expected = Some(
-            vec![r#"<h1 class="title" id="tango">Pack your kits</h1>"#]
+            vec![r#"<h1 id="tango" class="title">Pack your kits</h1>"#]
                 .join("\n")
                 .to_string(),
         );
@@ -115,7 +115,7 @@ mod test {
         .join("\n")
         .to_string();
         let expected = Some(
-            vec![r#"<h1 class="title victor" id="bravo">Open the crate</h1>"#]
+            vec![r#"<h1 id="bravo" class="title victor">Open the crate</h1>"#]
                 .join("\n")
                 .to_string(),
         );
