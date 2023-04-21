@@ -1,0 +1,5 @@
+#![allow(warnings)]
+fn span() {
+
+
+}

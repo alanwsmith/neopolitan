@@ -14,7 +14,8 @@ inline_tags = [
 ("cite","CiteTag"),
 ("code","CodeTag"),
 ("data","DataTag"),
-("del","DeleteTag"),("dfn","DefinitionTag"),
+("del","DeleteTag"),
+("dfn","DefinitionTag"),
 ("em","EmphasisTag"),
 ("i","IdiomaticTextTag"),
 ("img","ImageTag"),
@@ -48,7 +49,6 @@ def insert_inline_tags():
         print(tag[0])
     con.commit()
     con.close()
-
 
 if __name__ == "__main__":
     # NOTE: This is a one off script to load
