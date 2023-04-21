@@ -52,11 +52,12 @@ impl SourceFile {
                     children,
                 } => {
                     let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/blockquote.j2")
                             .unwrap()
-                            .render(context!(attributes, parts))
+                            .render(context!(attributes_string, parts))
                             .unwrap()
                             .as_str(),
                     );
@@ -374,11 +375,12 @@ impl SourceFile {
                     children,
                 } => {
                     let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/p.j2")
                             .unwrap()
-                            .render(context!(attributes, parts))
+                            .render(context!(attributes_string, parts))
                             .unwrap()
                             .as_str(),
                     );
@@ -565,7 +567,6 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
                 Section::AttributesSection {
                     attributes,
                     children,
@@ -748,7 +749,6 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
                 // AUTO GENERATED START: Sections //
                 // AUTO GENERATED END: Sections //
                 _ => {}

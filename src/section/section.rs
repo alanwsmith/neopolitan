@@ -280,6 +280,10 @@ pub enum Section {
     Placeholder,
 }
 
+// NOTE: Order matters here, the longer names
+// need to go first so they shorter names don't
+// yank the names out from under them
+
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (remainder, _) = multispace0(source)?;
     let (remainder, section) = alt((
@@ -456,13 +460,6 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| olist(t.3).unwrap().1),
-            tuple((
-                tag("-> p"),
-                not_line_ending,
-                line_ending,
-                alt((take_until("\n\n-> "), rest)),
-            ))
-            .map(|t| p(t.3).unwrap().1),
             tuple((
                 tag("-> picture"),
                 not_line_ending,
@@ -647,6 +644,13 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| widget(t.3).unwrap().1),
+            tuple((
+                tag("-> p"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| p(t.3).unwrap().1),
             // AUTO GENERATED START: tags //
             // AUTO GENERATED END: tags //
         )),

@@ -1,9 +1,6 @@
-<blockquote 
-  {%- for attribute in attributes -%}
-    {{- " " -}}
-    {{attribute.key}}="{{attribute.value}}"
-  {%- endfor -%}
-  >
+<blockquote {%- autoescape false -%}
+{{- attributes_string -}}
+{%- endautoescape -%}>
   {%- for part in parts -%}
     <p>
     {{- part -}}
