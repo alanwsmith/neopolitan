@@ -36,35 +36,44 @@ title_style_sections = [
     ("title", "TitleSection")
 ]
 
+# full section list
+full_section_list = [
+    ("aside", "AsideSection"),
+]
+
+
+
+
+
 def update_source_file():
     with open("../source_file/source_file.rs", "r") as _src:
         indata = _src.read()
         parts_a = indata.split("// AUTO GENERATED START: Sections //")
         parts_b = parts_a[1].split("// AUTO GENERATED END: Sections //")
-        with open("../source_file/test.rs", "w") as _out:
-            _out.write(parts_a[0])
-            _out.write("\n\n// AUTO GENERATED START: Sections //\n\n")
-            for item in items_alfa:
-                _out.write(f"""              Section::{item[1]}""")
-                _out.write("""{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/""")
-                _out.write(item[0])
-                _out.write(""".j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+    with open("../source_file/source_file.rs", "w") as _out:
+        _out.write(parts_a[0])
+        _out.write("\n\n// AUTO GENERATED START: Sections //\n\n")
+        for item in items_alfa:
+            _out.write(f"""              Section::{item[1]}""")
+            _out.write("""{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/""")
+            _out.write(item[0])
+            _out.write(""".j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
 """)
-            _out.write("\n\n// AUTO GENERATED END: Sections //\n\n")
-            _out.write(parts_b[1])
+        _out.write("\n\n// AUTO GENERATED END: Sections //\n\n")
+        _out.write(parts_b[1])
 
 def update_mod_file():
     with open("../section/mod.rs", "w") as _out:
@@ -72,7 +81,6 @@ def update_mod_file():
             _out.write(f"pub mod {item[0]};\n")
         for item in items_alfa:
             _out.write(f"pub mod {item[0]};\n")
-
 
 def write_title_style_files():
     for item in title_style_sections: 
@@ -88,6 +96,16 @@ def write_title_style_files():
                     _out.write(output)
             else: 
                 print(f"Already exists: {output_path}")
+
+# def make_full_section_list():
+#     with open("../section/section.rs", "r") as _in:
+#         indata = _in.read()
+#         parts_a = indata.split("// AUTO GENERATED START: Sections //")
+#         parts_b = parts_a[1].split("// AUTO GENERATED END: Sections //")
+#         # with open("../source_file/test.rs", "w") as _out:
+
+
+
 
 update_source_file()
 update_mod_file()

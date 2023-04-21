@@ -32,169 +32,169 @@ impl SourceFile {
             .iter()
             .for_each(|section| match section {
 
-                // AUTO GENERATED START: Sections //
+                
 
+// AUTO GENERATED START: Sections //
 
-
-
-                              Section::AsideSection{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/aside.j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+              Section::AsideSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/aside.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::BlockquoteSection{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/blockquote.j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/blockquote.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::H1Section{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/h1.j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/h1.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::H2Section{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/h2.j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/h2.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::H3Section{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/h3.j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/h3.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::H4Section{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/h4.j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/h4.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::H5Section{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/h5.j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/h5.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::H6Section{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/h6.j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/h6.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::NoteSection{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/note.j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/note.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::SubtitleSection{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/subtitle.j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/subtitle.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
               Section::TitleSection{
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/title.j2")
-                            .unwrap()
-                            .render(context!(attributes, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/title.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
 
 
+// AUTO GENERATED END: Sections //
 
-                // AUTO GENERATED END: Sections //
+
 
 
                 _ => {}
