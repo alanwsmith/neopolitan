@@ -70,6 +70,7 @@ base_files = {
         "h4": {"key": "H4Section"},
         "h5": {"key": "H5Section"},
         "h6": {"key": "H6Section"},
+        "hr": {"key": "HRSection"},
         "image": {"key": "ImageSection"},
         "list": {"key": "ListSection"},
         "menu": {"key": "MenuSection"},
