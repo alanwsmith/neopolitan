@@ -28,6 +28,7 @@ pub mod include;
 pub mod list;
 pub mod menu;
 pub mod nav;
+pub mod neoexample_start_end;
 pub mod note;
 pub mod notes;
 pub mod object;

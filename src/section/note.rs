@@ -42,7 +42,7 @@ mod test {
         .to_string();
         let expected = Some(
             vec![
-                r#"<div class="note charlie" id="oscar">"#,
+                r#"<div id="oscar" class="note charlie">"#,
                 r#"<p>Mark the spot</p>"#,
                 r#"<p>Pull the dart</p>"#,
                 r#"</div>"#,

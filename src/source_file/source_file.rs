@@ -321,16 +321,33 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
+                Section::NeoExampleStartEndSection {
+                    attributes,
+                    html,
+                    raw,
+                } => {
+                    // let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/neoexample_start_end.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, html, raw))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
                 Section::NoteSection {
                     attributes,
                     children,
                 } => {
                     let parts = joiner(children);
+                    let attributes_string = attributes_with_class(attributes, "note");
                     output_string.push_str(
                         &base
                             .get_template("components/note.j2")
                             .unwrap()
-                            .render(context!(attributes, parts))
+                            .render(context!(attributes_string, parts))
                             .unwrap()
                             .as_str(),
                     );

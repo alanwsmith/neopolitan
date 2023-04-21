@@ -1,18 +1,6 @@
-<div class="note
-  {%- for attribute in attributes -%}
-    {%- if attribute.key == "class" -%}
-      {{- " " -}}
-      {{ attribute.value }}
-    {%- endif -%}
-  {%- endfor -%}
-  "
-  {%- for attribute in attributes -%}
-    {%- if attribute.key != "class" -%}
-      {{- " " -}}
-      {{attribute.key}}="{{attribute.value}}"
-    {%- endif -%}
-  {%- endfor -%}
-  >
+<div {%- autoescape false -%}
+{{- attributes_string -}}
+{%- endautoescape -%}>
   {%- for part in parts -%}
     <p>
     {{- part -}}

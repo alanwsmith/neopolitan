@@ -30,6 +30,7 @@ use crate::section::include::*;
 use crate::section::list::*;
 use crate::section::menu::*;
 use crate::section::nav::*;
+use crate::section::neoexample_start_end::*;
 use crate::section::note::*;
 use crate::section::notes::*;
 use crate::section::object::*;
@@ -78,7 +79,19 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    AttributesSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    BlurbSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     CanvasSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    CategoriesSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -87,6 +100,19 @@ pub enum Section {
         children: Option<Vec<Block>>,
     },
     CodeSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+
+    CodeStartEndSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    CommentSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    CSSSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -102,7 +128,15 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    ExternalSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     FigureSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    FootnoteSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -130,11 +164,23 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    HeadSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     HRSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    HTMLSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     ImageSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    IncludeSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -149,6 +195,11 @@ pub enum Section {
     NavSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
+    },
+    NeoExampleStartEndSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        html: Option<String>,
+        raw: Option<String>,
     },
     NoteSection {
         attributes: Option<Vec<SectionAttribute>>,
@@ -178,11 +229,15 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    ReferenceSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     ResultsSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-    CodeStartEndSection {
+    ScriptSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -214,63 +269,15 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
+    WidgetSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
     YouTubeSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
     VideoSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    AttributesSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    BlurbSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    CategoriesSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    CommentSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    CSSSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    ExternalSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    FootnoteSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    HeadSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    HTMLSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    IncludeSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    ReferenceSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    ScriptSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    WidgetSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -288,6 +295,15 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     let (remainder, _) = multispace0(source)?;
     let (remainder, section) = alt((
         alt((
+            tuple((
+                tag("-> startneoexample"),
+                not_line_ending,
+                line_ending,
+                take_until("\n\n-> endneoexample"),
+                tag("\n\n-> endneoexample"),
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| neoexample_start_end(t.3).unwrap().1),
             tuple((
                 tag("-> aside"),
                 not_line_ending,
