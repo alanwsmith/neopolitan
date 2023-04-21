@@ -1,8 +1,20 @@
 use crate::block::block::*;
 
+
+
+
+
+
+
+
+
+
+
+
 // AUTO GENERATED START: calls //
 use crate::section::aside::*;
 use crate::section::blockquote::*;
+use crate::section::canvas::*;
 use crate::section::h1::*;
 use crate::section::h2::*;
 use crate::section::h3::*;
@@ -13,6 +25,17 @@ use crate::section::note::*;
 use crate::section::subtitle::*;
 use crate::section::title::*;
 // AUTO GENERATED END: calls //
+
+
+
+
+
+
+
+
+
+
+
 
 use crate::section::section_attributes::SectionAttribute;
 use nom::branch::alt;
@@ -30,8 +53,17 @@ use serde::Serialize;
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum Section {
-
     
+
+
+
+
+
+
+
+
+
+
 // AUTO GENERATED START: enum //
 AsideSection
  {
@@ -39,6 +71,11 @@ AsideSection
         children: Option<Vec<Block>>,
     },
 BlockquoteSection
+ {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+CanvasSection
  {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
@@ -92,93 +129,125 @@ TitleSection
 
 
 
+
+
+
+
+
+
+
+
     Placeholder,
 }
 
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (remainder, _) = multispace0(source)?;
-    let (remainder, _) = tag("-> ")(remainder)?;
     let (remainder, section) = alt((
         
+
+
+
+
+
+
+
+
+
+
 // AUTO GENERATED START: tags //
 tuple((
-            tag("aside"),
+            tag("-> aside"),
             not_line_ending,
             line_ending,
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| aside(t.3).unwrap().1),
 tuple((
-            tag("blockquote"),
+            tag("-> blockquote"),
             not_line_ending,
             line_ending,
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| blockquote(t.3).unwrap().1),
 tuple((
-            tag("h1"),
+            tag("-> canvas"),
+            not_line_ending,
+            line_ending,
+            alt((take_until("\n\n-> "), rest)),
+        ))
+        .map(|t| canvas(t.3).unwrap().1),
+tuple((
+            tag("-> h1"),
             not_line_ending,
             line_ending,
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| h1(t.3).unwrap().1),
 tuple((
-            tag("h2"),
+            tag("-> h2"),
             not_line_ending,
             line_ending,
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| h2(t.3).unwrap().1),
 tuple((
-            tag("h3"),
+            tag("-> h3"),
             not_line_ending,
             line_ending,
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| h3(t.3).unwrap().1),
 tuple((
-            tag("h4"),
+            tag("-> h4"),
             not_line_ending,
             line_ending,
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| h4(t.3).unwrap().1),
 tuple((
-            tag("h5"),
+            tag("-> h5"),
             not_line_ending,
             line_ending,
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| h5(t.3).unwrap().1),
 tuple((
-            tag("h6"),
+            tag("-> h6"),
             not_line_ending,
             line_ending,
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| h6(t.3).unwrap().1),
 tuple((
-            tag("note"),
+            tag("-> note"),
             not_line_ending,
             line_ending,
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| note(t.3).unwrap().1),
 tuple((
-            tag("subtitle"),
+            tag("-> subtitle"),
             not_line_ending,
             line_ending,
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| subtitle(t.3).unwrap().1),
 tuple((
-            tag("title"),
+            tag("-> title"),
             not_line_ending,
             line_ending,
             alt((take_until("\n\n-> "), rest)),
         ))
         .map(|t| title(t.3).unwrap().1),
 // AUTO GENERATED END: tags //
+
+
+
+
+
+
+
+
 
 
 

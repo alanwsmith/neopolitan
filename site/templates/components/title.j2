@@ -15,15 +15,11 @@
         {%- endif -%}
       {%- endfor -%}
     >
-{% autoescape false %}
       {{- part -}}
-{% endautoescape %}
     </h1>
   {%- else -%}
     <p>
-{% autoescape false %}
       {{- part -}}
-{% endautoescape %}
     </p>
   {%- endif -%}
 {%- endfor -%}

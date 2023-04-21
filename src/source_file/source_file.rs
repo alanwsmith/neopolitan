@@ -136,6 +136,36 @@ impl SourceFile {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // AUTO GENERATED START: Sections //
 
               Section::AsideSection{
@@ -160,6 +190,20 @@ impl SourceFile {
                 output_string.push_str(
                     &base
                         .get_template("components/blockquote.j2")
+                        .unwrap()
+                        .render(context!(attributes, parts))
+                        .unwrap()
+                        .as_str(),
+                );
+            }
+              Section::CanvasSection{
+                attributes,
+                children,
+            } => {
+                let parts = joiner(children);
+                output_string.push_str(
+                    &base
+                        .get_template("components/canvas.j2")
                         .unwrap()
                         .render(context!(attributes, parts))
                         .unwrap()
@@ -295,6 +339,36 @@ impl SourceFile {
 
 
 // AUTO GENERATED END: Sections //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
