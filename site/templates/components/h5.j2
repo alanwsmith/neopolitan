@@ -1,10 +1,8 @@
 {%- for part in parts -%}
   {%- if loop.first -%}
-    <h5
-      {%- for attribute in attributes -%}
-        {{- attribute -}}
-      {%- endfor -%}
-    >
+    <h5 {%- autoescape false -%}
+{{- attributes_string -}}
+{%- endautoescape -%}>
       {%- autoescape false -%}
         {{- part -}}
       {%- endautoescape -%}

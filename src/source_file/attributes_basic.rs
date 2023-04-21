@@ -1,6 +1,6 @@
 use crate::section::section_attributes::SectionAttribute;
 
-pub fn attributes_basic(source: &Option<Vec<SectionAttribute>>) -> Option<String> {
+pub fn attributes_basic(source: &Option<Vec<SectionAttribute>>) -> String {
     match source.as_ref() {
         Some(attributes) => {
             let mut response = String::from("");
@@ -16,9 +16,9 @@ pub fn attributes_basic(source: &Option<Vec<SectionAttribute>>) -> Option<String
                     );
                 }
             });
-            Some(response)
+            response
         }
-        None => None,
+        None => "".to_string(),
     }
 }
 
@@ -30,7 +30,7 @@ mod test {
     #[test]
     fn empty() {
         let input: Option<Vec<SectionAttribute>> = None;
-        let expected = None;
+        let expected = "".to_string();
         let results = attributes_basic(&input);
         assert_eq!(expected, results);
     }
@@ -41,7 +41,7 @@ mod test {
             key: Some("id".to_string()),
             value: Some("foxtrot".to_string()),
         }]);
-        let expected = Some(r#" id="foxtrot""#.to_string());
+        let expected = r#" id="foxtrot""#.to_string();
         let results = attributes_basic(&input);
         assert_eq!(expected, results);
     }

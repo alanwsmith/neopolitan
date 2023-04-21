@@ -166,11 +166,12 @@ impl SourceFile {
                     children,
                 } => {
                     let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/h1.j2")
                             .unwrap()
-                            .render(context!(attributes, parts))
+                            .render(context!(attributes_string, parts))
                             .unwrap()
                             .as_str(),
                     );
@@ -180,11 +181,12 @@ impl SourceFile {
                     children,
                 } => {
                     let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/h2.j2")
                             .unwrap()
-                            .render(context!(attributes, parts))
+                            .render(context!(attributes_string, parts))
                             .unwrap()
                             .as_str(),
                     );
@@ -194,11 +196,12 @@ impl SourceFile {
                     children,
                 } => {
                     let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/h3.j2")
                             .unwrap()
-                            .render(context!(attributes, parts))
+                            .render(context!(attributes_string, parts))
                             .unwrap()
                             .as_str(),
                     );
@@ -208,11 +211,12 @@ impl SourceFile {
                     children,
                 } => {
                     let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/h4.j2")
                             .unwrap()
-                            .render(context!(attributes, parts))
+                            .render(context!(attributes_string, parts))
                             .unwrap()
                             .as_str(),
                     );
@@ -222,11 +226,12 @@ impl SourceFile {
                     children,
                 } => {
                     let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/h5.j2")
                             .unwrap()
-                            .render(context!(attributes, parts))
+                            .render(context!(attributes_string, parts))
                             .unwrap()
                             .as_str(),
                     );
@@ -236,11 +241,12 @@ impl SourceFile {
                     children,
                 } => {
                     let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/h6.j2")
                             .unwrap()
-                            .render(context!(attributes, parts))
+                            .render(context!(attributes_string, parts))
                             .unwrap()
                             .as_str(),
                     );
