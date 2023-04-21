@@ -6,13 +6,13 @@ use nom::combinator::eof;
 use nom::multi::many_till;
 use nom::IResult;
 
-pub fn h6(source: &str) -> IResult<&str, Section> {
+pub fn title(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
     let (remainder, _) = multispace0(remainder)?;
     let (remainder, blocks) = many_till(block, eof)(remainder)?;
     Ok((
         remainder,
-        Section::H6Section {
+        Section::TitleSection {
             attributes,
             children: Some(blocks.0),
         },
@@ -29,9 +29,9 @@ mod test {
 
     // #[test]
     // pub fn single_line() {
-    //     let source = ["-> h6", "", "Pour the stew"].join("\n").to_string();
+    //     let source = ["-> title", "", "Pour the stew"].join("\n").to_string();
     //     let expected = Some(
-    //         vec![r#"<h6>Pour the stew</h6>"#]
+    //         vec![r#"<title>Pour the stew</title>"#]
     //             .join("\n")
     //             .to_string(),
     //     );
@@ -46,12 +46,12 @@ mod test {
 
     // #[test]
     // pub fn multiple_lines() {
-    //     let source = ["-> h6", "", "Pitch the straw", "", "through the door"]
+    //     let source = ["-> title", "", "Pitch the straw", "", "through the door"]
     //         .join("\n")
     //         .to_string();
     //     let expected = Some(
     //         vec![
-    //             r#"<h6>Pitch the straw</h6>"#,
+    //             r#"<title>Pitch the straw</title>"#,
     //             "<p>through the door</p>",
     //         ]
     //         .join("\n")
@@ -68,11 +68,11 @@ mod test {
 
     // #[test]
     // pub fn single_attribute() {
-    //     let source = ["-> h6", ">> id: tango", "", "Pack your kits"]
+    //     let source = ["-> title", ">> id: tango", "", "Pack your kits"]
     //         .join("\n")
     //         .to_string();
     //     let expected = Some(
-    //         vec![r#"<h6 id="tango">Pack your kits</h6>"#]
+    //         vec![r#"<title id="tango">Pack your kits</title>"#]
     //             .join("\n")
     //             .to_string(),
     //     );
@@ -87,11 +87,11 @@ mod test {
 
     // #[test]
     // pub fn class_attribute() {
-    //     let source = ["-> h6", ">> class: hotel", "", "Pick a card"]
+    //     let source = ["-> title", ">> class: hotel", "", "Pick a card"]
     //         .join("\n")
     //         .to_string();
     //     let expected = Some(
-    //         vec![r#"<h6 class="hotel">Pick a card</h6>"#]
+    //         vec![r#"<title class="hotel">Pick a card</title>"#]
     //             .join("\n")
     //             .to_string(),
     //     );
@@ -107,7 +107,7 @@ mod test {
     // #[test]
     // pub fn class_and_another_attribute() {
     //     let source = [
-    //         "-> h6",
+    //         "-> title",
     //         ">> class: victor",
     //         ">> id: bravo",
     //         "Open the crate",
@@ -115,7 +115,7 @@ mod test {
     //     .join("\n")
     //     .to_string();
     //     let expected = Some(
-    //         vec![r#"<h6 class="victor" id="bravo">Open the crate</h6>"#]
+    //         vec![r#"<title class="victor" id="bravo">Open the crate</title>"#]
     //             .join("\n")
     //             .to_string(),
     //     );
