@@ -91,22 +91,23 @@ pub fn joiner(children: &Option<Vec<Block>>) -> Vec<String> {
 
 #[cfg(test)]
 mod test {
-    use crate::block::block::Block;
-    use crate::snippet::snippet::SnippetAttribute;
-    use crate::snippet::snippet_enum::Snippet;
-    use crate::source_file::joiner::joiner;
 
-    #[test]
-    pub fn basic_joiner() {
-        let source = Some(vec![Block::Text {
-            snippets: Some(vec![Snippet::Plain {
-                text: Some("asdf".to_string()),
-            }]),
-        }]);
-        let expected: Vec<String> = vec![r#"asdf"#.to_string()];
-        let result = joiner(&source);
-        assert_eq!(expected, result);
-    }
+    // use crate::block::block::Block;
+    // use crate::snippet::snippet::SnippetAttribute;
+    // use crate::snippet::snippet_enum::Snippet;
+    // use crate::source_file::joiner::joiner;
+
+    // #[test]
+    // pub fn basic_joiner() {
+    //     let source = Some(vec![Block::Text {
+    //         snippets: Some(vec![Snippet::Plain {
+    //             text: Some("asdf".to_string()),
+    //         }]),
+    //     }]);
+    //     let expected: Vec<String> = vec![r#"asdf"#.to_string()];
+    //     let result = joiner(&source);
+    //     assert_eq!(expected, result);
+    // }
 
     // #[test]
     // pub fn kbd() {

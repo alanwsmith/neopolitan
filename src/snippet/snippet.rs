@@ -13,29 +13,6 @@ use nom::Parser;
 use serde::Serialize;
 use crate::snippet::snippet_enum::Snippet;
 
-// #[derive(Debug, PartialEq, Serialize)]
-// #[serde(tag = "type")]
-// pub enum Snippet {
-//     AbbreviationTag {
-//         string: Option<String>,
-//     },
-//     Abbr {
-//         string: Option<String>,
-//     },
-//     Kbd {
-//         attributes: Option<Vec<SnippetAttribute>>,
-//         text: Option<String>,
-//     },
-//     Link {
-//         attributes: Option<Vec<SnippetAttribute>>,
-//         text: Option<String>,
-//         url: Option<String>,
-//     },
-//     Plain {
-//         text: Option<String>,
-//     },
-// }
-
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum SnippetAttribute {
@@ -46,10 +23,6 @@ pub enum SnippetAttribute {
 }
 
 pub fn snippet(source: &str) -> IResult<&str, Snippet> {
-    // NOTE: Using trim on stuff in stead of multispace
-    // in most cases cause it's easier to mess with.
-    // Gotta keep the one before the tag name though
-    // to get the parse to hit everything properly
     let (remainder, captured) = alt((
         tuple((
             multispace1::<&str, Error<&str>>,
@@ -58,6 +31,18 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
             tag("|"),
             multispace0,
             tag("abbr"),
+            take_until(">>"),
+            tag(">>"),
+        ))
+        .map(|x| abbr(x.2, x.6)),
+
+        tuple((
+            multispace1::<&str, Error<&str>>,
+            tag("<<"),
+            take_until("|"),
+            tag("|"),
+            multispace0,
+            tag("b"),
             take_until(">>"),
             tag(">>"),
         ))
@@ -131,9 +116,6 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
         // }),
 
         /////////////////////
-
-
-
 
 
         take_until(" <<").map(|x: &str| Snippet::Plain {

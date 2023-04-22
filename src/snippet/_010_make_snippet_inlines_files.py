@@ -17,7 +17,7 @@ def make_files():
     sql = 'SELECT tag, enum FROM inline_tags WHERE format=?'
 
     for row in cur.execute(sql, ("basic", )):
-        output_path = os.path.join(script_dir, f"{row[0]}-tmp.rs")
+        output_path = os.path.join(script_dir, f"{row[0]}.rs")
         data = { "TAG": row[0], "ENUM": row[1] }
         print(data)
         template = Template(skeleton)

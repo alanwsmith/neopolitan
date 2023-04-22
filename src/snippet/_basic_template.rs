@@ -18,7 +18,7 @@ pub fn $TAG(text: &str, raw_attribute_string: &str) -> Snippet {
 #[cfg(test)]
 mod test {
     use crate::snippet::$TAG::*;
-    use crate::snippet_enum::snippet::Snippet;
+    use crate::snippet::snippet_enum::Snippet;
 
     #[test]
     fn basic() {
