@@ -1,0 +1,14 @@
+-> title
+
+Seciton: widget
+
+
+
+-> startneoexample
+
+-> widget
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample

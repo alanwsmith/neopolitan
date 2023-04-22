@@ -1,6 +1,9 @@
 #![allow(warnings)]
 use crate::parse::parse::parse;
 use crate::source_file::source_file::SourceFile;
+use eyre::Error as Error2;
+use fs_extra::copy_items;
+use fs_extra::dir;
 use minijinja::context;
 use minijinja::Environment;
 use std::fs;
@@ -10,6 +13,7 @@ use walkdir::{DirEntry, Error, WalkDir};
 
 #[derive(Debug)]
 pub struct Universe<'a> {
+    pub assets_dir: Option<PathBuf>,
     pub dest_dir: Option<PathBuf>,
     pub env: Option<Environment<'a>>,
     pub source_files: Vec<SourceFile>,
@@ -19,6 +23,7 @@ pub struct Universe<'a> {
 impl Universe<'_> {
     pub fn new() -> Universe<'static> {
         Universe {
+            assets_dir: None,
             dest_dir: None,
             env: None,
             source_dir: None,
@@ -82,5 +87,22 @@ impl Universe<'_> {
                 .to_string();
             fs::write(output_path, out).unwrap();
         }
+    }
+}
+
+impl Universe<'_> {
+    pub fn load_assets_didnot_work(&self) -> Result<u64, Error2> {
+        let options = dir::CopyOptions {
+            buffer_size: 64000,
+            content_only: true,
+            copy_inside: false,
+            depth: 0,
+            overwrite: true,
+            skip_exist: true,
+        };
+        let mut from_paths = Vec::new();
+        from_paths.push(self.assets_dir.as_ref().unwrap());
+        copy_items(&from_paths, self.dest_dir.as_ref().unwrap(), &options)?;
+        Ok(0)
     }
 }

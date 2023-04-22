@@ -1,0 +1,14 @@
+-> title
+
+Seciton: video
+
+
+
+-> startneoexample
+
+-> video
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample
