@@ -10,7 +10,7 @@ pub fn abbr(text: &str, raw_attribute_string: &str) -> Snippet {
     response.push_str(">");
     response.push_str(text);
     response.push_str("</abbr>");
-    Snippet::AbbreviationTag {
+    Snippet::Abbr {
         string: Some(response.to_string()),
     }
 }
@@ -22,7 +22,7 @@ mod test {
 
     #[test]
     fn basic() {
-        let expected = Snippet::AbbreviationTag {
+        let expected = Snippet::Abbr {
             string: Some("<abbr>Set the piece</abbr>".to_string()),
         };
         let results = abbr("Set the piece", "");
@@ -31,7 +31,7 @@ mod test {
 
     #[test]
     fn one_attribute() {
-        let expected = Snippet::AbbreviationTag {
+        let expected = Snippet::Abbr {
             string: Some(r#"<abbr class="alfa">Pile the coal</abbr>"#.to_string()),
         };
         let results = abbr("Pile the coal", r#"class: alfa"#);
@@ -40,7 +40,7 @@ mod test {
 
     #[test]
     fn two_attribute() {
-        let expected = Snippet::AbbreviationTag {
+        let expected = Snippet::Abbr {
             string: Some(
                 r#"<abbr id="echo" class="delta foxtrot">Raise the sail</abbr>"#.to_string(),
             ),
@@ -51,7 +51,7 @@ mod test {
 
     #[test]
     fn just_a_key() {
-        let expected = Snippet::AbbreviationTag {
+        let expected = Snippet::Abbr {
             string: Some(r#"<abbr checked>Lift the stone</abbr>"#.to_string()),
         };
         let results = abbr("Lift the stone", r#"checked"#);

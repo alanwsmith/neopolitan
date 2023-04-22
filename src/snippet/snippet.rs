@@ -15,6 +15,9 @@ use serde::Serialize;
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum Snippet {
+    AbbreviationTag {
+        string: Option<String>,
+    },
     Abbr {
         string: Option<String>,
     },

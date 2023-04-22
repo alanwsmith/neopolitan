@@ -17,13 +17,14 @@ def make_files():
     sql = 'SELECT tag, enum FROM inline_tags WHERE format=?'
 
     for row in cur.execute(sql, ("basic", )):
-        output_path = os.path.join(script_dir, f"{row[0]}.rs")
+        output_path = os.path.join(script_dir, f"{row[0]}-tmp.rs")
         data = { "TAG": row[0], "ENUM": row[1] }
         print(data)
-    #     template = Template(skeleton)
-    #     output = template.substitute(data)
-    #     with open(output_path, "w") as _out:
-    #         _out.write(output)
+        template = Template(skeleton)
+        output = template.substitute(data)
+        print(output)
+        with open(output_path, "w") as _out:
+            _out.write(output)
     con.close()
 
 if __name__ == "__main__":
