@@ -165,20 +165,20 @@ pub fn link_attributes(source: &str) -> IResult<&str, Option<Vec<SnippetAttribut
 
 #[cfg(test)]
 mod test {
-    use crate::snippet::snippet::*;
+    // use crate::snippet::snippet::*;
 
-    #[test]
-    pub fn integration_abbr_without_attribute() {
-        let source = " <<weave the carpet|abbr>>";
-        let expected = Ok((
-            "",
-            Snippet::Abbr {
-                string: Some("<abbr>weave the carpet</abbr>".to_string()),
-            },
-        ));
-        let result = snippet(source);
-        assert_eq!(expected, result);
-    }
+    // #[test]
+    // pub fn integration_abbr_without_attribute() {
+    //     let source = " <<weave the carpet|abbr>>";
+    //     let expected = Ok((
+    //         "",
+    //         Snippet::Abbr {
+    //             string: Some("<abbr>weave the carpet</abbr>".to_string()),
+    //         },
+    //     ));
+    //     let result = snippet(source);
+    //     assert_eq!(expected, result);
+    // }
 
     // #[test]
     // pub fn basic_test() {

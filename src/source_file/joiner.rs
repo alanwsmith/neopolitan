@@ -11,6 +11,9 @@ pub fn joiner(children: &Option<Vec<Block>>) -> Vec<String> {
             Block::Text { snippets } => {
                 for snippet in snippets.as_ref().unwrap() {
                     match snippet {
+                        Snippet::AbbreviationTag { string } => {
+                            assembler.push(string.as_ref().unwrap().to_string());
+                        }
 
                         Snippet::Abbr { string } => {
                             assembler.push(string.as_ref().unwrap().to_string());
