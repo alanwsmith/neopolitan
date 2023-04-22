@@ -1,5 +1,6 @@
-use crate::snippet::abbr::abbr;
+use crate::snippet::snippets::abbr::abbr;
 use nom::branch::alt;
+use crate::snippet::snippets::b::b;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
 use nom::character::complete::multispace0;
