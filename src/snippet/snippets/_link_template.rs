@@ -2,8 +2,8 @@
 use crate::snippet::snippet_enum::Snippet;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
-use nom::multi::separated_list0;
 use nom::combinator::opt;
+use nom::multi::separated_list0;
 use nom::IResult;
 
 pub fn link(text: &str, raw_attribute_string: &str) -> Snippet {
@@ -36,53 +36,41 @@ pub fn get_link_attributes(source: &str) -> IResult<&str, Option<String>> {
     Ok(("", Some(response_string)))
 }
 
-fn split_link_attributes<'a>(source: &'a str, separator: &'a str) -> IResult<&'a str, Vec<&'a str>> {
+fn split_link_attributes<'a>(
+    source: &'a str,
+    separator: &'a str,
+) -> IResult<&'a str, Vec<&'a str>> {
     let (remainder, _) = opt(tag(separator))(source)?;
     let (_, items) = separated_list0(tag(separator), is_not(separator))(remainder)?;
     Ok(("", items))
 }
-
 
 #[cfg(test)]
 mod test {
     use crate::snippet::snippet_enum::Snippet;
     use crate::snippet::snippets::link::*;
 
-    // #[test]
-    // fn basic() {
-    //     let expected = Snippet::$ENUM {
-    //         string: Some("<$TAG>Set the piece</$TAG>".to_string()),
-    //     };
-    //     let results = $TAG("Set the piece", "");
-    //     assert_eq!(expected, results);
-    // }
-
     #[test]
-    fn one_attribute() {
-        let expected = Snippet::$ENUM {
+    fn with_just_url() {
+        let expected = Snippet::LinkTag {
             string: Some(r#"<a href="https://delta.example.com/">Pile the coal</a>"#.to_string()),
         };
-        let results = $TAG("Pile the coal", r#"https://delta.example.com/"#);
+        let results = link("Pile the coal", r#"https://delta.example.com/"#);
         assert_eq!(expected, results);
     }
 
-    // #[test]
-    // fn two_attribute() {
-    //     let expected = Snippet::$ENUM {
-    //         string: Some(
-    //             r#"<$TAG id="echo" class="delta foxtrot">Raise the sail</$TAG>"#.to_string(),
-    //         ),
-    //     };
-    //     let results = $TAG("Raise the sail", r#"id: echo|class: delta foxtrot"#);
-    //     assert_eq!(expected, results);
-    // }
-
-    // #[test]
-    // fn just_a_key() {
-    //     let expected = Snippet::$ENUM {
-    //         string: Some(r#"<$TAG checked>Lift the stone</$TAG>"#.to_string()),
-    //     };
-    //     let results = $TAG("Lift the stone", r#"checked"#);
-    //     assert_eq!(expected, results);
-    // }
+    #[test]
+    fn url_and_attribute() {
+        let expected = Snippet::LinkTag {
+            string: Some(
+                r#"<a href="https://echo.example.com/" class="delta foxtrot">Raise the sail</a>"#
+                    .to_string(),
+            ),
+        };
+        let results = link(
+            "Raise the sail",
+            r#"https://echo.example.com/|class: delta foxtrot"#,
+        );
+        assert_eq!(expected, results);
+    }
 }

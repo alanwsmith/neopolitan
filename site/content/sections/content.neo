@@ -1,10 +1,10 @@
 -> title
 
-Sections
+Neopolitan
 
 -> h2
 
-Content (Done)
+Content Sections
 
 - <<aside|link|/sections/aside.html>>
 
@@ -28,9 +28,9 @@ Content (Done)
 
 - <<title|link|/sections/title.html>>
 
--> h2
+-> h3
 
-Content (In Progress)
+In Progress
 
 - <<canvas|link|/sections/canvas.html>>
 
