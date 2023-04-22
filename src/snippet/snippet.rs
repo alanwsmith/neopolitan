@@ -11,17 +11,8 @@ use nom::multi::separated_list0;
 use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
-use serde::Serialize;
 use crate::snippet::snippet_enum::Snippet;
-
-#[derive(Debug, PartialEq, Serialize)]
-#[serde(tag = "type")]
-pub enum SnippetAttribute {
-    Attribute {
-        key: Option<String>,
-        value: Option<String>,
-    },
-}
+use crate::snippet::snippet_attribute::SnippetAttribute;
 
 pub fn snippet(source: &str) -> IResult<&str, Snippet> {
     let (remainder, captured) = alt((
@@ -47,7 +38,7 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
             take_until(">>"),
             tag(">>"),
         ))
-        .map(|x| abbr(x.2, x.6)),
+        .map(|x| b(x.2, x.6)),
 
 
 
