@@ -3,7 +3,7 @@ import sys
 import os
 
 script_dir = sys.path[0]
-db_path = os.path.join(script_dir, "_data.sqlite")
+db_path = os.path.join(script_dir, "..", "..", "..", "src", "_data.sqlite")
 con = sqlite3.connect(db_path)
 cur = con.cursor()
 
@@ -13,7 +13,8 @@ output_path = os.path.join(
         "..", 
         "site", 
         "content", 
-        "sections.neo"
+        "sections"
+        "index.neo"
     )
 with open(output_path, "w") as _out:
     lines = []

@@ -10,11 +10,14 @@ use nom::character::complete::multispace0;
 use nom::combinator::eof;
 use nom::multi::many_till;
 use nom::IResult;
+use html_escape;
 
 pub fn neoexample_start_end(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
     let (raw, _) = multispace0(remainder)?;
     let (remainder, _blocks) = many_till(block, eof)(raw)?;
+
+    let escaped_raw = html_escape::encode_text(raw);
 
     let mut u = Universe::new();
     u.env = Some(create_env("./site/templates"));
@@ -39,12 +42,14 @@ pub fn neoexample_start_end(source: &str) -> IResult<&str, Section> {
         .unwrap()
         .to_string();
 
+    let escaped_out = html_escape::encode_text(&out);
+
     Ok((
         remainder,
         Section::NeoExampleStartEndSection {
             attributes,
-            html: Some(out.to_string()),
-            raw: Some(raw.to_string()),
+            html: Some(escaped_out.to_string()),
+            raw: Some(escaped_raw.to_string()),
         },
     ))
 }

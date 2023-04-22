@@ -11,6 +11,11 @@ pub fn joiner(children: &Option<Vec<Block>>) -> Vec<String> {
             Block::Text { snippets } => {
                 for snippet in snippets.as_ref().unwrap() {
                     match snippet {
+
+                        Snippet::Abbr { string } => {
+                            assembler.push(string.as_ref().unwrap().to_string());
+                        }
+
                         Snippet::Plain { text } => {
                             let new_thing = text.as_ref().unwrap();
                             assembler.push(new_thing.to_string());
@@ -72,8 +77,6 @@ pub fn joiner(children: &Option<Vec<Block>>) -> Vec<String> {
                             assembler.push(content.to_string());
                             ()
                         }
-
-                        _ => (),
                     }
                 }
                 ()

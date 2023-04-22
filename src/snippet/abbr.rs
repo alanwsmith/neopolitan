@@ -1,8 +1,13 @@
 use crate::snippet::get_attributes::get_attributes;
 use crate::snippet::snippet::Snippet;
 
-pub fn abbr(text: &str, _attributes: &str) -> Snippet {
-    let mut response = String::from("<abbr>");
+pub fn abbr(text: &str, raw_attribute_string: &str) -> Snippet {
+    let attributes = get_attributes(raw_attribute_string);
+    let mut response = String::from("<abbr");
+    if let Some(x) = attributes.unwrap().1 {
+        response.push_str(x.as_str());
+    };
+    response.push_str(">");
     response.push_str(text);
     response.push_str("</abbr>");
     Snippet::Abbr {
@@ -16,11 +21,7 @@ pub fn abbr_dev(text: &str, raw_attribute_string: &str) -> Snippet {
     if let Some(x) = attributes.unwrap().1 {
         response.push_str(x.as_str());
     };
-
-    // response.push_str(attributes.unwrap().1.as_str());
     response.push_str(">");
-
-    // class="alfa">"#);
     response.push_str(text);
     response.push_str("</abbr>");
     Snippet::Abbr {
@@ -47,7 +48,7 @@ mod test {
         let expected = Snippet::Abbr {
             string: Some(r#"<abbr class="alfa">Pile the coal</abbr>"#.to_string()),
         };
-        let results = abbr_dev("Pile the coal", r#"class: alfa"#);
+        let results = abbr("Pile the coal", r#"class: alfa"#);
         assert_eq!(expected, results);
     }
 
@@ -58,7 +59,16 @@ mod test {
                 r#"<abbr id="echo" class="delta foxtrot">Pile the coal</abbr>"#.to_string(),
             ),
         };
-        let results = abbr_dev("Pile the coal", r#"id: echo|class: delta foxtrot"#);
+        let results = abbr("Pile the coal", r#"id: echo|class: delta foxtrot"#);
+        assert_eq!(expected, results);
+    }
+
+    #[test]
+    fn just_a_key() {
+        let expected = Snippet::Abbr {
+            string: Some(r#"<abbr checked>Pile the coal</abbr>"#.to_string()),
+        };
+        let results = abbr_dev("Pile the coal", r#"checked"#);
         assert_eq!(expected, results);
     }
 }

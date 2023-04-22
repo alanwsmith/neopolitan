@@ -57,7 +57,7 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
             take_until(">>"),
             tag(">>"),
         ))
-        .map(|x| abbr(x.2, x.7)),
+        .map(|x| abbr(x.2, x.6)),
         tuple((
             multispace1::<&str, Error<&str>>,
             tag("<<"),
