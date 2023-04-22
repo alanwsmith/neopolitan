@@ -11,6 +11,7 @@
     <nav>
       <ul>
         <li><a href="/">Neopolitan</a></li>
+        <li><a href="/blog/index.html">Blog</a></li>
         <li><a href="/sections/index.html">Sections</a></li>
         <li><a href="/sections/content.html">Content Sections</a></li>
         <li><a href="/sections/metadata.html">Metadata Sections</a></li>
@@ -20,7 +21,29 @@
     </nav>
   </header>
   <main><h1 class="title">Neopolitan</h1><h2>Inline Tag: var (The Variable element)
-</h2><h3>Basic Usage</h3><h3>With Attributes</h3></main>
+</h2><h3>Basic Usage</h3><div class="pre-wrapper">
+<div class="pre-spacer">Source</div>
+<pre class="neoexmapleCode"><code>-&gt; p
+
+Use a &lt;&lt;pencil|var&gt;&gt; to write</code></pre>
+</div>
+
+<div class="pre-wrapper">
+<div class="pre-spacer">Output</div>
+<pre class="neoexmapleCode"><code>&lt;p&gt;Use a &lt;var&gt;pencil&lt;/var&gt;  to write&lt;/p&gt;
+</code></pre>
+</div><h3>With Attributes</h3><div class="pre-wrapper">
+<div class="pre-spacer">Source</div>
+<pre class="neoexmapleCode"><code>-&gt; p
+
+Use a &lt;&lt;pencil|var|id: alfa|class: bravo&gt;&gt; to write</code></pre>
+</div>
+
+<div class="pre-wrapper">
+<div class="pre-spacer">Output</div>
+<pre class="neoexmapleCode"><code>&lt;p&gt;Use a &lt;var id="alfa" class="bravo"&gt;pencil&lt;/var&gt;  to write&lt;/p&gt;
+</code></pre>
+</div></main>
 </body>
 
 </html>

@@ -394,6 +394,14 @@ output_string.push_str(&base
 .unwrap().render(context!(attributes_string, parts))
 .unwrap().as_str());
 }
+Section::NeoExampleStartEndSection
+{ attributes, html, raw} => {
+let attributes_string = attributes_basic(attributes);
+output_string.push_str(&base
+.get_template("components/startneoexample.j2")
+.unwrap().render(context!(attributes_string, html, raw))
+.unwrap().as_str());
+}
 
 
                 _ => {}

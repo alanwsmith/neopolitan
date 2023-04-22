@@ -24,6 +24,8 @@ Content Sections
 
 - <<note|link|/sections/note.html>>
 
+- <<title|link|/sections/title.html>>
+
 - <<todo|link|/sections/todo.html>>
 
 - <<warning|link|/sections/warning.html>>
@@ -77,8 +79,6 @@ In Progress
 - <<table|link|/sections/table.html>>
 
 - <<textarea|link|/sections/textarea.html>>
-
-- <<title|link|/sections/title.html>>
 
 - <<vimeo|link|/sections/vimeo.html>>
 

@@ -1,7 +1,32 @@
 -> title
 
-Is This Thing On?
+The Neopolitan Blog
 
-You're supposed to do hello world, but we're
-changing it up. 
+
+-> h2 
+
+Posts
+
+
+- <<Is This Thing On?|link|/blog/is-this-thing-on.html>>
+
+- <<Checklist For Making A New Section|link|
+/blog/checklist-for-making-a-new-section.html>>
+
+
+
+
+
+-> blurb
+
+-> categories
+>> Neopolitan 
+
+-> attributes
+>> date: 2023-04-22 17:33:19
+>> id: 2onbgnxbplch
+>> site: aws
+>> type: post
+>> status: published
+
 

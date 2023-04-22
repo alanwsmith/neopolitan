@@ -15,14 +15,10 @@ def make_file():
     con = sqlite3.connect(db_path)
     cur = con.cursor()
 
-    sql = """
-    SELECT tag, enum, type, template, attributes
-    FROM sections 
-    WHERE type=?
-    """
-
     lines = []
 
+    sql = """SELECT tag, enum, type, template, attributes
+    FROM sections WHERE type=? """
     for row in cur.execute(sql, ("content", )):
         lines.append(f"Section::{row[1]}")
         lines.append("{ attributes, children,} => {")
@@ -36,6 +32,20 @@ def make_file():
         lines.append(".unwrap().render(context!(attributes_string, parts))")
         lines.append(".unwrap().as_str());")
         lines.append("}")
+
+    sql = """SELECT tag, enum, type, template, attributes
+    FROM sections WHERE tag=?"""
+    for row in cur.execute(sql, ("startneoexample", )):
+        lines.append(f"Section::{row[1]}")
+        lines.append("{ attributes, html, raw} => {")
+        #lines.append("let parts = joiner(children);")
+        lines.append(f"""let attributes_string = attributes_{row[4]}(attributes);""")
+        lines.append("output_string.push_str(&base")
+        lines.append(f""".get_template("components/{row[0]}.j2")""")
+        lines.append(".unwrap().render(context!(attributes_string, html, raw))")
+        lines.append(".unwrap().as_str());")
+        lines.append("}")
+
 
     data = {
         "SECTIONDATA": "\n".join(lines)

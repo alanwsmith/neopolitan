@@ -14,9 +14,9 @@ cur = con.cursor()
 def make_section_files():
     print("Making section files")
     sql = """
-    SELECT tag, enum, type, template 
+    SELECT tag, enum, type, rust_template 
     FROM sections 
-    WHERE template IS NOT NULL
+    WHERE rust_template IS NOT NULL
     """
     for row in cur.execute(sql):
         data = {

@@ -71,6 +71,11 @@ use serde::Serialize;
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum Section {
+    NeoExampleStartEndSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        html: Option<String>,
+        raw: Option<String>,
+    },
     AsideSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
@@ -199,11 +204,6 @@ pub enum Section {
     NavSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
-    },
-    NeoExampleStartEndSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        html: Option<String>,
-        raw: Option<String>,
     },
     NoteSection {
         attributes: Option<Vec<SectionAttribute>>,
