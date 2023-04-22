@@ -1,0 +1,16 @@
+-> title
+
+Section: audio
+
+TODO: Add `controls` option to this
+
+
+-> startneoexample
+
+-> audio
+>> controls
+>> src: /some/url
+
+the quick brown fox
+
+-> endneoexample
