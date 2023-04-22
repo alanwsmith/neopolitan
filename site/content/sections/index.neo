@@ -4,86 +4,9 @@ Sections
 
 -> h2
 
-Content (Done)
+TODO
 
-- <<aside|link|/sections/aside.html>>
+Link to sections
 
-- <<blockquote|link|/sections/blockquote.html>>
 
-- <<h1|link|/sections/h1.html>>
-
-- <<h2|link|/sections/h2.html>>
-
-- <<h3|link|/sections/h3.html>>
-
-- <<h4|link|/sections/h4.html>>
-
-- <<h5|link|/sections/h5.html>>
-
-- <<h6|link|/sections/h6.html>>
-
-- <<note|link|/sections/note.html>>
-
-- <<subtitle|link|/sections/subtitle.html>>
-
-- <<title|link|/sections/title.html>>
-
--> h2
-
-Content (In Progress)
-
-- <<canvas|link|/sections/canvas.html>>
-
-- <<checklist|link|/sections/checklist.html>>
-
-- <<code|link|/sections/code.html>>
-
-- <<details|link|/sections/details.html>>
-
-- <<div|link|/sections/div.html>>
-
-- <<dlist|link|/sections/dlist.html>>
-
-- <<figure|link|/sections/figure.html>>
-
-- <<hr|link|/sections/hr.html>>
-
-- <<image|link|/sections/image.html>>
-
-- <<list|link|/sections/list.html>>
-
-- <<menu|link|/sections/menu.html>>
-
-- <<nav|link|/sections/nav.html>>
-
-- <<notes|link|/sections/notes.html>>
-
-- <<object|link|/sections/object.html>>
-
-- <<olist|link|/sections/olist.html>>
-
-- <<p|link|/sections/p.html>>
-
-- <<picture|link|/sections/picture.html>>
-
-- <<pre|link|/sections/pre.html>>
-
-- <<results|link|/sections/results.html>>
-
-- <<startcode|link|/sections/startcode.html>>
-
-- <<table|link|/sections/table.html>>
-
-- <<textarea|link|/sections/textarea.html>>
-
-- <<todo|link|/sections/todo.html>>
-
-- <<vimeo|link|/sections/vimeo.html>>
-
-- <<warning|link|/sections/warning.html>>
-
-- <<youtube|link|/sections/youtube.html>>
-
-- <<video|link|/sections/video.html>>
-
-- <<audio|link|/sections/audio.html>>
+They're in the nav right now

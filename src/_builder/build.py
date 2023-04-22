@@ -4,6 +4,14 @@ import os.path
 
 from string import Template
 
+DON'T USE THIS ONE. 
+
+It's just for reference while moving
+to individual base_files
+
+(This will panic intentionally if you 
+turn to run it)
+
 base_files = {
         "aside": {"key": "AsideSection", "example": "\nShut the hatch"},
         "attributes": {"key": "AttributesSection"},

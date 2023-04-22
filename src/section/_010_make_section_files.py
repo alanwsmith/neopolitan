@@ -14,7 +14,7 @@ cur = con.cursor()
 def make_section_files():
     print("Making section files")
     sql = """
-    SELECT tag, enum, status, type, template 
+    SELECT tag, enum, type, template 
     FROM sections 
     WHERE template IS NOT NULL
     """
@@ -23,7 +23,7 @@ def make_section_files():
             "TAG": row[0],
             "ENUM": row[1]
         }
-        with open(os.path.join(script_dir, f"_template_{row[4]}.rs")) as _in:
+        with open(os.path.join(script_dir, f"_template_{row[3]}.rs")) as _in:
             skeleton = _in.read()
             template = Template(skeleton)
             output_path = os.path.join(script_dir, f"{row[0]}.rs")

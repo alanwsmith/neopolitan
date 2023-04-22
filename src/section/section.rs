@@ -75,11 +75,15 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-    BlockquoteSection {
+    AttributesSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-    AttributesSection {
+    AudioSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    BlockquoteSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -258,6 +262,10 @@ pub enum Section {
         children: Option<Vec<Block>>,
     },
     TodoSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        children: Option<Vec<Block>>,
+    },
+    TodosSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },

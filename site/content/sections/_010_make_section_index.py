@@ -20,16 +20,16 @@ with open(output_path, "w") as _out:
     lines.append("")
     lines.append("Content Sections")
     lines.append("")
-    sql = 'SELECT tag FROM sections WHERE type=? AND status=?'
-    for row in cur.execute(sql, ("content", "done")):
+    sql = 'SELECT tag FROM sections WHERE type=? AND template IS NOT NULL'
+    for row in cur.execute(sql, ("content",)):
         lines.append(f"- <<{row[0]}|link|/sections/{row[0]}.html>>")
         lines.append("")
     lines.append("-> h3")
     lines.append("")
     lines.append("In Progress")
     lines.append("")
-    sql = 'SELECT tag FROM sections WHERE type=? AND status=?'
-    for row in cur.execute(sql, ("content", "todo")):
+    sql = 'SELECT tag FROM sections WHERE type=? AND template IS NULL'
+    for row in cur.execute(sql, ("content",)):
         lines.append(f"- <<{row[0]}|link|/sections/{row[0]}.html>>")
         lines.append("")
     _out.write("\n".join(lines))
@@ -46,16 +46,16 @@ with open(output_path, "w") as _out:
     lines.append("")
     lines.append("Metadata Sections")
     lines.append("")
-    sql = 'SELECT tag FROM sections WHERE type=? AND status=?'
-    for row in cur.execute(sql, ("meta", "done")):
+    sql = 'SELECT tag FROM sections WHERE type=? AND template IS NOT NULL'
+    for row in cur.execute(sql, ("meta",)):
         lines.append(f"- <<{row[0]}|link|/sections/{row[0]}.html>>")
         lines.append("")
     lines.append("-> h3")
     lines.append("")
     lines.append("In Progress")
     lines.append("")
-    sql = 'SELECT tag FROM sections WHERE type=? AND status=?'
-    for row in cur.execute(sql, ("meta", "todo")):
+    sql = 'SELECT tag FROM sections WHERE type=? AND template IS NULL'
+    for row in cur.execute(sql, ("meta",)):
         lines.append(f"- <<{row[0]}|link|/sections/{row[0]}.html>>")
         lines.append("")
     _out.write("\n".join(lines))
@@ -72,16 +72,16 @@ with open(output_path, "w") as _out:
     lines.append("")
     lines.append("Functional Sections")
     lines.append("")
-    sql = 'SELECT tag FROM sections WHERE type=? AND status=?'
-    for row in cur.execute(sql, ("meta", "done")):
+    sql = 'SELECT tag FROM sections WHERE type=? AND template IS NOT NULL'
+    for row in cur.execute(sql, ("functional",)):
         lines.append(f"- <<{row[0]}|link|/sections/{row[0]}.html>>")
         lines.append("")
     lines.append("-> h3")
     lines.append("")
     lines.append("In Progress")
     lines.append("")
-    sql = 'SELECT tag FROM sections WHERE type=? AND status=?'
-    for row in cur.execute(sql, ("meta", "todo")):
+    sql = 'SELECT tag FROM sections WHERE type=? AND template IS NULL'
+    for row in cur.execute(sql, ("functional",)):
         lines.append(f"- <<{row[0]}|link|/sections/{row[0]}.html>>")
         lines.append("")
     _out.write("\n".join(lines))
