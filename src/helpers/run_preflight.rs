@@ -10,7 +10,7 @@ pub fn run_preflight() -> Result<(), Error> {
             if ext == "py" {
                 let path_string = path.display().to_string();
                 let args: Vec<&str> = vec![path_string.as_str()];
-                let cmd_output = Command::new("/opt/homebrew/bin/python3")
+                let _cmd_output = Command::new("/opt/homebrew/bin/python3")
                     .args(args)
                     .output()
                     .unwrap();

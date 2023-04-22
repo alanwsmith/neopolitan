@@ -33,376 +33,621 @@ impl SourceFile {
             .unwrap()
             .iter()
             .for_each(|section| match section {
-
-                Section::AsideSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/aside.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::BlockquoteSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/blockquote.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::CanvasSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/canvas.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::ChecklistSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/checklist.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::CodeSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/code.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::DetailsSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/details.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::DivSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/div.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::DescriptionListSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/dlist.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::FigureSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/figure.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::H1Section
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/h1.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::H2Section
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/h2.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::H3Section
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/h3.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::H4Section
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/h4.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::H5Section
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/h5.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::H6Section
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/h6.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::HRSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/hr.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::ImageSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/image.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::ListSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/list.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::MenuSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/menu.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::NavSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/nav.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::NoteSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_with_class(attributes, "note");
-output_string.push_str(&base
-.get_template("components/note.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::NotesSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_with_class(attributes, "notes");
-output_string.push_str(&base
-.get_template("components/notes.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::ObjectSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/object.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::OrderedListSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/olist.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::ParagraphsSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/p.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::PictureSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/picture.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::PreSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/pre.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::ResultsSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/results.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::CodeStartEndSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/startcode.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::SubtitleSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_with_class(attributes, "subtitle");
-output_string.push_str(&base
-.get_template("components/subtitle.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::TableSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/table.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::TextareaSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/textarea.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::TitleSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_with_class(attributes, "title");
-output_string.push_str(&base
-.get_template("components/title.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::TodoSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_with_class(attributes, "todo");
-output_string.push_str(&base
-.get_template("components/todo.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::VimeoSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/vimeo.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::WarningSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_with_class(attributes, "warning");
-output_string.push_str(&base
-.get_template("components/warning.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::YouTubeSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/youtube.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::VideoSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/video.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::AudioSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/audio.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::TodosSection
-{ attributes, children,} => {
-let parts = joiner(children);
-let attributes_string = attributes_with_class(attributes, "todos");
-output_string.push_str(&base
-.get_template("components/todos.j2")
-.unwrap().render(context!(attributes_string, parts))
-.unwrap().as_str());
-}
-Section::NeoExampleStartEndSection
-{ attributes, html, raw} => {
-let attributes_string = attributes_basic(attributes);
-output_string.push_str(&base
-.get_template("components/startneoexample.j2")
-.unwrap().render(context!(attributes_string, html, raw))
-.unwrap().as_str());
-}
-
+                Section::AsideSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/aside.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::BlockquoteSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/blockquote.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::CanvasSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/canvas.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::ChecklistSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/checklist.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::CodeSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/code.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::DetailsSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/details.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::DivSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/div.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::DescriptionListSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/dlist.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::FigureSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/figure.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::H1Section {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/h1.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::H2Section {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/h2.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::H3Section {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/h3.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::H4Section {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/h4.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::H5Section {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/h5.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::H6Section {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/h6.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::HRSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/hr.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::ImageSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/image.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::ListSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/list.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::MenuSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/menu.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::NavSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/nav.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::NoteSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_with_class(attributes, "note");
+                    output_string.push_str(
+                        &base
+                            .get_template("components/note.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::NotesSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_with_class(attributes, "notes");
+                    output_string.push_str(
+                        &base
+                            .get_template("components/notes.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::ObjectSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/object.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::OrderedListSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/olist.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::ParagraphsSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/p.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::PictureSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/picture.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::PreSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/pre.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::ResultsSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/results.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::CodeStartEndSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/startcode.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::SubtitleSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_with_class(attributes, "subtitle");
+                    output_string.push_str(
+                        &base
+                            .get_template("components/subtitle.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::TableSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/table.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::TextareaSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/textarea.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::TitleSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_with_class(attributes, "title");
+                    output_string.push_str(
+                        &base
+                            .get_template("components/title.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::TodoSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_with_class(attributes, "todo");
+                    output_string.push_str(
+                        &base
+                            .get_template("components/todo.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::VimeoSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/vimeo.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::WarningSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_with_class(attributes, "warning");
+                    output_string.push_str(
+                        &base
+                            .get_template("components/warning.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::YouTubeSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/youtube.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::VideoSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/video.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::AudioSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/audio.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::TodosSection {
+                    attributes,
+                    children,
+                } => {
+                    let parts = joiner(children);
+                    let attributes_string = attributes_with_class(attributes, "todos");
+                    output_string.push_str(
+                        &base
+                            .get_template("components/todos.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, parts))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
+                Section::NeoExampleStartEndSection {
+                    attributes,
+                    html,
+                    raw,
+                } => {
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/startneoexample.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, html, raw))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
 
                 _ => {}
             });
@@ -417,9 +662,9 @@ mod test {
     use crate::section::section_attributes::SectionAttribute;
     use crate::snippet::snippet_enum::*;
     use crate::source_file::source_file::*;
-    use crate::tests::remove_whitespace::remove_whitespace;
-    use crate::universe::create_env::create_env;
-    use crate::universe::universe::Universe;
+    // use crate::tests::remove_whitespace::remove_whitespace;
+    // use crate::universe::create_env::create_env;
+    // use crate::universe::universe::Universe;
 
     // This tests is a basic look at the output
     // method. Each section type has similar ones
