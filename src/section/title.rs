@@ -110,6 +110,7 @@ mod test {
             "-> title",
             ">> class: victor",
             ">> id: bravo",
+            "",
             "Open the crate",
         ]
         .join("\n")
