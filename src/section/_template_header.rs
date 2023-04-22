@@ -6,13 +6,13 @@ use nom::combinator::eof;
 use nom::multi::many_till;
 use nom::IResult;
 
-pub fn h6(source: &str) -> IResult<&str, Section> {
+pub fn $TAG(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
     let (remainder, _) = multispace0(remainder)?;
     let (remainder, blocks) = many_till(block, eof)(remainder)?;
     Ok((
         remainder,
-        Section::H6Section {
+        Section::$ENUM {
             attributes,
             children: Some(blocks.0),
         },
@@ -29,8 +29,8 @@ mod test {
 
     #[test]
     pub fn single_line() {
-        let source = ["-> h6", "", "Say it slowly"].join("\n").to_string();
-        let expected = Some(vec![r#"<h6>Say it slowly</h6>"#].join("\n").to_string());
+        let source = ["-> $TAG", "", "Say it slowly"].join("\n").to_string();
+        let expected = Some(vec![r#"<$TAG>Say it slowly</$TAG>"#].join("\n").to_string());
         let mut u = Universe::new();
         u.env = Some(create_env("./site/templates"));
         let mut sf = SourceFile::new();
