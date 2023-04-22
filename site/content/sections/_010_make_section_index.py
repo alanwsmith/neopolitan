@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sqlite3
 import sys
 import os
@@ -9,13 +11,9 @@ cur = con.cursor()
 
 output_path = os.path.join(
         script_dir, 
-        "..", 
-        "..", 
-        "site", 
-        "content", 
-        "sections"
         "index.neo"
     )
+
 with open(output_path, "w") as _out:
     lines = []
     lines.append("-> title")
@@ -24,7 +22,7 @@ with open(output_path, "w") as _out:
     lines.append("")
     sql = 'SELECT tag FROM sections'
     for row in cur.execute(sql):
-        lines.append(f"- <<{row[0]}|link|/sections/{row[0]}.html>>")
+        lines.append(f"- <x<{row[0]}|link|/sections/{row[0]}.html>x>")
         lines.append("")
     _out.write("\n".join(lines))
 con.close()

@@ -6,6 +6,7 @@ use nom::combinator::rest;
 use nom::multi::many_till;
 use nom::IResult;
 use serde::Serialize;
+use crate::snippet::snippet_enum::Snippet;
 
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]

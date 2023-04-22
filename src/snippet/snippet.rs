@@ -11,29 +11,30 @@ use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
 use serde::Serialize;
+use crate::snippet::snippet_enum::Snippet;
 
-#[derive(Debug, PartialEq, Serialize)]
-#[serde(tag = "type")]
-pub enum Snippet {
-    AbbreviationTag {
-        string: Option<String>,
-    },
-    Abbr {
-        string: Option<String>,
-    },
-    Kbd {
-        attributes: Option<Vec<SnippetAttribute>>,
-        text: Option<String>,
-    },
-    Link {
-        attributes: Option<Vec<SnippetAttribute>>,
-        text: Option<String>,
-        url: Option<String>,
-    },
-    Plain {
-        text: Option<String>,
-    },
-}
+// #[derive(Debug, PartialEq, Serialize)]
+// #[serde(tag = "type")]
+// pub enum Snippet {
+//     AbbreviationTag {
+//         string: Option<String>,
+//     },
+//     Abbr {
+//         string: Option<String>,
+//     },
+//     Kbd {
+//         attributes: Option<Vec<SnippetAttribute>>,
+//         text: Option<String>,
+//     },
+//     Link {
+//         attributes: Option<Vec<SnippetAttribute>>,
+//         text: Option<String>,
+//         url: Option<String>,
+//     },
+//     Plain {
+//         text: Option<String>,
+//     },
+// }
 
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
@@ -61,54 +62,80 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
             tag(">>"),
         ))
         .map(|x| abbr(x.2, x.6)),
-        tuple((
-            multispace1::<&str, Error<&str>>,
-            tag("<<"),
-            take_until("|"),
-            tag("|"),
-            multispace0,
-            tag("kbd"),
-            take_until(">>"),
-            tag(">>"),
-        ))
-        .map(|x| Snippet::Kbd {
-            attributes: None,
-            text: Some(x.2.to_string()),
-        }),
-        tuple((
-            multispace1::<&str, Error<&str>>,
-            tag("<<"),
-            take_until("|"),
-            tag("|"),
-            multispace0,
-            tag("link"),
-            multispace0,
-            tag("|"),
-            take_until(">>"),
-            tag(">>"),
-        ))
-        .map(|x| {
-            // dbg!(x.8);
-            let (url, attrs) = link_attributes(x.8).unwrap();
-            Snippet::Link {
-                url: Some(url.to_string()),
-                attributes: attrs,
-                text: Some(x.2.to_string()),
-            }
-        }),
-        tuple((
-            multispace1::<&str, Error<&str>>,
-            tag(">"),
-            take_until(">"),
-            tag(">"),
-            take_until(">"),
-            tag(">"),
-        ))
-        .map(|x| Snippet::Link {
-            attributes: None,
-            text: Some(x.2.to_string()),
-            url: Some(x.4.to_string()),
-        }),
+
+
+
+        /////////////////////////////
+
+
+
+
+        // tuple((
+        //     multispace1::<&str, Error<&str>>,
+        //     tag("<<"),
+        //     take_until("|"),
+        //     tag("|"),
+        //     multispace0,
+        //     tag("kbd"),
+        //     take_until(">>"),
+        //     tag(">>"),
+        // ))
+        // .map(|x| Snippet::Kbd {
+        //     attributes: None,
+        //     text: Some(x.2.to_string()),
+        // }),
+
+
+
+        /////////////////////////////
+
+
+
+        // tuple((
+        //     multispace1::<&str, Error<&str>>,
+        //     tag("<<"),
+        //     take_until("|"),
+        //     tag("|"),
+        //     multispace0,
+        //     tag("link"),
+        //     multispace0,
+        //     tag("|"),
+        //     take_until(">>"),
+        //     tag(">>"),
+        // ))
+        // .map(|x| {
+        //     // dbg!(x.8);
+        //     let (url, attrs) = link_attributes(x.8).unwrap();
+        //     Snippet::Link {
+        //         url: Some(url.to_string()),
+        //         attributes: attrs,
+        //         text: Some(x.2.to_string()),
+        //     }
+        // }),
+
+
+        /////////////////////////////
+
+        // tuple((
+        //     multispace1::<&str, Error<&str>>,
+        //     tag(">"),
+        //     take_until(">"),
+        //     tag(">"),
+        //     take_until(">"),
+        //     tag(">"),
+        // ))
+        // .map(|x| Snippet::Link {
+        //     attributes: None,
+        //     text: Some(x.2.to_string()),
+        //     url: Some(x.4.to_string()),
+        // }),
+
+        /////////////////////
+
+
+
+
+
         take_until(" <<").map(|x: &str| Snippet::Plain {
             text: Some(x.to_string()),
         }),
@@ -165,6 +192,7 @@ pub fn link_attributes(source: &str) -> IResult<&str, Option<Vec<SnippetAttribut
 
 #[cfg(test)]
 mod test {
+    use crate::snippet::snippet_enum::Snippet;
     // use crate::snippet::snippet::*;
 
     // #[test]

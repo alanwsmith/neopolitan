@@ -787,7 +787,7 @@ mod test {
     use crate::block::block::*;
     use crate::parse::parse::*;
     use crate::section::section_attributes::SectionAttribute;
-    use crate::snippet::snippet::*;
+    use crate::snippet::snippet_enum::*;
     use crate::source_file::source_file::*;
     use crate::tests::remove_whitespace::remove_whitespace;
     use crate::universe::create_env::create_env;

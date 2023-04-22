@@ -1,5 +1,5 @@
 use crate::snippet::get_attributes::get_attributes;
-use crate::snippet::snippet::Snippet;
+use crate::snippet::snippet_enum::Snippet;
 
 pub fn $TAG(text: &str, raw_attribute_string: &str) -> Snippet {
     let attributes = get_attributes(raw_attribute_string);
@@ -18,7 +18,7 @@ pub fn $TAG(text: &str, raw_attribute_string: &str) -> Snippet {
 #[cfg(test)]
 mod test {
     use crate::snippet::$TAG::*;
-    use crate::snippet::snippet::Snippet;
+    use crate::snippet_enum::snippet::Snippet;
 
     #[test]
     fn basic() {

@@ -2,104 +2,106 @@
 
 Sections
 
-- <<aside|link|/sections/aside.html>>
+- <x<aside|link|/sections/aside.html>x>
 
-- <<attributes|link|/sections/attributes.html>>
+- <x<attributes|link|/sections/attributes.html>x>
 
-- <<blockquote|link|/sections/blockquote.html>>
+- <x<audio|link|/sections/audio.html>x>
 
-- <<blurb|link|/sections/blurb.html>>
+- <x<blockquote|link|/sections/blockquote.html>x>
 
-- <<canvas|link|/sections/canvas.html>>
+- <x<blurb|link|/sections/blurb.html>x>
 
-- <<categories|link|/sections/categories.html>>
+- <x<canvas|link|/sections/canvas.html>x>
 
-- <<checklist|link|/sections/checklist.html>>
+- <x<categories|link|/sections/categories.html>x>
 
-- <<code|link|/sections/code.html>>
+- <x<checklist|link|/sections/checklist.html>x>
 
-- <<comment|link|/sections/comment.html>>
+- <x<code|link|/sections/code.html>x>
 
-- <<css|link|/sections/css.html>>
+- <x<comment|link|/sections/comment.html>x>
 
-- <<details|link|/sections/details.html>>
+- <x<css|link|/sections/css.html>x>
 
-- <<div|link|/sections/div.html>>
+- <x<details|link|/sections/details.html>x>
 
-- <<dlist|link|/sections/dlist.html>>
+- <x<div|link|/sections/div.html>x>
 
-- <<ext|link|/sections/ext.html>>
+- <x<dlist|link|/sections/dlist.html>x>
 
-- <<figure|link|/sections/figure.html>>
+- <x<ext|link|/sections/ext.html>x>
 
-- <<footnote|link|/sections/footnote.html>>
+- <x<figure|link|/sections/figure.html>x>
 
-- <<h1|link|/sections/h1.html>>
+- <x<footnote|link|/sections/footnote.html>x>
 
-- <<h2|link|/sections/h2.html>>
+- <x<h1|link|/sections/h1.html>x>
 
-- <<h3|link|/sections/h3.html>>
+- <x<h2|link|/sections/h2.html>x>
 
-- <<h4|link|/sections/h4.html>>
+- <x<h3|link|/sections/h3.html>x>
 
-- <<h5|link|/sections/h5.html>>
+- <x<h4|link|/sections/h4.html>x>
 
-- <<h6|link|/sections/h6.html>>
+- <x<h5|link|/sections/h5.html>x>
 
-- <<head|link|/sections/head.html>>
+- <x<h6|link|/sections/h6.html>x>
 
-- <<hr|link|/sections/hr.html>>
+- <x<head|link|/sections/head.html>x>
 
-- <<html|link|/sections/html.html>>
+- <x<hr|link|/sections/hr.html>x>
 
-- <<image|link|/sections/image.html>>
+- <x<html|link|/sections/html.html>x>
 
-- <<include|link|/sections/include.html>>
+- <x<image|link|/sections/image.html>x>
 
-- <<list|link|/sections/list.html>>
+- <x<include|link|/sections/include.html>x>
 
-- <<menu|link|/sections/menu.html>>
+- <x<list|link|/sections/list.html>x>
 
-- <<nav|link|/sections/nav.html>>
+- <x<menu|link|/sections/menu.html>x>
 
-- <<note|link|/sections/note.html>>
+- <x<nav|link|/sections/nav.html>x>
 
-- <<notes|link|/sections/notes.html>>
+- <x<note|link|/sections/note.html>x>
 
-- <<object|link|/sections/object.html>>
+- <x<notes|link|/sections/notes.html>x>
 
-- <<olist|link|/sections/olist.html>>
+- <x<object|link|/sections/object.html>x>
 
-- <<p|link|/sections/p.html>>
+- <x<olist|link|/sections/olist.html>x>
 
-- <<picture|link|/sections/picture.html>>
+- <x<p|link|/sections/p.html>x>
 
-- <<pre|link|/sections/pre.html>>
+- <x<picture|link|/sections/picture.html>x>
 
-- <<reference|link|/sections/reference.html>>
+- <x<pre|link|/sections/pre.html>x>
 
-- <<results|link|/sections/results.html>>
+- <x<reference|link|/sections/reference.html>x>
 
-- <<script|link|/sections/script.html>>
+- <x<results|link|/sections/results.html>x>
 
-- <<startcode|link|/sections/startcode.html>>
+- <x<script|link|/sections/script.html>x>
 
-- <<subtitle|link|/sections/subtitle.html>>
+- <x<startcode|link|/sections/startcode.html>x>
 
-- <<table|link|/sections/table.html>>
+- <x<subtitle|link|/sections/subtitle.html>x>
 
-- <<textarea|link|/sections/textarea.html>>
+- <x<table|link|/sections/table.html>x>
 
-- <<title|link|/sections/title.html>>
+- <x<textarea|link|/sections/textarea.html>x>
 
-- <<todo|link|/sections/todo.html>>
+- <x<title|link|/sections/title.html>x>
 
-- <<video|link|/sections/video.html>>
+- <x<todo|link|/sections/todo.html>x>
 
-- <<vimeo|link|/sections/vimeo.html>>
+- <x<video|link|/sections/video.html>x>
 
-- <<warning|link|/sections/warning.html>>
+- <x<vimeo|link|/sections/vimeo.html>x>
 
-- <<widget|link|/sections/widget.html>>
+- <x<warning|link|/sections/warning.html>x>
 
-- <<youtube|link|/sections/youtube.html>>
+- <x<widget|link|/sections/widget.html>x>
+
+- <x<youtube|link|/sections/youtube.html>x>

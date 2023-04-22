@@ -25,7 +25,7 @@ pub mod s;
 pub mod samp;
 pub mod small;
 pub mod snippet;
-pub mod snippet_enums;
+pub mod snippet_enum;
 pub mod span;
 pub mod strong;
 pub mod sub;

@@ -6,7 +6,7 @@ import os
 
 script_dir = sys.path[0]
 db_path = os.path.join(script_dir, "..", "_data.sqlite")
-output_path = os.path.join(script_dir, "snippet_enums.rs")
+output_path = os.path.join(script_dir, "snippet_enum.rs")
 
 def make_file():
     con = sqlite3.connect(db_path)
@@ -24,7 +24,7 @@ def make_file():
     sql = 'SELECT enum FROM inline_tags WHERE format=?'
     for row in cur.execute(sql, ("basic", )):
         lines.append(row[0])
-        lines.append("{ text: Option<String> },")
+        lines.append("{ string: Option<String> },")
 
     lines.append("}")
     with open(output_path, "w") as _out:
