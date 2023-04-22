@@ -6,13 +6,13 @@ use nom::combinator::eof;
 use nom::multi::many_till;
 use nom::IResult;
 
-pub fn aside(source: &str) -> IResult<&str, Section> {
+pub fn subtitle(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
     let (remainder, _) = multispace0(remainder)?;
     let (remainder, blocks) = many_till(block, eof)(remainder)?;
     Ok((
         remainder,
-        Section::AsideSection {
+        Section::SubtitleSection {
             attributes,
             children: Some(blocks.0),
         },
@@ -28,24 +28,22 @@ mod test {
     use crate::universe::universe::Universe;
 
     #[test]
-    pub fn two_attribute_on_aside() {
+    pub fn subtitle_with_class_and_another_attribute() {
         let source = [
-            "-> aside",
-            ">> class: delta",
-            ">> id: bravo",
+            "-> subtitle",
+            ">> class: echo",
+            ">> id: alfa",
             "",
-            "Hold the hammer",
+            "Open your book",
             "",
-            "Heave the line",
+            "Read the page",
         ]
         .join("\n")
         .to_string();
         let expected = Some(
             vec![
-                r#"<aside class="delta" id="bravo">"#,
-                r#"<p>Hold the hammer</p>"#,
-                r#"<p>Heave the line</p>"#,
-                r#"</aside>"#,
+                r#"<div class="subtitle echo" id="alfa">Open your book</div>"#,
+                r#"<p>Read the page</p>"#,
             ]
             .join("\n")
             .to_string(),

@@ -6,13 +6,13 @@ use nom::combinator::eof;
 use nom::multi::many_till;
 use nom::IResult;
 
-pub fn aside(source: &str) -> IResult<&str, Section> {
+pub fn $TAG(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
     let (remainder, _) = multispace0(remainder)?;
     let (remainder, blocks) = many_till(block, eof)(remainder)?;
     Ok((
         remainder,
-        Section::AsideSection {
+        Section::$ENUM {
             attributes,
             children: Some(blocks.0),
         },
@@ -28,28 +28,29 @@ mod test {
     use crate::universe::universe::Universe;
 
     #[test]
-    pub fn two_attribute_on_aside() {
+    pub fn named_class_on_$TAG() {
         let source = [
-            "-> aside",
+            "-> $TAG",
             ">> class: delta",
             ">> id: bravo",
             "",
-            "Hold the hammer",
+            "Lift the stone",
             "",
-            "Heave the line",
+            "Fasten two pins",
         ]
         .join("\n")
         .to_string();
         let expected = Some(
             vec![
-                r#"<aside class="delta" id="bravo">"#,
-                r#"<p>Hold the hammer</p>"#,
-                r#"<p>Heave the line</p>"#,
-                r#"</aside>"#,
+                r#"<div id="bravo" class="note delta">"#,
+                r#"<p>Lift the stone</p>"#,
+                r#"<p>Fasten two pins</p>"#,
+                r#"</div>"#,
             ]
             .join("\n")
             .to_string(),
         );
+
         let mut u = Universe::new();
         u.env = Some(create_env("./site/templates"));
         let mut sf = SourceFile::new();

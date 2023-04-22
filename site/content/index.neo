@@ -43,11 +43,3 @@ None of the formats I've seen pull that off. So, I
 designed a new one. It's called Neopolitan and it 
 looks like this:
 
--> h2
-
-Test Section
-
-This is an <<abbreviation|abbr>>
-
-
-

@@ -28,28 +28,29 @@ mod test {
     use crate::universe::universe::Universe;
 
     #[test]
-    pub fn note_with_class_and_another_attribute() {
+    pub fn named_class_on_note() {
         let source = [
             "-> note",
-            ">> class: charlie",
-            ">> id: oscar",
+            ">> class: delta",
+            ">> id: bravo",
             "",
-            "Mark the spot",
+            "Lift the stone",
             "",
-            "Pull the dart",
+            "Fasten two pins",
         ]
         .join("\n")
         .to_string();
         let expected = Some(
             vec![
-                r#"<div id="oscar" class="note charlie">"#,
-                r#"<p>Mark the spot</p>"#,
-                r#"<p>Pull the dart</p>"#,
+                r#"<div id="bravo" class="note delta">"#,
+                r#"<p>Lift the stone</p>"#,
+                r#"<p>Fasten two pins</p>"#,
                 r#"</div>"#,
             ]
             .join("\n")
             .to_string(),
         );
+
         let mut u = Universe::new();
         u.env = Some(create_env("./site/templates"));
         let mut sf = SourceFile::new();

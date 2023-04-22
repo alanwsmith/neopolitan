@@ -6,31 +6,13 @@ Neopolitan
 
 Content Sections
 
-- <<aside|link|/sections/aside.html>>
-
-- <<blockquote|link|/sections/blockquote.html>>
-
-- <<h1|link|/sections/h1.html>>
-
-- <<h2|link|/sections/h2.html>>
-
-- <<h3|link|/sections/h3.html>>
-
-- <<h4|link|/sections/h4.html>>
-
-- <<h5|link|/sections/h5.html>>
-
-- <<h6|link|/sections/h6.html>>
-
-- <<note|link|/sections/note.html>>
-
-- <<subtitle|link|/sections/subtitle.html>>
-
-- <<title|link|/sections/title.html>>
-
 -> h3
 
 In Progress
+
+- <<aside|link|/sections/aside.html>>
+
+- <<blockquote|link|/sections/blockquote.html>>
 
 - <<canvas|link|/sections/canvas.html>>
 
@@ -46,6 +28,18 @@ In Progress
 
 - <<figure|link|/sections/figure.html>>
 
+- <<h1|link|/sections/h1.html>>
+
+- <<h2|link|/sections/h2.html>>
+
+- <<h3|link|/sections/h3.html>>
+
+- <<h4|link|/sections/h4.html>>
+
+- <<h5|link|/sections/h5.html>>
+
+- <<h6|link|/sections/h6.html>>
+
 - <<hr|link|/sections/hr.html>>
 
 - <<image|link|/sections/image.html>>
@@ -55,6 +49,8 @@ In Progress
 - <<menu|link|/sections/menu.html>>
 
 - <<nav|link|/sections/nav.html>>
+
+- <<note|link|/sections/note.html>>
 
 - <<notes|link|/sections/notes.html>>
 
@@ -72,9 +68,13 @@ In Progress
 
 - <<startcode|link|/sections/startcode.html>>
 
+- <<subtitle|link|/sections/subtitle.html>>
+
 - <<table|link|/sections/table.html>>
 
 - <<textarea|link|/sections/textarea.html>>
+
+- <<title|link|/sections/title.html>>
 
 - <<todo|link|/sections/todo.html>>
 
@@ -87,3 +87,5 @@ In Progress
 - <<video|link|/sections/video.html>>
 
 - <<audio|link|/sections/audio.html>>
+
+- <<todos|link|/sections/todos.html>>
