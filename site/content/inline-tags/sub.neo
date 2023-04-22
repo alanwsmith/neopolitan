@@ -1,0 +1,36 @@
+-> title
+
+Neopolitan
+
+-> h2
+
+Inline Tag: sub
+
+
+-> h3
+
+No Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|sub>> to write
+
+-> endneoexample
+
+
+
+-> h3
+
+With Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|sub|id: alfa|class: bravo>> to write
+
+-> endneoexample
+
+

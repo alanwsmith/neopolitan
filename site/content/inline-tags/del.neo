@@ -1,0 +1,36 @@
+-> title
+
+Neopolitan
+
+-> h2
+
+Inline Tag: del
+
+
+-> h3
+
+No Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|del>> to write
+
+-> endneoexample
+
+
+
+-> h3
+
+With Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|del|id: alfa|class: bravo>> to write
+
+-> endneoexample
+
+
