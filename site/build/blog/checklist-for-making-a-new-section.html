@@ -23,12 +23,23 @@
   <main><h1 class="title">Checklist For Making A New Section</h1><p>This post serves two purposed. First, it's my checklist
 for the process of adding a section to the Neopolitan 
 code base as I build them out. </p><p>Second, it's a test make sure the checklist functionality
-works :-)</p><p>- Choose a `_template_TAG`` template from `src/section``
-or make a new one</p><p>- Update the `rust_template` column in the sqlite database 
-for the section to add the template name key</p><p>- Run `src/section/_010_make_section_files.py`` to 
-generate the section file output from the template</p><p>- There's some other steps but move have been done
+works :-)</p><div class="note"><p>These are very much scratch note right now</p></div><p>- Choose a `_template_TAG`` template from `src/section``
+or make a new one</p>
+<p>- Update the `rust_template` column in the sqlite database 
+for the section to add the template name key</p>
+<p>- Run `src/section/_010_make_section_files.py`` to 
+generate the section file output from the template</p>
+<p>- Make a `.j2`` template in `site/templates/components``
+with the tag name of the section</p>
+<p>- Add the `site/content/sections/TAG.neo`` file</p>
+<p>- Add the Section enum to `section/section.rs``</p>
+<p>- Add the `use`` statement to `section/section.rs``</p>
+<p>- Add the tuple nom parse in `section/section.rs`</p>
+<p>- Add the tag to `src/section/mod.rs``</p>
+<p>- There's some other steps but move have been done
 for most sections already. Will update here 
-when I run into them</p><div class="note"><p>- This assumes the section already exists. If not
+when I run into them</p>
+<div class="note"><p>- This assumes the section already exists. If not
 it would need to be created. </p><p>- The template files have already been made. 
 A new one would have to be made as well.</p></div></main>
 </body>
