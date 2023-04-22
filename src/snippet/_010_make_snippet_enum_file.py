@@ -26,6 +26,11 @@ def make_file():
         lines.append(row[0])
         lines.append("{ string: Option<String> },")
 
+    sql = 'SELECT enum, tag FROM inline_tags WHERE tag=?'
+    for row in cur.execute(sql, ("link", )):
+        lines.append(row[0])
+        lines.append("{ string: Option<String> },")
+
     lines.append("}")
     with open(output_path, "w") as _out:
         _out.write("\n".join(lines))

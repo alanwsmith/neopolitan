@@ -44,6 +44,26 @@ def make_file():
 
         counter += 1
 
+
+    sql = 'SELECT tag FROM inline_tags WHERE tag=?'
+    for row in cur.execute(sql, ("link", )):
+        usage_lines.append(f"use crate::snippet::snippets::{row[0]}::{row[0]};")
+        lines[0].append(f"""
+        tuple((
+            multispace1::<&str, Error<&str>>,
+            tag("<<"),
+            take_until("|"),
+            tag("|"),
+            multispace0,
+            tag("{row[0]}"),
+            take_until(">>"),
+            tag(">>"),
+        ))
+        .map(|x| {row[0]}(x.2, x.6)),
+""")
+
+
+
     data = { 
         "USAGE": "\n".join(usage_lines),
         "LINES0": "\n".join(lines[0]),

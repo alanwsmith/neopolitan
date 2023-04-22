@@ -55,4 +55,6 @@ UnarticulatedAnnotationTag
 { string: Option<String> },
 VariableTag
 { string: Option<String> },
+LinkTag
+{ string: Option<String> },
 }

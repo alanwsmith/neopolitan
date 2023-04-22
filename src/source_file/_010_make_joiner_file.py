@@ -21,7 +21,16 @@ def make_file():
         lines.append(f"""Snippet::{row[0]}""")
         lines.append("""    { string } => {""")
         lines.append("""   assembler.push(string.as_ref().unwrap().to_string()); }""")
+
+    sql = 'SELECT enum, tag FROM inline_tags WHERE tag=?'
+    for row in cur.execute(sql, ("link", )):
+        lines.append(f"""Snippet::{row[0]}""")
+        lines.append("""    { string } => {""")
+        lines.append("""   assembler.push(string.as_ref().unwrap().to_string()); }""")
+
+
     data = { "ENUMS": "\n".join(lines) }
+
 
     with open(os.path.join(script_dir, "_joiner_template.rs")) as _in:
         skeleton = _in.read()

@@ -18,6 +18,10 @@ def make_file():
     for row in cur.execute(sql, ("basic", )):
         lines.append(f"pub mod {row[0].strip()};")
 
+    sql = 'SELECT tag FROM inline_tags WHERE tag=?'
+    for row in cur.execute(sql, ("link", )):
+        lines.append(f"pub mod {row[0].strip()};")
+
     with open(output_path, "w") as _out:
         _out.write("\n".join(lines))
 

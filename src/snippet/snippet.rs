@@ -24,6 +24,7 @@ use crate::snippet::snippets::data::data;
 use crate::snippet::snippets::button::button;
 use crate::snippet::snippets::b::b;
 use crate::snippet::snippets::abbr::abbr;
+use crate::snippet::snippets::link::link;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -117,6 +118,19 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
             tag(">>"),
         ))
         .map(|x| abbr(x.2, x.6)),
+
+
+        tuple((
+            multispace1::<&str, Error<&str>>,
+            tag("<<"),
+            take_until("|"),
+            tag("|"),
+            multispace0,
+            tag("link"),
+            take_until(">>"),
+            tag(">>"),
+        ))
+        .map(|x| link(x.2, x.6)),
 
         )),
 

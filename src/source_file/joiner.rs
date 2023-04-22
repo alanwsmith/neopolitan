@@ -87,6 +87,9 @@ Snippet::UnarticulatedAnnotationTag
 Snippet::VariableTag
     { string } => {
    assembler.push(string.as_ref().unwrap().to_string()); }
+Snippet::LinkTag
+    { string } => {
+   assembler.push(string.as_ref().unwrap().to_string()); }
 
                         Snippet::Plain { text } => {
                             let new_thing = text.as_ref().unwrap();
