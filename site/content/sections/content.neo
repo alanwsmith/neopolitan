@@ -8,7 +8,11 @@ Content Sections
 
 - <<aside|link|/sections/aside.html>>
 
+- <<audio|link|/sections/audio.html>>
+
 - <<blockquote|link|/sections/blockquote.html>>
+
+- <<canvas|link|/sections/canvas.html>>
 
 - <<h1|link|/sections/h1.html>>
 
@@ -36,15 +40,11 @@ Content Sections
 
 In Progress
 
-- <<canvas|link|/sections/canvas.html>>
-
 - <<checklist|link|/sections/checklist.html>>
 
 - <<code|link|/sections/code.html>>
 
 - <<details|link|/sections/details.html>>
-
-- <<div|link|/sections/div.html>>
 
 - <<dlist|link|/sections/dlist.html>>
 
@@ -76,16 +76,16 @@ In Progress
 
 - <<startcode|link|/sections/startcode.html>>
 
+- <<startdiv|link|/sections/startdiv.html>>
+
 - <<table|link|/sections/table.html>>
 
 - <<textarea|link|/sections/textarea.html>>
 
-- <<vimeo|link|/sections/vimeo.html>>
-
-- <<youtube|link|/sections/youtube.html>>
+- <<todos|link|/sections/todos.html>>
 
 - <<video|link|/sections/video.html>>
 
-- <<audio|link|/sections/audio.html>>
+- <<vimeo|link|/sections/vimeo.html>>
 
-- <<todos|link|/sections/todos.html>>
+- <<youtube|link|/sections/youtube.html>>
