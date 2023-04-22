@@ -1,4 +1,5 @@
 use neopolitan::helpers::load_assets::load_assets;
+use neopolitan::helpers::run_preflight::run_preflight;
 use neopolitan::universe::create_env::create_env;
 use neopolitan::universe::universe::Universe;
 // use std::path::Path;
@@ -10,6 +11,7 @@ fn main() {
     let assets_dir = "./site/assets/";
     let content_dir = "./site/content";
     let build_dir = "./site/build";
+    run_preflight().unwrap();
     load_assets(assets_dir, build_dir).unwrap();
 
     let mut u = Universe::new();

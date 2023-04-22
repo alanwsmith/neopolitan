@@ -4,12 +4,12 @@ Neopolitan
 
 -> h2
 
-Inline Tag: $TAG
+Inline Tag: $TAG ($DESCRIPTION)
 
 
 -> h3
 
-No Attributes
+Basic Usage
 
 -> startneoexample
 

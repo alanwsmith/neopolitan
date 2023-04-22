@@ -4,12 +4,12 @@ Neopolitan
 
 -> h2
 
-Inline Tag: samp
+Inline Tag: samp (The Sample Output Element)
 
 
 -> h3
 
-No Attributes
+Basic Usage
 
 -> startneoexample
 

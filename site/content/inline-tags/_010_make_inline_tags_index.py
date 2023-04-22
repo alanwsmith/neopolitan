@@ -20,11 +20,22 @@ with open(output_path, "w") as _out:
     lines.append("")
     lines.append("Inline Tags")
     lines.append("")
-    lines.append("")
-    sql = 'SELECT tag FROM inline_tags WHERE format=?'
-    for row in cur.execute(sql, ("basic",)):
-        lines.append(f"- <<{row[0]}|link|/inline-tags/{row[0]}.html>>")
+    sql = 'SELECT tag, description FROM inline_tags WHERE format=? OR format=?'
+    for row in cur.execute(sql, ("basic", "link")):
+        lines.append(f"- <<{row[0]}|link|/inline-tags/{row[0]}.html>> - {row[1]}")
         lines.append("")
+    lines.append("")
+    lines.append("-> h3")
+    lines.append("")
+    lines.append("In Progress")
+    lines.append("")
+
+    sql = 'SELECT tag, description FROM inline_tags WHERE format=?'
+    for row in cur.execute(sql, ("tbd",)):
+        lines.append(f"- {row[0]} - {row[1]}")
+        lines.append("")
+
+
     _out.write("\n".join(lines))
 con.close()
 

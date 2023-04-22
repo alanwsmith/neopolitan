@@ -5,7 +5,6 @@ pub fn load_assets(source_dir: &str, dest_dir: &str) -> Result<u64, fs_extra::er
     let mut options = CopyOptions::new();
     options.content_only = true;
     options.overwrite = true;
-    // options.skip_exist = true;
     copy(source_dir, dest_dir, &options)?;
     Ok(0)
 }

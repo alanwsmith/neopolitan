@@ -4,7 +4,7 @@ Neopolitan
 
 -> h2
 
-Inline Tag: sub (The Subscript Element)
+Inline Tag: $TAG ($DESCRIPTION)
 
 
 -> h3
@@ -15,7 +15,7 @@ Basic Usage
 
 -> p
 
-Use a <<pencil|sub>> to write
+Use a <<pencil|$TAG|https://www.example.com/>> to write
 
 -> endneoexample
 
@@ -29,7 +29,7 @@ With Attributes
 
 -> p
 
-Use a <<pencil|sub|id: alfa|class: bravo>> to write
+Use a <<pencil|$TAG|https://www.example.com/|class: echo>> to write
 
 -> endneoexample
 

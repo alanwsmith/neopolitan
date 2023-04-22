@@ -2,55 +2,73 @@
 
 Inline Tags
 
+- <<abbr|link|/inline-tags/abbr.html>> - The Abbreviation Element
 
-- <<abbr|link|/inline-tags/abbr.html>>
+- <<b|link|/inline-tags/b.html>> - The Bring Attention To Element
 
-- <<b|link|/inline-tags/b.html>>
+- <<button|link|/inline-tags/button.html>> - The Button Element
 
-- <<button|link|/inline-tags/button.html>>
+- <<data|link|/inline-tags/data.html>> - The Data Element
 
-- <<data|link|/inline-tags/data.html>>
+- <<del|link|/inline-tags/del.html>> - The Deleted Text Element
 
-- <<del|link|/inline-tags/del.html>>
+- <<dfn|link|/inline-tags/dfn.html>> - The Definition Element
 
-- <<dfn|link|/inline-tags/dfn.html>>
+- <<em|link|/inline-tags/em.html>> - The Emphasis Element
 
-- <<em|link|/inline-tags/em.html>>
+- <<i|link|/inline-tags/i.html>> - The Idiomatic Text Element
 
-- <<i|link|/inline-tags/i.html>>
+- <<ins|link|/inline-tags/ins.html>> - The Insert Element
 
-- <<ins|link|/inline-tags/ins.html>>
+- <<kbd|link|/inline-tags/kbd.html>> - The Keyboard Input Element
 
-- <<kbd|link|/inline-tags/kbd.html>>
+- <<label|link|/inline-tags/label.html>> - The Label Element
 
-- <<label|link|/inline-tags/label.html>>
+- <<legend|link|/inline-tags/legend.html>> - The Field Set Legend Element
 
-- <<legend|link|/inline-tags/legend.html>>
+- <<link|link|/inline-tags/link.html>> - The External Resource Link Element
 
-- <<meter|link|/inline-tags/meter.html>>
+- <<meter|link|/inline-tags/meter.html>> - The HTML Meter Element
 
-- <<object|link|/inline-tags/object.html>>
+- <<object|link|/inline-tags/object.html>> - The External Object Element
 
-- <<progress|link|/inline-tags/progress.html>>
+- <<progress|link|/inline-tags/progress.html>> - The Progress Indicator Element
 
-- <<q|link|/inline-tags/q.html>>
+- <<q|link|/inline-tags/q.html>> - The Inline Quotation Element
 
-- <<s|link|/inline-tags/s.html>>
+- <<s|link|/inline-tags/s.html>> - The Strikethrough Element
 
-- <<samp|link|/inline-tags/samp.html>>
+- <<samp|link|/inline-tags/samp.html>> - The Sample Output Element
 
-- <<small|link|/inline-tags/small.html>>
+- <<small|link|/inline-tags/small.html>> - The Side Comment Element
 
-- <<span|link|/inline-tags/span.html>>
+- <<span|link|/inline-tags/span.html>> - The Content Span Element
 
-- <<strong|link|/inline-tags/strong.html>>
+- <<strong|link|/inline-tags/strong.html>> - The Strong Importance Element
 
-- <<sub|link|/inline-tags/sub.html>>
+- <<sub|link|/inline-tags/sub.html>> - The Subscript Element
 
-- <<sup|link|/inline-tags/sup.html>>
+- <<sup|link|/inline-tags/sup.html>> - The Superscript Element
 
-- <<time|link|/inline-tags/time.html>>
+- <<time|link|/inline-tags/time.html>> - The (Date) Time Element
 
-- <<u|link|/inline-tags/u.html>>
+- <<u|link|/inline-tags/u.html>> - The Unarticulated Annotation Element
 
-- <<var|link|/inline-tags/var.html>>
+- <<var|link|/inline-tags/var.html>> - The Variable element
+
+
+-> h3
+
+In Progress
+
+- cite - The Citation Element
+
+- code - The Inline Code Element
+
+- img - The Image Embed Element
+
+- input - The Input (Form Input) Element
+
+- wbr - The Line Break Opportunity Element
+
+- br - The Line Break Element
