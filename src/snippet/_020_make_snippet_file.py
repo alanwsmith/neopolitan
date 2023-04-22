@@ -24,7 +24,7 @@ def make_file():
 [],
     ]
 
-    sql = 'SELECT tag FROM inline_tags WHERE format=?'
+    sql = 'SELECT tag FROM inline_tags WHERE format=? ORDER BY tag DESC'
     counter = 0
     for row in cur.execute(sql, ("basic", )):
         usage_lines.append(f"use crate::snippet::snippets::{row[0]}::{row[0]};")
@@ -62,9 +62,6 @@ def make_file():
 
         with open(output_path, "w") as _out:
             _out.write(output)
-
-
-
 
     con.close()
 

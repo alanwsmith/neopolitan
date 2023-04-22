@@ -32,7 +32,6 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
 
         alt((
             $LINES4
-
             
             take_until(" <<").map(|x: &str| Snippet::Plain {
                 text: Some(x.to_string()),

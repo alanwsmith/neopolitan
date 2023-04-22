@@ -21,8 +21,8 @@ with open(output_path, "w") as _out:
     lines.append("Inline Tags")
     lines.append("")
     lines.append("")
-    sql = 'SELECT tag FROM inline_tags'
-    for row in cur.execute(sql):
+    sql = 'SELECT tag FROM inline_tags WHERE format=?'
+    for row in cur.execute(sql, ("basic",)):
         lines.append(f"- <<{row[0]}|link|/inline-tags/{row[0]}.html>>")
         lines.append("")
     _out.write("\n".join(lines))
