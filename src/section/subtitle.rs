@@ -42,7 +42,7 @@ mod test {
         .to_string();
         let expected = Some(
             vec![
-                r#"<div class="subtitle echo" id="alfa">Open your book</div>"#,
+                r#"<div id="alfa" class="subtitle echo">Open your book</div>"#,
                 r#"<p>Read the page</p>"#,
             ]
             .join("\n")

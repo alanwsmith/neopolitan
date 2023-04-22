@@ -1,1 +1,9 @@
-TEMPLATE_TODO: warning
+<div {%- autoescape false -%}
+{{- attributes_string -}}
+{%- endautoescape -%}>
+  {%- for part in parts -%}
+    <p>
+    {{- part -}}
+    </p>
+  {%- endfor -%}
+</div>

@@ -1,20 +1,8 @@
 {%- for part in parts -%}
   {%- if loop.first -%}
-    <div class="subtitle
-      {%- for attribute in attributes -%}
-        {%- if attribute.key == "class" -%}
-          {{- " " -}}
-          {{ attribute.value }}
-        {%- endif -%}
-      {%- endfor -%}
-    "
-      {%- for attribute in attributes -%}
-        {%- if attribute.key != "class" -%}
-          {{- " " -}}
-          {{attribute.key}}="{{attribute.value}}"
-        {%- endif -%}
-      {%- endfor -%}
-    >
+<div {%- autoescape false -%}
+{{- attributes_string -}}
+{%- endautoescape -%}>
     {{- part -}}
     </div>
   {%- else -%}
