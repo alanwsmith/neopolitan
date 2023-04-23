@@ -1,4 +1,4 @@
-use crate::block::block::*;
+use crate::section::list_item::*;
 use crate::section::section::*;
 use crate::section::section_attributes::*;
 use nom::character::complete::multispace0;
@@ -9,55 +9,46 @@ use nom::IResult;
 pub fn checklist(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
     let (remainder, _) = multispace0(remainder)?;
-    let (remainder, blocks) = many_till(block, eof)(remainder)?;
+    let (remainder, items) = many_till(list_item, eof)(remainder)?;
     Ok((
         remainder,
-        Section::ChecklistSection {
+        Section::ListSection {
             attributes,
-            children: Some(blocks.0),
+            children: Some(items.0),
         },
     ))
 }
 
 #[cfg(test)]
 mod test {
+    use crate::parse::parse::*;
+    use crate::source_file::source_file::*;
+    use crate::tests::remove_whitespace::remove_whitespace;
+    use crate::universe::create_env::create_env;
+    use crate::universe::universe::Universe;
 
-    // use crate::parse::parse::*;
-    // use crate::source_file::source_file::*;
-    // use crate::tests::remove_whitespace::remove_whitespace;
-    // use crate::universe::create_env::create_env;
-    // use crate::universe::universe::Universe;
-
-    // #[test]
-    // pub fn core_test_checklist() {
-    //     let source = [
-    //         "-> checklist",
-    //         ">> id: alfa",
-    //         ">> class: bravo",
-    //         "",
-    //         "Hold the hammer",
-    //         "",
-    //         "Heave the line",
-    //     ]
-    //     .join("\n")
-    //     .to_string();
-    //     let expected = Some(
-    //         vec![
-    //             r#"<checklist class="delta" id="bravo">"#,
-    //             r#"<p>Hold the hammer</p>"#,
-    //             r#"<p>Heave the line</p>"#,
-    //             r#"</checklist>"#,
-    //         ]
-    //         .join("\n")
-    //         .to_string(),
-    //     );
-    //     let mut u = Universe::new();
-    //     u.env = Some(create_env("./site/templates"));
-    //     let mut sf = SourceFile::new();
-    //     sf.raw = Some(source);
-    //     sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
-    //     let output = sf.output(&u);
-    //     assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
-    // }
-
+    #[ignore]
+    #[test]
+    pub fn basic_checklist() {
+        let source = ["-> checklist", "", "- alfa", "", "- bravo"]
+            .join("\n")
+            .to_string();
+        let expected = Some(
+            vec![
+                r#"<ul>"#,
+                r#"<li><p>alfa</p></li>"#,
+                r#"<li><p>bravo</p></li>"#,
+                r#"</ul>"#,
+            ]
+            .join("\n")
+            .to_string(),
+        );
+        let mut u = Universe::new();
+        u.env = Some(create_env("./site/templates"));
+        let mut sf = SourceFile::new();
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
+        let output = sf.output(&u);
+        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
+    }
 }

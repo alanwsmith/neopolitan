@@ -3,12 +3,4 @@
 Section: checklist
 
 
-
--> startneoexample
-
--> checklist
->> class: foxtrot
-
-the quick brown fox
-
--> endneoexample
+TODO: Make this work

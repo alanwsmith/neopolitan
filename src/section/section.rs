@@ -219,7 +219,7 @@ pub enum Section {
     },
     OrderedListSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        children: Option<Vec<ListItem>>,
     },
     ParagraphsSection {
         attributes: Option<Vec<SectionAttribute>>,

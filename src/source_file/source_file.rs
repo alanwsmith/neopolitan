@@ -33,6 +33,20 @@ impl SourceFile {
             .unwrap()
             .iter()
             .for_each(|section| match section {
+                Section::OrderedListSection {
+                    attributes,
+                    children,
+                } => {
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/olist.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, children))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
                 Section::ListSection {
                     attributes,
                     children,
@@ -371,21 +385,6 @@ impl SourceFile {
                     output_string.push_str(
                         &base
                             .get_template("components/object.j2")
-                            .unwrap()
-                            .render(context!(attributes_string, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
-                Section::OrderedListSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    let attributes_string = attributes_basic(attributes);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/olist.j2")
                             .unwrap()
                             .render(context!(attributes_string, parts))
                             .unwrap()

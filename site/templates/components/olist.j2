@@ -1,1 +1,9 @@
-TEMPLATE_TODO: olist
+<ol>
+{% for child in children -%}
+<li>
+{%- for stuff in child.children -%}
+<p>{{ stuff }}</p>
+{%- endfor -%}
+</li>
+{% endfor -%}
+</ol>

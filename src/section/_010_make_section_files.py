@@ -14,14 +14,15 @@ cur = con.cursor()
 def make_section_files():
     print("Making section files")
     sql = """
-    SELECT tag, enum, type, rust_template 
+    SELECT tag, enum, type, rust_template, notes, token1
     FROM sections 
     WHERE rust_template IS NOT NULL
     """
     for row in cur.execute(sql):
         data = {
             "TAG": row[0],
-            "ENUM": row[1]
+            "ENUM": row[1],
+            "TOKEN1": row[5]
         }
         with open(os.path.join(script_dir, f"_template_{row[3]}.rs")) as _in:
             skeleton = _in.read()
