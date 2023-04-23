@@ -34,6 +34,8 @@ Content Sections
 
 - <<note|link|/sections/note.html>>
 
+- <<notes|link|/sections/notes.html>>
+
 - <<olist|link|/sections/olist.html>>
 
 - <<subtitle|link|/sections/subtitle.html>>
@@ -41,6 +43,8 @@ Content Sections
 - <<title|link|/sections/title.html>>
 
 - <<todo|link|/sections/todo.html>>
+
+- <<todos|link|/sections/todos.html>>
 
 - <<warning|link|/sections/warning.html>>
 
@@ -62,8 +66,6 @@ In Progress
 
 - <<nav|link|/sections/nav.html>>
 
-- <<notes|link|/sections/notes.html>>
-
 - <<object|link|/sections/object.html>>
 
 - <<p|link|/sections/p.html>>
@@ -81,8 +83,6 @@ In Progress
 - <<table|link|/sections/table.html>>
 
 - <<textarea|link|/sections/textarea.html>>
-
-- <<todos|link|/sections/todos.html>>
 
 - <<video|link|/sections/video.html>>
 

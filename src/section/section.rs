@@ -41,21 +41,19 @@ use crate::section::pre::*;
 use crate::section::reference::*;
 use crate::section::results::*;
 use crate::section::script::*;
+use crate::section::section_attributes::SectionAttribute;
 use crate::section::startcode::*;
 use crate::section::subtitle::*;
 use crate::section::table::*;
 use crate::section::textarea::*;
 use crate::section::title::*;
 use crate::section::todo::*;
+use crate::section::todos::*;
 use crate::section::video::*;
 use crate::section::vimeo::*;
 use crate::section::warning::*;
 use crate::section::widget::*;
 use crate::section::youtube::*;
-// AUTO GENERATED START: calls //
-// AUTO GENERATED END: calls //
-
-use crate::section::section_attributes::SectionAttribute;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -267,7 +265,7 @@ pub enum Section {
     },
     TodosSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        children: Option<Vec<TodosItem>>,
     },
     VimeoSection {
         attributes: Option<Vec<SectionAttribute>>,
@@ -542,6 +540,13 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             .map(|t| title(t.3).unwrap().1),
         )),
         alt((
+            tuple((
+                tag("-> todos"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| todos(t.3).unwrap().1),
             tuple((
                 tag("-> todo"),
                 not_line_ending,

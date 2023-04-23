@@ -615,13 +615,12 @@ impl SourceFile {
                     attributes,
                     children,
                 } => {
-                    let parts = joiner(children);
                     let attributes_string = attributes_with_class(attributes, "todos");
                     output_string.push_str(
                         &base
                             .get_template("components/todos.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, children))
                             .unwrap()
                             .as_str(),
                     );
