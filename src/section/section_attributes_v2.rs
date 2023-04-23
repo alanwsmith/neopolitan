@@ -158,6 +158,27 @@ mod test {
         let result = section_attributes_v2(source);
         assert_eq!(expected, result);
     }
+
+    #[test]
+    fn single_attribute_with_just_a_key_then_key_value() {
+        let lines = [">> sierra", ">> class: tango", ""].join("\n");
+        let source = lines.as_str();
+        let expected = Ok((
+            "",
+            Some(vec![
+                SectionAttributeV2::Attribute {
+                    key: Some("sierra".to_string()),
+                    value: None,
+                },
+                SectionAttributeV2::Attribute {
+                    key: Some("class".to_string()),
+                    value: Some("tango".to_string()),
+                },
+            ]),
+        ));
+        let result = section_attributes_v2(source);
+        assert_eq!(expected, result);
+    }
 }
 
 // Ok((
