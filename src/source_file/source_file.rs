@@ -282,15 +282,13 @@ impl SourceFile {
                 }
                 Section::HRSection {
                     attributes,
-                    children,
                 } => {
-                    let parts = joiner(children);
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/hr.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string))
                             .unwrap()
                             .as_str(),
                     );

@@ -34,6 +34,8 @@ Content Sections
 
 - <<h6|link|/sections/h6.html>>
 
+- <<hr|link|/sections/hr.html>>
+
 - <<list|link|/sections/list.html>>
 
 - <<menu|link|/sections/menu.html>>
@@ -65,8 +67,6 @@ Content Sections
 -> h3
 
 In Progress
-
-- <<hr|link|/sections/hr.html>>
 
 - <<image|link|/sections/image.html>>
 

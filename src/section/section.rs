@@ -172,7 +172,6 @@ pub enum Section {
     },
     HRSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
     },
     HTMLSection {
         attributes: Option<Vec<SectionAttribute>>,
