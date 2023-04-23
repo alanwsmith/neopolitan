@@ -26,6 +26,8 @@ pub mod html;
 pub mod image;
 pub mod include;
 pub mod list;
+pub mod list_enum;
+pub mod list_item;
 pub mod menu;
 pub mod nav;
 pub mod neoexample_start_end;

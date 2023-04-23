@@ -26,6 +26,8 @@ Content Sections
 
 - <<h6|link|/sections/h6.html>>
 
+- <<list|link|/sections/list.html>>
+
 - <<note|link|/sections/note.html>>
 
 - <<subtitle|link|/sections/subtitle.html>>
@@ -53,8 +55,6 @@ In Progress
 - <<hr|link|/sections/hr.html>>
 
 - <<image|link|/sections/image.html>>
-
-- <<list|link|/sections/list.html>>
 
 - <<menu|link|/sections/menu.html>>
 
