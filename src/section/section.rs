@@ -106,7 +106,7 @@ pub enum Section {
     },
     ChecklistSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        children: Option<Vec<ChecklistItem>>,
     },
     CodeSection {
         attributes: Option<Vec<SectionAttribute>>,

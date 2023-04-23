@@ -1,7 +1,5 @@
 use crate::block::block::*;
 use crate::section::list_enum::*;
-// use crate::section::section::*;
-// use crate::section::section_attributes::*;
 use crate::source_file::joiner::joiner;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -12,7 +10,6 @@ use nom::combinator::eof;
 use nom::combinator::rest;
 use nom::multi::many_till;
 use nom::IResult;
-// use serde::Serialize;
 
 pub fn list_item(source: &str) -> IResult<&str, ListItem> {
     let (remainder, _) = multispace0(source)?;

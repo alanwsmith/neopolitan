@@ -61,6 +61,20 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
+                Section::ChecklistSection {
+                    attributes,
+                    children,
+                } => {
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/checklist.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, children))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
                 Section::AsideSection {
                     attributes,
                     children,
@@ -100,21 +114,6 @@ impl SourceFile {
                     output_string.push_str(
                         &base
                             .get_template("components/canvas.j2")
-                            .unwrap()
-                            .render(context!(attributes_string, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
-                Section::ChecklistSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    let attributes_string = attributes_basic(attributes);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/checklist.j2")
                             .unwrap()
                             .render(context!(attributes_string, parts))
                             .unwrap()

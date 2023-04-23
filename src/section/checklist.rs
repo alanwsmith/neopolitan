@@ -1,20 +1,49 @@
-use crate::section::list_item::*;
+use crate::block::block::*;
 use crate::section::section::*;
 use crate::section::section_attributes::*;
+use crate::source_file::joiner::joiner;
+use nom::branch::alt;
+use nom::bytes::complete::tag;
+use nom::bytes::complete::take_until;
 use nom::character::complete::multispace0;
+use nom::character::complete::multispace1;
 use nom::combinator::eof;
+use nom::combinator::rest;
 use nom::multi::many_till;
 use nom::IResult;
+use serde::Serialize;
+
+#[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
+pub enum ChecklistItem {
+    Basic { children: Option<Vec<String>> },
+}
 
 pub fn checklist(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
     let (remainder, _) = multispace0(remainder)?;
-    let (remainder, items) = many_till(list_item, eof)(remainder)?;
+    let (remainder, items) = many_till(checklist_item, eof)(remainder)?;
     Ok((
         remainder,
-        Section::ListSection {
+        Section::ChecklistSection {
             attributes,
             children: Some(items.0),
+        },
+    ))
+}
+
+pub fn checklist_item(source: &str) -> IResult<&str, ChecklistItem> {
+    let (remainder, _) = multispace0(source)?;
+    let (remainder, _) = tag("[]")(remainder)?;
+    let (remainder, _) = multispace1(remainder)?;
+    let (remainder, captured) = alt((take_until("\n\n[]"), rest))(remainder)?;
+    let (_, parts) = many_till(block, eof)(captured)?;
+    let the_parts = Some(parts.0);
+    let text_string = joiner(&the_parts);
+    Ok((
+        remainder,
+        ChecklistItem::Basic {
+            children: Some(text_string),
         },
     ))
 }
@@ -27,15 +56,14 @@ mod test {
     use crate::universe::create_env::create_env;
     use crate::universe::universe::Universe;
 
-    #[ignore]
     #[test]
     pub fn basic_checklist() {
-        let source = ["-> checklist", "", "- alfa", "", "- bravo"]
+        let source = ["-> checklist", "", "[] alfa", "", "[] bravo"]
             .join("\n")
             .to_string();
         let expected = Some(
             vec![
-                r#"<ul>"#,
+                r#"<ul class="checklist">"#,
                 r#"<li><p>alfa</p></li>"#,
                 r#"<li><p>bravo</p></li>"#,
                 r#"</ul>"#,
