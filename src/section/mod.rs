@@ -48,7 +48,6 @@ pub mod textarea;
 pub mod title;
 pub mod todo;
 pub mod todos;
-pub mod video;
 pub mod vimeo;
 pub mod warning;
 pub mod widget;

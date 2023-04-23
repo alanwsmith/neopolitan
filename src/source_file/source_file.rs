@@ -513,32 +513,13 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::YouTubeSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
+                Section::YouTubeSection { attributes, id } => {
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/youtube.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
-                Section::VideoSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    let attributes_string = attributes_basic(attributes);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/video.j2")
-                            .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, id))
                             .unwrap()
                             .as_str(),
                     );

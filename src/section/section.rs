@@ -47,7 +47,6 @@ use crate::section::textarea::*;
 use crate::section::title::*;
 use crate::section::todo::*;
 use crate::section::todos::*;
-use crate::section::video::*;
 use crate::section::vimeo::*;
 use crate::section::warning::*;
 use crate::section::widget::*;
@@ -270,11 +269,7 @@ pub enum Section {
     },
     YouTubeSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    VideoSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        id: Option<String>,
     },
     Placeholder,
 }
@@ -547,13 +542,6 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| youtube(t.3).unwrap().1),
-            tuple((
-                tag("-> video"),
-                not_line_ending,
-                line_ending,
-                alt((take_until("\n\n-> "), rest)),
-            ))
-            .map(|t| video(t.3).unwrap().1),
             tuple((
                 tag("-> attributes"),
                 not_line_ending,
