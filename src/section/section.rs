@@ -257,7 +257,7 @@ pub enum Section {
     },
     VimeoSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        id: Option<String>,
     },
     WarningSection {
         attributes: Option<Vec<SectionAttribute>>,

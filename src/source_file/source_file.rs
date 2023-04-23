@@ -485,15 +485,14 @@ impl SourceFile {
                 }
                 Section::VimeoSection {
                     attributes,
-                    children,
+                    id,
                 } => {
-                    let parts = joiner(children);
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/vimeo.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, id))
                             .unwrap()
                             .as_str(),
                     );
