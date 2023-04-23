@@ -33,6 +33,20 @@ impl SourceFile {
             .unwrap()
             .iter()
             .for_each(|section| match section {
+                Section::NotesSection {
+                    attributes,
+                    children,
+                } => {
+                    let attributes_string = attributes_with_class(attributes, "notes");
+                    output_string.push_str(
+                        &base
+                            .get_template("components/notes.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, children))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
                 Section::OrderedListSection {
                     attributes,
                     children,
@@ -351,21 +365,6 @@ impl SourceFile {
                     output_string.push_str(
                         &base
                             .get_template("components/note.j2")
-                            .unwrap()
-                            .render(context!(attributes_string, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
-                Section::NotesSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    let attributes_string = attributes_with_class(attributes, "notes");
-                    output_string.push_str(
-                        &base
-                            .get_template("components/notes.j2")
                             .unwrap()
                             .render(context!(attributes_string, parts))
                             .unwrap()

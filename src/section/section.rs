@@ -211,7 +211,7 @@ pub enum Section {
     },
     NotesSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        children: Option<Vec<ListItem>>,
     },
     ObjectSection {
         attributes: Option<Vec<SectionAttribute>>,
@@ -455,19 +455,19 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             ))
             .map(|t| nav(t.3).unwrap().1),
             tuple((
-                tag("-> note"),
-                not_line_ending,
-                line_ending,
-                alt((take_until("\n\n-> "), rest)),
-            ))
-            .map(|t| note(t.3).unwrap().1),
-            tuple((
                 tag("-> notes"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| notes(t.3).unwrap().1),
+            tuple((
+                tag("-> note"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| note(t.3).unwrap().1),
         )),
         alt((
             tuple((

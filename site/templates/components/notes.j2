@@ -1,1 +1,11 @@
-TEMPLATE_TODO: notes
+<div {{ attributes_string }}>
+<ul {{ attributes_string }}>
+{% for child in children -%}
+<li>
+{%- for stuff in child.children -%}
+<p>{{ stuff }}</p>
+{%- endfor -%}
+</li>
+{% endfor -%}
+</ul>
+</div>
