@@ -1,5 +1,4 @@
 use crate::block::block::*;
-
 use crate::section::aside::*;
 use crate::section::attributes::*;
 use crate::section::blockquote::*;
@@ -195,7 +194,7 @@ pub enum Section {
     },
     ListSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        children: Option<Vec<ListItem>>,
     },
     MenuSection {
         attributes: Option<Vec<SectionAttribute>>,

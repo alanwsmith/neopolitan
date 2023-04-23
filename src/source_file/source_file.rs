@@ -33,6 +33,20 @@ impl SourceFile {
             .unwrap()
             .iter()
             .for_each(|section| match section {
+                Section::ListSection {
+                    attributes,
+                    children,
+                } => {
+                    let attributes_string = attributes_basic(attributes);
+                    output_string.push_str(
+                        &base
+                            .get_template("components/list.j2")
+                            .unwrap()
+                            .render(context!(attributes_string, children))
+                            .unwrap()
+                            .as_str(),
+                    );
+                }
                 Section::AsideSection {
                     attributes,
                     children,
@@ -282,21 +296,6 @@ impl SourceFile {
                     output_string.push_str(
                         &base
                             .get_template("components/image.j2")
-                            .unwrap()
-                            .render(context!(attributes_string, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
-                Section::ListSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    let attributes_string = attributes_basic(attributes);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/list.j2")
                             .unwrap()
                             .render(context!(attributes_string, parts))
                             .unwrap()

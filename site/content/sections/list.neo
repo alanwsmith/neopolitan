@@ -1,14 +1,16 @@
 -> title
 
-Seciton: list
-
+Section: list
 
 
 -> startneoexample
 
 -> list
->> class: foxtrot
 
-the quick brown fox
+- the quick brown fox
+
+- and the lazy dog
+
+and some more text
 
 -> endneoexample

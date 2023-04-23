@@ -20,17 +20,23 @@
       </ul>
     </nav>
   </header>
-  <main><h1 class="title">Seciton: list</h1><div class="pre-wrapper">
+  <main><h1 class="title">Seciton: list</h1><p>TODO: Get the individual lines inside <p> tags</p><div class="pre-wrapper">
 <div class="pre-spacer">Source</div>
 <pre class="neoexmapleCode"><code>-&gt; list
-&gt;&gt; class: foxtrot
 
-the quick brown fox</code></pre>
+- the quick brown fox
+
+- and the lazy dog
+
+and some more text</code></pre>
 </div>
 
 <div class="pre-wrapper">
 <div class="pre-spacer">Output</div>
-<pre class="neoexmapleCode"><code>TEMPLATE_TODO: list</code></pre>
+<pre class="neoexmapleCode"><code>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;the quick brown fox&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;and the lazy dog&lt;/p&gt;&lt;p&gt;and some more text&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
 </div></main>
 </body>
 
