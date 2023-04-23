@@ -27,6 +27,7 @@ use crate::section::html::*;
 use crate::section::image::*;
 use crate::section::include::*;
 use crate::section::list::*;
+use crate::section::list_enum::ListItem;
 use crate::section::menu::*;
 use crate::section::nav::*;
 use crate::section::neoexample_start_end::*;
