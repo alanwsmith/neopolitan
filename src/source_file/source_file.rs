@@ -280,9 +280,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::HRSection {
-                    attributes,
-                } => {
+                Section::HRSection { attributes } => {
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
@@ -294,16 +292,16 @@ impl SourceFile {
                     );
                 }
                 Section::ImageSection {
+                    alt_text,
                     attributes,
-                    children,
+                    src,
                 } => {
-                    let parts = joiner(children);
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/image.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, alt_text, src))
                             .unwrap()
                             .as_str(),
                     );

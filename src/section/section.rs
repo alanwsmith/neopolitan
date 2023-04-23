@@ -178,8 +178,9 @@ pub enum Section {
         children: Option<Vec<Block>>,
     },
     ImageSection {
+        alt_text: Option<String>,
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        src: Option<String>,
     },
     IncludeSection {
         attributes: Option<Vec<SectionAttribute>>,
