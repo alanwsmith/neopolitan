@@ -41,9 +41,16 @@ pub fn section_attribute(source: &str) -> IResult<&str, SectionAttribute> {
         };
         Ok((remainder, response))
     } else {
+        // deal with values that have colons in them
+        let mut new_vec: Vec<String> = vec![];
+        parts
+            .iter()
+            .skip(1)
+            .for_each(|x| new_vec.push(x.trim().to_string()));
         let response = SectionAttribute::Attribute {
             key: Some(parts[0].trim().to_string()),
-            value: Some(parts[1].trim().to_string()),
+            // value: Some(parts[1].trim().to_string()),
+            value: Some(new_vec.join(":")),
         };
         Ok((remainder, response))
     }
@@ -135,6 +142,21 @@ mod test {
                     value: Some("tango".to_string()),
                 },
             ]),
+        ));
+        let result = section_attributes(source);
+        assert_eq!(expected, result);
+    }
+
+    #[test]
+    fn with_colon_in_the_value() {
+        let lines = [">> src: https://www.example.com/", ""].join("\n");
+        let source = lines.as_str();
+        let expected = Ok((
+            "",
+            Some(vec![SectionAttribute::Attribute {
+                key: Some("src".to_string()),
+                value: Some("https://www.example.com/".to_string()),
+            }]),
         ));
         let result = section_attributes(source);
         assert_eq!(expected, result);

@@ -349,17 +349,13 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::ObjectSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
+                Section::ObjectSection { attributes } => {
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/object.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string))
                             .unwrap()
                             .as_str(),
                     );
