@@ -3,12 +3,12 @@
 Section: dlist
 
 
-
 -> startneoexample
 
 -> dlist
->> class: foxtrot
 
-the quick brown fox
+- the quick brown fox
+
+> was here
 
 -> endneoexample

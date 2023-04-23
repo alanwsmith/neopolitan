@@ -18,6 +18,10 @@ Content Sections
 
 - <<code|link|/sections/code.html>>
 
+- <<details|link|/sections/details.html>>
+
+- <<dlist|link|/sections/dlist.html>>
+
 - <<h1|link|/sections/h1.html>>
 
 - <<h2|link|/sections/h2.html>>
@@ -61,10 +65,6 @@ Content Sections
 -> h3
 
 In Progress
-
-- <<details|link|/sections/details.html>>
-
-- <<dlist|link|/sections/dlist.html>>
 
 - <<hr|link|/sections/hr.html>>
 

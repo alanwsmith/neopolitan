@@ -1,1 +1,14 @@
-TEMPLATE_TODO: dlist
+<dl>
+{% for child in children -%}
+<dt>
+{%- for dt_stuff in child.dt_content %}
+<p>{{ dt_stuff }}</p>
+{% endfor -%}
+</dt>
+<dd>
+{%- for dd_stuff in child.dd_content %}
+<p>{{ dd_stuff }}</p>
+{% endfor -%}
+</dd>
+{% endfor -%}
+</dl>

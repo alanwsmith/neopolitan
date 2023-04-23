@@ -1,1 +1,9 @@
-TEMPLATE_TODO: details
+<details {{- attributes_string -}}>
+{%- for part in parts -%}
+  {%- if loop.first %}
+    <summary>{{- part -}}</summary>
+  {%- else -%}
+    <p>{{- part -}}</p>
+  {%- endif -%}
+{%- endfor %}
+</details>

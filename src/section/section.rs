@@ -132,7 +132,7 @@ pub enum Section {
     },
     DescriptionListSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        children: Option<Vec<DescriptionListItem>>,
     },
     ExternalSection {
         attributes: Option<Vec<SectionAttribute>>,
