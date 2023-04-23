@@ -14,6 +14,8 @@ Content Sections
 
 - <<canvas|link|/sections/canvas.html>>
 
+- <<checklist|link|/sections/checklist.html>>
+
 - <<h1|link|/sections/h1.html>>
 
 - <<h2|link|/sections/h2.html>>
@@ -43,8 +45,6 @@ Content Sections
 -> h3
 
 In Progress
-
-- <<checklist|link|/sections/checklist.html>>
 
 - <<code|link|/sections/code.html>>
 

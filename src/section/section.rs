@@ -110,7 +110,7 @@ pub enum Section {
     },
     CodeSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        raw: Option<String>,
     },
 
     CodeStartEndSection {

@@ -120,17 +120,14 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::CodeSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
+                Section::CodeSection { attributes, raw } => {
+                    // let parts = joiner(children);
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/code.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, raw))
                             .unwrap()
                             .as_str(),
                     );
