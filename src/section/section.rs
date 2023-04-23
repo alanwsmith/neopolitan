@@ -35,7 +35,6 @@ use crate::section::notes::*;
 use crate::section::object::*;
 use crate::section::olist::*;
 use crate::section::p::*;
-use crate::section::picture::*;
 use crate::section::pre::*;
 use crate::section::reference::*;
 use crate::section::results::*;
@@ -214,10 +213,6 @@ pub enum Section {
         children: Option<Vec<ListItem>>,
     },
     ParagraphsSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    PictureSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
@@ -466,13 +461,6 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| olist(t.3).unwrap().1),
-            tuple((
-                tag("-> picture"),
-                not_line_ending,
-                line_ending,
-                alt((take_until("\n\n-> "), rest)),
-            ))
-            .map(|t| picture(t.3).unwrap().1),
             tuple((
                 tag("-> pre"),
                 not_line_ending,

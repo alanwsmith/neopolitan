@@ -375,21 +375,6 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::PictureSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    let attributes_string = attributes_basic(attributes);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/picture.j2")
-                            .unwrap()
-                            .render(context!(attributes_string, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
                 Section::PreSection { attributes, raw } => {
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(

@@ -1,7 +1,5 @@
 {%- for part in parts -%}
-  <p {%- autoescape false -%}
-{{- attributes_string -}}
-{%- endautoescape -%}>
-      {{- part -}}
-  </p>
+<p {{- attributes_string -}}>
+  {{- part -}}
+</p>
 {% endfor -%}

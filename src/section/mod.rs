@@ -35,7 +35,6 @@ pub mod notes;
 pub mod object;
 pub mod olist;
 pub mod p;
-pub mod picture;
 pub mod pre;
 pub mod reference;
 pub mod results;

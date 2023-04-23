@@ -48,7 +48,11 @@ Content Sections
 
 - <<notes|link|/sections/notes.html>>
 
+- <<object|link|/sections/object.html>>
+
 - <<olist|link|/sections/olist.html>>
+
+- <<p|link|/sections/p.html>>
 
 - <<pre|link|/sections/pre.html>>
 
@@ -69,10 +73,6 @@ Content Sections
 -> h3
 
 In Progress
-
-- <<object|link|/sections/object.html>>
-
-- <<p|link|/sections/p.html>>
 
 - <<picture|link|/sections/picture.html>>
 
