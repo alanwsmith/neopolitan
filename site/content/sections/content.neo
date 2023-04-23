@@ -32,11 +32,17 @@ Content Sections
 
 - <<list|link|/sections/list.html>>
 
+- <<menu|link|/sections/menu.html>>
+
+- <<nav|link|/sections/nav.html>>
+
 - <<note|link|/sections/note.html>>
 
 - <<notes|link|/sections/notes.html>>
 
 - <<olist|link|/sections/olist.html>>
+
+- <<pre|link|/sections/pre.html>>
 
 - <<subtitle|link|/sections/subtitle.html>>
 
@@ -56,23 +62,15 @@ In Progress
 
 - <<dlist|link|/sections/dlist.html>>
 
-- <<figure|link|/sections/figure.html>>
-
 - <<hr|link|/sections/hr.html>>
 
 - <<image|link|/sections/image.html>>
-
-- <<menu|link|/sections/menu.html>>
-
-- <<nav|link|/sections/nav.html>>
 
 - <<object|link|/sections/object.html>>
 
 - <<p|link|/sections/p.html>>
 
 - <<picture|link|/sections/picture.html>>
-
-- <<pre|link|/sections/pre.html>>
 
 - <<results|link|/sections/results.html>>
 

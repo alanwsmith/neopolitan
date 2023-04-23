@@ -2,6 +2,7 @@
 
 Section: nav
 
+TODO: Add attributes
 
 
 -> startneoexample
@@ -9,6 +10,6 @@ Section: nav
 -> nav
 >> class: foxtrot
 
-the quick brown fox
+- the quick brown fox
 
 -> endneoexample

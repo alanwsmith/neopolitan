@@ -12,7 +12,6 @@ pub mod details;
 pub mod div;
 pub mod dlist;
 pub mod ext;
-pub mod figure;
 pub mod footnote;
 pub mod h1;
 pub mod h2;

@@ -13,7 +13,6 @@ use crate::section::details::*;
 use crate::section::div::*;
 use crate::section::dlist::*;
 use crate::section::ext::*;
-use crate::section::figure::*;
 use crate::section::footnote::*;
 use crate::section::h1::*;
 use crate::section::h2::*;
@@ -139,10 +138,6 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-    FigureSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
     FootnoteSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
@@ -197,11 +192,11 @@ pub enum Section {
     },
     MenuSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        children: Option<Vec<ListItem>>,
     },
     NavSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        children: Option<Vec<ListItem>>,
     },
     NoteSection {
         attributes: Option<Vec<SectionAttribute>>,
@@ -229,7 +224,7 @@ pub enum Section {
     },
     PreSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        raw: Option<String>,
     },
     ReferenceSection {
         attributes: Option<Vec<SectionAttribute>>,
@@ -366,13 +361,6 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| dlist(t.3).unwrap().1),
-            tuple((
-                tag("-> figure"),
-                not_line_ending,
-                line_ending,
-                alt((take_until("\n\n-> "), rest)),
-            ))
-            .map(|t| figure(t.3).unwrap().1),
         )),
         alt((
             tuple((

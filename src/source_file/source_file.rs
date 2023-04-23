@@ -191,21 +191,6 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::FigureSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
-                    let attributes_string = attributes_basic(attributes);
-                    output_string.push_str(
-                        &base
-                            .get_template("components/figure.j2")
-                            .unwrap()
-                            .render(context!(attributes_string, parts))
-                            .unwrap()
-                            .as_str(),
-                    );
-                }
                 Section::H1Section {
                     attributes,
                     children,
@@ -330,13 +315,12 @@ impl SourceFile {
                     attributes,
                     children,
                 } => {
-                    let parts = joiner(children);
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/menu.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, children))
                             .unwrap()
                             .as_str(),
                     );
@@ -345,13 +329,12 @@ impl SourceFile {
                     attributes,
                     children,
                 } => {
-                    let parts = joiner(children);
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/nav.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, children))
                             .unwrap()
                             .as_str(),
                     );
@@ -416,17 +399,13 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::PreSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
+                Section::PreSection { attributes, raw } => {
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/pre.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, raw))
                             .unwrap()
                             .as_str(),
                     );
