@@ -8,8 +8,8 @@ pub fn attributes_with_class(
     let mut response = String::from("");
     match source {
         Some(v) => {
-            v.iter().for_each(|x| {
-                if let SectionAttribute::Attribute { key, value } = x {
+            v.iter().for_each(|x| match x {
+                SectionAttribute::Attribute { key, value } => {
                     if key.as_ref().unwrap() == "class" {
                         class_string.push_str(" ");
                         class_string.push_str(value.as_ref().unwrap().as_str());

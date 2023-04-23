@@ -4,17 +4,22 @@ pub fn attributes_basic(source: &Option<Vec<SectionAttribute>>) -> String {
     match source.as_ref() {
         Some(attributes) => {
             let mut response = String::from("");
-            attributes.iter().for_each(|x| {
-                if let SectionAttribute::Attribute { key, value } = x {
-                    response.push_str(
-                        format!(
-                            r#" {}="{}""#,
-                            key.as_ref().unwrap(),
-                            value.as_ref().unwrap()
-                        )
-                        .as_str(),
-                    );
-                }
+            attributes.iter().for_each(|x| match x {
+                SectionAttribute::Attribute { key, value } => match value {
+                    Some(_) => {
+                        response.push_str(
+                            format!(
+                                r#" {}="{}""#,
+                                key.as_ref().unwrap(),
+                                value.as_ref().unwrap()
+                            )
+                            .as_str(),
+                        );
+                    }
+                    None => {
+                        response.push_str(format!(r#" {}"#, key.as_ref().unwrap(),).as_str());
+                    }
+                },
             });
             response
         }
