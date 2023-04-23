@@ -18,13 +18,11 @@ pub fn pre(source: &str) -> IResult<&str, Section> {
 #[cfg(test)]
 mod test {
 
-
     use crate::parse::parse::*;
     use crate::source_file::source_file::*;
     use crate::tests::remove_whitespace::remove_whitespace;
     use crate::universe::create_env::create_env;
     use crate::universe::universe::Universe;
-
     
     #[test]
     pub fn basic_pre() {
@@ -51,7 +49,7 @@ mod test {
     #[test]
     pub fn attributes_with_code() {
         let source = [
-            "-> code",
+            "-> pre",
             ">> class: alfa",
             "",
             "Bring your best compass",
@@ -61,8 +59,8 @@ mod test {
         .to_string();
         let expected = Some(
             vec![
-                r#"<pre><code class="alfa">Bring your best compass"#,
-                r#"Cap the jar</code></pre>"#,
+                r#"<pre class="alfa">Bring your best compass"#,
+                r#"Cap the jar</pre>"#,
             ]
             .join("\n")
             .to_string(),

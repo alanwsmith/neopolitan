@@ -44,7 +44,11 @@ Content Sections
 
 - <<pre|link|/sections/pre.html>>
 
+- <<results|link|/sections/results.html>>
+
 - <<subtitle|link|/sections/subtitle.html>>
+
+- <<textarea|link|/sections/textarea.html>>
 
 - <<title|link|/sections/title.html>>
 
@@ -72,15 +76,11 @@ In Progress
 
 - <<picture|link|/sections/picture.html>>
 
-- <<results|link|/sections/results.html>>
-
 - <<startcode|link|/sections/startcode.html>>
 
 - <<startdiv|link|/sections/startdiv.html>>
 
 - <<table|link|/sections/table.html>>
-
-- <<textarea|link|/sections/textarea.html>>
 
 - <<video|link|/sections/video.html>>
 

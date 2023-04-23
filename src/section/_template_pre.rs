@@ -3,12 +3,12 @@ use crate::section::section_attributes::*;
 use nom::character::complete::multispace0;
 use nom::IResult;
 
-pub fn pre(source: &str) -> IResult<&str, Section> {
+pub fn $TAG(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
     let (remainder, _) = multispace0(remainder)?;
     Ok((
         remainder,
-        Section::PreSection {
+        Section::$ENUM {
             attributes,
             raw: Some(remainder.to_string()),
         },
@@ -18,23 +18,21 @@ pub fn pre(source: &str) -> IResult<&str, Section> {
 #[cfg(test)]
 mod test {
 
-
     use crate::parse::parse::*;
     use crate::source_file::source_file::*;
     use crate::tests::remove_whitespace::remove_whitespace;
     use crate::universe::create_env::create_env;
     use crate::universe::universe::Universe;
-
     
     #[test]
-    pub fn basic_pre() {
-        let source = ["-> pre", "", "Bring your best compass", "Cap the jar"]
+    pub fn basic_$TAG() {
+        let source = ["-> $TAG", "", "Bring your best compass", "Cap the jar"]
             .join("\n")
             .to_string();
         let expected = Some(
             vec![
-                r#"<pre>Bring your best compass"#,
-                r#"Cap the jar</pre>"#,
+                r#"<$TAG>Bring your best compass"#,
+                r#"Cap the jar</$TAG>"#,
             ]
             .join("\n")
             .to_string(),
@@ -51,7 +49,7 @@ mod test {
     #[test]
     pub fn attributes_with_code() {
         let source = [
-            "-> code",
+            "-> $TAG",
             ">> class: alfa",
             "",
             "Bring your best compass",
@@ -61,8 +59,8 @@ mod test {
         .to_string();
         let expected = Some(
             vec![
-                r#"<pre><code class="alfa">Bring your best compass"#,
-                r#"Cap the jar</code></pre>"#,
+                r#"<$TAG class="alfa">Bring your best compass"#,
+                r#"Cap the jar</$TAG>"#,
             ]
             .join("\n")
             .to_string(),

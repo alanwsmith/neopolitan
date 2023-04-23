@@ -410,17 +410,13 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::ResultsSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
+                Section::ResultsSection { attributes, raw } => {
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/results.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, raw))
                             .unwrap()
                             .as_str(),
                     );
@@ -470,17 +466,13 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::TextareaSection {
-                    attributes,
-                    children,
-                } => {
-                    let parts = joiner(children);
+                Section::TextareaSection { attributes, raw } => {
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
                             .get_template("components/textarea.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, raw))
                             .unwrap()
                             .as_str(),
                     );

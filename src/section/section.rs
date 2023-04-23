@@ -232,7 +232,7 @@ pub enum Section {
     },
     ResultsSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        raw: Option<String>,
     },
     ScriptSection {
         attributes: Option<Vec<SectionAttribute>>,
@@ -248,7 +248,7 @@ pub enum Section {
     },
     TextareaSection {
         attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
+        raw: Option<String>,
     },
     TitleSection {
         attributes: Option<Vec<SectionAttribute>>,
@@ -282,9 +282,6 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-
-    // AUTO GENERATED START: enum //
-    // AUTO GENERATED END: enum //
     Placeholder,
 }
 
