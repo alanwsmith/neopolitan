@@ -12,7 +12,7 @@ pub fn olist(source: &str) -> IResult<&str, Section> {
     let (remainder, items) = many_till(list_item, eof)(remainder)?;
     Ok((
         remainder,
-        Section::OrderedListSection {
+        Section::OrderedListSection{
             attributes,
             children: Some(items.0),
         },

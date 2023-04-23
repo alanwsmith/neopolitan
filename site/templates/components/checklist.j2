@@ -1,6 +1,6 @@
 <ul class="checklist">
 {% for child in children -%}
-<li>
+<li><input type="checkbox" class="checklistCheckbox" disabled />
 {%- for stuff in child.children -%}
 <p>{{ stuff }}</p>
 {%- endfor -%}

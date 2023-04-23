@@ -2,5 +2,12 @@
 
 Section: checklist
 
+-> startneoexample
 
-TODO: Make this work
+-> checklist
+
+[] Twist the valve
+
+[] Shut the hatch
+
+-> endneoexample
