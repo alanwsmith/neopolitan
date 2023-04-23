@@ -474,7 +474,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 tag("-> startcode"),
                 not_line_ending,
                 line_ending,
-                alt((take_until("\n\n-> "), rest)),
+                alt((take_until("\n\n-> endcode"), rest)),
             ))
             .map(|t| startcode(t.3).unwrap().1),
             tuple((
@@ -640,8 +640,13 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| p(t.3).unwrap().1),
-            // AUTO GENERATED START: tags //
-            // AUTO GENERATED END: tags //
+            tuple((
+                tag("-> endcode"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| p(t.3).unwrap().1),
         )),
     ))(remainder)?;
     Ok((remainder, section))
