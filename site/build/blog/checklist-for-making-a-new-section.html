@@ -12,18 +12,21 @@
       <ul>
         <li><a href="/">Neopolitan</a></li>
         <li><a href="/blog/index.html">Blog</a></li>
-        <li><a href="/sections/index.html">Sections</a></li>
         <li><a href="/sections/content.html">Content Sections</a></li>
         <li><a href="/sections/metadata.html">Metadata Sections</a></li>
         <li><a href="/sections/functional.html">Functional Sections</a></li>
         <li><a href="/inline-tags/index.html">Inline Tags</a></li>
+        <li><a href="/shorthand-tags.html">Shorthand Tags</a></li>
       </ul>
     </nav>
   </header>
   <main><h1 class="title">Checklist For Making A New Section</h1><p>This post serves two purposed. First, it's my checklist
 for the process of adding a section to the Neopolitan 
 code base as I build them out. </p><p>Second, it's a test make sure the checklist functionality
-works :-)</p><div class="note"><p>These are very much scratch note right now</p></div><p>- Choose a `_template_TAG`` template from `src/section``
+works :-)</p><div class="note">
+<div class="noteTitle">Note</div>
+<div class="noteText"><p>These are very much scratch note right now</p></div>
+</div><p>- Choose a `_template_TAG`` template from `src/section``
 or make a new one</p>
 <p>- Update the `rust_template` column in the sqlite database 
 for the section to add the template name key</p>
@@ -39,9 +42,11 @@ with the tag name of the section</p>
 <p>- There's some other steps but move have been done
 for most sections already. Will update here 
 when I run into them</p>
-<div class="note"><p>- This assumes the section already exists. If not
+<div class="note">
+<div class="noteTitle">Note</div>
+<div class="noteText"><p>- This assumes the section already exists. If not
 it would need to be created. </p><p>- The template files have already been made. 
-A new one would have to be made as well.</p></div></main>
+A new one would have to be made as well.</p></div>
+</div></main>
 </body>
-
 </html>

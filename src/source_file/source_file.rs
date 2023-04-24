@@ -134,14 +134,12 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::CodeSection { attributes, raw } => {
-                    // let parts = joiner(children);
-                    let attributes_string = attributes_basic(attributes);
-                    output_string.push_str(
+                Section::CodeSection { attributes, attributes_string, language, raw, title } => {
+                   output_string.push_str(
                         &base
                             .get_template("components/code.j2")
                             .unwrap()
-                            .render(context!(attributes_string, raw))
+                            .render(context!(attributes, attributes_string, language, raw, title))
                             .unwrap()
                             .as_str(),
                     );
@@ -336,6 +334,7 @@ impl SourceFile {
                 Section::NoteSection {
                     attributes,
                     children,
+                    title,
                 } => {
                     let parts = joiner(children);
                     let attributes_string = attributes_with_class(attributes, "note");
@@ -343,7 +342,7 @@ impl SourceFile {
                         &base
                             .get_template("components/note.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, parts, title))
                             .unwrap()
                             .as_str(),
                     );

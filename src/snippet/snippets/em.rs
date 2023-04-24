@@ -1,5 +1,6 @@
 use crate::snippet::get_attributes::get_attributes;
 use crate::snippet::snippet_enum::Snippet;
+use html_escape;
 
 pub fn em(text: &str, raw_attribute_string: &str) -> Snippet {
     let attributes = get_attributes(raw_attribute_string);
@@ -8,7 +9,8 @@ pub fn em(text: &str, raw_attribute_string: &str) -> Snippet {
         response.push_str(x.as_str());
     };
     response.push_str(">");
-    response.push_str(text);
+    let escaped_text = html_escape::encode_text(text).to_string();
+    response.push_str(escaped_text.as_str());
     response.push_str("</em>");
     Snippet::EmphasisTag {
         string: Some(response.to_string()),
@@ -17,8 +19,8 @@ pub fn em(text: &str, raw_attribute_string: &str) -> Snippet {
 
 #[cfg(test)]
 mod test {
-    use crate::snippet::snippets::em::*;
     use crate::snippet::snippet_enum::Snippet;
+    use crate::snippet::snippets::em::*;
 
     #[test]
     fn basic() {
@@ -41,9 +43,7 @@ mod test {
     #[test]
     fn two_attribute() {
         let expected = Snippet::EmphasisTag {
-            string: Some(
-                r#"<em id="echo" class="delta foxtrot">Raise the sail</em>"#.to_string(),
-            ),
+            string: Some(r#"<em id="echo" class="delta foxtrot">Raise the sail</em>"#.to_string()),
         };
         let results = em("Raise the sail", r#"id: echo|class: delta foxtrot"#);
         assert_eq!(expected, results);

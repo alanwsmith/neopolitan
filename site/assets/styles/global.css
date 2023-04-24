@@ -1,4 +1,5 @@
 :root {
+    --border-radius-1: 0.4rem;
     --color-1: #fefaec;
     --color-2: #240a05;
     --color-3: #f9a1bc;
@@ -7,7 +8,7 @@
     --main-chocolate: #240a05;
     --main-strawberry: #f9a1bc;
     --max-width: 65ch;
-    --border-radius-1: 0.4rem;
+    --pre-padding-x: 1.2rem;
 }
 
 #root,
@@ -105,7 +106,7 @@ body {
   color: var(--color-1);
   display: grid;
   font-family: 'Atkinson Hyperlegible', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 400;
   grid-template-rows: auto 1fr auto;
   height: 100%;
@@ -132,7 +133,7 @@ h2 {
   color: var(--color-3);
   font-weight: 700;
   margin-bottom: 0.4rem;
-  margin-top: 2rem;
+  margin-top: 2.4rem;
   overflow-wrap: break-word;
 }
 
@@ -231,14 +232,14 @@ main {
 }
 
 p {
-  margin-bottom: 0.7rem;
-  margin-top: 0.6rem;
+  margin-bottom: 2.0rem;
+  margin-top: 1.2rem;
   max-width: 68ch;
   overflow-wrap: break-word;
 }
 
 pre {
-  padding: 1.3rem;
+  padding: var(--pre-padding-x);
 }
 
 ul {
@@ -265,7 +266,6 @@ ul {
   padding-right: 1.2rem;
 }
 
-
 .note {
   border: 1px solid var(--main-strawberry);
   margin: 1.4rem;
@@ -273,7 +273,7 @@ ul {
   border-radius: 0.4rem;
 }
 
-.noteline {
+.noteTitle {
   background-color: var(--color-3);
   border-top-left-radius: var(--border-radius-1);
   border-top-right-radius: var(--border-radius-1);
@@ -281,27 +281,51 @@ ul {
   padding-left: 0.7rem;
 }
 
-.notetext {
+.noteText {
   padding: 0.7rem;
 }
 
-.pre-spacer {
+.codeTitle {
+  background-color: var(--color-1);
+  border: 1px solid var(--color-1);
+  border-top-left-radius: var(--border-radius-1);
+  border-top-right-radius: var(--border-radius-1);
+  color: var(--color-2);
+  font-weight: 700;
+  line-height: 1.6;
+  min-height: 1.5rem;
+  padding-left:  var(--pre-padding-x);
+}
+
+.codeWrapper {
+  background-color: var(--color-4);
+  border: 1px solid var(--color-1);
+  border-radius: var(--border-radius-1);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  margin-bottom: 2.4rem;
+  margin-top: 1.4rem;
+}
+
+.preTitle {
   background-color: var(--color-1);
   color: var(--color-2);
   border-top-left-radius: var(--border-radius-1);
   border-top-right-radius: var(--border-radius-1);
-  min-height: 1.3rem;
-  padding-left: 1.3rem;
+  font-weight: 700;
+  line-height: 1.6;
+  min-height: 1.5rem;
+  padding-left:  var(--pre-padding-x);
 }
 
-.pre-wrapper {
+.preWrapper {
   background-color: var(--color-4);
   border: 1px solid var(--color-1);
   border-radius: var(--border-radius-1);
   font-size: 0.92rem;
   line-height: 1.2;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
 }
 
 .subtitle {

@@ -2,11 +2,10 @@
 
 Sections
 
--> h2
+-> list
 
-TODO
+- The <<Content Sections|link|/sections/content.html>>
 
-Link to sections
+- The <<Metadata Sections|link|/sections/metadata.html>>
 
-
-They're in the nav right now
+- The <<Functional Sections|link|/sections/functional.html>>

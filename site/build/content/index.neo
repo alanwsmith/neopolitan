@@ -43,11 +43,40 @@ None of the formats I've seen pull that off. So, I
 designed a new one. It's called Neopolitan and it 
 looks like this:
 
+
+-> startcosde
+>> neo
+>> name: index.neo
+
+-> title
+
+Welcome To Neopolitan
+
+-> subtitle
+
+A plain-text format for websites
+
+-> note
+
+I'm doing the "launch before you're ready - build 
+in public" thing. The ideas are mostly in place. The 
+content and reference implementation are still a 
+work in progress. 
+
 -> h2
 
-Test Section
+Introduction
 
-This is an <<abbreviation|abbr>>
+My site is twenty years old. Pondering those decades 
+got me thinking about the next two. I find myself asking 
+"What do I want to use for the next twenty years?" instead 
+of "What do I want to do for my next redesign?" The answers 
+are very different.
 
+-> attributes
+>> date: 2023-04-16 19:06:40
+>> type: default 
+>> published: y
 
+-> endcode
 

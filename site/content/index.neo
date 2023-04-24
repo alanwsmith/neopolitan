@@ -7,11 +7,11 @@ Welcome To Neopolitan
 A plain-text format for websites
 
 -> note
+>> title: A Quick Heads-Up
 
-I'm doing the "launch before you're ready - 
-build in public" thing. The ideas are in place.
-The reference implementation and documentation are still 
-works in progress. 
+I'm doing the "launch before you're ready - build in 
+public" thing. The ideas for the format are in place. 
+The example implementation I'm building is still a work in progress.
 
 -> h2
 
@@ -19,9 +19,9 @@ Introduction
 
 My site is twenty years old. Thinking back on the past
 two decades got me thinking forward to the next two. 
-Instead of, "What do I want to use for my next 
-redesign?" I'm asking, "What do I want to 
-use for the next twenty years?"
+Instead of, "What do I want to use for my next redesign?" 
+I'm asking, "What foundation do I want for the next twenty 
+years?"
 
 The answers are very different.
 
@@ -29,17 +29,329 @@ The answers are very different.
 
 The Format
 
-I've moved my site a half dozen times. Each shift 
+I've moved my site a half dozen times. Each one 
 involved a painful content migration. I've gone from 
 raw HTML to Perl to Wordpress to PHP to Ruby to 
-Markdown to MDX to Org-Mode to a mix of all of the above.
+Markdown to MDX to Org-Mode to a mix of all of the 
+above.
 
-There are aspects to each I like. What I'm after is a 
-format that's easy to use and gives me the best parts 
-of each. I also never want to change formats again, 
-regardless of how often I change the tech I'm riding on.
+I don't want to work with any of those formats for
+the next twenty years. So, I designed a new one. 
+It's called Neopolitan and it looks like this:
 
-None of the formats I've seen pull that off. So, I
-designed a new one. It's called Neopolitan and it 
-looks like this:
+-> startcode
+>> neo
+>> title: index.neo
+
+-> title
+
+Welcome To Neopolitan
+
+-> subtitle
+
+A plain-text format for websites
+
+-> note
+>> title: A Quick Heads-Up
+
+I'm doing the "launch before you're ready - build in 
+public" thing. The ideas for the format are in place. 
+The example implementation I'm building is still a work 
+in progress.
+
+-> h2
+
+Introduction
+
+My site is twenty years old. Thinking back on the past
+two decades got me thinking forward to the next two. 
+Instead of, "What do I want to use for my next redesign?" 
+I'm asking, "What foundation do I want for the next twenty 
+years?"
+
+The answers are very different.
+
+
+-> attributes
+>> date: 2023-04-16 19:06:40
+>> type: default 
+>> status: published
+
+-> endcode
+
+
+-> h2
+
+How It Works
+
+Documents are made of two things:
+
+-> olist
+
+- Sections which start like this: <<->|strong>>
+
+- Attributes which start like this: <<>>|strong>>
+
+-> h2
+
+The Sections
+
+Sections are things like:
+
+-> startcode
+>> name: Section Types
+
+-> title
+
+-> h2
+
+-> list
+
+-> table
+
+-> endcode
+
+
+The section types determine how content 
+is treated. For example, the <<-> 
+h2|strong>> sections turn into <<<h2>|strong>> 
+elements, 
+
+-> startneoexample
+
+-> h2
+
+Bring your best compass 
+
+-> endneoexample
+
+
+-> p
+
+The list of content sections <<is here|link|/sections/content.html>>
+
+
+
+-> h2
+
+The Attributes
+
+Attributes are where things get interesting. 
+They get transposed directly into the HTML. 
+
+Here's the same <<-> h2|strong>> example from above 
+with an id and class added. 
+
+
+-> startneoexample
+
+-> h2
+>> id: alfa
+>> class: bravo
+
+Bring your best compass 
+
+-> endneoexample
+
+-> p
+
+Attributes aren't restricted to the HTML output. 
+They can be used as metadata for the processing 
+engine or to add supplemental content.
+
+For example, I use a <<title|strong>> attribute 
+to add a header to my code blocks:
+
+-> startcode
+>> title: Source
+
+-> code
+>> title: Foxtrot Example Title
+
+console.log("delta")
+
+-> endcode
+
+Which renders:
+
+-> code
+>> title: Foxtrot Example Title
+
+console.log("delta")
+
+
+-> h2
+
+Inline Tags And Attributes
+
+Content markup is done with inline tags. 
+They start with two `<<`` characters and end 
+with a closing `>>`` pair. 
+
+-> code
+>> title: Source
+
+Open <<your|strong>> book
+
+-> code
+>> title: Output
+
+Open <strong>your</strong> book
+
+
+-> p
+
+Attributes can be added by appending them
+with pipe separators. Here's what that looks
+like with an <<id|strong>> added
+
+-> code
+>> title: Source
+
+Open <<your|strong|id:delta>> book
+
+
+-> code
+>> title: Output
+
+Open <strong id="delta">your</strong> book
+
+-> p
+
+The list of inline tags <<is here|link|/inline-tags/index.html>>
+
+
+-> h2
+
+Shorthand Tags
+
+There are shorthand features as well. 
+Here's the <<strong|strong>> version:
+
+-> startcode
+>> title: Source
+
+The *first** draft
+
+-> endcode
+
+
+-> startcode
+>> title: Output
+
+The <strong>first</strong> draft
+
+-> endcode
+
+
+Attributes are added like this:
+
+-> startcode
+>> title: Source
+
+The *first*class:tango* draft
+
+-> endcode
+
+
+-> startcode
+>> title: Output
+
+The <strong class="tango">first</strong> draft
+
+-> endcode
+
+
+
+-> p
+
+Multiple attributes are separated by
+pipe characters. 
+
+
+-> startcode
+>> title: Source
+
+The *first*id:alfa|class:bravo* draft
+
+-> endcode
+
+
+-> startcode
+>> title: Output
+
+The <strong id="alfa" class="bravo">first</strong> draft
+
+-> endcode
+
+
+-> h2
+
+The Metadata Sections
+
+Some sections don't output directly. They're 
+used for metadata that can be placed on the 
+page independently or used during processing. 
+
+For example, I use the <<attributes|strong>> 
+section to hold the date and identify the 
+template to use via a <<type|strong>> attribute. 
+
+-> startcode
+>> title: Source
+
+-> attributes
+>> date: 2023-04-16 19:06:40
+>> type: default 
+>> status: published
+
+-> endcode
+
+
+The list of metadata sections <<is here|link|/sections/metadata.html>>
+
+
+-> h2
+
+The Functional Sections
+
+The third section type is for heavier processing. 
+Sections for <<-> css|strong>> and <<-> script|strong>>
+copy their contents directly to head of the document.
+
+The <<-> ext|strong>> section calls out to an external
+process and outputs its contents directly.
+
+
+The list of functional sections <<is here|link|/sections/functional.html>>
+
+
+-> h2
+
+Dogfooding
+
+I'm not a particular fan of the term "dogfooding".
+"Drink your own champagne" is worse. Either way, 
+that's what I'm doing. This site is built from the 
+Neopolitan documents and an <<example site generator|
+link|https://github.com/alanwsmith/neopolitan>>. It's 
+what I'll use for my site full time once it's ready.
+
+The goal for the site engine is not to make a 
+generic tool. It's to build my personal site. That
+said, it should make a good example and jumping off
+point if you're interested in playing with the
+format. 
+
+Enjoy, 
+
+- <<alan|link|https://hachyderm.io/@TheIdOfAlan>>
+
+
+-> attributes
+>> date: 2023-04-16 19:06:40
+>> id: 2owpsh3aov3w
+>> type: default 
+>> status: published
+
 

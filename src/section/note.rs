@@ -1,5 +1,6 @@
 use crate::block::block::*;
 use crate::section::section::*;
+use crate::section::lib::get_title_from_attributes::get_title_from_attributes;
 use crate::section::section_attributes::*;
 use nom::character::complete::multispace0;
 use nom::combinator::eof;
@@ -10,11 +11,13 @@ pub fn note(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
     let (remainder, _) = multispace0(remainder)?;
     let (remainder, blocks) = many_till(block, eof)(remainder)?;
+    let title = get_title_from_attributes(&attributes);
     Ok((
         remainder,
         Section::NoteSection {
             attributes,
             children: Some(blocks.0),
+            title,
         },
     ))
 }
@@ -26,6 +29,8 @@ mod test {
     use crate::section::section::*;
     use crate::section::section_attributes::*;
     use crate::snippet::snippet_enum::*;
+
+    // TODO: Add test with title
 
     #[test]
     pub fn named_class_on_note() {
@@ -62,6 +67,7 @@ mod test {
                     }]),
                 },
             ]),
+            title: None,
         };
         let results = note(&source).unwrap().1;
         assert_eq!(expected, results);

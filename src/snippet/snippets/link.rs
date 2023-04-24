@@ -1,5 +1,6 @@
 // use crate::snippet::get_attributes::get_attributes;
 use crate::snippet::snippet_enum::Snippet;
+use html_escape;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
 use nom::combinator::opt;
@@ -13,7 +14,8 @@ pub fn link(text: &str, raw_attribute_string: &str) -> Snippet {
         response.push_str(x.as_str());
     };
     response.push_str(">");
-    response.push_str(text);
+    let escaped_text = html_escape::encode_text(text).to_string();
+    response.push_str(escaped_text.as_str());
     response.push_str("</a>");
     Snippet::LinkTag {
         string: Some(response.to_string()),

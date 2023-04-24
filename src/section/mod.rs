@@ -23,6 +23,7 @@ pub mod hr;
 pub mod html;
 pub mod image;
 pub mod include;
+pub mod lib;
 pub mod list;
 pub mod list_enum;
 pub mod list_item;

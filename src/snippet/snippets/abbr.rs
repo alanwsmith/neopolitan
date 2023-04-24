@@ -1,5 +1,6 @@
 use crate::snippet::get_attributes::get_attributes;
 use crate::snippet::snippet_enum::Snippet;
+use html_escape;
 
 pub fn abbr(text: &str, raw_attribute_string: &str) -> Snippet {
     let attributes = get_attributes(raw_attribute_string);
@@ -8,7 +9,8 @@ pub fn abbr(text: &str, raw_attribute_string: &str) -> Snippet {
         response.push_str(x.as_str());
     };
     response.push_str(">");
-    response.push_str(text);
+    let escaped_text = html_escape::encode_text(text).to_string();
+    response.push_str(escaped_text.as_str());
     response.push_str("</abbr>");
     Snippet::AbbreviationTag {
         string: Some(response.to_string()),
@@ -17,8 +19,8 @@ pub fn abbr(text: &str, raw_attribute_string: &str) -> Snippet {
 
 #[cfg(test)]
 mod test {
-    use crate::snippet::snippets::abbr::*;
     use crate::snippet::snippet_enum::Snippet;
+    use crate::snippet::snippets::abbr::*;
 
     #[test]
     fn basic() {

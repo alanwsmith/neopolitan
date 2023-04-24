@@ -105,9 +105,11 @@ pub enum Section {
     },
     CodeSection {
         attributes: Option<Vec<SectionAttribute>>,
+        attributes_string: Option<String>,
+        title: Option<String>,
+        language: Option<String>,
         raw: Option<String>,
     },
-
     CodeStartEndSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
@@ -195,6 +197,7 @@ pub enum Section {
     NoteSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
+        title: Option<String>,
     },
     NotesSection {
         attributes: Option<Vec<SectionAttribute>>,

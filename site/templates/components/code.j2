@@ -1,1 +1,13 @@
+<div class="codeWrapper">
+<div class="codeTitle">
+{%- if title != none -%}
+{{- title -}}
+{%- else -%}
+&nbsp;
+{%- endif -%}
+</div>
+
+<div class="codeContent">
 <pre><code {{- attributes_string -}}>{{ raw }}</code></pre>
+</div>
+</div>
