@@ -10,7 +10,7 @@ use crate::section::code::*;
 use crate::section::comment::*;
 use crate::section::css::*;
 use crate::section::details::*;
-use crate::section::div::*;
+use crate::section::startdiv::*;
 use crate::section::dlist::*;
 use crate::section::ext::*;
 use crate::section::footnote::*;
@@ -124,10 +124,6 @@ pub enum Section {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
     },
-    DivSection {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
     DescriptionListSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<DescriptionListItem>>,
@@ -230,6 +226,10 @@ pub enum Section {
     ScriptSection {
         attributes: Option<Vec<SectionAttribute>>,
         children: Option<Vec<Block>>,
+    },
+    StartDivSection {
+        attributes: Option<Vec<SectionAttribute>>,
+        html: Option<String>,
     },
     SubtitleSection {
         attributes: Option<Vec<SectionAttribute>>,
@@ -334,12 +334,12 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             ))
             .map(|t| details(t.3).unwrap().1),
             tuple((
-                tag("-> div"),
+                tag("-> startdiv"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
-            .map(|t| div(t.3).unwrap().1),
+            .map(|t| startdiv(t.3).unwrap().1),
             tuple((
                 tag("-> dlist"),
                 not_line_ending,
@@ -642,6 +642,13 @@ pub fn section(source: &str) -> IResult<&str, Section> {
             .map(|t| p(t.3).unwrap().1),
             tuple((
                 tag("-> endcode"),
+                not_line_ending,
+                line_ending,
+                alt((take_until("\n\n-> "), rest)),
+            ))
+            .map(|t| p(t.3).unwrap().1),
+            tuple((
+                tag("-> enddiv"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),

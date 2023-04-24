@@ -161,17 +161,16 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::DivSection {
+                Section::StartDivSection {
                     attributes,
-                    children,
+                    html,
                 } => {
-                    let parts = joiner(children);
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
-                            .get_template("components/div.j2")
+                            .get_template("components/startdiv.j2")
                             .unwrap()
-                            .render(context!(attributes_string, parts))
+                            .render(context!(attributes_string, html))
                             .unwrap()
                             .as_str(),
                     );

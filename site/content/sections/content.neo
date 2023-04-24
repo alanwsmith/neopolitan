@@ -60,6 +60,8 @@ Content Sections
 
 - <<startcode|link|/sections/startcode.html>>
 
+- <<startdiv|link|/sections/startdiv.html>>
+
 - <<subtitle|link|/sections/subtitle.html>>
 
 - <<textarea|link|/sections/textarea.html>>
@@ -79,7 +81,5 @@ Content Sections
 -> h3
 
 In Progress
-
-- <<startdiv|link|/sections/startdiv.html>>
 
 - <<table|link|/sections/table.html>>

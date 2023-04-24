@@ -21,16 +21,15 @@ pub fn note(source: &str) -> IResult<&str, Section> {
 
 #[cfg(test)]
 mod test {
-    use crate::parse::parse::*;
-    use crate::source_file::source_file::*;
-    use crate::tests::remove_whitespace::remove_whitespace;
-    use crate::universe::create_env::create_env;
-    use crate::universe::universe::Universe;
+    use crate::block::block::*;
+    use crate::section::note::note;
+    use crate::section::section::*;
+    use crate::section::section_attributes::*;
+    use crate::snippet::snippet_enum::*;
 
     #[test]
     pub fn named_class_on_note() {
         let source = [
-            "-> note",
             ">> class: delta",
             ">> id: bravo",
             "",
@@ -40,23 +39,31 @@ mod test {
         ]
         .join("\n")
         .to_string();
-        let expected = Some(
-            vec![
-                r#"<div id="bravo" class="note delta">"#,
-                r#"<p>Lift the stone</p>"#,
-                r#"<p>Fasten two pins</p>"#,
-                r#"</div>"#,
-            ]
-            .join("\n")
-            .to_string(),
-        );
-
-        let mut u = Universe::new();
-        u.env = Some(create_env("./site/templates"));
-        let mut sf = SourceFile::new();
-        sf.raw = Some(source);
-        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
-        let output = sf.output(&u);
-        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
+        let expected = Section::NoteSection {
+            attributes: Some(vec![
+                SectionAttribute::Attribute {
+                    key: Some("class".to_string()),
+                    value: Some("delta".to_string()),
+                },
+                SectionAttribute::Attribute {
+                    key: Some("id".to_string()),
+                    value: Some("bravo".to_string()),
+                },
+            ]),
+            children: Some(vec![
+                Block::Text {
+                    snippets: Some(vec![Snippet::Plain {
+                        text: Some("Lift the stone".to_string()),
+                    }]),
+                },
+                Block::Text {
+                    snippets: Some(vec![Snippet::Plain {
+                        text: Some("Fasten two pins".to_string()),
+                    }]),
+                },
+            ]),
+        };
+        let results = note(&source).unwrap().1;
+        assert_eq!(expected, results);
     }
 }
