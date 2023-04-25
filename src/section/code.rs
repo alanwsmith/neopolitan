@@ -1,14 +1,16 @@
+use crate::section::lib::get_title_from_attributes::*;
 use crate::section::section::*;
 use crate::section::section_attributes::*;
-use crate::section::lib::get_title_from_attributes::*;
+use html_escape;
 use nom::character::complete::multispace0;
 use nom::IResult;
-use html_escape;
+// use syntect::html;
 
 pub fn code(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
     let (remainder, _) = multispace0(remainder)?;
     let title = get_title_from_attributes(&attributes);
+    // let escaped_text = html_escape::encode_text(remainder).to_string();
     Ok((
         remainder,
         Section::CodeSection {
@@ -21,12 +23,58 @@ pub fn code(source: &str) -> IResult<&str, Section> {
     ))
 }
 
+pub fn code_dev(source: &str) -> IResult<&str, Section> {
+    let (remainder, initial_attributes) = section_attributes(source)?;
+    let (remainder, _) = multispace0(remainder)?;
+    let title = get_title_from_attributes(&initial_attributes);
+    let mut language: Option<String> = None;
+    // let escaped_text = html_escape::encode_text(remainder).to_string();
+    let mut attributes: Option<Vec<SectionAttribute>> = None;
+    match initial_attributes {
+        Some(attrs) => {
+            attrs.iter().enumerate().for_each(|(a, b)| {
+                if a == 0 {
+                    match b {
+                        SectionAttribute::Attribute { key, value } => match value {
+                            Some(_) => {}
+                            None => language = Some("HTML".to_string()),
+                        },
+                    }
+                }
+            });
+        }
+        _ => {}
+    }
+
+    // if initial_attributes.as_ref().unwrap().len() > 0 {
+    //     match &initial_attributes.as_ref().unwrap()[0] {
+    //         SectionAttribute::Attribute { key, value } => match value {
+    //             None => language = Some(key.as_ref().unwrap().as_str().to_string()),
+    //             Some(_) => {
+    //                 attributes = Some(vec![]);
+    //             }
+    //         },
+    //     }
+    // }
+
+    Ok((
+        remainder,
+        Section::CodeSection {
+            attributes,
+            attributes_string: None,
+            language,
+            title,
+            raw: Some(html_escape::encode_text(remainder).to_string()),
+        },
+    ))
+}
+
 #[cfg(test)]
 mod test {
 
     // use crate::block::block::*;
-    use crate::section::code::code;
-    use crate::section::section::*;
+    use crate::section::code::*;
+    // use crate::section::section::*;
     // use crate::section::section_attributes::*;
     // use crate::snippet::snippet_enum::*;
 
@@ -42,34 +90,60 @@ mod test {
             title: None,
             raw: Some(source.to_string()),
         };
-        let results = code(&source).unwrap().1;
+        let results = code_dev(&source).unwrap().1;
         assert_eq!(expected, results);
-  }
+    }
 
-//   #[test]
-//   pub fn code_with_name() {
-//       let source = [">> name: tango", "", "Bring your best compass", "Cap the jar"]
-//           .join("\n")
-//           .to_string();
-//       let expected = Section::CodeSection {
-//           attributes: Some(vec![
-//             SectionAttribute::Attribute {
-//                 key: Some("name".to_string()),
-//                 value: Some("tango".to_string()),
-//             }
-//           ]),
-//           attributes_string: None,
-//           language: None,
-//           name: Some("tango".to_string()),
-//           raw: Some("Bring your best compass\nCap the jar".to_string())
-      
-//         };
-//       let results = code(&source).unwrap().1;
-//       assert_eq!(expected, results);
+    #[test]
+    pub fn code_with_langauge() {
+        let source = [">> HTML", "", "Cap the jar"].join("\n").to_string();
+        let expected = Section::CodeSection {
+            attributes: None,
+            attributes_string: None,
+            language: Some("HTML".to_string()),
+            title: None,
+            raw: Some("Cap the jar".to_string()),
+        };
+        let results = code_dev(&source).unwrap().1;
+        assert_eq!(expected, results);
+    }
 
-// }
+    // #[test]
+    // pub fn code_with_syntax_highlights() {
+    //     let source = ["<h1>Alfa</h1>"].join("\n").to_string();
+    //     let expected = Section::CodeSection {
+    //         attributes: None,
+    //         attributes_string: None,
+    //         language: None,
+    //         title: None,
+    //         raw: Some(source.to_string()),
+    //     };
+    //     let results = code(&source).unwrap().1;
+    //     assert_eq!(expected, results);
+    // }
 
+    //   #[test]
+    //   pub fn code_with_name() {
+    //       let source = [">> name: tango", "", "Bring your best compass", "Cap the jar"]
+    //           .join("\n")
+    //           .to_string();
+    //       let expected = Section::CodeSection {
+    //           attributes: Some(vec![
+    //             SectionAttribute::Attribute {
+    //                 key: Some("name".to_string()),
+    //                 value: Some("tango".to_string()),
+    //             }
+    //           ]),
+    //           attributes_string: None,
+    //           language: None,
+    //           name: Some("tango".to_string()),
+    //           raw: Some("Bring your best compass\nCap the jar".to_string())
 
+    //         };
+    //       let results = code(&source).unwrap().1;
+    //       assert_eq!(expected, results);
+
+    // }
 
     // #[test]
     // pub fn attributes_with_code() {
@@ -98,5 +172,4 @@ mod test {
     //     let output = sf.output(&u);
     //     assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     // }
-
 }
