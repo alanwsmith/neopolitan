@@ -6,23 +6,10 @@ use html_escape;
 use nom::character::complete::multispace0;
 use nom::IResult;
 // use syntect::html;
-
-// pub fn code_old(source: &str) -> IResult<&str, Section> {
-//     let (remainder, attributes) = section_attributes(source)?;
-//     let (remainder, _) = multispace0(remainder)?;
-//     let title = get_title_from_attributes(&attributes);
-//     // let escaped_text = html_escape::encode_text(remainder).to_string();
-//     Ok((
-//         remainder,
-//         Section::CodeSection {
-//             attributes,
-//             attributes_string: None,
-//             language: None,
-//             title,
-//             raw: Some(html_escape::encode_text(remainder).to_string()),
-//         },
-//     ))
-// }
+use syntect::easy::HighlightLines;
+use syntect::highlighting::ThemeSet;
+use syntect::html::{styled_line_to_highlighted_html, IncludeBackground};
+use syntect::parsing::SyntaxSet;
 
 pub fn code(source: &str) -> IResult<&str, Section> {
     let (remainder, initial_attributes) = section_attributes(source)?;
@@ -32,17 +19,36 @@ pub fn code(source: &str) -> IResult<&str, Section> {
     // This pulls off the first attribute if there is no
     // value and uses it as the language for code highlighting
     let mut tmp_attrs: Vec<SectionAttribute> = vec![];
+    let mut raw = Some(html_escape::encode_text(remainder).to_string());
     match initial_attributes {
         Some(attrs) => {
             attrs.iter().enumerate().for_each(|(a, b)| {
                 if a == 0 {
                     match b {
                         SectionAttribute::Attribute { key, value } => match value {
-                            Some(_) => tmp_attrs.push(SectionAttribute::Attribute {
-                                key: Some(key.as_ref().unwrap().to_string()),
-                                value: Some(value.as_ref().unwrap().to_string()),
-                            }),
-                            None => language = Some("HTML".to_string()),
+                            Some(_) => {
+                                tmp_attrs.push(SectionAttribute::Attribute {
+                                    key: Some(key.as_ref().unwrap().to_string()),
+                                    value: Some(value.as_ref().unwrap().to_string()),
+                                });
+                                raw = Some(html_escape::encode_text(remainder).to_string());
+                            }
+                            None => {
+                                let ps = SyntaxSet::load_defaults_newlines();
+                                let ts = ThemeSet::load_defaults();
+                                let syntax = ps.find_syntax_by_name("HTML").unwrap();
+                                let mut h =
+                                    HighlightLines::new(syntax, &ts.themes["base16-ocean.dark"]);
+                                let regions = h.highlight_line(remainder, &ps).unwrap();
+                                raw = Some(
+                                    styled_line_to_highlighted_html(
+                                        &regions[..],
+                                        IncludeBackground::No,
+                                    )
+                                    .unwrap(),
+                                );
+                                language = Some("HTML".to_string())
+                            }
                         },
                     }
                 }
@@ -56,6 +62,8 @@ pub fn code(source: &str) -> IResult<&str, Section> {
         None
     };
     let attributes_string = Some(attributes_basic(&attributes));
+
+    dbg!(&raw);
     Ok((
         remainder,
         Section::CodeSection {
@@ -63,7 +71,7 @@ pub fn code(source: &str) -> IResult<&str, Section> {
             attributes_string,
             language,
             title,
-            raw: Some(html_escape::encode_text(remainder).to_string()),
+            raw,
         },
     ))
 }
@@ -101,7 +109,7 @@ mod test {
             attributes_string: Some("".to_string()),
             language: Some("HTML".to_string()),
             title: None,
-            raw: Some("Cap the jar".to_string()),
+            raw: Some("<span style=\"color:#c0c5ce;\">Cap the jar</span>".to_string()),
         };
         let results = code(&source).unwrap().1;
         assert_eq!(expected, results);
@@ -126,68 +134,17 @@ mod test {
         assert_eq!(expected, results);
     }
 
-    // #[test]
-    // pub fn code_with_syntax_highlights() {
-    //     let source = ["<h1>Alfa</h1>"].join("\n").to_string();
-    //     let expected = Section::CodeSection {
-    //         attributes: None,
-    //         attributes_string: None,
-    //         language: None,
-    //         title: None,
-    //         raw: Some(source.to_string()),
-    //     };
-    //     let results = code(&source).unwrap().1;
-    //     assert_eq!(expected, results);
-    // }
-
-    //   #[test]
-    //   pub fn code_with_name() {
-    //       let source = [">> name: tango", "", "Bring your best compass", "Cap the jar"]
-    //           .join("\n")
-    //           .to_string();
-    //       let expected = Section::CodeSection {
-    //           attributes: Some(vec![
-    //             SectionAttribute::Attribute {
-    //                 key: Some("name".to_string()),
-    //                 value: Some("tango".to_string()),
-    //             }
-    //           ]),
-    //           attributes_string: None,
-    //           language: None,
-    //           name: Some("tango".to_string()),
-    //           raw: Some("Bring your best compass\nCap the jar".to_string())
-
-    //         };
-    //       let results = code(&source).unwrap().1;
-    //       assert_eq!(expected, results);
-
-    // }
-
-    // #[test]
-    // pub fn attributes_with_code() {
-    //     let source = [
-    //         "-> code",
-    //         ">> class: alfa",
-    //         "",
-    //         "Bring your best compass",
-    //         "Cap the jar",
-    //     ]
-    //     .join("\n")
-    //     .to_string();
-    //     let expected = Some(
-    //         vec![
-    //             r#"<pre><code class="alfa">Bring your best compass"#,
-    //             r#"Cap the jar</code></pre>"#,
-    //         ]
-    //         .join("\n")
-    //         .to_string(),
-    //     );
-    //     let mut u = Universe::new();
-    //     u.env = Some(create_env("./site/templates"));
-    //     let mut sf = SourceFile::new();
-    //     sf.raw = Some(source);
-    //     sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
-    //     let output = sf.output(&u);
-    //     assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
-    // }
+    #[test]
+    pub fn code_with_highlights() {
+        let source = [">> HTML", "", "Cap the jar"].join("\n").to_string();
+        let expected = Section::CodeSection {
+            attributes: None,
+            attributes_string: Some("".to_string()),
+            language: Some("HTML".to_string()),
+            title: None,
+            raw: Some("<span style=\"color:#c0c5ce;\">Cap the jar</span>".to_string()),
+        };
+        let results = code(&source).unwrap().1;
+        assert_eq!(expected, results);
+    }
 }
