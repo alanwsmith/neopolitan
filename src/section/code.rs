@@ -6,37 +6,41 @@ use nom::character::complete::multispace0;
 use nom::IResult;
 // use syntect::html;
 
-pub fn code(source: &str) -> IResult<&str, Section> {
-    let (remainder, attributes) = section_attributes(source)?;
-    let (remainder, _) = multispace0(remainder)?;
-    let title = get_title_from_attributes(&attributes);
-    // let escaped_text = html_escape::encode_text(remainder).to_string();
-    Ok((
-        remainder,
-        Section::CodeSection {
-            attributes,
-            attributes_string: None,
-            language: None,
-            title,
-            raw: Some(html_escape::encode_text(remainder).to_string()),
-        },
-    ))
-}
+// pub fn code_old(source: &str) -> IResult<&str, Section> {
+//     let (remainder, attributes) = section_attributes(source)?;
+//     let (remainder, _) = multispace0(remainder)?;
+//     let title = get_title_from_attributes(&attributes);
+//     // let escaped_text = html_escape::encode_text(remainder).to_string();
+//     Ok((
+//         remainder,
+//         Section::CodeSection {
+//             attributes,
+//             attributes_string: None,
+//             language: None,
+//             title,
+//             raw: Some(html_escape::encode_text(remainder).to_string()),
+//         },
+//     ))
+// }
 
-pub fn code_dev(source: &str) -> IResult<&str, Section> {
+pub fn code(source: &str) -> IResult<&str, Section> {
     let (remainder, initial_attributes) = section_attributes(source)?;
     let (remainder, _) = multispace0(remainder)?;
     let title = get_title_from_attributes(&initial_attributes);
     let mut language: Option<String> = None;
-    // let escaped_text = html_escape::encode_text(remainder).to_string();
-    let mut attributes: Option<Vec<SectionAttribute>> = None;
+    // This pulls off the first attribute if there is no
+    // value and uses it as the language for code highlighting
+    let mut tmp_attrs: Vec<SectionAttribute> = vec![];
     match initial_attributes {
         Some(attrs) => {
             attrs.iter().enumerate().for_each(|(a, b)| {
                 if a == 0 {
                     match b {
                         SectionAttribute::Attribute { key, value } => match value {
-                            Some(_) => {}
+                            Some(_) => tmp_attrs.push(SectionAttribute::Attribute {
+                                key: Some(key.as_ref().unwrap().to_string()),
+                                value: Some(value.as_ref().unwrap().to_string()),
+                            }),
                             None => language = Some("HTML".to_string()),
                         },
                     }
@@ -45,18 +49,11 @@ pub fn code_dev(source: &str) -> IResult<&str, Section> {
         }
         _ => {}
     }
-
-    // if initial_attributes.as_ref().unwrap().len() > 0 {
-    //     match &initial_attributes.as_ref().unwrap()[0] {
-    //         SectionAttribute::Attribute { key, value } => match value {
-    //             None => language = Some(key.as_ref().unwrap().as_str().to_string()),
-    //             Some(_) => {
-    //                 attributes = Some(vec![]);
-    //             }
-    //         },
-    //     }
-    // }
-
+    let attributes: Option<Vec<SectionAttribute>> = if tmp_attrs.len() > 0 {
+        Some(tmp_attrs)
+    } else {
+        None
+    };
     Ok((
         remainder,
         Section::CodeSection {
@@ -90,7 +87,7 @@ mod test {
             title: None,
             raw: Some(source.to_string()),
         };
-        let results = code_dev(&source).unwrap().1;
+        let results = code(&source).unwrap().1;
         assert_eq!(expected, results);
     }
 
@@ -104,7 +101,7 @@ mod test {
             title: None,
             raw: Some("Cap the jar".to_string()),
         };
-        let results = code_dev(&source).unwrap().1;
+        let results = code(&source).unwrap().1;
         assert_eq!(expected, results);
     }
 

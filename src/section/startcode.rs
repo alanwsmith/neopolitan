@@ -1,7 +1,7 @@
+use crate::section::lib::get_title_from_attributes::*;
 use crate::section::section::*;
 use crate::section::section_attributes::*;
 use nom::character::complete::multispace0;
-use crate::section::lib::get_title_from_attributes::*;
 use nom::IResult;
 
 pub fn startcode(source: &str) -> IResult<&str, Section> {
@@ -32,9 +32,17 @@ mod test {
     #[ignore]
     #[test]
     pub fn startcode_basic() {
-        let source = ["-> startcode", "", "Bring your best compass", "Cap the jar", "", "-> endcode", ""]
-            .join("\n")
-            .to_string();
+        let source = [
+            "-> startcode",
+            "",
+            "Bring your best compass",
+            "Cap the jar",
+            "",
+            "-> endcode",
+            "",
+        ]
+        .join("\n")
+        .to_string();
         let expected = Some(
             vec![
                 r#"<pre><code>Bring your best compass"#,
@@ -83,5 +91,4 @@ mod test {
         let output = sf.output(&u);
         assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
-
 }

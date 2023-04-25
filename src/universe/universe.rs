@@ -64,6 +64,7 @@ impl Universe<'_> {
     pub fn output_files(&self) {
         for output_file in self.source_files.iter() {
             let mut output_path = PathBuf::from(self.dest_dir.as_ref().unwrap());
+            println!("Writing: {}", output_path.display());
             let sub_path = &output_file
                 .input_path
                 .as_ref()
