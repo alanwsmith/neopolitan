@@ -4,6 +4,7 @@
 <head>
   <title>Neopolitan</title>
   <link rel="stylesheet" href="/styles/global.css" />
+  <link rel="stylesheet" href="/styles/prism.css" />
 </head>
 
 <body>
@@ -36,9 +37,11 @@ to a flat-file database that get assemled when the site
 is generated.</p><p>For example, here's a basic format I'm think about
 for bookmarks:</p><div class="codeWrapper">
 <div class="codeTitle">&nbsp;</div>
-
 <div class="codeContent">
-<pre><code file="simple bookmark">-&gt; reference
+<pre
+
+><code 
+>-&gt; reference
 &gt;&gt; title: Sara Joy's Home Page
 &gt;&gt; url: https://sarajoy.dev/
 &gt;&gt; category: Personal Websites
@@ -50,15 +53,19 @@ for bookmarks:</p><div class="codeWrapper">
 &gt;&gt; type: bookmark 
 &gt;&gt; published: y</code></pre>
 </div>
-</div><p>-&gt; h2</p>
+</div>
+
+<p>-&gt; h2</p>
 <p>Expansion</p>
 <p>The content area can be use for more non-structured
 information as well:</p>
 <div class="codeWrapper">
 <div class="codeTitle">&nbsp;</div>
-
 <div class="codeContent">
-<pre><code>-&gt; reference
+<pre
+ class="language-file detailed bookmark"
+><code  class="language-file detailed bookmark"
+>-&gt; reference
 &gt;&gt; title: Sara Joy's Home Page
 &gt;&gt; url: https://sarajoy.dev/
 &gt;&gt; category: Personal Websites
@@ -83,7 +90,9 @@ tabs are movig up the page
 &gt;&gt; type: bookmark 
 &gt;&gt; published: y</code></pre>
 </div>
-</div><p>These files could get their own pages but
+</div>
+
+<p>These files could get their own pages but
 they could also be collected and used
 as cards on other pages. </p>
 <p>The more I think about the metadata in 
@@ -93,7 +102,8 @@ more of a feature that I realized.</p>
 <div class="todo"><p>[] Write up and link to a post on your
 Grimoire (aka notes app).</p><p>[] Put in footnote reference to 
 &gt;meilisearch&gt;https://www.meilisearch.com/&gt;</p></div><h3 class="blog-footer">Previously</h3><p>&gt;Is This Thing On?&gt;/blog/is-this-thing-on.html&gt;</p><h3>Next</h3><p>&gt;Checklist Example&gt;/blog/checklist-example.html&gt;</p></main>
-
   <footer>from <a href="https://www.alanwsmith.com/">alan w. smith</a></footer>
+
+  <script src="/scripts/prism.js"></script>
 </body>
 </html>

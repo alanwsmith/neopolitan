@@ -4,6 +4,7 @@
 <head>
   <title>Neopolitan</title>
   <link rel="stylesheet" href="/styles/global.css" />
+  <link rel="stylesheet" href="/styles/prism.css" />
 </head>
 
 <body>
@@ -25,28 +26,29 @@
   <main><h1 class="title">Neopolitan</h1><h2>Inline Tag: small (The Side Comment Element)
 </h2><h3>Basic Usage</h3><div class="preWrapper">
 <div class="preTitle">Source</div>
-<pre><code>-&gt; p
+<pre class="language-neo"><code class="language-neo">-&gt; p
 
 Use a &lt;&lt;pencil|small&gt;&gt; to write</code></pre>
 </div>
 
 <div class="preWrapper">
 <div class="preTitle">Output</div>
-<pre><code>&lt;p&gt;Use a &lt;small&gt;pencil&lt;/small&gt;  to write&lt;/p&gt;
+<pre class="language-html"><code class="language-html">&lt;p&gt;Use a &lt;small&gt;pencil&lt;/small&gt;  to write&lt;/p&gt;
 </code></pre>
 </div><h3>With Attributes</h3><div class="preWrapper">
 <div class="preTitle">Source</div>
-<pre><code>-&gt; p
+<pre class="language-neo"><code class="language-neo">-&gt; p
 
 Use a &lt;&lt;pencil|small|id: alfa|class: bravo&gt;&gt; to write</code></pre>
 </div>
 
 <div class="preWrapper">
 <div class="preTitle">Output</div>
-<pre><code>&lt;p&gt;Use a &lt;small id="alfa" class="bravo"&gt;pencil&lt;/small&gt;  to write&lt;/p&gt;
+<pre class="language-html"><code class="language-html">&lt;p&gt;Use a &lt;small id="alfa" class="bravo"&gt;pencil&lt;/small&gt;  to write&lt;/p&gt;
 </code></pre>
 </div></main>
-
   <footer>from <a href="https://www.alanwsmith.com/">alan w. smith</a></footer>
+
+  <script src="/scripts/prism.js"></script>
 </body>
 </html>

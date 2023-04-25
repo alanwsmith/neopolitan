@@ -101,6 +101,7 @@ The Sections
 Sections are things like:
 
 -> startcode
+>> neo
 >> title: Section Types
 
 -> title
@@ -159,28 +160,38 @@ Bring your best compass
 
 Attributes aren't restricted to the HTML output. 
 They can be used as metadata for the processing 
-engine or to add supplemental content.
+engine or to add supplemental content. 
 
 For example, I use a <<title|strong>> attribute 
 to add a header to my code blocks. This:
 
 -> startcode
+>> neo
 >> title: Source
 
 -> code
 >> title: Foxtrot Example Title
 
-<div>alfa bravo charlie</div>
+alfa bravo charlie
 
 -> endcode
 
 Renders this:
 
 -> code
->> HTML
+>> html
 >> title: Foxtrot Example Title
 
-<div>alfa bravo charlie</div>
+alfa bravo charlie
+
+
+-> p
+
+The ability to use attributes directly inside
+content is the biggest reason I went down this 
+path. I couldn't be happier with how it's
+turning out.
+
 
 -> h2
 
@@ -191,12 +202,13 @@ They start with two `<<`` characters and end
 with a closing `>>`` pair. 
 
 -> code
+>> neo
 >> title: Source
 
 Open <<your|strong>> book
 
 -> code
->> HTML
+>> html
 >> title: Output
 
 Open <strong>your</strong> book
@@ -209,18 +221,42 @@ with pipe separators. Here's what that looks
 like:
 
 -> code
+>> neo
 >> title: Source
 
-Open <<your|strong|id:delta>> book
+Down <<that|strong|id:delta>> road
 
 
 -> code
->> HTML
+>> html
 >> title: Output
 
-Open <strong id="delta">your</strong> book
+Down <strong id="delta">that</strong> road
 
 -> p
+
+Multiple attributes are separated with 
+the pipe character:
+
+
+-> code
+>> neo
+>> title: Source
+
+The <<best|strong|id:delta|class:echo>> method
+
+
+-> code
+>> html
+>> title: Output
+
+The <strong id="delta" class="echo">best</strong> method
+
+
+
+
+-> p
+
 
 The list of inline tags <<is here|link|/inline-tags/index.html>>
 
@@ -233,6 +269,7 @@ There are shorthand features as well.
 Here's the <<strong|strong>> version:
 
 -> startcode
+>> neo
 >> title: Source
 
 The *first** draft
@@ -241,7 +278,7 @@ The *first** draft
 
 
 -> startcode
->> HTML
+>> html
 >> title: Output
 
 The <strong>first</strong> draft
@@ -252,18 +289,19 @@ The <strong>first</strong> draft
 Attributes are added like this:
 
 -> startcode
+>> neo
 >> title: Source
 
-The *first*class:tango* draft
+Five *round*class:tango* bowls
 
 -> endcode
 
 
 -> startcode
->> HTML
+>> html
 >> title: Output
 
-The <strong class="tango">first</strong> draft
+Five <strong class="tango">round</strong> bowls
 
 -> endcode
 
@@ -276,18 +314,19 @@ pipe characters.
 
 
 -> startcode
+>> neo
 >> title: Source
 
-The *first*id:alfa|class:bravo* draft
+Makes *good*id:alfa|class:bravo* sense
 
 -> endcode
 
 
 -> startcode
->> HTML
+>> html
 >> title: Output
 
-The <strong id="alfa" class="bravo">first</strong> draft
+Makes <strong id="alfa" class="bravo">good</strong> sense
 
 -> endcode
 
@@ -305,6 +344,7 @@ section to hold the date and identify the
 template to use via a <<type|strong>> attribute. 
 
 -> startcode
+>> neo
 >> title: Source
 
 -> attributes

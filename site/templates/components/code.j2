@@ -6,8 +6,12 @@
 &nbsp;
 {%- endif -%}
 </div>
-
 <div class="codeContent">
-<pre><code {{- attributes_string -}}>{{ raw }}</code></pre>
+<pre
+{% if language != none %} class="language-{{language}}"{% endif %}
+><code {% if language != none %} class="language-{{language}}"{% endif %}
+>{{ raw }}</code></pre>
 </div>
 </div>
+
+

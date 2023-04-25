@@ -48,7 +48,7 @@ pub fn code(source: &str) -> IResult<&str, Section> {
                                 //     .unwrap(),
                                 // );
 
-                                language = Some("HTML".to_string())
+                                language = Some(key.as_ref().unwrap().to_string())
                             }
                         },
                     }
@@ -62,11 +62,7 @@ pub fn code(source: &str) -> IResult<&str, Section> {
     } else {
         None
     };
-
     let attributes_string = Some(attributes_basic(&attributes));
-
-    dbg!(".");
-
     Ok((
         remainder,
         Section::CodeSection {
