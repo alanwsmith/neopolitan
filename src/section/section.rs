@@ -479,7 +479,7 @@ pub fn section(source: &str) -> IResult<&str, Section> {
                 line_ending,
                 alt((take_until("\n\n-> endcode"), rest)),
             ))
-            .map(|t| startcode(t.3).unwrap().1),
+            .map(|t| code(t.3).unwrap().1),
             tuple((
                 tag("-> subtitle"),
                 not_line_ending,

@@ -62,8 +62,6 @@ pub fn code(source: &str) -> IResult<&str, Section> {
         None
     };
     let attributes_string = Some(attributes_basic(&attributes));
-
-    dbg!(&raw);
     Ok((
         remainder,
         Section::CodeSection {

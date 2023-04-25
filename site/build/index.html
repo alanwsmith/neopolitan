@@ -43,7 +43,7 @@ It's called Neopolitan and it looks like this:</p><div class="codeWrapper">
 <div class="codeTitle">index.neo</div>
 
 <div class="codeContent">
-<pre><codenone>-&gt; title
+<pre><code><span style="color:#c0c5ce;">-&gt; title
 
 Welcome To Neopolitan
 
@@ -54,9 +54,9 @@ A plain-text format for websites
 -&gt; note
 &gt;&gt; title: A Quick Heads-Up
 
-I'm doing the "launch before you're ready - build in 
-public" thing. The ideas for the format are in place. 
-The example implementation I'm building is still a work 
+I&#39;m doing the &quot;launch before you&#39;re ready - build in 
+public&quot; thing. The ideas for the format are in place. 
+The example implementation I&#39;m building is still a work 
 in progress.
 
 -&gt; h2
@@ -65,9 +65,9 @@ Introduction
 
 My site is twenty years old. Thinking back on the past
 two decades got me thinking forward to the next two. 
-Instead of, "What do I want to use for my next redesign?" 
-I'm asking, "What foundation do I want for the next twenty 
-years?"
+Instead of, &quot;What do I want to use for my next redesign?&quot; 
+I&#39;m asking, &quot;What foundation do I want for the next twenty 
+years?&quot;
 
 The answers are very different.
 
@@ -75,7 +75,7 @@ The answers are very different.
 -&gt; attributes
 &gt;&gt; date: 2023-04-16 19:06:40
 &gt;&gt; type: default 
-&gt;&gt; status: published</code></pre>
+&gt;&gt; status: published</span></code></pre>
 </div>
 </div><h2>How It Works</h2><p>Documents are made of two things:</p><ol>
 <li><p>Sections which start like this: <strong>-&gt;</strong></p></li>
@@ -84,7 +84,7 @@ The answers are very different.
 <div class="codeTitle">Section Types</div>
 
 <div class="codeContent">
-<pre><codenone>-&gt; title
+<pre><code title="Section Types">-&gt; title
 
 -&gt; h2
 
@@ -130,7 +130,7 @@ to add a header to my code blocks. This:</p>
 <div class="codeTitle">Source</div>
 
 <div class="codeContent">
-<pre><codenone>-&gt; code
+<pre><code title="Source">-&gt; code
 &gt;&gt; title: Foxtrot Example Title
 
 console.log("delta")</code></pre>
@@ -181,26 +181,26 @@ Here's the <strong>strong</strong>  version:</p><div class="codeWrapper">
 <div class="codeTitle">Source</div>
 
 <div class="codeContent">
-<pre><codenone>The *first** draft</code></pre>
+<pre><code title="Source">The *first** draft</code></pre>
 </div>
 </div><div class="codeWrapper">
 <div class="codeTitle">Output</div>
 
 <div class="codeContent">
-<pre><codenone>The &lt;strong&gt;first&lt;/strong&gt; draft</code></pre>
+<pre><code title="Output">The &lt;strong&gt;first&lt;/strong&gt; draft</code></pre>
 </div>
 </div><p>Attributes are added like this:</p>
 <div class="codeWrapper">
 <div class="codeTitle">Source</div>
 
 <div class="codeContent">
-<pre><codenone>The *first*class:tango* draft</code></pre>
+<pre><code title="Source">The *first*class:tango* draft</code></pre>
 </div>
 </div><div class="codeWrapper">
 <div class="codeTitle">Output</div>
 
 <div class="codeContent">
-<pre><codenone>The &lt;strong class="tango"&gt;first&lt;/strong&gt; draft</code></pre>
+<pre><code title="Output">The &lt;strong class="tango"&gt;first&lt;/strong&gt; draft</code></pre>
 </div>
 </div><p>Multiple attributes are separated by
 pipe characters. 
@@ -209,13 +209,13 @@ pipe characters.
 <div class="codeTitle">Source</div>
 
 <div class="codeContent">
-<pre><codenone>The *first*id:alfa|class:bravo* draft</code></pre>
+<pre><code title="Source">The *first*id:alfa|class:bravo* draft</code></pre>
 </div>
 </div><div class="codeWrapper">
 <div class="codeTitle">Output</div>
 
 <div class="codeContent">
-<pre><codenone>The &lt;strong id="alfa" class="bravo"&gt;first&lt;/strong&gt; draft</code></pre>
+<pre><code title="Output">The &lt;strong id="alfa" class="bravo"&gt;first&lt;/strong&gt; draft</code></pre>
 </div>
 </div><h2>The Metadata Sections</h2><p>Some sections don't output directly. They're 
 used for metadata that can be placed on the 
@@ -225,7 +225,7 @@ template to use via a <strong>type</strong>  attribute.</p><div class="codeWrapp
 <div class="codeTitle">Source</div>
 
 <div class="codeContent">
-<pre><codenone>-&gt; attributes
+<pre><code title="Source">-&gt; attributes
 &gt;&gt; date: 2023-04-16 19:06:40
 &gt;&gt; type: default 
 &gt;&gt; status: published</code></pre>
