@@ -1,6 +1,7 @@
 use crate::section::lib::get_title_from_attributes::*;
 use crate::section::section::*;
 use crate::section::section_attributes::*;
+use crate::source_file::attributes_basic::attributes_basic;
 use html_escape;
 use nom::character::complete::multispace0;
 use nom::IResult;
@@ -54,11 +55,12 @@ pub fn code(source: &str) -> IResult<&str, Section> {
     } else {
         None
     };
+    let attributes_string = Some(attributes_basic(&attributes));
     Ok((
         remainder,
         Section::CodeSection {
             attributes,
-            attributes_string: None,
+            attributes_string,
             language,
             title,
             raw: Some(html_escape::encode_text(remainder).to_string()),
@@ -82,7 +84,7 @@ mod test {
             .to_string();
         let expected = Section::CodeSection {
             attributes: None,
-            attributes_string: None,
+            attributes_string: Some("".to_string()),
             language: None,
             title: None,
             raw: Some(source.to_string()),
@@ -96,9 +98,28 @@ mod test {
         let source = [">> HTML", "", "Cap the jar"].join("\n").to_string();
         let expected = Section::CodeSection {
             attributes: None,
-            attributes_string: None,
+            attributes_string: Some("".to_string()),
             language: Some("HTML".to_string()),
             title: None,
+            raw: Some("Cap the jar".to_string()),
+        };
+        let results = code(&source).unwrap().1;
+        assert_eq!(expected, results);
+    }
+
+    #[test]
+    pub fn code_with_title() {
+        let source = [">> title: Some new title", "", "Cap the jar"]
+            .join("\n")
+            .to_string();
+        let expected = Section::CodeSection {
+            attributes: Some(vec![SectionAttribute::Attribute {
+                key: Some("title".to_string()),
+                value: Some("Some new title".to_string()),
+            }]),
+            attributes_string: Some(r#" title="Some new title""#.to_string()),
+            language: None,
+            title: Some("Some new title".to_string()),
             raw: Some("Cap the jar".to_string()),
         };
         let results = code(&source).unwrap().1;

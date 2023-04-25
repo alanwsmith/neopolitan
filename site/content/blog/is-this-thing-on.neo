@@ -2,6 +2,60 @@
 
 Is This Thing On?
 
-You're supposed to do hello world, but we're
-changing it up. 
+-> h2
+
+An Alternative
+
+You're suppose to use "Hello, World" for the 
+title of the first post on a new site. I figure 
+that's been done enough. So, we're changing it up
+and going with "Is this thing on?"
+
+-> h2
+
+Bare Bones
+
+And, yes. This thing is on.
+
+I'm doing the Launch-Before-You're-Ready and
+Build-In-Public thing. Everything on this site 
+is built with Neopolitan documents and the
+example site generator I'm building. That means
+things are going to be sparse at the start. I really 
+like the approach though.
+
+There's nothing like using something
+you're building to help you find the sharp edges.
+
+
+-> h2
+
+A Doodad
+
+The overview of the format and why I'm 
+creating it are on the <<home page|link|/>>. I won't 
+rehash them here. In fact, this post is going
+to be very short. It's purpose is primarily 
+to give me content to work with as I continue
+progress on the format and the engine.
+
+The <<next post|link|/blog/considering-bookmarks.html>> on 
+bookmarks actually has something to say.
+
+-a
+
+-> h3
+>> class: blog-footer
+
+Next Up
+
+<<Considering Bookmarks|link|/blog/considering-bookmarks.html>>
+
+
+-> attributes
+>> date: 2023-04-17 03:39:57
+>> id: 2oxqir9tuhgm
+>> type: blog 
+>> status: published
+
 

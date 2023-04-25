@@ -11,7 +11,9 @@
     <nav>
       <ul>
         <li><a href="/">Neopolitan</a></li>
+        <!--
         <li><a href="/blog/index.html">Blog</a></li>
+        -->
         <li><a href="/sections/content.html">Content Sections</a></li>
         <li><a href="/sections/metadata.html">Metadata Sections</a></li>
         <li><a href="/sections/functional.html">Functional Sections</a></li>
@@ -20,11 +22,13 @@
       </ul>
     </nav>
   </header>
-  <main><h1 class="title">Welcome To Neopolitan</h1><div class="subtitle">A plain-text format for websites</div><div title="A Quick Heads-Up" class="note">
+  <main><h1 class="title">Welcome To Neopolitan
+</h1><div class="subtitle">A plain-text format for websites</div><div title="A Quick Heads-Up" class="note">
 <div class="noteTitle">A Quick Heads-Up</div>
 <div class="noteText"><p>I'm doing the "launch before you're ready - build in 
 public" thing. The ideas for the format are in place. 
-The example implementation I'm building is still a work in progress.</p></div>
+The implementation I'm building for my site is still a 
+work in progress.</p></div>
 </div><h2>Introduction</h2><p>My site is twenty years old. Thinking back on the past
 two decades got me thinking forward to the next two. 
 Instead of, "What do I want to use for my next redesign?" 
@@ -77,7 +81,7 @@ The answers are very different.
 <li><p>Sections which start like this: <strong>-&gt;</strong></p></li>
 <li><p>Attributes which start like this: <strong>&gt;&gt;</strong></p></li>
 </ol><h2>The Sections</h2><p>Sections are things like:</p><div class="codeWrapper">
-<div class="codeTitle">&nbsp;</div>
+<div class="codeTitle">Section Types</div>
 
 <div class="codeContent">
 <pre><codenone>-&gt; title
@@ -121,7 +125,7 @@ Bring your best compass </code></pre>
 They can be used as metadata for the processing 
 engine or to add supplemental content.</p>
 <p>For example, I use a <strong>title</strong>  attribute 
-to add a header to my code blocks:</p>
+to add a header to my code blocks. This:</p>
 <div class="codeWrapper">
 <div class="codeTitle">Source</div>
 
@@ -131,12 +135,12 @@ to add a header to my code blocks:</p>
 
 console.log("delta")</code></pre>
 </div>
-</div><p>Which renders:</p>
+</div><p>Renders this:</p>
 <div class="codeWrapper">
 <div class="codeTitle">Foxtrot Example Title</div>
 
 <div class="codeContent">
-<pre><codenone>console.log("delta")
+<pre><code title="Foxtrot Example Title">console.log("delta")
 </code></pre>
 </div>
 </div><h2>Inline Tags And Attributes</h2><p>Content markup is done with inline tags. 
@@ -145,30 +149,30 @@ with a closing `&gt;&gt;`` pair.</p><div class="codeWrapper">
 <div class="codeTitle">Source</div>
 
 <div class="codeContent">
-<pre><codenone>Open &lt;&lt;your|strong&gt;&gt; book</code></pre>
+<pre><code title="Source">Open &lt;&lt;your|strong&gt;&gt; book</code></pre>
 </div>
 </div><div class="codeWrapper">
 <div class="codeTitle">Output</div>
 
 <div class="codeContent">
-<pre><codenone>Open &lt;strong&gt;your&lt;/strong&gt; book
+<pre><code title="Output">Open &lt;strong&gt;your&lt;/strong&gt; book
 </code></pre>
 </div>
 </div><p>Attributes can be added by appending them
 with pipe separators. Here's what that looks
-like with an <strong>id</strong>  added</p>
+like:</p>
 <div class="codeWrapper">
 <div class="codeTitle">Source</div>
 
 <div class="codeContent">
-<pre><codenone>Open &lt;&lt;your|strong|id:delta&gt;&gt; book
+<pre><code title="Source">Open &lt;&lt;your|strong|id:delta&gt;&gt; book
 </code></pre>
 </div>
 </div><div class="codeWrapper">
 <div class="codeTitle">Output</div>
 
 <div class="codeContent">
-<pre><codenone>Open &lt;strong id="delta"&gt;your&lt;/strong&gt; book</code></pre>
+<pre><code title="Output">Open &lt;strong id="delta"&gt;your&lt;/strong&gt; book</code></pre>
 </div>
 </div><p>The list of inline tags <a href="/inline-tags/index.html">is here</a> 
 </p>
@@ -239,6 +243,9 @@ what I'll use for my site full time once it's ready.</p><p>The goal for the site
 generic tool. It's to build my personal site. That
 said, it should make a good example and jumping off
 point if you're interested in playing with the
-format. </p><p>Enjoy, </p><p>- <a href="https://hachyderm.io/@TheIdOfAlan">alan</a></p></main>
+format. </p><p>If you do, I hope you find it as enjoyable as I 
+am.</p><p>- <a href="https://www.alanwsmith.com/">a</a></p></main>
+
+  <footer>from <a href="https://www.alanwsmith.com/">alan w. smith</a></footer>
 </body>
 </html>

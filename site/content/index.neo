@@ -2,6 +2,7 @@
 
 Welcome To Neopolitan
 
+
 -> subtitle
 
 A plain-text format for websites
@@ -11,7 +12,8 @@ A plain-text format for websites
 
 I'm doing the "launch before you're ready - build in 
 public" thing. The ideas for the format are in place. 
-The example implementation I'm building is still a work in progress.
+The implementation I'm building for my site is still a 
+work in progress.
 
 -> h2
 
@@ -99,7 +101,7 @@ The Sections
 Sections are things like:
 
 -> startcode
->> name: Section Types
+>> title: Section Types
 
 -> title
 
@@ -160,7 +162,7 @@ They can be used as metadata for the processing
 engine or to add supplemental content.
 
 For example, I use a <<title|strong>> attribute 
-to add a header to my code blocks:
+to add a header to my code blocks. This:
 
 -> startcode
 >> title: Source
@@ -172,7 +174,7 @@ console.log("delta")
 
 -> endcode
 
-Which renders:
+Renders this:
 
 -> code
 >> title: Foxtrot Example Title
@@ -203,7 +205,7 @@ Open <strong>your</strong> book
 
 Attributes can be added by appending them
 with pipe separators. Here's what that looks
-like with an <<id|strong>> added
+like:
 
 -> code
 >> title: Source
@@ -343,15 +345,13 @@ said, it should make a good example and jumping off
 point if you're interested in playing with the
 format. 
 
-Enjoy, 
+If you do, I hope you find it as enjoyable as I 
+am.
 
-- <<alan|link|https://hachyderm.io/@TheIdOfAlan>>
-
+- <<a|link|https://www.alanwsmith.com/>>
 
 -> attributes
 >> date: 2023-04-16 19:06:40
 >> id: 2owpsh3aov3w
 >> type: default 
 >> status: published
-
-

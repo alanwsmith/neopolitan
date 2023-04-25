@@ -1,10 +1,13 @@
 -> title
 
-Neopolitan
+Neopolitan Content Sections
 
--> h2
+I've mapped sections to most of the core HTML
+elements. The basics of each one are setup in my
+example engine except for tables. I'm still 
+working through how I'm going to handle those. 
 
-Content Sections
+-> list
 
 - <<aside|link|/sections/aside.html>>
 
@@ -81,5 +84,7 @@ Content Sections
 -> h3
 
 In Progress
+
+-> list
 
 - <<table|link|/sections/table.html>>
