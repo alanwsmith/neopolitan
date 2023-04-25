@@ -40,7 +40,6 @@ use crate::section::reference::*;
 use crate::section::results::*;
 use crate::section::script::*;
 use crate::section::section_attributes::SectionAttribute;
-use crate::section::startcode::*;
 use crate::section::subtitle::*;
 use crate::section::table::*;
 use crate::section::textarea::*;

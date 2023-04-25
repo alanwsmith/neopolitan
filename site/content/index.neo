@@ -170,17 +170,17 @@ to add a header to my code blocks. This:
 -> code
 >> title: Foxtrot Example Title
 
-console.log("delta")
+<div>alfa bravo charlie</div>
 
 -> endcode
 
 Renders this:
 
 -> code
+>> HTML
 >> title: Foxtrot Example Title
 
-console.log("delta")
-
+<div>alfa bravo charlie</div>
 
 -> h2
 
@@ -196,6 +196,7 @@ with a closing `>>`` pair.
 Open <<your|strong>> book
 
 -> code
+>> HTML
 >> title: Output
 
 Open <strong>your</strong> book
@@ -214,6 +215,7 @@ Open <<your|strong|id:delta>> book
 
 
 -> code
+>> HTML
 >> title: Output
 
 Open <strong id="delta">your</strong> book
@@ -239,6 +241,7 @@ The *first** draft
 
 
 -> startcode
+>> HTML
 >> title: Output
 
 The <strong>first</strong> draft
@@ -257,6 +260,7 @@ The *first*class:tango* draft
 
 
 -> startcode
+>> HTML
 >> title: Output
 
 The <strong class="tango">first</strong> draft
@@ -280,6 +284,7 @@ The *first*id:alfa|class:bravo* draft
 
 
 -> startcode
+>> HTML
 >> title: Output
 
 The <strong id="alfa" class="bravo">first</strong> draft

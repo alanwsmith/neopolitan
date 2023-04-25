@@ -40,6 +40,7 @@ impl Universe<'_> {
                 if ext == "neo" {
                     let mut sf = SourceFile::new();
                     sf.input_path = Some(p.clone());
+                    dbg!(&sf.input_path);
                     sf.raw = Some(
                         fs::read_to_string(
                             sf.input_path
@@ -64,7 +65,6 @@ impl Universe<'_> {
     pub fn output_files(&self) {
         for output_file in self.source_files.iter() {
             let mut output_path = PathBuf::from(self.dest_dir.as_ref().unwrap());
-            println!("Writing: {}", output_path.display());
             let sub_path = &output_file
                 .input_path
                 .as_ref()
@@ -86,6 +86,7 @@ impl Universe<'_> {
                     ))
                 .unwrap()
                 .to_string();
+            //dbg!(&output_path);
             fs::write(output_path, out).unwrap();
         }
     }

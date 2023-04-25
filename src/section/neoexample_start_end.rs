@@ -5,12 +5,16 @@ use crate::section::section_attributes::*;
 use crate::source_file::source_file::SourceFile;
 use crate::universe::create_env::create_env;
 use crate::universe::universe::Universe;
+use html_escape;
 use minijinja::context;
 use nom::character::complete::multispace0;
 use nom::combinator::eof;
 use nom::multi::many_till;
 use nom::IResult;
-use html_escape;
+use syntect::easy::HighlightLines;
+use syntect::highlighting::ThemeSet;
+use syntect::html::{styled_line_to_highlighted_html, IncludeBackground};
+use syntect::parsing::SyntaxSet;
 
 pub fn neoexample_start_end(source: &str) -> IResult<&str, Section> {
     let (remainder, attributes) = section_attributes(source)?;
@@ -42,13 +46,21 @@ pub fn neoexample_start_end(source: &str) -> IResult<&str, Section> {
         .unwrap()
         .to_string();
 
-    let escaped_out = html_escape::encode_text(&out);
+    let escaped_html = html_escape::encode_text(&out);
+
+    // Tried to add syntax highlighting to be it was very slow
+    // let ps = SyntaxSet::load_defaults_newlines();
+    // let ts = ThemeSet::load_defaults();
+    // let syntax = ps.find_syntax_by_name("HTML").unwrap();
+    // let mut h = HighlightLines::new(syntax, &ts.themes["base16-ocean.dark"]);
+    // let regions = h.highlight_line(&out, &ps).unwrap();
+    // let html = styled_line_to_highlighted_html(&regions[..], IncludeBackground::No).unwrap();
 
     Ok((
         remainder,
         Section::NeoExampleStartEndSection {
             attributes,
-            html: Some(escaped_out.to_string()),
+            html: Some(escaped_html.to_string()),
             raw: Some(escaped_raw.to_string()),
         },
     ))

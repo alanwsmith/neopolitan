@@ -41,7 +41,6 @@ pub mod results;
 pub mod script;
 pub mod section;
 pub mod section_attributes;
-pub mod startcode;
 pub mod startdiv;
 pub mod subtitle;
 pub mod table;
