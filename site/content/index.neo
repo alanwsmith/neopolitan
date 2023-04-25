@@ -185,7 +185,7 @@ Renders this:
 alfa bravo charlie
 
 
--> p
+-> aside
 
 The ability to use attributes directly inside
 content is the biggest reason I went down this 
