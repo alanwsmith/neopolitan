@@ -1,0 +1,36 @@
+-> title
+
+Neopolitan
+
+-> h2
+
+Inline Tag: dfn
+
+
+-> h3
+
+No Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|dfn>> to write
+
+-> endneoexample
+
+
+
+-> h3
+
+With Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|dfn|id: alfa|class: bravo>> to write
+
+-> endneoexample
+
+

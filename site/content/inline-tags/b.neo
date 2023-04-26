@@ -1,0 +1,36 @@
+-> title
+
+Neopolitan
+
+-> h2
+
+Inline Tag: b (The Bring Attention To Element)
+
+
+-> h3
+
+Basic Usage
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|b>> to write
+
+-> endneoexample
+
+
+
+-> h3
+
+With Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|b|id: alfa|class: bravo>> to write
+
+-> endneoexample
+
+

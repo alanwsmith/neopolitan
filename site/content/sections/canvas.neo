@@ -1,0 +1,14 @@
+-> title
+
+Section: canvas
+
+
+
+-> startneoexample
+
+-> canvas
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample

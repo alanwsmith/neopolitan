@@ -1,0 +1,36 @@
+-> title
+
+Neopolitan
+
+-> h2
+
+Inline Tag: var (The Variable element)
+
+
+-> h3
+
+Basic Usage
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|var>> to write
+
+-> endneoexample
+
+
+
+-> h3
+
+With Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|var|id: alfa|class: bravo>> to write
+
+-> endneoexample
+
+

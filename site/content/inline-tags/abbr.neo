@@ -1,0 +1,36 @@
+-> title
+
+Neopolitan
+
+-> h2
+
+Inline Tag: abbr (The Abbreviation Element)
+
+
+-> h3
+
+Basic Usage
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|abbr>> to write
+
+-> endneoexample
+
+
+
+-> h3
+
+With Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|abbr|id: alfa|class: bravo>> to write
+
+-> endneoexample
+
+

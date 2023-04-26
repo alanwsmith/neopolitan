@@ -1,0 +1,14 @@
+-> title
+
+Seciton: textarea
+
+
+
+-> startneoexample
+
+-> textarea
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample

@@ -1,54 +1,26 @@
-use crate::content::content::*;
-use crate::section::attributes_for_section::*;
+use crate::snippet::snippet::*;
 use nom::branch::alt;
-use nom::bytes::complete::tag;
+use nom::bytes::complete::take_until;
 use nom::combinator::eof;
+use nom::combinator::rest;
 use nom::multi::many_till;
 use nom::IResult;
 use serde::Serialize;
+use crate::snippet::snippet_enum::Snippet;
 
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum Block {
-    ChecklistItem {
-        status: Option<String>,
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    CodeBlock {
-        text: Option<String>,
-    },
-    NotesItem {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    OrderedListItem {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    P {
-        children: Option<Vec<Content>>,
-    },
-    RawContent {
-        text: Option<String>,
-    },
-    ToDoItem {
-        status: Option<String>,
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
-    UnorderedListItem {
-        attributes: Option<Vec<SectionAttribute>>,
-        children: Option<Vec<Block>>,
-    },
+    Text { snippets: Option<Vec<Snippet>> },
+    Placeholder,
 }
 
 pub fn block(source: &str) -> IResult<&str, Block> {
-    let (remainder, content) = many_till(content, alt((tag("\n\n"), eof)))(source)?;
-    Ok((
-        remainder,
-        Block::P {
-            children: Some(content.0),
-        },
-    ))
+    let (remainder, captured) = alt((take_until("\n\n"), rest))(source)?;
+    // dbg!(captured);
+    let (_, snippets) = many_till(snippet, eof)(captured)?;
+    let return_block = Block::Text {
+        snippets: Some(snippets.0),
+    };
+    Ok((remainder.trim(), return_block))
 }

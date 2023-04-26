@@ -1,59 +1,76 @@
-use crate::block::block::*;
-use crate::section::attributes_for_section::*;
 use crate::section::section::*;
-use nom::bytes::complete::tag;
-use nom::multi::many0;
-use nom::sequence::preceded;
+use crate::section::section_attributes::*;
+use nom::character::complete::multispace0;
 use nom::IResult;
 
 pub fn textarea(source: &str) -> IResult<&str, Section> {
-    let (source, att_capture) = many0(preceded(tag(">> "), section_attribute))(source).unwrap();
-    let attributes = if att_capture.is_empty() {
-        None
-    } else {
-        Some(att_capture)
-    };
-    let children = if source.trim().is_empty() {
-        None
-    } else {
-        Some(Block::RawContent {
-            text: Some(source.trim().to_string()),
-        })
-    };
+    let (remainder, attributes) = section_attributes(source)?;
+    let (remainder, _) = multispace0(remainder)?;
     Ok((
-        source,
+        remainder,
         Section::TextareaSection {
             attributes,
-            children,
+            raw: Some(remainder.to_string()),
         },
     ))
 }
 
 #[cfg(test)]
-
 mod test {
-    use crate::block::block::*;
-    use crate::parse::parse;
-    use crate::section::attributes_for_section::*;
-    use crate::section::section::*;
-    use crate::wrapper::wrapper::*;
+
+    use crate::parse::parse::*;
+    use crate::source_file::source_file::*;
+    use crate::tests::remove_whitespace::remove_whitespace;
+    use crate::universe::create_env::create_env;
+    use crate::universe::universe::Universe;
+    
+    #[test]
+    pub fn basic_textarea() {
+        let source = ["-> textarea", "", "Bring your best compass", "Cap the jar"]
+            .join("\n")
+            .to_string();
+        let expected = Some(
+            vec![
+                r#"<textarea>Bring your best compass"#,
+                r#"Cap the jar</textarea>"#,
+            ]
+            .join("\n")
+            .to_string(),
+        );
+        let mut u = Universe::new();
+        u.env = Some(create_env("./site/templates"));
+        let mut sf = SourceFile::new();
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
+        let output = sf.output(&u);
+        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
+    }
 
     #[test]
-    fn basic_textarea() {
-        let lines = vec!["-> textarea", ">> rows: 50", "", "the quick brown fox"].join("\n");
-        let source = lines.as_str();
-        let expected = Wrapper::Page {
-            children: Some(vec![Section::TextareaSection {
-                attributes: Some(vec![SectionAttribute::Attribute {
-                    key: Some("rows".to_string()),
-                    value: Some("50".to_string()),
-                }]),
-                children: Some(Block::RawContent {
-                    text: Some("the quick brown fox".to_string()),
-                }),
-            }]),
-        };
-        let result = parse(source).unwrap().1;
-        assert_eq!(expected, result);
+    pub fn attributes_with_code() {
+        let source = [
+            "-> textarea",
+            ">> class: alfa",
+            "",
+            "Bring your best compass",
+            "Cap the jar",
+        ]
+        .join("\n")
+        .to_string();
+        let expected = Some(
+            vec![
+                r#"<textarea class="alfa">Bring your best compass"#,
+                r#"Cap the jar</textarea>"#,
+            ]
+            .join("\n")
+            .to_string(),
+        );
+        let mut u = Universe::new();
+        u.env = Some(create_env("./site/templates"));
+        let mut sf = SourceFile::new();
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
+        let output = sf.output(&u);
+        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
 }

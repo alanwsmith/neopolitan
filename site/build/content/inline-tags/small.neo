@@ -1,0 +1,36 @@
+-> title
+
+Neopolitan
+
+-> h2
+
+Inline Tag: small
+
+
+-> h3
+
+No Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|small>> to write
+
+-> endneoexample
+
+
+
+-> h3
+
+With Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|small|id: alfa|class: bravo>> to write
+
+-> endneoexample
+
+

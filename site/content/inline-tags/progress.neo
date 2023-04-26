@@ -1,0 +1,36 @@
+-> title
+
+Neopolitan
+
+-> h2
+
+Inline Tag: progress (The Progress Indicator Element)
+
+
+-> h3
+
+Basic Usage
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|progress>> to write
+
+-> endneoexample
+
+
+
+-> h3
+
+With Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|progress|id: alfa|class: bravo>> to write
+
+-> endneoexample
+
+

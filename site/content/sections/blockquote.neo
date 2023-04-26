@@ -1,0 +1,14 @@
+-> title
+
+Section: blockquote
+
+
+
+-> startneoexample
+
+-> blockquote
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample

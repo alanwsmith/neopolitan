@@ -1,0 +1,14 @@
+-> title
+
+Section: script
+
+
+
+-> startneoexample
+
+-> script
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample

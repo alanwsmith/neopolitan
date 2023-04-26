@@ -1,0 +1,28 @@
+-> title
+
+Skipping Some Elements
+
+I did some experimentation with a `-> figure`neo`
+section. The HTML figure tag can handle lots of
+types of internal content. I've got some ideas
+but haven't found a solution I like yet. So,
+punting on if for now. 
+
+Same thing goes for picture and video
+
+- Reference:
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+
+
+-> categories
+>> Neopolitan
+
+-> attributes
+>> date: 2023-04-23 01:59:17
+>> id: 2ooanojmkrrx
+>> type: post
+>> status: published
+

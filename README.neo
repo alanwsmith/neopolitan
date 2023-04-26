@@ -6,37 +6,31 @@ Neopolitan
 
 A plain-text format websites
 
--> h2
+-> notes
 
-The Format
+- This is the source code for the site
+engine I'm building to work with the 
+Neopolitan file format I designed 
 
-Neopolitan is a plain-text format designed
-for websites. It's built from the parts of
-Markdown, MDX, Org-Mode, Raw HTML, and 
-other formats that I like the most. The goal 
-is to use it for the next 20 years regardless
-of what tech I use for my site. 
+- The site engine is to build my site
+and to act as a test bed for the format
 
-The homepage for the format is:
+- This is still a work in progress
 
->neopolitan.alanwsmith.com>>
+- If you've got rust setup on your machine
+and want to experiment you should be able
+to clone down the repo do `cargo run``
+(This is very much a "works on my machine"
+thing at the moment)
 
-You can read more about the format there. 
+- Running the process uses the content
+and templates in the `site`` directory
+to generate output into the `site/build``
+directory
 
--> h2
 
-The Demo (Work In Progress)
+- The home page for the format is:
+>neopolitan.alanwsmith.com>
+https://neopolitan.alanwsmith.com/>
 
-This repo contains the documentation
-for the format along with the builder
-I use for my site. Neopolitan's spec is 
-an AST instead of an explict output. 
-So, my process is more of a demonstration 
-of than a reference implentation. 
-
-While the code in this repo is designed 
-for the sites I run it's built in a 
-relatively generic (but opinionated)
-manner. Feel free to use it. Or, fork
-it or make your own engine all together. 
 

@@ -1,0 +1,15 @@
+-> title
+
+Section: nav
+
+TODO: Add attributes
+
+
+-> startneoexample
+
+-> nav
+>> class: foxtrot
+
+- the quick brown fox
+
+-> endneoexample

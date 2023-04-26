@@ -1,144 +1,53 @@
-use crate::block::unordered_list_item::*;
-use crate::section::attributes_for_section::*;
+use crate::section::list_item::*;
 use crate::section::section::*;
-use nom::bytes::complete::tag;
+use crate::section::section_attributes::*;
+use nom::character::complete::multispace0;
 use nom::combinator::eof;
-use nom::multi::many0;
 use nom::multi::many_till;
-use nom::sequence::preceded;
 use nom::IResult;
 
 pub fn list(source: &str) -> IResult<&str, Section> {
-    let (source, att_capture) = many0(preceded(tag(">> "), section_attribute))(source).unwrap();
-    let attributes = if att_capture.is_empty() {
-        None
-    } else {
-        Some(att_capture)
-    };
-    let (source, b) = many_till(unordered_list_item, eof)(source.trim()).unwrap();
-    let children = if b.0.is_empty() { None } else { Some(b.0) };
+    let (remainder, attributes) = section_attributes(source)?;
+    let (remainder, _) = multispace0(remainder)?;
+    let (remainder, items) = many_till(list_item, eof)(remainder)?;
     Ok((
-        source,
-        Section::List {
+        remainder,
+        Section::ListSection{
             attributes,
-            children,
+            children: Some(items.0),
         },
     ))
 }
 
 #[cfg(test)]
 mod test {
-
-    use crate::block::block::*;
-    use crate::content::content::*;
-    use crate::parse::parse;
-    use crate::section::section::*;
-    use crate::wrapper::wrapper::*;
-
-    #[test]
-    fn basic_list() {
-        let lines = vec!["-> list", "", "- item alfa", "", "- item bravo"].join("\n");
-        let source = lines.as_str();
-        let expected = Wrapper::Page {
-            children: Some(vec![Section::List {
-                attributes: None,
-                children: Some(vec![
-                    Block::UnorderedListItem {
-                        attributes: None,
-                        children: Some(vec![Block::P {
-                            children: Some(vec![
-                                Content::Text {
-                                    text: Some("item".to_string()),
-                                },
-                                Content::Space,
-                                Content::Text {
-                                    text: Some("alfa".to_string()),
-                                },
-                            ]),
-                        }]),
-                    },
-                    Block::UnorderedListItem {
-                        attributes: None,
-                        children: Some(vec![Block::P {
-                            children: Some(vec![
-                                Content::Text {
-                                    text: Some("item".to_string()),
-                                },
-                                Content::Space,
-                                Content::Text {
-                                    text: Some("bravo".to_string()),
-                                },
-                            ]),
-                        }]),
-                    },
-                ]),
-            }]),
-        };
-        let result = parse(source).unwrap().1;
-        assert_eq!(expected, result);
-    }
+    use crate::parse::parse::*;
+    use crate::source_file::source_file::*;
+    use crate::tests::remove_whitespace::remove_whitespace;
+    use crate::universe::create_env::create_env;
+    use crate::universe::universe::Universe;
 
     #[test]
-    fn multi_item_list() {
-        let lines = vec![
-            "-> list",
-            "",
-            "- item alfa",
-            "apple",
-            "",
-            "bravo",
-            "",
-            "- item charlie",
-        ]
-        .join("\n");
-        let source = lines.as_str();
-        let expected = Wrapper::Page {
-            children: Some(vec![Section::List {
-                attributes: None,
-                children: Some(vec![
-                    Block::UnorderedListItem {
-                        attributes: None,
-                        children: Some(vec![
-                            Block::P {
-                                children: Some(vec![
-                                    Content::Text {
-                                        text: Some("item".to_string()),
-                                    },
-                                    Content::Space,
-                                    Content::Text {
-                                        text: Some("alfa".to_string()),
-                                    },
-                                    Content::Space,
-                                    Content::Text {
-                                        text: Some("apple".to_string()),
-                                    },
-                                ]),
-                            },
-                            Block::P {
-                                children: Some(vec![Content::Text {
-                                    text: Some("bravo".to_string()),
-                                }]),
-                            },
-                        ]),
-                    },
-                    Block::UnorderedListItem {
-                        attributes: None,
-                        children: Some(vec![Block::P {
-                            children: Some(vec![
-                                Content::Text {
-                                    text: Some("item".to_string()),
-                                },
-                                Content::Space,
-                                Content::Text {
-                                    text: Some("charlie".to_string()),
-                                },
-                            ]),
-                        }]),
-                    },
-                ]),
-            }]),
-        };
-        let result = parse(source).unwrap().1;
-        assert_eq!(expected, result);
+    pub fn basic_list() {
+        let source = ["-> list", "", "- alfa", "", "- bravo"]
+            .join("\n")
+            .to_string();
+        let expected = Some(
+            vec![
+                r#"<ul>"#,
+                r#"<li><p>alfa</p></li>"#,
+                r#"<li><p>bravo</p></li>"#,
+                r#"</ul>"#,
+            ]
+            .join("\n")
+            .to_string(),
+        );
+        let mut u = Universe::new();
+        u.env = Some(create_env("./site/templates"));
+        let mut sf = SourceFile::new();
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
+        let output = sf.output(&u);
+        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
 }

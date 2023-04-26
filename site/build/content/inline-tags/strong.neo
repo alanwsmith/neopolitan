@@ -1,0 +1,36 @@
+-> title
+
+Neopolitan
+
+-> h2
+
+Inline Tag: strong
+
+
+-> h3
+
+No Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|strong>> to write
+
+-> endneoexample
+
+
+
+-> h3
+
+With Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|strong|id: alfa|class: bravo>> to write
+
+-> endneoexample
+
+

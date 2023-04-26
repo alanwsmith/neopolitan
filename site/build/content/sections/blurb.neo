@@ -1,0 +1,14 @@
+-> title
+
+Seciton: blurb
+
+
+
+-> startneoexample
+
+-> blurb
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample

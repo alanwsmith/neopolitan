@@ -1,0 +1,14 @@
+-> title
+
+Section: h5
+
+
+
+-> startneoexample
+
+-> h5
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample

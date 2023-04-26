@@ -1,60 +1,62 @@
 use crate::block::block::*;
-use crate::section::attributes_for_section::*;
 use crate::section::section::*;
-use nom::bytes::complete::tag;
+use crate::section::section_attributes::*;
+use nom::character::complete::multispace0;
 use nom::combinator::eof;
-use nom::multi::many0;
 use nom::multi::many_till;
-use nom::sequence::preceded;
 use nom::IResult;
 
 pub fn warning(source: &str) -> IResult<&str, Section> {
-    let (source, att_capture) = many0(preceded(tag(">> "), section_attribute))(source).unwrap();
-    let attributes = if att_capture.is_empty() {
-        None
-    } else {
-        Some(att_capture)
-    };
-    let (source, b) = many_till(block, eof)(source.trim()).unwrap();
-    let children = if b.0.is_empty() { None } else { Some(b.0) };
+    let (remainder, attributes) = section_attributes(source)?;
+    let (remainder, _) = multispace0(remainder)?;
+    let (remainder, blocks) = many_till(block, eof)(remainder)?;
     Ok((
-        source,
+        remainder,
         Section::WarningSection {
             attributes,
-            children,
+            children: Some(blocks.0),
         },
     ))
 }
 
 #[cfg(test)]
 mod test {
-    use crate::block::block::*;
-    use crate::content::content::*;
-    use crate::parse::parse;
-    use crate::section::section::*;
-    use crate::wrapper::wrapper::*;
+    use crate::parse::parse::*;
+    use crate::source_file::source_file::*;
+    use crate::tests::remove_whitespace::remove_whitespace;
+    use crate::universe::create_env::create_env;
+    use crate::universe::universe::Universe;
 
     #[test]
-    fn lima() {
-        let lines = vec!["-> warning", "", "warning test"].join("\n");
-        let source = lines.as_str();
-        let expected = Wrapper::Page {
-            children: Some(vec![Section::WarningSection {
-                attributes: None,
-                children: Some(vec![Block::P {
-                    children: Some(vec![
-                        Content::Text {
-                            text: Some("warning".to_string()),
-                        },
-                        Content::Space,
-                        Content::Text {
-                            text: Some("test".to_string()),
-                        },
-                    ]),
-                }]),
-            }]),
-        };
-        let result = parse(source).unwrap().1;
-        assert_eq!(expected, result);
+    pub fn named_class_on_warning() {
+        let source = [
+            "-> warning",
+            ">> class: delta",
+            ">> id: bravo",
+            "",
+            "Lift the stone",
+            "",
+            "Fasten two pins",
+        ]
+        .join("\n")
+        .to_string();
+        let expected = Some(
+            vec![
+                r#"<div id="bravo" class="warning delta">"#,
+                r#"<p>Lift the stone</p>"#,
+                r#"<p>Fasten two pins</p>"#,
+                r#"</div>"#,
+            ]
+            .join("\n")
+            .to_string(),
+        );
+
+        let mut u = Universe::new();
+        u.env = Some(create_env("./site/templates"));
+        let mut sf = SourceFile::new();
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
+        let output = sf.output(&u);
+        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
 }

@@ -1,0 +1,88 @@
+-> title
+
+Content Sections
+
+-> h2
+
+Implemented
+
+- [x] >aside>/examples/aside.html> - The HTML <aside> tag
+
+- [x]>blockquote>/examples/blockquote.html> - The HTML <blockquote> tag
+
+- []>checklist>/examples/checklist.html> - Like a TODO list, but it resets every time the page is visited
+
+- []>code>/examples/code.html> - Code blocks like fenced code blocks but with attributes.
+
+- []>div>/examples/div.html> - A <div> wrapper that can 
+be used to add attributes to sections of content
+
+- []>h1-h6>/examples/headings.html> - HTML heading tags
+
+- []>image>/examples/image.html> - An image call with the alt text coming
+from the body of the section
+
+- []>list>/examples/list.html> - Unordered lists
+
+- [x]>note>/examples/note.html> - A div wrapper with a 
+  `class="note"`html` attribute
+
+- []>notes>/examples/notes.html> - A list style notes section
+
+- []>olist>/examples/olist.html> - An ordered list
+
+- []>p>/examples/p.html> - Basic text paragraph tags that are not otherwise 
+contained in a div.
+
+- []>pre>/examples/pre.html> - A pre tag
+
+- []>results>/examples/results.html> - Used to 
+show output from `-> code`neo` blocks
+
+- []>startcode/endcode>/examples/startcode_endcode.html>
+
+- [x]>subtitle>/examples/subtitle.html>
+
+- []>textarea>/examples/textarea.html>
+
+- [x]>title>/examples/title.html>
+
+- []>todo>/examples/todo.html> - TODO lists
+
+- []>vimeo>/examples/vimeo.html> - A vimeo embed
+
+- []>warning>/examples/warning.html> - A div block with a warning class on it
+
+- []>youtube>/examples/youtube.html> -  A youtube embed
+
+-> h2
+
+In Progress
+
+- []canvas - >wip>/examples/canvas.html> Basic canvas element with included attributes
+
+- []details - >wip>/examples/details.html> The details disclosure element: <details>
+
+- []dlist - >wip>/examples/dlist.html> The HTML <dl> tag
+
+- []figure - >wip>/examples/figure.html> The HTML figure element
+
+- []menu - the HTML <menu> tag
+
+- []nav - the HTML <nav> tag
+
+- []object - The HTML <objet> tag
+
+- []picture - The HTML <picture> element
+
+- []table - >wip>/examples/table.html> - Still working to define the format for these
+
+- []video - The HTML <video> element
+
+
+-> attributes
+>> date: 2023-04-18 00:21:07
+>> id: 2oahfnw74gpw
+>> type: default
+>> published: y
+

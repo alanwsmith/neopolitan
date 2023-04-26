@@ -1,175 +1,62 @@
-use crate::block::todo_item::*;
-use crate::section::attributes_for_section::*;
+use crate::block::block::*;
 use crate::section::section::*;
-use nom::bytes::complete::tag;
+use crate::section::section_attributes::*;
+use nom::character::complete::multispace0;
 use nom::combinator::eof;
-use nom::multi::many0;
 use nom::multi::many_till;
-use nom::sequence::preceded;
 use nom::IResult;
 
 pub fn todo(source: &str) -> IResult<&str, Section> {
-    let (source, att_capture) = many0(preceded(tag(">> "), section_attribute))(source).unwrap();
-    let attributes = if att_capture.is_empty() {
-        None
-    } else {
-        Some(att_capture)
-    };
-    let (source, b) = many_till(todo_item, eof)(source.trim()).unwrap();
-    let children = if b.0.is_empty() { None } else { Some(b.0) };
+    let (remainder, attributes) = section_attributes(source)?;
+    let (remainder, _) = multispace0(remainder)?;
+    let (remainder, blocks) = many_till(block, eof)(remainder)?;
     Ok((
-        source,
-        Section::ToDoSection {
+        remainder,
+        Section::TodoSection {
             attributes,
-            children,
+            children: Some(blocks.0),
         },
     ))
 }
 
 #[cfg(test)]
 mod test {
-    use crate::block::block::*;
-    use crate::content::content::*;
-    use crate::parse::parse;
-    use crate::section::section::*;
-    use crate::wrapper::wrapper::*;
+    use crate::parse::parse::*;
+    use crate::source_file::source_file::*;
+    use crate::tests::remove_whitespace::remove_whitespace;
+    use crate::universe::create_env::create_env;
+    use crate::universe::universe::Universe;
 
     #[test]
-    fn basic_todo() {
-        let lines = vec!["-> todo", "", "[] todo alfa", "", "[] todo bravo"].join("\n");
-        let source = lines.as_str();
-        let expected = Wrapper::Page {
-            children: Some(vec![Section::ToDoSection {
-                attributes: None,
-                children: Some(vec![
-                    Block::ToDoItem {
-                        status: None,
-                        attributes: None,
-                        children: Some(vec![Block::P {
-                            children: Some(vec![
-                                Content::Text {
-                                    text: Some("todo".to_string()),
-                                },
-                                Content::Space,
-                                Content::Text {
-                                    text: Some("alfa".to_string()),
-                                },
-                            ]),
-                        }]),
-                    },
-                    Block::ToDoItem {
-                        status: None,
-                        attributes: None,
-                        children: Some(vec![Block::P {
-                            children: Some(vec![
-                                Content::Text {
-                                    text: Some("todo".to_string()),
-                                },
-                                Content::Space,
-                                Content::Text {
-                                    text: Some("bravo".to_string()),
-                                },
-                            ]),
-                        }]),
-                    },
-                ]),
-            }]),
-        };
-        let result = parse(source).unwrap().1;
-        assert_eq!(expected, result);
-    }
-
-    #[test]
-    fn multi_item_list() {
-        let lines = vec![
+    pub fn named_class_on_todo() {
+        let source = [
             "-> todo",
+            ">> class: delta",
+            ">> id: bravo",
             "",
-            "[] item alfa",
-            "apple",
+            "Lift the stone",
             "",
-            "bravo",
-            "",
-            "[] item charlie",
+            "Fasten two pins",
         ]
-        .join("\n");
-        let source = lines.as_str();
-        let expected = Wrapper::Page {
-            children: Some(vec![Section::ToDoSection {
-                attributes: None,
-                children: Some(vec![
-                    Block::ToDoItem {
-                        status: None,
-                        attributes: None,
-                        children: Some(vec![
-                            Block::P {
-                                children: Some(vec![
-                                    Content::Text {
-                                        text: Some("item".to_string()),
-                                    },
-                                    Content::Space,
-                                    Content::Text {
-                                        text: Some("alfa".to_string()),
-                                    },
-                                    Content::Space,
-                                    Content::Text {
-                                        text: Some("apple".to_string()),
-                                    },
-                                ]),
-                            },
-                            Block::P {
-                                children: Some(vec![Content::Text {
-                                    text: Some("bravo".to_string()),
-                                }]),
-                            },
-                        ]),
-                    },
-                    Block::ToDoItem {
-                        status: None,
-                        attributes: None,
-                        children: Some(vec![Block::P {
-                            children: Some(vec![
-                                Content::Text {
-                                    text: Some("item".to_string()),
-                                },
-                                Content::Space,
-                                Content::Text {
-                                    text: Some("charlie".to_string()),
-                                },
-                            ]),
-                        }]),
-                    },
-                ]),
-            }]),
-        };
-        let result = parse(source).unwrap().1;
-        assert_eq!(expected, result);
-    }
+        .join("\n")
+        .to_string();
+        let expected = Some(
+            vec![
+                r#"<div id="bravo" class="todo delta">"#,
+                r#"<p>Lift the stone</p>"#,
+                r#"<p>Fasten two pins</p>"#,
+                r#"</div>"#,
+            ]
+            .join("\n")
+            .to_string(),
+        );
 
-    #[test]
-    fn todo_with_status() {
-        let lines = vec!["-> todo", "", "[x] todo alfa"].join("\n");
-        let source = lines.as_str();
-        let expected = Wrapper::Page {
-            children: Some(vec![Section::ToDoSection {
-                attributes: None,
-                children: Some(vec![Block::ToDoItem {
-                    status: Some("x".to_string()),
-                    attributes: None,
-                    children: Some(vec![Block::P {
-                        children: Some(vec![
-                            Content::Text {
-                                text: Some("todo".to_string()),
-                            },
-                            Content::Space,
-                            Content::Text {
-                                text: Some("alfa".to_string()),
-                            },
-                        ]),
-                    }]),
-                }]),
-            }]),
-        };
-        let result = parse(source).unwrap().1;
-        assert_eq!(expected, result);
+        let mut u = Universe::new();
+        u.env = Some(create_env("./site/templates"));
+        let mut sf = SourceFile::new();
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
+        let output = sf.output(&u);
+        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
 }

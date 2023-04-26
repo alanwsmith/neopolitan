@@ -1,0 +1,14 @@
+-> title
+
+Section: footnote
+
+
+
+-> startneoexample
+
+-> footnote
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample

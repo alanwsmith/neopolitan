@@ -1,0 +1,70 @@
+-> title
+
+Checklist For Making A New Section
+
+This post serves two purposed. First, it's my checklist
+for the process of adding a section to the Neopolitan 
+code base as I build them out. 
+
+Second, it's a test make sure the checklist functionality
+works :-)
+
+-> note
+
+These are very much scratch note right now
+
+-> p
+
+- Choose a `_template_TAG`` template from `src/section``
+or make a new one
+
+- Update the `rust_template` column in the sqlite database 
+for the section to add the template name key
+
+- Run `src/section/_010_make_section_files.py`` to 
+generate the section file output from the template
+
+- Make a `.j2`` template in `site/templates/components``
+with the tag name of the section
+
+- Add the `site/content/sections/TAG.neo`` file
+
+- Add the Section enum to `section/section.rs``
+
+- Add the `use`` statement to `section/section.rs``
+
+- Add the tuple nom parse in `section/section.rs`
+
+- Add the tag to `src/section/mod.rs``
+
+
+
+
+
+
+- There's some other steps but move have been done
+for most sections already. Will update here 
+when I run into them
+
+
+-> note
+
+- This assumes the section already exists. If not
+it would need to be created. 
+
+- The template files have already been made. 
+A new one would have to be made as well. 
+
+
+
+
+-> blurb
+
+-> categories
+>> Neopolitan
+
+-> attributes
+>> date: 2023-04-22 17:30:23
+>> id: 2onauctyoj2h
+>> type: post
+>> status: published

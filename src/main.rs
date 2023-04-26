@@ -1,81 +1,30 @@
-#![allow(warnings)]
-use minijinja::context;
-use minijinja::AutoEscape;
-use minijinja::Environment;
-use minijinja::Source;
-use neopolitan::block::block::Block::RawContent;
-use neopolitan::create_env::create_env;
-use neopolitan::parse::parse;
-use neopolitan::render_template::render_template;
-use neopolitan::section::attributes_for_section::SectionAttribute::Attribute;
-use neopolitan::section::section::*;
-use neopolitan::universe::Universe;
-use neopolitan::wrapper::wrapper::*;
-use std::fs;
-use std::fs::create_dir_all;
+use neopolitan::helpers::load_assets::load_assets;
+// use neopolitan::helpers::run_preflight::run_preflight;
+use neopolitan::universe::create_env::create_env;
+use neopolitan::universe::universe::Universe;
+// use std::path::Path;
 use std::path::PathBuf;
-use walkdir::{DirEntry, Error, WalkDir};
 
 fn main() {
-    let mut u = Universe {
-        assets_dir: Some(String::from("./assets")),
-        dest_dir: Some(String::from("./sites/default")),
-        // current_source_index: 0,
-        pages: Some(vec![]),
-        source_dir: Some(String::from("./content")),
-    };
-    u.load_pages();
-    u.copy_assets();
-    u.generate_pages();
-    println!("------------ PROCESS COMPLETE --------------");
-}
+    println!("Starting build");
+    let templates_dir = "./site/templates";
+    let assets_dir = "./site/assets/";
+    let content_dir = "./site/content";
+    let build_dir = "./site/build";
 
-fn get_type(payload: &Wrapper) -> String {
-    match &payload {
-        Wrapper::Page { children } => {
-            for section in children.as_ref().unwrap() {
-                match section {
-                    Section::AttributesSection { attributes, .. } => {
-                        for section_attribute in attributes.as_ref().unwrap() {
-                            match section_attribute {
-                                Attribute { key, value } => {
-                                    if key.as_ref().unwrap() == "type" {
-                                        return value.as_ref().unwrap().trim().to_string();
-                                    }
-                                }
-                                _ => {}
-                            }
-                        }
-                    }
-                    _ => {}
-                }
-            }
-        }
-    }
-    "default".to_string()
-}
+    // Be careful with the preflight right now
+    // it updates the contents directory which
+    // triggers cargo watch if it's pointed
+    // at it which turns into a loop. TODO:
+    // - ignore the directory that gets updated
+    // run_preflight().unwrap();
+    load_assets(assets_dir, build_dir).unwrap();
 
-fn should_publish(payload: &Wrapper) -> String {
-    match &payload {
-        Wrapper::Page { children } => {
-            for section in children.as_ref().unwrap() {
-                match section {
-                    Section::AttributesSection { attributes, .. } => {
-                        for section_attribute in attributes.as_ref().unwrap() {
-                            match section_attribute {
-                                Attribute { key, value } => {
-                                    if key.as_ref().unwrap() == "publish" {
-                                        return value.as_ref().unwrap().trim().to_string();
-                                    }
-                                }
-                                _ => {}
-                            }
-                        }
-                    }
-                    _ => {}
-                }
-            }
-        }
-    }
-    "n".to_string()
+    let mut u = Universe::new();
+    u.env = Some(create_env(templates_dir));
+    u.assets_dir = Some(PathBuf::from(assets_dir));
+    u.source_dir = Some(PathBuf::from(content_dir));
+    u.dest_dir = Some(PathBuf::from(build_dir));
+    u.load_files().unwrap();
+    u.output_files();
 }

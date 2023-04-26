@@ -1,0 +1,13 @@
+-> title
+
+Section: image
+
+-> startneoexample
+
+-> image
+>> https://placekitten.com/g/200/300
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample

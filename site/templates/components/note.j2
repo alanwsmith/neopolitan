@@ -1,0 +1,10 @@
+<div {{- attributes_string -}}>
+<div class="noteTitle">{% if title != none %}{{title}}{%else%}Note{%endif%}</div>
+<div class="noteText">
+  {%- for part in parts -%}
+    <p>
+    {{- part -}}
+    </p>
+  {%- endfor -%}
+</div>
+</div>

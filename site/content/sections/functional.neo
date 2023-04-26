@@ -1,0 +1,48 @@
+-> title
+
+Neopolitan Functional Sections
+
+I'm still thinking through some of these. For example, 
+it would be just as easy to have a single `-> head` 
+section type where you throw CSS and JavaScript. But, 
+I'm leaning towards keeping them independent. Feels
+like they'll be easier to think about and should
+offer easier syntax highlighting 
+
+
+-> list
+
+- <<startneoexample|link|/sections/startneoexample.html>> - This
+is a custom section I setup for this site. You send it one piece
+of Neopolitan code and it shows it raw along with the
+HTML output. 
+
+
+-> h3
+
+In Progress
+
+-> list
+
+- <<css|link|/sections/css.html>> - Goal: Write directly to the 
+head of the document
+
+- <<ext|link|/sections/ext.html>> - Goal: Call an external
+ process and renders its output. Can be setup to run before 
+ or after the main page processing has occurred
+
+- <<head|link|/sections/head.html>> - Goal: Add content directly 
+to the head of the document
+
+- <<html|link|/sections/html.html>> - Goal: Raw output of whatever 
+is in the content section to the final output
+
+- <<include|link|/sections/include.html>> - Goal: Include the 
+output from another file
+
+- <<script|link|/sections/script.html>> - Goal: Write a script 
+directly to the head of the document.
+
+- <<widget|link|/sections/widget.html>> - Goal: A way to provide 
+extra functionality with various frameworks. Or, at least, that's 
+the idea. I haven't dug into the details here.

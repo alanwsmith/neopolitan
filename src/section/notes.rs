@@ -1,144 +1,61 @@
-use crate::block::notes_item::*;
-use crate::section::attributes_for_section::*;
+use crate::section::list_item::*;
 use crate::section::section::*;
-use nom::bytes::complete::tag;
+use crate::section::section_attributes::*;
+use nom::character::complete::multispace0;
 use nom::combinator::eof;
-use nom::multi::many0;
 use nom::multi::many_till;
-use nom::sequence::preceded;
 use nom::IResult;
 
 pub fn notes(source: &str) -> IResult<&str, Section> {
-    let (source, att_capture) = many0(preceded(tag(">> "), section_attribute))(source).unwrap();
-    let _attributes = if att_capture.is_empty() {
-        None
-    } else {
-        Some(att_capture)
-    };
-    let (source, b) = many_till(notes_item, eof)(source.trim()).unwrap();
-    let children = if b.0.is_empty() { None } else { Some(b.0) };
+    let (remainder, attributes) = section_attributes(source)?;
+    let (remainder, _) = multispace0(remainder)?;
+    let (remainder, items) = many_till(list_item, eof)(remainder)?;
     Ok((
-        source,
+        remainder,
         Section::NotesSection {
-            attributes: None,
-            children,
+            attributes,
+            children: Some(items.0),
         },
     ))
 }
 
 #[cfg(test)]
 mod test {
-
-    use crate::block::block::*;
-    use crate::content::content::*;
-    use crate::parse::parse;
-    use crate::section::section::*;
-    use crate::wrapper::wrapper::*;
-
-    #[test]
-    fn basic_list() {
-        let lines = vec!["-> notes", "", "- note alfa", "", "- note bravo"].join("\n");
-        let source = lines.as_str();
-        let expected = Wrapper::Page {
-            children: Some(vec![Section::NotesSection {
-                attributes: None,
-                children: Some(vec![
-                    Block::NotesItem {
-                        attributes: None,
-                        children: Some(vec![Block::P {
-                            children: Some(vec![
-                                Content::Text {
-                                    text: Some("note".to_string()),
-                                },
-                                Content::Space,
-                                Content::Text {
-                                    text: Some("alfa".to_string()),
-                                },
-                            ]),
-                        }]),
-                    },
-                    Block::NotesItem {
-                        attributes: None,
-                        children: Some(vec![Block::P {
-                            children: Some(vec![
-                                Content::Text {
-                                    text: Some("note".to_string()),
-                                },
-                                Content::Space,
-                                Content::Text {
-                                    text: Some("bravo".to_string()),
-                                },
-                            ]),
-                        }]),
-                    },
-                ]),
-            }]),
-        };
-        let result = parse(source).unwrap().1;
-        assert_eq!(expected, result);
-    }
+    use crate::parse::parse::*;
+    use crate::source_file::source_file::*;
+    use crate::tests::remove_whitespace::remove_whitespace;
+    use crate::universe::create_env::create_env;
+    use crate::universe::universe::Universe;
 
     #[test]
-    fn multi_item_list() {
-        let lines = vec![
+    pub fn basic_notes() {
+        let source = [
             "-> notes",
             "",
-            "- note alfa",
-            "apple",
+            "- Dots of light betrayed the black cat",
             "",
-            "bravo",
-            "",
-            "- note charlie",
+            "- He wrote down a long list of items",
         ]
-        .join("\n");
-        let source = lines.as_str();
-        let expected = Wrapper::Page {
-            children: Some(vec![Section::NotesSection {
-                attributes: None,
-                children: Some(vec![
-                    Block::NotesItem {
-                        attributes: None,
-                        children: Some(vec![
-                            Block::P {
-                                children: Some(vec![
-                                    Content::Text {
-                                        text: Some("note".to_string()),
-                                    },
-                                    Content::Space,
-                                    Content::Text {
-                                        text: Some("alfa".to_string()),
-                                    },
-                                    Content::Space,
-                                    Content::Text {
-                                        text: Some("apple".to_string()),
-                                    },
-                                ]),
-                            },
-                            Block::P {
-                                children: Some(vec![Content::Text {
-                                    text: Some("bravo".to_string()),
-                                }]),
-                            },
-                        ]),
-                    },
-                    Block::NotesItem {
-                        attributes: None,
-                        children: Some(vec![Block::P {
-                            children: Some(vec![
-                                Content::Text {
-                                    text: Some("note".to_string()),
-                                },
-                                Content::Space,
-                                Content::Text {
-                                    text: Some("charlie".to_string()),
-                                },
-                            ]),
-                        }]),
-                    },
-                ]),
-            }]),
-        };
-        let result = parse(source).unwrap().1;
-        assert_eq!(expected, result);
+        .join("\n")
+        .to_string();
+        let expected = Some(
+            vec![
+                r#"<div class="notes">"#,
+                r#"<ul class="notes">"#,
+                r#"<li><p>Dots of light betrayed the black cat</p></li>"#,
+                r#"<li><p>He wrote down a long list of items</p></li>"#,
+                r#"</ul>"#,
+                r#"</div>"#,
+            ]
+            .join("\n")
+            .to_string(),
+        );
+        let mut u = Universe::new();
+        u.env = Some(create_env("./site/templates"));
+        let mut sf = SourceFile::new();
+        sf.raw = Some(source);
+        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
+        let output = sf.output(&u);
+        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
     }
 }
