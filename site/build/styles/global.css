@@ -333,4 +333,22 @@ ul {
   color: var(--main-vanilla);
 }
 
+.asideContainer {
+  border: 1px solid var(--main-strawberry);
+  margin-left: 10rem;
+  padding: 0rem;
+  border-radius: 0.4rem;
+}
 
+.asideContainer > p {
+  padding: 1.3rem;
+  margin: 0;
+}
+
+.asideTitle {
+  background-color: var(--color-3);
+  border-top-left-radius: var(--border-radius-1);
+  border-top-right-radius: var(--border-radius-1);
+  color: var(--color-2);
+  padding-left: 0.7rem;
+}

@@ -37,12 +37,11 @@ raw HTML to Perl to Wordpress to PHP to Ruby to
 Markdown to MDX to Org-Mode to a mix of all of the 
 above.
 
-I don't want to work with any of those formats for
-the next twenty years. So, I designed a new one. 
-It's called Neopolitan and it looks like this:
+The prospect of using any of those formats for the
+next twenty years is pretty unappealing. So, I designed 
+a new one. It's called Neopolitan and it looks like this:
 
 -> startcode
->> neo
 >> title: index.neo
 
 -> title
@@ -101,7 +100,6 @@ The Sections
 Sections are things like:
 
 -> startcode
->> neo
 >> title: Section Types
 
 -> title
@@ -131,8 +129,8 @@ Bring your best compass
 
 -> p
 
-The list of content sections <<is here|link|/sections/content.html>>
-
+A list of content sections with 
+examples <<is here|link|/sections/content.html>>
 
 
 -> h2
@@ -190,7 +188,9 @@ alfa bravo charlie
 The ability to use attributes directly inside
 content is the biggest reason I went down this 
 path. I couldn't be happier with how it's
-turning out.
+turning out. (Also, the ability to use more
+tags like the <aside> tag which is what rendered
+this via an <<-> aside|strong>> section)
 
 
 -> h2
@@ -224,14 +224,14 @@ like:
 >> neo
 >> title: Source
 
-Down <<that|strong|id:delta>> road
+Open <<your|strong|id:delta>> book
 
 
 -> code
 >> html
 >> title: Output
 
-Down <strong id="delta">that</strong> road
+Open <strong id="delta">your</strong> book
 
 -> p
 
@@ -243,17 +243,14 @@ the pipe character:
 >> neo
 >> title: Source
 
-The <<best|strong|id:delta|class:echo>> method
+Open <<your|strong|id:delta|class:echo>> book
 
 
 -> code
 >> html
 >> title: Output
 
-The <strong id="delta" class="echo">best</strong> method
-
-
-
+Open <strong id="delta" class="echo">your</strong> book
 
 -> p
 
@@ -292,7 +289,7 @@ Attributes are added like this:
 >> neo
 >> title: Source
 
-Five *round*class:tango* bowls
+The *first*class:tango* draft
 
 -> endcode
 
@@ -301,10 +298,9 @@ Five *round*class:tango* bowls
 >> html
 >> title: Output
 
-Five <strong class="tango">round</strong> bowls
+The <strong class="tango">first</strong> draft
 
 -> endcode
-
 
 
 -> p
@@ -317,7 +313,7 @@ pipe characters.
 >> neo
 >> title: Source
 
-Makes *good*id:alfa|class:bravo* sense
+The *first*id:alfa|class:bravo* draft
 
 -> endcode
 
@@ -326,7 +322,7 @@ Makes *good*id:alfa|class:bravo* sense
 >> html
 >> title: Output
 
-Makes <strong id="alfa" class="bravo">good</strong> sense
+The <strong id="alfa" class="bravo">first</strong> draft
 
 -> endcode
 
@@ -348,7 +344,7 @@ template to use via a <<type|strong>> attribute.
 >> title: Source
 
 -> attributes
->> date: 2023-04-16 19:06:40
+>> date: 2023-04-16
 >> type: default 
 >> status: published
 
@@ -375,25 +371,35 @@ The list of functional sections <<is here|link|/sections/functional.html>>
 
 -> h2
 
-Dogfooding
+The Engine 
 
 I'm not a particular fan of the term "dogfooding".
 "Drink your own champagne" is worse. Either way, 
 that's what I'm doing. This site is built from the 
-Neopolitan documents and an <<example site generator|
-link|https://github.com/alanwsmith/neopolitan>>. It's 
-what I'll use for my site full time once it's ready.
+Neopolitan documents and a site generator I'm 
+putting together to use them. 
 
-The goal for the site engine is not to make a 
-generic tool. It's to build my personal site. That
-said, it should make a good example and jumping off
-point if you're interested in playing with the
-format. 
+The site generator is relatively generic. It parses
+documents into an internal AST then uses
+templates to output the content. I'm really happy
+with where it's headed, but it's not something
+I'm going to turn into a supported project. It's
+goal is to build my site. 
 
-If you do, I hope you find it as enjoyable as I 
-am.
+That said, I think the format itself might be of
+broader interest. I write a good bit and I've been 
+very pleased with what I can do without having to 
+jump into a coding session. Content level 
+attributes and metadata are even more powerful
+than I thought.
 
-- <<a|link|https://www.alanwsmith.com/>>
+If you're interested in playing with the format
+the engine can show you how I set up the parsing. 
+The repo <<is here|
+link|https://github.com/alanwsmith/neopolitan>>. 
+Feel free to hack on it as much as you'd like.
+
+- <<alan|link|https://www.alanwsmith.com/>>
 
 -> attributes
 >> date: 2023-04-16 19:06:40

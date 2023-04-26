@@ -2,7 +2,6 @@
 http://localhost:8080/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+neo&plugins=line-highlight+line-numbers+custom-class+normalize-whitespace+toolbar+copy-to-clipboard */
 code[class*='language-'],
 pre[class*='language-'] {
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 1em;
   text-align: left;
   white-space: pre;

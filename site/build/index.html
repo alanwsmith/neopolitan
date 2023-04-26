@@ -38,14 +38,14 @@ years?"</p><p>The answers are very different.</p><h2>The Format</h2><p>I've move
 involved a painful content migration. I've gone from 
 raw HTML to Perl to Wordpress to PHP to Ruby to 
 Markdown to MDX to Org-Mode to a mix of all of the 
-above.</p><p>I don't want to work with any of those formats for
-the next twenty years. So, I designed a new one. 
-It's called Neopolitan and it looks like this:</p><div class="codeWrapper">
+above.</p><p>The prospect of using any of those formats for the
+next twenty years is pretty unappealing. So, I designed 
+a new one. It's called Neopolitan and it looks like this:</p><div class="codeWrapper">
 <div class="codeTitle">index.neo</div>
 <div class="codeContent">
 <pre
- class="language-neo"
-><code  class="language-neo"
+
+><code 
 >-&gt; title
 
 Welcome To Neopolitan
@@ -89,8 +89,8 @@ The answers are very different.
 <div class="codeTitle">Section Types</div>
 <div class="codeContent">
 <pre
- class="language-neo"
-><code  class="language-neo"
+
+><code 
 >-&gt; title
 
 -&gt; h2
@@ -115,7 +115,9 @@ Bring your best compass </code></pre>
 <div class="preWrapper">
 <div class="preTitle">Output</div>
 <pre class="language-html"><code class="language-html">&lt;h2&gt;Bring your best compass &lt;/h2&gt;</code></pre>
-</div><p>The list of content sections <a href="/sections/content.html">is here</a></p>
+</div><p>A list of content sections with 
+examples <a href="/sections/content.html">is here</a> 
+</p>
 <h2>The Attributes</h2><p>Attributes are where things get interesting. 
 They get transposed directly into the HTML. </p><p>Here's the same <strong>-&gt; h2</strong>  example from above 
 with an id and class added.</p><div class="preWrapper">
@@ -161,11 +163,15 @@ alfa bravo charlie</code></pre>
 </div>
 
 <aside>
-<p>aside:</p><p>The ability to use attributes directly inside
+<div class="asideContainer">
+<div class="asideTitle">Aside:</div><p>The ability to use attributes directly inside
 content is the biggest reason I went down this 
 path. I couldn't be happier with how it's
-turning out.
-</p></aside><h2>Inline Tags And Attributes</h2><p>Content markup is done with inline tags. 
+turning out. (Also, the ability to use more
+tags like the &lt;aside&gt; tag which is what rendered
+this via an <strong>-&gt; aside</strong>  section)
+</p></div>
+</aside><h2>Inline Tags And Attributes</h2><p>Content markup is done with inline tags. 
 They start with two `&lt;&lt;`` characters and end 
 with a closing `&gt;&gt;`` pair.</p><div class="codeWrapper">
 <div class="codeTitle">Source</div>
@@ -197,7 +203,7 @@ like:</p>
 <pre
  class="language-neo"
 ><code  class="language-neo"
->Down &lt;&lt;that|strong|id:delta&gt;&gt; road
+>Open &lt;&lt;your|strong|id:delta&gt;&gt; book
 </code></pre>
 </div>
 </div>
@@ -208,7 +214,7 @@ like:</p>
 <pre
  class="language-html"
 ><code  class="language-html"
->Down &lt;strong id="delta"&gt;that&lt;/strong&gt; road</code></pre>
+>Open &lt;strong id="delta"&gt;your&lt;/strong&gt; book</code></pre>
 </div>
 </div>
 
@@ -221,7 +227,7 @@ the pipe character:
 <pre
  class="language-neo"
 ><code  class="language-neo"
->The &lt;&lt;best|strong|id:delta|class:echo&gt;&gt; method
+>Open &lt;&lt;your|strong|id:delta|class:echo&gt;&gt; book
 </code></pre>
 </div>
 </div>
@@ -232,10 +238,7 @@ the pipe character:
 <pre
  class="language-html"
 ><code  class="language-html"
->The &lt;strong id="delta" class="echo"&gt;best&lt;/strong&gt; method
-
-
-</code></pre>
+>Open &lt;strong id="delta" class="echo"&gt;your&lt;/strong&gt; book</code></pre>
 </div>
 </div>
 
@@ -269,7 +272,7 @@ Here's the <strong>strong</strong>  version:</p><div class="codeWrapper">
 <pre
  class="language-neo"
 ><code  class="language-neo"
->Five *round*class:tango* bowls</code></pre>
+>The *first*class:tango* draft</code></pre>
 </div>
 </div>
 
@@ -279,7 +282,7 @@ Here's the <strong>strong</strong>  version:</p><div class="codeWrapper">
 <pre
  class="language-html"
 ><code  class="language-html"
->Five &lt;strong class="tango"&gt;round&lt;/strong&gt; bowls</code></pre>
+>The &lt;strong class="tango"&gt;first&lt;/strong&gt; draft</code></pre>
 </div>
 </div>
 
@@ -292,7 +295,7 @@ pipe characters.
 <pre
  class="language-neo"
 ><code  class="language-neo"
->Makes *good*id:alfa|class:bravo* sense</code></pre>
+>The *first*id:alfa|class:bravo* draft</code></pre>
 </div>
 </div>
 
@@ -302,7 +305,7 @@ pipe characters.
 <pre
  class="language-html"
 ><code  class="language-html"
->Makes &lt;strong id="alfa" class="bravo"&gt;good&lt;/strong&gt; sense</code></pre>
+>The &lt;strong id="alfa" class="bravo"&gt;first&lt;/strong&gt; draft</code></pre>
 </div>
 </div>
 
@@ -317,7 +320,7 @@ template to use via a <strong>type</strong>  attribute.</p><div class="codeWrapp
  class="language-neo"
 ><code  class="language-neo"
 >-&gt; attributes
-&gt;&gt; date: 2023-04-16 19:06:40
+&gt;&gt; date: 2023-04-16
 &gt;&gt; type: default 
 &gt;&gt; status: published</code></pre>
 </div>
@@ -328,16 +331,24 @@ template to use via a <strong>type</strong>  attribute.</p><div class="codeWrapp
 <h2>The Functional Sections</h2><p>The third section type is for heavier processing. 
 Sections for <strong>-&gt; css</strong>  and <strong>-&gt; script</strong> 
 copy their contents directly to head of the document.</p><p>The <strong>-&gt; ext</strong>  section calls out to an external
-process and outputs its contents directly.</p><p>The list of functional sections <a href="/sections/functional.html">is here</a></p><h2>Dogfooding</h2><p>I'm not a particular fan of the term "dogfooding".
+process and outputs its contents directly.</p><p>The list of functional sections <a href="/sections/functional.html">is here</a></p><h2>The Engine </h2><p>I'm not a particular fan of the term "dogfooding".
 "Drink your own champagne" is worse. Either way, 
 that's what I'm doing. This site is built from the 
-Neopolitan documents and an <a href="https://github.com/alanwsmith/neopolitan">example site generator</a> . It's 
-what I'll use for my site full time once it's ready.</p><p>The goal for the site engine is not to make a 
-generic tool. It's to build my personal site. That
-said, it should make a good example and jumping off
-point if you're interested in playing with the
-format. </p><p>If you do, I hope you find it as enjoyable as I 
-am.</p><p>- <a href="https://www.alanwsmith.com/">a</a></p></main>
+Neopolitan documents and a site generator I'm 
+putting together to use them. </p><p>The site generator is relatively generic. It parses
+documents into an internal AST then uses
+templates to output the content. I'm really happy
+with where it's headed, but it's not something
+I'm going to turn into a supported project. It's
+goal is to build my site. </p><p>That said, I think the format itself might be of
+broader interest. I write a good bit and I've been 
+very pleased with what I can do without having to 
+jump into a coding session. Content level 
+attributes and metadata are even more powerful
+than I thought.</p><p>If you're interested in playing with the format
+the engine can show you how I set up the parsing. 
+The repo <a href="https://github.com/alanwsmith/neopolitan">is here</a> . 
+Feel free to hack on it as much as you'd like.</p><p>- <a href="https://www.alanwsmith.com/">alan</a></p></main>
   <footer>from <a href="https://www.alanwsmith.com/">alan w. smith</a></footer>
 
   <script src="/scripts/prism.js"></script>

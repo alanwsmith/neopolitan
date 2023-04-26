@@ -1,8 +1,10 @@
 <aside {{- attributes_string -}}>
-<p>aside:</p>
+<div class="asideContainer">
+<div class="asideTitle">Aside:</div>
   {%- for part in parts -%}
     <p>
     {{- part -}} 
     </p>
   {%- endfor -%}
+</div>
 </aside>

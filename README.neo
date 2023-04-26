@@ -13,10 +13,24 @@ engine I'm building to work with the
 Neopolitan file format I designed 
 
 - The site engine is to build my site
-and to act as a testbed for the format
+and to act as a test bed for the format
+
+- This is still a work in progress
+
+- If you've got rust setup on your machine
+and want to experiment you should be able
+to clone down the repo do `cargo run``
+(This is very much a "works on my machine"
+thing at the moment)
+
+- Running the process uses the content
+and templates in the `site`` directory
+to generate output into the `site/build``
+directory
+
 
 - The home page for the format is:
 >neopolitan.alanwsmith.com>
 https://neopolitan.alanwsmith.com/>
 
-More info about everything is there. 
+
