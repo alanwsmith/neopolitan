@@ -2,6 +2,7 @@ use crate::snippet::snippet_enum::Snippet;
 use crate::snippet::snippets::abbr::abbr;
 use crate::snippet::snippets::b::b;
 use crate::snippet::snippets::button::button;
+use crate::snippet::snippets::code::code;
 use crate::snippet::snippets::data::data;
 use crate::snippet::snippets::del::del;
 use crate::snippet::snippets::dfn::dfn;
@@ -334,6 +335,17 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
                 tag(">>"),
             ))
             .map(|x| em(x.2, x.6)),
+            tuple((
+                multispace0::<&str, Error<&str>>,
+                tag("<<"),
+                take_until("|"),
+                tag("|"),
+                multispace0,
+                tag("code"),
+                take_until(">>"),
+                tag(">>"),
+            ))
+            .map(|x| code(x.2, x.6)),
             tuple((
                 multispace0::<&str, Error<&str>>,
                 tag("<<"),

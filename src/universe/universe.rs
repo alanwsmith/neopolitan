@@ -40,7 +40,7 @@ impl Universe<'_> {
                 if ext == "neo" {
                     let mut sf = SourceFile::new();
                     sf.input_path = Some(p.clone());
-                    // dbg!(&sf.input_path);
+                    dbg!(&sf.input_path);
                     sf.raw = Some(
                         fs::read_to_string(
                             sf.input_path

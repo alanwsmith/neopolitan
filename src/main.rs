@@ -9,8 +9,12 @@ fn main() {
     println!("Starting build");
     let templates_dir = "./site/templates";
     let assets_dir = "./site/assets/";
-    let content_dir = "./site/content";
-    let build_dir = "./site/build";
+
+    // let content_dir = "./site/content";
+    let content_dir = "/Users/alan/workshop/grimoire_org_to_neo_files/step-01";
+
+    // let build_dir = "./site/build";
+    let build_dir = "/Users/alan/workshop/grimoire_org_to_neo_files/test_build";
 
     // Be careful with the preflight right now
     // it updates the contents directory which

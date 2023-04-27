@@ -1,6 +1,7 @@
 pub mod abbr;
 pub mod b;
 pub mod button;
+pub mod code;
 pub mod data;
 pub mod del;
 pub mod dfn;
