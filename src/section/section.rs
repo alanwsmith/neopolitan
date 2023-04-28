@@ -51,7 +51,7 @@ use crate::section::warning::*;
 use crate::section::widget::*;
 use crate::section::youtube::*;
 use nom::branch::alt;
-use nom::bytes::complete::tag;
+use nom::bytes::complete::tag_no_case;
 use nom::bytes::complete::take_until;
 use nom::character::complete::line_ending;
 use nom::character::complete::multispace0;
@@ -285,65 +285,65 @@ pub fn section(source: &str) -> IResult<&str, Section> {
     let (remainder, section) = alt((
         alt((
             tuple((
-                tag("-> startneoexample"),
+                tag_no_case("-> startneoexample"),
                 not_line_ending,
                 line_ending,
                 take_until("\n\n-> endneoexample"),
-                tag("\n\n-> endneoexample"),
+                tag_no_case("\n\n-> endneoexample"),
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| neoexample_start_end(t.3).unwrap().1),
             tuple((
-                tag("-> aside"),
+                tag_no_case("-> aside"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| aside(t.3).unwrap().1),
             tuple((
-                tag("-> blockquote"),
+                tag_no_case("-> blockquote"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| blockquote(t.3).unwrap().1),
             tuple((
-                tag("-> canvas"),
+                tag_no_case("-> canvas"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| canvas(t.3).unwrap().1),
             tuple((
-                tag("-> checklist"),
+                tag_no_case("-> checklist"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| checklist(t.3).unwrap().1),
             tuple((
-                tag("-> code"),
+                tag_no_case("-> code"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| code(t.3).unwrap().1),
             tuple((
-                tag("-> details"),
+                tag_no_case("-> details"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| details(t.3).unwrap().1),
             tuple((
-                tag("-> startdiv"),
+                tag_no_case("-> startdiv"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| startdiv(t.3).unwrap().1),
             tuple((
-                tag("-> dlist"),
+                tag_no_case("-> dlist"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
@@ -352,91 +352,91 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         )),
         alt((
             tuple((
-                tag("-> h1"),
+                tag_no_case("-> h1"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| h1(t.3).unwrap().1),
             tuple((
-                tag("-> h2"),
+                tag_no_case("-> h2"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| h2(t.3).unwrap().1),
             tuple((
-                tag("-> h3"),
+                tag_no_case("-> h3"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| h3(t.3).unwrap().1),
             tuple((
-                tag("-> h4"),
+                tag_no_case("-> h4"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| h4(t.3).unwrap().1),
             tuple((
-                tag("-> h5"),
+                tag_no_case("-> h5"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| h5(t.3).unwrap().1),
             tuple((
-                tag("-> h6"),
+                tag_no_case("-> h6"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| h6(t.3).unwrap().1),
             tuple((
-                tag("-> hr"),
+                tag_no_case("-> hr"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| hr(t.3).unwrap().1),
             tuple((
-                tag("-> image"),
+                tag_no_case("-> image"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| image(t.3).unwrap().1),
             tuple((
-                tag("-> list"),
+                tag_no_case("-> list"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| list(t.3).unwrap().1),
             tuple((
-                tag("-> menu"),
+                tag_no_case("-> menu"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| menu(t.3).unwrap().1),
             tuple((
-                tag("-> nav"),
+                tag_no_case("-> nav"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| nav(t.3).unwrap().1),
             tuple((
-                tag("-> notes"),
+                tag_no_case("-> notes"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| notes(t.3).unwrap().1),
             tuple((
-                tag("-> note"),
+                tag_no_case("-> note"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
@@ -445,63 +445,63 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         )),
         alt((
             tuple((
-                tag("-> object"),
+                tag_no_case("-> object"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| object(t.3).unwrap().1),
             tuple((
-                tag("-> olist"),
+                tag_no_case("-> olist"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| olist(t.3).unwrap().1),
             tuple((
-                tag("-> pre"),
+                tag_no_case("-> pre"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| pre(t.3).unwrap().1),
             tuple((
-                tag("-> results"),
+                tag_no_case("-> results"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| results(t.3).unwrap().1),
             tuple((
-                tag("-> startcode"),
+                tag_no_case("-> startcode"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> endcode"), rest)),
             ))
             .map(|t| code(t.3).unwrap().1),
             tuple((
-                tag("-> subtitle"),
+                tag_no_case("-> subtitle"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| subtitle(t.3).unwrap().1),
             tuple((
-                tag("-> table"),
+                tag_no_case("-> table"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| table(t.3).unwrap().1),
             tuple((
-                tag("-> textarea"),
+                tag_no_case("-> textarea"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| textarea(t.3).unwrap().1),
             tuple((
-                tag("-> title"),
+                tag_no_case("-> title"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
@@ -510,147 +510,147 @@ pub fn section(source: &str) -> IResult<&str, Section> {
         )),
         alt((
             tuple((
-                tag("-> todos"),
+                tag_no_case("-> todos"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| todos(t.3).unwrap().1),
             tuple((
-                tag("-> todo"),
+                tag_no_case("-> todo"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| todo(t.3).unwrap().1),
             tuple((
-                tag("-> vimeo"),
+                tag_no_case("-> vimeo"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| vimeo(t.3).unwrap().1),
             tuple((
-                tag("-> warning"),
+                tag_no_case("-> warning"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| warning(t.3).unwrap().1),
             tuple((
-                tag("-> youtube"),
+                tag_no_case("-> youtube"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| youtube(t.3).unwrap().1),
             tuple((
-                tag("-> attributes"),
+                tag_no_case("-> attributes"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| attributes(t.3).unwrap().1),
             tuple((
-                tag("-> blurb"),
+                tag_no_case("-> blurb"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| blurb(t.3).unwrap().1),
             tuple((
-                tag("-> categories"),
+                tag_no_case("-> categories"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| categories(t.3).unwrap().1),
             tuple((
-                tag("-> comment"),
+                tag_no_case("-> comment"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| comment(t.3).unwrap().1),
             tuple((
-                tag("-> css"),
+                tag_no_case("-> css"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| css(t.3).unwrap().1),
             tuple((
-                tag("-> ext"),
+                tag_no_case("-> ext"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| ext(t.3).unwrap().1),
             tuple((
-                tag("-> footnote"),
+                tag_no_case("-> footnote"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| footnote(t.3).unwrap().1),
             tuple((
-                tag("-> head"),
+                tag_no_case("-> head"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| head(t.3).unwrap().1),
             tuple((
-                tag("-> html"),
+                tag_no_case("-> html"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| html(t.3).unwrap().1),
             tuple((
-                tag("-> include"),
+                tag_no_case("-> include"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| include(t.3).unwrap().1),
             tuple((
-                tag("-> reference"),
+                tag_no_case("-> reference"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| reference(t.3).unwrap().1),
             tuple((
-                tag("-> script"),
+                tag_no_case("-> script"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| script(t.3).unwrap().1),
             tuple((
-                tag("-> widget"),
+                tag_no_case("-> widget"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| widget(t.3).unwrap().1),
             tuple((
-                tag("-> p"),
+                tag_no_case("-> p"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| p(t.3).unwrap().1),
             tuple((
-                tag("-> endcode"),
+                tag_no_case("-> endcode"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| p(t.3).unwrap().1),
             tuple((
-                tag("-> enddiv"),
+                tag_no_case("-> enddiv"),
                 not_line_ending,
                 line_ending,
                 alt((take_until("\n\n-> "), rest)),

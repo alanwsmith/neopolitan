@@ -29,11 +29,16 @@ use crate::snippet::snippets::u::u;
 use crate::snippet::snippets::var::var;
 use html_escape;
 use nom::branch::alt;
+use nom::bytes::complete::escaped_transform;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
+use nom::character::complete::anychar;
 use nom::character::complete::multispace0;
+use nom::character::complete::none_of;
 use nom::combinator::rest;
+use nom::combinator::value;
 use nom::error::Error;
+use nom::multi::many_till;
 use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
@@ -110,14 +115,62 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
             tuple((
                 multispace0::<&str, Error<&str>>,
                 tag("<<"),
-                take_until("|"),
+                escaped_transform(none_of("\\|"), '\\', value("|", tag("|"))),
+                // tuple((
+                //     escaped_transform(none_of("|"), '\\', value("|", tag("|"))),
+                //     tag("|"),
+                // ))
+
+                // .map(|x| x.0.to_string()),
+
+                // many_till(
+                //     alt((
+                //         tuple((
+                //             escaped_transform(none_of("|"), '\\', value("|", tag("|"))),
+                //             tag("|"),
+                //         ))
+                //         .map(|x| x.0.to_string()),
+                //         tuple((take_until("|"), tag("|"))).map(|x: (&str, &str)| x.0.to_string()),
+                //         // rest.map(|x: &str| x.to_string()),
+                //     )),
+                //     tag("|"), // anychar, // tag(">>"),
+                // ),
                 tag("|"),
                 multispace0,
                 tag("link"),
                 take_until(">>"),
                 tag(">>"),
             ))
-            .map(|x| link(x.2, x.6)),
+            // .map(|x| link(x.2.as_str(), "x")),
+            .map(|x| link(x.2.as_str(), x.6)),
+            // let (_, items) = many_till(
+            //     alt((
+            //         tuple((
+            //             escaped_transform(
+            //                 none_of(separator_with_escape.as_str()),
+            //                 '\\',
+            //                 value(separator, tag(separator)),
+            //             ),
+            //             tag(separator),
+            //         ))
+            //         .map(|x| x.0.to_string()),
+            //         tuple((take_until(separator), tag(separator))).map(|x: (&str, &str)| x.0.to_string()),
+            //         rest.map(|x: &str| x.to_string()),
+            //     )),
+            //     eof,
+            // )
+
+            // tuple((
+            //     multispace0::<&str, Error<&str>>,
+            //     tag("<<"),
+            //     take_until("|"),
+            //     tag("|"),
+            //     multispace0,
+            //     tag("link"),
+            //     take_until(">>"),
+            //     tag(">>"),
+            // ))
+            // .map(|x| link(x.2, x.6)),
         )),
         alt((
             tuple((
@@ -367,3 +420,28 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
     ))(source)?;
     Ok((remainder, captured))
 }
+
+// fn split_on_separator_with_escapes<'a>(
+//     source: &'a str,
+//     separator: &'a str,
+// ) -> IResult<&'a str, Vec<String>> {
+//     let mut separator_with_escape = String::from("\\");
+//     separator_with_escape.push_str(separator);
+//     let (_, items) = many_till(
+//         alt((
+//             tuple((
+//                 escaped_transform(
+//                     none_of(separator_with_escape.as_str()),
+//                     '\\',
+//                     value(separator, tag(separator)),
+//                 ),
+//                 tag(separator),
+//             ))
+//             .map(|x| x.0.to_string()),
+//             tuple((take_until(separator), tag(separator))).map(|x: (&str, &str)| x.0.to_string()),
+//             rest.map(|x: &str| x.to_string()),
+//         )),
+//         eof,
+//     )(source)?;
+//     Ok(("", items.0))
+// }

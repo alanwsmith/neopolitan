@@ -14,7 +14,8 @@ pub fn link(text: &str, raw_attribute_string: &str) -> Snippet {
         response.push_str(x.as_str());
     };
     response.push_str(">");
-    let escaped_text = html_escape::encode_text(text).to_string();
+    let mut escaped_text = html_escape::encode_text(text).to_string();
+    escaped_text = escaped_text.replace("\\|", "|");
     response.push_str(escaped_text.as_str());
     response.push_str("</a>");
     Snippet::LinkTag {
@@ -73,6 +74,15 @@ mod test {
             "Raise the sail",
             r#"https://echo.example.com/|class: delta foxtrot"#,
         );
+        assert_eq!(expected, results);
+    }
+
+    #[test]
+    fn escaped_pipes() {
+        let expected = Snippet::LinkTag {
+            string: Some(r#"<a href="https://echo.example.com/">Lift | the stone</a>"#.to_string()),
+        };
+        let results = link("Lift \\| the stone", r#"https://echo.example.com/"#);
         assert_eq!(expected, results);
     }
 }
