@@ -85,7 +85,7 @@ mod test {
     // use crate::section::section_attributes::*;
     // use crate::snippet::snippet_enum::*;
 
-    #[ignore]
+    // #[ignore]
     #[test]
     pub fn core_test_code() {
         let source = ["Bring your best compass", "Cap the jar"]
@@ -111,13 +111,12 @@ mod test {
             language: Some("HTML".to_string()),
             title: None,
             raw: Some("Cap the jar".to_string()),
-            // raw: Some("<span style=\"color:#c0c5ce;\">Cap the jar</span>".to_string()),
         };
         let results = code(&source).unwrap().1;
         assert_eq!(expected, results);
     }
 
-    #[ignore]
+    // #[ignore]
     #[test]
     pub fn code_with_title() {
         let source = [">> title: Some new title", "", "Cap the jar"]
