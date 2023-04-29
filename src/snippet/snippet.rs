@@ -120,7 +120,7 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
                             return_value
                         }),
                         is_not("|").map(|x: &str| {
-                            dbg!(&x);
+                            // dbg!(&x);
                             x.to_string()
                         }),
                     )),

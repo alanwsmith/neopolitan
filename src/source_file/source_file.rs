@@ -134,12 +134,24 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::CodeSection { attributes, attributes_string, language, raw, title } => {
-                   output_string.push_str(
+                Section::CodeSection {
+                    attributes,
+                    attributes_string,
+                    language,
+                    raw,
+                    title,
+                } => {
+                    output_string.push_str(
                         &base
                             .get_template("components/code.j2")
                             .unwrap()
-                            .render(context!(attributes, attributes_string, language, raw, title))
+                            .render(context!(
+                                attributes,
+                                attributes_string,
+                                language,
+                                raw,
+                                title
+                            ))
                             .unwrap()
                             .as_str(),
                     );
@@ -159,10 +171,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::StartDivSection {
-                    attributes,
-                    html,
-                } => {
+                Section::StartDivSection { attributes, html } => {
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
@@ -481,10 +490,7 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-                Section::VimeoSection {
-                    attributes,
-                    id,
-                } => {
+                Section::VimeoSection { attributes, id } => {
                     let attributes_string = attributes_basic(attributes);
                     output_string.push_str(
                         &base
@@ -660,7 +666,7 @@ mod test {
             }]),
         }]);
         sf.raw = Some(lines.join("\n").to_string());
-        sf.parsed = parse_dev(sf.raw.unwrap().as_str()).unwrap().1;
+        sf.parsed = parse(sf.raw.unwrap().as_str()).unwrap().1;
         assert_eq!(expected, sf.parsed);
     }
 }
