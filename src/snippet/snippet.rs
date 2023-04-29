@@ -1,3 +1,4 @@
+#![allow(warnings)]
 use crate::snippet::snippet_enum::Snippet;
 use crate::snippet::snippets::abbr::abbr;
 use crate::snippet::snippets::b::b;
@@ -29,15 +30,20 @@ use crate::snippet::snippets::u::u;
 use crate::snippet::snippets::var::var;
 use html_escape;
 use nom::branch::alt;
+use nom::bytes::complete::escaped;
 use nom::bytes::complete::escaped_transform;
+use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
 use nom::character::complete::anychar;
+use nom::character::complete::char;
 use nom::character::complete::multispace0;
 use nom::character::complete::none_of;
+use nom::character::complete::one_of;
 use nom::combinator::rest;
 use nom::combinator::value;
 use nom::error::Error;
+use nom::multi::many0;
 use nom::multi::many_till;
 use nom::sequence::tuple;
 use nom::IResult;
@@ -115,7 +121,34 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
             tuple((
                 multispace0::<&str, Error<&str>>,
                 tag("<<"),
-                escaped_transform(none_of("\\|"), '\\', value("|", tag("|"))),
+                many_till(
+                    alt((
+                        tuple((take_until("\\|"), tag("\\|"))).map(|x| {
+                            let mut return_value = String::from(x.0);
+                            return_value.push_str("|");
+                            // dbg!(&return_value);
+                            return_value
+                        }),
+                        is_not("|").map(|x: &str| {
+                            dbg!(&x);
+                            x.to_string()
+                        }),
+                    )),
+                    // alt((
+                    //     // escaped_transform(none_of("|"), '\\', value("|", tag("|"))).map(|x| {
+                    //     //     dbg!(x);
+                    //     //     "x"
+                    //     // }),
+                    //     escaped(anychar, '\\', one_of("|")).map(|x| {
+                    //         dbg!(x);
+                    //         "x"
+                    //     }),
+                    //     take_until("|"),
+                    // )),
+                    tag("|"),
+                )
+                .map(|x| x),
+                //escaped_transform(none_of("|"), '\\', value("|", tag("|"))),
                 // tuple((
                 //     escaped_transform(none_of("|"), '\\', value("|", tag("|"))),
                 //     tag("|"),
@@ -135,14 +168,20 @@ pub fn snippet(source: &str) -> IResult<&str, Snippet> {
                 //     )),
                 //     tag("|"), // anychar, // tag(">>"),
                 // ),
-                tag("|"),
+                // tag("|"),
                 multispace0,
                 tag("link"),
                 take_until(">>"),
                 tag(">>"),
             ))
             // .map(|x| link(x.2.as_str(), "x")),
-            .map(|x| link(x.2.as_str(), x.6)),
+            //.map(|x| link(x.2.as_str(), x.6)),
+            // .map(|x| link(x.2, x.6)),
+            .map(|x| {
+                // dbg!(&x);
+                let text_string = x.2 .0.join("");
+                link(text_string.as_str(), x.5)
+            }),
             // let (_, items) = many_till(
             //     alt((
             //         tuple((
