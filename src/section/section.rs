@@ -10,7 +10,6 @@ use crate::section::code::*;
 use crate::section::comment::*;
 use crate::section::css::*;
 use crate::section::details::*;
-use crate::section::startdiv::*;
 use crate::section::dlist::*;
 use crate::section::ext::*;
 use crate::section::footnote::*;
@@ -40,6 +39,7 @@ use crate::section::reference::*;
 use crate::section::results::*;
 use crate::section::script::*;
 use crate::section::section_attributes::SectionAttribute;
+use crate::section::startdiv::*;
 use crate::section::subtitle::*;
 use crate::section::table::*;
 use crate::section::textarea::*;
@@ -55,7 +55,10 @@ use nom::bytes::complete::tag_no_case;
 use nom::bytes::complete::take_until;
 use nom::character::complete::line_ending;
 use nom::character::complete::multispace0;
+use nom::character::complete::none_of;
 use nom::character::complete::not_line_ending;
+use nom::combinator::not;
+// use nom::combinator::opt;
 use nom::combinator::rest;
 use nom::sequence::tuple;
 use nom::IResult;
@@ -282,6 +285,7 @@ pub enum Section {
 
 pub fn section(source: &str) -> IResult<&str, Section> {
     let (remainder, _) = multispace0(source)?;
+
     let (remainder, section) = alt((
         alt((
             tuple((

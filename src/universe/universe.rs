@@ -53,8 +53,16 @@ impl Universe<'_> {
                         )
                         .unwrap(),
                     );
-                    sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
-                    &self.source_files.push(sf);
+                    let parsed_data = parse(sf.raw.as_ref().unwrap().as_str());
+                    match parsed_data {
+                        Err(e) => {}
+                        Ok(data) => {
+                            sf.parsed = data.1;
+                            &self.source_files.push(sf);
+                        }
+                    }
+                    // sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
+                    // &self.source_files.push(sf);
                 }
             }
             count += 1;
