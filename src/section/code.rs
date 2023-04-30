@@ -116,7 +116,6 @@ mod test {
         assert_eq!(expected, results);
     }
 
-    // #[ignore]
     #[test]
     pub fn code_with_title() {
         let source = [">> title: Some new title", "", "Cap the jar"]
@@ -151,4 +150,18 @@ mod test {
     //     let results = code(&source).unwrap().1;
     //     assert_eq!(expected, results);
     // }
+
+    #[test]
+    pub fn code_with_symobols_in_it() {
+        let source = ["Some << text >>"].join("\n").to_string();
+        let expected = Section::CodeSection {
+            attributes: None,
+            attributes_string: Some("".to_string()),
+            language: None,
+            title: None,
+            raw: Some("Some &lt;&lt; text &gt;&gt;".to_string()),
+        };
+        let results = code(&source).unwrap().1;
+        assert_eq!(expected, results);
+    }
 }

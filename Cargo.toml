@@ -10,6 +10,7 @@ eyre = "0.6.8"
 fs_extra = "1.3.0"
 html-escape = "0.2.13"
 logos = "0.12.1"
+miette = "5.8.0"
 minijinja = { version = "0.30.7", features = ["source"] }
 nom = "7.1.3"
 serde = { version = "1.0.154", features = ["derive"] }
@@ -19,6 +20,7 @@ tokio = "1.28.0"
 walkdir = "2"
 watchexec = "2.3.0"
 watchexec-events = "1.0.0"
+watchexec-signals = "1.0.0"
 
 
 [lib]
