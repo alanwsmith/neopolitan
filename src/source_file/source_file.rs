@@ -7,7 +7,7 @@ use minijinja::context;
 use serde::Serialize;
 use std::path::PathBuf;
 
-#[derive(Debug, PartialEq, Serialize)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct SourceFile {
     pub input_path: Option<PathBuf>,
     pub parsed: Option<Vec<Section>>,

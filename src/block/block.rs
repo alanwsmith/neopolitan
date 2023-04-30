@@ -1,4 +1,5 @@
 use crate::snippet::snippet::*;
+use crate::snippet::snippet_enum::Snippet;
 use nom::branch::alt;
 use nom::bytes::complete::take_until;
 use nom::combinator::eof;
@@ -6,9 +7,8 @@ use nom::combinator::rest;
 use nom::multi::many_till;
 use nom::IResult;
 use serde::Serialize;
-use crate::snippet::snippet_enum::Snippet;
 
-#[derive(Debug, PartialEq, Serialize)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum Block {
     Text { snippets: Option<Vec<Snippet>> },

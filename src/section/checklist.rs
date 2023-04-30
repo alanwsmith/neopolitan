@@ -13,7 +13,7 @@ use nom::multi::many_till;
 use nom::IResult;
 use serde::Serialize;
 
-#[derive(Debug, PartialEq, Serialize)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum ChecklistItem {
     Basic { children: Option<Vec<String>> },

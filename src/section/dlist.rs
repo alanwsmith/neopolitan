@@ -16,7 +16,7 @@ use nom::Parser;
 
 use serde::Serialize;
 
-#[derive(Debug, PartialEq, Serialize)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
 #[serde(tag = "type")]
 pub enum DescriptionListItem {
     Basic {
