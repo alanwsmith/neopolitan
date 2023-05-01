@@ -28,8 +28,9 @@ pub struct Universe<'a> {
     pub assets_dir: Option<PathBuf>,
     pub content_dir: Option<PathBuf>,
     pub content_files: HashMap<PathBuf, SourceFile>,
-    pub dest_dir: Option<PathBuf>,
+    // pub dest_dir: Option<PathBuf>,
     pub env: Option<Environment<'a>>,
+    pub output_root: Option<PathBuf>,
 }
 
 impl Universe<'_> {
@@ -38,8 +39,9 @@ impl Universe<'_> {
             assets_dir: None,
             content_dir: None,
             content_files: HashMap::new(),
-            dest_dir: None,
+            // dest_dir: None,
             env: None,
+            output_root: None,
         }
     }
 }
@@ -56,6 +58,61 @@ impl Universe<'_> {
             }
         }
         Ok(())
+    }
+}
+
+impl Universe<'_> {
+    pub fn load_raw_data(&mut self) {
+        for (path, sf) in self.content_files.iter_mut() {
+            sf.raw = Some(fs::read_to_string(path.as_os_str().to_str().unwrap()).unwrap());
+            let parsed_data = parse(sf.raw.as_ref().unwrap().as_str());
+            match parsed_data {
+                Err(e) => sf.parsed = None,
+                Ok(data) => {
+                    sf.parsed = data.1;
+                }
+            }
+        }
+    }
+}
+
+impl Universe<'_> {
+    pub fn output_files(&self) {
+        for (source_path, source_file) in self.content_files.iter() {
+            self.output_file(source_path.to_path_buf(), source_file);
+        }
+    }
+}
+
+impl Universe<'_> {
+    pub fn output_file(&self, path: PathBuf, source_file: &SourceFile) {
+        let output_path = self.get_output_path(path);
+        if let Some(_) = source_file.output(self) {
+            let wrapper = self
+                .env
+                .as_ref()
+                .unwrap()
+                .get_template("default.j2")
+                .unwrap();
+            let out = wrapper
+                .render(context!(
+                content =>
+                 source_file.output(self).unwrap()
+                    ))
+                .unwrap()
+                .to_string();
+            fs::write(output_path, out).unwrap();
+        }
+    }
+}
+
+impl Universe<'_> {
+    pub fn get_output_path(&self, path: PathBuf) -> PathBuf {
+        let mut output_path = PathBuf::from(self.output_root.as_ref().unwrap());
+        let sub_path = path.strip_prefix(&self.content_dir.as_ref().unwrap());
+        output_path.push(sub_path.as_ref().unwrap());
+        output_path.set_extension("html");
+        output_path
     }
 }
 

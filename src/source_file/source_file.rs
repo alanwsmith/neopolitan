@@ -9,7 +9,7 @@ use std::path::PathBuf;
 
 #[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct SourceFile {
-    pub input_path: Option<PathBuf>,
+    pub output_path: Option<PathBuf>,
     pub parsed: Option<Vec<Section>>,
     pub raw: Option<String>,
 }
@@ -17,7 +17,7 @@ pub struct SourceFile {
 impl SourceFile {
     pub fn new() -> SourceFile {
         SourceFile {
-            input_path: None,
+            output_path: None,
             parsed: None,
             raw: None,
         }

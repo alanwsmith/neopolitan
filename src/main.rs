@@ -1,7 +1,7 @@
 // use core::fmt::Error;
 // use miette::Result;
 // use neopolitan::helpers::load_assets::load_assets;
-// use neopolitan::universe::create_env::create_env;
+use neopolitan::universe::create_env::create_env;
 use neopolitan::universe::universe::Universe;
 use std::path::PathBuf;
 
@@ -20,7 +20,6 @@ fn main() {
 
     // let content_dir = "/Users/alan/workshop/grimoire_org_to_neo_files/step-01";
     // let build_dir = "/Users/alan/workshop/grimoire_org_to_neo_files/test_build";
-    // let templates_dir = "./site/templates";
     // let assets_dir = "./site/assets/";
     // // let build_dir = "./site/build";
 
@@ -37,10 +36,14 @@ fn main() {
 
     let mut u = Universe::new();
     // u.content_dir = PathBuf::from("/Users/alan/workshop/grimoire_org_to_neo_files/step-01");
+    let templates_dir = "./site/templates";
     u.content_dir = Some(PathBuf::from("./site/content"));
-    u.find_files();
+    u.output_root = Some(PathBuf::from("./site/build"));
+    u.env = Some(create_env(templates_dir));
+    u.find_files().unwrap();
+    u.load_raw_data();
+    u.output_files();
 
-    // u.env = Some(create_env(templates_dir));
     // u.assets_dir = Some(PathBuf::from(assets_dir));
     // u.source_dir = Some(PathBuf::from(content_dir));
     // u.dest_dir = Some(PathBuf::from(build_dir));
