@@ -11,6 +11,7 @@ use minijinja::Environment;
 // use neopolitan::helpers::load_assets::load_assets;
 // use neopolitan::universe::create_env::create_env;
 // use neopolitan::universe::universe::Universe;
+use std::collections::HashMap;
 use std::fs;
 use std::fs::create_dir_all;
 use std::path::PathBuf;
@@ -25,21 +26,36 @@ use watchexec_signals::Signal;
 #[derive(Debug, Clone)]
 pub struct Universe<'a> {
     pub assets_dir: Option<PathBuf>,
+    pub content_dir: Option<PathBuf>,
+    pub content_files: HashMap<PathBuf, SourceFile>,
     pub dest_dir: Option<PathBuf>,
     pub env: Option<Environment<'a>>,
-    pub source_files: Vec<SourceFile>,
-    pub source_dir: Option<PathBuf>,
 }
 
 impl Universe<'_> {
     pub fn new() -> Universe<'static> {
         Universe {
             assets_dir: None,
+            content_dir: None,
+            content_files: HashMap::new(),
             dest_dir: None,
             env: None,
-            source_dir: None,
-            source_files: vec![],
         }
+    }
+}
+
+impl Universe<'_> {
+    pub fn find_files(&mut self) -> Result<(), Error> {
+        dbg!("Finding files");
+        for entry in WalkDir::new(&self.content_dir.as_ref().unwrap()).into_iter() {
+            let p = entry?.path().to_path_buf();
+            if let Some(ext) = p.extension() {
+                if ext == "neo" {
+                    self.content_files.insert(p, SourceFile::new());
+                }
+            }
+        }
+        Ok(())
     }
 }
 

@@ -24,7 +24,7 @@ pub fn startdiv(source: &str) -> IResult<&str, Section> {
     let mut u = Universe::new();
     u.env = Some(create_env(templates_dir));
     u.assets_dir = Some(PathBuf::from(assets_dir));
-    u.source_dir = Some(PathBuf::from(content_dir));
+    u.content_dir = Some(PathBuf::from(content_dir));
     u.dest_dir = Some(PathBuf::from(build_dir));
     let (remainder, attributes) = section_attributes(source)?;
     let (remainder, _) = multispace0(remainder)?;
