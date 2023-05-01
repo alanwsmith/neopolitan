@@ -1,5 +1,6 @@
 pub mod block;
 pub mod helpers;
+pub mod load_files;
 pub mod parse;
 pub mod section;
 pub mod snippet;

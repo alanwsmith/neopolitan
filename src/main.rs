@@ -1,9 +1,10 @@
-use core::fmt::Error;
-use miette::Result;
-use neopolitan::helpers::load_assets::load_assets;
-use neopolitan::universe::create_env::create_env;
+// use neopolitan::load_files::load_files;
+// use core::fmt::Error;
+// use miette::Result;
+// use neopolitan::helpers::load_assets::load_assets;
+// use neopolitan::universe::create_env::create_env;
 use neopolitan::universe::universe::Universe;
-use std::path::PathBuf;
+// use std::path::PathBuf;
 
 // use watchexec::action::Action;
 // use watchexec::action::Outcome;
@@ -12,16 +13,38 @@ use std::path::PathBuf;
 // use watchexec::Watchexec;
 // use watchexec_signals::Signal;
 
+// pub fn prep_database(db_path: &str) -> Result<()> {
+//     dbg!("Ensuring database is ready");
+//     let conn = Connection::open(db_path)?;
+//     let create_table = "
+//         CREATE TABLE IF NOT EXISTS pages (
+//         id INTEGER PRIMARY KEY AUTOINCREMENT,
+//         last_updated INTEGER,
+//         path TEXT UNIQUE
+//         )";
+//     conn.execute(create_table, ())?;
+//     let create_metadata_table = "
+//         CREATE TABLE IF NOT EXISTS metadata (
+//         key TEXT UNIQUE,
+//         value TEXT
+//         )";
+//     conn.execute(create_metadata_table, ())?;
+//     conn.close().unwrap();
+//     Ok(())
+// }
+
 // #[tokio::main]
 // async fn main() -> Result<(), Error> {
 fn main() {
     println!("Starting process");
-    let content_dir = "/Users/alan/workshop/grimoire_org_to_neo_files/step-01";
-    let build_dir = "/Users/alan/workshop/grimoire_org_to_neo_files/test_build";
+    let source_dir = "./site/content";
+    load_files(source_dir, db_path).unwrap();
 
-    let templates_dir = "./site/templates";
-    let assets_dir = "./site/assets/";
-    // let build_dir = "./site/build";
+    // let content_dir = "/Users/alan/workshop/grimoire_org_to_neo_files/step-01";
+    // let build_dir = "/Users/alan/workshop/grimoire_org_to_neo_files/test_build";
+    // let templates_dir = "./site/templates";
+    // let assets_dir = "./site/assets/";
+    // // let build_dir = "./site/build";
 
     println!("Starting build");
 
@@ -35,13 +58,14 @@ fn main() {
     // load_assets(assets_dir, build_dir).unwrap();
 
     let mut u = Universe::new();
-    u.env = Some(create_env(templates_dir));
-    u.assets_dir = Some(PathBuf::from(assets_dir));
-    u.source_dir = Some(PathBuf::from(content_dir));
-    u.dest_dir = Some(PathBuf::from(build_dir));
-    u.load_files().unwrap();
-    u.output_files();
-    u.watch_files();
+    // u.env = Some(create_env(templates_dir));
+    // u.assets_dir = Some(PathBuf::from(assets_dir));
+    // u.source_dir = Some(PathBuf::from(content_dir));
+    // u.dest_dir = Some(PathBuf::from(build_dir));
+    // u.load_files().unwrap();
+    // u.output_files();
+
+    // u.watch_files();
 
     // let init = InitConfig::default();
     // let mut runtime = RuntimeConfig::default();
