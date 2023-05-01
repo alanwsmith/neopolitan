@@ -28,7 +28,6 @@ pub struct Universe<'a> {
     pub assets_dir: Option<PathBuf>,
     pub content_dir: Option<PathBuf>,
     pub content_files: HashMap<PathBuf, SourceFile>,
-    // pub dest_dir: Option<PathBuf>,
     pub env: Option<Environment<'a>>,
     pub output_root: Option<PathBuf>,
 }
@@ -39,7 +38,6 @@ impl Universe<'_> {
             assets_dir: None,
             content_dir: None,
             content_files: HashMap::new(),
-            // dest_dir: None,
             env: None,
             output_root: None,
         }
@@ -78,9 +76,16 @@ impl Universe<'_> {
 
 impl Universe<'_> {
     pub fn output_files(&self) {
+        println!("Outputting files");
+        let mut counter: u32 = 0;
         for (source_path, source_file) in self.content_files.iter() {
             self.output_file(source_path.to_path_buf(), source_file);
+            counter += 1;
+            if counter % 100 == 0 {
+                println!("Count: {}", counter);
+            }
         }
+        println!("Count: {}", counter);
     }
 }
 
