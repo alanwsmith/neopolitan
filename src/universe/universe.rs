@@ -1,3 +1,4 @@
+#![allow(warnings)]
 use crate::parse::parse::parse;
 use crate::source_file::source_file::SourceFile;
 use miette::Result;
@@ -33,7 +34,6 @@ impl Universe<'_> {
 impl Universe<'_> {
     pub fn find_files(&mut self) -> Result<(), Error> {
         println!("Finding files");
-        // let mut counter = 0;
         for entry in WalkDir::new(&self.content_dir.as_ref().unwrap()).into_iter() {
             let p = entry?.path().to_path_buf();
             if let Some(ext) = p.extension() {
@@ -42,35 +42,44 @@ impl Universe<'_> {
                         .insert(p.canonicalize().unwrap(), SourceFile::new());
                 }
             }
-            // counter += 1;
-            // if counter % 100 == 0 {
-            //     print!("{}, ", counter);
-            // }
         }
-        // println!("{}", counter);
         Ok(())
     }
 }
 
 impl Universe<'_> {
-    pub fn load_raw_data(&mut self) {
+    pub fn load_raw_data(&mut self) -> Result<(), Error> {
         println!("Loading raw data");
-        // let mut counter = 0;
-        for (path, sf) in self.content_files.iter_mut() {
-            sf.raw = Some(fs::read_to_string(path.as_os_str().to_str().unwrap()).unwrap());
-            let parsed_data = parse(sf.raw.as_ref().unwrap().as_str());
-            match parsed_data {
-                Err(_) => sf.parsed = None,
-                Ok(data) => {
-                    sf.parsed = data.1;
+        for entry in WalkDir::new(&self.content_dir.as_ref().unwrap()).into_iter() {
+            let p = entry?.path().to_path_buf();
+            if let Some(ext) = p.extension() {
+                if ext == "neo" {
+                    let path = p.canonicalize().unwrap();
+                    let raw = fs::read_to_string(path.as_os_str().to_str().unwrap()).unwrap();
+                    let parsed_data = parse(raw.as_str());
+                    match parsed_data {
+                        Err(_) => {}
+                        Ok(data) => {
+                            let mut sf = SourceFile::new();
+                            sf.parsed = data.1;
+                        }
+                    }
                 }
             }
-            // counter += 1;
-            // if counter % 100 == 0 {
-            //     println!("{}, ", counter);
+
+            // for (path, sf) in self.content_files.iter_mut() {
+            //     sf.raw = Some(fs::read_to_string(path.as_os_str().to_str().unwrap()).unwrap());
+            //     let raw = Some(fs::read_to_string(path.as_os_str().to_str().unwrap()).unwrap());
+            //     let parsed_data = parse(raw.as_ref().unwrap().as_str());
+            //     match parsed_data {
+            //         Err(_) => sf.parsed = None,
+            //         Ok(data) => {
+            //             sf.parsed = data.1;
+            //         }
+            //     }
             // }
         }
-        // println!("{}", counter);
+        Ok(())
     }
 }
 

@@ -95,16 +95,15 @@ pub async fn watch_files() -> Result<()> {
     println!("Starting watcher");
     let mut u = Universe::new();
     let templates_dir = "./site/templates";
-    let _content_dir = PathBuf::from("./site/content");
-    let _output_root = PathBuf::from("./site/build");
-    let content_dir = PathBuf::from("/Users/alan/workshop/grimoire_org_to_neo_files/step-01");
-    let output_root = PathBuf::from("/Users/alan/workshop/grimoire_org_to_neo_files/test_build");
-
+    //let content_dir = PathBuf::from("/Users/alan/workshop/grimoire_org_to_neo_files/step-01");
+    // let output_root = PathBuf::from("/Users/alan/workshop/grimoire_org_to_neo_files/test_build");
+    let content_dir = PathBuf::from("./site/content");
+    let output_root = PathBuf::from("./site/build");
     u.content_dir = Some(content_dir.canonicalize().unwrap());
     u.output_root = Some(output_root.canonicalize().unwrap());
     u.env = Some(create_env(templates_dir));
-    u.find_files().unwrap();
-    u.load_raw_data();
+    // u.find_files().unwrap();
+    u.load_raw_data().unwrap();
     u.output_files();
     let init = InitConfig::default();
     let mut runtime = RuntimeConfig::default();
