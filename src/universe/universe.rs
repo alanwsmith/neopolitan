@@ -63,9 +63,9 @@ impl Universe<'_> {
                             let mut sf = SourceFile::new();
                             sf.parsed = data.1;
                             if sf.status() == Some("published".to_string()) {
-                                self.content_files
-                                    .insert(p.canonicalize().unwrap(), SourceFile::new());
-                                // dbg!("publish it");
+                                self.content_files.insert(p.canonicalize().unwrap(), sf);
+                            } else if sf.status() == Some("draft".to_string()) {
+                                self.content_files.insert(p.canonicalize().unwrap(), sf);
                             }
                         }
                     }
@@ -110,6 +110,7 @@ impl Universe<'_> {
         // println!("{}", path.display());
         if let Some(source_file) = self.content_files.get(&path) {
             let output_path = self.get_output_path(path);
+            println!("Outputting: {}", &output_path.display());
             // dbg!(output_path);
             if let Some(_) = source_file.output(self) {
                 let wrapper = self
