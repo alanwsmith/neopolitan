@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cargo watch --why -i 'site/build' -i 'site/html' -x 'test -- --nocapture' -x run
+cargo watch -i 'site/build' -i 'site/html' -x 'test -- --nocapture' -x run
