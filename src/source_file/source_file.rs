@@ -28,11 +28,8 @@ impl SourceFile {
     pub fn output(&self, u: &Universe) -> Option<String> {
         let mut output_string = String::from("");
         let base = u.env.as_ref().unwrap();
-        self.parsed
-            .as_ref()
-            .unwrap()
-            .iter()
-            .for_each(|section| match section {
+        if let Some(parsed) = self.parsed.as_ref() {
+            parsed.iter().for_each(|section| match section {
                 Section::NotesSection {
                     attributes,
                     children,
@@ -574,6 +571,7 @@ impl SourceFile {
 
                 _ => {}
             });
+        }
         Some(output_string)
     }
 }

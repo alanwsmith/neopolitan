@@ -33,6 +33,7 @@ impl Universe<'_> {
 impl Universe<'_> {
     pub fn find_files(&mut self) -> Result<(), Error> {
         println!("Finding files");
+        // let mut counter = 0;
         for entry in WalkDir::new(&self.content_dir.as_ref().unwrap()).into_iter() {
             let p = entry?.path().to_path_buf();
             if let Some(ext) = p.extension() {
@@ -41,13 +42,20 @@ impl Universe<'_> {
                         .insert(p.canonicalize().unwrap(), SourceFile::new());
                 }
             }
+            // counter += 1;
+            // if counter % 100 == 0 {
+            //     print!("{}, ", counter);
+            // }
         }
+        // println!("{}", counter);
         Ok(())
     }
 }
 
 impl Universe<'_> {
     pub fn load_raw_data(&mut self) {
+        println!("Loading raw data");
+        // let mut counter = 0;
         for (path, sf) in self.content_files.iter_mut() {
             sf.raw = Some(fs::read_to_string(path.as_os_str().to_str().unwrap()).unwrap());
             let parsed_data = parse(sf.raw.as_ref().unwrap().as_str());
@@ -57,29 +65,35 @@ impl Universe<'_> {
                     sf.parsed = data.1;
                 }
             }
+            // counter += 1;
+            // if counter % 100 == 0 {
+            //     println!("{}, ", counter);
+            // }
         }
+        // println!("{}", counter);
     }
 }
 
 impl Universe<'_> {
     pub fn output_files(&self) {
         println!("Outputting files");
-        let mut counter: u32 = 0;
+        // let mut counter: u32 = 0;
         for (source_path, _source_file) in self.content_files.iter() {
             self.output_file(source_path.to_path_buf());
-            counter += 1;
-            if counter % 100 == 0 {
-                println!("Count: {}", counter);
-            }
+            // counter += 1;
+            // if counter % 100 == 0 {
+            //     println!("Count: {}", counter);
+            // }
         }
-        println!("Count: {}", counter);
+        // println!("Count: {}", counter);
+        println!("Output finished");
     }
 }
 
 impl Universe<'_> {
     pub fn output_file(&self, path: PathBuf) {
         // let source_file = self.content_files.get(&path);
-        println!("{}", path.display());
+        // println!("{}", path.display());
         if let Some(source_file) = self.content_files.get(&path) {
             let output_path = self.get_output_path(path);
             // dbg!(output_path);

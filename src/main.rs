@@ -17,33 +17,8 @@ use watchexec_signals::Signal;
 // async fn main() -> Result<(), Error> {
 fn main() {
     println!("Starting process");
-    // let source_dir = "./site/content";
-
-    // let content_dir = "/Users/alan/workshop/grimoire_org_to_neo_files/step-01";
-    // let build_dir = "/Users/alan/workshop/grimoire_org_to_neo_files/test_build";
-    // let assets_dir = "./site/assets/";
-    // // let build_dir = "./site/build";
 
     println!("Starting build");
-
-    // Be careful with the preflight right now
-    // it updates the contents directory which
-    // triggers cargo watch if it's pointed
-    // at it which turns into a loop. TODO:
-    // - ignore the directory that gets updated
-    // run_preflight().unwrap();
-
-    // load_assets(assets_dir, build_dir).unwrap();
-
-    // let mut u = Universe::new();
-    // let templates_dir = "./site/templates";
-    // u.content_dir = Some(PathBuf::from("./site/content"));
-    // u.output_root = Some(PathBuf::from("./site/build"));
-    // u.env = Some(create_env(templates_dir));
-    // u.find_files().unwrap();
-    // u.load_raw_data();
-    // u.output_files();
-
     watch_files().unwrap();
 
     // u.assets_dir = Some(PathBuf::from(assets_dir));
@@ -120,8 +95,10 @@ pub async fn watch_files() -> Result<()> {
     println!("Starting watcher");
     let mut u = Universe::new();
     let templates_dir = "./site/templates";
-    let content_dir = PathBuf::from("./site/content");
-    let output_root = PathBuf::from("./site/build");
+    let _content_dir = PathBuf::from("./site/content");
+    let _output_root = PathBuf::from("./site/build");
+    let content_dir = PathBuf::from("/Users/alan/workshop/grimoire_org_to_neo_files/step-01");
+    let output_root = PathBuf::from("/Users/alan/workshop/grimoire_org_to_neo_files/test_build");
 
     u.content_dir = Some(content_dir.canonicalize().unwrap());
     u.output_root = Some(output_root.canonicalize().unwrap());
