@@ -23,7 +23,35 @@
       </ul>
     </nav>
   </header>
-  <main></main>
+  <main><h1 class="title">Section: div</h1><p>This section provides a div wrapper around
+the rest of the content the gets processed
+as normal. It allows for adding attributes
+to that div as well.</p><div class="preWrapper">
+<div class="preTitle">Source</div>
+<pre class="language-neo"><code class="language-neo">-&gt; startdiv
+&gt;&gt; id: alfa
+&gt;&gt; class: bravo
+
+
+-&gt; list
+
+- Turn the lantern
+
+- Raise the sail
+
+-&gt; enddiv
+</code></pre>
+</div>
+
+<div class="preWrapper">
+<div class="preTitle">Output</div>
+<pre class="language-html"><code class="language-html">&lt;div id="alfa" class="bravo"&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Turn the lantern&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Raise the sail&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div><div class="todo"><p>Solve the issue where two blank lines
+have to be entered after the `-&gt; enddiv``
+tag. (Same thing after the `-&gt; startdiv``)</p></div></main>
   <footer>from <a href="https://www.alanwsmith.com/">alan w. smith</a></footer>
 
   <script src="/scripts/prism.js"></script>

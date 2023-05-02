@@ -12,3 +12,8 @@ Section: menu
 - the quick brown fox
 
 -> endneoexample
+
+
+-> attributes
+>> status: published
+

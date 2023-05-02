@@ -12,3 +12,8 @@ Section: startcode
 the quick brown fox
 
 -> endneoexample
+
+
+-> attributes
+>> status: published
+

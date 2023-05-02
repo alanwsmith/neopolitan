@@ -11,3 +11,8 @@ Section: todos
 [] Shut the hatch
 
 -> endneoexample
+
+
+-> attributes
+>> status: published
+

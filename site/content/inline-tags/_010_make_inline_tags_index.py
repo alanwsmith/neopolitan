@@ -35,6 +35,9 @@ with open(output_path, "w") as _out:
         lines.append(f"- {row[0]} - {row[1]}")
         lines.append("")
 
+    lines.append("-> attributes")
+    lines.append(">> status: published")
+    lines.append("")
 
     _out.write("\n".join(lines))
 con.close()

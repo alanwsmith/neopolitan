@@ -46,3 +46,9 @@ directly to the head of the document.
 - <<widget|link|/sections/widget.html>> - Goal: A way to provide 
 extra functionality with various frameworks. Or, at least, that's 
 the idea. I haven't dug into the details here.
+
+
+
+-> attributes
+>> status: published
+

@@ -1,3 +1,8 @@
+-> comment
+
+Don't edit this by hand. Run the 
+_010_make_inilne_tags_index.py file to update it
+
 -> title
 
 Neopolitan
@@ -33,4 +38,7 @@ Use a <<pencil|small|id: alfa|class: bravo>> to write
 
 -> endneoexample
 
+
+-> attributes
+>> status: published
 

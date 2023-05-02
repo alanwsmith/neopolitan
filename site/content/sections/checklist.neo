@@ -11,3 +11,8 @@ Section: checklist
 [] Shut the hatch
 
 -> endneoexample
+
+
+-> attributes
+>> status: published
+

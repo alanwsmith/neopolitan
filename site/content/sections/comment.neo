@@ -12,3 +12,8 @@ Section: comment
 the quick brown fox
 
 -> endneoexample
+
+
+-> attributes
+>> status: published
+

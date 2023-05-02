@@ -12,3 +12,8 @@ Section: dlist
 > was here
 
 -> endneoexample
+
+
+-> attributes
+>> status: published
+
