@@ -31,21 +31,21 @@ impl Universe<'_> {
     }
 }
 
-impl Universe<'_> {
-    pub fn find_files(&mut self) -> Result<(), Error> {
-        println!("Finding files");
-        for entry in WalkDir::new(&self.content_dir.as_ref().unwrap()).into_iter() {
-            let p = entry?.path().to_path_buf();
-            if let Some(ext) = p.extension() {
-                if ext == "neo" {
-                    self.content_files
-                        .insert(p.canonicalize().unwrap(), SourceFile::new());
-                }
-            }
-        }
-        Ok(())
-    }
-}
+// impl Universe<'_> {
+//     pub fn find_files(&mut self) -> Result<(), Error> {
+//         println!("Finding files");
+//         for entry in WalkDir::new(&self.content_dir.as_ref().unwrap()).into_iter() {
+//             let p = entry?.path().to_path_buf();
+//             if let Some(ext) = p.extension() {
+//                 if ext == "neo" {
+//                     self.content_files
+//                         .insert(p.canonicalize().unwrap(), SourceFile::new());
+//                 }
+//             }
+//         }
+//         Ok(())
+//     }
+// }
 
 impl Universe<'_> {
     pub fn load_raw_data(&mut self) -> Result<(), Error> {
@@ -62,6 +62,11 @@ impl Universe<'_> {
                         Ok(data) => {
                             let mut sf = SourceFile::new();
                             sf.parsed = data.1;
+                            if sf.status() == Some("published".to_string()) {
+                                self.content_files
+                                    .insert(p.canonicalize().unwrap(), SourceFile::new());
+                                // dbg!("publish it");
+                            }
                         }
                     }
                 }
