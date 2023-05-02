@@ -1,20 +1,24 @@
 #![allow(warnings)]
+
 use crate::parse::parse::parse;
 use crate::source_file::source_file::SourceFile;
+use crate::universe::create_env::create_env;
 // use core::fmt::Error;
 use eyre::Error as Error2;
 use fs_extra::copy_items;
 use fs_extra::dir;
-use miette::Result;
 use minijinja::context;
 use minijinja::Environment;
 // use neopolitan::helpers::load_assets::load_assets;
 // use neopolitan::universe::create_env::create_env;
 // use neopolitan::universe::universe::Universe;
+// use core::fmt::Error;
+use miette::Result;
 use std::collections::HashMap;
 use std::fs;
 use std::fs::create_dir_all;
 use std::path::PathBuf;
+use std::time::Duration;
 use walkdir::{DirEntry, Error, WalkDir};
 use watchexec::action::Action;
 use watchexec::action::Outcome;
@@ -46,12 +50,13 @@ impl Universe<'_> {
 
 impl Universe<'_> {
     pub fn find_files(&mut self) -> Result<(), Error> {
-        dbg!("Finding files");
+        println!("Finding files");
         for entry in WalkDir::new(&self.content_dir.as_ref().unwrap()).into_iter() {
             let p = entry?.path().to_path_buf();
             if let Some(ext) = p.extension() {
                 if ext == "neo" {
-                    self.content_files.insert(p, SourceFile::new());
+                    self.content_files
+                        .insert(p.canonicalize().unwrap(), SourceFile::new());
                 }
             }
         }
@@ -79,7 +84,7 @@ impl Universe<'_> {
         println!("Outputting files");
         let mut counter: u32 = 0;
         for (source_path, source_file) in self.content_files.iter() {
-            self.output_file(source_path.to_path_buf(), source_file);
+            self.output_file(source_path.to_path_buf());
             counter += 1;
             if counter % 100 == 0 {
                 println!("Count: {}", counter);
@@ -90,23 +95,28 @@ impl Universe<'_> {
 }
 
 impl Universe<'_> {
-    pub fn output_file(&self, path: PathBuf, source_file: &SourceFile) {
-        let output_path = self.get_output_path(path);
-        if let Some(_) = source_file.output(self) {
-            let wrapper = self
-                .env
-                .as_ref()
-                .unwrap()
-                .get_template("default.j2")
-                .unwrap();
-            let out = wrapper
-                .render(context!(
-                content =>
-                 source_file.output(self).unwrap()
-                    ))
-                .unwrap()
-                .to_string();
-            fs::write(output_path, out).unwrap();
+    pub fn output_file(&self, path: PathBuf) {
+        // let source_file = self.content_files.get(&path);
+        println!("{}", path.display());
+        if let Some(source_file) = self.content_files.get(&path) {
+            let output_path = self.get_output_path(path);
+            // dbg!(output_path);
+            if let Some(_) = source_file.output(self) {
+                let wrapper = self
+                    .env
+                    .as_ref()
+                    .unwrap()
+                    .get_template("default.j2")
+                    .unwrap();
+                let out = wrapper
+                    .render(context!(
+                    content =>
+                     source_file.output(self).unwrap()
+                        ))
+                    .unwrap()
+                    .to_string();
+                fs::write(output_path, out).unwrap();
+            }
         }
     }
 }
@@ -120,6 +130,16 @@ impl Universe<'_> {
         output_path
     }
 }
+
+// impl Universe<'_> {
+//     pub fn watch_files(&self) -{
+//         let mut output_path = PathBuf::from(self.output_root.as_ref().unwrap());
+//         let sub_path = path.strip_prefix(&self.content_dir.as_ref().unwrap());
+//         output_path.push(sub_path.as_ref().unwrap());
+//         output_path.set_extension("html");
+//         output_path
+//     }
+// }
 
 // impl Universe<'_> {
 //     pub fn load_files(&mut self) -> Result<(), Error> {
@@ -210,10 +230,6 @@ impl Universe<'_> {
 //         copy_items(&from_paths, self.dest_dir.as_ref().unwrap(), &options)?;
 //         Ok(0)
 //     }
-// }
-
-// impl Universe<'_> {
-//     pub fn update_file(&self, path: PathBuf) {}
 // }
 
 // impl Universe<'_> {
