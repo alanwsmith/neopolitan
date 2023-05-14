@@ -43,13 +43,29 @@ impl Universe<'_> {
             if let Some(ext) = p.extension() {
                 if ext == "neo" {
                     let mut sf = SourceFile::new();
-                    let raw = fs::read_to_string(&p.to_str().unwrap()).unwrap();
-                    let parsed_data = parse(raw.as_str());
+                    sf.raw = Some(fs::read_to_string(&p.to_str().unwrap()).unwrap());
+                    let parsed_data = parse(sf.raw.as_ref().unwrap().as_str());
+                    sf.raw_path = Some(
+                        p.strip_prefix(&self.content_dir.as_ref().unwrap())
+                            .unwrap()
+                            .to_path_buf(),
+                    );
+
+                    // let raw = fs::read_to_string(&p.to_str().unwrap()).unwrap();
+                    // sf.slug_dir = Some(PathBuf::from(&p));
+                    // sf.slug_dir = Some(
+                    //     sf.slug_dir
+                    //         .as_ref()
+                    //         .unwrap()
+                    //         .strip_prefix(&self.content_dir.as_ref().unwrap())
+                    //         .unwrap()
+                    //         .to_path_buf(),
+                    // );
+                    // dbg!(&sf.slug_dir);
 
                     match parsed_data {
                         Err(_) => {}
                         Ok(data) => {
-
                             // //  get teh slug path
                             // let file_stem = &p.file_stem().unwrap();
                             // if file_stem.to_str().unwrap() == "index" {
@@ -71,14 +87,14 @@ impl Universe<'_> {
                             //     );
                             // }
 
-                            // sf.parsed = data.1;
-                            // if sf.status() == Some("published".to_string()) {
-                            //     self.content_files.insert(p.canonicalize().unwrap(), sf);
-                            // } else if sf.status() == Some("draft".to_string()) {
-                            //     self.content_files.insert(p.canonicalize().unwrap(), sf);
-                            // } else if sf.status() == Some("scratch".to_string()) {
-                            //     self.content_files.insert(p.canonicalize().unwrap(), sf);
-                            // }
+                            sf.parsed = data.1;
+                            if sf.status() == Some("published".to_string()) {
+                                self.content_files.insert(p.canonicalize().unwrap(), sf);
+                            } else if sf.status() == Some("draft".to_string()) {
+                                self.content_files.insert(p.canonicalize().unwrap(), sf);
+                            } else if sf.status() == Some("scratch".to_string()) {
+                                self.content_files.insert(p.canonicalize().unwrap(), sf);
+                            }
                         }
                     }
                 }
@@ -120,6 +136,9 @@ impl Universe<'_> {
         // let source_file = self.content_files.get(&path);
         // println!("{}", path.display());
         if let Some(source_file) = self.content_files.get(&path) {
+            let mut output_dir = self.output_root.clone().unwrap();
+            output_dir.push(&source_file.slug_dir().unwrap());
+            fs::create_dir_all(output_dir);
 
             // dbg!(&source_file.slug_dir);
             // let output_path = self.get_output_path(path);

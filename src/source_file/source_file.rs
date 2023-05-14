@@ -12,7 +12,7 @@ pub struct SourceFile {
     pub output_path: Option<PathBuf>,
     pub parsed: Option<Vec<Section>>,
     pub raw: Option<String>,
-    pub slug_dir: Option<PathBuf>,
+    pub raw_path: Option<PathBuf>,
 }
 
 impl SourceFile {
@@ -21,7 +21,7 @@ impl SourceFile {
             output_path: None,
             parsed: None,
             raw: None,
-            slug_dir: None,
+            raw_path: None,
         }
     }
 }
@@ -570,7 +570,6 @@ impl SourceFile {
                             .as_str(),
                     );
                 }
-
                 _ => {}
             });
         }
@@ -668,5 +667,14 @@ mod test {
         sf.raw = Some(lines.join("\n").to_string());
         sf.parsed = parse(sf.raw.unwrap().as_str()).unwrap().1;
         assert_eq!(expected, sf.parsed);
+    }
+
+    #[test]
+    pub fn slug_dir_test() {
+        let mut sf = SourceFile::new();
+        sf.raw_path = Some(PathBuf::from("some_dir/somefile.neo"));
+        let expected = Some(PathBuf::from("some_dir/somefile"));
+        let result = sf.slug_dir();
+        assert_eq!(expected, result);
     }
 }
