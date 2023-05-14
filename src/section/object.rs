@@ -15,7 +15,6 @@ mod test {
     use crate::universe::create_env::create_env;
     use crate::universe::universe::Universe;
 
-    #[ignore]
     #[test]
     pub fn basic_object() {
         let source = [

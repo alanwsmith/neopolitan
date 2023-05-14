@@ -4,9 +4,11 @@ use crate::source_file::source_file::SourceFile;
 use miette::Result;
 use minijinja::context;
 use minijinja::Environment;
+use regex::Regex;
 use std::collections::HashMap;
 use std::fs;
 use std::path::PathBuf;
+use urlencoding::encode;
 use walkdir::Error;
 use walkdir::WalkDir;
 
@@ -31,62 +33,71 @@ impl Universe<'_> {
     }
 }
 
-// impl Universe<'_> {
-//     pub fn find_files(&mut self) -> Result<(), Error> {
-//         println!("Finding files");
-//         for entry in WalkDir::new(&self.content_dir.as_ref().unwrap()).into_iter() {
-//             let p = entry?.path().to_path_buf();
-//             if let Some(ext) = p.extension() {
-//                 if ext == "neo" {
-//                     self.content_files
-//                         .insert(p.canonicalize().unwrap(), SourceFile::new());
-//                 }
-//             }
-//         }
-//         Ok(())
-//     }
-// }
-
 impl Universe<'_> {
+    // GOAL: do everything required for setting output variables here
     pub fn load_raw_data(&mut self) -> Result<(), Error> {
         println!("Loading raw data");
         for entry in WalkDir::new(&self.content_dir.as_ref().unwrap()).into_iter() {
             let p = entry?.path().to_path_buf();
+            println!("Input: {}", &p.display());
             if let Some(ext) = p.extension() {
                 if ext == "neo" {
-                    let path = p.canonicalize().unwrap();
-                    let raw = fs::read_to_string(path.as_os_str().to_str().unwrap()).unwrap();
+                    let mut sf = SourceFile::new();
+                    let raw = fs::read_to_string(&p.to_str().unwrap()).unwrap();
                     let parsed_data = parse(raw.as_str());
+
                     match parsed_data {
                         Err(_) => {}
                         Ok(data) => {
-                            let mut sf = SourceFile::new();
-                            sf.parsed = data.1;
-                            if sf.status() == Some("published".to_string()) {
-                                self.content_files.insert(p.canonicalize().unwrap(), sf);
-                            } else if sf.status() == Some("draft".to_string()) {
-                                self.content_files.insert(p.canonicalize().unwrap(), sf);
-                            }
+
+                            // //  get teh slug path
+                            // let file_stem = &p.file_stem().unwrap();
+                            // if file_stem.to_str().unwrap() == "index" {
+                            //     sf.slug_dir = Some(PathBuf::from(
+                            //         p.strip_prefix(&self.content_dir.as_ref().unwrap())
+                            //             .unwrap()
+                            //             .parent()
+                            //             .unwrap()
+                            //             .to_path_buf()
+                            //             .display()
+                            //             .to_string()
+                            //             .to_lowercase(),
+                            //     ));
+                            // } else {
+                            //     sf.slug_dir = Some(
+                            //         p.strip_prefix(&self.content_dir.as_ref().unwrap())
+                            //             .unwrap()
+                            //             .with_extension(""),
+                            //     );
+                            // }
+
+                            // sf.parsed = data.1;
+                            // if sf.status() == Some("published".to_string()) {
+                            //     self.content_files.insert(p.canonicalize().unwrap(), sf);
+                            // } else if sf.status() == Some("draft".to_string()) {
+                            //     self.content_files.insert(p.canonicalize().unwrap(), sf);
+                            // } else if sf.status() == Some("scratch".to_string()) {
+                            //     self.content_files.insert(p.canonicalize().unwrap(), sf);
+                            // }
                         }
                     }
                 }
             }
-
-            // for (path, sf) in self.content_files.iter_mut() {
-            //     sf.raw = Some(fs::read_to_string(path.as_os_str().to_str().unwrap()).unwrap());
-            //     let raw = Some(fs::read_to_string(path.as_os_str().to_str().unwrap()).unwrap());
-            //     let parsed_data = parse(raw.as_ref().unwrap().as_str());
-            //     match parsed_data {
-            //         Err(_) => sf.parsed = None,
-            //         Ok(data) => {
-            //             sf.parsed = data.1;
-            //         }
-            //     }
-            // }
         }
         Ok(())
     }
 }
+
+impl Universe<'_> {
+    pub fn scrub_url_path(source: String) -> String {
+        let re = Regex::new(r"\s+").unwrap();
+        re.replace_all(&source, "-").to_lowercase()
+    }
+}
+
+// NOTE: The source paths are the file paths on disk.
+// They are used here as keys so individual files can be
+// updated.
 
 impl Universe<'_> {
     pub fn output_files(&self) {
@@ -109,35 +120,37 @@ impl Universe<'_> {
         // let source_file = self.content_files.get(&path);
         // println!("{}", path.display());
         if let Some(source_file) = self.content_files.get(&path) {
-            let output_path = self.get_output_path(path);
-            println!("Outputting: {}", &output_path.display());
-            // dbg!(output_path);
-            if let Some(_) = source_file.output(self) {
-                let wrapper = self
-                    .env
-                    .as_ref()
-                    .unwrap()
-                    .get_template("default.j2")
-                    .unwrap();
-                let out = wrapper
-                    .render(context!(
-                    content =>
-                     source_file.output(self).unwrap()
-                        ))
-                    .unwrap()
-                    .to_string();
-                fs::write(output_path, out).unwrap();
-            }
+
+            // dbg!(&source_file.slug_dir);
+            // let output_path = self.get_output_path(path);
+            // // println!("Outputting: {}", &output_path.display());
+            // // dbg!(output_path);
+            // if let Some(_) = source_file.output(self) {
+            //     let wrapper = self
+            //         .env
+            //         .as_ref()
+            //         .unwrap()
+            //         .get_template("default.j2")
+            //         .unwrap();
+            //     let out = wrapper
+            //         .render(context!(
+            //         content =>
+            //          source_file.output(self).unwrap()
+            //             ))
+            //         .unwrap()
+            //         .to_string();
+            //     fs::write(output_path, out).unwrap();
+            // }
         }
     }
 }
 
-impl Universe<'_> {
-    pub fn get_output_path(&self, path: PathBuf) -> PathBuf {
-        let mut output_path = PathBuf::from(self.output_root.as_ref().unwrap());
-        let sub_path = path.strip_prefix(&self.content_dir.as_ref().unwrap());
-        output_path.push(sub_path.as_ref().unwrap());
-        output_path.set_extension("html");
-        output_path
-    }
-}
+// impl Universe<'_> {
+//     pub fn get_output_path(&self, path: PathBuf) -> PathBuf {
+//         let mut output_path = PathBuf::from(self.output_root.as_ref().unwrap());
+//         let sub_path = path.strip_prefix(&self.content_dir.as_ref().unwrap());
+//         output_path.push(sub_path.as_ref().unwrap());
+//         output_path.set_extension("html");
+//         output_path
+//     }
+// }

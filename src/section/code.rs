@@ -79,13 +79,8 @@ pub fn code(source: &str) -> IResult<&str, Section> {
 #[cfg(test)]
 mod test {
 
-    // use crate::block::block::*;
     use crate::section::code::*;
-    // use crate::section::section::*;
-    // use crate::section::section_attributes::*;
-    // use crate::snippet::snippet_enum::*;
 
-    // #[ignore]
     #[test]
     pub fn core_test_code() {
         let source = ["Bring your best compass", "Cap the jar"]

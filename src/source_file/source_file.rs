@@ -12,6 +12,7 @@ pub struct SourceFile {
     pub output_path: Option<PathBuf>,
     pub parsed: Option<Vec<Section>>,
     pub raw: Option<String>,
+    pub slug_dir: Option<PathBuf>,
 }
 
 impl SourceFile {
@@ -20,6 +21,7 @@ impl SourceFile {
             output_path: None,
             parsed: None,
             raw: None,
+            slug_dir: None,
         }
     }
 }

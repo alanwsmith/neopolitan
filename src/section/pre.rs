@@ -19,67 +19,34 @@ pub fn pre(source: &str) -> IResult<&str, Section> {
 #[cfg(test)]
 mod test {
 
-    use crate::parse::parse::*;
-    use crate::source_file::source_file::*;
-    use crate::tests::remove_whitespace::remove_whitespace;
-    use crate::universe::create_env::create_env;
-    use crate::universe::universe::Universe;
-    
+    use crate::section::pre::*;
 
-    // TODO: put this test back in place without
-    // calling the template directly
-    #[ignore]
     #[test]
     pub fn basic_pre() {
-        let source = ["-> pre", "", "Bring your best compass", "Cap the jar"]
+        let source = ["Bring your best compass", "Cap the jar"]
             .join("\n")
             .to_string();
-        let expected = Some(
-            vec![
-                r#"<pre>Bring your best compass"#,
-                r#"Cap the jar</pre>"#,
-            ]
-            .join("\n")
-            .to_string(),
-        );
-        let mut u = Universe::new();
-        u.env = Some(create_env("./site/templates"));
-        let mut sf = SourceFile::new();
-        sf.raw = Some(source);
-        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
-        let output = sf.output(&u);
-        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
+        let expected = Section::PreSection {
+            attributes: None,
+            raw: Some("Bring your best compass\nCap the jar".to_string()),
+        };
+        let results = pre(&source).unwrap().1;
+        assert_eq!(expected, results);
     }
 
-    // TODO: put this test back in place without
-    // calling the template directly
-    #[ignore]
     #[test]
-    pub fn attributes_with_code() {
-        let source = [
-            "-> pre",
-            ">> class: alfa",
-            "",
-            "Bring your best compass",
-            "Cap the jar",
-        ]
-        .join("\n")
-        .to_string();
-        let expected = Some(
-            vec![
-                r#"<pre class="alfa">Bring your best compass"#,
-                r#"Cap the jar</pre>"#,
-            ]
+    pub fn pre_with_attributes() {
+        let source = [">> class: highlight", "The canoe", "is made of oak"]
             .join("\n")
-            .to_string(),
-        );
-        let mut u = Universe::new();
-        u.env = Some(create_env("./site/templates"));
-        let mut sf = SourceFile::new();
-        sf.raw = Some(source);
-        sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
-        let output = sf.output(&u);
-        assert_eq!(remove_whitespace(expected), remove_whitespace(output),);
+            .to_string();
+        let expected = Section::PreSection {
+            attributes: Some(vec![SectionAttribute::Attribute {
+                key: Some("class".to_string()),
+                value: Some("highlight".to_string()),
+            }]),
+            raw: Some("The canoe\nis made of oak".to_string()),
+        };
+        let results = pre(&source).unwrap().1;
+        assert_eq!(expected, results);
     }
-
 }
