@@ -43,7 +43,9 @@ impl Universe<'_> {
             if let Some(ext) = p.extension() {
                 if ext == "neo" {
                     let mut sf = SourceFile::new();
-                    sf.raw = Some(fs::read_to_string(&p.to_str().unwrap()).unwrap());
+                    let mut initial_string = fs::read_to_string(&p.to_str().unwrap()).unwrap();
+                    initial_string.push_str("\n");
+                    sf.raw = Some(initial_string);
                     let parsed_data = parse(sf.raw.as_ref().unwrap().as_str());
                     sf.raw_path = Some(
                         p.strip_prefix(&self.content_dir.as_ref().unwrap())

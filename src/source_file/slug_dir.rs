@@ -14,28 +14,37 @@ impl SourceFile {
 
         let re = Regex::new(r"index$").unwrap();
         base_string = re.replace(base_string.as_str(), "").to_string();
+        let mut dir_check = base_string.clone();
 
         let re = Regex::new(r"\s+").unwrap();
-        Some(PathBuf::from(
-            re.replace_all(base_string.as_str(), "-").to_lowercase(),
-        ))
+        let mut dash_string = re.replace_all(base_string.as_str(), "-").to_lowercase();
+        let char_check = dir_check.pop().unwrap();
+        if char_check != '/' {
+            dash_string.push_str("-");
+            dash_string.push_str(self.id().unwrap().as_str());
+        }
+        Some(PathBuf::from(dash_string))
+        // Some(PathBuf::from("a/path-stop"))
     }
 }
-
-
 
 #[cfg(test)]
 
 mod test {
 
+    use crate::parse::parse::parse;
     use crate::source_file::source_file::SourceFile;
     use std::path::PathBuf;
 
     #[test]
     pub fn slug_dir_with_scrubbed_path() {
         let mut sf = SourceFile::new();
-        sf.raw_path = Some(PathBuf::from("This Is/Some/Path.neo"));
-        let expected = Some(PathBuf::from("this-is/some/path"));
+        let lines = vec!["-> attributes", ">> id: 1234asdf", ""];
+        let text = lines.join("\n");
+        let parsed_data = parse(text.as_str());
+        sf.parsed = parsed_data.unwrap().1;
+        sf.raw_path = Some(PathBuf::from("This  Is/Some/Path.neo"));
+        let expected = Some(PathBuf::from("this-is/some/path-1234asdf"));
         let result = sf.slug_dir();
         assert_eq!(expected, result);
     }
@@ -43,11 +52,13 @@ mod test {
     #[test]
     pub fn slug_dir_with_scrubbed_path_for_index() {
         let mut sf = SourceFile::new();
+        let lines = vec!["-> attributes", ">> id: 4343dsds", ""];
+        let text = lines.join("\n");
+        let parsed_data = parse(text.as_str());
+        sf.parsed = parsed_data.unwrap().1;
         sf.raw_path = Some(PathBuf::from("a/Path stop/index.neo"));
         let expected = Some(PathBuf::from("a/path-stop"));
         let result = sf.slug_dir();
         assert_eq!(expected, result);
     }
-
-
 }
