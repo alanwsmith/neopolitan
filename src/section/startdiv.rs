@@ -17,10 +17,10 @@ pub fn startdiv(source: &str) -> IResult<&str, Section> {
     // here instead of creating a new one so that
     // the paths are all defined in one place
 
-    let templates_dir = "./site/templates";
-    let assets_dir = "./site/assets/";
-    let content_dir = "./site/content";
-    let build_dir = "./site/build";
+    let templates_dir = "./templates";
+    let assets_dir = "./assets/";
+    let content_dir = "./content";
+    let build_dir = "./build";
     let mut u = Universe::new();
     u.env = Some(create_env(templates_dir));
     u.assets_dir = Some(PathBuf::from(assets_dir));
@@ -76,7 +76,7 @@ mod test {
             .to_string(),
         );
         let mut u = Universe::new();
-        u.env = Some(create_env("./site/templates"));
+        u.env = Some(create_env("./templates"));
         let mut sf = SourceFile::new();
         sf.raw = Some(source);
         sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;

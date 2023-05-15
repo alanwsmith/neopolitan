@@ -20,7 +20,7 @@ pub fn neoexample_start_end(source: &str) -> IResult<&str, Section> {
     let escaped_raw = html_escape::encode_text(raw);
 
     let mut u = Universe::new();
-    u.env = Some(create_env("./site/templates"));
+    u.env = Some(create_env("./templates"));
     u.env
         .as_mut()
         .unwrap()

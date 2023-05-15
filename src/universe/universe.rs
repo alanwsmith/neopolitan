@@ -136,7 +136,7 @@ impl Universe<'_> {
 impl Universe<'_> {
     pub fn output_file(&self, path: PathBuf) {
         // let source_file = self.content_files.get(&path);
-        dbg!(path.display());
+        // dbg!(path.display());
         if let Some(source_file) = self.content_files.get(&path) {
             let mut output_dir = self.output_root.clone().unwrap();
             output_dir.push(&source_file.slug_dir().unwrap());
@@ -187,13 +187,3 @@ impl Universe<'_> {
         }
     }
 }
-
-// impl Universe<'_> {
-//     pub fn get_output_path(&self, path: PathBuf) -> PathBuf {
-//         let mut output_path = PathBuf::from(self.output_root.as_ref().unwrap());
-//         let sub_path = path.strip_prefix(&self.content_dir.as_ref().unwrap());
-//         output_path.push(sub_path.as_ref().unwrap());
-//         output_path.set_extension("html");
-//         output_path
-//     }
-// }

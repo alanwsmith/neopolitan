@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Neopolitan</title>
+  <link rel="stylesheet" href="/styles/global.css" />
+  <link rel="stylesheet" href="/styles/prism.css" />
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Neopolitan</a></li>
+        <!--
+        <li><a href="/blog/index.html">Blog</a></li>
+        -->
+        <li><a href="/sections/content.html">Content Sections</a></li>
+        <li><a href="/sections/metadata.html">Metadata Sections</a></li>
+        <li><a href="/sections/functional.html">Functional Sections</a></li>
+        <li><a href="/inline-tags/index.html">Inline Tags</a></li>
+        <li><a href="/shorthand-tags.html">Shorthand Tags</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main><h1 class="title">Neopolitan</h1><h2>Inline Tag: progress (The Progress Indicator Element)
+</h2><h3>Basic Usage</h3><div class="preWrapper">
+<div class="preTitle">Source</div>
+<pre class="language-neo"><code class="language-neo">-&gt; p
+
+Use a &lt;&lt;pencil|progress&gt;&gt; to write</code></pre>
+</div>
+
+<div class="preWrapper">
+<div class="preTitle">Output</div>
+<pre class="language-html"><code class="language-html">&lt;p&gt;Use a &lt;progress&gt;pencil&lt;/progress&gt;  to write&lt;/p&gt;
+</code></pre>
+</div><h3>With Attributes</h3><div class="preWrapper">
+<div class="preTitle">Source</div>
+<pre class="language-neo"><code class="language-neo">-&gt; p
+
+Use a &lt;&lt;pencil|progress|id: alfa|class: bravo&gt;&gt; to write</code></pre>
+</div>
+
+<div class="preWrapper">
+<div class="preTitle">Output</div>
+<pre class="language-html"><code class="language-html">&lt;p&gt;Use a &lt;progress id="alfa" class="bravo"&gt;pencil&lt;/progress&gt;  to write&lt;/p&gt;
+</code></pre>
+</div></main>
+  <footer>from <a href="https://www.alanwsmith.com/">alan w. smith</a></footer>
+
+  <script src="/scripts/prism.js"></script>
+</body>
+</html>

@@ -32,7 +32,7 @@ mod test {
         let source = ["-> h4", "", "Say it slowly"].join("\n").to_string();
         let expected = Some(vec![r#"<h4>Say it slowly</h4>"#].join("\n").to_string());
         let mut u = Universe::new();
-        u.env = Some(create_env("./site/templates"));
+        u.env = Some(create_env("./templates"));
         let mut sf = SourceFile::new();
         sf.raw = Some(source);
         sf.parsed = parse(sf.raw.as_ref().unwrap().as_str()).unwrap().1;
