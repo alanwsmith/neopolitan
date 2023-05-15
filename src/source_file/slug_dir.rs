@@ -18,10 +18,14 @@ impl SourceFile {
 
         let re = Regex::new(r"\s+").unwrap();
         let mut dash_string = re.replace_all(base_string.as_str(), "-").to_lowercase();
-        let char_check = dir_check.pop().unwrap();
-        if char_check != '/' {
-            dash_string.push_str("-");
-            dash_string.push_str(self.id().unwrap().as_str());
+        match dir_check.pop() {
+            Some(char_check) => {
+                if char_check != '/' {
+                    dash_string.push_str("-");
+                    dash_string.push_str(self.id().unwrap().as_str());
+                }
+            }
+            None => (),
         }
         Some(PathBuf::from(dash_string))
         // Some(PathBuf::from("a/path-stop"))
@@ -58,6 +62,19 @@ mod test {
         sf.parsed = parsed_data.unwrap().1;
         sf.raw_path = Some(PathBuf::from("a/Path stop/index.neo"));
         let expected = Some(PathBuf::from("a/path-stop"));
+        let result = sf.slug_dir();
+        assert_eq!(expected, result);
+    }
+
+    #[test]
+    pub fn slug_dir_with_scrubbed_path_for_root_index() {
+        let mut sf = SourceFile::new();
+        let lines = vec!["-> attributes", ">> id: 2323rtrt", ""];
+        let text = lines.join("\n");
+        let parsed_data = parse(text.as_str());
+        sf.parsed = parsed_data.unwrap().1;
+        sf.raw_path = Some(PathBuf::from("index.html"));
+        let expected = Some(PathBuf::from(""));
         let result = sf.slug_dir();
         assert_eq!(expected, result);
     }

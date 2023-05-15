@@ -136,9 +136,10 @@ impl Universe<'_> {
 impl Universe<'_> {
     pub fn output_file(&self, path: PathBuf) {
         // let source_file = self.content_files.get(&path);
-        // println!("{}", path.display());
+        dbg!(path.display());
         if let Some(source_file) = self.content_files.get(&path) {
             let mut output_dir = self.output_root.clone().unwrap();
+            dbg!(source_file.slug_dir());
             output_dir.push(&source_file.slug_dir().unwrap());
             fs::create_dir_all(output_dir);
 
