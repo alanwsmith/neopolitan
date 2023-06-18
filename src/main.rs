@@ -47,7 +47,7 @@ pub async fn watch_files() -> Result<()> {
     // u.output_index_file();
     let init = InitConfig::default();
     let mut runtime = RuntimeConfig::default();
-    runtime.pathset(["./site/content"]);
+    runtime.pathset(["./content"]);
     runtime.action_throttle(Duration::new(0, 100000));
     runtime.on_action(move |action: Action| {
         let mut stop: bool = false;
