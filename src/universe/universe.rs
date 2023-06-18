@@ -113,40 +113,34 @@ impl Universe<'_> {
     }
 }
 
-impl Universe<'_> {
-    pub fn output_index_file(&self) {
-        println!("Outputting Index File");
-        let mut links = vec![];
-        for (_source_path, source_file) in self.content_files.iter() {
-            let mut url = String::from("/posts/");
-            url.push_str(source_file.slug_dir().as_ref().unwrap().to_str().unwrap());
-            url.push_str("/index.html");
-            links.push(url);
-            // dbg!(url);
-
-            // self.output_file(source_path.to_path_buf());
-            // dbg!(source_file.output_path.as_ref());
-            //dbg!(source_file.slug_dir().as_ref().unwrap());
-        }
-
-
-        // if let Some(_) = source_file.output(self) {
-        let wrapper = self.env.as_ref().unwrap().get_template("index.j2").unwrap();
-
-        let tmp_index_file = "/Users/alan/workshop/alanwsmith.com/site/index.html";
-
-        let out = wrapper
-            .render(context!(
-            content =>
-            links
-                ))
-            .unwrap()
-            .to_string();
-         fs::write(tmp_index_file, out).unwrap();
-
-        // }
-    }
-}
+// impl Universe<'_> {
+//     pub fn output_index_file(&self) {
+//         println!("Outputting Index File");
+//         let mut links = vec![];
+//         for (_source_path, source_file) in self.content_files.iter() {
+//             let mut url = String::from("/posts/");
+//             url.push_str(source_file.slug_dir().as_ref().unwrap().to_str().unwrap());
+//             url.push_str("/index.html");
+//             links.push(url);
+//             // dbg!(url);
+//             // self.output_file(source_path.to_path_buf());
+//             // dbg!(source_file.output_path.as_ref());
+//             //dbg!(source_file.slug_dir().as_ref().unwrap());
+//         }
+//         // if let Some(_) = source_file.output(self) {
+//         let wrapper = self.env.as_ref().unwrap().get_template("index.j2").unwrap();
+//         let tmp_index_file = "/Users/alan/workshop/alanwsmith.com/site/index.html";
+//         let out = wrapper
+//             .render(context!(
+//             content =>
+//             links
+//                 ))
+//             .unwrap()
+//             .to_string();
+//          fs::write(tmp_index_file, out).unwrap();
+//         // }
+//     }
+// }
 
 // NOTE: The source paths are the file paths on disk.
 // They are used here as keys so individual files can be

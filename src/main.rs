@@ -44,7 +44,7 @@ pub async fn watch_files() -> Result<()> {
     u.env = Some(create_env(templates_dir));
     u.load_raw_data().unwrap();
     u.output_files();
-    u.output_index_file();
+    // u.output_index_file();
     let init = InitConfig::default();
     let mut runtime = RuntimeConfig::default();
     runtime.pathset(["./site/content"]);
