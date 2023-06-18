@@ -197,27 +197,6 @@ impl Universe<'_> {
                     .to_string();
                 fs::write(output_file, out).unwrap();
             }
-
-            // dbg!(&source_file.slug_dir);
-            // let output_path = self.get_output_path(path);
-            // // println!("Outputting: {}", &output_path.display());
-            // // dbg!(output_path);
-            // if let Some(_) = source_file.output(self) {
-            //     let wrapper = self
-            //         .env
-            //         .as_ref()
-            //         .unwrap()
-            //         .get_template("default.j2")
-            //         .unwrap();
-            //     let out = wrapper
-            //         .render(context!(
-            //         content =>
-            //          source_file.output(self).unwrap()
-            //             ))
-            //         .unwrap()
-            //         .to_string();
-            //     fs::write(output_path, out).unwrap();
-            // }
         }
     }
 }

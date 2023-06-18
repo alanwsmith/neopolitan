@@ -11,7 +11,7 @@ use nom::IResult;
 use serde::Serialize;
 use std::path::PathBuf;
 use nom::bytes::complete::tag;
-use nom::character::complete::not_line_ending;
+use nom::bytes::complete::is_not;
 
 #[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct SourceFile {
@@ -31,7 +31,7 @@ impl SourceFile {
         }
         else {
             let (a, _b) = tag(">> type: ")(a)?;
-            let (_a, b) = not_line_ending(a)?;
+            let (_a, b) = is_not(" \t\n")(a)?;
             Ok(("", Some(String::from(b))))
         }
     }
