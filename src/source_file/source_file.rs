@@ -4,8 +4,13 @@ use crate::source_file::attributes_with_class::*;
 use crate::source_file::joiner::joiner;
 use crate::universe::universe::Universe;
 use minijinja::context;
+use nom::branch::alt;
+use nom::bytes::complete::take_until;
+use nom::combinator::rest;
+use nom::IResult;
 use serde::Serialize;
 use std::path::PathBuf;
+use nom::bytes::complete::tag;
 
 #[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct SourceFile {
@@ -13,6 +18,21 @@ pub struct SourceFile {
     pub parsed: Option<Vec<Section>>,
     pub raw: Option<String>,
     pub raw_path: Option<PathBuf>,
+    pub file_type: Option<String>,
+}
+
+impl SourceFile {
+    pub fn file_type(&self) -> IResult<&str, Option<String>> {
+        let tmp_string = self.raw.as_ref().unwrap().as_str();
+        let (a, _b) = alt((take_until(">> type: "), rest))(tmp_string)?;
+        if a == "" {
+            Ok(("", Some(String::from("asdfasdf"))))
+        }
+        else {
+            let (a, _b) = tag(">> type: ")(a)?;
+            Ok(("", Some(String::from(a))))
+        }
+    }
 }
 
 impl SourceFile {
@@ -22,6 +42,7 @@ impl SourceFile {
             parsed: None,
             raw: None,
             raw_path: None,
+            file_type: Some(String::from("testing")),
         }
     }
 }
@@ -668,4 +689,25 @@ mod test {
         sf.parsed = parse(sf.raw.unwrap().as_str()).unwrap().1;
         assert_eq!(expected, sf.parsed);
     }
+
+    #[test]
+    pub fn test_file_type() {
+        let mut sf = SourceFile::new();
+        let lines = [
+            "-> title",
+            "",
+            "Quick brown fox",
+            "",
+            "-> attributes",
+            ">> type: testing",
+        ];
+        sf.raw = Some(lines.join("\n").to_string());
+        let expected = Some(String::from("testing"));
+        let result = sf.file_type().unwrap().1;
+        assert_eq!(expected, result)
+    }
+
+
+
+
 }
