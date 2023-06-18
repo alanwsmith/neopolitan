@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
 
-  <link rel="stylesheet" href="/styles/global.css" />
-  </head>
+<head>
+  <style>
+    body {
+      background-color: #000;
+      color: #aaa;
+    }
+  </style>
+
+</head>
+
+<body>
+  {{ content }}
+
+  <h3>TODO: Add posts here</h3>
 
   <ul>
     {% for post in posts %}
@@ -14,6 +25,6 @@
     {% endfor %}
   </ul>
 
-
+</body>
 
 </html>
