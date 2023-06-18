@@ -44,7 +44,7 @@ impl SourceFile {
             parsed: None,
             raw: None,
             raw_path: None,
-            file_type: Some(String::from("REMOVETHIS")),
+            file_type: Some(String::from("default")),
         }
     }
 }
