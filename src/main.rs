@@ -27,15 +27,15 @@ pub async fn watch_files() -> Result<()> {
     // let output_root = PathBuf::from("/Users/alan/workshop/alanwsmith.com/site/posts");
     // let content_dir = PathBuf::from("/Users/alan/workshop/grimoire_org_to_neo_files/content");
 
-    // // PROD neopolitan.alanwsmith.com 
-    // let templates_dir = "./templates";
-    // let content_dir = PathBuf::from("./content");
-    // let output_root = PathBuf::from("./site/build");
+    // PROD neopolitan.alanwsmith.com 
+    let templates_dir = "./templates";
+    let content_dir = PathBuf::from("./content");
+    let output_root = PathBuf::from("./site");
 
-    // DEV
-    let templates_dir = "./site_dev/templates";
-    let content_dir = PathBuf::from("./site_dev/content");
-    let output_root = PathBuf::from("./site_dev/build");
+    // // DEV
+    // let templates_dir = "./site_dev/templates";
+    // let content_dir = PathBuf::from("./site_dev/content");
+    // let output_root = PathBuf::from("./site_dev/build");
 
     let mut u = Universe::new();
 
