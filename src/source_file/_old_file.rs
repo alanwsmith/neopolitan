@@ -5,6 +5,10 @@ use minijinja::context;
 use serde::Serialize;
 use std::path::PathBuf;
 
+// THIS IS NO LONGER BEING USED, KEEPING
+// FOR NOW JUST IN CASE, BUT SHOULD PROBABLY
+// BE KILLED
+
 #[derive(Debug, PartialEq, Serialize)]
 pub struct SourceFile {
     pub input_path: Option<PathBuf>,
@@ -294,4 +298,12 @@ mod test {
         sf.parsed = parse_dev(sf.raw.unwrap().as_str()).unwrap().1;
         assert_eq!(expected, sf.parsed);
     }
+
+    // #[test]
+    // pub fn test_file_type() {
+    //     let mut sf = SourceFile::new();
+    //     let lines = ["-> title", "", "Set The Piece", "", "-> attributes", ">> type: testing"];
+    //     assert_eq!(1, 2);
+    // }
+
 }
