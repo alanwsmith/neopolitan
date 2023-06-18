@@ -26,7 +26,7 @@ impl SourceFile {
         let tmp_string = self.raw.as_ref().unwrap().as_str();
         let (a, _b) = alt((take_until(">> type: "), rest))(tmp_string)?;
         if a == "" {
-            Ok(("", Some(String::from("asdfasdf"))))
+            Ok(("", Some(String::from("default"))))
         }
         else {
             let (a, _b) = tag(">> type: ")(a)?;
@@ -42,7 +42,7 @@ impl SourceFile {
             parsed: None,
             raw: None,
             raw_path: None,
-            file_type: Some(String::from("testing")),
+            file_type: Some(String::from("REMOVETHIS")),
         }
     }
 }
@@ -707,6 +707,19 @@ mod test {
         assert_eq!(expected, result)
     }
 
+    #[test]
+    pub fn test_default_file_type() {
+        let mut sf = SourceFile::new();
+        let lines = [
+            "-> title",
+            "",
+            "Quick brown fox",
+        ];
+        sf.raw = Some(lines.join("\n").to_string());
+        let expected = Some(String::from("default"));
+        let result = sf.file_type().unwrap().1;
+        assert_eq!(expected, result)
+    }
 
 
 
