@@ -7,7 +7,7 @@ module.exports = {
     port: 3000,
     reloadOnRestart: true,
     server: {
-        baseDir: 'site/build',
+        baseDir: 'site_dev/build',
         index: 'index.html',
         serveStaticOptions: {
             extensions: ['html'],

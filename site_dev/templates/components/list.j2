@@ -1,0 +1,9 @@
+<ul>
+{% for child in children -%}
+<li>
+{%- for stuff in child.children -%}
+<p>{{ stuff }}</p>
+{%- endfor -%}
+</li>
+{% endfor -%}
+</ul>

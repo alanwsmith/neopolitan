@@ -1,0 +1,11 @@
+<div class="todos">
+<ul class="todos">
+{% for child in children -%}
+<li><input type="checkbox" />
+{%- for stuff in child.children -%}
+<p>{{ stuff }}</p>
+{%- endfor -%}
+</li>
+{% endfor -%}
+</ul>
+</div>
