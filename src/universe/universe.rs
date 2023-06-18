@@ -179,15 +179,14 @@ impl Universe<'_> {
             fs::create_dir_all(output_dir);
             output_file.push("index.html");
             dbg!(&output_file);
-
-            // println!("Outputting: {}", &output_path.display());
-            // dbg!(output_path);
+            let mut template_file = source_file.file_type().unwrap().1.unwrap();
+            template_file.push_str(".j2");
             if let Some(_) = source_file.output(self) {
                 let wrapper = self
                     .env
                     .as_ref()
                     .unwrap()
-                    .get_template("default.j2")
+                    .get_template(&template_file)
                     .unwrap();
                 let out = wrapper
                     .render(context!(
