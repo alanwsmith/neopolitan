@@ -164,38 +164,29 @@ impl Universe<'_> {
 
 impl Universe<'_> {
     pub fn output_file(&self, path: PathBuf) {
-        // let source_file = self.content_files.get(&path);
-        // dbg!(path.display());
         if let Some(source_file) = self.content_files.get(&path) {
-            dbg!(&source_file.raw_path.as_ref().unwrap());
-
-            // let mut output_path = self.output_root.clone().unwrap();
-            // output_path.push(&source_file.raw_path.as_ref().unwrap());
-            // dbg!(output_path);
-
-            // let mut output_file = output_dir.clone();
-            // fs::create_dir_all(output_dir);
-            // output_file.push("index.html");
-            // dbg!(&output_file);
-            // let mut template_file = source_file.file_type().unwrap().1.unwrap();
-            // template_file.push_str(".j2");
-            // if let Some(_) = source_file.output(self) {
-            //     let wrapper = self
-            //         .env
-            //         .as_ref()
-            //         .unwrap()
-            //         .get_template(&template_file)
-            //         .unwrap();
-            //     let out = wrapper
-            //         .render(context!(
-            //         content =>
-            //          source_file.output(self).unwrap()
-            //             ))
-            //         .unwrap()
-            //         .to_string();
-            //     fs::write(output_file, out).unwrap();
-            // }
-
+            let mut full_path = self.output_root.clone().unwrap();
+            full_path.push(source_file.output_path().unwrap());
+            let dir_path = full_path.parent();
+            fs::create_dir_all(dir_path.unwrap());
+            let mut template_file = source_file.file_type().unwrap().1.unwrap();
+            template_file.push_str(".j2");
+            if let Some(_) = source_file.output(self) {
+                let wrapper = self
+                    .env
+                    .as_ref()
+                    .unwrap()
+                    .get_template(&template_file)
+                    .unwrap();
+                let out = wrapper
+                    .render(context!(
+                    content =>
+                     source_file.output(self).unwrap()
+                        ))
+                    .unwrap()
+                    .to_string();
+                fs::write(full_path, out).unwrap();
+            }
         }
     }
 }
