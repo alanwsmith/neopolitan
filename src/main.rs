@@ -93,18 +93,26 @@ fn main() {
 #[tokio::main]
 pub async fn watch_files() -> Result<()> {
     println!("Starting watcher");
-    let mut u = Universe::new();
+
+    // // PROD
+    // let templates_dir = "/Users/alan/workshop/alanwsmith.com/templates";
+    // let output_root = PathBuf::from("/Users/alan/workshop/alanwsmith.com/site/posts");
+    // let content_dir = PathBuf::from("/Users/alan/workshop/grimoire_org_to_neo_files/content");
+
+    // DEV
     let templates_dir = "./templates";
-    //let content_dir = PathBuf::from("/Users/alan/workshop/grimoire_org_to_neo_files/step-01");
-    // let output_root = PathBuf::from("/Users/alan/workshop/grimoire_org_to_neo_files/test_build");
     let content_dir = PathBuf::from("./content");
-    let output_root = PathBuf::from("./site");
+    let output_root = PathBuf::from("./site/build");
+
+    let mut u = Universe::new();
+
     u.content_dir = Some(content_dir.canonicalize().unwrap());
     u.output_root = Some(output_root.canonicalize().unwrap());
     u.env = Some(create_env(templates_dir));
     // u.find_files().unwrap();
     u.load_raw_data().unwrap();
     u.output_files();
+    u.output_index_file();
     let init = InitConfig::default();
     let mut runtime = RuntimeConfig::default();
     runtime.pathset(["./site/content"]);

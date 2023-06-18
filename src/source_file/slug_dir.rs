@@ -12,7 +12,7 @@ impl SourceFile {
             .display()
             .to_string();
 
-        let re = Regex::new(r"^\w+-+").unwrap();
+        let re = Regex::new(r"^[a-zA-Z]+-+\s+").unwrap();
         base_string = re.replace(base_string.as_str(), "").to_string();
 
         let re = Regex::new(r"index$").unwrap();
@@ -89,7 +89,7 @@ mod test {
         let text = lines.join("\n");
         let parsed_data = parse(text.as_str());
         sf.parsed = parsed_data.unwrap().1;
-        sf.raw_path = Some(PathBuf::from("something-whatever.neo"));
+        sf.raw_path = Some(PathBuf::from("something- whatever.neo"));
         let expected = Some(PathBuf::from("whatever-7612iuiu"));
         let result = sf.slug_dir();
         assert_eq!(expected, result);
