@@ -2,9 +2,11 @@
 
 Neopolitan
 
+
 -> subtitle 
 
 A plain-text format websites
+
 
 -> note
 
@@ -14,6 +16,20 @@ the home page.
 
 > neopolitan.alanwsmith.com/ 
 > https://neopolitan.alanwsmith.com/ >
+
+
+-> h2
+
+Usage
+
+
+-> list
+
+- Install it from source (directions on the way)
+
+- Run `neopolitan`` in a directory with a `content``
+directory and it'll build the site. 
+
 
 -> h2
 
