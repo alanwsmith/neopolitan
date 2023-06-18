@@ -11,6 +11,7 @@ use nom::IResult;
 use serde::Serialize;
 use std::path::PathBuf;
 use nom::bytes::complete::tag;
+use nom::character::complete::not_line_ending;
 
 #[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct SourceFile {
@@ -30,7 +31,8 @@ impl SourceFile {
         }
         else {
             let (a, _b) = tag(">> type: ")(a)?;
-            Ok(("", Some(String::from(a))))
+            let (_a, b) = not_line_ending(a)?;
+            Ok(("", Some(String::from(b))))
         }
     }
 }
@@ -721,6 +723,22 @@ mod test {
         assert_eq!(expected, result)
     }
 
-
+    #[test]
+    pub fn test_file_type_with_following_lines() {
+        let mut sf = SourceFile::new();
+        let lines = [
+            "-> title",
+            "",
+            "Quick brown fox",
+            "",
+            "-> attributes",
+            ">> type: second_test",
+            ">> status: unpublished",
+        ];
+        sf.raw = Some(lines.join("\n").to_string());
+        let expected = Some(String::from("second_test"));
+        let result = sf.file_type().unwrap().1;
+        assert_eq!(expected, result)
+    }
 
 }
