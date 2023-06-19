@@ -18,14 +18,17 @@ impl Universe<'_> {
         let (_, captured3) = many0(tuple((tag(">> "), not_line_ending, line_ending)))(remainder2)?;
         for category in captured3.iter() {
             let here_now_is_clone = source_file.clone();
-            if self.categories.contains_key(&String::from(category.1)) {
+            if self
+                .categories
+                .contains_key(&String::from(category.1.trim()))
+            {
                 self.categories
-                    .get_mut(&String::from(category.1))
+                    .get_mut(&String::from(category.1.trim()))
                     .unwrap()
                     .push(here_now_is_clone.raw_path.unwrap());
             } else {
                 self.categories.insert(
-                    String::from(category.1),
+                    String::from(category.1.trim()),
                     vec![here_now_is_clone.raw_path.unwrap()],
                 );
             }
@@ -108,6 +111,24 @@ mod test {
         assert_eq!(
             &expected_vec,
             u.categories.get(&String::from("Echo")).unwrap()
+        );
+    }
+
+    #[test]
+    pub fn white_space_after_category_test() {
+        let mut u = Universe::new();
+        let mut sf = SourceFile::new();
+        let lines = ["-> categories", ">> Echo Foxtrot ", ""];
+        sf.raw = Some(lines.join("\n").to_string());
+        let file_path = PathBuf::from("some/path.neo");
+        sf.raw_path = Some(PathBuf::from("some/path.neo"));
+        u.content_files.insert(file_path, sf.clone());
+        let _get_categories_status = u.get_categories(&sf);
+        assert_eq!(true, u.categories.contains_key("Echo Foxtrot"));
+        let expected_vec = vec![PathBuf::from("some/path.neo")];
+        assert_eq!(
+            &expected_vec,
+            u.categories.get(&String::from("Echo Foxtrot")).unwrap()
         );
     }
 }
