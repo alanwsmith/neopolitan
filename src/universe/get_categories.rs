@@ -7,7 +7,7 @@ use nom::character::complete::not_line_ending;
 use nom::multi::many0;
 use nom::sequence::tuple;
 use nom::IResult;
-use std::path::PathBuf;
+// use std::path::PathBuf;
 
 impl Universe<'_> {
     pub fn get_categories<'a>(&'a mut self, source_file: &'a SourceFile) -> IResult<&str, &str> {
@@ -24,9 +24,10 @@ impl Universe<'_> {
 
         for category in captured3.iter() {
             dbg!(&category.1);
+            let here_now_is_clone = source_file.clone();
             self.categories.insert(
                 String::from(category.1),
-                vec![PathBuf::from("some/path.neo")],
+                vec![here_now_is_clone.raw_path.unwrap()],
             );
         }
         Ok(("", ""))
@@ -52,7 +53,9 @@ mod test {
             "",
         ];
         sf.raw = Some(lines.join("\n").to_string());
+
         let file_path = PathBuf::from("some/path.neo");
+        sf.raw_path = Some(PathBuf::from("some/path.neo"));
         u.content_files.insert(file_path, sf.clone());
         let _get_categories_status = u.get_categories(&sf);
         assert_eq!(true, u.categories.contains_key("Posts"));
