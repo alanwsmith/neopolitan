@@ -23,6 +23,8 @@ impl Universe<'_> {
                     .render(context!(
                     content =>
                      source_file.output(self).unwrap()
+                     , 
+                     categories => self.categories
                         ))
                     .unwrap()
                     .to_string();
