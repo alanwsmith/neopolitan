@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cargo watch -i 'site' -x 'test universe --lib --color always -- --nocapture'
