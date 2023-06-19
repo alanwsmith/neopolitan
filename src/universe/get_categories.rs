@@ -7,27 +7,27 @@ use nom::character::complete::not_line_ending;
 use nom::multi::many0;
 use nom::sequence::tuple;
 use nom::IResult;
+// use std::path::PathBuf;
 
 impl Universe<'_> {
     pub fn get_categories<'a>(&'a mut self, source_file: &'a SourceFile) -> IResult<&str, &str> {
-        let (remainder1, captured1) =
+        let (remainder1, _) =
             take_until("-> categories")(source_file.raw.as_ref().unwrap().as_str())?;
-        dbg!(&captured1);
-        dbg!(&remainder1);
-
         let (remainder2, _) = tuple((tag("-> categories"), multispace0))(remainder1)?;
-        dbg!(&remainder2);
-
         let (_, captured3) = many0(tuple((tag(">> "), not_line_ending)))(remainder2)?;
-        dbg!(&captured3);
-
         for category in captured3.iter() {
-            dbg!(&category.1);
             let here_now_is_clone = source_file.clone();
-            self.categories.insert(
-                String::from(category.1),
-                vec![here_now_is_clone.raw_path.unwrap()],
-            );
+            if self.categories.contains_key(&String::from(category.1)) {
+                self.categories
+                    .get_mut(&String::from(category.1))
+                    .unwrap()
+                    .push(here_now_is_clone.raw_path.unwrap());
+            } else {
+                self.categories.insert(
+                    String::from(category.1),
+                    vec![here_now_is_clone.raw_path.unwrap()],
+                );
+            }
         }
         Ok(("", ""))
     }
@@ -61,6 +61,35 @@ mod test {
         assert_eq!(
             &expected_vec,
             u.categories.get(&String::from("Posts")).unwrap()
+        );
+    }
+
+    #[test]
+    pub fn two_file_test() {
+        let mut u = Universe::new();
+        let mut alfa_file = SourceFile::new();
+        let alfa_lines = ["-> categories", ">> Widget", ""];
+        alfa_file.raw = Some(alfa_lines.join("\n").to_string());
+        let alfa_path = PathBuf::from("some/alfa.neo");
+        alfa_file.raw_path = Some(PathBuf::from("some/alfa.neo"));
+        u.content_files.insert(alfa_path, alfa_file.clone());
+        let _get_categories_status = u.get_categories(&alfa_file);
+
+        let mut bravo_file = SourceFile::new();
+        let bravo_lines = ["-> categories", ">> Widget", ""];
+        bravo_file.raw = Some(bravo_lines.join("\n").to_string());
+        let bravo_path = PathBuf::from("some/bravo.neo");
+        bravo_file.raw_path = Some(PathBuf::from("some/bravo.neo"));
+        u.content_files.insert(bravo_path, bravo_file.clone());
+        let _get_categories_status = u.get_categories(&bravo_file);
+
+        let expected_vec = vec![
+            PathBuf::from("some/alfa.neo"),
+            PathBuf::from("some/bravo.neo"),
+        ];
+        assert_eq!(
+            &expected_vec,
+            u.categories.get(&String::from("Widget")).unwrap()
         );
     }
 }
