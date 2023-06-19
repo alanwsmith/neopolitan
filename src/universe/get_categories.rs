@@ -7,7 +7,6 @@ use nom::character::complete::not_line_ending;
 use nom::multi::many0;
 use nom::sequence::tuple;
 use nom::IResult;
-// use std::path::PathBuf;
 
 impl Universe<'_> {
     pub fn get_categories<'a>(&'a mut self, source_file: &'a SourceFile) -> IResult<&str, &str> {
@@ -53,7 +52,6 @@ mod test {
             "",
         ];
         sf.raw = Some(lines.join("\n").to_string());
-
         let file_path = PathBuf::from("some/path.neo");
         sf.raw_path = Some(PathBuf::from("some/path.neo"));
         u.content_files.insert(file_path, sf.clone());
