@@ -2,6 +2,7 @@ use crate::source_file::source_file::SourceFile;
 use crate::universe::universe::Universe;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
+use nom::character::complete::line_ending;
 use nom::character::complete::multispace0;
 use nom::character::complete::not_line_ending;
 use nom::multi::many0;
@@ -14,7 +15,7 @@ impl Universe<'_> {
         let (remainder1, _) =
             take_until("-> categories")(source_file.raw.as_ref().unwrap().as_str())?;
         let (remainder2, _) = tuple((tag("-> categories"), multispace0))(remainder1)?;
-        let (_, captured3) = many0(tuple((tag(">> "), not_line_ending)))(remainder2)?;
+        let (_, captured3) = many0(tuple((tag(">> "), not_line_ending, line_ending)))(remainder2)?;
         for category in captured3.iter() {
             let here_now_is_clone = source_file.clone();
             if self.categories.contains_key(&String::from(category.1)) {
@@ -90,6 +91,23 @@ mod test {
         assert_eq!(
             &expected_vec,
             u.categories.get(&String::from("Widget")).unwrap()
+        );
+    }
+
+    #[test]
+    pub fn multiple_categories_test() {
+        let mut u = Universe::new();
+        let mut sf = SourceFile::new();
+        let lines = ["-> categories", ">> Delta", ">> Echo", ""];
+        sf.raw = Some(lines.join("\n").to_string());
+        let file_path = PathBuf::from("some/path.neo");
+        sf.raw_path = Some(PathBuf::from("some/path.neo"));
+        u.content_files.insert(file_path, sf.clone());
+        let _get_categories_status = u.get_categories(&sf);
+        let expected_vec = vec![PathBuf::from("some/path.neo")];
+        assert_eq!(
+            &expected_vec,
+            u.categories.get(&String::from("Echo")).unwrap()
         );
     }
 }
