@@ -18,23 +18,14 @@ struct Files {
 impl Files {
     pub fn posts(&self) -> Vec<(PathBuf, String)> {
         let mut post_data = vec![];
-
         self.files.iter().for_each(|file| {
-            // dbg!(file.raw_path.as_ref().unwrap());
-            let mut cloned_path = file.raw_path.clone().unwrap();
-            let mut cloned_path_bravo = file.raw_path.clone().unwrap();
-            cloned_path.set_extension("html");
-            cloned_path_bravo.set_extension("html");
-            post_data.push((cloned_path, cloned_path_bravo.display().to_string()));
+            let mut url_path = PathBuf::from("/");
+            url_path.push(file.raw_path.clone().unwrap());
+            url_path.set_extension("html");
+            post_data.push((url_path, String::from("Title Goes Here")));
             ()
         });
-
         post_data
-
-        // vec![(
-        //     PathBuf::from("posts/test-post-1/index.html"),
-        //     String::from("Test Post 1"),
-        // )]
     }
 }
 
@@ -44,11 +35,8 @@ impl Files {
             let p = entry?.path().to_path_buf();
             if let Some(ext) = p.extension() {
                 if ext == "neo" {
-                    // println!("Input: {}", &p.display());
                     let mut sf = SourceFile::new();
-                    let mut initial_string = fs::read_to_string(&p.to_str().unwrap()).unwrap();
-                    initial_string.push_str("\n");
-                    sf.raw = Some(initial_string);
+                    sf.raw = Some(fs::read_to_string(&p.to_str().unwrap()).unwrap());
                     sf.raw_path = Some(
                         p.strip_prefix(&self.content_dir.as_ref().unwrap())
                             .unwrap()
@@ -90,7 +78,6 @@ fn make_site() {
     let mut env = Environment::new();
     env.set_source(Source::from_path(PathBuf::from("./templates")));
     let wrapper = env.get_template("home_page.j2").unwrap();
-
     content.content_dir = Some(PathBuf::from("./content"));
     let _ = content.load_files();
     content.files.iter().for_each(|file| {
