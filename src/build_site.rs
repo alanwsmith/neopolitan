@@ -9,9 +9,13 @@
 //use walkdir::Error;
 // use walkdir::WalkDir;
 
+use std::fs;
+
 pub fn build_site() {
     // TODO: Make site directories
     println!("Making the site");
+    fs::create_dir("site").unwrap();
+    fs::write("site/index.html", "alfa bravo").unwrap();
 
     // let mut content = Files {
     //     files: vec![],
