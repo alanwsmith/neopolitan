@@ -60,9 +60,10 @@ impl Universe<'_> {
                             //     );
                             // }
                             sf.parsed = data.1;
-                            let sf_for_categories = sf.clone();
-                            self.content_files.insert(p.canonicalize().unwrap(), sf);
-                            self.get_categories(&sf_for_categories);
+                            // let sf_for_categories = sf.clone();
+                            // self.content_files.insert(p.canonicalize().unwrap(), sf);
+                            self.content_files.insert(sf.output_path().unwrap(), sf);
+                            // let _get_categories_status = self.get_categories(&sf_for_categories);
                         }
                     }
                 }

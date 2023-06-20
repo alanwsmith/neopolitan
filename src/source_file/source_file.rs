@@ -5,13 +5,13 @@ use crate::source_file::joiner::joiner;
 use crate::universe::universe::Universe;
 use minijinja::context;
 use nom::branch::alt;
+use nom::bytes::complete::is_not;
+use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
 use nom::combinator::rest;
 use nom::IResult;
 use serde::Serialize;
 use std::path::PathBuf;
-use nom::bytes::complete::tag;
-use nom::bytes::complete::is_not;
 
 #[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct SourceFile {
@@ -20,6 +20,20 @@ pub struct SourceFile {
     pub raw: Option<String>,
     pub raw_path: Option<PathBuf>,
     pub file_type: Option<String>,
+    // pub title: Option<String>,
+}
+
+// impl SourceFile {
+//     pub fn load_title(&self) -> String {
+//         String::from("delta")
+//     }
+// }
+//
+
+impl SourceFile {
+    pub fn title(&self) -> Option<String> {
+        Some(String::from("TKTKTKTKTK - ALFA BRAVO"))
+    }
 }
 
 impl SourceFile {
@@ -28,8 +42,7 @@ impl SourceFile {
         let (a, _b) = alt((take_until(">> type: "), rest))(tmp_string)?;
         if a == "" {
             Ok(("", Some(String::from("default"))))
-        }
-        else {
+        } else {
             let (a, _b) = tag(">> type: ")(a)?;
             let (_a, b) = is_not(" \t\n")(a)?;
             Ok(("", Some(String::from(b))))
@@ -45,6 +58,7 @@ impl SourceFile {
             raw: None,
             raw_path: None,
             file_type: Some(String::from("default")),
+            // title: Some(String::from("Default Title")),
         }
     }
 }
@@ -712,11 +726,7 @@ mod test {
     #[test]
     pub fn test_default_file_type() {
         let mut sf = SourceFile::new();
-        let lines = [
-            "-> title",
-            "",
-            "Quick brown fox",
-        ];
+        let lines = ["-> title", "", "Quick brown fox"];
         sf.raw = Some(lines.join("\n").to_string());
         let expected = Some(String::from("default"));
         let result = sf.file_type().unwrap().1;
@@ -740,5 +750,4 @@ mod test {
         let result = sf.file_type().unwrap().1;
         assert_eq!(expected, result)
     }
-
 }

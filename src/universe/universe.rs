@@ -3,10 +3,10 @@ use minijinja::Environment;
 use std::collections::HashMap;
 use std::path::PathBuf;
 
-#[derive(Debug, Clone)]
+#[derive(Clone, Debug)]
 pub struct Universe<'a> {
     pub assets_dir: Option<PathBuf>,
-    pub categories: HashMap<String, Vec<PathBuf>>,
+    // pub categories: HashMap<String, Vec<PathBuf>>,
     pub content_dir: Option<PathBuf>,
     pub content_files: HashMap<PathBuf, SourceFile>,
     pub env: Option<Environment<'a>>,

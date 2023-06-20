@@ -12,24 +12,44 @@ impl Universe<'_> {
             fs::create_dir_all(dir_path.unwrap()).unwrap();
             let mut template_file = source_file.file_type().unwrap().1.unwrap();
             template_file.push_str(".j2");
-            if let Some(_) = source_file.output(self) {
-                let wrapper = self
-                    .env
-                    .as_ref()
-                    .unwrap()
-                    .get_template(&template_file)
-                    .unwrap();
-                let out = wrapper
-                    .render(context!(
-                    content =>
-                     source_file.output(self).unwrap()
-                     , 
-                     categories => self.categories
+            if template_file == String::from("home_page.j2") {
+                dbg!("Making home_page");
+                if let Some(_) = source_file.output(self) {
+                    let wrapper = self
+                        .env
+                        .as_ref()
+                        .unwrap()
+                        .get_template(&template_file)
+                        .unwrap();
+                    let out = wrapper
+                        .render(context!(
+                            content => source_file.output(self).unwrap(),
+                            posts => self.posts(),
                         ))
-                    .unwrap()
-                    .to_string();
-                fs::write(full_path, out).unwrap();
+                        .unwrap()
+                        .to_string();
+                    fs::write(full_path, out).unwrap();
+                }
             }
+
+            // if let Some(_) = source_file.output(self) {
+            //     let wrapper = self
+            //         .env
+            //         .as_ref()
+            //         .unwrap()
+            //         .get_template(&template_file)
+            //         .unwrap();
+            //     let out = wrapper
+            //         .render(context!(
+            //             files => self.content_files,
+            //             content => source_file.output(self).unwrap(),
+            //             categories => self.categories,
+            //             title => source_file.title(),
+            //         ))
+            //         .unwrap()
+            //         .to_string();
+            //     fs::write(full_path, out).unwrap();
+            // }
         }
     }
 }

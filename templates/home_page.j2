@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <style>
+    body {
+      background-color: #000;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+  {{ content }}
+  <ul>
+    {% for post in posts %}
+    <li><a href="{{ post[0] }}">{{ post[1] }}</a></li>
+    {% endfor %}
+  </ul>
+</body>
+
+</html>

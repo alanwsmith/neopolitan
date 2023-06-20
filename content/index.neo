@@ -9,14 +9,13 @@ A plaintext format for websites
 This is a test run for the website builder
 
 -> categories
->> Posts
 >> Rust
 
 -> attributes
 >> date: 2023-06-18 14:17:32
 >> id: 2rodupw3
 >> site: aws
->> type: index 
+>> type: home_page 
 >> status: published
 
 

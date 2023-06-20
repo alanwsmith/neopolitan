@@ -25,11 +25,11 @@ impl Universe<'_> {
                 self.categories
                     .get_mut(&String::from(category.1.trim()))
                     .unwrap()
-                    .push(here_now_is_clone.raw_path.unwrap());
+                    .push(here_now_is_clone.output_path().unwrap());
             } else {
                 self.categories.insert(
                     String::from(category.1.trim()),
-                    vec![here_now_is_clone.raw_path.unwrap()],
+                    vec![here_now_is_clone.output_path().unwrap()],
                 );
             }
         }
@@ -61,7 +61,7 @@ mod test {
         u.content_files.insert(file_path, sf.clone());
         let _get_categories_status = u.get_categories(&sf);
         assert_eq!(true, u.categories.contains_key("Posts"));
-        let expected_vec = vec![PathBuf::from("some/path.neo")];
+        let expected_vec = vec![PathBuf::from("some/path.html")];
         assert_eq!(
             &expected_vec,
             u.categories.get(&String::from("Posts")).unwrap()
@@ -78,7 +78,6 @@ mod test {
         alfa_file.raw_path = Some(PathBuf::from("some/alfa.neo"));
         u.content_files.insert(alfa_path, alfa_file.clone());
         let _get_categories_status = u.get_categories(&alfa_file);
-
         let mut bravo_file = SourceFile::new();
         let bravo_lines = ["-> categories", ">> Widget", ""];
         bravo_file.raw = Some(bravo_lines.join("\n").to_string());
@@ -86,10 +85,9 @@ mod test {
         bravo_file.raw_path = Some(PathBuf::from("some/bravo.neo"));
         u.content_files.insert(bravo_path, bravo_file.clone());
         let _get_categories_status = u.get_categories(&bravo_file);
-
         let expected_vec = vec![
-            PathBuf::from("some/alfa.neo"),
-            PathBuf::from("some/bravo.neo"),
+            PathBuf::from("some/alfa.html"),
+            PathBuf::from("some/bravo.html"),
         ];
         assert_eq!(
             &expected_vec,
@@ -107,7 +105,7 @@ mod test {
         sf.raw_path = Some(PathBuf::from("some/path.neo"));
         u.content_files.insert(file_path, sf.clone());
         let _get_categories_status = u.get_categories(&sf);
-        let expected_vec = vec![PathBuf::from("some/path.neo")];
+        let expected_vec = vec![PathBuf::from("some/path.html")];
         assert_eq!(
             &expected_vec,
             u.categories.get(&String::from("Echo")).unwrap()
@@ -125,7 +123,7 @@ mod test {
         u.content_files.insert(file_path, sf.clone());
         let _get_categories_status = u.get_categories(&sf);
         assert_eq!(true, u.categories.contains_key("Echo Foxtrot"));
-        let expected_vec = vec![PathBuf::from("some/path.neo")];
+        let expected_vec = vec![PathBuf::from("some/path.html")];
         assert_eq!(
             &expected_vec,
             u.categories.get(&String::from("Echo Foxtrot")).unwrap()
