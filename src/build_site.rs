@@ -3,9 +3,9 @@ use crate::source_file::source_file::SourceFile;
 use minijinja::context;
 use minijinja::Environment;
 use minijinja::Source;
-use std::path::PathBuf;
-
 use std::fs;
+use std::path::PathBuf;
+// use walkdir::WalkDir;
 
 pub fn build_site() {
     println!("Making the site");
@@ -25,4 +25,15 @@ pub fn build_site() {
         .unwrap()
         .to_string();
     fs::write("site/index.html", output).unwrap();
+
+    // for entry in WalkDir::new("content").into_iter() {
+    //     let p = entry.unwrap().path().to_path_buf();
+    //     if let Some(ext) = p.extension() {
+    //         if ext == "neo" {
+    //         }
+    //     }
+    // }
+
+    fs::create_dir_all("site/posts/alfa").unwrap();
+    fs::write("site/posts/alfa/index.html", "foxtrot").unwrap();
 }
