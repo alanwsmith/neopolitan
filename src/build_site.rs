@@ -1,9 +1,9 @@
 // #![allow(warnings)]
+use crate::source_file::source_file::SourceFile;
 use minijinja::context;
 use minijinja::Environment;
 use minijinja::Source;
 use std::path::PathBuf;
-// use crate::source_file::source_file::SourceFile;
 // use crate::files::files::Files;
 // use std::fs;
 //use walkdir::Error;
@@ -16,10 +16,11 @@ pub fn build_site() {
     fs::create_dir("site").unwrap();
     let mut env = Environment::new();
     env.set_source(Source::from_path(PathBuf::from("./templates")));
+    let source_file = SourceFile::new();
     let wrapper = env.get_template("home_page.j2").unwrap();
     let output = wrapper
         .render(context!(
-            title => "ALFA BRAVO CHARLIE",
+            title => source_file.title(),
         ))
         .unwrap()
         .to_string();
