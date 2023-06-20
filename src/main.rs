@@ -16,6 +16,29 @@ struct Files {
 }
 
 impl Files {
+    pub fn posts(&self) -> Vec<(PathBuf, String)> {
+        let mut post_data = vec![];
+
+        self.files.iter().for_each(|file| {
+            // dbg!(file.raw_path.as_ref().unwrap());
+            let mut cloned_path = file.raw_path.clone().unwrap();
+            let mut cloned_path_bravo = file.raw_path.clone().unwrap();
+            cloned_path.set_extension("html");
+            cloned_path_bravo.set_extension("html");
+            post_data.push((cloned_path, cloned_path_bravo.display().to_string()));
+            ()
+        });
+
+        post_data
+
+        // vec![(
+        //     PathBuf::from("posts/test-post-1/index.html"),
+        //     String::from("Test Post 1"),
+        // )]
+    }
+}
+
+impl Files {
     pub fn load_files(&mut self) -> Result<(), Error> {
         for entry in WalkDir::new(&self.content_dir.as_ref().unwrap()).into_iter() {
             let p = entry?.path().to_path_buf();
@@ -77,6 +100,7 @@ fn make_site() {
         let output = wrapper
             .render(context!(
                 content => "ALFA BRAVO CHARLIE",
+                posts => content.posts(),
             ))
             .unwrap()
             .to_string();
