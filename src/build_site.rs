@@ -12,10 +12,16 @@
 use std::fs;
 
 pub fn build_site() {
-    // TODO: Make site directories
     println!("Making the site");
     fs::create_dir("site").unwrap();
-    fs::write("site/index.html", "alfa bravo").unwrap();
+
+    let source = r#"
+        <!DOCTYPE html>
+        <html>
+            <head><title>Alfa Bravo</title></head>
+        </html>"#;
+
+    fs::write("site/index.html", source).unwrap();
 
     // let mut content = Files {
     //     files: vec![],
