@@ -65,9 +65,11 @@ impl SourceFile {
 
         // dbg!(&self.source_data);
         // dbg!(self.content_dev2());
-        // self.content_dev2()
 
         Some("<p>This is a test run of the website builder</p>".to_string())
+        // self.content_dev2()
+
+        //
     }
 
     pub fn content_dev(&self) -> Option<String> {
