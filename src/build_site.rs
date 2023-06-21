@@ -1,5 +1,6 @@
 // #![allow(warnings)]
 use crate::source_file::source_file::SourceFile;
+use crate::source_files::source_files::SourceFiles;
 use minijinja::context;
 use minijinja::Environment;
 use minijinja::Source;
@@ -14,14 +15,11 @@ pub fn build_site() {
     let content_dir = PathBuf::from("content");
     let site_root_dir = PathBuf::from("site");
 
-    // fs::create_dir(site_root_dir).unwrap();
-    //
-
     let mut env = Environment::new();
     env.set_source(Source::from_path(template_dir));
     let wrapper = env.get_template("home_page.j2").unwrap();
 
-    let mut source_files: Vec<SourceFile> = vec![];
+    let mut source_files = SourceFiles::new();
 
     for entry in WalkDir::new(&content_dir).into_iter() {
         let initial_path = entry.unwrap().path().to_path_buf();
@@ -36,13 +34,12 @@ pub fn build_site() {
                         .to_path_buf(),
                 );
                 sf.source_data = Some(fs::read_to_string(initial_path).unwrap());
-                source_files.push(sf);
+                source_files.files.push(sf);
             }
         }
     }
 
-    // Output the files
-    source_files.iter().for_each(|source_file| {
+    source_files.files.iter().for_each(|source_file| {
         let output = wrapper
             .render(context!(
                 title => source_file.title(),
