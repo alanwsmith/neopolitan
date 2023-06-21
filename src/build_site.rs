@@ -1,6 +1,6 @@
 // #![allow(warnings)]
+use crate::files::files::Files;
 use crate::source_file::source_file::SourceFile;
-use crate::source_files::source_files::SourceFiles;
 use minijinja::context;
 use minijinja::Environment;
 use minijinja::Source;
@@ -19,7 +19,7 @@ pub fn build_site() {
     env.set_source(Source::from_path(template_dir));
     let wrapper = env.get_template("home_page.j2").unwrap();
 
-    let mut source_files = SourceFiles::new();
+    let mut source_files = Files::new();
 
     for entry in WalkDir::new(&content_dir).into_iter() {
         let initial_path = entry.unwrap().path().to_path_buf();
@@ -43,6 +43,7 @@ pub fn build_site() {
         let output = wrapper
             .render(context!(
                 title => source_file.title(),
+                posts => source_files.all_posts(),
             ))
             .unwrap()
             .to_string();
