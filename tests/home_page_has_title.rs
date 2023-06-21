@@ -9,5 +9,5 @@ fn home_page_has_title() {
     let doc = Html::parse_document(source.as_str());
     let selector = Selector::parse("title").unwrap();
     let element = doc.select(&selector).next().unwrap();
-    assert_eq!("Alfa Bravo", element.inner_html());
+    assert_eq!("Neopolitan Test Site", element.inner_html());
 }
