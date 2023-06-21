@@ -10,5 +10,8 @@ fn home_page_posts_exist() {
     let selector = Selector::parse("li").unwrap();
     let mut elements = doc.select(&selector);
     let element = elements.nth(1).unwrap();
-    assert_eq!("Alfa Bravo", element.inner_html());
+    assert_eq!(
+        r#"<a href="/index.html">Alfa Bravo</a>"#,
+        element.inner_html()
+    );
 }

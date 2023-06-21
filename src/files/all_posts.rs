@@ -3,9 +3,12 @@ use crate::files::files::Files;
 impl Files {
     pub fn all_posts(&self) -> Vec<(String, String)> {
         let mut all_posts = vec![];
-        self.files
-            .iter()
-            .for_each(|file| all_posts.push((file.title().unwrap(), String::from(""))));
+        self.files.iter().for_each(|file| {
+            all_posts.push((
+                file.title().unwrap(),
+                file.url().unwrap().display().to_string(),
+            ))
+        });
         all_posts
     }
 }
@@ -14,6 +17,7 @@ impl Files {
 mod test {
     use crate::files::files::Files;
     use crate::source_file::source_file::SourceFile;
+    use std::path::PathBuf;
 
     #[test]
     pub fn test_posts_basic() {
@@ -21,10 +25,14 @@ mod test {
         let mut sf = SourceFile::new();
         let lines = vec!["-> title", "", "Alfa Bravooo", "", "-> p"];
         sf.source_data = Some(lines.join("\n"));
+        sf.source_path = Some(PathBuf::from("some/path/index.neo"));
         content.files.push(sf);
         assert_eq!(
-            vec![(String::from("Alfa Bravooo"), String::from(""))],
-            content.all_posts()
+            content.all_posts(),
+            vec![(
+                String::from("Alfa Bravooo"),
+                String::from("/some/path/index.html")
+            )],
         );
     }
 }

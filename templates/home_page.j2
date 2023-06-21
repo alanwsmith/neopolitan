@@ -13,11 +13,12 @@
 </head>
 
 <body>
-  <h1>TITLE: {{ title }}</h1>
+  <h1>{{ title }}</h1>
   <ul>
     {% for post in posts %}
-    <li>{{ post[0] }}</li>
+    <li><a href="{{ post[1] }}">{{ post[0] }}</a></li>
     {% endfor %}
   </ul>
 </body>
+
 </html>
