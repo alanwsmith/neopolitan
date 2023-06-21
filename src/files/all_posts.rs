@@ -4,10 +4,12 @@ impl Files {
     pub fn all_posts(&self) -> Vec<(String, String)> {
         let mut all_posts = vec![];
         self.files.iter().for_each(|file| {
-            all_posts.push((
-                file.title().unwrap(),
-                file.url().unwrap().display().to_string(),
-            ))
+            if file.content_type() == Some(String::from("post")) {
+                all_posts.push((
+                    file.title().unwrap(),
+                    file.url().unwrap().display().to_string(),
+                ))
+            }
         });
         all_posts
     }
@@ -23,7 +25,15 @@ mod test {
     pub fn test_posts_basic() {
         let mut content = Files::new();
         let mut sf = SourceFile::new();
-        let lines = vec!["-> title", "", "Alfa Bravooo", "", "-> p"];
+        let lines = vec![
+            "-> title",
+            "",
+            "Alfa Bravooo",
+            "",
+            "-> attributes",
+            ">> type: post",
+            "",
+        ];
         sf.source_data = Some(lines.join("\n"));
         sf.source_path = Some(PathBuf::from("some/path/index.neo"));
         content.files.push(sf);

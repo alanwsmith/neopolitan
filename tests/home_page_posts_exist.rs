@@ -9,9 +9,9 @@ fn home_page_posts_exist() {
     let doc = Html::parse_document(source.as_str());
     let selector = Selector::parse("li").unwrap();
     let mut elements = doc.select(&selector);
-    let element = elements.nth(1).unwrap();
+    let element = elements.nth(0).unwrap();
     assert_eq!(
-        r#"<a href="/index.html">Alfa Bravo</a>"#,
+        r#"<a href="/posts/alfa/index.html">Test Post 1</a>"#,
         element.inner_html()
     );
 }
