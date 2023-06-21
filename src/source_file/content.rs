@@ -77,6 +77,13 @@ impl SourceFile {
                         alt((take_until("\n\n-> "), rest)),
                     ))
                     .map(|t| self.p_section(t.3)),
+                    tuple((
+                        tag_no_case("categories"),
+                        not_line_ending,
+                        line_ending,
+                        alt((take_until("\n\n-> "), rest)),
+                    ))
+                    .map(|t| Some("".to_string())),
                     // When all section types are in place this
                     // rest.map should be able to be removed. Right
                     // now it's just catching things that haven't been
@@ -141,6 +148,26 @@ mod test {
             sf.content_dev(),
             Some(String::from(
                 r#"<h1 class="neo-title">Echo Foxtrot</h1><p>Light the candle</p>"#
+            ))
+        );
+    }
+
+    #[test]
+    pub fn ignore_categories() {
+        let mut sf = SourceFile::new();
+        let lines = vec![
+            "-> title",
+            "",
+            "Whiskey November",
+            "",
+            "-> categories",
+            ">> Example",
+        ];
+        sf.source_data = Some(lines.join("\n"));
+        assert_eq!(
+            sf.content_dev(),
+            Some(String::from(
+                r#"<h1 class="neo-title">Whiskey November</h1>"#
             ))
         );
     }

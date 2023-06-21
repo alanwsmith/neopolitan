@@ -11,7 +11,7 @@ fn home_page_posts_exist() {
     let mut elements = doc.select(&selector);
     let element = elements.nth(0).unwrap();
     assert_eq!(
-        r#"<a href="/posts/alfa/index.html">Test Post 1</a>"#,
+        r#"<a href="/posts/alfa/index.html">Test Post Alfa</a>"#,
         element.inner_html()
     );
 }
