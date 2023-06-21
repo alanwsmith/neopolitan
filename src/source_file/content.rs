@@ -84,6 +84,13 @@ impl SourceFile {
                         alt((take_until("\n\n-> "), rest)),
                     ))
                     .map(|t| Some("".to_string())),
+                    tuple((
+                        tag_no_case("attributes"),
+                        not_line_ending,
+                        line_ending,
+                        alt((take_until("\n\n-> "), rest)),
+                    ))
+                    .map(|t| Some("".to_string())),
                     // When all section types are in place this
                     // rest.map should be able to be removed. Right
                     // now it's just catching things that haven't been
@@ -169,6 +176,24 @@ mod test {
             Some(String::from(
                 r#"<h1 class="neo-title">Whiskey November</h1>"#
             ))
+        );
+    }
+
+    #[test]
+    pub fn ignore_attributes() {
+        let mut sf = SourceFile::new();
+        let lines = vec![
+            "-> title",
+            "",
+            "Echo Oscar",
+            "",
+            "-> attributes",
+            ">> Example",
+        ];
+        sf.source_data = Some(lines.join("\n"));
+        assert_eq!(
+            sf.content_dev(),
+            Some(String::from(r#"<h1 class="neo-title">Echo Oscar</h1>"#))
         );
     }
 
