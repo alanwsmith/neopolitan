@@ -49,8 +49,7 @@ impl SourceFile {
     }
 
     pub fn content(&self) -> Option<String> {
-        Some("<p>This is a test run of the website builder</p>".to_string())
-        // self.content_dev()
+        self.content_dev()
     }
 
     pub fn content_dev(&self) -> Option<String> {
@@ -78,6 +77,11 @@ impl SourceFile {
                         alt((take_until("-> "), rest)),
                     ))
                     .map(|t| self.p_section(t.3)),
+                    // When all section types are in place this
+                    // rest.map should be able to be removed. Right
+                    // now it's just catching things that haven't been
+                    // defined yet
+                    rest.map(|x| Some(String::from(x))),
                 )),
             )),
             eof,
@@ -87,6 +91,8 @@ impl SourceFile {
             .for_each(|x| output.push_str(x.2.as_ref().unwrap().as_str()));
         Ok(("", Some(output)))
     }
+
+    //
 }
 
 #[cfg(test)]
