@@ -50,6 +50,7 @@ impl SourceFile {
 
     pub fn content(&self) -> Option<String> {
         Some("<p>This is a test run of the website builder</p>".to_string())
+        // self.content_dev()
     }
 
     pub fn content_dev(&self) -> Option<String> {
@@ -58,53 +59,6 @@ impl SourceFile {
     }
 
     fn parse_content_dev(&self) -> IResult<&str, Option<String>> {
-        self.parse_content_dev2()
-        // let (a, _) = take_until("-> p\n\n")(self.source_data.as_ref().unwrap().as_str())?;
-        // let (a, _) = tag("-> p\n\n")(a)?;
-        // let (_, b) = rest(a)?;
-        // let mut content = String::from("<p>");
-        // content.push_str(b);
-        // content.push_str("</p>");
-        // Ok(("", Some(content)))
-    }
-
-    pub fn content_dev2(&self) -> Option<String> {
-        let (_, b) = self.parse_content_dev2().unwrap();
-        b
-    }
-
-    fn parse_content_dev2(&self) -> IResult<&str, Option<String>> {
-        //let (a, b) = take_until("-> ")(self.source_data.as_ref().unwrap().as_str())?;
-        // let (a, b) = tag("-> ")(a)?;
-
-        let (a, b) = alt((
-            tuple((
-                tag_no_case("-> title"),
-                not_line_ending,
-                line_ending,
-                alt((take_until("\n\n-> "), rest)),
-            ))
-            .map(|t| self.title_section(t.3)),
-            tuple((
-                tag_no_case("-> p"),
-                not_line_ending,
-                line_ending,
-                alt((take_until("\n\n-> "), rest)),
-            ))
-            .map(|t| self.p_section(t.3)),
-        ))(self.source_data.as_ref().unwrap().as_str())?;
-
-        Ok(("", b))
-
-        //
-    }
-
-    pub fn content_dev3(&self) -> Option<String> {
-        let (_, b) = self.parse_content_dev3().unwrap();
-        b
-    }
-
-    fn parse_content_dev3(&self) -> IResult<&str, Option<String>> {
         let (a, b) = many_till(
             tuple((
                 multispace0,
@@ -128,23 +82,10 @@ impl SourceFile {
             )),
             eof,
         )(self.source_data.as_ref().unwrap().as_str())?;
-
         let mut output = String::from("");
-
         b.0.iter()
             .for_each(|x| output.push_str(x.2.as_ref().unwrap().as_str()));
-
-        dbg!(b);
-
-        dbg!(&output);
-
-        // Ok(("", Some(b.2.join(""))))
-
-        Ok((
-            "",
-            //Some(r#"<h1 class="neo-title">Echo Foxtrot</h1><p>Light the candle</p>"#.to_string()),
-            Some(output),
-        ))
+        Ok(("", Some(output)))
     }
 }
 
@@ -159,7 +100,7 @@ mod test {
         let lines = vec!["-> title", "", "Delta Hotel"];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content_dev3(),
+            sf.content_dev(),
             Some(String::from(r#"<h1 class="neo-title">Delta Hotel</h1>"#))
         );
     }
@@ -170,7 +111,7 @@ mod test {
         let lines = vec!["-> p", "", "This is a test run of the website builder"];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content_dev3(),
+            sf.content_dev(),
             Some(String::from(
                 "<p>This is a test run of the website builder</p>"
             ))
@@ -191,7 +132,7 @@ mod test {
         ];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content_dev3(),
+            sf.content_dev(),
             Some(String::from(
                 r#"<h1 class="neo-title">Echo Foxtrot</h1><p>Light the candle</p>"#
             ))
