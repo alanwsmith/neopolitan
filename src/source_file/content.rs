@@ -34,25 +34,25 @@ impl SourceFile {
     pub fn p_section(&self, source: &str) -> Option<String> {
         //
 
-        // let mut env = Environment::new();
-        // env.set_source(Source::from_path("./templates"));
-        // let wrapper = env.get_template("sections/title.j2").unwrap();
-        // Some(
-        //     wrapper
-        //         .render(context!(
-        //             title => String::from(source.trim()),
-        //         ))
-        //         .unwrap()
-        //         .to_string(),
-        // )
+        let mut env = Environment::new();
+        env.set_source(Source::from_path("./templates"));
+        let wrapper = env.get_template("sections/p.j2").unwrap();
+        Some(
+            wrapper
+                .render(context!(
+                    content => String::from(source.trim()),
+                ))
+                .unwrap()
+                .to_string(),
+        )
 
         //
 
-        let mut output = String::from("<p>");
-        output.push_str(source.trim());
-        output.push_str("</p>");
+        // let mut output = String::from("<p>");
+        // output.push_str(source.trim());
+        // output.push_str("</p>");
 
-        Some(output)
+        // Some(output)
 
         //Some(r#"<p>This is a test run of the website builder</p>"#.to_string())
         //Some(String::from(""))
