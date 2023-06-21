@@ -1,3 +1,4 @@
+pub mod content;
 pub mod content_type;
 pub mod new;
 pub mod output_dir;

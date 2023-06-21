@@ -44,6 +44,7 @@ pub fn build_site() {
             .render(context!(
                 title => source_file.title(),
                 posts => source_files.all_posts(),
+                content => source_file.content(),
             ))
             .unwrap()
             .to_string();
