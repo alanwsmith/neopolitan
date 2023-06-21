@@ -17,5 +17,6 @@ This is a test run for the website builder
 >> site: aws
 >> type: home_page 
 >> status: published
+>> template: home_page
 
 

@@ -17,7 +17,6 @@ pub fn build_site() {
 
     let mut env = Environment::new();
     env.set_source(Source::from_path(template_dir));
-    let wrapper = env.get_template("home_page.j2").unwrap();
 
     let mut source_files = Files::new();
 
@@ -40,6 +39,7 @@ pub fn build_site() {
     }
 
     source_files.files.iter().for_each(|source_file| {
+        let wrapper = env.get_template(&source_file.template().unwrap()).unwrap();
         let output = wrapper
             .render(context!(
                 title => source_file.title(),
