@@ -8,9 +8,8 @@ fn home_page_posts_exist() {
     let source = fs::read_to_string("site/index.html").unwrap();
     let doc = Html::parse_document(source.as_str());
     let selector = Selector::parse("li").unwrap();
-    // let element = doc.select(&selector).next().unwrap();
     let mut elements = doc.select(&selector);
-    elements.next();
-    let element = elements.next().unwrap();
+    // elements.next();
+    let element = elements.nth(1).unwrap();
     assert_eq!("Alfa Bravo", element.inner_html());
 }
