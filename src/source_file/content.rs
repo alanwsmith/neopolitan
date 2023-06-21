@@ -31,6 +31,35 @@ impl SourceFile {
         )
     }
 
+    pub fn p_section(&self, source: &str) -> Option<String> {
+        //
+
+        // let mut env = Environment::new();
+        // env.set_source(Source::from_path("./templates"));
+        // let wrapper = env.get_template("sections/title.j2").unwrap();
+        // Some(
+        //     wrapper
+        //         .render(context!(
+        //             title => String::from(source.trim()),
+        //         ))
+        //         .unwrap()
+        //         .to_string(),
+        // )
+
+        //
+
+        let mut output = String::from("<p>");
+        output.push_str(source.trim());
+        output.push_str("</p>");
+
+        Some(output)
+
+        //Some(r#"<p>This is a test run of the website builder</p>"#.to_string())
+        //Some(String::from(""))
+
+        //
+    }
+
     pub fn content(&self) -> Option<String> {
         //let (_, b) = self.parse_content().unwrap();
 
@@ -81,9 +110,10 @@ impl SourceFile {
                 alt((take_until("\n\n-> "), rest)),
             ))
             .map(|t| {
-                Some(String::from(
-                    r#"<p>This is a test run of the website builder</p>"#,
-                ))
+                self.p_section(t.3)
+                // Some(String::from(
+                //     r#"<p>This is a test run of the website builder</p>"#,
+                // ))
             }),
         ))(self.source_data.as_ref().unwrap().as_str())?;
 
@@ -99,7 +129,18 @@ mod test {
     use crate::source_file::source_file::SourceFile;
 
     #[test]
-    pub fn test_first_paragraph() {
+    pub fn test_title() {
+        let mut sf = SourceFile::new();
+        let lines = vec!["-> title", "", "Delta Hotel"];
+        sf.source_data = Some(lines.join("\n"));
+        assert_eq!(
+            sf.content_dev2(),
+            Some(String::from(r#"<h1 class="neo-title">Delta Hotel</h1>"#))
+        );
+    }
+
+    #[test]
+    pub fn test_single_paragraph() {
         let mut sf = SourceFile::new();
         let lines = vec!["-> p", "", "This is a test run of the website builder"];
         sf.source_data = Some(lines.join("\n"));
@@ -108,17 +149,6 @@ mod test {
             Some(String::from(
                 "<p>This is a test run of the website builder</p>"
             ))
-        );
-    }
-
-    #[test]
-    pub fn test_title() {
-        let mut sf = SourceFile::new();
-        let lines = vec!["-> title", "", "Delta Hotel"];
-        sf.source_data = Some(lines.join("\n"));
-        assert_eq!(
-            sf.content_dev2(),
-            Some(String::from(r#"<h1 class="neo-title">Delta Hotel</h1>"#))
         );
     }
 
@@ -138,7 +168,7 @@ mod test {
     //     assert_eq!(
     //         sf.content_dev2(),
     //         Some(String::from(
-    //             r#"<h1 class="neo-title">Echo FoxTrot</h1><p>Light the candle</p>"#
+    //             r#"<h1 class="neo-title">Echo Foxtrot</h1><p>Light the candle</p>"#
     //         ))
     //     );
     // }
