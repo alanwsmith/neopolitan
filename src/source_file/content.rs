@@ -67,14 +67,14 @@ impl SourceFile {
                         tag_no_case("title"),
                         not_line_ending,
                         line_ending,
-                        alt((take_until("-> "), rest)),
+                        alt((take_until("\n\n-> "), rest)),
                     ))
                     .map(|t| self.title_section(t.3)),
                     tuple((
                         tag_no_case("p"),
                         not_line_ending,
                         line_ending,
-                        alt((take_until("-> "), rest)),
+                        alt((take_until("\n\n-> "), rest)),
                     ))
                     .map(|t| self.p_section(t.3)),
                     // When all section types are in place this
