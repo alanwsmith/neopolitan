@@ -34,6 +34,23 @@ impl SourceFile {
         )
     }
 
+    pub fn title_section_dev(&self, source: &str) -> IResult<&str, Option<String>> {
+        let mut env = Environment::new();
+        env.set_source(Source::from_path("./templates"));
+        let wrapper = env.get_template("sections/title.j2").unwrap();
+        Ok((
+            "",
+            Some(
+                wrapper
+                    .render(context!(
+                        title => String::from(source.trim()),
+                    ))
+                    .unwrap()
+                    .to_string(),
+            ),
+        ))
+    }
+
     pub fn p_section(&self, source: &str) -> Option<String> {
         let mut env = Environment::new();
         env.set_source(Source::from_path("./templates"));
@@ -85,13 +102,13 @@ impl SourceFile {
                 multispace0,
                 tag_no_case("-> "),
                 alt((
-                    // tuple((
-                    //     tag_no_case("title"),
-                    //     not_line_ending,
-                    //     line_ending,
-                    //     alt((take_until("\n\n-> "), rest)),
-                    // ))
-                    // .map(|t| self.title_section(t.3)),
+                    tuple((
+                        tag_no_case("title"),
+                        not_line_ending,
+                        line_ending,
+                        alt((take_until("\n\n-> "), rest)),
+                    ))
+                    .map(|t| self.title_section_dev(t.3)),
                     tuple((
                         tag_no_case("p"),
                         not_line_ending,
@@ -99,21 +116,20 @@ impl SourceFile {
                         alt((take_until("\n\n-> "), rest)),
                     ))
                     .map(|t| self.p_section_dev(t.3)),
-                    // tuple((
-                    //     tag_no_case("categories"),
-                    //     not_line_ending,
-                    //     line_ending,
-                    //     alt((take_until("\n\n-> "), rest)),
-                    // ))
-                    // .map(|t| Some("".to_string())),
-                    // tuple((
-                    //     tag_no_case("attributes"),
-                    //     not_line_ending,
-                    //     line_ending,
-                    //     alt((take_until("\n\n-> "), rest)),
-                    // ))
-                    // .map(|t| Some("".to_string())),
-
+                    tuple((
+                        tag_no_case("categories"),
+                        not_line_ending,
+                        line_ending,
+                        alt((take_until("\n\n-> "), rest)),
+                    ))
+                    .map(|t| Ok(("", Some("".to_string())))),
+                    tuple((
+                        tag_no_case("attributes"),
+                        not_line_ending,
+                        line_ending,
+                        alt((take_until("\n\n-> "), rest)),
+                    ))
+                    .map(|t| Ok(("", Some("".to_string())))),
                     // When all section types are in place this
                     // rest.map should be able to be removed. Right
                     // now it's just catching things that haven't been
@@ -192,7 +208,7 @@ mod test {
         let lines = vec!["-> title", "", "Delta Hotel"];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content(),
+            sf.content_dev(),
             Some(String::from(r#"<h1 class="neo-title">Delta Hotel</h1>"#))
         );
     }
@@ -203,7 +219,7 @@ mod test {
         let lines = vec!["-> p", "", "This is a test run of the website builder"];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content(),
+            sf.content_dev(),
             Some(String::from(
                 "<p>This is a test run of the website builder</p>"
             ))
@@ -224,7 +240,7 @@ mod test {
         ];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content(),
+            sf.content_dev(),
             Some(String::from(
                 r#"<h1 class="neo-title">Echo Foxtrot</h1><p>Light the candle</p>"#
             ))
@@ -244,7 +260,7 @@ mod test {
         ];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content(),
+            sf.content_dev(),
             Some(String::from(
                 r#"<h1 class="neo-title">Whiskey November</h1>"#
             ))
@@ -264,7 +280,7 @@ mod test {
         ];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content(),
+            sf.content_dev(),
             Some(String::from(r#"<h1 class="neo-title">Echo Oscar</h1>"#))
         );
     }
