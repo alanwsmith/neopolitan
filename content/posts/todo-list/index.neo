@@ -1,0 +1,32 @@
+-> title
+
+TODO List
+
+-> p
+
+[] Add tags to paragraphs
+
+[] Add shortcodes to paragraphs
+
+[] refactor the section calls so there's less repetition
+
+[] Setup the TODO list section so this shows up as a list
+
+[] Setup title tag so paragraphs can come after it
+
+[] Add attributes to paragraphs
+
+[] Add all the different section types
+
+
+
+-> categories
+>> Miscellaneous
+
+-> attributes
+>> date: 2023-06-22 00:55:26
+>> id: 2rxwrfei
+>> site: aws
+>> type: post
+>> status: published
+
