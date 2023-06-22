@@ -65,7 +65,7 @@ impl SourceFile {
         )
     }
 
-    pub fn content_dev(&self) -> Option<String> {
+    pub fn content(&self) -> Option<String> {
         let (_, b) = self.parse_content_dev().unwrap();
         b
     }
@@ -91,10 +91,11 @@ impl SourceFile {
         Ok(("", Some(output)))
     }
 
-    pub fn content(&self) -> Option<String> {
-        let (_, b) = self.parse_content().unwrap();
-        b
-    }
+    // pub fn content(&self) -> Option<String> {
+    //     self.content_dev()
+    //     // let (_, b) = self.parse_content().unwrap();
+    //     // b
+    // }
 
     fn parse_content_dev(&self) -> IResult<&str, Option<String>> {
         let (a, b) = many_till(
@@ -208,7 +209,7 @@ mod test {
         let lines = vec!["-> title", "", "Delta Hotel"];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content_dev(),
+            sf.content(),
             Some(String::from(r#"<h1 class="neo-title">Delta Hotel</h1>"#))
         );
     }
@@ -219,7 +220,7 @@ mod test {
         let lines = vec!["-> p", "", "This is a test run of the website builder"];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content_dev(),
+            sf.content(),
             Some(String::from(
                 "<p>This is a test run of the website builder</p>"
             ))
@@ -240,7 +241,7 @@ mod test {
         ];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content_dev(),
+            sf.content(),
             Some(String::from(
                 r#"<h1 class="neo-title">Echo Foxtrot</h1><p>Light the candle</p>"#
             ))
@@ -260,7 +261,7 @@ mod test {
         ];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content_dev(),
+            sf.content(),
             Some(String::from(
                 r#"<h1 class="neo-title">Whiskey November</h1>"#
             ))
@@ -280,7 +281,7 @@ mod test {
         ];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content_dev(),
+            sf.content(),
             Some(String::from(r#"<h1 class="neo-title">Echo Oscar</h1>"#))
         );
     }
@@ -291,7 +292,7 @@ mod test {
         let lines = vec!["-> p", "", "Hotel India", "", "Oscar Echo", ""];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content_dev(),
+            sf.content(),
             Some(String::from(r#"<p>Hotel India</p><p>Oscar Echo</p>"#))
         );
     }
