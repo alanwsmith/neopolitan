@@ -1,4 +1,4 @@
 #!/bin/bash
 
-TEST_NAME=multiple_paragraphs
+TEST_NAME=multiple_sections
 cargo watch -i "site" -x "test --lib $TEST_NAME --color always -- --nocapture"
