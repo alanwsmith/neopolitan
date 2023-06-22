@@ -1,4 +1,4 @@
-use crate::files::files::Files;
+use crate::files::Files;
 
 impl Files {
     pub fn new() -> Files {

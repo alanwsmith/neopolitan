@@ -8,7 +8,7 @@ use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
 
-pub fn parse_block<'a>(source: &'a str) -> IResult<&str, Option<String>> {
+pub fn parse_block(source: &str) -> IResult<&str, Option<String>> {
     let (_, b) = many_till(
         alt((
             tuple((
@@ -38,7 +38,6 @@ pub fn parse_block<'a>(source: &'a str) -> IResult<&str, Option<String>> {
     let block = b.0.join("");
     Ok(("", Some(block)))
 }
-
 
 #[cfg(test)]
 mod test {

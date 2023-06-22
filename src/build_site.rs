@@ -1,5 +1,5 @@
 // #![allow(warnings)]
-use crate::files::files::Files;
+use crate::files::Files;
 use crate::source_file::SourceFile;
 use minijinja::context;
 use minijinja::Environment;

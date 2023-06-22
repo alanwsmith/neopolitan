@@ -1,4 +1,4 @@
-use crate::files::files::Files;
+use crate::files::Files;
 
 impl Files {
     pub fn all_posts(&self) -> Vec<(String, String)> {
@@ -17,7 +17,7 @@ impl Files {
 
 #[cfg(test)]
 mod test {
-    use crate::files::files::Files;
+    use crate::files::Files;
     use crate::source_file::SourceFile;
     use std::path::PathBuf;
 
