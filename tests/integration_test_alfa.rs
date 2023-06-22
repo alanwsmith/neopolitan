@@ -13,8 +13,8 @@ fn integration_test_alfa() {
         elements.next().unwrap().inner_html(),
         "This is the alfa integration test"
     );
-    // assert_eq!(
-    //     elements.next().unwrap().inner_html(),
-    //     "This is the second paragraph"
-    // );
+    assert_eq!(
+        elements.next().unwrap().inner_html(),
+        "This is the second paragraph"
+    );
 }
