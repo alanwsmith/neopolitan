@@ -53,7 +53,8 @@ impl SourceFile {
             .map(|x| {
                 if x.3 == "p" {
                     dbg!(&x);
-                    "".to_string()
+                    // "".to_string()
+                    self.p_section(x.6).unwrap().1.unwrap()
                 } else if x.3 == "title" {
                     dbg!(&x);
                     dbg!(self.title_section(x.6).unwrap().1.unwrap());
@@ -144,8 +145,10 @@ impl SourceFile {
     }
 
     pub fn content(&self) -> Option<String> {
-        let (_, b) = self.parse_content().unwrap();
-        b
+        self.content_dev3()
+
+        // let (_, b) = self.parse_content().unwrap();
+        // b
     }
 
     fn parse_content(&self) -> IResult<&str, Option<String>> {
@@ -233,7 +236,7 @@ impl SourceFile {
                         .map(|t| self.title_section(t.3)),
                         tuple((
                             tag_no_case("p"),
-                            self.get_section_content::<&str, &str, nom::error::Error<&str>>(),
+                            // self.get_section_content::<&str, &str, nom::error::Error<&str>>(),
                         ))
                         .map(|t| self.p_section(t.0)),
                     )),
@@ -256,42 +259,42 @@ impl SourceFile {
     //     Ok(("", "".to_string()))
     // }
 
-    fn get_section_content<'a, C, Input, Error: ParseError<Input>>(
-        &self,
-    ) -> impl Fn(Input) -> IResult<Input, Input, Error>
-    where
-        Input: FindSubstring<&'a str>
-            + Slice<RangeFrom<usize>>
-            + Slice<std::ops::Range<usize>>
-            + InputLength
-            + InputIter
-            + InputTake
-            + Clone
-            // + AsChar
-            + Slice<RangeTo<usize>>
-            // + nom::UnspecializedInput
-            + std::fmt::Debug,
-    {
-        dbg!("-------------------------------");
-        // let c = count.to_usize();
-        move |i: Input| {
-            // Err(_needed) => Err(Err::Error(Error::from_error_kind(i, ErrorKind::Eof))),
-            // Ok(index) => Ok(i.take_split(index)),
-            //
-            // dbg!(&i.take(3));
-            // let x = i.clone();
-            // Ok((i, x))
-            // let (a, b) = not_line_ending(i)?;
-            // let (a, b) = line_ending(a)?;
-            let (a, b) = take_until("L")(i)?;
-            dbg!(&a);
-            dbg!(&b);
-            Ok((a, b))
-            // i.parse()
-            // Ok((i.take(4), i.take(3)))
-            // Ok((rest(i.take(5)).unwrap().1, i.take(3)))
-        }
-    }
+    //fn get_section_content<'a, C, Input, Error: ParseError<Input>>(
+    //    &self,
+    //) -> impl Fn(Input) -> IResult<Input, Input, Error>
+    //where
+    //    Input: FindSubstring<&'a str>
+    //        + Slice<RangeFrom<usize>>
+    //        + Slice<std::ops::Range<usize>>
+    //        + InputLength
+    //        + InputIter
+    //        + InputTake
+    //        + Clone
+    //        // + AsChar
+    //        + Slice<RangeTo<usize>>
+    //        // + nom::UnspecializedInput
+    //        + std::fmt::Debug,
+    //{
+    //    dbg!("-------------------------------");
+    //    // let c = count.to_usize();
+    //    move |i: Input| {
+    //        // Err(_needed) => Err(Err::Error(Error::from_error_kind(i, ErrorKind::Eof))),
+    //        // Ok(index) => Ok(i.take_split(index)),
+    //        //
+    //        // dbg!(&i.take(3));
+    //        // let x = i.clone();
+    //        // Ok((i, x))
+    //        // let (a, b) = not_line_ending(i)?;
+    //        // let (a, b) = line_ending(a)?;
+    //        let (a, b) = take_until("L")(i)?;
+    //        dbg!(&a);
+    //        dbg!(&b);
+    //        Ok((a, b))
+    //        // i.parse()
+    //        // Ok((i.take(4), i.take(3)))
+    //        // Ok((rest(i.take(5)).unwrap().1, i.take(3)))
+    //    }
+    //}
 
     //
 }
@@ -328,7 +331,7 @@ mod test {
         ];
         sf.source_data = Some(lines.join("\n"));
         assert_eq!(
-            sf.content_dev2(),
+            sf.content_dev3(),
             Some(String::from(
                 r#"<h1 class="neo-title">Echo Foxtrot</h1><p>Light the candle</p>"#
             ))
