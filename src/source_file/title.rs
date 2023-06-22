@@ -1,4 +1,4 @@
-use crate::source_file::source_file::SourceFile;
+use crate::source_file::SourceFile;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take;
@@ -35,7 +35,7 @@ mod test {
 
     use std::path::PathBuf;
 
-    use crate::source_file::source_file::SourceFile;
+    use crate::source_file::SourceFile;
 
     #[test]
     pub fn title_with_other_sections() {

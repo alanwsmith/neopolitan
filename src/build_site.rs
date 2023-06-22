@@ -1,6 +1,6 @@
 // #![allow(warnings)]
 use crate::files::files::Files;
-use crate::source_file::source_file::SourceFile;
+use crate::source_file::SourceFile;
 use minijinja::context;
 use minijinja::Environment;
 use minijinja::Source;
@@ -45,8 +45,7 @@ pub fn build_site() {
                 posts => source_files.all_posts(),
                 content => source_file.content(),
             ))
-            .unwrap()
-            .to_string();
+            .unwrap();
         let mut file_path = site_root_dir.clone();
         file_path.push(source_file.output_path().unwrap());
         let dir_path = file_path.parent().unwrap();

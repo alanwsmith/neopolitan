@@ -1,4 +1,4 @@
-use crate::source_file::source_file::SourceFile;
+use crate::source_file::SourceFile;
 use std::path::PathBuf;
 
 impl SourceFile {
@@ -13,7 +13,7 @@ impl SourceFile {
 #[cfg(test)]
 
 mod test {
-    use crate::source_file::source_file::SourceFile;
+    use crate::source_file::SourceFile;
     use std::path::PathBuf;
 
     #[test]

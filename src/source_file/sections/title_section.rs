@@ -1,4 +1,4 @@
-use crate::source_file::source_file::SourceFile;
+use crate::source_file::SourceFile;
 use minijinja::context;
 use minijinja::Environment;
 use minijinja::Source;
@@ -17,7 +17,7 @@ impl SourceFile {
                         title => String::from(source.trim()),
                     ))
                     .unwrap()
-                    .to_string(),
+                    ,
             ),
         ))
     }
@@ -25,7 +25,7 @@ impl SourceFile {
 
 #[cfg(test)]
 mod test {
-    use crate::source_file::source_file::SourceFile;
+    use crate::source_file::SourceFile;
     use std::path::PathBuf;
 
     #[test]

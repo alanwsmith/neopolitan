@@ -18,7 +18,7 @@ impl Files {
 #[cfg(test)]
 mod test {
     use crate::files::files::Files;
-    use crate::source_file::source_file::SourceFile;
+    use crate::source_file::SourceFile;
     use std::path::PathBuf;
 
     #[test]

@@ -1,6 +1,5 @@
 use nom::IResult;
-
-use crate::source_file::source_file::SourceFile;
+use crate::source_file::SourceFile;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
 use nom::character::complete::multispace1;
@@ -28,7 +27,7 @@ impl SourceFile {
 
 #[cfg(test)]
 mod test {
-    use crate::source_file::source_file::SourceFile;
+    use crate::source_file::SourceFile;
     use std::path::PathBuf;
 
     #[test]

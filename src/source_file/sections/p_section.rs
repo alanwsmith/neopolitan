@@ -1,5 +1,5 @@
 use crate::source_file::parse_block::parse_block;
-use crate::source_file::source_file::SourceFile;
+use crate::source_file::SourceFile;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -28,7 +28,7 @@ impl SourceFile {
             output.push_str("<p>");
             output.push_str(parse_block(x.1).unwrap().1.unwrap().as_str());
             output.push_str("</p>");
-            ()
+            
         });
         Ok(("", Some(output)))
     }
@@ -37,7 +37,7 @@ impl SourceFile {
 #[cfg(test)]
 
 mod test {
-    use crate::source_file::sections::p_section::SourceFile;
+    use crate::source_file::SourceFile;
     use std::path::PathBuf;
 
     #[test]

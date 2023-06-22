@@ -1,4 +1,4 @@
-use crate::source_file::source_file::SourceFile;
+use crate::source_file::SourceFile;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -55,7 +55,7 @@ impl SourceFile {
 
 #[cfg(test)]
 mod test {
-    use crate::source_file::source_file::SourceFile;
+    use crate::source_file::SourceFile;
     use std::path::PathBuf;
 
     // NOTE: Unknown sections are simply skipped

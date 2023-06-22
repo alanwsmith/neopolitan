@@ -1,6 +1,6 @@
 use nom::IResult;
 
-use crate::source_file::source_file::SourceFile;
+use crate::source_file::SourceFile;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -21,12 +21,12 @@ impl SourceFile {
         let (a, _) = alt((take_until("\n-> attributes"), rest))(
             self.source_data.as_str(),
         )?;
-        if a == "" {
+        if a.is_empty() {
             Ok(("", String::from("default.j2")))
         } else {
             let (a, _) = tag("\n-> attributes")(a)?;
             let (a, _) = alt((take_until(">> template:"), rest))(a)?;
-            if a == "" {
+            if a.is_empty() {
                 Ok(("", String::from("default.j2")))
             } else {
                 let (a, _) = tag(">> template:")(a)?;
@@ -43,7 +43,7 @@ impl SourceFile {
 #[cfg(test)]
 mod test {
     use std::path::PathBuf;
-    use crate::source_file::source_file::SourceFile;
+    use crate::source_file::SourceFile;
 
     #[test]
     pub fn basic_template_check() {

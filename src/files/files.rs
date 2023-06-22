@@ -1,4 +1,4 @@
-use crate::source_file::source_file::SourceFile;
+use crate::source_file::SourceFile;
 
 #[derive(Debug)]
 pub struct Files {
