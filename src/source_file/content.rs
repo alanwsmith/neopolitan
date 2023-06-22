@@ -48,27 +48,91 @@ impl SourceFile {
         )
     }
 
-    // pub fn p_section_dev(&self, source: &str) -> Option<String> {
-    //     let mut env = Environment::new();
-    //     env.set_source(Source::from_path("./templates"));
-    //     let wrapper = env.get_template("sections/p_dev.j2").unwrap();
-    //     Some(
-    //         wrapper
-    //             .render(context!(
-    //                 content => String::from(source.trim()),
-    //             ))
-    //             .unwrap()
-    //             .to_string(),
-    //     )
-    // }
+    pub fn content_dev(&self) -> Option<String> {
+        let (_, b) = self.parse_content_dev().unwrap();
+        b
+    }
 
-    // pub fn content(&self) -> Option<String> {
-    //     self.content_dev()
+    pub fn p_section_dev(&self, source: &str) -> IResult<&str, Option<String>> {
+        // let mut env = Environment::new();
+        // env.set_source(Source::from_path("./templates"));
+        // let wrapper = env.get_template("sections/p_dev.j2").unwrap();
+        // Some(
+        //     wrapper
+        //         .render(context!(
+        //             content => String::from(source.trim()),
+        //         ))
+        //         .unwrap()
+        //         .to_string(),
+        // )
+        Ok((
+            "",
+            Some(String::from(r#"<p>Hotel India</p><p>Oscar Echo</p>"#)),
+        ))
+    }
+
+    // pub fn parse_p(source: &str) -> IResult<&str, Option<String>> {
+    //     dbg!("asdf");
+    //     let (a, b) = multispace0(source)?;
+    //     Ok((
+    //         "",
+    //         Some(String::from(r#"<p>Hotel India</p><p>Oscar Echo</p>"#)),
+    //     ))
     // }
 
     pub fn content(&self) -> Option<String> {
         let (_, b) = self.parse_content().unwrap();
         b
+    }
+
+    fn parse_content_dev(&self) -> IResult<&str, Option<String>> {
+        let (a, b) = many_till(
+            tuple((
+                multispace0,
+                tag_no_case("-> "),
+                alt((
+                    // tuple((
+                    //     tag_no_case("title"),
+                    //     not_line_ending,
+                    //     line_ending,
+                    //     alt((take_until("\n\n-> "), rest)),
+                    // ))
+                    // .map(|t| self.title_section(t.3)),
+                    tuple((
+                        tag_no_case("p"),
+                        not_line_ending,
+                        line_ending,
+                        alt((take_until("\n\n-> "), rest)),
+                    ))
+                    .map(|t| self.p_section_dev(t.3)),
+                    // tuple((
+                    //     tag_no_case("categories"),
+                    //     not_line_ending,
+                    //     line_ending,
+                    //     alt((take_until("\n\n-> "), rest)),
+                    // ))
+                    // .map(|t| Some("".to_string())),
+                    // tuple((
+                    //     tag_no_case("attributes"),
+                    //     not_line_ending,
+                    //     line_ending,
+                    //     alt((take_until("\n\n-> "), rest)),
+                    // ))
+                    // .map(|t| Some("".to_string())),
+
+                    // When all section types are in place this
+                    // rest.map should be able to be removed. Right
+                    // now it's just catching things that haven't been
+                    // defined yet
+                    rest.map(|x| Ok(("", Some(String::from(x))))),
+                )),
+            )),
+            eof,
+        )(self.source_data.as_ref().unwrap().as_str())?;
+        let mut output = String::from("");
+        b.0.iter()
+            .for_each(|x| output.push_str(x.2.as_ref().unwrap().1.as_ref().unwrap().as_str()));
+        Ok(("", Some(output)))
     }
 
     fn parse_content(&self) -> IResult<&str, Option<String>> {
@@ -211,16 +275,16 @@ mod test {
         );
     }
 
-    // #[test]
-    // pub fn multiple_paragraphs() {
-    //     let mut sf = SourceFile::new();
-    //     let lines = vec!["-> p", "", "Hotel India", "", "Oscar Echo", ""];
-    //     sf.source_data = Some(lines.join("\n"));
-    //     assert_eq!(
-    //         sf.content_dev2(),
-    //         Some(String::from(r#"<h1 class="neo-title">Echo Oscar</h1>"#))
-    //     );
-    // }
+    #[test]
+    pub fn multiple_paragraphs() {
+        let mut sf = SourceFile::new();
+        let lines = vec!["-> p", "", "Hotel India", "", "Oscar Echo", ""];
+        sf.source_data = Some(lines.join("\n"));
+        assert_eq!(
+            sf.content_dev(),
+            Some(String::from(r#"<p>Hotel India</p><p>Oscar Echo</p>"#))
+        );
+    }
 
     //
 }
