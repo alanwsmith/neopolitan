@@ -21,6 +21,9 @@ TODO List
 [] Default the template to the `type`` if the `template`` 
 attribute doesn't exist
 
+[] Setup so processing fails if an unknown tag is hit
+
+[] Make category pages
 
 -> categories
 >> Miscellaneous
