@@ -1,14 +1,14 @@
-use nom::combinator::eof;
-use nom::combinator::rest;
-use nom::Parser;
+use crate::source_file::source_file::SourceFile;
+use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
-use nom::sequence::tuple;
-use nom::branch::alt;
 use nom::character::complete::multispace0;
+use nom::combinator::eof;
+use nom::combinator::rest;
 use nom::multi::many_till;
+use nom::sequence::tuple;
 use nom::IResult;
-use crate::source_file::source_file::SourceFile;
+use nom::Parser;
 
 impl SourceFile {
     pub fn p_section<'a>(&'a self, source: &'a str) -> IResult<&str, Option<String>> {
@@ -50,4 +50,16 @@ mod test {
             ))
         );
     }
+
+    #[test]
+    pub fn multiple_paragraphs() {
+        let mut sf = SourceFile::new();
+        let lines = vec!["-> p", "", "Hotel India", "", "Oscar Echo", ""];
+        sf.source_data = Some(lines.join("\n"));
+        assert_eq!(
+            sf.content(),
+            Some(String::from(r#"<p>Hotel India</p><p>Oscar Echo</p>"#))
+        );
+    }
 }
+

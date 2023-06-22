@@ -144,16 +144,5 @@ mod test {
         );
     }
 
-    #[test]
-    pub fn multiple_paragraphs() {
-        let mut sf = SourceFile::new();
-        let lines = vec!["-> p", "", "Hotel India", "", "Oscar Echo", ""];
-        sf.source_data = Some(lines.join("\n"));
-        assert_eq!(
-            sf.content(),
-            Some(String::from(r#"<p>Hotel India</p><p>Oscar Echo</p>"#))
-        );
-    }
-
     //
 }
