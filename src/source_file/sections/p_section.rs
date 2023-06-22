@@ -25,7 +25,7 @@ impl SourceFile {
         let mut output = String::from("");
         b.0.iter().for_each(|x| {
             output.push_str("<p>");
-            output.push_str(x.1);
+            output.push_str(self.parse_block(x.1).unwrap().1.unwrap().as_str());
             output.push_str("</p>");
             ()
         });
