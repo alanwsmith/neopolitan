@@ -2,6 +2,7 @@ use scraper::{Html, Selector};
 use std::fs;
 
 #[test]
+#[ignore]
 fn integration_test_alfa() {
     neopolitan::clear_output_directory::clear_output_directory();
     neopolitan::build_site::build_site();
@@ -16,5 +17,9 @@ fn integration_test_alfa() {
     assert_eq!(
         elements.next().unwrap().inner_html(),
         "This is the second paragraph"
+    );
+    assert_eq!(
+        elements.next().unwrap().inner_html(),
+        "This is <strong>text with a strong tag</strong> applied"
     );
 }

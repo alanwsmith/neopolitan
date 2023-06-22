@@ -8,6 +8,8 @@ This is the alfa integration test
 
 This is the second paragraph
 
+This is <<text with a strong tag|strong>> applied
+
 -> categories
 >> Posts
 
