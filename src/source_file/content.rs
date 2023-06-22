@@ -20,21 +20,12 @@ use nom::IResult;
 use nom::Parser;
 
 impl SourceFile {
-    pub fn title_section(&self, source: &str) -> Option<String> {
-        let mut env = Environment::new();
-        env.set_source(Source::from_path("./templates"));
-        let wrapper = env.get_template("sections/title.j2").unwrap();
-        Some(
-            wrapper
-                .render(context!(
-                    title => String::from(source.trim()),
-                ))
-                .unwrap()
-                .to_string(),
-        )
+    pub fn content(&self) -> Option<String> {
+        let (_, b) = self.parse_content().unwrap();
+        b
     }
 
-    pub fn title_section_dev(&self, source: &str) -> IResult<&str, Option<String>> {
+    pub fn title_section(&self, source: &str) -> IResult<&str, Option<String>> {
         let mut env = Environment::new();
         env.set_source(Source::from_path("./templates"));
         let wrapper = env.get_template("sections/title.j2").unwrap();
@@ -51,26 +42,7 @@ impl SourceFile {
         ))
     }
 
-    pub fn p_section(&self, source: &str) -> Option<String> {
-        let mut env = Environment::new();
-        env.set_source(Source::from_path("./templates"));
-        let wrapper = env.get_template("sections/p.j2").unwrap();
-        Some(
-            wrapper
-                .render(context!(
-                    content => String::from(source.trim()),
-                ))
-                .unwrap()
-                .to_string(),
-        )
-    }
-
-    pub fn content(&self) -> Option<String> {
-        let (_, b) = self.parse_content().unwrap();
-        b
-    }
-
-    pub fn p_section_dev<'a>(&'a self, source: &'a str) -> IResult<&str, Option<String>> {
+    pub fn p_section<'a>(&'a self, source: &'a str) -> IResult<&str, Option<String>> {
         let (a, b) = many_till(
             tuple((
                 multispace0,
@@ -103,14 +75,14 @@ impl SourceFile {
                         line_ending,
                         alt((take_until("\n\n-> "), rest)),
                     ))
-                    .map(|t| self.title_section_dev(t.3)),
+                    .map(|t| self.title_section(t.3)),
                     tuple((
                         tag_no_case("p"),
                         not_line_ending,
                         line_ending,
                         alt((take_until("\n\n-> "), rest)),
                     ))
-                    .map(|t| self.p_section_dev(t.3)),
+                    .map(|t| self.p_section(t.3)),
                     tuple((
                         tag_no_case("categories"),
                         not_line_ending,
