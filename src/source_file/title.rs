@@ -13,9 +13,7 @@ use nom::Parser;
 
 impl SourceFile {
     pub fn title(&self) -> Option<String> {
-        let (_, b) = self
-            .parse_title(&self.source_data.as_ref().unwrap())
-            .unwrap();
+        let (_, b) = self.parse_title(&self.source_data).unwrap();
         Some(b)
     }
 
@@ -35,11 +33,12 @@ impl SourceFile {
 
 mod test {
 
+    use std::path::PathBuf;
+
     use crate::source_file::source_file::SourceFile;
 
     #[test]
     pub fn title_with_other_sections() {
-        let mut sf = SourceFile::new();
         let lines = vec![
             "-> title",
             "",
@@ -49,15 +48,21 @@ mod test {
             "",
             "Hotel India",
         ];
-        sf.source_data = Some(lines.join("\n"));
+        let sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
+        };
+
         assert_eq!(Some(String::from("Foxtrot Golf")), sf.title());
     }
 
     #[test]
     pub fn title_with_following_content() {
-        let mut sf = SourceFile::new();
         let lines = vec!["-> title", "", "Delta Echo", "", "Whiskey Tango"];
-        sf.source_data = Some(lines.join("\n"));
+        let mut sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
+        };
         assert_eq!(Some(String::from("Delta Echo")), sf.title());
     }
 }

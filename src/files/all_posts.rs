@@ -24,7 +24,6 @@ mod test {
     #[test]
     pub fn test_posts_basic() {
         let mut content = Files::new();
-        let mut sf = SourceFile::new();
         let lines = vec![
             "-> title",
             "",
@@ -34,8 +33,11 @@ mod test {
             ">> type: post",
             "",
         ];
-        sf.source_data = Some(lines.join("\n"));
-        sf.source_path = Some(PathBuf::from("some/path/index.neo"));
+        let sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from("some/path/index.neo"),
+        };
+
         content.files.push(sf);
         assert_eq!(
             content.all_posts(),

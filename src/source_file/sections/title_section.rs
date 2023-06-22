@@ -26,12 +26,15 @@ impl SourceFile {
 #[cfg(test)]
 mod test {
     use crate::source_file::source_file::SourceFile;
+    use std::path::PathBuf;
 
     #[test]
     pub fn test_title() {
-        let mut sf = SourceFile::new();
         let lines = vec!["-> title", "", "Delta Hotel"];
-        sf.source_data = Some(lines.join("\n"));
+        let mut sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
+        };
         assert_eq!(
             sf.content(),
             Some(String::from(r#"<h1 class="neo-title">Delta Hotel</h1>"#))

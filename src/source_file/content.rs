@@ -44,7 +44,7 @@ impl SourceFile {
                 }
             }),
             eof,
-        )(self.source_data.as_ref().unwrap().as_str())?;
+        )(self.source_data.as_str())?;
         let mut content = "".to_string();
         b.0.iter().for_each(|sec| content.push_str(sec));
         Ok(("", Some(content)))
@@ -56,14 +56,17 @@ impl SourceFile {
 #[cfg(test)]
 mod test {
     use crate::source_file::source_file::SourceFile;
+    use std::path::PathBuf;
 
     // NOTE: Unknown sections are simply skipped
 
     #[test]
     pub fn test_title() {
-        let mut sf = SourceFile::new();
         let lines = vec!["-> title", "", "Delta Hotel"];
-        sf.source_data = Some(lines.join("\n"));
+        let mut sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
+        };
         assert_eq!(
             sf.content(),
             Some(String::from(r#"<h1 class="neo-title">Delta Hotel</h1>"#))
@@ -72,7 +75,6 @@ mod test {
 
     #[test]
     pub fn test_multiple_sections() {
-        let mut sf = SourceFile::new();
         let lines = vec![
             "-> title",
             "",
@@ -82,7 +84,10 @@ mod test {
             "",
             "Light the candle",
         ];
-        sf.source_data = Some(lines.join("\n"));
+        let mut sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
+        };
         assert_eq!(
             sf.content(),
             Some(String::from(
@@ -93,7 +98,6 @@ mod test {
 
     #[test]
     pub fn ignore_categories() {
-        let mut sf = SourceFile::new();
         let lines = vec![
             "-> title",
             "",
@@ -102,7 +106,10 @@ mod test {
             "-> categories",
             ">> Example",
         ];
-        sf.source_data = Some(lines.join("\n"));
+        let mut sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
+        };
         assert_eq!(
             sf.content(),
             Some(String::from(
@@ -113,7 +120,6 @@ mod test {
 
     #[test]
     pub fn ignore_attributes() {
-        let mut sf = SourceFile::new();
         let lines = vec![
             "-> title",
             "",
@@ -122,7 +128,10 @@ mod test {
             "-> attributes",
             ">> Example",
         ];
-        sf.source_data = Some(lines.join("\n"));
+        let mut sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
+        };
         assert_eq!(
             sf.content(),
             Some(String::from(r#"<h1 class="neo-title">Echo Oscar</h1>"#))
@@ -131,7 +140,6 @@ mod test {
 
     #[test]
     pub fn ignore_hidden_sections() {
-        let mut sf = SourceFile::new();
         let lines = vec![
             "-> title",
             "",
@@ -141,7 +149,10 @@ mod test {
             "",
             "Pet the dog",
         ];
-        sf.source_data = Some(lines.join("\n"));
+        let mut sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
+        };
         assert_eq!(
             sf.content(),
             Some(String::from(r#"<h1 class="neo-title">Tango Whiskey</h1>"#))

@@ -16,7 +16,7 @@ impl SourceFile {
     }
 
     fn parse_content_type(&self) -> IResult<&str, String> {
-        let (a, _) = take_until("\n-> attributes")(self.source_data.as_ref().unwrap().as_str())?;
+        let (a, _) = take_until("\n-> attributes")(self.source_data.as_str())?;
         let (a, _) = tag("\n-> attributes")(a)?;
         let (a, _) = take_until(">> type:")(a)?;
         let (a, _) = tag(">> type:")(a)?;
@@ -29,12 +29,15 @@ impl SourceFile {
 #[cfg(test)]
 mod test {
     use crate::source_file::source_file::SourceFile;
+    use std::path::PathBuf;
 
     #[test]
     pub fn basic_type_check() {
-        let mut sf = SourceFile::new();
         let lines = vec!["", "-> attributes", ">> type: echo"];
-        sf.source_data = Some(lines.join("\n"));
+        let mut sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
+        };
         assert_eq!(sf.content_type(), Some(String::from("echo")));
     }
 }

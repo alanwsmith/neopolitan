@@ -3,7 +3,7 @@ use std::path::PathBuf;
 
 impl SourceFile {
     pub fn output_dir(&self) -> Option<PathBuf> {
-        let output_dir = self.source_path.as_ref().unwrap().clone();
+        let output_dir = &self.source_path;
         let output_dir = output_dir.parent().unwrap();
         Some(output_dir.to_path_buf())
     }
@@ -17,8 +17,10 @@ mod test {
 
     #[test]
     pub fn test_path() {
-        let mut sf = SourceFile::new();
-        sf.source_path = Some(PathBuf::from("site/example/index.neo"));
+        let mut sf = SourceFile {
+            source_data: "".to_string(),
+            source_path: PathBuf::from("site/example/index.neo"),
+        };
         let expected = Some(PathBuf::from("site/example"));
         assert_eq!(expected, sf.output_dir());
     }

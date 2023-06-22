@@ -24,15 +24,14 @@ pub fn build_site() {
         let initial_path = entry.unwrap().path().to_path_buf();
         if let Some(ext) = initial_path.extension() {
             if ext == "neo" {
-                let mut sf = SourceFile::new();
-                sf.source_path = Some(
-                    initial_path
+                let sf = SourceFile {
+                    source_path: initial_path
                         .clone()
                         .strip_prefix(&content_dir)
                         .unwrap()
                         .to_path_buf(),
-                );
-                sf.source_data = Some(fs::read_to_string(initial_path).unwrap());
+                    source_data: fs::read_to_string(initial_path).unwrap(),
+                };
                 source_files.files.push(sf);
             }
         }

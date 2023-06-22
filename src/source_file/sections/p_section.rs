@@ -1,3 +1,4 @@
+use crate::source_file::parse_block::parse_block;
 use crate::source_file::source_file::SourceFile;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -25,7 +26,7 @@ impl SourceFile {
         let mut output = String::from("");
         b.0.iter().for_each(|x| {
             output.push_str("<p>");
-            output.push_str(self.parse_block(x.1).unwrap().1.unwrap().as_str());
+            output.push_str(parse_block(x.1).unwrap().1.unwrap().as_str());
             output.push_str("</p>");
             ()
         });
@@ -37,12 +38,15 @@ impl SourceFile {
 
 mod test {
     use crate::source_file::sections::p_section::SourceFile;
+    use std::path::PathBuf;
 
     #[test]
     pub fn test_single_paragraph() {
-        let mut sf = SourceFile::new();
         let lines = vec!["-> p", "", "This is a test run of the website builder"];
-        sf.source_data = Some(lines.join("\n"));
+        let mut sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
+        };
         assert_eq!(
             sf.content(),
             Some(String::from(
@@ -53,13 +57,14 @@ mod test {
 
     #[test]
     pub fn multiple_paragraphs() {
-        let mut sf = SourceFile::new();
         let lines = vec!["-> p", "", "Hotel India", "", "Oscar Echo", ""];
-        sf.source_data = Some(lines.join("\n"));
+        let sf = SourceFile {
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
+        };
         assert_eq!(
             sf.content(),
             Some(String::from(r#"<p>Hotel India</p><p>Oscar Echo</p>"#))
         );
     }
 }
-
