@@ -54,7 +54,6 @@ impl SourceFile {
     }
 
     pub fn p_section_dev<'a>(&'a self, source: &'a str) -> IResult<&str, Option<String>> {
-        // let (a, b) = multispace0(source)?;
         let (a, b) = many_till(
             tuple((
                 multispace0,
@@ -65,45 +64,15 @@ impl SourceFile {
             )),
             eof,
         )(source)?;
-
-        // tuple((take_until("\n\n"), tag("\n\n"))), eof)(a)?;
-        // dbg!(&b.0);
-
         let mut output = String::from("");
-
         b.0.iter().for_each(|x| {
             output.push_str("<p>");
             output.push_str(x.1);
             output.push_str("</p>");
             ()
         });
-        dbg!(&output);
-
-        // let mut env = Environment::new();
-        // env.set_source(Source::from_path("./templates"));
-        // let wrapper = env.get_template("sections/p_dev.j2").unwrap();
-        // Some(
-        //     wrapper
-        //         .render(context!(
-        //             content => String::from(source.trim()),
-        //         ))
-        //         .unwrap()
-        //         .to_string(),
-        // )
-        Ok((
-            "",
-            Some(output), //   Some(String::from(r#"<p>Hotel India</p><p>Oscar Echo</p>"#)),
-        ))
+        Ok(("", Some(output)))
     }
-
-    // pub fn parse_p(source: &str) -> IResult<&str, Option<String>> {
-    //     dbg!("asdf");
-    //     let (a, b) = multispace0(source)?;
-    //     Ok((
-    //         "",
-    //         Some(String::from(r#"<p>Hotel India</p><p>Oscar Echo</p>"#)),
-    //     ))
-    // }
 
     pub fn content(&self) -> Option<String> {
         let (_, b) = self.parse_content().unwrap();
