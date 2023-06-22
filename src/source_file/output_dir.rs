@@ -17,7 +17,7 @@ mod test {
 
     #[test]
     pub fn test_path() {
-        let mut sf = SourceFile {
+        let sf = SourceFile {
             source_data: "".to_string(),
             source_path: PathBuf::from("site/example/index.neo"),
         };

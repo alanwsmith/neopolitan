@@ -63,7 +63,7 @@ mod test {
     #[test]
     pub fn test_title() {
         let lines = vec!["-> title", "", "Delta Hotel"];
-        let mut sf = SourceFile {
+        let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };
@@ -84,7 +84,7 @@ mod test {
             "",
             "Light the candle",
         ];
-        let mut sf = SourceFile {
+        let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };
@@ -106,7 +106,7 @@ mod test {
             "-> categories",
             ">> Example",
         ];
-        let mut sf = SourceFile {
+        let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };
@@ -128,7 +128,7 @@ mod test {
             "-> attributes",
             ">> Example",
         ];
-        let mut sf = SourceFile {
+        let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };
@@ -149,7 +149,7 @@ mod test {
             "",
             "Pet the dog",
         ];
-        let mut sf = SourceFile {
+        let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };

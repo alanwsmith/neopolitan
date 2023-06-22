@@ -59,7 +59,7 @@ mod test {
     #[test]
     pub fn title_with_following_content() {
         let lines = vec!["-> title", "", "Delta Echo", "", "Whiskey Tango"];
-        let mut sf = SourceFile {
+        let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };

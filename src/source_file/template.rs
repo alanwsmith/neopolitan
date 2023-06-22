@@ -48,7 +48,7 @@ mod test {
     #[test]
     pub fn basic_template_check() {
         let lines = vec!["", "-> attributes", ">> template: delta"];
-        let mut sf = SourceFile {
+        let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from("")
         };
@@ -58,7 +58,7 @@ mod test {
     #[test]
     pub fn default_if_no_attributes() {
         let lines = vec!["-> title", "", "no template"];
-        let mut sf = SourceFile {
+        let sf = SourceFile {
            source_data: lines.join("\n"),
            source_path: PathBuf::from("")
         };

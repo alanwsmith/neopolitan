@@ -43,7 +43,7 @@ mod test {
     #[test]
     pub fn test_single_paragraph() {
         let lines = vec!["-> p", "", "This is a test run of the website builder"];
-        let mut sf = SourceFile {
+        let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };

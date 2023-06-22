@@ -34,7 +34,7 @@ mod test {
     #[test]
     pub fn basic_type_check() {
         let lines = vec!["", "-> attributes", ">> type: echo"];
-        let mut sf = SourceFile {
+        let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };

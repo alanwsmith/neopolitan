@@ -31,7 +31,7 @@ mod test {
     #[test]
     pub fn test_title() {
         let lines = vec!["-> title", "", "Delta Hotel"];
-        let mut sf = SourceFile {
+        let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };
