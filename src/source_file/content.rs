@@ -1,14 +1,7 @@
-#![allow(warnings)]
 use crate::source_file::source_file::SourceFile;
-use nom::bytes::complete::tag;
-// use nom::bytes::complete::take_till;
-use nom::bytes::complete::take_until;
-// use nom::combinator::eof;
-use minijinja::context;
-use minijinja::Environment;
-use minijinja::Source;
 use nom::branch::alt;
 use nom::bytes::complete::tag_no_case;
+use nom::bytes::complete::take_until;
 use nom::character::complete::line_ending;
 use nom::character::complete::multispace0;
 use nom::character::complete::not_line_ending;
@@ -25,46 +18,8 @@ impl SourceFile {
         b
     }
 
-    pub fn title_section(&self, source: &str) -> IResult<&str, Option<String>> {
-        let mut env = Environment::new();
-        env.set_source(Source::from_path("./templates"));
-        let wrapper = env.get_template("sections/title.j2").unwrap();
-        Ok((
-            "",
-            Some(
-                wrapper
-                    .render(context!(
-                        title => String::from(source.trim()),
-                    ))
-                    .unwrap()
-                    .to_string(),
-            ),
-        ))
-    }
-
-    pub fn p_section<'a>(&'a self, source: &'a str) -> IResult<&str, Option<String>> {
-        let (a, b) = many_till(
-            tuple((
-                multispace0,
-                alt((
-                    tuple((take_until("\n\n"), tag("\n\n"))).map(|x: (&str, &str)| x.0.trim()),
-                    rest.map(|x: &str| x.trim()),
-                )),
-            )),
-            eof,
-        )(source)?;
-        let mut output = String::from("");
-        b.0.iter().for_each(|x| {
-            output.push_str("<p>");
-            output.push_str(x.1);
-            output.push_str("</p>");
-            ()
-        });
-        Ok(("", Some(output)))
-    }
-
     fn parse_content(&self) -> IResult<&str, Option<String>> {
-        let (a, b) = many_till(
+        let (_, b) = many_till(
             tuple((
                 multispace0,
                 tag_no_case("-> "),
@@ -89,14 +44,14 @@ impl SourceFile {
                         line_ending,
                         alt((take_until("\n\n-> "), rest)),
                     ))
-                    .map(|t| Ok(("", Some("".to_string())))),
+                    .map(|_| Ok(("", Some("".to_string())))),
                     tuple((
                         tag_no_case("attributes"),
                         not_line_ending,
                         line_ending,
                         alt((take_until("\n\n-> "), rest)),
                     ))
-                    .map(|t| Ok(("", Some("".to_string())))),
+                    .map(|_| Ok(("", Some("".to_string())))),
                     // When all section types are in place this
                     // rest.map should be able to be removed. Right
                     // now it's just catching things that haven't been
@@ -116,7 +71,6 @@ impl SourceFile {
 }
 
 #[cfg(test)]
-
 mod test {
     use crate::source_file::source_file::SourceFile;
 
@@ -128,19 +82,6 @@ mod test {
         assert_eq!(
             sf.content(),
             Some(String::from(r#"<h1 class="neo-title">Delta Hotel</h1>"#))
-        );
-    }
-
-    #[test]
-    pub fn test_single_paragraph() {
-        let mut sf = SourceFile::new();
-        let lines = vec!["-> p", "", "This is a test run of the website builder"];
-        sf.source_data = Some(lines.join("\n"));
-        assert_eq!(
-            sf.content(),
-            Some(String::from(
-                "<p>This is a test run of the website builder</p>"
-            ))
         );
     }
 

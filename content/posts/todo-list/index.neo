@@ -18,6 +18,8 @@ TODO List
 
 [] Add all the different section types
 
+[] Default the template to the `type`` if the `template`` 
+attribute doesn't exist
 
 
 -> categories
