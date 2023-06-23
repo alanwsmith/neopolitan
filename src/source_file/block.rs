@@ -89,93 +89,18 @@ mod test {
     #[rstest]
     #[case("move the radio", Ok(("", Some(String::from("move the radio")))))]
     #[case(r#"alfa <<bravo|abbr>> charlie"#, Ok(("", Some(String::from(r#"alfa <abbr>bravo</abbr> charlie"#)))))]
+    #[case(r#"delt <<echoo|abbr|class: foxtrot>> tango"#, Ok(("", Some(String::from(r#"delt <abbr class="foxtrot">echoo</abbr> tango"#)))))]
+    #[case(r#"alfa <<bravo|em>> charlie"#, Ok(("", Some(String::from(r#"alfa <em>bravo</em> charlie"#)))))]
+    #[case(r#"delt <<echoo|em|class: foxtrot>> tango"#, Ok(("", Some(String::from(r#"delt <em class="foxtrot">echoo</em> tango"#)))))]
+    #[case(r#"alfa <<bravo|link|https://www.example.com/>> charlie"#, Ok(("", Some(String::from(r#"alfa <a href="https://www.example.com/">bravo</a> charlie"#)))))]
+    #[case(r#"delt <<echoo|link|https://www.example.com/|class: foxtrot>> tango"#, Ok(("", Some(String::from(r#"delt <a href="https://www.example.com/" class="foxtrot">echoo</a> tango"#)))))]
+    #[case(r#"alfa <<bravo|strong>> charlie"#, Ok(("", Some(String::from(r#"alfa <strong>bravo</strong> charlie"#)))))]
+    #[case(r#"delt <<echoo|strong|class: foxtrot>> tango"#, Ok(("", Some(String::from(r#"delt <strong class="foxtrot">echoo</strong> tango"#)))))]
     fn block_test(
         #[case] input: &str,
         #[case] expected: Result<(&str, Option<String>), Err<Error<&str>>>,
     ) {
         assert_eq!(expected, block(input))
-    }
-
-    #[test]
-    pub fn abbr_without_attributes() {
-        assert_eq!(
-            block(r#"delta <<echo|abbr|class: foxtrot>> tango"#),
-            Ok((
-                "",
-                Some(String::from(
-                    r#"delta <abbr class="foxtrot">echo</abbr> tango"#
-                ))
-            ))
-        )
-    }
-
-    #[test]
-    pub fn em_with_attribute() {
-        assert_eq!(
-            block(r#"kick <<the|em|class: alfa bravo>> ball"#),
-            Ok((
-                "",
-                Some(String::from(r#"kick <em class="alfa bravo">the</em> ball"#))
-            ))
-        )
-    }
-
-    #[test]
-    pub fn em_without_attributes() {
-        assert_eq!(
-            block(r#"kick <<the|em>> ball"#),
-            Ok(("", Some(String::from(r#"kick <em>the</em> ball"#))))
-        )
-    }
-
-    #[test]
-    pub fn link_with_attributes() {
-        assert_eq!(
-            block(r#"break <<the|link|https://www.example.com/|class: highlighted>> glass"#),
-            Ok((
-                "",
-                Some(String::from(
-                    r#"break <a href="https://www.example.com/" class="highlighted">the</a> glass"#
-                ))
-            ))
-        )
-    }
-
-    #[test]
-    pub fn link_without_attributes() {
-        assert_eq!(
-            block(r#"the <<old|link|https://www.example.com/>> rug"#),
-            Ok((
-                "",
-                Some(String::from(
-                    r#"the <a href="https://www.example.com/">old</a> rug"#
-                ))
-            ))
-        )
-    }
-
-    #[test]
-    pub fn strong_tag_with_attributes() {
-        assert_eq!(
-            block(r#"alfa <<bravo|strong|class: delta|id: echo>> charlie"#),
-            Ok((
-                "",
-                Some(String::from(
-                    r#"alfa <strong class="delta" id="echo">bravo</strong> charlie"#
-                ))
-            ))
-        )
-    }
-
-    #[test]
-    pub fn strong_tag_without_attributes() {
-        assert_eq!(
-            block(r#"alfa <<bravo|strong>> charlie"#),
-            Ok((
-                "",
-                Some(String::from(r#"alfa <strong>bravo</strong> charlie"#))
-            ))
-        )
     }
 
     //
