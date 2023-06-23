@@ -8,7 +8,7 @@ use nom::sequence::tuple;
 use nom::IResult;
 use nom::Parser;
 
-pub fn parse_block(source: &str) -> IResult<&str, Option<String>> {
+pub fn block(source: &str) -> IResult<&str, Option<String>> {
     let (_, b) = many_till(
         alt((
             tuple((
@@ -38,12 +38,12 @@ pub fn parse_block(source: &str) -> IResult<&str, Option<String>> {
 
 #[cfg(test)]
 mod test {
-    use crate::source_file::parse_block::parse_block;
+    use crate::source_file::block::block;
 
     #[test]
     pub fn text_with_no_tags() {
         assert_eq!(
-            parse_block("move the radio"),
+            block("move the radio"),
             Ok(("", Some(String::from("move the radio"))))
         )
     }
@@ -51,7 +51,7 @@ mod test {
     #[test]
     pub fn text_with_strong_tag() {
         assert_eq!(
-            parse_block("wash <<the|strong>> car"),
+            block("wash <<the|strong>> car"),
             Ok(("", Some(String::from("wash <strong>the</strong> car"))))
         )
     }
@@ -59,7 +59,7 @@ mod test {
     #[test]
     pub fn test_em_tag() {
         assert_eq!(
-            parse_block(r#"kick <<the|em>> ball"#),
+            block(r#"kick <<the|em>> ball"#),
             Ok(("", Some(String::from(r#"kick <em>the</em> ball"#))))
         )
     }

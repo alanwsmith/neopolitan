@@ -1,4 +1,4 @@
-use crate::source_file::parse_block::parse_block;
+use crate::source_file::block::block;
 use crate::source_file::SourceFile;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -26,9 +26,8 @@ impl SourceFile {
         let mut output = String::from("");
         b.0.iter().for_each(|x| {
             output.push_str("<p>");
-            output.push_str(parse_block(x.1).unwrap().1.unwrap().as_str());
+            output.push_str(block(x.1).unwrap().1.unwrap().as_str());
             output.push_str("</p>");
-            
         });
         Ok(("", Some(output)))
     }
