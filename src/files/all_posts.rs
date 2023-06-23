@@ -6,19 +6,27 @@ impl Files {
             .files
             .iter()
             .filter_map(|file| {
-                file.content_type().and_then(|ct| {
-                    if ct == "post" {
-                        Some((
-                            file.title().unwrap(),
-                            file.url().unwrap().display().to_string(),
-                        ))
-                    } else {
-                        None
-                    }
-                })
+                match &file.content_type() {
+                    Some(ct) if ct == "post" => Some((
+                        file.title().unwrap(),
+                        file.url().unwrap().display().to_string(),
+                    )),
+                    Some(_) => None,
+                    None => None,
+                }
+
+                // file.content_type().and_then(|ct| {
+                //     if ct == "post" {
+                //         Some((
+                //             file.title().unwrap(),
+                //             file.url().unwrap().display().to_string(),
+                //         ))
+                //     } else {
+                //         None
+                //     }
+                // })
             })
             .collect();
-
         files
     }
 
