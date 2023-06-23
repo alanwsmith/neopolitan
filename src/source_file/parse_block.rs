@@ -21,12 +21,9 @@ pub fn parse_block(source: &str) -> IResult<&str, Option<String>> {
             ))
             .map(|x| {
                 if x.4 == "strong" {
-                    let mut out = String::from(x.0);
-                    out.push_str("<strong>");
-                    out.push_str(x.2);
-                    out.push_str("</strong>");
-                    dbg!(&out);
-                    out
+                    format!("{}<strong>{}</strong>", x.0, x.2)
+                } else if x.4 == "em" {
+                    format!("{}<em>{}</em>", x.0, x.2)
                 } else {
                     "".to_string()
                 }
@@ -58,4 +55,14 @@ mod test {
             Ok(("", Some(String::from("wash <strong>the</strong> car"))))
         )
     }
+
+    #[test]
+    pub fn test_em_tag() {
+        assert_eq!(
+            parse_block(r#"kick <<the|em>> ball"#),
+            Ok(("", Some(String::from(r#"kick <em>the</em> ball"#))))
+        )
+    }
+
+    //
 }

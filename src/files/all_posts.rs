@@ -11,17 +11,6 @@ impl Files {
                     file.title().unwrap(),
                     file.url().unwrap().display().to_string(),
                 )
-
-                // file.content_type().and_then(|ct| {
-                //     if ct == "post" {
-                //         Some((
-                //             file.title().unwrap(),
-                //             file.url().unwrap().display().to_string(),
-                //         ))
-                //     } else {
-                //         None
-                //     }
-                // })
             })
             .collect();
         files

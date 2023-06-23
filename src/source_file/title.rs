@@ -13,8 +13,7 @@ use nom::Parser;
 
 impl SourceFile {
     pub fn title(&self) -> Option<String> {
-        let (_, b) = self.parse_title(&self.source_data).unwrap();
-        Some(b)
+        self.parse_title(&self.source_data).ok().map(|(_, b)| b)
     }
 
     pub fn parse_title<'a>(&'a self, source: &'a str) -> IResult<&str, String> {

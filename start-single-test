@@ -1,4 +1,4 @@
 #!/bin/bash
 
-TEST_NAME=text_with
+TEST_NAME=test_em_tag
 cargo watch -i "site" -x "test --lib $TEST_NAME --color always -- --nocapture"
