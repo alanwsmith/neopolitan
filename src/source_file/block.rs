@@ -34,6 +34,14 @@ pub fn block(source: &str) -> IResult<&str, Option<String>> {
             .map(|(preface, _, text, payload)| {
                 let items = payload.0;
                 match items[0].1 {
+                    "abbr" => {
+                        format!(
+                            r#"{} <abbr{}>{}</abbr>"#,
+                            preface,
+                            attributes(items.clone(), 1),
+                            text
+                        )
+                    }
                     "link" => {
                         format!(
                             r#"{} <a href="{}"{}>{}</a>"#,
@@ -73,12 +81,31 @@ pub fn block(source: &str) -> IResult<&str, Option<String>> {
 #[cfg(test)]
 mod test {
     use crate::source_file::block::block;
+    use nom::error::Error;
+    use nom::Err;
+
+    use rstest::rstest;
+
+    #[rstest]
+    #[case("move the radio", Ok(("", Some(String::from("move the radio")))))]
+    #[case(r#"alfa <<bravo|abbr>> charlie"#, Ok(("", Some(String::from(r#"alfa <abbr>bravo</abbr> charlie"#)))))]
+    fn block_test(
+        #[case] input: &str,
+        #[case] expected: Result<(&str, Option<String>), Err<Error<&str>>>,
+    ) {
+        assert_eq!(expected, block(input))
+    }
 
     #[test]
-    pub fn text_with_no_tags() {
+    pub fn abbr_without_attributes() {
         assert_eq!(
-            block("move the radio"),
-            Ok(("", Some(String::from("move the radio"))))
+            block(r#"delta <<echo|abbr|class: foxtrot>> tango"#),
+            Ok((
+                "",
+                Some(String::from(
+                    r#"delta <abbr class="foxtrot">echo</abbr> tango"#
+                ))
+            ))
         )
     }
 
