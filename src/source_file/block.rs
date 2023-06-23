@@ -22,29 +22,48 @@ pub fn block(source: &str) -> IResult<&str, Option<String>> {
             ))
             .map(|(preface, _, text, payload)| {
                 let items = payload.0;
-                // let attributes = r#" class="highlighted""#;
-
-                let attributes: String = items
-                    .clone()
-                    .into_iter()
-                    .skip(2)
-                    .map(|x: (&str, &str)| {
-                        let parts: Vec<&str> = x.1.split(": ").collect();
-                        format!(r#" {}="{}""#, parts[0], parts[1])
-                    })
-                    .collect();
-                // &things.skip(2);
-
-                // dbg!(&items);
-                // dbg!(&things);
 
                 match items[0].1 {
-                    "link" => format!(
-                        r#"{} <a href="{}"{}>{}</a>"#,
-                        preface, items[1].1, attributes, text
-                    ),
-                    "strong" => format!(r#"{} <strong>{}</strong>"#, preface, text),
-                    "em" => format!(r#"{} <em>{}</em>"#, preface, text),
+                    "link" => {
+                        let attributes: String = items
+                            .clone()
+                            .into_iter()
+                            .skip(2)
+                            .map(|x: (&str, &str)| {
+                                let parts: Vec<&str> = x.1.split(": ").collect();
+                                format!(r#" {}="{}""#, parts[0], parts[1])
+                            })
+                            .collect();
+
+                        format!(
+                            r#"{} <a href="{}"{}>{}</a>"#,
+                            preface, items[1].1, attributes, text
+                        )
+                    }
+                    "em" => {
+                        let attributes: String = items
+                            .clone()
+                            .into_iter()
+                            .skip(1)
+                            .map(|x: (&str, &str)| {
+                                let parts: Vec<&str> = x.1.split(": ").collect();
+                                format!(r#" {}="{}""#, parts[0], parts[1])
+                            })
+                            .collect();
+                        format!(r#"{} <em{}>{}</em>"#, preface, attributes, text)
+                    }
+                    "strong" => {
+                        let _attributes: String = items
+                            .clone()
+                            .into_iter()
+                            .skip(1)
+                            .map(|x: (&str, &str)| {
+                                let parts: Vec<&str> = x.1.split(": ").collect();
+                                format!(r#" {}="{}""#, parts[0], parts[1])
+                            })
+                            .collect();
+                        format!(r#"{} <strong>{}</strong>"#, preface, text)
+                    }
                     _ => format!(r#"{} <a href="{}">{}</a>"#, preface, text, text),
                 }
             }),
@@ -110,6 +129,17 @@ mod test {
         assert_eq!(
             block(r#"kick <<the|em>> ball"#),
             Ok(("", Some(String::from(r#"kick <em>the</em> ball"#))))
+        )
+    }
+
+    #[test]
+    pub fn em_tag_with_attribute() {
+        assert_eq!(
+            block(r#"kick <<the|em|class: alfa bravo>> ball"#),
+            Ok((
+                "",
+                Some(String::from(r#"kick <em class="alfa bravo">the</em> ball"#))
+            ))
         )
     }
 
