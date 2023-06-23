@@ -23,7 +23,7 @@ mod test {
 
     #[test]
     pub fn test_posts_basic() {
-        let mut content = Files::new();
+        let mut content = Files { files: vec![] };
         let lines = vec![
             "-> title",
             "",

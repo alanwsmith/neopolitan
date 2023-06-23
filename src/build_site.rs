@@ -1,4 +1,3 @@
-// #![allow(warnings)]
 use crate::files::Files;
 use crate::source_file::SourceFile;
 use minijinja::context;
@@ -18,7 +17,7 @@ pub fn build_site() {
     let mut env = Environment::new();
     env.set_source(Source::from_path(template_dir));
 
-    let mut source_files = Files::new();
+    let mut source_files = Files { files: vec![] };
 
     for entry in WalkDir::new(&content_dir).into_iter() {
         let initial_path = entry.unwrap().path().to_path_buf();
