@@ -2,7 +2,6 @@ use scraper::{Html, Selector};
 use std::fs;
 
 #[test]
-#[ignore]
 fn integration_test_alfa() {
     neopolitan::clear_output_directory::clear_output_directory();
     neopolitan::build_site::build_site();

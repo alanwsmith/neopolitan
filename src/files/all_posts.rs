@@ -2,17 +2,38 @@ use crate::files::Files;
 
 impl Files {
     pub fn all_posts(&self) -> Vec<(String, String)> {
-        let mut all_posts = vec![];
-        self.files.iter().for_each(|file| {
-            if file.content_type() == Some(String::from("post")) {
-                all_posts.push((
-                    file.title().unwrap(),
-                    file.url().unwrap().display().to_string(),
-                ))
-            }
-        });
-        all_posts
+        let files = self
+            .files
+            .iter()
+            .filter_map(|file| {
+                file.content_type().and_then(|ct| {
+                    if ct == "post" {
+                        Some((
+                            file.title().unwrap(),
+                            file.url().unwrap().display().to_string(),
+                        ))
+                    } else {
+                        None
+                    }
+                })
+            })
+            .collect();
+
+        files
     }
+
+    // pub fn all_posts(&self) -> Vec<(String, String)> {
+    //     let mut all_posts = vec![];
+    //     self.files.iter().for_each(|file| {
+    //         if file.content_type() == Some(String::from("post")) {
+    //             all_posts.push((
+    //                 file.title().unwrap(),
+    //                 file.url().unwrap().display().to_string(),
+    //             ))
+    //         }
+    //     });
+    //     all_posts
+    // }
 }
 
 #[cfg(test)]
