@@ -1,0 +1,87 @@
+-> title
+
+TODO: Tags to make
+
+
+-> p
+
+[x] a - The Link tag
+
+[] abbr - The Abbreviation Element
+
+[] b - The Bring Attention To Element
+
+[] br - The Line Break Element
+
+[] button - The Button Element
+
+[] cite - The Citation Element
+
+[] code - The Inline Code Element
+
+[] data - The Data Element
+
+[] del - The Deleted Text Element
+
+[] dfn - The Definition Element
+
+[x] em - The Emphasis Element
+
+[] i - The Idiomatic Text Element
+
+[] img - The Image Embed Element
+
+[] input - The Input (Form Input) Element
+
+[] ins - The Insert Element
+
+[] kbd - The Keyboard Input Element
+
+[] label - The Label Element
+
+[] legend - The Field Set Legend Element
+
+[] link - The External Resource Link Element
+
+[] meter - The HTML Meter Element
+
+[] object - The External Object Element
+
+[] progress - The Progress Indicator Element
+
+[] q - The Inline Quotation Element
+
+[] s - The Strikethrough Element
+
+[] samp - The Sample Output Element
+
+[] small - The Side Comment Element
+
+[] span - The Content Span Element
+
+[x] strong - The Strong Importance Element
+
+[] sub - The Subscript Element
+
+[] sup - The Superscript Element
+
+[] time - The (Date) Time Element
+
+[] u - The Unarticulated Annotation Element
+
+[] var - The Variable element
+
+[] wbr - The Line Break Opportunity Element
+
+
+
+-> categories
+>> Miscellaneous
+
+-> attributes
+>> date: 2023-06-23 15:03:51
+>> id: 2rcqkpy9
+>> site: aws
+>> type: post
+>> status: unpublished
+
