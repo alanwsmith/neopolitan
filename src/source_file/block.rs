@@ -22,40 +22,32 @@ pub fn block(source: &str) -> IResult<&str, Option<String>> {
             ))
             .map(|(preface, _, text, payload)| {
                 let items = payload.0;
+                // let attributes = r#" class="highlighted""#;
+
+                let attributes: String = items
+                    .clone()
+                    .into_iter()
+                    .skip(2)
+                    .map(|x: (&str, &str)| {
+                        let parts: Vec<&str> = x.1.split(": ").collect();
+                        format!(r#" {}="{}""#, parts[0], parts[1])
+                    })
+                    .collect();
+                // &things.skip(2);
+
+                // dbg!(&items);
+                // dbg!(&things);
 
                 match items[0].1 {
-                    "link" => format!(r#"{} <a href="{}">{}</a>"#, preface, items[1].1, text),
+                    "link" => format!(
+                        r#"{} <a href="{}"{}>{}</a>"#,
+                        preface, items[1].1, attributes, text
+                    ),
                     "strong" => format!(r#"{} <strong>{}</strong>"#, preface, text),
                     "em" => format!(r#"{} <em>{}</em>"#, preface, text),
                     _ => format!(r#"{} <a href="{}">{}</a>"#, preface, text, text),
                 }
-
-                // dbg!(&items);
-
-                // let items = payload.0;
-                // dbg!(&items);
-                // format!(r#"{} <a href="{}">{}</a>"#, preface, items[2].0, items[0].0)
-
-                // match payload.0 {
-                // "em" => {
-                //     format!("{}<em>{}</em>", preface, content)
-                // }
-                // "strong" => {
-                //     format!("{}<strong>{}</strong>", preface, content)
-                // }
-                // "link" => {
-                //     format!(
-                //         r#"{}<a href="https://www.example.com/">{}</a>"#,
-                //         preface, content
-                //     )
-                // }
-                // _ => "".to_string(),
-
-                // String::from("HHHHHHHHHHHHIIIIIIIIIITTTTTTTTTT")
-
-                // format!("{}", String::from(items.0))
             }),
-            //  rest.map(|x: &str| format!("DID NOT HIT - Remainder: {}", x)),
             rest.map(|x: &str| x.to_string()),
         )),
         eof,
@@ -68,21 +60,22 @@ pub fn block(source: &str) -> IResult<&str, Option<String>> {
 //     let (_, b) = many_till(
 //         alt((
 //             tuple((
-//                 take_until("<<"),
-//                 tag("<<"),
+//                 take_until(" <<"),
+//                 tag(" <<"),
 //                 take_until("|"),
-//                 tag("|"),
-//                 take_until(">>"),
-//                 tag(">>"),
+//                 many_till(
+//                     tuple((tag("|"), alt((take_until("|"), take_until(">>"))))),
+//                     tag(">>"),
+//                 ),
 //             ))
-//             .map(|(preface, _, content, _, tag, _)| match tag {
-//                 "em" => {
-//                     format!("{}<em>{}</em>", preface, content)
+//             .map(|(preface, _, text, payload)| {
+//                 let items = payload.0;
+//                 match items[0].1 {
+//                     "link" => format!(r#"{} <a href="{}">{}</a>"#, preface, items[1].1, text),
+//                     "strong" => format!(r#"{} <strong>{}</strong>"#, preface, text),
+//                     "em" => format!(r#"{} <em>{}</em>"#, preface, text),
+//                     _ => format!(r#"{} <a href="{}">{}</a>"#, preface, text, text),
 //                 }
-//                 "strong" => {
-//                     format!("{}<strong>{}</strong>", preface, content)
-//                 }
-//                 _ => "".to_string(),
 //             }),
 //             rest.map(|x: &str| x.to_string()),
 //         )),
@@ -105,7 +98,7 @@ mod test {
     }
 
     #[test]
-    pub fn text_with_strong_tag() {
+    pub fn basic_strong_tag() {
         assert_eq!(
             block("wash <<the|strong>> car"),
             Ok(("", Some(String::from("wash <strong>the</strong> car"))))
@@ -113,7 +106,7 @@ mod test {
     }
 
     #[test]
-    pub fn test_em_tag() {
+    pub fn basic_em_tag() {
         assert_eq!(
             block(r#"kick <<the|em>> ball"#),
             Ok(("", Some(String::from(r#"kick <em>the</em> ball"#))))
@@ -121,7 +114,7 @@ mod test {
     }
 
     #[test]
-    pub fn test_link() {
+    pub fn basic_link() {
         assert_eq!(
             block(r#"the <<old|link|https://www.example.com/>> rug"#),
             Ok((
@@ -133,14 +126,29 @@ mod test {
         )
     }
 
+    // NOTE: Not going to do this. An empyt pipe as the last character
+    // is not valid
+    // #[test]
+    // pub fn extra_empty_pipe_after_link() {
+    //     assert_eq!(
+    //         block(r#"the <<old|link|https://www.example.com/|>> rug"#),
+    //         Ok((
+    //             "",
+    //             Some(String::from(
+    //                 r#"the <a href="https://www.example.com/">old</a> rug"#
+    //             ))
+    //         ))
+    //     )
+    // }
+
     #[test]
-    pub fn test_extra_empty_pipe_after_link() {
+    pub fn link_with_attribute() {
         assert_eq!(
-            block(r#"the <<old|link|https://www.example.com/|>> rug"#),
+            block(r#"break <<the|link|https://www.example.com/|class: highlighted>> glass"#),
             Ok((
                 "",
                 Some(String::from(
-                    r#"the <a href="https://www.example.com/">old</a> rug"#
+                    r#"break <a href="https://www.example.com/" class="highlighted">the</a> glass"#
                 ))
             ))
         )

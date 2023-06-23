@@ -1,4 +1,4 @@
 #!/bin/bash
 
-TEST_NAME=test_link
+TEST_NAME=link_with_attribute
 cargo watch -i "site" -x "test --lib $TEST_NAME --color always -- --nocapture"
