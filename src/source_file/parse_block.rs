@@ -19,14 +19,14 @@ pub fn parse_block(source: &str) -> IResult<&str, Option<String>> {
                 take_until(">>"),
                 tag(">>"),
             ))
-            .map(|x| {
-                if x.4 == "strong" {
-                    format!("{}<strong>{}</strong>", x.0, x.2)
-                } else if x.4 == "em" {
-                    format!("{}<em>{}</em>", x.0, x.2)
-                } else {
-                    "".to_string()
+            .map(|(preface, _, content, _, tag, _)| match tag {
+                "em" => {
+                    format!("{}<em>{}</em>", preface, content)
                 }
+                "strong" => {
+                    format!("{}<strong>{}</strong>", preface, content)
+                }
+                _ => "".to_string(),
             }),
             rest.map(|x: &str| x.to_string()),
         )),
