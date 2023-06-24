@@ -6,6 +6,8 @@ Second Test Post
 
 This is the second test post
 
+link <<example|link|https://www.example.com/|style: color: red;>> test
+
 -> categories
 >> Miscellaneous
 

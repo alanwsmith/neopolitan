@@ -26,7 +26,7 @@ impl SourceFile {
         let mut output = String::from("");
         b.0.iter().for_each(|x| {
             output.push_str("<p>");
-            output.push_str(block(x.1).unwrap().1.unwrap().as_str());
+            output.push_str(block(x.1).unwrap().1.as_str());
             output.push_str("</p>");
         });
         Ok(("", Some(output)))

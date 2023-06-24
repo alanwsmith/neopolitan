@@ -7,19 +7,19 @@ TODO: Tags to make
 
 [x] a - The Link tag
 
-[] abbr - The Abbreviation Element
+[x] abbr - The Abbreviation Element
 
-[] b - The Bring Attention To Element
+[x] b - The Bring Attention To Element
 
-[] br - The Line Break Element
+[format tbd] br - The Line Break Element
 
-[] button - The Button Element
+[x] button - The Button Element
 
-[] cite - The Citation Element
+[format tbd] cite - The Citation Element
 
-[] code - The Inline Code Element
+[format tbd] code - The Inline Code Element
 
-[] data - The Data Element
+[x] data - The Data Element
 
 [] del - The Deleted Text Element
 
