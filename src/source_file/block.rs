@@ -25,7 +25,7 @@ fn attributes(v: &Vec<&str>, position: usize) -> String {
         .into_iter()
         .map(|att| {
             let parts = att.split_once(": ").unwrap();
-            dbg!(&parts);
+            // dbg!(&parts);
             format!(r#" {}="{}""#, parts.0, parts.1)
         })
         .collect::<Vec<String>>()
@@ -83,14 +83,16 @@ fn neotag(source: &str) -> IResult<&str, String> {
             a,
             format!(r#"<code{}>{}</code>"#, code_attributes(&b), b[0]),
         )),
+        "del" => Ok((a, format!("<del{}>{}</del>", attributes(&b, 2), b[0]))),
+        "dfn" => Ok((a, format!("<dfn{}>{}</dfn>", attributes(&b, 2), b[0]))),
+        "i" => Ok((a, format!("<i{}>{}</i>", attributes(&b, 2), b[0]))),
+        "ins" => Ok((a, format!("<ins{}>{}</ins>", attributes(&b, 2), b[0]))),
+        "kbd" => Ok((a, format!("<kbd{}>{}</kbd>", attributes(&b, 2), b[0]))),
         "link" => Ok((
             a,
             format!(r#"<a href="{}"{}>{}</a>"#, b[2], attributes(&b, 3), b[0]),
         )),
-        "strong" => Ok((
-            a,
-            format!("<{}{}>{}</{}>", b[1], attributes(&b, 2), b[0], b[1]),
-        )),
+        "strong" => Ok((a, format!("<strong{}>{}</strong>", attributes(&b, 2), b[0]))),
         _ => Ok((a, format!(r#""#))),
     }
 }
@@ -99,6 +101,14 @@ fn neotag(source: &str) -> IResult<&str, String> {
 mod test {
 
     use super::*;
+    use rstest::rstest;
+
+    #[rstest]
+    #[case("alfa <<bravo|kbd>> charlie", Ok(("", format!("alfa <kbd>bravo</kbd> charlie"))))]
+    #[case("alfa <<bravo|strong>> charlie", Ok(("", format!("alfa <strong>bravo</strong> charlie"))))]
+    pub fn run_test(#[case] input: &str, #[case] expected: IResult<&str, String>) {
+        assert_eq!(expected, block(input));
+    }
 
     #[test]
     pub fn strong_tag_no_attributes() {
@@ -206,13 +216,53 @@ mod test {
     }
 
     #[test]
-    pub fn solo_colons_in_attributes() {
+    pub fn colons_in_attributes() {
         assert_eq!(
             block("alfa <<bravo|strong|style: color: red;>> charlie"),
             Ok((
                 "",
                 format!(r#"alfa <strong style="color: red;">bravo</strong> charlie"#)
             ))
+        )
+    }
+
+    #[test]
+    pub fn del_tag() {
+        assert_eq!(
+            block("alfa <<bravo|del>> charlie"),
+            Ok(("", format!(r#"alfa <del>bravo</del> charlie"#)))
+        )
+    }
+
+    #[test]
+    pub fn dfn_tag() {
+        assert_eq!(
+            block("alfa <<bravo|dfn>> charlie"),
+            Ok(("", format!(r#"alfa <dfn>bravo</dfn> charlie"#)))
+        )
+    }
+
+    #[test]
+    pub fn i_tag() {
+        assert_eq!(
+            block("alfa <<bravo|i>> charlie"),
+            Ok(("", format!(r#"alfa <i>bravo</i> charlie"#)))
+        )
+    }
+
+    #[test]
+    pub fn ins_tag() {
+        assert_eq!(
+            block("alfa <<bravo|ins>> charlie"),
+            Ok(("", format!(r#"alfa <ins>bravo</ins> charlie"#)))
+        )
+    }
+
+    #[test]
+    pub fn kbd_tag() {
+        assert_eq!(
+            block("alfa <<bravo|kbd>> charlie"),
+            Ok(("", format!(r#"alfa <kbd>bravo</kbd> charlie"#)))
         )
     }
 

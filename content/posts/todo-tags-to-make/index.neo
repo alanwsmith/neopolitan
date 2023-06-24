@@ -21,19 +21,19 @@ TODO: Tags to make
 
 [x] data - The Data Element
 
-[] del - The Deleted Text Element
+[x] del - The Deleted Text Element
 
-[] dfn - The Definition Element
+[x] dfn - The Definition Element
 
 [x] em - The Emphasis Element
 
-[] i - The Idiomatic Text Element
+[x] i - The Idiomatic Text Element
 
 [] img - The Image Embed Element
 
 [] input - The Input (Form Input) Element
 
-[] ins - The Insert Element
+[x] ins - The Insert Element
 
 [] kbd - The Keyboard Input Element
 
@@ -41,7 +41,7 @@ TODO: Tags to make
 
 [] legend - The Field Set Legend Element
 
-[] link - The External Resource Link Element
+[x] link - The External Resource Link Element
 
 [] meter - The HTML Meter Element
 
