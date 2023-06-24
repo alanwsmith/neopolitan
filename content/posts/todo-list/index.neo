@@ -4,13 +4,13 @@ TODO List
 
 -> p
 
-[] Add `<<>>`` tags to paragraphs
+[x] Add `<<>>`` tags to paragraphs
 
 [] Add <<`shortcodes``|code>> to paragraphs
 
 [] Setup the TODO list section so this shows up as a list
 
-[] Setup title tag so paragraphs can come after it
+[] Setup title tag so paragraphs can come after it (hgroup)
 
 [] Add attributes to paragraphs
 
@@ -26,7 +26,7 @@ attribute doesn't exist
 [x] Setup so unknown tags are skipped
 
 -> categories
->> Miscellaneous
+>> Neopolitan
 
 -> attributes
 >> date: 2023-06-22 00:55:26

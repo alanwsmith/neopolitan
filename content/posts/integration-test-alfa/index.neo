@@ -2,6 +2,8 @@
 
 Integration Test Alfa
 
+With a follow up
+
 -> p
 
 This is the alfa integration test 
@@ -11,6 +13,7 @@ This is the second paragraph
 This is <<text with a strong tag|strong>> applied
 
 Here is <<an example|link|https://www.example.com/>> link
+
 
 -> categories
 >> Posts

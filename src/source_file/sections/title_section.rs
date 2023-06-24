@@ -16,8 +16,7 @@ impl SourceFile {
                     .render(context!(
                         title => String::from(source.trim()),
                     ))
-                    .unwrap()
-                    ,
+                    .unwrap(),
             ),
         ))
     }
@@ -26,18 +25,31 @@ impl SourceFile {
 #[cfg(test)]
 mod test {
     use crate::source_file::SourceFile;
+    use rstest::rstest;
     use std::path::PathBuf;
 
-    #[test]
-    pub fn test_title() {
-        let lines = vec!["-> title", "", "Delta Hotel"];
+    #[rstest]
+    #[case(vec!["-> title", "", "Echo Whiskey"], 
+ Some(format!(r#"<h1 class="neo-title">Echo Whiskey</h1>"#)
+    ))]
+    pub fn run_tests(#[case] input: Vec<&str>, #[case] expected: Option<String>) {
         let sf = SourceFile {
-            source_data: lines.join("\n"),
+            source_data: input.join("\n"),
             source_path: PathBuf::from(""),
         };
-        assert_eq!(
-            sf.content(),
-            Some(String::from(r#"<h1 class="neo-title">Delta Hotel</h1>"#))
-        );
+        assert_eq!(expected, sf.content());
     }
+
+    // #[test]
+    // pub fn test_title() {
+    //     let lines = vec!["-> title", "", "Delta Hotel"];
+    //     let sf = SourceFile {
+    //         source_data: lines.join("\n"),
+    //         source_path: PathBuf::from(""),
+    //     };
+    //     assert_eq!(
+    //         sf.content(),
+    //         Some(String::from(r#"<h1 class="neo-title">Delta Hotel</h1>"#))
+    //     );
+    // }
 }
