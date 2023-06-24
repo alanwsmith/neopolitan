@@ -79,10 +79,17 @@ fn neotag(source: &str) -> IResult<&str, String> {
         |v: &Vec<&str>| v.len() > 1,
     )(source)?;
     match b[1] {
+        "abbr" => Ok((a, format!("<abbr{}>{}</abbr>", attributes(&b, 2), b[0]))),
+        "b" => Ok((a, format!("<b{}>{}</b>", attributes(&b, 2), b[0]))),
+        "bdi" => Ok((a, format!("<bdi{}>{}</bdi>", attributes(&b, 2), b[0]))),
+        "bdo" => Ok((a, format!("<bdo{}>{}</bdo>", attributes(&b, 2), b[0]))),
+        "button" => Ok((a, format!("<button{}>{}</button>", attributes(&b, 2), b[0]))),
+        "cite" => Ok((a, format!("<cite{}>{}</cite>", attributes(&b, 2), b[0]))),
         "code" => Ok((
             a,
             format!(r#"<code{}>{}</code>"#, code_attributes(&b), b[0]),
         )),
+        "data" => Ok((a, format!("<data{}>{}</data>", attributes(&b, 2), b[0]))),
         "del" => Ok((a, format!("<del{}>{}</del>", attributes(&b, 2), b[0]))),
         "dfn" => Ok((a, format!("<dfn{}>{}</dfn>", attributes(&b, 2), b[0]))),
         "i" => Ok((a, format!("<i{}>{}</i>", attributes(&b, 2), b[0]))),
@@ -104,166 +111,33 @@ mod test {
     use rstest::rstest;
 
     #[rstest]
-    #[case("alfa <<bravo|kbd>> charlie", Ok(("", format!("alfa <kbd>bravo</kbd> charlie"))))]
-    #[case("alfa <<bravo|strong>> charlie", Ok(("", format!("alfa <strong>bravo</strong> charlie"))))]
+    #[case("alfa bravo charlie", Ok(("", format!(r#"alfa bravo charlie"#))))]
+    #[case("alfa <<bravo|abbr>> charlie", Ok(("", format!(r#"alfa <abbr>bravo</abbr> charlie"#))))]
+    #[case("alfa <<bravo|abbr|class: delta>> charlie", Ok(("", format!(r#"alfa <abbr class="delta">bravo</abbr> charlie"#))))]
+    #[case("alfa <<bravo|abbr|style: color: red;>> charlie", Ok(("", format!(r#"alfa <abbr style="color: red;">bravo</abbr> charlie"#))))]
+    #[case("alfa <<bravo|b>> charlie", Ok(("", format!(r#"alfa <b>bravo</b> charlie"#))))]
+    #[case("alfa <<bravo|bdi>> charlie", Ok(("", format!(r#"alfa <bdi>bravo</bdi> charlie"#))))]
+    #[case("alfa <<bravo|bdo>> charlie", Ok(("", format!(r#"alfa <bdo>bravo</bdo> charlie"#))))]
+    #[case("alfa <<bravo|button>> charlie", Ok(("", format!(r#"alfa <button>bravo</button> charlie"#))))]
+    #[case("alfa <<bravo|cite>> charlie", Ok(("", format!(r#"alfa <cite>bravo</cite> charlie"#))))]
+    #[case("alfa <<bravo|code>> charlie", Ok(("", format!(r#"alfa <code>bravo</code> charlie"#))))]
+    #[case("alfa <<bravo|code|class: delta>> charlie", Ok(("", format!(r#"alfa <code class="delta">bravo</code> charlie"#))))]
+    #[case("alfa <<bravo|code|rust>> charlie", Ok(("", format!(r#"alfa <code class="language-rust">bravo</code> charlie"#))))]
+    #[case("alfa <<bravo|code|rust|class: delta>> charlie", Ok(("", format!(r#"alfa <code class="language-rust delta">bravo</code> charlie"#))))]
+    #[case("alfa <<bravo|code|rust|class: delta|id: echo>> charlie", Ok(("", format!(r#"alfa <code id="echo" class="language-rust delta">bravo</code> charlie"#))))]
+    #[case("alfa <<bravo|data>> charlie", Ok(("", format!(r#"alfa <data>bravo</data> charlie"#))))]
+    #[case("alfa <<bravo|del>> charlie", Ok(("", format!(r#"alfa <del>bravo</del> charlie"#))))]
+    #[case("alfa <<bravo|dfn>> charlie", Ok(("", format!(r#"alfa <dfn>bravo</dfn> charlie"#))))]
+    #[case("alfa <<bravo|i>> charlie", Ok(("", format!(r#"alfa <i>bravo</i> charlie"#))))]
+    #[case("alfa <<bravo|ins>> charlie", Ok(("", format!(r#"alfa <ins>bravo</ins> charlie"#))))]
+    #[case("alfa <<bravo|kbd>> charlie", Ok(("", format!(r#"alfa <kbd>bravo</kbd> charlie"#))))]
+    #[case("alfa <<bravo|link|https://www.example.com/>> charlie", Ok(("", format!(r#"alfa <a href="https://www.example.com/">bravo</a> charlie"#))))]
+    #[case("alfa <<bravo|link|https://www.example.com/|class: delta>> charlie", Ok(("", format!(r#"alfa <a href="https://www.example.com/" class="delta">bravo</a> charlie"#))))]
+    #[case("alfa <<bravo|link|https://www.example.com/|class: delta|id: echo>> charlie", Ok(("", format!(r#"alfa <a href="https://www.example.com/" class="delta" id="echo">bravo</a> charlie"#))))]
+    #[case("alfa <<bravo|strong>> charlie", Ok(("", format!(r#"alfa <strong>bravo</strong> charlie"#))))]
+    #[case("alfa <<bravo|strong|class: echo>> charlie", Ok(("", format!(r#"alfa <strong class="echo">bravo</strong> charlie"#))))]
     pub fn run_test(#[case] input: &str, #[case] expected: IResult<&str, String>) {
         assert_eq!(expected, block(input));
-    }
-
-    #[test]
-    pub fn strong_tag_no_attributes() {
-        assert_eq!(
-            block("<<bravo|strong>>"),
-            Ok(("", format!("<strong>bravo</strong>"))),
-        )
-    }
-
-    #[test]
-    pub fn strong_tag_with_attributes() {
-        assert_eq!(
-            block("<<bravo|strong|class: echo>>"),
-            Ok(("", format!(r#"<strong class="echo">bravo</strong>"#))),
-        )
-    }
-
-    #[test]
-    pub fn link_without_attributes() {
-        assert_eq!(
-            block("<<delta|link|https://www.example.com/>>"),
-            Ok((
-                "",
-                format!(r#"<a href="https://www.example.com/">delta</a>"#)
-            )),
-        )
-    }
-
-    #[test]
-    pub fn link_with_attributes() {
-        assert_eq!(
-            block("<<tango|link|https://tango.example.com/|class: whiskey>>"),
-            Ok((
-                "",
-                format!(r#"<a href="https://tango.example.com/" class="whiskey">tango</a>"#)
-            )),
-        )
-    }
-
-    #[test]
-    pub fn link_with_multiple_attributes() {
-        assert_eq!(
-            block("<<foxtrot|link|https://foxtrot.example.com/|class: november|id: zulu>>"),
-            Ok((
-                "",
-                format!(
-                    r#"<a href="https://foxtrot.example.com/" class="november" id="zulu">foxtrot</a>"#
-                )
-            )),
-        )
-    }
-
-    #[test]
-    pub fn code_without_language() {
-        assert_eq!(
-            block("<<tango|code>>"),
-            Ok(("", format!(r#"<code>tango</code>"#))),
-        )
-    }
-
-    #[test]
-    pub fn code_with_language() {
-        assert_eq!(
-            block("<<tango|code|rust>>"),
-            Ok(("", format!(r#"<code class="language-rust">tango</code>"#))),
-        )
-    }
-
-    #[test]
-    pub fn code_with_multiple_attributes() {
-        assert_eq!(
-            block("<<tango|code|class: highlighted|id: baseline>>"),
-            Ok((
-                "",
-                format!(r#"<code id="baseline" class="highlighted">tango</code>"#)
-            )),
-        )
-    }
-
-    #[test]
-    pub fn code_with_language_and_class_attributes() {
-        assert_eq!(
-            block("<<tango|code|rust|class: highlighted|id: baseline>>"),
-            Ok((
-                "",
-                format!(r#"<code id="baseline" class="language-rust highlighted">tango</code>"#)
-            )),
-        )
-    }
-
-    #[test]
-    pub fn no_tags() {
-        assert_eq!(
-            block("light the candle"),
-            Ok(("", format!(r#"light the candle"#)))
-        )
-    }
-
-    #[test]
-    pub fn prelude_text_with_tags() {
-        assert_eq!(
-            block("light <<the|strong>> candle"),
-            Ok(("", format!(r#"light <strong>the</strong> candle"#)))
-        )
-    }
-
-    #[test]
-    pub fn colons_in_attributes() {
-        assert_eq!(
-            block("alfa <<bravo|strong|style: color: red;>> charlie"),
-            Ok((
-                "",
-                format!(r#"alfa <strong style="color: red;">bravo</strong> charlie"#)
-            ))
-        )
-    }
-
-    #[test]
-    pub fn del_tag() {
-        assert_eq!(
-            block("alfa <<bravo|del>> charlie"),
-            Ok(("", format!(r#"alfa <del>bravo</del> charlie"#)))
-        )
-    }
-
-    #[test]
-    pub fn dfn_tag() {
-        assert_eq!(
-            block("alfa <<bravo|dfn>> charlie"),
-            Ok(("", format!(r#"alfa <dfn>bravo</dfn> charlie"#)))
-        )
-    }
-
-    #[test]
-    pub fn i_tag() {
-        assert_eq!(
-            block("alfa <<bravo|i>> charlie"),
-            Ok(("", format!(r#"alfa <i>bravo</i> charlie"#)))
-        )
-    }
-
-    #[test]
-    pub fn ins_tag() {
-        assert_eq!(
-            block("alfa <<bravo|ins>> charlie"),
-            Ok(("", format!(r#"alfa <ins>bravo</ins> charlie"#)))
-        )
-    }
-
-    #[test]
-    pub fn kbd_tag() {
-        assert_eq!(
-            block("alfa <<bravo|kbd>> charlie"),
-            Ok(("", format!(r#"alfa <kbd>bravo</kbd> charlie"#)))
-        )
     }
 
     //
