@@ -92,6 +92,8 @@ fn neotag(source: &str) -> IResult<&str, String> {
         "data" => Ok((a, format!("<data{}>{}</data>", attributes(&b, 2), b[0]))),
         "del" => Ok((a, format!("<del{}>{}</del>", attributes(&b, 2), b[0]))),
         "dfn" => Ok((a, format!("<dfn{}>{}</dfn>", attributes(&b, 2), b[0]))),
+        "em" => Ok((a, format!("<em{}>{}</em>", attributes(&b, 2), b[0]))),
+        "embed" => Ok((a, format!("<embed{}>{}</embed>", attributes(&b, 2), b[0]))),
         "i" => Ok((a, format!("<i{}>{}</i>", attributes(&b, 2), b[0]))),
         "ins" => Ok((a, format!("<ins{}>{}</ins>", attributes(&b, 2), b[0]))),
         "kbd" => Ok((a, format!("<kbd{}>{}</kbd>", attributes(&b, 2), b[0]))),
@@ -99,7 +101,25 @@ fn neotag(source: &str) -> IResult<&str, String> {
             a,
             format!(r#"<a href="{}"{}>{}</a>"#, b[2], attributes(&b, 3), b[0]),
         )),
+        "mark" => Ok((a, format!("<mark{}>{}</mark>", attributes(&b, 2), b[0]))),
+        "meter" => Ok((a, format!("<meter{}>{}</meter>", attributes(&b, 2), b[0]))),
+        "object" => Ok((a, format!("<object{}>{}</object>", attributes(&b, 2), b[0]))),
+        "progress" => Ok((
+            a,
+            format!("<progress{}>{}</progress>", attributes(&b, 2), b[0]),
+        )),
+        "q" => Ok((a, format!("<q{}>{}</q>", attributes(&b, 2), b[0]))),
+        "s" => Ok((a, format!("<s{}>{}</s>", attributes(&b, 2), b[0]))),
+        "samp" => Ok((a, format!("<samp{}>{}</samp>", attributes(&b, 2), b[0]))),
+        "small" => Ok((a, format!("<small{}>{}</small>", attributes(&b, 2), b[0]))),
+        "span" => Ok((a, format!("<span{}>{}</span>", attributes(&b, 2), b[0]))),
         "strong" => Ok((a, format!("<strong{}>{}</strong>", attributes(&b, 2), b[0]))),
+        "sub" => Ok((a, format!("<sub{}>{}</sub>", attributes(&b, 2), b[0]))),
+        "sup" => Ok((a, format!("<sup{}>{}</sup>", attributes(&b, 2), b[0]))),
+        "time" => Ok((a, format!("<time{}>{}</time>", attributes(&b, 2), b[0]))),
+        "u" => Ok((a, format!("<u{}>{}</u>", attributes(&b, 2), b[0]))),
+        "var" => Ok((a, format!("<var{}>{}</var>", attributes(&b, 2), b[0]))),
+        "wbr" => Ok((a, format!("<wbr{}>{}</wbr>", attributes(&b, 2), b[0]))),
         _ => Ok((a, format!(r#""#))),
     }
 }
@@ -128,14 +148,31 @@ mod test {
     #[case("alfa <<bravo|data>> charlie", Ok(("", format!(r#"alfa <data>bravo</data> charlie"#))))]
     #[case("alfa <<bravo|del>> charlie", Ok(("", format!(r#"alfa <del>bravo</del> charlie"#))))]
     #[case("alfa <<bravo|dfn>> charlie", Ok(("", format!(r#"alfa <dfn>bravo</dfn> charlie"#))))]
+    #[case("alfa <<bravo|em>> charlie", Ok(("", format!(r#"alfa <em>bravo</em> charlie"#))))]
+    #[case("alfa <<bravo|embed>> charlie", Ok(("", format!(r#"alfa <embed>bravo</embed> charlie"#))))]
     #[case("alfa <<bravo|i>> charlie", Ok(("", format!(r#"alfa <i>bravo</i> charlie"#))))]
     #[case("alfa <<bravo|ins>> charlie", Ok(("", format!(r#"alfa <ins>bravo</ins> charlie"#))))]
     #[case("alfa <<bravo|kbd>> charlie", Ok(("", format!(r#"alfa <kbd>bravo</kbd> charlie"#))))]
     #[case("alfa <<bravo|link|https://www.example.com/>> charlie", Ok(("", format!(r#"alfa <a href="https://www.example.com/">bravo</a> charlie"#))))]
     #[case("alfa <<bravo|link|https://www.example.com/|class: delta>> charlie", Ok(("", format!(r#"alfa <a href="https://www.example.com/" class="delta">bravo</a> charlie"#))))]
     #[case("alfa <<bravo|link|https://www.example.com/|class: delta|id: echo>> charlie", Ok(("", format!(r#"alfa <a href="https://www.example.com/" class="delta" id="echo">bravo</a> charlie"#))))]
+    #[case("alfa <<bravo|mark>> charlie", Ok(("", format!(r#"alfa <mark>bravo</mark> charlie"#))))]
+    #[case("alfa <<bravo|meter>> charlie", Ok(("", format!(r#"alfa <meter>bravo</meter> charlie"#))))]
+    #[case("alfa <<bravo|object>> charlie", Ok(("", format!(r#"alfa <object>bravo</object> charlie"#))))]
+    #[case("alfa <<bravo|progress>> charlie", Ok(("", format!(r#"alfa <progress>bravo</progress> charlie"#))))]
+    #[case("alfa <<bravo|q>> charlie", Ok(("", format!(r#"alfa <q>bravo</q> charlie"#))))]
+    #[case("alfa <<bravo|s>> charlie", Ok(("", format!(r#"alfa <s>bravo</s> charlie"#))))]
+    #[case("alfa <<bravo|samp>> charlie", Ok(("", format!(r#"alfa <samp>bravo</samp> charlie"#))))]
+    #[case("alfa <<bravo|small>> charlie", Ok(("", format!(r#"alfa <small>bravo</small> charlie"#))))]
+    #[case("alfa <<bravo|span>> charlie", Ok(("", format!(r#"alfa <span>bravo</span> charlie"#))))]
     #[case("alfa <<bravo|strong>> charlie", Ok(("", format!(r#"alfa <strong>bravo</strong> charlie"#))))]
     #[case("alfa <<bravo|strong|class: echo>> charlie", Ok(("", format!(r#"alfa <strong class="echo">bravo</strong> charlie"#))))]
+    #[case("alfa <<bravo|sub>> charlie", Ok(("", format!(r#"alfa <sub>bravo</sub> charlie"#))))]
+    #[case("alfa <<bravo|sup>> charlie", Ok(("", format!(r#"alfa <sup>bravo</sup> charlie"#))))]
+    #[case("alfa <<bravo|time>> charlie", Ok(("", format!(r#"alfa <time>bravo</time> charlie"#))))]
+    #[case("alfa <<bravo|u>> charlie", Ok(("", format!(r#"alfa <u>bravo</u> charlie"#))))]
+    #[case("alfa <<bravo|var>> charlie", Ok(("", format!(r#"alfa <var>bravo</var> charlie"#))))]
+    #[case("alfa <<bravo|wbr>> charlie", Ok(("", format!(r#"alfa <wbr>bravo</wbr> charlie"#))))]
     pub fn run_test(#[case] input: &str, #[case] expected: IResult<&str, String>) {
         assert_eq!(expected, block(input));
     }

@@ -37,7 +37,7 @@ TODO: Tags to make
 
 [todo] caption (table)- The Table Caption element
 
-[.] cite (tag)- The Citation Element
+[done] cite (tag)- The Citation Element
 
 [done] code (tag) - The Inline Code Element
 
@@ -49,25 +49,25 @@ TODO: Tags to make
 
 [todo] datalist (section) - The HTML Data List element
 
-[todo] dd (section) - The Description Details element
+[] dd (section) - The Description Details element
 
-[.] del (tag) - The Deleted Text Element
+[done] del (tag) - The Deleted Text Element
 
-[todo] details (section) - The Details disclosure element
+[] details (section) - The Details disclosure element
 
-[.] dfn (tag) - The Definition Element
+[done] dfn (tag) - The Definition Element
 
 [todo] dialog (section) - The Dialog element
 
-[todo] div (section) - The Content Division element
+[] div (section) - The Content Division element
 
-[todo] dl (section) - The Description List element
+[] dl (section) - The Description List element
 
-[todo] dt (section) - The Description Term element
+[] dt (section) - The Description Term element
 
-[.] em (tag) - The Emphasis Element
+[done] em (tag) - The Emphasis Element
 
-[.] embed (tag) - The Embed External Content element
+[done] embed (tag) - The Embed External Content element
 
 [todo] fieldset (section) - The Field Set element
 
@@ -79,35 +79,35 @@ TODO: Tags to make
 
 [todo] form (section) - The Form element
 
-[todo] h# (section) - The H1-H6 Heading element
+[] h# (section) - The H1-H6 Heading element
 
 [done] head (template) - The Document Metadata (Header) element
 
-[todo] header (section) - The header element
+[done] header (template) - The header element
 
-[todo] hgroup (section) - The heading group (use this for -> title)
+[] hgroup (section) - The heading group (use this for -> title)
 
-[todo] hr (section) - The Thematic Break (Horizontal Rule) element
+[] hr (section) - The Thematic Break (Horizontal Rule) element
 
 [done] html (template) - The HTML Document / Root element
 
-[.] i (tag) - The Idiomatic Text Element
+[done] i (tag) - The Idiomatic Text Element
 
 [todo] iframe (section) - The Inline Frame element
 
-[todo] img (section) - The Image Embed element
+[] img (section) - The Image Embed element
 
 [todo] input (section) - The Input (Form Input) element
 
-[.] ins (tag) - The Insert Element
+[done] ins (tag) - The Insert Element
 
-[.] kbd (tag) - The Keyboard Input Element
+[done] kbd (tag) - The Keyboard Input Element
 
 [todo] label (section) - The Label Element
 
 [todo] legend (section) - The Field Set Legend Element
 
-[todo] li (section) - The List Item element
+[] li (section) - The List Item element
 
 [done] link (template) - The External Resource Link element
 
@@ -115,71 +115,71 @@ TODO: Tags to make
 
 [skip] map (section) - The Image Map element
 
-[.] mark (tag) - The Mark Text element
+[done] mark (tag) - The Mark Text element
 
 [todo] menu (section) - The Menu element
 
 [done] meta (template) - The metadata element
 
-[.] meter (tag) - The HTML Meter Element
+[done] meter (tag) - The HTML Meter Element
 
-[todo] nav (section) - The Navigation Section element
+[done] nav (template) - The Navigation Section element
 
 [todo] noscript (section) - The Noscript element
 
-[.] object (tag) - The External Object Element
+[done] object (tag) - The External Object Element
 
-[todo] ol (section) - The Ordered List element
+[] ol (section) - The Ordered List element
 
 [todo] optgroup (section) - The Option Group element
 
 [todo] option (section) - The HTML Option element
 
-[todo] output (section) - The Output element
+[] output (tag) - The Output element
 
-[todo] p (section) - The Paragraph element
+[] p (section) - The Paragraph element
 
 [todo] picture (section) - The Picture element
 
-[todo] pre (section) - The Preformatted Text element
+[] pre (section) - The Preformatted Text element
 
-[.] progress (tag) - The Progress Indicator element
+[done] progress (tag) - The Progress Indicator element
 
-[.] q (tag) - The Inline Quotation element
+[done] q (tag) - The Inline Quotation element
 
-[todo] rp (section) - The Ruby Fallback Parenthesis element
+[skip] rp (section) - The Ruby Fallback Parenthesis element
 
-[todo] rt (section) - The Ruby Text element
+[skip] rt (section) - The Ruby Text element
 
-[todo] ruby (section) - The Ruby Annotation element
+[skip] ruby (section) - The Ruby Annotation element
 
-[.] s (tag) - The Strikethrough element
+[done] s (tag) - The Strikethrough element
 
-[.] samp (tag) - The Sample Output element
+[done] samp (tag) - The Sample Output element
 
-[todo] script (section) - The Script element
+[] script (section) - The Script element
 
-[todo] section (section) - The Generic Section element
+[done] section (template) - The Generic Section element
 
 [todo] select (section) - The HTML Select element
 
 [todo] slot (section) - The Web Component Slot element
 
-[.] small (tag) - The side comment element
+[done] small (tag) - The side comment element
 
 [todo] source (section) - The Media or Image Source element
 
-[.] span (tag) - The Content Span element
+[done] span (tag) - The Content Span element
 
-[.] strong (tag) - The Strong Importance element
+[done] strong (tag) - The Strong Importance element
 
-[todo] style (section) - The Style Information element
+[] style (section) - The Style Information element
 
-[.] sub (tag) - The Subscript element
+[done] sub (tag) - The Subscript element
 
-[todo] summary (section) - The Disclosure Summary element
+[] summary (section) - The Disclosure Summary element
 
-[.] sup (tag) - The Superscript element
+[done] sup (tag) - The Superscript element
 
 [todo] table (section) - The Table element
 
@@ -189,7 +189,7 @@ TODO: Tags to make
 
 [todo] template (section) - The Content Template element
 
-[todo] textarea (section) - The Textarea element
+[] textarea (section) - The Textarea element
 
 [todo] tfoot (section) - The Table Foot element
 
@@ -197,7 +197,7 @@ TODO: Tags to make
 
 [todo] thead (section) - The Table Head element
 
-[.] time (tag) - The (Date) Time element
+[done] time (tag) - The (Date) Time element
 
 [done] title (template) - The Document Title element
 
@@ -205,90 +205,16 @@ TODO: Tags to make
 
 [todo] track (section) - The Embed Text Track element
 
-[.] u (tag) - The Unarticulated Annotation (Underline) element
+[done] u (tag) - The Unarticulated Annotation (Underline) element
 
-[todo] ul (section) - The Unordered List element
+[] ul (section) - The Unordered List element
 
-[.] var (tag) - The Variable element
+[done] var (tag) - The Variable element
 
 [todo] - video (section) The Video Embed element
 
-[.] wbr (tag) - The Line Break Opportunity element
+[done] wbr (tag) - The Line Break Opportunity element
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[] progress - The Progress Indicator Element
-
-[] q - The Inline Quotation Element
-
-[] s - The Strikethrough Element
-
-[] samp - The Sample Output Element
-
-[] small - The Side Comment Element
-
-[] span - The Content Span Element
-
-[x] strong - The Strong Importance Element
-
-[] sub - The Subscript Element
-
-[] sup - The Superscript Element
-
-[] time - The (Date) Time Element
-
-[] u - The Unarticulated Annotation Element
-
-[] var - The Variable element
-
-[] wbr - The Line Break Opportunity Element
 
 
 
