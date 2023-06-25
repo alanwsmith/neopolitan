@@ -66,7 +66,7 @@ mod test {
         };
         assert_eq!(
             sf.content(),
-            Some(String::from(r#"<h1 class="neo-title">Delta Hotel</h1>"#))
+            Some(String::from(r#"<hgroup><h1>Delta Hotel</h1></hgroup>"#))
         );
     }
 
@@ -88,7 +88,7 @@ mod test {
         assert_eq!(
             sf.content(),
             Some(String::from(
-                r#"<h1 class="neo-title">Echo Foxtrot</h1><p>Light the candle</p>"#
+                r#"<hgroup><h1>Echo Foxtrot</h1></hgroup><p>Light the candle</p>"#
             ))
         );
     }
@@ -110,7 +110,7 @@ mod test {
         assert_eq!(
             sf.content(),
             Some(String::from(
-                r#"<h1 class="neo-title">Whiskey November</h1>"#
+                r#"<hgroup><h1>Whiskey November</h1></hgroup>"#
             ))
         );
     }
@@ -131,7 +131,7 @@ mod test {
         };
         assert_eq!(
             sf.content(),
-            Some(String::from(r#"<h1 class="neo-title">Echo Oscar</h1>"#))
+            Some(String::from(r#"<hgroup><h1>Echo Oscar</h1></hgroup>"#))
         );
     }
 
@@ -152,7 +152,7 @@ mod test {
         };
         assert_eq!(
             sf.content(),
-            Some(String::from(r#"<h1 class="neo-title">Tango Whiskey</h1>"#))
+            Some(String::from(r#"<hgroup><h1>Tango Whiskey</h1></hgroup>"#))
         );
     }
 

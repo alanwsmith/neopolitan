@@ -28,7 +28,7 @@ pub fn title_section(source: &str) -> IResult<&str, Option<String>> {
             .skip(1)
             .map(|x| block(x).unwrap().1)
             .collect();
-    dbg!(&paragraphs);
+    // dbg!(&paragraphs);
     let mut env = Environment::new();
     env.set_source(Source::from_path("./templates"));
     let wrapper = env.get_template("sections/title.j2").unwrap();
