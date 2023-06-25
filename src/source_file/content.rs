@@ -1,3 +1,4 @@
+use crate::source_file::sections::title_section::title_section;
 use crate::source_file::SourceFile;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -33,12 +34,8 @@ impl SourceFile {
             .map(|x| {
                 if x.3 == "p" {
                     self.p_section(x.6).unwrap().1.unwrap()
-                    // self.parse_block(self.p_section(x.6).unwrap().1.unwrap().as_str())
-                    //     .unwrap()
-                    //     .1
-                    //     .unwrap()
                 } else if x.3 == "title" {
-                    self.title_section(x.6).unwrap().1.unwrap()
+                    title_section(x.6).unwrap().1.unwrap()
                 } else {
                     "".to_string()
                 }

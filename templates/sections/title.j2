@@ -1,1 +1,4 @@
-<h1 class="neo-title">{{ title }}</h1>
+<hgroup><h1>{{ main_title }}</h1>
+{%- for paragraph in paragraphs -%}
+<p>{{ paragraph }}</p>
+{%- endfor -%}</hgroup>
