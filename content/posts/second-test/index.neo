@@ -2,11 +2,13 @@
 
 Second Test Post
 
--> p
+Here's another line 
 
 This is the second test post
 
-link <<example|link|https://www.example.com/|style: color: red;>> test
+link <<example|link|https://www.alanwsmith.com/|style: color: red;>> test
+
+And another
 
 -> categories
 >> Miscellaneous

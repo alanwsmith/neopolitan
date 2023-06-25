@@ -12,7 +12,7 @@ TODO List
 
 [x] Setup title tag so paragraphs can come after it (hgroup)
 
-[] Add attributes to paragraphs
+[x] Add attributes to paragraphs
 
 [] Add all the different section types
 
@@ -24,6 +24,9 @@ attribute doesn't exist
 [x] refactor the section calls so there's less repetition
 
 [x] Setup so unknown tags are skipped
+
+[] Add case insensitivity
+
 
 -> categories
 >> Neopolitan

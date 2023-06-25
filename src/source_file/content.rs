@@ -1,5 +1,6 @@
 use crate::source_file::sections::p_section::p_section;
 use crate::source_file::sections::title_section::title_section;
+use crate::source_file::sections::todo_section::todo_section;
 use crate::source_file::SourceFile;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -37,6 +38,8 @@ impl SourceFile {
                     p_section(x.6).unwrap().1.unwrap()
                 } else if x.3 == "title" {
                     title_section(x.6).unwrap().1.unwrap()
+                } else if x.3 == "todo" {
+                    todo_section(x.6).unwrap().1.unwrap()
                 } else {
                     "".to_string()
                 }

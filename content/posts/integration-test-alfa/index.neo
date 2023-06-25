@@ -5,6 +5,7 @@ Integration Test Alfa
 This is below the title
 
 -> p
+>> class: sierra
 
 This is the alfa integration test 
 
@@ -12,9 +13,18 @@ This is the second paragraph
 
 This is <<text with a strong tag|strong>> applied
 
-Here is <<an example|link|https://www.example.com/>> link
+Here is <<an example|link|https://www.alanwsmith.com/|id: alfa>> link
 
 This is `a snippet`` of code
+
+-> todo
+
+[] this is unchecked
+
+[x] this is checked
+
+
+
 
 -> categories
 >> Posts

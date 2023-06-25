@@ -67,7 +67,7 @@ mod test {
         Ok(("", Some(format!(r#"<hgroup><h1>Bravo Charlie</h1><p>Alfa <strong>Delta</strong> Sierra</p></hgroup>"#)))
     ))]
 
-    pub fn solo_run_tests_for_title(
+    pub fn run_tests_for_title(
         #[case] input: String,
         #[case] expected: IResult<&str, Option<String>>,
     ) {
