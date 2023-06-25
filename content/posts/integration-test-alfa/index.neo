@@ -1,6 +1,6 @@
 -> title
 
-Integration Test Alfa2
+Integration Test Alfa
 
 This is below the title
 
@@ -14,6 +14,7 @@ This is <<text with a strong tag|strong>> applied
 
 Here is <<an example|link|https://www.example.com/>> link
 
+This is `a snippet`` of code
 
 -> categories
 >> Posts
