@@ -1,3 +1,4 @@
+use nom::branch::alt;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -10,8 +11,11 @@ use nom::IResult;
 use nom::Parser;
 
 pub fn block(source: &str) -> IResult<&str, String> {
-    let (a, b) =
-        many0(tuple((take_until("<<"), neotag)).map(|(x, y)| format!("{}{}", x, y)))(source)?;
+    let (a, b) = many0(alt((
+        tuple((take_until("<<"), neotag)).map(|(x, y)| format!("{}{}", x, y)),
+        tuple((take_until("`"), tag("`"), take_until("``"), tag("``")))
+            .map(|x| format!("{}<code>{}</code>", x.0, x.2)),
+    )))(source)?;
     let mut result = b.join("").to_string();
     result.push_str(a);
     Ok(("", result))
@@ -173,6 +177,7 @@ mod test {
     #[case("alfa <<bravo|u>> charlie", Ok(("", format!(r#"alfa <u>bravo</u> charlie"#))))]
     #[case("alfa <<bravo|var>> charlie", Ok(("", format!(r#"alfa <var>bravo</var> charlie"#))))]
     #[case("alfa <<bravo|wbr>> charlie", Ok(("", format!(r#"alfa <wbr>bravo</wbr> charlie"#))))]
+    #[case("alfa `bravo`` charlie", Ok(("", format!(r#"alfa <code>bravo</code> charlie"#))))]
     pub fn run_test(#[case] input: &str, #[case] expected: IResult<&str, String>) {
         assert_eq!(expected, block(input));
     }

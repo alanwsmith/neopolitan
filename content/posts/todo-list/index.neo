@@ -10,7 +10,7 @@ TODO List
 
 [] Setup the TODO list section so this shows up as a list
 
-[] Setup title tag so paragraphs can come after it (hgroup)
+[x] Setup title tag so paragraphs can come after it (hgroup)
 
 [] Add attributes to paragraphs
 
