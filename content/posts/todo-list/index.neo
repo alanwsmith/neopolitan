@@ -6,7 +6,7 @@ TODO List
 
 [x] Add `<<>>`` tags to paragraphs
 
-[] Add <<`shortcodes``|code>> to paragraphs
+[x] Add <<`shortcodes``|code>> to paragraphs
 
 [] Setup the TODO list section so this shows up as a list
 

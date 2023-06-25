@@ -21,7 +21,7 @@ pub fn block(source: &str) -> IResult<&str, String> {
     Ok(("", result))
 }
 
-fn attributes(v: &Vec<&str>, position: usize) -> String {
+pub fn attributes(v: &Vec<&str>, position: usize) -> String {
     v.clone()
         .into_iter()
         .skip(position)
