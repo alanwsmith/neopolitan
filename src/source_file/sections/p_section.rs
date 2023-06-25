@@ -59,6 +59,17 @@ mod test {
         )
     }
 
+    #[test]
+    pub fn test_multiple_attributes_work() {
+        let lines = vec![">> class: highlighted", ">> id: tango", "", "Cook bacon"];
+        assert_eq!(
+            Some(String::from(
+                r#"<p class="highlighted" id="tango">Cook bacon</p>"#
+            )),
+            p_section(lines.join("\n").as_str()).unwrap().1,
+        )
+    }
+
     // TODO: Update these tests to call
     // p_section directly instead of going
     // throught the SourceFile
