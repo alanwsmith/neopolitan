@@ -17,7 +17,8 @@ use nom::Parser;
 // impl SourceFile {
 pub fn p_section<'a>(source: &'a str) -> IResult<&str, Option<String>> {
     let (a, r) = many0(
-        tuple((multispace0, tag(">> "), not_line_ending, line_ending)).map(|(w, x, y, q)| ("", y)),
+        tuple((multispace0, tag(">> "), not_line_ending, line_ending))
+            .map(|(_w, _x, y, _q)| ("", y)),
     )(source)?;
 
     let delta = attributes(&r.iter().map(|x| x.1).collect::<Vec<&str>>(), 0);
