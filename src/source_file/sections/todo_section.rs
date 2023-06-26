@@ -10,9 +10,14 @@ use nom::sequence::preceded;
 use nom::sequence::tuple;
 use nom::IResult;
 
-pub fn todo_section<'a>(source: &'a str) -> IResult<&str, Option<String>> {
+pub fn todo_section<'a>(
+    source: &'a str,
+) -> IResult<&str, Option<String>> {
     let (_, b) = many0(tuple((
-        preceded(multispace0, delimited(tag("["), opt(tag("x")), tag("]"))),
+        preceded(
+            multispace0,
+            delimited(tag("["), opt(tag("x")), tag("]")),
+        ),
         alt((take_until("\n\n"), rest)),
     )))(source)?;
     Ok((
@@ -43,7 +48,9 @@ mod test {
     pub fn basic_todo() {
         let lines = ["[] alfa", "", "[] bravo", ""];
         assert_eq!(
-            todo_section(lines.join("\n").as_str()).unwrap().1,
+            todo_section(lines.join("\n").as_str())
+                .unwrap()
+                .1,
             Some(format!(
                 r#"<ul><li><input type="checkbox"> alfa</li><li><input type="checkbox"> bravo</li></ul>"#
             ))
@@ -54,7 +61,9 @@ mod test {
     pub fn checked_todo() {
         let lines = ["[x] alfa", "", "[] bravo"];
         assert_eq!(
-            todo_section(lines.join("\n").as_str()).unwrap().1,
+            todo_section(lines.join("\n").as_str())
+                .unwrap()
+                .1,
             Some(format!(
                 r#"<ul><li><input type="checkbox" checked> alfa</li><li><input type="checkbox"> bravo</li></ul>"#
             ))

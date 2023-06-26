@@ -12,16 +12,25 @@ use nom::Parser;
 
 pub fn block(source: &str) -> IResult<&str, String> {
     let (a, b) = many0(alt((
-        tuple((take_until("<<"), neotag)).map(|(x, y)| format!("{}{}", x, y)),
-        tuple((take_until("`"), tag("`"), take_until("``"), tag("``")))
-            .map(|x| format!("{}<code>{}</code>", x.0, x.2)),
+        tuple((take_until("<<"), neotag))
+            .map(|(x, y)| format!("{}{}", x, y)),
+        tuple((
+            take_until("`"),
+            tag("`"),
+            take_until("``"),
+            tag("``"),
+        ))
+        .map(|x| format!("{}<code>{}</code>", x.0, x.2)),
     )))(source)?;
     let mut result = b.join("").to_string();
     result.push_str(a);
     Ok(("", result))
 }
 
-pub fn attributes(v: &Vec<&str>, position: usize) -> String {
+pub fn attributes(
+    v: &Vec<&str>,
+    position: usize,
+) -> String {
     v.clone()
         .into_iter()
         .skip(position)
@@ -41,7 +50,10 @@ fn code_attributes(v: &Vec<&str>) -> String {
     if v.len() >= 3 {
         let parts: Vec<&str> = v[2].split(": ").collect();
         if parts.len() == 1 {
-            classes.push(format!("language-{}", parts[0].to_string()))
+            classes.push(format!(
+                "language-{}",
+                parts[0].to_string()
+            ))
         }
     }
     let mut attributes = v
@@ -51,13 +63,17 @@ fn code_attributes(v: &Vec<&str>) -> String {
         .collect::<Vec<&str>>()
         .into_iter()
         .map(|att| {
-            let parts: Vec<&str> = att.split(": ").collect();
+            let parts: Vec<&str> =
+                att.split(": ").collect();
             if parts.len() == 2 {
                 if parts[0] == "class" {
                     classes.push(format!("{}", parts[1]));
                     format!(r#""#)
                 } else {
-                    format!(r#" {}="{}""#, parts[0], parts[1])
+                    format!(
+                        r#" {}="{}""#,
+                        parts[0], parts[1]
+                    )
                 }
             } else {
                 format!("")
@@ -83,47 +99,243 @@ fn neotag(source: &str) -> IResult<&str, String> {
         |v: &Vec<&str>| v.len() > 1,
     )(source)?;
     match b[1] {
-        "abbr" => Ok((a, format!("<abbr{}>{}</abbr>", attributes(&b, 2), b[0]))),
-        "b" => Ok((a, format!("<b{}>{}</b>", attributes(&b, 2), b[0]))),
-        "bdi" => Ok((a, format!("<bdi{}>{}</bdi>", attributes(&b, 2), b[0]))),
-        "bdo" => Ok((a, format!("<bdo{}>{}</bdo>", attributes(&b, 2), b[0]))),
-        "button" => Ok((a, format!("<button{}>{}</button>", attributes(&b, 2), b[0]))),
-        "cite" => Ok((a, format!("<cite{}>{}</cite>", attributes(&b, 2), b[0]))),
+        "abbr" => Ok((
+            a,
+            format!(
+                "<abbr{}>{}</abbr>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "b" => Ok((
+            a,
+            format!("<b{}>{}</b>", attributes(&b, 2), b[0]),
+        )),
+        "bdi" => Ok((
+            a,
+            format!(
+                "<bdi{}>{}</bdi>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "bdo" => Ok((
+            a,
+            format!(
+                "<bdo{}>{}</bdo>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "button" => Ok((
+            a,
+            format!(
+                "<button{}>{}</button>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "cite" => Ok((
+            a,
+            format!(
+                "<cite{}>{}</cite>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
         "code" => Ok((
             a,
-            format!(r#"<code{}>{}</code>"#, code_attributes(&b), b[0]),
+            format!(
+                r#"<code{}>{}</code>"#,
+                code_attributes(&b),
+                b[0]
+            ),
         )),
-        "data" => Ok((a, format!("<data{}>{}</data>", attributes(&b, 2), b[0]))),
-        "del" => Ok((a, format!("<del{}>{}</del>", attributes(&b, 2), b[0]))),
-        "dfn" => Ok((a, format!("<dfn{}>{}</dfn>", attributes(&b, 2), b[0]))),
-        "em" => Ok((a, format!("<em{}>{}</em>", attributes(&b, 2), b[0]))),
-        "embed" => Ok((a, format!("<embed{}>{}</embed>", attributes(&b, 2), b[0]))),
-        "i" => Ok((a, format!("<i{}>{}</i>", attributes(&b, 2), b[0]))),
-        "ins" => Ok((a, format!("<ins{}>{}</ins>", attributes(&b, 2), b[0]))),
-        "kbd" => Ok((a, format!("<kbd{}>{}</kbd>", attributes(&b, 2), b[0]))),
+        "data" => Ok((
+            a,
+            format!(
+                "<data{}>{}</data>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "del" => Ok((
+            a,
+            format!(
+                "<del{}>{}</del>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "dfn" => Ok((
+            a,
+            format!(
+                "<dfn{}>{}</dfn>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "em" => Ok((
+            a,
+            format!(
+                "<em{}>{}</em>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "embed" => Ok((
+            a,
+            format!(
+                "<embed{}>{}</embed>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "i" => Ok((
+            a,
+            format!("<i{}>{}</i>", attributes(&b, 2), b[0]),
+        )),
+        "ins" => Ok((
+            a,
+            format!(
+                "<ins{}>{}</ins>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "kbd" => Ok((
+            a,
+            format!(
+                "<kbd{}>{}</kbd>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
         "link" => Ok((
             a,
-            format!(r#"<a href="{}"{}>{}</a>"#, b[2], attributes(&b, 3), b[0]),
+            format!(
+                r#"<a href="{}"{}>{}</a>"#,
+                b[2],
+                attributes(&b, 3),
+                b[0]
+            ),
         )),
-        "mark" => Ok((a, format!("<mark{}>{}</mark>", attributes(&b, 2), b[0]))),
-        "meter" => Ok((a, format!("<meter{}>{}</meter>", attributes(&b, 2), b[0]))),
-        "object" => Ok((a, format!("<object{}>{}</object>", attributes(&b, 2), b[0]))),
+        "mark" => Ok((
+            a,
+            format!(
+                "<mark{}>{}</mark>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "meter" => Ok((
+            a,
+            format!(
+                "<meter{}>{}</meter>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "object" => Ok((
+            a,
+            format!(
+                "<object{}>{}</object>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
         "progress" => Ok((
             a,
-            format!("<progress{}>{}</progress>", attributes(&b, 2), b[0]),
+            format!(
+                "<progress{}>{}</progress>",
+                attributes(&b, 2),
+                b[0]
+            ),
         )),
-        "q" => Ok((a, format!("<q{}>{}</q>", attributes(&b, 2), b[0]))),
-        "s" => Ok((a, format!("<s{}>{}</s>", attributes(&b, 2), b[0]))),
-        "samp" => Ok((a, format!("<samp{}>{}</samp>", attributes(&b, 2), b[0]))),
-        "small" => Ok((a, format!("<small{}>{}</small>", attributes(&b, 2), b[0]))),
-        "span" => Ok((a, format!("<span{}>{}</span>", attributes(&b, 2), b[0]))),
-        "strong" => Ok((a, format!("<strong{}>{}</strong>", attributes(&b, 2), b[0]))),
-        "sub" => Ok((a, format!("<sub{}>{}</sub>", attributes(&b, 2), b[0]))),
-        "sup" => Ok((a, format!("<sup{}>{}</sup>", attributes(&b, 2), b[0]))),
-        "time" => Ok((a, format!("<time{}>{}</time>", attributes(&b, 2), b[0]))),
-        "u" => Ok((a, format!("<u{}>{}</u>", attributes(&b, 2), b[0]))),
-        "var" => Ok((a, format!("<var{}>{}</var>", attributes(&b, 2), b[0]))),
-        "wbr" => Ok((a, format!("<wbr{}>{}</wbr>", attributes(&b, 2), b[0]))),
+        "q" => Ok((
+            a,
+            format!("<q{}>{}</q>", attributes(&b, 2), b[0]),
+        )),
+        "s" => Ok((
+            a,
+            format!("<s{}>{}</s>", attributes(&b, 2), b[0]),
+        )),
+        "samp" => Ok((
+            a,
+            format!(
+                "<samp{}>{}</samp>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "small" => Ok((
+            a,
+            format!(
+                "<small{}>{}</small>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "span" => Ok((
+            a,
+            format!(
+                "<span{}>{}</span>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "strong" => Ok((
+            a,
+            format!(
+                "<strong{}>{}</strong>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "sub" => Ok((
+            a,
+            format!(
+                "<sub{}>{}</sub>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "sup" => Ok((
+            a,
+            format!(
+                "<sup{}>{}</sup>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "time" => Ok((
+            a,
+            format!(
+                "<time{}>{}</time>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "u" => Ok((
+            a,
+            format!("<u{}>{}</u>", attributes(&b, 2), b[0]),
+        )),
+        "var" => Ok((
+            a,
+            format!(
+                "<var{}>{}</var>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
+        "wbr" => Ok((
+            a,
+            format!(
+                "<wbr{}>{}</wbr>",
+                attributes(&b, 2),
+                b[0]
+            ),
+        )),
         _ => Ok((a, format!(r#""#))),
     }
 }
@@ -178,7 +390,10 @@ mod test {
     #[case("alfa <<bravo|var>> charlie", Ok(("", format!(r#"alfa <var>bravo</var> charlie"#))))]
     #[case("alfa <<bravo|wbr>> charlie", Ok(("", format!(r#"alfa <wbr>bravo</wbr> charlie"#))))]
     #[case("alfa `bravo`` charlie", Ok(("", format!(r#"alfa <code>bravo</code> charlie"#))))]
-    pub fn run_test(#[case] input: &str, #[case] expected: IResult<&str, String>) {
+    pub fn run_test(
+        #[case] input: &str,
+        #[case] expected: IResult<&str, String>,
+    ) {
         assert_eq!(expected, block(input));
     }
 

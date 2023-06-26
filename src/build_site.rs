@@ -20,7 +20,8 @@ pub fn build_site() {
     let mut source_files = Files { files: vec![] };
 
     for entry in WalkDir::new(&content_dir).into_iter() {
-        let initial_path = entry.unwrap().path().to_path_buf();
+        let initial_path =
+            entry.unwrap().path().to_path_buf();
         if let Some(ext) = initial_path.extension() {
             if ext == "neo" {
                 let sf = SourceFile {
@@ -29,7 +30,10 @@ pub fn build_site() {
                         .strip_prefix(&content_dir)
                         .unwrap()
                         .to_path_buf(),
-                    source_data: fs::read_to_string(initial_path).unwrap(),
+                    source_data: fs::read_to_string(
+                        initial_path,
+                    )
+                    .unwrap(),
                 };
                 source_files.files.push(sf);
             }
@@ -37,7 +41,9 @@ pub fn build_site() {
     }
 
     source_files.files.iter().for_each(|source_file| {
-        let wrapper = env.get_template(&source_file.template().unwrap()).unwrap();
+        let wrapper = env
+            .get_template(&source_file.template().unwrap())
+            .unwrap();
         let output = wrapper
             .render(context!(
                 title => source_file.title(),

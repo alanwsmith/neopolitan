@@ -6,7 +6,10 @@ use std::fs;
 fn integration_test_alfa() {
     neopolitan::clear_output_directory::clear_output_directory();
     neopolitan::build_site::build_site();
-    let source = fs::read_to_string("site/posts/integration-test-alfa/index.html").unwrap();
+    let source = fs::read_to_string(
+        "site/posts/integration-test-alfa/index.html",
+    )
+    .unwrap();
     let doc = Html::parse_document(source.as_str());
     let selector = Selector::parse("p").unwrap();
     let mut elements = doc.select(&selector);
@@ -48,5 +51,8 @@ fn integration_test_alfa() {
 
     let selector = Selector::parse("code").unwrap();
     let mut elements = doc.select(&selector);
-    assert_eq!(elements.next().unwrap().inner_html(), "a snippet");
+    assert_eq!(
+        elements.next().unwrap().inner_html(),
+        "a snippet"
+    );
 }

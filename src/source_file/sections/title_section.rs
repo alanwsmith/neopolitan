@@ -16,12 +16,19 @@ use nom::IResult;
 use nom::Parser;
 
 // impl SourceFile {
-pub fn title_section(source: &str) -> IResult<&str, Option<String>> {
+pub fn title_section(
+    source: &str,
+) -> IResult<&str, Option<String>> {
     let (_, b) = many_till(
-        alt((tuple((take_until("\n\n"), tag("\n\n"))).map(|x| x.0), rest)),
+        alt((
+            tuple((take_until("\n\n"), tag("\n\n")))
+                .map(|x| x.0),
+            rest,
+        )),
         eof,
     )(source)?;
-    let main_title = b.0.clone().into_iter().next().unwrap();
+    let main_title =
+        b.0.clone().into_iter().next().unwrap();
     let paragraphs: Vec<_> =
         b.0.clone()
             .into_iter()
@@ -31,7 +38,8 @@ pub fn title_section(source: &str) -> IResult<&str, Option<String>> {
     // dbg!(&paragraphs);
     let mut env = Environment::new();
     env.set_source(Source::from_path("./templates"));
-    let wrapper = env.get_template("sections/title.j2").unwrap();
+    let wrapper =
+        env.get_template("sections/title.j2").unwrap();
     Ok((
         "",
         Some(

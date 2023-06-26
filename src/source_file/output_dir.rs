@@ -19,7 +19,9 @@ mod test {
     pub fn test_path() {
         let sf = SourceFile {
             source_data: "".to_string(),
-            source_path: PathBuf::from("site/example/index.neo"),
+            source_path: PathBuf::from(
+                "site/example/index.neo",
+            ),
         };
         let expected = Some(PathBuf::from("site/example"));
         assert_eq!(expected, sf.output_dir());

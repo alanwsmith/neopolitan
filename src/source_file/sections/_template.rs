@@ -14,7 +14,7 @@ mod test {
         let lines = vec!["", "Slide the tray across the glass top."];
         assert_eq!(
             aside_section(lines.join("").as_str()).unwrap().1,
-            Some(format!("{}", ""))
+            Some(format!("{}", "\n"))
         );
     }
 }

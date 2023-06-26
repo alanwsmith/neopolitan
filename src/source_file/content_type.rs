@@ -1,9 +1,9 @@
-use nom::IResult;
 use crate::source_file::SourceFile;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
 use nom::character::complete::multispace1;
 use nom::character::complete::not_line_ending;
+use nom::IResult;
 
 // NOTE This can currently be thrown off if you put
 // an -> attributes section inside a code block
@@ -15,7 +15,9 @@ impl SourceFile {
     }
 
     fn parse_content_type(&self) -> IResult<&str, String> {
-        let (a, _) = take_until("\n-> attributes")(self.source_data.as_str())?;
+        let (a, _) = take_until("\n-> attributes")(
+            self.source_data.as_str(),
+        )?;
         let (a, _) = tag("\n-> attributes")(a)?;
         let (a, _) = take_until(">> type:")(a)?;
         let (a, _) = tag(">> type:")(a)?;
@@ -32,11 +34,15 @@ mod test {
 
     #[test]
     pub fn basic_type_check() {
-        let lines = vec!["", "-> attributes", ">> type: echo"];
+        let lines =
+            vec!["", "-> attributes", ">> type: echo"];
         let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };
-        assert_eq!(sf.content_type(), Some(String::from("echo")));
+        assert_eq!(
+            sf.content_type(),
+            Some(String::from("echo"))
+        );
     }
 }

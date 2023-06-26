@@ -19,9 +19,16 @@ mod test {
     #[test]
     pub fn check_url() {
         let sf = SourceFile {
-            source_path: PathBuf::from("site/example/index.neo"),
+            source_path: PathBuf::from(
+                "site/example/index.neo",
+            ),
             source_data: "".to_string(),
         };
-        assert_eq!(sf.url(), Some(PathBuf::from("/site/example/index.html")));
+        assert_eq!(
+            sf.url(),
+            Some(PathBuf::from(
+                "/site/example/index.html"
+            ))
+        );
     }
 }

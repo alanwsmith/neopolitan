@@ -13,16 +13,25 @@ use nom::Parser;
 
 impl SourceFile {
     pub fn title(&self) -> Option<String> {
-        self.parse_title(&self.source_data).ok().map(|(_, b)| b)
+        self.parse_title(&self.source_data)
+            .ok()
+            .map(|(_, b)| b)
     }
 
-    pub fn parse_title<'a>(&'a self, source: &'a str) -> IResult<&str, String> {
+    pub fn parse_title<'a>(
+        &'a self,
+        source: &'a str,
+    ) -> IResult<&str, String> {
         let (a, _) = take_until("-> title")(source)?;
         let (a, _) = tag("-> title")(a)?;
         let (a, _) = multispace0(a)?;
         let (a, b) = many_till(
             take(1u32),
-            alt((tuple((line_ending, line_ending)).map(|_| ""), eof)),
+            alt((
+                tuple((line_ending, line_ending))
+                    .map(|_| ""),
+                eof,
+            )),
         )(a)?;
         Ok((a, b.0.join("")))
     }
@@ -52,16 +61,28 @@ mod test {
             source_path: PathBuf::from(""),
         };
 
-        assert_eq!(Some(String::from("Foxtrot Golf")), sf.title());
+        assert_eq!(
+            Some(String::from("Foxtrot Golf")),
+            sf.title()
+        );
     }
 
     #[test]
     pub fn title_with_following_content() {
-        let lines = vec!["-> title", "", "Delta Echo", "", "Whiskey Tango"];
+        let lines = vec![
+            "-> title",
+            "",
+            "Delta Echo",
+            "",
+            "Whiskey Tango",
+        ];
         let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };
-        assert_eq!(Some(String::from("Delta Echo")), sf.title());
+        assert_eq!(
+            Some(String::from("Delta Echo")),
+            sf.title()
+        );
     }
 }

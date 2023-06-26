@@ -5,11 +5,17 @@ impl Files {
         let files = self
             .files
             .iter()
-            .filter(|file| file.content_type().is_some_and(|ct| ct == "post"))
+            .filter(|file| {
+                file.content_type()
+                    .is_some_and(|ct| ct == "post")
+            })
             .map(|file| {
                 (
                     file.title().unwrap(),
-                    file.url().unwrap().display().to_string(),
+                    file.url()
+                        .unwrap()
+                        .display()
+                        .to_string(),
                 )
             })
             .collect();
@@ -37,7 +43,9 @@ mod test {
         ];
         let sf = SourceFile {
             source_data: lines.join("\n"),
-            source_path: PathBuf::from("some/path/index.neo"),
+            source_path: PathBuf::from(
+                "some/path/index.neo",
+            ),
         };
 
         content.files.push(sf);

@@ -22,7 +22,9 @@ impl SourceFile {
         b
     }
 
-    fn parse_content(&self) -> IResult<&str, Option<String>> {
+    fn parse_content(
+        &self,
+    ) -> IResult<&str, Option<String>> {
         let (_, b) = many_till(
             tuple((
                 multispace0,
@@ -70,7 +72,9 @@ mod test {
         };
         assert_eq!(
             sf.content(),
-            Some(String::from(r#"<hgroup><h1>Delta Hotel</h1></hgroup>"#))
+            Some(String::from(
+                r#"<hgroup><h1>Delta Hotel</h1></hgroup>"#
+            ))
         );
     }
 
@@ -135,7 +139,9 @@ mod test {
         };
         assert_eq!(
             sf.content(),
-            Some(String::from(r#"<hgroup><h1>Echo Oscar</h1></hgroup>"#))
+            Some(String::from(
+                r#"<hgroup><h1>Echo Oscar</h1></hgroup>"#
+            ))
         );
     }
 
@@ -156,7 +162,9 @@ mod test {
         };
         assert_eq!(
             sf.content(),
-            Some(String::from(r#"<hgroup><h1>Tango Whiskey</h1></hgroup>"#))
+            Some(String::from(
+                r#"<hgroup><h1>Tango Whiskey</h1></hgroup>"#
+            ))
         );
     }
 

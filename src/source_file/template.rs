@@ -18,14 +18,16 @@ impl SourceFile {
     }
 
     fn parse_template(&self) -> IResult<&str, String> {
-        let (a, _) = alt((take_until("\n-> attributes"), rest))(
-            self.source_data.as_str(),
-        )?;
+        let (a, _) = alt((
+            take_until("\n-> attributes"),
+            rest,
+        ))(self.source_data.as_str())?;
         if a.is_empty() {
             Ok(("", String::from("default.j2")))
         } else {
             let (a, _) = tag("\n-> attributes")(a)?;
-            let (a, _) = alt((take_until(">> template:"), rest))(a)?;
+            let (a, _) =
+                alt((take_until(">> template:"), rest))(a)?;
             if a.is_empty() {
                 Ok(("", String::from("default.j2")))
             } else {
@@ -42,36 +44,51 @@ impl SourceFile {
 
 #[cfg(test)]
 mod test {
-    use std::path::PathBuf;
     use crate::source_file::SourceFile;
+    use std::path::PathBuf;
 
     #[test]
     pub fn basic_template_check() {
-        let lines = vec!["", "-> attributes", ">> template: delta"];
+        let lines =
+            vec!["", "-> attributes", ">> template: delta"];
         let sf = SourceFile {
             source_data: lines.join("\n"),
-            source_path: PathBuf::from("")
+            source_path: PathBuf::from(""),
         };
-        assert_eq!(sf.template(), Some(String::from("delta.j2")));
+        assert_eq!(
+            sf.template(),
+            Some(String::from("delta.j2"))
+        );
     }
 
     #[test]
     pub fn default_if_no_attributes() {
         let lines = vec!["-> title", "", "no template"];
         let sf = SourceFile {
-           source_data: lines.join("\n"),
-           source_path: PathBuf::from("")
+            source_data: lines.join("\n"),
+            source_path: PathBuf::from(""),
         };
-        assert_eq!(sf.template(), Some(String::from("default.j2")));
+        assert_eq!(
+            sf.template(),
+            Some(String::from("default.j2"))
+        );
     }
 
     #[test]
     pub fn default_if_no_template_in_attributes() {
-        let lines = vec!["", "-> attributes", "", ">> type: no_template"];
+        let lines = vec![
+            "",
+            "-> attributes",
+            "",
+            ">> type: no_template",
+        ];
         let sf = SourceFile {
             source_data: lines.join("\n"),
             source_path: PathBuf::from(""),
         };
-        assert_eq!(sf.template(), Some(String::from("default.j2")));
+        assert_eq!(
+            sf.template(),
+            Some(String::from("default.j2"))
+        );
     }
 }
