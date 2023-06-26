@@ -51,7 +51,7 @@ mod test {
     }
 
     #[test]
-    pub fn solo_checked_todo() {
+    pub fn checked_todo() {
         let lines = ["[x] alfa", "", "[] bravo"];
         assert_eq!(
             todo_section(lines.join("\n").as_str()).unwrap().1,

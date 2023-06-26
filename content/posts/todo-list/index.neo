@@ -2,13 +2,13 @@
 
 TODO List
 
--> p
+-> todo
 
 [x] Add `<<>>`` tags to paragraphs
 
 [x] Add <<`shortcodes``|code>> to paragraphs
 
-[] Setup the TODO list section so this shows up as a list
+[x] Setup the TODO list section so this shows up as a list
 
 [x] Setup title tag so paragraphs can come after it (hgroup)
 
