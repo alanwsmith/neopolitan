@@ -9,13 +9,21 @@ pub fn title_section(
     source: &str,
 ) -> IResult<&str, Option<String>> {
     let (_, b) = paragraphs(source)?;
+    // let (a, b) = opt(
+    //     tuple((tag(">>"), multispace1, rest)),
+    // )(b)
+    // b.clone().into_iter().next().unwrap();
+
     let main_title = b.clone().into_iter().next().unwrap();
+    dbg!(&main_title);
+
     let paragraphs: Vec<_> = b
         .clone()
         .into_iter()
         .skip(1)
         .map(|x| block(&x).unwrap().1)
         .collect();
+    dbg!(&paragraphs);
     let mut env = Environment::new();
     env.set_source(Source::from_path("./templates"));
     let wrapper =
@@ -36,9 +44,7 @@ pub fn title_section(
 #[cfg(test)]
 mod test {
     use super::*;
-    // use crate::source_file::SourceFile;
     use rstest::rstest;
-    // use std::path::PathBuf;
 
     #[rstest]
     #[case(vec!["Echo Whiskey"].join(""), 
@@ -53,6 +59,14 @@ mod test {
     #[case(vec!["Bravo Charlie", "", "Alfa <<Delta|strong>> Sierra"].join("\n"), 
         Ok(("", Some(format!(r#"<hgroup><h1>Bravo Charlie</h1><p>Alfa <strong>Delta</strong> Sierra</p></hgroup>"#)))
     ))]
+
+    // #[case(vec![">> class: echo", "", "Foxtrot Tango", "", "Sierra Hotel"].join("\n"),
+    //     Ok(("", Some(format!(r#"<hgroup class="echo"><h1>Foxtrot Tango</h1><p>Sierra Hotel</p></hgroup>"#)))
+    // ))]
+
+    // #[case(vec![">> class: echo", "id: victor", "", "Foxtrot Tango", "", "Sierra Hotel"].join("\n"),
+    //     Ok(("", Some(format!(r#"<hgroup class="echo"><h1>Foxtrot Tango</h1><p>Sierra Hotel</p></hgroup>"#)))
+    // ))]
 
     pub fn solo_run_tests_for_title(
         #[case] input: String,
