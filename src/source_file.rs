@@ -1,3 +1,4 @@
+pub mod attributes;
 pub mod block;
 pub mod content;
 pub mod content_type;
