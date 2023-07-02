@@ -19,17 +19,23 @@ pub fn attributes(
         ),
     )))(source)?;
 
-    let delta = b
-        .unwrap()
-        .1
-        .into_iter()
-        .map(|x| x.split(":").collect::<Vec<&str>>())
-        .collect::<Vec<Vec<&str>>>();
-    let echo = delta
-        .iter()
-        .map(|r| (r[0].trim(), r[1].trim()))
-        .collect::<Vec<(&str, &str)>>();
-    Ok((a, echo))
+    match b {
+        Some(data) => {
+            let delta = data
+                .1
+                .into_iter()
+                .map(|x| {
+                    x.split(":").collect::<Vec<&str>>()
+                })
+                .collect::<Vec<Vec<&str>>>();
+            let echo = delta
+                .iter()
+                .map(|r| (r[0].trim(), r[1].trim()))
+                .collect::<Vec<(&str, &str)>>();
+            Ok((a, echo))
+        }
+        None => Ok((a, vec![])),
+    }
 
     //
 }
