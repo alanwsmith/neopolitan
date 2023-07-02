@@ -14,13 +14,21 @@ pub fn title_section(
     let (_, b) = paragraphs(source)?;
     dbg!(&b);
 
-    let input = b.clone().into_iter().next().unwrap();
-    dbg!(&input);
+    let mut main_title = "".to_string();
+    let mut skip_count: usize = 1;
+
+    // let input = b.clone().into_iter().next().unwrap();
+    // dbg!(&input);
 
     let jejej = b.clone().into_iter().next().unwrap();
-
-    // let (_a, _c) = attributes(input.as_str())?;
     let (a, c) = attributes(jejej.as_str()).unwrap();
+
+    if c.len() == 1 {
+        main_title = b.clone().into_iter().nth(1).unwrap();
+        skip_count = 2;
+    } else {
+        main_title = b.clone().into_iter().next().unwrap();
+    }
 
     //let (_a, _c) = attributes(input.as_str())?;
     // let whatever = b.clone()[0];
@@ -34,13 +42,12 @@ pub fn title_section(
     // )(b)
     // b.clone().into_iter().next().unwrap();
 
-    let main_title = b.clone().into_iter().next().unwrap();
     dbg!(&main_title);
 
     let paragraphs: Vec<_> = b
         .clone()
         .into_iter()
-        .skip(1)
+        .skip(skip_count)
         .map(|x| block(&x).unwrap().1)
         .collect();
     dbg!(&paragraphs);
@@ -49,19 +56,29 @@ pub fn title_section(
     let wrapper =
         env.get_template("sections/title.j2").unwrap();
 
-    Ok(("", None))
+    // Ok(("", None))
+
+    Ok((
+        "",
+        Some(
+            wrapper
+                .render(context!(
+                main_title => main_title,
+                paragraphs => paragraphs,
+                attributes => r#" class="echo""#
+                ))
+                .unwrap(),
+        ),
+    ))
 
     // Ok((
     //     "",
-    //     Some(
-    //         wrapper
-    //             .render(context!(
-    //             main_title => main_title,
-    //             paragraphs => paragraphs,
-    //                 ))
-    //             .unwrap(),
-    //     ),
+    //     Some(format!(
+    //         r#"<hgroup class="echo"><h1>Foxtrot Tango</h1><p>Sierra Hotel</p></hgroup>"#
+    //     )),
     // ))
+
+    //
 }
 
 #[cfg(test)]
@@ -85,10 +102,9 @@ mod test {
     #[case(vec![">> class: echo", "", "Foxtrot Tango", "", "Sierra Hotel"].join("\n"),
         Ok(("", Some(format!(r#"<hgroup class="echo"><h1>Foxtrot Tango</h1><p>Sierra Hotel</p></hgroup>"#)))
     ))]
-
-    // #[case(vec![">> class: echo", "id: victor", "", "Foxtrot Tango", "", "Sierra Hotel"].join("\n"),
-    //     Ok(("", Some(format!(r#"<hgroup class="echo"><h1>Foxtrot Tango</h1><p>Sierra Hotel</p></hgroup>"#)))
-    // ))]
+    #[case(vec![">> class: echo", "id: victor", "", "Foxtrot Tango", "", "Sierra Hotel"].join("\n"),
+        Ok(("", Some(format!(r#"<hgroup class="echo"><h1>Foxtrot Tango</h1><p>Sierra Hotel</p></hgroup>"#)))
+    ))]
 
     pub fn solo_run_tests_for_title(
         #[case] input: String,
