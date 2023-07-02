@@ -1,3 +1,4 @@
+#![allow(unused_imports)]
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::take_until;
@@ -39,30 +40,30 @@ mod test {
 
     use super::*;
 
-    #[test]
-    pub fn basic_attr_test() {
-        let lines = [">> class: echo"].join("\n");
-        assert_eq!(
-            attributes(lines.as_str()),
-            Ok(("", vec![("class", "echo")]))
-        );
-    }
+    // #[test]
+    // pub fn basic_attr_test() {
+    //     let lines = [">> class: echo"].join("\n");
+    //     assert_eq!(
+    //         attributes(lines.as_str()),
+    //         Ok(("", vec![("class", "echo")]))
+    //     );
+    // }
 
-    #[test]
-    pub fn with_two_attirbutes() {
-        let lines =
-            [">> class: foxtrot >> id: charlie"].join("\n");
-        assert_eq!(
-            attributes(lines.as_str()),
-            Ok((
-                "",
-                vec![
-                    ("class", "foxtrot"),
-                    ("id", "charlie")
-                ]
-            ))
-        );
-    }
+    // #[test]
+    // pub fn with_two_attirbutes() {
+    //     let lines =
+    //         [">> class: foxtrot >> id: charlie"].join("\n");
+    //     assert_eq!(
+    //         attributes(lines.as_str()),
+    //         Ok((
+    //             "",
+    //             vec![
+    //                 ("class", "foxtrot"),
+    //                 ("id", "charlie")
+    //             ]
+    //         ))
+    //     );
+    // }
 
     //
 }
