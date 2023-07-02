@@ -1,26 +1,16 @@
-use nom::branch::alt;
-use nom::bytes::complete::take_until;
-use nom::character::complete::multispace0;
-use nom::combinator::rest;
-// use nom::multi::many0;
-use nom::combinator::eof;
-use nom::multi::many_till;
-use nom::sequence::preceded;
+use std::vec;
+
+use crate::source_file::sections::p_blocks::p_blocks;
 use nom::IResult;
 
 pub fn aside_section<'a>(
     source: &'a str,
-) -> IResult<&str, Option<String>> {
-    let (a, b) = many_till(
-        preceded(
-            multispace0,
-            alt((take_until("\n\n"), rest)),
-        ),
-        eof,
-    )(source)?;
-    dbg!(&b);
-    dbg!(&a);
-    Ok(("", Some(format!("{}", ""))))
+) -> IResult<&str, Vec<String>> {
+    let mut content = p_blocks(source).unwrap().1;
+    let mut output = vec!["<aside>".to_string()];
+    output.append(&mut content);
+    output.push("</aside>".to_string());
+    Ok(("", output))
 }
 
 #[cfg(test)]
@@ -29,17 +19,25 @@ mod test {
     use super::*;
 
     #[test]
-    #[ignore]
-    pub fn test_basic_aside() {
+    pub fn solo_test_basic_aside() {
         let lines = vec![
             "",
-            "Slide the tray across the glass top.",
+            "Slide the tray",
+            "across the glass top",
+            "",
+            "Add salt before you fry the egg",
         ];
         assert_eq!(
-            aside_section(lines.join("").as_str())
+            aside_section(lines.join("\n").as_str())
                 .unwrap()
                 .1,
-            Some(format!("{}", r#"<aside>"#))
+            vec![
+                r#"<aside>"#.to_string(),
+                r#"<p>Slide the tray across the glass top</p>"#.to_string(),
+                r#"<p>Add salt before you fry the egg</p>"#.to_string(),
+                r#"</aside>"#.to_string(),
+
+            ]
         );
     }
 }

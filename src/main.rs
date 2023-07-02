@@ -8,10 +8,12 @@
 // use walkdir::Error;
 // use walkdir::WalkDir;
 
+use neopolitan::build_site::build_site;
+
 fn main() {
     println!("Starting process");
     // watch_files().unwrap();
-    // build_site();
+    build_site();
 }
 
 // #[derive(Debug)]

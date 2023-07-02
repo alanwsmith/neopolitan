@@ -3,6 +3,7 @@ pub mod content;
 pub mod content_type;
 pub mod output_dir;
 pub mod output_path;
+pub mod paragraphs;
 pub mod sections;
 pub mod template;
 pub mod title;

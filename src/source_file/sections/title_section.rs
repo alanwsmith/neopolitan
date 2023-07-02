@@ -1,41 +1,21 @@
-// use crate::source_file::SourceFile;
-//
-//
 use crate::source_file::block::block;
+use crate::source_file::paragraphs::paragraphs;
 use minijinja::context;
 use minijinja::Environment;
 use minijinja::Source;
-use nom::branch::alt;
-use nom::bytes::complete::tag;
-use nom::bytes::complete::take_until;
-use nom::combinator::eof;
-use nom::combinator::rest;
-use nom::multi::many_till;
-use nom::sequence::tuple;
 use nom::IResult;
-use nom::Parser;
 
-// impl SourceFile {
 pub fn title_section(
     source: &str,
 ) -> IResult<&str, Option<String>> {
-    let (_, b) = many_till(
-        alt((
-            tuple((take_until("\n\n"), tag("\n\n")))
-                .map(|x| x.0),
-            rest,
-        )),
-        eof,
-    )(source)?;
-    let main_title =
-        b.0.clone().into_iter().next().unwrap();
-    let paragraphs: Vec<_> =
-        b.0.clone()
-            .into_iter()
-            .skip(1)
-            .map(|x| block(x).unwrap().1)
-            .collect();
-    // dbg!(&paragraphs);
+    let (_, b) = paragraphs(source)?;
+    let main_title = b.clone().into_iter().next().unwrap();
+    let paragraphs: Vec<_> = b
+        .clone()
+        .into_iter()
+        .skip(1)
+        .map(|x| block(&x).unwrap().1)
+        .collect();
     let mut env = Environment::new();
     env.set_source(Source::from_path("./templates"));
     let wrapper =
@@ -52,7 +32,6 @@ pub fn title_section(
         ),
     ))
 }
-// }
 
 #[cfg(test)]
 mod test {
@@ -75,12 +54,10 @@ mod test {
         Ok(("", Some(format!(r#"<hgroup><h1>Bravo Charlie</h1><p>Alfa <strong>Delta</strong> Sierra</p></hgroup>"#)))
     ))]
 
-    pub fn run_tests_for_title(
+    pub fn solo_run_tests_for_title(
         #[case] input: String,
         #[case] expected: IResult<&str, Option<String>>,
     ) {
         assert_eq!(expected, title_section(input.as_str()));
     }
-
-    //
 }
