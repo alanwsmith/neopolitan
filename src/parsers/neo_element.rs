@@ -14,6 +14,7 @@ use nom::Parser;
 #[derive(Debug, PartialEq)]
 pub enum NeoElement {
     Abbreviation(Vec<NeoAttribute>),
+    BringAttention(Vec<NeoAttribute>),
     Link(Vec<NeoAttribute>),
     Strong(Vec<NeoAttribute>),
     None,
@@ -24,6 +25,7 @@ pub fn neo_element(
 ) -> IResult<&str, NeoElement> {
     let (source, el) = alt((
         tag_no_case("abbr"),
+        tag_no_case("b"),
         tag_no_case("strong"),
     ))(source)?;
 
@@ -43,6 +45,14 @@ pub fn neo_element(
             let (source, attrs) =
                 many0(neo_attribute)(source)?;
             Ok((source, NeoElement::Abbreviation(attrs)))
+        }
+        "b" => {
+            let (source, attrs) =
+                many0(neo_attribute)(source)?;
+            Ok((
+                source,
+                NeoElement::BringAttention(attrs),
+            ))
         }
         "strong" => {
             let (source, attrs) =
@@ -66,11 +76,28 @@ mod test {
     use rstest::rstest;
 
     #[rstest]
-    #[case("strong", ("", NeoElement::Strong(vec![])))]
-    #[case("strong|class: alfa", ("", NeoElement::Strong ( vec![NeoAttribute::Class(vec!["alfa".to_string()])])))]
-    #[case("strong|class: bravo charlie", ("", NeoElement::Strong ( vec![NeoAttribute::Class(vec!["bravo".to_string(), "charlie".to_string()])])))]
-    #[case("abbr|id: delta", ("", NeoElement::Abbreviation(vec![NeoAttribute::Id("delta".to_string())])))]
-    #[case("abbr|id: echo foxtrot", ("", NeoElement::Abbreviation(vec![NeoAttribute::Id("echo foxtrot".to_string())])))]
+    #[case("abbr|id: delta", ("", 
+        NeoElement::Abbreviation(
+            vec![NeoAttribute::Id("delta".to_string())])))]
+    #[case("abbr|id: echo foxtrot", ("", 
+        NeoElement::Abbreviation(
+            vec![NeoAttribute::Id("echo foxtrot".to_string())])))]
+    #[case("abbr|class: sierra whiskey|id: echo foxtrot>>", (">>", 
+        NeoElement::Abbreviation(vec![
+            NeoAttribute::Class(vec!["sierra".to_string(), "whiskey".to_string()]), 
+            NeoAttribute::Id("echo foxtrot".to_string()
+        )])))]
+    #[case("b", ("", 
+        NeoElement::BringAttention(vec![])))]
+    #[case("strong", ("", 
+        NeoElement::Strong(vec![])))]
+    #[case("strong|class: alfa", ("", 
+        NeoElement::Strong ( vec![
+            NeoAttribute::Class(vec!["alfa".to_string()])])))]
+    #[case("strong|class: bravo charlie", ("", 
+        NeoElement::Strong ( vec![
+            NeoAttribute::Class(vec!["bravo".to_string(), "charlie".to_string()])])))]
+
     // #[case("strong", ("", NeoElement::Strong { global_attrs: vec![]}))]
     // #[case("link|localhost", ("", NeoElement::Link{url: "localhost".to_string()}))]
     //#[case("code>>", ("", NeoElement::Code{language: None }))]
