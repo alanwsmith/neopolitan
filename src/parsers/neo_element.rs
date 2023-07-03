@@ -1,5 +1,4 @@
 #![allow(unused_imports)]
-// use crate::parsers::global_attr::GlobalAttr;
 use crate::parsers::neo_attribute::neo_attribute;
 use crate::parsers::neo_attribute::neo_button_attr::neo_button_attr;
 use crate::parsers::neo_attribute::NeoAttribute;

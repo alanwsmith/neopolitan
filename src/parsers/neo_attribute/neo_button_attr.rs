@@ -46,10 +46,7 @@ mod test {
     #[rstest]
     #[case("|type: reset>>", (">>", NeoAttribute::ButtonType("reset".to_string())))]
     #[case("|type: submit|class: alfa>>", ("|class: alfa>>", NeoAttribute::ButtonType("submit".to_string())))]
-    // #[case("|class: bravo charlie>>", (">>", NeoAttribute::Class(vec!["bravo".to_string(), "charlie".to_string()])))]
-    // #[case("|id: delta>>", (">>", NeoAttribute::Id("delta".to_string())))]
-    // #[case("|id: echo|class: foxtrot golf>>", ("|class: foxtrot golf>>", NeoAttribute::Id("echo".to_string())))]
-    fn solo_neo_button_attr_test(
+    fn neo_button_attr_test(
         #[case] input: &str,
         #[case] expected: (&str, NeoAttribute),
     ) {
