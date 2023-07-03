@@ -1,3 +1,11 @@
+use nom::IResult;
+use crate::parsers::attribute::Attribute;
+
+pub fn global_attr_class(source: &str) -> IResult<&str, Attribute> {
+    Ok((source, Attribute::None))
+}
+
+
 // use crate::parsers::attribute::Attribute;
 // use nom::IResult;
 
