@@ -20,6 +20,7 @@ pub enum NeoElement {
     B(Vec<NeoAttribute>),
     Button(Vec<NeoAttribute>),
     Data(Vec<NeoAttribute>),
+    Del(Vec<NeoAttribute>),
     Link(Vec<NeoAttribute>),
     Strong(Vec<NeoAttribute>),
     None,
@@ -33,6 +34,7 @@ pub fn neo_element(
         tag_no_case("button"),
         tag_no_case("b"),
         tag_no_case("data"),
+        tag_no_case("del"),
     ))(source)?;
 
     let payload = match el {
@@ -60,6 +62,11 @@ pub fn neo_element(
             )))(source)?;
             (source, NeoElement::Data(attrs))
         }
+        "del" => {
+            let (source, attrs) =
+                many0(neo_attribute)(source)?;
+            (source, NeoElement::Del(attrs))
+        }
         "strong" => {
             let (source, attrs) =
                 many0(neo_attribute)(source)?;
@@ -67,7 +74,6 @@ pub fn neo_element(
         }
         _ => (source, NeoElement::None),
     };
-
     Ok(payload)
 }
 
@@ -107,8 +113,8 @@ mod test {
         NeoElement::Data(vec![
             NeoAttribute::DataValue("foxtrot".to_string())
         ])))]
-    // - data - The Data Element
-    // - del - The Deleted Text Element
+    #[case("del>>", (">>",
+        NeoElement::Del(vec![])))]
     // - dfn - The Definition Element
     // - em - The Emphasis Element
     // - i - The Idiomatic Text Element
