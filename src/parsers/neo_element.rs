@@ -106,7 +106,7 @@ mod test {
     // #[case("code|rust>>", ("", NeoElement::Code{language: Some("rust".to_string())}))]
     // #[case("code|class: alfa>>", ("", NeoElement::Code{language: None}))]
     //#[case("b>>", ("", NeoElement::Code{language: None }))]
-    fn solo_neo_element_test(
+    fn neo_element_test(
         #[case] input: &str,
         #[case] expected: (&str, NeoElement),
     ) {

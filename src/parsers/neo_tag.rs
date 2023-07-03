@@ -67,8 +67,7 @@ mod test {
     }
 
     #[test]
-    #[ignore]
-    pub fn solo_neo_tag_with_class() {
+    pub fn neo_tag_with_class() {
         assert_eq!(
             neo_tag("<<alfa|strong|class: bravo>>")
                 .unwrap(),
@@ -85,24 +84,6 @@ mod test {
             )
         );
     }
-
-    // #[test]
-    // pub fn neotag_with_attribute() {
-    //     assert_eq!(
-    //         neo_tag("<<alfa|strong|class: highlight>>")
-    //             .unwrap(),
-    //         (
-    //             "",
-    //             NeoTag {
-    //                 attributes: vec![NeoAttribute::Class(
-    //                     vec!["highlight".to_string()]
-    //                 )],
-    //                 content: "alfa".to_string(),
-    //                 element: NeoElement::Strong
-    //             }
-    //         )
-    //     );
-    // }
 
     //
 }
