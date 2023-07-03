@@ -1,0 +1,79 @@
+-> title
+
+Inline Tags
+
+- <<abbr|link|/inline-tags/abbr.html>> - The Abbreviation Element
+
+- <<b|link|/inline-tags/b.html>> - The Bring Attention To Element
+
+- <<button|link|/inline-tags/button.html>> - The Button Element
+
+- <<data|link|/inline-tags/data.html>> - The Data Element
+
+- <<del|link|/inline-tags/del.html>> - The Deleted Text Element
+
+- <<dfn|link|/inline-tags/dfn.html>> - The Definition Element
+
+- <<em|link|/inline-tags/em.html>> - The Emphasis Element
+
+- <<i|link|/inline-tags/i.html>> - The Idiomatic Text Element
+
+- <<ins|link|/inline-tags/ins.html>> - The Insert Element
+
+- <<kbd|link|/inline-tags/kbd.html>> - The Keyboard Input Element
+
+- <<label|link|/inline-tags/label.html>> - The Label Element
+
+- <<legend|link|/inline-tags/legend.html>> - The Field Set Legend Element
+
+- <<link|link|/inline-tags/link.html>> - The External Resource Link Element
+
+- <<meter|link|/inline-tags/meter.html>> - The HTML Meter Element
+
+- <<object|link|/inline-tags/object.html>> - The External Object Element
+
+- <<progress|link|/inline-tags/progress.html>> - The Progress Indicator Element
+
+- <<q|link|/inline-tags/q.html>> - The Inline Quotation Element
+
+- <<s|link|/inline-tags/s.html>> - The Strikethrough Element
+
+- <<samp|link|/inline-tags/samp.html>> - The Sample Output Element
+
+- <<small|link|/inline-tags/small.html>> - The Side Comment Element
+
+- <<span|link|/inline-tags/span.html>> - The Content Span Element
+
+- <<strong|link|/inline-tags/strong.html>> - The Strong Importance Element
+
+- <<sub|link|/inline-tags/sub.html>> - The Subscript Element
+
+- <<sup|link|/inline-tags/sup.html>> - The Superscript Element
+
+- <<time|link|/inline-tags/time.html>> - The (Date) Time Element
+
+- <<u|link|/inline-tags/u.html>> - The Unarticulated Annotation Element
+
+- <<var|link|/inline-tags/var.html>> - The Variable element
+
+
+-> h3
+
+In Progress
+
+- cite - The Citation Element
+
+- code - The Inline Code Element
+
+- img - The Image Embed Element
+
+- input - The Input (Form Input) Element
+
+- wbr - The Line Break Opportunity Element
+
+- br - The Line Break Element
+
+-> attributes
+>> status: published
+>> date: 2023-05-14 23:06:29
+>> id: 2poovhji

@@ -2,9 +2,138 @@
 
 Neopolitan
 
+
 -> subtitle 
 
 A plain-text format websites
+
+
+-> note
+
+These are scratch notes for doing the built of my
+process for the website. The format itself is one
+the home page. 
+
+> neopolitan.alanwsmith.com/ 
+> https://neopolitan.alanwsmith.com/ >
+
+
+-> h2
+
+Usage
+
+
+-> list
+
+- Install it from source (directions on the way)
+
+- Run `neopolitan`` in a directory with a `content``
+directory and it'll build the site. 
+
+
+-> h2
+
+Features
+
+-> list
+
+[x] Code blocks have language applied automatically 
+if there is one. 
+
+[] Files to into directories and get renamed to 
+index.html inside of them so other assets can
+be stored along side
+
+[] Choose the template based on the attribute from
+the file
+
+[] Reference blocks that turn into footnotes if there
+is a matching `^id^^`` in the body of the text
+
+[] Autobuild redirects file when paths change
+
+-> todos
+
+[] Add any tests back in there were commented out. 
+
+[] Move tests so they don't use templates (just do them
+as you run into them) (See the list below)
+
+[] Identify posts that don't have an attributes section 
+
+[x] Only publish posts that are marked as `published`, 
+`draft`, or `scratch`
+
+[] Create category index pages
+
+[] Create index page
+
+[] Identify pages missing key attributes
+
+-> p
+
+Test to move over to using just the data instead
+of the output template:
+
+
+aside.j2
+attributes.j2
+audio.j2
+blockquote.j2
+blurb.j2
+canvas.j2
+categories.j2
+checklist.j2
+code.j2
+comment.j2
+css.j2
+details.j2
+dlist.j2
+ext.j2
+footnote.j2
+h1.j2
+h2.j2
+h3.j2
+h4.j2
+h5.j2
+h6.j2
+head.j2
+hr.j2
+html.j2
+image.j2
+include.j2
+list.j2
+menu.j2
+nav.j2
+note.j2
+notes.j2
+object.j2
+olist.j2
+p.j2
+pbcopy
+picture.j2
+pre.j2
+reference.j2
+results.j2
+script.j2
+startcode.j2
+startdiv.j2
+startneoexample.j2
+subtitle.j2
+table.j2
+textarea.j2
+title.j2
+todo.j2
+todos.j2
+video.j2
+vimeo.j2
+warning.j2
+widget.j2
+youtube.j2
+
+
+
+
 
 -> notes
 

@@ -1,0 +1,18 @@
+-> title
+
+Sections
+
+-> list
+
+- The <<Content Sections|link|/sections/content.html>>
+
+- The <<Metadata Sections|link|/sections/metadata.html>>
+
+- The <<Functional Sections|link|/sections/functional.html>>
+
+
+
+-> attributes
+>> status: published
+>> date: 2023-05-14 22:53:22
+>> id: 2pomukun

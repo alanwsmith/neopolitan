@@ -1,0 +1,20 @@
+-> title
+
+Section: textarea
+
+
+
+-> startneoexample
+
+-> textarea
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample
+
+
+-> attributes
+>> status: published
+>> date: 2023-05-14 22:42:06
+>> id: 2polxstt

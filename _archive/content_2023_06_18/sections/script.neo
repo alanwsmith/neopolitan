@@ -1,0 +1,20 @@
+-> title
+
+Section: script
+
+
+
+-> startneoexample
+
+-> script
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample
+
+
+-> attributes
+>> status: published
+>> date: 2023-05-14 22:45:19
+>> id: 2polvf07

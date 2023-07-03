@@ -1,0 +1,20 @@
+-> title
+
+Neopolitan Test Site
+
+-> p
+
+This is a test run of the website builder
+
+-> categories
+>> Miscellaneous
+
+-> attributes
+>> date: 2023-06-18 14:17:32
+>> id: 2rodupw3
+>> site: aws
+>> type: home_page 
+>> status: published
+>> template: home_page
+
+

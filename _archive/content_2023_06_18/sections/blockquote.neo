@@ -1,0 +1,20 @@
+-> title
+
+Section: blockquote
+
+
+
+-> startneoexample
+
+-> blockquote
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample
+
+
+-> attributes
+>> status: published
+>> date: 2023-05-14 22:59:16
+>> id: 2poncqei

@@ -1,0 +1,26 @@
+-> title
+
+Section: list
+
+TODO: Add attributes
+
+
+
+
+-> startneoexample
+
+-> list
+
+- the quick brown fox
+
+- and the lazy dog
+
+and some more text
+
+-> endneoexample
+
+
+-> attributes
+>> status: published
+>> date: 2023-05-14 22:53:11
+>> id: 2pomszih

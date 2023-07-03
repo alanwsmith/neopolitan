@@ -1,0 +1,20 @@
+-> title
+
+Section: css
+
+
+
+-> startneoexample
+
+-> css
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample
+
+
+-> attributes
+>> status: published
+>> date: 2023-05-14 22:58:00
+>> id: 2ponthjj

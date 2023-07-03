@@ -1,0 +1,20 @@
+-> title
+
+Section: h6
+
+
+
+-> startneoexample
+
+-> h6
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample
+
+
+-> attributes
+>> status: published
+>> date: 2023-05-14 22:54:56
+>> id: 2pon6brz

@@ -1,0 +1,20 @@
+-> title
+
+Section: vimeo
+
+
+
+-> startneoexample
+
+-> vimeo
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample
+
+
+-> attributes
+>> status: published
+>> date: 2023-05-14 22:41:08
+>> id: 2polq6m4

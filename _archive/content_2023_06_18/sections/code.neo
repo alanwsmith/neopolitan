@@ -1,0 +1,22 @@
+-> title
+
+Section: code
+
+TODO: Add language with just
+one key on the first line
+
+-> startneoexample
+
+-> code
+>> name: example
+>> class: foxtrot
+
+the quick brown fox
+
+-> endneoexample
+
+
+-> attributes
+>> status: published
+>> date: 2023-05-14 22:58:30
+>> id: 2ponx6hq

@@ -1,0 +1,45 @@
+-> comment
+
+Don't edit this by hand. Run the 
+_020_make_inilne_tags_files.py file to update it
+
+-> title
+
+Neopolitan
+
+-> h2
+
+Inline Tag: link (The External Resource Link Element)
+
+
+-> h3
+
+Basic Usage
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|link|https://www.example.com/>> to write
+
+-> endneoexample
+
+
+
+-> h3
+
+With Attributes
+
+-> startneoexample
+
+-> p
+
+Use a <<pencil|link|https://www.example.com/|class: echo>> to write
+
+-> endneoexample
+
+
+-> attributes
+>> status: published
+>> date: 2023-05-14 23:05:40
+>> id: 2poop6ed

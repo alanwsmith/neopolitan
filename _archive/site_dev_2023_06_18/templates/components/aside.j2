@@ -1,0 +1,10 @@
+<aside {{- attributes_string -}}>
+<div class="asideContainer">
+<div class="asideTitle">Aside:</div>
+  {%- for part in parts -%}
+    <p>
+    {{- part -}} 
+    </p>
+  {%- endfor -%}
+</div>
+</aside>
