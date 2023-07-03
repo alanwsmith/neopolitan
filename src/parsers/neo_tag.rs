@@ -1,4 +1,6 @@
 #![allow(unused_imports)]
+use crate::parsers::neo_attribute::neo_attribute;
+use crate::parsers::neo_attribute::NeoAttribute;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::character::complete::space1;
@@ -15,12 +17,6 @@ use nom::IResult;
 use nom::Parser;
 
 #[derive(Debug, PartialEq)]
-pub enum NeoAttribute {
-    Class(Vec<String>),
-    Id(String),
-}
-
-#[derive(Debug, PartialEq)]
 pub struct NeoTag {
     attributes: Vec<NeoAttribute>,
     content: String,
@@ -31,33 +27,6 @@ pub fn css_class_name(
     source: &str,
 ) -> IResult<&str, String> {
     alpha1(source).map(|x| (x.0, x.1.to_string()))
-}
-
-pub fn neo_attribute(
-    source: &str,
-) -> IResult<&str, NeoAttribute> {
-    let (source, attr_key) = terminated(
-        alt((tag("class"), tag("id"))),
-        tag(": "),
-    )(source)?;
-
-    match attr_key {
-        "class" => {
-            let (source, attr_values) =
-                separated_list1(space1, css_class_name)(
-                    source,
-                )?;
-            Ok((source, NeoAttribute::Class(attr_values)))
-        }
-        "id" => {
-            let (source, attr_value) = alpha1(source)?;
-            Ok((
-                source,
-                NeoAttribute::Id(attr_value.to_string()),
-            ))
-        }
-        _ => panic!("AAAAAAAAAAAAAAAAAAAAAAAAAA"),
-    }
 }
 
 pub fn neo_tag(source: &str) -> IResult<&str, NeoTag> {
@@ -90,7 +59,7 @@ mod test {
     use super::*;
 
     #[test]
-    pub fn solo_basic_neo_tag() {
+    pub fn basic_neo_tag() {
         assert_eq!(
             neo_tag("<<alfa|strong>>").unwrap(),
             (
@@ -105,7 +74,7 @@ mod test {
     }
 
     #[test]
-    pub fn solo_neotag_with_class() {
+    pub fn neotag_with_class() {
         assert_eq!(
             neo_tag("<<alfa|strong|class: highlight>>")
                 .unwrap(),
@@ -123,7 +92,7 @@ mod test {
     }
 
     #[test]
-    pub fn solo_neotag_with_multiple_classes() {
+    pub fn neotag_with_multiple_classes() {
         assert_eq!(
             neo_tag("<<bravo|strong|class: bgblue text>>")
                 .unwrap(),
@@ -158,8 +127,7 @@ mod test {
 
     #[test]
     #[ignore]
-    pub fn solo_neotag_with_multiple_classes_with_weird_names(
-    ) {
+    pub fn neotag_with_multiple_classes_with_weird_names() {
         // TODO: Setup this based off the CSS spec with the
         // differetn ways class names can be formed
         assert_eq!(
@@ -179,7 +147,7 @@ mod test {
     }
 
     #[test]
-    pub fn solo_neotag_with_id() {
+    pub fn neotag_with_id() {
         assert_eq!(
             neo_tag("<<echo|kbd|id: foxtrot>>").unwrap(),
             (
