@@ -17,6 +17,7 @@ pub fn title_section(
     let mut main_title = "".to_string();
     let mut skip_count: usize = 1;
     let mut attrs: Vec<String> = vec![];
+    dbg!(&main_title);
 
     // let input = b.clone().into_iter().next().unwrap();
     // dbg!(&input);
@@ -104,7 +105,7 @@ mod test {
         Ok(("", Some(format!(r#"<hgroup class="echo" id="victor"><h1>Foxtrot Tango</h1><p>Sierra Hotel</p></hgroup>"#)))
     ))]
 
-    pub fn solo_run_tests_for_title(
+    pub fn run_tests_for_title(
         #[case] input: String,
         #[case] expected: IResult<&str, Option<String>>,
     ) {

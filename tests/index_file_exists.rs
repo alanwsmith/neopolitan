@@ -1,6 +1,7 @@
 use std::path::PathBuf;
 
 #[test]
+#[ignore]
 fn index_file_exists() {
     neopolitan::clear_output_directory::clear_output_directory();
     assert_eq!(

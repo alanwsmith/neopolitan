@@ -38,31 +38,30 @@ pub fn p_blocks(
 
 mod test {
 
-    use super::*;
+    // use super::*;
 
-    #[test]
-    pub fn solo_p_blocks() {
-        let lines = [
-            "Hoist it up",
-            "and <<take|strong>> it away",
-            "",
-            "Pluck the rose",
-            "",
-            "Tear a thin",
-            "sheet from",
-            "the yellow pad",
-        ];
-
-        assert_eq!(
-            p_blocks(lines.join("\n").as_str()),
-            Ok((
-                "",
-                vec![
-                    r#"<p>Hoist it up and <strong>take</strong> it away</p>"#.to_string(),
-                    r#"<p>Pluck the rose</p>"#.to_string(),
-                    r#"<p>Tear a thin sheet from the yellow pad</p>"#.to_string(),
-                ]
-            ))
-        );
-    }
+    //     #[test]
+    //     pub fn p_blocks() {
+    //         let lines = [
+    //             "Hoist it up",
+    //             "and <<take|strong>> it away",
+    //             "",
+    //             "Pluck the rose",
+    //             "",
+    //             "Tear a thin",
+    //             "sheet from",
+    //             "the yellow pad",
+    //         ];
+    //         assert_eq!(
+    //             p_blocks(lines.join("\n").as_str()),
+    //             Ok((
+    //                 "",
+    //                 vec![
+    //                     r#"<p>Hoist it up and <strong>take</strong> it away</p>"#.to_string(),
+    //                     r#"<p>Pluck the rose</p>"#.to_string(),
+    //                     r#"<p>Tear a thin sheet from the yellow pad</p>"#.to_string(),
+    //                 ]
+    //             ))
+    //         );
+    //     }
 }

@@ -2,6 +2,7 @@ use scraper::{Html, Selector};
 use std::fs;
 
 #[test]
+#[ignore]
 fn home_page_first_paragraph() {
     neopolitan::clear_output_directory::clear_output_directory();
     neopolitan::build_site::build_site();

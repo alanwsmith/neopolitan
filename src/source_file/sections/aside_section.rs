@@ -19,7 +19,7 @@ mod test {
     use super::*;
 
     #[test]
-    pub fn solo_test_basic_aside() {
+    pub fn test_basic_aside() {
         let lines = vec![
             "",
             "Slide the tray",

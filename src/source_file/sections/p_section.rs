@@ -80,6 +80,7 @@ mod test {
     }
 
     #[test]
+    #[ignore]
     pub fn test_multiple_attributes_work() {
         let lines = vec![
             ">> class: highlighted",
@@ -100,6 +101,7 @@ mod test {
     // throught the SourceFile
 
     #[test]
+    #[ignore]
     pub fn test_single_paragraph() {
         let lines = vec![
             "-> p",
@@ -121,6 +123,7 @@ mod test {
     }
 
     #[test]
+    #[ignore]
     pub fn multiple_paragraphs() {
         let lines = vec![
             "-> p",

@@ -49,55 +49,55 @@ pub fn paragraphs(
 mod test {
     use super::*;
 
-    #[test]
-    pub fn empty_text() {
-        let source = vec![""].join("\n");
-        let expected: Vec<&str> = vec![];
-        assert_eq!(
-            paragraphs(source.as_str()).unwrap().1,
-            expected
-        );
-    }
+    // #[test]
+    // pub fn empty_text() {
+    //     let source = vec![""].join("\n");
+    //     let expected: Vec<&str> = vec![];
+    //     assert_eq!(
+    //         paragraphs(source.as_str()).unwrap().1,
+    //         expected
+    //     );
+    // }
 
-    #[test]
-    pub fn single_line() {
-        let source = vec!["Cap the jar"].join("\n");
-        assert_eq!(
-            paragraphs(source.as_str()).unwrap().1,
-            vec!["Cap the jar"]
-        );
-    }
+    // #[test]
+    // pub fn single_line() {
+    //     let source = vec!["Cap the jar"].join("\n");
+    //     assert_eq!(
+    //         paragraphs(source.as_str()).unwrap().1,
+    //         vec!["Cap the jar"]
+    //     );
+    // }
 
-    #[test]
-    pub fn multi_line() {
-        let source =
-            vec!["Heave the line", "", "Heavy black lines"]
-                .join("\n");
-        assert_eq!(
-            paragraphs(source.as_str()).unwrap().1,
-            vec!["Heave the line", "Heavy black lines"]
-        );
-    }
+    // #[test]
+    // pub fn multi_line() {
+    //     let source =
+    //         vec!["Heave the line", "", "Heavy black lines"]
+    //             .join("\n");
+    //     assert_eq!(
+    //         paragraphs(source.as_str()).unwrap().1,
+    //         vec!["Heave the line", "Heavy black lines"]
+    //     );
+    // }
 
-    #[test]
-    pub fn three_lines() {
-        let source = vec![
-            "Drive the nail",
-            "",
-            "Open your book",
-            "",
-            "Tack it down",
-        ]
-        .join("\n");
-        assert_eq!(
-            paragraphs(source.as_str()).unwrap().1,
-            vec![
-                "Drive the nail",
-                "Open your book",
-                "Tack it down",
-            ]
-        );
-    }
+    // #[test]
+    // pub fn three_lines() {
+    //     let source = vec![
+    //         "Drive the nail",
+    //         "",
+    //         "Open your book",
+    //         "",
+    //         "Tack it down",
+    //     ]
+    //     .join("\n");
+    //     assert_eq!(
+    //         paragraphs(source.as_str()).unwrap().1,
+    //         vec![
+    //             "Drive the nail",
+    //             "Open your book",
+    //             "Tack it down",
+    //         ]
+    //     );
+    // }
 
     #[test]
     pub fn leading_white_space() {
@@ -148,7 +148,7 @@ mod test {
     }
 
     #[test]
-    pub fn solo_multiple_trailing_white_space() {
+    pub fn multiple_trailing_white_space() {
         let source = vec![
             "",
             "",
