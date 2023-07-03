@@ -49,7 +49,7 @@ mod test {
     #[case("class: alfa", ("", NeoAttribute::Class(vec!["alfa".to_string()])))]
     #[case("class: bravo charlie", ("", NeoAttribute::Class(vec!["bravo".to_string(), "charlie".to_string()])))]
     #[case("id: delta", ("", NeoAttribute::Id("delta".to_string())))]
-    fn solo_neo_attribute_test(
+    fn neo_attribute_test(
         #[case] input: &str,
         #[case] expected: (&str, NeoAttribute),
     ) {
