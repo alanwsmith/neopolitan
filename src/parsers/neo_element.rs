@@ -74,10 +74,10 @@ mod test {
     use rstest::rstest;
 
     #[rstest]
-    #[case("abbr|id: delta", ("", 
+    #[case("abbr|id: delta>>", (">>", 
         NeoElement::Abbreviation(
             vec![NeoAttribute::Id("delta".to_string())])))]
-    #[case("abbr|id: echo foxtrot", ("", 
+    #[case("abbr|id: echo foxtrot>>", (">>", 
         NeoElement::Abbreviation(
             vec![NeoAttribute::Id("echo foxtrot".to_string())])))]
     #[case("abbr|class: sierra whiskey|id: echo foxtrot>>", (">>", 
@@ -85,18 +85,18 @@ mod test {
             NeoAttribute::Class(vec!["sierra".to_string(), "whiskey".to_string()]), 
             NeoAttribute::Id("echo foxtrot".to_string()
         )])))]
-    #[case("b", ("", 
+    #[case("b>>", (">>", 
         NeoElement::BringAttention(vec![])))]
-    #[case("button", ("", 
+    #[case("button>>", (">>", 
         NeoElement::Button(vec![])))]
-    #[case("button|type: reset", ("", 
+    #[case("button|type: reset>>", (">>", 
         NeoElement::Button(vec![NeoAttribute::ButtonType("reset".to_string())])))]
-    #[case("strong", ("", 
+    #[case("strong>>", (">>", 
         NeoElement::Strong(vec![])))]
-    #[case("strong|class: alfa", ("", 
+    #[case("strong|class: alfa>>", (">>", 
         NeoElement::Strong ( vec![
             NeoAttribute::Class(vec!["alfa".to_string()])])))]
-    #[case("strong|class: bravo charlie", ("", 
+    #[case("strong|class: bravo charlie>>", (">>", 
         NeoElement::Strong ( vec![
             NeoAttribute::Class(vec!["bravo".to_string(), "charlie".to_string()])])))]
 
