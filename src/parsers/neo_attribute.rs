@@ -11,9 +11,11 @@ use nom::sequence::terminated;
 use nom::IResult;
 
 pub mod neo_attr_id;
+pub mod neo_button_attr;
 
 #[derive(Debug, PartialEq)]
 pub enum NeoAttribute {
+    ButtonType(String),
     Class(Vec<String>),
     Id(String),
 }

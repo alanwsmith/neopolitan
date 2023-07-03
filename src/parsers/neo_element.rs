@@ -1,6 +1,7 @@
 #![allow(unused_imports)]
 // use crate::parsers::global_attr::GlobalAttr;
 use crate::parsers::neo_attribute::neo_attribute;
+use crate::parsers::neo_attribute::neo_button_attr::neo_button_attr;
 use crate::parsers::neo_attribute::NeoAttribute;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -15,6 +16,7 @@ use nom::Parser;
 pub enum NeoElement {
     Abbreviation(Vec<NeoAttribute>),
     BringAttention(Vec<NeoAttribute>),
+    Button(Vec<NeoAttribute>),
     Link(Vec<NeoAttribute>),
     Strong(Vec<NeoAttribute>),
     None,
@@ -25,21 +27,11 @@ pub fn neo_element(
 ) -> IResult<&str, NeoElement> {
     let (source, el) = alt((
         tag_no_case("abbr"),
+        tag_no_case("button"),
         tag_no_case("b"),
         tag_no_case("strong"),
     ))(source)?;
 
-    // tag_no_case("kbd").map(|_| NeoElement::Keyboard),
-    // separated_pair(
-    //     tag_no_case("link"),
-    //     tag("|"),
-    //     alpha1,
-    // )
-    // .map(|(_, url): (&str, &str)| {
-    //     NeoElement::Link {
-    //         url: url.to_string(),
-    //     }
-    // }),
     match el {
         "abbr" => {
             let (source, attrs) =
@@ -53,6 +45,13 @@ pub fn neo_element(
                 source,
                 NeoElement::BringAttention(attrs),
             ))
+        }
+        "button" => {
+            let (source, attrs) = many0(alt((
+                neo_attribute,
+                neo_button_attr,
+            )))(source)?;
+            Ok((source, NeoElement::Button(attrs)))
         }
         "strong" => {
             let (source, attrs) =
@@ -89,6 +88,10 @@ mod test {
         )])))]
     #[case("b", ("", 
         NeoElement::BringAttention(vec![])))]
+    #[case("button", ("", 
+        NeoElement::Button(vec![])))]
+    #[case("button|type: reset", ("", 
+        NeoElement::Button(vec![NeoAttribute::ButtonType("reset".to_string())])))]
     #[case("strong", ("", 
         NeoElement::Strong(vec![])))]
     #[case("strong|class: alfa", ("", 
