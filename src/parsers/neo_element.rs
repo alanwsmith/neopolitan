@@ -1,6 +1,7 @@
 #![allow(unused_imports)]
 use crate::parsers::neo_attribute::neo_attribute;
 use crate::parsers::neo_attribute::neo_button_attr::neo_button_attr;
+use crate::parsers::neo_attribute::neo_data_attr::neo_data_attr;
 use crate::parsers::neo_attribute::NeoAttribute;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
@@ -18,6 +19,7 @@ pub enum NeoElement {
     Abbr(Vec<NeoAttribute>),
     B(Vec<NeoAttribute>),
     Button(Vec<NeoAttribute>),
+    Data(Vec<NeoAttribute>),
     Link(Vec<NeoAttribute>),
     Strong(Vec<NeoAttribute>),
     None,
@@ -30,7 +32,7 @@ pub fn neo_element(
         tag_no_case("abbr"),
         tag_no_case("button"),
         tag_no_case("b"),
-        tag_no_case("strong"),
+        tag_no_case("data"),
     ))(source)?;
 
     let payload = match el {
@@ -50,6 +52,13 @@ pub fn neo_element(
                 neo_button_attr,
             )))(source)?;
             (source, NeoElement::Button(attrs))
+        }
+        "data" => {
+            let (source, attrs) = many0(alt((
+                neo_attribute,
+                neo_data_attr,
+            )))(source)?;
+            (source, NeoElement::Data(attrs))
         }
         "strong" => {
             let (source, attrs) =
@@ -78,31 +87,62 @@ mod test {
     #[case("abbr|id: delta>>", (">>", 
         NeoElement::Abbr(
             vec![NeoAttribute::Id("delta".to_string())])))]
+    #[case("abbr|id: echo foxtrot>>", (">>",
+        NeoElement::Abbr(
+            vec![NeoAttribute::Id("echo foxtrot".to_string())])))]
+    #[case("abbr|class: sierra whiskey|id: echo foxtrot>>", (">>",
+        NeoElement::Abbr(vec![
+            NeoAttribute::Class(vec!["sierra".to_string(), "whiskey".to_string()]),
+            NeoAttribute::Id("echo foxtrot".to_string()
+        )])))]
+    #[case("b>>", (">>",
+        NeoElement::B(vec![])))]
+    #[case("button>>", (">>",
+        NeoElement::Button(vec![])))]
+    #[case("button|type: reset>>", (">>",
+        NeoElement::Button(vec![NeoAttribute::ButtonType("reset".to_string())])))]
+    #[case("data>>", (">>",
+        NeoElement::Data(vec![])))]
+    #[case("data|value: foxtrot>>", (">>",
+        NeoElement::Data(vec![
+            NeoAttribute::DataValue("foxtrot".to_string())
+        ])))]
+    // - data - The Data Element
+    // - del - The Deleted Text Element
+    // - dfn - The Definition Element
+    // - em - The Emphasis Element
+    // - i - The Idiomatic Text Element
+    // - ins - The Insert Element
+    // - kbd - The Keyboard Input Element
+    // - label - The Label Element
+    // - legend - The Field Set Legend Element
+    // - link - The External Resource Link Element
+    // - meter - The HTML Meter Element
+    // - object - The External Object Element
+    // - progress - The Progress Indicator Element
+    // - q - The Inline Quotation Element
+    // - s - The Strikethrough Element
+    // - samp - The Sample Output Element
+    // - small - The Side Comment Element
+    // - span - The Content Span Element
+    // - strong - The Strong Importance Element
 
-    // #[case("abbr|id: echo foxtrot>>", (">>",
-    //     NeoElement::Abbr(
-    //         vec![NeoAttribute::Id("echo foxtrot".to_string())])))]
-    // #[case("abbr|class: sierra whiskey|id: echo foxtrot>>", (">>",
-    //     NeoElement::Abbr(vec![
-    //         NeoAttribute::Class(vec!["sierra".to_string(), "whiskey".to_string()]),
-    //         NeoAttribute::Id("echo foxtrot".to_string()
-    //     )])))]
-    // #[case("b>>", (">>",
-    //     NeoElement::B(vec![])))]
-    // #[case("button>>", (">>",
-    //     NeoElement::Button(vec![])))]
-    // #[case("button|type: reset>>", (">>",
-    //     NeoElement::Button(vec![NeoAttribute::ButtonType("reset".to_string())])))]
-    // #[case("strong>>", (">>",
-    //     NeoElement::Strong(vec![])))]
-    // #[case("strong|class: alfa>>", (">>",
-    //     NeoElement::Strong ( vec![
-    //         NeoAttribute::Class(vec!["alfa".to_string()])])))]
-    // #[case("strong|class: bravo charlie>>", (">>",
-    //     NeoElement::Strong ( vec![
-    //         NeoAttribute::Class(vec!["bravo".to_string(), "charlie".to_string()])])))]
+    ////
+    //#[case("strong>>", (">>",
+    //    NeoElement::Strong(vec![])))]
+    //#[case("strong|class: alfa>>", (">>",
+    //    NeoElement::Strong ( vec![
+    //        NeoAttribute::Class(vec!["alfa".to_string()])])))]
+    //#[case("strong|class: bravo charlie>>", (">>",
+    //    NeoElement::Strong ( vec![
+    //        NeoAttribute::Class(vec!["bravo".to_string(), "charlie".to_string()])])))]
 
-    // #[case("strong", ("", NeoElement::Strong { global_attrs: vec![]}))]
+    // - sub - The Subscript Element
+    // - sup - The Superscript Element
+    // - time - The (Date) Time Element
+    // - u - The Unarticulated Annotation Element
+    // - var - The Variable element
+
     // #[case("link|localhost", ("", NeoElement::Link{url: "localhost".to_string()}))]
     //#[case("code>>", ("", NeoElement::Code{language: None }))]
     // #[case("code|rust>>", ("", NeoElement::Code{language: Some("rust".to_string())}))]

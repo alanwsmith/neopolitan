@@ -45,14 +45,14 @@ mod test {
     use super::*;
 
     #[test]
-    pub fn basic_neo_tag() {
+    pub fn solo_basic_neo_tag() {
         assert_eq!(
-            neo_tag("<<alfa|strong>>").unwrap(),
+            neo_tag("<<alfa|abbr>>").unwrap(),
             (
                 "",
                 NeoTag {
                     content: "alfa".to_string(),
-                    element: NeoElement::Strong(vec![]),
+                    element: NeoElement::Abbr(vec![]),
                 }
             )
         );
@@ -61,15 +61,14 @@ mod test {
     #[test]
     pub fn neo_tag_with_class() {
         assert_eq!(
-            neo_tag("<<alfa|strong|class: bravo>>")
-                .unwrap(),
+            neo_tag("<<bravo|abbr|class: delta>>").unwrap(),
             (
                 "",
                 NeoTag {
-                    content: "alfa".to_string(),
-                    element: NeoElement::Strong(vec![
+                    content: "bravo".to_string(),
+                    element: NeoElement::Abbr(vec![
                         NeoAttribute::Class(vec![
-                            "bravo".to_string()
+                            "delta".to_string()
                         ])
                     ]),
                 }

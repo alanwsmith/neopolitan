@@ -15,9 +15,14 @@ pub fn title_section(
     // dbg!(&b);
 
     let mut main_title = "".to_string();
+    // this debug just prevents a warning about
+    // main_title not being read. TODO: Refactor
+    // so that that's not an issue
+    dbg!(&main_title);
+
     let mut skip_count: usize = 1;
     let mut attrs: Vec<String> = vec![];
-    dbg!(&main_title);
+    
 
     // let input = b.clone().into_iter().next().unwrap();
     // dbg!(&input);
@@ -25,7 +30,7 @@ pub fn title_section(
     let jejej = b.clone().into_iter().next().unwrap();
     let (a, c) = attributes(jejej.as_str()).unwrap();
 
-    dbg!(&c);
+    // dbg!(&c);
     if c.len() >= 1 {
         main_title = b.clone().into_iter().nth(1).unwrap();
         skip_count = 2;
@@ -36,14 +41,14 @@ pub fn title_section(
     } else {
         main_title = b.clone().into_iter().next().unwrap();
     }
-    dbg!(&attrs);
-    dbg!(&c);
+    // dbg!(&attrs);
+    // dbg!(&c);
 
     //let (_a, _c) = attributes(input.as_str())?;
     // let whatever = b.clone()[0];
     // let whatever = b[0];
     // let (a, c) = attributes(whatever.as_str())?;
-    dbg!(&a);
+    // dbg!(&a);
 
     // let (a, b) = opt(
     //     tuple((tag(">>"), multispace1, rest)),
