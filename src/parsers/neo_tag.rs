@@ -15,7 +15,6 @@ use nom::IResult;
 
 #[derive(Debug, PartialEq)]
 pub struct NeoTag {
-    // attributes: Vec<NeoAttribute>,
     content: String,
     element: NeoElement,
 }
@@ -30,16 +29,9 @@ pub fn neo_tag(source: &str) -> IResult<&str, NeoTag> {
     let (source, (content, element)) = delimited(
         tag("<<"),
         separated_pair(alpha1, tag("|"), neo_element),
-        // pair(
-        //     opt(preceded(
-        //         tag("|"),
-        //         separated_list1(tag("|"), neo_attribute),
-        //     )),
-        // ),
         tag(">>"),
     )(source)?;
     let nt = NeoTag {
-        // attributes: attrs.unwrap_or(vec![]),
         content: content.to_string(),
         element,
     };
@@ -78,6 +70,26 @@ mod test {
                     element: NeoElement::Strong(vec![
                         NeoAttribute::Class(vec![
                             "bravo".to_string()
+                        ])
+                    ]),
+                }
+            )
+        );
+    }
+
+    #[test]
+    #[ignore]
+    pub fn neo_tag_with_content_including_spaces() {
+        assert_eq!(
+            neo_tag("<<delta 1 echo ! foxtrot|abbr|class: kilo>>")
+                .unwrap(),
+            (
+                "",
+                NeoTag {
+                    content: "delta 1 echo ! foxtrot".to_string(),
+                    element: NeoElement::Abbr(vec![
+                        NeoAttribute::Class(vec![
+                            "kilo".to_string()
                         ])
                     ]),
                 }

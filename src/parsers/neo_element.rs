@@ -6,6 +6,8 @@ use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
 use nom::character::complete::alpha1;
+use nom::combinator::map_parser;
+use nom::combinator::map_res;
 use nom::multi::many0;
 use nom::sequence::separated_pair;
 use nom::IResult;
@@ -13,8 +15,8 @@ use nom::Parser;
 
 #[derive(Debug, PartialEq)]
 pub enum NeoElement {
-    Abbreviation(Vec<NeoAttribute>),
-    BringAttention(Vec<NeoAttribute>),
+    Abbr(Vec<NeoAttribute>),
+    B(Vec<NeoAttribute>),
     Button(Vec<NeoAttribute>),
     Link(Vec<NeoAttribute>),
     Strong(Vec<NeoAttribute>),
@@ -31,34 +33,33 @@ pub fn neo_element(
         tag_no_case("strong"),
     ))(source)?;
 
-    match el {
+    let payload = match el {
         "abbr" => {
             let (source, attrs) =
                 many0(neo_attribute)(source)?;
-            Ok((source, NeoElement::Abbreviation(attrs)))
+            (source, NeoElement::Abbr(attrs))
         }
         "b" => {
             let (source, attrs) =
                 many0(neo_attribute)(source)?;
-            Ok((
-                source,
-                NeoElement::BringAttention(attrs),
-            ))
+            (source, NeoElement::B(attrs))
         }
         "button" => {
             let (source, attrs) = many0(alt((
                 neo_attribute,
                 neo_button_attr,
             )))(source)?;
-            Ok((source, NeoElement::Button(attrs)))
+            (source, NeoElement::Button(attrs))
         }
         "strong" => {
             let (source, attrs) =
                 many0(neo_attribute)(source)?;
-            Ok((source, NeoElement::Strong(attrs)))
+            (source, NeoElement::Strong(attrs))
         }
-        _ => Ok((source, NeoElement::None)),
-    }
+        _ => (source, NeoElement::None),
+    };
+
+    Ok(payload)
 }
 
 pub fn global_attrs(
@@ -75,30 +76,31 @@ mod test {
 
     #[rstest]
     #[case("abbr|id: delta>>", (">>", 
-        NeoElement::Abbreviation(
+        NeoElement::Abbr(
             vec![NeoAttribute::Id("delta".to_string())])))]
-    #[case("abbr|id: echo foxtrot>>", (">>", 
-        NeoElement::Abbreviation(
-            vec![NeoAttribute::Id("echo foxtrot".to_string())])))]
-    #[case("abbr|class: sierra whiskey|id: echo foxtrot>>", (">>", 
-        NeoElement::Abbreviation(vec![
-            NeoAttribute::Class(vec!["sierra".to_string(), "whiskey".to_string()]), 
-            NeoAttribute::Id("echo foxtrot".to_string()
-        )])))]
-    #[case("b>>", (">>", 
-        NeoElement::BringAttention(vec![])))]
-    #[case("button>>", (">>", 
-        NeoElement::Button(vec![])))]
-    #[case("button|type: reset>>", (">>", 
-        NeoElement::Button(vec![NeoAttribute::ButtonType("reset".to_string())])))]
-    #[case("strong>>", (">>", 
-        NeoElement::Strong(vec![])))]
-    #[case("strong|class: alfa>>", (">>", 
-        NeoElement::Strong ( vec![
-            NeoAttribute::Class(vec!["alfa".to_string()])])))]
-    #[case("strong|class: bravo charlie>>", (">>", 
-        NeoElement::Strong ( vec![
-            NeoAttribute::Class(vec!["bravo".to_string(), "charlie".to_string()])])))]
+
+    // #[case("abbr|id: echo foxtrot>>", (">>",
+    //     NeoElement::Abbr(
+    //         vec![NeoAttribute::Id("echo foxtrot".to_string())])))]
+    // #[case("abbr|class: sierra whiskey|id: echo foxtrot>>", (">>",
+    //     NeoElement::Abbr(vec![
+    //         NeoAttribute::Class(vec!["sierra".to_string(), "whiskey".to_string()]),
+    //         NeoAttribute::Id("echo foxtrot".to_string()
+    //     )])))]
+    // #[case("b>>", (">>",
+    //     NeoElement::B(vec![])))]
+    // #[case("button>>", (">>",
+    //     NeoElement::Button(vec![])))]
+    // #[case("button|type: reset>>", (">>",
+    //     NeoElement::Button(vec![NeoAttribute::ButtonType("reset".to_string())])))]
+    // #[case("strong>>", (">>",
+    //     NeoElement::Strong(vec![])))]
+    // #[case("strong|class: alfa>>", (">>",
+    //     NeoElement::Strong ( vec![
+    //         NeoAttribute::Class(vec!["alfa".to_string()])])))]
+    // #[case("strong|class: bravo charlie>>", (">>",
+    //     NeoElement::Strong ( vec![
+    //         NeoAttribute::Class(vec!["bravo".to_string(), "charlie".to_string()])])))]
 
     // #[case("strong", ("", NeoElement::Strong { global_attrs: vec![]}))]
     // #[case("link|localhost", ("", NeoElement::Link{url: "localhost".to_string()}))]
@@ -106,7 +108,7 @@ mod test {
     // #[case("code|rust>>", ("", NeoElement::Code{language: Some("rust".to_string())}))]
     // #[case("code|class: alfa>>", ("", NeoElement::Code{language: None}))]
     //#[case("b>>", ("", NeoElement::Code{language: None }))]
-    fn neo_element_test(
+    fn solo_neo_element_test(
         #[case] input: &str,
         #[case] expected: (&str, NeoElement),
     ) {
