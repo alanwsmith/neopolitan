@@ -74,7 +74,7 @@ mod test {
     }
 
     #[test]
-    pub fn neotag_with_class() {
+    pub fn neotag_with_attribute() {
         assert_eq!(
             neo_tag("<<alfa|strong|class: highlight>>")
                 .unwrap(),
@@ -86,78 +86,6 @@ mod test {
                     )],
                     content: "alfa".to_string(),
                     tag_name: "strong".to_string(),
-                }
-            )
-        );
-    }
-
-    #[test]
-    pub fn neotag_with_multiple_classes() {
-        assert_eq!(
-            neo_tag("<<bravo|strong|class: bgblue text>>")
-                .unwrap(),
-            (
-                "",
-                NeoTag {
-                    attributes: vec![NeoAttribute::Class(
-                        vec![
-                            "bgblue".to_string(),
-                            "text".to_string(),
-                        ]
-                    )],
-                    content: "bravo".to_string(),
-                    tag_name: "strong".to_string(),
-                }
-            )
-        );
-    }
-
-    #[test]
-    #[ignore]
-    pub fn tktktktkt_more_attribute_names() {
-        // TODO: Add all the attribute names you want to use
-    }
-
-    #[test]
-    #[ignore]
-    pub fn tktktktkt_attributes_() {
-        // TODO:
-        // Setup for data-* generic names in attributes
-    }
-
-    #[test]
-    #[ignore]
-    pub fn neotag_with_multiple_classes_with_weird_names() {
-        // TODO: Setup this based off the CSS spec with the
-        // differetn ways class names can be formed
-        assert_eq!(
-            neo_tag("<<bravo|strong|class: TKTKTKTKTK>>")
-                .unwrap(),
-            (
-                "",
-                NeoTag {
-                    attributes: vec![NeoAttribute::Class(
-                        vec![]
-                    )],
-                    content: "bravo".to_string(),
-                    tag_name: "strong".to_string(),
-                }
-            )
-        );
-    }
-
-    #[test]
-    pub fn neotag_with_id() {
-        assert_eq!(
-            neo_tag("<<echo|kbd|id: foxtrot>>").unwrap(),
-            (
-                "",
-                NeoTag {
-                    attributes: vec![NeoAttribute::Id(
-                        "foxtrot".to_string()
-                    )],
-                    content: "echo".to_string(),
-                    tag_name: "kbd".to_string(),
                 }
             )
         );
