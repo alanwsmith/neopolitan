@@ -1,3 +1,4 @@
+#![allow(unused_imports)]
 use crate::parsers::neo_attribute::neo_attribute;
 use crate::parsers::neo_attribute::NeoAttribute;
 use crate::parsers::neo_element::neo_element;
@@ -14,7 +15,7 @@ use nom::IResult;
 
 #[derive(Debug, PartialEq)]
 pub struct NeoTag {
-    attributes: Vec<NeoAttribute>,
+    // attributes: Vec<NeoAttribute>,
     content: String,
     element: NeoElement,
 }
@@ -26,22 +27,19 @@ pub fn css_class_name(
 }
 
 pub fn neo_tag(source: &str) -> IResult<&str, NeoTag> {
-    let (source, ((content, element), attrs)) = delimited(
+    let (source, (content, element)) = delimited(
         tag("<<"),
-        pair(
-            separated_pair(alpha1, tag("|"), neo_element),
-            opt(preceded(
-                tag("|"),
-                separated_list1(tag("|"), neo_attribute),
-            )),
-        ),
+        separated_pair(alpha1, tag("|"), neo_element),
+        // pair(
+        //     opt(preceded(
+        //         tag("|"),
+        //         separated_list1(tag("|"), neo_attribute),
+        //     )),
+        // ),
         tag(">>"),
-    )(
-        source
-    )?;
-
+    )(source)?;
     let nt = NeoTag {
-        attributes: attrs.unwrap_or(vec![]),
+        // attributes: attrs.unwrap_or(vec![]),
         content: content.to_string(),
         element,
     };
@@ -61,11 +59,28 @@ mod test {
             (
                 "",
                 NeoTag {
-                    attributes: vec![],
                     content: "alfa".to_string(),
-                    element: NeoElement::Strong {
-                        global_attrs: vec![]
-                    },
+                    element: NeoElement::Strong(vec![]),
+                }
+            )
+        );
+    }
+
+    #[test]
+    #[ignore]
+    pub fn solo_neo_tag_with_class() {
+        assert_eq!(
+            neo_tag("<<alfa|strong|class: bravo>>")
+                .unwrap(),
+            (
+                "",
+                NeoTag {
+                    content: "alfa".to_string(),
+                    element: NeoElement::Strong(vec![
+                        NeoAttribute::Class(vec![
+                            "bravo".to_string()
+                        ])
+                    ]),
                 }
             )
         );

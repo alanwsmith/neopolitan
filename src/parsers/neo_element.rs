@@ -1,40 +1,62 @@
 #![allow(unused_imports)]
-use crate::parsers::global_attr::GlobalAttr;
+// use crate::parsers::global_attr::GlobalAttr;
+use crate::parsers::neo_attribute::neo_attribute;
+use crate::parsers::neo_attribute::NeoAttribute;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
 use nom::character::complete::alpha1;
+use nom::multi::many0;
 use nom::sequence::separated_pair;
 use nom::IResult;
 use nom::Parser;
 
 #[derive(Debug, PartialEq)]
 pub enum NeoElement {
-    Keyboard,
-    Link { url: String },
-    Strong { global_attrs: Vec<GlobalAttr> },
+    Abbreviation(Vec<NeoAttribute>),
+    Link(Vec<NeoAttribute>),
+    Strong(Vec<NeoAttribute>),
+    None,
 }
 
 pub fn neo_element(
     source: &str,
 ) -> IResult<&str, NeoElement> {
     let (source, el) = alt((
-        tag_no_case("strong").map(|_| NeoElement::Strong {
-            global_attrs: vec![],
-        }),
-        // tag_no_case("kbd").map(|_| NeoElement::Keyboard),
-        // separated_pair(
-        //     tag_no_case("link"),
-        //     tag("|"),
-        //     alpha1,
-        // )
-        // .map(|(_, url): (&str, &str)| {
-        //     NeoElement::Link {
-        //         url: url.to_string(),
-        //     }
-        // }),
+        tag_no_case("abbr"),
+        tag_no_case("strong"),
     ))(source)?;
-    Ok((source, el))
+
+    // tag_no_case("kbd").map(|_| NeoElement::Keyboard),
+    // separated_pair(
+    //     tag_no_case("link"),
+    //     tag("|"),
+    //     alpha1,
+    // )
+    // .map(|(_, url): (&str, &str)| {
+    //     NeoElement::Link {
+    //         url: url.to_string(),
+    //     }
+    // }),
+    match el {
+        "abbr" => {
+            let (source, attrs) =
+                many0(neo_attribute)(source)?;
+            Ok((source, NeoElement::Abbreviation(attrs)))
+        }
+        "strong" => {
+            let (source, attrs) =
+                many0(neo_attribute)(source)?;
+            Ok((source, NeoElement::Strong(attrs)))
+        }
+        _ => Ok((source, NeoElement::None)),
+    }
+}
+
+pub fn global_attrs(
+    source: &str,
+) -> IResult<&str, Vec<NeoAttribute>> {
+    Ok((source, vec![]))
 }
 
 #[cfg(test)]
@@ -44,8 +66,12 @@ mod test {
     use rstest::rstest;
 
     #[rstest]
-    #[case("strong", ("", NeoElement::Strong { global_attrs: vec![]}))]
-    // #[case("kbd|class: sierra", ("|class: sierra", NeoElement::Keyboard))]
+    #[case("strong", ("", NeoElement::Strong(vec![])))]
+    #[case("strong|class: alfa", ("", NeoElement::Strong ( vec![NeoAttribute::Class(vec!["alfa".to_string()])])))]
+    #[case("strong|class: bravo charlie", ("", NeoElement::Strong ( vec![NeoAttribute::Class(vec!["bravo".to_string(), "charlie".to_string()])])))]
+    #[case("abbr|id: delta", ("", NeoElement::Abbreviation(vec![NeoAttribute::Id("delta".to_string())])))]
+    #[case("abbr|id: echo foxtrot", ("", NeoElement::Abbreviation(vec![NeoAttribute::Id("echo foxtrot".to_string())])))]
+    // #[case("strong", ("", NeoElement::Strong { global_attrs: vec![]}))]
     // #[case("link|localhost", ("", NeoElement::Link{url: "localhost".to_string()}))]
     //#[case("code>>", ("", NeoElement::Code{language: None }))]
     // #[case("code|rust>>", ("", NeoElement::Code{language: Some("rust".to_string())}))]
