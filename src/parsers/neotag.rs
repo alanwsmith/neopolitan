@@ -49,6 +49,13 @@ pub fn neo_attribute(
                 )?;
             Ok((source, NeoAttribute::Class(attr_values)))
         }
+        "id" => {
+            let (source, attr_value) = alpha1(source)?;
+            Ok((
+                source,
+                NeoAttribute::Id(attr_value.to_string()),
+            ))
+        }
         _ => panic!("AAAAAAAAAAAAAAAAAAAAAAAAAA"),
     }
 }
@@ -138,6 +145,19 @@ mod test {
 
     #[test]
     #[ignore]
+    pub fn tktktktkt_more_attribute_names() {
+        // TODO: Add all the attribute names you want to use
+    }
+
+    #[test]
+    #[ignore]
+    pub fn tktktktkt_attributes_() {
+        // TODO:
+        // Setup for data-* generic names in attributes
+    }
+
+    #[test]
+    #[ignore]
     pub fn solo_neotag_with_multiple_classes_with_weird_names(
     ) {
         // TODO: Setup this based off the CSS spec with the
@@ -158,22 +178,22 @@ mod test {
         );
     }
 
-    // #[test]
-    // pub fn solo_neotag_with_id() {
-    //     assert_eq!(
-    //         neo_tag("<<echo|kbd|id: foxtrot>>").unwrap(),
-    //         (
-    //             "",
-    //             NeoTag {
-    //                 attributes: vec![NeoAttribute::Id(
-    //                     "foxtrot".to_string()
-    //                 )],
-    //                 content: "echo".to_string(),
-    //                 tag_name: "kbd".to_string(),
-    //             }
-    //         )
-    //     );
-    // }
+    #[test]
+    pub fn solo_neotag_with_id() {
+        assert_eq!(
+            neo_tag("<<echo|kbd|id: foxtrot>>").unwrap(),
+            (
+                "",
+                NeoTag {
+                    attributes: vec![NeoAttribute::Id(
+                        "foxtrot".to_string()
+                    )],
+                    content: "echo".to_string(),
+                    tag_name: "kbd".to_string(),
+                }
+            )
+        );
+    }
 
     //
 }
