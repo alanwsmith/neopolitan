@@ -35,7 +35,7 @@ pub fn neo_tag(source: &str) -> IResult<&str, NeoTag> {
     let result = match tag_name {
         "abbr" => {
 
-            // abbr_tag(source)?;
+            abbr_tag(source)?;
 
 
             // (

@@ -1,7 +1,30 @@
 use nom::IResult;
 use crate::parsers::attribute::Attribute;
+use nom::bytes::complete::is_not;
+use nom::multi::many0;
+use nom::bytes::complete::tag;
+use nom::branch::alt;
+use nom::character::complete::multispace1;
+use nom::multi::separated_list1;
+use nom::sequence::terminated;
+use nom::character::complete::space1;
 
-pub fn global_attr_class(source: &str) -> IResult<&str, Attribute> {
+pub fn class_attr(source: &str) -> IResult<&str, Attribute> {
+    dbg!("---------------------------");
+
+    let (source, values) = 
+    terminated(
+separated_list1(space1, is_not(" ")),
+        tag(">>"))(source)?;
+    
+dbg!(&values);
+
+dbg!("---------------------------");
+
+    // many0(is_not("|>"))(source)?;
+    // dbg!(&source);
+    // dbg!(&values);
+
     Ok((source, Attribute::None))
 }
 
