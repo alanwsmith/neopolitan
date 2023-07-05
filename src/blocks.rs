@@ -1,4 +1,4 @@
-use crate::snippets::Snippet;
+use crate::tags::Snippet;
 
 pub mod headline;
 pub mod paragraph;

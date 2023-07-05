@@ -1,4 +1,4 @@
-use crate::snippets::Snippet;
+use crate::tags::Snippet;
 use nom::character::complete::not_line_ending;
 use nom::IResult;
 

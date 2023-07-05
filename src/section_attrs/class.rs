@@ -1,4 +1,4 @@
-use crate::sec_attr::SecAttr;
+use crate::section_attrs::SecAttr;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
 use nom::character::complete::not_line_ending;

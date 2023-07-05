@@ -1,5 +1,5 @@
-use crate::block::Block;
-use crate::sec_attr::SecAttr;
+use crate::blocks::Block;
+use crate::section_attrs::SecAttr;
 
 pub mod title;
 

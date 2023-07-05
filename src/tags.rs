@@ -1,6 +1,6 @@
 // use crate::snippets::strong::strong;
-use crate::snippets::text::text;
-use crate::tag_attr::TagAttr;
+use crate::tags::text::text;
+use crate::tag_attrs::TagAttr;
 use nom::branch::alt;
 use nom::combinator::eof;
 use nom::multi::many_till;

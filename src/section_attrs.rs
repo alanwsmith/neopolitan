@@ -1,4 +1,4 @@
-use crate::sec_attr::class::class;
+use crate::section_attrs::class::class;
 use nom::multi::many0;
 use nom::IResult;
 

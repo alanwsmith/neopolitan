@@ -1,6 +1,6 @@
-pub mod block;
+pub mod blocks;
 pub mod parse;
-pub mod sec_attr;
-pub mod tag_attr;
-pub mod section;
-pub mod snippets;
+pub mod section_attrs;
+pub mod tag_attrs;
+pub mod sections;
+pub mod tags;

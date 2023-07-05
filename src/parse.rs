@@ -1,7 +1,12 @@
-use crate::section::title::title;
-use crate::section::Section;
+use crate::sections::title::title;
+use crate::sections::Section;
 use nom::multi::many0;
 use nom::IResult;
+
+
+// TODO: Move this into sections.rs and 
+// consolidate there
+
 
 pub fn parse(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, results) = many0(title)(source)?;
@@ -12,10 +17,10 @@ pub fn parse(source: &str) -> IResult<&str, Vec<Section>> {
 
 mod test {
     use super::*;
-    use crate::block::Block;
-    use crate::sec_attr::SecAttr;
-    use crate::section::Section;
-    use crate::snippets::Snippet;
+    use crate::blocks::Block;
+    use crate::section_attrs::SecAttr;
+    use crate::sections::Section;
+    use crate::tags::Snippet;
 
     #[test]
     #[ignore]
