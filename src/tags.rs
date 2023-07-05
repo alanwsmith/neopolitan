@@ -15,6 +15,7 @@ use nom::multi::many_till;
 use nom::IResult;
 
 pub mod abbr;
+pub mod basic;
 pub mod em;
 pub mod less_than;
 pub mod q;
