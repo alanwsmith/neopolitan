@@ -25,15 +25,23 @@ pub fn parse(source: &str) -> IResult<&str, Vec<Section>> {
 mod test {
     use super::*;
     use crate::block::Block;
+    use crate::sec_attr::SecAttr;
     use crate::section::Section;
     use crate::snippet::Snippet;
 
     #[test]
     pub fn basic() {
-        let lines =
-            ["-> title", "", "hello world"].join("\n");
+        let lines = [
+            "-> title",
+            ">> class: alfa",
+            "",
+            "hello world",
+        ]
+        .join("\n");
         let expected = vec![Section::Title {
-            attrs: vec![],
+            attrs: vec![SecAttr::Class(vec![
+                "alfa".to_string()
+            ])],
             headline: Block::Headline {
                 content: vec![Snippet::Text {
                     string: "hello world".to_string(),
