@@ -68,13 +68,13 @@ mod test {
             Section::Title {
                 attrs: vec![SecAttr::Class(vec!["alfa".to_string()])],
                 headline: Block::Headline {
-                    snippets: vec![Tag::Text {
+                    tags: vec![Tag::Text {
                         text: "bravo charlie delta echo".to_string(),
                     }],
                 },
                 paragraphs: vec![
                     Block::Paragraph {
-                        snippets: vec![
+                        tags: vec![
                             Tag::Text {
                                 text: "foxtrot ".to_string(),
                             },
@@ -87,7 +87,7 @@ mod test {
                         ],
                     },
                     Block::Paragraph {
-                        snippets: vec![
+                        tags: vec![
                             Tag::Text {
                                 text: "whiskey ".to_string(),
                             },
@@ -105,7 +105,7 @@ mod test {
             Section::H2 {
                 attrs: vec![SecAttr::Id("victor".to_string())],
                 headline: Block::Headline {
-                    snippets: vec![
+                    tags: vec![
                         Tag::Text {
                             text: "Crack the walnut. Fasten ".to_string(),
                         },
@@ -119,7 +119,7 @@ mod test {
                     ],
                 },
                 paragraphs: vec![Block::Paragraph {
-                    snippets: vec![
+                    tags: vec![
                         Tag::Abbr {
                             attrs: vec![],
                             text: "Guess the".to_string(),

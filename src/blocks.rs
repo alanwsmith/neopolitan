@@ -5,6 +5,6 @@ pub mod paragraph;
 
 #[derive(Debug, PartialEq)]
 pub enum Block {
-    Headline { snippets: Vec<Tag> },
-    Paragraph { snippets: Vec<Tag> },
+    Headline { tags: Vec<Tag> },
+    Paragraph { tags: Vec<Tag> },
 }

@@ -43,7 +43,7 @@ mod test {
         let expected = Section::Title {
             attrs: vec![],
             headline: Block::Headline {
-                snippets: vec![Tag::Text {
+                tags: vec![Tag::Text {
                     text: "alfa bravo".to_string(),
                 }],
             },
@@ -59,7 +59,7 @@ mod test {
         let expected = Section::Title {
             attrs: vec![],
             headline: Block::Headline {
-                snippets: vec![Tag::Text {
+                tags: vec![Tag::Text {
                     text: "charlie delta echo foxtrot".to_string(),
                 }],
             },
@@ -82,12 +82,12 @@ mod test {
         let expected = Section::Title {
             attrs: vec![],
             headline: Block::Headline {
-                snippets: vec![Tag::Text {
+                tags: vec![Tag::Text {
                     text: "golf hotel whiskey tango".to_string(),
                 }],
             },
             paragraphs: vec![Block::Paragraph {
-                snippets: vec![Tag::Text {
+                tags: vec![Tag::Text {
                     text: "foxtrot alfa".to_string(),
                 }],
             }],

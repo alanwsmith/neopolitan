@@ -17,6 +17,6 @@ pub fn paragraph(source: &str) -> IResult<&str, Block> {
         alt((multispace1, eof)),
     )(source.trim())?;
     let string = content.0.join(" ");
-    let (_, snippets) = tags(string.as_str()).unwrap();
-    Ok((source, Block::Paragraph { snippets }))
+    let (_, tags) = tags(string.as_str()).unwrap();
+    Ok((source, Block::Paragraph { tags }))
 }
