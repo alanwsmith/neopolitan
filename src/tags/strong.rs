@@ -2,22 +2,19 @@ use crate::tags::Snippet;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
-use nom::multi::many_till;
 use nom::sequence::delimited;
 use nom::IResult;
-use crate::tag_attrs::class::class;
-use nom::branch::alt;
+use crate::tag_attrs::tag_attrs;
+use nom::Parser;
 
 pub fn strong(source: &str) -> IResult<&str, Snippet> {
-    let (source, text_string) =
-        delimited(tag("<<"), is_not("|"), tag_no_case("|strong"))(source)?;
-    let (source, attrs) = many_till(alt((class, class)), tag(">>"))(source)?;
+    let (source, text) =
+        delimited(tag("<<"), is_not("|").map(|s: &str| s.to_string()), tag_no_case("|strong"))(source)?;
+    let (source, attrs) = tag_attrs(source)?;
+    let (source, _) = tag(">>")(source)?;
     Ok((
         source,
-        Snippet::Strong {
-            text: text_string.to_string(),
-            attrs: attrs.0,
-        },
+        Snippet::Strong { text, attrs},
     ))
 }
 
