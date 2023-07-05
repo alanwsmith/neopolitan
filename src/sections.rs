@@ -64,7 +64,8 @@ mod test {
             "<<Guess the|abbr>> <<results|em|id: tango>>.",
             "Hoist <<it|s>> up.",
             "",
-            "<<Heave|sub>><<the|sup>>",
+            "<<Heave|sub>><<the|sup>><<line|span|class: alfa bravo charlie|id: delta>>",
+            "<<Take it away|q>>",
         ]
         .join("\n");
         let expected = vec![
@@ -156,6 +157,24 @@ mod test {
                             Tag::Sup {
                                 attrs: vec![],
                                 text: "the".to_string(),
+                            },
+                            Tag::Span {
+                                attrs: vec![
+                                    TagAttr::Class(vec![
+                                        "alfa".to_string(),
+                                        "bravo".to_string(),
+                                        "charlie".to_string(),
+                                    ]),
+                                    TagAttr::Id("delta".to_string()),
+                                ],
+                                text: "line".to_string(),
+                            },
+                            Tag::Text {
+                                text: " ".to_string(),
+                            },
+                            Tag::Q {
+                                attrs: vec![],
+                                text: "Take it away".to_string(),
                             },
                         ],
                     },
