@@ -1,18 +1,22 @@
-use crate::block::Block;
+// use crate::block::Block;
+use crate::section::title::title;
 use crate::section::Section;
-use crate::snippet::Snippet;
+// use crate::snippet::Snippet;
+use nom::multi::many0;
 use nom::IResult;
 
 pub fn parse(source: &str) -> IResult<&str, Vec<Section>> {
-    let results = vec![Section::Title {
-        attrs: vec![],
-        headline: Block::Headline {
-            content: vec![Snippet::Text {
-                string: "hello world".to_string(),
-            }],
-        },
-        paragraphs: vec![],
-    }];
+    let (source, results) = many0(title)(source)?;
+
+    // let results = vec![Section::Title {
+    //     attrs: vec![],
+    //     headline: Block::Headline {
+    //         content: vec![Snippet::Text {
+    //             string: "hello world".to_string(),
+    //         }],
+    //     },
+    //     paragraphs: vec![],
+    // }];
     Ok((source, results))
 }
 
