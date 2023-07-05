@@ -24,7 +24,7 @@ mod test {
     #[case(
         "< ", 
         Tag::LessThan{ text: "< ".to_string() })]
-    fn solo_less_than_runner(#[case] input: &str, #[case] expected: Tag) {
+    fn less_than_runner(#[case] input: &str, #[case] expected: Tag) {
         assert_eq!(expected, less_than(input).unwrap().1)
     }
 }

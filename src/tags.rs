@@ -40,7 +40,7 @@ mod test {
     }
 
     #[test]
-    pub fn solo_text_with_strong() {
+    pub fn text_with_strong() {
         let line = "alfa <<bravo|strong>> charlie";
         let expected = vec![
             Tag::Text {
@@ -58,7 +58,7 @@ mod test {
     }
 
     #[test]
-    pub fn solo_less_than() {
+    pub fn less_than() {
         let line = "delta <- <<echo|strong>> foxtrot";
         let expected = vec![
             Tag::Text {
