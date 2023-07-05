@@ -26,7 +26,7 @@ mod test {
     use super::*;
 
     #[test]
-    pub fn solo_basic_text() {
+    pub fn basic_text() {
         let line = "the quick brown fox";
         let expected = vec![Snippet::Text {
             text: "the quick brown fox".to_string(),
