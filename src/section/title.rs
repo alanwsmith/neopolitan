@@ -47,4 +47,18 @@ mod test {
         };
         assert_eq!(expected, title(lines.as_str()).unwrap().1);
     }
+
+
+    #[test]
+    pub fn title_with_two_lines() {
+        let lines = vec!["-> title", "", "charlie delta", "echo foxtrot"].join("\n");
+        let expected = Section::Title {
+            attrs: vec![],
+            headline: Block::Headline{ content: vec![Snippet::Text { string: "charlie delta echo foxtrot".to_string() } ]},
+            paragraphs: vec![]
+        };
+        assert_eq!(expected, title(lines.as_str()).unwrap().1);
+    }
+
+
 }
