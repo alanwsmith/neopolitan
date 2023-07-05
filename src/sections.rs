@@ -16,13 +16,10 @@ pub enum Section {
     None,
 }
 
-
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, results) = many0(title)(source)?;
     Ok((source, results))
 }
-
-
 
 #[cfg(test)]
 
@@ -31,7 +28,7 @@ mod test {
     use crate::blocks::Block;
     use crate::section_attrs::SecAttr;
     use crate::sections::Section;
-    use crate::tags::Snippet;
+    use crate::tags::Tag;
 
     #[test]
     #[ignore]
@@ -53,26 +50,26 @@ mod test {
             attrs: vec![SecAttr::Class(vec!["alfa".to_string()])],
 
             headline: Block::Headline {
-                snippets: vec![Snippet::Text {
+                snippets: vec![Tag::Text {
                     text: "bravo charlie delta echo".to_string(),
                 }],
             },
             paragraphs: vec![
                 Block::Paragraph {
-                    snippets: vec![Snippet::Text {
+                    snippets: vec![Tag::Text {
                         text: "foxtrot golf hotel".to_string(),
                     }],
                 },
                 Block::Paragraph {
                     snippets: vec![
-                        Snippet::Text {
+                        Tag::Text {
                             text: "whiskey ".to_string(),
                         },
-                        Snippet::Strong {
+                        Tag::Strong {
                             attrs: vec![],
                             text: "tango".to_string(),
                         },
-                        Snippet::Text {
+                        Tag::Text {
                             text: " sierra".to_string(),
                         },
                     ],

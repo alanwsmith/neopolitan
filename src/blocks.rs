@@ -1,10 +1,10 @@
-use crate::tags::Snippet;
+use crate::tags::Tag;
 
 pub mod headline;
 pub mod paragraph;
 
 #[derive(Debug, PartialEq)]
 pub enum Block {
-    Headline { snippets: Vec<Snippet> },
-    Paragraph { snippets: Vec<Snippet> },
+    Headline { snippets: Vec<Tag> },
+    Paragraph { snippets: Vec<Tag> },
 }

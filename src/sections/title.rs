@@ -35,7 +35,7 @@ mod test {
     use super::*;
     use crate::blocks::Block;
     use crate::sections::Section;
-    use crate::tags::Snippet;
+    use crate::tags::Tag;
 
     #[test]
     pub fn basic_title() {
@@ -43,7 +43,7 @@ mod test {
         let expected = Section::Title {
             attrs: vec![],
             headline: Block::Headline {
-                snippets: vec![Snippet::Text {
+                snippets: vec![Tag::Text {
                     text: "alfa bravo".to_string(),
                 }],
             },
@@ -59,7 +59,7 @@ mod test {
         let expected = Section::Title {
             attrs: vec![],
             headline: Block::Headline {
-                snippets: vec![Snippet::Text {
+                snippets: vec![Tag::Text {
                     text: "charlie delta echo foxtrot".to_string(),
                 }],
             },
@@ -82,12 +82,12 @@ mod test {
         let expected = Section::Title {
             attrs: vec![],
             headline: Block::Headline {
-                snippets: vec![Snippet::Text {
+                snippets: vec![Tag::Text {
                     text: "golf hotel whiskey tango".to_string(),
                 }],
             },
             paragraphs: vec![Block::Paragraph {
-                snippets: vec![Snippet::Text {
+                snippets: vec![Tag::Text {
                     text: "foxtrot alfa".to_string(),
                 }],
             }],

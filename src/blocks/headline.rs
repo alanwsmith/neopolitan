@@ -1,5 +1,5 @@
 use crate::blocks::Block;
-use crate::tags::Snippet;
+use crate::tags::Tag;
 use nom::branch::alt;
 use nom::character::complete::line_ending;
 use nom::character::complete::multispace1;
@@ -19,7 +19,7 @@ pub fn headline(source: &str) -> IResult<&str, Block> {
     Ok((
         source,
         Block::Headline {
-            snippets: vec![Snippet::Text { text }],
+            snippets: vec![Tag::Text { text }],
         },
     ))
 }

@@ -1,4 +1,4 @@
-use crate::tags::Snippet;
+use crate::tags::Tag;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
@@ -7,14 +7,14 @@ use nom::IResult;
 use crate::tag_attrs::tag_attrs;
 use nom::Parser;
 
-pub fn strong(source: &str) -> IResult<&str, Snippet> {
+pub fn strong(source: &str) -> IResult<&str, Tag> {
     let (source, text) =
         delimited(tag("<<"), is_not("|").map(|s: &str| s.to_string()), tag_no_case("|strong"))(source)?;
     let (source, attrs) = tag_attrs(source)?;
     let (source, _) = tag(">>")(source)?;
     Ok((
         source,
-        Snippet::Strong { text, attrs},
+        Tag::Strong { text, attrs},
     ))
 }
 
@@ -30,11 +30,11 @@ mod test{
     #[rstest]
     #[case(
         "<<alfa bravo|strong>>", 
-        Ok(("", Snippet::Strong{ attrs: vec![], text: "alfa bravo".to_string() })))]
+        Ok(("", Tag::Strong{ attrs: vec![], text: "alfa bravo".to_string() })))]
     #[case(
         "<<alfa bravo|strong|class: charlie delta>>", 
         Ok(("", 
-            Snippet::Strong{ 
+        Tag::Strong{ 
                 attrs: vec![
                     TagAttr::Class(
                         vec![
@@ -44,7 +44,7 @@ mod test{
                 ],
                 text: "alfa bravo".to_string() 
             })))]
-    fn solo_strong_runner(#[case] input: &str, #[case] expected: Result<(&str, Snippet), Err<Error<&str>>>) {
+    fn solo_strong_runner(#[case] input: &str, #[case] expected: Result<(&str, Tag), Err<Error<&str>>>) {
         assert_eq!(expected, strong(input))
     }
 }

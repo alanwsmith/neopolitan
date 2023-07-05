@@ -1,5 +1,5 @@
 use crate::blocks::Block;
-use crate::tags::snippets;
+use crate::tags::tags;
 // use crate::snippets::Snippet;
 use nom::branch::alt;
 use nom::character::complete::line_ending;
@@ -17,6 +17,6 @@ pub fn paragraph(source: &str) -> IResult<&str, Block> {
         alt((multispace1, eof)),
     )(source.trim())?;
     let string = content.0.join(" ");
-    let (_, snippets) = snippets(string.as_str()).unwrap();
+    let (_, snippets) = tags(string.as_str()).unwrap();
     Ok((source, Block::Paragraph { snippets }))
 }
