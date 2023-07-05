@@ -39,7 +39,7 @@ mod test {
             "bravo charlie",
             "delta echo",
             "",
-            "foxtrot golf",
+            "foxtrot <golf",
             "hotel",
             "",
             "whiskey <<tango|strong>> sierra",
@@ -55,9 +55,17 @@ mod test {
             },
             paragraphs: vec![
                 Block::Paragraph {
-                    snippets: vec![Tag::Text {
-                        text: "foxtrot golf hotel".to_string(),
-                    }],
+                    snippets: vec![
+                        Tag::Text {
+                            text: "foxtrot ".to_string(),
+                        },
+                        Tag::LessThan {
+                            text: "<g".to_string(),
+                        },
+                        Tag::Text {
+                            text: "olf hotel".to_string(),
+                        },
+                    ],
                 },
                 Block::Paragraph {
                     snippets: vec![
