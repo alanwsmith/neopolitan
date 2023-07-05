@@ -63,6 +63,8 @@ mod test {
             "",
             "<<Guess the|abbr>> <<results|em|id: tango>>.",
             "Hoist <<it|s>> up.",
+            "",
+            "<<Heave|sub>><<the|sup>>",
         ]
         .join("\n");
         let expected = vec![
@@ -119,31 +121,45 @@ mod test {
                         },
                     ],
                 },
-                paragraphs: vec![Block::Paragraph {
-                    tags: vec![
-                        Tag::Abbr {
-                            attrs: vec![],
-                            text: "Guess the".to_string(),
-                        },
-                        Tag::Text {
-                            text: " ".to_string(),
-                        },
-                        Tag::Em {
-                            attrs: vec![TagAttr::Id("tango".to_string())],
-                            text: "results".to_string(),
-                        },
-                        Tag::Text {
-                            text: ". Hoist ".to_string(),
-                        },
-                        Tag::S {
-                            attrs: vec![],
-                            text: "it".to_string(),
-                        },
-                        Tag::Text {
-                            text: " up.".to_string(),
-                        },
-                    ],
-                }],
+                paragraphs: vec![
+                    Block::Paragraph {
+                        tags: vec![
+                            Tag::Abbr {
+                                attrs: vec![],
+                                text: "Guess the".to_string(),
+                            },
+                            Tag::Text {
+                                text: " ".to_string(),
+                            },
+                            Tag::Em {
+                                attrs: vec![TagAttr::Id("tango".to_string())],
+                                text: "results".to_string(),
+                            },
+                            Tag::Text {
+                                text: ". Hoist ".to_string(),
+                            },
+                            Tag::S {
+                                attrs: vec![],
+                                text: "it".to_string(),
+                            },
+                            Tag::Text {
+                                text: " up.".to_string(),
+                            },
+                        ],
+                    },
+                    Block::Paragraph {
+                        tags: vec![
+                            Tag::Sub {
+                                attrs: vec![],
+                                text: "Heave".to_string(),
+                            },
+                            Tag::Sup {
+                                attrs: vec![],
+                                text: "the".to_string(),
+                            },
+                        ],
+                    },
+                ],
             },
         ];
         assert_eq!(expected, sections(lines.as_str()).unwrap().1);

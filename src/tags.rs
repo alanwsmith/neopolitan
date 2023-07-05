@@ -4,6 +4,8 @@ use crate::tags::em::em;
 use crate::tags::less_than::less_than;
 use crate::tags::s::s;
 use crate::tags::strong::strong;
+use crate::tags::sub::sub;
+use crate::tags::sup::sup;
 use crate::tags::text::text;
 use nom::branch::alt;
 use nom::combinator::eof;
@@ -15,6 +17,8 @@ pub mod em;
 pub mod less_than;
 pub mod s;
 pub mod strong;
+pub mod sub;
+pub mod sup;
 pub mod text;
 
 #[derive(Debug, PartialEq)]
@@ -25,12 +29,16 @@ pub enum Tag {
     Text { text: String },
     S { attrs: Vec<TagAttr>, text: String },
     Strong { attrs: Vec<TagAttr>, text: String },
+    Sub { attrs: Vec<TagAttr>, text: String },
+    Sup { attrs: Vec<TagAttr>, text: String },
 }
 
 pub fn tags(source: &str) -> IResult<&str, Vec<Tag>> {
     dbg!(&source);
-    let (source, snippets) =
-        many_till(alt((less_than, abbr, em, strong, text, s)), eof)(source)?;
+    let (source, snippets) = many_till(
+        alt((less_than, abbr, em, strong, text, s, sub, sup)),
+        eof,
+    )(source)?;
     Ok((source, snippets.0))
 }
 
