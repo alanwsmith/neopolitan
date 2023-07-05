@@ -1,9 +1,9 @@
 use crate::tags::Tag;
-use nom::character::complete::not_line_ending;
+use nom::bytes::complete::is_not;
 use nom::IResult;
 
 pub fn text(source: &str) -> IResult<&str, Tag> {
-    let (source, text_string) = not_line_ending(source)?;
+    let (source, text_string) = is_not("<")(source)?;
     Ok((
         source,
         Tag::Text {

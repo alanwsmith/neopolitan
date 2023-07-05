@@ -25,7 +25,7 @@ mod test {
 
     #[rstest]
     #[case("|class: delta echo>>", Ok((">>", vec![TagAttr::Class(vec!["delta".to_string(), "echo".to_string()])])))]
-    fn solo_tag_attrs_tester(
+    fn tag_attrs_tester(
         #[case] i: &str,
         #[case] e: Result<(&str, Vec<TagAttr>), Err<Error<&str>>>,
     ) {

@@ -26,7 +26,7 @@ mod test {
 
     #[rstest]
     #[case("|class: alfa bravo>>", Ok((">>", TagAttr::Class(vec!["alfa".to_string(), "bravo".to_string()]))))]
-    fn solo_class_tester(
+    fn class_tester(
         #[case] i: &str,
         #[case] e: Result<(&str, TagAttr), Err<Error<&str>>>,
     ) {

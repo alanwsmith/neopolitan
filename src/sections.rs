@@ -31,7 +31,6 @@ mod test {
     use crate::tags::Tag;
 
     #[test]
-    #[ignore]
     pub fn basic() {
         let lines = [
             "-> title",

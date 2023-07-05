@@ -44,7 +44,7 @@ mod test{
                 ],
                 text: "alfa bravo".to_string() 
             })))]
-    fn solo_strong_runner(#[case] input: &str, #[case] expected: Result<(&str, Tag), Err<Error<&str>>>) {
+    fn strong_runner(#[case] input: &str, #[case] expected: Result<(&str, Tag), Err<Error<&str>>>) {
         assert_eq!(expected, strong(input))
     }
 }
