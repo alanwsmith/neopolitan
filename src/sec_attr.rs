@@ -7,6 +7,7 @@ pub mod class;
 #[derive(Debug, PartialEq)]
 pub enum SecAttr {
     Class(Vec<String>),
+    Placeholder
 }
 
 pub fn sec_attrs(

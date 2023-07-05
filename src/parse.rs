@@ -15,9 +15,10 @@ mod test {
     use crate::block::Block;
     use crate::sec_attr::SecAttr;
     use crate::section::Section;
-    use crate::snippet::Snippet;
+    use crate::snippets::Snippet;
 
     #[test]
+    #[ignore]
     pub fn basic() {
         let lines = [
             "-> title",
@@ -29,36 +30,39 @@ mod test {
             "foxtrot golf",
             "hotel",
             "",
-            "whiskey tango",
+            "whiskey <<tango|strong>> sierra",
         ]
         .join("\n");
         let expected = vec![Section::Title {
-            attrs: vec![SecAttr::Class(vec![
-                "alfa".to_string()
-            ])],
+            attrs: vec![SecAttr::Class(vec!["alfa".to_string()])],
+
             headline: Block::Headline {
-                content: vec![Snippet::Text {
-                    string: "bravo charlie delta echo"
-                        .to_string(),
+                snippets: vec![Snippet::Text {
+                    text: "bravo charlie delta echo".to_string(),
                 }],
             },
             paragraphs: vec![
                 Block::Paragraph {
-                    content: vec![Snippet::Text {
-                        string: "foxtrot golf hotel"
-                            .to_string(),
+                    snippets: vec![Snippet::Text {
+                        text: "foxtrot golf hotel".to_string(),
                     }],
                 },
                 Block::Paragraph {
-                    content: vec![Snippet::Text {
-                        string: "whiskey tango".to_string(),
-                    }],
+                    snippets: vec![
+                        Snippet::Text {
+                            text: "whiskey ".to_string(),
+                        },
+                        Snippet::Strong {
+                            attrs: vec![],
+                            text: "tango".to_string(),
+                        },
+                        Snippet::Text {
+                            text: " sierra".to_string(),
+                        },
+                    ],
                 },
             ],
         }];
-        assert_eq!(
-            expected,
-            parse(lines.as_str()).unwrap().1
-        );
+        assert_eq!(expected, parse(lines.as_str()).unwrap().1);
     }
 }

@@ -1,10 +1,10 @@
-use crate::snippet::Snippet;
+use crate::snippets::Snippet;
 
 pub mod headline;
 pub mod paragraph;
 
 #[derive(Debug, PartialEq)]
 pub enum Block {
-    Headline { content: Vec<Snippet> },
-    Paragraph { content: Vec<Snippet> },
+    Headline { snippets: Vec<Snippet> },
+    Paragraph { snippets: Vec<Snippet> },
 }
