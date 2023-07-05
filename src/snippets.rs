@@ -1,4 +1,4 @@
-use crate::snippets::strong::strong;
+// use crate::snippets::strong::strong;
 use crate::snippets::text::text;
 use crate::tag_attr::TagAttr;
 use nom::branch::alt;
@@ -16,6 +16,21 @@ pub enum Snippet {
 }
 
 pub fn snippets(source: &str) -> IResult<&str, Vec<Snippet>> {
-    let (source, snippets) = many_till(alt((strong, text)), eof)(source)?;
+    let (source, snippets) = many_till(alt((text, text)), eof)(source)?;
     Ok((source, snippets.0))
+}
+
+#[cfg(test)]
+mod test {
+
+    use super::*;
+
+    #[test]
+    pub fn solo_basic_text() {
+        let line = "the quick brown fox";
+        let expected = vec![Snippet::Text {
+            text: "the quick brown fox".to_string(),
+        }];
+        assert_eq!(expected, snippets(line).unwrap().1);
+    }
 }
