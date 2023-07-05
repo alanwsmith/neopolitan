@@ -4,29 +4,25 @@ use nom::bytes::complete::tag;
 use nom::bytes::complete::tag_no_case;
 use nom::multi::many_till;
 use nom::sequence::delimited;
-use nom::sequence::preceded;
 use nom::IResult;
-use nom::Parser;
+use crate::tag_attrs::class::class;
+use nom::branch::alt;
 
 pub fn strong(source: &str) -> IResult<&str, Snippet> {
     let (source, text_string) =
         delimited(tag("<<"), is_not("|"), tag_no_case("|strong"))(source)?;
-    let (source, attrs) = many_till(
-        preceded(tag("|"), is_not("|>").map(|s: &str| s.to_string())),
-        tag(">>"),
-    )(source)?;
+    let (source, attrs) = many_till(alt((class, class)), tag(">>"))(source)?;
     Ok((
         source,
         Snippet::Strong {
             text: text_string.to_string(),
-            attrs: vec![],
+            attrs: attrs.0,
         },
     ))
 }
 
-
-
 #[cfg(test)]
+
 mod test{
     use super::*;
     use rstest::rstest;
@@ -38,7 +34,6 @@ mod test{
     #[case(
         "<<alfa bravo|strong>>", 
         Ok(("", Snippet::Strong{ attrs: vec![], text: "alfa bravo".to_string() })))]
-   
     #[case(
         "<<alfa bravo|strong|class: charlie delta>>", 
         Ok(("", 
@@ -55,27 +50,4 @@ mod test{
     fn solo_strong_runner(#[case] input: &str, #[case] expected: Result<(&str, Snippet), Err<Error<&str>>>) {
         assert_eq!(expected, strong(input))
     }
-
-
-
-    // #[test]
-    // pub fn solo_basic_strong() {
-    //     let line = "<<alfa|strong>>";
-    //     let expected = Snippet::Strong{ attrs: vec![], text: "alfa".to_string() };
-    //     assert_eq!(expected, strong(line))));
-    // }
-
-
-    // #[test]
-    // pub fn solo_basic_strong() {
-    //     let line = "<<alfa|strong>>";
-    //     let expected = Snippet::Strong{ attrs: vec![], text: "alfa".to_string() };
-    //     assert_eq!(expected, strong(line).unwrap().1);
-    // }
-
-
-
-
-
-
 }
