@@ -60,7 +60,7 @@ mod test {
             "",
             "",
             "",
-            "Guess the results.",
+            "<<Guess the|abbr>> results.",
             "Hoist it up.",
         ]
         .join("\n");
@@ -119,9 +119,15 @@ mod test {
                     ],
                 },
                 paragraphs: vec![Block::Paragraph {
-                    snippets: vec![Tag::Text {
-                        text: "Guess the results. Hoist it up.".to_string(),
-                    }],
+                    snippets: vec![
+                        Tag::Abbr {
+                            attrs: vec![],
+                            text: "Guess the".to_string(),
+                        },
+                        Tag::Text {
+                            text: " results. Hoist it up.".to_string(),
+                        },
+                    ],
                 }],
             },
         ];

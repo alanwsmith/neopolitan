@@ -1,4 +1,5 @@
 use crate::tag_attrs::TagAttr;
+use crate::tags::abbr::abbr;
 use crate::tags::less_than::less_than;
 use crate::tags::strong::strong;
 use crate::tags::text::text;
@@ -7,12 +8,14 @@ use nom::combinator::eof;
 use nom::multi::many_till;
 use nom::IResult;
 
+pub mod abbr;
 pub mod less_than;
 pub mod strong;
 pub mod text;
 
 #[derive(Debug, PartialEq)]
 pub enum Tag {
+    Abbr { attrs: Vec<TagAttr>, text: String },
     LessThan { text: String },
     Text { text: String },
     Strong { attrs: Vec<TagAttr>, text: String },
@@ -21,7 +24,7 @@ pub enum Tag {
 pub fn tags(source: &str) -> IResult<&str, Vec<Tag>> {
     dbg!(&source);
     let (source, snippets) =
-        many_till(alt((less_than, strong, text)), eof)(source)?;
+        many_till(alt((less_than, abbr, strong, text)), eof)(source)?;
     Ok((source, snippets.0))
 }
 
