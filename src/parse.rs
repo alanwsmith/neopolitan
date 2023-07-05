@@ -1,22 +1,10 @@
-// use crate::block::Block;
 use crate::section::title::title;
 use crate::section::Section;
-// use crate::snippet::Snippet;
 use nom::multi::many0;
 use nom::IResult;
 
 pub fn parse(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, results) = many0(title)(source)?;
-
-    // let results = vec![Section::Title {
-    //     attrs: vec![],
-    //     headline: Block::Headline {
-    //         content: vec![Snippet::Text {
-    //             string: "hello world".to_string(),
-    //         }],
-    //     },
-    //     paragraphs: vec![],
-    // }];
     Ok((source, results))
 }
 
@@ -35,7 +23,13 @@ mod test {
             "-> title",
             ">> class: alfa",
             "",
-            "hello world",
+            "bravo charlie",
+            "delta echo",
+            "",
+            "foxtrot golf",
+            "hotel",
+            "",
+            "whiskey tango",
         ]
         .join("\n");
         let expected = vec![Section::Title {
@@ -44,10 +38,23 @@ mod test {
             ])],
             headline: Block::Headline {
                 content: vec![Snippet::Text {
-                    string: "hello world".to_string(),
+                    string: "bravo charlie delta echo"
+                        .to_string(),
                 }],
             },
-            paragraphs: vec![],
+            paragraphs: vec![
+                Block::Paragraph {
+                    content: vec![Snippet::Text {
+                        string: "foxtrot golf hotel"
+                            .to_string(),
+                    }],
+                },
+                Block::Paragraph {
+                    content: vec![Snippet::Text {
+                        string: "whiskey tango".to_string(),
+                    }],
+                },
+            ],
         }];
         assert_eq!(
             expected,
