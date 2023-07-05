@@ -7,13 +7,13 @@ use nom::IResult;
 use crate::tag_attrs::tag_attrs;
 use nom::Parser;
 
-pub fn abbr(source: &str) -> IResult<&str, Tag> {
+pub fn em(source: &str) -> IResult<&str, Tag> {
     let (source, text) =
-        delimited(tag("<<"), is_not("|").map(|s: &str| s.to_string()), tag_no_case("|abbr"))(source)?;
+        delimited(tag("<<"), is_not("|").map(|s: &str| s.to_string()), tag_no_case("|em"))(source)?;
     let (source, attrs) = tag_attrs(source)?;
     let (source, _) = tag(">>")(source)?;
     Ok((
         source,
-        Tag::Abbr { text, attrs },
+        Tag::Em { text, attrs },
     ))
 }

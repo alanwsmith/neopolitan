@@ -2,17 +2,19 @@ use crate::tag_attrs::class::class;
 use nom::branch::alt;
 use nom::multi::many0;
 use nom::IResult;
+use crate::tag_attrs::id::id;
 
 pub mod class;
+pub mod id;
 
 #[derive(Debug, PartialEq)]
 pub enum TagAttr {
     Class(Vec<String>),
-    Placeholder,
+    Id(String),
 }
 
 pub fn tag_attrs(source: &str) -> IResult<&str, Vec<TagAttr>> {
-    let (source, attrs) = many0(alt((class, class)))(source)?;
+    let (source, attrs) = many0(alt((class, id)))(source)?;
     Ok((source, attrs))
 }
 

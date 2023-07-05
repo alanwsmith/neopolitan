@@ -36,6 +36,7 @@ mod test {
     use crate::blocks::Block;
     use crate::section_attrs::SecAttr;
     use crate::sections::Section;
+    use crate::tag_attrs::TagAttr;
     use crate::tags::Tag;
 
     #[test]
@@ -60,8 +61,8 @@ mod test {
             "",
             "",
             "",
-            "<<Guess the|abbr>> results.",
-            "Hoist it up.",
+            "<<Guess the|abbr>> <<results|em|id: tango>>.",
+            "Hoist <<it|s>> up.",
         ]
         .join("\n");
         let expected = vec![
@@ -125,7 +126,21 @@ mod test {
                             text: "Guess the".to_string(),
                         },
                         Tag::Text {
-                            text: " results. Hoist it up.".to_string(),
+                            text: " ".to_string(),
+                        },
+                        Tag::Em {
+                            attrs: vec![TagAttr::Id("tango".to_string())],
+                            text: "results".to_string(),
+                        },
+                        Tag::Text {
+                            text: ". Hoist ".to_string(),
+                        },
+                        Tag::S {
+                            attrs: vec![],
+                            text: "it".to_string(),
+                        },
+                        Tag::Text {
+                            text: " up.".to_string(),
                         },
                     ],
                 }],
