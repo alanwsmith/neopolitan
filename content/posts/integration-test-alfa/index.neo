@@ -1,13 +1,13 @@
 -> title
 
-Integration Test Alfa
+Integration Test Alfa (This is the title)
 
-This is below the title
+This is below the title (This is a paragraph in the title section)
 
 -> p
 >> class: sierra
 
-This is the alfa integration test 
+This is a section of paragraphs
 
 This is the second paragraph
 

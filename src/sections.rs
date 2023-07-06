@@ -1,6 +1,7 @@
 use crate::blocks::Block;
 use crate::section_attrs::SecAttr;
 use crate::sections::h::h;
+use crate::sections::p::p;
 use crate::sections::title::title;
 use nom::branch::alt;
 use nom::multi::many0;
@@ -8,6 +9,7 @@ use nom::IResult;
 use serde::Serialize;
 
 pub mod h;
+pub mod p;
 pub mod title;
 
 // #[derive(Debug, PartialEq)]
@@ -44,6 +46,10 @@ pub enum Section {
         headline: Block,
         paragraphs: Vec<Block>,
     },
+    P {
+        attrs: Vec<SecAttr>,
+        paragraphs: Vec<Block>,
+    },
     Title {
         attrs: Vec<SecAttr>,
         headline: Block,
@@ -53,7 +59,7 @@ pub enum Section {
 }
 
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
-    let (source, results) = many0(alt((title, h)))(source)?;
+    let (source, results) = many0(alt((h, p, title)))(source)?;
     Ok((source, results))
 }
 
