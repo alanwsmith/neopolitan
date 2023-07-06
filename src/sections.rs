@@ -40,7 +40,7 @@ mod test {
     use crate::tags::Tag;
 
     #[test]
-    pub fn solo_basic_integration() {
+    pub fn basic_integration() {
         let lines = [
             "-> title",
             ">> class: alfa",

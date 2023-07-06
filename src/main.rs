@@ -1,3 +1,6 @@
+use neopolitan::build_site::build_site;
+
 pub fn main() {
-    println!("Work In Progress");
+    println!("Process Started...");
+    build_site();
 }
