@@ -39,7 +39,7 @@ pub fn build_site() {
 
     source_files.iter().for_each(|source_file| {
         println!("Outputting: {}", &source_file.source_path.display());
-        let wrapper = env.get_template(
+        let template = env.get_template(
             format!(
                 "{}.j2",
                 &source_file.template(&source_file.source_data).unwrap().1,
@@ -54,7 +54,7 @@ pub fn build_site() {
             .1;
         let the_title = title(&source_file.source_data).unwrap().1;
 
-        let output = wrapper
+        let output = template
             .unwrap()
             .render(context!(
                 content => the_content,
