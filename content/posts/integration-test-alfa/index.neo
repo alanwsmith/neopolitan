@@ -9,6 +9,8 @@ This is below the title (This is a paragraph in the title section)
 
 This is a section of paragraphs
 
+-> p
+
 This is the second paragraph
 
 This is <<text with a strong tag|strong>> applied
@@ -17,9 +19,13 @@ Here is <<an example|link|https://www.alanwsmith.com/|id: alfa>> link
 
 This is `a shorthand sippet`` of code
 
-And here's a <<regular code snippet|code>>
+- Code without language: <<alfa|code>>
 
+- Code with language: <<bravo|code|rust>>
 
+- Code with language and attributes: <<charlie|code|rust|id: asdf|class: testing>>
+
+- Code with attributes and no language: <<delta|code|class: testing>>
 
 -> todo
 

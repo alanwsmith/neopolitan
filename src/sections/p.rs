@@ -49,7 +49,7 @@ mod text {
             }],
         }
     )]
-    fn solo_p_test(#[case] i: String, #[case] e: Section) {
+    fn p_test(#[case] i: String, #[case] e: Section) {
         assert_eq!(e, p(i.as_str()).unwrap().1)
     }
 }

@@ -22,6 +22,10 @@
         <b {{- attrs(tag.attrs) -}}>
             {{- tag.text -}}
         </b>
+    {%- elif tag.type == "code" -%}
+        <code {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </code>
     {%- elif tag.type == "dfn" -%}
         <dfn {{- attrs(tag.attrs) -}}>
             {{- tag.text -}}

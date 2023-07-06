@@ -64,7 +64,7 @@ pub enum Tag {
     },
     Code {
         attrs: Vec<TagAttr>,
-        lang: Option<String>,
+        // lang: Option<String>,
         text: String,
     },
     Dfn {
