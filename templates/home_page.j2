@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>    
+
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ title }}</title>
@@ -16,7 +17,42 @@
   <header>
     <a href="/">home</a>
   </header>
-  {{ content }}
+
+  {% for section in content %}
+
+  {% if section.type == "Title" %}
+  <h1>
+    {% for tag in section.headline.tags %}
+    {% if tag.type == "Em" %}
+
+
+
+
+    <em {%- for attr in tag.attrs -%} {%- if attr.t=="class" %} class="
+    {%- for value in attr.c -%}
+        {% if loop.first == False %}
+        {{- " " -}}
+        {% endif %}
+    {{- value -}}
+    {%- endfor -%}
+        " {%- endif -%} {%- endfor -%}>{{ tag.text }}</em>
+    {%- else -%}
+    {{ tag.text }}
+    {% endif %}
+
+    {% endfor %}
+  </h1>
+
+  {% endif %}
+
+
+  {% endfor %}
+
+
+
+  <pre>
+    {{ content }}
+  </pre>
   <ul>
     {% for post in posts %}
     <li><a href="{{ post[1] }}">{{ post[0] }}</a></li>

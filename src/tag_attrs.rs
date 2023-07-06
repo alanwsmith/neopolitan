@@ -9,6 +9,7 @@ pub mod class;
 pub mod id;
 
 #[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "t", content = "c", rename_all = "lowercase")]
 pub enum TagAttr {
     Class(Vec<String>),
     Id(String),

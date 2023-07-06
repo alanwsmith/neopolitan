@@ -12,6 +12,7 @@ pub mod title;
 
 // #[derive(Debug, PartialEq)]
 #[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
 pub enum Section {
     H2 {
         attrs: Vec<SecAttr>,

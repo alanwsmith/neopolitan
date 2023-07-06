@@ -7,6 +7,7 @@ pub mod template;
 pub mod title;
 
 #[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
 pub struct SourceFile {
     pub source_data: String,
     pub source_path: PathBuf,
