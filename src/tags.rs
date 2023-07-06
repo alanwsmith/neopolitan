@@ -31,19 +31,18 @@ pub enum Tag {
     Abbr { attrs: Vec<TagAttr>, text: String },
     Em { attrs: Vec<TagAttr>, text: String },
     LessThan { text: String },
-    Text { text: String },
     Q { attrs: Vec<TagAttr>, text: String },
     S { attrs: Vec<TagAttr>, text: String },
     Span { attrs: Vec<TagAttr>, text: String },
     Strong { attrs: Vec<TagAttr>, text: String },
     Sub { attrs: Vec<TagAttr>, text: String },
     Sup { attrs: Vec<TagAttr>, text: String },
+    Text { text: String },
 }
 
 pub fn tags(source: &str) -> IResult<&str, Vec<Tag>> {
-    dbg!(&source);
     let (source, snippets) = many_till(
-        alt((less_than, abbr, em, strong, text, q, s, span, sub, sup)),
+        alt((less_than, abbr, em, q, s, span, strong, sub, sup, text)),
         eof,
     )(source)?;
     Ok((source, snippets.0))

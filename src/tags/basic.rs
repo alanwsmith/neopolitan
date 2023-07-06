@@ -17,8 +17,26 @@ pub fn basic<'a>(source: &'a str, name: &'a str) -> IResult<&'a str, Tag> {
         "abbr" => {
             Ok((source, Tag::Abbr { text, attrs} ))
         },
+        "em" => {
+            Ok((source, Tag::Em{ text, attrs} ))
+        },
+        "q" => {
+            Ok((source, Tag::Q { text, attrs} ))
+        },
+        "s" => {
+            Ok((source, Tag::S { text, attrs} ))
+        },
+        "span" => {
+            Ok((source, Tag::Span { text, attrs} ))
+        },
         "strong" => {
             Ok((source, Tag::Strong { text, attrs} ))
+        },
+        "sub" => {
+            Ok((source, Tag::Sub { text, attrs} ))
+        },
+        "sup" => {
+            Ok((source, Tag::Sup { text, attrs} ))
         },
         _ => panic!("No tag")
     } 
@@ -38,6 +56,27 @@ mod test{
         "<<delta|abbr>>", 
         "abbr",
         Ok(("", Tag::Abbr{ attrs: vec![], text: "delta".to_string() })))]
+        #[case(
+            "<<delta|q>>", 
+            "q",
+            Ok(("", Tag::Q{ attrs: vec![], text: "delta".to_string() })))]
+            #[case(
+                "<<delta|s>>", 
+                "s",
+                Ok(("", Tag::S{ attrs: vec![], text: "delta".to_string() })))]
+                #[case(
+                    "<<delta|span>>", 
+                    "span",
+                    Ok(("", Tag::Span{ attrs: vec![], text: "delta".to_string() })))]
+                    #[case(
+                        "<<delta|sub>>", 
+                        "sub",
+                        Ok(("", Tag::Sub{ attrs: vec![], text: "delta".to_string() })))]
+                        #[case(
+                            "<<delta|sup>>", 
+                            "sup",
+                            Ok(("", Tag::Sup{ attrs: vec![], text: "delta".to_string() })))]
+                    
     #[case(
         "<<alfa bravo|strong>>", 
         "strong",
