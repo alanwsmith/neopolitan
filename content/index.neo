@@ -1,4 +1,6 @@
 -> title
+>> class: whiskey tango
+>> id: sierra
 
 Neopolitan <<Testing|em|class: alfa bravo>> <<Site|strong|id: charlie>>
 
@@ -6,6 +8,16 @@ A test run to <<see|s>> if things work
 
 pour <<the|sub>> water
 lift <<the|sup>> <<hammer|small>>
+
+
+-> h2
+>> class: foxtrot
+
+This is the second level headline
+
+with some more text under it
+and one to grow on
+
 
 -> p
 

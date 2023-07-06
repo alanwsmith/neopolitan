@@ -14,7 +14,32 @@ pub mod title;
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type", rename_all = "lowercase")]
 pub enum Section {
+    H1 {
+        attrs: Vec<SecAttr>,
+        headline: Block,
+        paragraphs: Vec<Block>,
+    },
     H2 {
+        attrs: Vec<SecAttr>,
+        headline: Block,
+        paragraphs: Vec<Block>,
+    },
+    H3 {
+        attrs: Vec<SecAttr>,
+        headline: Block,
+        paragraphs: Vec<Block>,
+    },
+    H4 {
+        attrs: Vec<SecAttr>,
+        headline: Block,
+        paragraphs: Vec<Block>,
+    },
+    H5 {
+        attrs: Vec<SecAttr>,
+        headline: Block,
+        paragraphs: Vec<Block>,
+    },
+    H6 {
         attrs: Vec<SecAttr>,
         headline: Block,
         paragraphs: Vec<Block>,
@@ -43,7 +68,7 @@ mod test {
     use crate::tags::Tag;
 
     #[test]
-    pub fn basic_integration() {
+    pub fn solo_basic_integration() {
         let lines = [
             "-> title",
             ">> class: alfa",
@@ -69,6 +94,12 @@ mod test {
             "",
             "<<Heave|sub>><<the|sup>><<line|span|class: alfa bravo charlie|id: delta>>",
             "<<Take it away|q>>",
+            "",
+            "-> h3", 
+            "", 
+            "lift the hammer",
+            "", 
+            "cap the jar",
         ]
         .join("\n");
         let expected = vec![
@@ -182,6 +213,19 @@ mod test {
                         ],
                     },
                 ],
+            },
+            Section::H3 {
+                attrs: vec![],
+                headline: Block::Headline {
+                    tags: vec![Tag::Text {
+                        text: "lift the hammer".to_string(),
+                    }],
+                },
+                paragraphs: vec![Block::Paragraph {
+                    tags: vec![Tag::Text {
+                        text: "cap the jar".to_string(),
+                    }],
+                }],
             },
         ];
         assert_eq!(expected, sections(lines.as_str()).unwrap().1);

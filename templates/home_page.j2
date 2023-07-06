@@ -14,23 +14,45 @@
   </style>
 </head>
 
+{%- macro section_attrs(attrs) %}
+  {%- for attr in attrs %}
+    {%- if attr.type == "class" -%}
+      {{- " " -}}
+      class="
+        {%- for item in attr.content %}
+          {%- if loop.first == false %}
+            {{- " " }}
+          {%- endif %}
+          {{- item }}
+        {%- endfor -%}
+      "
+    {%- elif attr.type == "id" -%}
+      {{- " " -}}
+      id="{{- attr.content -}}"
+    {%- endif %}
+  {%- endfor %}
+{%- endmacro -%}
+
 <body>
   <header>
     <a href="/">home</a>
   </header>
-
-------------
-
   {% for section in content %}
-
-  {% if section.type == "title" %}
-  <h1>
-    {{text(section.headline.tags)}}
-  </h1>
-  {% for paragraph in section.paragraphs %}
-  <p>{{ text(paragraph.tags) }}</p>
-  {% endfor %}
-  {% endif %}
+    {% if section.type == "title" %}
+      <h1 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h1>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% elif section.type == "h2" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% endif %}
   {% endfor %}
 
   <ul>

@@ -9,7 +9,7 @@ pub mod class;
 pub mod id;
 
 #[derive(Debug, PartialEq, Serialize)]
-#[serde(tag = "type", rename_all = "lowercase")]
+#[serde(tag = "type", content = "content", rename_all = "lowercase")]
 pub enum SecAttr {
     Class(Vec<String>),
     Id(String),
