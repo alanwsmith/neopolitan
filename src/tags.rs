@@ -6,6 +6,7 @@ use crate::tags::em::em;
 use crate::tags::i::i;
 use crate::tags::kbd::kbd;
 use crate::tags::less_than::less_than;
+use crate::tags::link::link;
 use crate::tags::mark::mark;
 use crate::tags::q::q;
 use crate::tags::s::s;
@@ -33,6 +34,7 @@ pub mod em;
 pub mod i;
 pub mod kbd;
 pub mod less_than;
+pub mod link;
 pub mod mark;
 pub mod q;
 pub mod s;
@@ -50,33 +52,96 @@ pub mod wbr;
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type", rename_all = "lowercase")]
 pub enum Tag {
-    Abbr { attrs: Vec<TagAttr>, text: String },
-    B { attrs: Vec<TagAttr>, text: String },
-    Dfn { attrs: Vec<TagAttr>, text: String },
-    Em { attrs: Vec<TagAttr>, text: String },
-    I { attrs: Vec<TagAttr>, text: String },
-    Kbd { attrs: Vec<TagAttr>, text: String },
-    LessThan { text: String },
-    Mark { attrs: Vec<TagAttr>, text: String },
-    Q { attrs: Vec<TagAttr>, text: String },
-    S { attrs: Vec<TagAttr>, text: String },
-    Samp { attrs: Vec<TagAttr>, text: String },
-    Small { attrs: Vec<TagAttr>, text: String },
-    Span { attrs: Vec<TagAttr>, text: String },
-    Strong { attrs: Vec<TagAttr>, text: String },
-    Sub { attrs: Vec<TagAttr>, text: String },
-    Sup { attrs: Vec<TagAttr>, text: String },
-    Text { text: String },
-    U { attrs: Vec<TagAttr>, text: String },
-    Var { attrs: Vec<TagAttr>, text: String },
-    Wbr { attrs: Vec<TagAttr>, text: String },
+    Abbr {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    B {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Dfn {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Em {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    I {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Kbd {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    LessThan {
+        text: String,
+    },
+    Link {
+        attrs: Vec<TagAttr>,
+        text: String,
+        url: String,
+    },
+    Mark {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Q {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    S {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Samp {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Small {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Span {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Strong {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Sub {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Sup {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Text {
+        text: String,
+    },
+    U {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Var {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Wbr {
+        attrs: Vec<TagAttr>,
+        text: String,
+    },
 }
 
 pub fn tags(source: &str) -> IResult<&str, Vec<Tag>> {
     let (source, snippets) = many_till(
         alt((
-            less_than, abbr, b, dfn, em, i, kbd, mark, q, s, samp, small, span,
-            strong, sub, sup, text, u, var, wbr,
+            less_than, abbr, b, dfn, em, i, kbd, link, mark, q, s, samp, small,
+            span, strong, sub, sup, text, u, var, wbr,
         )),
         eof,
     )(source)?;

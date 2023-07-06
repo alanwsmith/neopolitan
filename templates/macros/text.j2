@@ -38,6 +38,10 @@
         <kbd {{- attrs(tag.attrs) -}}>
             {{- tag.text -}}
         </kbd>
+    {%- elif tag.type == "link" -%}
+        <a href="{{- tag.url -}}" {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </a>
     {%- elif tag.type == "mark" -%}
         <mark {{- attrs(tag.attrs) -}}>
             {{- tag.text -}}

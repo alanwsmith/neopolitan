@@ -34,7 +34,7 @@ mod test {
         vec!["-> attributes", ">> type: alfa"].join("\n"),
         "alfa"
         )]
-    fn solo_type_tester(#[case] i1: String, #[case] e: &str) {
+    fn type_tester(#[case] i1: String, #[case] e: &str) {
         let sf = SourceFile::new();
         assert_eq!(e, sf.type_of_page(i1.as_str()).unwrap().1);
     }

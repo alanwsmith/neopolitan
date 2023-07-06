@@ -18,6 +18,15 @@ This is the second level headline
 with some more text under it
 and one to grow on
 
+-> h3
+
+Hard coded links
+
+<<integration-test-alfa|link|/posts/integration-test-alfa/index.html>>
+
+<<second-test|link|/posts/second-test/index.html>>
+
+
 
 -> p
 

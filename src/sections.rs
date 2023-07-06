@@ -68,7 +68,7 @@ mod test {
     use crate::tags::Tag;
 
     #[test]
-    pub fn solo_basic_integration() {
+    pub fn basic_integration() {
         let lines = [
             "-> title",
             ">> class: alfa",
@@ -100,6 +100,7 @@ mod test {
             "lift the hammer",
             "", 
             "cap the jar",
+            "<<echo|link|https://www.example.com/|id: victor>>"
         ]
         .join("\n");
         let expected = vec![
@@ -222,9 +223,16 @@ mod test {
                     }],
                 },
                 paragraphs: vec![Block::Paragraph {
-                    tags: vec![Tag::Text {
-                        text: "cap the jar".to_string(),
-                    }],
+                    tags: vec![
+                        Tag::Text {
+                            text: "cap the jar ".to_string(),
+                        },
+                        Tag::Link {
+                            attrs: vec![TagAttr::Id("victor".to_string())],
+                            text: "echo".to_string(),
+                            url: "https://www.example.com/".to_string(),
+                        },
+                    ],
                 }],
             },
         ];

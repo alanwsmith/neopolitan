@@ -23,7 +23,7 @@ mod test {
     use super::*;
 
     #[test]
-    pub fn solo_basic_test() {
+    pub fn basic_test() {
         let lines = vec!["-> title", "", "Delta Echo"].join("\n");
         let expected = "Delta Echo".to_string();
         assert_eq!(expected, title(lines.as_str()).unwrap().1);

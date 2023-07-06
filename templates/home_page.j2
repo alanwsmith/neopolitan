@@ -46,7 +46,42 @@
       {% for paragraph in section.paragraphs %}
         <p>{{ text(paragraph.tags) }}</p>
       {% endfor %}
+    {% elif section.type == "h1" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
     {% elif section.type == "h2" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% elif section.type == "h3" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% elif section.type == "h4" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% elif section.type == "h5" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% elif section.type == "h6" %}
       <h2 {{- section_attrs(section.attrs)}}>
         {{text(section.headline.tags)}}
       </h2>
@@ -55,6 +90,7 @@
       {% endfor %}
     {% endif %}
   {% endfor %}
+
 
   <ul>
     {% for post in posts %}
