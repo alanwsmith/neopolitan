@@ -12,7 +12,7 @@ pub mod title;
 
 // #[derive(Debug, PartialEq)]
 #[derive(Debug, PartialEq, Serialize)]
-#[serde(tag = "type")]
+#[serde(tag = "type", rename_all = "lowercase")]
 pub enum Section {
     H2 {
         attrs: Vec<SecAttr>,

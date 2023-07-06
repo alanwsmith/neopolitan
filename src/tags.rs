@@ -48,7 +48,7 @@ pub mod var;
 pub mod wbr;
 
 #[derive(Debug, PartialEq, Serialize)]
-#[serde(tag = "type")]
+#[serde(tag = "type", rename_all = "lowercase")]
 pub enum Tag {
     Abbr { attrs: Vec<TagAttr>, text: String },
     B { attrs: Vec<TagAttr>, text: String },

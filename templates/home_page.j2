@@ -1,3 +1,4 @@
+{% from "macros/text.j2" import text %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,29 +19,13 @@
     <a href="/">home</a>
   </header>
 
+------------
+
   {% for section in content %}
 
-  {% if section.type == "Title" %}
+  {% if section.type == "title" %}
   <h1>
-    {% for tag in section.headline.tags %}
-    {% if tag.type == "Em" %}
-
-
-
-
-    <em {%- for attr in tag.attrs -%} {%- if attr.t=="class" %} class="
-    {%- for value in attr.c -%}
-        {% if loop.first == False %}
-        {{- " " -}}
-        {% endif %}
-    {{- value -}}
-    {%- endfor -%}
-        " {%- endif -%} {%- endfor -%}>{{ tag.text }}</em>
-    {%- else -%}
-    {{ tag.text }}
-    {% endif %}
-
-    {% endfor %}
+    {{text(section.headline.tags)}}
   </h1>
 
   {% endif %}

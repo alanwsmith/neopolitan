@@ -1,0 +1,29 @@
+{% macro attrs(data) %}
+{%- for attr in data -%} 
+    {%- if attr.t=="class" %} class="
+        {%- for value in attr.c -%}
+            {% if loop.first == False %}
+                {{- " " -}}
+            {% endif %}
+            {{- value -}}
+        {%- endfor -%}
+        "
+    {%- endif -%}
+{%- endfor -%}
+{% endmacro %}
+
+{% macro text(content) -%}
+{% for tag in content  %}
+    {% if tag.type == "em" %}
+        <em {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </em>
+    {%- elif tag.type == "strong" -%}
+        <strong {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </strong>
+    {%- else -%}
+        {{- tag.text -}}
+    {%- endif -%}
+{%- endfor -%}
+{%- endmacro %}
