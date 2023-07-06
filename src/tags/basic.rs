@@ -17,14 +17,32 @@ pub fn basic<'a>(source: &'a str, name: &'a str) -> IResult<&'a str, Tag> {
         "abbr" => {
             Ok((source, Tag::Abbr { text, attrs} ))
         },
+        "b" => {
+            Ok((source, Tag::B{ text, attrs} ))
+        },
+        "dfn" => {
+            Ok((source, Tag::Dfn{ text, attrs} ))
+        },
         "em" => {
             Ok((source, Tag::Em{ text, attrs} ))
+        },
+        "i" => {
+            Ok((source, Tag::I{ text, attrs} ))
+        },
+        "kbd" => {
+            Ok((source, Tag::Kbd{ text, attrs} ))
+        },
+        "mark" => {
+            Ok((source, Tag::Mark{ text, attrs} ))
         },
         "q" => {
             Ok((source, Tag::Q { text, attrs} ))
         },
         "s" => {
             Ok((source, Tag::S { text, attrs} ))
+        },
+        "small" => {
+            Ok((source, Tag::Small{ text, attrs} ))
         },
         "span" => {
             Ok((source, Tag::Span { text, attrs} ))
@@ -57,6 +75,22 @@ mod test{
         "abbr",
         Ok(("", Tag::Abbr{ attrs: vec![], text: "delta".to_string() })))]
     #[case(
+        "<<delta|b>>", 
+        "b",
+        Ok(("", Tag::B{ attrs: vec![], text: "delta".to_string() })))]
+    #[case(
+        "<<delta|dfn>>", 
+        "dfn",
+        Ok(("", Tag::Dfn{ attrs: vec![], text: "delta".to_string() })))]
+    #[case(
+        "<<delta|i>>", 
+        "i",
+        Ok(("", Tag::I{ attrs: vec![], text: "delta".to_string() })))]
+    #[case(
+        "<<delta|mark>>", 
+        "mark",
+        Ok(("", Tag::Mark{ attrs: vec![], text: "delta".to_string() })))]
+    #[case(
         "<<delta|q>>", 
         "q",
         Ok(("", Tag::Q{ attrs: vec![], text: "delta".to_string() })))]
@@ -64,6 +98,10 @@ mod test{
         "<<delta|s>>", 
         "s",
         Ok(("", Tag::S{ attrs: vec![], text: "delta".to_string() })))]
+    #[case(
+        "<<delta|small>>", 
+        "small",
+        Ok(("", Tag::Small{ attrs: vec![], text: "delta".to_string() })))]
     #[case(
         "<<delta|span>>", 
         "span",
