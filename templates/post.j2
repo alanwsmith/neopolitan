@@ -23,6 +23,7 @@
       <h1 {{- section_attrs(section.attrs)}}>
         {{- text(section.headline.tags) -}}
       </h1>
+      {{ date }}
       {%- for paragraph in section.paragraphs -%}
         <p>{{ text(paragraph.tags) }}</p>
       {%- endfor -%}
