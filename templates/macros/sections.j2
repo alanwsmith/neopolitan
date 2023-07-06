@@ -3,17 +3,10 @@
 
 {% macro sections(content) %}
   {% for section in content %}
-    {% if section.type == "title" %}
+    {% if section.type == "h1" %}
       <h1 {{- section_attrs(section.attrs)}}>
         {{text(section.headline.tags)}}
       </h1>
-      {% for paragraph in section.paragraphs %}
-        <p>{{ text(paragraph.tags) }}</p>
-      {% endfor %}
-    {% elif section.type == "h1" %}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
       {% for paragraph in section.paragraphs %}
         <p>{{ text(paragraph.tags) }}</p>
       {% endfor %}

@@ -1,4 +1,6 @@
+{%- from "macros/text.j2" import text -%}
 {%- from "macros/sections.j2" import sections -%}
+{%- from "macros/section_attrs.j2" import section_attrs -%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +17,17 @@
 </head>
 <body>
   <header>
-    <a href="/">home</a>
+    <a href="/">home</a>  
+    {%- for section in content -%}
+    {%- if section.type == "title" -%}
+      <h1 {{- section_attrs(section.attrs)}}>
+        {{- text(section.headline.tags) -}}
+      </h1>
+      {%- for paragraph in section.paragraphs -%}
+        <p>{{ text(paragraph.tags) }}</p>
+      {%- endfor -%}
+    {%- endif -%}
+    {%- endfor -%}
   </header>
   <main>
   {{ sections(content) }}
