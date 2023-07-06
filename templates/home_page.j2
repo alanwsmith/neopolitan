@@ -27,22 +27,18 @@
   <h1>
     {{text(section.headline.tags)}}
   </h1>
-
+  {% for paragraph in section.paragraphs %}
+  <p>{{ text(paragraph.tags) }}</p>
+  {% endfor %}
   {% endif %}
-
-
   {% endfor %}
 
-
-
-  <pre>
-    {{ content }}
-  </pre>
   <ul>
     {% for post in posts %}
-    <li><a href="{{ post[1] }}">{{ post[0] }}</a></li>
+    <li><a href="{{ post[1] }}">{{ post[0]}}</a></li>
     {% endfor %}
   </ul>
+
 </body>
 
 </html>

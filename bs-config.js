@@ -1,5 +1,5 @@
 module.exports = {
-    browser: ['firefox'],
+    browser: ['chrome'],
     injectChanges: false,
     ghostMode: false,
     minify: false,

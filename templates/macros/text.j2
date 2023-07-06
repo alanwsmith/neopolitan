@@ -14,14 +14,74 @@
 
 {% macro text(content) -%}
 {% for tag in content  %}
-    {% if tag.type == "em" %}
+    {% if tag.type == "abbr" %}
+        <abbr {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </abbr>
+    {%- elif tag.type == "b" -%}
+        <b {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </b>
+    {%- elif tag.type == "dfn" -%}
+        <dfn {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </dfn>
+    {%- elif tag.type == "em" -%}
         <em {{- attrs(tag.attrs) -}}>
             {{- tag.text -}}
         </em>
+    {%- elif tag.type == "i" -%}
+        <i {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </i>
+    {%- elif tag.type == "kbd" -%}
+        <kbd {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </kbd>
+    {%- elif tag.type == "mark" -%}
+        <mark {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </mark>
+    {%- elif tag.type == "q" -%}
+        <q {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </q>
+    {%- elif tag.type == "s" -%}
+        <s {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </s>
+    {%- elif tag.type == "samp" -%}
+        <samp {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </samp>
+    {%- elif tag.type == "small" -%}
+        <small {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </small>
+    {%- elif tag.type == "span" -%}
+        <span {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </span>
     {%- elif tag.type == "strong" -%}
         <strong {{- attrs(tag.attrs) -}}>
             {{- tag.text -}}
         </strong>
+    {%- elif tag.type == "sub" -%}
+        <sub {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </sub>
+    {%- elif tag.type == "sup" -%}
+        <sup {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </sup>
+    {%- elif tag.type == "var" -%}
+        <var {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </var>
+    {%- elif tag.type == "wbr" -%}
+        <wbr {{- attrs(tag.attrs) -}}>
+            {{- tag.text -}}
+        </wbr>
     {%- else -%}
         {{- tag.text -}}
     {%- endif -%}
