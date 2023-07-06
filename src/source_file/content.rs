@@ -20,7 +20,7 @@ pub fn content(source: &str) -> IResult<&str, String> {
 
 mod test {
 
-    use super::*;
+    // use super::*;
 
     // #[test]
     // pub fn solo_basic_test() {

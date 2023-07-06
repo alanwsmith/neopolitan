@@ -2,6 +2,8 @@ use serde::Serialize;
 use std::path::PathBuf;
 
 pub mod content;
+pub mod date;
+pub mod new;
 pub mod template;
 pub mod title;
 

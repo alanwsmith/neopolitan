@@ -43,15 +43,18 @@ pub fn build_site() {
         let wrapper = env.get_template(
             template(&source_file.source_data).unwrap().1.as_str(),
         );
-        let the_title = title(&source_file.source_data).unwrap().1;
+        
         let the_content = sections(&source_file.source_data).unwrap().1;
+        let the_date = &source_file.date(&source_file.source_data, "%B %Y").unwrap().1;
+        let the_title = title(&source_file.source_data).unwrap().1;
 
         dbg!(&the_title);
         let output = wrapper
             .unwrap()
             .render(context!(
-                 title => the_title,
-                content => the_content
+                content => the_content,
+                date => the_date,
+                title => the_title,
             ))
             .unwrap();
         let mut file_path = site_root_dir.clone();
