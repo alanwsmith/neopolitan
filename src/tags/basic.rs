@@ -41,6 +41,9 @@ pub fn basic<'a>(source: &'a str, name: &'a str) -> IResult<&'a str, Tag> {
         "s" => {
             Ok((source, Tag::S { text, attrs} ))
         },
+        "samp" => {
+            Ok((source, Tag::Samp { text, attrs} ))
+        },
         "small" => {
             Ok((source, Tag::Small{ text, attrs} ))
         },
@@ -55,6 +58,15 @@ pub fn basic<'a>(source: &'a str, name: &'a str) -> IResult<&'a str, Tag> {
         },
         "sup" => {
             Ok((source, Tag::Sup { text, attrs} ))
+        },
+        "u" => {
+            Ok((source, Tag::U{ text, attrs} ))
+        },
+        "var" => {
+            Ok((source, Tag::Var{ text, attrs} ))
+        },
+        "wbr" => {
+            Ok((source, Tag::Wbr{ text, attrs} ))
         },
         _ => panic!("No tag")
     } 
@@ -99,6 +111,10 @@ mod test{
         "s",
         Ok(("", Tag::S{ attrs: vec![], text: "delta".to_string() })))]
     #[case(
+        "<<delta|samp>>", 
+        "samp",
+        Ok(("", Tag::Samp{ attrs: vec![], text: "delta".to_string() })))]
+    #[case(
         "<<delta|small>>", 
         "small",
         Ok(("", Tag::Small{ attrs: vec![], text: "delta".to_string() })))]
@@ -118,6 +134,18 @@ mod test{
         "<<alfa bravo|strong>>", 
         "strong",
         Ok(("", Tag::Strong{ attrs: vec![], text: "alfa bravo".to_string() })))]
+    #[case(
+        "<<alfa bravo|u>>", 
+        "u",
+        Ok(("", Tag::U{ attrs: vec![], text: "alfa bravo".to_string() })))]
+    #[case(
+        "<<alfa bravo|var>>", 
+        "var",
+        Ok(("", Tag::Var{ attrs: vec![], text: "alfa bravo".to_string() })))]
+    #[case(
+        "<<alfa bravo|wbr>>", 
+        "wbr",
+        Ok(("", Tag::Wbr{ attrs: vec![], text: "alfa bravo".to_string() })))]
     #[case(
         "<<alfa bravo|strong|class: charlie delta|id: echo>>", 
         "strong",

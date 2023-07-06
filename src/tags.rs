@@ -9,12 +9,16 @@ use crate::tags::less_than::less_than;
 use crate::tags::mark::mark;
 use crate::tags::q::q;
 use crate::tags::s::s;
+use crate::tags::samp::samp;
 use crate::tags::small::small;
 use crate::tags::span::span;
 use crate::tags::strong::strong;
 use crate::tags::sub::sub;
 use crate::tags::sup::sup;
 use crate::tags::text::text;
+use crate::tags::u::u;
+use crate::tags::var::var;
+use crate::tags::wbr::wbr;
 use nom::branch::alt;
 use nom::combinator::eof;
 use nom::multi::many_till;
@@ -31,12 +35,16 @@ pub mod less_than;
 pub mod mark;
 pub mod q;
 pub mod s;
+pub mod samp;
 pub mod small;
 pub mod span;
 pub mod strong;
 pub mod sub;
 pub mod sup;
 pub mod text;
+pub mod u;
+pub mod var;
+pub mod wbr;
 
 #[derive(Debug, PartialEq)]
 pub enum Tag {
@@ -50,19 +58,23 @@ pub enum Tag {
     Mark { attrs: Vec<TagAttr>, text: String },
     Q { attrs: Vec<TagAttr>, text: String },
     S { attrs: Vec<TagAttr>, text: String },
+    Samp { attrs: Vec<TagAttr>, text: String },
     Small { attrs: Vec<TagAttr>, text: String },
     Span { attrs: Vec<TagAttr>, text: String },
     Strong { attrs: Vec<TagAttr>, text: String },
     Sub { attrs: Vec<TagAttr>, text: String },
     Sup { attrs: Vec<TagAttr>, text: String },
     Text { text: String },
+    U { attrs: Vec<TagAttr>, text: String },
+    Var { attrs: Vec<TagAttr>, text: String },
+    Wbr { attrs: Vec<TagAttr>, text: String },
 }
 
 pub fn tags(source: &str) -> IResult<&str, Vec<Tag>> {
     let (source, snippets) = many_till(
         alt((
-            less_than, abbr, b, dfn, em, i, kbd, mark, q, s, small, span,
-            strong, sub, sup, text,
+            less_than, abbr, b, dfn, em, i, kbd, mark, q, s, samp, small, span,
+            strong, sub, sup, text, u, var, wbr,
         )),
         eof,
     )(source)?;
