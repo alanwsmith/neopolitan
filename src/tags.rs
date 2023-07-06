@@ -23,6 +23,7 @@ use nom::branch::alt;
 use nom::combinator::eof;
 use nom::multi::many_till;
 use nom::IResult;
+use serde::Serialize;
 
 pub mod abbr;
 pub mod b;
@@ -46,7 +47,7 @@ pub mod u;
 pub mod var;
 pub mod wbr;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
 pub enum Tag {
     Abbr { attrs: Vec<TagAttr>, text: String },
     B { attrs: Vec<TagAttr>, text: String },

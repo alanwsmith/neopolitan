@@ -3,11 +3,12 @@ use nom::branch::alt;
 use nom::multi::many0;
 use nom::IResult;
 use crate::tag_attrs::id::id;
+use serde::Serialize;
 
 pub mod class;
 pub mod id;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
 pub enum TagAttr {
     Class(Vec<String>),
     Id(String),

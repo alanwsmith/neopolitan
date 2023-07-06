@@ -5,11 +5,13 @@ use crate::sections::title::title;
 use nom::branch::alt;
 use nom::multi::many0;
 use nom::IResult;
+use serde::Serialize;
 
 pub mod h;
 pub mod title;
 
-#[derive(Debug, PartialEq)]
+// #[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
 pub enum Section {
     H2 {
         attrs: Vec<SecAttr>,

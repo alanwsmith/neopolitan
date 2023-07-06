@@ -3,11 +3,12 @@ use crate::section_attrs::id::id;
 use nom::multi::many0;
 use nom::IResult;
 use nom::branch::alt;
+use serde::Serialize;
 
 pub mod class;
 pub mod id;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize)]
 pub enum SecAttr {
     Class(Vec<String>),
     Id(String),

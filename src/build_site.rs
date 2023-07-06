@@ -1,4 +1,4 @@
-// use crate::files::Files;
+use crate::sections::sections;
 use crate::source_file::template::template;
 use crate::source_file::title::title;
 use crate::source_file::SourceFile;
@@ -44,13 +44,15 @@ pub fn build_site() {
             template(&source_file.source_data).unwrap().1.as_str(),
         );
         let the_title = title(&source_file.source_data).unwrap().1;
+        let the_content = sections(&source_file.source_data).unwrap().1;
+
         dbg!(&the_title);
         let output = wrapper
             .unwrap()
             .render(context!(
-                          title => the_title
-            //             content => source_file.content(),
-                     ))
+                 title => the_title,
+                content => the_content
+            ))
             .unwrap();
         let mut file_path = site_root_dir.clone();
         file_path.push(&source_file.source_path);

@@ -4,9 +4,9 @@ TODO List
 
 -> todo
 
-[x] Add `<<>>`` tags to paragraphs
+[x] Add inline tags to paragraphs
 
-[x] Add <<`shortcodes``|code>> to paragraphs
+[x] Add shortcodes to paragraphs
 
 [x] Setup the TODO list section so this shows up as a list
 

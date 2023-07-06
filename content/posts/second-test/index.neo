@@ -6,7 +6,7 @@ Here's another line
 
 This is the second test post
 
-link <<example|link|https://www.alanwsmith.com/|style: color: red;>> test
+<<example|strong>>
 
 And another
 
