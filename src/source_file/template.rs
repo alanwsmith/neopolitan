@@ -27,14 +27,14 @@ mod test {
     use super::*;
 
     #[test]
-    pub fn solo_basic_test() {
+    pub fn basic_test() {
         let lines = vec!["-> attributes", ">> type: alfa"].join("\n");
         let expected = "alfa.j2".to_string();
         assert_eq!(expected, template(lines.as_str()).unwrap().1);
     }
 
     #[test]
-    pub fn solo_basic_with_whitespace_problem() {
+    pub fn basic_with_whitespace_problem() {
         let lines = vec!["-> attributes", ">> type: bravo "].join("\n");
         let expected = "bravo.j2".to_string();
         assert_eq!(expected, template(lines.as_str()).unwrap().1);

@@ -1,6 +1,7 @@
 // use crate::files::Files;
+use crate::source_file::template::template;
+use crate::source_file::title::title;
 use crate::source_file::SourceFile;
-use crate::template::template;
 use minijinja::context;
 use minijinja::Environment;
 use minijinja::Source;
@@ -42,20 +43,21 @@ pub fn build_site() {
         let wrapper = env.get_template(
             template(&source_file.source_data).unwrap().1.as_str(),
         );
+        let the_title = title(&source_file.source_data).unwrap().1;
+        dbg!(&the_title);
         let output = wrapper
             .unwrap()
             .render(context!(
-            //             title => source_file.title(),
-            //             // posts => source_files.all_posts(),
+                          title => the_title
             //             content => source_file.content(),
                      ))
             .unwrap();
-        dbg!(output);
-        //     let mut file_path = site_root_dir.clone();
-        //     file_path.push(source_file.output_path().unwrap());
-        //     let dir_path = file_path.parent().unwrap();
-        //     fs::create_dir_all(dir_path).unwrap();
-        //     fs::write(file_path, output).unwrap();
+        let mut file_path = site_root_dir.clone();
+        file_path.push(&source_file.source_path);
+        file_path.set_extension("html");
+        let dir_path = file_path.parent().unwrap();
+        fs::create_dir_all(dir_path).unwrap();
+        fs::write(file_path, output).unwrap();
     });
 
     //
