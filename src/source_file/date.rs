@@ -41,11 +41,7 @@ mod test {
         "%B %Y",
         "July 2023".to_string()
         )]
-    fn solo_date_tester(
-        #[case] i1: String,
-        #[case] i2: &str,
-        #[case] e: String,
-    ) {
+    fn date_tester(#[case] i1: String, #[case] i2: &str, #[case] e: String) {
         let sf = SourceFile::new();
         assert_eq!(e, sf.date(i1.as_str(), i2).unwrap().1.unwrap());
     }

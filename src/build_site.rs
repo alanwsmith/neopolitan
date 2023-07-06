@@ -1,5 +1,4 @@
 use crate::sections::sections;
-use crate::source_file::template::template;
 use crate::source_file::title::title;
 use crate::source_file::SourceFile;
 use minijinja::context;
@@ -41,14 +40,20 @@ pub fn build_site() {
     source_files.iter().for_each(|source_file| {
         println!("Outputting: {}", &source_file.source_path.display());
         let wrapper = env.get_template(
-            template(&source_file.source_data).unwrap().1.as_str(),
+            format!(
+                "{}.j2",
+                &source_file.template(&source_file.source_data).unwrap().1,
+            )
+            .as_str(),
         );
-        
+
         let the_content = sections(&source_file.source_data).unwrap().1;
-        let the_date = &source_file.date(&source_file.source_data, "%B %Y").unwrap().1;
+        let the_date = &source_file
+            .date(&source_file.source_data, "%B %Y")
+            .unwrap()
+            .1;
         let the_title = title(&source_file.source_data).unwrap().1;
 
-        dbg!(&the_title);
         let output = wrapper
             .unwrap()
             .render(context!(
