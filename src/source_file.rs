@@ -1,8 +1,7 @@
-use std::path::PathBuf;
 use serde::Serialize;
+use std::path::PathBuf;
 
 pub mod content;
-pub mod output_path;
 pub mod template;
 pub mod title;
 
