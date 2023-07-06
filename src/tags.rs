@@ -1,6 +1,7 @@
 use crate::tag_attrs::TagAttr;
 use crate::tags::abbr::abbr;
 use crate::tags::b::b;
+use crate::tags::code::code;
 use crate::tags::dfn::dfn;
 use crate::tags::em::em;
 use crate::tags::i::i;
@@ -29,6 +30,7 @@ use serde::Serialize;
 pub mod abbr;
 pub mod b;
 pub mod basic;
+pub mod code;
 pub mod dfn;
 pub mod em;
 pub mod i;
@@ -58,6 +60,11 @@ pub enum Tag {
     },
     B {
         attrs: Vec<TagAttr>,
+        text: String,
+    },
+    Code {
+        attrs: Vec<TagAttr>,
+        lang: Option<String>,
         text: String,
     },
     Dfn {
@@ -140,8 +147,11 @@ pub enum Tag {
 pub fn tags(source: &str) -> IResult<&str, Vec<Tag>> {
     let (source, snippets) = many_till(
         alt((
-            less_than, abbr, b, dfn, em, i, kbd, link, mark, q, s, samp, small,
-            span, strong, sub, sup, text, u, var, wbr,
+            alt((
+                less_than, abbr, b, code, dfn, em, i, kbd, link, mark, q, s,
+                samp,
+            )),
+            alt((small, span, strong, sub, sup, text, u, var, wbr)),
         )),
         eof,
     )(source)?;

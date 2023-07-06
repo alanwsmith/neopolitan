@@ -46,7 +46,7 @@ mod test {
             TagAttr::Class(vec!["bravo".to_string()])
         ], text: "alfa".to_string(), url: "https://www.example.com/".to_string() }
     )]
-    fn solo_link_test(#[case] i: &str, #[case] e: Tag) {
+    fn link_test(#[case] i: &str, #[case] e: Tag) {
         assert_eq!(e, link(i).unwrap().1);
     }
 }

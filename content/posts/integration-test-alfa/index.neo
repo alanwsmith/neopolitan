@@ -15,7 +15,11 @@ This is <<text with a strong tag|strong>> applied
 
 Here is <<an example|link|https://www.alanwsmith.com/|id: alfa>> link
 
-This is `a snippet`` of code
+This is `a shorthand sippet`` of code
+
+And here's a <<regular code snippet|code>>
+
+
 
 -> todo
 
