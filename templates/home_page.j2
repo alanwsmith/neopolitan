@@ -1,7 +1,7 @@
-{% from "macros/text.j2" import text %}
+{%- from "macros/sections.j2" import sections -%}
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,91 +13,18 @@
     }
   </style>
 </head>
-
-{%- macro section_attrs(attrs) %}
-  {%- for attr in attrs %}
-    {%- if attr.type == "class" -%}
-      {{- " " -}}
-      class="
-        {%- for item in attr.content %}
-          {%- if loop.first == false %}
-            {{- " " }}
-          {%- endif %}
-          {{- item }}
-        {%- endfor -%}
-      "
-    {%- elif attr.type == "id" -%}
-      {{- " " -}}
-      id="{{- attr.content -}}"
-    {%- endif %}
-  {%- endfor %}
-{%- endmacro -%}
-
 <body>
   <header>
     <a href="/">home</a>
     {{ date }}
   </header>
-  {% for section in content %}
-    {% if section.type == "title" %}
-      <h1 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h1>
-      {% for paragraph in section.paragraphs %}
-        <p>{{ text(paragraph.tags) }}</p>
-      {% endfor %}
-    {% elif section.type == "h1" %}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
-      {% for paragraph in section.paragraphs %}
-        <p>{{ text(paragraph.tags) }}</p>
-      {% endfor %}
-    {% elif section.type == "h2" %}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
-      {% for paragraph in section.paragraphs %}
-        <p>{{ text(paragraph.tags) }}</p>
-      {% endfor %}
-    {% elif section.type == "h3" %}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
-      {% for paragraph in section.paragraphs %}
-        <p>{{ text(paragraph.tags) }}</p>
-      {% endfor %}
-    {% elif section.type == "h4" %}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
-      {% for paragraph in section.paragraphs %}
-        <p>{{ text(paragraph.tags) }}</p>
-      {% endfor %}
-    {% elif section.type == "h5" %}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
-      {% for paragraph in section.paragraphs %}
-        <p>{{ text(paragraph.tags) }}</p>
-      {% endfor %}
-    {% elif section.type == "h6" %}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
-      {% for paragraph in section.paragraphs %}
-        <p>{{ text(paragraph.tags) }}</p>
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
-
-
+  <main>
+  {{ sections(content) }}
+  </main>
   <ul>
     {% for post in posts %}
     <li><a href="{{ post[1] }}">{{ post[0]}}</a></li>
     {% endfor %}
   </ul>
-
 </body>
-
 </html>

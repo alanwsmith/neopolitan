@@ -1,0 +1,57 @@
+{% from "macros/text.j2" import text %}
+{% from "macros/section_attrs.j2" import section_attrs %}
+
+{% macro sections(content) %}
+  {% for section in content %}
+    {% if section.type == "title" %}
+      <h1 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h1>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% elif section.type == "h1" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% elif section.type == "h2" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% elif section.type == "h3" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% elif section.type == "h4" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% elif section.type == "h5" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% elif section.type == "h6" %}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {% for paragraph in section.paragraphs %}
+        <p>{{ text(paragraph.tags) }}</p>
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+{% endmacro %}

@@ -1,3 +1,5 @@
+{%- from "macros/sections.j2" import sections -%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>    
@@ -11,15 +13,12 @@
     }
   </style>
 </head>
-
 <body>
   <header>
     <a href="/">home</a>
   </header>
   <main>
-  <h1>{{ title }}</h1>
-    {{- content -}}
+  {{ sections(content) }}
   </main>
 </body>
-
 </html>
