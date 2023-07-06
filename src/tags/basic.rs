@@ -56,33 +56,32 @@ mod test{
         "<<delta|abbr>>", 
         "abbr",
         Ok(("", Tag::Abbr{ attrs: vec![], text: "delta".to_string() })))]
-        #[case(
-            "<<delta|q>>", 
-            "q",
-            Ok(("", Tag::Q{ attrs: vec![], text: "delta".to_string() })))]
-            #[case(
-                "<<delta|s>>", 
-                "s",
-                Ok(("", Tag::S{ attrs: vec![], text: "delta".to_string() })))]
-                #[case(
-                    "<<delta|span>>", 
-                    "span",
-                    Ok(("", Tag::Span{ attrs: vec![], text: "delta".to_string() })))]
-                    #[case(
-                        "<<delta|sub>>", 
-                        "sub",
-                        Ok(("", Tag::Sub{ attrs: vec![], text: "delta".to_string() })))]
-                        #[case(
-                            "<<delta|sup>>", 
-                            "sup",
-                            Ok(("", Tag::Sup{ attrs: vec![], text: "delta".to_string() })))]
-                    
+    #[case(
+        "<<delta|q>>", 
+        "q",
+        Ok(("", Tag::Q{ attrs: vec![], text: "delta".to_string() })))]
+    #[case(
+        "<<delta|s>>", 
+        "s",
+        Ok(("", Tag::S{ attrs: vec![], text: "delta".to_string() })))]
+    #[case(
+        "<<delta|span>>", 
+        "span",
+        Ok(("", Tag::Span{ attrs: vec![], text: "delta".to_string() })))]
+    #[case(
+        "<<delta|sub>>", 
+        "sub",
+        Ok(("", Tag::Sub{ attrs: vec![], text: "delta".to_string() })))]
+    #[case(
+        "<<delta|sup>>", 
+        "sup",
+        Ok(("", Tag::Sup{ attrs: vec![], text: "delta".to_string() })))]
     #[case(
         "<<alfa bravo|strong>>", 
         "strong",
         Ok(("", Tag::Strong{ attrs: vec![], text: "alfa bravo".to_string() })))]
     #[case(
-        "<<alfa bravo|strong|class: charlie delta>>", 
+        "<<alfa bravo|strong|class: charlie delta|id: echo>>", 
         "strong",
         Ok(("", 
         Tag::Strong{ 
@@ -91,7 +90,8 @@ mod test{
                         vec![
                             "charlie".to_string(), "delta".to_string()
                         ]
-                    )
+                    ), 
+                    TagAttr::Id("echo".to_string())
                 ],
                 text: "alfa bravo".to_string() 
             })))]
