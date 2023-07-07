@@ -12,9 +12,9 @@ use nom::multi::many_till;
 use nom::sequence::tuple;
 use nom::IResult;
 
-pub fn blockquote(source: &str) -> IResult<&str, Section> {
+pub fn note(source: &str) -> IResult<&str, Section> {
     let (source, _) =
-        tuple((tag_no_case("-> blockquote"), not_line_ending, line_ending))(
+        tuple((tag_no_case("-> note"), not_line_ending, line_ending))(
             source.trim(),
         )?;
     let (source, content) = alt((take_until("\n\n->"), rest))(source.trim())?;
@@ -22,7 +22,7 @@ pub fn blockquote(source: &str) -> IResult<&str, Section> {
     let (_, paragraphs) = many_till(paragraph, eof)(content.trim())?;
     Ok((
         source,
-        Section::Blockquote {
+        Section::Note {
             attrs,
             paragraphs: paragraphs.0,
         },
@@ -39,8 +39,8 @@ mod text {
 
     #[rstest]
     #[case(
-        vec!["-> blockquote", "", "whiskey tango"].join("\n"), 
-        Section::Blockquote {
+        vec!["-> note", "", "whiskey tango"].join("\n"), 
+        Section::Note {
             attrs: vec![],
             paragraphs: vec![Block::Paragraph {
                 tags: vec![Tag::Text {
@@ -49,7 +49,7 @@ mod text {
             }],
         }
     )]
-    fn blockquote_test(#[case] i: String, #[case] e: Section) {
-        assert_eq!(e, blockquote(i.as_str()).unwrap().1)
+    fn note_test(#[case] i: String, #[case] e: Section) {
+        assert_eq!(e, note(i.as_str()).unwrap().1)
     }
 }

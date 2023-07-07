@@ -2,7 +2,9 @@ use crate::blocks::Block;
 use crate::section_attrs::SecAttr;
 use crate::sections::aside::aside;
 use crate::sections::blockquote::blockquote;
+use crate::sections::code::code;
 use crate::sections::h::h;
+use crate::sections::note::note;
 use crate::sections::p::p;
 use crate::sections::title::title;
 use nom::branch::alt;
@@ -12,7 +14,9 @@ use serde::Serialize;
 
 pub mod aside;
 pub mod blockquote;
+pub mod code;
 pub mod h;
+pub mod note;
 pub mod p;
 pub mod title;
 
@@ -27,6 +31,10 @@ pub enum Section {
     Blockquote {
         attrs: Vec<SecAttr>,
         paragraphs: Vec<Block>,
+    },
+    Code {
+        attrs: Vec<SecAttr>,
+        text: String,
     },
     H1 {
         attrs: Vec<SecAttr>,
@@ -58,6 +66,10 @@ pub enum Section {
         headline: Block,
         paragraphs: Vec<Block>,
     },
+    Note {
+        attrs: Vec<SecAttr>,
+        paragraphs: Vec<Block>,
+    },
     P {
         attrs: Vec<SecAttr>,
         paragraphs: Vec<Block>,
@@ -71,7 +83,8 @@ pub enum Section {
 }
 
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
-    let (source, results) = many0(alt((aside, blockquote, h, p, title)))(source)?;
+    let (source, results) =
+        many0(alt((aside, blockquote, code, h, note, p, title)))(source)?;
     Ok((source, results))
 }
 
@@ -86,7 +99,7 @@ mod test {
     use crate::tags::Tag;
 
     #[test]
-    pub fn solo_basic_integration() {
+    pub fn basic_integration() {
         let lines = [
             "-> title",
             ">> class: alfa",
@@ -128,6 +141,10 @@ mod test {
             "",
             "Hang tinsel from both branches",
             "",
+            "-> note",
+            "",
+            "alfa tango echo",
+            ""
         ]
         .join("\n");
         let expected = vec![
@@ -275,6 +292,14 @@ mod test {
                 paragraphs: vec![Block::Paragraph {
                     tags: vec![Tag::Text {
                         text: "Hang tinsel from both branches".to_string(),
+                    }],
+                }],
+            },
+            Section::Note {
+                attrs: vec![],
+                paragraphs: vec![Block::Paragraph {
+                    tags: vec![Tag::Text {
+                        text: "alfa tango echo".to_string(),
                     }],
                 }],
             },
