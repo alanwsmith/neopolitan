@@ -68,7 +68,7 @@ mod text {
             text: "sierra bravo".to_string()
         }
     )]
-    fn solo_pre_test(#[case] i: String, #[case] e: Section) {
+    fn pre_test(#[case] i: String, #[case] e: Section) {
         assert_eq!(e, pre(i.as_str()).unwrap().1)
     }
 }

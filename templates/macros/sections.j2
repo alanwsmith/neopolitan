@@ -19,6 +19,7 @@
       <pre><code {{- section_attrs(section.attrs)-}}>
         {{- section.text -}}
       </code></pre>
+    {%- elif section.type == "hidden" -%}
     {%- elif section.type == "h1" -%}
       <h1 {{- section_attrs(section.attrs)-}}>
         {{text(section.headline.tags)}}

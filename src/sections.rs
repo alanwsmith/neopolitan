@@ -4,6 +4,7 @@ use crate::sections::aside::aside;
 use crate::sections::blockquote::blockquote;
 use crate::sections::code::code;
 use crate::sections::h::h;
+use crate::sections::hidden::hidden;
 use crate::sections::note::note;
 use crate::sections::p::p;
 use crate::sections::pre::pre;
@@ -17,6 +18,7 @@ pub mod aside;
 pub mod blockquote;
 pub mod code;
 pub mod h;
+pub mod hidden;
 pub mod note;
 pub mod p;
 pub mod pre;
@@ -68,6 +70,7 @@ pub enum Section {
         headline: Block,
         paragraphs: Vec<Block>,
     },
+    Hidden,
     Note {
         attrs: Vec<SecAttr>,
         paragraphs: Vec<Block>,
@@ -93,7 +96,7 @@ pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
         many0(
             alt((
                 alt((
-                    aside, blockquote, code, note, pre, title
+                    aside, blockquote, code, hidden, note, pre, title
                 )), 
                 // these need to go second
                 alt((

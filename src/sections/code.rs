@@ -76,7 +76,7 @@ mod text {
             text: "echo foxtrot".to_string()
         }
     )]
-    fn solo_code_test(#[case] i: String, #[case] e: Section) {
+    fn code_test(#[case] i: String, #[case] e: Section) {
         assert_eq!(e, code(i.as_str()).unwrap().1)
     }
 }
