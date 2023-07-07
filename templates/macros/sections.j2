@@ -15,6 +15,8 @@
           <p>{{- text(paragraph.tags) -}}</p>
         {%- endfor -%}
       </blockquote>
+    {%- elif section.type == "closediv" -%}
+      </div>
     {%- elif section.type == "code" -%}
       <pre><code {{- section_attrs(section.attrs)-}}>
         {{- section.text -}}
@@ -68,6 +70,8 @@
       <div {{- section_attrs(section.attrs)-}}>
        <img src="{{- section.src -}}">
       </div>
+    {%- elif section.type == "opendiv" -%}
+      <div {{- section_attrs(section.attrs) -}}>
     {%- elif section.type == "p" -%}
       {%- for paragraph in section.paragraphs -%}
         <p {{- section_attrs(section.attrs) -}}>{{- text(paragraph.tags) -}}</p>

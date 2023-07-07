@@ -69,7 +69,7 @@ mod text {
     //         ))
     // )]
 
-    fn solo_image_test(#[case] i: String, #[case] e: IResult<&str, Section>) {
+    fn image_test(#[case] i: String, #[case] e: IResult<&str, Section>) {
         assert_eq!(e, image(i.as_str()))
     }
 }

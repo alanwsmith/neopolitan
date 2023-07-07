@@ -2,12 +2,14 @@ use crate::blocks::Block;
 use crate::section_attrs::SecAttr;
 use crate::sections::aside::aside;
 use crate::sections::blockquote::blockquote;
+use crate::sections::closediv::closediv;
 use crate::sections::code::code;
 use crate::sections::h::h;
 use crate::sections::hidden::hidden;
 use crate::sections::html::html;
 use crate::sections::image::image;
 use crate::sections::note::note;
+use crate::sections::opendiv::opendiv;
 use crate::sections::p::p;
 use crate::sections::pre::pre;
 use crate::sections::title::title;
@@ -20,12 +22,14 @@ use serde::Serialize;
 
 pub mod aside;
 pub mod blockquote;
+pub mod closediv;
 pub mod code;
 pub mod h;
 pub mod hidden;
 pub mod html;
 pub mod image;
 pub mod note;
+pub mod opendiv;
 pub mod p;
 pub mod pre;
 pub mod title;
@@ -44,6 +48,7 @@ pub enum Section {
         attrs: Vec<SecAttr>,
         paragraphs: Vec<Block>,
     },
+    CloseDiv,
     Code {
         attrs: Vec<SecAttr>,
         text: String,
@@ -90,6 +95,9 @@ pub enum Section {
         attrs: Vec<SecAttr>,
         paragraphs: Vec<Block>,
     },
+    OpenDiv {
+        attrs: Vec<SecAttr>,
+    },
     P {
         attrs: Vec<SecAttr>,
         paragraphs: Vec<Block>,
@@ -118,7 +126,7 @@ pub enum Section {
 
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, results) = many0(alt((
-        alt((aside, blockquote, code, hidden, html, image, note, pre, title, vimeo, youtube)),
+        alt((aside, blockquote, closediv, code, hidden, html, image, note, opendiv, pre, title, vimeo, youtube)),
         // these need to go second
         alt((h, p)),
     )))(source)?;
