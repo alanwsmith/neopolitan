@@ -3,8 +3,14 @@
 
 {%- macro sections(content) -%}
   {%- for section in content -%}
-    {%- if section.type == "h1" -%}
-      <h1 {{- section_attrs(section.attrs)}}>
+    {%- if section.type == "aside" -%}
+      <aside {{- section_attrs(section.attrs)-}}>
+        {%- for paragraph in section.paragraphs -%}
+          <p>{{- text(paragraph.tags) -}}</p>
+        {%- endfor -%}
+      </aside>
+    {%- elif section.type == "h1" -%}
+      <h1 {{- section_attrs(section.attrs)-}}>
         {{text(section.headline.tags)}}
       </h1>
       {%- for paragraph in section.paragraphs -%}

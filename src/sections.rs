@@ -1,5 +1,6 @@
 use crate::blocks::Block;
 use crate::section_attrs::SecAttr;
+use crate::sections::aside::aside;
 use crate::sections::h::h;
 use crate::sections::p::p;
 use crate::sections::title::title;
@@ -8,6 +9,7 @@ use nom::multi::many0;
 use nom::IResult;
 use serde::Serialize;
 
+pub mod aside;
 pub mod h;
 pub mod p;
 pub mod title;
@@ -16,6 +18,10 @@ pub mod title;
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type", rename_all = "lowercase")]
 pub enum Section {
+    Aside {
+        attrs: Vec<SecAttr>,
+        paragraphs: Vec<Block>,
+    },
     H1 {
         attrs: Vec<SecAttr>,
         headline: Block,
@@ -59,7 +65,7 @@ pub enum Section {
 }
 
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
-    let (source, results) = many0(alt((h, p, title)))(source)?;
+    let (source, results) = many0(alt((aside, h, p, title)))(source)?;
     Ok((source, results))
 }
 
@@ -74,7 +80,7 @@ mod test {
     use crate::tags::Tag;
 
     #[test]
-    pub fn basic_integration() {
+    pub fn solo_basic_integration() {
         let lines = [
             "-> title",
             ">> class: alfa",
@@ -106,7 +112,12 @@ mod test {
             "lift the hammer",
             "", 
             "cap the jar",
-            "<<echo|link|https://www.example.com/|id: victor>>"
+            "<<echo|link|https://www.example.com/|id: victor>>", 
+            "", 
+            "-> aside",
+            "",
+            "Add salt before you fry the egg",
+            ""
         ]
         .join("\n");
         let expected = vec![
@@ -239,6 +250,14 @@ mod test {
                             url: "https://www.example.com/".to_string(),
                         },
                     ],
+                }],
+            },
+            Section::Aside {
+                attrs: vec![],
+                paragraphs: vec![Block::Paragraph {
+                    tags: vec![Tag::Text {
+                        text: "Add salt before you fry the egg".to_string(),
+                    }],
                 }],
             },
         ];

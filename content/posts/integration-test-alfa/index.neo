@@ -4,6 +4,12 @@ Integration Test Alfa (This is the title)
 
 This is below the title (This is a paragraph in the title section)
 
+-> aside
+>> class: foxtrot
+>> id: tango
+
+this is an aside
+
 -> p
 >> class: sierra
 
