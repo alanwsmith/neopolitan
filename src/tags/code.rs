@@ -19,15 +19,15 @@ use crate::tags::TagAttr;
 use nom::character::complete::space1;
 use nom::multi::separated_list1;
 
-pub fn code_class(source: &str) -> IResult<&str, Vec<String>> {
-    let (source, value_string) =
-        preceded(tag("|class: "), is_not("|>"))(source)?;
-    let (_, classes) = separated_list1(
-        space1,
-        is_not(" ").map(|s: &str| s.to_string()),
-    )(value_string)?;
-    Ok((source, classes))
-}
+// pub fn code_class(source: &str) -> IResult<&str, Vec<String>> {
+//     let (source, value_string) =
+//         preceded(tag("|class: "), is_not("|>"))(source)?;
+//     let (_, classes) = separated_list1(
+//         space1,
+//         is_not(" ").map(|s: &str| s.to_string()),
+//     )(value_string)?;
+//     Ok((source, classes))
+// }
 
 // pub fn code_tag_attrs(source: &str) -> IResult<&str, Vec<TagAttr>> {
 //     let (source, attrs) = many0(alt((code_class, id)))(source)?;
@@ -52,7 +52,6 @@ pub fn code(source: &str) -> IResult<&str, Tag> {
         )
     )(source)?;
 
-    // dbg!(&source);
 
     // let mut the_classes: Vec<String> = vec![];
 
@@ -68,22 +67,36 @@ pub fn code(source: &str) -> IResult<&str, Tag> {
     let (source, mut attrs) = tag_attrs(source)?;
     let (source, _) = tag(">>")(source)?;
 
-    attrs.iter_mut().for_each(|x| {
-        match x {
-            TagAttr::Class(x) => {
-                match lang.clone() {
-                    Some(l) => {
-                        x.push(l)
-                    }
-                    None => {}
-                }
-            },
-            _ => {}
-        }
+    // attrs.iter_mut().for_each(|x| {
+    //     match x {
+    //         TagAttr::Class(x) => {
+    //             match lang.clone() {
+    //                 Some(l) => {
+    //                     x.push(format!("language-{}", l))
+    //                 }
+    //                 None => {}
+    //             }
+    //         },
+    //         _ => {}
+    //     }
+    // });
+
+
+    let found_it = attrs.iter_mut().find(|x| match x {
+        TagAttr::Class(_) => {true},
+        _ => { false }
     });
 
-     dbg!(&attrs);
-
+    match (found_it, lang) {
+        (Some(TagAttr::Class(the_thing)), Some(the_lang)) => {
+            the_thing.push(format!("language-{}", the_lang));
+        }
+        (None, Some(the_lang)) => {
+            attrs.push(TagAttr::Class(vec![format!("language-{}", the_lang)]))
+        },
+        _ => {}
+    }
+     // dbg!(&attrs);
      Ok((source, Tag::Code { attrs, text}))
 }
 
@@ -94,12 +107,10 @@ mod test {
     use rstest::rstest;
 
     #[rstest]
-    #[ignore]
     #[case(
         "<<foxtrot|code>>",
         Tag::Code{ attrs: vec![], text: "foxtrot".to_string() }
     )]
-    #[ignore]
     #[case(
         "<<sierra|code|rust>>",
         Tag::Code{ 
@@ -112,17 +123,16 @@ mod test {
         "<<foxtrot|code|python|id: bravo|class: echo>>",
         Tag::Code{ attrs: vec![
             TagAttr::Id("bravo".to_string()),
-            TagAttr::Class(vec!["echo".to_string(), "python".to_string()])
+            TagAttr::Class(vec!["echo".to_string(), "language-python".to_string()])
         ],  text: "foxtrot".to_string() }
     )]
-    #[ignore]
     #[case(
         "<<bravo|code|js|id: delta>>",
         Tag::Code{ attrs: vec![
-            TagAttr::Id("delta".to_string())
+            TagAttr::Id("delta".to_string()),
+            TagAttr::Class(vec!["language-js".to_string()])
         ],  text: "bravo".to_string() }
     )]
-    #[ignore]
     #[case(
         "<<alfa|code|class: echo>>",
         Tag::Code{ 

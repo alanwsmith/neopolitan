@@ -21,7 +21,7 @@ This is `a shorthand sippet`` of code
 
 - Code without language: <<alfa|code>>
 
-- Code with language: <<bravo|code|rust>>
+- Code with language: <<bravo|code|rust>> 
 
 - Code with language and attributes: <<charlie|code|rust|id: asdf|class: testing>>
 
