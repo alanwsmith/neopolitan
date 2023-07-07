@@ -3,7 +3,6 @@
 
 {%- macro sections(content) -%}
   {%- for section in content -%}
-  {{ section}}
     {%- if section.type == "aside" -%}
       <aside {{- section_attrs(section.attrs)-}}>
         {%- for paragraph in section.paragraphs -%}
@@ -71,8 +70,14 @@
       <pre {{- section_attrs(section.attrs)-}}>
         {{- section.text -}}
       </pre>
+    {%- elif section.type == "vimeo" -%}
+      <div {{- section_attrs(section.attrs)-}}>
+       <iframe src="https://player.vimeo.com/video/{{- section.id -}}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div>
     {%- elif section.type == "youtube" -%}
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{- section.id -}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div {{- section_attrs(section.attrs)-}}>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{- section.id -}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
     {%- endif -%}
   {%- endfor -%}
 {%- endmacro -%}

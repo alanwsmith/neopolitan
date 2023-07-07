@@ -15,9 +15,9 @@ use nom::sequence::preceded;
 use nom::sequence::tuple;
 use nom::IResult;
 
-pub fn youtube(source: &str) -> IResult<&str, Section> {
+pub fn vimeo(source: &str) -> IResult<&str, Section> {
     let (source, _) =
-        tuple((tag_no_case("-> youtube"), not_line_ending, line_ending))(
+        tuple((tag_no_case("-> vimeo"), not_line_ending, line_ending))(
             source.trim(),
         )?;
     let (source, content) = alt((take_until("\n\n->"), rest))(source)?;
@@ -27,7 +27,7 @@ pub fn youtube(source: &str) -> IResult<&str, Section> {
 
     Ok((
         source,
-        Section::Youtube {
+        Section::Vimeo {
             attrs,
             id: id.unwrap().to_string(),
             paragraphs: paragraphs.0,
@@ -46,9 +46,9 @@ mod text {
 
     #[rstest]
     #[case(
-        vec!["-> youtube", ">> alfabravo","", "-> next"].join("\n"), 
+        vec!["-> vimeo", ">> alfabravo","", "-> next"].join("\n"), 
         Ok(("\n\n-> next", 
-        Section::Youtube {
+        Section::Vimeo {
             attrs: vec![],
             id: "alfabravo".to_string(),
             paragraphs: vec![]
@@ -56,9 +56,9 @@ mod text {
         }))
     )]
     #[case(
-        vec!["-> youtube", ">> deltaecho",">> class: foxtrot", "", "whiskey tango", "", "-> next"].join("\n"),
+        vec!["-> vimeo", ">> deltaecho",">> class: foxtrot", "", "whiskey tango", "", "-> next"].join("\n"),
         Ok(("\n\n-> next", 
-        Section::Youtube {
+        Section::Vimeo {
             attrs: vec![
                 SecAttr::Class(vec!["foxtrot".to_string()])
             ],
@@ -72,7 +72,7 @@ mod text {
             ))
     )]
 
-    fn youtube_test(#[case] i: String, #[case] e: IResult<&str, Section>) {
-        assert_eq!(e, youtube(i.as_str()))
+    fn solo_vimeo_test(#[case] i: String, #[case] e: IResult<&str, Section>) {
+        assert_eq!(e, vimeo(i.as_str()))
     }
 }
