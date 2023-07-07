@@ -9,6 +9,7 @@ use crate::sections::note::note;
 use crate::sections::p::p;
 use crate::sections::pre::pre;
 use crate::sections::title::title;
+use crate::sections::youtube::youtube;
 use nom::branch::alt;
 use nom::multi::many0;
 use nom::IResult;
@@ -23,6 +24,7 @@ pub mod note;
 pub mod p;
 pub mod pre;
 pub mod title;
+pub mod youtube;
 
 // #[derive(Debug, PartialEq)]
 #[derive(Debug, PartialEq, Serialize)]
@@ -88,20 +90,20 @@ pub enum Section {
         headline: Block,
         paragraphs: Vec<Block>,
     },
+    Youtube {
+        attrs: Vec<SecAttr>,
+        id: String,
+        paragraphs: Vec<Block>,
+    },
     None,
 }
 
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
-    let (source, results) =
-        many0(
-            alt((
-                alt((
-                    aside, blockquote, code, hidden, note, pre, title
-                )), 
-                // these need to go second
-                alt((
-                    h, p, 
-                )))))(source)?;
+    let (source, results) = many0(alt((
+        alt((youtube, aside, blockquote, code, hidden, note, pre, title)),
+        // these need to go second
+        alt((h, p)),
+    )))(source)?;
     Ok((source, results))
 }
 

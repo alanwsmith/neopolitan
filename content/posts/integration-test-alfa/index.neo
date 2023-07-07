@@ -57,9 +57,15 @@ This is pre stuff below after a hidden
 item that only shows up in the source
 file
 
+-> youtube
+>> asdf
+
+
+
 -> hidden
 
 this is hidden 
+
 
 -> pre
 >> class: echo
@@ -69,6 +75,10 @@ the text
 that is
 in pre
 
+
+-> h3
+
+This is below youtube
 
 
 

@@ -1,14 +1,10 @@
-use crate::blocks::paragraph::paragraph;
-use crate::section_attrs::sec_attrs;
 use crate::sections::alt;
 use crate::sections::Section;
 use nom::bytes::complete::tag_no_case;
 use nom::bytes::complete::take_until;
 use nom::character::complete::line_ending;
 use nom::character::complete::not_line_ending;
-use nom::combinator::eof;
 use nom::combinator::rest;
-use nom::multi::many_till;
 use nom::sequence::tuple;
 use nom::IResult;
 
@@ -17,19 +13,14 @@ pub fn hidden(source: &str) -> IResult<&str, Section> {
         tuple((tag_no_case("-> hidden"), not_line_ending, line_ending))(
             source.trim(),
         )?;
-    let (source, content) = alt((take_until("\n\n->"), rest))(source.trim())?;
-     Ok((
-        source,
-        Section::Hidden
-    ))
+    let (source, _) = alt((take_until("\n\n->"), rest))(source.trim())?;
+    Ok((source, Section::Hidden))
 }
 
 #[cfg(test)]
 mod text {
     use super::*;
-    use crate::blocks::Block;
     use crate::sections::Section;
-    use crate::tags::Tag;
     use rstest::rstest;
 
     #[rstest]

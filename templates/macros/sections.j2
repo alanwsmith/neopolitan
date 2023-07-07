@@ -3,6 +3,7 @@
 
 {%- macro sections(content) -%}
   {%- for section in content -%}
+  {{ section}}
     {%- if section.type == "aside" -%}
       <aside {{- section_attrs(section.attrs)-}}>
         {%- for paragraph in section.paragraphs -%}
@@ -69,6 +70,10 @@
     {%- elif section.type == "pre" -%}
       <pre {{- section_attrs(section.attrs)-}}>
         {{- section.text -}}
+      </pre>
+    {%- elif section.type == "youtube" -%}
+      <pre {{- section_attrs(section.attrs)-}}>
+        {{- section.id -}}
       </pre>
     {%- endif -%}
   {%- endfor -%}

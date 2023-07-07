@@ -1,6 +1,5 @@
 use crate::section_attrs::sec_attrs;
 use crate::sections::alt;
-use crate::sections::SecAttr;
 use crate::sections::Section;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
@@ -24,7 +23,7 @@ pub fn pre(source: &str) -> IResult<&str, Section> {
         opt(delimited(tag(">> "), is_not(":\n"), line_ending))(content)?;
     dbg!(&lang);
 
-    let (content, mut attrs) = sec_attrs(content.trim())?;
+    let (content, attrs) = sec_attrs(content.trim())?;
 
     // let found_it = attrs.iter_mut().find(|x| match x {
     //     SecAttr::Class(_) => true,
@@ -54,10 +53,7 @@ pub fn pre(source: &str) -> IResult<&str, Section> {
 #[cfg(test)]
 mod text {
     use super::*;
-    // use crate::blocks::Block;
     use crate::sections::Section;
-    // use crate::tags::Tag;
-    use crate::section_attrs::SecAttr;
     use rstest::rstest;
 
     #[rstest]
