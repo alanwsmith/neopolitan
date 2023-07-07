@@ -65,6 +65,10 @@
       {%- for paragraph in section.paragraphs -%}
         <p {{- section_attrs(section.attrs) -}}>{{- text(paragraph.tags) -}}</p>
       {%- endfor -%}
+    {%- elif section.type == "pre" -%}
+      <pre {{- section_attrs(section.attrs)-}}>
+        {{- section.text -}}
+      </pre>
     {%- endif -%}
   {%- endfor -%}
 {%- endmacro -%}
