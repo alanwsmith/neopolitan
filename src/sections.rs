@@ -1,6 +1,7 @@
 use crate::blocks::Block;
 use crate::section_attrs::SecAttr;
 use crate::sections::aside::aside;
+use crate::sections::blockquote::blockquote;
 use crate::sections::h::h;
 use crate::sections::p::p;
 use crate::sections::title::title;
@@ -10,6 +11,7 @@ use nom::IResult;
 use serde::Serialize;
 
 pub mod aside;
+pub mod blockquote;
 pub mod h;
 pub mod p;
 pub mod title;
@@ -19,6 +21,10 @@ pub mod title;
 #[serde(tag = "type", rename_all = "lowercase")]
 pub enum Section {
     Aside {
+        attrs: Vec<SecAttr>,
+        paragraphs: Vec<Block>,
+    },
+    Blockquote {
         attrs: Vec<SecAttr>,
         paragraphs: Vec<Block>,
     },
@@ -65,7 +71,7 @@ pub enum Section {
 }
 
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
-    let (source, results) = many0(alt((aside, h, p, title)))(source)?;
+    let (source, results) = many0(alt((aside, blockquote, h, p, title)))(source)?;
     Ok((source, results))
 }
 
@@ -117,7 +123,11 @@ mod test {
             "-> aside",
             "",
             "Add salt before you fry the egg",
-            ""
+            "",
+            "-> blockquote",
+            "",
+            "Hang tinsel from both branches",
+            "",
         ]
         .join("\n");
         let expected = vec![
@@ -257,6 +267,14 @@ mod test {
                 paragraphs: vec![Block::Paragraph {
                     tags: vec![Tag::Text {
                         text: "Add salt before you fry the egg".to_string(),
+                    }],
+                }],
+            },
+            Section::Blockquote {
+                attrs: vec![],
+                paragraphs: vec![Block::Paragraph {
+                    tags: vec![Tag::Text {
+                        text: "Hang tinsel from both branches".to_string(),
                     }],
                 }],
             },

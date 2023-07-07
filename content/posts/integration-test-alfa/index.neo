@@ -33,16 +33,26 @@ This is `a shorthand sippet`` of code
 
 - Code with attributes and no language: <<delta|code|class: testing>>
 
--> todo
-
-[] this is unchecked
-
-[x] this is checked
 
 -> aside
 
 Pack the kits and don’t 
 forget the salt.
+
+-> blockquote
+>> class: echo
+>> id: delta
+
+This is a blockquote
+
+
+
+
+-> todo
+
+[] this is unchecked
+
+[x] this is checked
 
 
 

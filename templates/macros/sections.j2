@@ -9,6 +9,12 @@
           <p>{{- text(paragraph.tags) -}}</p>
         {%- endfor -%}
       </aside>
+    {%- elif section.type == "blockquote" -%}
+      <blockquote {{- section_attrs(section.attrs)-}}>
+        {%- for paragraph in section.paragraphs -%}
+          <p>{{- text(paragraph.tags) -}}</p>
+        {%- endfor -%}
+      </blockquote>
     {%- elif section.type == "h1" -%}
       <h1 {{- section_attrs(section.attrs)-}}>
         {{text(section.headline.tags)}}
