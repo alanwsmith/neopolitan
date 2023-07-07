@@ -72,7 +72,7 @@ mod text {
             ))
     )]
 
-    fn solo_vimeo_test(#[case] i: String, #[case] e: IResult<&str, Section>) {
+    fn vimeo_test(#[case] i: String, #[case] e: IResult<&str, Section>) {
         assert_eq!(e, vimeo(i.as_str()))
     }
 }

@@ -62,6 +62,8 @@
       {%- for paragraph in section.paragraphs -%}
         <p>{{- text(paragraph.tags) -}}</p>
       {%- endfor -%}
+    {%- elif section.type == "html" -%}
+        {{- section.text -}}
     {%- elif section.type == "p" -%}
       {%- for paragraph in section.paragraphs -%}
         <p {{- section_attrs(section.attrs) -}}>{{- text(paragraph.tags) -}}</p>
