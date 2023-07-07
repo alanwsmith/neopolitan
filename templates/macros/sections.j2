@@ -64,6 +64,10 @@
       {%- endfor -%}
     {%- elif section.type == "html" -%}
         {{- section.text -}}
+    {%- elif section.type == "image" -%}
+      <div {{- section_attrs(section.attrs)-}}>
+       <img src="{{- section.src -}}">
+      </div>
     {%- elif section.type == "p" -%}
       {%- for paragraph in section.paragraphs -%}
         <p {{- section_attrs(section.attrs) -}}>{{- text(paragraph.tags) -}}</p>

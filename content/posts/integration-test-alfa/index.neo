@@ -69,11 +69,13 @@ file
 
 <h2>This is raw HTML</h2>
 
-
-
 -> hidden
 
 this is hidden 
+
+-> image
+>> https://placekitten.com/g/200/300
+>> class: echo
 
 
 -> pre

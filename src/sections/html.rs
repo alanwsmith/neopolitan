@@ -43,7 +43,7 @@ mod text {
             text: "sierra bravo".to_string()
         }
     )]
-    fn solo_html_test(#[case] i: String, #[case] e: Section) {
+    fn html_test(#[case] i: String, #[case] e: Section) {
         assert_eq!(e, html(i.as_str()).unwrap().1)
     }
 }
