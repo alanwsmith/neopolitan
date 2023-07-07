@@ -18,11 +18,9 @@ use nom::IResult;
 pub fn youtube(source: &str) -> IResult<&str, Section> {
     let (source, _) =
         tuple((tag_no_case("-> youtube"), not_line_ending, line_ending))(
-            source,
+            source.trim(),
         )?;
     let (source, content) = alt((take_until("\n\n->"), rest))(source)?;
-    dbg!(&content);
-    dbg!(&source);
     let (content, id) = opt(preceded(tag(">> "), not_line_ending))(content)?;
     let (content, attrs) = sec_attrs(content.trim())?;
     let (_, paragraphs) = many_till(paragraph, eof)(content.trim())?;
@@ -40,10 +38,10 @@ pub fn youtube(source: &str) -> IResult<&str, Section> {
 #[cfg(test)]
 mod text {
     use super::*;
-    // use crate::blocks::Block;
-    // use crate::section_attrs::SecAttr;
+    use crate::blocks::Block;
+    use crate::section_attrs::SecAttr;
     use crate::sections::Section;
-    // use crate::tags::Tag;
+    use crate::tags::Tag;
     use rstest::rstest;
 
     #[rstest]
@@ -57,21 +55,22 @@ mod text {
 
         }))
     )]
-
-    // #[case(
-    //     vec!["-> youtube", ">> deltaecho",">> class: foxtrot", "", "whiskey tango"].join("\n"),
-    //     Section::Youtube {
-    //         attrs: vec![
-    //             SecAttr::Class(vec!["foxtrot".to_string()])
-    //         ],
-    //         id: "deltaecho".to_string(),
-    //         paragraphs: vec![Block::Paragraph {
-    //             tags: vec![Tag::Text {
-    //                 text: "whiskey tango".to_string(),
-    //             }],
-    //         }],
-    //     }
-    // )]
+    #[case(
+        vec!["-> youtube", ">> deltaecho",">> class: foxtrot", "", "whiskey tango", "", "-> next"].join("\n"),
+        Ok(("\n\n-> next", 
+        Section::Youtube {
+            attrs: vec![
+                SecAttr::Class(vec!["foxtrot".to_string()])
+            ],
+            id: "deltaecho".to_string(),
+            paragraphs: vec![Block::Paragraph {
+                tags: vec![Tag::Text {
+                    text: "whiskey tango".to_string(),
+                }],
+            }],
+        }
+            ))
+    )]
 
     fn solo_youtube_test(#[case] i: String, #[case] e: IResult<&str, Section>) {
         assert_eq!(e, youtube(i.as_str()))
