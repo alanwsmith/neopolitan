@@ -51,7 +51,7 @@ pub mod u;
 pub mod var;
 pub mod wbr;
 
-#[derive(Debug, PartialEq, Serialize)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
 #[serde(tag = "type", rename_all = "lowercase")]
 pub enum Tag {
     Abbr {

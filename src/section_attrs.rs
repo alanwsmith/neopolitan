@@ -8,7 +8,7 @@ use serde::Serialize;
 pub mod class;
 pub mod id;
 
-#[derive(Debug, PartialEq, Serialize)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
 #[serde(tag = "type", content = "content", rename_all = "lowercase")]
 pub enum SecAttr {
     Class(Vec<String>),

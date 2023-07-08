@@ -72,6 +72,19 @@
       <div {{- section_attrs(section.attrs)-}}>
        <img src="{{- section.src -}}">
       </div>
+    {%- elif section.type == "list" -%}
+       {%- for paragraph in section.paragraphs -%}
+          <p>{{- text(paragraph.tags) -}}</p>
+        {%- endfor -%}
+      <ul {{- section_attrs(section.attrs)-}}>
+        {% for item in section.items %} 
+          <li>
+            {%- for paragraph in item.paragraphs -%}
+              <p>{{- text(paragraph.tags) -}}</p>
+            {%- endfor -%}
+          </li>
+        {% endfor %}
+      </ul>
     {%- elif section.type == "opendiv" -%}
       <div {{- section_attrs(section.attrs) -}}>
     {%- elif section.type == "p" -%}

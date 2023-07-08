@@ -3,8 +3,8 @@ use serde::Serialize;
 
 pub mod list_item;
 
-#[derive(Debug, PartialEq, Serialize)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
 #[serde(tag = "type", rename_all = "lowercase")]
 pub enum Container {
-    ListItem(Vec<Block>),
+    ListItem{ paragraphs: Vec<Block> },
 }

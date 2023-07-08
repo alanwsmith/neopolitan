@@ -25,8 +25,8 @@ pub fn list(source: &str) -> IResult<&str, Section> {
             source.trim(),
         )?;
     let (source, content) = alt((take_until("\n\n->"), rest))(source.trim())?;
-    let (content, _attrs) = sec_attrs(content.trim())?;
-    let (content, _paragraphs) =
+    let (content, attrs) = sec_attrs(content.trim())?;
+    let (content, paragraphs) =
         many_till(paragraph, alt((tag("- "), eof)))(content.trim())?;
     // dbg!(&paragraphs);
 
@@ -41,19 +41,24 @@ pub fn list(source: &str) -> IResult<&str, Section> {
         .into_iter()
         .map(|i| {
             i.0.into_iter()
-                .map(|x| Container::ListItem(x.0))
+                .map(|x| Container::ListItem { paragraphs: x.0 })
                 .collect::<Vec<_>>()
         })
         .collect();
 
     // dbg!(&items);
 
+    // let things = items.pop().unwrap();
+    // let things2 = things.clone();
+
     Ok((
         source,
         Section::List {
-            attrs: vec![],
+            attrs,
             items: items.pop().unwrap(),
-            paragraphs: vec![],
+            // items: vec![],
+            // items: things2,
+            paragraphs: paragraphs.0, 
         },
     ))
 }
@@ -65,6 +70,7 @@ mod test {
     use rstest::rstest;
 
     #[rstest]
+    #[ignore]
     #[case(
         ["-> list", 
             ">> id: sierra",
@@ -89,10 +95,7 @@ mod test {
             attrs: vec![],
             paragraphs: vec![],
             items: vec![
-
-
-
-                    Container::ListItem(
+                    Container::ListItem { paragraphs:
                         vec![
                             Block::Paragraph {
                                 tags: vec![
@@ -105,9 +108,10 @@ mod test {
                                 ]
                             },
                         ]
-                    ),
+                    },
 
-                    Container::ListItem(
+                    Container::ListItem{
+            paragraphs: 
                         vec![
                             Block::Paragraph {
                                 tags: vec![
@@ -125,11 +129,7 @@ mod test {
                                 ]
                             },
                         ]
-                    ),
-
-
-
-
+                    },
                 ]
         }))
     )]

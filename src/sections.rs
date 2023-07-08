@@ -11,7 +11,7 @@ use crate::sections::hidden::hidden;
 use crate::sections::hr::hr;
 use crate::sections::html::html;
 use crate::sections::image::image;
-// use crate::sections::list::list;
+use crate::sections::list::list;
 use crate::sections::note::note;
 use crate::sections::opendiv::opendiv;
 use crate::sections::p::p;
@@ -46,7 +46,7 @@ pub mod vimeo;
 pub mod youtube;
 
 // #[derive(Debug, PartialEq)]
-#[derive(Debug, PartialEq, Serialize)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
 #[serde(tag = "type", rename_all = "lowercase")]
 pub enum Section {
     Aside {
@@ -145,7 +145,7 @@ pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, results) = many0(alt((
         alt((
             aside, blockquote, closediv, code, endcode, hidden, html, hr,
-            image, note, opendiv, pre, startcode, title, vimeo, youtube,
+            list, image, note, opendiv, pre, startcode, title, vimeo, youtube,
         )),
         // these need to go second
         alt((h, p)),
