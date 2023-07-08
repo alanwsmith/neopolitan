@@ -87,7 +87,6 @@ CSS Section
 Nothing visual shows up here. The section
 content is put into the head of the page. 
 
-
 -> css
 
 body { color: green; }
@@ -100,6 +99,30 @@ body { background-color: #231122; }
     padding-top: 30px;
 }
 
+
+
+-> h3
+>> class: heading
+
+TODO: ext Section
+
+TODO: -> ext
+>> template: widgets/example.j2
+
+This will call out to external processes and return
+JSON that's passed directly to the template renderer. 
+It's just like the widgets except that the data is
+pulled from an external source 
+
+
+
+-> h3
+>> class: heading
+
+TODO: Head Section
+
+This will put content directly in the head
+of the document
 
 
 
@@ -198,11 +221,14 @@ HR Section
 
 -> hr
 
+TODO: Update this so you don't have to put
+content here to get the next section to work
+
 
 -> h3
 >> class: heading
 
-HR Section
+HTML Section
 
 
 -> html
@@ -221,6 +247,16 @@ Image Section
 >> class: echo
 
 This is the alt text for the image
+
+
+-> h3
+>> class: heading
+
+TODO: Images Section
+
+For a collection of images
+
+
 
 
 -> h3
@@ -334,6 +370,39 @@ text to display
 -> h3
 >> class: heading
 
+TODO: Ref Section
+
+References can be added anywhere in the document
+they are then collected and added at the end
+of the document in the default implementation
+
+TODO: -> ref
+>> url: https://www.example.com/
+>> title: Example reference
+
+This is some text for the ref
+
+
+-> h3
+>> class: heading
+
+TODO: Results Section
+
+Used to display output from code sections. Will
+eventually be automated for blocks that can be
+run. The output will be in a pre tag. in the
+default implementation. 
+
+TODO: -> results
+
+This is an example of output
+
+
+
+
+-> h3
+>> class: heading
+
 Script Section
 
 This section is added to the head of the document in a
@@ -372,6 +441,18 @@ This is a neotag in a code block
 -> endcode
 
 
+-> h3
+>> class: heading
+
+TODO: Subtitle Section
+
+TODO: -> subtitle
+
+This is like a title section that's a convience to 
+wrap a subtitle. 
+
+
+
 
 -> h3
 >> class: heading
@@ -386,10 +467,41 @@ be one per page.
 -> h3
 >> class: heading
 
+TODO: TODO Section
+
+Like a list but lets you mark things that show 
+up as check boxes. The `[]`` is empty, the `[x]``
+is checked and anything else like `[whatever]``
+is marked with the minus state
+
+-> h3
+>> class: heading
+
+TODO: Warning Section
+
+This is like note in that it's a convience wrapper
+that provides a div for warning content. TBD
+of if there should be a `warnings`` too. Probably
+that makes sense to keep the analoies in parity
+
+
+
+-> h3
+>> class: heading
+
 Vimeo Section
 
 -> vimeo
 >> 786334291
+
+
+-> h3
+>> class: heading
+
+TODO: Widget Section
+
+This will hold JSON data that's passed directly 
+to the template rendered for processing. 
 
 
 
@@ -403,116 +515,6 @@ Youtube Section
 
 
 
-
-
-
-
--> hr
-
--> hr
-
--> hr
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--> h3
-
-Inline Tags
-
--> list
-
-Here's the basic inline tags
-
-- Strong: <<example|strong>>
-
-- Code without language: <<alfa|code>>
-
-- Code with language: <<bravo|code|rust>> 
-
-- Code with language and attributes: <<charlie|code|rust|id: asdf|class: testing>>
-
-- Code with attributes and no language: <<delta|code|class: testing>>
-
-
-
-
-
-
-
-
-
-This is the second paragraph
-
-This is <<text with a strong tag|strong>> applied
-
-Here is <<an example|link|https://www.alanwsmith.com/|id: alfa>> link
-
-This is `a shorthand sippet`` of code
-
-
-
-
--> h2
-
-This is pre stuff below after a hidden
-item that only shows up in the source
-file
-
-
-
-
-
--> h6
-
-Getting ready for olist
-
--> olist
-
-This is the start of an ordered list
-
-- alfa
-
-- bravo
-
-- charlie
-
-
--> h4
-
-Script is done above this
-
--> todo
-
-[] this is unchecked
-
-[x] this is checked
-
-
--> widget
->> example_widget
-
-This will be a json or list of lines section
-that calls out to a example for rendering
-
--> ext
->> ls /Users/alan/workshop/neopolitan
->> format: lines
->> widget: ls
-
-
-
 -> categories
 >> Neopolitan
 
@@ -522,6 +524,3 @@ that calls out to a example for rendering
 >> site: aws
 >> type: post
 >> status: published
->> template: post
-
-

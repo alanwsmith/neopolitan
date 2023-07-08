@@ -10,6 +10,7 @@ pour <<the|sub>> water
 lift <<the|sup>> <<hammer|small>>
 
 
+
 -> h2
 >> class: foxtrot
 
@@ -22,7 +23,7 @@ and one to grow on
 
 Hard coded links
 
-<<integration-test-alfa|link|/posts/integration-test-alfa/index.html>>
+<<sections-smoke-test|link|/posts/sections-smoke-test/index.html>>
 
 <<second-test|link|/posts/second-test/index.html>>
 
@@ -36,12 +37,11 @@ Hard coded links
 This is a test run of the website builder
 
 -> categories
->> Miscellaneous
+>> Neopolitan
 
 -> attributes
 >> date: 2023-06-18 14:17:32
 >> id: 2rodupw3
 >> site: aws
->> type: home_page 
+>> type: post 
 >> status: published
->> template: home_page
