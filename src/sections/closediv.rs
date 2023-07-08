@@ -30,7 +30,7 @@ mod text {
         vec!["-> closediv", "", "-> ect"].join("\n"),
         Section::CloseDiv
     )]
-    fn solo_closediv_test(#[case] i: String, #[case] e: Section) {
+    fn closediv_test(#[case] i: String, #[case] e: Section) {
         assert_eq!(e, closediv(i.as_str()).unwrap().1)
     }
 }

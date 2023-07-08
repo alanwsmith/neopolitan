@@ -66,6 +66,8 @@
       {%- endfor -%}
     {%- elif section.type == "html" -%}
         {{- section.text -}}
+    {%- elif section.type == "hr" -%}
+      <hr {{- section_attrs(section.attrs)-}} />
     {%- elif section.type == "image" -%}
       <div {{- section_attrs(section.attrs)-}}>
        <img src="{{- section.src -}}">

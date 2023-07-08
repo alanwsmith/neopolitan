@@ -4,14 +4,17 @@ use crate::sections::aside::aside;
 use crate::sections::blockquote::blockquote;
 use crate::sections::closediv::closediv;
 use crate::sections::code::code;
+use crate::sections::endcode::endcode;
 use crate::sections::h::h;
 use crate::sections::hidden::hidden;
 use crate::sections::html::html;
+use crate::sections::hr::hr;
 use crate::sections::image::image;
 use crate::sections::note::note;
 use crate::sections::opendiv::opendiv;
 use crate::sections::p::p;
 use crate::sections::pre::pre;
+use crate::sections::startcode::startcode;
 use crate::sections::title::title;
 use crate::sections::vimeo::vimeo;
 use crate::sections::youtube::youtube;
@@ -24,14 +27,17 @@ pub mod aside;
 pub mod blockquote;
 pub mod closediv;
 pub mod code;
+pub mod endcode;
 pub mod h;
 pub mod hidden;
 pub mod html;
+pub mod hr;
 pub mod image;
 pub mod note;
 pub mod opendiv;
 pub mod p;
 pub mod pre;
+pub mod startcode;
 pub mod title;
 pub mod vimeo;
 pub mod youtube;
@@ -87,6 +93,9 @@ pub enum Section {
     Html {
         text: String,
     },
+    Hr {
+        attrs: Vec<SecAttr>
+    },
     Image {
         src: String,
         attrs: Vec<SecAttr>,
@@ -126,7 +135,7 @@ pub enum Section {
 
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, results) = many0(alt((
-        alt((aside, blockquote, closediv, code, hidden, html, image, note, opendiv, pre, title, vimeo, youtube)),
+        alt((aside, blockquote, closediv, code, endcode, hidden, html, hr, image, note, opendiv, pre, startcode, title, vimeo, youtube)),
         // these need to go second
         alt((h, p)),
     )))(source)?;
@@ -189,7 +198,16 @@ mod test {
             "-> note",
             "",
             "alfa tango echo",
-            ""
+            "",
+            "-> startcode",
+            ">> rust",
+            ">> id: delta",
+            "",
+            "-> h2",
+            "",
+            "That h2 should be in code",
+            "",
+            "-> endcode",
         ]
         .join("\n");
         let expected = vec![
@@ -347,6 +365,15 @@ mod test {
                         text: "alfa tango echo".to_string(),
                     }],
                 }],
+            },
+            Section::Code {
+                attrs: vec![
+                    SecAttr::Class(vec!["alfa".to_string()]),
+                    SecAttr::Id("delta".to_string())
+                    ],
+                text: vec!["-> h2", "",
+                    "That h2 should be in code",
+                ].join("\n")
             },
         ];
         assert_eq!(expected, sections(lines.as_str()).unwrap().1);

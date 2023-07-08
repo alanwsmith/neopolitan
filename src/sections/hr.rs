@@ -9,14 +9,14 @@ use nom::combinator::rest;
 use nom::sequence::tuple;
 use nom::IResult;
 
-pub fn opendiv(source: &str) -> IResult<&str, Section> {
+pub fn hr(source: &str) -> IResult<&str, Section> {
     let (source, _) =
-        tuple((tag_no_case("-> opendiv"), not_line_ending, line_ending))(
+        tuple((tag_no_case("-> hr"), not_line_ending, line_ending))(
             source.trim(),
         )?;
     let (source, content) = alt((take_until("\n\n->"), rest))(source.trim())?;
     let (_, attrs) = sec_attrs(content.trim())?;
-    Ok((source, Section::OpenDiv { attrs }))
+    Ok((source, Section::Hr { attrs }))
 }
 
 #[cfg(test)]
@@ -28,12 +28,12 @@ mod text {
 
     #[rstest]
     #[case(
-        vec!["-> opendiv", ">> class: alfa", ""].join("\n"),
-        Section::OpenDiv {
-            attrs: vec![SecAttr::Class(vec!["alfa".to_string()])],
+        vec!["-> hr", ">> class: tango", ""].join("\n"),
+        Section::Hr {
+            attrs: vec![SecAttr::Class(vec!["tango".to_string()])],
         }
     )]
-    fn opendiv_test(#[case] i: String, #[case] e: Section) {
-        assert_eq!(e, opendiv(i.as_str()).unwrap().1)
+    fn hr_test(#[case] i: String, #[case] e: Section) {
+        assert_eq!(e, hr(i.as_str()).unwrap().1)
     }
 }

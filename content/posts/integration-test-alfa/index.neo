@@ -96,13 +96,12 @@ This is below youtube
 -> opendiv
 >> class: custom-div
 
--> p
+-> p 
 
 First level div
 
 -> opendiv
 >> id: second-div
-
 
 -> p
 
@@ -110,6 +109,31 @@ Second level div
 
 -> closediv
 -> closediv 
+
+
+-> hr
+>> class: row-split
+
+-> h3
+
+Post HR
+
+-> startcode
+>> neo
+>> class: thingamajig
+
+this is it
+
+-> h2
+
+-> endcode
+
+
+-> h3
+
+Post Start code is here
+
+etc... etc...
 
 
 

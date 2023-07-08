@@ -1,4 +1,0 @@
-#!/bin/bash
-
-TEST_NAME=multiple_paragraphs
-cargo watch -i "site" -x "test --lib $TEST_NAME --color always -- --nocapture"

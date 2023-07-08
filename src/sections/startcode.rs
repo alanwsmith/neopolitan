@@ -14,13 +14,12 @@ use nom::sequence::delimited;
 use nom::sequence::tuple;
 use nom::IResult;
 
-pub fn code(source: &str) -> IResult<&str, Section> {
+pub fn startcode(source: &str) -> IResult<&str, Section> {
     let (source, _) =
-        tuple((tag_no_case("-> code"), not_line_ending, line_ending))(
+        tuple((tag_no_case("-> startcode"), not_line_ending, line_ending))(
             source.trim(),
         )?;
-    let (source, content) = alt((take_until("\n\n->"), rest))(source.trim())?;
-    
+    let (source, content) = alt((take_until("\n\n-> endcode"), rest))(source.trim())?;
     
     let (content, lang) =
         opt(delimited(tag(">> "), is_not(":\n"), line_ending))(content)?;
@@ -62,22 +61,21 @@ mod text {
     use rstest::rstest;
 
     #[rstest]
-    #[ignore]
     #[case(
-        vec!["-> code", "", "sierra bravo"].join("\n"), 
+        vec!["-> startcode", "", "kick it", "", "-> h2", "", "-> endcode"].join("\n"), 
         Section::Code {
             attrs: vec![],
-            text: "sierra bravo".to_string()
+            text: "kick it\n\n-> h2".to_string()
         }
     )]
     #[case(
-        vec!["-> code", ">> rust", "", "echo foxtrot"].join("\n"), 
+        vec!["-> startcode", ">> rust", "", "kick it", "", "-> h2", "", "-> endcode"].join("\n"), 
         Section::Code {
             attrs: vec![SecAttr::Class(vec!["language-rust".to_string()])],
-            text: "echo foxtrot".to_string()
+            text: "kick it\n\n-> h2".to_string()
         }
     )]
-    fn code_test(#[case] i: String, #[case] e: Section) {
-        assert_eq!(e, code(i.as_str()).unwrap().1)
+    fn solo_code_test(#[case] i: String, #[case] e: Section) {
+        assert_eq!(e, startcode(i.as_str()).unwrap().1)
     }
 }
