@@ -7,8 +7,8 @@ use crate::sections::code::code;
 use crate::sections::endcode::endcode;
 use crate::sections::h::h;
 use crate::sections::hidden::hidden;
-use crate::sections::html::html;
 use crate::sections::hr::hr;
+use crate::sections::html::html;
 use crate::sections::image::image;
 use crate::sections::note::note;
 use crate::sections::opendiv::opendiv;
@@ -30,8 +30,8 @@ pub mod code;
 pub mod endcode;
 pub mod h;
 pub mod hidden;
-pub mod html;
 pub mod hr;
+pub mod html;
 pub mod image;
 pub mod note;
 pub mod opendiv;
@@ -94,7 +94,7 @@ pub enum Section {
         text: String,
     },
     Hr {
-        attrs: Vec<SecAttr>
+        attrs: Vec<SecAttr>,
     },
     Image {
         src: String,
@@ -135,7 +135,10 @@ pub enum Section {
 
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, results) = many0(alt((
-        alt((aside, blockquote, closediv, code, endcode, hidden, html, hr, image, note, opendiv, pre, startcode, title, vimeo, youtube)),
+        alt((
+            aside, blockquote, closediv, code, endcode, hidden, html, hr,
+            image, note, opendiv, pre, startcode, title, vimeo, youtube,
+        )),
         // these need to go second
         alt((h, p)),
     )))(source)?;
@@ -368,12 +371,11 @@ mod test {
             },
             Section::Code {
                 attrs: vec![
-                    SecAttr::Class(vec!["alfa".to_string()]),
-                    SecAttr::Id("delta".to_string())
-                    ],
-                text: vec!["-> h2", "",
-                    "That h2 should be in code",
-                ].join("\n")
+                    SecAttr::Id("delta".to_string()),
+                    SecAttr::Class(vec!["language-rust".to_string()]),
+                ],
+                text: vec!["", "", "-> h2", "", "That h2 should be in code"]
+                    .join("\n"),
             },
         ];
         assert_eq!(expected, sections(lines.as_str()).unwrap().1);

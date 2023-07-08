@@ -1,4 +1,3 @@
-use crate::section_attrs::sec_attrs;
 use crate::sections::alt;
 use crate::sections::Section;
 use nom::bytes::complete::tag_no_case;

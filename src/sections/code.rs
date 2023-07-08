@@ -62,7 +62,6 @@ mod text {
     use rstest::rstest;
 
     #[rstest]
-    #[ignore]
     #[case(
         vec!["-> code", "", "sierra bravo"].join("\n"), 
         Section::Code {
