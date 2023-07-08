@@ -2,6 +2,11 @@
 {%- from "macros/sections.j2" import sections -%}
 {%- from "macros/head_content.j2" import head_content -%}
 {%- from "macros/section_attrs.j2" import section_attrs -%}
+{%- from "sections/aside.j2" import aside -%}
+{%- from "sections/blockquote.j2" import blockquote -%}
+{%- from "sections/checklist.j2" import checklist -%}
+{%- from "sections/closediv.j2" import closediv -%}
+{%- from "sections/code.j2" import code -%}
 {%- from "sections/image.j2" import image -%}
 {%- from "sections/title.j2" import title -%}
 
@@ -28,45 +33,18 @@
   </header>
   <main>
 
-
-
-
   {%- for section in content -%}
     {%- if section.type == "aside" -%}
-      <aside {{- section_attrs(section.attrs)-}}>
-        {%- for paragraph in section.paragraphs -%}
-          <p>{{- text(paragraph.tags) -}}</p>
-        {%- endfor -%}
-      </aside>
+      {{ aside(section) }}
     {%- elif section.type == "blockquote" -%}
-      <blockquote {{- section_attrs(section.attrs)-}}>
-        {%- for paragraph in section.paragraphs -%}
-          <p>{{- text(paragraph.tags) -}}</p>
-        {%- endfor -%}
-      </blockquote>
+      {{ blockquote(section) }}
     {%- elif section.type == "checklist" -%}
-       {%- for paragraph in section.paragraphs -%}
-          <p>{{- text(paragraph.tags) -}}</p>
-        {%- endfor -%}
-      <ul {{- section_attrs(section.attrs)-}}>
-        {% for item in section.items %} 
-          <li>
-          <!-- TODO: setup so the checkbox only shows
-          for the first paragraph -->
-            {%- for paragraph in item.paragraphs -%}
-              <p>
-              <input type="checkbox" />
-              {{- text(paragraph.tags) -}}</p>
-            {%- endfor -%}
-          </li>
-        {% endfor %}
-      </ul>
+      {{ checklist(section) }}
     {%- elif section.type == "closediv" -%}
-      </div>
+      {{ closediv() }}
     {%- elif section.type == "code" -%}
-      <pre><code {{- section_attrs(section.attrs)-}}>
-        {{- section.text -}}
-      </code></pre>
+      {{ code(section) }}
+
     {%- elif section.type == "hidden" -%}
     {%- elif section.type == "h1" -%}
       <h1 {{- section_attrs(section.attrs)-}}>

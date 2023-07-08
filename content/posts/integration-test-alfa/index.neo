@@ -4,6 +4,62 @@ Integration Test Alfa
 
 A smoke test to verify basic functionality 
 
+
+-> h3
+
+Aside Section
+
+-> aside
+>> class: alfa_aside
+>> id: alfa
+
+Bring your best compass to the third class
+
+
+-> h3
+
+Blockquote Section
+
+-> blockquote
+>> class: bravo_blockquote
+>> id: bravo
+
+Cap the jar with a tight brass cover.
+
+Crack the walnut with your sharp side teeth.
+
+-> h3
+
+Code Section
+
+-> code
+>> python
+
+for i in range(1,10):
+    print("hello, world")
+
+
+-> hr
+
+
+-> h3
+
+Checklist Section
+
+
+-> checklist
+
+note: this needs to be updated so the checkboxes only 
+show on the first paragraph
+
+- And now we're in a checklist
+
+- With some items
+
+- To check off
+
+
+
 -> p
 >> class: sierra bravo
 
@@ -33,11 +89,7 @@ Here's the basic inline tags
 
 
 
--> aside
->> class: foxtrot
->> id: tango
 
-this is an aside
 
 
 
@@ -55,17 +107,8 @@ This is `a shorthand sippet`` of code
 Pack the kits and don’t 
 forget the salt.
 
--> blockquote
->> class: echo
->> id: delta
 
-This is a blockquote
 
--> code
->> python
-
-for i in range(1,10):
-    print("hello, world")
 
 -> h2
 
@@ -178,27 +221,6 @@ And now we're in notes
 
 - note 2
 
-
--> h5 
-
-Getting ready for a checklist
-
--> checklist
-
-This is a checklist. Right now it's 
-using dashes and will probably stick with
-that, if you want to have check boxes
-use `-> todo``
-
-The formatting also needs some help so the
-checkbox only shows up on the first 
-paragraph of a thing
-
-- And now we're in a checklist
-
-- With some items
-
-- To check off
 
 
 -> h6
