@@ -1,4 +1,5 @@
 use crate::blocks::Block;
+use crate::containers::Container;
 use crate::section_attrs::SecAttr;
 use crate::sections::aside::aside;
 use crate::sections::blockquote::blockquote;
@@ -10,6 +11,7 @@ use crate::sections::hidden::hidden;
 use crate::sections::hr::hr;
 use crate::sections::html::html;
 use crate::sections::image::image;
+// use crate::sections::list::list;
 use crate::sections::note::note;
 use crate::sections::opendiv::opendiv;
 use crate::sections::p::p;
@@ -33,6 +35,7 @@ pub mod hidden;
 pub mod hr;
 pub mod html;
 pub mod image;
+pub mod list;
 pub mod note;
 pub mod opendiv;
 pub mod p;
@@ -97,8 +100,13 @@ pub enum Section {
         attrs: Vec<SecAttr>,
     },
     Image {
-        src: String,
         attrs: Vec<SecAttr>,
+        src: String,
+    },
+    List {
+        attrs: Vec<SecAttr>,
+        items: Vec<Container>,
+        paragraphs: Vec<Block>,
     },
     Note {
         attrs: Vec<SecAttr>,

@@ -3,7 +3,6 @@ use serde::Serialize;
 
 pub mod headline;
 pub mod paragraph;
-
 #[derive(Debug, PartialEq, Serialize)]
 #[serde(tag = "type", rename_all = "lowercase")]
 pub enum Block {
