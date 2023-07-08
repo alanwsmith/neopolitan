@@ -15,6 +15,7 @@ use crate::sections::image::image;
 use crate::sections::list::list;
 use crate::sections::note::note;
 use crate::sections::notes::notes;
+use crate::sections::olist::olist;
 use crate::sections::opendiv::opendiv;
 use crate::sections::p::p;
 use crate::sections::pre::pre;
@@ -41,6 +42,7 @@ pub mod image;
 pub mod list;
 pub mod note;
 pub mod notes;
+pub mod olist;
 pub mod opendiv;
 pub mod p;
 pub mod pre;
@@ -126,6 +128,11 @@ pub enum Section {
         items: Vec<Container>,
         paragraphs: Vec<Block>,
     },
+    OList {
+        attrs: Vec<SecAttr>,
+        items: Vec<Container>,
+        paragraphs: Vec<Block>,
+    },
     OpenDiv {
         attrs: Vec<SecAttr>,
     },
@@ -160,7 +167,7 @@ pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
         alt((notes, note, checklist)),
         alt((
             aside, blockquote, closediv, code, endcode, hidden, html, hr, list,
-            image, opendiv, pre, startcode, title, vimeo, youtube,
+            image, opendiv, olist, pre, startcode, title, vimeo, youtube,
         )),
         // these need to go second
         alt((h, p)),

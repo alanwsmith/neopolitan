@@ -185,6 +185,26 @@ paragraph of a thing
 - To check off
 
 
+-> h6
+
+Getting ready for olist
+
+-> olist
+
+This is the start of an ordered list
+
+- alfa
+
+- bravo
+
+- charlie
+
+
+
+
+
+
+
 
 
 -> todo
