@@ -19,24 +19,19 @@ use nom::multi::separated_list1;
 use nom::sequence::tuple;
 use nom::IResult;
 
-pub fn list(source: &str) -> IResult<&str, Section> {
+pub fn notes(source: &str) -> IResult<&str, Section> {
     let (source, _) =
-        tuple((tag_no_case("-> list"), not_line_ending, line_ending))(
+        tuple((tag_no_case("-> notes"), not_line_ending, line_ending))(
             source.trim(),
         )?;
     let (source, content) = alt((take_until("\n\n->"), rest))(source.trim())?;
     let (content, attrs) = sec_attrs(content.trim())?;
     let (content, paragraphs) =
         many_till(paragraph, alt((tag("- "), eof)))(content.trim())?;
-    // dbg!(&paragraphs);
-
-    // dbg!(&content);
     let (_, raw_items) = separated_list1(
         tag("- "),
         many_till(many_till(paragraph, alt((tag("- "), eof))), eof),
     )(content)?;
-    // dbg!(&raw_items);
-
     let mut items: Vec<_> = raw_items
         .into_iter()
         .map(|i| {
@@ -45,19 +40,11 @@ pub fn list(source: &str) -> IResult<&str, Section> {
                 .collect::<Vec<_>>()
         })
         .collect();
-
-    // dbg!(&items);
-
-    // let things = items.pop().unwrap();
-    // let things2 = things.clone();
-
     Ok((
         source,
         Section::List {
             attrs,
             items: items.pop().unwrap(),
-            // items: vec![],
-            // items: things2,
             paragraphs: paragraphs.0, 
         },
     ))
@@ -72,11 +59,10 @@ mod test {
 // this test is mostly working but the data doesn't match 
 // so it's currently out of rotation and just relying
 // on the actual output for now
-
     #[rstest]
     #[ignore]
     #[case(
-        ["-> list", 
+        ["-> notes", 
             ">> id: sierra",
             "", 
             "tango foxtrot", 
@@ -137,8 +123,8 @@ mod test {
                 ]
         }))
     )]
-    fn test_example(#[case] i: String, #[case] e: IResult<&str, Section>) {
-        assert_eq!(e, list(i.as_str()));
+    fn solo_test_example(#[case] i: String, #[case] e: IResult<&str, Section>) {
+        assert_eq!(e, notes(i.as_str()));
     }
 }
 

@@ -13,6 +13,7 @@ use crate::sections::html::html;
 use crate::sections::image::image;
 use crate::sections::list::list;
 use crate::sections::note::note;
+use crate::sections::notes::notes;
 use crate::sections::opendiv::opendiv;
 use crate::sections::p::p;
 use crate::sections::pre::pre;
@@ -37,6 +38,7 @@ pub mod html;
 pub mod image;
 pub mod list;
 pub mod note;
+pub mod notes;
 pub mod opendiv;
 pub mod p;
 pub mod pre;
@@ -143,9 +145,10 @@ pub enum Section {
 
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, results) = many0(alt((
+        alt((notes, note)),
         alt((
-            aside, blockquote, closediv, code, endcode, hidden, html, hr,
-            list, image, note, opendiv, pre, startcode, title, vimeo, youtube,
+            aside, blockquote, closediv, code, endcode, hidden, html, hr, list,
+            image, opendiv, pre, startcode, title, vimeo, youtube,
         )),
         // these need to go second
         alt((h, p)),
