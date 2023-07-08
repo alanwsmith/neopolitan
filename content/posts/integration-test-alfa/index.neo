@@ -49,6 +49,9 @@ show on the first paragraph
 
 - To check off
 
+
+
+
 -> h3
 >> class: heading
 
@@ -59,6 +62,45 @@ Code Section
 
 for i in range(1,10):
     print("hello, world")
+
+
+
+-> h3
+>> class: heading
+
+TODO: Config Section
+
+Key/value pairs that are passed to the templates 
+for rendering decisions. 
+
+These can be arbitrary vs the attributes 
+which are defined
+
+
+
+
+-> h3
+>> class: heading
+
+CSS Section
+
+Nothing visual shows up here. The section
+content is put into the head of the page. 
+
+
+-> css
+
+body { color: green; }
+
+body { background-color: #231122; }
+
+.heading { 
+    border-bottom: 1px solid; 
+    padding-bottom: 2px;  
+    padding-top: 30px;
+}
+
+
 
 
 -> h3
@@ -133,29 +175,256 @@ Drop the ashes
 Take the winding path to reach the lake
 
 
+-> h3
+>> class: heading
+
+Hidden Section
+
+Nothing shows up here on the page. The section is
+for notes that shouldn't be published (though you
+shouldn't put anything sensitive in there because
+mistakes happen)
+
+-> hidden
+
+This does not render in the page output
 
 
+-> h3
+>> class: heading
 
-
-
-
-
+HR Section
 
 
 -> hr
 
--> hr
 
--> hr
+-> h3
+>> class: heading
+
+HR Section
+
+
+-> html
+
+<div style="color: red;">This is raw HTML with a style</div>
+
+
+-> h3
+>> class: heading
+
+Image Section
+
+
+-> image
+>> https://placekitten.com/g/200/300
+>> class: echo
+
+This is the alt text for the image
+
+
+-> h3
+>> class: heading
+
+List Section
+
+-> list
+
+This is a basic list 
+
+- alfa
+bravo
+
+- charlie
+
+delta
 
 
 
+-> h3
+>> class: heading
+
+TODO: Note Section
+
+-> note
+
+This is a stand alone note
+
+
+
+-> h3
+>> class: heading
+
+Notes Section
+
+-> notes
+
+This is a notes section that is like a list
+
+- delta
+charlie
+
+- echo 
+
+foxtrot
+
+
+-> h3
+>> class: heading
+
+TODO: OList Section
+
+An ordered list
+
+- echo
+whiskey
+
+- sierra
+
+tango
+
+
+-> h3
+>> class: heading
+
+Open/Close Div Section
+
+-> opendiv
+>> class: raw
+
+-> list
+
+- foxtrot
+
+- sierra
+
+-> closediv
+
+TODO: Remove the need for content here before 
+the next tag. 
+
+TODO: Switch to `-> p` automatically if
+you don't hit another tag
+
+-> h3
+>> class: heading
+
+P Section
 
 -> p
 >> class: sierra bravo
 
 This is a paragraph with the class set to
 `sierra bravo`
+
+
+
+-> h3
+>> class: heading
+
+Pre Section
+
+-> pre
+
+this is some preformatted
+text to display
+
+
+
+-> h3
+>> class: heading
+
+Script Section
+
+This section is added to the head of the document in a
+`script`html` tag. In this example it updates the 
+contents of a `-> p`neo` section.
+
+-> script
+
+const update_example = () => {
+    script_target.innerHTML = new Date();
+}
+
+document.addEventListener("DOMContentLoaded", setInterval(update_example, 1000))
+
+
+-> p
+>> id: script_target
+
+Loading script example
+
+
+-> h3
+>> class: heading
+
+Start/End Code Section
+
+This is used to make code blocks that can contain 
+neopolitan tags. 
+
+-> startcode
+
+This is a neotag in a code block
+
+-> h2
+
+-> endcode
+
+
+
+-> h3
+>> class: heading
+
+Title Section
+
+The title section is at the top of the page. It's
+not duplicated here because there should only 
+be one per page. 
+
+
+-> h3
+>> class: heading
+
+Vimeo Section
+
+-> vimeo
+>> 786334291
+
+
+
+-> h3
+>> class: heading
+
+Youtube Section
+
+-> youtube
+>> _YUzQa_1RCE
+
+
+
+
+
+
+
+-> hr
+
+-> hr
+
+-> hr
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -> h3
@@ -193,12 +462,6 @@ Here is <<an example|link|https://www.alanwsmith.com/|id: alfa>> link
 This is `a shorthand sippet`` of code
 
 
--> aside
-
-Pack the kits and don’t 
-forget the salt.
-
-
 
 
 -> h2
@@ -207,110 +470,7 @@ This is pre stuff below after a hidden
 item that only shows up in the source
 file
 
--> youtube
->> _YUzQa_1RCE
->> class: whatever
 
--> vimeo
->> 786334291
-
-
--> html
-
-<h2>This is raw HTML</h2>
-
--> hidden
-
-this is hidden 
-
--> image
->> https://placekitten.com/g/200/300
->> class: echo
-
-
--> pre
->> class: echo
-
-this is 
-the text
-that is
-in pre
-
-
--> h3
-
-This is below youtube
-
-
-
--> opendiv
->> class: custom-div
-
--> p 
-
-First level div
-
--> opendiv
->> id: second-div
-
--> p
-
-Second level div
-
--> closediv
--> closediv 
-
-
--> hr
->> class: row-split
-
--> h3
-
-Post HR
-
--> startcode
->> neo
->> class: thingamajig
-
-this is it
-
--> h2
-
--> endcode
-
-
--> h3
-
-Post Start code is here
-
-etc... etc...
-
--> list
->> class: listing1
->> id: sierra
-
-This is the intro to the list
-
-- item 1
-
-this is still 
-item 1
-
-- item 2
-
-this is still item 2
-
--> h4
-
-Getting ready for notes
-
--> notes
-
-And now we're in notes
-
-- note 1
-
-- note 2
 
 
 
@@ -328,26 +488,6 @@ This is the start of an ordered list
 
 - charlie
 
--> css
-
-body { color: green; }
-
-body { background-color: #231122; }
-
-.heading { text-decoration: underline; }
-
--> p
->> id: script_target
-
-Loading timestamp
-
--> script
-
-const update_example = () => {
-    script_target.innerHTML = new Date();
-}
-
-document.addEventListener("DOMContentLoaded", setInterval(update_example, 1000))
 
 -> h4
 
@@ -371,16 +511,10 @@ that calls out to a example for rendering
 >> format: lines
 >> widget: ls
 
--> config
->> alpine: true
-
-
-
-
 
 
 -> categories
->> Posts
+>> Neopolitan
 
 -> attributes
 >> date: 2023-06-18 14:29:39

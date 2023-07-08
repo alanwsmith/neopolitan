@@ -13,8 +13,18 @@
 {%- from "sections/h4.j2" import h4 -%}
 {%- from "sections/h5.j2" import h5 -%}
 {%- from "sections/h6.j2" import h6 -%}
+{%- from "sections/html.j2" import html -%}
 {%- from "sections/image.j2" import image -%}
+{%- from "sections/images.j2" import images -%}
+{%- from "sections/list.j2" import list -%}
+{%- from "sections/notes.j2" import notes -%}
+{%- from "sections/olist.j2" import olist -%}
+{%- from "sections/opendiv.j2" import opendiv -%}
+{%- from "sections/p.j2" import p -%}
+{%- from "sections/pre.j2" import pre -%}
 {%- from "sections/title.j2" import title -%}
+{%- from "sections/vimeo.j2" import vimeo -%}
+{%- from "sections/youtube.j2" import youtube -%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,14 +73,14 @@
       {{ h5(section) }}
     {%- elif section.type == "h6" -%}
       {{ h6(section) }}
-
-
     {%- elif section.type == "html" -%}
         {{- section.text -}}
     {%- elif section.type == "hr" -%}
       <hr {{- section_attrs(section.attrs)-}} />
     {%- elif section.type == "image" -%}
        {{- image(section) -}}
+
+
     {%- elif section.type == "list" -%}
        {%- for paragraph in section.paragraphs -%}
           <p>{{- text(paragraph.tags) -}}</p>

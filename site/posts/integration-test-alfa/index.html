@@ -17,7 +17,14 @@ body { color: green; }
 
 body { background-color: #231122; }
 
-.heading { text-decoration: underline; }
+.heading { 
+    border-bottom: 1px solid; 
+    padding-bottom: 2px;  
+    padding-top: 30px;
+}
+
+
+
 </style>
 <script>
 const update_example = () => {
@@ -25,6 +32,7 @@ const update_example = () => {
 }
 
 document.addEventListener("DOMContentLoaded", setInterval(update_example, 1000))
+
 </script>
 
 </head>
@@ -75,6 +83,15 @@ document.addEventListener("DOMContentLoaded", setInterval(update_example, 1000))
     </h3><pre><code class="language-python">for i in range(1,10):
     print("hello, world")</code></pre><h3 class="heading">
         
+    TODO: Config Section
+    </h3><p>
+    Key/value pairs that are passed to the templates  for rendering decisions. </p><p>
+    These can be arbitrary vs the attributes  which are defined</p><h3 class="heading">
+        
+    CSS Section
+    </h3><p>
+    Nothing visual shows up here. The section content is put into the head of the page.</p><h3 class="heading">
+        
     H1 Section
     </h3><h1>
         
@@ -115,10 +132,101 @@ document.addEventListener("DOMContentLoaded", setInterval(update_example, 1000))
         
     Drop the ashes
     </h6><p>
-    Take the winding path to reach the lake</p><hr/><hr/><h3>
+    Take the winding path to reach the lake</p><h3 class="heading">
         
-    Inline Tags
+    Hidden Section
     </h3><p>
+    Nothing shows up here on the page. The section is for notes that shouldn't be published (though you shouldn't put anything sensitive in there because mistakes happen)</p><h3 class="heading">
+        
+    HR Section
+    </h3><hr/><div style="color: red;">This is raw HTML with a style</div>
+<h3 class="heading">
+        
+    Image Section
+    </h3>TODO: Add alt text
+    <div class="echo">
+        <img src="https://placekitten.com/g/200/300">
+    </div><h3 class="heading">
+        
+    List Section
+    </h3><p>
+    This is a basic list </p><ul>
+         
+          <li><p>
+    alfa bravo</p></li>
+         
+          <li><p>
+    charlie</p><p>
+    delta</p></li>
+        
+      </ul><h3 class="heading">
+        
+    TODO: Note Section
+    </h3><h3 class="heading">
+        
+    Notes Section
+    </h3><p>
+    This is a notes section that is like a list</p><ul>
+         
+          <li><p>
+    delta charlie</p></li>
+         
+          <li><p>
+    echo </p><p>
+    foxtrot</p></li>
+        
+      </ul><h3 class="heading">
+        
+    TODO: OList Section
+    </h3><p>
+    An ordered list</p><p>
+    - echo whiskey</p><p>
+    - sierra</p><p>
+    tango</p><h3 class="heading">
+        
+    Open/Close Div Section
+    </h3><div class="raw"><ul>
+         
+          <li><p>
+    foxtrot</p></li>
+         
+          <li><p>
+    sierra</p></li>
+        
+      </ul></div><h3 class="heading">
+        
+    P Section
+    </h3><p class="sierra bravo">
+    This is a paragraph with the class set to `sierra bravo`</p><h3 class="heading">
+        
+    Pre Section
+    </h3><pre>this is some preformatted
+text to display</pre><h3 class="heading">
+        
+    Script Section
+    </h3><p>
+    This section is added to the head of the document in a `script`html` tag. In this example it updates the  contents of a `-> p`neo` section.</p><p id="script_target">
+    Loading script example</p><h3 class="heading">
+        
+    Start/End Code Section
+    </h3><p>
+    This is used to make code blocks that can contain  neopolitan tags.</p><pre><code>This is a neotag in a code block
+
+-> h2</code></pre><h3 class="heading">
+        
+    Title Section
+    </h3><p>
+    The title section is at the top of the page. It's not duplicated here because there should only  be one per page.</p><h3 class="heading">
+        
+    Vimeo Section
+    </h3><div>
+       <iframe src="https://player.vimeo.com/video/786334291" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div><h3 class="heading">
+        
+    Youtube Section
+    </h3><div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/_YUzQa_1RCE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div><hr/><hr/><p>
     Here's the basic inline tags</p><ul>
          
           <li><p>
@@ -150,61 +258,10 @@ document.addEventListener("DOMContentLoaded", setInterval(update_example, 1000))
      link</p><p>
     This is `a shorthand sippet`` of code</p></li>
         
-      </ul><aside><p>
-    Pack the kits and don’t  forget the salt.</p></aside><h2>
+      </ul><h2>
         
     This is pre stuff below after a hidden item that only shows up in the source file
-    </h2><div class="whatever">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/_YUzQa_1RCE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div><div>
-       <iframe src="https://player.vimeo.com/video/786334291" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-      </div><h2>This is raw HTML</h2><div class="echo">
-        <img src="https://placekitten.com/g/200/300">
-    </div><pre class="echo">
-
-this is 
-the text
-that is
-in pre</pre><h3>
-        
-    This is below youtube
-    </h3><div class="custom-div"><p>
-    First level div</p><div id="second-div"><p>
-    Second level div</p></div><hr class="row-split"/><h3>
-        
-    Post HR
-    </h3><pre><code class="thingamajig language-neo">
-
-this is it
-
--> h2</code></pre><h3>
-        
-    Post Start code is here
-    </h3><p>
-    etc... etc...</p><p>
-    This is the intro to the list</p><ul class="listing1" id="sierra">
-         
-          <li><p>
-    item 1</p><p>
-    this is still  item 1</p></li>
-         
-          <li><p>
-    item 2</p><p>
-    this is still item 2</p></li>
-        
-      </ul><h4>
-        
-    Getting ready for notes
-    </h4><p>
-    And now we're in notes</p><ul>
-         
-          <li><p>
-    note 1</p></li>
-         
-          <li><p>
-    note 2</p></li>
-        
-      </ul><h6>
+    </h2><h6>
         
     Getting ready for olist
     </h6><p>
@@ -219,8 +276,7 @@ this is it
           <li><p>
     charlie</p></li>
         
-      </ol><p id="script_target">
-    Loading timestamp</p><h4>
+      </ol><h4>
         
     Script is done above this
     </h4></main>
