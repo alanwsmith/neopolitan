@@ -1,29 +1,25 @@
 -> title
 
-Integration Test Alfa (This is the title)
+Integration Test Alfa 
 
-This is below the title (This is a paragraph in the title section)
-
--> aside
->> class: foxtrot
->> id: tango
-
-this is an aside
+A smoke test to verify basic functionality 
 
 -> p
->> class: sierra
+>> class: sierra bravo
 
-This is a section of paragraphs
+This is a paragraph with the class set to
+`sierra bravo`
 
--> p
 
-This is the second paragraph
+-> h3
 
-This is <<text with a strong tag|strong>> applied
+Inline Tags
 
-Here is <<an example|link|https://www.alanwsmith.com/|id: alfa>> link
+-> list
 
-This is `a shorthand sippet`` of code
+Here's the basic inline tags
+
+- Strong: <<example|strong>>
 
 - Code without language: <<alfa|code>>
 
@@ -32,6 +28,26 @@ This is `a shorthand sippet`` of code
 - Code with language and attributes: <<charlie|code|rust|id: asdf|class: testing>>
 
 - Code with attributes and no language: <<delta|code|class: testing>>
+
+
+
+
+
+-> aside
+>> class: foxtrot
+>> id: tango
+
+this is an aside
+
+
+
+This is the second paragraph
+
+This is <<text with a strong tag|strong>> applied
+
+Here is <<an example|link|https://www.alanwsmith.com/|id: alfa>> link
+
+This is `a shorthand sippet`` of code
 
 
 -> aside
@@ -199,13 +215,28 @@ This is the start of an ordered list
 
 - charlie
 
+-> css
 
+body { color: green; }
 
+body { background-color: #231122; }
 
+-> p
+>> id: script_target
 
+Loading timestamp
 
+-> script
 
+const update_example = () => {
+    script_target.innerHTML = new Date();
+}
 
+document.addEventListener("DOMContentLoaded", setInterval(update_example, 1000))
+
+-> h4
+
+Script is done above this
 
 -> todo
 
@@ -214,7 +245,19 @@ This is the start of an ordered list
 [x] this is checked
 
 
+-> widget
+>> example_widget
 
+This will be a json or list of lines section
+that calls out to a example for rendering
+
+-> ext
+>> ls /Users/alan/workshop/neopolitan
+>> format: lines
+>> widget: ls
+
+-> config
+>> alpine: true
 
 
 

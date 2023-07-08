@@ -6,6 +6,7 @@ use crate::sections::blockquote::blockquote;
 use crate::sections::checklist::checklist;
 use crate::sections::closediv::closediv;
 use crate::sections::code::code;
+use crate::sections::css::css;
 use crate::sections::endcode::endcode;
 use crate::sections::h::h;
 use crate::sections::hidden::hidden;
@@ -19,6 +20,7 @@ use crate::sections::olist::olist;
 use crate::sections::opendiv::opendiv;
 use crate::sections::p::p;
 use crate::sections::pre::pre;
+use crate::sections::script::script;
 use crate::sections::startcode::startcode;
 use crate::sections::title::title;
 use crate::sections::vimeo::vimeo;
@@ -33,6 +35,7 @@ pub mod blockquote;
 pub mod checklist;
 pub mod closediv;
 pub mod code;
+pub mod css;
 pub mod endcode;
 pub mod h;
 pub mod hidden;
@@ -46,6 +49,7 @@ pub mod olist;
 pub mod opendiv;
 pub mod p;
 pub mod pre;
+pub mod script;
 pub mod startcode;
 pub mod title;
 pub mod vimeo;
@@ -71,6 +75,9 @@ pub enum Section {
     CloseDiv,
     Code {
         attrs: Vec<SecAttr>,
+        text: String,
+    },
+    CSS {
         text: String,
     },
     H1 {
@@ -144,6 +151,9 @@ pub enum Section {
         attrs: Vec<SecAttr>,
         text: String,
     },
+    Script {
+        text: String,
+    },
     Title {
         attrs: Vec<SecAttr>,
         headline: Block,
@@ -164,12 +174,12 @@ pub enum Section {
 
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, results) = many0(alt((
+        // order matters here so things don't get flipped
         alt((notes, note, checklist)),
         alt((
-            aside, blockquote, closediv, code, endcode, hidden, html, hr, list,
-            image, opendiv, olist, pre, startcode, title, vimeo, youtube,
+            aside, blockquote, closediv, code, css, endcode, hidden, html, hr, list,
+            image, opendiv, olist, pre, script, startcode, title, vimeo, youtube,
         )),
-        // these need to go second
         alt((h, p)),
     )))(source)?;
     Ok((source, results))

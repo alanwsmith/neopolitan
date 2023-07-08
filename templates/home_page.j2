@@ -1,5 +1,6 @@
 {%- from "macros/text.j2" import text -%}
 {%- from "macros/sections.j2" import sections -%}
+{%- from "macros/head_content.j2" import head_content -%}
 {%- from "macros/section_attrs.j2" import section_attrs -%}
 
 <!DOCTYPE html>
@@ -14,6 +15,9 @@
       color: #aaa;
     }
   </style>
+
+  {{ head_content(content) }}
+
 </head>
 <body>
   <header>

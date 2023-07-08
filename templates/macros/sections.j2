@@ -22,12 +22,11 @@
       <ul {{- section_attrs(section.attrs)-}}>
         {% for item in section.items %} 
           <li>
+          <!-- TODO: setup so the checkbox only shows
+          for the first paragraph -->
             {%- for paragraph in item.paragraphs -%}
               <p>
-
-          <input type="checkbox" />
-
-
+              <input type="checkbox" />
               {{- text(paragraph.tags) -}}</p>
             {%- endfor -%}
           </li>
