@@ -118,6 +118,7 @@ pub enum Section {
         attrs: Vec<SecAttr>,
     },
     Image {
+        alt: String,
         attrs: Vec<SecAttr>,
         src: String,
     },

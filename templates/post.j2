@@ -2,6 +2,8 @@
 {%- from "macros/sections.j2" import sections -%}
 {%- from "macros/head_content.j2" import head_content -%}
 {%- from "macros/section_attrs.j2" import section_attrs -%}
+{%- from "sections/image.j2" import image -%}
+{%- from "sections/title.j2" import title -%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,20 +24,159 @@
 <body>
   <header>
     <a href="/">home</a>  
-    {%- for section in content -%}
-    {%- if section.type == "title" -%}
-      <h1 {{- section_attrs(section.attrs)}}>
-        {{- text(section.headline.tags) -}}
-      </h1>
-      {{ date }}
-      {%- for paragraph in section.paragraphs -%}
-        <p>{{ text(paragraph.tags) }}</p>
-      {%- endfor -%}
-    {%- endif -%}
-    {%- endfor -%}
+        {{ title(content, date) }}
   </header>
   <main>
-  {{ sections(content) }}
+
+
+
+
+  {%- for section in content -%}
+    {%- if section.type == "aside" -%}
+      <aside {{- section_attrs(section.attrs)-}}>
+        {%- for paragraph in section.paragraphs -%}
+          <p>{{- text(paragraph.tags) -}}</p>
+        {%- endfor -%}
+      </aside>
+    {%- elif section.type == "blockquote" -%}
+      <blockquote {{- section_attrs(section.attrs)-}}>
+        {%- for paragraph in section.paragraphs -%}
+          <p>{{- text(paragraph.tags) -}}</p>
+        {%- endfor -%}
+      </blockquote>
+    {%- elif section.type == "checklist" -%}
+       {%- for paragraph in section.paragraphs -%}
+          <p>{{- text(paragraph.tags) -}}</p>
+        {%- endfor -%}
+      <ul {{- section_attrs(section.attrs)-}}>
+        {% for item in section.items %} 
+          <li>
+          <!-- TODO: setup so the checkbox only shows
+          for the first paragraph -->
+            {%- for paragraph in item.paragraphs -%}
+              <p>
+              <input type="checkbox" />
+              {{- text(paragraph.tags) -}}</p>
+            {%- endfor -%}
+          </li>
+        {% endfor %}
+      </ul>
+    {%- elif section.type == "closediv" -%}
+      </div>
+    {%- elif section.type == "code" -%}
+      <pre><code {{- section_attrs(section.attrs)-}}>
+        {{- section.text -}}
+      </code></pre>
+    {%- elif section.type == "hidden" -%}
+    {%- elif section.type == "h1" -%}
+      <h1 {{- section_attrs(section.attrs)-}}>
+        {{text(section.headline.tags)}}
+      </h1>
+      {%- for paragraph in section.paragraphs -%}
+        <p>{{- text(paragraph.tags) -}}</p>
+      {%- endfor -%}
+    {%- elif section.type == "h2" -%}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {%- for paragraph in section.paragraphs -%}
+        <p>{{- text(paragraph.tags) -}}</p>
+      {%- endfor -%}
+    {%- elif section.type == "h3" -%}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {%- for paragraph in section.paragraphs -%}
+        <p>{{- text(paragraph.tags) -}}</p>
+      {%- endfor -%}
+    {%- elif section.type == "h4" -%}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {%- for paragraph in section.paragraphs -%}
+        <p>{{- text(paragraph.tags) -}}</p>
+      {%- endfor -%}
+    {%- elif section.type == "h5" -%}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {%- for paragraph in section.paragraphs -%}
+        <p>{{- text(paragraph.tags) -}}</p>
+      {%- endfor -%}
+    {%- elif section.type == "h6" -%}
+      <h2 {{- section_attrs(section.attrs)}}>
+        {{text(section.headline.tags)}}
+      </h2>
+      {%- for paragraph in section.paragraphs -%}
+        <p>{{- text(paragraph.tags) -}}</p>
+      {%- endfor -%}
+    {%- elif section.type == "html" -%}
+        {{- section.text -}}
+    {%- elif section.type == "hr" -%}
+      <hr {{- section_attrs(section.attrs)-}} />
+    {%- elif section.type == "image" -%}
+       {{- image(section) -}}
+    {%- elif section.type == "list" -%}
+       {%- for paragraph in section.paragraphs -%}
+          <p>{{- text(paragraph.tags) -}}</p>
+        {%- endfor -%}
+      <ul {{- section_attrs(section.attrs)-}}>
+        {% for item in section.items %} 
+          <li>
+            {%- for paragraph in item.paragraphs -%}
+              <p>{{- text(paragraph.tags) -}}</p>
+            {%- endfor -%}
+          </li>
+        {% endfor %}
+      </ul>
+    {%- elif section.type == "notes" -%}
+       {%- for paragraph in section.paragraphs -%}
+          <p>{{- text(paragraph.tags) -}}</p>
+        {%- endfor -%}
+      <ul {{- section_attrs(section.attrs)-}}>
+        {% for item in section.items %} 
+          <li>
+            {%- for paragraph in item.paragraphs -%}
+              <p>{{- text(paragraph.tags) -}}</p>
+            {%- endfor -%}
+          </li>
+        {% endfor %}
+      </ul>
+    {%- elif section.type == "olist" -%}
+       {%- for paragraph in section.paragraphs -%}
+          <p>{{- text(paragraph.tags) -}}</p>
+        {%- endfor -%}
+      <ol {{- section_attrs(section.attrs)-}}>
+        {% for item in section.items %} 
+          <li>
+            {%- for paragraph in item.paragraphs -%}
+              <p>{{- text(paragraph.tags) -}}</p>
+            {%- endfor -%}
+          </li>
+        {% endfor %}
+      </ol>
+    {%- elif section.type == "opendiv" -%}
+      <div {{- section_attrs(section.attrs) -}}>
+    {%- elif section.type == "p" -%}
+      {%- for paragraph in section.paragraphs -%}
+        <p {{- section_attrs(section.attrs) -}}>{{- text(paragraph.tags) -}}</p>
+      {%- endfor -%}
+    {%- elif section.type == "pre" -%}
+      <pre {{- section_attrs(section.attrs)-}}>
+        {{- section.text -}}
+      </pre>
+    {%- elif section.type == "vimeo" -%}
+      <div {{- section_attrs(section.attrs)-}}>
+       <iframe src="https://player.vimeo.com/video/{{- section.id -}}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    {%- elif section.type == "youtube" -%}
+      <div {{- section_attrs(section.attrs)-}}>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{- section.id -}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+
+
   </main>
 </body>
 </html>

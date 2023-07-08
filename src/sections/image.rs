@@ -1,4 +1,4 @@
-// use crate::blocks::paragraph::paragraph;
+use crate::blocks::paragraph::paragraph;
 use crate::section_attrs::sec_attrs;
 use crate::sections::alt;
 use crate::sections::Section;
@@ -22,12 +22,13 @@ pub fn image(source: &str) -> IResult<&str, Section> {
         )?;
     let (source, content) = alt((take_until("\n\n->"), rest))(source)?;
     let (content, id) = opt(preceded(tag(">> "), not_line_ending))(content)?;
-    let (_, attrs) = sec_attrs(content.trim())?;
-    // let (_, paragraphs) = many_till(paragraph, eof)(content.trim())?;
+    let (content, attrs) = sec_attrs(content.trim())?;
+    let (_, alt) = alt((take_until("\n\n->"), rest))(content)?;
 
     Ok((
         source,
         Section::Image {
+            alt: alt.to_string(),
             attrs,
             src: id.unwrap().to_string(),
         },
@@ -45,9 +46,10 @@ mod text {
 
     #[rstest]
     #[case(
-        vec!["-> image", ">> alfabravo","", "-> next"].join("\n"), 
+        vec!["-> image", ">> alfabravo","", "Charlie Delta", "", "-> next"].join("\n"), 
         Ok(("\n\n-> next", 
         Section::Image {
+            alt: "Charlie Delta".to_string(),
             attrs: vec![],
             src: "alfabravo".to_string(),
         }))
