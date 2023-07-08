@@ -3,6 +3,7 @@ use crate::containers::Container;
 use crate::section_attrs::SecAttr;
 use crate::sections::aside::aside;
 use crate::sections::blockquote::blockquote;
+use crate::sections::checklist::checklist;
 use crate::sections::closediv::closediv;
 use crate::sections::code::code;
 use crate::sections::endcode::endcode;
@@ -28,6 +29,7 @@ use serde::Serialize;
 
 pub mod aside;
 pub mod blockquote;
+pub mod checklist;
 pub mod closediv;
 pub mod code;
 pub mod endcode;
@@ -57,6 +59,11 @@ pub enum Section {
     },
     Blockquote {
         attrs: Vec<SecAttr>,
+        paragraphs: Vec<Block>,
+    },
+    Checklist {
+        attrs: Vec<SecAttr>,
+        items: Vec<Container>,
         paragraphs: Vec<Block>,
     },
     CloseDiv,
@@ -114,6 +121,11 @@ pub enum Section {
         attrs: Vec<SecAttr>,
         paragraphs: Vec<Block>,
     },
+    Notes {
+        attrs: Vec<SecAttr>,
+        items: Vec<Container>,
+        paragraphs: Vec<Block>,
+    },
     OpenDiv {
         attrs: Vec<SecAttr>,
     },
@@ -145,7 +157,7 @@ pub enum Section {
 
 pub fn sections(source: &str) -> IResult<&str, Vec<Section>> {
     let (source, results) = many0(alt((
-        alt((notes, note)),
+        alt((notes, note, checklist)),
         alt((
             aside, blockquote, closediv, code, endcode, hidden, html, hr, list,
             image, opendiv, pre, startcode, title, vimeo, youtube,

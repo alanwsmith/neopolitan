@@ -163,6 +163,29 @@ And now we're in notes
 - note 2
 
 
+-> h5 
+
+Getting ready for a checklist
+
+-> checklist
+
+This is a checklist. Right now it's 
+using dashes and will probably stick with
+that, if you want to have check boxes
+use `-> todo``
+
+The formatting also needs some help so the
+checkbox only shows up on the first 
+paragraph of a thing
+
+- And now we're in a checklist
+
+- With some items
+
+- To check off
+
+
+
 
 -> todo
 
