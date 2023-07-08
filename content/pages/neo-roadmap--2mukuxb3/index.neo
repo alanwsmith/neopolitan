@@ -1,0 +1,173 @@
+-> title 
+
+Roadmap/TODO List
+
+Stuff required for migrating over to using
+Neopolitan full time for an initial version. 
+
+This needs to be split out into different parts
+for:
+
+-> list
+
+- neopolitan
+
+- neopolengine (neo binary)
+
+- neoprep
+
+
+
+-> list
+
+There are TODO lists in:
+
+- Neopolitan Sections 
+
+- Inline Tags (phase 1 is done)
+
+- Shorthand Tags
+
+- Attributes
+
+
+-> h3
+
+Content Migration TODO
+
+-> todo
+
+[] Move bascially everyting to posts? Or, maybe
+everything?
+
+[] Add a "scrubbed_neo: false" attribute to anything 
+that gets converted, skip it for files that are 
+already neo files. 
+
+[] Scrub nonce words from titles that came from filenames
+
+[] Deal with double nonce words too (e.g. `ps- js-``)
+
+[] Review all "type" attirbutes and merge things down
+with a focus on "post". 
+
+[] Search for org-mode comment tags and make sure they
+are all removed or coverted
+
+[] Do a smoke test on dates
+
+[] consolidate all the statuses to just the ones you want
+
+
+-> todo 
+
+[] Add `>> template: `neo` everywhere it'll to so you 
+can switch them out for sections. 
+
+[] Add `>> path: `neo` to attributes to put things
+in an explicit place  on render that's different from
+where it is in the file tree
+
+[] Refactor template directory to separate things out more
+
+[] widgets section that sends JSON direclty to a 
+named tempalte
+
+[] cofig for widgets to send lines to a template 
+instead of JSON
+
+[] Setup a way to reference blocks by ID so they 
+can be spit out as code blocks 
+
+[] Add `title`` attributes to everywhere it fits 
+
+[] Setup redirects for current structure. 
+
+[] Setup redirect watcher to watch for filename changes. 
+Consider watching the diretotry structe and if a file with
+an id gets moved deal with it that way. 
+
+[] Output everything to a `pages`` directory by default
+(regarless of type, in which case type becomes the 
+template.) - collecitons will be made from categories.
+
+[] Add the abiblity to give a page a different 
+directory parent other than pages. 
+
+[] Setup output filenames so they keep the nonce
+but move it to the end before the id marker
+
+[] Move all files in the content directory. If they
+aren't neo files, just copy them directly. 
+
+[] Setup `-> todo`` and `-> list``, etc..
+so that you can have paragraphs before the list
+
+[] Load lists of files types for linking
+
+[] Load lists of catoegory types for linking
+
+[] Define `i:`` link syntax to point to internal
+pages via ID
+
+[] Setup to work with external processes
+
+[] Look at syntax highlighting with: 
+https://github.com/trishume/syntect
+
+[] Add multiple levels of list items
+
+[] Allow code blocks in list type sections
+
+[] Add the cite stuff to blockquote
+
+[] Setup images to render with srcset
+
+[] Setup image processing to prep images or maybe
+do Cloudinary stuff
+
+
+-> h4
+
+Other stuff
+
+[] Rename site engine to "neopolengine"
+
+[] Add a `>> title: `` attribute to `-> notes``
+and possibly other sections that gets pulled 
+out for use in the template. 
+
+[] Make section header tags case insensitive
+
+[] Deal with white space around header tags
+if it doesn't already work. 
+
+[] Add the ability to style lists by adding
+something like `|class: whatever|`neo` before the lines
+
+[] Setup global references so you can have the same
+footnote on multiple pages without having to duplicate it
+
+[] Think about file includes
+
+[] Think about something like triple `|`` for allowing
+an inline drop in of raw html
+
+
+-> ref
+>> title: syntect - Rust syntax highlighting crate
+>> url: https://github.com/trishume/syntect
+
+
+-> categories:
+>> Rust
+>> Neopolitan
+
+
+-> attributes 
+>> date: 2023-03-12 05:07:23
+>> id: 2mukuxb3
+>> site: neopolitan 
+>> type: post
+>> status: draft 
+

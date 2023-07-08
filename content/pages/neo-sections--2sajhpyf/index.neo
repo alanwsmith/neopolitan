@@ -1,0 +1,140 @@
+-> title
+
+Neopolitan Sections
+
+This is the list of available sections:
+
+-> todo
+
+
+[x] aside
+
+[x] attributes - These items are parsed directly and not included 
+as part of visible section directly
+
+[PHASE2] audio
+
+[x] blockquote
+
+[PHASE2] blurb
+
+[PHASE2] canvas
+
+[x] categories - These will be parsed directly and not included
+in the sections output directly
+
+[x] checklist 
+
+[x] code
+
+[] config - for passing values direclty to the template engine
+for processing (separate for attributes which are defined the 
+config is simply key/value pairs that get passed together)
+
+[x] css - For injecting css directly into the page
+
+[PHASE2] details
+
+[PHASE2] dlist
+
+[PHASE2] ext - call to an external process which should return
+json or lines that are passed directly to a template
+
+[x] h1
+
+[x] h2
+
+[x] h3
+
+[x] h4
+
+[x] h5
+
+[x] h6
+
+[] head - For adding content directly into the head of the document
+
+[x] hidden - Content that doesn't show on the site (this might happen automatically, 
+but should still be done explicity)
+
+[x] hr
+
+[x] html 
+
+[x] image 
+
+[] images - for collections of images
+
+[PHASE2] include - For pulling content from another file (TBD on this one)
+
+[x] list
+
+[PHASE2] menu
+
+[PHASE2] nav
+
+[x] note
+
+[x] notes
+
+[PHASE2] object
+
+[x] opendiv/closediv - literal open and close tags that can be 
+separated around content and even nested. Classes, ids and 
+other attributes can be added as well. Maybe any content
+you put in there just becomes p tags. 
+
+[x] olist
+
+[x] p - A section of paragraphs
+
+[x] pre - Preformatted text
+
+[] ref - A referece that can be used as a footnote if there is an id
+
+[] results - Stright outout showing the results of code blocks
+
+[x] script - For adding script tags directly do the head of the document
+
+[x] startcode/endcode - code block starting and stopping point that allows neopolitan `->`` tags to be used
+
+[PHASE2] starthtml/endhtml - HTML block starting and stopping that allows `->`` neopolitan tags to be used
+
+[PHASE2] startneoexample/endneoexample - Not sure if this one will be added, but the idea is to 
+setup Neopolitan samples so you can put in the code once and it'll show it and then render it
+as well
+
+[] subtitle
+
+[PHASE2] table 
+
+[PHASE2] textarea
+
+[x] title - The main title of the post and optional suplemental paragraphs
+
+[] todos - `x`` marks as done. anything else marks with a `-`` and empty is
+not checked
+
+[x] vimeo
+
+[] warning
+
+[PHASE2] widget - First attribute is a name which is the template to use. 
+The data is either json or a set of lines that are passed direcctly to
+the template. This is just like `ext`` but without making an external 
+call to fetch the data
+
+[x] youtube 
+
+
+-> categories
+>> Neopolitan 
+
+-> attributes
+>> date: 2023-07-05 18:33:21
+>> id: 2sajhpyf
+>> site: neopolitan
+>> type: post 
+>> status: draft 
+
+

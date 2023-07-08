@@ -1,6 +1,7 @@
 -> title
 
-Integration Test Alfa 
+Smoke Test Neopolitan Sections
+
 
 A smoke test to verify basic functionality 
 
@@ -521,6 +522,7 @@ Youtube Section
 -> attributes
 >> date: 2023-06-18 14:29:39
 >> id: 2roeyctm
->> site: aws
+>> site: neopolitan 
 >> type: post
 >> status: published
+

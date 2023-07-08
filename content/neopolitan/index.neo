@@ -49,10 +49,8 @@ color: #773322;
 
 
 
-
-
 -> categories
->> Miscellaneous
+>> Neopolitan 
 
 -> attributes
 >> date: 2023-07-08 17:12:03
@@ -60,6 +58,6 @@ color: #773322;
 >> site: neopolitan 
 >> type: post
 >> status: published
->> path: index.neo
+>> path: neopolitan/index.neo
 
 

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><macro title></title>
+  <style>
+    body {
+      background-color: #000;
+      color: #aaa;
+    }
+  </style>
+
+  
+<style type="text/css">
+body { color: green; }
+
+body { background-color: #231122; }
+
+.heading { 
+    border-bottom: 1px solid; 
+    padding-bottom: 2px;  
+    padding-top: 30px;
+}
+
+
+</style>
+<script>
+const update_example = () => {
+    script_target.innerHTML = new Date();
+}
+
+document.addEventListener("DOMContentLoaded", setInterval(update_example, 1000))
+
+</script>
+
+</head>
+<body>
+  <header>
+    <a href="/">home</a>  
+        <hgroup><h1>
+    Integration Test Alfa </h1>
+        June 2023<p>
+    A smoke test to verify basic functionality</p></hgroup>
+  </header>
+  <main><h3 class="heading">
+        
+    Aside Section
+    </h3><aside class="alfa_aside" id="alfa"><p>
+    Bring your best compass to the third class</p></aside><h3 class="heading">
+        
+    Blockquote Section
+    </h3><blockquote class="bravo_blockquote" id="bravo"><p>
+    Cap the jar with a tight brass cover.</p><p>
+    Crack the walnut with your sharp side teeth.</p></blockquote><h3 class="heading">
+        
+    Checklist Section
+    </h3><p>
+    note: this needs to be updated so the checkboxes only  show on the first paragraph</p><ul>
+     
+        <li>
+        <!-- TODO: setup so the checkbox only shows
+        for the first paragraph --><p>
+            <input type="checkbox" />
+    And now we're in a checklist</p></li>
+     
+        <li>
+        <!-- TODO: setup so the checkbox only shows
+        for the first paragraph --><p>
+            <input type="checkbox" />
+    With some items</p></li>
+     
+        <li>
+        <!-- TODO: setup so the checkbox only shows
+        for the first paragraph --><p>
+            <input type="checkbox" />
+    To check off</p></li>
+    
+    </ul><h3 class="heading">
+        
+    Code Section
+    </h3><pre><code class="language-python">for i in range(1,10):
+    print("hello, world")</code></pre><h3 class="heading">
+        
+    TODO: Config Section
+    </h3><p>
+    Key/value pairs that are passed to the templates  for rendering decisions. </p><p>
+    These can be arbitrary vs the attributes  which are defined</p><h3 class="heading">
+        
+    CSS Section
+    </h3><p>
+    Nothing visual shows up here. The section content is put into the head of the page.</p><h3 class="heading">
+        
+    TODO: ext Section
+    </h3><p>
+    TODO: -> ext >> template: widgets/example.j2</p><p>
+    This will call out to external processes and return JSON that's passed directly to the template renderer.  It's just like the widgets except that the data is pulled from an external source</p><h3 class="heading">
+        
+    TODO: Head Section
+    </h3><p>
+    This will put content directly in the head of the document</p><h3 class="heading">
+        
+    H1 Section
+    </h3><h1>
+        
+    Cut the pie 
+    </h1><p>
+    Slide the catch back and open the desk</p><h3 class="heading">
+        
+    H2 Section
+    </h3><h2>
+        
+    Dip the pail 
+    </h2><p>
+    Slide the tray across the glass top</p><h3 class="heading">
+        
+    H3 Section
+    </h3><h3>
+        
+    Let it settle
+    </h3><p>
+    Split the log with a quick, sharp blow</p><h3 class="heading">
+        
+    H4 Section
+    </h3><h4>
+        
+    Fasten two pins
+    </h4><p>
+    Tack the strip of carpet to the worn floor</p><h3 class="heading">
+        
+    H5 Section
+    </h3><h5>
+        
+    Tuck the sheet
+    </h5><p>
+    Take the match and strike it against your shoe</p><h3 class="heading">
+        
+    H6 Section
+    </h3><h6>
+        
+    Drop the ashes
+    </h6><p>
+    Take the winding path to reach the lake</p><h3 class="heading">
+        
+    Hidden Section
+    </h3><p>
+    Nothing shows up here on the page. The section is for notes that shouldn't be published (though you shouldn't put anything sensitive in there because mistakes happen)</p><h3 class="heading">
+        
+    HR Section
+    </h3><hr/><h3 class="heading">
+        
+    HTML Section
+    </h3><div style="color: red;">This is raw HTML with a style</div>
+<h3 class="heading">
+        
+    Image Section
+    </h3>TODO: Add alt text
+    <div class="echo">
+        <img src="https://placekitten.com/g/200/300">
+    </div><h3 class="heading">
+        
+    TODO: Images Section
+    </h3><p>
+    For a collection of images</p><h3 class="heading">
+        
+    List Section
+    </h3><p>
+    This is a basic list </p><ul>
+         
+          <li><p>
+    alfa bravo</p></li>
+         
+          <li><p>
+    charlie</p><p>
+    delta</p></li>
+        
+      </ul><h3 class="heading">
+        
+    TODO: Note Section
+    </h3><h3 class="heading">
+        
+    Notes Section
+    </h3><p>
+    This is a notes section that is like a list</p><ul>
+         
+          <li><p>
+    delta charlie</p></li>
+         
+          <li><p>
+    echo </p><p>
+    foxtrot</p></li>
+        
+      </ul><h3 class="heading">
+        
+    TODO: OList Section
+    </h3><p>
+    An ordered list</p><p>
+    - echo whiskey</p><p>
+    - sierra</p><p>
+    tango</p><h3 class="heading">
+        
+    Open/Close Div Section
+    </h3><div class="raw"><ul>
+         
+          <li><p>
+    foxtrot</p></li>
+         
+          <li><p>
+    sierra</p></li>
+        
+      </ul></div><h3 class="heading">
+        
+    P Section
+    </h3><p class="sierra bravo">
+    This is a paragraph with the class set to `sierra bravo`</p><h3 class="heading">
+        
+    Pre Section
+    </h3><pre>this is some preformatted
+text to display</pre><h3 class="heading">
+        
+    TODO: Ref Section
+    </h3><p>
+    References can be added anywhere in the document they are then collected and added at the end of the document in the default implementation</p><p>
+    TODO: -> ref >> url: https://www.example.com/ >> title: Example reference</p><p>
+    This is some text for the ref</p><h3 class="heading">
+        
+    TODO: Results Section
+    </h3><p>
+    Used to display output from code sections. Will eventually be automated for blocks that can be run. The output will be in a pre tag. in the default implementation. </p><p>
+    TODO: -> results</p><p>
+    This is an example of output</p><h3 class="heading">
+        
+    Script Section
+    </h3><p>
+    This section is added to the head of the document in a `script`html` tag. In this example it updates the  contents of a `-> p`neo` section.</p><p id="script_target">
+    Loading script example</p><h3 class="heading">
+        
+    Start/End Code Section
+    </h3><p>
+    This is used to make code blocks that can contain  neopolitan tags.</p><pre><code>This is a neotag in a code block
+
+-> h2</code></pre><h3 class="heading">
+        
+    TODO: Subtitle Section
+    </h3><p>
+    TODO: -> subtitle</p><p>
+    This is like a title section that's a convience to  wrap a subtitle.</p><h3 class="heading">
+        
+    Title Section
+    </h3><p>
+    The title section is at the top of the page. It's not duplicated here because there should only  be one per page.</p><h3 class="heading">
+        
+    TODO: TODO Section
+    </h3><p>
+    Like a list but lets you mark things that show  up as check boxes. The `[]`` is empty, the `[x]`` is checked and anything else like `[whatever]`` is marked with the minus state</p><h3 class="heading">
+        
+    TODO: Warning Section
+    </h3><p>
+    This is like note in that it's a convience wrapper that provides a div for warning content. TBD of if there should be a `warnings`` too. Probably that makes sense to keep the analoies in parity</p><h3 class="heading">
+        
+    Vimeo Section
+    </h3><div>
+       <iframe src="https://player.vimeo.com/video/786334291" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div><h3 class="heading">
+        
+    TODO: Widget Section
+    </h3><p>
+    This will hold JSON data that's passed directly  to the template rendered for processing.</p><h3 class="heading">
+        
+    Youtube Section
+    </h3><div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/_YUzQa_1RCE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div></main>
+</body>
+</html>
