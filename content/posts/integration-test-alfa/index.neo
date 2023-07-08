@@ -6,6 +6,7 @@ A smoke test to verify basic functionality
 
 
 -> h3
+>> class: heading
 
 Aside Section
 
@@ -17,6 +18,7 @@ Bring your best compass to the third class
 
 
 -> h3
+>> class: heading
 
 Blockquote Section
 
@@ -28,21 +30,10 @@ Cap the jar with a tight brass cover.
 
 Crack the walnut with your sharp side teeth.
 
--> h3
-
-Code Section
-
--> code
->> python
-
-for i in range(1,10):
-    print("hello, world")
-
-
--> hr
 
 
 -> h3
+>> class: heading
 
 Checklist Section
 
@@ -57,6 +48,106 @@ show on the first paragraph
 - With some items
 
 - To check off
+
+-> h3
+>> class: heading
+
+Code Section
+
+-> code
+>> python
+
+for i in range(1,10):
+    print("hello, world")
+
+
+-> h3
+>> class: heading
+
+H1 Section
+
+-> h1
+
+Cut the pie 
+
+Slide the catch back and open the desk
+
+
+-> h3
+>> class: heading
+
+H2 Section
+
+-> h2
+
+Dip the pail 
+
+Slide the tray across the glass top
+
+
+-> h3
+>> class: heading
+
+H3 Section
+
+-> h3
+
+Let it settle
+
+Split the log with a quick, sharp blow
+
+
+-> h3
+>> class: heading
+
+H4 Section
+
+-> h4
+
+Fasten two pins
+
+Tack the strip of carpet to the worn floor
+
+
+-> h3
+>> class: heading
+
+H5 Section
+
+-> h5
+
+Tuck the sheet
+
+Take the match and strike it against your shoe
+
+
+-> h3
+>> class: heading
+
+H6 Section
+
+-> h6
+
+Drop the ashes
+
+Take the winding path to reach the lake
+
+
+
+
+
+
+
+
+
+
+
+-> hr
+
+-> hr
+
+-> hr
+
 
 
 
@@ -242,6 +333,8 @@ This is the start of an ordered list
 body { color: green; }
 
 body { background-color: #231122; }
+
+.heading { text-decoration: underline; }
 
 -> p
 >> id: script_target

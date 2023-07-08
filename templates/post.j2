@@ -7,6 +7,12 @@
 {%- from "sections/checklist.j2" import checklist -%}
 {%- from "sections/closediv.j2" import closediv -%}
 {%- from "sections/code.j2" import code -%}
+{%- from "sections/h1.j2" import h1 -%}
+{%- from "sections/h2.j2" import h2 -%}
+{%- from "sections/h3.j2" import h3 -%}
+{%- from "sections/h4.j2" import h4 -%}
+{%- from "sections/h5.j2" import h5 -%}
+{%- from "sections/h6.j2" import h6 -%}
 {%- from "sections/image.j2" import image -%}
 {%- from "sections/title.j2" import title -%}
 
@@ -44,50 +50,21 @@
       {{ closediv() }}
     {%- elif section.type == "code" -%}
       {{ code(section) }}
-
     {%- elif section.type == "hidden" -%}
     {%- elif section.type == "h1" -%}
-      <h1 {{- section_attrs(section.attrs)-}}>
-        {{text(section.headline.tags)}}
-      </h1>
-      {%- for paragraph in section.paragraphs -%}
-        <p>{{- text(paragraph.tags) -}}</p>
-      {%- endfor -%}
+      {{ h1(section) }}
     {%- elif section.type == "h2" -%}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
-      {%- for paragraph in section.paragraphs -%}
-        <p>{{- text(paragraph.tags) -}}</p>
-      {%- endfor -%}
+      {{ h2(section) }}
     {%- elif section.type == "h3" -%}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
-      {%- for paragraph in section.paragraphs -%}
-        <p>{{- text(paragraph.tags) -}}</p>
-      {%- endfor -%}
+      {{ h3(section) }}
     {%- elif section.type == "h4" -%}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
-      {%- for paragraph in section.paragraphs -%}
-        <p>{{- text(paragraph.tags) -}}</p>
-      {%- endfor -%}
+      {{ h4(section) }}
     {%- elif section.type == "h5" -%}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
-      {%- for paragraph in section.paragraphs -%}
-        <p>{{- text(paragraph.tags) -}}</p>
-      {%- endfor -%}
+      {{ h5(section) }}
     {%- elif section.type == "h6" -%}
-      <h2 {{- section_attrs(section.attrs)}}>
-        {{text(section.headline.tags)}}
-      </h2>
-      {%- for paragraph in section.paragraphs -%}
-        <p>{{- text(paragraph.tags) -}}</p>
-      {%- endfor -%}
+      {{ h6(section) }}
+
+
     {%- elif section.type == "html" -%}
         {{- section.text -}}
     {%- elif section.type == "hr" -%}
