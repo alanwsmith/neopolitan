@@ -19,6 +19,7 @@ pub fn build_site() {
 
     let mut source_files = Files { files: vec![] };
 
+
     for entry in WalkDir::new(&content_dir).into_iter() {
         let initial_path =
             entry.unwrap().path().to_path_buf();
