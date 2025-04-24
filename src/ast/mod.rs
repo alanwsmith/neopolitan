@@ -1,7 +1,7 @@
 #![allow(unused)]
-use crate::neo_config::NeoConfig;
 use crate::neo_parser::NeoParser;
 use crate::section::Section;
+use crate::{neo_config::NeoConfig, section_parent::SectionParent};
 use anyhow::Error;
 use nom::Err;
 // use nom::error::Error;
@@ -26,7 +26,7 @@ impl Ast<'_> {
         config: &'a NeoConfig,
         debug: bool,
     ) -> Ast<'a> {
-        match NeoParser::parse(source, config, debug) {
+        match NeoParser::parse(source, config, &SectionParent::Page, debug) {
             Ok(results) => {
                 if results.0 == "" {
                     Ast::Ok(results.1)

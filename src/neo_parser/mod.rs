@@ -1,6 +1,7 @@
 #![allow(unused)]
 use crate::section::parse_section;
 use crate::section_category::SectionCategory;
+use crate::section_parent::SectionParent;
 use crate::{neo_config::NeoConfig, section::Section};
 use anyhow::{Error, Result};
 use nom::multi::many1;
@@ -20,11 +21,13 @@ impl<'a> NeoParser {
     pub fn parse(
         source: &'a str,
         config: &'a NeoConfig,
+        parent: &'a SectionParent,
         debug: bool,
     ) -> IResult<&'a str, Vec<Section>> {
         let (source, _) = multispace0(source)?;
         let (source, sections) =
-            many1(|src| parse_section(src, config, debug)).parse(source)?;
+            many1(|src| parse_section(src, config, parent, debug))
+                .parse(source)?;
         Ok(("", sections))
     }
 }
