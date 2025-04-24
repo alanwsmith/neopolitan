@@ -1,12 +1,13 @@
 use crate::neo_config::NeoConfig;
 use crate::neo_parser::NeoParser;
 use crate::section::Section;
-use anyhow;
+// use anyhow::Error;
 use nom::Err;
+use nom::error::Error;
 
 pub enum Ast<'a> {
     Ok(Vec<Section>),
-    Error(Err<nom::error::Error<&'a str>>),
+    Error(Err<Error<&'a str>>),
 }
 
 impl Ast<'_> {
@@ -18,10 +19,10 @@ impl Ast<'_> {
         match NeoParser::parse(source, config, debug) {
             Ok(results) => {
                 if results.0 == "" {
-                    // TODO: Make this an error if
-                    // the full thing wasn't parsed.
                     Ast::Ok(results.1)
                 } else {
+                    // TODO: Make this an error if
+                    // the full thing wasn't parsed.
                     Ast::Ok(results.1)
                 }
             }
