@@ -1,7 +1,9 @@
 #![allow(unused)]
+use crate::section::parse_section;
 use crate::section_category::SectionCategory;
 use crate::{neo_config::NeoConfig, section::Section};
 use anyhow::{Error, Result};
+use nom::multi::many1;
 use nom::{Finish, IResult};
 // use nom::{Err, Parser};
 use nom::Parser;
@@ -20,21 +22,9 @@ impl<'a> NeoParser {
         config: &'a NeoConfig,
         debug: bool,
     ) -> IResult<&'a str, Vec<Section>> {
-        decend(source, config, debug)
+        let (source, _) = multispace0(source)?;
+        let (source, sections) =
+            many1(|src| parse_section(src, config, debug)).parse(source)?;
+        Ok(("", sections))
     }
-}
-
-fn decend<'a>(
-    source: &'a str,
-    config: &'a NeoConfig,
-    debug: bool,
-) -> IResult<&'a str, Vec<Section>> {
-    let (source, _) = multispace0(source)?;
-    Ok((
-        "",
-        vec![Section {
-            category: SectionCategory::Raw,
-            kind: "title".to_string(),
-        }],
-    ))
 }
