@@ -1,10 +1,13 @@
-use crate::{section::Section, section_bound::SectionBound};
+use crate::{
+    section::Section, section_attribute::SectionAttribute,
+    section_bound::SectionBound,
+};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize, PartialEq, Serialize)]
 pub enum SectionCategory {
     Basic {
-        attrs: Vec<String>,
+        attrs: Vec<SectionAttribute>,
         bound: SectionBound,
         chidren: Vec<Section>,
         end_section: Option<Box<Section>>,

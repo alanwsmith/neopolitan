@@ -3,6 +3,7 @@ use super::Section;
 use crate::neo_config::NeoConfig;
 use crate::section_bound::SectionBound;
 use crate::section_category::SectionCategory;
+use crate::section_metadata::section_metadata;
 use crate::section_parent::SectionParent;
 use crate::span::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
@@ -24,15 +25,17 @@ pub fn basic_section_full<'a>(
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
             .parse(source)?;
+    let (source, (attrs, flags)) =
+        section_metadata(source, config, parent, debug)?;
     Ok((
         "",
         Section {
             category: SectionCategory::Basic {
-                attrs: vec![],
+                attrs,
                 bound: SectionBound::Full,
                 chidren: vec![],
                 end_section: None,
-                flags: vec![],
+                flags,
                 source_body: Some("bravo foxtrot tango".to_string()),
                 source_head: "-- title".to_string(),
             },
