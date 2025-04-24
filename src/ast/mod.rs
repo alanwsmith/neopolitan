@@ -1,14 +1,18 @@
-use std::env::remove_var;
-
+#![allow(unused)]
 use crate::neo_config::NeoConfig;
 use crate::neo_parser::NeoParser;
 use crate::section::Section;
-// use anyhow::Error;
+use anyhow::Error;
 use nom::Err;
-use nom::error::Error;
+// use nom::error::Error;
+use serde::{Deserialize, Serialize};
 
+#[derive(Debug, Deserialize, Serialize)]
 pub enum Ast<'a> {
-    Error(Err<Error<&'a str>>),
+    Error {
+        message: String,
+        remainder: String,
+    },
     Incomplete {
         parsed: Vec<Section>,
         remainder: &'a str,
@@ -33,7 +37,10 @@ impl Ast<'_> {
                     }
                 }
             }
-            Err(e) => Ast::Error(e),
+            Err(_e) => Ast::Error {
+                message: "TODO: Put message here".to_string(),
+                remainder: "TODO: Put remainder here".to_string(),
+            },
         }
     }
 }

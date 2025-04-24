@@ -1,6 +1,7 @@
 #![allow(unused)]
 use crate::section_category::SectionCategory;
 use crate::{neo_config::NeoConfig, section::Section};
+use anyhow::{Error, Result};
 use nom::{Finish, IResult};
 // use nom::{Err, Parser};
 use nom::Parser;
