@@ -1,5 +1,6 @@
 #![allow(unused)]
 pub mod basic_section;
+pub mod basic_section_full;
 
 use crate::neo_config::NeoConfig;
 use crate::section::basic_section::basic_section;
@@ -9,7 +10,7 @@ use nom::Parser;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, PartialEq, Serialize)]
 pub struct Section {
     pub category: SectionCategory,
     pub kind: String,
