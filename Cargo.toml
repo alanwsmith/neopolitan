@@ -3,10 +3,13 @@ name = "neopolitan"
 version = "0.2.0"
 edition = "2024"
 
+[dev-dependencies]
+pretty_assertions = "1.4.1"
+
 [dependencies]
 anyhow = "1.0.98"
 nom = "8.0.0"
-pretty_assertions = "1.4.1"
+serde = { version = "1.0.219", features = ["derive"] }
 
 
 

@@ -49,6 +49,7 @@ mod test {
         let source = include_str!("test-data/basic-example.neo");
         if let Ast::Ok(sections) = Ast::new_from_source(source, &config, false)
         {
+            dbg!(&sections);
             assert_eq!(1, sections.len());
         }
     }
