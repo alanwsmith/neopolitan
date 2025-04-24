@@ -19,5 +19,5 @@ pub fn section_metadata<'a>(
     parent: &'a SectionParent,
     debug: bool,
 ) -> IResult<&'a str, (Vec<SectionAttribute>, Vec<String>)> {
-    Ok(("", (vec![], vec![])))
+    Ok((source, (vec![], vec![])))
 }

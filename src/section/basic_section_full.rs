@@ -27,6 +27,9 @@ pub fn basic_section_full<'a>(
             .parse(source)?;
     let (source, (attrs, flags)) =
         section_metadata(source, config, parent, debug)?;
+    dbg!(&initial_source);
+    dbg!(&source);
+    let source_head = initial_source.replace(source, "").trim().to_string();
     Ok((
         "",
         Section {
@@ -37,7 +40,7 @@ pub fn basic_section_full<'a>(
                 end_section: None,
                 flags,
                 source_body: Some("bravo foxtrot tango".to_string()),
-                source_head: "-- title".to_string(),
+                source_head,
             },
             kind: kind.to_string(),
         },
