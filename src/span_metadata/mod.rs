@@ -29,6 +29,6 @@ pub fn span_metadata<'a>(
     // let (source, metadata) =
     //     many0(alt((code_span_attribute, code_span_flag))).parse(source)?;
     let mut flags = vec![];
-    let mut attributes = BTreeMap::new();
-    Ok((source, (flags, attributes)))
+    let mut attrs = BTreeMap::new();
+    Ok((source, (flags, attrs)))
 }

@@ -12,7 +12,7 @@ use nom::multi::many1;
 use nom::sequence::terminated;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 
-pub fn raw_section_attribute<'a>(
+pub fn raw_section_attr<'a>(
     source: &'a str,
     _config: &'a NeoConfig,
     _parent: &'a SectionParent,
@@ -73,9 +73,7 @@ mod test {
                 text: "bravo".to_string(),
             }],
         };
-        let right = raw_section_attribute(source, config, parent, debug)
-            .unwrap()
-            .1;
+        let right = raw_section_attr(source, config, parent, debug).unwrap().1;
         assert_eq!(left, right);
     }
 

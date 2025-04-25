@@ -1,5 +1,5 @@
 use crate::neo_config::NeoConfig;
-use crate::section_attribute::raw_section_attribute;
+use crate::section_attr::raw_section_attr;
 use crate::section_flag::raw_section_flag;
 use crate::section_parent::SectionParent;
 use crate::span::Span;
@@ -23,7 +23,7 @@ pub fn section_metadata<'a>(
 ) -> IResult<&'a str, (BTreeMap<String, Vec<Vec<Span>>>, Vec<String>)> {
     let (source, raw_metadata) = many0(alt((
         |src| raw_section_flag(src, config, parent, debug),
-        |src| raw_section_attribute(src, config, parent, debug),
+        |src| raw_section_attr(src, config, parent, debug),
     )))
     .parse(source)?;
     let mut attributes: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();

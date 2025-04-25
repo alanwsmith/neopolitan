@@ -1,6 +1,5 @@
 #![allow(unused)]
 use crate::neo_config::NeoConfig;
-use crate::section_attribute::raw_section_attribute;
 use crate::section_flag::raw_section_flag;
 use crate::section_parent::SectionParent;
 use crate::span::Span;

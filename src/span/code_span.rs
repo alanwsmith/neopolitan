@@ -1,6 +1,6 @@
 #![allow(unused)]
 use crate::neo_config::NeoConfig;
-use crate::section_attribute::raw_section_attribute;
+use crate::section_attr::raw_section_attr;
 use crate::section_flag::raw_section_flag;
 use crate::section_parent::SectionParent;
 use crate::span::Span;
@@ -57,13 +57,12 @@ pub fn code_span<'a>(
         ))),
     )
     .parse(source)?;
-    let (source, (flags, attributes)) =
-        span_metadata(source, characters.clone())?;
+    let (source, (flags, attrs)) = span_metadata(source, characters.clone())?;
     let (source, _) = tag("``").parse(source)?;
     Ok((
         source,
         Span::CodeSpan {
-            attributes: BTreeMap::new(),
+            attrs: BTreeMap::new(),
             flags: vec![],
             spans: vec![Span::TextDev {
                 content: "asdf".to_string(),
@@ -81,7 +80,7 @@ mod test {
 
     #[rstest]
     #[case("``alfa``", Span::CodeSpan{
-        attributes: BTreeMap::new(),
+        attrs: BTreeMap::new(),
         flags: vec![],
         spans: vec![],
     }, "")]
