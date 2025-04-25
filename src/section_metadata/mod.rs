@@ -1,7 +1,7 @@
 #![allow(unused)]
 use crate::neo_config::NeoConfig;
 use crate::section_attribute::SectionAttribute;
-use crate::section_attribute::section_attribute;
+use crate::section_attribute::section_attribute_line;
 use crate::section_bound::SectionBound;
 use crate::section_category::SectionCategory;
 use crate::section_flag::section_flag;
