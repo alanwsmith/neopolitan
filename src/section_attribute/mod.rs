@@ -15,6 +15,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Deserialize, PartialEq, Serialize)]
 pub struct SectionAttribute {
     key: String,
+    spans: Vec<Vec<Span>>,
 }
 
 #[derive(Debug, PartialEq)]

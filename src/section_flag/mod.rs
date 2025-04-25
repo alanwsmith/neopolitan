@@ -15,7 +15,7 @@ use nom::combinator::not;
 use nom::multi::many1;
 use nom::sequence::pair;
 
-pub fn section_flag<'a>(
+pub fn raw_section_flag<'a>(
     source: &'a str,
     _config: &'a NeoConfig,
     _parent: &'a SectionParent,
@@ -54,7 +54,7 @@ mod test {
     #[case("  leading_spaces_are_okay")]
     #[case("trailing_spaces_are_okay   ")]
     #[case("these_characters_are_okay:!@#$%^&*()[]<>|-")]
-    fn section_flag_attr_v42_valid_flags(#[case] left: &str) {
+    fn raw_section_flag_valid_tests(#[case] left: &str) {
         let config = &NeoConfig::default();
         let parent = &SectionParent::Basic;
         let debug = false;
@@ -62,7 +62,7 @@ mod test {
         let left = RawSectionMetaData::Flag {
             string: left.trim().to_string(),
         };
-        let right = section_flag(&source, config, parent, debug).unwrap().1;
+        let right = raw_section_flag(&source, config, parent, debug).unwrap().1;
         assert_eq!(left, right);
     }
 
@@ -72,12 +72,12 @@ mod test {
     #[case("bravo: charlie")]
     #[case("delta: ")]
     #[case("no_escaped_\\allowed")]
-    fn section_flag_attr_v42_invalid_flags(#[case] left: &str) {
+    fn raw_section_flag_invalid_tests(#[case] left: &str) {
         let config = &NeoConfig::default();
         let parent = &SectionParent::Basic;
         let debug = false;
         let source = format!("-- {}", left);
-        let right = section_flag(&source, config, parent, debug);
+        let right = raw_section_flag(&source, config, parent, debug);
         if right.is_err() {
             assert!(true)
         } else {

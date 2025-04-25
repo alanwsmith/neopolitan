@@ -4,7 +4,7 @@ use crate::section_attribute::SectionAttribute;
 use crate::section_attribute::raw_section_attribute;
 use crate::section_bound::SectionBound;
 use crate::section_category::SectionCategory;
-use crate::section_flag::section_flag;
+use crate::section_flag::raw_section_flag;
 use crate::section_parent::SectionParent;
 use crate::span::Span;
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -31,13 +31,18 @@ pub fn section_metadata<'a>(
     debug: bool,
 ) -> IResult<&'a str, (Vec<SectionAttribute>, Vec<String>)> {
     let (source, raw_metadata) = many0(alt((
-        |src| section_flag(src, config, parent, debug),
-        // |src| section_attribute_line(src, config, parent, debug),
+        |src| raw_section_flag(src, config, parent, debug),
+        |src| raw_section_attribute(src, config, parent, debug),
     )))
     .parse(source)?;
-    //let flags = raw_metadata.iter().filter(|metadata| )
-
-    Ok((source, (vec![], vec![])))
+    let flags = raw_metadata
+        .iter()
+        .filter_map(|metadata| match metadata {
+            RawSectionMetaData::Flag { string } => Some(string.clone()),
+            _ => None,
+        })
+        .collect::<Vec<String>>();
+    Ok((source, (vec![], flags)))
 }
 
 #[cfg(test)]
@@ -46,7 +51,6 @@ mod test {
     use pretty_assertions::assert_eq;
 
     #[test]
-    #[ignore]
     pub fn section_metadata_basic_test() {
         let config = &NeoConfig::default();
         let source = "-- test-flag\n\n";
