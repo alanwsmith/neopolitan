@@ -1,20 +1,11 @@
-#![allow(unused)]
 use crate::neo_config::NeoConfig;
 use crate::section_attribute::raw_section_attribute;
-use crate::section_bound::SectionBound;
-use crate::section_category::SectionCategory;
 use crate::section_flag::raw_section_flag;
 use crate::section_parent::SectionParent;
 use crate::span::Span;
-use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
-use nom::bytes::complete::is_not;
-use nom::character::complete::multispace0;
-use nom::character::complete::space1;
 use nom::multi::many0;
-use nom::sequence::pair;
-use nom::sequence::terminated;
-use nom::{IResult, branch::alt, bytes::complete::tag, combinator::rest};
+use nom::{IResult, branch::alt};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
