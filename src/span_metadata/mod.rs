@@ -9,7 +9,7 @@ use std::collections::BTreeMap;
 
 #[derive(Debug, PartialEq)]
 pub enum RawSpanMetadata {
-    Attribute { key: String, spans: Vec<Span> },
+    Attr { key: String, spans: Vec<Span> },
     Flag(String),
 }
 

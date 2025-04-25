@@ -32,7 +32,7 @@ use std::collections::BTreeMap;
 pub fn span_attr(source: &str) -> IResult<&str, RawSpanMetadata> {
     Ok((
         "",
-        RawSpanMetadata::Attribute {
+        RawSpanMetadata::Attr {
             key: "alfa".to_string(),
             spans: vec![],
         },
@@ -46,7 +46,7 @@ mod test {
     use rstest::rstest;
 
     #[rstest]
-    #[case("|alfa: bravo``", "`", RawSpanMetadata::Attribute{ key: "alfa".to_string(), spans: vec![]} , "``")]
+    #[case("|alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![]} , "``")]
     fn span_flag_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
