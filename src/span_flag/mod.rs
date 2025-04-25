@@ -141,7 +141,7 @@ mod test {
         let result = span_flag(source, character);
         match result {
             Ok(_) => {
-                dbg!(result);
+                dbg!(result.unwrap());
                 assert!(false)
             }
             Err(_) => assert!(true),
