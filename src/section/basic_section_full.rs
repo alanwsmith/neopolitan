@@ -1,5 +1,6 @@
 #![allow(unused)]
 use super::Section;
+use super::text_block::text_block;
 use crate::neo_config::NeoConfig;
 use crate::section_bound::SectionBound;
 use crate::section_category::SectionCategory;
@@ -10,6 +11,7 @@ use nom::Parser;
 use nom::bytes::complete::is_not;
 use nom::character::complete::multispace0;
 use nom::character::complete::space1;
+use nom::multi::many0;
 use nom::sequence::pair;
 use nom::sequence::terminated;
 use nom::{IResult, branch::alt, bytes::complete::tag, combinator::rest};
@@ -31,14 +33,16 @@ pub fn basic_section_full<'a>(
     let source_head = initial_head.replace(source, "").trim().to_string();
     let (source, _) = multispace0.parse(source)?;
     let initial_body = source;
-
+    let (source, children) =
+        many0(|src| text_block(src, config, &SectionParent::Basic, debug))
+            .parse(source)?;
     Ok((
         "",
         Section {
             category: SectionCategory::Basic {
                 attrs,
                 bound: SectionBound::Full,
-                chidren: vec![],
+                children,
                 end_section: None,
                 flags,
                 source_body: Some("bravo foxtrot tango".to_string()),
@@ -51,6 +55,8 @@ pub fn basic_section_full<'a>(
 
 #[cfg(test)]
 mod test {
+    use crate::span::{Span, plain_text::PlainTextSpan};
+
     use super::*;
     use pretty_assertions::assert_eq;
 
@@ -65,7 +71,15 @@ mod test {
             category: SectionCategory::Basic {
                 attrs: vec![],
                 bound: SectionBound::Full,
-                chidren: vec![],
+                children: vec![Section {
+                    category: SectionCategory::Block {
+                        spans: vec![Span::PlainText(PlainTextSpan {
+                            kind: "plain-text".to_string(),
+                            text: "bravo foxtrot tango".to_string(),
+                        })],
+                    },
+                    kind: "text-block".to_string(),
+                }],
                 end_section: None,
                 flags: vec![],
                 source_body: Some("bravo foxtrot tango".to_string()),

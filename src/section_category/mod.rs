@@ -9,7 +9,7 @@ pub enum SectionCategory {
     Basic {
         attrs: Vec<SectionAttribute>,
         bound: SectionBound,
-        chidren: Vec<Section>,
+        children: Vec<Section>,
         end_section: Option<Box<Section>>,
         flags: Vec<String>,
         source_head: String,
