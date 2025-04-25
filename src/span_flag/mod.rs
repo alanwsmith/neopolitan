@@ -32,6 +32,10 @@ use serde::Deserialize;
 use serde::Serialize;
 use std::collections::BTreeMap;
 
+// NOTE: span_flags are straight Strings,
+// not a collection of spans. Use an
+// attr if you need spans
+
 // NOTE: Spaces are not allowed in flags.
 // Use an attr if you need one
 

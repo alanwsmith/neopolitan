@@ -9,20 +9,22 @@ use nom::sequence::terminated;
 pub fn single_character(source: &str) -> IResult<&str, &str> {
     let (source, result) = alt((
         terminated(tag("`"), peek(not(tag("`")))),
-        // preceded(tag("~"), tag("~")),
-        // preceded(tag("!"), tag("!")),
-        // preceded(tag("#"), tag("#")),
-        // preceded(tag("%"), tag("%")),
-        // preceded(tag("^"), tag("^")),
-        // preceded(tag("*"), tag("*")),
-        // preceded(tag("["), tag("[")),
-        // preceded(tag("]"), tag("]")),
-        // preceded(tag("{"), tag("{")),
-        // preceded(tag("}"), tag("}")),
-        // preceded(tag("<"), tag("<")),
-        // preceded(tag(">"), tag(">")),
-        // preceded(tag("("), tag("(")),
-        // preceded(tag("("), tag("(")),
+        terminated(tag("~"), peek(not(tag("~")))),
+        terminated(tag("!"), peek(not(tag("!")))),
+        terminated(tag("@"), peek(not(tag("@")))),
+        terminated(tag("#"), peek(not(tag("#")))),
+        terminated(tag("$"), peek(not(tag("$")))),
+        terminated(tag("%"), peek(not(tag("%")))),
+        terminated(tag("^"), peek(not(tag("^")))),
+        terminated(tag("*"), peek(not(tag("*")))),
+        terminated(tag("["), peek(not(tag("[")))),
+        terminated(tag("]"), peek(not(tag("]")))),
+        terminated(tag("{"), peek(not(tag("{")))),
+        terminated(tag("}"), peek(not(tag("}")))),
+        terminated(tag("<"), peek(not(tag("<")))),
+        terminated(tag(">"), peek(not(tag(">")))),
+        terminated(tag("("), peek(not(tag("(")))),
+        terminated(tag(")"), peek(not(tag(")")))),
     ))
     .parse(source)?;
     Ok((source, result))
@@ -35,8 +37,40 @@ mod test {
     use rstest::rstest;
 
     #[rstest]
+    #[case("`", "`", "")]
     #[case("`x", "`", "x")]
-
+    #[case("~", "~", "")]
+    #[case("~x", "~", "x")]
+    #[case("!", "!", "")]
+    #[case("!x", "!", "x")]
+    #[case("@", "@", "")]
+    #[case("@x", "@", "x")]
+    #[case("#", "#", "")]
+    #[case("#x", "#", "x")]
+    #[case("$", "$", "")]
+    #[case("$x", "$", "x")]
+    #[case("%", "%", "")]
+    #[case("%x", "%", "x")]
+    #[case("^", "^", "")]
+    #[case("^x", "^", "x")]
+    #[case("*", "*", "")]
+    #[case("*x", "*", "x")]
+    #[case("[", "[", "")]
+    #[case("[x", "[", "x")]
+    #[case("]", "]", "")]
+    #[case("]x", "]", "x")]
+    #[case("{", "{", "")]
+    #[case("{x", "{", "x")]
+    #[case("}", "}", "")]
+    #[case("}x", "}", "x")]
+    #[case("<", "<", "")]
+    #[case("<x", "<", "x")]
+    #[case(">", ">", "")]
+    #[case(">x", ">", "x")]
+    #[case("(", "(", "")]
+    #[case("(x", "(", "x")]
+    #[case(")", ")", "")]
+    #[case(")x", ")", "x")]
     fn single_character_valid_tests(
         #[case] source: &str,
         #[case] left: &str,
@@ -47,19 +81,35 @@ mod test {
         assert_eq!(remainder, right.0);
     }
 
-    // #[rstest]
-    // #[case("|alfa bravo", "`")]
-    // fn span_flag_invalid_tests(#[case] source: &str, #[case] character: &str) {
-    //     let characters = "%@~*^![]{}<>_#:".to_string();
-    //     let result = span_flag(source, character);
-    //     match result {
-    //         Ok(_) => {
-    //             dbg!(result);
-    //             assert!(false)
-    //         }
-    //         Err(_) => assert!(true),
-    //     }
-    // }
+    #[rstest]
+    #[case("``")]
+    #[case("~~")]
+    #[case("!!")]
+    #[case("@@")]
+    #[case("##")]
+    #[case("$$")]
+    #[case("%%")]
+    #[case("^^")]
+    #[case("&&")]
+    #[case("**")]
+    #[case("((")]
+    #[case("))")]
+    #[case("<<")]
+    #[case(">>")]
+    #[case("[[")]
+    #[case("]]")]
+    #[case("{{")]
+    #[case("}}")]
+    fn single_character_invalid_tests(#[case] source: &str) {
+        let result = single_character(source);
+        match result {
+            Ok(value) => {
+                dbg!(value);
+                assert!(false)
+            }
+            Err(_) => assert!(true),
+        }
+    }
 
     //
 }
