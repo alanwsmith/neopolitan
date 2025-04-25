@@ -100,15 +100,14 @@ fn raw_shorthand_flag<'a>(
     source: &'a str,
     characters: String,
 ) -> IResult<&'a str, RawShorthandMetadata> {
-    let (source, _) = (tag("|"), space0, opt(line_ending)).parse(source)?;
-    dbg!(&source);
+    let (source, _) =
+        (tag("|"), space0, opt(line_ending), space0).parse(source)?;
     let (source, parts) = many1(alt((
         plain_text_string_base,
         is_a(characters.as_bytes()),
         escaped_character,
     )))
     .parse(source)?;
-    dbg!(&parts);
     let (source, _) = space0.parse(source)?;
     let (source, _) = opt(line_ending).parse(source)?;
     let (source, _) = space0.parse(source)?;
@@ -143,10 +142,15 @@ mod test {
     #[case("| alfa |", "alfa", "|")]
     #[case("| alfa-bravo", "alfa-bravo", "")]
     #[case("|http://www.example.com/", "http://www.example.com/", "")]
-    #[case("|alfa``", "alfa", "``")]
     #[case("|alfa`", "alfa`", "")]
+    #[case("|alfa``", "alfa", "``")]
+    #[case("|alfa\\``", "alfa``", "")]
     #[case("|alfa::bravo", "alfa::bravo", "")]
     #[case("|alfa[[bravo]]", "alfa[[bravo]]", "")]
+    #[case("|\nalfa|", "alfa", "|")]
+    #[case("|alfa\n|", "alfa", "|")]
+    #[case("| \n alfa \n |", "alfa", "|")]
+    #[case("|alfa\\|", "alfa|", "")]
     fn raw_flag_valid_tests(
         #[case] source: &str,
         #[case] found: &str,
