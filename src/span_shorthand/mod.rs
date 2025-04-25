@@ -101,12 +101,21 @@ fn raw_shorthand_flag<'a>(
     characters: String,
 ) -> IResult<&'a str, RawShorthandMetadata> {
     let (source, _) = (tag("|"), space0, opt(line_ending)).parse(source)?;
-    // let (source, parts) = many1(alt((
-    //     plain_text_string_base,
-    //     is_a("%@~*^![]{}<>_#:"),
-    //     escaped_character,
-    // )))
-    Ok(("", RawShorthandMetadata::Flag("alfa".to_string())))
+    dbg!(&source);
+    let (source, parts) = many1(alt((
+        plain_text_string_base,
+        is_a(characters.as_bytes()),
+        escaped_character,
+    )))
+    .parse(source)?;
+    dbg!(&parts);
+    let (source, _) = space0.parse(source)?;
+    let (source, _) = opt(line_ending).parse(source)?;
+    let (source, _) = space0.parse(source)?;
+    Ok((
+        source,
+        RawShorthandMetadata::Flag(parts.join("").to_string()),
+    ))
 }
 
 fn raw_shorthand_attribute(
@@ -129,15 +138,36 @@ mod test {
 
     #[rstest]
     #[case("|alfa", "alfa", "")]
-    fn raw_flag_test(
+    #[case("|alfa|", "alfa", "|")]
+    #[case("| alfa", "alfa", "")]
+    #[case("| alfa |", "alfa", "|")]
+    #[case("| alfa-bravo", "alfa-bravo", "")]
+    #[case("|http://www.example.com/", "http://www.example.com/", "")]
+    #[case("|alfa``", "alfa", "``")]
+    #[case("|alfa`", "alfa`", "")]
+    #[case("|alfa::bravo", "alfa::bravo", "")]
+    #[case("|alfa[[bravo]]", "alfa[[bravo]]", "")]
+    fn raw_flag_valid_tests(
         #[case] source: &str,
         #[case] found: &str,
         #[case] remainder: &str,
     ) {
         let characters = "%@~*^![]{}<>_#:".to_string();
         let left = RawShorthandMetadata::Flag(found.to_string());
-        let right = raw_shorthand_flag(source, characters).unwrap().1;
-        assert_eq!(left, right);
+        let right = raw_shorthand_flag(source, characters).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
+
+    #[rstest]
+    #[case("alfa")]
+    fn raw_flag_invalid_tests(#[case] source: &str) {
+        let characters = "%@~*^![]{}<>_#:".to_string();
+        let result = raw_shorthand_flag(source, characters);
+        match result {
+            Ok(_) => assert!(false),
+            Err(_) => assert!(true),
+        }
     }
 }
 
