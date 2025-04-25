@@ -15,7 +15,7 @@ pub enum RawShorthandMetadata {
 
 #[derive(Debug, PartialEq)]
 pub enum RawShorthandMetadataDev {
-    Flag(Vec<Span>),
+    Flag(String),
 }
 
 pub fn span_metadata<'a>(
@@ -23,11 +23,17 @@ pub fn span_metadata<'a>(
     characters: &'a str,
 ) -> IResult<&'a str, (Vec<String>, BTreeMap<String, Vec<Span>>)> {
     let (source, raw_metadata) =
-        many0(alt((|src| span_flag(src, characters),))).parse(source)?;
+        many0(alt((|src| span_flag(src),))).parse(source)?;
     // Reminder: attrs first otherwise things go wrong with this setup
-    // let (source, metadata) =
-    //     many0(alt((code_span_attribute, code_span_flag))).parse(source)?;
-    let mut flags = vec![];
+    let (source, metadata) =
+        many0(alt((|src| span_flag(src),))).parse(source)?;
+    let mut flags = metadata
+        .iter()
+        .filter_map(|data| match data {
+            RawShorthandMetadataDev::Flag(content) => Some(content.clone()),
+            _ => None,
+        })
+        .collect::<Vec<String>>();
     let mut attrs = BTreeMap::new();
     Ok((source, (flags, attrs)))
 }

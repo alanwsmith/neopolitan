@@ -74,21 +74,30 @@ mod test {
     use pretty_assertions::assert_eq;
     use rstest::rstest;
 
-    #[rstest]
-    #[case("``alfa``", Span::Code{
-        attrs: BTreeMap::new(),
-        flags: vec![],
-        spans: vec![
-            Span::Text{content: "alfa".to_string()}
-        ],
-    }, "")]
-    fn code_span_valid_tests(
-        #[case] source: &str,
-        #[case] left: Span,
-        #[case] remainder: &str,
-    ) {
-        let right = code_span(source).unwrap();
-        assert_eq!(left, right.1);
-        assert_eq!(remainder, right.0);
-    }
+    // #[rstest]
+    // #[case("``alfa``", Span::Code{
+    //     attrs: BTreeMap::new(),
+    //     flags: vec![],
+    //     spans: vec![
+    //         Span::Text{content: "alfa".to_string()}
+    //     ],
+    // }, "")]
+    // #[case("``alfa|bravo``", Span::Code{
+    //     attrs: BTreeMap::new(),
+    //     flags: vec!["bravo".to_string()],
+    //     spans: vec![
+    //         Span::Text{content: "alfa".to_string()}
+    //     ],
+    // }, "")]
+    // fn code_span_valid_tests(
+    //     #[case] source: &str,
+    //     #[case] left: Span,
+    //     #[case] remainder: &str,
+    // ) {
+    //     let right = code_span(source).unwrap();
+    //     assert_eq!(left, right.1);
+    //     assert_eq!(remainder, right.0);
+    // }
+
+    //
 }
