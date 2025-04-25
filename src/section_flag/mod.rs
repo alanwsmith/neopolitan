@@ -1,4 +1,5 @@
 use crate::neo_config::NeoConfig;
+use crate::section_metadata::RawSectionMetaData;
 use crate::section_parent::SectionParent;
 use nom::IResult;
 use nom::Parser;
@@ -19,7 +20,7 @@ pub fn section_flag<'a>(
     _config: &'a NeoConfig,
     _parent: &'a SectionParent,
     _debug: bool,
-) -> IResult<&'a str, String> {
+) -> IResult<&'a str, RawSectionMetaData> {
     let (source, _) = tag("--").parse(source)?;
     let (source, _) = space1.parse(source)?;
     let (source, parts) = many1(alt((
@@ -29,12 +30,15 @@ pub fn section_flag<'a>(
     .parse(source)?;
     let (source, _) =
         alt((pair(space0, line_ending), pair(space0, eof))).parse(source)?;
-    let value = parts
-        .iter()
-        .map(|part| part.to_string())
-        .collect::<Vec<String>>()
-        .join("");
-    Ok((source, value.to_string()))
+    let flag = RawSectionMetaData::Flag {
+        string: parts
+            .iter()
+            .map(|part| part.to_string())
+            .collect::<Vec<String>>()
+            .join("")
+            .to_string(),
+    };
+    Ok((source, flag))
 }
 
 #[cfg(test)]
@@ -55,8 +59,11 @@ mod test {
         let parent = &SectionParent::Basic;
         let debug = false;
         let source = format!("-- {}", left);
+        let left = RawSectionMetaData::Flag {
+            string: left.trim().to_string(),
+        };
         let right = section_flag(&source, config, parent, debug).unwrap().1;
-        assert_eq!(left.trim(), right);
+        assert_eq!(left, right);
     }
 
     #[rstest]

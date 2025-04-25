@@ -28,10 +28,8 @@ pub fn basic_section_full<'a>(
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
             .parse(source)?;
-    dbg!(&source);
     let (source, (attrs, flags)) =
         section_metadata(source, config, parent, debug)?;
-    dbg!(&source);
     let source_head = initial_head.replace(source, "").trim().to_string();
     let (source, _) = multispace0.parse(source)?;
     let initial_body = source;

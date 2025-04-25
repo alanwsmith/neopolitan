@@ -6,6 +6,7 @@ use crate::section_bound::SectionBound;
 use crate::section_category::SectionCategory;
 use crate::section_flag::section_flag;
 use crate::section_parent::SectionParent;
+use crate::span::Span;
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::bytes::complete::is_not;
@@ -17,15 +18,25 @@ use nom::sequence::terminated;
 use nom::{IResult, branch::alt, bytes::complete::tag, combinator::rest};
 use serde::{Deserialize, Serialize};
 
+#[derive(Debug, Deserialize, PartialEq, Serialize)]
+pub enum RawSectionMetaData {
+    Attribtue { key: String, spans: Vec<Span> },
+    Flag { string: String },
+}
+
 pub fn section_metadata<'a>(
     source: &'a str,
     config: &'a NeoConfig,
     parent: &'a SectionParent,
     debug: bool,
 ) -> IResult<&'a str, (Vec<SectionAttribute>, Vec<String>)> {
-    let (source, raw_metadata) =
-        many0(alt((|src| section_flag(src, config, parent, debug),)))
-            .parse(source)?;
+    let (source, raw_metadata) = many0(alt((
+        |src| section_flag(src, config, parent, debug),
+        // |src| section_attribute_line(src, config, parent, debug),
+    )))
+    .parse(source)?;
+    //let flags = raw_metadata.iter().filter(|metadata| )
+
     Ok((source, (vec![], vec![])))
 }
 
