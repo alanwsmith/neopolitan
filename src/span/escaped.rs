@@ -55,7 +55,7 @@ mod test {
     #[case("\\\\ ", Span::Escaped{
         content: "\\".to_string()
     }, " ")]
-    fn code_span_valid_tests(
+    fn escaped_span_valid_tests(
         #[case] source: &str,
         #[case] left: Span,
         #[case] remainder: &str,
