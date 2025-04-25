@@ -1,13 +1,11 @@
-use crate::{
-    section::Section, section_attribute::SectionAttribute,
-    section_bound::SectionBound, span::Span,
-};
+use crate::{section::Section, section_bound::SectionBound, span::Span};
 use serde::{Deserialize, Serialize};
+use std::collections::BTreeMap;
 
 #[derive(Debug, Deserialize, PartialEq, Serialize)]
 pub enum SectionCategory {
     Basic {
-        attrs: Vec<SectionAttribute>,
+        attrs: BTreeMap<String, Vec<Vec<Span>>>,
         bound: SectionBound,
         children: Vec<Section>,
         end_section: Option<Box<Section>>,

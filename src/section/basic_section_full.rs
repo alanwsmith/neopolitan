@@ -16,6 +16,7 @@ use nom::sequence::pair;
 use nom::sequence::terminated;
 use nom::{IResult, branch::alt, bytes::complete::tag, combinator::rest};
 use serde::{Deserialize, Serialize};
+use std::collections::BTreeMap;
 
 pub fn basic_section_full<'a>(
     source: &'a str,
@@ -74,7 +75,7 @@ mod test {
         let debug = false;
         let left = Section {
             category: SectionCategory::Basic {
-                attrs: vec![],
+                attrs: BTreeMap::new(),
                 bound: SectionBound::Full,
                 children: vec![Section {
                     category: SectionCategory::Block {

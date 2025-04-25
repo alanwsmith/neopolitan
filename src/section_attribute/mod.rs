@@ -1,7 +1,6 @@
 use crate::neo_config::NeoConfig;
 use crate::section_metadata::RawSectionMetaData;
 use crate::section_parent::SectionParent;
-use crate::span::Span;
 use crate::span_parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
@@ -10,19 +9,13 @@ use nom::character::complete::space1;
 use nom::multi::many1;
 use nom::sequence::terminated;
 use nom::{IResult, branch::alt, bytes::complete::tag};
-use serde::{Deserialize, Serialize};
+// use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize, PartialEq, Serialize)]
-pub struct SectionAttribute {
-    key: String,
-    spans: Vec<Vec<Span>>,
-}
-
-#[derive(Debug, PartialEq)]
-pub struct SectionAttributeLine {
-    key: String,
-    spans: Vec<Span>,
-}
+// #[derive(Debug, Deserialize, PartialEq, Serialize)]
+// pub struct SectionAttribute {
+//     key: String,
+//     spans: Vec<Vec<Span>>,
+// }
 
 pub fn raw_section_attribute<'a>(
     source: &'a str,
@@ -68,6 +61,7 @@ pub fn raw_section_attribute<'a>(
 #[cfg(test)]
 mod test {
     use super::*;
+    use crate::span::Span;
     use pretty_assertions::assert_eq;
     // use rstest::rstest;
 
