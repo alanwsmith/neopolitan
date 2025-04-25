@@ -1,3 +1,6 @@
+pub mod code_span;
+pub mod text_span;
+
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
@@ -12,8 +15,7 @@ pub enum Span {
     CodeSpan {
         attributes: BTreeMap<String, Vec<Span>>,
         flags: Vec<String>,
-        kind: String,
-        text: String,
+        spans: Vec<Span>,
     },
     // #[serde(rename = "emphasis-span")]
     // EmphasisShorthand(EmphasisShorthandV42),
@@ -29,10 +31,15 @@ pub enum Span {
     // LinkShorthand(LinkShorthandV42),
     // #[serde(rename = "mark-span")]
     // MarkShorthand(MarkShorthandV42),
-    // #[serde(rename = "named-span")]
+    //
+    // // TODO: rename to TagSpan
+    // #[serde(rename = "tag")]
     // NamedSpan(NamedSpanV42),
+    //
     #[serde(rename = "text-span")]
     TextSpan { kind: String, text: String },
+    #[serde(rename = "text")]
+    TextDev { content: String },
     // #[serde(rename = "strong-span")]
     // StrongShorthand(StrongShorthandV42),
     // #[serde(rename = "strike-span")]

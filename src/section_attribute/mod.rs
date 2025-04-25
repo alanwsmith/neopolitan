@@ -1,9 +1,9 @@
+#![allow(unused)]
 use crate::neo_config::NeoConfig;
 use crate::section_metadata::RawSectionMetaData;
 use crate::section_parent::SectionParent;
+use crate::span::code_span;
 use crate::span_parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
-use crate::span_shorthand::code_span;
-use crate::span_shorthand::shorthand_span;
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::character::complete::alphanumeric1;
@@ -32,7 +32,7 @@ pub fn raw_section_attribute<'a>(
             span_of_plain_text_for_section_key_value_attr_value,
             // link_shorthand_span,
             // footnote_shorthand_span,
-            code_span,
+            // code_span,
             // emphasis_shorthand_span,
             // html_shorthand_span,
             // image_shorthand_span,

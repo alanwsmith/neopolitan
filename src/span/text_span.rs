@@ -1,10 +1,10 @@
 #![allow(unused)]
-
 use crate::neo_config::NeoConfig;
 use crate::section_attribute::raw_section_attribute;
 use crate::section_flag::raw_section_flag;
 use crate::section_parent::SectionParent;
 use crate::span::Span;
+use crate::span_metadata::span_metadata;
 use crate::span_strings::escaped_character::escaped_character;
 use crate::span_strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
 use crate::span_strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
@@ -30,7 +30,8 @@ use serde::Deserialize;
 use serde::Serialize;
 use std::collections::BTreeMap;
 
-pub fn shorthand_span<'a>(
+// TODO:
+pub fn text_span<'a>(
     source: &'a str,
     start_marker: &'a str,
     end_marker: &'a str,
@@ -58,66 +59,12 @@ pub fn shorthand_span<'a>(
     )
     .parse(source)?;
     let (source, (flags, attributes)) =
-        shorthand_metadata(source, characters.clone())?;
+        span_metadata(source, characters.clone())?;
     let (source, _) = tag("``").parse(source)?;
     Ok((
         source,
-        Span::CodeSpan {
-            attributes: BTreeMap::new(),
-            flags: vec![],
-            kind: "code-shorthand".to_string(),
-            spans: vec![Span::TextSpan {
-                kind: "text".to_string(),
-                text: "asdf".to_string(),
-            }],
+        Span::TextDev {
+            content: "asdf".to_string(),
         },
     ))
 }
-
-// pub fn code_span_attribute(source: &str) -> IResult<&str, SpanBaseAttrV42> {
-//     let (source, _) = tag("|").parse(source)?;
-//     let (source, _) = space0.parse(source)?;
-//     let (source, _) = opt(line_ending).parse(source)?;
-//     let (source, _) = space0.parse(source)?;
-//     let (source, key_spans) = terminated(
-//         many1(alt((alphanumeric1, is_a("-_")))),
-//         pair(tag(":"), space1),
-//     )
-//     .parse(source)?;
-//     let (source, spans) = many1(alt((
-//         span_of_plain_text_for_shorthand_attr_value,
-//         named_span,
-//         span_of_escaped_character,
-//         code_span_of_extra_shorthand_attr_value,
-//     )))
-//     .parse(source)?;
-//     Ok((
-//         source,
-//         SpanBaseAttrV42::KeyValue {
-//             key: key_spans.join(""),
-//             spans,
-//         },
-//     ))
-// }
-
-// pub fn code_span_flag(source: &str) -> IResult<&str, Span> {
-//     let (source, _) = tag("|").parse(source)?;
-//     let (source, _) = space0.parse(source)?;
-//     let (source, _) = opt(line_ending).parse(source)?;
-//     let (source, _) = space0.parse(source)?;
-//     let (source, parts) = many1(alt((
-//         plain_text_string_base,
-//         is_a("%@~*^![]{}<>_#:"),
-//         escaped_character,
-//     )))
-//     .parse(source)?;
-//     let (source, _) = space0.parse(source)?;
-//     let (source, _) = opt(line_ending).parse(source)?;
-//     let (source, _) = space0.parse(source)?;
-//     Ok((
-//         source,
-//         SpanBaseAttrV42::Flag(SpanFlagAttrV42 {
-//             text: parts.join(""),
-//         }),
-//     ))
-// }
