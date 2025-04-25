@@ -32,7 +32,7 @@ use std::collections::BTreeMap;
 
 pub fn span_flag<'a>(
     source: &'a str,
-    characters: String,
+    characters: &'a str,
 ) -> IResult<&'a str, RawShorthandMetadataDev> {
     let (source, _) =
         (tag("|"), space0, opt(line_ending), space0).parse(source)?;
@@ -61,7 +61,7 @@ mod test {
         #[case] found: &str,
         #[case] remainder: &str,
     ) {
-        let characters = "%@~*^![]{}<>_#:".to_string();
+        let characters = "%@~*^![]{}<>_#:";
         let left = RawShorthandMetadataDev::Flag(vec![Span::TextDev {
             content: "alfa".to_string(),
         }]);

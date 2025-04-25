@@ -1,5 +1,5 @@
-pub mod code_span;
-pub mod text_span;
+pub mod code;
+pub mod text;
 
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;

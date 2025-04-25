@@ -35,19 +35,9 @@ pub fn code_span<'a>(
     start_marker: &'a str,
     end_marker: &'a str,
 ) -> IResult<&'a str, Span> {
-    let all_characters = "`%@~*^![]{}<>_#:";
-    let characters = all_characters
-        .split("")
-        .filter(|c| *c != "" && *c != start_marker && *c != end_marker)
-        .map(|c| c.to_string())
-        .collect::<Vec<_>>()
-        .join("")
-        .to_string();
+    let characters = "%@~*^![]{}<>_#:";
     let (source, tokens) = preceded(
-        pair(
-            pair(tag(start_marker), tag(start_marker)),
-            opt(plain_text_space1_as_single_space),
-        ),
+        pair(tag("``"), opt(plain_text_space1_as_single_space)),
         many1(alt((
             plain_text_string_base,
             plain_text_space1_as_single_space,
@@ -57,7 +47,7 @@ pub fn code_span<'a>(
         ))),
     )
     .parse(source)?;
-    let (source, (flags, attrs)) = span_metadata(source, characters.clone())?;
+    let (source, (flags, attrs)) = span_metadata(source, characters)?;
     let (source, _) = tag("``").parse(source)?;
     Ok((
         source,
@@ -67,6 +57,27 @@ pub fn code_span<'a>(
             spans: vec![Span::TextDev {
                 content: "asdf".to_string(),
             }],
+        },
+    ))
+}
+
+pub fn code_span_text<'a>(
+    source: &'a str,
+    start_marker: &'a str,
+    end_marker: &'a str,
+) -> IResult<&'a str, Span> {
+    let (source, parts) = many1(alt((
+        plain_text_string_base,
+        plain_text_space1_as_single_space,
+        is_a("%@~*^![]{}<>_#:"),
+        plain_text_single_line_ending_as_space,
+        escaped_character,
+    )))
+    .parse(source)?;
+    Ok((
+        source,
+        Span::TextDev {
+            content: parts.join(""),
         },
     ))
 }

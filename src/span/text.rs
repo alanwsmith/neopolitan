@@ -36,14 +36,6 @@ pub fn text_span<'a>(
     start_marker: &'a str,
     end_marker: &'a str,
 ) -> IResult<&'a str, Span> {
-    let all_characters = "`%@~*^![]{}<>_#:";
-    let characters = all_characters
-        .split("")
-        .filter(|c| *c != "" && *c != start_marker && *c != end_marker)
-        .map(|c| c.to_string())
-        .collect::<Vec<_>>()
-        .join("")
-        .to_string();
     let (source, tokens) = preceded(
         pair(
             pair(tag(start_marker), tag(start_marker)),
@@ -58,7 +50,7 @@ pub fn text_span<'a>(
         ))),
     )
     .parse(source)?;
-    let (source, (flags, attrs)) = span_metadata(source, characters.clone())?;
+    //let (source, (flags, attrs)) = span_metadata(source, characters.clone())?;
     let (source, _) = tag("``").parse(source)?;
     Ok((
         source,
