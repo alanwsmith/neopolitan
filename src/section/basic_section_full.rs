@@ -36,6 +36,12 @@ pub fn basic_section_full<'a>(
     let (source, children) =
         many0(|src| text_block(src, config, &SectionParent::Basic, debug))
             .parse(source)?;
+    let tmp_source_body = initial_body.replace(source, "").trim().to_string();
+    let source_body = if tmp_source_body != "" {
+        Some(tmp_source_body)
+    } else {
+        None
+    };
     Ok((
         "",
         Section {
@@ -45,7 +51,7 @@ pub fn basic_section_full<'a>(
                 children,
                 end_section: None,
                 flags,
-                source_body: Some("bravo foxtrot tango".to_string()),
+                source_body,
                 source_head,
             },
             kind: kind.to_string(),
@@ -55,9 +61,8 @@ pub fn basic_section_full<'a>(
 
 #[cfg(test)]
 mod test {
-    use crate::span::{Span, plain_text::PlainTextSpan};
-
     use super::*;
+    use crate::span::{Span, plain_text::PlainTextSpan};
     use pretty_assertions::assert_eq;
 
     #[test]
