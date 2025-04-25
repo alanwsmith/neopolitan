@@ -33,3 +33,33 @@ pub fn plain_text_span_for_block_paragraph(
     .parse(source)?;
     Ok((source, results))
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use pretty_assertions::assert_eq;
+    use rstest::rstest;
+
+    #[rstest]
+    #[case("alfa", &["alfa"], "")]
+    #[case("alfa bravo", &["alfa", " ", "bravo"], "")]
+    #[case("alfa    bravo", &["alfa", " ", "bravo"], "")]
+    #[case("alfa\nbravo", &["alfa", " ", "bravo"], "")]
+    #[case("alfa\n\nbravo", &["alfa"], "\n\nbravo")]
+    #[case("alfa~bravo", &["alfa", "~", "bravo"], "")]
+    #[case("alfa|bravo", &["alfa", "|", "bravo"], "")]
+    #[case("alfa||bravo", &["alfa", "||", "bravo"], "")]
+    #[case("alfa:bravo", &["alfa", ":", "bravo"], "")]
+    #[case("alfa::bravo", &["alfa", "::", "bravo"], "")]
+    #[case("alfa~~bravo~~", &["alfa"], "~~bravo~~")]
+    #[case("alfa ~~bravo~~", &["alfa", " "], "~~bravo~~")]
+    fn plain_text_span_for_block_paragraph_valid_tests(
+        #[case] source: &str,
+        #[case] got: &[&str],
+        #[case] remainder: &str,
+    ) {
+        let matcher = (remainder, got.to_vec());
+        let parsed = plain_text_span_for_block_paragraph(source).unwrap();
+        assert_eq!(matcher, parsed);
+    }
+}

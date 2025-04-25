@@ -19,3 +19,23 @@ pub fn plain_text_any_pipes(source: &str) -> IResult<&str, &str> {
     let (source, result) = is_a("|").parse(source)?;
     Ok((source, result))
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use pretty_assertions::assert_eq;
+    use rstest::rstest;
+
+    #[rstest]
+    #[case("|", "|", "")]
+    #[case("||", "||", "")]
+    fn plain_text_any_pipes_valid_tests(
+        #[case] source: &str,
+        #[case] got: &str,
+        #[case] remainder: &str,
+    ) {
+        let matcher = (remainder, got);
+        let parsed = plain_text_any_pipes(source).unwrap();
+        assert_eq!(matcher, parsed);
+    }
+}

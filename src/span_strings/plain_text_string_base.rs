@@ -41,3 +41,36 @@ pub fn plain_text_string_base(source: &str) -> IResult<&str, &str> {
     .parse(source)?;
     Ok((source, result))
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use pretty_assertions::assert_eq;
+    use rstest::rstest;
+    #[rstest]
+    #[case("alfa", "alfa", "")]
+    #[case("alfa bravo", "alfa", " bravo")]
+    #[case("alfa\nbravo", "alfa", "\nbravo")]
+    #[case("`bravo", "`", "bravo")]
+    #[case("~bravo", "~", "bravo")]
+    #[case("!bravo", "!", "bravo")]
+    #[case("#bravo", "#", "bravo")]
+    #[case("^bravo", "^", "bravo")]
+    #[case("*bravo", "*", "bravo")]
+    #[case("[bravo", "[", "bravo")]
+    #[case("]bravo", "]", "bravo")]
+    #[case("{bravo", "{", "bravo")]
+    #[case("}bravo", "}", "bravo")]
+    #[case("<bravo", "<", "bravo")]
+    #[case(">bravo", ">", "bravo")]
+    #[case("_bravo", "_", "bravo")]
+    fn plain_text_string_base_valid_tests(
+        #[case] source: &str,
+        #[case] got: &str,
+        #[case] remainder: &str,
+    ) {
+        let matcher = (remainder, got);
+        let parsed = plain_text_string_base(source).unwrap();
+        assert_eq!(matcher, parsed);
+    }
+}

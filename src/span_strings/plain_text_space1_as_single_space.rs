@@ -24,3 +24,34 @@ pub fn plain_text_space1_as_single_space(source: &str) -> IResult<&str, &str> {
     let (source, _) = not(alt((line_ending, eof))).parse(source)?;
     Ok((source, " "))
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use pretty_assertions::assert_eq;
+    use rstest::rstest;
+
+    #[rstest]
+    #[case(" foxtrot", "foxtrot")]
+    #[case("    foxtrot", "foxtrot")]
+    fn plain_text_space1_as_single_space_valid_tests(
+        #[case] source: &str,
+        #[case] remainder: &str,
+    ) {
+        let matcher = (remainder, " ");
+        let parsed = plain_text_space1_as_single_space(source).unwrap();
+        assert_eq!(matcher, parsed);
+    }
+
+    #[rstest]
+    #[case("\n", "Don't Trigger On Newline")]
+    #[case(" \n", "Don't Trigger In Front Of Newline")]
+    #[case(" ", "Don't Trigger At End Of File")]
+    fn plain_text_space1_as_single_space_invalid_tests(
+        #[case] source: &str,
+        #[case] description: &str,
+    ) {
+        let parsed = plain_text_space1_as_single_space(source);
+        assert!(parsed.is_err(), "{}", description);
+    }
+}
