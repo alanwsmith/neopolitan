@@ -30,6 +30,8 @@ use serde::Deserialize;
 use serde::Serialize;
 use std::collections::BTreeMap;
 
+use super::escaped::escaped_span;
+
 pub fn code_span<'a>(
     source: &'a str,
     start_marker: &'a str,
@@ -38,15 +40,18 @@ pub fn code_span<'a>(
     let characters = "%@~*^![]{}<>_#:";
     let (source, tokens) = preceded(
         pair(tag("``"), opt(plain_text_space1_as_single_space)),
-        many1(alt((
-            plain_text_string_base,
-            plain_text_space1_as_single_space,
-            is_a("%@~*^![]{}<>_#:"),
-            plain_text_single_line_ending_as_space,
-            escaped_character,
-        ))),
+        many1(alt((escaped_span,))),
     )
     .parse(source)?;
+
+    // many1(alt((
+    //     plain_text_string_base,
+    //     plain_text_space1_as_single_space,
+    //     is_a("%@~*^![]{}<>_#:"),
+    //     plain_text_single_line_ending_as_space,
+    //     escaped_character,
+    // ))),
+
     let (source, (flags, attrs)) = span_metadata(source, characters)?;
     let (source, _) = tag("``").parse(source)?;
     Ok((

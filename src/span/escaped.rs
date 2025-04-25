@@ -5,6 +5,7 @@ use crate::section_flag::raw_section_flag;
 use crate::section_parent::SectionParent;
 use crate::span::Span;
 use crate::span_metadata::span_metadata;
+use crate::span_strings::escaped_character;
 use crate::span_strings::escaped_character::escaped_character;
 use crate::span_strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
 use crate::span_strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
@@ -30,31 +31,37 @@ use serde::Deserialize;
 use serde::Serialize;
 use std::collections::BTreeMap;
 
-pub fn text_span<'a>(
-    source: &'a str,
-    start_marker: &'a str,
-    end_marker: &'a str,
-) -> IResult<&'a str, Span> {
-    let (source, tokens) = preceded(
-        pair(
-            pair(tag(start_marker), tag(start_marker)),
-            opt(plain_text_space1_as_single_space),
-        ),
-        many1(alt((
-            plain_text_string_base,
-            plain_text_space1_as_single_space,
-            is_a("%@~*^![]{}<>_#:"),
-            plain_text_single_line_ending_as_space,
-            escaped_character,
-        ))),
-    )
-    .parse(source)?;
-    //let (source, (flags, attrs)) = span_metadata(source, characters.clone())?;
-    let (source, _) = tag("``").parse(source)?;
+pub fn escaped_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
+    let (source, content) = escaped_character(source)?;
     Ok((
         source,
-        Span::TextDev {
-            content: "asdf".to_string(),
+        Span::Escaped {
+            content: content.to_string(),
         },
     ))
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use crate::span::Span;
+    use pretty_assertions::assert_eq;
+    use rstest::rstest;
+
+    #[rstest]
+    #[case("\\|", Span::Escaped{
+        content: "|".to_string()
+    }, "")]
+    #[case("\\\\ ", Span::Escaped{
+        content: "\\".to_string()
+    }, " ")]
+    fn code_span_valid_tests(
+        #[case] source: &str,
+        #[case] left: Span,
+        #[case] remainder: &str,
+    ) {
+        let right = escaped_span(source).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
 }

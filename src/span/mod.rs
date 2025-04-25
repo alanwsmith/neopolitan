@@ -1,4 +1,5 @@
 pub mod code;
+pub mod escaped;
 pub mod text;
 
 use serde::{Deserialize, Serialize};
@@ -19,8 +20,14 @@ pub enum Span {
     },
     // #[serde(rename = "emphasis-span")]
     // EmphasisShorthand(EmphasisShorthandV42),
+    //
     // #[serde(rename = "escaped-span")]
     // EscapedCharacter(EscapedCharacterSpanV42),
+    // [serde(rename = "escaped")]
+    Escaped {
+        content: String,
+    },
+    //
     // #[serde(rename = "footnote-span")]
     // FootnoteShorthand(FootnoteShorthandV42),
     // #[serde(rename = "html-span")]
@@ -37,9 +44,14 @@ pub enum Span {
     // NamedSpan(NamedSpanV42),
     //
     #[serde(rename = "text-span")]
-    TextSpan { kind: String, text: String },
+    TextSpan {
+        kind: String,
+        text: String,
+    },
     #[serde(rename = "text")]
-    TextDev { content: String },
+    TextDev {
+        content: String,
+    },
     // #[serde(rename = "strong-span")]
     // StrongShorthand(StrongShorthandV42),
     // #[serde(rename = "strike-span")]
