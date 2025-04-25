@@ -20,13 +20,13 @@ pub enum RawShorthandMetadataDev {
 
 pub fn span_metadata<'a>(
     source: &'a str,
-    characters: &'a str,
+    character: &'a str,
 ) -> IResult<&'a str, (Vec<String>, BTreeMap<String, Vec<Span>>)> {
     let (source, raw_metadata) =
-        many0(alt((|src| span_flag(src),))).parse(source)?;
+        many0(alt((|src| span_flag(src, character),))).parse(source)?;
     // Reminder: attrs first otherwise things go wrong with this setup
     let (source, metadata) =
-        many0(alt((|src| span_flag(src),))).parse(source)?;
+        many0(alt((|src| span_flag(src, character),))).parse(source)?;
     let mut flags = metadata
         .iter()
         .filter_map(|data| match data {

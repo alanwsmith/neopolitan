@@ -18,10 +18,14 @@ use nom::sequence::pair;
 use nom::sequence::preceded;
 use nom::sequence::terminated;
 
+// THIS IS PROBABLY DEPRECATED
+
+// NOTE: Flags do not accept escape characters.
+// Use an attribute if you need on.
+
 pub fn flag_text_for_span(source: &str) -> IResult<&str, String> {
     let (source, _) = multispace0(source)?;
-    let (source, parts) =
-        many1(alt((alphanumeric1, tag("_")))).parse(source)?;
+    let (source, content) = is_not(" ").parse(source)?;
 
     // let (source, parts) = many1(alt((
     //     is_not(": \n\t\\"),
@@ -30,7 +34,7 @@ pub fn flag_text_for_span(source: &str) -> IResult<&str, String> {
     // .parse(source)?;
     // let (source, _) =
     // alt((pair(space0, line_ending), pair(space0, eof))).parse(source)?;
-    Ok((source, parts.join("").to_string()))
+    Ok((source, content.to_string()))
 }
 
 #[cfg(test)]
@@ -42,6 +46,7 @@ mod test {
     #[rstest]
     #[case("alfa", "alfa", "")]
     #[case("underscores_are_okay", "underscores_are_okay", "")]
+    #[case("dashes-are-okay", "dashes-are-okay", "")]
     #[case("  leading_spaces_are_okay", "leading_spaces_are_okay", "")]
     // #[case("bravo-charlie", "bravo-charlie", "")]
     // #[case("https://www.example.com/", "https://www.example.com/", "")]

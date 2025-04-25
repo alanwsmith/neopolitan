@@ -32,15 +32,18 @@ use std::collections::BTreeMap;
 
 pub fn span_flag<'a>(
     source: &'a str,
+    character: &'a str,
 ) -> IResult<&'a str, RawShorthandMetadataDev> {
     let (source, _) =
         (tag("|"), space0, opt(line_ending), space0).parse(source)?;
-    let (source, spans) =
-        many1(alt((plain_text_string_base,))).parse(source)?;
+    let (source, spans) = many1(alt((is_not(" \r\n\t"),))).parse(source)?;
     let (source, _) = space0.parse(source)?;
     let (source, _) = opt(line_ending).parse(source)?;
     let (source, _) = space0.parse(source)?;
-    Ok((source, RawShorthandMetadataDev::Flag("alfa".to_string())))
+    Ok((
+        source,
+        RawShorthandMetadataDev::Flag(spans.join("").to_string()),
+    ))
 }
 
 #[cfg(test)]
@@ -49,18 +52,25 @@ mod test {
     use pretty_assertions::assert_eq;
     use rstest::rstest;
 
-    // #[rstest]
-    // #[case("|alfa", "alfa", "")]
-    // fn span_flag_valid_tests(
-    //     #[case] source: &str,
-    //     #[case] found: &str,
-    //     #[case] remainder: &str,
-    // ) {
-    //     let left = RawShorthandMetadataDev::Flag("alfa".to_string());
-    //     let right = span_flag(source).unwrap();
-    //     assert_eq!(left, right.1);
-    //     assert_eq!(remainder, right.0);
-    // }
+    #[rstest]
+    #[case("|alfa", "`", "alfa", "")]
+    #[case("|alfa\n", "`", "alfa", "")]
+    #[case("|alfa\t", "`", "alfa", "")]
+    #[case("|alfa\r\n", "`", "alfa", "")]
+    #[case("|\nalfa", "`", "alfa", "")]
+    #[case("|\talfa\t", "`", "alfa", "")]
+    #[case("|\r\nalfa", "`", "alfa", "")]
+    fn span_flag_valid_tests(
+        #[case] source: &str,
+        #[case] character: &str,
+        #[case] found: &str,
+        #[case] remainder: &str,
+    ) {
+        let left = RawShorthandMetadataDev::Flag("alfa".to_string());
+        let right = span_flag(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
 
     //
 }
