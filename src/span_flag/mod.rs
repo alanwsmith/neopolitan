@@ -34,6 +34,9 @@ use serde::Deserialize;
 use serde::Serialize;
 use std::collections::BTreeMap;
 
+// NOTE: Empty spaces is trimmed from
+// around the flag including newlines.
+
 // NOTE: span_flags are straight Strings,
 // not a collection of spans. Use an
 // attr if you need spans
@@ -77,11 +80,15 @@ mod test {
     #[case("|alfa``", "`", "alfa", "``")]
     #[case("|alfa ``", "`", "alfa", "``")]
     #[case("|alfa\n``", "`", "alfa", "``")]
+    #[case("|alfa \n ``", "`", "alfa", "``")]
     #[case("|alfa\t``", "`", "alfa", "``")]
     #[case("|alfa\r\n``", "`", "alfa", "``")]
+    #[case("|alfa \r\n ``", "`", "alfa", "``")]
     #[case("|\nalfa``", "`", "alfa", "``")]
     #[case("|\talfa\t``", "`", "alfa", "``")]
     #[case("|\r\nalfa``", "`", "alfa", "``")]
+    #[case("| \n alfa``", "`", "alfa", "``")]
+    #[case("| \r\n alfa``", "`", "alfa", "``")]
     #[case(
         "|https://www.example.com/``",
         "`",
@@ -90,6 +97,9 @@ mod test {
     )]
     #[case("|single`character``", "`", "single`character", "``")]
     #[case("|alfa|", "`", "alfa", "|")]
+    #[case("|alfa |", "`", "alfa", "|")]
+    #[case("|alfa\n|", "`", "alfa", "|")]
+    #[case("|alfa\t|", "`", "alfa", "|")]
 
     // #[case(
     //     "|others~~!!@@##$$%%^^&&**(())<<>>[[]]{{}}``",
