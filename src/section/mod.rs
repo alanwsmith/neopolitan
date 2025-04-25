@@ -1,6 +1,7 @@
 #![allow(unused)]
 pub mod basic_section;
 pub mod basic_section_full;
+pub mod text_block;
 
 use crate::neo_config::NeoConfig;
 use crate::section::basic_section::basic_section;

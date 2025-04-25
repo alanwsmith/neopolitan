@@ -3,7 +3,7 @@ use crate::neo_config::NeoConfig;
 use crate::section_bound::SectionBound;
 use crate::section_category::SectionCategory;
 use crate::section_parent::SectionParent;
-use crate::span::space0_line_ending_or_eof::space0_line_ending_or_eof;
+use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::bytes::complete::is_not;
 use nom::character::complete::space1;

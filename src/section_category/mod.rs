@@ -1,6 +1,6 @@
 use crate::{
     section::Section, section_attribute::SectionAttribute,
-    section_bound::SectionBound,
+    section_bound::SectionBound, span::Span,
 };
 use serde::{Deserialize, Serialize};
 
@@ -16,7 +16,7 @@ pub enum SectionCategory {
         source_body: Option<String>,
     },
     Block {
-        spans: Vec<String>,
+        spans: Vec<Span>,
     },
     CheckListItem,
     CheckList,

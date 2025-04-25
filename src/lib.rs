@@ -9,3 +9,4 @@ pub mod section_flag;
 pub mod section_metadata;
 pub mod section_parent;
 pub mod span;
+pub mod span_strings;

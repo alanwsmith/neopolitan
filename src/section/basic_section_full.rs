@@ -5,9 +5,10 @@ use crate::section_bound::SectionBound;
 use crate::section_category::SectionCategory;
 use crate::section_metadata::section_metadata;
 use crate::section_parent::SectionParent;
-use crate::span::space0_line_ending_or_eof::space0_line_ending_or_eof;
+use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::bytes::complete::is_not;
+use nom::character::complete::multispace0;
 use nom::character::complete::space1;
 use nom::sequence::pair;
 use nom::sequence::terminated;
@@ -20,16 +21,17 @@ pub fn basic_section_full<'a>(
     parent: &'a SectionParent,
     debug: bool,
 ) -> IResult<&'a str, Section> {
-    let initial_source = source;
+    let initial_head = source;
     let (source, _) = pair(tag("--"), space1).parse(source)?;
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
             .parse(source)?;
     let (source, (attrs, flags)) =
         section_metadata(source, config, parent, debug)?;
-    dbg!(&initial_source);
-    dbg!(&source);
-    let source_head = initial_source.replace(source, "").trim().to_string();
+    let source_head = initial_head.replace(source, "").trim().to_string();
+    let (source, _) = multispace0.parse(source)?;
+    let initial_body = source;
+
     Ok((
         "",
         Section {
