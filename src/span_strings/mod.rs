@@ -1,3 +1,4 @@
+pub mod escaped_character;
 pub mod plain_text_any_colons;
 pub mod plain_text_any_pipes;
 pub mod plain_text_single_line_ending_as_space;

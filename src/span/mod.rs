@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use std::collections::BTreeMap;
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 #[serde(tag = "category", rename_all = "lowercase")]
@@ -7,9 +8,13 @@ pub enum Span {
     // TODO: Move these so the values are directly
     // in the enum and not nested structs
     //
-
-    // #[serde(rename = "code-span")]
-    // CodeShorthand(CodeShorthandV42),
+    #[serde(rename = "code-span")]
+    CodeSpan {
+        attributes: BTreeMap<String, Vec<Span>>,
+        flags: Vec<String>,
+        kind: String,
+        text: String,
+    },
     // #[serde(rename = "emphasis-span")]
     // EmphasisShorthand(EmphasisShorthandV42),
     // #[serde(rename = "escaped-span")]

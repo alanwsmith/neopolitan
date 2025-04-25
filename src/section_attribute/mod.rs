@@ -2,6 +2,8 @@ use crate::neo_config::NeoConfig;
 use crate::section_metadata::RawSectionMetaData;
 use crate::section_parent::SectionParent;
 use crate::span_parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
+use crate::span_shorthand::code_span;
+use crate::span_shorthand::shorthand_span;
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::character::complete::alphanumeric1;
@@ -9,13 +11,6 @@ use nom::character::complete::space1;
 use nom::multi::many1;
 use nom::sequence::terminated;
 use nom::{IResult, branch::alt, bytes::complete::tag};
-// use serde::{Deserialize, Serialize};
-
-// #[derive(Debug, Deserialize, PartialEq, Serialize)]
-// pub struct SectionAttribute {
-//     key: String,
-//     spans: Vec<Vec<Span>>,
-// }
 
 pub fn raw_section_attribute<'a>(
     source: &'a str,
@@ -37,7 +32,7 @@ pub fn raw_section_attribute<'a>(
             span_of_plain_text_for_section_key_value_attr_value,
             // link_shorthand_span,
             // footnote_shorthand_span,
-            // code_shorthand_span,
+            code_span,
             // emphasis_shorthand_span,
             // html_shorthand_span,
             // image_shorthand_span,
