@@ -69,7 +69,6 @@ pub fn text_block<'a>(
 #[cfg(test)]
 mod test {
     use crate::span::Span;
-    use crate::span::text::TextSpan;
 
     use super::*;
     use pretty_assertions::assert_eq;
@@ -82,10 +81,10 @@ mod test {
         let debug = false;
         let left = Section {
             category: SectionCategory::Block {
-                spans: vec![Span::Text(TextSpan {
+                spans: vec![Span::Text {
                     kind: "text".to_string(),
                     text: "this is some text with some lines".to_string(),
-                })],
+                }],
             },
             kind: "text-block".to_string(),
         };

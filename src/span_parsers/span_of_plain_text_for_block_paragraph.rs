@@ -1,6 +1,5 @@
 #![allow(unused)]
 use crate::span::Span;
-use crate::span::text::TextSpan;
 use crate::span_strings::plain_text_span_for_block_paragraph::plain_text_span_for_block_paragraph;
 use nom::IResult;
 use nom::Parser;
@@ -25,9 +24,9 @@ pub fn span_of_plain_text_for_block_paragraph(
         plain_text_span_for_block_paragraph.parse(source)?;
     Ok((
         source,
-        Span::Text(TextSpan {
+        Span::Text {
             kind: "text".to_string(),
             text: results.join(""),
-        }),
+        },
     ))
 }

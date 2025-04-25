@@ -1,6 +1,3 @@
-pub mod text;
-
-use crate::span::text::TextSpan;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
@@ -25,7 +22,7 @@ pub enum Span {
     // #[serde(rename = "named-span")]
     // NamedSpan(NamedSpanV42),
     #[serde(rename = "text-span")]
-    Text(TextSpan),
+    Text { kind: String, text: String },
     // #[serde(rename = "strong-span")]
     // StrongShorthand(StrongShorthandV42),
     // #[serde(rename = "strike-span")]

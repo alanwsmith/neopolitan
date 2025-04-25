@@ -54,7 +54,10 @@ mod test {
         let source = "-- alfa: bravo";
         let left = SectionAttributeLine {
             key: "alfa".to_string(),
-            spans: vec![],
+            spans: vec![Span::Text {
+                kind: "text".to_string(),
+                text: "bravo".to_string(),
+            }],
         };
         let right = section_attribute_line(source, config, parent, debug)
             .unwrap()

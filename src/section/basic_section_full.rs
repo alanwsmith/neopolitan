@@ -62,7 +62,7 @@ pub fn basic_section_full<'a>(
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::span::{Span, text::TextSpan};
+    use crate::span::Span;
     use pretty_assertions::assert_eq;
 
     #[test]
@@ -78,10 +78,10 @@ mod test {
                 bound: SectionBound::Full,
                 children: vec![Section {
                     category: SectionCategory::Block {
-                        spans: vec![Span::Text(TextSpan {
+                        spans: vec![Span::Text {
                             kind: "text".to_string(),
                             text: "bravo foxtrot tango".to_string(),
-                        })],
+                        }],
                     },
                     kind: "text-block".to_string(),
                 }],
