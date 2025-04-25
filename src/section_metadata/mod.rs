@@ -9,6 +9,7 @@ use crate::section_parent::SectionParent;
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::bytes::complete::is_not;
+use nom::character::complete::multispace0;
 use nom::character::complete::space1;
 use nom::multi::many0;
 use nom::sequence::pair;
@@ -22,8 +23,9 @@ pub fn section_metadata<'a>(
     parent: &'a SectionParent,
     debug: bool,
 ) -> IResult<&'a str, (Vec<SectionAttribute>, Vec<String>)> {
-    // let (source, raw_metadata) =
-    //     alt((|src| section_flag(src, config, parent, debug),)).parse(source)?;
+    let (source, raw_metadata) =
+        many0(alt((|src| section_flag(src, config, parent, debug),)))
+            .parse(source)?;
     Ok((source, (vec![], vec![])))
 }
 
@@ -36,7 +38,7 @@ mod test {
     #[ignore]
     pub fn section_metadata_basic_test() {
         let config = &NeoConfig::default();
-        let source = "-- test-flag\n-- alfa: bravo\n\n";
+        let source = "-- test-flag\n\n";
         let parent = &SectionParent::Basic;
         let debug = false;
         let left = (vec![], vec!["test-flag".to_string()]);
