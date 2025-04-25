@@ -19,3 +19,25 @@ pub fn plain_text_any_colons(source: &str) -> IResult<&str, &str> {
     let (source, result) = is_a(":").parse(source)?;
     Ok((source, result))
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use pretty_assertions::assert_eq;
+    use rstest::rstest;
+
+    #[rstest]
+    #[case(":", ":", "")]
+    #[case("::", "::", "")]
+    #[case(":::", ":::", "")]
+    #[case(":x:", ":", "x:")]
+    fn plain_text_any_colons_valid_test(
+        #[case] source: &str,
+        #[case] got: &str,
+        #[case] remainder: &str,
+    ) {
+        let matcher = (remainder, got);
+        let parsed = plain_text_any_colons(source).unwrap();
+        assert_eq!(matcher, parsed);
+    }
+}

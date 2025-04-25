@@ -29,6 +29,8 @@ mod test {
     #[rstest]
     #[case("|", "|", "")]
     #[case("||", "||", "")]
+    #[case("|||", "|||", "")]
+    #[case("|x|", "|", "x|")]
     fn plain_text_any_pipes_valid_tests(
         #[case] source: &str,
         #[case] got: &str,
