@@ -19,8 +19,10 @@ use nom::character::complete::alphanumeric1;
 use nom::character::complete::line_ending;
 use nom::character::complete::space0;
 use nom::character::complete::space1;
+use nom::combinator::eof;
 use nom::combinator::not;
 use nom::combinator::opt;
+use nom::combinator::peek;
 use nom::multi::many0;
 use nom::multi::many1;
 use nom::sequence::pair;
@@ -30,16 +32,22 @@ use serde::Deserialize;
 use serde::Serialize;
 use std::collections::BTreeMap;
 
+// NOTE: Spaces are not allowed in flags.
+// Use a attr if you need one
+
 pub fn span_flag<'a>(
     source: &'a str,
     character: &'a str,
 ) -> IResult<&'a str, RawShorthandMetadataDev> {
     let (source, _) =
         (tag("|"), space0, opt(line_ending), space0).parse(source)?;
-    let (source, spans) = many1(alt((is_not(" \r\n\t"),))).parse(source)?;
+    let (source, spans) = many1(alt((is_not(" \r\n\t`"),))).parse(source)?;
     let (source, _) = space0.parse(source)?;
     let (source, _) = opt(line_ending).parse(source)?;
     let (source, _) = space0.parse(source)?;
+    let (source, _) =
+        peek(alt((tag("|"), terminated(tag(character), tag(character)))))
+            .parse(source)?;
     Ok((
         source,
         RawShorthandMetadataDev::Flag(spans.join("").to_string()),
@@ -53,13 +61,14 @@ mod test {
     use rstest::rstest;
 
     #[rstest]
-    #[case("|alfa", "`", "alfa", "")]
-    #[case("|alfa\n", "`", "alfa", "")]
-    #[case("|alfa\t", "`", "alfa", "")]
-    #[case("|alfa\r\n", "`", "alfa", "")]
-    #[case("|\nalfa", "`", "alfa", "")]
-    #[case("|\talfa\t", "`", "alfa", "")]
-    #[case("|\r\nalfa", "`", "alfa", "")]
+    #[case("|alfa``", "`", "alfa", "``")]
+    #[case("|alfa ``", "`", "alfa", "``")]
+    #[case("|alfa\n``", "`", "alfa", "``")]
+    #[case("|alfa\t``", "`", "alfa", "``")]
+    #[case("|alfa\r\n``", "`", "alfa", "``")]
+    #[case("|\nalfa``", "`", "alfa", "``")]
+    #[case("|\talfa\t``", "`", "alfa", "``")]
+    #[case("|\r\nalfa``", "`", "alfa", "``")]
     fn span_flag_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
@@ -71,6 +80,20 @@ mod test {
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
+
+    // #[rstest]
+    // #[case("|alfa bravo", "`")]
+    // fn span_flag_invalid_tests(#[case] source: &str, #[case] character: &str) {
+    //     let characters = "%@~*^![]{}<>_#:".to_string();
+    //     let result = span_flag(source, character);
+    //     match result {
+    //         Ok(_) => {
+    //             dbg!(result);
+    //             assert!(false)
+    //         }
+    //         Err(_) => assert!(true),
+    //     }
+    // }
 
     //
 }
