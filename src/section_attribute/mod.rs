@@ -1,10 +1,13 @@
 use crate::neo_config::NeoConfig;
 use crate::section_parent::SectionParent;
 use crate::span::Span;
+use crate::span_parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
+use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::character::complete::alphanumeric1;
 use nom::character::complete::space1;
 use nom::multi::many1;
+use nom::sequence::terminated;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 use serde::{Deserialize, Serialize};
 
@@ -27,15 +30,35 @@ pub fn section_attribute_line<'a>(
 ) -> IResult<&'a str, SectionAttributeLine> {
     let (source, _) = tag("--").parse(source)?;
     let (source, _) = space1.parse(source)?;
+
     // TODO: Figure out how this works with
     // accent characters.
     let (source, key_parts) =
         many1(alt((alphanumeric1, tag("-"), tag("_")))).parse(source)?;
+    let (source, _) = tag(":").parse(source)?;
+    let (source, _) = space1.parse(source)?;
+    let (source, spans) = terminated(
+        many1(alt((
+            span_of_plain_text_for_section_key_value_attr_value,
+            // link_shorthand_span,
+            // footnote_shorthand_span,
+            // code_shorthand_span,
+            // emphasis_shorthand_span,
+            // html_shorthand_span,
+            // image_shorthand_span,
+            // mark_shorthand_span,
+            // strikethrough_shorthand_span,
+            // strong_shorthand_span,
+            // underline_shorthand_span,
+        ))),
+        space0_line_ending_or_eof,
+    )
+    .parse(source)?;
     Ok((
-        "",
+        source,
         SectionAttributeLine {
             key: key_parts.join("").to_string(),
-            spans: vec![],
+            spans,
         },
     ))
 }
@@ -54,7 +77,7 @@ mod test {
         let source = "-- alfa: bravo";
         let left = SectionAttributeLine {
             key: "alfa".to_string(),
-            spans: vec![Span::Text {
+            spans: vec![Span::TextSpan {
                 kind: "text".to_string(),
                 text: "bravo".to_string(),
             }],

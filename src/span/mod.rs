@@ -3,6 +3,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 #[serde(tag = "category", rename_all = "lowercase")]
 pub enum Span {
+    //
+    // TODO: Move these so the values are directly
+    // in the enum and not nested structs
+    //
+
     // #[serde(rename = "code-span")]
     // CodeShorthand(CodeShorthandV42),
     // #[serde(rename = "emphasis-span")]
@@ -22,7 +27,7 @@ pub enum Span {
     // #[serde(rename = "named-span")]
     // NamedSpan(NamedSpanV42),
     #[serde(rename = "text-span")]
-    Text { kind: String, text: String },
+    TextSpan { kind: String, text: String },
     // #[serde(rename = "strong-span")]
     // StrongShorthand(StrongShorthandV42),
     // #[serde(rename = "strike-span")]
