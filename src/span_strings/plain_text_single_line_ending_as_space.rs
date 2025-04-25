@@ -14,12 +14,11 @@ use nom::multi::many1;
 use nom::sequence::pair;
 use nom::sequence::preceded;
 use nom::sequence::terminated;
-use nom::sequence::tuple;
 
 pub fn plain_text_single_line_ending_as_space(
     source: &str,
 ) -> IResult<&str, &str> {
-    let (source, _) = tuple((space0, tag("\n"), not(pair(space0, tag("\n")))))
-        .parse(source)?;
+    let (source, _) =
+        ((space0, tag("\n"), not(pair(space0, tag("\n"))))).parse(source)?;
     Ok((source, " "))
 }

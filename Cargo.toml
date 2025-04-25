@@ -9,6 +9,7 @@ pretty_assertions = "1.4.1"
 [dependencies]
 anyhow = "1.0.98"
 nom = "8.0.0"
+rstest = "0.25.0"
 serde = { version = "1.0.219", features = ["derive"] }
 
 

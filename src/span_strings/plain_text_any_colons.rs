@@ -14,7 +14,6 @@ use nom::multi::many1;
 use nom::sequence::pair;
 use nom::sequence::preceded;
 use nom::sequence::terminated;
-use nom::sequence::tuple;
 
 pub fn plain_text_any_colons(source: &str) -> IResult<&str, &str> {
     let (source, result) = is_a(":").parse(source)?;
