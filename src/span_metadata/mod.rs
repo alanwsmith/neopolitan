@@ -8,13 +8,8 @@ use nom::multi::many0;
 use std::collections::BTreeMap;
 
 #[derive(Debug, PartialEq)]
-pub enum RawShorthandMetadata {
+pub enum RawSpanMetadata {
     Attribute { key: String, spans: Vec<Span> },
-    Flag(String),
-}
-
-#[derive(Debug, PartialEq)]
-pub enum RawShorthandMetadataDev {
     Flag(String),
 }
 
@@ -30,7 +25,7 @@ pub fn span_metadata<'a>(
     let mut flags = metadata
         .iter()
         .filter_map(|data| match data {
-            RawShorthandMetadataDev::Flag(content) => Some(content.clone()),
+            RawSpanMetadata::Flag(content) => Some(content.clone()),
             _ => None,
         })
         .collect::<Vec<String>>();

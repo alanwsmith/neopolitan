@@ -1,4 +1,4 @@
-use crate::span_metadata::RawShorthandMetadataDev;
+use crate::span_metadata::RawSpanMetadata;
 use crate::span_strings::single_character::single_character;
 use nom::IResult;
 use nom::Parser;
@@ -50,7 +50,7 @@ pub fn not_character<'a>(
 pub fn span_flag<'a>(
     source: &'a str,
     character: &'a str,
-) -> IResult<&'a str, RawShorthandMetadataDev> {
+) -> IResult<&'a str, RawSpanMetadata> {
     let (source, _) =
         (tag("|"), space0, opt(line_ending), space0).parse(source)?;
     let (source, spans) = many1(alt((
@@ -65,10 +65,7 @@ pub fn span_flag<'a>(
     let (source, _) =
         peek(alt((tag("|"), terminated(tag(character), tag(character)))))
             .parse(source)?;
-    Ok((
-        source,
-        RawShorthandMetadataDev::Flag(spans.join("").to_string()),
-    ))
+    Ok((source, RawSpanMetadata::Flag(spans.join("").to_string())))
 }
 
 #[cfg(test)]
@@ -128,7 +125,7 @@ mod test {
         #[case] found: String,
         #[case] remainder: &str,
     ) {
-        let left = RawShorthandMetadataDev::Flag(found);
+        let left = RawSpanMetadata::Flag(found);
         let right = span_flag(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
