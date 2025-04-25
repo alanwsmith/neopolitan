@@ -17,14 +17,20 @@ use nom::branch::alt;
 use nom::bytes::complete::is_a;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
+use nom::bytes::complete::take;
 use nom::character::complete::alphanumeric1;
+use nom::character::complete::char;
 use nom::character::complete::line_ending;
+use nom::character::complete::one_of;
+use nom::character::complete::satisfy;
 use nom::character::complete::space0;
 use nom::character::complete::space1;
 use nom::combinator::eof;
+use nom::combinator::fail;
 use nom::combinator::not;
 use nom::combinator::opt;
 use nom::combinator::peek;
+use nom::combinator::recognize;
 use nom::multi::many0;
 use nom::multi::many1;
 use nom::sequence::pair;
@@ -45,7 +51,27 @@ use std::collections::BTreeMap;
 // Use an attr if you need one
 
 // NOTE: Escaped character are not allowed
-// in flags. Use an attr if you need one
+// in flags. Use an attr if you need one.
+// The reason for this is if escaped
+// characters were allowed, the flag
+// would have to be made of spans to
+// allow the source file to be reassembled
+// from the AST. That's not worth the
+// amount of extra effort it would
+// require to work with flags in
+// general
+
+pub fn not_character<'a>(
+    source: &'a str,
+    character: &'a str,
+) -> IResult<&'a str, &'a str> {
+    let (source, result) = recognize(preceded(
+        not(tag(character)),
+        one_of("~!@#$%^&*()<<>>[[]]{{}}"),
+    ))
+    .parse(source)?;
+    Ok((source, result))
+}
 
 pub fn span_flag<'a>(
     source: &'a str,
@@ -56,6 +82,7 @@ pub fn span_flag<'a>(
     let (source, spans) = many1(alt((
         is_not(" \r\n\t|~`!@#$%^&*()<<>>[[]]{{}}"),
         single_character,
+        |src| not_character(src, character),
     )))
     .parse(source)?;
     let (source, _) = space0.parse(source)?;
@@ -100,14 +127,12 @@ mod test {
     #[case("|alfa |", "`", "alfa", "|")]
     #[case("|alfa\n|", "`", "alfa", "|")]
     #[case("|alfa\t|", "`", "alfa", "|")]
-
-    // #[case(
-    //     "|others~~!!@@##$$%%^^&&**(())<<>>[[]]{{}}``",
-    //     "`",
-    //     "others~~!!@@##$$%%^^&&**(())<<>>[[]]{{}}``",
-    //     "``"
-    // )]
-
+    #[case(
+        "|others~~!!@@##$$%%^^&&**(())<<>>[[]]{{}}``",
+        "`",
+        "others~~!!@@##$$%%^^&&**(())<<>>[[]]{{}}",
+        "``"
+    )]
     fn span_flag_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
