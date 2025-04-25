@@ -33,7 +33,10 @@ use serde::Serialize;
 use std::collections::BTreeMap;
 
 // NOTE: Spaces are not allowed in flags.
-// Use a attr if you need one
+// Use an attr if you need one
+
+// NOTE: Escaped character are not allowed
+// in flags. Use an attr if you need one
 
 pub fn span_flag<'a>(
     source: &'a str,
@@ -69,13 +72,21 @@ mod test {
     #[case("|\nalfa``", "`", "alfa", "``")]
     #[case("|\talfa\t``", "`", "alfa", "``")]
     #[case("|\r\nalfa``", "`", "alfa", "``")]
+    #[case(
+        "|https://www.example.com/``",
+        "`",
+        "https://www.example.com/",
+        "``"
+    )]
+    // #[case("|single`character``", "`", "single`character", "``")]
+
     fn span_flag_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
-        #[case] found: &str,
+        #[case] found: String,
         #[case] remainder: &str,
     ) {
-        let left = RawShorthandMetadataDev::Flag("alfa".to_string());
+        let left = RawShorthandMetadataDev::Flag(found);
         let right = span_flag(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
