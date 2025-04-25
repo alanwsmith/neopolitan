@@ -53,7 +53,7 @@ pub fn text_span<'a>(
     let (source, _) = tag("``").parse(source)?;
     Ok((
         source,
-        Span::TextDev {
+        Span::Text {
             content: "asdf".to_string(),
         },
     ))

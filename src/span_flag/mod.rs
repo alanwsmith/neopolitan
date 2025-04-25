@@ -43,7 +43,7 @@ pub fn span_flag<'a>(
     let (source, _) = space0.parse(source)?;
     Ok((
         source,
-        RawShorthandMetadataDev::Flag(vec![Span::TextDev {
+        RawShorthandMetadataDev::Flag(vec![Span::Text {
             content: "alfa".to_string(),
         }]),
     ))
@@ -62,7 +62,7 @@ mod test {
         #[case] remainder: &str,
     ) {
         let characters = "%@~*^![]{}<>_#:";
-        let left = RawShorthandMetadataDev::Flag(vec![Span::TextDev {
+        let left = RawShorthandMetadataDev::Flag(vec![Span::Text {
             content: "alfa".to_string(),
         }]);
         let right = span_flag(source, characters).unwrap();

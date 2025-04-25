@@ -1,4 +1,5 @@
 #![allow(unused)]
+use super::escaped::escaped_span;
 use crate::neo_config::NeoConfig;
 use crate::section_attr::raw_section_attr;
 use crate::section_flag::raw_section_flag;
@@ -30,47 +31,26 @@ use serde::Deserialize;
 use serde::Serialize;
 use std::collections::BTreeMap;
 
-use super::escaped::escaped_span;
-
-pub fn code_span<'a>(
-    source: &'a str,
-    start_marker: &'a str,
-    end_marker: &'a str,
-) -> IResult<&'a str, Span> {
+pub fn code_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let characters = "%@~*^![]{}<>_#:";
-    let (source, tokens) = preceded(
+    let (source, spans) = preceded(
         pair(tag("``"), opt(plain_text_space1_as_single_space)),
-        many1(alt((escaped_span,))),
+        many1(alt((escaped_span, code_span_text))),
     )
     .parse(source)?;
-
-    // many1(alt((
-    //     plain_text_string_base,
-    //     plain_text_space1_as_single_space,
-    //     is_a("%@~*^![]{}<>_#:"),
-    //     plain_text_single_line_ending_as_space,
-    //     escaped_character,
-    // ))),
-
     let (source, (flags, attrs)) = span_metadata(source, characters)?;
     let (source, _) = tag("``").parse(source)?;
     Ok((
         source,
-        Span::CodeSpan {
+        Span::Code {
             attrs: BTreeMap::new(),
             flags: vec![],
-            spans: vec![Span::TextDev {
-                content: "asdf".to_string(),
-            }],
+            spans,
         },
     ))
 }
 
-pub fn code_span_text<'a>(
-    source: &'a str,
-    start_marker: &'a str,
-    end_marker: &'a str,
-) -> IResult<&'a str, Span> {
+pub fn code_span_text<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, parts) = many1(alt((
         plain_text_string_base,
         plain_text_space1_as_single_space,
@@ -81,7 +61,7 @@ pub fn code_span_text<'a>(
     .parse(source)?;
     Ok((
         source,
-        Span::TextDev {
+        Span::Text {
             content: parts.join(""),
         },
     ))
@@ -95,22 +75,20 @@ mod test {
     use rstest::rstest;
 
     #[rstest]
-    #[case("``alfa``", Span::CodeSpan{
+    #[case("``alfa``", Span::Code{
         attrs: BTreeMap::new(),
         flags: vec![],
-        spans: vec![],
+        spans: vec![
+            Span::Text{content: "alfa".to_string()}
+        ],
     }, "")]
     fn code_span_valid_tests(
         #[case] source: &str,
-        #[case] found: Span,
+        #[case] left: Span,
         #[case] remainder: &str,
     ) {
-        // let characters = "%@~*^![]{}<>_#:".to_string();
-        // let left = RawShorthandMetadataDev::Flag(vec![Span::TextSpanDev {
-        //     content: "alfa".to_string(),
-        // }]);
-        // let right = code_span(source, characters).unwrap();
-        // assert_eq!(left, right.1);
-        // assert_eq!(remainder, right.0);
+        let right = code_span(source).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
     }
 }

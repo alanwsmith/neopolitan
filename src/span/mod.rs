@@ -13,7 +13,7 @@ pub enum Span {
     // in the enum and not nested structs
     //
     #[serde(rename = "code-span")]
-    CodeSpan {
+    Code {
         attrs: BTreeMap<String, Vec<Span>>,
         flags: Vec<String>,
         spans: Vec<Span>,
@@ -49,7 +49,7 @@ pub enum Span {
         text: String,
     },
     #[serde(rename = "text")]
-    TextDev {
+    Text {
         content: String,
     },
     // #[serde(rename = "strong-span")]
