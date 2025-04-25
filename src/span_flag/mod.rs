@@ -103,6 +103,7 @@ mod test {
     #[case("|alfa |", "`", "alfa", "|")]
     #[case("|alfa\n|", "`", "alfa", "|")]
     #[case("|alfa\t|", "`", "alfa", "|")]
+    #[case("|[[alfa]]``", "`", "[[alfa]]", "``")]
     #[case(
         "|others~~!!@@##$$%%^^&&**(())<<>>[[]]{{}}``",
         "`",
@@ -147,8 +148,6 @@ mod test {
             Err(_) => assert!(true),
         }
     }
-
-    //
 }
 
 // #[cfg(test)]
@@ -157,11 +156,6 @@ mod test {
 //     use pretty_assertions::assert_eq;
 //     use rstest::rstest;
 //     #[rstest]
-//     #[case("|alfa", "alfa", "")]
-//     #[case("|alfa|", "alfa", "|")]
-//     #[case("| alfa", "alfa", "")]
-//     #[case("| alfa |", "alfa", "|")]
-//     #[case("| alfa-bravo", "alfa-bravo", "")]
 //     #[case("|http://www.example.com/", "http://www.example.com/", "")]
 //     #[case("|alfa`", "alfa`", "")]
 //     #[case("|alfa``", "alfa", "``")]
