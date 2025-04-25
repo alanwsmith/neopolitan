@@ -1,4 +1,5 @@
 use crate::neo_config::NeoConfig;
+use crate::section_metadata::RawSectionMetaData;
 use crate::section_parent::SectionParent;
 use crate::span::Span;
 use crate::span_parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
@@ -22,12 +23,12 @@ pub struct SectionAttributeLine {
     spans: Vec<Span>,
 }
 
-pub fn section_attribute_line<'a>(
+pub fn raw_section_attribute<'a>(
     source: &'a str,
     _config: &'a NeoConfig,
     _parent: &'a SectionParent,
     _debug: bool,
-) -> IResult<&'a str, SectionAttributeLine> {
+) -> IResult<&'a str, RawSectionMetaData> {
     let (source, _) = tag("--").parse(source)?;
     let (source, _) = space1.parse(source)?;
 
@@ -56,7 +57,7 @@ pub fn section_attribute_line<'a>(
     .parse(source)?;
     Ok((
         source,
-        SectionAttributeLine {
+        RawSectionMetaData::Attribtue {
             key: key_parts.join("").to_string(),
             spans,
         },
@@ -75,14 +76,14 @@ mod test {
         let parent = &SectionParent::Basic;
         let debug = false;
         let source = "-- alfa: bravo";
-        let left = SectionAttributeLine {
+        let left = RawSectionMetaData::Attribtue {
             key: "alfa".to_string(),
             spans: vec![Span::TextSpan {
                 kind: "text".to_string(),
                 text: "bravo".to_string(),
             }],
         };
-        let right = section_attribute_line(source, config, parent, debug)
+        let right = raw_section_attribute(source, config, parent, debug)
             .unwrap()
             .1;
         assert_eq!(left, right);
