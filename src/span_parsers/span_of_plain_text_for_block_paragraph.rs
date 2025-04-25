@@ -26,6 +26,7 @@ pub fn span_of_plain_text_for_block_paragraph(
     Ok((
         source,
         Span::Text(TextSpan {
+            kind: "text".to_string(),
             text: results.join(""),
         }),
     ))

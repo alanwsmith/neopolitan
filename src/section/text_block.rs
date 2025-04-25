@@ -83,6 +83,7 @@ mod test {
         let left = Section {
             category: SectionCategory::Block {
                 spans: vec![Span::Text(TextSpan {
+                    kind: "text".to_string(),
                     text: "this is some text with some lines".to_string(),
                 })],
             },

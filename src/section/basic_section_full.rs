@@ -79,6 +79,7 @@ mod test {
                 children: vec![Section {
                     category: SectionCategory::Block {
                         spans: vec![Span::Text(TextSpan {
+                            kind: "text".to_string(),
                             text: "bravo foxtrot tango".to_string(),
                         })],
                     },
