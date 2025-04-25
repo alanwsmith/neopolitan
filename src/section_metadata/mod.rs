@@ -56,7 +56,7 @@ mod test {
     use pretty_assertions::assert_eq;
 
     #[test]
-    pub fn section_metadata_flag_test() {
+    fn section_metadata_flag_test() {
         let config = &NeoConfig::default();
         let source = "-- test-flag\n\n";
         let parent = &SectionParent::Basic;
@@ -67,7 +67,7 @@ mod test {
     }
 
     #[test]
-    pub fn section_metadata_attribute_test() {
+    fn section_metadata_attribute_test() {
         let config = &NeoConfig::default();
         let source = "-- alfa: bravo\n\n";
         let parent = &SectionParent::Basic;
@@ -81,6 +81,32 @@ mod test {
             }]],
         );
         let left = (attributes, vec![]);
+        let right = section_metadata(source, config, parent, debug).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+    #[test]
+    fn multiple_metadata_test() {
+        let config = &NeoConfig::default();
+        let source = "-- delta: alfa\n-- foxtrot\n-- delta: bravo\n-- echo";
+        let parent = &SectionParent::Basic;
+        let debug = false;
+        let mut attributes: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
+        attributes.insert(
+            "delta".to_string(),
+            vec![
+                vec![Span::TextSpan {
+                    kind: "text".to_string(),
+                    text: "alfa".to_string(),
+                }],
+                vec![Span::TextSpan {
+                    kind: "text".to_string(),
+                    text: "bravo".to_string(),
+                }],
+            ],
+        );
+        let left =
+            (attributes, vec!["foxtrot".to_string(), "echo".to_string()]);
         let right = section_metadata(source, config, parent, debug).unwrap().1;
         assert_eq!(left, right);
     }
