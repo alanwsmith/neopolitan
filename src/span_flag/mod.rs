@@ -9,6 +9,8 @@ use crate::span_strings::escaped_character::escaped_character;
 use crate::span_strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
 use crate::span_strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
 use crate::span_strings::plain_text_string_base::plain_text_string_base;
+use crate::span_strings::single_character;
+use crate::span_strings::single_character::single_character;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;
@@ -48,7 +50,11 @@ pub fn span_flag<'a>(
 ) -> IResult<&'a str, RawShorthandMetadataDev> {
     let (source, _) =
         (tag("|"), space0, opt(line_ending), space0).parse(source)?;
-    let (source, spans) = many1(alt((is_not(" \r\n\t`"),))).parse(source)?;
+    let (source, spans) = many1(alt((
+        is_not(" \r\n\t|~`!@#$%^&*()<<>>[[]]{{}}"),
+        single_character,
+    )))
+    .parse(source)?;
     let (source, _) = space0.parse(source)?;
     let (source, _) = opt(line_ending).parse(source)?;
     let (source, _) = space0.parse(source)?;
@@ -82,7 +88,15 @@ mod test {
         "https://www.example.com/",
         "``"
     )]
-    // #[case("|single`character``", "`", "single`character", "``")]
+    #[case("|single`character``", "`", "single`character", "``")]
+    #[case("|alfa|", "`", "alfa", "|")]
+
+    // #[case(
+    //     "|others~~!!@@##$$%%^^&&**(())<<>>[[]]{{}}``",
+    //     "`",
+    //     "others~~!!@@##$$%%^^&&**(())<<>>[[]]{{}}``",
+    //     "``"
+    // )]
 
     fn span_flag_valid_tests(
         #[case] source: &str,
