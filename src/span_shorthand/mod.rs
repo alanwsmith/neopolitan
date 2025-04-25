@@ -1,3 +1,4 @@
+#![allow(unused)]
 use crate::neo_config::NeoConfig;
 use crate::section_attribute::raw_section_attribute;
 use crate::section_flag::raw_section_flag;
@@ -28,6 +29,12 @@ use serde::Deserialize;
 use serde::Serialize;
 use std::collections::BTreeMap;
 
+#[derive(Debug, PartialEq)]
+enum RawShorthandMetadata {
+    Attribute { key: String, spans: Vec<Span> },
+    Flag(String),
+}
+
 pub fn code_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, span) = shorthand_span(source, "`", "`")?;
     Ok((source, span))
@@ -42,9 +49,10 @@ pub fn shorthand_span<'a>(
     let characters = all_characters
         .split("")
         .filter(|c| *c != "" && *c != start_marker && *c != end_marker)
-        .collect::<Vec<_>>();
-    dbg!(characters);
-
+        .map(|c| c.to_string())
+        .collect::<Vec<_>>()
+        .join("")
+        .to_string();
     let (source, tokens) = preceded(
         pair(
             pair(tag(start_marker), tag(start_marker)),
@@ -59,7 +67,8 @@ pub fn shorthand_span<'a>(
         ))),
     )
     .parse(source)?;
-    let (source, (flags, attributes)) = code_span_metadata.parse(source)?;
+    let (source, (flags, attributes)) =
+        shorthand_metadata(source, characters.clone())?;
     let (source, _) = tag("``").parse(source)?;
     Ok((
         source,
@@ -72,15 +81,64 @@ pub fn shorthand_span<'a>(
     ))
 }
 
-pub fn code_span_metadata(
-    source: &str,
-) -> IResult<&str, (Vec<String>, BTreeMap<String, Vec<Span>>)> {
+fn shorthand_metadata<'a>(
+    source: &'a str,
+    characters: String,
+) -> IResult<&'a str, (Vec<String>, BTreeMap<String, Vec<Span>>)> {
+    let (source, raw_metadata) =
+        many0(alt((|src| raw_shorthand_flag(src, characters.clone()),)))
+            .parse(source)?;
     // Reminder: attrs first otherwise things go wrong with this setup
     // let (source, metadata) =
     //     many0(alt((code_span_attribute, code_span_flag))).parse(source)?;
     let mut flags = vec![];
     let mut attributes = BTreeMap::new();
     Ok((source, (flags, attributes)))
+}
+
+fn raw_shorthand_flag<'a>(
+    source: &'a str,
+    characters: String,
+) -> IResult<&'a str, RawShorthandMetadata> {
+    let (source, _) = (tag("|"), space0, opt(line_ending)).parse(source)?;
+    // let (source, parts) = many1(alt((
+    //     plain_text_string_base,
+    //     is_a("%@~*^![]{}<>_#:"),
+    //     escaped_character,
+    // )))
+    Ok(("", RawShorthandMetadata::Flag("alfa".to_string())))
+}
+
+fn raw_shorthand_attribute(
+    source: &str,
+) -> IResult<&str, RawShorthandMetadata> {
+    Ok((
+        "",
+        RawShorthandMetadata::Attribute {
+            key: "alfa".to_string(),
+            spans: vec![],
+        },
+    ))
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use pretty_assertions::assert_eq;
+    use rstest::rstest;
+
+    #[rstest]
+    #[case("|alfa", "alfa", "")]
+    fn raw_flag_test(
+        #[case] source: &str,
+        #[case] found: &str,
+        #[case] remainder: &str,
+    ) {
+        let characters = "%@~*^![]{}<>_#:".to_string();
+        let left = RawShorthandMetadata::Flag(found.to_string());
+        let right = raw_shorthand_flag(source, characters).unwrap().1;
+        assert_eq!(left, right);
+    }
 }
 
 // pub fn code_span_attribute(source: &str) -> IResult<&str, SpanBaseAttrV42> {
