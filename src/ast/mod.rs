@@ -1,7 +1,7 @@
 #![allow(unused)]
 use crate::config::Config;
 use crate::section::Section;
-use crate::section::parse_section;
+use crate::section::section;
 use crate::section_category::SectionCategory;
 use crate::section_parent::SectionParent;
 use anyhow::{Error, Result};
@@ -57,8 +57,7 @@ impl<'a> Ast<'_> {
     ) -> IResult<&'a str, Vec<Section>> {
         let (source, _) = multispace0(source)?;
         let (source, sections) =
-            many1(|src| parse_section(src, config, parent, debug))
-                .parse(source)?;
+            many1(|src| section(src, config, parent, debug)).parse(source)?;
         Ok(("", sections))
     }
 }

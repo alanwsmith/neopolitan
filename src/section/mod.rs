@@ -17,7 +17,7 @@ pub struct Section {
     pub kind: String,
 }
 
-pub fn parse_section<'a>(
+pub fn section<'a>(
     source: &'a str,
     config: &'a Config,
     parent: &'a SectionParent,
