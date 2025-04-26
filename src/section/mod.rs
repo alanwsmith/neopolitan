@@ -23,10 +23,8 @@ pub fn section<'a>(
     parent: &'a SectionParent,
     debug: bool,
 ) -> IResult<&'a str, Section> {
-    let (source, section) = alt((
-        |src| basic_section(src, config, parent, debug),
-        |src| basic_section(src, config, parent, debug),
-    ))
-    .parse(source)?;
+    let (source, section) =
+        alt((|src| basic_section(src, config, parent, debug),))
+            .parse(source)?;
     Ok((source, section))
 }

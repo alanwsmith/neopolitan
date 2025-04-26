@@ -8,7 +8,7 @@ use nom::Parser;
 use nom::branch::alt;
 use nom::multi::many1;
 
-pub fn text_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
+pub fn text<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, results) = many1(alt((
         plain_text_string_base,
         plain_text_space1_as_single_space,
@@ -48,7 +48,7 @@ mod test {
         #[case] left: Span,
         #[case] remainder: &str,
     ) {
-        let right = text_span(source).unwrap();
+        let right = text(source).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
@@ -57,7 +57,7 @@ mod test {
     #[case("``alfa")]
     #[case("<<alfa")]
     fn text_span_invalid_tests(#[case] source: &str) {
-        let result = text_span(source);
+        let result = text(source);
         match result {
             Ok(_) => {
                 dbg!(result.unwrap());

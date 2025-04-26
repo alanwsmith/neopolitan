@@ -1,9 +1,9 @@
-#![allow(unused)]
 use crate::config::Config;
 use crate::section::Section;
 use crate::section_bound::SectionBound;
 use crate::section_category::SectionCategory;
 use crate::section_parent::SectionParent;
+use crate::span::text::text;
 use crate::span_parsers::span_of_plain_text_for_block_paragraph::span_of_plain_text_for_block_paragraph;
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
@@ -26,7 +26,8 @@ pub fn text_block<'a>(
     let (source, _) = not(tag("--")).parse(source)?;
 
     let (source, spans) = many1(alt((
-        span_of_plain_text_for_block_paragraph,
+        text,
+        // span_of_plain_text_for_block_paragraph,
         //     span_of_escaped_character,
         //     named_span,
         //     code_shorthand_span,

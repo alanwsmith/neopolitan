@@ -34,7 +34,7 @@ pub fn basic_section_full<'a>(
         many0(|src| text_block(src, config, &SectionParent::Basic, debug))
             .parse(source)?;
     Ok((
-        "",
+        source,
         Section {
             category: SectionCategory::Basic {
                 attrs,
