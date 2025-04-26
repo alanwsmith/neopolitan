@@ -19,6 +19,18 @@ pub enum RawSpanMetadata {
 // the keys for attrs so they have the same
 // rules.
 
+// NOTE: multiple attrs with the same
+// key are collapsed into one. Adding
+// spaces between this is an implementation
+// detail if it's necessary.
+
+// NOTE: Trailing whitespace is left in
+// the spans. That means it's possible
+// to have trailing white space at the
+// end of an output. Removing that is
+// the responsibility of the output
+// implementation.
+
 pub fn span_metadata<'a>(
     source: &'a str,
     character: &'a str,
@@ -96,7 +108,7 @@ mod test {
     use rstest::rstest;
 
     #[test]
-    fn single_flag_test_dev() {
+    fn single_flag_test() {
         let source = "|alfa``";
         let character = "`";
         let flags = vec!["alfa".to_string()];
@@ -109,7 +121,7 @@ mod test {
     }
 
     #[test]
-    fn solo_single_attr_test_dev() {
+    fn single_attr_test() {
         let source = "|alfa: bravo``";
         let character = "`";
         let flags = vec![];
@@ -127,24 +139,30 @@ mod test {
         assert_eq!(remainder, right.0);
     }
 
-    // TESTS TO REMOVE FOR OLD
-    // Vec<Vec<Span>> approach.
-
     #[test]
-    fn single_attr_test() {
-        let source = "|alfa: bravo``";
+    fn solo_single_attr_with_multiple_spans_test() {
+        let source = "|alfa: bravo ``charlie``>>";
         let character = "`";
         let flags = vec![];
         let mut attrs = BTreeMap::new();
         attrs.insert(
             "alfa".to_string(),
-            vec![vec![Span::Text {
-                content: "bravo".to_string(),
-            }]],
+            vec![
+                Span::Text {
+                    content: "bravo ".to_string(),
+                },
+                Span::Code {
+                    attrs: BTreeMap::new(),
+                    flags: vec![],
+                    spans: vec![Span::Text {
+                        content: "charlie".to_string(),
+                    }],
+                },
+            ],
         );
         let left = (flags, attrs);
-        let remainder = "``";
-        let right = span_metadata(source, character).unwrap();
+        let remainder = ">>";
+        let right = span_metadata_dev(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
@@ -154,22 +172,22 @@ mod test {
         let source = "|alfa: bravo|charlie: delta``";
         let character = "`";
         let flags = vec![];
-        let mut attrs: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
+        let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();
         attrs.insert(
             "alfa".to_string(),
-            vec![vec![Span::Text {
+            vec![Span::Text {
                 content: "bravo".to_string(),
-            }]],
+            }],
         );
         attrs.insert(
             "charlie".to_string(),
-            vec![vec![Span::Text {
+            vec![Span::Text {
                 content: "delta".to_string(),
-            }]],
+            }],
         );
         let left = (flags, attrs);
         let remainder = "``";
-        let right = span_metadata(source, character).unwrap();
+        let right = span_metadata_dev(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
@@ -179,19 +197,19 @@ mod test {
         let source = "|alfa: bravo|alfa: delta``";
         let character = "`";
         let flags = vec![];
-        let mut attrs: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
+        let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();
         let alfa_vecs = vec![
-            vec![Span::Text {
+            Span::Text {
                 content: "bravo".to_string(),
-            }],
-            vec![Span::Text {
+            },
+            Span::Text {
                 content: "delta".to_string(),
-            }],
+            },
         ];
         attrs.insert("alfa".to_string(), alfa_vecs);
         let left = (flags, attrs);
         let remainder = "``";
-        let right = span_metadata(source, character).unwrap();
+        let right = span_metadata_dev(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
