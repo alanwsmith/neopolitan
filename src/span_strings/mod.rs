@@ -6,4 +6,5 @@ pub mod plain_text_space1_as_single_space;
 pub mod plain_text_span_for_block_paragraph;
 pub mod plain_text_string_base;
 pub mod single_character;
+pub mod single_pipe;
 pub mod space0_line_ending_or_eof;
