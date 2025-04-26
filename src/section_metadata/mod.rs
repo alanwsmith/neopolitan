@@ -67,6 +67,17 @@ mod test {
     }
 
     #[test]
+    fn section_metadata_flag_whitespace_test() {
+        let config = &Config::default();
+        let source = "--      foxtrot-bravo     ";
+        let parent = &SectionParent::Basic;
+        let debug = false;
+        let left = (BTreeMap::new(), vec!["foxtrot-bravo".to_string()]);
+        let right = section_metadata(source, config, parent, debug).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+    #[test]
     fn section_metadata_attribute_test() {
         let config = &Config::default();
         let source = "-- alfa: bravo\n\n";
@@ -77,6 +88,24 @@ mod test {
             "alfa".to_string(),
             vec![vec![Span::Text {
                 content: "bravo".to_string(),
+            }]],
+        );
+        let left = (attributes, vec![]);
+        let right = section_metadata(source, config, parent, debug).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+    #[test]
+    fn section_metadata_attribute_whitespace_test() {
+        let config = &Config::default();
+        let source = "--    hotel:      whiskey     \n\n";
+        let parent = &SectionParent::Basic;
+        let debug = false;
+        let mut attributes: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
+        attributes.insert(
+            "hotel".to_string(),
+            vec![vec![Span::Text {
+                content: "whiskey".to_string(),
             }]],
         );
         let left = (attributes, vec![]);
