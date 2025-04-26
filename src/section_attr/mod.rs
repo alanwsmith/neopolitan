@@ -10,6 +10,18 @@ use nom::multi::many1;
 use nom::sequence::terminated;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 
+// TODO: Figure out if you want to have the
+// ability to have other span types inside
+// the attrs. It would involved having to
+// make new stuff to deal with newlines
+// probably. But maybe it's just the text
+// one that needs to deal with that and
+// the criteria for usage is that you
+// don't have other span types break over lines.
+//
+// Though, in the long term, it would be
+// nice to be able to do that too.
+
 pub fn raw_section_attr<'a>(
     source: &'a str,
     _config: &'a Config,
