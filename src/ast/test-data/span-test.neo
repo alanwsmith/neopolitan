@@ -1,0 +1,6 @@
+-- title
+
+Span Test
+
+This <<link|is|https://www.example.com/|class: red>> a paragraph
+

@@ -1,6 +1,6 @@
 #![allow(unused)]
 use super::Section;
-use crate::neo_config::NeoConfig;
+use crate::config::Config;
 use crate::section::basic_section_full::basic_section_full;
 use crate::section_category::SectionCategory;
 use crate::section_parent::SectionParent;
@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 
 pub fn basic_section<'a>(
     source: &'a str,
-    config: &'a NeoConfig,
+    config: &'a Config,
     parent: &'a SectionParent,
     debug: bool,
 ) -> IResult<&'a str, Section> {
@@ -29,7 +29,7 @@ pub fn basic_section<'a>(
 
 // pub fn basic_section_start<'a>(
 //     source: &'a str,
-//     config: &'a NeoConfig,
+//     config: &'a Config,
 //     parent: &'a SectionParent,
 //     debug: bool,
 // ) -> IResult<&'a str, Section> {

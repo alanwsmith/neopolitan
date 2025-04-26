@@ -1,7 +1,7 @@
 #![allow(unused)]
 use super::Section;
 use super::text_block::text_block;
-use crate::neo_config::NeoConfig;
+use crate::config::Config;
 use crate::section_bound::SectionBound;
 use crate::section_category::SectionCategory;
 use crate::section_metadata::section_metadata;
@@ -20,7 +20,7 @@ use std::collections::BTreeMap;
 
 pub fn basic_section_full<'a>(
     source: &'a str,
-    config: &'a NeoConfig,
+    config: &'a Config,
     parent: &'a SectionParent,
     debug: bool,
 ) -> IResult<&'a str, Section> {
@@ -59,7 +59,7 @@ mod test {
     fn basic_test() {
         let source =
             include_str!("test-data/basic-section-full/basic-test.neo");
-        let config = NeoConfig::default();
+        let config = Config::default();
         let parent = SectionParent::Page;
         let debug = false;
         let left = Section {

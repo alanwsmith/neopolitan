@@ -1,5 +1,5 @@
 #![allow(unused)]
-use crate::neo_config::NeoConfig;
+use crate::config::Config;
 use crate::section::Section;
 use crate::section_bound::SectionBound;
 use crate::section_category::SectionCategory;
@@ -18,7 +18,7 @@ use serde::{Deserialize, Serialize};
 
 pub fn text_block<'a>(
     source: &'a str,
-    config: &'a NeoConfig,
+    config: &'a Config,
     parent: &'a SectionParent,
     debug: bool,
 ) -> IResult<&'a str, Section> {
@@ -76,7 +76,7 @@ mod test {
     #[test]
     fn basic_test() {
         let source = include_str!("test-data/text-block/basic-test.neo");
-        let config = NeoConfig::default();
+        let config = Config::default();
         let parent = SectionParent::Basic;
         let debug = false;
         let left = Section {

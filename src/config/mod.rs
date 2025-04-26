@@ -1,12 +1,12 @@
 use crate::section_category::SectionCategory;
 
-pub struct NeoConfig {
+pub struct Config {
     pub section_kinds: Vec<(String, SectionCategory)>,
 }
 
-impl NeoConfig {
-    pub fn default() -> NeoConfig {
-        NeoConfig {
+impl Config {
+    pub fn default() -> Config {
+        Config {
             section_kinds: vec![],
         }
     }

@@ -1,8 +1,6 @@
-#![allow(unused)]
-use crate::neo_config::NeoConfig;
+use crate::config::Config;
 use crate::section_metadata::RawSectionMetaData;
 use crate::section_parent::SectionParent;
-use crate::span::code;
 use crate::span_parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
@@ -14,7 +12,7 @@ use nom::{IResult, branch::alt, bytes::complete::tag};
 
 pub fn raw_section_attr<'a>(
     source: &'a str,
-    _config: &'a NeoConfig,
+    _config: &'a Config,
     _parent: &'a SectionParent,
     _debug: bool,
 ) -> IResult<&'a str, RawSectionMetaData> {
@@ -62,7 +60,7 @@ mod test {
 
     #[test]
     fn section_attribute_line_basic_test() {
-        let config = &NeoConfig::default();
+        let config = &Config::default();
         let parent = &SectionParent::Basic;
         let debug = false;
         let source = "-- alfa: bravo";
@@ -90,7 +88,7 @@ mod test {
     //     #[case] source: &str,
     //     #[case] remainder: &str,
     // ) {
-    //     let config = &NeoConfig::default();
+    //     let config = &Config::default();
     //     let parent = &SectionParent::Basic;
     //     let debug = false;
     //     let right = section_attribute(source, config, parent, debug).unwrap().1;
@@ -110,7 +108,7 @@ mod test {
     // #[case("-- https://www.example.com/")]
     // #[case("-- key-must-connect-to-colon : alfa")]
     // fn test_invalid_cases(#[case] source: &str) {
-    //     let config = &NeoConfig::default();
+    //     let config = &Config::default();
     //     let parent = &SectionParent::Basic;
     //     let debug = false;
     //     let results = section_attribute(source, config, parent, debug);

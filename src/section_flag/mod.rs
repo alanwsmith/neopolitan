@@ -1,4 +1,4 @@
-use crate::neo_config::NeoConfig;
+use crate::config::Config;
 use crate::section_metadata::RawSectionMetaData;
 use crate::section_parent::SectionParent;
 use nom::IResult;
@@ -17,7 +17,7 @@ use nom::sequence::pair;
 
 pub fn raw_section_flag<'a>(
     source: &'a str,
-    _config: &'a NeoConfig,
+    _config: &'a Config,
     _parent: &'a SectionParent,
     _debug: bool,
 ) -> IResult<&'a str, RawSectionMetaData> {
@@ -55,7 +55,7 @@ mod test {
     #[case("trailing_spaces_are_okay   ")]
     #[case("these_characters_are_okay:!@#$%^&*()[]<>|-")]
     fn raw_section_flag_valid_tests(#[case] left: &str) {
-        let config = &NeoConfig::default();
+        let config = &Config::default();
         let parent = &SectionParent::Basic;
         let debug = false;
         let source = format!("-- {}", left);
@@ -73,7 +73,7 @@ mod test {
     #[case("delta: ")]
     #[case("no_escaped_\\allowed")]
     fn raw_section_flag_invalid_tests(#[case] left: &str) {
-        let config = &NeoConfig::default();
+        let config = &Config::default();
         let parent = &SectionParent::Basic;
         let debug = false;
         let source = format!("-- {}", left);

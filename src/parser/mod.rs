@@ -2,25 +2,19 @@
 use crate::section::parse_section;
 use crate::section_category::SectionCategory;
 use crate::section_parent::SectionParent;
-use crate::{neo_config::NeoConfig, section::Section};
+use crate::{config::Config, section::Section};
 use anyhow::{Error, Result};
-use nom::multi::many1;
-use nom::{Finish, IResult};
-// use nom::{Err, Parser};
 use nom::Parser;
 use nom::character::complete::multispace0;
-// use nom::multi::many1;
-// use nom_supreme::ParserExt;
-// use nom_supreme::error::ErrorTree;
-// use nom_supreme::final_parser::final_parser;
-// use anyhow::Error;
+use nom::multi::many1;
+use nom::{Finish, IResult};
 
-pub struct NeoParser {}
+pub struct Parser {}
 
-impl<'a> NeoParser {
-    pub fn parse(
+impl<'a> Parser {
+    pub fn parse_ast(
         source: &'a str,
-        config: &'a NeoConfig,
+        config: &'a Config,
         parent: &'a SectionParent,
         debug: bool,
     ) -> IResult<&'a str, Vec<Section>> {

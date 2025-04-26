@@ -3,7 +3,7 @@ pub mod basic_section;
 pub mod basic_section_full;
 pub mod text_block;
 
-use crate::neo_config::NeoConfig;
+use crate::config::Config;
 use crate::section::basic_section::basic_section;
 use crate::section_category::SectionCategory;
 use crate::section_parent::SectionParent;
@@ -19,7 +19,7 @@ pub struct Section {
 
 pub fn parse_section<'a>(
     source: &'a str,
-    config: &'a NeoConfig,
+    config: &'a Config,
     parent: &'a SectionParent,
     debug: bool,
 ) -> IResult<&'a str, Section> {

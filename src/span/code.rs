@@ -1,9 +1,4 @@
-#![allow(unused)]
 use super::escaped::escaped_span;
-use crate::neo_config::NeoConfig;
-use crate::section_attr::raw_section_attr;
-use crate::section_flag::raw_section_flag;
-use crate::section_parent::SectionParent;
 use crate::span::Span;
 use crate::span_metadata::span_metadata;
 use crate::span_strings::escaped_character::escaped_character;
@@ -14,22 +9,11 @@ use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;
 use nom::bytes::complete::is_a;
-use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
-use nom::character::complete::alphanumeric1;
-use nom::character::complete::line_ending;
-use nom::character::complete::space0;
-use nom::character::complete::space1;
-use nom::combinator::not;
 use nom::combinator::opt;
-use nom::multi::many0;
 use nom::multi::many1;
 use nom::sequence::pair;
 use nom::sequence::preceded;
-use nom::sequence::terminated;
-use serde::Deserialize;
-use serde::Serialize;
-use std::collections::BTreeMap;
 
 pub fn code_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, spans) = preceded(
@@ -68,10 +52,11 @@ pub fn code_span_text<'a>(source: &'a str) -> IResult<&'a str, Span> {
 
 #[cfg(test)]
 mod test {
-    use super::*;
-    use crate::span::Span;
-    use pretty_assertions::assert_eq;
-    use rstest::rstest;
+
+    // use super::*;
+    // use crate::span::Span;
+    // use pretty_assertions::assert_eq;
+    // use rstest::rstest;
 
     // #[rstest]
     // #[case("``alfa``", Span::Code{

@@ -1,4 +1,4 @@
-use crate::neo_config::NeoConfig;
+use crate::config::Config;
 use crate::section_attr::raw_section_attr;
 use crate::section_flag::raw_section_flag;
 use crate::section_parent::SectionParent;
@@ -17,7 +17,7 @@ pub enum RawSectionMetaData {
 
 pub fn section_metadata<'a>(
     source: &'a str,
-    config: &'a NeoConfig,
+    config: &'a Config,
     parent: &'a SectionParent,
     debug: bool,
 ) -> IResult<&'a str, (BTreeMap<String, Vec<Vec<Span>>>, Vec<String>)> {
@@ -57,7 +57,7 @@ mod test {
 
     #[test]
     fn section_metadata_flag_test() {
-        let config = &NeoConfig::default();
+        let config = &Config::default();
         let source = "-- test-flag\n\n";
         let parent = &SectionParent::Basic;
         let debug = false;
@@ -68,7 +68,7 @@ mod test {
 
     #[test]
     fn section_metadata_attribute_test() {
-        let config = &NeoConfig::default();
+        let config = &Config::default();
         let source = "-- alfa: bravo\n\n";
         let parent = &SectionParent::Basic;
         let debug = false;
@@ -86,7 +86,7 @@ mod test {
 
     #[test]
     fn multiple_metadata_test() {
-        let config = &NeoConfig::default();
+        let config = &Config::default();
         let source = "-- delta: alfa\n-- foxtrot\n-- delta: bravo\n-- echo";
         let parent = &SectionParent::Basic;
         let debug = false;
