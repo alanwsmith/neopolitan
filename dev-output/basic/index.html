@@ -20,6 +20,86 @@
     <div>
 
       <h2>BASIC: title</h2>
+<div>Flags: 
+<ul>
+
+</ul>
+</div>
+<div>Attrs:
+<ul>
+
+</ul>
+</div>
+
+{
+  "attrs": {},
+  "bound": "Full",
+  "children": [
+    {
+      "content": {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This Is An Output Example"
+          }
+        ]
+      },
+      "type": "block"
+    },
+    {
+      "content": {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This is "
+          },
+          {
+            "attrs": {},
+            "category": "code-span",
+            "flags": [],
+            "spans": [
+              {
+                "category": "text-span",
+                "content": "a code"
+              }
+            ]
+          },
+          {
+            "category": "text-span",
+            "content": " example. That spans multiple lines."
+          }
+        ]
+      },
+      "type": "block"
+    },
+    {
+      "content": {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "And another one down here."
+          }
+        ]
+      },
+      "type": "block"
+    },
+    {
+      "content": {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This is a | and two || and ||| pipes"
+          }
+        ]
+      },
+      "type": "block"
+    }
+  ],
+  "end_section": null,
+  "flags": [],
+  "kind": "title"
+}
+
 
 
 
@@ -27,9 +107,6 @@
 
 
 This Is An Output Example
-
-
-
 
 
 
@@ -48,16 +125,10 @@ This is
 
 
 
-
-
-
 <h3>BLOCK</h3>
 
 
 And another one down here.
-
-
-
 
 
 
@@ -72,11 +143,39 @@ This is a | and two || and ||| pipes
 
 
 
-
-
-
-
       <h2>BASIC: p</h2>
+<div>Flags: 
+<ul>
+
+</ul>
+</div>
+<div>Attrs:
+<ul>
+
+</ul>
+</div>
+
+{
+  "attrs": {},
+  "bound": "Full",
+  "children": [
+    {
+      "content": {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This is another section"
+          }
+        ]
+      },
+      "type": "block"
+    }
+  ],
+  "end_section": null,
+  "flags": [],
+  "kind": "p"
+}
+
 
 
 
@@ -90,11 +189,71 @@ This is another section
 
 
 
-
-
-
-
       <h2>BASIC: metadata</h2>
+<div>Flags: 
+<ul>
+
+<li>flag-example</li>
+
+</ul>
+</div>
+<div>Attrs:
+<ul>
+
+<li>created: [{"category": "text-span", "content": "2025-04-26T15:41:54-04:00"}]</li>
+
+<li>id: [{"category": "text-span", "content": "2w/hr/sm/c3"}]</li>
+
+<li>status: [{"category": "text-span", "content": "prep"}]</li>
+
+<li>template: [{"category": "text-span", "content": "post"}]</li>
+
+<li>updated: [{"category": "text-span", "content": "2025-04-26T15:41:54-04:00"}]</li>
+
+</ul>
+</div>
+
+{
+  "attrs": {
+    "created": [
+      {
+        "category": "text-span",
+        "content": "2025-04-26T15:41:54-04:00"
+      }
+    ],
+    "id": [
+      {
+        "category": "text-span",
+        "content": "2w/hr/sm/c3"
+      }
+    ],
+    "status": [
+      {
+        "category": "text-span",
+        "content": "prep"
+      }
+    ],
+    "template": [
+      {
+        "category": "text-span",
+        "content": "post"
+      }
+    ],
+    "updated": [
+      {
+        "category": "text-span",
+        "content": "2025-04-26T15:41:54-04:00"
+      }
+    ]
+  },
+  "bound": "Full",
+  "children": [],
+  "end_section": null,
+  "flags": [
+    "flag-example"
+  ],
+  "kind": "metadata"
+}
 
 
 

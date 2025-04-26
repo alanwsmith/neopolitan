@@ -20,19 +20,21 @@ pub fn section_metadata<'a>(
     config: &'a Config,
     parent: &'a SectionParent,
     debug: bool,
-) -> IResult<&'a str, (BTreeMap<String, Vec<Vec<Span>>>, Vec<String>)> {
+) -> IResult<&'a str, (BTreeMap<String, Vec<Span>>, Vec<String>)> {
     let (source, raw_metadata) = many0(alt((
         |src| raw_section_flag(src, config, parent, debug),
         |src| raw_section_attr(src, config, parent, debug),
     )))
     .parse(source)?;
-    let mut attributes: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
+    let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();
     raw_metadata.iter().for_each(|metadata| match metadata {
         RawSectionMetaData::Attribtue { key, spans } => {
-            match attributes.get_mut(key) {
-                Some(payload) => payload.push(spans.clone()),
+            match attrs.get_mut(key) {
+                Some(payload) => spans.iter().for_each(|span| {
+                    payload.push(span.clone());
+                }),
                 None => {
-                    attributes.insert(key.to_string(), vec![spans.clone()]);
+                    attrs.insert(key.to_string(), spans.clone());
                     ()
                 }
             }
@@ -47,7 +49,7 @@ pub fn section_metadata<'a>(
             _ => None,
         })
         .collect::<Vec<String>>();
-    Ok((source, (attributes, flags)))
+    Ok((source, (attrs, flags)))
 }
 
 #[cfg(test)]
@@ -83,12 +85,12 @@ mod test {
         let source = "-- alfa: bravo\n\n";
         let parent = &SectionParent::Basic;
         let debug = false;
-        let mut attributes: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
+        let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
         attributes.insert(
             "alfa".to_string(),
-            vec![vec![Span::Text {
+            vec![Span::Text {
                 content: "bravo".to_string(),
-            }]],
+            }],
         );
         let left = (attributes, vec![]);
         let right = section_metadata(source, config, parent, debug).unwrap().1;
@@ -101,12 +103,12 @@ mod test {
         let source = "--    hotel:      whiskey     \n\n";
         let parent = &SectionParent::Basic;
         let debug = false;
-        let mut attributes: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
+        let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
         attributes.insert(
             "hotel".to_string(),
-            vec![vec![Span::Text {
+            vec![Span::Text {
                 content: "whiskey".to_string(),
-            }]],
+            }],
         );
         let left = (attributes, vec![]);
         let right = section_metadata(source, config, parent, debug).unwrap().1;
@@ -119,16 +121,16 @@ mod test {
         let source = "-- delta: alfa\n-- foxtrot\n-- delta: bravo\n-- echo";
         let parent = &SectionParent::Basic;
         let debug = false;
-        let mut attributes: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
+        let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
         attributes.insert(
             "delta".to_string(),
             vec![
-                vec![Span::Text {
+                Span::Text {
                     content: "alfa".to_string(),
-                }],
-                vec![Span::Text {
+                },
+                Span::Text {
                     content: "bravo".to_string(),
-                }],
+                },
             ],
         );
         let left =

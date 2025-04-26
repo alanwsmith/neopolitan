@@ -1,28 +1,24 @@
 <h2>BASIC: [@ section.content.kind @]</h2>
+<div>Flags: 
+<ul>
+[! for flag in section.content.flags !]
+<li>[@ flag @]</li>
+[! endfor !]
+</ul>
+</div>
+<div>Attrs:
+<ul>
+[! for key in section.content.attrs !]
+<li>[@ key @]: [@ section.content.attrs[key] @]</li>
+[! endfor !]
+</ul>
+</div>
+
+[@ section.content|tojson(true) @]
+
+
 [! if "content" in section !]
 [! for child in section.content.children !]
-
 [! include child.type + ".neoj" !]
-[#
-<pre>
-[@ child.type @]
-[@ child @]
-</pre>
-#]
-
 [! endfor !]
-
-[#
-[! for child in section.content.children !]
-  [! include child.type + ".neoj" !]
-<!--
-[@ child.type @]
-<pre>
-  </pre>
-[! endfor !]
-<pre>
-[@ section.content|tojson(true) @]
-</pre>
--->
-#]
 [! endif !]

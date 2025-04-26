@@ -19,7 +19,7 @@ use std::collections::BTreeMap;
 #[serde(tag = "type", content = "content", rename_all = "lowercase")]
 pub enum Section {
     Basic {
-        attrs: BTreeMap<String, Vec<Vec<Span>>>,
+        attrs: BTreeMap<String, Vec<Span>>,
         bound: SectionBound,
         children: Vec<Section>,
         end_section: Option<Box<Section>>,
