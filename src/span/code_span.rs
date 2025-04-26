@@ -1,4 +1,4 @@
-use super::escaped::escaped_span;
+use super::escaped_span::escaped_span;
 use crate::span::Span;
 use crate::span_metadata::span_metadata;
 use crate::span_strings::escaped_character::escaped_character;

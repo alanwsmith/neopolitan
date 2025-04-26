@@ -3,9 +3,9 @@ use crate::section::Section;
 use crate::section_bound::SectionBound;
 use crate::section_category::SectionCategory;
 use crate::section_parent::SectionParent;
-use crate::span::code::code_span;
-use crate::span::escaped::escaped_span;
-use crate::span::text::text;
+use crate::span::code_span::code_span;
+use crate::span::escaped_span::escaped_span;
+use crate::span::text_span::text_span;
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::bytes::complete::is_not;
@@ -27,7 +27,7 @@ pub fn text_block<'a>(
     let (source, _) = not(tag("--")).parse(source)?;
 
     let (source, spans) = many1(alt((
-        text,
+        text_span,
         code_span,
         escaped_span,
         // span_of_plain_text_for_block_paragraph,

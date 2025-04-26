@@ -1,4 +1,5 @@
-use crate::span::code::code_span;
+use crate::span::code_span::code_span;
+use crate::span::text_span::text_span;
 use crate::span_metadata::RawSpanMetadata;
 use crate::span_strings::single_character::single_character;
 use nom::IResult;
@@ -14,7 +15,6 @@ use nom::combinator::opt;
 use nom::combinator::recognize;
 use nom::multi::many1;
 use nom::sequence::preceded;
-use crate::span::text::text;
 
 // TODO: Verify the same rules
 // for flags apply for attribute
@@ -44,7 +44,7 @@ pub fn span_attr<'a>(
     .parse(source)?;
     let (source, _) = tag(":").parse(source)?;
     let (source, _) = (space0, opt(line_ending), space0).parse(source)?;
-    let (source, spans) = many1(alt((text, code_span))).parse(source)?;
+    let (source, spans) = many1(alt((text_span, code_span))).parse(source)?;
     Ok((
         source,
         RawSpanMetadata::Attr {
@@ -57,10 +57,14 @@ pub fn span_attr<'a>(
 #[cfg(test)]
 mod test {
     use super::*;
+    use crate::span::Span;
     use pretty_assertions::assert_eq;
     use rstest::rstest;
-    use crate::span::Span;
     use std::collections::BTreeMap;
+
+    // NOTE: These lines are long because
+    // breaking them breaks the formatter
+    // for the entire file
 
     #[rstest]
     #[case("|alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
@@ -69,19 +73,7 @@ mod test {
     #[case("|alfa:\nbravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
     #[case("|alfa:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
     #[case("|alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
-    #[case(
-        "|alfa: bravo``code-here``>>", 
-        ">", 
-        RawSpanMetadata::Attr{ 
-            key: "alfa".to_string(), 
-            spans: vec![
-                Span::Text{content: "bravo".to_string()},
-                Span::Code{attrs: BTreeMap::new(), flags: vec![], spans: vec![
-                    Span::Text{content: "code-here".to_string()}
-                ]}
-            ]
-        }, 
-        ">>")]
+    #[case("|alfa: bravo``code-here``>>", ">",RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}, Span::Code{attrs: BTreeMap::new(), flags: vec![], spans: vec![Span::Text{content: "code-here".to_string()}]}]}, ">>")]
     fn span_flag_valid_tests(
         #[case] source: &str,
         #[case] character: &str,

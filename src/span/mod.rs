@@ -1,6 +1,6 @@
-pub mod code;
-pub mod escaped;
-pub mod text;
+pub mod code_span;
+pub mod escaped_span;
+pub mod text_span;
 
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
