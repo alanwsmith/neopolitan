@@ -68,9 +68,8 @@ mod test {
         let source = "-- alfa: bravo";
         let left = RawSectionMetaData::Attribtue {
             key: "alfa".to_string(),
-            spans: vec![Span::TextSpan {
-                kind: "text".to_string(),
-                text: "bravo".to_string(),
+            spans: vec![Span::Text {
+                content: "bravo".to_string(),
             }],
         };
         let right = raw_section_attr(source, config, parent, debug).unwrap().1;

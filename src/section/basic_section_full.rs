@@ -68,9 +68,8 @@ mod test {
                 bound: SectionBound::Full,
                 children: vec![Section {
                     category: SectionCategory::Block {
-                        spans: vec![Span::TextSpan {
-                            kind: "text".to_string(),
-                            text: "bravo foxtrot tango".to_string(),
+                        spans: vec![Span::Text {
+                            content: "bravo foxtrot tango".to_string(),
                         }],
                     },
                     kind: "text-block".to_string(),

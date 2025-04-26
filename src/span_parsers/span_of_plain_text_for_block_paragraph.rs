@@ -24,9 +24,8 @@ pub fn span_of_plain_text_for_block_paragraph(
         plain_text_span_for_block_paragraph.parse(source)?;
     Ok((
         source,
-        Span::TextSpan {
-            kind: "text".to_string(),
-            text: results.join(""),
+        Span::Text {
+            content: results.join(""),
         },
     ))
 }

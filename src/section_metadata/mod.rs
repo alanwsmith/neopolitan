@@ -75,9 +75,8 @@ mod test {
         let mut attributes: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
         attributes.insert(
             "alfa".to_string(),
-            vec![vec![Span::TextSpan {
-                kind: "text".to_string(),
-                text: "bravo".to_string(),
+            vec![vec![Span::Text {
+                content: "bravo".to_string(),
             }]],
         );
         let left = (attributes, vec![]);
@@ -95,13 +94,11 @@ mod test {
         attributes.insert(
             "delta".to_string(),
             vec![
-                vec![Span::TextSpan {
-                    kind: "text".to_string(),
-                    text: "alfa".to_string(),
+                vec![Span::Text {
+                    content: "alfa".to_string(),
                 }],
-                vec![Span::TextSpan {
-                    kind: "text".to_string(),
-                    text: "bravo".to_string(),
+                vec![Span::Text {
+                    content: "bravo".to_string(),
                 }],
             ],
         );

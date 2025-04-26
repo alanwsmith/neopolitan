@@ -43,11 +43,11 @@ pub enum Span {
     // #[serde(rename = "tag")]
     // NamedSpan(NamedSpanV42),
     //
-    #[serde(rename = "text-span")]
-    TextSpan {
-        kind: String,
-        text: String,
-    },
+    // #[serde(rename = "text-span")]
+    // TextSpan {
+    //     kind: String,
+    //     text: String,
+    // },
     #[serde(rename = "text")]
     Text {
         content: String,
