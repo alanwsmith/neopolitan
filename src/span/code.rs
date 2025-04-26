@@ -32,7 +32,6 @@ use serde::Serialize;
 use std::collections::BTreeMap;
 
 pub fn code_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
-    // let characters = "%@~*^![]{}<>_#:";
     let (source, spans) = preceded(
         pair(tag("``"), opt(plain_text_space1_as_single_space)),
         many1(alt((escaped_span, code_span_text))),
@@ -43,8 +42,8 @@ pub fn code_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
     Ok((
         source,
         Span::Code {
-            attrs: BTreeMap::new(),
-            flags: vec![],
+            attrs,
+            flags,
             spans,
         },
     ))
