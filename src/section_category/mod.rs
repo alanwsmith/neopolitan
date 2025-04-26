@@ -3,6 +3,8 @@ use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
 #[derive(Debug, Deserialize, PartialEq, Serialize)]
+// #[serde(untagged)]
+#[serde(tag = "type", content = "content", rename_all = "lowercase")]
 pub enum SectionCategory {
     Basic {
         attrs: BTreeMap<String, Vec<Vec<Span>>>,

@@ -49,6 +49,7 @@ impl Ast<'_> {
 mod test {
     use super::*;
     use pretty_assertions::assert_eq;
+    use serde_json;
 
     #[test]
     fn basic_test() {
@@ -56,9 +57,10 @@ mod test {
         let source = include_str!("test-data/basic-example.neo");
         if let Ast::Ok(sections) = Ast::new_from_source(source, &config, false)
         {
+            println!("{}", serde_json::to_string_pretty(&sections).unwrap());
             assert_eq!(1, sections.len());
         } else {
-            dbg!("ERERERERER");
+            assert!(false);
         }
     }
 }
