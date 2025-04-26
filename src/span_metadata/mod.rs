@@ -32,6 +32,13 @@ pub fn span_metadata<'a>(
         })
         .collect::<Vec<String>>();
     let mut attrs = BTreeMap::new();
+    raw_metadata.iter().for_each(|data| match data {
+        RawSpanMetadata::Attr { key, spans } => {
+            attrs.insert(key.to_string(), spans.clone());
+            ()
+        }
+        _ => (),
+    });
     Ok((source, (flags, attrs)))
 }
 
@@ -42,14 +49,33 @@ mod test {
     use pretty_assertions::assert_eq;
     use rstest::rstest;
 
-    #[rstest]
-    #[case("|alfa``", "`", (vec!["alfa".to_string()], BTreeMap::new()), "``")]
-    fn span_metadata_valid_tests(
-        #[case] source: &str,
-        #[case] character: &str,
-        #[case] left: (Vec<String>, BTreeMap<String, Vec<Span>>),
-        #[case] remainder: &str,
-    ) {
+    #[test]
+    fn single_flag_test() {
+        let source = "|alfa``";
+        let character = "`";
+        let flags = vec!["alfa".to_string()];
+        let attrs = BTreeMap::new();
+        let left = (flags, attrs);
+        let remainder = "``";
+        let right = span_metadata(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
+
+    #[test]
+    fn single_attr_test() {
+        let source = "|alfa: bravo``";
+        let character = "`";
+        let flags = vec![];
+        let mut attrs = BTreeMap::new();
+        attrs.insert(
+            "alfa".to_string(),
+            vec![Span::Text {
+                content: "bravo".to_string(),
+            }],
+        );
+        let left = (flags, attrs);
+        let remainder = "``";
         let right = span_metadata(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
