@@ -64,6 +64,8 @@ impl<'a> Ast<'_> {
 
 #[cfg(test)]
 mod test {
+    use std::path::PathBuf;
+
     use super::*;
     use pretty_assertions::assert_eq;
     use serde_json;
@@ -87,7 +89,9 @@ mod test {
         let source = include_str!("test-data/span-test.neo");
         if let Ast::Ok(sections) = Ast::new_from_source(source, &config, false)
         {
-            // println!("{}", serde_json::to_string_pretty(&sections).unwrap());
+            let tmp_output_path = PathBuf::from("dev-output/basic/ast.json");
+            let json = serde_json::to_string_pretty(&sections).unwrap();
+            std::fs::write(tmp_output_path, json);
             assert_eq!(1, sections.len());
         } else {
             assert!(false);
