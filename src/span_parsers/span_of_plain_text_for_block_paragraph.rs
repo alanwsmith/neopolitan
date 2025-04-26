@@ -1,3 +1,5 @@
+// DEPRECATED. Should be able to use span/text.
+//
 #![allow(unused)]
 use crate::span::Span;
 use crate::span_strings::plain_text_span_for_block_paragraph::plain_text_span_for_block_paragraph;
