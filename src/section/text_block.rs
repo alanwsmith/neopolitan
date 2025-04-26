@@ -8,6 +8,7 @@ use crate::span_parsers::span_of_plain_text_for_block_paragraph::span_of_plain_t
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::bytes::complete::is_not;
+use nom::character::complete::multispace0;
 use nom::character::complete::space1;
 use nom::combinator::not;
 use nom::multi::many1;
@@ -40,6 +41,7 @@ pub fn text_block<'a>(
         //     underline_shorthand_span,
     )))
     .parse(source)?;
+    let (source, _) = multispace0(source)?;
 
     Ok((
         source,

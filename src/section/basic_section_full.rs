@@ -1,4 +1,3 @@
-#![allow(unused)]
 use super::Section;
 use super::text_block::text_block;
 use crate::config::Config;
