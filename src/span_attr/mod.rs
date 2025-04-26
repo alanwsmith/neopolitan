@@ -92,12 +92,12 @@ mod test {
 
     #[test]
     fn span_attr_whitespace_test() {
-        let source = "|  delta: \n   yankee  \n  `` ping";
+        let source = "|  delta: \n   sierra  \n yankee  \n  `` ping";
         let character = "`";
         let left = RawSpanMetadata::Attr {
             key: "delta".to_string(),
             spans: vec![Span::Text {
-                content: "yankee".to_string(),
+                content: "sierra yankee ".to_string(),
             }],
         };
         let remainder = "`` ping";

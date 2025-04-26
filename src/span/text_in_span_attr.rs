@@ -15,6 +15,12 @@ use nom::multi::many1;
 // NOTE: Having empty lines in an
 // attribute is not allowed.
 
+// NOTE: Trailing space is required
+// since there can be other spans
+// after it.
+// TODO: Figure out a way to chomp
+// just the last one.
+
 pub fn text_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, results) = many1(alt((
         plain_text_string_base,
@@ -28,7 +34,7 @@ pub fn text_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
     Ok((
         source,
         Span::Text {
-            content: results.join("").trim().to_string(),
+            content: results.join("").to_string(),
         },
     ))
 }
@@ -50,7 +56,6 @@ mod test {
     #[case("https://www.example.com/", Span::Text{ content: "https://www.example.com/".to_string()}, "")]
     #[case("alfa bravo -\n- charlie delta", Span::Text{ content: "alfa bravo - - charlie delta".to_string()}, "")]
     #[case("alfa^^1^^", Span::Text{ content: "alfa".to_string()}, "^^1^^")]
-    // #[case("alfa <<span|ping>>", Span::Text{ content: "alfa ".to_string()}, "<<span|ping>>")]
     #[case("alfa\\<<", Span::Text{ content: "alfa".to_string()}, "\\<<")]
     // TODO: Make escaped version of this
     // #[case("alfa|bravo", Span::Text{ content: "alfa|bravo".to_string()}, "")]
@@ -68,6 +73,18 @@ mod test {
     fn text_in_span_attr_whitespace_test() {
         let source = "alfa    bravo \n   ";
         let left = Span::Text {
+            content: "alfa bravo ".to_string(),
+        };
+        let remainder = "";
+        let right = text_in_span_attr(source).unwrap();
+        assert_eq!(remainder, right.0);
+        assert_eq!(left, right.1);
+    }
+
+    #[test]
+    fn solo_text_in_span_attr_chomp_leading_whitespace_on_new_lines() {
+        let source = "alfa  \n  bravo";
+        let left = Span::Text {
             content: "alfa bravo".to_string(),
         };
         let remainder = "";
@@ -77,7 +94,7 @@ mod test {
     }
 
     #[test]
-    fn solo_text_in_span_attr_no_empty_lines() {
+    fn text_in_span_attr_no_empty_lines() {
         let source = "alfa\n\nbravo";
         match text_in_span_attr(source) {
             Ok(result) => {
@@ -88,5 +105,17 @@ mod test {
                 assert!(true);
             }
         }
+    }
+
+    #[test]
+    fn text_in_span_attr_trailing_space_is_necessary() {
+        let source = "alfa <<span|ping>>";
+        let left = Span::Text {
+            content: "alfa ".to_string(),
+        };
+        let remainder = "<<span|ping>>";
+        let right = text_in_span_attr(source).unwrap();
+        assert_eq!(remainder, right.0);
+        assert_eq!(left, right.1);
     }
 }

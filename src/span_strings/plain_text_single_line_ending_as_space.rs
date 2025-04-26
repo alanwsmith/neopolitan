@@ -15,11 +15,18 @@ use nom::sequence::pair;
 use nom::sequence::preceded;
 use nom::sequence::terminated;
 
+// NOTE: Also chomp leading whitespace
+// on following line
+
 pub fn plain_text_single_line_ending_as_space(
     source: &str,
 ) -> IResult<&str, &str> {
-    let (source, _) =
-        ((space0, tag("\n"), not(pair(space0, tag("\n"))))).parse(source)?;
+    let (source, _) = ((
+        space0,
+        pair(line_ending, space0),
+        not(pair(space0, tag("\n"))),
+    ))
+        .parse(source)?;
     Ok((source, " "))
 }
 

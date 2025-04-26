@@ -94,7 +94,7 @@ mod test {
         attrs.insert(
             "bravo".to_string(),
             vec![vec![Span::Text {
-                content: "charlie".to_string(),
+                content: "charlie ".to_string(),
             }]],
         );
         let flags = vec!["delta".to_string()];
@@ -106,8 +106,33 @@ mod test {
             }],
         };
         let remainder = " ping";
-        let right = code_span(source).unwrap().1;
-        assert_eq!(left, right);
+        let right = code_span(source).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
+
+    #[test]
+    fn code_span_newline_test_2() {
+        let source = "``\nalfa\n|\nbravo:\ncharlie \n echo\n|\ndelta\n`` ping";
+        let mut attrs = BTreeMap::new();
+        attrs.insert(
+            "bravo".to_string(),
+            vec![vec![Span::Text {
+                content: "charlie echo ".to_string(),
+            }]],
+        );
+        let flags = vec!["delta".to_string()];
+        let left = Span::Code {
+            attrs,
+            flags,
+            spans: vec![Span::Text {
+                content: "alfa".to_string(),
+            }],
+        };
+        let remainder = " ping";
+        let right = code_span(source).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
     }
 
     //
