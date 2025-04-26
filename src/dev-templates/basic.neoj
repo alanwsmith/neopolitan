@@ -1,4 +1,4 @@
-<h2>BASIC: [@ section.content.kind @]</h2>
+<h2>BASIC SECTION: [@ section.content.kind @]</h2>
 <div>Flags: 
 <ul>
 [! for flag in section.content.flags !]
@@ -9,12 +9,13 @@
 <div>Attrs:
 <ul>
 [! for key in section.content.attrs !]
-<li>[@ key @]: [@ section.content.attrs[key] @]</li>
+<li>[@ key @]: [! for span in section.content.attrs[key] !]
+[! include "spans/" + span.category + ".neoj" !]
+[! endfor !]
+</li>
 [! endfor !]
 </ul>
 </div>
-
-[@ section.content|tojson(true) @]
 
 
 [! if "content" in section !]
