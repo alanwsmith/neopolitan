@@ -7,6 +7,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,14 +54,160 @@
   
 
 
+  
+
+
+<div>attrs:</div>
+<ul>
+
+<li>subtitle: 
+
+this is
+
+a subtitle
+
+</li>
+
+</ul>
 
 
 
-  <div>Attributes</div>
+  
+
+
+<div>blocks:</div>
+<ul>
+
+<li>
+
+
+
+This Is An Output Example
+
+
+
+</li>
+
+
+
+<li>
+
+
+
+This is 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;code&gt;
+
+a code example
+
+
+
+
+
+
+
+
+&lt;-- flags 
+
+| alfa
+
+
+
+| bravo
+
+--&gt;
+
+
+
+
+
+
+&lt;-- attrs 
+
+| charlie: 
+
+delta
+
+
+
+
+
+| echo: 
+
+foxtrot
+
+
+
+--&gt;
+
+
+
+
+&lt;/code&gt;
+
+
+.
+
+
+
+</li>
+
+
+
+<li>
+
+
+
+And another one down here.
+
+
+
+</li>
+
+
+
+<li>
+
+
+
+This is a | and two || and ||| pipes
+
+
+
+</li>
+
+</ul>
+
+
+
 
   </h2>
-
-
 
 
       
@@ -55,14 +218,31 @@
   
 
 
+  
+
+
+  
+
+
+<div>blocks:</div>
+<ul>
+
+<li>
 
 
 
-  <div>Attributes</div>
+This is another section
+
+
+
+</li>
+
+</ul>
+
+
+
 
   </h2>
-
-
 
 
       
@@ -82,14 +262,59 @@
 
 
 
+  
+
+
+<div>attrs:</div>
+<ul>
+
+<li>created: 
+
+2025-04-26T15:41:54-04:00
+
+</li>
 
 
 
-  <div>Attributes</div>
+<li>id: 
+
+2w/hr/sm/c3
+
+</li>
+
+
+
+<li>status: 
+
+prep
+
+</li>
+
+
+
+<li>template: 
+
+post
+
+</li>
+
+
+
+<li>updated: 
+
+2025-04-26T15:41:54-04:00
+
+</li>
+
+</ul>
+
+
+
+  
+
+
 
   </h2>
-
-
 
 
       </ul>
@@ -97,7 +322,18 @@
     <pre>
       [
   {
-    "attrs": {},
+    "attrs": {
+      "subtitle": [
+        {
+          "category": "text-span",
+          "content": "this is"
+        },
+        {
+          "category": "text-span",
+          "content": "a subtitle"
+        }
+      ]
+    },
     "bound": "Full",
     "children": [
       {
@@ -117,27 +353,34 @@
           },
           {
             "attrs": {
-              "code": [
+              "charlie": [
                 {
                   "category": "text-span",
-                  "content": "attr"
+                  "content": "delta"
+                }
+              ],
+              "echo": [
+                {
+                  "category": "text-span",
+                  "content": "foxtrot"
                 }
               ]
             },
             "category": "code-span",
             "flags": [
-              "code-flag"
+              "alfa",
+              "bravo"
             ],
             "spans": [
               {
                 "category": "text-span",
-                "content": "a code"
+                "content": "a code example"
               }
             ]
           },
           {
             "category": "text-span",
-            "content": " example. That spans multiple lines."
+            "content": "."
           }
         ],
         "type": "block"

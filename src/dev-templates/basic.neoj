@@ -1,3 +1,6 @@
+
+
+[#
 <h2>BASIC SECTION: [@ section.content.kind @]</h2>
 <div>Flags: 
 <ul>
@@ -23,3 +26,4 @@
 [! include child.type + ".neoj" !]
 [! endfor !]
 [! endif !]
+#]

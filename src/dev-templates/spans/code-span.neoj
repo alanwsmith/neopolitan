@@ -1,8 +1,13 @@
+[! include "macros.neoj" !]
+
+&lt;code&gt;
 [! for child_span in span.spans !]
-<code>[@ child_span.content @]
+[@ child_span.content @]
+
+[#
 {attrs: 
 [! for attr in span.attrs !]
-[@ attr @]> [@ span.attrs[attr] @],
+[@ attr @]> [@ output_spans(span.attrs[attr]) @],
 [! endfor !]
 
 , flags: 
@@ -11,6 +16,12 @@
 [@ flag @]
 [! endfor !]
 }
+#]
 
-</code>
 [! endfor !]
+
+[@ output_span_flags(span) @]
+[@ output_span_attrs(span) @]
+
+&lt;/code&gt;
+
