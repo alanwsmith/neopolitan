@@ -23,7 +23,7 @@ pub enum Span {
     //
     #[serde(rename = "code-span")]
     Code {
-        attrs: BTreeMap<String, Vec<Vec<Span>>>,
+        attrs: BTreeMap<String, Vec<Span>>,
         flags: Vec<String>,
         spans: Vec<Span>,
     },

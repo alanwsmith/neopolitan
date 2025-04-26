@@ -31,44 +31,44 @@ pub enum RawSpanMetadata {
 // the responsibility of the output
 // implementation.
 
-pub fn span_metadata<'a>(
-    source: &'a str,
-    character: &'a str,
-) -> IResult<&'a str, (Vec<String>, BTreeMap<String, Vec<Vec<Span>>>)> {
-    // Reminder: attrs first otherwise things go wrong with this setup
-    let (source, raw_metadata) = many0(alt((
-        |src| span_attr(src, character),
-        |src| span_flag(src, character),
-    )))
-    .parse(source)?;
-    let mut flags = raw_metadata
-        .iter()
-        .filter_map(|data| match data {
-            RawSpanMetadata::Flag(content) => Some(content.clone()),
-            _ => None,
-        })
-        .collect::<Vec<String>>();
-    let mut attrs: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
-    raw_metadata.iter().for_each(|data| match data {
-        RawSpanMetadata::Attr { key, spans } => {
-            match attrs.get_mut(key) {
-                Some(v) => {
-                    v.push(spans.clone());
-                    ()
-                }
-                None => {
-                    attrs.insert(key.to_string(), vec![spans.clone()]);
-                    ()
-                }
-            }
-            ()
-        }
-        _ => (),
-    });
-    Ok((source, (flags, attrs)))
-}
+// pub fn span_metadata<'a>(
+//     source: &'a str,
+//     character: &'a str,
+// ) -> IResult<&'a str, (Vec<String>, BTreeMap<String, Vec<Vec<Span>>>)> {
+//     // Reminder: attrs first otherwise things go wrong with this setup
+//     let (source, raw_metadata) = many0(alt((
+//         |src| span_attr(src, character),
+//         |src| span_flag(src, character),
+//     )))
+//     .parse(source)?;
+//     let mut flags = raw_metadata
+//         .iter()
+//         .filter_map(|data| match data {
+//             RawSpanMetadata::Flag(content) => Some(content.clone()),
+//             _ => None,
+//         })
+//         .collect::<Vec<String>>();
+//     let mut attrs: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
+//     raw_metadata.iter().for_each(|data| match data {
+//         RawSpanMetadata::Attr { key, spans } => {
+//             match attrs.get_mut(key) {
+//                 Some(v) => {
+//                     v.push(spans.clone());
+//                     ()
+//                 }
+//                 None => {
+//                     attrs.insert(key.to_string(), vec![spans.clone()]);
+//                     ()
+//                 }
+//             }
+//             ()
+//         }
+//         _ => (),
+//     });
+//     Ok((source, (flags, attrs)))
+// }
 
-pub fn span_metadata_dev<'a>(
+pub fn span_metadata<'a>(
     source: &'a str,
     character: &'a str,
 ) -> IResult<&'a str, (Vec<String>, BTreeMap<String, Vec<Span>>)> {
@@ -115,7 +115,7 @@ mod test {
         let attrs = BTreeMap::new();
         let left = (flags, attrs);
         let remainder = "``";
-        let right = span_metadata_dev(source, character).unwrap();
+        let right = span_metadata(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
@@ -134,7 +134,7 @@ mod test {
         );
         let left = (flags, attrs);
         let remainder = "``";
-        let right = span_metadata_dev(source, character).unwrap();
+        let right = span_metadata(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
@@ -162,7 +162,7 @@ mod test {
         );
         let left = (flags, attrs);
         let remainder = ">>";
-        let right = span_metadata_dev(source, character).unwrap();
+        let right = span_metadata(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
@@ -187,7 +187,7 @@ mod test {
         );
         let left = (flags, attrs);
         let remainder = "``";
-        let right = span_metadata_dev(source, character).unwrap();
+        let right = span_metadata(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
@@ -209,7 +209,7 @@ mod test {
         attrs.insert("alfa".to_string(), alfa_vecs);
         let left = (flags, attrs);
         let remainder = "``";
-        let right = span_metadata_dev(source, character).unwrap();
+        let right = span_metadata(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }

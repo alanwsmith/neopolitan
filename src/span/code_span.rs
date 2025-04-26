@@ -93,9 +93,9 @@ mod test {
         let mut attrs = BTreeMap::new();
         attrs.insert(
             "bravo".to_string(),
-            vec![vec![Span::Text {
+            vec![Span::Text {
                 content: "charlie ".to_string(),
-            }]],
+            }],
         );
         let flags = vec!["delta".to_string()];
         let left = Span::Code {
@@ -117,9 +117,9 @@ mod test {
         let mut attrs = BTreeMap::new();
         attrs.insert(
             "bravo".to_string(),
-            vec![vec![Span::Text {
+            vec![Span::Text {
                 content: "charlie echo ".to_string(),
-            }]],
+            }],
         );
         let flags = vec!["delta".to_string()];
         let left = Span::Code {
