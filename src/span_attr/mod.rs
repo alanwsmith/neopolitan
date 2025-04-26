@@ -1,5 +1,5 @@
 use crate::span::code_span::code_span;
-use crate::span::text_span::text_span;
+use crate::span::text_span_in_metadata::text_span_in_metadata;
 use crate::span_metadata::RawSpanMetadata;
 use crate::span_strings::single_character::single_character;
 use nom::IResult;
@@ -44,7 +44,8 @@ pub fn span_attr<'a>(
     .parse(source)?;
     let (source, _) = tag(":").parse(source)?;
     let (source, _) = (space0, opt(line_ending), space0).parse(source)?;
-    let (source, spans) = many1(alt((text_span, code_span))).parse(source)?;
+    let (source, spans) =
+        many1(alt((text_span_in_metadata, code_span))).parse(source)?;
     Ok((
         source,
         RawSpanMetadata::Attr {
