@@ -12,8 +12,6 @@ pub enum SectionCategory {
         children: Vec<Section>,
         end_section: Option<Box<Section>>,
         flags: Vec<String>,
-        source_head: String,
-        source_body: Option<String>,
     },
     Block {
         spans: Vec<Span>,

@@ -24,25 +24,16 @@ pub fn basic_section_full<'a>(
     parent: &'a SectionParent,
     debug: bool,
 ) -> IResult<&'a str, Section> {
-    let initial_head = source;
     let (source, _) = pair(tag("--"), space1).parse(source)?;
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
             .parse(source)?;
     let (source, (attrs, flags)) =
         section_metadata(source, config, parent, debug)?;
-    let source_head = initial_head.replace(source, "").trim().to_string();
     let (source, _) = multispace0.parse(source)?;
-    let initial_body = source;
     let (source, children) =
         many0(|src| text_block(src, config, &SectionParent::Basic, debug))
             .parse(source)?;
-    let tmp_source_body = initial_body.replace(source, "").trim().to_string();
-    let source_body = if tmp_source_body != "" {
-        Some(tmp_source_body)
-    } else {
-        None
-    };
     Ok((
         "",
         Section {
@@ -52,8 +43,6 @@ pub fn basic_section_full<'a>(
                 children,
                 end_section: None,
                 flags,
-                source_body,
-                source_head,
             },
             kind: kind.to_string(),
         },
@@ -88,8 +77,6 @@ mod test {
                 }],
                 end_section: None,
                 flags: vec![],
-                source_body: Some("bravo foxtrot tango".to_string()),
-                source_head: "-- title".to_string(),
             },
             kind: "title".to_string(),
         };
