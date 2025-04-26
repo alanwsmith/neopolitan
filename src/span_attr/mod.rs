@@ -1,5 +1,5 @@
 use crate::span::code_span::code_span;
-use crate::span::text_span_in_metadata::text_span_in_metadata;
+use crate::span::text_in_span_attr::text_in_span_attr;
 use crate::span_metadata::RawSpanMetadata;
 use crate::span_strings::single_character::single_character;
 use nom::IResult;
@@ -16,9 +16,11 @@ use nom::combinator::recognize;
 use nom::multi::many1;
 use nom::sequence::preceded;
 
-// TODO: Verify the same rules
-// for flags apply for attribute
-// keys
+// TODO: Move ``not_character`` to
+// it's own file
+
+// TODO: Use single function for
+// attr key and flags.
 
 pub fn not_character<'a>(
     source: &'a str,
@@ -45,7 +47,7 @@ pub fn span_attr<'a>(
     let (source, _) = tag(":").parse(source)?;
     let (source, _) = (space0, opt(line_ending), space0).parse(source)?;
     let (source, spans) =
-        many1(alt((text_span_in_metadata, code_span))).parse(source)?;
+        many1(alt((text_in_span_attr, code_span))).parse(source)?;
     Ok((
         source,
         RawSpanMetadata::Attr {
@@ -63,9 +65,11 @@ mod test {
     use rstest::rstest;
     use std::collections::BTreeMap;
 
-    // NOTE: These lines are long because
+    // NOTE: These rstest lines are long because
     // breaking them breaks the formatter
-    // for the entire file
+    // for the entire file. New tests that need
+    // to be long are made in independent
+    // tests below.
 
     #[rstest]
     #[case("|alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
@@ -75,12 +79,28 @@ mod test {
     #[case("|alfa:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
     #[case("|alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
     #[case("|alfa: bravo``code-here``>>", ">",RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}, Span::Code{attrs: BTreeMap::new(), flags: vec![], spans: vec![Span::Text{content: "code-here".to_string()}]}]}, ">>")]
-    fn span_flag_valid_tests(
+    fn span_attr_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
         #[case] left: RawSpanMetadata,
         #[case] remainder: &str,
     ) {
+        let right = span_attr(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
+
+    #[test]
+    fn span_attr_whitespace_test() {
+        let source = "|  delta: \n   yankee  \n  `` ping";
+        let character = "`";
+        let left = RawSpanMetadata::Attr {
+            key: "delta".to_string(),
+            spans: vec![Span::Text {
+                content: "yankee".to_string(),
+            }],
+        };
+        let remainder = "`` ping";
         let right = span_attr(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);

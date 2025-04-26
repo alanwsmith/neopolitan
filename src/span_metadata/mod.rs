@@ -14,6 +14,11 @@ pub enum RawSpanMetadata {
     Flag(String),
 }
 
+// TODO: create ``metadata_key`` or something
+// like that that is used for flags and
+// the keys for attrs so they have the same
+// rules.
+
 pub fn span_metadata<'a>(
     source: &'a str,
     character: &'a str,

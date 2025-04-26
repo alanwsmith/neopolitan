@@ -8,6 +8,9 @@ use nom::Parser;
 use nom::branch::alt;
 use nom::multi::many1;
 
+// TODO: Set this up to be text_in_section_attr
+// (independent of text_in_span_attr)
+
 pub fn text_span_in_metadata<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, results) = many1(alt((
         plain_text_string_base,

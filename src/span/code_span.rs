@@ -33,6 +33,9 @@ pub fn code_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
     ))
 }
 
+// TODO: Move this to text_span_in_span and
+// pass character to it.
+
 pub fn code_span_text<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, parts) = many1(alt((
         plain_text_string_base,
@@ -45,7 +48,7 @@ pub fn code_span_text<'a>(source: &'a str) -> IResult<&'a str, Span> {
     Ok((
         source,
         Span::Text {
-            content: parts.join(""),
+            content: parts.join("").trim().to_string(),
         },
     ))
 }
@@ -53,35 +56,59 @@ pub fn code_span_text<'a>(source: &'a str) -> IResult<&'a str, Span> {
 #[cfg(test)]
 mod test {
 
-    // use super::*;
-    // use crate::span::Span;
-    // use pretty_assertions::assert_eq;
-    // use rstest::rstest;
+    use super::*;
+    use crate::span::Span;
+    use pretty_assertions::assert_eq;
+    use rstest::rstest;
+    use std::collections::BTreeMap;
 
-    // #[rstest]
-    // #[case("``alfa``", Span::Code{
-    //     attrs: BTreeMap::new(),
-    //     flags: vec![],
-    //     spans: vec![
-    //         Span::Text{content: "alfa".to_string()}
-    //     ],
-    // }, "")]
-    // #[case("``alfa|bravo``", Span::Code{
-    //     attrs: BTreeMap::new(),
-    //     flags: vec!["bravo".to_string()],
-    //     spans: vec![
-    //         Span::Text{content: "alfa".to_string()}
-    //     ],
-    // }, "")]
-    // fn code_span_valid_tests(
-    //     #[case] source: &str,
-    //     #[case] left: Span,
-    //     #[case] remainder: &str,
-    // ) {
-    //     let right = code_span(source).unwrap();
-    //     assert_eq!(left, right.1);
-    //     assert_eq!(remainder, right.0);
-    // }
+    #[rstest]
+    #[case("``alfa``", Span::Code{
+        attrs: BTreeMap::new(),
+        flags: vec![],
+        spans: vec![
+            Span::Text{content: "alfa".to_string()}
+        ],
+    }, "")]
+    #[case("``alfa|bravo``", Span::Code{
+        attrs: BTreeMap::new(),
+        flags: vec!["bravo".to_string()],
+        spans: vec![
+            Span::Text{content: "alfa".to_string()}
+        ],
+    }, "")]
+    fn code_span_valid_tests(
+        #[case] source: &str,
+        #[case] left: Span,
+        #[case] remainder: &str,
+    ) {
+        let right = code_span(source).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
+
+    #[test]
+    fn code_span_newline_test() {
+        let source = "``\nalfa\n|\nbravo:\ncharlie\n|\ndelta\n`` ping";
+        let mut attrs = BTreeMap::new();
+        attrs.insert(
+            "bravo".to_string(),
+            vec![vec![Span::Text {
+                content: "charlie".to_string(),
+            }]],
+        );
+        let flags = vec!["delta".to_string()];
+        let left = Span::Code {
+            attrs,
+            flags,
+            spans: vec![Span::Text {
+                content: "alfa".to_string(),
+            }],
+        };
+        let remainder = " ping";
+        let right = code_span(source).unwrap().1;
+        assert_eq!(left, right);
+    }
 
     //
 }
