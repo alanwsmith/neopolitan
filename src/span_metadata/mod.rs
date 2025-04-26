@@ -56,6 +56,38 @@ pub fn span_metadata<'a>(
     Ok((source, (flags, attrs)))
 }
 
+pub fn span_metadata_dev<'a>(
+    source: &'a str,
+    character: &'a str,
+) -> IResult<&'a str, (Vec<String>, BTreeMap<String, Vec<Span>>)> {
+    // Reminder: attrs first otherwise things go wrong with this setup
+    let (source, raw_metadata) = many0(alt((
+        |src| span_attr(src, character),
+        |src| span_flag(src, character),
+    )))
+    .parse(source)?;
+    let mut flags = raw_metadata
+        .iter()
+        .filter_map(|data| match data {
+            RawSpanMetadata::Flag(content) => Some(content.clone()),
+            _ => None,
+        })
+        .collect::<Vec<String>>();
+    let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();
+    raw_metadata.iter().for_each(|data| match data {
+        RawSpanMetadata::Attr { key, spans } => match attrs.get_mut(key) {
+            Some(v) => {
+                spans.iter().for_each(|span| v.push(span.clone()));
+            }
+            None => {
+                attrs.insert(key.to_string(), spans.clone());
+            }
+        },
+        _ => (),
+    });
+    Ok((source, (flags, attrs)))
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
@@ -64,17 +96,39 @@ mod test {
     use rstest::rstest;
 
     #[test]
-    fn single_flag_test() {
+    fn single_flag_test_dev() {
         let source = "|alfa``";
         let character = "`";
         let flags = vec!["alfa".to_string()];
         let attrs = BTreeMap::new();
         let left = (flags, attrs);
         let remainder = "``";
-        let right = span_metadata(source, character).unwrap();
+        let right = span_metadata_dev(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
+
+    #[test]
+    fn solo_single_attr_test_dev() {
+        let source = "|alfa: bravo``";
+        let character = "`";
+        let flags = vec![];
+        let mut attrs = BTreeMap::new();
+        attrs.insert(
+            "alfa".to_string(),
+            vec![Span::Text {
+                content: "bravo".to_string(),
+            }],
+        );
+        let left = (flags, attrs);
+        let remainder = "``";
+        let right = span_metadata_dev(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
+
+    // TESTS TO REMOVE FOR OLD
+    // Vec<Vec<Span>> approach.
 
     #[test]
     fn single_attr_test() {
@@ -141,6 +195,4 @@ mod test {
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
-
-    //
 }
