@@ -17,7 +17,7 @@ pub enum RawSpanMetadata {
 pub fn span_metadata<'a>(
     source: &'a str,
     character: &'a str,
-) -> IResult<&'a str, (Vec<String>, BTreeMap<String, Vec<Span>>)> {
+) -> IResult<&'a str, (Vec<String>, BTreeMap<String, Vec<Vec<Span>>>)> {
     // Reminder: attrs first otherwise things go wrong with this setup
     let (source, raw_metadata) = many0(alt((
         |src| span_attr(src, character),
@@ -31,10 +31,19 @@ pub fn span_metadata<'a>(
             _ => None,
         })
         .collect::<Vec<String>>();
-    let mut attrs = BTreeMap::new();
+    let mut attrs: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
     raw_metadata.iter().for_each(|data| match data {
         RawSpanMetadata::Attr { key, spans } => {
-            attrs.insert(key.to_string(), spans.clone());
+            match attrs.get_mut(key) {
+                Some(v) => {
+                    v.push(spans.clone());
+                    ()
+                }
+                None => {
+                    attrs.insert(key.to_string(), vec![spans.clone()]);
+                    ()
+                }
+            }
             ()
         }
         _ => (),
@@ -70,10 +79,57 @@ mod test {
         let mut attrs = BTreeMap::new();
         attrs.insert(
             "alfa".to_string(),
+            vec![vec![Span::Text {
+                content: "bravo".to_string(),
+            }]],
+        );
+        let left = (flags, attrs);
+        let remainder = "``";
+        let right = span_metadata(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
+
+    #[test]
+    fn multi_attr_test() {
+        let source = "|alfa: bravo|charlie: delta``";
+        let character = "`";
+        let flags = vec![];
+        let mut attrs: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
+        attrs.insert(
+            "alfa".to_string(),
+            vec![vec![Span::Text {
+                content: "bravo".to_string(),
+            }]],
+        );
+        attrs.insert(
+            "charlie".to_string(),
+            vec![vec![Span::Text {
+                content: "delta".to_string(),
+            }]],
+        );
+        let left = (flags, attrs);
+        let remainder = "``";
+        let right = span_metadata(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
+
+    #[test]
+    fn single_attr_multiple_times_test() {
+        let source = "|alfa: bravo|alfa: delta``";
+        let character = "`";
+        let flags = vec![];
+        let mut attrs: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
+        let alfa_vecs = vec![
             vec![Span::Text {
                 content: "bravo".to_string(),
             }],
-        );
+            vec![Span::Text {
+                content: "delta".to_string(),
+            }],
+        ];
+        attrs.insert("alfa".to_string(), alfa_vecs);
         let left = (flags, attrs);
         let remainder = "``";
         let right = span_metadata(source, character).unwrap();
