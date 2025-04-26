@@ -73,7 +73,7 @@ mod test {
         let remainder = "";
         let right = text_in_span_attr(source).unwrap();
         assert_eq!(remainder, right.0);
-        // assert_eq!(left, right.1);
+        assert_eq!(left, right.1);
     }
 
     #[test]
@@ -88,20 +88,5 @@ mod test {
                 assert!(true);
             }
         }
-        // assert_eq!(left, right.1);
     }
-
-    // #[rstest]
-    // #[case("``alfa")]
-    // #[case("<<alfa")]
-    // fn text_span_invalid_tests(#[case] source: &str) {
-    //     let result = text_in_span_attr(source);
-    //     match result {
-    //         Ok(_) => {
-    //             dbg!(result.unwrap());
-    //             assert!(false)
-    //         }
-    //         Err(_) => assert!(true),
-    //     }
-    // }
 }
