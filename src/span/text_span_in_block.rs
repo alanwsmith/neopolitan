@@ -1,4 +1,5 @@
 use crate::span::Span;
+use crate::span_strings::multiple_pipes::multiple_pipes;
 use crate::span_strings::plain_text_any_colons::plain_text_any_colons;
 use crate::span_strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
 use crate::span_strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
@@ -16,6 +17,7 @@ pub fn text_span_in_block<'a>(source: &'a str) -> IResult<&'a str, Span> {
         plain_text_single_line_ending_as_space,
         plain_text_any_colons,
         single_pipe,
+        multiple_pipes,
     )))
     .parse(source)?;
     Ok((
@@ -47,6 +49,7 @@ mod test {
     #[case("alfa <<span|ping>>", Span::Text{ content: "alfa ".to_string()}, "<<span|ping>>")]
     #[case("alfa\\<<", Span::Text{ content: "alfa".to_string()}, "\\<<")]
     #[case("alfa|bravo", Span::Text{ content: "alfa|bravo".to_string()}, "")]
+    #[case("alfa||bravo", Span::Text{ content: "alfa||bravo".to_string()}, "")]
     fn text_span_valid_tests(
         #[case] source: &str,
         #[case] left: Span,

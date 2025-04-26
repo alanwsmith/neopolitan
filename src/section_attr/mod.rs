@@ -21,6 +21,11 @@ use nom::{IResult, branch::alt, bytes::complete::tag};
 //
 // Though, in the long term, it would be
 // nice to be able to do that too.
+//
+// Might be able to just slurp all the
+// text to start with and then parse
+// it after multiple instances of the
+// same attr have been assembled.
 
 pub fn raw_section_attr<'a>(
     source: &'a str,

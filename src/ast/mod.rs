@@ -87,7 +87,7 @@ mod test {
         let source = include_str!("test-data/span-test.neo");
         if let Ast::Ok(sections) = Ast::new_from_source(source, &config, false)
         {
-            println!("{}", serde_json::to_string_pretty(&sections).unwrap());
+            // println!("{}", serde_json::to_string_pretty(&sections).unwrap());
             assert_eq!(1, sections.len());
         } else {
             assert!(false);

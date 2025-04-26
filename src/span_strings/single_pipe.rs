@@ -21,7 +21,7 @@ mod test {
     #[rstest]
     #[case("|", "|", "")]
     #[case("|x", "|", "x")]
-    fn single_character_valid_tests(
+    fn single_pipe_valid_tests(
         #[case] source: &str,
         #[case] left: &str,
         #[case] remainder: &str,
@@ -33,7 +33,7 @@ mod test {
 
     #[rstest]
     #[case("||")]
-    fn single_character_invalid_tests(#[case] source: &str) {
+    fn single_pipe_invalid_tests(#[case] source: &str) {
         let result = single_pipe(source);
         match result {
             Ok(value) => {
