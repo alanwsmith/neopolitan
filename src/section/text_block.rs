@@ -5,6 +5,7 @@ use crate::section_category::SectionCategory;
 use crate::section_parent::SectionParent;
 use crate::span::code_span::code_span;
 use crate::span::escaped_span::escaped_span;
+use crate::span::span;
 use crate::span::text_span::text_span;
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
@@ -26,12 +27,12 @@ pub fn text_block<'a>(
 ) -> IResult<&'a str, Section> {
     let (source, _) = not(tag("--")).parse(source)?;
 
-    let (source, spans) = many1(alt((
-        text_span,
-        code_span,
-        escaped_span,
-        // span_of_plain_text_for_block_paragraph,
-        //     span_of_escaped_character,
+    let (source, spans) = many1(
+        span,
+        // alt((
+        // text_span,
+        // code_span,
+        // escaped_span,
         //     named_span,
         //     code_shorthand_span,
         //     emphasis_shorthand_span,
@@ -43,7 +44,8 @@ pub fn text_block<'a>(
         //     strikethrough_shorthand_span,
         //     strong_shorthand_span,
         //     underline_shorthand_span,
-    )))
+        // ))
+    )
     .parse(source)?;
     let (source, _) = multispace0(source)?;
 

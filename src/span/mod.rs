@@ -2,8 +2,14 @@ pub mod code_span;
 pub mod escaped_span;
 pub mod text_span;
 
+use code_span::code_span;
+use escaped_span::escaped_span;
+use nom::IResult;
+use nom::Parser;
+use nom::branch::alt;
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
+use text_span::text_span;
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 #[serde(tag = "category", rename_all = "lowercase")]
@@ -58,4 +64,10 @@ pub enum Span {
     // StrikethroughShorthand(StrikethroughShorthandV42),
     // #[serde(rename = "underline-span")]
     // UnderlineShorthand(UnderlineShorthandV42),
+}
+
+pub fn span<'a>(source: &'a str) -> IResult<&'a str, Span> {
+    let (source, span) =
+        alt((text_span, code_span, escaped_span)).parse(source)?;
+    Ok((source, span))
 }
