@@ -1,3 +1,16 @@
 [! for child_span in span.spans !]
-<code>[@ child_span.content @]</code>
+<code>[@ child_span.content @]
+{attrs: 
+[! for attr in span.attrs !]
+[@ attr @]> [@ span.attrs[attr] @],
+[! endfor !]
+
+, flags: 
+
+[! for flag in span.flags !]
+[@ flag @]
+[! endfor !]
+}
+
+</code>
 [! endfor !]

@@ -168,6 +168,11 @@ mod test {
                 include_str!("../dev-templates/spans/text-span.neoj"),
             )
             .unwrap();
+            env.add_template(
+                "macros.neoj",
+                include_str!("../dev-templates/macros.neoj"),
+            )
+            .unwrap();
             match env.get_template("page.neoj") {
                 Ok(template) => {
                     match template.render(

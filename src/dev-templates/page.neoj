@@ -1,3 +1,5 @@
+[! include "macros.neoj" !]
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,9 +20,14 @@
 <body>
     <h1>PAGE</h1>
     <div>
+      <ul>
 [! for section in page !]
-      [! include section.type + ".neoj" !]
+      [@ output_section(section) @]
 [! endfor !]
+      </ul>
     </div>
+    <pre>
+      [@ page|tojson(true) @]
+    </pre>
 </body>
 </html>

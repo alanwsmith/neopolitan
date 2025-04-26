@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,131 +27,207 @@
 <body>
     <h1>PAGE</h1>
     <div>
+      <ul>
 
-      <h2>BASIC SECTION: title</h2>
-<div>Flags: 
-<ul>
+      
+<li>
+  <h2>
 
-</ul>
-</div>
-<div>Attrs:
-<ul>
-
-</ul>
-</div>
-
-
-
-
-<h3>BLOCK</h3>
-
-
-This Is An Output Example
-
-
-
-
-<h3>BLOCK</h3>
-
-
-This is 
-
-
-<code>a code</code>
-
-
- example. That spans multiple lines.
-
-
-
-
-<h3>BLOCK</h3>
-
-
-And another one down here.
-
-
-
-
-<h3>BLOCK</h3>
-
-
-This is a | and two || and ||| pipes
+  title
+  
 
 
 
 
 
+  <div>Attributes</div>
 
-      <h2>BASIC SECTION: p</h2>
-<div>Flags: 
-<ul>
-
-</ul>
-</div>
-<div>Attrs:
-<ul>
-
-</ul>
-</div>
+  </h2>
 
 
 
 
-<h3>BLOCK</h3>
+      
+<li>
+  <h2>
 
-
-This is another section
+  p
+  
 
 
 
 
 
+  <div>Attributes</div>
 
-      <h2>BASIC SECTION: metadata</h2>
-<div>Flags: 
+  </h2>
+
+
+
+
+      
+<li>
+  <h2>
+
+  metadata
+  
+
+
+<div>flags:</div>
 <ul>
 
 <li>flag-example</li>
 
 </ul>
-</div>
-<div>Attrs:
-<ul>
-
-<li>created: 
-2025-04-26T15:41:54-04:00
-
-</li>
-
-<li>id: 
-2w/hr/sm/c3
-
-</li>
-
-<li>status: 
-prep
-
-</li>
-
-<li>template: 
-post
-
-</li>
-
-<li>updated: 
-2025-04-26T15:41:54-04:00
-
-</li>
-
-</ul>
-</div>
 
 
 
 
 
 
+  <div>Attributes</div>
+
+  </h2>
+
+
+
+
+      </ul>
     </div>
+    <pre>
+      [
+  {
+    "attrs": {},
+    "bound": "Full",
+    "children": [
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This Is An Output Example"
+          }
+        ],
+        "type": "block"
+      },
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This is "
+          },
+          {
+            "attrs": {
+              "code": [
+                {
+                  "category": "text-span",
+                  "content": "attr"
+                }
+              ]
+            },
+            "category": "code-span",
+            "flags": [
+              "code-flag"
+            ],
+            "spans": [
+              {
+                "category": "text-span",
+                "content": "a code"
+              }
+            ]
+          },
+          {
+            "category": "text-span",
+            "content": " example. That spans multiple lines."
+          }
+        ],
+        "type": "block"
+      },
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "And another one down here."
+          }
+        ],
+        "type": "block"
+      },
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This is a | and two || and ||| pipes"
+          }
+        ],
+        "type": "block"
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "title",
+    "type": "basic"
+  },
+  {
+    "attrs": {},
+    "bound": "Full",
+    "children": [
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This is another section"
+          }
+        ],
+        "type": "block"
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "p",
+    "type": "basic"
+  },
+  {
+    "attrs": {
+      "created": [
+        {
+          "category": "text-span",
+          "content": "2025-04-26T15:41:54-04:00"
+        }
+      ],
+      "id": [
+        {
+          "category": "text-span",
+          "content": "2w/hr/sm/c3"
+        }
+      ],
+      "status": [
+        {
+          "category": "text-span",
+          "content": "prep"
+        }
+      ],
+      "template": [
+        {
+          "category": "text-span",
+          "content": "post"
+        }
+      ],
+      "updated": [
+        {
+          "category": "text-span",
+          "content": "2025-04-26T15:41:54-04:00"
+        }
+      ]
+    },
+    "bound": "Full",
+    "children": [],
+    "end_section": null,
+    "flags": [
+      "flag-example"
+    ],
+    "kind": "metadata",
+    "type": "basic"
+  }
+]
+    </pre>
 </body>
 </html>

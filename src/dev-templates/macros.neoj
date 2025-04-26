@@ -1,0 +1,48 @@
+[! macro output_section(section) !]
+<li>
+  <h2>
+[! if section.type == "basic" !]
+  [@ section.kind @]
+  [@ output_flags(section) @]
+
+  <div>Attributes</div>
+[! else !]
+  [@ section.type @]
+[! endif !]
+  </h2>
+
+[#
+<ul>
+[@ section.content @]
+[! endif !]
+</ul>
+</li>
+#]
+[! endmacro !]
+
+[! macro output_flags(section) !]
+[! for flag in section.flags !]
+[! if loop.first !]
+<div>flags:</div>
+<ul>
+[! endif !]
+<li>[@ flag @]</li>
+[! if loop.last !]
+</ul>
+[! endif !]
+[! endfor !]
+
+[#
+
+<ul>[! endif !]
+<li>[@ flag @]</li>
+[! if loop.last !]</ul>[! endif !]
+#]
+[! endmacro !]
+
+
+[! macro output_spans(spans) !]
+SPAN
+[! endmacro !]
+
+

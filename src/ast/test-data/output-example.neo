@@ -2,7 +2,7 @@
 
 This Is An Output Example
 
-This is ``a code`` example. That
+This is ``a code|code-flag|code: attr`` example. That
 spans multiple lines.
 
 And another one down here.

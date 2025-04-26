@@ -16,7 +16,8 @@ use std::collections::BTreeMap;
 
 #[derive(Debug, Deserialize, PartialEq, Serialize)]
 // #[serde(untagged)]
-#[serde(tag = "type", content = "content", rename_all = "lowercase")]
+// #[serde(tag = "type", content = "content", rename_all = "lowercase")]
+#[serde(tag = "type", rename_all = "lowercase")]
 pub enum Section {
     Basic {
         attrs: BTreeMap<String, Vec<Span>>,
