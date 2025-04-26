@@ -1,0 +1,28 @@
+<h2>BASIC: [@ section.content.kind @]</h2>
+[! if "content" in section !]
+[! for child in section.content.children !]
+
+[! include child.type + ".neoj" !]
+[#
+<pre>
+[@ child.type @]
+[@ child @]
+</pre>
+#]
+
+[! endfor !]
+
+[#
+[! for child in section.content.children !]
+  [! include child.type + ".neoj" !]
+<!--
+[@ child.type @]
+<pre>
+  </pre>
+[! endfor !]
+<pre>
+[@ section.content|tojson(true) @]
+</pre>
+-->
+#]
+[! endif !]

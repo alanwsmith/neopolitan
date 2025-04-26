@@ -57,7 +57,7 @@ pub enum Span {
     //     kind: String,
     //     text: String,
     // },
-    #[serde(rename = "text")]
+    #[serde(rename = "text-span")]
     Text {
         content: String,
     },
