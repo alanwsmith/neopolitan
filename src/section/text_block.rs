@@ -1,7 +1,6 @@
 use crate::config::Config;
 use crate::section::Section;
 use crate::section_bound::SectionBound;
-use crate::section_category::SectionCategory;
 use crate::section_parent::SectionParent;
 use crate::span::code_span::code_span;
 use crate::span::escaped_span::escaped_span;
@@ -49,13 +48,7 @@ pub fn text_block<'a>(
     .parse(source)?;
     let (source, _) = multispace0(source)?;
 
-    Ok((
-        source,
-        Section {
-            category: SectionCategory::Block { spans },
-            kind: "text-block".to_string(),
-        },
-    ))
+    Ok((source, Section::Block { spans }))
 
     // dump_parser_if_debug(debug, dbg_header, source, 2);
     // let (source, _) = multispace0.context("").parse(source)?;
@@ -87,13 +80,10 @@ mod test {
         let config = Config::default();
         let parent = SectionParent::Basic;
         let debug = false;
-        let left = Section {
-            category: SectionCategory::Block {
-                spans: vec![Span::Text {
-                    content: "this is some text with some lines".to_string(),
-                }],
-            },
-            kind: "text-block".to_string(),
+        let left = Section::Block {
+            spans: vec![Span::Text {
+                content: "this is some text with some lines".to_string(),
+            }],
         };
         let right = text_block(source, &config, &parent, debug).unwrap().1;
         assert_eq!(left, right);

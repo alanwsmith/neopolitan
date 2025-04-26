@@ -1,8 +1,8 @@
-use super::Section;
 use super::text_block::text_block;
 use crate::config::Config;
 use crate::section_bound::SectionBound;
-use crate::section_category::SectionCategory;
+// use crate::section_category::SectionCategory;
+use crate::section::Section;
 use crate::section_metadata::section_metadata;
 use crate::section_parent::SectionParent;
 use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -35,14 +35,12 @@ pub fn basic_section_full<'a>(
             .parse(source)?;
     Ok((
         source,
-        Section {
-            category: SectionCategory::Basic {
-                attrs,
-                bound: SectionBound::Full,
-                children,
-                end_section: None,
-                flags,
-            },
+        Section::Basic {
+            attrs,
+            bound: SectionBound::Full,
+            children,
+            end_section: None,
+            flags,
             kind: kind.to_string(),
         },
     ))
@@ -61,21 +59,16 @@ mod test {
         let config = Config::default();
         let parent = SectionParent::Page;
         let debug = false;
-        let left = Section {
-            category: SectionCategory::Basic {
-                attrs: BTreeMap::new(),
-                bound: SectionBound::Full,
-                children: vec![Section {
-                    category: SectionCategory::Block {
-                        spans: vec![Span::Text {
-                            content: "bravo foxtrot tango".to_string(),
-                        }],
-                    },
-                    kind: "text-block".to_string(),
+        let left = Section::Basic {
+            attrs: BTreeMap::new(),
+            bound: SectionBound::Full,
+            children: vec![Section::Block {
+                spans: vec![Span::Text {
+                    content: "bravo foxtrot tango".to_string(),
                 }],
-                end_section: None,
-                flags: vec![],
-            },
+            }],
+            end_section: None,
+            flags: vec![],
             kind: "title".to_string(),
         };
         let right = basic_section_full(source, &config, &parent, debug)
