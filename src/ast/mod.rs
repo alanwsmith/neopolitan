@@ -158,6 +158,16 @@ mod test {
                 include_str!("../dev-templates/block.neoj"),
             )
             .unwrap();
+            env.add_template(
+                "spans/code-span.neoj",
+                include_str!("../dev-templates/spans/code-span.neoj"),
+            )
+            .unwrap();
+            env.add_template(
+                "spans/text-span.neoj",
+                include_str!("../dev-templates/spans/text-span.neoj"),
+            )
+            .unwrap();
             match env.get_template("page.neoj") {
                 Ok(template) => {
                     match template.render(

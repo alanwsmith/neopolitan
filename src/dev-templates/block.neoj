@@ -1,13 +1,7 @@
 <h3>BLOCK</h3>
-
 [! if "content" in child !]
 [! for span in child.content.spans !]
-[@ span|tojson(true) @]
+[! include "spans/" + span.category + ".neoj" !]
 [! endfor !]
-[#
-<pre>
-  [@ child.content.spans|tojson(true) @]
-</pre>
-#]
 [! endif !]
 

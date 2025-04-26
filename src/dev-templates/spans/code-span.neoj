@@ -1,0 +1,3 @@
+[! for child_span in span.spans !]
+<code>[@ child_span.content @]</code>
+[! endfor !]
