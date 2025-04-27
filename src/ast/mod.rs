@@ -196,12 +196,13 @@ mod test {
                                 let output_error_template = env
                                     .get_template("rendering-error.neoj")
                                     .unwrap();
-                                let message = Value::from(
+                                let name = Value::from(e.name().unwrap());
+                                let detail = Value::from(e.detail().unwrap());
+                                let line = Value::from(e.line().unwrap());
+                                let debug = Value::from(
                                     e.display_debug_info().to_string(),
                                 );
-                                match output_error_template
-                                    .render(context!(message => message))
-                                {
+                                match output_error_template.render(context!(debug => debug, detail => detail, line => line, name=> name)) {
                                     Ok(error_output) => write_file_with_mkdir(
                                         &output_path,
                                         &error_output,

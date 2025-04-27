@@ -2,8 +2,10 @@
 [!- include "macros.neoj" -!]
 
 [! block main !]
-    <h1>Output Error</h1>
-    <pre>[@ message @]</pre>
+    <h1>Rendering Error</h1>
+    <p>File: [@ name @]</p>
+    <p>Details: [@ detail @]</p>
+    <pre>[@ debug @]</pre>
 [! endblock !]
 
 
