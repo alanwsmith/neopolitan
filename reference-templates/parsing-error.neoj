@@ -2,7 +2,7 @@
 [!- include "macros.neoj" -!]
 
 [! block main !]
-    <h1>Error Parsing</h1>
+    <h1>Parsing Error</h1>
     <h2>Message:</h2>
     <pre>[@ message @]</pre>
     <h2>Remainder</h2>

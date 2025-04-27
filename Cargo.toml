@@ -4,7 +4,7 @@ version = "0.2.0"
 edition = "2024"
 
 [dev-dependencies]
-minijinja = { version = "2.9.0", features = ["custom_syntax", "json", "loader"] }
+minijinja = { version = "2.9.0", features = ["custom_syntax", "debug", "json", "loader"] }
 pretty_assertions = "1.4.1"
 walkdir = "2"
 

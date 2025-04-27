@@ -193,8 +193,27 @@ mod test {
                             }
                             Err(e) => {
                                 // Attempt to fall back to error output
-                                dbg!(e);
-                                ()
+                                let output_error_template = env
+                                    .get_template("output-error.neoj")
+                                    .unwrap();
+                                let message = Value::from(
+                                    e.display_debug_info().to_string(),
+                                );
+                                match output_error_template
+                                    .render(context!(message => message))
+                                {
+                                    Ok(error_output) => write_file_with_mkdir(
+                                        &output_path,
+                                        &error_output,
+                                    )
+                                    .unwrap(),
+                                    // Panic on purpose if the error file
+                                    // can't be written
+                                    Err(panic_error) => {
+                                        dbg!(panic_error);
+                                        assert!(false);
+                                    }
+                                }
                             }
                         }
                     }

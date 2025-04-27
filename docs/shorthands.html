@@ -8,20 +8,317 @@
 </head>
 <body>
   <main class="flow">
-
-["sections/title/default.neoj", "sections/basic/default.neoj"]
-  ["sections/h2/default.neoj", "sections/basic/default.neoj"]
-  ["sections/olist/default.neoj", "sections/basic/default.neoj"]
-  ["sections/h2/default.neoj", "sections/basic/default.neoj"]
-  ["sections/h2/default.neoj", "sections/basic/default.neoj"]
-  ["sections/page/default.neoj", "sections/basic/default.neoj"]
-  <div>
-      <ul>
-      </ul>
-    </div>
+    <h1>Output Error</h1>
     <pre>
-      null
-    </pre>
+---------------------------------- page.neoj ----------------------------------
+  16 |     "sections/" + section.kind + "/default.neoj",
+  17 |     "sections/" + section.type + "/default.neoj",
+  18 |   ] -!]
+  19 >   [!- include templates -!]
+     i       ^^^^^^^^^^^^^^^^^ template not found
+  20 |   [#
+  21 |   [!- if section.kind == "title" !]
+  22 |     [@- output_title(section) -@]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Referenced variables: {
+    loop: <loop 1/6>,
+    section: {
+        "attrs": {},
+        "bound": "Full",
+        "children": [
+            {
+                "spans": [
+                    {
+                        "category": "text-span",
+                        "content": "Introduction",
+                    },
+                ],
+                "type": "block",
+            },
+            {
+                "spans": [
+                    {
+                        "category": "text-span",
+                        "content": "Neopolitan provides two ways to enhance content inside of sections:",
+                    },
+                ],
+                "type": "block",
+            },
+        ],
+        "end_section": none,
+        "flags": [],
+        "kind": "h2",
+        "type": "basic",
+    },
+    sections: [
+        {
+            "attrs": {},
+            "bound": "Full",
+            "children": [
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "Tags and Shorthands",
+                        },
+                    ],
+                    "type": "block",
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "title",
+            "type": "basic",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "children": [
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "Introduction",
+                        },
+                    ],
+                    "type": "block",
+                },
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "Neopolitan provides two ways to enhance content inside of sections:",
+                        },
+                    ],
+                    "type": "block",
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+            "type": "basic",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "children": [
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "1. tags",
+                        },
+                    ],
+                    "type": "block",
+                },
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "2. shorthands",
+                        },
+                    ],
+                    "type": "block",
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "olist",
+            "type": "basic",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "children": [
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "TODO",
+                        },
+                    ],
+                    "type": "block",
+                },
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "Note that ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code-span",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text-span",
+                                    "content": "class:",
+                                },
+                            ],
+                        },
+                        {
+                            "category": "text-span",
+                            "content": " and ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code-span",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text-span",
+                                    "content": "id:",
+                                },
+                            ],
+                        },
+                        {
+                            "category": "text-span",
+                            "content": " are reserved attributes that must go into the output",
+                        },
+                    ],
+                    "type": "block",
+                },
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "Same with ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code-span",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text-span",
+                                    "content": "alt",
+                                },
+                            ],
+                        },
+                    ],
+                    "type": "block",
+                },
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "Same with ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code-span",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text-span",
+                                    "content": "data-",
+                                },
+                            ],
+                        },
+                    ],
+                    "type": "block",
+                },
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "Same with ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code-span",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text-span",
+                                    "content": "aria-",
+                                },
+                            ],
+                        },
+                    ],
+                    "type": "block",
+                },
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "TBD on others.",
+                        },
+                    ],
+                    "type": "block",
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+            "type": "basic",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "children": [
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "Tags",
+                        },
+                    ],
+                    "type": "block",
+                },
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "For example:",
+                        },
+                    ],
+                    "type": "block",
+                },
+                {
+                    "spans": [
+                        {
+                            "category": "text-span",
+                            "content": "TKTKTK",
+                        },
+                    ],
+                    "type": "block",
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+            "type": "basic",
+        },
+        {
+            "attrs": {
+                "created": [
+                    {
+                        "category": "text-span",
+                        "content": "2025-04-27T10:22:14-04:00",
+                    },
+                ],
+                "updated": [
+                    {
+                        "category": "text-span",
+                        "content": "2025-04-27T10:22:14-04:00",
+                    },
+                ],
+            },
+            "bound": "Full",
+            "children": [],
+            "end_section": none,
+            "flags": [],
+            "kind": "page",
+            "type": "basic",
+        },
+    ],
+    templates: [
+        "sections/h2/default.neoj",
+        "sections/basic/default.neoj",
+    ],
+}
+-------------------------------------------------------------------------------</pre>
 </main>
 </body>
 </html>

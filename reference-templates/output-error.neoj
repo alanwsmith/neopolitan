@@ -1,0 +1,9 @@
+[!- extends "wrapper.neoj" -!]
+[!- include "macros.neoj" -!]
+
+[! block main !]
+    <h1>Output Error</h1>
+    <pre>[@ message @]</pre>
+[! endblock !]
+
+
