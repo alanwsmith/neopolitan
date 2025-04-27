@@ -1,28 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[!- include "helpers/macros.neoj" -!]
 
 <!DOCTYPE html>
 <html lang="en"> 
@@ -33,6 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <main class="flow"><h1>TODOs</h1><h2>Introduction</h2></main>
+  <main class="flow">
+    [!- block main -!][!- endblock -!]
+  </main>
 </body>
 </html>

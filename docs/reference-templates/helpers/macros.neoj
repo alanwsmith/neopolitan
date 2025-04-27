@@ -1,0 +1,121 @@
+[!- macro output_block(block) -!]
+[!- for span in block.spans -!]
+[! include "spans/" + span.category + ".neoj" !]
+[!- endfor -!]
+[!- endmacro -!]
+
+
+[# DEPRECATED: Use .neoj templates instead 
+[!- macro output_section(section) -!]
+<li>
+  <h2>
+[! if section.type == "basic" !]
+  [@ section.kind @]
+  [@ output_section_flags(section) @]
+  [@ output_section_attrs(section) @]
+  [@ output_blocks(section.children) @]
+[! else !]
+  [@ section.type @]
+[! endif !]
+  </h2>
+[!- endmacro -!]
+#]
+
+
+[# DEPRECATED: Use .neoj templates instead 
+[!- macro output_title(section) -!]
+  [!- for block in section.children -!]
+    [!- if loop.first -!]
+      <h1>[@ output_block(block) @]</h1>
+    [!- else -!]
+      <p>[@ output_block(block) @]</p>
+    [!- endif -!]
+  [!- endfor -!]
+[!- endmacro -!]
+#]
+
+
+
+
+[# DEPRECATED: Use .neoj templates instead 
+[!- macro output_blocks(blocks) -!]
+[! for block in blocks !]
+[! if loop.first !]
+<div>blocks:</div>
+<ul>
+[! endif !]
+<li>[@ output_block(block) @]</li>
+[! if loop.last!]
+</ul>
+[! endif !]
+[! endfor !]
+[!- endmacro -!]
+#]
+
+
+
+
+
+[# DEPRECATED: Use .neoj templates instead 
+[!- macro output_section_flags(section) -!]
+[! for flag in section.flags !]
+[! if loop.first !]
+<div>flags:</div>
+<ul>
+[! endif !]
+<li>[@ flag @]</li>
+[! if loop.last !]
+</ul>
+[! endif !]
+[! endfor !]
+[!- endmacro -!]
+#]
+
+
+
+
+[# DEPRECATED: Use .neoj templates instead 
+[!- macro output_section_attrs(section) -!]
+[! for attr in section.attrs !]
+[! if loop.first !]
+<div>attrs:</div>
+<ul>
+[! endif !]
+<li>[@ attr @]: [@ output_spans(section.attrs[attr]) @]</li>
+[! if loop.last !]
+</ul>
+[! endif !]
+[! endfor !]
+[!- endmacro -!]
+#]
+
+
+[# DEPRECATED: Use .neoj templates instead 
+[!- macro output_span_attrs(span) -!]
+[! for attr in span.attrs !]
+[! if loop.first !]
+&lt;-- attrs 
+[! endif !]
+| [@ attr @]: [@ output_spans(span.attrs[attr]) @]
+[! if loop.last !]
+--&gt;
+[! endif !]
+[! endfor !]
+[!- endmacro -!]
+#]
+
+
+[# DEPRECATED: Use .neoj templates instead 
+[!- macro output_span_flags(span) -!]
+[! for flag in span.flags !]
+[! if loop.first !]
+&lt;-- flags 
+[! endif !]
+| [@ flag @]
+[! if loop.last !]
+--&gt;
+[! endif !]
+[! endfor !]
+[!- endmacro -!]
+#]
+

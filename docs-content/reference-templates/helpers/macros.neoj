@@ -1,3 +1,11 @@
+[!- macro output_block(block) -!]
+[!- for span in block.spans -!]
+[! include "spans/" + span.category + ".neoj" !]
+[!- endfor -!]
+[!- endmacro -!]
+
+
+[# DEPRECATED: Use .neoj templates instead 
 [!- macro output_section(section) -!]
 <li>
   <h2>
@@ -11,8 +19,10 @@
 [! endif !]
   </h2>
 [!- endmacro -!]
+#]
 
 
+[# DEPRECATED: Use .neoj templates instead 
 [!- macro output_title(section) -!]
   [!- for block in section.children -!]
     [!- if loop.first -!]
@@ -22,10 +32,12 @@
     [!- endif -!]
   [!- endfor -!]
 [!- endmacro -!]
+#]
 
 
 
 
+[# DEPRECATED: Use .neoj templates instead 
 [!- macro output_blocks(blocks) -!]
 [! for block in blocks !]
 [! if loop.first !]
@@ -38,15 +50,13 @@
 [! endif !]
 [! endfor !]
 [!- endmacro -!]
+#]
 
 
-[!- macro output_block(block) -!]
-[! if block.type == "block" !]
-[@ output_spans(block.spans) @]
-[! endif !]
-[!- endmacro -!]
 
 
+
+[# DEPRECATED: Use .neoj templates instead 
 [!- macro output_section_flags(section) -!]
 [! for flag in section.flags !]
 [! if loop.first !]
@@ -59,15 +69,12 @@
 [! endif !]
 [! endfor !]
 [!- endmacro -!]
+#]
 
 
-[!- macro output_spans(spans) -!]
-[! for span in spans !]
-[! include "spans/" + span.category + ".neoj" !]
-[! endfor !]
-[!- endmacro -!]
 
 
+[# DEPRECATED: Use .neoj templates instead 
 [!- macro output_section_attrs(section) -!]
 [! for attr in section.attrs !]
 [! if loop.first !]
@@ -80,8 +87,10 @@
 [! endif !]
 [! endfor !]
 [!- endmacro -!]
+#]
 
 
+[# DEPRECATED: Use .neoj templates instead 
 [!- macro output_span_attrs(span) -!]
 [! for attr in span.attrs !]
 [! if loop.first !]
@@ -93,8 +102,10 @@
 [! endif !]
 [! endfor !]
 [!- endmacro -!]
+#]
 
 
+[# DEPRECATED: Use .neoj templates instead 
 [!- macro output_span_flags(span) -!]
 [! for flag in span.flags !]
 [! if loop.first !]
@@ -106,4 +117,5 @@
 [! endif !]
 [! endfor !]
 [!- endmacro -!]
+#]
 

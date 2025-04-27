@@ -1,0 +1,17 @@
+[! include "helpers/macros.neoj" !]
+
+[#
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+[! for child_span in span.spans !]
+[@ child_span.content @]
+[! endfor !]
+<span class="attrs-and-flags">
+[@ output_span_attrs(span) @]
+[@ output_span_flags(span) @]
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+#]

@@ -162,7 +162,7 @@ mod test {
                 .build()
                 .unwrap(),
         );
-        env.set_loader(path_loader("reference-templates"));
+        env.set_loader(path_loader("docs-content/reference-templates"));
         // env.set_loader(path_loader("docs-templates"));
         let input_files = get_files_in_dir(&PathBuf::from("docs-content"))?;
         input_files.iter().for_each(|source_path| {
@@ -174,9 +174,11 @@ mod test {
                 &PathBuf::from("docs"),
             )
             .unwrap();
-            if source_extension == "css" || source_extension == "html" {
-                // NOTE: This currently assumes the output
-                // directory already exists.
+            if source_extension == "css" || source_extension == "html" || source_extension == "neoj" {
+                // This panics if it can't make the directory 
+                // or copy the file. Should be fine for dev.
+                let parent = output_path.parent().unwrap();
+                std::fs::create_dir_all(parent).unwrap();
                 std::fs::copy(source_path, output_path).unwrap();
             } else {
                 output_path.set_extension("html");

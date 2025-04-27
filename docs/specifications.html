@@ -1,3 +1,29 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en"> 
 <head> 
@@ -7,174 +33,146 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <main class="flow">
-<h1>
+  <main class="flow"><h1>Neopolitan 2.0.0 Specification</h1><p>[] make 
 
-Neopolitan 2.0.0 Specification
 
-</h1>
-  <p>
 
-[] make 
 
 
 
 
 
- a defined section where the first flag is the language to use for highlighting
 
-</p><h2>
 
-Introduction
 
-</h2><p>
 
-The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification.
 
-</p><h2>
 
-Test Types
 
-</h2><p>
 
-The specification is split into three parts.
 
-</p>
-  <p>
 
-1. AST Generation
 
-</p>
-  <p>
 
-2. Required Sections and Attributes
 
-</p>
-  <p>
 
-3. HTML Output
 
-</p><h2>
 
-AST Generation
 
-</h2><p>
 
-Tests are currently built into the rust code. They include parsing for the shorthands.
 
-</p><p>
+ a defined section where the first flag is the language to use for highlighting</p><h2>Introduction</h2><p>The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification.</p><h2>Test Types</h2><p>The specification is split into three parts.</p><p>1. AST Generation</p><p>2. Required Sections and Attributes</p><p>3. HTML Output</p><h2>AST Generation</h2><p>Tests are currently built into the rust code. They include parsing for the shorthands.</p><p>Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order.</p><h2>Reserved/Required Sections And Attributes</h2><p>Sections</p><p>TODO: Add details about how documents must start with a section (which means all content is in a section)</p><p>- metadata - must not output directly on the page.</p><p>- neopolitan - Outputs the contents of the section without adding anything beyond the content generated from the body of section. This ensures there's a way to test AST generation from a parser. (Necessary because content can't exist outside a section)</p><p>Section Attributes</p><p>These attributes must be handled by a parser to meet the spec. They can be used in any section.</p><p>- 
 
-Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order.
 
-</p><h2>
 
-Reserved/Required Sections And Attributes
 
-</h2>
-  <p>
 
-Sections
 
-</p>
-  <p>
 
-TODO: Add details about how documents must start with a section (which means all content is in a section)
 
-</p>
-  <p>
 
-- metadata - must not output directly on the page.
 
-</p>
-  <p>
 
-- neopolitan - Outputs the contents of the section without adding anything beyond the content generated from the body of section. This ensures there's a way to test AST generation from a parser. (Necessary because content can't exist outside a section)
 
-</p>
-  <p>
 
-Section Attributes
 
-</p>
-  <p>
 
-These attributes must be handled by a parser to meet the spec. They can be used in any section.
 
-</p>
-  <p>
 
-- 
 
 
 
 
 
-</p>
-  <p>
 
-Value is a date in the RFC 3339 format.
 
-</p>
-  <p>
 
-- 
 
 
+</p><p>Value is a date in the RFC 3339 format.</p><p>- 
 
 
 
-</p>
-  <p>
 
-Value is a date in the RFC 3339 format.
 
-</p>
-  <p>
 
-- 
 
 
 
 
 
-</p>
-  <p>
 
-This is the way to change the output template for a section. The details of the values and their corresponding outputs is an implementation detail, but the attribute key is reserved.
 
-</p><h2>
 
-HTML Output
 
-</h2><p>
 
-Neopolitan is designed primarily to generate web content. Output is largely an implementation detail with a required exceptions designed to improve portability between systems.
 
-</p><p>
 
-Any generator that passes all the output tests meets the spec. Anything not defined in the tests is left as an implementation detail.
 
-</p><p>
 
-TODO: Write up details of 
 
 
 
 
 
- being reserved. It's how you can change the output if you want something other than what's speced for the shorthands.
 
-</p><p>
 
-TODO: Consider desciptions of how the HTML Output is representative. (e.g. systems may add extra classes, or attributes, but they should work directionally the same if any modifications are made)
+</p><p>Value is a date in the RFC 3339 format.</p><p>- 
 
-</p><div>
-      <ul>
-      </ul>
-    </div>
-    <pre>
-      null
-    </pre>
-</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p>This is the way to change the output template for a section. The details of the values and their corresponding outputs is an implementation detail, but the attribute key is reserved.</p><h2>HTML Output</h2><p>Neopolitan is designed primarily to generate web content. Output is largely an implementation detail with a required exceptions designed to improve portability between systems.</p><p>Any generator that passes all the output tests meets the spec. Anything not defined in the tests is left as an implementation detail.</p><p>TODO: Write up details of 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ being reserved. It's how you can change the output if you want something other than what's speced for the shorthands.</p><p>TODO: Consider desciptions of how the HTML Output is representative. (e.g. systems may add extra classes, or attributes, but they should work directionally the same if any modifications are made)</p></main>
 </body>
 </html>

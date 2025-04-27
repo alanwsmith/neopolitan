@@ -1,0 +1,8 @@
+[!- for block in section.children -!]
+  [!- if loop.first -!]
+    <h2>[@ output_block(block) @]</h2>
+  [!- else -!]
+    <p>[@ output_block(block) @]</p>
+  [!- endif -!]
+[!- endfor -!]
+
