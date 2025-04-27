@@ -184,7 +184,7 @@ mod test {
                 // can't be output
                 match Ast::new_from_source(&source, &config, false) {
                     Ast::Ok { sections } => {
-                        let template = env.get_template("page.neoj").unwrap();
+                        let template = env.get_template("pages/default.neoj").unwrap();
                         let sections = Value::from_serialize(&sections);
                         match template.render(context!(sections => sections)) {
                             Ok(output) => {
@@ -194,7 +194,7 @@ mod test {
                             Err(e) => {
                                 // Attempt to fall back to error output
                                 let output_error_template = env
-                                    .get_template("rendering-error.neoj")
+                                    .get_template("pages/rendering-error.neoj")
                                     .unwrap();
                                 let name = Value::from(e.name().unwrap());
                                 let detail = Value::from(e.detail().unwrap());
@@ -219,7 +219,7 @@ mod test {
                         }
                     }
                     Ast::Error { message, remainder } => {
-                        let template = env.get_template("error.neoj").unwrap();
+                        let template = env.get_template("pages/parsing-error.neoj").unwrap();
                         let message = Value::from_serialize(message);
                         let remainder = Value::from_serialize(remainder);
                         let output = template
@@ -232,7 +232,7 @@ mod test {
                     }
                     Ast::Incomplete { parsed, remainder } => {
                         let template =
-                            env.get_template("incomplete.neoj").unwrap();
+                            env.get_template("pages/incomplete.neoj").unwrap();
                         let parsed = Value::from_serialize(parsed);
                         let remainder = Value::from_serialize(remainder);
                         let output = template

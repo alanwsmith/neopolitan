@@ -8,30 +8,17 @@
 </head>
 <body>
   <main class="flow">
-
 <h1>
 
 Neopolitan 2.0.0 Specification
 
-</h1><p>
+</h1>
+  <p>
 
 [] make 
 
 
 
-<span class="tag-output-example">
-&lt;code&gt;
-</span>
-
--- code
-
-<span class="attrs-and-flags">
-
-
-</span>
-<span class="tag-output-example">
-&lt;/code&gt;
-</span>
 
 
  a defined section where the first flag is the language to use for highlighting
@@ -52,15 +39,18 @@ Test Types
 
 The specification is split into three parts.
 
-</p><p>
+</p>
+  <p>
 
 1. AST Generation
 
-</p><p>
+</p>
+  <p>
 
 2. Required Sections and Attributes
 
-</p><p>
+</p>
+  <p>
 
 3. HTML Output
 
@@ -80,102 +70,75 @@ Sections can have attrs (attributes) and flags. The flags must preserve the orde
 
 Reserved/Required Sections And Attributes
 
-</h2><p>
+</h2>
+  <p>
 
 Sections
 
-</p><p>
+</p>
+  <p>
 
 TODO: Add details about how documents must start with a section (which means all content is in a section)
 
-</p><p>
+</p>
+  <p>
 
 - metadata - must not output directly on the page.
 
-</p><p>
+</p>
+  <p>
 
 - neopolitan - Outputs the contents of the section without adding anything beyond the content generated from the body of section. This ensures there's a way to test AST generation from a parser. (Necessary because content can't exist outside a section)
 
-</p><p>
+</p>
+  <p>
 
 Section Attributes
 
-</p><p>
+</p>
+  <p>
 
 These attributes must be handled by a parser to meet the spec. They can be used in any section.
 
-</p><p>
+</p>
+  <p>
 
 - 
 
 
 
-<span class="tag-output-example">
-&lt;code&gt;
-</span>
-
--- created:
-
-<span class="attrs-and-flags">
 
 
-</span>
-<span class="tag-output-example">
-&lt;/code&gt;
-</span>
-
-
-</p><p>
+</p>
+  <p>
 
 Value is a date in the RFC 3339 format.
 
-</p><p>
+</p>
+  <p>
 
 - 
 
 
 
-<span class="tag-output-example">
-&lt;code&gt;
-</span>
-
--- updated:
-
-<span class="attrs-and-flags">
 
 
-</span>
-<span class="tag-output-example">
-&lt;/code&gt;
-</span>
-
-
-</p><p>
+</p>
+  <p>
 
 Value is a date in the RFC 3339 format.
 
-</p><p>
+</p>
+  <p>
 
 - 
 
 
 
-<span class="tag-output-example">
-&lt;code&gt;
-</span>
-
--- template:
-
-<span class="attrs-and-flags">
 
 
-</span>
-<span class="tag-output-example">
-&lt;/code&gt;
-</span>
-
-
-</p><p>
+</p>
+  <p>
 
 This is the way to change the output template for a section. The details of the values and their corresponding outputs is an implementation detail, but the attribute key is reserved.
 
@@ -197,19 +160,6 @@ TODO: Write up details of
 
 
 
-<span class="tag-output-example">
-&lt;code&gt;
-</span>
-
-template:
-
-<span class="attrs-and-flags">
-
-
-</span>
-<span class="tag-output-example">
-&lt;/code&gt;
-</span>
 
 
  being reserved. It's how you can change the output if you want something other than what's speced for the shorthands.

@@ -1,5 +1,6 @@
-[! include "macros.neoj" !]
+[! include "helpers/macros.neoj" !]
 
+[#
 <span class="tag-output-example">
 &lt;code&gt;
 </span>
@@ -13,4 +14,4 @@
 <span class="tag-output-example">
 &lt;/code&gt;
 </span>
-
+#]

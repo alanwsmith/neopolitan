@@ -1,8 +1,7 @@
-[!- extends "wrapper.neoj" -!]
-[!- include "macros.neoj" -!]
+[!- extends "wrappers/default.neoj" -!]
+[!- import "helpers/macros.neoj" as macros -!] 
 
 [! block main !]
-
 [# 
   Output the title first, regardless
   of where it is in the source

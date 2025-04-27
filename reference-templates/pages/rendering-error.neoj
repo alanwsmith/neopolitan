@@ -1,5 +1,5 @@
-[!- extends "wrapper.neoj" -!]
-[!- include "macros.neoj" -!]
+[!- extends "wrappers/default.neoj" -!]
+[!- import "helpers/macros.neoj" as macros -!] 
 
 [! block main !]
     <h1>Rendering Error</h1>

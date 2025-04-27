@@ -1,3 +1,7 @@
+[!- import "helpers/macros.neoj" as macros -!] 
+
 [!- for block in section.children -!]
-  <p>[@ output_block(block) @]</p>
+[#
+#]
+  <p>[@ macros.output_block(block) @]</p>
 [!- endfor -!]
