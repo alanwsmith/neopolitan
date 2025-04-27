@@ -1,4 +1,4 @@
-[! macro output_section(section) !]
+[!- macro output_section(section) -!]
 <li>
   <h2>
 [! if section.type == "basic" !]
@@ -10,10 +10,10 @@
   [@ section.type @]
 [! endif !]
   </h2>
-[! endmacro !]
+[!- endmacro -!]
 
 
-[! macro output_blocks(blocks) !]
+[!- macro output_blocks(blocks) -!]
 [! for block in blocks !]
 [! if loop.first !]
 <div>blocks:</div>
@@ -24,17 +24,17 @@
 </ul>
 [! endif !]
 [! endfor !]
-[! endmacro !]
+[!- endmacro -!]
 
 
-[! macro output_block(block) !]
+[!- macro output_block(block) -!]
 [! if block.type == "block" !]
 [@ output_spans(block.spans) @]
 [! endif !]
-[! endmacro !]
+[!- endmacro -!]
 
 
-[! macro output_section_flags(section) !]
+[!- macro output_section_flags(section) -!]
 [! for flag in section.flags !]
 [! if loop.first !]
 <div>flags:</div>
@@ -45,17 +45,17 @@
 </ul>
 [! endif !]
 [! endfor !]
-[! endmacro !]
+[!- endmacro -!]
 
 
-[! macro output_spans(spans) !]
+[!- macro output_spans(spans) -!]
 [! for span in spans !]
 [! include "spans/" + span.category + ".neoj" !]
 [! endfor !]
-[! endmacro !]
+[!- endmacro -!]
 
 
-[! macro output_section_attrs(section) !]
+[!- macro output_section_attrs(section) -!]
 [! for attr in section.attrs !]
 [! if loop.first !]
 <div>attrs:</div>
@@ -66,10 +66,10 @@
 </ul>
 [! endif !]
 [! endfor !]
-[! endmacro !]
+[!- endmacro -!]
 
 
-[! macro output_span_attrs(span) !]
+[!- macro output_span_attrs(span) -!]
 [! for attr in span.attrs !]
 [! if loop.first !]
 &lt;-- attrs 
@@ -79,10 +79,10 @@
 --&gt;
 [! endif !]
 [! endfor !]
-[! endmacro !]
+[!- endmacro -!]
 
 
-[! macro output_span_flags(span) !]
+[!- macro output_span_flags(span) -!]
 [! for flag in span.flags !]
 [! if loop.first !]
 &lt;-- flags 
@@ -92,18 +92,5 @@
 --&gt;
 [! endif !]
 [! endfor !]
-[! endmacro !]
-
-[#
-[! for attr in section.attrs !]
-[! if loop.first !]
-<div>attrs:</div>
-<ul>
-[! endif !]
-<li>[@ attr @]: [@ output_spans(section.attrs[attr]) @]</li>
-[! if loop.last !]
-</ul>
-[! endif !]
-[! endfor !]
-#]
+[!- endmacro -!]
 

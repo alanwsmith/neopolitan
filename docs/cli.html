@@ -1,60 +1,190 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Grimoire Dev Output</title>
-  <style>
-    * {
-      margin: 0;
-    }
-    body {
-      background-color: black;
-      color: #ccc;
-    }
-    h1, h2, h3 {
-      margin-top: 1.2rem;
-    }
-    .attrs-and-flags {
-      color: #555;
-    }
-    .tag-output-example {
-      color: #66a;
-    }
-
-  </style>
+<html lang="en"> 
+<head> 
+	<title></title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <main class="flow">
     <h1>PAGE</h1>
     <div>
       <ul>
 
+      <li>
+  <h2>
+
+  title
+  
+  
+  
+
+<div>blocks:</div>
+<ul>
+
+<li>
+
+Command Line Interface
+
+</li>
+
+</ul>
+
+
+
+  </h2>
+
+      <li>
+  <h2>
+
+  h2
+  
+  
+  
+
+<div>blocks:</div>
+<ul>
+
+<li>
+
+Introduction
+
+</li>
+
+
+
+<li>
+
+Version 2.0 of Neopolitan generates ASTs for use in rust apps. It does not include a command line interface. I'm considering one in the future to output ASTs as JSONs either as files or as STDOUT.
+
+</li>
+
+
+
+<li>
+
+Adding a basic HTML output from templates is also a possibility. I'm not sure about that though as there are so many possible quality-of-life improvement decisions that it's it might not be worth doing work inside Neopolitan. Other engines (e.g. Neopoligen) are likely where that effort is better spent.
+
+</li>
+
+</ul>
+
+
+
+  </h2>
+
+      <li>
+  <h2>
+
+  metadata
+  
+  
+
+<div>attrs:</div>
+<ul>
+
+<li>created: 
+2025-04-27T10:12:27-04:00
+</li>
+
+
+
+<li>updated: 
+2025-04-27T10:12:27-04:00
+</li>
+
+</ul>
+
+
+  
+
+  </h2>
+
       </ul>
     </div>
     <pre>
-      null
+      [
+  {
+    "attrs": {},
+    "bound": "Full",
+    "children": [
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "Command Line Interface"
+          }
+        ],
+        "type": "block"
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "title",
+    "type": "basic"
+  },
+  {
+    "attrs": {},
+    "bound": "Full",
+    "children": [
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "Introduction"
+          }
+        ],
+        "type": "block"
+      },
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "Version 2.0 of Neopolitan generates ASTs for use in rust apps. It does not include a command line interface. I\u0027m considering one in the future to output ASTs as JSONs either as files or as STDOUT."
+          }
+        ],
+        "type": "block"
+      },
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "Adding a basic HTML output from templates is also a possibility. I\u0027m not sure about that though as there are so many possible quality-of-life improvement decisions that it\u0027s it might not be worth doing work inside Neopolitan. Other engines (e.g. Neopoligen) are likely where that effort is better spent."
+          }
+        ],
+        "type": "block"
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "h2",
+    "type": "basic"
+  },
+  {
+    "attrs": {
+      "created": [
+        {
+          "category": "text-span",
+          "content": "2025-04-27T10:12:27-04:00"
+        }
+      ],
+      "updated": [
+        {
+          "category": "text-span",
+          "content": "2025-04-27T10:12:27-04:00"
+        }
+      ]
+    },
+    "bound": "Full",
+    "children": [],
+    "end_section": null,
+    "flags": [],
+    "kind": "metadata",
+    "type": "basic"
+  }
+]
     </pre>
+</main>
 </body>
 </html>

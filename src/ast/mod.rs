@@ -18,7 +18,9 @@ pub enum Ast<'a> {
         parsed: Vec<Section>,
         remainder: &'a str,
     },
-    Ok(Vec<Section>),
+    Ok {
+        sections: Vec<Section>,
+    },
 }
 
 impl<'a> Ast<'_> {
@@ -30,7 +32,9 @@ impl<'a> Ast<'_> {
         match Ast::parse_ast(source, config, &SectionParent::Page, debug) {
             Ok(results) => {
                 if results.0 == "" {
-                    Ast::Ok(results.1)
+                    Ast::Ok {
+                        sections: results.1,
+                    }
                 } else {
                     Ast::Incomplete {
                         parsed: results.1,
@@ -65,7 +69,6 @@ mod test {
     use minijinja::syntax::SyntaxConfig;
     use minijinja::{Environment, Value, context, path_loader};
     use pretty_assertions::assert_eq;
-    use std::mem::replace;
     use std::path::PathBuf;
     use walkdir::WalkDir;
     // use serde_json;
@@ -74,7 +77,8 @@ mod test {
     fn basic_test() {
         let config = Config::default();
         let source = include_str!("test-data/basic-example.neo");
-        if let Ast::Ok(sections) = Ast::new_from_source(source, &config, false)
+        if let Ast::Ok { sections } =
+            Ast::new_from_source(source, &config, false)
         {
             // println!("{}", serde_json::to_string_pretty(&sections).unwrap());
             assert_eq!(1, sections.len());
@@ -87,7 +91,8 @@ mod test {
     fn span_test() {
         let config = Config::default();
         let source = include_str!("test-data/span-test.neo");
-        if let Ast::Ok(sections) = Ast::new_from_source(source, &config, false)
+        if let Ast::Ok { sections } =
+            Ast::new_from_source(source, &config, false)
         {
             // let mut env = Environment::new();
             // env.set_syntax(
@@ -121,7 +126,6 @@ mod test {
             //         ()
             //     }
             // }
-
             // let tmp_json_path = PathBuf::from("dev-output/basic/ast.json");
             // let json = serde_json::to_string_pretty(&sections).unwrap();
             // std::fs::write(tmp_json_path, json);
@@ -131,22 +135,24 @@ mod test {
         }
     }
 
-    #[test]
-    fn test_spec_output() {
-        let mut env = Environment::new();
-        env.set_syntax(
-            SyntaxConfig::builder()
-                .block_delimiters("[!", "!]")
-                .variable_delimiters("[@", "@]")
-                .comment_delimiters("[#", "#]")
-                .build()
-                .unwrap(),
-        );
-        env.set_loader(path_loader("src/templates/spec"));
-    }
+    // DEPRECATED: Remove the next time you see it
+    // #[test]
+    // fn test_spec_output() {
+    //     let mut env = Environment::new();
+    //     env.set_syntax(
+    //         SyntaxConfig::builder()
+    //             .block_delimiters("[!", "!]")
+    //             .variable_delimiters("[@", "@]")
+    //             .comment_delimiters("[#", "#]")
+    //             .build()
+    //             .unwrap(),
+    //     );
+    //     env.set_loader(path_loader("src/templates/spec"));
+    // }
 
     #[test]
     fn solo_output_site() -> Result<()> {
+        let config = Config::default();
         let mut env = Environment::new();
         env.set_syntax(
             SyntaxConfig::builder()
@@ -158,33 +164,49 @@ mod test {
         );
         env.set_loader(path_loader("reference-templates"));
         // env.set_loader(path_loader("docs-templates"));
-
         let input_files = get_files_in_dir(&PathBuf::from("docs-content"))?;
         input_files.iter().for_each(|source_path| {
+            let source = std::fs::read_to_string(&source_path).unwrap();
+            let source_extension = source_path.extension().unwrap();
             let mut output_path = replace_path_root(
                 &source_path,
                 &PathBuf::from("docs-content"),
                 &PathBuf::from("docs"),
             )
             .unwrap();
-            output_path.set_extension("html");
-            let template = env.get_template("page.neoj").unwrap();
-
-            match template.render(
-                context!(), //context!(page => Value::from_serialize(&sections)),
-            ) {
-                Ok(output) => {
-                    if let Err(e) = write_file_with_mkdir(&output_path, &output)
-                    {
-                        dbg!(e);
-                        assert!(false);
+            if source_extension == "css" || source_extension == "html" {
+                // NOTE: This currently assumes the output
+                // directory already exists.
+                std::fs::copy(source_path, output_path).unwrap();
+            } else {
+                output_path.set_extension("html");
+                match Ast::new_from_source(&source, &config, false) {
+                    Ast::Ok { sections } => {
+                        let template = env.get_template("page.neoj").unwrap();
+                        match template.render(
+                            context!(page => Value::from_serialize(&sections)),
+                        ) {
+                            Ok(output) => {
+                                if let Err(e) =
+                                    write_file_with_mkdir(&output_path, &output)
+                                {
+                                    dbg!(e);
+                                    assert!(false);
+                                }
+                            }
+                            Err(e) => {
+                                dbg!(e);
+                                assert!(false);
+                            }
+                        };
                     }
-                }
-                Err(e) => {
-                    dbg!(e);
-                    assert!(false);
-                }
-            };
+                    Ast::Error { message, remainder } => {
+                        dbg!(&message);
+                        ()
+                    }
+                    Ast::Incomplete { parsed, remainder } => {}
+                };
+            }
             //output_page(&source_path, &output_path);
         });
         // dbg!(output_files);
