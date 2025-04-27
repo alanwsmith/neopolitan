@@ -1,8 +1,10 @@
+[#
 [!- macro output_block(block) -!]
 [!- for span in block.spans -!]
 [! include "spans/" + span.category + ".neoj" !]
 [!- endfor -!]
 [!- endmacro -!]
+#]
 
 
 [# DEPRECATED: Use .neoj templates instead 

@@ -1,7 +1,8 @@
 [!- for block in section.children -!]
+  [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
   [!- if loop.first -!]
-    <h1>[@ output_block(block) @]</h1>
+    <h1>[!- include templates -!]</h1>
   [!- else -!]
-    <p>[@ output_block(block) @]</p>
+    <p>[!- include templates -!]</p>
   [!- endif -!]
 [!- endfor -!]

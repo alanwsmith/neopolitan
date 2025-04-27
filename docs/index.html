@@ -24,6 +24,9 @@
 
 
 
+
+
+
 <!DOCTYPE html>
 <html lang="en"> 
 <head> 
@@ -33,8 +36,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <main class="flow"><h1>Neopolitan</h1><p>Welcome to Neopolitan! A plain-text file format in the spirit of Markdown but with more functionality.</p><h2>Documentation</h2><h2>Custom Shorthand Tags</h2><p>Shorthand tags look like</p><p>There are not specified custom tags. Defining and using them is an implementaiton detail. TODO: There are recommended examples in the reference templates</p><p>[] Section names for the category types are reserved words that go to their type to ensure that all types have sections associated with them. (That is, it's required to have output for the section categories. There is no expectation for what the output should be. Just that the templates exist)</p><p>[] Define the characters that get escaped when escaping happens.</p><p>[] Create template the outputs the section for rebuilding sections.</p><p>[] Write up the fact that flags are required to be output in order for redoing this format. Attributes are not required to be in the same order they showed up in the source when rebuilding it.</p><p>[] Create a default formatter. Allow line length to be set. TBD on what else (aim to keep it at a minimum)</p><p>[] Implicit in the specs is the required 
+  <main class="flow"><h1>
+  
+  Neopolitan
+</h1><p>
+  
+  Welcome to Neopolitan! A plain-text file format in the spirit of Markdown but with more functionality.
+</p><h2>
+  
+  Documentation
+</h2><h2>
+  
+  Custom Shorthand Tags
+</h2><p>
+  
+  Shorthand tags look like
+</p><p>
+  
+  There are not specified custom tags. Defining and using them is an implementaiton detail. TODO: There are recommended examples in the reference templates
+</p><p>
+  
+  [] Section names for the category types are reserved words that go to their type to ensure that all types have sections associated with them. (That is, it's required to have output for the section categories. There is no expectation for what the output should be. Just that the templates exist)
+</p><p>
+  
+  [] Define the characters that get escaped when escaping happens.
+</p><p>
+  
+  [] Create template the outputs the section for rebuilding sections.
+</p><p>
+  
+  [] Write up the fact that flags are required to be output in order for redoing this format. Attributes are not required to be in the same order they showed up in the source when rebuilding it.
+</p><p>
+  
+  [] Create a default formatter. Allow line length to be set. TBD on what else (aim to keep it at a minimum)
+</p><p>
+  
+  [] Implicit in the specs is the required 
 
+  
+  
 
 
 
@@ -61,14 +101,20 @@
 
 
 
- section which transforms the contents without adding anything extra to it. Section attributes and flags are ignored. This is the only required section.</p><p>[] Make 
 
 
 
 
 
 
+  
+   section which transforms the contents without adding anything extra to it. Section attributes and flags are ignored. This is the only required section.
+</p><p>
+  
+  [] Make 
 
+  
+  
 
 
 
@@ -89,7 +135,6 @@
 
 
 
- a reserved section name that should not be output to the page. The attrs it has are implementation details. Having an metadata section is not required though. Possible feature for future versions is to allow JSON or YAML to be used for the body and pulled in. In that light, the 
 
 
 
@@ -102,7 +147,11 @@
 
 
 
+  
+   a reserved section name that should not be output to the page. The attrs it has are implementation details. Having an metadata section is not required though. Possible feature for future versions is to allow JSON or YAML to be used for the body and pulled in. In that light, the 
 
+  
+  
 
 
 
@@ -117,7 +166,6 @@
 
 
 
- attribute is a reserved word. Eventually, will have possible values of 
 
 
 
@@ -136,7 +184,11 @@
 
 
 
+  
+   attribute is a reserved word. Eventually, will have possible values of 
 
+  
+  
 
 
 
@@ -145,7 +197,6 @@
 
 
 
-, 
 
 
 
@@ -170,10 +221,13 @@
 
 
 
+  
+  , 
 
+  
+  
 
 
-, 
 
 
 
@@ -201,11 +255,14 @@
 
 
 
-. Other formats TBD.</p><p>[] Should there be speced reserved words for 
 
 
 
+  
+  , 
 
+  
+  
 
 
 
@@ -229,7 +286,6 @@
 
 
 
-? Attrs that aren't required but are defined for what they should be? Probably makes sense to have 
 
 
 
@@ -239,7 +295,14 @@
 
 
 
+  
+  . Other formats TBD.
+</p><p>
+  
+  [] Should there be speced reserved words for 
 
+  
+  
 
 
 
@@ -257,7 +320,6 @@
 
 
 
-, 
 
 
 
@@ -273,7 +335,11 @@
 
 
 
+  
+  ? Attrs that aren't required but are defined for what they should be? Probably makes sense to have 
 
+  
+  
 
 
 
@@ -285,7 +351,6 @@
 
 
 
- be defined for the date format to use. And, 
 
 
 
@@ -307,13 +372,16 @@
 
 
 
+  
+  , 
 
+  
+  
 
 
 
 
 
- as a recommendation for the ID of page that can be used for cross references.</p><p>[] Make 
 
 
 
@@ -341,8 +409,11 @@
 
 
 
- be part of the section ref, but not spec. (since there isn't a defined spec for sections)</p><p>[] Make 
+  
+   be defined for the date format to use. And, 
 
+  
+  
 
 
 
@@ -369,14 +440,20 @@
 
 
 
- and 
 
 
 
 
 
 
+  
+   as a recommendation for the ID of page that can be used for cross references.
+</p><p>
+  
+  [] Make 
 
+  
+  
 
 
 
@@ -397,7 +474,6 @@
 
 
 
- be section ref.</p><p>[] Make 
 
 
 
@@ -410,7 +486,14 @@
 
 
 
+  
+   be part of the section ref, but not spec. (since there isn't a defined spec for sections)
+</p><p>
+  
+  [] Make 
 
+  
+  
 
 
 
@@ -425,7 +508,6 @@
 
 
 
- be part of the shorthand ref.</p><p>[] Spec is to fall back to 
 
 
 
@@ -444,7 +526,11 @@
 
 
 
+  
+   and 
 
+  
+  
 
 
 
@@ -453,7 +539,6 @@
 
 
 
- for any 
 
 
 
@@ -478,9 +563,167 @@
 
 
 
+  
+   be section ref.
+</p><p>
+  
+  [] Make 
 
+  
+  
 
 
- tag that doesn't match a template. It's always open and close.</p><p>[] Reference should include standard elements for spans.</p><p>[] Reference should include standard elements for sections.</p><p>[] Provide tests for the reference sections and spans for anyone that wants to implement them to use them as expanded test for other parsers?</p><p>[] Version the specs.</p><p>[] Attribute values are only text spans and escaped characters? Or should they be full parsing? TBD based on test usage.</p><p>[] Image section is not required but give guidelines about usage (re: alt text and path handling via flag)</p><p>[] The output references should just be sections, not the full page. Should be able to show them in the example though. Maybe those templates are in a "support" section that's outside the reference templates.</p><p>[] Note that the specific page wrapper is more example than reference, but the page template itself is ref.</p><h2>Possible Command Line Interface</h2><p>The first 2.0 version will only create the AST for use inside rust apps. Long term possibility of making a command line interface.</p><p>[] Make a config loader with a JSON schema you can pass in.</p><p>[] Output ASTs as JSONs in an output dir with the relative paths of the source files.</p><p>[] Output ASTs as JSONs in the same directory as the source files.</p><p>[] Provide minijinja output from the command line run.</p></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   be part of the shorthand ref.
+</p><p>
+  
+  [] Spec is to fall back to 
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   for any 
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   tag that doesn't match a template. It's always open and close.
+</p><p>
+  
+  [] Reference should include standard elements for spans.
+</p><p>
+  
+  [] Reference should include standard elements for sections.
+</p><p>
+  
+  [] Provide tests for the reference sections and spans for anyone that wants to implement them to use them as expanded test for other parsers?
+</p><p>
+  
+  [] Version the specs.
+</p><p>
+  
+  [] Attribute values are only text spans and escaped characters? Or should they be full parsing? TBD based on test usage.
+</p><p>
+  
+  [] Image section is not required but give guidelines about usage (re: alt text and path handling via flag)
+</p><p>
+  
+  [] The output references should just be sections, not the full page. Should be able to show them in the example though. Maybe those templates are in a "support" section that's outside the reference templates.
+</p><p>
+  
+  [] Note that the specific page wrapper is more example than reference, but the page template itself is ref.
+</p><h2>
+  
+  Possible Command Line Interface
+</h2><p>
+  
+  The first 2.0 version will only create the AST for use inside rust apps. Long term possibility of making a command line interface.
+</p><p>
+  
+  [] Make a config loader with a JSON schema you can pass in.
+</p><p>
+  
+  [] Output ASTs as JSONs in an output dir with the relative paths of the source files.
+</p><p>
+  
+  [] Output ASTs as JSONs in the same directory as the source files.
+</p><p>
+  
+  [] Provide minijinja output from the command line run.
+</p></main>
 </body>
 </html>
