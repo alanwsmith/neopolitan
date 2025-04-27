@@ -1,5 +1,6 @@
 pub mod escaped_character;
 pub mod multiple_pipes;
+pub mod not_span_close;
 pub mod plain_text_any_colons;
 pub mod plain_text_any_pipes;
 pub mod plain_text_single_line_ending_as_space;

@@ -62,7 +62,7 @@ impl<'a> Ast<'_> {
 mod test {
     use super::*;
     use minijinja::syntax::SyntaxConfig;
-    use minijinja::{Environment, Value, context};
+    use minijinja::{Environment, Value, context, path_loader};
     use pretty_assertions::assert_eq;
     use std::path::PathBuf;
     // use serde_json;
@@ -129,77 +129,107 @@ mod test {
     }
 
     #[test]
-    fn output_test() {
-        let config = Config::default();
-        let source = include_str!("test-data/output-example.neo");
-        if let Ast::Ok(sections) = Ast::new_from_source(source, &config, false)
-        {
-            let mut env = Environment::new();
-            env.set_syntax(
-                SyntaxConfig::builder()
-                    .block_delimiters("[!", "!]")
-                    .variable_delimiters("[@", "@]")
-                    .comment_delimiters("[#", "#]")
-                    .build()
-                    .unwrap(),
-            );
-            env.add_template(
-                "page.neoj",
-                include_str!("../dev-templates/page.neoj"),
-            )
-            .unwrap();
-            env.add_template(
-                "basic.neoj",
-                include_str!("../dev-templates/basic.neoj"),
-            )
-            .unwrap();
-            env.add_template(
-                "block.neoj",
-                include_str!("../dev-templates/block.neoj"),
-            )
-            .unwrap();
-            env.add_template(
-                "spans/code-span.neoj",
-                include_str!("../dev-templates/spans/code-span.neoj"),
-            )
-            .unwrap();
-            env.add_template(
-                "spans/text-span.neoj",
-                include_str!("../dev-templates/spans/text-span.neoj"),
-            )
-            .unwrap();
-            env.add_template(
-                "macros.neoj",
-                include_str!("../dev-templates/macros.neoj"),
-            )
-            .unwrap();
-            match env.get_template("page.neoj") {
-                Ok(template) => {
-                    match template.render(
-                        context!(page => Value::from_serialize(&sections)),
-                    ) {
-                        Ok(output) => {
-                            let tmp_html_path =
-                                PathBuf::from("dev-output/basic/index.html");
-                            let _ = std::fs::write(tmp_html_path, output);
-                        }
-                        Err(e) => {
-                            dbg!(e);
-                            ()
-                        }
-                    }
-                }
-                Err(e) => {
-                    dbg!(e);
-                    ()
-                }
-            }
-            // let tmp_json_path = PathBuf::from("dev-output/basic/ast.json");
-            // let json = serde_json::to_string_pretty(&sections).unwrap();
-            // std::fs::write(tmp_json_path, json);
-            // assert_eq!(1, sections.len());
-        } else {
-            assert!(false);
-        }
+    fn test_spec_output() {
+        let mut env = Environment::new();
+        env.set_syntax(
+            SyntaxConfig::builder()
+                .block_delimiters("[!", "!]")
+                .variable_delimiters("[@", "@]")
+                .comment_delimiters("[#", "#]")
+                .build()
+                .unwrap(),
+        );
+        env.set_loader(path_loader("src/templates/spec"));
+    }
+
+    #[test]
+    fn output_site() {
+        let input = PathBuf::from("src/site-content/index.neoj");
+        let output = PathBuf::from("docs/index.html");
+        output_page(&input, &output);
+        // This isn't really a test. It's what's
+        // used to generate the https://neopolitan.alanwsmith.com/
+        // site with the demo templates. This
+        // serves as way to validate output
+        // during development each time the
+        // tests are run.
+    }
+
+    // This is a support function for output_site
+    fn output_page(input: &PathBuf, output: &PathBuf) {
+
+        // let config = Config::default();
+        // let source = include_str!("test-data/output-example.neo");
+        // if let Ast::Ok(sections) = Ast::new_from_source(source, &config, false)
+        // {
+        //     let mut env = Environment::new();
+        //     env.set_syntax(
+        //         SyntaxConfig::builder()
+        //             .block_delimiters("[!", "!]")
+        //             .variable_delimiters("[@", "@]")
+        //             .comment_delimiters("[#", "#]")
+        //             .build()
+        //             .unwrap(),
+        //     );
+        //     env.add_template(
+        //         "page.neoj",
+        //         include_str!("../dev-templates/page.neoj"),
+        //     )
+        //     .unwrap();
+        //     env.add_template(
+        //         "basic.neoj",
+        //         include_str!("../dev-templates/basic.neoj"),
+        //     )
+        //     .unwrap();
+        //     env.add_template(
+        //         "block.neoj",
+        //         include_str!("../dev-templates/block.neoj"),
+        //     )
+        //     .unwrap();
+        //     env.add_template(
+        //         "spans/code-span.neoj",
+        //         include_str!("../dev-templates/spans/code-span.neoj"),
+        //     )
+        //     .unwrap();
+        //     env.add_template(
+        //         "spans/text-span.neoj",
+        //         include_str!("../dev-templates/spans/text-span.neoj"),
+        //     )
+        //     .unwrap();
+        //     env.add_template(
+        //         "macros.neoj",
+        //         include_str!("../dev-templates/macros.neoj"),
+        //     )
+        //     .unwrap();
+        //     match env.get_template("page.neoj") {
+        //         Ok(template) => {
+        //             match template.render(
+        //                 context!(page => Value::from_serialize(&sections)),
+        //             ) {
+        //                 Ok(output) => {
+        //                     let tmp_html_path =
+        //                         PathBuf::from("dev-output/basic/index.html");
+        //                     let _ = std::fs::write(tmp_html_path, output);
+        //                 }
+        //                 Err(e) => {
+        //                     dbg!(e);
+        //                     ()
+        //                 }
+        //             }
+        //         }
+        //         Err(e) => {
+        //             dbg!(e);
+        //             ()
+        //         }
+        //     }
+        //     // let tmp_json_path = PathBuf::from("dev-output/basic/ast.json");
+        //     // let json = serde_json::to_string_pretty(&sections).unwrap();
+        //     // std::fs::write(tmp_json_path, json);
+        //     // assert_eq!(1, sections.len());
+        // } else {
+        //     assert!(false);
+        // }
+
+        //
     }
 }

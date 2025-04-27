@@ -1,0 +1,124 @@
+-- title
+
+Neopolitan
+
+This is the site example
+
+-- h2
+
+Documentation 
+
+
+-- h2
+
+Custom Shorthand Tags
+
+Shorthand tags look like
+
+-- code/
+
+<<span|alfa|bravo|charlie: delta>>
+
+-- /code
+
+There are not specified custom tags. Defining
+and using them is an implementaiton detail. 
+TODO: There are recommended examples in
+the reference templates
+
+
+-- todo
+
+[] Section names for the category types
+are reserved words that go to their 
+type to ensure that all types
+have sections associated with them. 
+(That is, it's required to have output
+for the section categories. There is
+no expectation for what the output
+should be. Just that the templates exist)
+
+[] Define the characters that get escaped
+when escaping happens. 
+
+[] Create template the outputs the section
+for rebuilding sections. 
+
+[] Write up the fact that flags are required
+to be output in order for redoing this 
+format. Attributes are not required to
+be in the same order they showed up in
+the source when rebuilding it. 
+
+[] Create a default formatter. Allow
+line length to be set. TBD on what
+else (aim to keep it at a minimum)
+
+[] Implicit in the specs is the required 
+``-- neopolitan`` section which transforms 
+the contents without adding anything extra 
+to it. Section attributes and flags are ignored. 
+This is the only required section. 
+
+[] Make ``-- metadata`` a reserved section name
+that should not be output to the page. 
+The attrs it has are implementation details. 
+Having an metadata section is not required
+though. Possible feature for future versions
+is to allow JSON or YAML to be used for
+the body and pulled in. In that light, 
+the ``-- type:`` attribute is a reserved
+word. Eventually, will have possible values
+of ``neopolitan``, ``json``, ``yaml``.
+Other formats TBD.
+
+
+[] Make ``-- template: `` be part of the 
+section ref, but not spec. (since
+there isn't a defined spec for sections)
+
+[] Make ``-- id: `` and ``-- class: `` be
+section ref. 
+
+[] Make ``template:`` be part of the
+shorthand ref. 
+
+[] Spec is to fall back to ``<NAME>``
+for any ``<<NAME>>`` tag that doesn't
+match a template. It's always open
+and close. 
+
+[] Reference should include standard
+elements for spans. 
+
+[] Reference should include standard
+elements for sections. 
+
+[] Provide tests for the reference 
+sections and spans for anyone
+that wants to implement them to
+use them as expanded test for 
+other parsers?
+
+[] Version the specs. 
+
+[] Attribute values are only 
+text spans and escaped characters? 
+Or should they be full parsing? TBD
+based on test usage. 
+
+[] Image section is not required but
+give guidelines about usage (re: alt text
+and path handling via flag)
+
+[] The output references should
+just be sections, not the full page. 
+Should be able to show them in 
+the example though. Maybe
+those templates are in
+a "support" section that's outside
+the reference templates. 
+
+
+
+

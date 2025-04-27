@@ -22,4 +22,8 @@ returns a vec of ASTs.
 builder and make neopolitan it's
 own crate.
 
+## Shortcuts
+
+
+
 

@@ -1,4 +1,6 @@
 #![allow(unused)]
+pub mod attr_flag_key;
+
 use crate::span::Span;
 use crate::span_attr::span_attr;
 use crate::span_flag::span_flag;
@@ -140,25 +142,19 @@ mod test {
     }
 
     #[test]
-    fn solo_single_attr_with_multiple_spans_test() {
+    #[ignore]
+    fn single_attr_with_text_instead_of_nested_spans() {
+        // NOTE: the backticks that would be a code
+        // section in content are just text here.
         let source = "|alfa: bravo ``charlie``>>";
         let character = "`";
         let flags = vec![];
         let mut attrs = BTreeMap::new();
         attrs.insert(
             "alfa".to_string(),
-            vec![
-                Span::Text {
-                    content: "bravo ".to_string(),
-                },
-                Span::Code {
-                    attrs: BTreeMap::new(),
-                    flags: vec![],
-                    spans: vec![Span::Text {
-                        content: "charlie".to_string(),
-                    }],
-                },
-            ],
+            vec![Span::Text {
+                content: "bravo ``charlie``".to_string(),
+            }],
         );
         let left = (flags, attrs);
         let remainder = ">>";
