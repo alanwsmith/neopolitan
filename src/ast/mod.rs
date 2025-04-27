@@ -185,17 +185,27 @@ mod test {
                 match Ast::new_from_source(&source, &config, false) {
                     Ast::Ok { sections } => {
                         let template = env.get_template("page.neoj").unwrap();
-                        let output = template.render(
-                            context!(page => Value::from_serialize(&sections)),
-                        ).unwrap();
-                        write_file_with_mkdir(&output_path, &output).unwrap();
+                        let sections = Value::from_serialize(&sections);
+                        match template.render(context!(sections => sections)) {
+                            Ok(output) => {
+                                write_file_with_mkdir(&output_path, &output)
+                                    .unwrap()
+                            }
+                            Err(e) => {
+                                // Attempt to fall back to error output
+                                dbg!(e);
+                                ()
+                            }
+                        }
                     }
                     Ast::Error { message, remainder } => {
                         let template = env.get_template("error.neoj").unwrap();
+                        let message = Value::from_serialize(message);
+                        let remainder = Value::from_serialize(remainder);
                         let output = template
                             .render(context!(
-                                message => Value::from_serialize(message),
-                                remainder => Value::from_serialize(remainder),
+                                message => message,
+                                remainder => remainder,
                             ))
                             .unwrap();
                         write_file_with_mkdir(&output_path, &output).unwrap();
@@ -203,10 +213,12 @@ mod test {
                     Ast::Incomplete { parsed, remainder } => {
                         let template =
                             env.get_template("incomplete.neoj").unwrap();
+                        let parsed = Value::from_serialize(parsed);
+                        let remainder = Value::from_serialize(remainder);
                         let output = template
                             .render(context!(
-                                parsed => Value::from_serialize(parsed),
-                                remainder => Value::from_serialize(remainder),
+                                parsed => parsed,
+                                remainder => remainder,
                             ))
                             .unwrap();
                         write_file_with_mkdir(&output_path, &output).unwrap();

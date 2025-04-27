@@ -2,12 +2,32 @@
 [!- include "macros.neoj" -!]
 
 [! block main !]
-    <h1>PAGE</h1>
+
+[# 
+  Output the title first, regardless
+  of where it is in the source
+  document. Put the first set of 
+  blocks in an H1 and the rest
+  in paragraphs. 
+#]
+
+[!- for section in sections -!]
+  [!- set templates = [
+    "sections/" + section.kind + "/default.neoj",
+    "sections/" + section.type + "/default.neoj",
+  ] -!]
+  [!- include templates -!]
+  [#
+  [!- if section.kind == "title" !]
+    [@- output_title(section) -@]
+  [!- else -!]
+    [@- output_section(section) -@]
+  [!- endif -!]
+  #]
+[!- endfor -!]
+
     <div>
       <ul>
-[! for section in page !]
-      [@ output_section(section) @]
-[! endfor !]
       </ul>
     </div>
     <pre>

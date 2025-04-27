@@ -2,7 +2,10 @@
 
 Neopolitan
 
-This is the site example
+Welcome to Neopolitan! It's a plain-text 
+file format in the spirit of Markdown but
+with more functionality. 
+
 
 -- h2
 
@@ -15,11 +18,7 @@ Custom Shorthand Tags
 
 Shorthand tags look like
 
--- code/
-
-<<span|alfa|bravo|charlie: delta>>
-
--- /code
+-- code
 
 There are not specified custom tags. Defining
 and using them is an implementaiton detail. 
