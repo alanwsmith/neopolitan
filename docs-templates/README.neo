@@ -1,0 +1,15 @@
+-- title
+
+Docs Templates
+
+The docs site is built primarily from the
+``reference-templates``. The templates
+in this directory provide some extra
+support for things like outputting examples.
+
+
+-- page
+-- created: 2025-04-27T11:37:06-04:00
+-- updated: 2025-04-27T11:37:06-04:00
+
+

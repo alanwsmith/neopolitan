@@ -1,0 +1,51 @@
+-- title
+
+Tags and Shorthands
+
+-- h2
+
+Introduction
+
+Neopolitan provides two ways to enhance
+content inside of sections:
+
+-- olist
+
+1. tags
+
+2. shorthands
+
+
+-- h2
+
+TODO
+
+Note that ``class:`` and ``id:`` are
+reserved attributes that must go into
+the output
+
+Same with ``alt``
+
+Same with ``data-``
+
+Same with ``aria-``
+
+TBD on others. 
+
+
+-- h2
+
+Tags
+
+For example:
+
+TKTKTK
+
+
+
+
+
+-- page
+-- created: 2025-04-27T10:22:14-04:00
+-- updated: 2025-04-27T10:22:14-04:00
+

@@ -1,0 +1,143 @@
+-- title
+
+Neopolitan 2.0.0 Specification
+
+-- todo
+
+[] make ``-- code`` a defined section
+where the first flag is the language
+to use for highlighting
+
+
+
+-- h2
+
+Introduction
+
+The specification for Neopolitan 2.0.0 is
+test based. Any parser that passes
+all the test meets the specification. 
+
+-- h2
+
+Test Types
+
+The specification is split into three 
+parts. 
+
+-- olist
+
+1. AST Generation
+
+2. Required Sections and Attributes
+
+3. HTML Output
+
+
+-- h2
+
+AST Generation
+
+Tests are currently built into the
+rust code. They include parsing
+for the shorthands. 
+
+Sections can have attrs (attributes)
+and flags. The flags must preserve
+the order from the source input. 
+Attrs are key/value pairs with no
+requirement for maintaining
+a specific order. 
+
+
+
+
+-- h2
+
+Reserved/Required Sections And Attributes
+
+-- h3
+
+Sections
+
+TODO: Add details about how documents
+must start with a section (which means
+all content is in a section)
+
+-- list
+
+- metadata - must not output directly
+on the page. 
+
+- neopolitan - Outputs the contents
+of the section without adding anything
+beyond the content generated from 
+the body of section. This ensures
+there's a way to test AST generation
+from a parser. (Necessary because
+content can't exist outside 
+a section)
+
+-- h3
+
+Section Attributes
+
+These attributes must be handled by
+a parser to meet the spec. They can
+be used in any section. 
+
+-- list
+
+- ``-- created:``
+
+Value is a date in the RFC 3339 format. 
+
+- ``-- updated:`` 
+
+Value is a date in the RFC 3339 format. 
+
+- ``-- template:``
+
+This is the way to change the output
+template for a section. The details
+of the values and their corresponding
+outputs is an implementation detail, but
+the attribute key is reserved. 
+
+-- h2
+
+HTML Output
+
+Neopolitan is designed primarily to 
+generate web content. Output is 
+largely an implementation detail
+with a required exceptions designed
+to improve portability between
+systems. 
+
+Any generator that passes all
+the output tests meets the spec. 
+Anything not defined in the tests
+is left as an implementation detail. 
+
+TODO: Write up details of ``template:``
+being reserved. It's how you can
+change the output if you want
+something other than what's 
+speced for the shorthands. 
+
+TODO: Consider desciptions of how
+the HTML Output is representative. 
+(e.g. systems may add extra 
+classes, or attributes, but 
+they should work directionally 
+the same if any modifications
+are made)
+
+
+
+-- metadata 
+-- created: 2025-04-27T10:54:39-04:00
+-- updated: 2025-04-27T10:54:39-04:00
+
+

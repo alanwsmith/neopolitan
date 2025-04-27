@@ -61,10 +61,13 @@ impl<'a> Ast<'_> {
 #[cfg(test)]
 mod test {
     use super::*;
+    use anyhow::Result;
     use minijinja::syntax::SyntaxConfig;
     use minijinja::{Environment, Value, context, path_loader};
     use pretty_assertions::assert_eq;
+    use std::mem::replace;
     use std::path::PathBuf;
+    use walkdir::WalkDir;
     // use serde_json;
 
     #[test]
@@ -143,21 +146,61 @@ mod test {
     }
 
     #[test]
-    fn output_site() {
-        let input = PathBuf::from("src/site-content/index.neoj");
-        let output = PathBuf::from("docs/index.html");
-        output_page(&input, &output);
+    fn solo_output_site() -> Result<()> {
+        let mut env = Environment::new();
+        env.set_syntax(
+            SyntaxConfig::builder()
+                .block_delimiters("[!", "!]")
+                .variable_delimiters("[@", "@]")
+                .comment_delimiters("[#", "#]")
+                .build()
+                .unwrap(),
+        );
+        env.set_loader(path_loader("reference-templates"));
+        // env.set_loader(path_loader("docs-templates"));
+
+        let input_files = get_files_in_dir(&PathBuf::from("docs-content"))?;
+        input_files.iter().for_each(|source_path| {
+            let mut output_path = replace_path_root(
+                &source_path,
+                &PathBuf::from("docs-content"),
+                &PathBuf::from("docs"),
+            )
+            .unwrap();
+            output_path.set_extension("html");
+            let template = env.get_template("page.neoj").unwrap();
+
+            match template.render(
+                context!(), //context!(page => Value::from_serialize(&sections)),
+            ) {
+                Ok(output) => {
+                    if let Err(e) = write_file_with_mkdir(&output_path, &output)
+                    {
+                        dbg!(e);
+                        assert!(false);
+                    }
+                }
+                Err(e) => {
+                    dbg!(e);
+                    assert!(false);
+                }
+            };
+            //output_page(&source_path, &output_path);
+        });
+        // dbg!(output_files);
+        //        output_page(&input, &output);
         // This isn't really a test. It's what's
         // used to generate the https://neopolitan.alanwsmith.com/
         // site with the demo templates. This
         // serves as way to validate output
         // during development each time the
         // tests are run.
+        // assert!(false);
+        Ok(())
     }
 
     // This is a support function for output_site
     fn output_page(input: &PathBuf, output: &PathBuf) {
-
         // let config = Config::default();
         // let source = include_str!("test-data/output-example.neo");
         // if let Ast::Ok(sections) = Ast::new_from_source(source, &config, false)
@@ -231,5 +274,40 @@ mod test {
         // }
 
         //
+    }
+
+    pub fn get_files_in_dir(root_dir: &PathBuf) -> Result<Vec<PathBuf>> {
+        let file_list: Vec<PathBuf> = WalkDir::new(root_dir)
+            .into_iter()
+            .filter_map(|e| e.ok())
+            .filter(|e| e.path().is_file())
+            .filter(|e| {
+                !e.file_name()
+                    .to_str()
+                    .map(|s| s.starts_with("."))
+                    .unwrap_or(false)
+            })
+            .map(|e| e.path().to_path_buf())
+            .collect();
+        Ok(file_list)
+    }
+
+    pub fn replace_path_root(
+        source: &PathBuf,
+        find: &PathBuf,
+        replacement: &PathBuf,
+    ) -> Result<PathBuf> {
+        let stripped_path = source.strip_prefix(find)?;
+        let new_path = replacement.clone().join(stripped_path);
+        Ok(new_path)
+    }
+
+    fn write_file_with_mkdir(path: &PathBuf, content: &str) -> Result<()> {
+        let parent_dir = path
+            .parent()
+            .ok_or(std::io::Error::other("Could not get parent path"))?;
+        std::fs::create_dir_all(parent_dir)?;
+        std::fs::write(path, content)?;
+        Ok(())
     }
 }

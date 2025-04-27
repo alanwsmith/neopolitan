@@ -134,5 +134,30 @@ wrapper is more example than
 reference, but the page template
 itself is ref. 
 
+-- h2
+
+Possible Command Line Interface
+
+The first 2.0 version will only
+create the AST for use inside
+rust apps. Long term possibility
+of making a command line interface. 
+
+-- todo
+
+[] Make a config loader with
+a JSON schema you can pass in. 
+
+[] Output ASTs as JSONs in 
+an output dir with the relative
+paths of the source files. 
+
+[] Output ASTs as JSONs in
+the same directory as the 
+source files. 
+
+[] Provide minijinja output
+from the command line run.
+
 
 
