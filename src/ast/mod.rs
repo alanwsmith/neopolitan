@@ -194,7 +194,7 @@ mod test {
                             Err(e) => {
                                 // Attempt to fall back to error output
                                 let output_error_template = env
-                                    .get_template("output-error.neoj")
+                                    .get_template("rendering-error.neoj")
                                     .unwrap();
                                 let message = Value::from(
                                     e.display_debug_info().to_string(),
