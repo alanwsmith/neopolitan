@@ -1,0 +1,6 @@
+[!- extends "wrapper.neoj" -!]
+[!- include "macros.neoj" -!]
+
+[! block main !]
+    <h1>Error Parsing</h1>
+[! endblock !]

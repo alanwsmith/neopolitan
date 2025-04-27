@@ -180,31 +180,37 @@ mod test {
                 std::fs::copy(source_path, output_path).unwrap();
             } else {
                 output_path.set_extension("html");
+                // NOTE: these will panic intentionally if they
+                // can't be output
                 match Ast::new_from_source(&source, &config, false) {
                     Ast::Ok { sections } => {
                         let template = env.get_template("page.neoj").unwrap();
-                        match template.render(
+                        let output = template.render(
                             context!(page => Value::from_serialize(&sections)),
-                        ) {
-                            Ok(output) => {
-                                if let Err(e) =
-                                    write_file_with_mkdir(&output_path, &output)
-                                {
-                                    dbg!(e);
-                                    assert!(false);
-                                }
-                            }
-                            Err(e) => {
-                                dbg!(e);
-                                assert!(false);
-                            }
-                        };
+                        ).unwrap();
+                        write_file_with_mkdir(&output_path, &output).unwrap();
                     }
                     Ast::Error { message, remainder } => {
-                        dbg!(&message);
-                        ()
+                        let template = env.get_template("error.neoj").unwrap();
+                        let output = template
+                            .render(context!(
+                                message => Value::from_serialize(message),
+                                remainder => Value::from_serialize(remainder),
+                            ))
+                            .unwrap();
+                        write_file_with_mkdir(&output_path, &output).unwrap();
                     }
-                    Ast::Incomplete { parsed, remainder } => {}
+                    Ast::Incomplete { parsed, remainder } => {
+                        let template =
+                            env.get_template("incomplete.neoj").unwrap();
+                        let output = template
+                            .render(context!(
+                                parsed => Value::from_serialize(parsed),
+                                remainder => Value::from_serialize(remainder),
+                            ))
+                            .unwrap();
+                        write_file_with_mkdir(&output_path, &output).unwrap();
+                    }
                 };
             }
             //output_page(&source_path, &output_path);
