@@ -72,6 +72,16 @@ word. Eventually, will have possible values
 of ``neopolitan``, ``json``, ``yaml``.
 Other formats TBD.
 
+[] Should there be speced reserved words
+for ``-- metadata``? Attrs that aren't 
+required but are defined for what
+they should be? Probably makes sense
+to have ``-- created:``, ``-- updated:``
+be defined for the date format to use. 
+And, ``-- id:`` as a recommendation for
+the ID of page that can be used
+for cross references. 
+
 
 [] Make ``-- template: `` be part of the 
 section ref, but not spec. (since
@@ -119,6 +129,10 @@ those templates are in
 a "support" section that's outside
 the reference templates. 
 
+[] Note that the specific page
+wrapper is more example than 
+reference, but the page template
+itself is ref. 
 
 
 
