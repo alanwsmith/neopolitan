@@ -8,647 +8,446 @@
 </head>
 <body>
   <main class="flow">
-    <h1>Rendering Error</h1>
-    <p>File: page.neoj</p>
-    <p>Details: tried to include one of multiple templates, none of which existed ["sections/h2/default.neoj", "sections/basic/default.neoj"]</p>
+
+<h1>
+
+Neopolitan
+
+</h1><p>
+
+Welcome to Neopolitan! A plain-text file format in the spirit of Markdown but with more functionality.
+
+</p><h2>
+
+Documentation
+
+</h2><h2>
+
+Custom Shorthand Tags
+
+</h2><p>
+
+Shorthand tags look like
+
+</p><p>
+
+There are not specified custom tags. Defining and using them is an implementaiton detail. TODO: There are recommended examples in the reference templates
+
+</p><p>
+
+[] Section names for the category types are reserved words that go to their type to ensure that all types have sections associated with them. (That is, it's required to have output for the section categories. There is no expectation for what the output should be. Just that the templates exist)
+
+</p><p>
+
+[] Define the characters that get escaped when escaping happens.
+
+</p><p>
+
+[] Create template the outputs the section for rebuilding sections.
+
+</p><p>
+
+[] Write up the fact that flags are required to be output in order for redoing this format. Attributes are not required to be in the same order they showed up in the source when rebuilding it.
+
+</p><p>
+
+[] Create a default formatter. Allow line length to be set. TBD on what else (aim to keep it at a minimum)
+
+</p><p>
+
+[] Implicit in the specs is the required 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- neopolitan
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ section which transforms the contents without adding anything extra to it. Section attributes and flags are ignored. This is the only required section.
+
+</p><p>
+
+[] Make 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- metadata
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ a reserved section name that should not be output to the page. The attrs it has are implementation details. Having an metadata section is not required though. Possible feature for future versions is to allow JSON or YAML to be used for the body and pulled in. In that light, the 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- type:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ attribute is a reserved word. Eventually, will have possible values of 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+neopolitan
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+, 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+json
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+, 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+yaml
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+. Other formats TBD.
+
+</p><p>
+
+[] Should there be speced reserved words for 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- metadata
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+? Attrs that aren't required but are defined for what they should be? Probably makes sense to have 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- created:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+, 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- updated:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ be defined for the date format to use. And, 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- id:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ as a recommendation for the ID of page that can be used for cross references.
+
+</p><p>
+
+[] Make 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- template:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ be part of the section ref, but not spec. (since there isn't a defined spec for sections)
+
+</p><p>
+
+[] Make 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- id:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ and 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- class:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ be section ref.
+
+</p><p>
+
+[] Make 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+template:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ be part of the shorthand ref.
+
+</p><p>
+
+[] Spec is to fall back to 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+<NAME>
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ for any 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+<<NAME>>
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ tag that doesn't match a template. It's always open and close.
+
+</p><p>
+
+[] Reference should include standard elements for spans.
+
+</p><p>
+
+[] Reference should include standard elements for sections.
+
+</p><p>
+
+[] Provide tests for the reference sections and spans for anyone that wants to implement them to use them as expanded test for other parsers?
+
+</p><p>
+
+[] Version the specs.
+
+</p><p>
+
+[] Attribute values are only text spans and escaped characters? Or should they be full parsing? TBD based on test usage.
+
+</p><p>
+
+[] Image section is not required but give guidelines about usage (re: alt text and path handling via flag)
+
+</p><p>
+
+[] The output references should just be sections, not the full page. Should be able to show them in the example though. Maybe those templates are in a "support" section that's outside the reference templates.
+
+</p><p>
+
+[] Note that the specific page wrapper is more example than reference, but the page template itself is ref.
+
+</p><h2>
+
+Possible Command Line Interface
+
+</h2><p>
+
+The first 2.0 version will only create the AST for use inside rust apps. Long term possibility of making a command line interface.
+
+</p><p>
+
+[] Make a config loader with a JSON schema you can pass in.
+
+</p><p>
+
+[] Output ASTs as JSONs in an output dir with the relative paths of the source files.
+
+</p><p>
+
+[] Output ASTs as JSONs in the same directory as the source files.
+
+</p><p>
+
+[] Provide minijinja output from the command line run.
+
+</p><div>
+      <ul>
+      </ul>
+    </div>
     <pre>
----------------------------------- page.neoj ----------------------------------
-  16 |     "sections/" + section.kind + "/default.neoj",
-  17 |     "sections/" + section.type + "/default.neoj",
-  18 |   ] -!]
-  19 >   [!- include templates -!]
-     i       ^^^^^^^^^^^^^^^^^ template not found
-  20 |   [#
-  21 |   [!- if section.kind == "title" !]
-  22 |     [@- output_title(section) -@]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Referenced variables: {
-    loop: <loop 1/7>,
-    section: {
-        "attrs": {},
-        "bound": "Full",
-        "children": [
-            {
-                "spans": [
-                    {
-                        "category": "text-span",
-                        "content": "Documentation",
-                    },
-                ],
-                "type": "block",
-            },
-        ],
-        "end_section": none,
-        "flags": [],
-        "kind": "h2",
-        "type": "basic",
-    },
-    sections: [
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Neopolitan",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Welcome to Neopolitan! It's a plain-text file format in the spirit of Markdown but with more functionality.",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "title",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Documentation",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "h2",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Custom Shorthand Tags",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Shorthand tags look like",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "h2",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "There are not specified custom tags. Defining and using them is an implementaiton detail. TODO: There are recommended examples in the reference templates",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "code",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Section names for the category types are reserved words that go to their type to ensure that all types have sections associated with them. (That is, it's required to have output for the section categories. There is no expectation for what the output should be. Just that the templates exist)",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Define the characters that get escaped when escaping happens.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Create template the outputs the section for rebuilding sections.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Write up the fact that flags are required to be output in order for redoing this format. Attributes are not required to be in the same order they showed up in the source when rebuilding it.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Create a default formatter. Allow line length to be set. TBD on what else (aim to keep it at a minimum)",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Implicit in the specs is the required ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- neopolitan",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " section which transforms the contents without adding anything extra to it. Section attributes and flags are ignored. This is the only required section.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Make ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- metadata",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " a reserved section name that should not be output to the page. The attrs it has are implementation details. Having an metadata section is not required though. Possible feature for future versions is to allow JSON or YAML to be used for the body and pulled in. In that light, the ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- type:",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " attribute is a reserved word. Eventually, will have possible values of ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "neopolitan",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": ", ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "json",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": ", ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "yaml",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": ". Other formats TBD.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Should there be speced reserved words for ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- metadata",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": "? Attrs that aren't required but are defined for what they should be? Probably makes sense to have ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- created:",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": ", ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- updated:",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " be defined for the date format to use. And, ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- id:",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " as a recommendation for the ID of page that can be used for cross references.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Make ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- template:",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " be part of the section ref, but not spec. (since there isn't a defined spec for sections)",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Make ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- id:",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " and ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- class:",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " be section ref.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Make ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "template:",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " be part of the shorthand ref.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Spec is to fall back to ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "<NAME>",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " for any ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "<<NAME>>",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " tag that doesn't match a template. It's always open and close.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Reference should include standard elements for spans.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Reference should include standard elements for sections.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Provide tests for the reference sections and spans for anyone that wants to implement them to use them as expanded test for other parsers?",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Version the specs.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Attribute values are only text spans and escaped characters? Or should they be full parsing? TBD based on test usage.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Image section is not required but give guidelines about usage (re: alt text and path handling via flag)",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] The output references should just be sections, not the full page. Should be able to show them in the example though. Maybe those templates are in a \"support\" section that's outside the reference templates.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Note that the specific page wrapper is more example than reference, but the page template itself is ref.",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "todo",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Possible Command Line Interface",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "The first 2.0 version will only create the AST for use inside rust apps. Long term possibility of making a command line interface.",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "h2",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Make a config loader with a JSON schema you can pass in.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Output ASTs as JSONs in an output dir with the relative paths of the source files.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Output ASTs as JSONs in the same directory as the source files.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] Provide minijinja output from the command line run.",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "todo",
-            "type": "basic",
-        },
-    ],
-    templates: [
-        "sections/h2/default.neoj",
-        "sections/basic/default.neoj",
-    ],
-}
--------------------------------------------------------------------------------</pre>
+      null
+    </pre>
 </main>
 </body>
 </html>

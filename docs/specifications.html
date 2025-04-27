@@ -8,539 +8,223 @@
 </head>
 <body>
   <main class="flow">
-    <h1>Rendering Error</h1>
-    <p>File: page.neoj</p>
-    <p>Details: tried to include one of multiple templates, none of which existed ["sections/todo/default.neoj", "sections/basic/default.neoj"]</p>
+
+<h1>
+
+Neopolitan 2.0.0 Specification
+
+</h1><p>
+
+[] make 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- code
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ a defined section where the first flag is the language to use for highlighting
+
+</p><h2>
+
+Introduction
+
+</h2><p>
+
+The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification.
+
+</p><h2>
+
+Test Types
+
+</h2><p>
+
+The specification is split into three parts.
+
+</p><p>
+
+1. AST Generation
+
+</p><p>
+
+2. Required Sections and Attributes
+
+</p><p>
+
+3. HTML Output
+
+</p><h2>
+
+AST Generation
+
+</h2><p>
+
+Tests are currently built into the rust code. They include parsing for the shorthands.
+
+</p><p>
+
+Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order.
+
+</p><h2>
+
+Reserved/Required Sections And Attributes
+
+</h2><p>
+
+Sections
+
+</p><p>
+
+TODO: Add details about how documents must start with a section (which means all content is in a section)
+
+</p><p>
+
+- metadata - must not output directly on the page.
+
+</p><p>
+
+- neopolitan - Outputs the contents of the section without adding anything beyond the content generated from the body of section. This ensures there's a way to test AST generation from a parser. (Necessary because content can't exist outside a section)
+
+</p><p>
+
+Section Attributes
+
+</p><p>
+
+These attributes must be handled by a parser to meet the spec. They can be used in any section.
+
+</p><p>
+
+- 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- created:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+</p><p>
+
+Value is a date in the RFC 3339 format.
+
+</p><p>
+
+- 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- updated:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+</p><p>
+
+Value is a date in the RFC 3339 format.
+
+</p><p>
+
+- 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+-- template:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+</p><p>
+
+This is the way to change the output template for a section. The details of the values and their corresponding outputs is an implementation detail, but the attribute key is reserved.
+
+</p><h2>
+
+HTML Output
+
+</h2><p>
+
+Neopolitan is designed primarily to generate web content. Output is largely an implementation detail with a required exceptions designed to improve portability between systems.
+
+</p><p>
+
+Any generator that passes all the output tests meets the spec. Anything not defined in the tests is left as an implementation detail.
+
+</p><p>
+
+TODO: Write up details of 
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+template:
+
+<span class="attrs-and-flags">
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+ being reserved. It's how you can change the output if you want something other than what's speced for the shorthands.
+
+</p><p>
+
+TODO: Consider desciptions of how the HTML Output is representative. (e.g. systems may add extra classes, or attributes, but they should work directionally the same if any modifications are made)
+
+</p><div>
+      <ul>
+      </ul>
+    </div>
     <pre>
----------------------------------- page.neoj ----------------------------------
-  16 |     "sections/" + section.kind + "/default.neoj",
-  17 |     "sections/" + section.type + "/default.neoj",
-  18 |   ] -!]
-  19 >   [!- include templates -!]
-     i       ^^^^^^^^^^^^^^^^^ template not found
-  20 |   [#
-  21 |   [!- if section.kind == "title" !]
-  22 |     [@- output_title(section) -@]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Referenced variables: {
-    loop: <loop 1/13>,
-    section: {
-        "attrs": {},
-        "bound": "Full",
-        "children": [
-            {
-                "spans": [
-                    {
-                        "category": "text-span",
-                        "content": "[] make ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code-span",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text-span",
-                                "content": "-- code",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text-span",
-                        "content": " a defined section where the first flag is the language to use for highlighting",
-                    },
-                ],
-                "type": "block",
-            },
-        ],
-        "end_section": none,
-        "flags": [],
-        "kind": "todo",
-        "type": "basic",
-    },
-    sections: [
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Neopolitan 2.0.0 Specification",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "title",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "[] make ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- code",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " a defined section where the first flag is the language to use for highlighting",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "todo",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Introduction",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification.",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "h2",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Test Types",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "The specification is split into three parts.",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "h2",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "1. AST Generation",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "2. Required Sections and Attributes",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "3. HTML Output",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "olist",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "AST Generation",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Tests are currently built into the rust code. They include parsing for the shorthands.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order.",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "h2",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Reserved/Required Sections And Attributes",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "h2",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Sections",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "TODO: Add details about how documents must start with a section (which means all content is in a section)",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "h3",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "- metadata - must not output directly on the page.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "- neopolitan - Outputs the contents of the section without adding anything beyond the content generated from the body of section. This ensures there's a way to test AST generation from a parser. (Necessary because content can't exist outside a section)",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "list",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Section Attributes",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "These attributes must be handled by a parser to meet the spec. They can be used in any section.",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "h3",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "- ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- created:",
-                                },
-                            ],
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Value is a date in the RFC 3339 format.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "- ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- updated:",
-                                },
-                            ],
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Value is a date in the RFC 3339 format.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "- ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "-- template:",
-                                },
-                            ],
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "This is the way to change the output template for a section. The details of the values and their corresponding outputs is an implementation detail, but the attribute key is reserved.",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "list",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "HTML Output",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Neopolitan is designed primarily to generate web content. Output is largely an implementation detail with a required exceptions designed to improve portability between systems.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Any generator that passes all the output tests meets the spec. Anything not defined in the tests is left as an implementation detail.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "TODO: Write up details of ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code-span",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text-span",
-                                    "content": "template:",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text-span",
-                            "content": " being reserved. It's how you can change the output if you want something other than what's speced for the shorthands.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "TODO: Consider desciptions of how the HTML Output is representative. (e.g. systems may add extra classes, or attributes, but they should work directionally the same if any modifications are made)",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "h2",
-            "type": "basic",
-        },
-        {
-            "attrs": {
-                "created": [
-                    {
-                        "category": "text-span",
-                        "content": "2025-04-27T10:54:39-04:00",
-                    },
-                ],
-                "updated": [
-                    {
-                        "category": "text-span",
-                        "content": "2025-04-27T10:54:39-04:00",
-                    },
-                ],
-            },
-            "bound": "Full",
-            "children": [],
-            "end_section": none,
-            "flags": [],
-            "kind": "metadata",
-            "type": "basic",
-        },
-    ],
-    templates: [
-        "sections/todo/default.neoj",
-        "sections/basic/default.neoj",
-    ],
-}
--------------------------------------------------------------------------------</pre>
+      null
+    </pre>
 </main>
 </body>
 </html>

@@ -8,145 +8,30 @@
 </head>
 <body>
   <main class="flow">
-    <h1>Rendering Error</h1>
-    <p>File: page.neoj</p>
-    <p>Details: tried to include one of multiple templates, none of which existed ["sections/h2/default.neoj", "sections/basic/default.neoj"]</p>
+
+<h1>
+
+Command Line Interface
+
+</h1><h2>
+
+Introduction
+
+</h2><p>
+
+Version 2.0 of Neopolitan generates ASTs for use in rust apps. It does not include a command line interface. I'm considering one in the future to output ASTs as JSONs either as files or as STDOUT.
+
+</p><p>
+
+Adding a basic HTML output from templates is also a possibility. I'm not sure about that though as there are so many possible quality-of-life improvement decisions that it's it might not be worth doing work inside Neopolitan. Other engines (e.g. Neopoligen) are likely where that effort is better spent.
+
+</p><div>
+      <ul>
+      </ul>
+    </div>
     <pre>
----------------------------------- page.neoj ----------------------------------
-  16 |     "sections/" + section.kind + "/default.neoj",
-  17 |     "sections/" + section.type + "/default.neoj",
-  18 |   ] -!]
-  19 >   [!- include templates -!]
-     i       ^^^^^^^^^^^^^^^^^ template not found
-  20 |   [#
-  21 |   [!- if section.kind == "title" !]
-  22 |     [@- output_title(section) -@]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Referenced variables: {
-    loop: <loop 1/3>,
-    section: {
-        "attrs": {},
-        "bound": "Full",
-        "children": [
-            {
-                "spans": [
-                    {
-                        "category": "text-span",
-                        "content": "Introduction",
-                    },
-                ],
-                "type": "block",
-            },
-            {
-                "spans": [
-                    {
-                        "category": "text-span",
-                        "content": "Version 2.0 of Neopolitan generates ASTs for use in rust apps. It does not include a command line interface. I'm considering one in the future to output ASTs as JSONs either as files or as STDOUT.",
-                    },
-                ],
-                "type": "block",
-            },
-            {
-                "spans": [
-                    {
-                        "category": "text-span",
-                        "content": "Adding a basic HTML output from templates is also a possibility. I'm not sure about that though as there are so many possible quality-of-life improvement decisions that it's it might not be worth doing work inside Neopolitan. Other engines (e.g. Neopoligen) are likely where that effort is better spent.",
-                    },
-                ],
-                "type": "block",
-            },
-        ],
-        "end_section": none,
-        "flags": [],
-        "kind": "h2",
-        "type": "basic",
-    },
-    sections: [
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Command Line Interface",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "title",
-            "type": "basic",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "children": [
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Introduction",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Version 2.0 of Neopolitan generates ASTs for use in rust apps. It does not include a command line interface. I'm considering one in the future to output ASTs as JSONs either as files or as STDOUT.",
-                        },
-                    ],
-                    "type": "block",
-                },
-                {
-                    "spans": [
-                        {
-                            "category": "text-span",
-                            "content": "Adding a basic HTML output from templates is also a possibility. I'm not sure about that though as there are so many possible quality-of-life improvement decisions that it's it might not be worth doing work inside Neopolitan. Other engines (e.g. Neopoligen) are likely where that effort is better spent.",
-                        },
-                    ],
-                    "type": "block",
-                },
-            ],
-            "end_section": none,
-            "flags": [],
-            "kind": "h2",
-            "type": "basic",
-        },
-        {
-            "attrs": {
-                "created": [
-                    {
-                        "category": "text-span",
-                        "content": "2025-04-27T10:12:27-04:00",
-                    },
-                ],
-                "updated": [
-                    {
-                        "category": "text-span",
-                        "content": "2025-04-27T10:12:27-04:00",
-                    },
-                ],
-            },
-            "bound": "Full",
-            "children": [],
-            "end_section": none,
-            "flags": [],
-            "kind": "metadata",
-            "type": "basic",
-        },
-    ],
-    templates: [
-        "sections/h2/default.neoj",
-        "sections/basic/default.neoj",
-    ],
-}
--------------------------------------------------------------------------------</pre>
+      null
+    </pre>
 </main>
 </body>
 </html>
