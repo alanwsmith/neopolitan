@@ -4,10 +4,16 @@ use crate::section::Section;
 use anyhow::Result;
 use minijinja::syntax::SyntaxConfig;
 use minijinja::{Environment, Value, context, path_loader};
+use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 use std::path::PathBuf;
 use walkdir::WalkDir;
 
+// NOTE: this creates an Environment three times
+// could be optimized to just one, but it's fine
+// for now
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Site {
     config: Config,
     errors: BTreeMap<PathBuf, (String, String)>,
@@ -49,7 +55,23 @@ impl Site {
         Ok(())
     }
 
+    pub fn copy_files(&self) -> Result<()> {
+        self.files.iter().for_each(|source_path| {
+            let output_path = replace_path_root(
+                &source_path,
+                &self.input_root,
+                &self.output_root,
+            )
+            .unwrap();
+            let parent = output_path.parent().unwrap();
+            std::fs::create_dir_all(parent).unwrap();
+            std::fs::copy(source_path, output_path).unwrap();
+        });
+        Ok(())
+    }
+
     pub fn output_pages(&self) -> Result<()> {
+        let site = &self.clone();
         let mut env = Environment::new();
         env.set_syntax(
             SyntaxConfig::builder()
@@ -64,8 +86,8 @@ impl Site {
         self.pages.iter().for_each(|(source_path, sections)| {
             let mut output_path = replace_path_root(
                 &source_path,
-                &PathBuf::from("docs-content"),
-                &PathBuf::from("docs"),
+                &self.input_root,
+                &self.output_root,
             )
             .unwrap();
             output_path.set_extension("html");
@@ -75,7 +97,6 @@ impl Site {
             let template =
                 env.get_template("pages/template-picker.neoj").unwrap();
             let sections = Value::from_serialize(&sections);
-
             match template.render(context!(sections)) {
                 Ok(output) => {
                     write_file_with_mkdir(&output_path, &output).unwrap()
@@ -88,7 +109,7 @@ impl Site {
                     let detail = Value::from(e.detail().unwrap());
                     let line = Value::from(e.line().unwrap());
                     let debug = Value::from(e.display_debug_info().to_string());
-                    let context = context!(debug, detail, line, name);
+                    let context = context!(site, debug, detail, line, name);
                     match output_error_template.render(context) {
                         Ok(error_output) => {
                             write_file_with_mkdir(&output_path, &error_output)
@@ -104,23 +125,49 @@ impl Site {
                 }
             }
         });
-        assert!(false);
         Ok(())
     }
 
-    //                 }
-    //                 Ast::Error { message, remainder } => {
-    //                     let template = env.get_template("pages/parsing-error.neoj").unwrap();
-    //                     let message = Value::from_serialize(message);
-    //                     let remainder = Value::from_serialize(remainder);
-    //                     let output = template
-    //                         .render(context!(
-    //                             message => message,
-    //                             remainder => remainder,
-    //                         ))
-    //                         .unwrap();
-    //                     write_file_with_mkdir(&output_path, &output).unwrap();
-    //                 }
+    pub fn output_errors(&self) -> Result<()> {
+        let site = &self.clone();
+        let mut env = Environment::new();
+        env.set_syntax(
+            SyntaxConfig::builder()
+                .block_delimiters("[!", "!]")
+                .variable_delimiters("[@", "@]")
+                .comment_delimiters("[#", "#]")
+                .build()
+                .unwrap(),
+        );
+        env.set_loader(path_loader("docs-content/reference-templates"));
+        self.errors
+            .iter()
+            .for_each(|(source_path, (message, remainder))| {
+                let mut output_path = replace_path_root(
+                    &source_path,
+                    &self.input_root,
+                    &self.output_root,
+                )
+                .unwrap();
+                output_path.set_extension("html");
+                dbg!(&output_path);
+                let parent = output_path.parent().unwrap();
+                std::fs::create_dir_all(parent).unwrap();
+                let template =
+                    env.get_template("pages/template-picker.neoj").unwrap();
+                let output = template
+                    .render(context!(site, message, remainder))
+                    .unwrap();
+                write_file_with_mkdir(&output_path, &output).unwrap();
+            });
+        Ok(())
+    }
+
+    pub fn output_incompletes(&self) -> Result<()> {
+        Ok(())
+    }
+
+    //
     //                 Ast::Incomplete { parsed, remainder } => {
     //                     let template =
     //                         env.get_template("pages/incomplete.neoj").unwrap();
@@ -139,8 +186,6 @@ impl Site {
     //     });
     //     Ok(())
     // }
-
-    //             std::fs::copy(source_path, output_path).unwrap();
 
     //
 }
@@ -199,7 +244,12 @@ mod test {
             pages: BTreeMap::new(),
             files: vec![],
         };
-        let _ = site.load_pages_and_files();
-        let _ = site.output_pages();
+        // These will panic intentionally if
+        // they fail for now
+        site.load_pages_and_files().unwrap();
+        site.copy_files().unwrap();
+        site.output_pages().unwrap();
+        site.output_errors().unwrap();
+        site.output_incompletes().unwrap();
     }
 }

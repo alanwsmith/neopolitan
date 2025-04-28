@@ -2,7 +2,7 @@ use crate::{section::Section, section_bound::SectionBound, span::Span};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
-#[derive(Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 // #[serde(untagged)]
 #[serde(tag = "type", content = "content", rename_all = "lowercase")]
 pub enum SectionCategory {
