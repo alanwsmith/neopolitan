@@ -263,7 +263,7 @@ and attributes like this:
 </p>
 
 <p>
-The &#64;&#64;Title&#124;class: red&#64;&#64;
+The Title
 </p>
 
 <p>
@@ -289,7 +289,7 @@ produces this:
 
 <p>
 &lt;h1 class=&quot;title&quot; aria-label=&quot;Page Title&quot;&gt;<br />
-&nbsp;&nbsp;The &lt;span class=&quot;red&quot;&gt;Title&lt;/span&gt;<br />
+&nbsp;&nbsp;The Title<br />
 &lt;/h1&gt;<br />
 &lt;p&gt;Some Text.&lt;/p&gt;<br />
 &lt;h2 class=&quot;forward blue&quot;&gt;<br />
@@ -312,13 +312,6 @@ Specifically, it does the following:
   <li>
     Automatically add an &quot;aria-label&quot; to
     the &quot;h1&quot; element<sup>2</sup>
-  </li>
-  <li>
-    Use a span to add a &quot;red&quot; class to the
-    word Title in the H1. This is done with the &quot;&#64;&#64;&quot;
-    shorthand which is described further below. 
-    The key point for this example 
-    is the ability to add styles inside headlines. 
   </li>
   <li>
     Output an H2 with the &quot;Forward&quot; text in
