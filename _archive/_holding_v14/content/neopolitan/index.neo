@@ -1,0 +1,63 @@
+-> title
+
+Neopolitan
+
+This is the home page for the Neopolitan project
+
+There are two parts to it:
+
+-> list
+
+- The Format
+
+- The Engine
+
+-> p
+
+
+This is about the format. The repo is
+<<here|link|https://github.com/alanwsmith/neopolitan>>
+
+
+The repo for the engine <<is here|link|https://github.com/alanwsmith/neopolengine>>
+
+
+This is some updated content
+
+-> h3
+
+Sections
+
+this is <<the list of secitons|link|neo-docs-sections--2sajhpyf>>
+
+
+-> css
+
+body {
+background-color: #223344;
+color: #773322;
+}
+
+
+-> checklist
+
+- item
+
+- alfa
+
+- bravo
+
+
+
+-> categories
+>> Neopolitan 
+
+-> attributes
+>> date: 2023-07-08 17:12:03
+>> id: 2sj3borg
+>> site: neopolitan 
+>> type: post
+>> status: published
+>> path: neopolitan/index.neo
+
+

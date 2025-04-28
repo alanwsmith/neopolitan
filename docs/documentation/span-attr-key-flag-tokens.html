@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head> 
+	<title></title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <main class="flow"><div>
+<a href="alternate-templates.html">alternate-templates.html</a>
+</div><div>
+<a href="cli.html">cli.html</a>
+</div><div>
+<a href="documentation/span-attr-key-flag-tokens.html">documentation/span-attr-key-flag-tokens.html</a>
+</div><div>
+<a href="documentations.html">documentations.html</a>
+</div><div>
+<a href="goals.html">goals.html</a>
+</div><div>
+<a href="index.html">index.html</a>
+</div><div>
+<a href="possible-enhancements.html">possible-enhancements.html</a>
+</div><div>
+<a href="recommendations.html">recommendations.html</a>
+</div><div>
+<a href="shorthands.html">shorthands.html</a>
+</div><div>
+<a href="tests/level-1/spans/code.html">tests/level-1/spans/code.html</a>
+</div><div>
+<a href="todos.html">todos.html</a>
+</div><div>
+<a href="versioning.html">versioning.html</a>
+</div><h1>Span Attr Key/Flag Tokens
+
+</h1><p>Tags and Shorthand spans accept flags and attributes. The parser uses the same token logig for individual flags and the key portion of attributes.
+
+</p><p>The specific logic is:
+
+</p><p>- The token ends at spaces, tabs, newlines or pipes [TKTKTK: Insert pipe character]
+
+</p><p>- Escaping character in tokens is not supported. Doing so would require switching the AST to use an array of spans to track the escaped characters instead of using a single text string. That would lead to an unacceptable increase in the complexity of using them in templates.
+
+</p></main>
+</body>
+</html>

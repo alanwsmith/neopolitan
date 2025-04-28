@@ -1,0 +1,36 @@
+[!- include "macros/loader.neoj" -!]
+
+<!DOCTYPE html>
+<html lang="en"> 
+
+
+<!-- 
+  Welcome To The Source Code!
+
+  Please don't judge it too harshly. It's
+  very much a work in progress. 
+-->
+
+
+<head> 
+	<title></title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/tmp-dev-styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header>
+    <a href="/">Home</a>
+  </header>
+  <main class="flow">
+    [!- block main -!][!- endblock -!]
+  </main>
+  <footer>
+    from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
+    <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
+    <a href="https://links.alanwsmith.com/">other projects</a> ~
+    <a href="https://socials.alanwsmith.com/">socials</a>
+  </footer>
+</body>
+</html>

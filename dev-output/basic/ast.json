@@ -1,0 +1,166 @@
+[
+  {
+    "type": "basic",
+    "content": {
+      "attrs": {},
+      "bound": "Full",
+      "children": [
+        {
+          "type": "block",
+          "content": {
+            "spans": [
+              {
+                "category": "text",
+                "content": "Span Test"
+              }
+            ]
+          }
+        },
+        {
+          "type": "block",
+          "content": {
+            "spans": [
+              {
+                "category": "text",
+                "content": "This test it just to make sure things parse fully. Specific outputs are tested in their individual locations"
+              }
+            ]
+          }
+        },
+        {
+          "type": "block",
+          "content": {
+            "spans": [
+              {
+                "category": "text",
+                "content": "Check "
+              },
+              {
+                "category": "code-span",
+                "attrs": {},
+                "flags": [],
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "basic"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " code"
+              }
+            ]
+          }
+        },
+        {
+          "type": "block",
+          "content": {
+            "spans": [
+              {
+                "category": "text",
+                "content": "Check "
+              },
+              {
+                "category": "code-span",
+                "attrs": {},
+                "flags": [
+                  "with-flag"
+                ],
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "code"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " here"
+              }
+            ]
+          }
+        },
+        {
+          "type": "block",
+          "content": {
+            "spans": [
+              {
+                "category": "text",
+                "content": "Check "
+              },
+              {
+                "category": "code-span",
+                "attrs": {
+                  "with": [
+                    {
+                      "category": "text",
+                      "content": "attrs"
+                    }
+                  ]
+                },
+                "flags": [
+                  "and-flags"
+                ],
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "code"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "block",
+          "content": {
+            "spans": [
+              {
+                "category": "text",
+                "content": "This "
+              },
+              {
+                "category": "code-span",
+                "attrs": {},
+                "flags": [],
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "ping"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " a "
+              },
+              {
+                "category": "escaped",
+                "content": "<"
+              },
+              {
+                "category": "text",
+                "content": "< paragraph"
+              }
+            ]
+          }
+        },
+        {
+          "type": "block",
+          "content": {
+            "spans": [
+              {
+                "category": "text",
+                "content": "Check | the || pipes |||"
+              }
+            ]
+          }
+        }
+      ],
+      "end_section": null,
+      "flags": [],
+      "kind": "title"
+    }
+  }
+]

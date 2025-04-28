@@ -1,0 +1,65 @@
+-- title
+
+Command Line Interface
+
+-- h2
+
+Introduction
+
+Version 2.0 of Neopolitan generates
+ASTs for use in rust apps. It does not
+include a command line interface. 
+I'm considering one in the future
+to output ASTs as JSONs either as
+files or as STDOUT. 
+
+Adding a basic HTML output from 
+templates is also a possibility. I'm
+not sure about that though as there
+are so many possible quality-of-life 
+improvement decisions that it's 
+it might not be worth doing work
+inside Neopolitan. Other engines
+(e.g. Neopoligen) are likely 
+where that effort is better spent. 
+
+-- h2
+
+NOTES
+
+The first 2.0 version will only
+create the AST for use inside
+rust apps. Long term possibility
+of making a command line interface. 
+
+
+
+-- h2
+
+TODO
+
+[] Make a config loader with
+a JSON schema you can pass in. 
+
+[] Output ASTs as JSONs in 
+an output dir with the relative
+paths of the source files. 
+
+[] Output ASTs as JSONs in
+the same directory as the 
+source files. 
+
+[] Provide minijinja output
+from the command line run.
+
+[] Create a default formatter. Allow
+line length to be set. TBD on what
+else (aim to keep it at a minimum)
+
+
+
+
+-- metadata 
+-- created: 2025-04-27T10:12:27-04:00
+-- updated: 2025-04-27T10:12:27-04:00
+

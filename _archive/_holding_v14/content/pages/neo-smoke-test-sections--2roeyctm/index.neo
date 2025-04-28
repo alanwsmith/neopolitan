@@ -1,0 +1,528 @@
+-> title
+
+Smoke Test Neopolitan Sections
+
+
+A smoke test to verify basic functionality 
+
+
+-> h3
+>> class: heading
+
+Aside Section
+
+-> aside
+>> class: alfa_aside
+>> id: alfa
+
+Bring your best compass to the third class
+
+
+-> h3
+>> class: heading
+
+Blockquote Section
+
+-> blockquote
+>> class: bravo_blockquote
+>> id: bravo
+
+Cap the jar with a tight brass cover.
+
+Crack the walnut with your sharp side teeth.
+
+
+
+-> h3
+>> class: heading
+
+Checklist Section
+
+
+-> checklist
+
+note: this needs to be updated so the checkboxes only 
+show on the first paragraph
+
+- And now we're in a checklist
+
+- With some items
+
+- To check off
+
+
+
+
+-> h3
+>> class: heading
+
+Code Section
+
+-> code
+>> python
+
+for i in range(1,10):
+    print("hello, world")
+
+
+
+-> h3
+>> class: heading
+
+TODO: Config Section
+
+Key/value pairs that are passed to the templates 
+for rendering decisions. 
+
+These can be arbitrary vs the attributes 
+which are defined
+
+
+
+
+-> h3
+>> class: heading
+
+CSS Section
+
+Nothing visual shows up here. The section
+content is put into the head of the page. 
+
+-> css
+
+body { color: green; }
+
+body { background-color: #231122; }
+
+.heading { 
+    border-bottom: 1px solid; 
+    padding-bottom: 2px;  
+    padding-top: 30px;
+}
+
+
+
+-> h3
+>> class: heading
+
+TODO: ext Section
+
+TODO: -> ext
+>> template: widgets/example.j2
+
+This will call out to external processes and return
+JSON that's passed directly to the template renderer. 
+It's just like the widgets except that the data is
+pulled from an external source 
+
+
+
+-> h3
+>> class: heading
+
+TODO: Head Section
+
+This will put content directly in the head
+of the document
+
+
+
+-> h3
+>> class: heading
+
+H1 Section
+
+-> h1
+
+Cut the pie 
+
+Slide the catch back and open the desk
+
+
+-> h3
+>> class: heading
+
+H2 Section
+
+-> h2
+
+Dip the pail 
+
+Slide the tray across the glass top
+
+
+-> h3
+>> class: heading
+
+H3 Section
+
+-> h3
+
+Let it settle
+
+Split the log with a quick, sharp blow
+
+
+-> h3
+>> class: heading
+
+H4 Section
+
+-> h4
+
+Fasten two pins
+
+Tack the strip of carpet to the worn floor
+
+
+-> h3
+>> class: heading
+
+H5 Section
+
+-> h5
+
+Tuck the sheet
+
+Take the match and strike it against your shoe
+
+
+-> h3
+>> class: heading
+
+H6 Section
+
+-> h6
+
+Drop the ashes
+
+Take the winding path to reach the lake
+
+
+-> h3
+>> class: heading
+
+Hidden Section
+
+Nothing shows up here on the page. The section is
+for notes that shouldn't be published (though you
+shouldn't put anything sensitive in there because
+mistakes happen)
+
+-> hidden
+
+This does not render in the page output
+
+
+-> h3
+>> class: heading
+
+HR Section
+
+
+-> hr
+
+TODO: Update this so you don't have to put
+content here to get the next section to work
+
+
+-> h3
+>> class: heading
+
+HTML Section
+
+
+-> html
+
+<div style="color: red;">This is raw HTML with a style</div>
+
+
+-> h3
+>> class: heading
+
+Image Section
+
+
+-> image
+>> https://placekitten.com/g/200/300
+>> class: echo
+
+This is the alt text for the image
+
+
+-> h3
+>> class: heading
+
+TODO: Images Section
+
+For a collection of images
+
+
+
+
+-> h3
+>> class: heading
+
+List Section
+
+-> list
+
+This is a basic list 
+
+- alfa
+bravo
+
+- charlie
+
+delta
+
+
+
+-> h3
+>> class: heading
+
+TODO: Note Section
+
+-> note
+
+This is a stand alone note
+
+
+
+-> h3
+>> class: heading
+
+Notes Section
+
+-> notes
+
+This is a notes section that is like a list
+
+- delta
+charlie
+
+- echo 
+
+foxtrot
+
+
+-> h3
+>> class: heading
+
+TODO: OList Section
+
+An ordered list
+
+- echo
+whiskey
+
+- sierra
+
+tango
+
+
+-> h3
+>> class: heading
+
+Open/Close Div Section
+
+-> opendiv
+>> class: raw
+
+-> list
+
+- foxtrot
+
+- sierra
+
+-> closediv
+
+TODO: Remove the need for content here before 
+the next tag. 
+
+TODO: Switch to `-> p` automatically if
+you don't hit another tag
+
+-> h3
+>> class: heading
+
+P Section
+
+-> p
+>> class: sierra bravo
+
+This is a paragraph with the class set to
+`sierra bravo`
+
+
+
+-> h3
+>> class: heading
+
+Pre Section
+
+-> pre
+
+this is some preformatted
+text to display
+
+
+
+-> h3
+>> class: heading
+
+TODO: Ref Section
+
+References can be added anywhere in the document
+they are then collected and added at the end
+of the document in the default implementation
+
+TODO: -> ref
+>> url: https://www.example.com/
+>> title: Example reference
+
+This is some text for the ref
+
+
+-> h3
+>> class: heading
+
+TODO: Results Section
+
+Used to display output from code sections. Will
+eventually be automated for blocks that can be
+run. The output will be in a pre tag. in the
+default implementation. 
+
+TODO: -> results
+
+This is an example of output
+
+
+
+
+-> h3
+>> class: heading
+
+Script Section
+
+This section is added to the head of the document in a
+`script`html` tag. In this example it updates the 
+contents of a `-> p`neo` section.
+
+-> script
+
+const update_example = () => {
+    script_target.innerHTML = new Date();
+}
+
+document.addEventListener("DOMContentLoaded", setInterval(update_example, 1000))
+
+
+-> p
+>> id: script_target
+
+Loading script example
+
+
+-> h3
+>> class: heading
+
+Start/End Code Section
+
+This is used to make code blocks that can contain 
+neopolitan tags. 
+
+-> startcode
+
+This is a neotag in a code block
+
+-> h2
+
+-> endcode
+
+
+-> h3
+>> class: heading
+
+TODO: Subtitle Section
+
+TODO: -> subtitle
+
+This is like a title section that's a convience to 
+wrap a subtitle. 
+
+
+
+
+-> h3
+>> class: heading
+
+Title Section
+
+The title section is at the top of the page. It's
+not duplicated here because there should only 
+be one per page. 
+
+
+-> h3
+>> class: heading
+
+TODO: TODO Section
+
+Like a list but lets you mark things that show 
+up as check boxes. The `[]`` is empty, the `[x]``
+is checked and anything else like `[whatever]``
+is marked with the minus state
+
+-> h3
+>> class: heading
+
+TODO: Warning Section
+
+This is like note in that it's a convience wrapper
+that provides a div for warning content. TBD
+of if there should be a `warnings`` too. Probably
+that makes sense to keep the analoies in parity
+
+
+
+-> h3
+>> class: heading
+
+Vimeo Section
+
+-> vimeo
+>> 786334291
+
+
+-> h3
+>> class: heading
+
+TODO: Widget Section
+
+This will hold JSON data that's passed directly 
+to the template rendered for processing. 
+
+
+
+-> h3
+>> class: heading
+
+Youtube Section
+
+-> youtube
+>> _YUzQa_1RCE
+
+
+
+-> categories
+>> Neopolitan
+
+-> attributes
+>> date: 2023-06-18 14:29:39
+>> id: 2roeyctm
+>> site: neopolitan 
+>> type: post
+>> status: published
+

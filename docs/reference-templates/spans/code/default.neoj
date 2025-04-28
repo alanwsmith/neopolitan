@@ -1,0 +1,7 @@
+[!- import "macros/loader.neoj" as macros -!]
+<code
+[@- macros.span_classes(span) -@]
+[@- macros.span_id(span) -@]
+>
+[@- macros.child_spans(span.spans) -@]
+</code>

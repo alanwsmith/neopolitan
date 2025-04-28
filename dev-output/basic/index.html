@@ -1,0 +1,484 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Grimoire Dev Output</title>
+  <style>
+    * {
+      margin: 0;
+    }
+    body {
+      background-color: black;
+      color: #ccc;
+    }
+    h1, h2, h3 {
+      margin-top: 1.2rem;
+    }
+    .attrs-and-flags {
+      color: #555;
+    }
+    .tag-output-example {
+      color: #66a;
+    }
+
+  </style>
+</head>
+<body>
+    <h1>PAGE</h1>
+    <div>
+      <ul>
+
+      
+<li>
+  <h2>
+
+  title
+  
+
+
+  
+
+
+<div>attrs:</div>
+<ul>
+
+<li>subtitle: 
+
+this is
+
+a subtitle
+
+</li>
+
+</ul>
+
+
+
+  
+
+
+<div>blocks:</div>
+<ul>
+
+<li>
+
+
+
+This Is An Output Example
+
+
+
+</li>
+
+
+
+<li>
+
+
+
+This is 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="tag-output-example">
+&lt;code&gt;
+</span>
+
+a code example
+
+<span class="attrs-and-flags">
+
+
+
+&lt;-- attrs 
+
+| charlie: 
+
+delta
+
+
+
+
+
+| echo: 
+
+foxtrot
+
+
+
+--&gt;
+
+
+
+
+
+
+&lt;-- flags 
+
+| alfa
+
+
+
+| bravo
+
+--&gt;
+
+
+
+</span>
+<span class="tag-output-example">
+&lt;/code&gt;
+</span>
+
+
+.
+
+
+
+</li>
+
+
+
+<li>
+
+
+
+And another one down here.
+
+
+
+</li>
+
+
+
+<li>
+
+
+
+This is a | and two || and ||| pipes
+
+
+
+</li>
+
+</ul>
+
+
+
+
+  </h2>
+
+
+      
+<li>
+  <h2>
+
+  p
+  
+
+
+  
+
+
+  
+
+
+<div>blocks:</div>
+<ul>
+
+<li>
+
+
+
+This is another section
+
+
+
+</li>
+
+</ul>
+
+
+
+
+  </h2>
+
+
+      
+<li>
+  <h2>
+
+  metadata
+  
+
+
+<div>flags:</div>
+<ul>
+
+<li>flag-example</li>
+
+</ul>
+
+
+
+  
+
+
+<div>attrs:</div>
+<ul>
+
+<li>created: 
+
+2025-04-26T15:41:54-04:00
+
+</li>
+
+
+
+<li>id: 
+
+2w/hr/sm/c3
+
+</li>
+
+
+
+<li>status: 
+
+prep
+
+</li>
+
+
+
+<li>template: 
+
+post
+
+</li>
+
+
+
+<li>updated: 
+
+2025-04-26T15:41:54-04:00
+
+</li>
+
+</ul>
+
+
+
+  
+
+
+
+  </h2>
+
+
+      </ul>
+    </div>
+    <pre>
+      [
+  {
+    "attrs": {
+      "subtitle": [
+        {
+          "category": "text-span",
+          "content": "this is"
+        },
+        {
+          "category": "text-span",
+          "content": "a subtitle"
+        }
+      ]
+    },
+    "bound": "Full",
+    "children": [
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This Is An Output Example"
+          }
+        ],
+        "type": "block"
+      },
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This is "
+          },
+          {
+            "attrs": {
+              "charlie": [
+                {
+                  "category": "text-span",
+                  "content": "delta"
+                }
+              ],
+              "echo": [
+                {
+                  "category": "text-span",
+                  "content": "foxtrot"
+                }
+              ]
+            },
+            "category": "code-span",
+            "flags": [
+              "alfa",
+              "bravo"
+            ],
+            "spans": [
+              {
+                "category": "text-span",
+                "content": "a code example"
+              }
+            ]
+          },
+          {
+            "category": "text-span",
+            "content": "."
+          }
+        ],
+        "type": "block"
+      },
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "And another one down here."
+          }
+        ],
+        "type": "block"
+      },
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This is a | and two || and ||| pipes"
+          }
+        ],
+        "type": "block"
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "title",
+    "type": "basic"
+  },
+  {
+    "attrs": {},
+    "bound": "Full",
+    "children": [
+      {
+        "spans": [
+          {
+            "category": "text-span",
+            "content": "This is another section"
+          }
+        ],
+        "type": "block"
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "p",
+    "type": "basic"
+  },
+  {
+    "attrs": {
+      "created": [
+        {
+          "category": "text-span",
+          "content": "2025-04-26T15:41:54-04:00"
+        }
+      ],
+      "id": [
+        {
+          "category": "text-span",
+          "content": "2w/hr/sm/c3"
+        }
+      ],
+      "status": [
+        {
+          "category": "text-span",
+          "content": "prep"
+        }
+      ],
+      "template": [
+        {
+          "category": "text-span",
+          "content": "post"
+        }
+      ],
+      "updated": [
+        {
+          "category": "text-span",
+          "content": "2025-04-26T15:41:54-04:00"
+        }
+      ]
+    },
+    "bound": "Full",
+    "children": [],
+    "end_section": null,
+    "flags": [
+      "flag-example"
+    ],
+    "kind": "metadata",
+    "type": "basic"
+  }
+]
+    </pre>
+</body>
+</html>

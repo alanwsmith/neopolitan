@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Run this from the directory with
+# Cargo.toml in it
+
+watchexec\
+  --project-origin .\
+  -c\
+  -r\
+  -e rs,neo,neoj,css\
+  "bash -c 'cargo test solo -- --nocapture && cargo test -- --nocapture'"
+

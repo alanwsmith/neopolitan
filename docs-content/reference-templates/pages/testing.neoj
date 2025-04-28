@@ -1,0 +1,60 @@
+[!- import "macros/loader.neoj" as macros -!] 
+[!- set data = namespace() -!]
+
+<!DOCTYPE html>
+<html lang="en"> 
+<head> 
+	<title></title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <main class="flow">
+
+[!- for section in sections -!]
+  [!- if section.kind == "title" -!]
+    [!- include "sections/title/default.neoj" -!]
+  [!- endif -!]
+[!- endfor -!]
+
+[!- for section in sections -!]
+  [!- if section.kind == "raw" -!]
+    [!- set data.expected -!]
+    [!- include "sections/raw/default.neoj" -!]
+    [!- endset -!]
+  [!- endif -!]
+[!- endfor -!]
+
+[!- for section in sections -!]
+  [!- if section.kind == "neopolitan" -!]
+    [!- set data.got -!]
+    [!- include "sections/neopolitan/default.neoj" -!]
+    [!- endset -!]
+  [!- endif -!]
+[!- endfor -!]
+
+[!- if data.expected|trim == data.got|trim -!]
+<h2>Passed</h2>
+[!- else -!]
+<h2>Failed</h2>
+[!- endif -!]
+
+    <h3>Got</h3>
+    <pre>
+    [!- autoescape true -!]
+    [@- data.got -@]
+    [!- endautoescape -!]
+    </pre>
+
+    <h3>Expected</h3>
+    <pre>
+    [!- autoescape true -!]
+    [@- data.expected -@]
+    [!- endautoescape -!]
+    </pre>
+
+  </main>
+</body>
+</html>

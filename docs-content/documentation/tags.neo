@@ -1,0 +1,45 @@
+-- title
+
+Tags
+
+-- h2
+
+Introduction
+
+-- html
+
+<p>Tag are one of the ways to enhance 
+content in Neopolitan files<sup>1</sup>.</p>
+
+<p>Details about how they work are currently 
+<a href="/">on the home page</a>.</p>
+
+-- h2
+
+TODO 
+
+Move content from the home page to here. 
+
+
+-- h2
+
+Footnote
+
+-- html
+
+<ol>
+  <li>
+    The other way is 
+    <a href="/documentation/shorthands.html">Shorthands</a>
+  </li>
+</ol>
+
+
+
+
+
+
+-- metadata 
+-- created: 2025-04-28T14:26:15-04:00
+-- updated: 2025-04-28T14:26:15-04:00
+

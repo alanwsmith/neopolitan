@@ -1,0 +1,103 @@
+-- title
+
+Goals
+
+-- h2
+
+Things To Strive For
+
+-- list
+
+- A Single Standard Specification
+
+Trying to avoid all the different flavors
+of Markdown parsers. Any given input
+should produce the same AST regardless
+of the parser<sup>1<sup>. 
+
+- Complete AST Specification
+
+- Specific Output Specifications
+
+Neopolitan is designed to be as flexible
+as possible. This is by making the spec
+mostly focused on parsing inputs to
+generate an AST. Output of the AST
+is largely an implementation detail. 
+
+However, there are a few standard outputs
+specified for HTML output to aid in 
+portability of files. These are defined
+on the specification page. 
+
+- No JavaScript Required
+
+- Authoring Simplicity
+
+I'm attempting to make something that is
+simple to use while still provding
+a lot of power. I considred how things
+work from the authoring, parsing, 
+templatings, and generation perspectives. 
+I tried to make all aspects easy to 
+work with, but the primary perspective
+is that of the writer/author/artist/creator.
+Decisions always pushed towards making
+that expeirnce the best even if it meant
+the other persptives couldn't be improved
+as much. 
+
+
+
+
+
+
+
+
+
+
+
+- Semantic Versioning
+
+- Format Stability
+
+I've been using Neopolitan for
+a few years now. While it has evolved 
+a lot during that time, it's been 
+effectively stable for some time. 
+
+The goal of 2.0 is to be as stable
+as possible, but I expect a 2.0.1 with 
+minor modifications to clarify behavior
+of edge cases. 
+
+There are some potential feature additions
+(e.g. CSV, JSON, YAML section handling)
+that would result in 2.1, 2.2 etc.
+Those versions would provide backward
+compatibility with prior 2.x versions. 
+
+The goes is to never have to make
+a 3.0 (i.e. something that requires
+breaking changes)
+
+
+-- footnote
+-- id: 1
+
+The only things that could be different 
+are ``attrs`` which might appear in a 
+different order. But, requiring an 
+order is not part of the spec since
+they are key/values pairs. The only
+requirement is that all the same
+keys exist with the same values
+(regardless of order)
+
+
+
+-- metadata 
+-- created: 2025-04-27T10:24:22-04:00
+-- updated: 2025-04-27T10:24:22-04:00
+
+

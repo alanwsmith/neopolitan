@@ -1,0 +1,3 @@
+[!- macro debug(source) -!]
+<div><pre>[@ source|tojson(true) @]</pre></div>
+[!- endmacro -!]

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+
+<!-- 
+  Welcome To The Source Code!
+
+  Please don't judge it too harshly. It's
+  very much a work in progress. 
+-->
+
+
+<head> 
+	<title></title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/tmp-dev-styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header>
+    <a href="/">Home</a>
+  </header>
+  <main class="flow"><div class="tmp-under-construction">
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+  <div>
+    <p>This page is currently under construction.</p>
+    <p>
+      Depending on when you see it, it could be anywhere from a complete draft to nothing but
+      a bunch of scratch notes and placeholders. Follow me on
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
+    </p>
+  </div>
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+</div><h1 class="title">Goals
+
+</h1><h2>Things To Strive For
+
+</h2><p>- A Single Standard Specification
+
+</p><p>Trying to avoid all the different flavors of Markdown parsers. Any given input should produce the same AST regardless of the parser<sup>1<sup>.
+
+</p><p>- Complete AST Specification
+
+</p><p>- Specific Output Specifications
+
+</p><p>Neopolitan is designed to be as flexible as possible. This is by making the spec mostly focused on parsing inputs to generate an AST. Output of the AST is largely an implementation detail.
+
+</p><p>However, there are a few standard outputs specified for HTML output to aid in portability of files. These are defined on the specification page.
+
+</p><p>- No JavaScript Required
+
+</p><p>- Authoring Simplicity
+
+</p><p>I'm attempting to make something that is simple to use while still provding a lot of power. I considred how things work from the authoring, parsing, templatings, and generation perspectives. I tried to make all aspects easy to work with, but the primary perspective is that of the writer/author/artist/creator. Decisions always pushed towards making that expeirnce the best even if it meant the other persptives couldn't be improved as much.
+
+</p><p>- Semantic Versioning
+
+</p><p>- Format Stability
+
+</p><p>I've been using Neopolitan for a few years now. While it has evolved a lot during that time, it's been effectively stable for some time.
+
+</p><p>The goal of 2.0 is to be as stable as possible, but I expect a 2.0.1 with minor modifications to clarify behavior of edge cases.
+
+</p><p>There are some potential feature additions (e.g. CSV, JSON, YAML section handling) that would result in 2.1, 2.2 etc. Those versions would provide backward compatibility with prior 2.x versions.
+
+</p><p>The goes is to never have to make a 3.0 (i.e. something that requires breaking changes)
+
+</p><p>The only things that could be different are <code>attrs</code> which might appear in a different order. But, requiring an order is not part of the spec since they are key/values pairs. The only requirement is that all the same keys exist with the same values (regardless of order)
+
+</p><hr />
+<h3>Under Construction</h3>
+<ul class="flow"><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></main>
+  <footer>
+    from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
+    <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
+    <a href="https://links.alanwsmith.com/">other projects</a> ~
+    <a href="https://socials.alanwsmith.com/">socials</a>
+  </footer>
+</body>
+</html>

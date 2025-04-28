@@ -1,0 +1,13 @@
+-- neopolitan
+
+[[https://www.example.com/]]
+
+[[example link|https://www.example.com/]]
+
+[[example link|https://www.example.com/|class: red]]
+
+[[example link|https://www.example.com/|id: alfa]]
+
+
+
+

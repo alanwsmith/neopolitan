@@ -1,0 +1,757 @@
+-- title
+
+Welcome to Neopolitan
+
+-- h2
+
+Introduction
+
+Neopolitan is a plain-text file format. 
+It's like Markdown, but with more features. 
+
+-- h2
+
+Work-In-Progress
+
+-- html
+
+<div class="tmp-warning flow">
+
+<p>
+<strong>Head's up:</strong> I'm in the middle of rebuilding the site. 
+</p>
+
+<p>
+The examples on this page are up to date. Most
+of the rest of the site is just scratch notes and 
+TODOs. Feel free to click around if you want to see how the 
+sausage is being made. 
+</p>
+
+<p>
+Follow me on 
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>
+for updates. 
+</p>
+
+</div>
+
+-- h2
+
+How It Works
+
+-- h3
+
+The Basics
+
+
+
+
+-- html
+
+<p>
+Neopolitan documents are made from sections. Each one
+start with two dashes followed by a name. For example, 
+here's a <code>title</code> section:
+</p>
+
+<div class="tmp-example flow">
+
+<p>&#45;&#45; title</p>
+
+<p>A Basic Example</p>
+
+<p>This is an example of what a Neopolitan<br />
+document looks like.</p>
+
+</div>
+
+<p>which outputs this HTML:</p>
+
+<div class="tmp-example flow">
+<p>
+&lt;h1 class=&quot;title&quot;&gt;<br />
+&nbsp;&nbsp;A Basic Example<br />
+&lt;/h1&gt;<br />
+&lt;p&gt;<br />
+&nbsp;&nbsp;This is an example of what a<br />
+&nbsp;&nbsp;Neopolitan document looks like.<br />
+&lt;/p&gt;
+</p>
+
+</div>
+
+
+
+-- h3
+
+Section Flags
+
+Each section can have flags. They're
+defined by adding lines starting
+with two dashes immediately
+follow the section like this:
+
+-- html
+
+<div class="tmp-example flow">
+
+<p>
+&#45;&#45; h2<br />
+&#45;&#45; hidden 
+</p>
+
+<p>
+This H2 is hidden
+</p>
+
+</div>
+
+<p>
+Which outputs:
+</p>
+
+<div class="tmp-example">
+
+<p>
+&lt;h2 hidden&gt;<br />
+&nbsp;&nbsp;This H2 is hidden<br />
+&lt;/h2&gt;
+</p>
+
+</div>
+
+
+
+-- h3
+
+Section Attributes
+
+Key/value attributes can be added as
+well. For example:
+
+-- html
+
+<div class="tmp-example flow">
+
+<p>
+&#45;&#45; h2<br />
+&#45;&#45; class: red 
+</p>
+
+<p>
+This H2 is red 
+</p>
+
+</div>
+
+<p>
+Which produces:
+</p>
+
+<div class="tmp-example flow">
+
+<p>
+&lt;h2 class=&quot;red&quot;&gt;<br />
+&nbsp;&nbsp;This H2 is red<br />
+&lt;/h2&gt;
+</p>
+
+</div>
+
+
+-- h2
+
+Markdown Section Comparison
+
+A basic Markdown document might look like this:
+
+-- html
+
+<div class="tmp-example flow">
+
+<p>
+&#35; The Title
+</p>
+
+<p>
+Some text.
+</p>
+
+<p>
+&#35;&#35; Forward
+</p>
+
+<p>
+More text.
+</p>
+
+</div>
+
+<p>
+A corresponding Neopolitan document 
+would look like this:
+</p>
+
+<div class="tmp-example flow">
+
+<p>
+&#45;&#45; h1
+</p>
+
+<p>
+The Title
+</p>
+
+<p>
+Some text.
+</p>
+
+<p>
+&#45;&#45; h2
+</p>
+<p>
+Forward
+</p>
+
+<p>
+More text.
+</p>
+
+</div>
+
+<p>
+Each would produce:
+</p>
+
+<div class="tmp-example flow">
+
+<p>
+&lt;h1&gt;The Title&lt;/h1&gt;<br />
+&lt;p&gt;Some Text.&lt;/p&gt;<br />
+&lt;h2&gt;Forward&lt;/h2&gt;<br />
+&lt;p&gt;More Text.&lt;/p&gt;
+</p>
+
+</div>
+
+<p>
+Neopolitan takes more lines to produce 
+the same output. It provides no benefit if 
+that's all you need. 
+</p>
+
+-- h2
+
+Enter Neopolitan
+
+Neopolitan's usefulness comes
+from adding HTML features
+to content<sup>1</sup>. 
+
+For example, changing the above
+demo to use explicit sections
+and attributes like this:
+
+-- html
+
+<div class="tmp-example flow">
+
+<p>
+&#45;&#45; title
+</p>
+
+<p>
+The &#64;&#64;Title&#124;class: red&#64;&#64;
+</p>
+
+<p>
+Some text.
+</p>
+
+<p>
+&#45;&#45; forward<br />
+&#45;&#45; class: blue<br />
+</p>
+
+<p>
+More text.
+</p>
+
+</div>
+
+<p>
+produces this:
+</p>
+
+<div class="tmp-example flow">
+
+<p>
+&lt;h1 class=&quot;title&quot; aria-label=&quot;Page Title&quot;&gt;<br />
+&nbsp;&nbsp;The &lt;span class=&quot;red&quot;&gt;Title&lt;/span&gt;<br />
+&lt;/h1&gt;<br />
+&lt;p&gt;Some Text.&lt;/p&gt;<br />
+&lt;h2 class=&quot;forward blue&quot;&gt;<br />
+&nbsp;&nbsp;Forward<br />
+&lt;/h2&gt;<br />
+&lt;p&gt;More Text.&lt;/p&gt;
+</p>
+
+</div>
+
+<p>
+Specifically, it does the following:
+</p>
+
+<ul class="flow">
+  <li>
+    Automatically add the &quot;title&quot; class 
+    to the &quot;h1&quot; element
+  </li>
+  <li>
+    Automatically add an &quot;aria-label&quot; to
+    the &quot;h1&quot; element<sup>2</sup>
+  </li>
+  <li>
+    Use a span to add a &quot;red&quot; class to the
+    word Title in the H1. This is done with the &quot;&#64;&#64;&quot;
+    shorthand which is described further below. 
+    The key point for this example 
+    is the ability to add styles inside headlines. 
+  </li>
+  <li>
+    Output an H2 with the &quot;Forward&quot; text in
+    it without having to write the word in addition 
+    to using it as the section name<sup>3</sup>.
+  </li>
+  <li>
+    Automatically add the &quot;forward&quot; class
+    to the H2 
+  </li>
+  <li>
+    Append the &quot;blue&quot; class to the H2 
+    via the &quot;&#45;&#45; class: blue&quot;
+    section attribute
+  </li>
+</ul>
+
+Of course, the same output could be produced with
+Markdown. It would require falling back to
+raw HTML for most of it, though.
+
+
+-- h2
+
+Tags 
+
+-- html
+
+<h3>The Basics</h3>
+
+<p>
+Neopolitan <code>tags</code> provide a way to enhance content. 
+A basic one looks like this:
+</p>
+
+<p>
+  <code>&lt;&lttag-name&#124;some text&gt;&gt;</code>
+</p>
+
+<p>
+  The <code>tag-name</code> defines what the type
+  of tag. The <code>some text</code> in this example
+  represents the content the tag works on.
+</p>
+
+<h3>Element Examples</h3>
+
+<p>Basic examples, include:
+</p>
+
+<p>
+  <code>&lt;&ltstrong&#124;some text&gt;&gt;</code><br />
+  <code>&lt;&ltem&#124;some text&gt;&gt;</code><br />
+  <code>&lt;&ltkbd&#124;some text&gt;&gt;</code><br />
+</p>
+
+<p>Which output:</p>
+
+<p>
+  <strong>some text</strong><br />
+  <em>some text</em><br />
+  <kbd>some text</kbd><br />
+</p>
+
+<p>TODO: show raw HTML output here too</p>
+
+<h3>Custom Tags</h3>
+
+<p>
+  Those all map to existing HTML elements. 
+  They don't have to. Tags can be used to do
+  anything with the content<sup>4</sup>. They
+  can also include content generated
+  by the output system itself. For example,
+  a <code>wiki</code> tag could be set
+  up like this:
+</p>
+
+<p>
+  <code>&lt;&lt;wiki&#124;Documentation&gt;&gt;</code>
+</p>
+
+<p>
+The app generating the content could automatically 
+transform that into a link to the Documentation page, 
+add some styles, an id, and a data attribute.
+Something like:
+</p>
+
+<p>
+  <code>
+  &lt;a<br />
+  href=&quot;/documentation.html&quot;<br />
+  id=&quot;documentation-link&quot;<br />
+  class=&quot;wiki-link&quot;<br />
+  data-group=&quot;examples&quot;<br />
+  &gt;Documentation<&lt;a&gt;</code>
+</p>
+
+<p>
+The content stays readable while the
+HTML has all the parts necessary
+to provide the functionality
+</p>
+
+<h3>Attributes and Flags</h3>
+
+<p>
+  Tags can use attributes and flags. 
+  They're made by adding a <code>&#124;</code> at
+  the end of the content to separate them. 
+  For example, a <code>link</code> tag needs a 
+  URL. That's done by adding it as a flag like this:
+</p>
+
+<p>
+  <code>&lt;&lt;link&#124;Example Site&#124;https://www.example.com/&gt;&gt;</code>
+</p>
+
+<p>(aside: It may feel weird to call a URL
+a flag if you've done a lot of coding.
+In terms of Neopolitan, &quot;flag&quot;
+just means a string of content instead
+of a key value pair. You can 
+learn more about them on <a href="/documentation/attributes-and-flags.html">
+Attributes and Flags page</a>.)
+</p>
+
+
+<p>
+Attributes work the same way. The
+only difference is they are key/value
+pairs. For example, this is how to use
+a tag attribute to add a CSS class to the output:
+</p>
+
+<p>
+  <code>&lt;&lt;kbd&#124;Escape&#124;class: red&gt;&gt;</code>
+</p>
+
+<p>
+Which produces: 
+</p>
+
+<p>
+  <code>&lt;kbd class=&quot;red&quot;&gt;Escape&lt;kbd&gt;</code>
+</p>
+
+
+<p>TODO: Show the rendered HTML output here too.</p>
+
+<h3>Multiple Attributes And Flags</h3>
+
+<p>
+  Any number of attributes and flags can be added to 
+  a given tag<sup>5</sup>. All that's needed is
+  another <code>&#124;</code> separator between them.
+  For example:
+</p>
+
+<p>
+  <code>&lt;&lt;link<br />
+  &#124;example text<br />
+  &#124;https://www.example.com/<br />
+  &#124;class: red<br />
+  &#124;id: alfa<br />
+  &#124;hidden&gt;&gt;</code>
+</p>
+
+<p>Which produces:</p>
+
+<p>
+  <code>&lt;a<br />
+  href=&quot;https://www.example.com/&quot;<br />
+  class=&quot;red&quot;<br />
+  id=&quot;alfa&quot;<br />
+  hidden<br />
+  &gt;example text&lt;/a&gt;</code>
+</p>
+
+
+
+
+
+-- h2
+
+Shorthands
+
+-- html
+
+<h3>The Basics</h3>
+
+<p>
+  Shorthands provide another way to enhance
+  content in Neopolitan files. Each works
+  like a specific Tag, but without the 
+  need to type the full thing. For example, 
+  one shorthand uses <code>&#42;&#42;</code>.
+  It looks like this:
+</p>
+
+<p><code>&#42;&#42;example text&#42;&#42;</code></pre>
+
+<p>Which outputs this HTML:</p>
+
+<p>
+  <code>&lt;strong&gt;example text&lt;/strong&gt;</code>
+</p>
+
+
+<p>Which is the exact same thing you'd get if you used
+a tag like this:</p>
+
+<p>
+  <code>&lt;&lt;strong&#124;example text&gt;&gt;</code>
+</p>
+
+<h3>Attributes and Flags</h3>
+
+<p>
+  Shorthands can use attributes and flags the same
+  way Tags can. For example the <code>&#96;&#96;</code>
+  shorthand is for code snippets. Adding a flag
+  to it with the name of a language adds the 
+  appropriate syntax highlighting:
+</p>
+
+<p>
+  <code>&#96;&#96;println!("ping");&#124;rust&#96;&#96;</code>
+</p>
+
+<p>Which outputs:</p>
+
+<p><code>TODO: output snippet when syntax highlighting
+is reinstated</code></p>
+
+<p>
+  Adding an attribute to a strong shorthand
+  looks like this:
+</p>
+
+<p>
+  <code>&#96;&#96;example text&#124;class: red&#96;&#96;</code>
+</p>
+  
+<p>Which outputs:</p>
+
+<p>
+  <code>&lt;strong class=&quot;red&quot;&gt;example text&lt;/strong&gt;</code>
+</p>
+
+
+<h3>Multiple Attributes and Flags</h3>
+
+<p>Shorthands can use multiple attributes and
+flags as well. For example, the link
+shorthand uses <code>&#91;&#91;</code> and 
+<code>&#93;&#93;</code>. It uses a flag
+by default for the URL. Styles and IDs
+can be added like this:
+</p>
+
+<p>
+  <code>&#91;&#91;example link<br />
+  &#124;https://www.example.com/<br />
+  &#124;id: example-link<br />
+  &#124;class: red&#93;&#93;</code>
+</p>
+
+<p>Which outputs:</p>
+
+<p>
+<p>
+  <code>&lt;a<br />
+  href=&quot;https://www.example.com/&quot;<br />
+  id="example-link"<br />
+  class="red"<br />
+  &gt;example link&lt;/a&gt;</code>
+</p>
+
+<h3>The Shorthand List</h3>
+
+<p>Neopolitan provides nine shorthands. They are:</p>
+
+<ul class="flow">
+  <li class="flow">
+    <p>Span:</p>
+    <p>
+      <code>&#64;&#64;code snippet&#64;&#64;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Code:</p>
+    <p>
+      <code>&#96;&#96;code snippet&#96;&#96;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Strong:</p>
+    <p>
+      <code>&#42;&#42;strong text&#42;&#42;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Emphasis:</p>
+    <p>
+      <code>&#95;&#95;emphasis text&#95;&#95;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Footnote Reference:</p>
+    <p>
+      <code>&#94;&#94;1&#94;&#94;</code>
+    </p>
+    <p>See: <a href="/documentation/footnotes.html">the footnote documentation
+    for more details on how footnotes work</a></p>
+  </li>
+  <li class="flow">
+    <p>Deleted:</p>
+    <p>
+      <code>&#126;&#126;deleted text&#126;&#126;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Inserted:</p>
+    <p>
+      <code>&#40;&#40;inserted text&#41;&#41;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Link:</p>
+    <p>
+      <code>&#91;&#91;link text&#124;https://www.example.com/&#93;&#93;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Image:</p>
+    <p>
+      <code>&#123;&#123;image-name.jpg&#124;alt: Alt text for the image&#125;&#125;</code>
+    </p>
+  </li>
+</ul>
+
+
+-- h2
+
+No JavaScript Required
+
+TODO: add section about how all this is done with
+templates and no need for JavaScript. It can
+be added if you want it. But, it's not required. 
+
+
+-- h2
+
+More To Come
+
+Formats can be interesting. If there's nothing that uses
+them, they don't mean much. In that light, I'm
+finishing up a reference static site generator 
+that uses Neopolitan. 
+
+I expect to have a beta version ready by June 2025. 
+
+I'll post about progress on 
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+and <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>
+if you want to follow along. 
+
+
+-- h2
+
+Footnotes
+
+-- html
+
+<ol class="flow">
+  <li>
+    Sure, you could always roll back to 
+    using HTML directly in your Markdown
+    documents. 
+  </li>
+  <li>
+    Adding the &quot;aria-label&quot; is a bit of
+    a contrived example. I don't know if including
+    one in an H1 is advisable. The point here is
+    not about the specific label. It's about
+    the general ability to add things like 
+    aria labels during output without having to 
+    define them directly in the content itself.
+  </li>
+  <li>
+    <p>
+      The names don't have to match. You could just
+      as easily make a section called &quot;&#45;&#45; week&quot;
+      and have the output be &quot;The Week In Review&quot;.
+    </p>
+    <p>
+      There's also no restriction limiting the output 
+      to an H2 tag. An entire structure of divs could
+      be used the same way.
+    </p>
+  </li>
+  <li>
+    Okay, only stuff that's possible with HTML, 
+    CSS, and JavaScript if you want to be pedantic 
+    about it. 
+  </li>
+  <li>
+    Okay, sure. There are limits to computer memory,
+    etc. if you want to be pedantic about it.
+  </li>
+</ol>
+
+
+
+-- h2
+
+TODO
+
+[] Write up No JavaScript Required section.
+
+[] Output the contents of the example
+below it to show the rendered HTML.
+
+[] Add syntax highlighting.
+
+
+
+
+
+-- metadata 
+-- created: 2025-04-27T20:21:11-04:00
+-- updated: 2025-04-27T20:21:11-04:00
+-- template: home-page
+

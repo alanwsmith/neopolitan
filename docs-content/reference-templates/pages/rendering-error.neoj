@@ -1,0 +1,11 @@
+[!- extends "wrappers/default.neoj" -!]
+[!- import "macros/loader.neoj" as macros -!] 
+
+[! block main !]
+    <h1>Rendering Error</h1>
+    <p>File: [@ name @]</p>
+    <p>Details: [@ detail @]</p>
+    <pre>[@ debug @]</pre>
+[! endblock !]
+
+
