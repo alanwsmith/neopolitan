@@ -1,31 +1,7 @@
+[!- include "helpers/child-spans.neoj" -!]
 [!- include "helpers/page-links.neoj" -!]
-
-[!- macro span_classes(span, extras) -!]
-  [!- if "class" in span.attrs or extras != none -!]
-  [@- ' ' -@]
-  class="
-  [@- child_spans(span.attrs.class) -@]
-  [!- if "class" in span.attrs and extras != none -!]
-  [@- ' ' -@]
-  [!- endif -!]
-  [@- extras -@]
-  "
-  [!- endif -!]
-[!- endmacro -!]
-
-[!- macro span_id(span) -!]
-  [@- ' ' -@]
-  id="
-  [@ span @]
-  "
-[!- endmacro -!]
-
-[!- macro child_spans(source) -!]
-[!- for span in source -!]
-  [!- set templates = ["spans/" + span.category + "/default.neoj"] -!]
-  [!- include templates -!]
-[!- endfor -!]
-[!- endmacro -!]
+[!- include "helpers/span-classes.neoj" -!]
+[!- include "helpers/span-id.neoj" -!]
 
 
 [#

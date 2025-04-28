@@ -1,0 +1,13 @@
+[!- macro span_classes(span, extras) -!]
+  [!- if "class" in span.attrs or extras != none -!]
+  [@- ' ' -@]
+  class="
+  [@- child_spans(span.attrs.class) -@]
+  [!- if "class" in span.attrs and extras != none -!]
+  [@- ' ' -@]
+  [!- endif -!]
+  [@- extras -@]
+  "
+  [!- endif -!]
+[!- endmacro -!]
+

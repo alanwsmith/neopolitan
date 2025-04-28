@@ -1,0 +1,7 @@
+[!- macro span_id(span) -!]
+  [@- ' ' -@]
+  id="
+  [@ span @]
+  "
+[!- endmacro -!]
+
