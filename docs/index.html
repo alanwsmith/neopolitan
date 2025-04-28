@@ -10,15 +10,17 @@
 <body>
   <main class="flow"><h1 class="title">Welcome to Neopolitan
 
-</h1><p>A plain-text format for making web sites.
+</h1><h2>Introduction
 
-</p><p>It's like Markdown, but with more features.
+</h2><p>Neopolitan is a plain-text file format designed to making web sites. It's like Markdown, but with more features.
 
-</p><p><div class="tmp-example">
+</p><h2>Work-In-Progress
 
-</p><p>Head's up: I'm in the middle of rebuilding the site.
+</h2><p><div class="tmp-warning">
 
-</p><p>The examples on this home page are up to date. Most of the rest of the site is just scratch notes and TODOs. Feel free to click around if you want to see how the sausage is being made.
+</p><p><strong>Head's up:</strong> I'm in the middle of rebuilding the site.
+
+</p><p>The examples on this page are up to date. Most of the rest of the site is just scratch notes and TODOs. Feel free to click around if you want to see how the sausage is being made.
 
 </p><p>Follow me on <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 
@@ -40,7 +42,7 @@
 
 </p><p></div>
 
-</p><p>The HTML output looks like this:
+</p><p>which outputs this HTML:
 
 </p><p><div class="tmp-example">
 
@@ -160,29 +162,25 @@
 
 </p><p></div>
 
-</p><p>Specifically, this output does the following:
+</p><p>Specifically, it does the following:
 
 </p><p><ul class="flow"> <li> Automatically add the &quot;title&quot; class to the &quot;h1&quot; element </li> <li> Automatically add an &quot;aria-label&quot; to the &quot;h1&quot; element<sup>2</sup> </li> <li> Use a span to add a &quot;red&quot; class to the word Title in the H1. This is done with the &quot;&#64;&#64;&quot; shorthand which is described further below. The key point for this example is the ability to add styles inside headlines. </li> <li> Output an H2 with the &quot;Forward&quot; text in it without having to write the word in addition to using it as the section name<sup>3</sup>. </li> <li> Automatically add the &quot;forward&quot; class to the H2 </li> <li> Append the &quot;blue&quot; class to the H2 via the &quot;&#45;&#45; class: blue&quot; section attribute </li> </ul>
 
-</p><p>Of course, the same output could be produced with Markdown. But, it would require falling back to raw HTML for most of it.
+</p><p>Of course, the same output could be produced with Markdown. It would require falling back to raw HTML for most of it, though.
 
-</p><p><hr />
+</p><h2>Shorthand Spans
+
+</h2><p>TODO: Overview of shorthand spans
+
+</p><h2>Tag Spans
+
+</h2><p>TODO: Overview of tag spans
 
 </p><p><h2>Footnotes</h2>
 
 </p><p><ol class="flow"> <li> Sure, you could always roll back to using HTML directly in your Markdown documents. </li> <li> Adding the &quot;aria-label&quot; is a bit of a contrived example. I don't know if including one in an H1 is advisable. The point here is not about the specific label. It's about the general ability to add things like aria labels during output without having to define them directly in the content itself. </li> <li> <p> The names don't have to match. You could just as easily make a section called &quot;&#45;&#45; week&quot; and have the output be &quot;The Week In Review&quot;. </p> <p> There's also no restriction limiting the output to an H2 tag. An entire structure of divs could be used the same way. </p> </li> </ol>
 
-</p><p>do smoething with an aria label
-
 </p><p>Section Attribute Example
-
-</p><p>Neopolitan documents consist of sections. They start with two dashes followed by a name (e.g. &#45;&#45; title, &#45;&#45; h2, &#45;&#45; image, etc.). Each section can have key/value attributes and flags. They also start with two dashes and look like &#96;&#96;&#45;&#45; attrKey: value&#96;&#96; and &#96;&#96;&#45;&#45; flagName&#96;&#96;.
-
-</p><p>For example, this section has a &#96;&#96;&#45;&#45; class: red&#96;&#96; attribute. As a result, the HTML output looks like:
-
-</p><p>&#45;&#45; code<br /> &#45;&#45; html
-
-</p><p>&lt;h2 class=&quot;red&quot&gt;<br /> &nbsp;&nbsp;Section Attribute Example<br /> &lt;/h2&gt;<br />
 
 </p><p>&#45;&#45; footnote<br /> &#45;&#45; id: 1
 
@@ -254,32 +252,8 @@
 
 </p><p>[] Provide minijinja output from the command line run.
 
-</p><div>
-<a href="/alternate-templates.html">alternate-templates.html</a>
-</div><div>
-<a href="/cli.html">cli.html</a>
-</div><div>
-<a href="/documentation/shorthands.html">documentation/shorthands.html</a>
-</div><div>
-<a href="/documentation/span-flags.html">documentation/span-flags.html</a>
-</div><div>
-<a href="/documentations.html">documentations.html</a>
-</div><div>
-<a href="/goals.html">goals.html</a>
-</div><div>
-<a href="/index.html">index.html</a>
-</div><div>
-<a href="/possible-enhancements.html">possible-enhancements.html</a>
-</div><div>
-<a href="/recommendations.html">recommendations.html</a>
-</div><div>
-<a href="/specifications/index.html">specifications/index.html</a>
-</div><div>
-<a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a>
-</div><div>
-<a href="/todos.html">todos.html</a>
-</div><div>
-<a href="/versioning.html">versioning.html</a>
-</div></main>
+</p><hr />
+<h3>Under Construction</h3>
+<ul class="flow"><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></main>
 </body>
 </html>

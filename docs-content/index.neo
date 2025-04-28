@@ -2,15 +2,22 @@
 
 Welcome to Neopolitan
 
-A plain-text format for making web sites. 
+-- h2
 
+Introduction
+
+Neopolitan is a plain-text file format designed to making web sites. 
 It's like Markdown, but with more features. 
 
-<div class="tmp-example">
+-- h2
 
-Head's up: I'm in the middle of rebuilding the site. 
+Work-In-Progress
 
-The examples on this home page are up to date. Most
+<div class="tmp-warning">
+
+<strong>Head's up:</strong> I'm in the middle of rebuilding the site. 
+
+The examples on this page are up to date. Most
 of the rest of the site is just scratch notes and 
 TODOs. Feel free to click around if you want to see how the 
 sausage is being made. 
@@ -44,7 +51,7 @@ document looks like.
 
 </div>
 
-The HTML output looks like this:
+which outputs this HTML:
 
 
 <div class="tmp-example">
@@ -214,7 +221,7 @@ produces this:
 
 </div>
 
-Specifically, this output does the following:
+Specifically, it does the following:
 
 <ul class="flow">
   <li>
@@ -249,11 +256,21 @@ Specifically, this output does the following:
 </ul>
 
 Of course, the same output could be produced with
-Markdown. But, it would require falling back to
-raw HTML for most of it. 
+Markdown. It would require falling back to
+raw HTML for most of it, though.
 
+-- h2
 
-<hr />
+Shorthand Spans
+
+TODO: Overview of shorthand spans
+
+-- h2
+
+Tag Spans
+
+TODO: Overview of tag spans
+
 
 <h2>Footnotes</h2>
 
@@ -289,11 +306,6 @@ raw HTML for most of it.
 
 
 
-do smoething with an aria label
-
-
-
-
 
 
 
@@ -305,25 +317,6 @@ do smoething with an aria label
 
 Section Attribute Example
 
-Neopolitan documents consist of sections.
-They start with two dashes followed by a
-name (e.g. &#45;&#45; title, &#45;&#45; h2,
-&#45;&#45; image, etc.). Each section
-can have key/value attributes and flags.
-They also start with two dashes and look like 
-&#96;&#96;&#45;&#45; attrKey: value&#96;&#96; and
-&#96;&#96;&#45;&#45; flagName&#96;&#96;.
-
-For example, this section has a 
-&#96;&#96;&#45;&#45; class: red&#96;&#96; attribute. 
-As a result, the HTML output looks like:
-
-&#45;&#45; code<br />
-&#45;&#45; html
-
-&lt;h2 class=&quot;red&quot&gt;<br />
-&nbsp;&nbsp;Section Attribute Example<br />
-&lt;/h2&gt;<br />
 
 
 

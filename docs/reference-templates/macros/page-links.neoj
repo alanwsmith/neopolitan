@@ -1,8 +1,10 @@
 [!- macro page_links(site) -!]
+<hr />
+<h3>Under Construction</h3>
+<ul class="flow">
 [!- for page in site.pages -!]
-<div>
-<a href="/[@ page @]">[@ page @]</a>
-</div>
+<li><a href="/[@ page @]">[@ page @]</a></li>
 [!- endfor -!]
+</ul>
 [!- endmacro -!]
 
