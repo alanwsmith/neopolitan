@@ -39,20 +39,28 @@ impl Site {
             let source_extension = source_path.extension().unwrap();
             if source_extension == "neo" {
                 output_path.set_extension("html");
+                let stripped_output_path = output_path
+                    .strip_prefix(&self.output_root)
+                    .unwrap()
+                    .to_path_buf();
                 let source =
                     std::fs::read_to_string(&source_path).unwrap().to_string();
                 match Ast::new_from_source(&source, &self.config, false) {
                     Ast::Ok { sections } => {
-                        self.pages
-                            .insert(output_path.clone(), sections.clone());
+                        self.pages.insert(
+                            stripped_output_path.clone(),
+                            sections.clone(),
+                        );
                     }
                     Ast::Error { message, remainder } => {
-                        self.errors
-                            .insert(output_path.clone(), (message, remainder));
+                        self.errors.insert(
+                            stripped_output_path.clone(),
+                            (message, remainder),
+                        );
                     }
                     Ast::Incomplete { parsed, remainder } => {
                         self.incompletes.insert(
-                            output_path.clone(),
+                            stripped_output_path.clone(),
                             (parsed, remainder.to_string()),
                         );
                     }
@@ -84,7 +92,8 @@ impl Site {
         );
         env.set_loader(path_loader("docs-content/reference-templates"));
         // env.set_loader(path_loader("docs-templates"));
-        self.pages.iter().for_each(|(output_path, sections)| {
+        self.pages.iter().for_each(|(relative_path, sections)| {
+            let output_path = &self.output_root.join(relative_path);
             let template =
                 env.get_template("pages/template-picker.neoj").unwrap();
             let sections = Value::from_serialize(&sections);
@@ -133,7 +142,8 @@ impl Site {
         env.set_loader(path_loader("docs-content/reference-templates"));
         self.errors
             .iter()
-            .for_each(|(output_path, (message, remainder))| {
+            .for_each(|(relative_path, (message, remainder))| {
+                let output_path = &self.output_root.join(relative_path);
                 let template =
                     env.get_template("pages/parsing-error.neoj").unwrap();
                 let output = template
@@ -158,7 +168,8 @@ impl Site {
         env.set_loader(path_loader("docs-content/reference-templates"));
         self.incompletes
             .iter()
-            .for_each(|(output_path, (sections, remainder))| {
+            .for_each(|(relative_path, (sections, remainder))| {
+                let output_path = &self.output_root.join(relative_path);
                 let template =
                     env.get_template("pages/incomplete.neoj").unwrap();
                 let output = template
