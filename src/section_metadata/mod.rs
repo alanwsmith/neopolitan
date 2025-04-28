@@ -9,7 +9,7 @@ use nom::{IResult, branch::alt};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
-#[derive(Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub enum RawSectionMetaData {
     Attribtue { key: String, spans: Vec<Span> },
     Flag { string: String },

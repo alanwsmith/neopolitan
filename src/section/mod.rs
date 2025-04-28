@@ -14,7 +14,7 @@ use nom::{IResult, branch::alt, bytes::complete::tag};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
-#[derive(Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 // #[serde(untagged)]
 // #[serde(tag = "type", content = "content", rename_all = "lowercase")]
 #[serde(tag = "category", rename_all = "lowercase")]
