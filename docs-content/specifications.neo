@@ -78,6 +78,37 @@ from a parser. (Necessary because
 content can't exist outside 
 a section)
 
+- head - does not show up by default.
+The contents are added directly 
+to the head of the document. It's
+a ``raw`` category. So, the
+output is exactly what's input. 
+
+- javascript - a raw section. 
+The output is added to the page inside 
+script tags just before the closing ``</body>`
+tag. Can be shown on the page
+by using another template,
+the details of that are left
+up to the implementation. 
+
+Note, of course, that some systems
+may not allow the output a script
+tags. In that case, nothing
+is output in the HTML by default. 
+But, escaped output can still 
+be rendered on the page by
+choosing an alternate template. 
+
+
+
+
+
+
+
+
+
+
 -- h3
 
 Section Attributes

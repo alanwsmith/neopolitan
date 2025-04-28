@@ -2,10 +2,10 @@
 
 Neopolitan
 
-Welcome to Neopolitan! A plain-text 
-file format in the spirit of Markdown but
-with more functionality. 
+Welcome to Neopolitan! A plain-text format 
+for making web pages. 
 
+Test: ``code|class: red`` sample
 
 -- h2
 

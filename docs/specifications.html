@@ -36,15 +36,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <main class="flow"><h1>
-  
-  Neopolitan 2.0.0 Specification
-</h1><p>
-  
-  [] make 
+  <main class="flow">
+    <h1>Incomplete Parsing</h1>
+    <h2>Failed At:</h2>
+    <pre>``</body>`
+tag. Can be shown on the page
+by using another template,
+the details of that are left
+up to the implementation. 
 
-  
-  
+Note, of course, that some systems
+may not allow the output a script
+tags. In that case, nothing
+is output in the HTML by default. 
+But, escaped output can still 
+be rendered on the page by
+choosing an alternate template. 
 
 
 
@@ -54,254 +61,365 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-   a defined section where the first flag is the language to use for highlighting
-</p><h2>
-  
-  Introduction
-</h2><p>
-  
-  The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification.
-</p><h2>
-  
-  Test Types
-</h2><p>
-  
-  The specification is split into three parts.
-</p><p>
-  
-  1. AST Generation
-</p><p>
-  
-  2. Required Sections and Attributes
-</p><p>
-  
-  3. HTML Output
-</p><h2>
-  
-  AST Generation
-</h2><p>
-  
-  Tests are currently built into the rust code. They include parsing for the shorthands.
-</p><p>
-  
-  Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order.
-</p><h2>
-  
-  Reserved/Required Sections And Attributes
-</h2><p>
-  
-  Sections
-</p><p>
-  
-  TODO: Add details about how documents must start with a section (which means all content is in a section)
-</p><p>
-  
-  - metadata - must not output directly on the page.
-</p><p>
-  
-  - neopolitan - Outputs the contents of the section without adding anything beyond the content generated from the body of section. This ensures there's a way to test AST generation from a parser. (Necessary because content can't exist outside a section)
-</p><p>
-  
-  Section Attributes
-</p><p>
-  
-  These attributes must be handled by a parser to meet the spec. They can be used in any section.
-</p><p>
-  
-  - 
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</p><p>
-  
-  Value is a date in the RFC 3339 format.
-</p><p>
-  
-  - 
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</p><p>
-  
-  Value is a date in the RFC 3339 format.
-</p><p>
-  
-  - 
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</p><p>
-  
-  This is the way to change the output template for a section. The details of the values and their corresponding outputs is an implementation detail, but the attribute key is reserved.
-</p><h2>
-  
-  HTML Output
-</h2><p>
-  
-  Neopolitan is designed primarily to generate web content. Output is largely an implementation detail with a required exceptions designed to improve portability between systems.
-</p><p>
-  
-  Any generator that passes all the output tests meets the spec. Anything not defined in the tests is left as an implementation detail.
-</p><p>
-  
-  TODO: Write up details of 
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-   being reserved. It's how you can change the output if you want something other than what's speced for the shorthands.
-</p><p>
-  
-  TODO: Consider desciptions of how the HTML Output is representative. (e.g. systems may add extra classes, or attributes, but they should work directionally the same if any modifications are made)
-</p></main>
+
+-- h3
+
+Section Attributes
+
+These attributes must be handled by
+a parser to meet the spec. They can
+be used in any section. 
+
+-- list
+
+- ``-- created:``
+
+Value is a date in the RFC 3339 format. 
+
+- ``-- updated:`` 
+
+Value is a date in the RFC 3339 format. 
+
+- ``-- template:``
+
+This is the way to change the output
+template for a section. The details
+of the values and their corresponding
+outputs is an implementation detail, but
+the attribute key is reserved. 
+
+-- h2
+
+HTML Output
+
+Neopolitan is designed primarily to 
+generate web content. Output is 
+largely an implementation detail
+with a required exceptions designed
+to improve portability between
+systems. 
+
+Any generator that passes all
+the output tests meets the spec. 
+Anything not defined in the tests
+is left as an implementation detail. 
+
+TODO: Write up details of ``template:``
+being reserved. It's how you can
+change the output if you want
+something other than what's 
+speced for the shorthands. 
+
+TODO: Consider desciptions of how
+the HTML Output is representative. 
+(e.g. systems may add extra 
+classes, or attributes, but 
+they should work directionally 
+the same if any modifications
+are made)
+
+
+
+-- metadata 
+-- created: 2025-04-27T10:54:39-04:00
+-- updated: 2025-04-27T10:54:39-04:00
+
+
+</pre>
+    <h2>Completed:</h2>
+    <pre>[
+  {
+    "attrs": {},
+    "bound": "Full",
+    "category": "basic",
+    "children": [
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "Neopolitan 2.0.0 Specification"
+          }
+        ]
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "title"
+  },
+  {
+    "attrs": {},
+    "bound": "Full",
+    "category": "basic",
+    "children": [
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "[] make "
+          },
+          {
+            "attrs": {},
+            "category": "code",
+            "flags": [],
+            "spans": [
+              {
+                "category": "text",
+                "content": "-- code"
+              }
+            ]
+          },
+          {
+            "category": "text",
+            "content": " a defined section where the first flag is the language to use for highlighting"
+          }
+        ]
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "todo"
+  },
+  {
+    "attrs": {},
+    "bound": "Full",
+    "category": "basic",
+    "children": [
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "Introduction"
+          }
+        ]
+      },
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification."
+          }
+        ]
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "h2"
+  },
+  {
+    "attrs": {},
+    "bound": "Full",
+    "category": "basic",
+    "children": [
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "Test Types"
+          }
+        ]
+      },
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "The specification is split into three parts."
+          }
+        ]
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "h2"
+  },
+  {
+    "attrs": {},
+    "bound": "Full",
+    "category": "basic",
+    "children": [
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "1. AST Generation"
+          }
+        ]
+      },
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "2. Required Sections and Attributes"
+          }
+        ]
+      },
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "3. HTML Output"
+          }
+        ]
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "olist"
+  },
+  {
+    "attrs": {},
+    "bound": "Full",
+    "category": "basic",
+    "children": [
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "AST Generation"
+          }
+        ]
+      },
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "Tests are currently built into the rust code. They include parsing for the shorthands."
+          }
+        ]
+      },
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order."
+          }
+        ]
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "h2"
+  },
+  {
+    "attrs": {},
+    "bound": "Full",
+    "category": "basic",
+    "children": [
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "Reserved/Required Sections And Attributes"
+          }
+        ]
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "h2"
+  },
+  {
+    "attrs": {},
+    "bound": "Full",
+    "category": "basic",
+    "children": [
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "Sections"
+          }
+        ]
+      },
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "TODO: Add details about how documents must start with a section (which means all content is in a section)"
+          }
+        ]
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "h3"
+  },
+  {
+    "attrs": {},
+    "bound": "Full",
+    "category": "basic",
+    "children": [
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "- metadata - must not output directly on the page."
+          }
+        ]
+      },
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "- neopolitan - Outputs the contents of the section without adding anything beyond the content generated from the body of section. This ensures there\u0027s a way to test AST generation from a parser. (Necessary because content can\u0027t exist outside a section)"
+          }
+        ]
+      },
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "- head - does not show up by default. The contents are added directly to the head of the document. It\u0027s a "
+          },
+          {
+            "attrs": {},
+            "category": "code",
+            "flags": [],
+            "spans": [
+              {
+                "category": "text",
+                "content": "raw"
+              }
+            ]
+          },
+          {
+            "category": "text",
+            "content": " category. So, the output is exactly what\u0027s input."
+          }
+        ]
+      },
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "- javascript - a raw section. The output is added to the page inside script tags just before the closing "
+          }
+        ]
+      }
+    ],
+    "end_section": null,
+    "flags": [],
+    "kind": "list"
+  }
+]</pre>
+</main>
 </body>
 </html>

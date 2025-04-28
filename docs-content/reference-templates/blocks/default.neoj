@@ -1,0 +1,10 @@
+block
+
+[#
+[! if "content" in child !]
+[! for span in child.content.spans !]
+[! include "spans/" + span.category + ".neoj" !]
+[! endfor !]
+[! endif !]
+#]
+

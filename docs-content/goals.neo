@@ -31,6 +31,26 @@ portability of files. These are defined
 on the specification page. 
 
 
+- **Authoring Simplicity**
+
+I'm attempting to make something that is
+simple to use while still provding
+a lot of power. I considred how things
+work from the authoring, parsing, 
+templatings, and generation perspectives. 
+I tried to make all aspects easy to 
+work with, but the primary perspective
+is that of the writer/author/artist/creator.
+Decisions always pushed towards making
+that expeirnce the best even if it meant
+the other persptives couldn't be improved
+as much. 
+
+
+
+
+
+
 
 
 
