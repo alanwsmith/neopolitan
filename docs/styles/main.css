@@ -11,66 +11,6 @@
     --pre-padding-x: 1.2rem;
 }
 
-#root,
-#__next {
-  isolation: isolate;
-}
-
-/* latin-ext */
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: italic;
-  font-weight: 400;
-  font-display: block;
-  src: url(/fonts/atkinson-hyperlegible/italic-400-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: italic;
-  font-weight: 400;
-  font-display: block;
-  src: url(/fonts/atkinson-hyperlegible/italic-400-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url(/fonts/atkinson-hyperlegible/normal-400-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url(/fonts/atkinson-hyperlegible/normal-400-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: normal;
-  font-weight: 700;
-  font-display: block;
-  src: url(/fonts/atkinson-hyperlegible/normal-700-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: normal;
-  font-weight: 700;
-  font-display: block;
-  src: url(/fonts/atkinson-hyperlegible/normal-700-latin-ext.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
 *,
 *::before,
 *::after {
@@ -102,8 +42,8 @@ a {
 }
 
 body {
-  font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
-  font-weight: normal;
+font-family: system-ui, sans-serif;
+font-weight: normal;
   background-color: var(--color-2);
   color: var(--color-1);
   display: grid;
@@ -118,7 +58,13 @@ body {
 }
 
 code {
-  border-radius: 22px;
+  color: #999;
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  font-weight: normal;
+}
+
+.flow > :where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1em);
 }
 
 h1 {
@@ -212,9 +158,14 @@ footer {
   margin: 0 auto;
   margin-top: 60px;
   max-width: var(--max-width);
-  padding-bottom: 12px;
+  padding-bottom: 2.4rem;
   text-align: center;
   width: 100%;
+}
+
+header {
+  width: min(100vw - 3rem, 58ch);
+  margin-inline: auto;
 }
 
 input {
@@ -231,12 +182,6 @@ main {
   margin-inline: auto;
 }
 
-p {
-  margin-bottom: 2.0rem;
-  margin-top: 1.2rem;
-  max-width: 68ch;
-  overflow-wrap: break-word;
-}
 
 pre {
   padding: var(--pre-padding-x);

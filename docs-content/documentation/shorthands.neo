@@ -1,14 +1,13 @@
 -- title
 
-Tags and Shorthands
+Shorthands
 
 -- h2
 
 Introduction
 
-Neopolitan provides two ways to enhance
-content inside of sections:
-
+Shorthands offer a way to enhance
+content in Neopolitan files<sup>1</sup>. 
 
 -- h2
 
@@ -69,7 +68,18 @@ For example:
 
 TKTKTK
 
+-- h2
 
+Footnotes
+
+-- html
+
+<ol>
+  <li>
+    The other way is 
+    <a href="/documentation/tags.html">Tags</a>
+  </li>
+</ol>
 
 
 

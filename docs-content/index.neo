@@ -6,7 +6,7 @@ Welcome to Neopolitan
 
 Introduction
 
-Neopolitan is a plain-text file format designed to making web sites. 
+Neopolitan is a plain-text file format. 
 It's like Markdown, but with more features. 
 
 -- h2
@@ -259,20 +259,127 @@ Of course, the same output could be produced with
 Markdown. It would require falling back to
 raw HTML for most of it, though.
 
+
+-- h2
+
+Tags 
+
+-- html
+
+<h3>The Basics</h3>
+
+<p>
+  A basic tag looks like this:
+</p>
+<p>
+  <code>&lt;&lttag-name&#124;some text&gt;&gt;</code>
+</p>
+
+<p>
+  The <code>tag-name</code> defines what the tag
+  does. The <code>some text</code> in the example
+  is what the tag does its work on.
+</p>
+
+<p>Basic examples, include:
+</p>
+
+<p>
+  <code>&lt;&ltstrong&#124;some text&gt;&gt;</code><br />
+  <code>&lt;&ltem&#124;some text&gt;&gt;</code><br />
+  <code>&lt;&ltkbd&#124;some text&gt;&gt;</code><br />
+</p>
+
+<p>Which output:</p>
+
+<p>
+  <strong>some text</strong><br />
+  <em>some text</em><br />
+  <kbd>some text</kbd><br />
+</p>
+
+<h3>Custom Tags</h3>
+
+<p>
+  Those all map to existing HTML elements. 
+  They don't have to. They can be used to do
+  anything with the content<sup>4</sup>. They
+  can also include content generated
+  by the output system itself. For example,
+  a <code>wiki</code> tag could be set up
+  to provide for:
+</p>
+
+<p>
+  <code>&lt;&lt;wiki&#124;Documentation&gt;&gt;</code>
+</p>
+
+<p>
+The app generating the content could automatically 
+transform that into a link to the Documentation page like:
+</p>
+
+<p>
+  <code>&lt;a href=&quot;/documentation.html&quot;&gt;<br />
+    Documentation<br />&lt;a&gt;</code>
+</p>
+
+
+<h3>Flags and Attributes</h3>
+
+<p>
+  Tags can use flags and attributes as well. 
+  They're made by adding a <code>&#124;</code> at
+  the end of the content to separate them. 
+  For example, a <code>link</code> tag needs a 
+  URL to link to. That's done like this:
+</p>
+
+<p>
+  <code>&lt;&lt;link&#124;Example Site&#124;https://www.example.com/&gt;&gt;</code>
+</p>
+
+<p>
+Attributes work the same way. The
+only difference is that they are key/value
+pairs. For example, this adds a class:
+</p>
+
+<p>
+  <code>&lt;&lt;kbd&#124;Escape&#124;class: red&gt;&gt;</code>
+</p>
+
+
+<p>
+Which outputs: 
+</p>
+
+<p>
+  <code>&lt;kbd class=&quot;red&quot;&gt;Escape&lt;kbd&gt;</code>
+</p>
+
+
+
+
+
+
+
+
+
+
 -- h2
 
 Shorthand Spans
 
-TODO: Overview of shorthand spans
+
+-- html
+
 
 -- h2
 
-Tag Spans
+Footnotes
 
-TODO: Overview of tag spans
-
-
-<h2>Footnotes</h2>
+-- html
 
 <ol class="flow">
   <li>
@@ -301,207 +408,30 @@ TODO: Overview of tag spans
       be used the same way.
     </p>
   </li>
+  <li>
+    Okay, only stuff that's possible with HTML, 
+    CSS, and JavaScript if you want to be pedantic 
+    about it. 
+  </li>
 </ol>
 
 
 
+-- h2
 
-
-
-
-
-
-
-
-
-
-Section Attribute Example
-
-
-
-
-
-
-
-&#45;&#45; footnote<br />
-&#45;&#45; id: 1
-
-This is an example footnote. They
-are linked to the content in the document
-by matching the <code>&#45;&#45; id</code>
-attribute of the section to the
-corresponding 
-<code>&#94;&#94;ID&#94;&#94;</code>
-shorthand in the document. 
-
-<hr />
-
-
-
-
-
--- todo
+TODO
 
 [] Output the contents of the example
 below it to show the rendered HTML.
 
 [] Add syntax highlighting.
 
--- h2
-
-Documentation 
 
 
--- h2
-
-Custom Shorthand Tags
-
-Shorthand tags look like
-
--- code
-
-There are not specified custom tags. Defining
-and using them is an implementaiton detail. 
-TODO: There are recommended examples in
-the reference templates
-
-
--- todo
-
-[] Section names for the category types
-are reserved words that go to their 
-type to ensure that all types
-have sections associated with them. 
-(That is, it's required to have output
-for the section categories. There is
-no expectation for what the output
-should be. Just that the templates exist)
-
-[] Define the characters that get escaped
-when escaping happens. 
-
-[] Create template the outputs the section
-for rebuilding sections. 
-
-[] Write up the fact that flags are required
-to be output in order for redoing this 
-format. Attributes are not required to
-be in the same order they showed up in
-the source when rebuilding it. 
-
-[] Create a default formatter. Allow
-line length to be set. TBD on what
-else (aim to keep it at a minimum)
-
-[] Implicit in the specs is the required 
-``-- neopolitan`` section which transforms 
-the contents without adding anything extra 
-to it. Section attributes and flags are ignored. 
-This is the only required section. 
-
-[] Make ``-- metadata`` a reserved section name
-that should not be output to the page. 
-The attrs it has are implementation details. 
-Having an metadata section is not required
-though. Possible feature for future versions
-is to allow JSON or YAML to be used for
-the body and pulled in. In that light, 
-the ``-- type:`` attribute is a reserved
-word. Eventually, will have possible values
-of ``neopolitan``, ``json``, ``yaml``.
-Other formats TBD.
-
-[] Should there be speced reserved words
-for ``-- metadata``? Attrs that aren't 
-required but are defined for what
-they should be? Probably makes sense
-to have ``-- created:``, ``-- updated:``
-be defined for the date format to use. 
-And, ``-- id:`` as a recommendation for
-the ID of page that can be used
-for cross references. 
-
-
-[] Make ``-- template: `` be part of the 
-section ref, but not spec. (since
-there isn't a defined spec for sections)
-
-[] Make ``-- id: `` and ``-- class: `` be
-section ref. 
-
-[] Make ``template:`` be part of the
-shorthand ref. 
-
-[] Spec is to fall back to ``<NAME>``
-for any ``<<NAME>>`` tag that doesn't
-match a template. It's always open
-and close. 
-
-[] Reference should include standard
-elements for spans. 
-
-[] Reference should include standard
-elements for sections. 
-
-[] Provide tests for the reference 
-sections and spans for anyone
-that wants to implement them to
-use them as expanded test for 
-other parsers?
-
-[] Version the specs. 
-
-[] Attribute values are only 
-text spans and escaped characters? 
-Or should they be full parsing? TBD
-based on test usage. 
-
-[] Image section is not required but
-give guidelines about usage (re: alt text
-and path handling via flag)
-
-[] The output references should
-just be sections, not the full page. 
-Should be able to show them in 
-the example though. Maybe
-those templates are in
-a "support" section that's outside
-the reference templates. 
-
-[] Note that the specific page
-wrapper is more example than 
-reference, but the page template
-itself is ref. 
-
--- h2
-
-Possible Command Line Interface
-
-The first 2.0 version will only
-create the AST for use inside
-rust apps. Long term possibility
-of making a command line interface. 
-
--- todo
-
-[] Make a config loader with
-a JSON schema you can pass in. 
-
-[] Output ASTs as JSONs in 
-an output dir with the relative
-paths of the source files. 
-
-[] Output ASTs as JSONs in
-the same directory as the 
-source files. 
-
-[] Provide minijinja output
-from the command line run.
 
 
 -- metadata 
 -- created: 2025-04-27T20:21:11-04:00
 -- updated: 2025-04-27T20:21:11-04:00
 -- template: home-page
-
 
