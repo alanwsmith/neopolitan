@@ -64,7 +64,7 @@ code {
 }
 
 .flow > :where(:not(:first-child)) {
-  margin-top: var(--flow-space, 1em);
+  margin-top: var(--flow-space, 1.1em);
 }
 
 h1 {

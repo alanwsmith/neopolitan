@@ -45,11 +45,16 @@ How It Works
 
 The Basics
 
-Neopolitan documents are made from sections. Each one
-start with two dashes followed by a name. For example: 
+
 
 
 -- html
+
+<p>
+Neopolitan documents are made from sections. Each one
+start with two dashes followed by a name. For example, 
+here's a <code>title</code> section:
+</p>
 
 <div class="tmp-example flow">
 
@@ -88,22 +93,32 @@ defined by adding lines starting
 with two dashes immediately
 follow the section like this:
 
-<div class="tmp-example">
+-- html
 
+<div class="tmp-example flow">
+
+<p>
 &#45;&#45; h2<br />
 &#45;&#45; hidden 
+</p>
 
+<p>
 This H2 is hidden
+</p>
 
 </div>
 
+<p>
 Which outputs:
+</p>
 
 <div class="tmp-example">
 
+<p>
 &lt;h2 hidden&gt;<br />
 &nbsp;&nbsp;This H2 is hidden<br />
 &lt;/h2&gt;
+</p>
 
 </div>
 
@@ -116,23 +131,32 @@ Section Attributes
 Key/value attributes can be added as
 well. For example:
 
+-- html
 
-<div class="tmp-example">
+<div class="tmp-example flow">
 
+<p>
 &#45;&#45; h2<br />
 &#45;&#45; class: red 
+</p>
 
+<p>
 This H2 is red 
+</p>
 
 </div>
 
+<p>
 Which produces:
+</p>
 
-<div class="tmp-example">
+<div class="tmp-example flow">
 
+<p>
 &lt;h2 class=&quot;red&quot;&gt;<br />
 &nbsp;&nbsp;This H2 is red<br />
 &lt;/h2&gt;
+</p>
 
 </div>
 
@@ -143,56 +167,84 @@ Markdown Section Comparison
 
 A basic Markdown document might look like this:
 
+-- html
 
-<div class="tmp-example">
+<div class="tmp-example flow">
 
+<p>
 &#35; The Title
+</p>
 
+<p>
 Some text.
+</p>
 
+<p>
 &#35;&#35; Forward
+</p>
 
+<p>
 More text.
+</p>
 
 </div>
 
+<p>
 A corresponding Neopolitan document 
 would look like this:
+</p>
 
-<div class="tmp-example">
+<div class="tmp-example flow">
 
+<p>
 &#45;&#45; h1
+</p>
 
+<p>
 The Title
+</p>
 
+<p>
 Some text.
+</p>
 
+<p>
 &#45;&#45; h2
-
+</p>
+<p>
 Forward
+</p>
 
+<p>
 More text.
+</p>
 
 </div>
 
+<p>
 Each would produce:
+</p>
 
-<div class="tmp-example">
+<div class="tmp-example flow">
 
+<p>
 &lt;h1&gt;The Title&lt;/h1&gt;<br />
 &lt;p&gt;Some Text.&lt;/p&gt;<br />
 &lt;h2&gt;Forward&lt;/h2&gt;<br />
 &lt;p&gt;More Text.&lt;/p&gt;
+</p>
 
 </div>
 
+<p>
 Neopolitan takes more lines to produce 
 the same output. It provides no benefit if 
 that's all you need. 
+</p>
 
 -- h2
 
-Neopolitan Benefits
+Enter Neopolitan
 
 Neopolitan's usefulness comes
 from adding HTML features
@@ -202,25 +254,40 @@ For example, changing the above
 demo to use explicit sections
 and attributes like this:
 
-<div class="tmp-example">
+-- html
 
+<div class="tmp-example flow">
+
+<p>
 &#45;&#45; title
+</p>
 
+<p>
 The &#64;&#64;Title&#124;class: red&#64;&#64;
+</p>
 
+<p>
 Some text.
+</p>
 
+<p>
 &#45;&#45; forward<br />
 &#45;&#45; class: blue<br />
+</p>
 
+<p>
 More text.
+</p>
 
 </div>
 
+<p>
 produces this:
+</p>
 
-<div class="tmp-example">
+<div class="tmp-example flow">
 
+<p>
 &lt;h1 class=&quot;title&quot; aria-label=&quot;Page Title&quot;&gt;<br />
 &nbsp;&nbsp;The &lt;span class=&quot;red&quot;&gt;Title&lt;/span&gt;<br />
 &lt;/h1&gt;<br />
@@ -229,10 +296,13 @@ produces this:
 &nbsp;&nbsp;Forward<br />
 &lt;/h2&gt;<br />
 &lt;p&gt;More Text.&lt;/p&gt;
+</p>
 
 </div>
 
+<p>
 Specifically, it does the following:
+</p>
 
 <ul class="flow">
   <li>
@@ -280,17 +350,21 @@ Tags
 <h3>The Basics</h3>
 
 <p>
-  A basic tag looks like this:
+Neopolitan <code>tags</code> provide a way to enhance content. 
+A basic one looks like this:
 </p>
+
 <p>
   <code>&lt;&lttag-name&#124;some text&gt;&gt;</code>
 </p>
 
 <p>
-  The <code>tag-name</code> defines what the tag
-  does. The <code>some text</code> in the example
-  is what the tag does its work on.
+  The <code>tag-name</code> defines what the type
+  of tag. The <code>some text</code> in this example
+  represents the content the tag works on.
 </p>
+
+<h3>Element Examples</h3>
 
 <p>Basic examples, include:
 </p>
@@ -309,16 +383,18 @@ Tags
   <kbd>some text</kbd><br />
 </p>
 
+<p>TODO: show raw HTML output here too</p>
+
 <h3>Custom Tags</h3>
 
 <p>
   Those all map to existing HTML elements. 
-  They don't have to. They can be used to do
+  They don't have to. Tags can be used to do
   anything with the content<sup>4</sup>. They
   can also include content generated
   by the output system itself. For example,
-  a <code>wiki</code> tag could be set up
-  to provide for:
+  a <code>wiki</code> tag could be set
+  up like this:
 </p>
 
 <p>
@@ -328,7 +404,8 @@ Tags
 <p>
 The app generating the content could automatically 
 transform that into a link to the Documentation page, 
-add some styles, an id, and a data- attribute.
+add some styles, an id, and a data attribute.
+Something like:
 </p>
 
 <p>
@@ -341,25 +418,41 @@ add some styles, an id, and a data- attribute.
   &gt;Documentation<&lt;a&gt;</code>
 </p>
 
+<p>
+The content stays readable while the
+HTML has all the parts necessary
+to provide the functionality
+</p>
 
 <h3>Attributes and Flags</h3>
 
 <p>
-  Tags can use attributes and flags as well. 
+  Tags can use attributes and flags. 
   They're made by adding a <code>&#124;</code> at
   the end of the content to separate them. 
   For example, a <code>link</code> tag needs a 
-  URL to link to. That's done like this:
+  URL. That's done by adding it as a flag like this:
 </p>
 
 <p>
   <code>&lt;&lt;link&#124;Example Site&#124;https://www.example.com/&gt;&gt;</code>
 </p>
 
+<p>(aside: It may feel weird to call a URL
+a flag if you've done a lot of coding.
+In terms of Neopolitan, &quot;flag&quot;
+just means a string of content instead
+of a key value pair. You can 
+learn more about them on <a href="/documentation/attributes-and-flags.html">
+Attributes and Flags page</a>.)
+</p>
+
+
 <p>
 Attributes work the same way. The
-only difference is that they are key/value
-pairs. For example, this adds a class:
+only difference is they are key/value
+pairs. For example, this is how to use
+a tag attribute to add a CSS class to the output:
 </p>
 
 <p>
@@ -367,12 +460,15 @@ pairs. For example, this adds a class:
 </p>
 
 <p>
-Which outputs: 
+Which produces: 
 </p>
 
 <p>
   <code>&lt;kbd class=&quot;red&quot;&gt;Escape&lt;kbd&gt;</code>
 </p>
+
+
+<p>TODO: Show the rendered HTML output here too.</p>
 
 <h3>Multiple Attributes And Flags</h3>
 

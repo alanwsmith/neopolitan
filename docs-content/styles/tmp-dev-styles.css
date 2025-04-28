@@ -5,11 +5,11 @@
   font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
   font-weight: normal;
   font-size: 0.8rem;
-  line-height: 1.3;
+  line-height: 1.5;
 }
 
 .tmp-warning {
-  padding-inline: 1rem;
+  padding: 1rem;
   border: 1px solid #666;
   border-radius: 0.4rem;
   font-weight: normal;
