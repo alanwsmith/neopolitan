@@ -2,7 +2,7 @@
 <html lang="en"> 
 <head> 
 	<title></title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -14,318 +14,89 @@
 </div><div>
 <a href="documentations.html">documentations.html</a>
 </div><div>
+<a href="goals.html">goals.html</a>
+</div><div>
 <a href="index.html">index.html</a>
 </div><div>
 <a href="possible-enhancements.html">possible-enhancements.html</a>
 </div><div>
+<a href="recommendations.html">recommendations.html</a>
+</div><div>
 <a href="shorthands.html">shorthands.html</a>
+</div><div>
+<a href="tests/spans/code.html">tests/spans/code.html</a>
 </div><div>
 <a href="todos.html">todos.html</a>
 </div><div>
 <a href="versioning.html">versioning.html</a>
-</div><h1>
-  
-  Neopolitan
-</h1><p>
-  
-  Welcome to Neopolitan! A plain-text format for making web pages.
-</p><p>
-  
-  Test: 
+</div><h1>Neopolitan
 
-  
-  <code>
- class="red flow"
-code</code>
+</h1><p>Welcome to Neopolitan!
 
+</p><p>A plain-text format for making web pages.
 
+</p><p>Test: <code class="red">code</code> sample
 
+</p><h2>Documentation
 
+</h2><h2>Custom Shorthand Tags
 
-  
-   sample
-</p><h2>
-  
-  Documentation
-</h2><h2>
-  
-  Custom Shorthand Tags
-</h2><p>
-  
-  Shorthand tags look like
-</p><p>
-  
-  There are not specified custom tags. Defining and using them is an implementaiton detail. TODO: There are recommended examples in the reference templates
-</p><p>
-  
-  [] Section names for the category types are reserved words that go to their type to ensure that all types have sections associated with them. (That is, it's required to have output for the section categories. There is no expectation for what the output should be. Just that the templates exist)
-</p><p>
-  
-  [] Define the characters that get escaped when escaping happens.
-</p><p>
-  
-  [] Create template the outputs the section for rebuilding sections.
-</p><p>
-  
-  [] Write up the fact that flags are required to be output in order for redoing this format. Attributes are not required to be in the same order they showed up in the source when rebuilding it.
-</p><p>
-  
-  [] Create a default formatter. Allow line length to be set. TBD on what else (aim to keep it at a minimum)
-</p><p>
-  
-  [] Implicit in the specs is the required 
+</h2><p>Shorthand tags look like
 
-  
-  <code>
- class="flow"
--- neopolitan</code>
+</p><p>There are not specified custom tags. Defining and using them is an implementaiton detail. TODO: There are recommended examples in the reference templates
 
+</p><p>[] Section names for the category types are reserved words that go to their type to ensure that all types have sections associated with them. (That is, it's required to have output for the section categories. There is no expectation for what the output should be. Just that the templates exist)
 
+</p><p>[] Define the characters that get escaped when escaping happens.
 
+</p><p>[] Create template the outputs the section for rebuilding sections.
 
+</p><p>[] Write up the fact that flags are required to be output in order for redoing this format. Attributes are not required to be in the same order they showed up in the source when rebuilding it.
 
-  
-   section which transforms the contents without adding anything extra to it. Section attributes and flags are ignored. This is the only required section.
-</p><p>
-  
-  [] Make 
+</p><p>[] Create a default formatter. Allow line length to be set. TBD on what else (aim to keep it at a minimum)
 
-  
-  <code>
- class="flow"
--- metadata</code>
+</p><p>[] Implicit in the specs is the required <code>-- neopolitan</code> section which transforms the contents without adding anything extra to it. Section attributes and flags are ignored. This is the only required section.
 
+</p><p>[] Make <code>-- metadata</code> a reserved section name that should not be output to the page. The attrs it has are implementation details. Having an metadata section is not required though. Possible feature for future versions is to allow JSON or YAML to be used for the body and pulled in. In that light, the <code>-- type:</code> attribute is a reserved word. Eventually, will have possible values of <code>neopolitan</code>, <code>json</code>, <code>yaml</code>. Other formats TBD.
 
+</p><p>[] Should there be speced reserved words for <code>-- metadata</code>? Attrs that aren't required but are defined for what they should be? Probably makes sense to have <code>-- created:</code>, <code>-- updated:</code> be defined for the date format to use. And, <code>-- id:</code> as a recommendation for the ID of page that can be used for cross references.
 
+</p><p>[] Make <code>-- template:</code> be part of the section ref, but not spec. (since there isn't a defined spec for sections)
 
+</p><p>[] Make <code>-- id:</code> and <code>-- class:</code> be section ref.
 
-  
-   a reserved section name that should not be output to the page. The attrs it has are implementation details. Having an metadata section is not required though. Possible feature for future versions is to allow JSON or YAML to be used for the body and pulled in. In that light, the 
+</p><p>[] Make <code>template:</code> be part of the shorthand ref.
 
-  
-  <code>
- class="flow"
--- type:</code>
+</p><p>[] Spec is to fall back to <code><NAME></code> for any <code><<NAME>></code> tag that doesn't match a template. It's always open and close.
 
+</p><p>[] Reference should include standard elements for spans.
 
+</p><p>[] Reference should include standard elements for sections.
 
+</p><p>[] Provide tests for the reference sections and spans for anyone that wants to implement them to use them as expanded test for other parsers?
 
+</p><p>[] Version the specs.
 
-  
-   attribute is a reserved word. Eventually, will have possible values of 
+</p><p>[] Attribute values are only text spans and escaped characters? Or should they be full parsing? TBD based on test usage.
 
-  
-  <code>
- class="flow"
-neopolitan</code>
+</p><p>[] Image section is not required but give guidelines about usage (re: alt text and path handling via flag)
 
+</p><p>[] The output references should just be sections, not the full page. Should be able to show them in the example though. Maybe those templates are in a "support" section that's outside the reference templates.
 
+</p><p>[] Note that the specific page wrapper is more example than reference, but the page template itself is ref.
 
+</p><h2>Possible Command Line Interface
 
+</h2><p>The first 2.0 version will only create the AST for use inside rust apps. Long term possibility of making a command line interface.
 
-  
-  , 
+</p><p>[] Make a config loader with a JSON schema you can pass in.
 
-  
-  <code>
- class="flow"
-json</code>
+</p><p>[] Output ASTs as JSONs in an output dir with the relative paths of the source files.
 
+</p><p>[] Output ASTs as JSONs in the same directory as the source files.
 
+</p><p>[] Provide minijinja output from the command line run.
 
-
-
-  
-  , 
-
-  
-  <code>
- class="flow"
-yaml</code>
-
-
-
-
-
-  
-  . Other formats TBD.
-</p><p>
-  
-  [] Should there be speced reserved words for 
-
-  
-  <code>
- class="flow"
--- metadata</code>
-
-
-
-
-
-  
-  ? Attrs that aren't required but are defined for what they should be? Probably makes sense to have 
-
-  
-  <code>
- class="flow"
--- created:</code>
-
-
-
-
-
-  
-  , 
-
-  
-  <code>
- class="flow"
--- updated:</code>
-
-
-
-
-
-  
-   be defined for the date format to use. And, 
-
-  
-  <code>
- class="flow"
--- id:</code>
-
-
-
-
-
-  
-   as a recommendation for the ID of page that can be used for cross references.
-</p><p>
-  
-  [] Make 
-
-  
-  <code>
- class="flow"
--- template:</code>
-
-
-
-
-
-  
-   be part of the section ref, but not spec. (since there isn't a defined spec for sections)
-</p><p>
-  
-  [] Make 
-
-  
-  <code>
- class="flow"
--- id:</code>
-
-
-
-
-
-  
-   and 
-
-  
-  <code>
- class="flow"
--- class:</code>
-
-
-
-
-
-  
-   be section ref.
-</p><p>
-  
-  [] Make 
-
-  
-  <code>
- class="flow"
-template:</code>
-
-
-
-
-
-  
-   be part of the shorthand ref.
-</p><p>
-  
-  [] Spec is to fall back to 
-
-  
-  <code>
- class="flow"
-<NAME></code>
-
-
-
-
-
-  
-   for any 
-
-  
-  <code>
- class="flow"
-<<NAME>></code>
-
-
-
-
-
-  
-   tag that doesn't match a template. It's always open and close.
-</p><p>
-  
-  [] Reference should include standard elements for spans.
-</p><p>
-  
-  [] Reference should include standard elements for sections.
-</p><p>
-  
-  [] Provide tests for the reference sections and spans for anyone that wants to implement them to use them as expanded test for other parsers?
-</p><p>
-  
-  [] Version the specs.
-</p><p>
-  
-  [] Attribute values are only text spans and escaped characters? Or should they be full parsing? TBD based on test usage.
-</p><p>
-  
-  [] Image section is not required but give guidelines about usage (re: alt text and path handling via flag)
-</p><p>
-  
-  [] The output references should just be sections, not the full page. Should be able to show them in the example though. Maybe those templates are in a "support" section that's outside the reference templates.
-</p><p>
-  
-  [] Note that the specific page wrapper is more example than reference, but the page template itself is ref.
-</p><h2>
-  
-  Possible Command Line Interface
-</h2><p>
-  
-  The first 2.0 version will only create the AST for use inside rust apps. Long term possibility of making a command line interface.
-</p><p>
-  
-  [] Make a config loader with a JSON schema you can pass in.
-</p><p>
-  
-  [] Output ASTs as JSONs in an output dir with the relative paths of the source files.
-</p><p>
-  
-  [] Output ASTs as JSONs in the same directory as the source files.
-</p><p>
-  
-  [] Provide minijinja output from the command line run.
 </p></main>
 </body>
 </html>

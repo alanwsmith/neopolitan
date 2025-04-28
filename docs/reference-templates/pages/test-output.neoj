@@ -1,0 +1,25 @@
+[!- import "helpers/macros.neoj" as macros -!] 
+
+<!DOCTYPE html>
+<html lang="en"> 
+<head> 
+	<title></title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <main class="flow">
+    [!- block main -!][!- endblock -!]
+  </main>
+</body>
+</html>
+
+[!- for section in sections -!]
+  [!- set templates = [
+    "sections/" + section.kind + "/default.neoj",
+    "sections/" + section.category + "/default.neoj",
+  ] -!]
+  [!- include templates -!]
+[!- endfor -!]
+

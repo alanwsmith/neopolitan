@@ -2,7 +2,7 @@
 <html lang="en"> 
 <head> 
 	<title></title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -81,13 +81,23 @@ change the output if you want
 something other than what's 
 speced for the shorthands. 
 
-TODO: Consider desciptions of how
+TODO: Consider descriptions of how
 the HTML Output is representative. 
 (e.g. systems may add extra 
 classes, or attributes, but 
 they should work directionally 
 the same if any modifications
 are made)
+
+TODO: Reserve ``-- tag:`` as a reserved
+word used for tagging. can be done
+at the page level in ``-- metadata:``
+or the ``-- SECTION`` level 
+
+
+
+
+
 
 
 
@@ -144,6 +154,30 @@ are made)
           {
             "category": "text",
             "content": " a defined section where the first flag is the language to use for highlighting"
+          }
+        ]
+      },
+      {
+        "category": "block",
+        "spans": [
+          {
+            "category": "text",
+            "content": "[] Make "
+          },
+          {
+            "attrs": {},
+            "category": "code",
+            "flags": [],
+            "spans": [
+              {
+                "category": "text",
+                "content": "style"
+              }
+            ]
+          },
+          {
+            "category": "text",
+            "content": " reserved attr for spans to output inline CSS styles if the system allows it."
           }
         ]
       }

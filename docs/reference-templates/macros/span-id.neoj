@@ -1,0 +1,7 @@
+[!- macro span_id(span) -!]
+  [!- if "id" in span.attrs -!]
+    [@- ' ' -@]
+    id="[@- child_spans(span.attrs.id) -@]"
+  [!- endif -!]
+[!- endmacro -!]
+

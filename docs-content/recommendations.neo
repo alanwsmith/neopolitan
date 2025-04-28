@@ -1,0 +1,21 @@
+-- title
+
+Recommendations 
+
+The following are recommendations. They aren't 
+required to meet the spec, but the more they
+are used the more portable the format becomes. 
+
+
+-- list
+
+- Use ``-- created:`` and ``-- updated:``
+attributes in the ``-- metadata`` section.
+
+
+
+
+
+-- metadata 
+-- created: 2025-04-27T22:56:55-04:00
+-- updated: 2025-04-27T22:56:55-04:00

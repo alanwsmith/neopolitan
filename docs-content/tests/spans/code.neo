@@ -1,0 +1,29 @@
+-- title
+
+Code Shorthand
+
+-- neopolitan
+
+``alfa``
+
+``alfa|rust``
+
+``alfa|class: red``
+
+``alfa|id: bravo``
+
+-- raw
+
+<code>alfa</code>
+
+<code data-lang="rust">alfa</code>
+
+<code class="red">alfa</code>
+
+<code id="bravo">alfa</code>
+
+
+-- metadata 
+-- created: 2025-04-27T23:02:41-04:00
+-- updated: 2025-04-27T23:02:41-04:00
+-- template: testing

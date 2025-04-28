@@ -1,21 +1,7 @@
-[!- import "helpers/macros.neoj" as macros -!]
-<code>
-[@ macros.span_classes(span, "flow") @]
-[#
-[@ macros.span_id(span) @]
-#]
+[!- import "macros/loader.neoj" as macros -!]
+<code
+[@- macros.span_classes(span) -@]
+[@- macros.span_id(span) -@]
+>
 [@- macros.child_spans(span.spans) -@]
 </code>
-[#
-#]
-[#
-[!- for span in span.spans -!]
-  [!- set templates = ["spans/" + span.category + "/default.neoj"] -!]
-  <code>[!- include templates -!]
-  [@ classes @]
-  [@ id @]
-  </code>
-[!- endfor -!]
-  #]
-
-

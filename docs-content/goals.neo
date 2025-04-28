@@ -8,16 +8,16 @@ Things To Strive For
 
 -- list
 
-- **A Single Standard Specification**
+- A Single Standard Specification
 
 Trying to avoid all the different flavors
 of Markdown parsers. Any given input
 should produce the same AST regardless
-of the parser^^1^^. 
+of the parser<sup>1<sup>. 
 
-- **Complete AST Specification**
+- Complete AST Specification
 
-- **Specific Output Specifications**
+- Specific Output Specifications
 
 Neopolitan is designed to be as flexible
 as possible. This is by making the spec
@@ -30,9 +30,9 @@ specified for HTML output to aid in
 portability of files. These are defined
 on the specification page. 
 
-- **No JavaScript Required**
+- No JavaScript Required
 
-- **Authoring Simplicity**
+- Authoring Simplicity
 
 I'm attempting to make something that is
 simple to use while still provding
@@ -57,9 +57,9 @@ as much.
 
 
 
-- **Semantic Versioning**
+- Semantic Versioning
 
-- **Format Stability**
+- Format Stability
 
 I've been using Neopolitan for
 a few years now. While it has evolved 

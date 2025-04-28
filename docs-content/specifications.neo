@@ -8,6 +8,9 @@ Neopolitan 2.0.0 Specification
 where the first flag is the language
 to use for highlighting
 
+[] Make ``style`` reserved attr
+for spans to output inline CSS
+styles if the system allows it. 
 
 
 -- h2
@@ -157,13 +160,23 @@ change the output if you want
 something other than what's 
 speced for the shorthands. 
 
-TODO: Consider desciptions of how
+TODO: Consider descriptions of how
 the HTML Output is representative. 
 (e.g. systems may add extra 
 classes, or attributes, but 
 they should work directionally 
 the same if any modifications
 are made)
+
+TODO: Reserve ``-- tag:`` as a reserved
+word used for tagging. can be done
+at the page level in ``-- metadata:``
+or the ``-- SECTION`` level 
+
+
+
+
+
 
 
 
