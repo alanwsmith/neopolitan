@@ -6,6 +6,7 @@ use crate::span_strings::plain_text_string_base::plain_text_string_base;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;
+use nom::bytes::complete::tag;
 use nom::multi::many1;
 
 // TODO: Accept character that needs to be skipped

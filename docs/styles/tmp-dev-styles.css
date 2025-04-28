@@ -1,0 +1,12 @@
+.tmp-example {
+  padding: 1rem;
+  border: 1px solid #666;
+  border-radius: 0.4rem;
+}
+
+h1, h2 {
+  border-bottom: 1px solid #444;
+  margin-top: 2.8rem;
+}
+
+

@@ -9,6 +9,34 @@ Introduction
 Neopolitan provides two ways to enhance
 content inside of sections:
 
+
+-- h2
+
+Tags
+
+-- code
+
+< and > = named tag
+
+` = code
+
+* = strong
+
+_ = emphasis
+
+[ and ] = link
+
+^ = footnote
+
+~ = delete 
+
+( and ) = insert
+
+{ and } = image
+
+@ = wraps in span tag to make it quicker to
+add attributes and flags. 
+
 -- olist
 
 1. tags
@@ -48,4 +76,5 @@ TKTKTK
 -- metadata 
 -- created: 2025-04-27T10:22:14-04:00
 -- updated: 2025-04-27T10:22:14-04:00
+
 

@@ -1,0 +1,69 @@
+-- title
+
+Span Flags
+
+-- Overview
+
+Tags and Shorthand spans accept flags. 
+
+The parsing logic is:
+
+-- list
+
+- Flags end at spaces, tabs, newlines
+or pipes [TKTKTK: Insert pipe character]
+
+- Flags can have individual characters
+that match the closing tag or shorthand
+token, but they can't have two in a row
+as that would be the closing indication. 
+
+- Emoji (e.g. 🕺) can be used. (Recognizing
+that different systems display different
+images for the same emoji)
+
+- Escaping characters in flags is not 
+supported. 1
+
+
+
+-- footnote
+-- id: 1
+
+Doing so would require switching 
+the AST to use an array of spans to 
+track the escaped characters instead of
+using a single text string. That would
+lead to an unacceptable increase in the
+complexity of using them in templates. 
+
+The reason spans would be required for
+escape characters is so the AST can
+be used to make an accurate reproduction
+of the input source. 
+
+
+-- footnote
+
+Note that this means you can have
+multiple opening tag tokens like:
+
+-- code 
+
+text|alfa&lt;&lt;bravo
+
+-- p
+
+Where ``alfa<<bravo`` is the flag. 
+Same goes for the ``[`` and ``{``
+characters for links and images.
+
+
+
+
+
+-- metadata 
+-- created: 2025-04-28T07:37:11-04:00
+-- updated: 2025-04-28T07:37:11-04:00
+
+

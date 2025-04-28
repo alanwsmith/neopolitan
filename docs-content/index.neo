@@ -1,12 +1,358 @@
 -- title
 
-Neopolitan
+Welcome to Neopolitan
 
-Welcome to Neopolitan! 
+A plain-text format for making web sites. 
 
-A plain-text format for making web pages. 
+It's like Markdown, but with more features. 
 
-Test: ``code|class: red`` sample
+<div class="tmp-example">
+
+Head's up: I'm in the middle of rebuilding the site. 
+
+The examples on this home page are up to date. Most
+of the rest of the site is just scratch notes and 
+TODOs. Feel free to click around if you want to see how the 
+sausage is being made. 
+
+Follow me on 
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>
+for updates. 
+
+</div>
+
+-- h2
+
+How It Works
+
+-- h3
+
+The Basics
+
+Neopolitan documents are made from sections. Each one
+start with two dashes followed by a name. For example: 
+
+<div class="tmp-example">
+
+&#45;&#45; title
+
+A Basic Example
+
+This is an example of what a Neopolitan<br />
+document looks like.
+
+</div>
+
+The HTML output looks like this:
+
+
+<div class="tmp-example">
+
+&lt;h1 class=&quot;title&quot;&gt;<br />
+&nbsp;&nbsp;A Basic Example<br />
+&lt;/h1&gt;<br />
+&lt;p&gt;<br />
+&nbsp;&nbsp;This is an example of what a<br />
+&nbsp;&nbsp;Neopolitan document looks like.<br />
+&lt;/p&gt;
+
+</div>
+
+
+
+-- h3
+
+Section Flags
+
+Each section can have flags. They're
+defined by adding lines starting
+with two dashes immediately
+follow the section like this:
+
+<div class="tmp-example">
+
+&#45;&#45; h2<br />
+&#45;&#45; hidden 
+
+This H2 is hidden
+
+</div>
+
+Which outputs:
+
+<div class="tmp-example">
+
+&lt;h2 hidden&gt;<br />
+&nbsp;&nbsp;This H2 is hidden<br />
+&lt;/h2&gt;
+
+</div>
+
+
+
+-- h3
+
+Section Attributes
+
+Key/value attributes can be added as
+well. For example:
+
+
+<div class="tmp-example">
+
+&#45;&#45; h2<br />
+&#45;&#45; class: red 
+
+This H2 is red 
+
+</div>
+
+Which produces:
+
+<div class="tmp-example">
+
+&lt;h2 class=&quot;red&quot;&gt;<br />
+&nbsp;&nbsp;This H2 is red<br />
+&lt;/h2&gt;
+
+</div>
+
+
+-- h2
+
+Markdown Section Comparison
+
+A basic Markdown document might look like this:
+
+
+<div class="tmp-example">
+
+&#35; The Title
+
+Some text.
+
+&#35;&#35; Forward
+
+More text.
+
+</div>
+
+A corresponding Neopolitan document 
+would look like this:
+
+<div class="tmp-example">
+
+&#45;&#45; h1
+
+The Title
+
+Some text.
+
+&#45;&#45; h2
+
+Forward
+
+More text.
+
+</div>
+
+Each would produce:
+
+<div class="tmp-example">
+
+&lt;h1&gt;The Title&lt;/h1&gt;<br />
+&lt;p&gt;Some Text.&lt;/p&gt;<br />
+&lt;h2&gt;Forward&lt;/h2&gt;<br />
+&lt;p&gt;More Text.&lt;/p&gt;
+
+</div>
+
+Neopolitan takes more lines to produce 
+the same output. It provides no benefit if 
+that's all you need. 
+
+-- h2
+
+Neopolitan Benefits
+
+Neopolitan's usefulness comes
+from adding HTML features
+to content<sup>1</sup>. 
+
+For example, changing the above
+demo to use explicit sections
+and attributes like this:
+
+<div class="tmp-example">
+
+&#45;&#45; title
+
+The &#64;&#64;Title&#124;class: red&#64;&#64;
+
+Some text.
+
+&#45;&#45; forward<br />
+&#45;&#45; class: blue<br />
+
+More text.
+
+</div>
+
+produces this:
+
+<div class="tmp-example">
+
+&lt;h1 class=&quot;title&quot; aria-label=&quot;Page Title&quot;&gt;<br />
+&nbsp;&nbsp;The &lt;span class=&quot;red&quot;&gt;Title&lt;/span&gt;<br />
+&lt;/h1&gt;<br />
+&lt;p&gt;Some Text.&lt;/p&gt;<br />
+&lt;h2 class=&quot;forward blue&quot;&gt;<br />
+&nbsp;&nbsp;Forward<br />
+&lt;/h2&gt;<br />
+&lt;p&gt;More Text.&lt;/p&gt;
+
+</div>
+
+Specifically, this output does the following:
+
+<ul class="flow">
+  <li>
+    Automatically add the &quot;title&quot; class 
+    to the &quot;h1&quot; element
+  </li>
+  <li>
+    Automatically add an &quot;aria-label&quot; to
+    the &quot;h1&quot; element<sup>2</sup>
+  </li>
+  <li>
+    Use a span to add a &quot;red&quot; class to the
+    word Title in the H1. This is done with the &quot;&#64;&#64;&quot;
+    shorthand which is described further below. 
+    The key point for this example 
+    is the ability to add styles inside headlines. 
+  </li>
+  <li>
+    Output an H2 with the &quot;Forward&quot; text in
+    it without having to write the word in addition 
+    to using it as the section name<sup>3</sup>.
+  </li>
+  <li>
+    Automatically add the &quot;forward&quot; class
+    to the H2 
+  </li>
+  <li>
+    Append the &quot;blue&quot; class to the H2 
+    via the &quot;&#45;&#45; class: blue&quot;
+    section attribute
+  </li>
+</ul>
+
+Of course, the same output could be produced with
+Markdown. But, it would require falling back to
+raw HTML for most of it. 
+
+
+<hr />
+
+<h2>Footnotes</h2>
+
+<ol class="flow">
+  <li>
+    Sure, you could always roll back to 
+    using HTML directly in your Markdown
+    documents. 
+  </li>
+  <li>
+    Adding the &quot;aria-label&quot; is a bit of
+    a contrived example. I don't know if including
+    one in an H1 is advisable. The point here is
+    not about the specific label. It's about
+    the general ability to add things like 
+    aria labels during output without having to 
+    define them directly in the content itself.
+  </li>
+  <li>
+    <p>
+      The names don't have to match. You could just
+      as easily make a section called &quot;&#45;&#45; week&quot;
+      and have the output be &quot;The Week In Review&quot;.
+    </p>
+    <p>
+      There's also no restriction limiting the output 
+      to an H2 tag. An entire structure of divs could
+      be used the same way.
+    </p>
+  </li>
+</ol>
+
+
+
+
+do smoething with an aria label
+
+
+
+
+
+
+
+
+
+
+
+
+
+Section Attribute Example
+
+Neopolitan documents consist of sections.
+They start with two dashes followed by a
+name (e.g. &#45;&#45; title, &#45;&#45; h2,
+&#45;&#45; image, etc.). Each section
+can have key/value attributes and flags.
+They also start with two dashes and look like 
+&#96;&#96;&#45;&#45; attrKey: value&#96;&#96; and
+&#96;&#96;&#45;&#45; flagName&#96;&#96;.
+
+For example, this section has a 
+&#96;&#96;&#45;&#45; class: red&#96;&#96; attribute. 
+As a result, the HTML output looks like:
+
+&#45;&#45; code<br />
+&#45;&#45; html
+
+&lt;h2 class=&quot;red&quot&gt;<br />
+&nbsp;&nbsp;Section Attribute Example<br />
+&lt;/h2&gt;<br />
+
+
+
+
+
+
+&#45;&#45; footnote<br />
+&#45;&#45; id: 1
+
+This is an example footnote. They
+are linked to the content in the document
+by matching the <code>&#45;&#45; id</code>
+attribute of the section to the
+corresponding 
+<code>&#94;&#94;ID&#94;&#94;</code>
+shorthand in the document. 
+
+<hr />
+
+
+
+
+
+-- todo
+
+[] Output the contents of the example
+below it to show the rendered HTML.
+
+[] Add syntax highlighting.
 
 -- h2
 
@@ -163,5 +509,6 @@ from the command line run.
 -- metadata 
 -- created: 2025-04-27T20:21:11-04:00
 -- updated: 2025-04-27T20:21:11-04:00
+-- template: home-page
 
 

@@ -1,7 +1,7 @@
 [!- macro page_links(site) -!]
 [!- for page in site.pages -!]
 <div>
-<a href="[@ page @]">[@ page @]</a>
+<a href="/[@ page @]">[@ page @]</a>
 </div>
 [!- endfor -!]
 [!- endmacro -!]

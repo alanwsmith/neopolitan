@@ -1,0 +1,34 @@
+-- title
+
+Specifications
+
+-- todo
+
+[] Three levels of conforming: 1 properly
+produce the AST, 2 properly produce core
+HTML, 3 properly implement standard 
+section and span outputs. 
+
+[] Make ``neb-css`` sections part of
+the level 3 requirement. Should
+not output to page. Only to be used
+in the RSS feeds. 
+
+[] Add other Neb stuff for level 3. 
+
+[] Make sure ``link`` shorthand
+moves ``target`` attr into the output
+as part of the spec
+
+[] Go through required flags (e.g.
+``hidden``, etc.)
+
+[] Required sections for the lower
+level: warning, note
+
+
+-- metadata 
+-- created: 2025-04-28T08:46:10-04:00
+-- updated: 2025-04-28T08:46:10-04:00
+
+

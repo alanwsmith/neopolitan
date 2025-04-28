@@ -1,7 +1,0 @@
-[!- macro child_spans(source) -!]
-[!- for span in source -!]
-  [!- set templates = ["spans/" + span.category + "/default.neoj"] -!]
-  [!- include templates -!]
-[!- endfor -!]
-[!- endmacro -!]
-

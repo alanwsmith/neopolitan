@@ -1,6 +1,4 @@
 use crate::span_metadata::RawSpanMetadata;
-use crate::span_metadata::attr_flag_key::attr_flag_key;
-use crate::span_strings::single_character::single_character;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;
@@ -54,14 +52,53 @@ pub fn span_flag<'a>(
 ) -> IResult<&'a str, RawSpanMetadata> {
     let (source, _) =
         (tag("|"), space0, opt(line_ending), space0).parse(source)?;
-    let (source, key) = attr_flag_key(source, character)?;
+    let (source, token) = span_flag_token(source, character)?;
     let (source, _) = space0.parse(source)?;
     let (source, _) = opt(line_ending).parse(source)?;
     let (source, _) = space0.parse(source)?;
     let (source, _) =
         peek(alt((tag("|"), terminated(tag(character), tag(character)))))
             .parse(source)?;
-    Ok((source, RawSpanMetadata::Flag(key.to_string())))
+    Ok((source, RawSpanMetadata::Flag(token)))
+}
+
+fn span_flag_token<'a>(
+    source: &'a str,
+    character: &'a str,
+) -> IResult<&'a str, String> {
+    let (source, parts) = many1(alt((
+        is_not(" \t\r\n\\|`~^*_>[]{}"),
+        recognize(preceded(not(tag(character)), one_of("`~^*_>[]{}"))),
+        span_flag_token_single_character,
+    )))
+    .parse(source)?;
+    Ok((source, parts.join("")))
+}
+
+pub fn span_flag_token_single_character<'a>(
+    source: &'a str,
+) -> IResult<&'a str, &'a str> {
+    let (source, token_character) = alt((
+        terminated(tag("`"), peek(not(tag("`")))),
+        // terminated(tag("~"), peek(not(tag("~")))),
+        // terminated(tag("!"), peek(not(tag("!")))),
+        // terminated(tag("@"), peek(not(tag("@")))),
+        // terminated(tag("#"), peek(not(tag("#")))),
+        // terminated(tag("$"), peek(not(tag("$")))),
+        // terminated(tag("%"), peek(not(tag("%")))),
+        // terminated(tag("^"), peek(not(tag("^")))),
+        // terminated(tag("*"), peek(not(tag("*")))),
+        // terminated(tag("["), peek(not(tag("[")))),
+        // terminated(tag("]"), peek(not(tag("]")))),
+        // terminated(tag("{"), peek(not(tag("{")))),
+        // terminated(tag("}"), peek(not(tag("}")))),
+        // terminated(tag("<"), peek(not(tag("<")))),
+        // terminated(tag(">"), peek(not(tag(">")))),
+        // terminated(tag("("), peek(not(tag("(")))),
+        // terminated(tag(")"), peek(not(tag(")")))),
+    ))
+    .parse(source)?;
+    Ok((source, token_character))
 }
 
 #[cfg(test)]
@@ -69,6 +106,32 @@ mod test {
     use super::*;
     use pretty_assertions::assert_eq;
     use rstest::rstest;
+
+    #[rstest]
+    #[case("alfa", "`", "alfa", "")]
+    #[case("alfa ", "`", "alfa", " ")]
+    #[case("alfa|", "`", "alfa", "|")]
+    #[case("alfa🕺|", "`", "alfa🕺", "|")]
+    #[case("alfa`|", "`", "alfa`", "|")]
+    #[case("alfa`|", "`", "alfa`", "|")]
+    #[case("alfa<bravo|", ">", "alfa<bravo", "|")]
+    #[case("alfa<<bravo|", ">", "alfa<<bravo", "|")]
+    #[case("alfa<<<bravo|", ">", "alfa<<<bravo", "|")]
+    #[case("alfa<<<<bravo|", ">", "alfa<<<<bravo", "|")]
+    #[case("alfa~^*_<>[]{}|", "`", "alfa~^*_<>[]{}", "|")]
+    #[case("alfa`^*_<>[]{}|", "~", "alfa`^*_<>[]{}", "|")]
+    #[case("https://www.example.com/|", "`", "https://www.example.com/", "|")]
+    fn solo_attr_flag_key_valid_tests(
+        #[case] source: &str,
+        #[case] character: &str,
+        #[case] found: &str,
+        #[case] remainder: &str,
+    ) {
+        let left = found.to_string();
+        let right = span_flag_token(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
 
     // #[rstest]
     // #[case("|alfa``", "`", "alfa", "``")]
@@ -127,20 +190,23 @@ mod test {
     //     assert_eq!(remainder, right.0);
     // }
 
-    // #[rstest]
-    // #[case("|alfa bravo``", "`")]
-    // #[case("|alfa: bravo``", "`")]
-    // #[case("|alfa\\bravo``", "`")]
-    // fn span_flag_invalid_tests(#[case] source: &str, #[case] character: &str) {
-    //     let result = span_flag(source, character);
-    //     match result {
-    //         Ok(_) => {
-    //             dbg!(result.unwrap());
-    //             assert!(false)
-    //         }
-    //         Err(_) => assert!(true),
-    //     }
-    // }
+    #[rstest]
+    #[case("|alfa bravo``", "`")]
+    #[case("|alfa: bravo``", "`")]
+    #[case("|alfa\\bravo``", "`")]
+    fn solo_span_flag_invalid_tests(
+        #[case] source: &str,
+        #[case] character: &str,
+    ) {
+        let result = span_flag(source, character);
+        match result {
+            Ok(_) => {
+                dbg!(result.unwrap());
+                assert!(false)
+            }
+            Err(_) => assert!(true),
+        }
+    }
 
     //
 }

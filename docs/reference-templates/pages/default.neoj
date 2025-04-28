@@ -2,9 +2,6 @@
 [!- import "macros/loader.neoj" as macros -!] 
 
 [!- block main -!]
-
-[@- macros.page_links(site) -@]
-
 [!- for section in sections -!]
   [!- set templates = [
     "sections/" + section.kind + "/default.neoj",
@@ -12,6 +9,6 @@
   ] -!]
   [!- include templates -!]
 [!- endfor -!]
-
+[@- macros.page_links(site) -@]
 [!- endblock -!]
 

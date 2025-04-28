@@ -6,6 +6,10 @@ use nom::combinator::not;
 use nom::combinator::peek;
 use nom::sequence::terminated;
 
+// PROBABLY DEPRECATED: TODO: Move into specific files
+// that need it because they have slightly differnt
+// requirements.
+
 pub fn single_character(source: &str) -> IResult<&str, &str> {
     let (source, result) = alt((
         terminated(tag("`"), peek(not(tag("`")))),

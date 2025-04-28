@@ -3,9 +3,30 @@
 TODOs
 
 
--- h2
+-- todo
 
-Introduction
+[] Add web server?
+
+[] Add front end?
+
+[] Generate most recently changed page at
+specific location so you can see most
+recent set of changes automatically?
+
+[] Add ``wiki`` tag and functionality
+for third level? (or maybe fourth)?
+
+[] Add plugin architecture (this would
+be a later version)
+
+[] Add ``-- extension:`` to ``-- metadata``
+for changing the file extension of
+the output. 
+
+[] Add ``-- path:`` to the ``-- metadata``
+to change the output path. 
+
+
 
 
 

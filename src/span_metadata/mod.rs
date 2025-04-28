@@ -1,6 +1,4 @@
 #![allow(unused)]
-pub mod attr_flag_key;
-
 use crate::span::Span;
 use crate::span_attr::span_attr;
 use crate::span_flag::span_flag;

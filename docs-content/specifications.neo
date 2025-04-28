@@ -1,6 +1,6 @@
 -- title
 
-Neopolitan 2.0.0 Specification
+Neopolitan 2.0 Specification
 
 -- todo
 
@@ -11,6 +11,11 @@ to use for highlighting
 [] Make ``style`` reserved attr
 for spans to output inline CSS
 styles if the system allows it. 
+
+[] Split specification requires into
+two levels. First passes basic test. 
+Second implements standard features. 
+
 
 
 -- h2
