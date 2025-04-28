@@ -186,7 +186,7 @@ mod test {
                 // can't be output
                 match Ast::new_from_source(&source, &config, false) {
                     Ast::Ok { sections } => {
-                        let template = env.get_template("pages/default.neoj").unwrap();
+                        let template = env.get_template("pages/template-picker.neoj").unwrap();
                         let sections = Value::from_serialize(&sections);
                         match template.render(context!(sections => sections)) {
                             Ok(output) => {

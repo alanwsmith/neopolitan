@@ -1,0 +1,14 @@
+[!- extends "wrappers/default.neoj" -!]
+[!- import "helpers/macros.neoj" as macros -!] 
+
+[!- block main -!]
+<h1> THIS IS THE ALTERNATE EXAMPLE</h1>
+[!- for section in sections -!]
+  [!- set templates = [
+    "sections/" + section.kind + "/default.neoj",
+    "sections/" + section.category + "/default.neoj",
+  ] -!]
+  [!- include templates -!]
+[!- endfor -!]
+[!- endblock -!]
+

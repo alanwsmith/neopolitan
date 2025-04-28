@@ -25,6 +25,7 @@
 [!- endfor -!]
 [!- endmacro -!]
 
+
 [#
 [!- macro output_block(block) -!]
 [!- for span in block.spans -!]
