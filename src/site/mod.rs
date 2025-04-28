@@ -154,7 +154,7 @@ impl Site {
                 let parent = output_path.parent().unwrap();
                 std::fs::create_dir_all(parent).unwrap();
                 let template =
-                    env.get_template("pages/template-picker.neoj").unwrap();
+                    env.get_template("pages/parsing-error.neoj").unwrap();
                 let output = template
                     .render(context!(site, message, remainder))
                     .unwrap();
@@ -164,30 +164,39 @@ impl Site {
     }
 
     pub fn output_incompletes(&self) -> Result<()> {
+        let site = &self.clone();
+        let mut env = Environment::new();
+        env.set_syntax(
+            SyntaxConfig::builder()
+                .block_delimiters("[!", "!]")
+                .variable_delimiters("[@", "@]")
+                .comment_delimiters("[#", "#]")
+                .build()
+                .unwrap(),
+        );
+        env.set_loader(path_loader("docs-content/reference-templates"));
+        self.incompletes
+            .iter()
+            .for_each(|(source_path, (sections, remainder))| {
+                let mut output_path = replace_path_root(
+                    &source_path,
+                    &self.input_root,
+                    &self.output_root,
+                )
+                .unwrap();
+                output_path.set_extension("html");
+                dbg!(&output_path);
+                let parent = output_path.parent().unwrap();
+                std::fs::create_dir_all(parent).unwrap();
+                let template =
+                    env.get_template("pages/incomplete.neoj").unwrap();
+                let output = template
+                    .render(context!(site, sections => Value::from_serialize(sections), remainder))
+                    .unwrap();
+                write_file_with_mkdir(&output_path, &output).unwrap();
+            });
         Ok(())
     }
-
-    //
-    //                 Ast::Incomplete { parsed, remainder } => {
-    //                     let template =
-    //                         env.get_template("pages/incomplete.neoj").unwrap();
-    //                     let parsed = Value::from_serialize(parsed);
-    //                     let remainder = Value::from_serialize(remainder);
-    //                     let output = template
-    //                         .render(context!(
-    //                             parsed => parsed,
-    //                             remainder => remainder,
-    //                         ))
-    //                         .unwrap();
-    //                     write_file_with_mkdir(&output_path, &output).unwrap();
-    //                 }
-    //             };
-    //         }
-    //     });
-    //     Ok(())
-    // }
-
-    //
 }
 
 pub fn get_files_in_dir(root_dir: &PathBuf) -> Result<Vec<PathBuf>> {
