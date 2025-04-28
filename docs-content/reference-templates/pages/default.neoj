@@ -9,4 +9,11 @@
   ] -!]
   [!- include templates -!]
 [!- endfor -!]
+
+
+
+[!- for page in site.pages -!]
+[@ page @]
+[!- endfor -!]
 [!- endblock -!]
+

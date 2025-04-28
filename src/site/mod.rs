@@ -17,7 +17,7 @@ use walkdir::WalkDir;
 pub struct Site {
     config: Config,
     errors: BTreeMap<PathBuf, (String, String)>,
-    files: Vec<PathBuf>,
+    files: Vec<(PathBuf, PathBuf)>,
     incompletes: BTreeMap<PathBuf, (Vec<Section>, String)>,
     input_root: PathBuf,
     output_root: PathBuf,
@@ -28,36 +28,7 @@ impl Site {
     pub fn load_pages_and_files(&mut self) -> Result<()> {
         let input_files = get_files_in_dir(&self.input_root)?;
         input_files.iter().for_each(|source_path| {
-            let source_extension = source_path.extension().unwrap();
-            if source_extension == "neo" {
-                let source =
-                    std::fs::read_to_string(&source_path).unwrap().to_string();
-                match Ast::new_from_source(&source, &self.config, false) {
-                    Ast::Ok { sections } => {
-                        self.pages
-                            .insert(source_path.clone(), sections.clone());
-                    }
-                    Ast::Error { message, remainder } => {
-                        self.errors
-                            .insert(source_path.clone(), (message, remainder));
-                    }
-                    Ast::Incomplete { parsed, remainder } => {
-                        self.incompletes.insert(
-                            source_path.clone(),
-                            (parsed, remainder.to_string()),
-                        );
-                    }
-                }
-            } else {
-                self.files.push(source_path.clone());
-            }
-        });
-        Ok(())
-    }
-
-    pub fn copy_files(&self) -> Result<()> {
-        self.files.iter().for_each(|source_path| {
-            let output_path = replace_path_root(
+            let mut output_path = replace_path_root(
                 &source_path,
                 &self.input_root,
                 &self.output_root,
@@ -65,13 +36,43 @@ impl Site {
             .unwrap();
             let parent = output_path.parent().unwrap();
             std::fs::create_dir_all(parent).unwrap();
+            let source_extension = source_path.extension().unwrap();
+            if source_extension == "neo" {
+                output_path.set_extension("html");
+                let source =
+                    std::fs::read_to_string(&source_path).unwrap().to_string();
+                match Ast::new_from_source(&source, &self.config, false) {
+                    Ast::Ok { sections } => {
+                        self.pages
+                            .insert(output_path.clone(), sections.clone());
+                    }
+                    Ast::Error { message, remainder } => {
+                        self.errors
+                            .insert(output_path.clone(), (message, remainder));
+                    }
+                    Ast::Incomplete { parsed, remainder } => {
+                        self.incompletes.insert(
+                            output_path.clone(),
+                            (parsed, remainder.to_string()),
+                        );
+                    }
+                }
+            } else {
+                self.files.push((source_path.clone(), output_path.clone()));
+            }
+        });
+        Ok(())
+    }
+
+    pub fn copy_files(&self) -> Result<()> {
+        self.files.iter().for_each(|(source_path, output_path)| {
             std::fs::copy(source_path, output_path).unwrap();
         });
         Ok(())
     }
 
     pub fn output_pages(&self) -> Result<()> {
-        let site = &self.clone();
+        let site = Value::from_serialize(&self.clone());
         let mut env = Environment::new();
         env.set_syntax(
             SyntaxConfig::builder()
@@ -83,21 +84,11 @@ impl Site {
         );
         env.set_loader(path_loader("docs-content/reference-templates"));
         // env.set_loader(path_loader("docs-templates"));
-        self.pages.iter().for_each(|(source_path, sections)| {
-            let mut output_path = replace_path_root(
-                &source_path,
-                &self.input_root,
-                &self.output_root,
-            )
-            .unwrap();
-            output_path.set_extension("html");
-            dbg!(&output_path);
-            let parent = output_path.parent().unwrap();
-            std::fs::create_dir_all(parent).unwrap();
+        self.pages.iter().for_each(|(output_path, sections)| {
             let template =
                 env.get_template("pages/template-picker.neoj").unwrap();
             let sections = Value::from_serialize(&sections);
-            match template.render(context!(sections)) {
+            match template.render(context!(site, sections)) {
                 Ok(output) => {
                     write_file_with_mkdir(&output_path, &output).unwrap()
                 }
@@ -129,7 +120,7 @@ impl Site {
     }
 
     pub fn output_errors(&self) -> Result<()> {
-        let site = &self.clone();
+        let site = Value::from_serialize(&self.clone());
         let mut env = Environment::new();
         env.set_syntax(
             SyntaxConfig::builder()
@@ -142,17 +133,7 @@ impl Site {
         env.set_loader(path_loader("docs-content/reference-templates"));
         self.errors
             .iter()
-            .for_each(|(source_path, (message, remainder))| {
-                let mut output_path = replace_path_root(
-                    &source_path,
-                    &self.input_root,
-                    &self.output_root,
-                )
-                .unwrap();
-                output_path.set_extension("html");
-                dbg!(&output_path);
-                let parent = output_path.parent().unwrap();
-                std::fs::create_dir_all(parent).unwrap();
+            .for_each(|(output_path, (message, remainder))| {
                 let template =
                     env.get_template("pages/parsing-error.neoj").unwrap();
                 let output = template
@@ -164,7 +145,7 @@ impl Site {
     }
 
     pub fn output_incompletes(&self) -> Result<()> {
-        let site = &self.clone();
+        let site = Value::from_serialize(&self.clone());
         let mut env = Environment::new();
         env.set_syntax(
             SyntaxConfig::builder()
@@ -177,17 +158,7 @@ impl Site {
         env.set_loader(path_loader("docs-content/reference-templates"));
         self.incompletes
             .iter()
-            .for_each(|(source_path, (sections, remainder))| {
-                let mut output_path = replace_path_root(
-                    &source_path,
-                    &self.input_root,
-                    &self.output_root,
-                )
-                .unwrap();
-                output_path.set_extension("html");
-                dbg!(&output_path);
-                let parent = output_path.parent().unwrap();
-                std::fs::create_dir_all(parent).unwrap();
+            .for_each(|(output_path, (sections, remainder))| {
                 let template =
                     env.get_template("pages/incomplete.neoj").unwrap();
                 let output = template
