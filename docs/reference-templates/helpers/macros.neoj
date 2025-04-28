@@ -1,3 +1,5 @@
+[!- include "helpers/page-links.neoj" -!]
+
 [!- macro span_classes(span, extras) -!]
   [!- if "class" in span.attrs or extras != none -!]
   [@- ' ' -@]
@@ -22,14 +24,6 @@
 [!- for span in source -!]
   [!- set templates = ["spans/" + span.category + "/default.neoj"] -!]
   [!- include templates -!]
-[!- endfor -!]
-[!- endmacro -!]
-
-[!- macro page_links(site) -!]
-[!- for page in site.pages -!]
-<div>
-<a href="[@ page @]">[@ page @]</a>
-</div>
 [!- endfor -!]
 [!- endmacro -!]
 

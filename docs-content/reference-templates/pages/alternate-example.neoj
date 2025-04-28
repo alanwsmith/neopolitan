@@ -3,7 +3,6 @@
 
 [!- block main -!]
 [@- macros.page_links(site) -@]
-
 <h1> THIS IS THE ALTERNATE EXAMPLE</h1>
 [!- for section in sections -!]
   [!- set templates = [
