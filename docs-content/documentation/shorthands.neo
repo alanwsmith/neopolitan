@@ -9,13 +9,7 @@ Introduction
 Shorthands offer a way to enhance
 content in Neopolitan files<sup>1</sup>. 
 
--- h2
-
-Tags
-
 -- code
-
-< and > = named tag
 
 ` = code
 

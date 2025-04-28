@@ -13,19 +13,27 @@ It's like Markdown, but with more features.
 
 Work-In-Progress
 
-<div class="tmp-warning">
+-- html
 
+<div class="tmp-warning flow">
+
+<p>
 <strong>Head's up:</strong> I'm in the middle of rebuilding the site. 
+</p>
 
+<p>
 The examples on this page are up to date. Most
 of the rest of the site is just scratch notes and 
 TODOs. Feel free to click around if you want to see how the 
 sausage is being made. 
+</p>
 
+<p>
 Follow me on 
 <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
 or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>
 for updates. 
+</p>
 
 </div>
 
@@ -40,22 +48,24 @@ The Basics
 Neopolitan documents are made from sections. Each one
 start with two dashes followed by a name. For example: 
 
-<div class="tmp-example">
 
-&#45;&#45; title
+-- html
 
-A Basic Example
+<div class="tmp-example flow">
 
-This is an example of what a Neopolitan<br />
-document looks like.
+<p>&#45;&#45; title</p>
+
+<p>A Basic Example</p>
+
+<p>This is an example of what a Neopolitan<br />
+document looks like.</p>
 
 </div>
 
-which outputs this HTML:
+<p>which outputs this HTML:</p>
 
-
-<div class="tmp-example">
-
+<div class="tmp-example flow">
+<p>
 &lt;h1 class=&quot;title&quot;&gt;<br />
 &nbsp;&nbsp;A Basic Example<br />
 &lt;/h1&gt;<br />
@@ -63,6 +73,7 @@ which outputs this HTML:
 &nbsp;&nbsp;This is an example of what a<br />
 &nbsp;&nbsp;Neopolitan document looks like.<br />
 &lt;/p&gt;
+</p>
 
 </div>
 
@@ -316,19 +327,25 @@ Tags
 
 <p>
 The app generating the content could automatically 
-transform that into a link to the Documentation page like:
+transform that into a link to the Documentation page, 
+add some styles, an id, and a data- attribute.
 </p>
 
 <p>
-  <code>&lt;a href=&quot;/documentation.html&quot;&gt;<br />
-    Documentation<br />&lt;a&gt;</code>
+  <code>
+  &lt;a<br />
+  href=&quot;/documentation.html&quot;<br />
+  id=&quot;documentation-link&quot;<br />
+  class=&quot;wiki-link&quot;<br />
+  data-group=&quot;examples&quot;<br />
+  &gt;Documentation<&lt;a&gt;</code>
 </p>
 
 
-<h3>Flags and Attributes</h3>
+<h3>Attributes and Flags</h3>
 
 <p>
-  Tags can use flags and attributes as well. 
+  Tags can use attributes and flags as well. 
   They're made by adding a <code>&#124;</code> at
   the end of the content to separate them. 
   For example, a <code>link</code> tag needs a 
@@ -349,7 +366,6 @@ pairs. For example, this adds a class:
   <code>&lt;&lt;kbd&#124;Escape&#124;class: red&gt;&gt;</code>
 </p>
 
-
 <p>
 Which outputs: 
 </p>
@@ -358,10 +374,34 @@ Which outputs:
   <code>&lt;kbd class=&quot;red&quot;&gt;Escape&lt;kbd&gt;</code>
 </p>
 
+<h3>Multiple Attributes And Flags</h3>
 
+<p>
+  Any number of attributes and flags can be added to 
+  a given tag<sup>5</sup>. All that's needed is
+  another <code>&#124;</code> separator between them.
+  For example:
+</p>
 
+<p>
+  <code>&lt;&lt;link<br />
+  &#124;example text<br />
+  &#124;https://www.example.com/<br />
+  &#124;class: red<br />
+  &#124;id: alfa<br />
+  &#124;hidden&gt;&gt;</code>
+</p>
 
+<p>Which produces:</p>
 
+<p>
+  <code>&lt;a<br />
+  href=&quot;https://www.example.com/&quot;<br />
+  class=&quot;red&quot;<br />
+  id=&quot;alfa&quot;<br />
+  hidden<br />
+  &gt;example text&lt;/a&gt;</code>
+</p>
 
 
 
@@ -369,10 +409,188 @@ Which outputs:
 
 -- h2
 
-Shorthand Spans
-
+Shorthands
 
 -- html
+
+<h3>The Basics</h3>
+
+<p>
+  Shorthands provide another way to enhance
+  content in Neopolitan files. Each works
+  like a specific Tag, but without the 
+  need to type the full thing. For example, 
+  one shorthand uses <code>&#42;&#42;</code>.
+  It looks like this:
+</p>
+
+<p><code>&#42;&#42;example text&#42;&#42;</code></pre>
+
+<p>Which outputs this HTML:</p>
+
+<p>
+  <code>&lt;strong&gt;example text&lt;/strong&gt;</code>
+</p>
+
+
+<p>Which is the exact same thing you'd get if you used
+a tag like this:</p>
+
+<p>
+  <code>&lt;&lt;strong&#124;example text&gt;&gt;</code>
+</p>
+
+<h3>Attributes and Flags</h3>
+
+<p>
+  Shorthands can use attributes and flags the same
+  way Tags can. For example the <code>&#96;&#96;</code>
+  shorthand is for code snippets. Adding a flag
+  to it with the name of a language adds the 
+  appropriate syntax highlighting:
+</p>
+
+<p>
+  <code>&#96;&#96;println!("ping");&#124;rust&#96;&#96;</code>
+</p>
+
+<p>Which outputs:</p>
+
+<p><code>TODO: output snippet when syntax highlighting
+is reinstated</code></p>
+
+<p>
+  Adding an attribute to a strong shorthand
+  looks like this:
+</p>
+
+<p>
+  <code>&#96;&#96;example text&#124;class: red&#96;&#96;</code>
+</p>
+  
+<p>Which outputs:</p>
+
+<p>
+  <code>&lt;strong class=&quot;red&quot;&gt;example text&lt;/strong&gt;</code>
+</p>
+
+
+<h3>Multiple Attributes and Flags</h3>
+
+<p>Shorthands can use multiple attributes and
+flags as well. For example, the link
+shorthand uses <code>&#91;&#91;</code> and 
+<code>&#93;&#93;</code>. It uses a flag
+by default for the URL. Styles and IDs
+can be added like this:
+</p>
+
+<p>
+  <code>&#91;&#91;example link<br />
+  &#124;https://www.example.com/<br />
+  &#124;id: example-link<br />
+  &#124;class: red&#93;&#93;</code>
+</p>
+
+<p>Which outputs:</p>
+
+<p>
+<p>
+  <code>&lt;a<br />
+  href=&quot;https://www.example.com/&quot;<br />
+  id="example-link"<br />
+  class="red"<br />
+  &gt;example link&lt;/a&gt;</code>
+</p>
+
+<h3>The Shorthand List</h3>
+
+<p>Neopolitan provides nine shorthands. They are:</p>
+
+<ul class="flow">
+  <li class="flow">
+    <p>Span:</p>
+    <p>
+      <code>&#64;&#64;code snippet&#64;&#64;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Code:</p>
+    <p>
+      <code>&#96;&#96;code snippet&#96;&#96;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Strong:</p>
+    <p>
+      <code>&#42;&#42;strong text&#42;&#42;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Emphasis:</p>
+    <p>
+      <code>&#95;&#95;emphasis text&#95;&#95;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Footnote Reference:</p>
+    <p>
+      <code>&#94;&#94;1&#94;&#94;</code>
+    </p>
+    <p>See: <a href="/documentation/footnotes.html">the footnote documentation
+    for more details on how footnotes work</a></p>
+  </li>
+  <li class="flow">
+    <p>Deleted:</p>
+    <p>
+      <code>&#126;&#126;deleted text&#126;&#126;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Inserted:</p>
+    <p>
+      <code>&#40;&#40;inserted text&#41;&#41;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Link:</p>
+    <p>
+      <code>&#91;&#91;link text&#124;https://www.example.com/&#93;&#93;</code>
+    </p>
+  </li>
+  <li class="flow">
+    <p>Image:</p>
+    <p>
+      <code>&#123;&#123;image-name.jpg&#124;alt: Alt text for the image&#125;&#125;</code>
+    </p>
+  </li>
+</ul>
+
+
+-- h2
+
+No JavaScript Required
+
+TODO: add section about how all this is done with
+templates and no need for JavaScript. It can
+be added if you want it. But, it's not required. 
+
+
+-- h2
+
+More To Come
+
+Formats can be interesting. If there's nothing that uses
+them, they don't mean much. In that light, I'm
+finishing up a reference static site generator 
+that uses Neopolitan. 
+
+I expect to have a beta version ready by June 2025. 
+
+I'll post about progress on 
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+and <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>
+if you want to follow along. 
 
 
 -- h2
@@ -413,6 +631,10 @@ Footnotes
     CSS, and JavaScript if you want to be pedantic 
     about it. 
   </li>
+  <li>
+    Okay, sure. There are limits to computer memory,
+    etc. if you want to be pedantic about it.
+  </li>
 </ol>
 
 
@@ -420,6 +642,8 @@ Footnotes
 -- h2
 
 TODO
+
+[] Write up No JavaScript Required section.
 
 [] Output the contents of the example
 below it to show the rendered HTML.
