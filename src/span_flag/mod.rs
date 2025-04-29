@@ -80,6 +80,7 @@ pub fn span_flag_token_single_character<'a>(
 ) -> IResult<&'a str, &'a str> {
     let (source, token_character) = alt((
         terminated(tag("`"), peek(not(tag("`")))),
+        terminated(tag("*"), peek(not(tag("*")))),
         // terminated(tag("~"), peek(not(tag("~")))),
         // terminated(tag("!"), peek(not(tag("!")))),
         // terminated(tag("@"), peek(not(tag("@")))),
@@ -87,7 +88,6 @@ pub fn span_flag_token_single_character<'a>(
         // terminated(tag("$"), peek(not(tag("$")))),
         // terminated(tag("%"), peek(not(tag("%")))),
         // terminated(tag("^"), peek(not(tag("^")))),
-        // terminated(tag("*"), peek(not(tag("*")))),
         // terminated(tag("["), peek(not(tag("[")))),
         // terminated(tag("]"), peek(not(tag("]")))),
         // terminated(tag("{"), peek(not(tag("{")))),
@@ -110,10 +110,25 @@ mod test {
     #[rstest]
     #[case("alfa", "`", "alfa", "")]
     #[case("alfa ", "`", "alfa", " ")]
+    #[case("alfa\n", "`", "alfa", "\n")]
     #[case("alfa|", "`", "alfa", "|")]
     #[case("alfa🕺|", "`", "alfa🕺", "|")]
+    //
+    #[case("alfa` ", "`", "alfa`", " ")]
     #[case("alfa`|", "`", "alfa`", "|")]
-    #[case("alfa`|", "`", "alfa`", "|")]
+    #[case("alfa`x ", "`", "alfa`x", " ")]
+    #[case("alfa`x|", "`", "alfa`x", "|")]
+    #[case("alfa``x", "`", "alfa", "``x")]
+    //
+    #[case("alfa* ", "*", "alfa*", " ")]
+    #[case("alfa*|", "*", "alfa*", "|")]
+    #[case("alfa*x ", "*", "alfa*x", " ")]
+    #[case("alfa*x|", "*", "alfa*x", "|")]
+    #[case("alfa**x", "*", "alfa", "**x")]
+    //
+    #[case("alfa*x", "*", "alfa*x", "")]
+    #[case("alfa**x", "*", "alfa", "**x")]
+    #[case("alfa``x", "`", "alfa", "``x")]
     #[case("alfa<bravo|", ">", "alfa<bravo", "|")]
     #[case("alfa<<bravo|", ">", "alfa<<bravo", "|")]
     #[case("alfa<<<bravo|", ">", "alfa<<<bravo", "|")]
