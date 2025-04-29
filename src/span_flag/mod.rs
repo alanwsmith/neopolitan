@@ -36,15 +36,27 @@ use nom::sequence::terminated;
 // require to work with flags in
 // general
 
-// pub fn not_character<'a>(
-//     source: &'a str,
-//     character: &'a str,
-// ) -> IResult<&'a str, &'a str> {
-//     let (source, result) =
-//         recognize(preceded(not(tag(character)), one_of("`~!@#$%^&*()<>[]{}")))
-//             .parse(source)?;
-//     Ok((source, result))
-// }
+// Using the tokens from another tag/shorthand
+// is allowed. For example, this
+//
+// ``ping|ping<<>>``
+//
+// produces a valid flag of: ping<<>>
+//
+// where as this:
+//
+// <<ping|ping<<>>>>
+//
+// produces a flag of "ping<<" with a remainder
+// of ">>" in the parser.
+//
+// This introduces some inconsistent behavior
+// in that any given token set can be used
+// in everything except itself. I'm okay with
+// this given the trade off is expanding the
+// overall possibilities without introducing
+// escape characters.
+//
 
 pub fn span_flag<'a>(
     source: &'a str,
@@ -162,51 +174,61 @@ mod test {
     #[case("alfa`x ", "`", "alfa`x", " ")]
     #[case("alfa`x|", "`", "alfa`x", "|")]
     #[case("alfa``x", "`", "alfa", "``x")]
+    #[case("alfa``|", "_", "alfa``", "|")]
     #[case("alfa* ", "*", "alfa*", " ")]
     #[case("alfa*|", "*", "alfa*", "|")]
     #[case("alfa*x ", "*", "alfa*x", " ")]
     #[case("alfa*x|", "*", "alfa*x", "|")]
     #[case("alfa**x", "*", "alfa", "**x")]
+    #[case("alfa**|", "_", "alfa**", "|")]
     #[case("alfa_ ", "_", "alfa_", " ")]
     #[case("alfa_|", "_", "alfa_", "|")]
     #[case("alfa_x ", "_", "alfa_x", " ")]
     #[case("alfa_x|", "_", "alfa_x", "|")]
     #[case("alfa__x", "_", "alfa", "__x")]
+    #[case("alfa__|", "`", "alfa__", "|")]
     #[case("alfa^ ", "^", "alfa^", " ")]
     #[case("alfa^|", "^", "alfa^", "|")]
     #[case("alfa^x ", "^", "alfa^x", " ")]
     #[case("alfa^x|", "^", "alfa^x", "|")]
     #[case("alfa^^x", "^", "alfa", "^^x")]
+    #[case("alfa^^|", "_", "alfa^^", "|")]
     #[case("alfa@ ", "@", "alfa@", " ")]
     #[case("alfa@|", "@", "alfa@", "|")]
     #[case("alfa@x ", "@", "alfa@x", " ")]
     #[case("alfa@x|", "@", "alfa@x", "|")]
     #[case("alfa@@x", "@", "alfa", "@@x")]
+    #[case("alfa@@|", "_", "alfa@@", "|")]
     #[case("alfa~ ", "~", "alfa~", " ")]
     #[case("alfa~|", "~", "alfa~", "|")]
     #[case("alfa~x ", "~", "alfa~x", " ")]
     #[case("alfa~x|", "~", "alfa~x", "|")]
     #[case("alfa~~x", "~", "alfa", "~~x")]
+    #[case("alfa~~|", "_", "alfa~~", "|")]
     #[case("alfa) ", ")", "alfa)", " ")]
     #[case("alfa)|", ")", "alfa)", "|")]
     #[case("alfa)x ", ")", "alfa)x", " ")]
     #[case("alfa)x|", ")", "alfa)x", "|")]
     #[case("alfa))x", ")", "alfa", "))x")]
+    #[case("alfa))|", "_", "alfa))", "|")]
     #[case("alfa] ", "]", "alfa]", " ")]
     #[case("alfa]|", "]", "alfa]", "|")]
     #[case("alfa]x ", "]", "alfa]x", " ")]
     #[case("alfa]x|", "]", "alfa]x", "|")]
     #[case("alfa]]x", "]", "alfa", "]]x")]
+    #[case("alfa]]|", "_", "alfa]]", "|")]
     #[case("alfa} ", "}", "alfa}", " ")]
     #[case("alfa}|", "}", "alfa}", "|")]
     #[case("alfa}x ", "}", "alfa}x", " ")]
     #[case("alfa}x|", "}", "alfa}x", "|")]
     #[case("alfa}}x", "}", "alfa", "}}x")]
+    #[case("alfa}}|", "_", "alfa}}", "|")]
     #[case("alfa> ", ">", "alfa>", " ")]
     #[case("alfa>|", ">", "alfa>", "|")]
     #[case("alfa>x ", ">", "alfa>x", " ")]
     #[case("alfa>x|", ">", "alfa>x", "|")]
     #[case("alfa>>x", ">", "alfa", ">>x")]
+    #[case("alfa>>|", "_", "alfa>>", "|")]
     #[case("alfa<bravo|", ">", "alfa<bravo", "|")]
     #[case("alfa<<bravo|", ">", "alfa<<bravo", "|")]
     #[case("alfa<<<bravo|", ">", "alfa<<<bravo", "|")]
