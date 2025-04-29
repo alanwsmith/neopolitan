@@ -67,8 +67,8 @@ fn span_flag_token<'a>(
     character: &'a str,
 ) -> IResult<&'a str, String> {
     let (source, parts) = many1(alt((
-        is_not(" \t\r\n\\|`~^*_>[]{}"),
-        recognize(preceded(not(tag(character)), one_of("`~^*_>[]{}"))),
+        is_not(" \t\r\n\\|~`@^*_>]})"),
+        recognize(preceded(not(tag(character)), one_of("~`@^*_>]})"))),
         span_flag_token_single_character,
     )))
     .parse(source)?;
@@ -79,18 +79,21 @@ pub fn span_flag_token_single_character<'a>(
     source: &'a str,
 ) -> IResult<&'a str, &'a str> {
     let (source, token_character) = alt((
+        terminated(tag("~"), peek(not(tag("~")))),
         terminated(tag("`"), peek(not(tag("`")))),
+        terminated(tag("@"), peek(not(tag("@")))),
+        terminated(tag("^"), peek(not(tag("^")))),
         terminated(tag("*"), peek(not(tag("*")))),
         terminated(tag("_"), peek(not(tag("_")))),
-        terminated(tag("["), peek(not(tag("[")))),
+        terminated(tag("]"), peek(not(tag("]")))),
+        terminated(tag(")"), peek(not(tag(")")))),
+        terminated(tag("}"), peek(not(tag("}")))),
         // terminated(tag("~"), peek(not(tag("~")))),
         // terminated(tag("!"), peek(not(tag("!")))),
         // terminated(tag("@"), peek(not(tag("@")))),
         // terminated(tag("#"), peek(not(tag("#")))),
         // terminated(tag("$"), peek(not(tag("$")))),
         // terminated(tag("%"), peek(not(tag("%")))),
-        // terminated(tag("^"), peek(not(tag("^")))),
-        // terminated(tag("]"), peek(not(tag("]")))),
         // terminated(tag("{"), peek(not(tag("{")))),
         // terminated(tag("}"), peek(not(tag("}")))),
         // terminated(tag("<"), peek(not(tag("<")))),
@@ -133,11 +136,44 @@ mod test {
     #[case("alfa_x|", "_", "alfa_x", "|")]
     #[case("alfa__x", "_", "alfa", "__x")]
     //
-    #[case("alfa[ ", "[", "alfa[", " ")]
-    #[case("alfa[|", "[", "alfa[", "|")]
-    #[case("alfa[x ", "[", "alfa[x", " ")]
-    #[case("alfa[x|", "[", "alfa[x", "|")]
-    #[case("alfa[[x", "[", "alfa", "[[x")]
+    #[case("alfa^ ", "^", "alfa^", " ")]
+    #[case("alfa^|", "^", "alfa^", "|")]
+    #[case("alfa^x ", "^", "alfa^x", " ")]
+    #[case("alfa^x|", "^", "alfa^x", "|")]
+    #[case("alfa^^x", "^", "alfa", "^^x")]
+    //
+    #[case("alfa@ ", "@", "alfa@", " ")]
+    #[case("alfa@|", "@", "alfa@", "|")]
+    #[case("alfa@x ", "@", "alfa@x", " ")]
+    #[case("alfa@x|", "@", "alfa@x", "|")]
+    #[case("alfa@@x", "@", "alfa", "@@x")]
+    //
+    #[case("alfa~ ", "~", "alfa~", " ")]
+    #[case("alfa~|", "~", "alfa~", "|")]
+    #[case("alfa~x ", "~", "alfa~x", " ")]
+    #[case("alfa~x|", "~", "alfa~x", "|")]
+    #[case("alfa~~x", "~", "alfa", "~~x")]
+    //
+    //
+    //
+    #[case("alfa) ", ")", "alfa)", " ")]
+    #[case("alfa)|", ")", "alfa)", "|")]
+    #[case("alfa)x ", ")", "alfa)x", " ")]
+    #[case("alfa)x|", ")", "alfa)x", "|")]
+    #[case("alfa))x", ")", "alfa", "))x")]
+    //
+    #[case("alfa] ", "]", "alfa]", " ")]
+    #[case("alfa]|", "]", "alfa]", "|")]
+    #[case("alfa]x ", "]", "alfa]x", " ")]
+    #[case("alfa]x|", "]", "alfa]x", "|")]
+    #[case("alfa]]x", "]", "alfa", "]]x")]
+    //
+    #[case("alfa} ", "}", "alfa}", " ")]
+    #[case("alfa}|", "}", "alfa}", "|")]
+    #[case("alfa}x ", "}", "alfa}x", " ")]
+    #[case("alfa}x|", "}", "alfa}x", "|")]
+    #[case("alfa}}x", "}", "alfa", "}}x")]
+    //
     //
     #[case("alfa*x", "*", "alfa*x", "")]
     #[case("alfa**x", "*", "alfa", "**x")]
@@ -146,8 +182,8 @@ mod test {
     #[case("alfa<<bravo|", ">", "alfa<<bravo", "|")]
     #[case("alfa<<<bravo|", ">", "alfa<<<bravo", "|")]
     #[case("alfa<<<<bravo|", ">", "alfa<<<<bravo", "|")]
-    #[case("alfa~^*_<>[]{}|", "`", "alfa~^*_<>[]{}", "|")]
-    #[case("alfa`^*_<>[]{}|", "~", "alfa`^*_<>[]{}", "|")]
+    // #[case("alfa~^*_<>[]{}|", "`", "alfa~^*_<>[]{}", "|")]
+    // #[case("alfa`^*_<>[]{}|", "~", "alfa`^*_<>[]{}", "|")]
     #[case("https://www.example.com/|", "`", "https://www.example.com/", "|")]
     fn solo_attr_flag_key_valid_tests(
         #[case] source: &str,

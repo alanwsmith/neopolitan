@@ -11,13 +11,14 @@ content in Neopolitan files<sup>1</sup>.
 
 -- code
 
+@ = wraps in span tag to make it quicker to
+add attributes and flags. 
+
 ` = code
 
 * = strong
 
 _ = emphasis
-
-[ and ] = link
 
 ^ = footnote
 
@@ -25,16 +26,10 @@ _ = emphasis
 
 ( and ) = insert
 
+[ and ] = link
+
 { and } = image
 
-@ = wraps in span tag to make it quicker to
-add attributes and flags. 
-
--- olist
-
-1. tags
-
-2. shorthands
 
 
 -- h2
