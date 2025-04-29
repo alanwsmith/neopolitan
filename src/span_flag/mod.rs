@@ -228,6 +228,7 @@ mod test {
     #[case("alfa:::bravo|", ">", "alfa:::bravo", "|")]
     #[case("alfa::::bravo|", ">", "alfa::::bravo", "|")]
     #[case("https://www.example.com/|", "`", "https://www.example.com/", "|")]
+    #[case("https://www.example.com/``", "`", "https://www.example.com/", "``")]
     fn solo_span_flag_token_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
