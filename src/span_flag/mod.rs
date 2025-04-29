@@ -88,18 +88,7 @@ pub fn span_flag_token_single_character<'a>(
         terminated(tag("]"), peek(not(tag("]")))),
         terminated(tag(")"), peek(not(tag(")")))),
         terminated(tag("}"), peek(not(tag("}")))),
-        // terminated(tag("~"), peek(not(tag("~")))),
-        // terminated(tag("!"), peek(not(tag("!")))),
-        // terminated(tag("@"), peek(not(tag("@")))),
-        // terminated(tag("#"), peek(not(tag("#")))),
-        // terminated(tag("$"), peek(not(tag("$")))),
-        // terminated(tag("%"), peek(not(tag("%")))),
-        // terminated(tag("{"), peek(not(tag("{")))),
-        // terminated(tag("}"), peek(not(tag("}")))),
-        // terminated(tag("<"), peek(not(tag("<")))),
-        // terminated(tag(">"), peek(not(tag(">")))),
-        // terminated(tag("("), peek(not(tag("(")))),
-        // terminated(tag(")"), peek(not(tag(")")))),
+        terminated(tag(">"), peek(not(tag(">")))),
     ))
     .parse(source)?;
     Ok((source, token_character))
@@ -117,71 +106,78 @@ mod test {
     #[case("alfa\n", "`", "alfa", "\n")]
     #[case("alfa|", "`", "alfa", "|")]
     #[case("alfa🕺|", "`", "alfa🕺", "|")]
-    //
     #[case("alfa` ", "`", "alfa`", " ")]
     #[case("alfa`|", "`", "alfa`", "|")]
     #[case("alfa`x ", "`", "alfa`x", " ")]
     #[case("alfa`x|", "`", "alfa`x", "|")]
     #[case("alfa``x", "`", "alfa", "``x")]
-    //
     #[case("alfa* ", "*", "alfa*", " ")]
     #[case("alfa*|", "*", "alfa*", "|")]
     #[case("alfa*x ", "*", "alfa*x", " ")]
     #[case("alfa*x|", "*", "alfa*x", "|")]
     #[case("alfa**x", "*", "alfa", "**x")]
-    //
     #[case("alfa_ ", "_", "alfa_", " ")]
     #[case("alfa_|", "_", "alfa_", "|")]
     #[case("alfa_x ", "_", "alfa_x", " ")]
     #[case("alfa_x|", "_", "alfa_x", "|")]
     #[case("alfa__x", "_", "alfa", "__x")]
-    //
     #[case("alfa^ ", "^", "alfa^", " ")]
     #[case("alfa^|", "^", "alfa^", "|")]
     #[case("alfa^x ", "^", "alfa^x", " ")]
     #[case("alfa^x|", "^", "alfa^x", "|")]
     #[case("alfa^^x", "^", "alfa", "^^x")]
-    //
     #[case("alfa@ ", "@", "alfa@", " ")]
     #[case("alfa@|", "@", "alfa@", "|")]
     #[case("alfa@x ", "@", "alfa@x", " ")]
     #[case("alfa@x|", "@", "alfa@x", "|")]
     #[case("alfa@@x", "@", "alfa", "@@x")]
-    //
     #[case("alfa~ ", "~", "alfa~", " ")]
     #[case("alfa~|", "~", "alfa~", "|")]
     #[case("alfa~x ", "~", "alfa~x", " ")]
     #[case("alfa~x|", "~", "alfa~x", "|")]
     #[case("alfa~~x", "~", "alfa", "~~x")]
-    //
-    //
-    //
     #[case("alfa) ", ")", "alfa)", " ")]
     #[case("alfa)|", ")", "alfa)", "|")]
     #[case("alfa)x ", ")", "alfa)x", " ")]
     #[case("alfa)x|", ")", "alfa)x", "|")]
     #[case("alfa))x", ")", "alfa", "))x")]
-    //
     #[case("alfa] ", "]", "alfa]", " ")]
     #[case("alfa]|", "]", "alfa]", "|")]
     #[case("alfa]x ", "]", "alfa]x", " ")]
     #[case("alfa]x|", "]", "alfa]x", "|")]
     #[case("alfa]]x", "]", "alfa", "]]x")]
-    //
     #[case("alfa} ", "}", "alfa}", " ")]
     #[case("alfa}|", "}", "alfa}", "|")]
     #[case("alfa}x ", "}", "alfa}x", " ")]
     #[case("alfa}x|", "}", "alfa}x", "|")]
     #[case("alfa}}x", "}", "alfa", "}}x")]
+    #[case("alfa> ", ">", "alfa>", " ")]
+    #[case("alfa>|", ">", "alfa>", "|")]
+    #[case("alfa>x ", ">", "alfa>x", " ")]
+    #[case("alfa>x|", ">", "alfa>x", "|")]
+    #[case("alfa>>x", ">", "alfa", ">>x")]
     //
     //
-    #[case("alfa*x", "*", "alfa*x", "")]
-    #[case("alfa**x", "*", "alfa", "**x")]
-    #[case("alfa``x", "`", "alfa", "``x")]
     #[case("alfa<bravo|", ">", "alfa<bravo", "|")]
     #[case("alfa<<bravo|", ">", "alfa<<bravo", "|")]
     #[case("alfa<<<bravo|", ">", "alfa<<<bravo", "|")]
     #[case("alfa<<<<bravo|", ">", "alfa<<<<bravo", "|")]
+    #[case("alfa[bravo|", "]", "alfa[bravo", "|")]
+    #[case("alfa[[bravo|", "]", "alfa[[bravo", "|")]
+    #[case("alfa[[[bravo|", "]", "alfa[[[bravo", "|")]
+    #[case("alfa[[[[bravo|", "]", "alfa[[[[bravo", "|")]
+    #[case("alfa(bravo|", ">", "alfa(bravo", "|")]
+    #[case("alfa((bravo|", ">", "alfa((bravo", "|")]
+    #[case("alfa(((bravo|", ">", "alfa(((bravo", "|")]
+    #[case("alfa((((bravo|", ">", "alfa((((bravo", "|")]
+    #[case("alfa{bravo|", ">", "alfa{bravo", "|")]
+    #[case("alfa{{bravo|", ">", "alfa{{bravo", "|")]
+    #[case("alfa{{{bravo|", ">", "alfa{{{bravo", "|")]
+    #[case("alfa{{{{bravo|", ">", "alfa{{{{bravo", "|")]
+    #[case("alfa:bravo|", ">", "alfa:bravo", "|")]
+    #[case("alfa::bravo|", ">", "alfa::bravo", "|")]
+    #[case("alfa:::bravo|", ">", "alfa:::bravo", "|")]
+    #[case("alfa::::bravo|", ">", "alfa::::bravo", "|")]
     // #[case("alfa~^*_<>[]{}|", "`", "alfa~^*_<>[]{}", "|")]
     // #[case("alfa`^*_<>[]{}|", "~", "alfa`^*_<>[]{}", "|")]
     #[case("https://www.example.com/|", "`", "https://www.example.com/", "|")]
