@@ -81,6 +81,8 @@ pub fn span_flag_token_single_character<'a>(
     let (source, token_character) = alt((
         terminated(tag("`"), peek(not(tag("`")))),
         terminated(tag("*"), peek(not(tag("*")))),
+        terminated(tag("_"), peek(not(tag("_")))),
+        terminated(tag("["), peek(not(tag("[")))),
         // terminated(tag("~"), peek(not(tag("~")))),
         // terminated(tag("!"), peek(not(tag("!")))),
         // terminated(tag("@"), peek(not(tag("@")))),
@@ -88,7 +90,6 @@ pub fn span_flag_token_single_character<'a>(
         // terminated(tag("$"), peek(not(tag("$")))),
         // terminated(tag("%"), peek(not(tag("%")))),
         // terminated(tag("^"), peek(not(tag("^")))),
-        // terminated(tag("["), peek(not(tag("[")))),
         // terminated(tag("]"), peek(not(tag("]")))),
         // terminated(tag("{"), peek(not(tag("{")))),
         // terminated(tag("}"), peek(not(tag("}")))),
@@ -125,6 +126,18 @@ mod test {
     #[case("alfa*x ", "*", "alfa*x", " ")]
     #[case("alfa*x|", "*", "alfa*x", "|")]
     #[case("alfa**x", "*", "alfa", "**x")]
+    //
+    #[case("alfa_ ", "_", "alfa_", " ")]
+    #[case("alfa_|", "_", "alfa_", "|")]
+    #[case("alfa_x ", "_", "alfa_x", " ")]
+    #[case("alfa_x|", "_", "alfa_x", "|")]
+    #[case("alfa__x", "_", "alfa", "__x")]
+    //
+    #[case("alfa[ ", "[", "alfa[", " ")]
+    #[case("alfa[|", "[", "alfa[", "|")]
+    #[case("alfa[x ", "[", "alfa[x", " ")]
+    #[case("alfa[x|", "[", "alfa[x", "|")]
+    #[case("alfa[[x", "[", "alfa", "[[x")]
     //
     #[case("alfa*x", "*", "alfa*x", "")]
     #[case("alfa**x", "*", "alfa", "**x")]
