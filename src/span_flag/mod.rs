@@ -101,6 +101,57 @@ mod test {
     use rstest::rstest;
 
     #[rstest]
+    #[case("|alfa``", "`", "alfa", "``")]
+    #[case("|alfa ``", "`", "alfa", "``")]
+    #[case("|alfa\n``", "`", "alfa", "``")]
+    #[case("|alfa \n ``", "`", "alfa", "``")]
+    #[case("|alfa\t``", "`", "alfa", "``")]
+    #[case("|alfa\r\n``", "`", "alfa", "``")]
+    #[case("|alfa \r\n ``", "`", "alfa", "``")]
+    #[case("|\nalfa``", "`", "alfa", "``")]
+    #[case("|\talfa\t``", "`", "alfa", "``")]
+    #[case("|\r\nalfa``", "`", "alfa", "``")]
+    #[case("| \n alfa``", "`", "alfa", "``")]
+    #[case("| \r\n alfa``", "`", "alfa", "``")]
+    #[case("|alfa-bravo``", "`", "alfa-bravo", "``")]
+    #[case("|alfa_bravo``", "`", "alfa_bravo", "``")]
+    #[case("|single`character``", "`", "single`character", "``")]
+    #[case("|alfa|", "`", "alfa", "|")]
+    #[case("|alfa |", "`", "alfa", "|")]
+    #[case("|alfa\n|", "`", "alfa", "|")]
+    #[case("|alfa\t|", "`", "alfa", "|")]
+    #[case("|[[alfa]]``", "`", "[[alfa]]", "``")]
+    fn span_flag_valid_tests(
+        #[case] source: &str,
+        #[case] character: &str,
+        #[case] found: String,
+        #[case] remainder: &str,
+    ) {
+        let left = RawSpanMetadata::Flag(found);
+        let right = span_flag(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
+
+    #[rstest]
+    #[case("|alfa bravo``", "`")]
+    #[case("|alfa: bravo``", "`")]
+    #[case("|alfa\\bravo``", "`")]
+    fn solo_span_flag_invalid_tests(
+        #[case] source: &str,
+        #[case] character: &str,
+    ) {
+        let result = span_flag(source, character);
+        match result {
+            Ok(_) => {
+                dbg!(result.unwrap());
+                assert!(false)
+            }
+            Err(_) => assert!(true),
+        }
+    }
+
+    #[rstest]
     #[case("alfa", "`", "alfa", "")]
     #[case("alfa ", "`", "alfa", " ")]
     #[case("alfa\n", "`", "alfa", "\n")]
@@ -156,8 +207,6 @@ mod test {
     #[case("alfa>x ", ">", "alfa>x", " ")]
     #[case("alfa>x|", ">", "alfa>x", "|")]
     #[case("alfa>>x", ">", "alfa", ">>x")]
-    //
-    //
     #[case("alfa<bravo|", ">", "alfa<bravo", "|")]
     #[case("alfa<<bravo|", ">", "alfa<<bravo", "|")]
     #[case("alfa<<<bravo|", ">", "alfa<<<bravo", "|")]
@@ -178,10 +227,8 @@ mod test {
     #[case("alfa::bravo|", ">", "alfa::bravo", "|")]
     #[case("alfa:::bravo|", ">", "alfa:::bravo", "|")]
     #[case("alfa::::bravo|", ">", "alfa::::bravo", "|")]
-    // #[case("alfa~^*_<>[]{}|", "`", "alfa~^*_<>[]{}", "|")]
-    // #[case("alfa`^*_<>[]{}|", "~", "alfa`^*_<>[]{}", "|")]
     #[case("https://www.example.com/|", "`", "https://www.example.com/", "|")]
-    fn solo_attr_flag_key_valid_tests(
+    fn solo_span_flag_token_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
         #[case] found: &str,
@@ -192,81 +239,4 @@ mod test {
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
-
-    // #[rstest]
-    // #[case("|alfa``", "`", "alfa", "``")]
-    // #[case("|alfa ``", "`", "alfa", "``")]
-    // #[case("|alfa\n``", "`", "alfa", "``")]
-    // #[case("|alfa \n ``", "`", "alfa", "``")]
-    // #[case("|alfa\t``", "`", "alfa", "``")]
-    // #[case("|alfa\r\n``", "`", "alfa", "``")]
-    // #[case("|alfa \r\n ``", "`", "alfa", "``")]
-    // #[case("|\nalfa``", "`", "alfa", "``")]
-    // #[case("|\talfa\t``", "`", "alfa", "``")]
-    // #[case("|\r\nalfa``", "`", "alfa", "``")]
-    // #[case("| \n alfa``", "`", "alfa", "``")]
-    // #[case("| \r\n alfa``", "`", "alfa", "``")]
-    // #[case(
-    //     "|https://www.example.com/``",
-    //     "`",
-    //     "https://www.example.com/",
-    //     "``"
-    // )]
-    // #[case("|alfa-bravo``", "`", "alfa-bravo", "``")]
-    // #[case("|alfa_bravo``", "`", "alfa_bravo", "``")]
-    // #[case("|single`character``", "`", "single`character", "``")]
-    // #[case("|alfa|", "`", "alfa", "|")]
-    // #[case("|alfa |", "`", "alfa", "|")]
-    // #[case("|alfa\n|", "`", "alfa", "|")]
-    // #[case("|alfa\t|", "`", "alfa", "|")]
-    // #[case("|[[alfa]]``", "`", "[[alfa]]", "``")]
-    // #[case(
-    //     "|others~~!!@@##$$%%^^&&**(())<<>>[[]]{{}}``",
-    //     "`",
-    //     "others~~!!@@##$$%%^^&&**(())<<>>[[]]{{}}",
-    //     "``"
-    // )]
-    // #[case(
-    //     "|others``~~!!@@##$$%%^^&&**(())<<[[]]{{}}>>",
-    //     ">",
-    //     "others``~~!!@@##$$%%^^&&**(())<<[[]]{{}}",
-    //     ">>"
-    // )]
-    // #[case(
-    //     "|others``~~!!@@##$$%%^^&&(())<<>>[[]]{{}}**",
-    //     "*",
-    //     "others``~~!!@@##$$%%^^&&(())<<>>[[]]{{}}",
-    //     "**"
-    // )]
-    // fn span_flag_valid_tests(
-    //     #[case] source: &str,
-    //     #[case] character: &str,
-    //     #[case] found: String,
-    //     #[case] remainder: &str,
-    // ) {
-    //     let left = RawSpanMetadata::Flag(found);
-    //     let right = span_flag(source, character).unwrap();
-    //     assert_eq!(left, right.1);
-    //     assert_eq!(remainder, right.0);
-    // }
-
-    #[rstest]
-    #[case("|alfa bravo``", "`")]
-    #[case("|alfa: bravo``", "`")]
-    #[case("|alfa\\bravo``", "`")]
-    fn solo_span_flag_invalid_tests(
-        #[case] source: &str,
-        #[case] character: &str,
-    ) {
-        let result = span_flag(source, character);
-        match result {
-            Ok(_) => {
-                dbg!(result.unwrap());
-                assert!(false)
-            }
-            Err(_) => assert!(true),
-        }
-    }
-
-    //
 }
