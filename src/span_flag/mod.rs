@@ -149,10 +149,7 @@ mod test {
     #[case("|alfa bravo``", "`")]
     #[case("|alfa: bravo``", "`")]
     #[case("|alfa\\bravo``", "`")]
-    fn solo_span_flag_invalid_tests(
-        #[case] source: &str,
-        #[case] character: &str,
-    ) {
+    fn span_flag_invalid_tests(#[case] source: &str, #[case] character: &str) {
         let result = span_flag(source, character);
         match result {
             Ok(_) => {
@@ -251,7 +248,7 @@ mod test {
     #[case("alfa::::bravo|", ">", "alfa::::bravo", "|")]
     #[case("https://www.example.com/|", "`", "https://www.example.com/", "|")]
     #[case("https://www.example.com/``", "`", "https://www.example.com/", "``")]
-    fn solo_span_flag_token_valid_tests(
+    fn span_flag_token_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
         #[case] found: &str,

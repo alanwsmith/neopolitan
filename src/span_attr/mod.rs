@@ -1,3 +1,6 @@
+#![allow(unused)]
+pub mod span_attr_key_test;
+
 use crate::span::text_in_span_attr::text_in_span_attr;
 use crate::span_metadata::RawSpanMetadata;
 use crate::span_strings::not_span_close::not_span_close;
@@ -66,12 +69,25 @@ pub fn span_attr<'a>(
     ))
 }
 
+pub fn span_attr_key_token<'a>(
+    source: &'a str,
+    character: &'a str,
+) -> IResult<&'a str, String> {
+    let (source, key_snippets) =
+        many1(alt((is_not(": \r\n\t\\"),))).parse(source)?;
+    let (source, _) = tag(":").parse(source)?;
+    let (source, _) = (space0, opt(line_ending), space0).parse(source)?;
+    Ok((source, key_snippets.join("").to_string()))
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
     use crate::span::Span;
     use pretty_assertions::assert_eq;
     use rstest::rstest;
+
+    // Original tests to review below this line
 
     // NOTE: These rstest lines are long because
     // breaking them breaks the formatter
@@ -115,7 +131,7 @@ mod test {
 
     #[test]
     #[ignore]
-    fn solo_span_attr_string_closing_test() {
+    fn span_attr_string_closing_test() {
         let source = "|alfa ``bravo``>> charlie";
         let character = ">";
         let left = RawSpanMetadata::Attr {

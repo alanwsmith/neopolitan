@@ -2,7 +2,6 @@ use nom::IResult;
 use nom::Parser;
 use nom::bytes::complete::is_a;
 use nom::bytes::complete::tag;
-use nom::character::complete::one_of;
 use nom::combinator::not;
 use nom::combinator::recognize;
 use nom::sequence::preceded;
