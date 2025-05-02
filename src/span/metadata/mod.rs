@@ -1,7 +1,7 @@
 #![allow(unused)]
 use crate::span::Span;
-use crate::span_attr::span_attr;
-use crate::span_flag::span_flag;
+use crate::span::attr::span_attr;
+use crate::span::flag::span_flag;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;

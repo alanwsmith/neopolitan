@@ -1,24 +1,23 @@
-#![allow(unused)]
 use crate::span::Span;
-use crate::span_strings::plain_text_any_colons::plain_text_any_colons;
-use crate::span_strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
-use crate::span_strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
-use crate::span_strings::plain_text_string_base::plain_text_string_base;
+use crate::span::strings::multiple_pipes::multiple_pipes;
+use crate::span::strings::plain_text_any_colons::plain_text_any_colons;
+use crate::span::strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
+use crate::span::strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
+use crate::span::strings::plain_text_string_base::plain_text_string_base;
+use crate::span::strings::single_pipe::single_pipe;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;
-use nom::bytes::complete::tag;
 use nom::multi::many1;
 
-// TODO: Accept character that needs to be skipped
-//
-
-pub fn text_span_in_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
+pub fn text_span_in_block<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, results) = many1(alt((
         plain_text_string_base,
         plain_text_space1_as_single_space,
         plain_text_single_line_ending_as_space,
         plain_text_any_colons,
+        single_pipe,
+        multiple_pipes,
     )))
     .parse(source)?;
     Ok((
@@ -49,14 +48,14 @@ mod test {
     #[case("alfa^^1^^", Span::Text{ content: "alfa".to_string()}, "^^1^^")]
     #[case("alfa <<span|ping>>", Span::Text{ content: "alfa ".to_string()}, "<<span|ping>>")]
     #[case("alfa\\<<", Span::Text{ content: "alfa".to_string()}, "\\<<")]
-    // TODO: Make escaped version of this
-    // #[case("alfa|bravo", Span::Text{ content: "alfa|bravo".to_string()}, "")]
+    #[case("alfa|bravo", Span::Text{ content: "alfa|bravo".to_string()}, "")]
+    #[case("alfa||bravo", Span::Text{ content: "alfa||bravo".to_string()}, "")]
     fn text_span_valid_tests(
         #[case] source: &str,
         #[case] left: Span,
         #[case] remainder: &str,
     ) {
-        let right = text_span_in_span(source).unwrap();
+        let right = text_span_in_block(source).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
@@ -65,7 +64,7 @@ mod test {
     #[case("``alfa")]
     #[case("<<alfa")]
     fn text_span_invalid_tests(#[case] source: &str) {
-        let result = text_span_in_span(source);
+        let result = text_span_in_block(source);
         match result {
             Ok(_) => {
                 dbg!(result.unwrap());

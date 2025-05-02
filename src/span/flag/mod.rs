@@ -1,4 +1,4 @@
-use crate::span_metadata::RawSpanMetadata;
+use crate::span::metadata::RawSpanMetadata;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;

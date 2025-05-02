@@ -1,8 +1,8 @@
 use crate::span::Span;
-use crate::span_strings::plain_text_any_colons::plain_text_any_colons;
-use crate::span_strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
-use crate::span_strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
-use crate::span_strings::plain_text_string_base::plain_text_string_base;
+use crate::span::strings::plain_text_any_colons::plain_text_any_colons;
+use crate::span::strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
+use crate::span::strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
+use crate::span::strings::plain_text_string_base::plain_text_string_base;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;
@@ -13,13 +13,16 @@ use nom::combinator::not;
 use nom::multi::many1;
 
 // NOTE: Having empty lines in an
-// attribute is not allowed.
+// attribute is not allowed. (as in an
+// empty line between the different
+// parts of the attribute in the same
+// way empty lines break paragraphs.
 
 // NOTE: Trailing space is required
-// since there can be other spans
+// to be left in since there can be other spans
 // after it.
 // TODO: Figure out a way to chomp
-// just the last one.
+// just the last one?
 
 pub fn text_span_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, results) = many1(alt((

@@ -1,11 +1,10 @@
 use super::text_block::text_block;
 use crate::config::Config;
-use crate::section_bound::SectionBound;
-// use crate::section_category::SectionCategory;
 use crate::section::Section;
+use crate::section_bound::SectionBound;
 use crate::section_metadata::section_metadata;
 use crate::section_parent::SectionParent;
-use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
+use crate::span::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::bytes::complete::is_not;
 use nom::character::complete::multispace0;

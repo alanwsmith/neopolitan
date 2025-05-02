@@ -1,10 +1,10 @@
-use super::escaped_span::escaped_span;
 use crate::span::Span;
-use crate::span_metadata::span_metadata;
-use crate::span_strings::escaped_character::escaped_character;
-use crate::span_strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
-use crate::span_strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
-use crate::span_strings::plain_text_string_base::plain_text_string_base;
+use crate::span::escaped::escaped_span;
+use crate::span::metadata::span_metadata;
+use crate::span::strings::escaped_character::escaped_character;
+use crate::span::strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
+use crate::span::strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
+use crate::span::strings::plain_text_string_base::plain_text_string_base;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;

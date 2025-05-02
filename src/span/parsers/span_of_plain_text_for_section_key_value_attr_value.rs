@@ -1,10 +1,10 @@
 #![allow(unused)]
 use crate::span::Span;
-use crate::span_strings::plain_text_any_colons::plain_text_any_colons;
-use crate::span_strings::plain_text_any_pipes::plain_text_any_pipes;
-use crate::span_strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
-use crate::span_strings::plain_text_span_for_block_paragraph::plain_text_span_for_block_paragraph;
-use crate::span_strings::plain_text_string_base::plain_text_string_base;
+use crate::span::strings::plain_text_any_colons::plain_text_any_colons;
+use crate::span::strings::plain_text_any_pipes::plain_text_any_pipes;
+use crate::span::strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
+use crate::span::strings::plain_text_span_for_block_paragraph::plain_text_span_for_block_paragraph;
+use crate::span::strings::plain_text_string_base::plain_text_string_base;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;

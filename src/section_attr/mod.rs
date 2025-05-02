@@ -1,8 +1,8 @@
 use crate::config::Config;
 use crate::section_metadata::RawSectionMetaData;
 use crate::section_parent::SectionParent;
-use crate::span_parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
-use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
+use crate::span::parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
+use crate::span::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::character::complete::alphanumeric1;
 use nom::character::complete::space1;
@@ -30,6 +30,14 @@ use nom::{IResult, branch::alt, bytes::complete::tag};
 // text to start with and then parse
 // it after multiple instances of the
 // same attr have been assembled.
+//
+// TODO: Allow attrs to move to the next
+// line without a preable, like
+//
+// -- alt: this is some alt text
+// that breaks to a new line
+// -- class: some classes
+//
 
 pub fn raw_section_attr<'a>(
     source: &'a str,

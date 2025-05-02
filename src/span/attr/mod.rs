@@ -1,5 +1,5 @@
-use crate::span::span_in_span_attr::span_in_span_attr;
-use crate::span_metadata::RawSpanMetadata;
+use crate::span::metadata::RawSpanMetadata;
+use crate::span::text::in_span_attr::text_span_in_span_attr;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;
@@ -13,6 +13,8 @@ use nom::combinator::opt;
 use nom::combinator::peek;
 use nom::multi::many1;
 use nom::sequence::terminated;
+
+use super::shorthand::shorthand_span;
 
 // TODO: Probably don't move everything
 // into a single attr? that way
@@ -45,6 +47,11 @@ use nom::sequence::terminated;
 // key to contain what would otherwise
 // be the close tag for the shorthand
 
+// TODO: Don't try to nest sections with the
+// same tokens. Does that need a test or
+// will that just break with sections
+// and throw an accurate error there?
+
 pub fn span_attr<'a>(
     source: &'a str,
     character: &'a str,
@@ -53,7 +60,8 @@ pub fn span_attr<'a>(
         (tag("|"), space0, opt(line_ending), space0).parse(source)?;
     let (source, key) =
         (|src| span_attr_key_token(src, character)).parse(source)?;
-    let (source, spans) = many1(span_in_span_attr).parse(source)?;
+    let (source, spans) =
+        many1(alt((text_span_in_span_attr, shorthand_span))).parse(source)?;
     Ok((source, RawSpanMetadata::Attr { key, spans }))
 }
 
@@ -254,7 +262,7 @@ mod test {
     }
 
     #[test]
-    fn span_attr_string_closing_test() {
+    fn solo_span_attr_string_closing_test() {
         let source = "|alfa: ``bravo``>> charlie";
         let character = ">";
         let left = RawSpanMetadata::Attr {
@@ -272,10 +280,6 @@ mod test {
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
-
-    // TODO: Don't try to nest sections with the
-    // same tokens.
-    //
 
     //
 }

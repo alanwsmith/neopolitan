@@ -2,9 +2,9 @@ use crate::config::Config;
 use crate::section::Section;
 use crate::section_bound::SectionBound;
 use crate::section_parent::SectionParent;
-use crate::span::span_in_block;
-use crate::span::span_in_block::span_in_block;
-use crate::span_strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
+use crate::span::shorthand::shorthand_span;
+use crate::span::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
+use crate::span::text::in_block::text_span_in_block;
 use nom::Parser;
 use nom::bytes::complete::is_not;
 use nom::character::complete::multispace0;
@@ -24,8 +24,9 @@ pub fn text_block<'a>(
 ) -> IResult<&'a str, Section> {
     let (source, _) = not(tag("--")).parse(source)?;
 
-    let (source, spans) = many1(
-        span_in_block,
+    let (source, spans) = many1(alt((
+        text_span_in_block,
+        shorthand_span,
         // alt((
         // text_span_in_block,
         // code_span,
@@ -42,7 +43,7 @@ pub fn text_block<'a>(
         //     strong_shorthand_span,
         //     underline_shorthand_span,
         // ))
-    )
+    )))
     .parse(source)?;
     let (source, _) = multispace0(source)?;
 
