@@ -5,8 +5,10 @@ use nom::branch::alt;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
 use nom::character::complete::line_ending;
+use nom::character::complete::multispace1;
 use nom::character::complete::one_of;
 use nom::character::complete::space0;
+use nom::character::complete::space1;
 use nom::combinator::not;
 use nom::combinator::opt;
 use nom::combinator::peek;
@@ -14,6 +16,31 @@ use nom::combinator::recognize;
 use nom::multi::many1;
 use nom::sequence::preceded;
 use nom::sequence::terminated;
+
+// NOTE: This makes the assumption that
+// attrs have already been identified
+// and pulled out so they aren't
+// passed in to these functions. I expect
+// there's a way to build this so
+// it wouldn't pick up attrs regardless,
+// but the order will ensure that's not
+// necessary. Just want to make sure
+// there's a note of that. What it
+// amounts to is that flags will
+// pick up anything that's not
+// an attr.
+
+// TODO: Allow colons in the text.
+// The criteria is that if it's
+// on the first word it's an attr.
+// otherwise, they can be in there.
+// (so, anything after the first space
+// is allowed) This is to allow for
+// strings of text that you so
+// they don't break things, for example
+// if you make a comment after a
+// tlink to know what it goes to
+//
 
 // NOTE: Empty spaces is trimmed from
 // around the flag including newlines.
@@ -81,10 +108,13 @@ fn span_flag_token<'a>(
     let (source, parts) = many1(alt((
         is_not(" \t\r\n\\|~`@^*_>]})"),
         recognize(preceded(not(tag(character)), one_of("~`@^*_>]})"))),
+        (space0, line_ending, space0, not(line_ending)).map(|_| " "),
+        (space1, line_ending, space0, not(line_ending)).map(|_| " "),
+        space1,
         span_flag_token_single_character,
     )))
     .parse(source)?;
-    Ok((source, parts.join("")))
+    Ok((source, parts.join("").trim().to_string()))
 }
 
 pub fn span_flag_token_single_character<'a>(
@@ -133,6 +163,8 @@ mod test {
     #[case("|alfa\n|", "`", "alfa", "|")]
     #[case("|alfa\t|", "`", "alfa", "|")]
     #[case("|[[alfa]]``", "`", "[[alfa]]", "``")]
+    #[case("|alfa bravo``", "`", "alfa bravo", "``")]
+    #[case("|alfa bravo: charlie``", "`", "alfa bravo: charlie", "``")]
     fn span_flag_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
@@ -146,83 +178,77 @@ mod test {
     }
 
     #[rstest]
-    #[case("|alfa bravo``", "`")]
-    #[case("|alfa: bravo``", "`")]
-    #[case("|alfa\\bravo``", "`")]
-    fn span_flag_invalid_tests(#[case] source: &str, #[case] character: &str) {
-        let result = span_flag(source, character);
-        match result {
-            Ok(_) => {
-                dbg!(result.unwrap());
-                assert!(false)
-            }
-            Err(_) => assert!(true),
-        }
-    }
-
-    #[rstest]
     #[case("alfa", "`", "alfa", "")]
-    #[case("alfa ", "`", "alfa", " ")]
-    #[case("alfa\n", "`", "alfa", "\n")]
+    #[case("alfa ", "`", "alfa", "")]
+    #[case("alfa\n", "`", "alfa", "")]
     #[case("alfa|", "`", "alfa", "|")]
     #[case("alfa🕺|", "`", "alfa🕺", "|")]
-    #[case("alfa` ", "`", "alfa`", " ")]
+    #[case("alfa` ", "`", "alfa`", "")]
     #[case("alfa`|", "`", "alfa`", "|")]
-    #[case("alfa`x ", "`", "alfa`x", " ")]
+    #[case("alfa`x ", "`", "alfa`x", "")]
     #[case("alfa`x|", "`", "alfa`x", "|")]
     #[case("alfa``x", "`", "alfa", "``x")]
     #[case("alfa``|", "_", "alfa``", "|")]
-    #[case("alfa* ", "*", "alfa*", " ")]
+    #[case("alfa* ", "*", "alfa*", "")]
     #[case("alfa*|", "*", "alfa*", "|")]
-    #[case("alfa*x ", "*", "alfa*x", " ")]
+    #[case("alfa* |", "*", "alfa*", "|")]
+    #[case("alfa*x ", "*", "alfa*x", "")]
     #[case("alfa*x|", "*", "alfa*x", "|")]
     #[case("alfa**x", "*", "alfa", "**x")]
     #[case("alfa**|", "_", "alfa**", "|")]
-    #[case("alfa_ ", "_", "alfa_", " ")]
+    #[case("alfa_ ", "_", "alfa_", "")]
     #[case("alfa_|", "_", "alfa_", "|")]
-    #[case("alfa_x ", "_", "alfa_x", " ")]
+    #[case("alfa_ |", "_", "alfa_", "|")]
+    #[case("alfa_x ", "_", "alfa_x", "")]
     #[case("alfa_x|", "_", "alfa_x", "|")]
     #[case("alfa__x", "_", "alfa", "__x")]
     #[case("alfa__|", "`", "alfa__", "|")]
-    #[case("alfa^ ", "^", "alfa^", " ")]
+    #[case("alfa^ ", "^", "alfa^", "")]
     #[case("alfa^|", "^", "alfa^", "|")]
-    #[case("alfa^x ", "^", "alfa^x", " ")]
+    #[case("alfa^ |", "^", "alfa^", "|")]
+    #[case("alfa^x ", "^", "alfa^x", "")]
     #[case("alfa^x|", "^", "alfa^x", "|")]
     #[case("alfa^^x", "^", "alfa", "^^x")]
     #[case("alfa^^|", "_", "alfa^^", "|")]
-    #[case("alfa@ ", "@", "alfa@", " ")]
+    #[case("alfa@ ", "@", "alfa@", "")]
     #[case("alfa@|", "@", "alfa@", "|")]
-    #[case("alfa@x ", "@", "alfa@x", " ")]
+    #[case("alfa@ |", "@", "alfa@", "|")]
+    #[case("alfa@x ", "@", "alfa@x", "")]
     #[case("alfa@x|", "@", "alfa@x", "|")]
     #[case("alfa@@x", "@", "alfa", "@@x")]
     #[case("alfa@@|", "_", "alfa@@", "|")]
-    #[case("alfa~ ", "~", "alfa~", " ")]
+    #[case("alfa~ ", "~", "alfa~", "")]
     #[case("alfa~|", "~", "alfa~", "|")]
-    #[case("alfa~x ", "~", "alfa~x", " ")]
+    #[case("alfa~ |", "~", "alfa~", "|")]
+    #[case("alfa~x ", "~", "alfa~x", "")]
     #[case("alfa~x|", "~", "alfa~x", "|")]
     #[case("alfa~~x", "~", "alfa", "~~x")]
     #[case("alfa~~|", "_", "alfa~~", "|")]
-    #[case("alfa) ", ")", "alfa)", " ")]
+    #[case("alfa) ", ")", "alfa)", "")]
     #[case("alfa)|", ")", "alfa)", "|")]
-    #[case("alfa)x ", ")", "alfa)x", " ")]
+    #[case("alfa) |", ")", "alfa)", "|")]
+    #[case("alfa)x ", ")", "alfa)x", "")]
     #[case("alfa)x|", ")", "alfa)x", "|")]
     #[case("alfa))x", ")", "alfa", "))x")]
     #[case("alfa))|", "_", "alfa))", "|")]
-    #[case("alfa] ", "]", "alfa]", " ")]
+    #[case("alfa] ", "]", "alfa]", "")]
     #[case("alfa]|", "]", "alfa]", "|")]
-    #[case("alfa]x ", "]", "alfa]x", " ")]
+    #[case("alfa] |", "]", "alfa]", "|")]
+    #[case("alfa]x ", "]", "alfa]x", "")]
     #[case("alfa]x|", "]", "alfa]x", "|")]
     #[case("alfa]]x", "]", "alfa", "]]x")]
     #[case("alfa]]|", "_", "alfa]]", "|")]
-    #[case("alfa} ", "}", "alfa}", " ")]
+    #[case("alfa} ", "}", "alfa}", "")]
     #[case("alfa}|", "}", "alfa}", "|")]
-    #[case("alfa}x ", "}", "alfa}x", " ")]
+    #[case("alfa} |", "}", "alfa}", "|")]
+    #[case("alfa}x ", "}", "alfa}x", "")]
     #[case("alfa}x|", "}", "alfa}x", "|")]
     #[case("alfa}}x", "}", "alfa", "}}x")]
     #[case("alfa}}|", "_", "alfa}}", "|")]
-    #[case("alfa> ", ">", "alfa>", " ")]
+    #[case("alfa> ", ">", "alfa>", "")]
     #[case("alfa>|", ">", "alfa>", "|")]
-    #[case("alfa>x ", ">", "alfa>x", " ")]
+    #[case("alfa> |", ">", "alfa>", "|")]
+    #[case("alfa>x ", ">", "alfa>x", "")]
     #[case("alfa>x|", ">", "alfa>x", "|")]
     #[case("alfa>>x", ">", "alfa", ">>x")]
     #[case("alfa>>|", "_", "alfa>>", "|")]
@@ -248,7 +274,13 @@ mod test {
     #[case("alfa::::bravo|", ">", "alfa::::bravo", "|")]
     #[case("https://www.example.com/|", "`", "https://www.example.com/", "|")]
     #[case("https://www.example.com/``", "`", "https://www.example.com/", "``")]
-    fn span_flag_token_valid_tests(
+    #[case("alfa bravo|", ">", "alfa bravo", "|")]
+    #[case("alfa\nbravo|", ">", "alfa bravo", "|")]
+    #[case("alfa \n bravo|", ">", "alfa bravo", "|")]
+    #[case("alfa bravo: charlie|", ">", "alfa bravo: charlie", "|")]
+    #[case(":alfa bravo: charlie:|", ">", ":alfa bravo: charlie:", "|")]
+    #[case("\n:alfa bravo: charlie:\n|", ">", ":alfa bravo: charlie:", "|")]
+    fn solo_span_flag_token_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
         #[case] found: &str,
@@ -259,4 +291,21 @@ mod test {
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
+
+    #[rstest]
+    #[case("|alfa\\bravo``", "`")]
+    #[case("|alfa\n\nbravo``", "`")]
+    #[case("|alfa \n \n bravo``", "`")]
+    fn span_flag_invalid_tests(#[case] source: &str, #[case] character: &str) {
+        let result = span_flag(source, character);
+        match result {
+            Ok(_) => {
+                dbg!(result.unwrap());
+                assert!(false)
+            }
+            Err(_) => assert!(true),
+        }
+    }
+
+    //
 }
