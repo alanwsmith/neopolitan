@@ -20,24 +20,6 @@ pub fn span_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
 // TODO: Figure out a way to chomp
 // just the last one.
 
-// pub fn text_span_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
-//     let (source, results) = many1(alt((
-//         plain_text_string_base,
-//         plain_text_space1_as_single_space,
-//         plain_text_single_line_ending_as_space,
-//         plain_text_any_colons,
-//     )))
-//     .parse(source)?;
-//     let (source, _) = not((line_ending, space0, line_ending)).parse(source)?;
-//     let (source, _) = multispace0(source)?;
-//     Ok((
-//         source,
-//         Span::Text {
-//             content: results.join("").to_string(),
-//         },
-//     ))
-// }
-
 #[cfg(test)]
 mod test {
 
