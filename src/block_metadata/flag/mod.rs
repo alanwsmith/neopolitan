@@ -1,5 +1,5 @@
 use crate::block_metadata::RawSectionMetaData;
-use crate::block_metadata::parent::SectionParent;
+use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use nom::IResult;
 use nom::Parser;
@@ -18,7 +18,7 @@ use nom::sequence::pair;
 pub fn raw_section_flag<'a>(
     source: &'a str,
     _config: &'a Config,
-    _parent: &'a SectionParent,
+    _parent: &'a BlockParent,
     _debug: bool,
 ) -> IResult<&'a str, RawSectionMetaData> {
     let (source, _) = tag("--").parse(source)?;
@@ -56,7 +56,7 @@ mod test {
     #[case("these_characters_are_okay:!@#$%^&*()[]<>|-")]
     fn raw_section_flag_valid_tests(#[case] left: &str) {
         let config = &Config::default();
-        let parent = &SectionParent::Basic;
+        let parent = &BlockParent::Basic;
         let debug = false;
         let source = format!("-- {}", left);
         let left = RawSectionMetaData::Flag {
@@ -74,7 +74,7 @@ mod test {
     #[case("no_escaped_\\allowed")]
     fn raw_section_flag_invalid_tests(#[case] left: &str) {
         let config = &Config::default();
-        let parent = &SectionParent::Basic;
+        let parent = &BlockParent::Basic;
         let debug = false;
         let source = format!("-- {}", left);
         let right = raw_section_flag(&source, config, parent, debug);

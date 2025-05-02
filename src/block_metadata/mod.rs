@@ -5,7 +5,7 @@ pub mod parent;
 
 use crate::block_metadata::attr::raw_section_attr;
 use crate::block_metadata::flag::raw_section_flag;
-use crate::block_metadata::parent::SectionParent;
+use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span::Span;
 use nom::Parser;
@@ -23,7 +23,7 @@ pub enum RawSectionMetaData {
 pub fn section_metadata<'a>(
     source: &'a str,
     config: &'a Config,
-    parent: &'a SectionParent,
+    parent: &'a BlockParent,
     debug: bool,
 ) -> IResult<&'a str, (BTreeMap<String, Vec<Span>>, Vec<String>)> {
     let (source, raw_metadata) = many0(alt((
@@ -66,7 +66,7 @@ mod test {
     fn section_metadata_flag_test() {
         let config = &Config::default();
         let source = "-- test-flag\n\n";
-        let parent = &SectionParent::Basic;
+        let parent = &BlockParent::Basic;
         let debug = false;
         let left = (BTreeMap::new(), vec!["test-flag".to_string()]);
         let right = section_metadata(source, config, parent, debug).unwrap().1;
@@ -77,7 +77,7 @@ mod test {
     fn section_metadata_flag_whitespace_test() {
         let config = &Config::default();
         let source = "--      foxtrot-bravo     ";
-        let parent = &SectionParent::Basic;
+        let parent = &BlockParent::Basic;
         let debug = false;
         let left = (BTreeMap::new(), vec!["foxtrot-bravo".to_string()]);
         let right = section_metadata(source, config, parent, debug).unwrap().1;
@@ -88,7 +88,7 @@ mod test {
     fn section_metadata_attribute_test() {
         let config = &Config::default();
         let source = "-- alfa: bravo\n\n";
-        let parent = &SectionParent::Basic;
+        let parent = &BlockParent::Basic;
         let debug = false;
         let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
         attributes.insert(
@@ -106,7 +106,7 @@ mod test {
     fn section_metadata_attribute_whitespace_test() {
         let config = &Config::default();
         let source = "--    hotel:      whiskey     \n\n";
-        let parent = &SectionParent::Basic;
+        let parent = &BlockParent::Basic;
         let debug = false;
         let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
         attributes.insert(
@@ -124,7 +124,7 @@ mod test {
     fn multiple_metadata_test() {
         let config = &Config::default();
         let source = "-- delta: alfa\n-- foxtrot\n-- delta: bravo\n-- echo";
-        let parent = &SectionParent::Basic;
+        let parent = &BlockParent::Basic;
         let debug = false;
         let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
         attributes.insert(

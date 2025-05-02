@@ -3,7 +3,7 @@ pub mod start;
 
 use crate::block::Block;
 use crate::block::basic::full::basic_section_full;
-use crate::block_metadata::parent::SectionParent;
+use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use nom::Parser;
 use nom::{IResult, branch::alt};
@@ -11,7 +11,7 @@ use nom::{IResult, branch::alt};
 pub fn basic_section<'a>(
     source: &'a str,
     config: &'a Config,
-    parent: &'a SectionParent,
+    parent: &'a BlockParent,
     debug: bool,
 ) -> IResult<&'a str, Block> {
     let (source, section) =

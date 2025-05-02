@@ -1,4 +1,4 @@
-pub enum SectionParent {
+pub enum BlockParent {
     Basic,
     Page,
 }

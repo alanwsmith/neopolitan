@@ -1,5 +1,5 @@
 use crate::block_metadata::RawSectionMetaData;
-use crate::block_metadata::parent::SectionParent;
+use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span_metadata::parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -42,7 +42,7 @@ use nom::{IResult, branch::alt, bytes::complete::tag};
 pub fn raw_section_attr<'a>(
     source: &'a str,
     _config: &'a Config,
-    _parent: &'a SectionParent,
+    _parent: &'a BlockParent,
     _debug: bool,
 ) -> IResult<&'a str, RawSectionMetaData> {
     let (source, _) = tag("--").parse(source)?;
@@ -90,7 +90,7 @@ mod test {
     #[test]
     fn section_attribute_line_basic_test() {
         let config = &Config::default();
-        let parent = &SectionParent::Basic;
+        let parent = &BlockParent::Basic;
         let debug = false;
         let source = "-- alfa: bravo";
         let left = RawSectionMetaData::Attribtue {

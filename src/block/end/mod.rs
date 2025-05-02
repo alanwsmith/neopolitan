@@ -1,5 +1,5 @@
 use crate::block::Block;
-use crate::block::SectionParent;
+use crate::block::BlockParent;
 use crate::block::paragraph::paragraph_block;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::section_metadata;
@@ -16,7 +16,7 @@ use nom::sequence::terminated;
 pub fn end_section<'a>(
     source: &'a str,
     config: &'a Config,
-    parent: &'a SectionParent,
+    parent: &'a BlockParent,
     kind: &str,
 ) -> IResult<&'a str, Block> {
     dbg!(&source);
@@ -27,7 +27,7 @@ pub fn end_section<'a>(
         section_metadata(source, config, parent, false)?;
     let (source, _) = multispace0.parse(source)?;
     let (source, children) =
-        many0(|src| paragraph_block(src, config, &SectionParent::Basic, false))
+        many0(|src| paragraph_block(src, config, &BlockParent::Basic, false))
             .parse(source)?;
     Ok((
         source,
@@ -54,7 +54,7 @@ mod test {
 
 bravo foxtrot tango"#;
         let config = Config::default();
-        let parent = SectionParent::Page;
+        let parent = BlockParent::Page;
         let kind = "some-end-section";
         let left = Block::End {
             attrs: BTreeMap::new(),

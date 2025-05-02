@@ -1,5 +1,5 @@
 use crate::block::Block;
-use crate::block_metadata::parent::SectionParent;
+use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span::shorthand::shorthand_span;
 use crate::span::text::in_block::text_span_in_block;
@@ -12,7 +12,7 @@ use nom::{IResult, branch::alt, bytes::complete::tag};
 pub fn paragraph_block<'a>(
     source: &'a str,
     _config: &'a Config,
-    _parent: &'a SectionParent,
+    _parent: &'a BlockParent,
     _debug: bool,
 ) -> IResult<&'a str, Block> {
     let (source, _) = not(tag("--")).parse(source)?;
@@ -70,7 +70,7 @@ mod test {
         let source = r#"this is some 
 text with some lines"#;
         let config = Config::default();
-        let parent = SectionParent::Basic;
+        let parent = BlockParent::Basic;
         let debug = false;
         let left = Block::Paragraph {
             spans: vec![Span::Text {

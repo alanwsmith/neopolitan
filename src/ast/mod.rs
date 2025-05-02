@@ -1,6 +1,6 @@
 use crate::block::Block;
 use crate::block::block;
-use crate::block_metadata::parent::SectionParent;
+use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use nom::IResult;
 use nom::Parser;
@@ -29,7 +29,7 @@ impl<'a> Ast<'_> {
         config: &'a Config,
         debug: bool,
     ) -> Ast<'a> {
-        match Ast::parse_ast(source, config, &SectionParent::Page, debug) {
+        match Ast::parse_ast(source, config, &BlockParent::Page, debug) {
             Ok(results) => {
                 if results.0 == "" {
                     Ast::Ok { blocks: results.1 }
@@ -50,7 +50,7 @@ impl<'a> Ast<'_> {
     pub fn parse_ast(
         source: &'a str,
         config: &'a Config,
-        parent: &'a SectionParent,
+        parent: &'a BlockParent,
         debug: bool,
     ) -> IResult<&'a str, Vec<Block>> {
         let (source, _) = multispace0(source)?;

@@ -1,7 +1,7 @@
 use crate::block::Block;
 use crate::block::paragraph::paragraph_block;
 use crate::block_metadata::bound::BlockBound;
-use crate::block_metadata::parent::SectionParent;
+use crate::block_metadata::parent::BlockParent;
 use crate::block_metadata::section_metadata;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -17,7 +17,7 @@ use nom::{IResult, bytes::complete::tag};
 pub fn basic_section_full<'a>(
     source: &'a str,
     config: &'a Config,
-    parent: &'a SectionParent,
+    parent: &'a BlockParent,
     debug: bool,
 ) -> IResult<&'a str, Block> {
     let (source, _) = pair(tag("--"), space1).parse(source)?;
@@ -28,7 +28,7 @@ pub fn basic_section_full<'a>(
         section_metadata(source, config, parent, debug)?;
     let (source, _) = multispace0.parse(source)?;
     let (source, children) =
-        many0(|src| paragraph_block(src, config, &SectionParent::Basic, debug))
+        many0(|src| paragraph_block(src, config, &BlockParent::Basic, debug))
             .parse(source)?;
     Ok((
         source,
@@ -56,7 +56,7 @@ mod test {
 
 bravo foxtrot tango"#;
         let config = Config::default();
-        let parent = SectionParent::Page;
+        let parent = BlockParent::Page;
         let debug = false;
         let left = Block::Basic {
             attrs: BTreeMap::new(),

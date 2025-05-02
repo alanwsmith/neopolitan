@@ -4,7 +4,7 @@ pub mod paragraph;
 
 use crate::block::basic::basic_section;
 use crate::block_metadata::bound::BlockBound;
-use crate::block_metadata::parent::SectionParent;
+use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span::Span;
 use nom::Parser;
@@ -59,7 +59,7 @@ pub enum Block {
 pub fn block<'a>(
     source: &'a str,
     config: &'a Config,
-    parent: &'a SectionParent,
+    parent: &'a BlockParent,
     debug: bool,
 ) -> IResult<&'a str, Block> {
     let (source, section) =
