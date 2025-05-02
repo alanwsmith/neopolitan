@@ -30,177 +30,54 @@
     <h2>Details</h2>
     <ul>
     
-        <li>template not found: tried to include non-existing template "blocks/text-block/default.neoj" (in sections/basic/default.neoj:3)
+        <li>template not found: tried to include non-existing template "sections/paragraph/default.neoj" (in sections/title/default.neoj:4)
 -------------------------------- default.neoj ---------------------------------
    1 | [!- for block in section.children -!]
-   2 |   [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
-   3 >   <p>[!- include templates -!]</p>
-     i          ^^^^^^^^^^^^^^^^^ template not found
-   4 | [!- endfor -!]
+   2 |   [!- set templates = ["sections/" + block.category + "/default.neoj"] -!]
+   3 |   [!- if loop.first -!]
+   4 >     <h1 class="title">[!- include templates -!]</h1>
+     i                           ^^^^^^^^^^^^^^^^^ template not found
+   5 |   [!- else -!]
+   6 |     <p>[!- include templates -!]</p>
+   7 |   [!- endif -!]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Referenced variables: {
     block: {
-        "category": "text-block",
+        "category": "paragraph",
         "spans": [
             {
                 "category": "text",
-                "content": "- A Single Standard Specification",
+                "content": "Goals",
             },
         ],
     },
-    loop: <loop 0/15>,
+    loop: <loop 0/1>,
     section: {
         "attrs": {},
         "bound": "Full",
         "category": "basic",
         "children": [
             {
-                "category": "text-block",
+                "category": "paragraph",
                 "spans": [
                     {
                         "category": "text",
-                        "content": "- A Single Standard Specification",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "Trying to avoid all the different flavors of Markdown parsers. Any given input should produce the same AST regardless of the parser<sup>1<sup>.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- Complete AST Specification",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- Specific Output Specifications",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "Neopolitan is designed to be as flexible as possible. This is by making the spec mostly focused on parsing inputs to generate an AST. Output of the AST is largely an implementation detail.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "However, there are a few standard outputs specified for HTML output to aid in portability of files. These are defined on the specification page.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- No JavaScript Required",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- Authoring Simplicity",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "I'm attempting to make something that is simple to use while still provding a lot of power. I considred how things work from the authoring, parsing, templatings, and generation perspectives. I tried to make all aspects easy to work with, but the primary perspective is that of the writer/author/artist/creator. Decisions always pushed towards making that expeirnce the best even if it meant the other persptives couldn't be improved as much.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- Semantic Versioning",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- Format Stability",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "I've been using Neopolitan for a few years now. While it has evolved a lot during that time, it's been effectively stable for some time.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "The goal of 2.0 is to be as stable as possible, but I expect a 2.0.1 with minor modifications to clarify behavior of edge cases.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "There are some potential feature additions (e.g. CSV, JSON, YAML section handling) that would result in 2.1, 2.2 etc. Those versions would provide backward compatibility with prior 2.x versions.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "The goes is to never have to make a 3.0 (i.e. something that requires breaking changes)",
+                        "content": "Goals",
                     },
                 ],
             },
         ],
         "end_section": none,
         "flags": [],
-        "kind": "list",
+        "kind": "title",
     },
     templates: [
-        "blocks/text-block/default.neoj",
+        "sections/paragraph/default.neoj",
     ],
 }
 -------------------------------------------------------------------------------</li>
     
-        <li>could not render include: error in "sections/basic/default.neoj" (in pages/default.neoj:32)
+        <li>could not render include: error in "sections/title/default.neoj" (in pages/default.neoj:32)
 -------------------------------- default.neoj ---------------------------------
   29 |     "sections/" + section.kind + "/default.neoj",
   30 |     "sections/" + section.category + "/default.neoj",
@@ -212,151 +89,25 @@ Referenced variables: {
   35 | [!- endblock -!]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Referenced variables: {
-    loop: <loop 0/15>,
+    loop: <loop 0/1>,
     section: {
         "attrs": {},
         "bound": "Full",
         "category": "basic",
         "children": [
             {
-                "category": "text-block",
+                "category": "paragraph",
                 "spans": [
                     {
                         "category": "text",
-                        "content": "- A Single Standard Specification",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "Trying to avoid all the different flavors of Markdown parsers. Any given input should produce the same AST regardless of the parser<sup>1<sup>.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- Complete AST Specification",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- Specific Output Specifications",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "Neopolitan is designed to be as flexible as possible. This is by making the spec mostly focused on parsing inputs to generate an AST. Output of the AST is largely an implementation detail.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "However, there are a few standard outputs specified for HTML output to aid in portability of files. These are defined on the specification page.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- No JavaScript Required",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- Authoring Simplicity",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "I'm attempting to make something that is simple to use while still provding a lot of power. I considred how things work from the authoring, parsing, templatings, and generation perspectives. I tried to make all aspects easy to work with, but the primary perspective is that of the writer/author/artist/creator. Decisions always pushed towards making that expeirnce the best even if it meant the other persptives couldn't be improved as much.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- Semantic Versioning",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "- Format Stability",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "I've been using Neopolitan for a few years now. While it has evolved a lot during that time, it's been effectively stable for some time.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "The goal of 2.0 is to be as stable as possible, but I expect a 2.0.1 with minor modifications to clarify behavior of edge cases.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "There are some potential feature additions (e.g. CSV, JSON, YAML section handling) that would result in 2.1, 2.2 etc. Those versions would provide backward compatibility with prior 2.x versions.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "The goes is to never have to make a 3.0 (i.e. something that requires breaking changes)",
+                        "content": "Goals",
                     },
                 ],
             },
         ],
         "end_section": none,
         "flags": [],
-        "kind": "list",
+        "kind": "title",
     },
     sections: [
         {
@@ -365,7 +116,7 @@ Referenced variables: {
             "category": "basic",
             "children": [
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -384,7 +135,7 @@ Referenced variables: {
             "category": "basic",
             "children": [
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -403,7 +154,7 @@ Referenced variables: {
             "category": "basic",
             "children": [
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -412,7 +163,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -421,7 +172,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -430,7 +181,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -439,7 +190,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -448,7 +199,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -457,7 +208,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -466,7 +217,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -475,7 +226,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -484,7 +235,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -493,7 +244,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -502,7 +253,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -511,7 +262,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -520,7 +271,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -529,7 +280,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -555,7 +306,7 @@ Referenced variables: {
             "category": "basic",
             "children": [
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -607,7 +358,7 @@ Referenced variables: {
         },
     ],
     templates: [
-        "blocks/text-block/default.neoj",
+        "sections/paragraph/default.neoj",
     ],
 }
 -------------------------------------------------------------------------------</li>

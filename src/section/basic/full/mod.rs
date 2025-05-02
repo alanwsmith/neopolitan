@@ -61,7 +61,7 @@ bravo foxtrot tango"#;
         let left = Section::Basic {
             attrs: BTreeMap::new(),
             bound: SectionBound::Full,
-            children: vec![Section::Block {
+            children: vec![Section::Paragraph {
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),
                 }],

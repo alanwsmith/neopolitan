@@ -66,7 +66,7 @@ delta zulu alfa
         let left = Section::Basic {
             attrs: BTreeMap::new(),
             bound: SectionBound::Start,
-            children: vec![Section::Block {
+            children: vec![Section::Paragraph {
                 spans: vec![Span::Text {
                     content: "delta zulu alfa".to_string(),
                 }],

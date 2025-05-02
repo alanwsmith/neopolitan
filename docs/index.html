@@ -22,573 +22,1685 @@
   <header class="wrapper-medium margin-bottom-large">
     <a href="/">Home</a>
   </header>
-  <main class="wrapper-medium flow"><h1 class="title">Welcome to Neopolitan
-
-</h1><h2>Introduction
-
-</h2><p>Neopolitan is a plain-text file format. It's like Markdown, but with more features.
-
-</p><h2>Work-In-Progress
-
-</h2>
-
-<div class="flow">
-
-  
-    <div class="tmp-warning flow">
-  
-
-  
-    <p> <strong>Head's up:</strong> I'm in the middle of rebuilding the site. </p>
-  
-
-  
-    <p> The examples on this page are up to date. Most of the rest of the site is just scratch notes and TODOs. Feel free to click around if you want to see how the sausage is being made. </p>
-  
-
-  
-    <p> Follow me on <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates. </p>
-  
-
-  
-    </div>
-  
-
-</div><h2>How It Works
-
-</h2><h3>The Basics
-
-</h3>
-
-<div class="flow">
-
-  
-    <p> Neopolitan documents are made from sections. Each one start with two dashes followed by a name. For example, here's a <code>title</code> section: </p>
-  
-
-  
-    <div class="tmp-example flow">
-  
-
-  
-    <p>&#45;&#45; title</p>
-  
-
-  
-    <p>A Basic Example</p>
-  
-
-  
-    <p>This is an example of what a Neopolitan<br /> document looks like.</p>
-  
-
-  
-    </div>
-  
-
-  
-    <p>which outputs this HTML:</p>
-  
-
-  
-    <div class="tmp-example flow"> <p> &lt;h1 class=&quot;title&quot;&gt;<br /> &nbsp;&nbsp;A Basic Example<br /> &lt;/h1&gt;<br /> &lt;p&gt;<br /> &nbsp;&nbsp;This is an example of what a<br /> &nbsp;&nbsp;Neopolitan document looks like.<br /> &lt;/p&gt; </p>
-  
-
-  
-    </div>
-  
-
-</div><h3>Section Flags
-
-</h3><p>Each section can have flags. They're defined by adding lines starting with two dashes immediately follow the section like this:
-
-</p>
-
-<div class="flow">
-
-  
-    <div class="tmp-example flow">
-  
-
-  
-    <p> &#45;&#45; h2<br /> &#45;&#45; hidden </p>
-  
-
-  
-    <p> This H2 is hidden </p>
-  
-
-  
-    </div>
-  
-
-  
-    <p> Which outputs: </p>
-  
-
-  
-    <div class="tmp-example">
-  
-
-  
-    <p> &lt;h2 hidden&gt;<br /> &nbsp;&nbsp;This H2 is hidden<br /> &lt;/h2&gt; </p>
-  
-
-  
-    </div>
-  
-
-</div><h3>Section Attributes
-
-</h3><p>Key/value attributes can be added as well. For example:
-
-</p>
-
-<div class="flow">
-
-  
-    <div class="tmp-example flow">
-  
-
-  
-    <p> &#45;&#45; h2<br /> &#45;&#45; class: red </p>
-  
-
-  
-    <p> This H2 is red </p>
-  
-
-  
-    </div>
-  
-
-  
-    <p> Which produces: </p>
-  
-
-  
-    <div class="tmp-example flow">
-  
-
-  
-    <p> &lt;h2 class=&quot;red&quot;&gt;<br /> &nbsp;&nbsp;This H2 is red<br /> &lt;/h2&gt; </p>
-  
-
-  
-    </div>
-  
-
-</div><h2>Markdown Section Comparison
-
-</h2><p>A basic Markdown document might look like this:
-
-</p>
-
-<div class="flow">
-
-  
-    <div class="tmp-example flow">
-  
-
-  
-    <p> &#35; The Title </p>
-  
-
-  
-    <p> Some text. </p>
-  
-
-  
-    <p> &#35;&#35; Forward </p>
-  
-
-  
-    <p> More text. </p>
-  
-
-  
-    </div>
-  
-
-  
-    <p> A corresponding Neopolitan document would look like this: </p>
-  
-
-  
-    <div class="tmp-example flow">
-  
-
-  
-    <p> &#45;&#45; h1 </p>
-  
-
-  
-    <p> The Title </p>
-  
-
-  
-    <p> Some text. </p>
-  
-
-  
-    <p> &#45;&#45; h2 </p> <p> Forward </p>
-  
-
-  
-    <p> More text. </p>
-  
-
-  
-    </div>
-  
-
-  
-    <p> Each would produce: </p>
-  
-
-  
-    <div class="tmp-example flow">
-  
-
-  
-    <p> &lt;h1&gt;The Title&lt;/h1&gt;<br /> &lt;p&gt;Some Text.&lt;/p&gt;<br /> &lt;h2&gt;Forward&lt;/h2&gt;<br /> &lt;p&gt;More Text.&lt;/p&gt; </p>
-  
-
-  
-    </div>
-  
-
-  
-    <p> Neopolitan takes more lines to produce the same output. It provides no benefit if that's all you need. </p>
-  
-
-</div><h2>Enter Neopolitan
-
-</h2><p>Neopolitan's usefulness comes from adding HTML features to content<sup>1</sup>.
-
-</p><p>For example, changing the above demo to use explicit sections and attributes like this:
-
-</p>
-
-<div class="flow">
-
-  
-    <div class="tmp-example flow">
-  
-
-  
-    <p> &#45;&#45; title </p>
-  
-
-  
-    <p> The Title </p>
-  
-
-  
-    <p> Some text. </p>
-  
-
-  
-    <p> &#45;&#45; forward<br /> &#45;&#45; class: blue<br /> </p>
-  
-
-  
-    <p> More text. </p>
-  
-
-  
-    </div>
-  
-
-  
-    <p> produces this: </p>
-  
-
-  
-    <div class="tmp-example flow">
-  
-
-  
-    <p> &lt;h1 class=&quot;title&quot; aria-label=&quot;Page Title&quot;&gt;<br /> &nbsp;&nbsp;The Title<br /> &lt;/h1&gt;<br /> &lt;p&gt;Some Text.&lt;/p&gt;<br /> &lt;h2 class=&quot;forward blue&quot;&gt;<br /> &nbsp;&nbsp;Forward<br /> &lt;/h2&gt;<br /> &lt;p&gt;More Text.&lt;/p&gt; </p>
-  
-
-  
-    </div>
-  
-
-  
-    <p> Specifically, it does the following: </p>
-  
-
-  
-    <ul class="flow"> <li> Automatically add the &quot;title&quot; class to the &quot;h1&quot; element </li> <li> Automatically add an &quot;aria-label&quot; to the &quot;h1&quot; element<sup>2</sup> </li> <li> Output an H2 with the &quot;Forward&quot; text in it without having to write the word in addition to using it as the section name<sup>3</sup>. </li> <li> Automatically add the &quot;forward&quot; class to the H2 </li> <li> Append the &quot;blue&quot; class to the H2 via the &quot;&#45;&#45; class: blue&quot; section attribute </li> </ul>
-  
-
-  
-    Of course, the same output could be produced with Markdown. It would require falling back to raw HTML for most of it, though.
-  
-
-</div><h2>Tags
-
-</h2>
-
-<div class="flow">
-
-  
-    <h3>The Basics</h3>
-  
-
-  
-    <p> Neopolitan <code>tags</code> provide a way to enhance content. A basic one looks like this: </p>
-  
-
-  
-    <p> <code>&lt;&lttag-name&#124;some text&gt;&gt;</code> </p>
-  
-
-  
-    <p> The <code>tag-name</code> defines what the type of tag. The <code>some text</code> in this example represents the content the tag works on. </p>
-  
-
-  
-    <h3>Element Examples</h3>
-  
-
-  
-    <p>Basic examples, include: </p>
-  
-
-  
-    <p> <code>&lt;&ltstrong&#124;some text&gt;&gt;</code><br /> <code>&lt;&ltem&#124;some text&gt;&gt;</code><br /> <code>&lt;&ltkbd&#124;some text&gt;&gt;</code><br /> </p>
-  
-
-  
-    <p>Which output:</p>
-  
-
-  
-    <p> <strong>some text</strong><br /> <em>some text</em><br /> <kbd>some text</kbd><br /> </p>
-  
-
-  
-    <p>TODO: show raw HTML output here too</p>
-  
-
-  
-    <h3>Custom Tags</h3>
-  
-
-  
-    <p> Those all map to existing HTML elements. They don't have to. Tags can be used to do anything with the content<sup>4</sup>. They can also include content generated by the output system itself. For example, a <code>wiki</code> tag could be set up like this: </p>
-  
-
-  
-    <p> <code>&lt;&lt;wiki&#124;Documentation&gt;&gt;</code> </p>
-  
-
-  
-    <p> The app generating the content could automatically transform that into a link to the Documentation page, add some styles, an id, and a data attribute. Something like: </p>
-  
-
-  
-    <p> <code> &lt;a<br /> href=&quot;/documentation.html&quot;<br /> id=&quot;documentation-link&quot;<br /> class=&quot;wiki-link&quot;<br /> data-group=&quot;examples&quot;<br /> &gt;Documentation<&lt;a&gt;</code> </p>
-  
-
-  
-    <p> The content stays readable while the HTML has all the parts necessary to provide the functionality </p>
-  
-
-  
-    <h3>Attributes and Flags</h3>
-  
-
-  
-    <p> Tags can use attributes and flags. They're made by adding a <code>&#124;</code> at the end of the content to separate them. For example, a <code>link</code> tag needs a URL. That's done by adding it as a flag like this: </p>
-  
-
-  
-    <p> <code>&lt;&lt;link&#124;Example Site&#124;https://www.example.com/&gt;&gt;</code> </p>
-  
-
-  
-    <p>(aside: It may feel weird to call a URL a flag if you've done a lot of coding. In terms of Neopolitan, &quot;flag&quot; just means a string of content instead of a key value pair. You can learn more about them on <a href="/documentation/attributes-and-flags.html"> Attributes and Flags page</a>.) </p>
-  
-
-  
-    <p> Attributes work the same way. The only difference is they are key/value pairs. For example, this is how to use a tag attribute to add a CSS class to the output: </p>
-  
-
-  
-    <p> <code>&lt;&lt;kbd&#124;Escape&#124;class: red&gt;&gt;</code> </p>
-  
-
-  
-    <p> Which produces: </p>
-  
-
-  
-    <p> <code>&lt;kbd class=&quot;red&quot;&gt;Escape&lt;kbd&gt;</code> </p>
-  
-
-  
-    <p>TODO: Show the rendered HTML output here too.</p>
-  
-
-  
-    <h3>Multiple Attributes And Flags</h3>
-  
-
-  
-    <p> Any number of attributes and flags can be added to a given tag<sup>5</sup>. All that's needed is another <code>&#124;</code> separator between them. For example: </p>
-  
-
-  
-    <p> <code>&lt;&lt;link<br /> &#124;example text<br /> &#124;https://www.example.com/<br /> &#124;class: red<br /> &#124;id: alfa<br /> &#124;hidden&gt;&gt;</code> </p>
-  
-
-  
-    <p>Which produces:</p>
-  
-
-  
-    <p> <code>&lt;a<br /> href=&quot;https://www.example.com/&quot;<br /> class=&quot;red&quot;<br /> id=&quot;alfa&quot;<br /> hidden<br /> &gt;example text&lt;/a&gt;</code> </p>
-  
-
-</div><h2>Shorthands
-
-</h2>
-
-<div class="flow">
-
-  
-    <h3>The Basics</h3>
-  
-
-  
-    <p> Shorthands provide another way to enhance content in Neopolitan files. Each works like a specific Tag, but without the need to type the full thing. For example, one shorthand uses <code>&#42;&#42;</code>. It looks like this: </p>
-  
-
-  
-    <p><code>&#42;&#42;example text&#42;&#42;</code></pre>
-  
-
-  
-    <p>Which outputs this HTML:</p>
-  
-
-  
-    <p> <code>&lt;strong&gt;example text&lt;/strong&gt;</code> </p>
-  
-
-  
-    <p>Which is the exact same thing you'd get if you used a tag like this:</p>
-  
-
-  
-    <p> <code>&lt;&lt;strong&#124;example text&gt;&gt;</code> </p>
-  
-
-  
-    <h3>Attributes and Flags</h3>
-  
-
-  
-    <p> Shorthands can use attributes and flags the same way Tags can. For example the <code>&#96;&#96;</code> shorthand is for code snippets. Adding a flag to it with the name of a language adds the appropriate syntax highlighting: </p>
-  
-
-  
-    <p> <code>&#96;&#96;println!("ping");&#124;rust&#96;&#96;</code> </p>
-  
-
-  
-    <p>Which outputs:</p>
-  
-
-  
-    <p><code>TODO: output snippet when syntax highlighting is reinstated</code></p>
-  
-
-  
-    <p> Adding an attribute to a strong shorthand looks like this: </p>
-  
-
-  
-    <p> <code>&#96;&#96;example text&#124;class: red&#96;&#96;</code> </p>
-  
-
-  
-    <p>Which outputs:</p>
-  
-
-  
-    <p> <code>&lt;strong class=&quot;red&quot;&gt;example text&lt;/strong&gt;</code> </p>
-  
-
-  
-    <h3>Multiple Attributes and Flags</h3>
-  
-
-  
-    <p>Shorthands can use multiple attributes and flags as well. For example, the link shorthand uses <code>&#91;&#91;</code> and <code>&#93;&#93;</code>. It uses a flag by default for the URL. Styles and IDs can be added like this: </p>
-  
-
-  
-    <p> <code>&#91;&#91;example link<br /> &#124;https://www.example.com/<br /> &#124;id: example-link<br /> &#124;class: red&#93;&#93;</code> </p>
-  
-
-  
-    <p>Which outputs:</p>
-  
-
-  
-    <p> <p> <code>&lt;a<br /> href=&quot;https://www.example.com/&quot;<br /> id="example-link"<br /> class="red"<br /> &gt;example link&lt;/a&gt;</code> </p>
-  
-
-  
-    <h3>The Shorthand List</h3>
-  
-
-  
-    <p>Neopolitan provides nine shorthands. They are:</p>
-  
-
-  
-    <ul class="flow"> <li class="flow"> <p>Span:</p> <p> <code>&#64;&#64;code snippet&#64;&#64;</code> </p> </li> <li class="flow"> <p>Code:</p> <p> <code>&#96;&#96;code snippet&#96;&#96;</code> </p> </li> <li class="flow"> <p>Strong:</p> <p> <code>&#42;&#42;strong text&#42;&#42;</code> </p> </li> <li class="flow"> <p>Emphasis:</p> <p> <code>&#95;&#95;emphasis text&#95;&#95;</code> </p> </li> <li class="flow"> <p>Footnote Reference:</p> <p> <code>&#94;&#94;1&#94;&#94;</code> </p> <p>See: <a href="/documentation/footnotes.html">the footnote documentation for more details on how footnotes work</a></p> </li> <li class="flow"> <p>Deleted:</p> <p> <code>&#126;&#126;deleted text&#126;&#126;</code> </p> </li> <li class="flow"> <p>Inserted:</p> <p> <code>&#40;&#40;inserted text&#41;&#41;</code> </p> </li> <li class="flow"> <p>Link:</p> <p> <code>&#91;&#91;link text&#124;https://www.example.com/&#93;&#93;</code> </p> </li> <li class="flow"> <p>Image:</p> <p> <code>&#123;&#123;image-name.jpg&#124;alt: Alt text for the image&#125;&#125;</code> </p> </li> </ul>
-  
-
-</div><h2>No JavaScript Required
-
-</h2><p>TODO: add section about how all this is done with templates and no need for JavaScript. It can be added if you want it. But, it's not required.
-
-</p><h2>More To Come
-
-</h2><p>Formats can be interesting. If there's nothing that uses them, they don't mean much. In that light, I'm finishing up a reference static site generator that uses Neopolitan.
-
-</p><p>I expect to have a beta version ready by June 2025.
-
-</p><p>I'll post about progress on <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> and <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> if you want to follow along.
-
-</p><h2>Footnotes
-
-</h2>
-
-<div class="flow">
-
-  
-    <ol class="flow"> <li> Sure, you could always roll back to using HTML directly in your Markdown documents. </li> <li> Adding the &quot;aria-label&quot; is a bit of a contrived example. I don't know if including one in an H1 is advisable. The point here is not about the specific label. It's about the general ability to add things like aria labels during output without having to define them directly in the content itself. </li> <li> <p> The names don't have to match. You could just as easily make a section called &quot;&#45;&#45; week&quot; and have the output be &quot;The Week In Review&quot;. </p> <p> There's also no restriction limiting the output to an H2 tag. An entire structure of divs could be used the same way. </p> </li> <li> Okay, only stuff that's possible with HTML, CSS, and JavaScript if you want to be pedantic about it. </li> <li> Okay, sure. There are limits to computer memory, etc. if you want to be pedantic about it. </li> </ol>
-  
-
-</div><h2>TODO
-
-</h2><p>[] Write up No JavaScript Required section.
-
-</p><p>[] Output the contents of the example below it to show the rendered HTML.
-
-</p><p>[] Add syntax highlighting.
-
-</p><hr />
-<h3>Under Construction</h3>
-<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/v_2_0/parser/span-tests.html">spec/v_2_0/parser/span-tests.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></main>
+  <main class="wrapper-medium flow">
+    <h1>Rendering Error</h1>
+    <p>error in "pages/home-page.neoj"</p>
+    <p>File: helpers/template-picker.neoj</p>
+    <p>Line: 19</p>
+    <h2>Details</h2>
+    <ul>
+    
+        <li>template not found: tried to include non-existing template "sections/paragraph/default.neoj" (in sections/title/default.neoj:4)
+-------------------------------- default.neoj ---------------------------------
+   1 | [!- for block in section.children -!]
+   2 |   [!- set templates = ["sections/" + block.category + "/default.neoj"] -!]
+   3 |   [!- if loop.first -!]
+   4 >     <h1 class="title">[!- include templates -!]</h1>
+     i                           ^^^^^^^^^^^^^^^^^ template not found
+   5 |   [!- else -!]
+   6 |     <p>[!- include templates -!]</p>
+   7 |   [!- endif -!]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Referenced variables: {
+    block: {
+        "category": "paragraph",
+        "spans": [
+            {
+                "category": "text",
+                "content": "Welcome to Neopolitan",
+            },
+        ],
+    },
+    loop: <loop 0/1>,
+    section: {
+        "attrs": {},
+        "bound": "Full",
+        "category": "basic",
+        "children": [
+            {
+                "category": "paragraph",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "Welcome to Neopolitan",
+                    },
+                ],
+            },
+        ],
+        "end_section": none,
+        "flags": [],
+        "kind": "title",
+    },
+    templates: [
+        "sections/paragraph/default.neoj",
+    ],
+}
+-------------------------------------------------------------------------------</li>
+    
+        <li>could not render include: error in "sections/title/default.neoj" (in pages/home-page.neoj:15)
+------------------------------- home-page.neoj --------------------------------
+  12 |     "sections/" + section.kind + "/default.neoj",
+  13 |     "sections/" + section.category + "/default.neoj",
+  14 |   ] -!]
+  15 >   [!- include templates -!]
+     i       ^^^^^^^^^^^^^^^^^ could not render include
+  16 | [!- endfor -!]
+  17 | [@- macros.page_links(site) -@]
+  18 | [!- endblock -!]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Referenced variables: {
+    loop: <loop 0/1>,
+    section: {
+        "attrs": {},
+        "bound": "Full",
+        "category": "basic",
+        "children": [
+            {
+                "category": "paragraph",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "Welcome to Neopolitan",
+                    },
+                ],
+            },
+        ],
+        "end_section": none,
+        "flags": [],
+        "kind": "title",
+    },
+    sections: [
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Welcome to Neopolitan",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "title",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Introduction",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Neopolitan is a plain-text file format. It's like Markdown, but with more features.",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Work-In-Progress",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-warning flow\">",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <strong>Head's up:</strong> I'm in the middle of rebuilding the site. </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> The examples on this page are up to date. Most of the rest of the site is just scratch notes and TODOs. Feel free to click around if you want to see how the sausage is being made. </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Follow me on <a href=\"https://hachyderm.io/deck/@TheIdOfAlan\">Mastodon</a> or <a href=\"https://bsky.app/profile/alanwsmith.com\">Bluesky</a> for updates. </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "html",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "How It Works",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "The Basics",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h3",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Neopolitan documents are made from sections. Each one start with two dashes followed by a name. For example, here's a <code>title</code> section: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-example flow\">",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>&#45;&#45; title</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>A Basic Example</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>This is an example of what a Neopolitan<br /> document looks like.</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>which outputs this HTML:</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-example flow\"> <p> &lt;h1 class=&quot;title&quot;&gt;<br /> &nbsp;&nbsp;A Basic Example<br /> &lt;/h1&gt;<br /> &lt;p&gt;<br /> &nbsp;&nbsp;This is an example of what a<br /> &nbsp;&nbsp;Neopolitan document looks like.<br /> &lt;/p&gt; </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "html",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Section Flags",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Each section can have flags. They're defined by adding lines starting with two dashes immediately follow the section like this:",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h3",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-example flow\">",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &#45;&#45; h2<br /> &#45;&#45; hidden </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> This H2 is hidden </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Which outputs: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-example\">",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &lt;h2 hidden&gt;<br /> &nbsp;&nbsp;This H2 is hidden<br /> &lt;/h2&gt; </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "html",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Section Attributes",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Key/value attributes can be added as well. For example:",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h3",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-example flow\">",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &#45;&#45; h2<br /> &#45;&#45; class: red </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> This H2 is red </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Which produces: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-example flow\">",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &lt;h2 class=&quot;red&quot;&gt;<br /> &nbsp;&nbsp;This H2 is red<br /> &lt;/h2&gt; </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "html",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Markdown Section Comparison",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "A basic Markdown document might look like this:",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-example flow\">",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &#35; The Title </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Some text. </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &#35;&#35; Forward </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> More text. </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> A corresponding Neopolitan document would look like this: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-example flow\">",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &#45;&#45; h1 </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> The Title </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Some text. </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &#45;&#45; h2 </p> <p> Forward </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> More text. </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Each would produce: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-example flow\">",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &lt;h1&gt;The Title&lt;/h1&gt;<br /> &lt;p&gt;Some Text.&lt;/p&gt;<br /> &lt;h2&gt;Forward&lt;/h2&gt;<br /> &lt;p&gt;More Text.&lt;/p&gt; </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Neopolitan takes more lines to produce the same output. It provides no benefit if that's all you need. </p>",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "html",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Enter Neopolitan",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Neopolitan's usefulness comes from adding HTML features to content<sup>1</sup>.",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "For example, changing the above demo to use explicit sections and attributes like this:",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-example flow\">",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &#45;&#45; title </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> The Title </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Some text. </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &#45;&#45; forward<br /> &#45;&#45; class: blue<br /> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> More text. </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> produces this: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<div class=\"tmp-example flow\">",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> &lt;h1 class=&quot;title&quot; aria-label=&quot;Page Title&quot;&gt;<br /> &nbsp;&nbsp;The Title<br /> &lt;/h1&gt;<br /> &lt;p&gt;Some Text.&lt;/p&gt;<br /> &lt;h2 class=&quot;forward blue&quot;&gt;<br /> &nbsp;&nbsp;Forward<br /> &lt;/h2&gt;<br /> &lt;p&gt;More Text.&lt;/p&gt; </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "</div>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Specifically, it does the following: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<ul class=\"flow\"> <li> Automatically add the &quot;title&quot; class to the &quot;h1&quot; element </li> <li> Automatically add an &quot;aria-label&quot; to the &quot;h1&quot; element<sup>2</sup> </li> <li> Output an H2 with the &quot;Forward&quot; text in it without having to write the word in addition to using it as the section name<sup>3</sup>. </li> <li> Automatically add the &quot;forward&quot; class to the H2 </li> <li> Append the &quot;blue&quot; class to the H2 via the &quot;&#45;&#45; class: blue&quot; section attribute </li> </ul>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Of course, the same output could be produced with Markdown. It would require falling back to raw HTML for most of it, though.",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "html",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Tags",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<h3>The Basics</h3>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Neopolitan <code>tags</code> provide a way to enhance content. A basic one looks like this: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&lt;&lttag-name&#124;some text&gt;&gt;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> The <code>tag-name</code> defines what the type of tag. The <code>some text</code> in this example represents the content the tag works on. </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<h3>Element Examples</h3>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>Basic examples, include: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&lt;&ltstrong&#124;some text&gt;&gt;</code><br /> <code>&lt;&ltem&#124;some text&gt;&gt;</code><br /> <code>&lt;&ltkbd&#124;some text&gt;&gt;</code><br /> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>Which output:</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <strong>some text</strong><br /> <em>some text</em><br /> <kbd>some text</kbd><br /> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>TODO: show raw HTML output here too</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<h3>Custom Tags</h3>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Those all map to existing HTML elements. They don't have to. Tags can be used to do anything with the content<sup>4</sup>. They can also include content generated by the output system itself. For example, a <code>wiki</code> tag could be set up like this: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&lt;&lt;wiki&#124;Documentation&gt;&gt;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> The app generating the content could automatically transform that into a link to the Documentation page, add some styles, an id, and a data attribute. Something like: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code> &lt;a<br /> href=&quot;/documentation.html&quot;<br /> id=&quot;documentation-link&quot;<br /> class=&quot;wiki-link&quot;<br /> data-group=&quot;examples&quot;<br /> &gt;Documentation<&lt;a&gt;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> The content stays readable while the HTML has all the parts necessary to provide the functionality </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<h3>Attributes and Flags</h3>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Tags can use attributes and flags. They're made by adding a <code>&#124;</code> at the end of the content to separate them. For example, a <code>link</code> tag needs a URL. That's done by adding it as a flag like this: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&lt;&lt;link&#124;Example Site&#124;https://www.example.com/&gt;&gt;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>(aside: It may feel weird to call a URL a flag if you've done a lot of coding. In terms of Neopolitan, &quot;flag&quot; just means a string of content instead of a key value pair. You can learn more about them on <a href=\"/documentation/attributes-and-flags.html\"> Attributes and Flags page</a>.) </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Attributes work the same way. The only difference is they are key/value pairs. For example, this is how to use a tag attribute to add a CSS class to the output: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&lt;&lt;kbd&#124;Escape&#124;class: red&gt;&gt;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Which produces: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&lt;kbd class=&quot;red&quot;&gt;Escape&lt;kbd&gt;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>TODO: Show the rendered HTML output here too.</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<h3>Multiple Attributes And Flags</h3>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Any number of attributes and flags can be added to a given tag<sup>5</sup>. All that's needed is another <code>&#124;</code> separator between them. For example: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&lt;&lt;link<br /> &#124;example text<br /> &#124;https://www.example.com/<br /> &#124;class: red<br /> &#124;id: alfa<br /> &#124;hidden&gt;&gt;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>Which produces:</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&lt;a<br /> href=&quot;https://www.example.com/&quot;<br /> class=&quot;red&quot;<br /> id=&quot;alfa&quot;<br /> hidden<br /> &gt;example text&lt;/a&gt;</code> </p>",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "html",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Shorthands",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<h3>The Basics</h3>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Shorthands provide another way to enhance content in Neopolitan files. Each works like a specific Tag, but without the need to type the full thing. For example, one shorthand uses <code>&#42;&#42;</code>. It looks like this: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p><code>&#42;&#42;example text&#42;&#42;</code></pre>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>Which outputs this HTML:</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&lt;strong&gt;example text&lt;/strong&gt;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>Which is the exact same thing you'd get if you used a tag like this:</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&lt;&lt;strong&#124;example text&gt;&gt;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<h3>Attributes and Flags</h3>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Shorthands can use attributes and flags the same way Tags can. For example the <code>&#96;&#96;</code> shorthand is for code snippets. Adding a flag to it with the name of a language adds the appropriate syntax highlighting: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&#96;&#96;println!(\"ping\");&#124;rust&#96;&#96;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>Which outputs:</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p><code>TODO: output snippet when syntax highlighting is reinstated</code></p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> Adding an attribute to a strong shorthand looks like this: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&#96;&#96;example text&#124;class: red&#96;&#96;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>Which outputs:</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&lt;strong class=&quot;red&quot;&gt;example text&lt;/strong&gt;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<h3>Multiple Attributes and Flags</h3>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>Shorthands can use multiple attributes and flags as well. For example, the link shorthand uses <code>&#91;&#91;</code> and <code>&#93;&#93;</code>. It uses a flag by default for the URL. Styles and IDs can be added like this: </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <code>&#91;&#91;example link<br /> &#124;https://www.example.com/<br /> &#124;id: example-link<br /> &#124;class: red&#93;&#93;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>Which outputs:</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p> <p> <code>&lt;a<br /> href=&quot;https://www.example.com/&quot;<br /> id=\"example-link\"<br /> class=\"red\"<br /> &gt;example link&lt;/a&gt;</code> </p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<h3>The Shorthand List</h3>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<p>Neopolitan provides nine shorthands. They are:</p>",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<ul class=\"flow\"> <li class=\"flow\"> <p>Span:</p> <p> <code>&#64;&#64;code snippet&#64;&#64;</code> </p> </li> <li class=\"flow\"> <p>Code:</p> <p> <code>&#96;&#96;code snippet&#96;&#96;</code> </p> </li> <li class=\"flow\"> <p>Strong:</p> <p> <code>&#42;&#42;strong text&#42;&#42;</code> </p> </li> <li class=\"flow\"> <p>Emphasis:</p> <p> <code>&#95;&#95;emphasis text&#95;&#95;</code> </p> </li> <li class=\"flow\"> <p>Footnote Reference:</p> <p> <code>&#94;&#94;1&#94;&#94;</code> </p> <p>See: <a href=\"/documentation/footnotes.html\">the footnote documentation for more details on how footnotes work</a></p> </li> <li class=\"flow\"> <p>Deleted:</p> <p> <code>&#126;&#126;deleted text&#126;&#126;</code> </p> </li> <li class=\"flow\"> <p>Inserted:</p> <p> <code>&#40;&#40;inserted text&#41;&#41;</code> </p> </li> <li class=\"flow\"> <p>Link:</p> <p> <code>&#91;&#91;link text&#124;https://www.example.com/&#93;&#93;</code> </p> </li> <li class=\"flow\"> <p>Image:</p> <p> <code>&#123;&#123;image-name.jpg&#124;alt: Alt text for the image&#125;&#125;</code> </p> </li> </ul>",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "html",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "No JavaScript Required",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "TODO: add section about how all this is done with templates and no need for JavaScript. It can be added if you want it. But, it's not required.",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "More To Come",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Formats can be interesting. If there's nothing that uses them, they don't mean much. In that light, I'm finishing up a reference static site generator that uses Neopolitan.",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "I expect to have a beta version ready by June 2025.",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "I'll post about progress on <a href=\"https://hachyderm.io/deck/@TheIdOfAlan\">Mastodon</a> and <a href=\"https://bsky.app/profile/alanwsmith.com\">Bluesky</a> if you want to follow along.",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Footnotes",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<ol class=\"flow\"> <li> Sure, you could always roll back to using HTML directly in your Markdown documents. </li> <li> Adding the &quot;aria-label&quot; is a bit of a contrived example. I don't know if including one in an H1 is advisable. The point here is not about the specific label. It's about the general ability to add things like aria labels during output without having to define them directly in the content itself. </li> <li> <p> The names don't have to match. You could just as easily make a section called &quot;&#45;&#45; week&quot; and have the output be &quot;The Week In Review&quot;. </p> <p> There's also no restriction limiting the output to an H2 tag. An entire structure of divs could be used the same way. </p> </li> <li> Okay, only stuff that's possible with HTML, CSS, and JavaScript if you want to be pedantic about it. </li> <li> Okay, sure. There are limits to computer memory, etc. if you want to be pedantic about it. </li> </ol>",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "html",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "TODO",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "[] Write up No JavaScript Required section.",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "[] Output the contents of the example below it to show the rendered HTML.",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "[] Add syntax highlighting.",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {
+                "created": [
+                    {
+                        "category": "text",
+                        "content": "2025-04-27T20:21:11-04:00",
+                    },
+                ],
+                "template": [
+                    {
+                        "category": "text",
+                        "content": "home-page",
+                    },
+                ],
+                "updated": [
+                    {
+                        "category": "text",
+                        "content": "2025-04-27T20:21:11-04:00",
+                    },
+                ],
+            },
+            "bound": "Full",
+            "category": "basic",
+            "children": [],
+            "end_section": none,
+            "flags": [],
+            "kind": "metadata",
+        },
+    ],
+    templates: [
+        "sections/paragraph/default.neoj",
+    ],
+}
+-------------------------------------------------------------------------------</li>
+    
+    </ul>
+</main>
   <footer>
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 

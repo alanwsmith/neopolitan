@@ -40,7 +40,7 @@ pub fn paragraph_block<'a>(
     .parse(source)?;
     let (source, _) = multispace0(source)?;
 
-    Ok((source, Section::Block { spans }))
+    Ok((source, Section::Paragraph { spans }))
 
     // dump_parser_if_debug(debug, dbg_header, source, 2);
     // let (source, _) = multispace0.context("").parse(source)?;
@@ -72,7 +72,7 @@ text with some lines"#;
         let config = Config::default();
         let parent = SectionParent::Basic;
         let debug = false;
-        let left = Section::Block {
+        let left = Section::Paragraph {
             spans: vec![Span::Text {
                 content: "this is some text with some lines".to_string(),
             }],

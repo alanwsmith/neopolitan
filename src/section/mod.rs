@@ -32,9 +32,6 @@ pub enum Section {
         kind: String,
     },
     #[serde(rename = "text-block")]
-    Block {
-        spans: Vec<Span>,
-    },
     CheckListItem,
     CheckList,
     CSS,
@@ -53,6 +50,9 @@ pub enum Section {
     ListItem,
     Olist,
     OlistItem,
+    Paragraph {
+        spans: Vec<Span>,
+    },
     Raw,
 }
 

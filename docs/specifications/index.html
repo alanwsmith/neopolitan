@@ -30,156 +30,54 @@
     <h2>Details</h2>
     <ul>
     
-        <li>template not found: tried to include non-existing template "blocks/text-block/default.neoj" (in sections/basic/default.neoj:3)
+        <li>template not found: tried to include non-existing template "sections/paragraph/default.neoj" (in sections/title/default.neoj:4)
 -------------------------------- default.neoj ---------------------------------
    1 | [!- for block in section.children -!]
-   2 |   [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
-   3 >   <p>[!- include templates -!]</p>
-     i          ^^^^^^^^^^^^^^^^^ template not found
-   4 | [!- endfor -!]
+   2 |   [!- set templates = ["sections/" + block.category + "/default.neoj"] -!]
+   3 |   [!- if loop.first -!]
+   4 >     <h1 class="title">[!- include templates -!]</h1>
+     i                           ^^^^^^^^^^^^^^^^^ template not found
+   5 |   [!- else -!]
+   6 |     <p>[!- include templates -!]</p>
+   7 |   [!- endif -!]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Referenced variables: {
     block: {
-        "category": "text-block",
+        "category": "paragraph",
         "spans": [
             {
                 "category": "text",
-                "content": "[] Three levels of conforming: 1 properly produce the AST, 2 properly produce core HTML, 3 properly implement standard section and span outputs.",
+                "content": "Specifications",
             },
         ],
     },
-    loop: <loop 0/6>,
+    loop: <loop 0/1>,
     section: {
         "attrs": {},
         "bound": "Full",
         "category": "basic",
         "children": [
             {
-                "category": "text-block",
+                "category": "paragraph",
                 "spans": [
                     {
                         "category": "text",
-                        "content": "[] Three levels of conforming: 1 properly produce the AST, 2 properly produce core HTML, 3 properly implement standard section and span outputs.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Make ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "neb-css",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " sections part of the level 3 requirement. Should not output to page. Only to be used in the RSS feeds.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add other Neb stuff for level 3.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Make sure ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "link",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " shorthand moves ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "target",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " attr into the output as part of the spec",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Go through required flags (e.g. ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "hidden",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": ", etc.)",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Required sections for the lower level: warning, note",
+                        "content": "Specifications",
                     },
                 ],
             },
         ],
         "end_section": none,
         "flags": [],
-        "kind": "todo",
+        "kind": "title",
     },
     templates: [
-        "blocks/text-block/default.neoj",
+        "sections/paragraph/default.neoj",
     ],
 }
 -------------------------------------------------------------------------------</li>
     
-        <li>could not render include: error in "sections/basic/default.neoj" (in pages/default.neoj:32)
+        <li>could not render include: error in "sections/title/default.neoj" (in pages/default.neoj:32)
 -------------------------------- default.neoj ---------------------------------
   29 |     "sections/" + section.kind + "/default.neoj",
   30 |     "sections/" + section.category + "/default.neoj",
@@ -191,130 +89,25 @@ Referenced variables: {
   35 | [!- endblock -!]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Referenced variables: {
-    loop: <loop 0/6>,
+    loop: <loop 0/1>,
     section: {
         "attrs": {},
         "bound": "Full",
         "category": "basic",
         "children": [
             {
-                "category": "text-block",
+                "category": "paragraph",
                 "spans": [
                     {
                         "category": "text",
-                        "content": "[] Three levels of conforming: 1 properly produce the AST, 2 properly produce core HTML, 3 properly implement standard section and span outputs.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Make ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "neb-css",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " sections part of the level 3 requirement. Should not output to page. Only to be used in the RSS feeds.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add other Neb stuff for level 3.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Make sure ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "link",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " shorthand moves ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "target",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " attr into the output as part of the spec",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Go through required flags (e.g. ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "hidden",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": ", etc.)",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Required sections for the lower level: warning, note",
+                        "content": "Specifications",
                     },
                 ],
             },
         ],
         "end_section": none,
         "flags": [],
-        "kind": "todo",
+        "kind": "title",
     },
     sections: [
         {
@@ -323,7 +116,7 @@ Referenced variables: {
             "category": "basic",
             "children": [
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -342,7 +135,7 @@ Referenced variables: {
             "category": "basic",
             "children": [
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -351,7 +144,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -375,7 +168,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -384,7 +177,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -423,7 +216,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -447,7 +240,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -484,7 +277,7 @@ Referenced variables: {
         },
     ],
     templates: [
-        "blocks/text-block/default.neoj",
+        "sections/paragraph/default.neoj",
     ],
 }
 -------------------------------------------------------------------------------</li>

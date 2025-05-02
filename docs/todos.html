@@ -30,180 +30,54 @@
     <h2>Details</h2>
     <ul>
     
-        <li>template not found: tried to include non-existing template "blocks/text-block/default.neoj" (in sections/basic/default.neoj:3)
+        <li>template not found: tried to include non-existing template "sections/paragraph/default.neoj" (in sections/title/default.neoj:4)
 -------------------------------- default.neoj ---------------------------------
    1 | [!- for block in section.children -!]
-   2 |   [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
-   3 >   <p>[!- include templates -!]</p>
-     i          ^^^^^^^^^^^^^^^^^ template not found
-   4 | [!- endfor -!]
+   2 |   [!- set templates = ["sections/" + block.category + "/default.neoj"] -!]
+   3 |   [!- if loop.first -!]
+   4 >     <h1 class="title">[!- include templates -!]</h1>
+     i                           ^^^^^^^^^^^^^^^^^ template not found
+   5 |   [!- else -!]
+   6 |     <p>[!- include templates -!]</p>
+   7 |   [!- endif -!]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Referenced variables: {
     block: {
-        "category": "text-block",
+        "category": "paragraph",
         "spans": [
             {
                 "category": "text",
-                "content": "[] Add web server?",
+                "content": "TODOs",
             },
         ],
     },
-    loop: <loop 0/7>,
+    loop: <loop 0/1>,
     section: {
         "attrs": {},
         "bound": "Full",
         "category": "basic",
         "children": [
             {
-                "category": "text-block",
+                "category": "paragraph",
                 "spans": [
                     {
                         "category": "text",
-                        "content": "[] Add web server?",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add front end?",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Generate most recently changed page at specific location so you can see most recent set of changes automatically?",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "wiki",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " tag and functionality for third level? (or maybe fourth)?",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add plugin architecture (this would be a later version)",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "-- extension:",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " to ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "-- metadata",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " for changing the file extension of the output.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "-- path:",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " to the ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "-- metadata",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " to change the output path.",
+                        "content": "TODOs",
                     },
                 ],
             },
         ],
         "end_section": none,
         "flags": [],
-        "kind": "todo",
+        "kind": "title",
     },
     templates: [
-        "blocks/text-block/default.neoj",
+        "sections/paragraph/default.neoj",
     ],
 }
 -------------------------------------------------------------------------------</li>
     
-        <li>could not render include: error in "sections/basic/default.neoj" (in pages/default.neoj:32)
+        <li>could not render include: error in "sections/title/default.neoj" (in pages/default.neoj:32)
 -------------------------------- default.neoj ---------------------------------
   29 |     "sections/" + section.kind + "/default.neoj",
   30 |     "sections/" + section.category + "/default.neoj",
@@ -215,154 +89,25 @@ Referenced variables: {
   35 | [!- endblock -!]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Referenced variables: {
-    loop: <loop 0/7>,
+    loop: <loop 0/1>,
     section: {
         "attrs": {},
         "bound": "Full",
         "category": "basic",
         "children": [
             {
-                "category": "text-block",
+                "category": "paragraph",
                 "spans": [
                     {
                         "category": "text",
-                        "content": "[] Add web server?",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add front end?",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Generate most recently changed page at specific location so you can see most recent set of changes automatically?",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "wiki",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " tag and functionality for third level? (or maybe fourth)?",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add plugin architecture (this would be a later version)",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "-- extension:",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " to ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "-- metadata",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " for changing the file extension of the output.",
-                    },
-                ],
-            },
-            {
-                "category": "text-block",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "[] Add ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "-- path:",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " to the ",
-                    },
-                    {
-                        "attrs": {},
-                        "category": "code",
-                        "flags": [],
-                        "spans": [
-                            {
-                                "category": "text",
-                                "content": "-- metadata",
-                            },
-                        ],
-                    },
-                    {
-                        "category": "text",
-                        "content": " to change the output path.",
+                        "content": "TODOs",
                     },
                 ],
             },
         ],
         "end_section": none,
         "flags": [],
-        "kind": "todo",
+        "kind": "title",
     },
     sections: [
         {
@@ -371,7 +116,7 @@ Referenced variables: {
             "category": "basic",
             "children": [
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -390,7 +135,7 @@ Referenced variables: {
             "category": "basic",
             "children": [
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -399,7 +144,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -408,7 +153,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -417,7 +162,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -441,7 +186,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -450,7 +195,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -489,7 +234,7 @@ Referenced variables: {
                     ],
                 },
                 {
-                    "category": "text-block",
+                    "category": "paragraph",
                     "spans": [
                         {
                             "category": "text",
@@ -556,7 +301,7 @@ Referenced variables: {
         },
     ],
     templates: [
-        "blocks/text-block/default.neoj",
+        "sections/paragraph/default.neoj",
     ],
 }
 -------------------------------------------------------------------------------</li>
