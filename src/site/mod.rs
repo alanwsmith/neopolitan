@@ -95,7 +95,7 @@ impl Site {
         self.pages.iter().for_each(|(relative_path, sections)| {
             let output_path = &self.output_root.join(relative_path);
             let template =
-                env.get_template("pages/template-picker.neoj").unwrap();
+                env.get_template("helpers/template-picker.neoj").unwrap();
             let sections = Value::from_serialize(&sections);
             match template.render(context!(site, sections)) {
                 Ok(output) => {
@@ -179,7 +179,7 @@ impl Site {
             .for_each(|(relative_path, (sections, remainder))| {
                 let output_path = &self.output_root.join(relative_path);
                 let template =
-                    env.get_template("pages/incomplete.neoj").unwrap();
+                    env.get_template("helpers/incomplete.neoj").unwrap();
                 let output = template
                     .render(context!(site, sections => Value::from_serialize(sections), remainder))
                     .unwrap();
