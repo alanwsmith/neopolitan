@@ -5,7 +5,6 @@ use nom::branch::alt;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
 use nom::character::complete::line_ending;
-use nom::character::complete::multispace1;
 use nom::character::complete::one_of;
 use nom::character::complete::space0;
 use nom::character::complete::space1;
