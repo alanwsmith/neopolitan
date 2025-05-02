@@ -8,8 +8,10 @@ use crate::span_strings::single_character::single_character;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;
+use nom::bytes::complete::is_a;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
+use nom::character;
 use nom::character::complete::line_ending;
 use nom::character::complete::one_of;
 use nom::character::complete::space0;
@@ -44,6 +46,16 @@ use nom::sequence::terminated;
 // but the feels like a lot
 // of complexity for now a lot
 // of benefit.
+
+// NOTE: you can have the double close
+// tokens for alternate tags in the
+// keys. For example ``alfa**bravo: charlie``
+// is valid with a key of ``alfa**bravo``
+// it's possible to make any key because you
+// can use either the shorthand or the
+// explicit ``<<>>`` tag if you need the
+// key to contain what would otherwise
+// be the close tag for the shorthand
 
 pub fn not_character<'a>(
     source: &'a str,
@@ -84,6 +96,7 @@ pub fn span_attr_key_token<'a>(
     let (source, key_snippets) = many1(alt((
         is_not(": \t\r\n\\|~`@^*_>]})"),
         span_attr_key_token_single_character,
+        |src| span_attr_key_token_alternate_close_characters(src, character),
     )))
     .parse(source)?;
     let (source, _) = tag(":").parse(source)?;
@@ -111,6 +124,16 @@ pub fn span_attr_key_token_single_character<'a>(
     ))
     .parse(source)?;
     Ok((source, token_character))
+}
+
+pub fn span_attr_key_token_alternate_close_characters<'a>(
+    source: &'a str,
+    character: &'a str,
+) -> IResult<&'a str, &'a str> {
+    let (source, _) =
+        peek(not((tag(character), tag(character)))).parse(source)?;
+    let (source, characters) = alt((is_a("~`@^*_])}>"),)).parse(source)?;
+    Ok((source, characters))
 }
 
 #[cfg(test)]
@@ -142,7 +165,52 @@ mod test {
     #[case("alfa: \n bravo``", "`", "alfa", "bravo``")]
     #[case("alfa🕺: bravo``", "`", "alfa🕺", "bravo``")]
     #[case("alfa`bravo: charlie", "`", "alfa`bravo", "charlie")]
-    fn span_attr_key_token_valid_tests(
+    // #[case("alfa_: bravo", "_", "alfa*", "bravo")]
+    // #[case("alfa_bravo: charlie", "_", "alfa*bravo", "charlie")]
+    // #[case("alfa__bravo: charlie", "`", "alfa*bravo", "charlie")]
+    fn solo_span_attr_key_token_valid_tests(
+        #[case] source: &str,
+        #[case] character: &str,
+        #[case] left: String,
+        #[case] remainder: &str,
+    ) {
+        let right = span_attr_key_token(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
+
+    #[rstest]
+    #[case("alfa~: bravo", "~", "alfa~", "bravo")]
+    #[case("alfa~bravo: charlie", "~", "alfa~bravo", "charlie")]
+    #[case("alfa~~bravo: charlie", "`", "alfa~~bravo", "charlie")]
+    #[case("alfa`: bravo", "`", "alfa`", "bravo")]
+    #[case("alfa`bravo: charlie", "`", "alfa`bravo", "charlie")]
+    #[case("alfa``bravo: charlie", "*", "alfa``bravo", "charlie")]
+    #[case("alfa@: bravo", "@", "alfa@", "bravo")]
+    #[case("alfa@bravo: charlie", "@", "alfa@bravo", "charlie")]
+    #[case("alfa@@bravo: charlie", "`", "alfa@@bravo", "charlie")]
+    #[case("alfa^: bravo", "^", "alfa^", "bravo")]
+    #[case("alfa^bravo: charlie", "^", "alfa^bravo", "charlie")]
+    #[case("alfa^^bravo: charlie", "`", "alfa^^bravo", "charlie")]
+    #[case("alfa*: bravo", "*", "alfa*", "bravo")]
+    #[case("alfa*bravo: charlie", "*", "alfa*bravo", "charlie")]
+    #[case("alfa**bravo: charlie", "`", "alfa**bravo", "charlie")]
+    #[case("alfa_: bravo", "_", "alfa_", "bravo")]
+    #[case("alfa_bravo: charlie", "_", "alfa_bravo", "charlie")]
+    #[case("alfa__bravo: charlie", "`", "alfa__bravo", "charlie")]
+    #[case("alfa>: bravo", ">", "alfa>", "bravo")]
+    #[case("alfa>bravo: charlie", ">", "alfa>bravo", "charlie")]
+    #[case("alfa>>bravo: charlie", "`", "alfa>>bravo", "charlie")]
+    #[case("alfa]: bravo", "]", "alfa]", "bravo")]
+    #[case("alfa]bravo: charlie", "]", "alfa]bravo", "charlie")]
+    #[case("alfa]]bravo: charlie", "`", "alfa]]bravo", "charlie")]
+    #[case("alfa}: bravo", "}", "alfa}", "bravo")]
+    #[case("alfa}bravo: charlie", "}", "alfa}bravo", "charlie")]
+    #[case("alfa}}bravo: charlie", "`", "alfa}}bravo", "charlie")]
+    #[case("alfa): bravo", ")", "alfa)", "bravo")]
+    #[case("alfa)bravo: charlie", ")", "alfa)bravo", "charlie")]
+    #[case("alfa))bravo: charlie", "`", "alfa))bravo", "charlie")]
+    fn solo_span_attr_key_token_generated_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
         #[case] left: String,
@@ -161,7 +229,16 @@ mod test {
     #[case("alfa:\n|bravo``", "`")]
     #[case("alfa bravo: charlie``", "`")]
     #[case("alfa``bravo: charlie", "`")]
-    fn solo_span_attr_key_token_invalid_tests(
+    #[case("alfa**x", "*")]
+    #[case("alfa__x", "_")]
+    #[case("alfa^^x", "^")]
+    #[case("alfa@@x", "@")]
+    #[case("alfa~~x", "~")]
+    #[case("alfa))x", ")")]
+    #[case("alfa]]x", "]")]
+    #[case("alfa}}x", "}")]
+    #[case("alfa>>x", ">")]
+    fn span_attr_key_token_invalid_tests(
         #[case] source: &str,
         #[case] character: &str,
     ) {
