@@ -1,6 +1,6 @@
 use crate::config::Config;
-use crate::section_metadata::RawSectionMetaData;
-use crate::section_parent::SectionParent;
+use crate::section::metadata::RawSectionMetaData;
+use crate::section::parent::SectionParent;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;

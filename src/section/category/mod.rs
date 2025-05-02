@@ -1,4 +1,4 @@
-use crate::{section::Section, section_bound::SectionBound, span::Span};
+use crate::{section::Section, section::bound::SectionBound, span::Span};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 

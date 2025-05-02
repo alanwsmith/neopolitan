@@ -1,13 +1,17 @@
-#![allow(unused)]
-pub mod basic_section;
-pub mod basic_section_full;
-pub mod text_block;
+pub mod attr;
+pub mod basic;
+pub mod blocks;
+pub mod bound;
+pub mod category;
+pub mod flag;
+pub mod metadata;
+pub mod parent;
 
 use crate::config::Config;
-use crate::section::basic_section::basic_section;
-use crate::section_bound::SectionBound;
-use crate::section_category::SectionCategory;
-use crate::section_parent::SectionParent;
+use crate::section::basic::basic_section;
+use crate::section::bound::SectionBound;
+use crate::section::category::SectionCategory;
+use crate::section::parent::SectionParent;
 use crate::span::Span;
 use nom::Parser;
 use nom::{IResult, branch::alt, bytes::complete::tag};

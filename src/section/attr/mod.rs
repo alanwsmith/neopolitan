@@ -1,6 +1,6 @@
 use crate::config::Config;
-use crate::section_metadata::RawSectionMetaData;
-use crate::section_parent::SectionParent;
+use crate::section::metadata::RawSectionMetaData;
+use crate::section::parent::SectionParent;
 use crate::span::parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
 use crate::span::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;

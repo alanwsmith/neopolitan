@@ -1,9 +1,9 @@
-use super::text_block::text_block;
 use crate::config::Config;
 use crate::section::Section;
-use crate::section_bound::SectionBound;
-use crate::section_metadata::section_metadata;
-use crate::section_parent::SectionParent;
+use crate::section::blocks::text::text_block;
+use crate::section::bound::SectionBound;
+use crate::section::metadata::section_metadata;
+use crate::section::parent::SectionParent;
 use crate::span::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::bytes::complete::is_not;
@@ -53,8 +53,9 @@ mod test {
 
     #[test]
     fn basic_test() {
-        let source =
-            include_str!("test-data/basic-section-full/basic-test.neo");
+        let source = r#"-- title
+
+bravo foxtrot tango"#;
         let config = Config::default();
         let parent = SectionParent::Page;
         let debug = false;

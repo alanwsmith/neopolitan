@@ -1,7 +1,7 @@
 use crate::config::Config;
-use crate::section_attr::raw_section_attr;
-use crate::section_flag::raw_section_flag;
-use crate::section_parent::SectionParent;
+use crate::section::attr::raw_section_attr;
+use crate::section::flag::raw_section_flag;
+use crate::section::parent::SectionParent;
 use crate::span::Span;
 use nom::Parser;
 use nom::multi::many0;

@@ -1,4 +1,4 @@
-use crate::section_category::SectionCategory;
+use crate::section::category::SectionCategory;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, Serialize)]

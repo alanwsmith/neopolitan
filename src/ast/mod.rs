@@ -1,7 +1,7 @@
 use crate::config::Config;
 use crate::section::Section;
+use crate::section::parent::SectionParent;
 use crate::section::section;
-use crate::section_parent::SectionParent;
 use nom::IResult;
 use nom::Parser;
 use nom::character::complete::multispace0;

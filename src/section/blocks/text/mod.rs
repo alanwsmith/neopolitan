@@ -1,7 +1,7 @@
 use crate::config::Config;
 use crate::section::Section;
-use crate::section_bound::SectionBound;
-use crate::section_parent::SectionParent;
+use crate::section::bound::SectionBound;
+use crate::section::parent::SectionParent;
 use crate::span::shorthand::shorthand_span;
 use crate::span::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use crate::span::text::in_block::text_span_in_block;
@@ -75,7 +75,8 @@ mod test {
 
     #[test]
     fn basic_test() {
-        let source = include_str!("test-data/text-block/basic-test.neo");
+        let source = r#"this is some 
+text with some lines"#;
         let config = Config::default();
         let parent = SectionParent::Basic;
         let debug = false;
