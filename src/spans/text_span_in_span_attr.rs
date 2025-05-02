@@ -1,4 +1,3 @@
-// DEPRECATED: Remove the next time you see this
 use crate::span::Span;
 use crate::span_strings::plain_text_any_colons::plain_text_any_colons;
 use crate::span_strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
@@ -22,7 +21,7 @@ use nom::multi::many1;
 // TODO: Figure out a way to chomp
 // just the last one.
 
-pub fn text_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
+pub fn text_span_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, results) = many1(alt((
         plain_text_string_base,
         plain_text_space1_as_single_space,
@@ -60,44 +59,44 @@ mod test {
     #[case("alfa\\<<", Span::Text{ content: "alfa".to_string()}, "\\<<")]
     // TODO: Make escaped version of this
     // #[case("alfa|bravo", Span::Text{ content: "alfa|bravo".to_string()}, "")]
-    fn text_in_span_attr_valid_tests(
+    fn text_span_in_span_attr_valid_tests(
         #[case] source: &str,
         #[case] left: Span,
         #[case] remainder: &str,
     ) {
-        let right = text_in_span_attr(source).unwrap();
+        let right = text_span_in_span_attr(source).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
 
     #[test]
-    fn text_in_span_attr_whitespace_test() {
+    fn text_span_in_span_attr_whitespace_test() {
         let source = "alfa    bravo \n   ";
         let left = Span::Text {
             content: "alfa bravo ".to_string(),
         };
         let remainder = "";
-        let right = text_in_span_attr(source).unwrap();
+        let right = text_span_in_span_attr(source).unwrap();
         assert_eq!(remainder, right.0);
         assert_eq!(left, right.1);
     }
 
     #[test]
-    fn solo_text_in_span_attr_chomp_leading_whitespace_on_new_lines() {
+    fn solo_text_span_in_span_attr_chomp_leading_whitespace_on_new_lines() {
         let source = "alfa  \n  bravo";
         let left = Span::Text {
             content: "alfa bravo".to_string(),
         };
         let remainder = "";
-        let right = text_in_span_attr(source).unwrap();
+        let right = text_span_in_span_attr(source).unwrap();
         assert_eq!(remainder, right.0);
         assert_eq!(left, right.1);
     }
 
     #[test]
-    fn text_in_span_attr_no_empty_lines() {
+    fn text_span_in_span_attr_no_empty_lines() {
         let source = "alfa\n\nbravo";
-        match text_in_span_attr(source) {
+        match text_span_in_span_attr(source) {
             Ok(result) => {
                 dbg!(result);
                 assert!(false);
@@ -109,13 +108,13 @@ mod test {
     }
 
     #[test]
-    fn text_in_span_attr_trailing_space_is_necessary() {
+    fn text_span_in_span_attr_trailing_space_is_necessary() {
         let source = "alfa <<span|ping>>";
         let left = Span::Text {
             content: "alfa ".to_string(),
         };
         let remainder = "<<span|ping>>";
-        let right = text_in_span_attr(source).unwrap();
+        let right = text_span_in_span_attr(source).unwrap();
         assert_eq!(remainder, right.0);
         assert_eq!(left, right.1);
     }

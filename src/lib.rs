@@ -15,3 +15,4 @@ pub mod span_flag;
 pub mod span_metadata;
 pub mod span_parsers;
 pub mod span_strings;
+pub mod spans;
