@@ -1,7 +1,7 @@
 use crate::ast::Ast;
+use crate::block::Block;
 use crate::config::Config;
 use crate::minijinja_functions::highlight_syntax::highlight_span;
-use crate::section::Section;
 use anyhow::Result;
 use minijinja::syntax::SyntaxConfig;
 use minijinja::{Environment, Value, context, path_loader};
@@ -19,10 +19,10 @@ pub struct Site {
     pub config: Config,
     pub errors: BTreeMap<PathBuf, (String, String)>,
     pub files: Vec<(PathBuf, PathBuf)>,
-    pub incompletes: BTreeMap<PathBuf, (Vec<Section>, String)>,
+    pub incompletes: BTreeMap<PathBuf, (Vec<Block>, String)>,
     pub input_root: PathBuf,
     pub output_root: PathBuf,
-    pub pages: BTreeMap<PathBuf, Vec<Section>>,
+    pub pages: BTreeMap<PathBuf, Vec<Block>>,
 }
 
 impl Site {
@@ -47,10 +47,10 @@ impl Site {
                 let source =
                     std::fs::read_to_string(&source_path).unwrap().to_string();
                 match Ast::new_from_source(&source, &self.config, false) {
-                    Ast::Ok { sections } => {
+                    Ast::Ok { blocks } => {
                         self.pages.insert(
                             stripped_output_path.clone(),
-                            sections.clone(),
+                            blocks.clone(),
                         );
                     }
                     Ast::Error { message, remainder } => {

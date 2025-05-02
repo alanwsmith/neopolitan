@@ -1,5 +1,5 @@
 use crate::span::Span;
-use crate::span::strings::escaped_character::escaped_character;
+use crate::span_metadata::strings::escaped_character::escaped_character;
 use nom::IResult;
 
 pub fn escaped_span<'a>(source: &'a str) -> IResult<&'a str, Span> {

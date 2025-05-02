@@ -1,7 +1,7 @@
+use crate::block::Block;
+use crate::block::block;
+use crate::block_metadata::parent::SectionParent;
 use crate::config::Config;
-use crate::section::Section;
-use crate::section::parent::SectionParent;
-use crate::section::section;
 use nom::IResult;
 use nom::Parser;
 use nom::character::complete::multispace0;
@@ -15,11 +15,11 @@ pub enum Ast<'a> {
         remainder: String,
     },
     Incomplete {
-        parsed: Vec<Section>,
+        parsed: Vec<Block>,
         remainder: &'a str,
     },
     Ok {
-        sections: Vec<Section>,
+        blocks: Vec<Block>,
     },
 }
 
@@ -32,9 +32,7 @@ impl<'a> Ast<'_> {
         match Ast::parse_ast(source, config, &SectionParent::Page, debug) {
             Ok(results) => {
                 if results.0 == "" {
-                    Ast::Ok {
-                        sections: results.1,
-                    }
+                    Ast::Ok { blocks: results.1 }
                 } else {
                     Ast::Incomplete {
                         parsed: results.1,
@@ -54,11 +52,11 @@ impl<'a> Ast<'_> {
         config: &'a Config,
         parent: &'a SectionParent,
         debug: bool,
-    ) -> IResult<&'a str, Vec<Section>> {
+    ) -> IResult<&'a str, Vec<Block>> {
         let (source, _) = multispace0(source)?;
-        let (source, sections) =
-            many1(|src| section(src, config, parent, debug)).parse(source)?;
-        Ok((source, sections))
+        let (source, blocks) =
+            many1(|src| block(src, config, parent, debug)).parse(source)?;
+        Ok((source, blocks))
     }
 }
 
@@ -72,11 +70,10 @@ mod test {
     fn basic_test() {
         let config = Config::default();
         let source = include_str!("test-data/basic-example.neo");
-        if let Ast::Ok { sections } =
-            Ast::new_from_source(source, &config, false)
+        if let Ast::Ok { blocks } = Ast::new_from_source(source, &config, false)
         {
             // println!("{}", serde_json::to_string_pretty(&sections).unwrap());
-            assert_eq!(1, sections.len());
+            assert_eq!(1, blocks.len());
         } else {
             assert!(false);
         }
@@ -87,7 +84,7 @@ mod test {
         let config = Config::default();
         let source = include_str!("test-data/span-test.neo");
         match Ast::new_from_source(source, &config, false) {
-            Ast::Ok { sections } => assert_eq!(1, sections.len()),
+            Ast::Ok { blocks } => assert_eq!(1, blocks.len()),
             Ast::Error { message, remainder } => {
                 dbg!(message);
                 dbg!(remainder);

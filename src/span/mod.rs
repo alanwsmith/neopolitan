@@ -1,11 +1,6 @@
-pub mod attr;
 pub mod code;
 pub mod escaped;
-pub mod flag;
-pub mod metadata;
-pub mod parsers;
 pub mod shorthand;
-pub mod strings;
 pub mod tag;
 pub mod text;
 
