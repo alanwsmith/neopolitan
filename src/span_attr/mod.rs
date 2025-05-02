@@ -32,9 +32,6 @@ use nom::sequence::terminated;
 // character and use the different
 // lines as an explicit separator.
 
-// TODO: Move ``not_character`` to
-// it's own file
-
 // TODO: Use single function for
 // attr key and flags.
 
@@ -56,16 +53,6 @@ use nom::sequence::terminated;
 // explicit ``<<>>`` tag if you need the
 // key to contain what would otherwise
 // be the close tag for the shorthand
-
-pub fn not_character<'a>(
-    source: &'a str,
-    character: &'a str,
-) -> IResult<&'a str, &'a str> {
-    let (source, result) =
-        recognize(preceded(not(tag(character)), one_of("`~!@#$%^&*()<>[]{}")))
-            .parse(source)?;
-    Ok((source, result))
-}
 
 pub fn span_attr<'a>(
     source: &'a str,
