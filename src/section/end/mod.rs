@@ -1,5 +1,3 @@
-use std::collections::BTreeMap;
-
 use crate::config::Config;
 use crate::section::Section;
 use crate::section::SectionParent;
