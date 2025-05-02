@@ -63,7 +63,7 @@ mod test {
     use pretty_assertions::assert_eq;
 
     #[test]
-    fn section_metadata_flag_test() {
+    fn block_metadata_flag_test() {
         let config = &Config::default();
         let source = "-- test-flag\n\n";
         let parent = &BlockParent::Basic;
@@ -74,7 +74,7 @@ mod test {
     }
 
     #[test]
-    fn section_metadata_flag_whitespace_test() {
+    fn block_metadata_flag_whitespace_test() {
         let config = &Config::default();
         let source = "--      foxtrot-bravo     ";
         let parent = &BlockParent::Basic;
@@ -85,7 +85,7 @@ mod test {
     }
 
     #[test]
-    fn section_metadata_attribute_test() {
+    fn block_metadata_attribute_test() {
         let config = &Config::default();
         let source = "-- alfa: bravo\n\n";
         let parent = &BlockParent::Basic;
@@ -103,7 +103,7 @@ mod test {
     }
 
     #[test]
-    fn section_metadata_attribute_whitespace_test() {
+    fn block_metadata_attribute_whitespace_test() {
         let config = &Config::default();
         let source = "--    hotel:      whiskey     \n\n";
         let parent = &BlockParent::Basic;
