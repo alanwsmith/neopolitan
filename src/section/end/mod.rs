@@ -35,9 +35,8 @@ pub fn end_section<'a>(
             attrs,
             bound: SectionBound::Full,
             children,
-            end_section: None,
             flags,
-            kind: kind.to_string(),
+            kind: format!("{}-end", kind),
         },
     ))
 }
@@ -65,9 +64,8 @@ bravo foxtrot tango"#;
                     content: "bravo foxtrot tango".to_string(),
                 }],
             }],
-            end_section: None,
             flags: vec![],
-            kind: "some-end-section".to_string(),
+            kind: "some-end-section-end".to_string(),
         };
         let right = end_section(source, &config, &parent, kind).unwrap().1;
         assert_eq!(left, right);

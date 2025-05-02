@@ -43,7 +43,6 @@ pub enum Section {
         attrs: BTreeMap<String, Vec<Span>>,
         bound: SectionBound,
         children: Vec<Section>,
-        end_section: Option<Box<Section>>,
         flags: Vec<String>,
         kind: String,
     },
