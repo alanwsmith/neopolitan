@@ -280,7 +280,7 @@ mod test {
     #[case("alfa bravo: charlie|", ">", "alfa bravo: charlie", "|")]
     #[case(":alfa bravo: charlie:|", ">", ":alfa bravo: charlie:", "|")]
     #[case("\n:alfa bravo: charlie:\n|", ">", ":alfa bravo: charlie:", "|")]
-    fn solo_span_flag_token_valid_tests(
+    fn span_flag_token_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
         #[case] found: &str,

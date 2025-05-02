@@ -88,6 +88,7 @@ pub fn span_attr_key_token<'a>(
     .parse(source)?;
     let (source, _) = tag(":").parse(source)?;
     let (source, _) = (space0, opt(line_ending), space0).parse(source)?;
+    let (source, _) = peek(not(tag("|"))).parse(source)?;
     let (source, _) = not(line_ending).parse(source)?;
     let (source, _) = not((tag(character), tag(character))).parse(source)?;
     Ok((source, key_snippets.join("").to_string()))
@@ -155,12 +156,12 @@ mod test {
     #[rstest]
     #[case("alfa:   ``", "`")]
     #[case("alfa:\n\nbravo``", "`")]
-    // #[case("alfa:|bravo``", "`")]
-    // #[case("alfa: |bravo``", "`")]
-    // #[case("alfa:\n|bravo``", "`")]
-    // #[case("alfa bravo: charlie``", "`")]
-    // #[case("alfa``bravo: charlie", "`")]
-    fn span_attr_key_token_invalid_tests(
+    #[case("alfa:|bravo``", "`")]
+    #[case("alfa: |bravo``", "`")]
+    #[case("alfa:\n|bravo``", "`")]
+    #[case("alfa bravo: charlie``", "`")]
+    #[case("alfa``bravo: charlie", "`")]
+    fn solo_span_attr_key_token_invalid_tests(
         #[case] source: &str,
         #[case] character: &str,
     ) {
