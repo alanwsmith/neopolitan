@@ -165,9 +165,6 @@ mod test {
     #[case("alfa: \n bravo``", "`", "alfa", "bravo``")]
     #[case("alfa🕺: bravo``", "`", "alfa🕺", "bravo``")]
     #[case("alfa`bravo: charlie", "`", "alfa`bravo", "charlie")]
-    // #[case("alfa_: bravo", "_", "alfa*", "bravo")]
-    // #[case("alfa_bravo: charlie", "_", "alfa*bravo", "charlie")]
-    // #[case("alfa__bravo: charlie", "`", "alfa*bravo", "charlie")]
     fn solo_span_attr_key_token_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
@@ -252,56 +249,56 @@ mod test {
         }
     }
 
-    // #[rstest]
-    // #[case("|alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
-    // #[case("| alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
-    // #[case("| \n alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
-    // #[case("|alfa:\nbravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
-    // #[case("|alfa:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
-    // #[case("|alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
-    // fn span_attr_valid_tests(
-    //     #[case] source: &str,
-    //     #[case] character: &str,
-    //     #[case] left: RawSpanMetadata,
-    //     #[case] remainder: &str,
-    // ) {
-    //     let right = span_attr(source, character).unwrap();
-    //     assert_eq!(left, right.1);
-    //     assert_eq!(remainder, right.0);
-    // }
+    #[rstest]
+    #[case("|alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
+    #[case("| alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
+    #[case("| \n alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
+    #[case("|alfa:\nbravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
+    #[case("|alfa:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
+    #[case("|alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>".to_string(), spans: vec![Span::Text{content: "bravo".to_string()}]} , "``")]
+    fn span_attr_valid_tests(
+        #[case] source: &str,
+        #[case] character: &str,
+        #[case] left: RawSpanMetadata,
+        #[case] remainder: &str,
+    ) {
+        let right = span_attr(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
 
-    // #[test]
-    // fn span_attr_whitespace_test() {
-    //     let source = "|  delta: \n   sierra  \n yankee  \n  `` ping";
-    //     let character = "`";
-    //     let left = RawSpanMetadata::Attr {
-    //         key: "delta".to_string(),
-    //         spans: vec![Span::Text {
-    //             content: "sierra yankee ".to_string(),
-    //         }],
-    //     };
-    //     let remainder = "`` ping";
-    //     let right = span_attr(source, character).unwrap();
-    //     assert_eq!(left, right.1);
-    //     assert_eq!(remainder, right.0);
-    // }
+    #[test]
+    fn span_attr_whitespace_test() {
+        let source = "|  delta: \n   sierra  \n yankee  \n  `` ping";
+        let character = "`";
+        let left = RawSpanMetadata::Attr {
+            key: "delta".to_string(),
+            spans: vec![Span::Text {
+                content: "sierra yankee ".to_string(),
+            }],
+        };
+        let remainder = "`` ping";
+        let right = span_attr(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
 
-    // #[test]
-    // #[ignore]
-    // fn span_attr_string_closing_test() {
-    //     let source = "|alfa ``bravo``>> charlie";
-    //     let character = ">";
-    //     let left = RawSpanMetadata::Attr {
-    //         key: "delta".to_string(),
-    //         spans: vec![Span::Text {
-    //             content: "sierra yankee ".to_string(),
-    //         }],
-    //     };
-    //     let remainder = ">> charlie";
-    //     let right = span_attr(source, character).unwrap();
-    //     assert_eq!(left, right.1);
-    //     assert_eq!(remainder, right.0);
-    // }
+    #[test]
+    #[ignore]
+    fn span_attr_string_closing_test() {
+        let source = "|alfa ``bravo``>> charlie";
+        let character = ">";
+        let left = RawSpanMetadata::Attr {
+            key: "delta".to_string(),
+            spans: vec![Span::Text {
+                content: "sierra yankee ".to_string(),
+            }],
+        };
+        let remainder = ">> charlie";
+        let right = span_attr(source, character).unwrap();
+        assert_eq!(left, right.1);
+        assert_eq!(remainder, right.0);
+    }
 
     //
 }
