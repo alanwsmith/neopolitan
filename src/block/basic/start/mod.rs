@@ -39,7 +39,7 @@ pub fn basic_section_start<'a>(
             attrs,
             bound: BlockBound::Start,
             children,
-            end_section: Some(Box::new(end_section)),
+            end_block: Some(Box::new(end_section)),
             flags,
             kind: kind.to_string(),
         },
@@ -71,7 +71,7 @@ delta zulu alfa
                     content: "delta zulu alfa".to_string(),
                 }],
             }],
-            end_section: Some(Box::new(Block::End {
+            end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
                 bound: BlockBound::Full,
                 children: vec![],

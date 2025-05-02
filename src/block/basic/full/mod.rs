@@ -36,7 +36,7 @@ pub fn basic_section_full<'a>(
             attrs,
             bound: BlockBound::Full,
             children,
-            end_section: None,
+            end_block: None,
             flags,
             kind: kind.to_string(),
         },
@@ -66,7 +66,7 @@ bravo foxtrot tango"#;
                     content: "bravo foxtrot tango".to_string(),
                 }],
             }],
-            end_section: None,
+            end_block: None,
             flags: vec![],
             kind: "title".to_string(),
         };

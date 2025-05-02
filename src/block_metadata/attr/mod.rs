@@ -1,7 +1,7 @@
 use crate::block_metadata::RawBlockMetaData;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
-use crate::span_metadata::parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
+use crate::span_metadata::parsers::span_of_plain_text_for_block_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value as span_of_plain_text_for_block_key_value_attr_value;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
 use nom::character::complete::alphanumeric1;
@@ -56,7 +56,7 @@ pub fn raw_block_attr<'a>(
     let (source, _) = space1.parse(source)?;
     let (source, spans) = terminated(
         many1(alt((
-            span_of_plain_text_for_section_key_value_attr_value,
+            span_of_plain_text_for_block_key_value_attr_value,
             // link_shorthand_span,
             // footnote_shorthand_span,
             // code_span,
@@ -88,7 +88,7 @@ mod test {
     // use rstest::rstest;
 
     #[test]
-    fn section_attribute_line_basic_test() {
+    fn block_attribute_line_basic_test() {
         let config = &Config::default();
         let parent = &BlockParent::Basic;
         let debug = false;

@@ -54,7 +54,7 @@ mod test {
     #[case("  leading_spaces_are_okay")]
     #[case("trailing_spaces_are_okay   ")]
     #[case("these_characters_are_okay:!@#$%^&*()[]<>|-")]
-    fn raw_section_flag_valid_tests(#[case] left: &str) {
+    fn raw_block_flag_valid_tests(#[case] left: &str) {
         let config = &Config::default();
         let parent = &BlockParent::Basic;
         let debug = false;
@@ -72,7 +72,7 @@ mod test {
     #[case("bravo: charlie")]
     #[case("delta: ")]
     #[case("no_escaped_\\allowed")]
-    fn raw_section_flag_invalid_tests(#[case] left: &str) {
+    fn raw_block_flag_invalid_tests(#[case] left: &str) {
         let config = &Config::default();
         let parent = &BlockParent::Basic;
         let debug = false;

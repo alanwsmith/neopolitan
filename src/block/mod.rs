@@ -21,7 +21,7 @@ pub enum Block {
         attrs: BTreeMap<String, Vec<Span>>,
         bound: BlockBound,
         children: Vec<Block>,
-        end_section: Option<Box<Block>>,
+        end_block: Option<Box<Block>>,
         flags: Vec<String>,
         kind: String,
     },
