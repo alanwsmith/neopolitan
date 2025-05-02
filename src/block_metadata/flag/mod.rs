@@ -1,4 +1,4 @@
-use crate::block_metadata::RawSectionMetaData;
+use crate::block_metadata::RawBlockMetaData;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use nom::IResult;
@@ -15,12 +15,12 @@ use nom::combinator::not;
 use nom::multi::many1;
 use nom::sequence::pair;
 
-pub fn raw_section_flag<'a>(
+pub fn raw_block_flag<'a>(
     source: &'a str,
     _config: &'a Config,
     _parent: &'a BlockParent,
     _debug: bool,
-) -> IResult<&'a str, RawSectionMetaData> {
+) -> IResult<&'a str, RawBlockMetaData> {
     let (source, _) = tag("--").parse(source)?;
     let (source, _) = space1.parse(source)?;
     let (source, parts) = many1(alt((
@@ -30,7 +30,7 @@ pub fn raw_section_flag<'a>(
     .parse(source)?;
     let (source, _) =
         alt((pair(space0, line_ending), pair(space0, eof))).parse(source)?;
-    let flag = RawSectionMetaData::Flag {
+    let flag = RawBlockMetaData::Flag {
         string: parts
             .iter()
             .map(|part| part.to_string())
@@ -59,10 +59,10 @@ mod test {
         let parent = &BlockParent::Basic;
         let debug = false;
         let source = format!("-- {}", left);
-        let left = RawSectionMetaData::Flag {
+        let left = RawBlockMetaData::Flag {
             string: left.trim().to_string(),
         };
-        let right = raw_section_flag(&source, config, parent, debug).unwrap().1;
+        let right = raw_block_flag(&source, config, parent, debug).unwrap().1;
         assert_eq!(left, right);
     }
 
@@ -77,7 +77,7 @@ mod test {
         let parent = &BlockParent::Basic;
         let debug = false;
         let source = format!("-- {}", left);
-        let right = raw_section_flag(&source, config, parent, debug);
+        let right = raw_block_flag(&source, config, parent, debug);
         if right.is_err() {
             assert!(true)
         } else {

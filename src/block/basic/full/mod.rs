@@ -2,7 +2,7 @@ use crate::block::Block;
 use crate::block::paragraph::paragraph_block;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
-use crate::block_metadata::section_metadata;
+use crate::block_metadata::block_metadata;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
@@ -25,7 +25,7 @@ pub fn basic_section_full<'a>(
         terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
             .parse(source)?;
     let (source, (attrs, flags)) =
-        section_metadata(source, config, parent, debug)?;
+        block_metadata(source, config, parent, debug)?;
     let (source, _) = multispace0.parse(source)?;
     let (source, children) =
         many0(|src| paragraph_block(src, config, &BlockParent::Basic, debug))

@@ -1,4 +1,4 @@
-use crate::block_metadata::RawSectionMetaData;
+use crate::block_metadata::RawBlockMetaData;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span_metadata::parsers::span_of_plain_text_for_section_key_value_attr_value::span_of_plain_text_for_section_key_value_attr_value;
@@ -44,7 +44,7 @@ pub fn raw_block_attr<'a>(
     _config: &'a Config,
     _parent: &'a BlockParent,
     _debug: bool,
-) -> IResult<&'a str, RawSectionMetaData> {
+) -> IResult<&'a str, RawBlockMetaData> {
     let (source, _) = tag("--").parse(source)?;
     let (source, _) = space1.parse(source)?;
 
@@ -73,7 +73,7 @@ pub fn raw_block_attr<'a>(
     .parse(source)?;
     Ok((
         source,
-        RawSectionMetaData::Attribtue {
+        RawBlockMetaData::Attribtue {
             key: key_parts.join("").to_string(),
             spans,
         },
@@ -93,7 +93,7 @@ mod test {
         let parent = &BlockParent::Basic;
         let debug = false;
         let source = "-- alfa: bravo";
-        let left = RawSectionMetaData::Attribtue {
+        let left = RawBlockMetaData::Attribtue {
             key: "alfa".to_string(),
             spans: vec![Span::Text {
                 content: "bravo".to_string(),
