@@ -1,10 +1,7 @@
 #![allow(unused)]
-pub mod span_attr_key_token_tests;
-
 use crate::span::code_span::code_span;
 use crate::span::span;
 use crate::span::text_in_span_attr::text_in_span_attr;
-// use crate::span::text_in_span_attr::text_in_span_attr;
 use crate::span_metadata::RawSpanMetadata;
 use crate::span_strings::not_span_close::not_span_close;
 use crate::span_strings::single_character::single_character;

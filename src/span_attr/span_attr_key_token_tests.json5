@@ -1,7 +1,0 @@
-{
-  extension: 'rs',
-  data: {
-    close_tokens: ['>']
-
-  }
-}
