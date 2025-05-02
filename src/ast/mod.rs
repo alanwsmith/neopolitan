@@ -83,7 +83,7 @@ mod test {
     }
 
     #[test]
-    fn solo_span_test() {
+    fn span_test() {
         let config = Config::default();
         let source = include_str!("test-data/span-test.neo");
         match Ast::new_from_source(source, &config, false) {
