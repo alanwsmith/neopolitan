@@ -1,3 +1,4 @@
+// DEPRECATED: Remove the next time you see this
 use crate::span::Span;
 use crate::span_strings::plain_text_any_colons::plain_text_any_colons;
 use crate::span_strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;

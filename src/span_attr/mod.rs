@@ -1,7 +1,10 @@
 #![allow(unused)]
 pub mod span_attr_key_token_tests;
 
+use crate::span::code_span::code_span;
+use crate::span::span;
 use crate::span::text_in_span_attr::text_in_span_attr;
+// use crate::span::text_in_span_attr::text_in_span_attr;
 use crate::span_metadata::RawSpanMetadata;
 use crate::span_strings::not_span_close::not_span_close;
 use crate::span_strings::single_character::single_character;
@@ -75,17 +78,8 @@ pub fn span_attr<'a>(
         (tag("|"), space0, opt(line_ending), space0).parse(source)?;
     let (source, key) =
         (|src| span_attr_key_token(src, character)).parse(source)?;
-
-    //let (source, key_snippets) = many1(alt((
-    //    is_not(": \r\n\t\\|~`!@#$%^&*()<>[]{}"),
-    //    //single_character,
-    //    //|src| not_character(src, character),
-    //    |src| not_span_close(src, character),
-    //)))
-    //.parse(source)?;
-    //let (source, _) = tag(":").parse(source)?;
-    //let (source, _) = (space0, opt(line_ending), space0).parse(source)?;
-    let (source, spans) = many1(alt((text_in_span_attr,))).parse(source)?;
+    let (source, spans) =
+        many1(alt((text_in_span_attr, code_span))).parse(source)?;
     Ok((source, RawSpanMetadata::Attr { key, spans }))
 }
 
@@ -138,6 +132,8 @@ pub fn span_attr_key_token_alternate_close_characters<'a>(
 
 #[cfg(test)]
 mod test {
+    use std::collections::BTreeMap;
+
     use super::*;
     use crate::span::Span;
     use pretty_assertions::assert_eq;
@@ -165,7 +161,7 @@ mod test {
     #[case("alfa: \n bravo``", "`", "alfa", "bravo``")]
     #[case("alfa🕺: bravo``", "`", "alfa🕺", "bravo``")]
     #[case("alfa`bravo: charlie", "`", "alfa`bravo", "charlie")]
-    fn solo_span_attr_key_token_valid_tests(
+    fn span_attr_key_token_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
         #[case] left: String,
@@ -207,7 +203,7 @@ mod test {
     #[case("alfa): bravo", ")", "alfa)", "bravo")]
     #[case("alfa)bravo: charlie", ")", "alfa)bravo", "charlie")]
     #[case("alfa))bravo: charlie", "`", "alfa))bravo", "charlie")]
-    fn solo_span_attr_key_token_generated_valid_tests(
+    fn span_attr_key_token_generated_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
         #[case] left: String,
@@ -284,14 +280,17 @@ mod test {
     }
 
     #[test]
-    #[ignore]
     fn span_attr_string_closing_test() {
-        let source = "|alfa ``bravo``>> charlie";
+        let source = "|alfa: ``bravo``>> charlie";
         let character = ">";
         let left = RawSpanMetadata::Attr {
-            key: "delta".to_string(),
-            spans: vec![Span::Text {
-                content: "sierra yankee ".to_string(),
+            key: "alfa".to_string(),
+            spans: vec![Span::Code {
+                attrs: BTreeMap::new(),
+                flags: vec![],
+                spans: vec![Span::Text {
+                    content: "bravo".to_string(),
+                }],
             }],
         };
         let remainder = ">> charlie";
@@ -299,6 +298,10 @@ mod test {
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
+
+    // TODO: Don't try to nest sections with the
+    // same tokens.
+    //
 
     //
 }

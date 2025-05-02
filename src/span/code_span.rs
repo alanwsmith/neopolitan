@@ -88,7 +88,7 @@ mod test {
     }
 
     #[test]
-    fn code_span_newline_test() {
+    fn solo_code_span_newline_test() {
         let source = "``\nalfa\n|\nbravo:\ncharlie\n|\ndelta\n`` ping";
         let mut attrs = BTreeMap::new();
         attrs.insert(
