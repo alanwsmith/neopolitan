@@ -1,7 +1,7 @@
 use crate::block::Block;
 use crate::block::SectionParent;
 use crate::block::paragraph::paragraph_block;
-use crate::block_metadata::bound::SectionBound;
+use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::section_metadata;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -33,7 +33,7 @@ pub fn end_section<'a>(
         source,
         Block::End {
             attrs,
-            bound: SectionBound::Full,
+            bound: BlockBound::Full,
             children,
             flags,
             kind: format!("{}-end", kind),
@@ -58,7 +58,7 @@ bravo foxtrot tango"#;
         let kind = "some-end-section";
         let left = Block::End {
             attrs: BTreeMap::new(),
-            bound: SectionBound::Full,
+            bound: BlockBound::Full,
             children: vec![Block::Paragraph {
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),

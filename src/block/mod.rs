@@ -3,7 +3,7 @@ pub mod end;
 pub mod paragraph;
 
 use crate::block::basic::basic_section;
-use crate::block_metadata::bound::SectionBound;
+use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::SectionParent;
 use crate::config::Config;
 use crate::span::Span;
@@ -19,7 +19,7 @@ use std::collections::BTreeMap;
 pub enum Block {
     Basic {
         attrs: BTreeMap<String, Vec<Span>>,
-        bound: SectionBound,
+        bound: BlockBound,
         children: Vec<Block>,
         end_section: Option<Box<Block>>,
         flags: Vec<String>,
@@ -32,7 +32,7 @@ pub enum Block {
     CSV,
     End {
         attrs: BTreeMap<String, Vec<Span>>,
-        bound: SectionBound,
+        bound: BlockBound,
         children: Vec<Block>,
         flags: Vec<String>,
         kind: String,

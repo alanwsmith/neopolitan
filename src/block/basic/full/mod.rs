@@ -1,6 +1,6 @@
 use crate::block::Block;
 use crate::block::paragraph::paragraph_block;
-use crate::block_metadata::bound::SectionBound;
+use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::SectionParent;
 use crate::block_metadata::section_metadata;
 use crate::config::Config;
@@ -34,7 +34,7 @@ pub fn basic_section_full<'a>(
         source,
         Block::Basic {
             attrs,
-            bound: SectionBound::Full,
+            bound: BlockBound::Full,
             children,
             end_section: None,
             flags,
@@ -60,7 +60,7 @@ bravo foxtrot tango"#;
         let debug = false;
         let left = Block::Basic {
             attrs: BTreeMap::new(),
-            bound: SectionBound::Full,
+            bound: BlockBound::Full,
             children: vec![Block::Paragraph {
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),

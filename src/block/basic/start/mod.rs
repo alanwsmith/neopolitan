@@ -1,7 +1,7 @@
 use crate::block::Block;
 use crate::block::end::end_section;
 use crate::block::paragraph::paragraph_block;
-use crate::block_metadata::bound::SectionBound;
+use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::SectionParent;
 use crate::block_metadata::section_metadata;
 use crate::config::Config;
@@ -37,7 +37,7 @@ pub fn basic_section_start<'a>(
         source,
         Block::Basic {
             attrs,
-            bound: SectionBound::Start,
+            bound: BlockBound::Start,
             children,
             end_section: Some(Box::new(end_section)),
             flags,
@@ -65,7 +65,7 @@ delta zulu alfa
         let debug = false;
         let left = Block::Basic {
             attrs: BTreeMap::new(),
-            bound: SectionBound::Start,
+            bound: BlockBound::Start,
             children: vec![Block::Paragraph {
                 spans: vec![Span::Text {
                     content: "delta zulu alfa".to_string(),
@@ -73,7 +73,7 @@ delta zulu alfa
             }],
             end_section: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
-                bound: SectionBound::Full,
+                bound: BlockBound::Full,
                 children: vec![],
                 flags: vec![],
                 kind: "aside-end".to_string(),
