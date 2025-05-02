@@ -21,44 +21,483 @@
   <header>
     <a href="/">Home</a>
   </header>
-  <main class="flow"><div class="tmp-under-construction">
-<img 
-  src="/images/under-construction-1.gif" 
-  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-  <div>
-    <p>This page is currently under construction.</p>
-    <p>
-      Depending on when you see it, it could be anywhere from a complete draft to nothing but
-      a bunch of scratch notes and placeholders. Follow me on
-<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
-or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
-    </p>
-  </div>
-<img 
-  src="/images/under-construction-1.gif" 
-  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-</div><h1 class="title">Specifications
-
-</h1><p>[] Three levels of conforming: 1 properly produce the AST, 2 properly produce core HTML, 3 properly implement standard section and span outputs.
-
-</p><p>[] Make <code>neb-css</code> sections part of the level 3 requirement. Should not output to page. Only to be used in the RSS feeds.
-
-</p><p>[] Add other Neb stuff for level 3.
-
-</p><p>[] Make sure <code>link</code> shorthand moves <code>target</code> attr into the output as part of the spec
-
-</p><p>[] Go through required flags (e.g. <code>hidden</code>, etc.)
-
-</p><p>[] Required sections for the lower level: warning, note
-
-</p><hr />
-<h3>Under Construction</h3>
-<ul class="flow"><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></main>
+  <main class="flow">
+    <h1>Rendering Error</h1>
+    <p>error in "pages/default.neoj"</p>
+    <p>File: pages/template-picker.neoj</p>
+    <p>Line: 19</p>
+    <h2>Details</h2>
+    <ul>
+    
+        <li>template not found: tried to include non-existing template "blocks/text-block/default.neoj" (in sections/basic/default.neoj:3)
+-------------------------------- default.neoj ---------------------------------
+   1 | [!- for block in section.children -!]
+   2 |   [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
+   3 >   <p>[!- include templates -!]</p>
+     i          ^^^^^^^^^^^^^^^^^ template not found
+   4 | [!- endfor -!]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Referenced variables: {
+    block: {
+        "category": "text-block",
+        "spans": [
+            {
+                "category": "text",
+                "content": "[] Three levels of conforming: 1 properly produce the AST, 2 properly produce core HTML, 3 properly implement standard section and span outputs.",
+            },
+        ],
+    },
+    loop: <loop 0/6>,
+    section: {
+        "attrs": {},
+        "bound": "Full",
+        "category": "basic",
+        "children": [
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Three levels of conforming: 1 properly produce the AST, 2 properly produce core HTML, 3 properly implement standard section and span outputs.",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Make ",
+                    },
+                    {
+                        "attrs": {},
+                        "category": "code",
+                        "flags": [],
+                        "spans": [
+                            {
+                                "category": "text",
+                                "content": "neb-css",
+                            },
+                        ],
+                    },
+                    {
+                        "category": "text",
+                        "content": " sections part of the level 3 requirement. Should not output to page. Only to be used in the RSS feeds.",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Add other Neb stuff for level 3.",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Make sure ",
+                    },
+                    {
+                        "attrs": {},
+                        "category": "code",
+                        "flags": [],
+                        "spans": [
+                            {
+                                "category": "text",
+                                "content": "link",
+                            },
+                        ],
+                    },
+                    {
+                        "category": "text",
+                        "content": " shorthand moves ",
+                    },
+                    {
+                        "attrs": {},
+                        "category": "code",
+                        "flags": [],
+                        "spans": [
+                            {
+                                "category": "text",
+                                "content": "target",
+                            },
+                        ],
+                    },
+                    {
+                        "category": "text",
+                        "content": " attr into the output as part of the spec",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Go through required flags (e.g. ",
+                    },
+                    {
+                        "attrs": {},
+                        "category": "code",
+                        "flags": [],
+                        "spans": [
+                            {
+                                "category": "text",
+                                "content": "hidden",
+                            },
+                        ],
+                    },
+                    {
+                        "category": "text",
+                        "content": ", etc.)",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Required sections for the lower level: warning, note",
+                    },
+                ],
+            },
+        ],
+        "end_section": none,
+        "flags": [],
+        "kind": "todo",
+    },
+    templates: [
+        "blocks/text-block/default.neoj",
+    ],
+}
+-------------------------------------------------------------------------------</li>
+    
+        <li>could not render include: error in "sections/basic/default.neoj" (in pages/default.neoj:32)
+-------------------------------- default.neoj ---------------------------------
+  29 |     "sections/" + section.kind + "/default.neoj",
+  30 |     "sections/" + section.category + "/default.neoj",
+  31 |   ] -!]
+  32 >   [!- include templates -!]
+     i       ^^^^^^^^^^^^^^^^^ could not render include
+  33 | [!- endfor -!]
+  34 | [@- macros.page_links(site) -@]
+  35 | [!- endblock -!]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Referenced variables: {
+    loop: <loop 0/6>,
+    section: {
+        "attrs": {},
+        "bound": "Full",
+        "category": "basic",
+        "children": [
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Three levels of conforming: 1 properly produce the AST, 2 properly produce core HTML, 3 properly implement standard section and span outputs.",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Make ",
+                    },
+                    {
+                        "attrs": {},
+                        "category": "code",
+                        "flags": [],
+                        "spans": [
+                            {
+                                "category": "text",
+                                "content": "neb-css",
+                            },
+                        ],
+                    },
+                    {
+                        "category": "text",
+                        "content": " sections part of the level 3 requirement. Should not output to page. Only to be used in the RSS feeds.",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Add other Neb stuff for level 3.",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Make sure ",
+                    },
+                    {
+                        "attrs": {},
+                        "category": "code",
+                        "flags": [],
+                        "spans": [
+                            {
+                                "category": "text",
+                                "content": "link",
+                            },
+                        ],
+                    },
+                    {
+                        "category": "text",
+                        "content": " shorthand moves ",
+                    },
+                    {
+                        "attrs": {},
+                        "category": "code",
+                        "flags": [],
+                        "spans": [
+                            {
+                                "category": "text",
+                                "content": "target",
+                            },
+                        ],
+                    },
+                    {
+                        "category": "text",
+                        "content": " attr into the output as part of the spec",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Go through required flags (e.g. ",
+                    },
+                    {
+                        "attrs": {},
+                        "category": "code",
+                        "flags": [],
+                        "spans": [
+                            {
+                                "category": "text",
+                                "content": "hidden",
+                            },
+                        ],
+                    },
+                    {
+                        "category": "text",
+                        "content": ", etc.)",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[] Required sections for the lower level: warning, note",
+                    },
+                ],
+            },
+        ],
+        "end_section": none,
+        "flags": [],
+        "kind": "todo",
+    },
+    sections: [
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Specifications",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "title",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "[] Three levels of conforming: 1 properly produce the AST, 2 properly produce core HTML, 3 properly implement standard section and span outputs.",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "[] Make ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text",
+                                    "content": "neb-css",
+                                },
+                            ],
+                        },
+                        {
+                            "category": "text",
+                            "content": " sections part of the level 3 requirement. Should not output to page. Only to be used in the RSS feeds.",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "[] Add other Neb stuff for level 3.",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "[] Make sure ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text",
+                                    "content": "link",
+                                },
+                            ],
+                        },
+                        {
+                            "category": "text",
+                            "content": " shorthand moves ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text",
+                                    "content": "target",
+                                },
+                            ],
+                        },
+                        {
+                            "category": "text",
+                            "content": " attr into the output as part of the spec",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "[] Go through required flags (e.g. ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text",
+                                    "content": "hidden",
+                                },
+                            ],
+                        },
+                        {
+                            "category": "text",
+                            "content": ", etc.)",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "[] Required sections for the lower level: warning, note",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "todo",
+        },
+        {
+            "attrs": {
+                "created": [
+                    {
+                        "category": "text",
+                        "content": "2025-04-28T08:46:10-04:00",
+                    },
+                ],
+                "updated": [
+                    {
+                        "category": "text",
+                        "content": "2025-04-28T08:46:10-04:00",
+                    },
+                ],
+            },
+            "bound": "Full",
+            "category": "basic",
+            "children": [],
+            "end_section": none,
+            "flags": [],
+            "kind": "metadata",
+        },
+    ],
+    templates: [
+        "blocks/text-block/default.neoj",
+    ],
+}
+-------------------------------------------------------------------------------</li>
+    
+    </ul>
+</main>
   <footer>
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
     <a href="https://links.alanwsmith.com/">other projects</a> ~
     <a href="https://socials.alanwsmith.com/">socials</a>
   </footer>
+
+
+
 </body>
 </html>

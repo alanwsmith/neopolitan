@@ -27,6 +27,7 @@ pub enum Section {
         flags: Vec<String>,
         kind: String,
     },
+    #[serde(rename = "text-block")]
     Block {
         spans: Vec<Span>,
     },

@@ -32,5 +32,14 @@
     <a href="https://links.alanwsmith.com/">other projects</a> ~
     <a href="https://socials.alanwsmith.com/">socials</a>
   </footer>
+
+[#
+<div class="wrapper-medium padding-top-large">
+<pre>
+[@ sections|tojson(true) @]
+</pre>
+</div>
+#]
+
 </body>
 </html>

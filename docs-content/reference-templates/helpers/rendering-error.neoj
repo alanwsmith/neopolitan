@@ -5,10 +5,15 @@
 
 [! block main !]
     <h1>Rendering Error</h1>
+    <p>[@ message @]</p>
     <p>File: [@ name @]</p>
-    <p>Details: [@ detail @]</p>
     <p>Line: [@ line @]</p>
-    <pre>[@ dbg @]</pre>
+    <h2>Details</h2>
+    <ul>
+    [! for detail in details !]
+        <li>[@ detail @]</li>
+    [! endfor !]
+    </ul>
 [! endblock !]
 
 

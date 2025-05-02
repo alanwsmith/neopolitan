@@ -21,82 +21,614 @@
   <header>
     <a href="/">Home</a>
   </header>
-  <main class="flow"><div class="tmp-under-construction">
-<img 
-  src="/images/under-construction-1.gif" 
-  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-  <div>
-    <p>This page is currently under construction.</p>
-    <p>
-      Depending on when you see it, it could be anywhere from a complete draft to nothing but
-      a bunch of scratch notes and placeholders. Follow me on
-<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
-or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
-    </p>
-  </div>
-<img 
-  src="/images/under-construction-1.gif" 
-  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-</div><h1 class="title">Shorthands
-
-</h1><h2>Introduction
-
-</h2><p>Shorthands offer a way to enhance content in Neopolitan files<sup>1</sup>.
-
-</p><p>@ = wraps in span tag to make it quicker to add attributes and flags.
-
-</p><p>` = code
-
-</p><p>* = strong
-
-</p><p>_ = emphasis
-
-</p><p>^ = footnote
-
-</p><p>~ = delete
-
-</p><p>( and ) = insert
-
-</p><p>[ and ] = link
-
-</p><p>{ and } = image
-
-</p><h2>TODO
-
-</h2><p>Note that <code>class:</code> and <code>id:</code> are reserved attributes that must go into the output
-
-</p><p>Same with <code>alt</code>
-
-</p><p>Same with <code>data-</code>
-
-</p><p>Same with <code>aria-</code>
-
-</p><p>TBD on others.
-
-</p><h2>Tags
-
-</h2><p>For example:
-
-</p><p>TKTKTK
-
-</p><h2>Footnotes
-
-</h2>
-
-<div class="flow">
-
-  
-    <ol> <li> The other way is <a href="/documentation/tags.html">Tags</a> </li> </ol>
-  
-
-</div><hr />
-<h3>Under Construction</h3>
-<ul class="flow"><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></main>
+  <main class="flow">
+    <h1>Rendering Error</h1>
+    <p>error in "pages/default.neoj"</p>
+    <p>File: pages/template-picker.neoj</p>
+    <p>Line: 19</p>
+    <h2>Details</h2>
+    <ul>
+    
+        <li>template not found: tried to include non-existing template "blocks/text-block/default.neoj" (in sections/basic/default.neoj:3)
+-------------------------------- default.neoj ---------------------------------
+   1 | [!- for block in section.children -!]
+   2 |   [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
+   3 >   <p>[!- include templates -!]</p>
+     i          ^^^^^^^^^^^^^^^^^ template not found
+   4 | [!- endfor -!]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Referenced variables: {
+    block: {
+        "category": "text-block",
+        "spans": [
+            {
+                "category": "text",
+                "content": "@ = wraps in span tag to make it quicker to add attributes and flags.",
+            },
+        ],
+    },
+    loop: <loop 0/9>,
+    section: {
+        "attrs": {},
+        "bound": "Full",
+        "category": "basic",
+        "children": [
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "@ = wraps in span tag to make it quicker to add attributes and flags.",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "` = code",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "* = strong",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "_ = emphasis",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "^ = footnote",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "~ = delete",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "( and ) = insert",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[ and ] = link",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "{ and } = image",
+                    },
+                ],
+            },
+        ],
+        "end_section": none,
+        "flags": [],
+        "kind": "code",
+    },
+    templates: [
+        "blocks/text-block/default.neoj",
+    ],
+}
+-------------------------------------------------------------------------------</li>
+    
+        <li>could not render include: error in "sections/basic/default.neoj" (in pages/default.neoj:32)
+-------------------------------- default.neoj ---------------------------------
+  29 |     "sections/" + section.kind + "/default.neoj",
+  30 |     "sections/" + section.category + "/default.neoj",
+  31 |   ] -!]
+  32 >   [!- include templates -!]
+     i       ^^^^^^^^^^^^^^^^^ could not render include
+  33 | [!- endfor -!]
+  34 | [@- macros.page_links(site) -@]
+  35 | [!- endblock -!]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Referenced variables: {
+    loop: <loop 0/9>,
+    section: {
+        "attrs": {},
+        "bound": "Full",
+        "category": "basic",
+        "children": [
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "@ = wraps in span tag to make it quicker to add attributes and flags.",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "` = code",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "* = strong",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "_ = emphasis",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "^ = footnote",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "~ = delete",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "( and ) = insert",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "[ and ] = link",
+                    },
+                ],
+            },
+            {
+                "category": "text-block",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "{ and } = image",
+                    },
+                ],
+            },
+        ],
+        "end_section": none,
+        "flags": [],
+        "kind": "code",
+    },
+    sections: [
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Shorthands",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "title",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Introduction",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Shorthands offer a way to enhance content in Neopolitan files<sup>1</sup>.",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "@ = wraps in span tag to make it quicker to add attributes and flags.",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "` = code",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "* = strong",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "_ = emphasis",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "^ = footnote",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "~ = delete",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "( and ) = insert",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "[ and ] = link",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "{ and } = image",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "code",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "TODO",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Note that ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text",
+                                    "content": "class:",
+                                },
+                            ],
+                        },
+                        {
+                            "category": "text",
+                            "content": " and ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text",
+                                    "content": "id:",
+                                },
+                            ],
+                        },
+                        {
+                            "category": "text",
+                            "content": " are reserved attributes that must go into the output",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Same with ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text",
+                                    "content": "alt",
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Same with ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text",
+                                    "content": "data-",
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Same with ",
+                        },
+                        {
+                            "attrs": {},
+                            "category": "code",
+                            "flags": [],
+                            "spans": [
+                                {
+                                    "category": "text",
+                                    "content": "aria-",
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "TBD on others.",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Tags",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "For example:",
+                        },
+                    ],
+                },
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "TKTKTK",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Footnotes",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "text-block",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "<ol> <li> The other way is <a href=\"/documentation/tags.html\">Tags</a> </li> </ol>",
+                        },
+                    ],
+                },
+            ],
+            "end_section": none,
+            "flags": [],
+            "kind": "html",
+        },
+        {
+            "attrs": {
+                "created": [
+                    {
+                        "category": "text",
+                        "content": "2025-04-27T10:22:14-04:00",
+                    },
+                ],
+                "updated": [
+                    {
+                        "category": "text",
+                        "content": "2025-04-27T10:22:14-04:00",
+                    },
+                ],
+            },
+            "bound": "Full",
+            "category": "basic",
+            "children": [],
+            "end_section": none,
+            "flags": [],
+            "kind": "metadata",
+        },
+    ],
+    templates: [
+        "blocks/text-block/default.neoj",
+    ],
+}
+-------------------------------------------------------------------------------</li>
+    
+    </ul>
+</main>
   <footer>
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
     <a href="https://links.alanwsmith.com/">other projects</a> ~
     <a href="https://socials.alanwsmith.com/">socials</a>
   </footer>
+
+
+
 </body>
 </html>

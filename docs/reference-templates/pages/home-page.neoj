@@ -1,6 +1,11 @@
 [!- extends "wrappers/default.neoj" -!]
 [!- import "macros/loader.neoj" as macros -!] 
 
+
+[# TODO: post/home-page.neoj #]
+
+
+
 [!- block main -!]
 [!- for section in sections -!]
   [!- set templates = [

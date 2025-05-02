@@ -1,6 +1,9 @@
 [!- extends "wrappers/default.neoj" -!]
 [!- import "macros/loader.neoj" as macros -!] 
 
+[# TODO: Move to post/default.neoj #]
+
+
 [!- block main -!]
 
 <div class="tmp-under-construction">
