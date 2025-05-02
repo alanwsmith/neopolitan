@@ -1,5 +1,5 @@
 use crate::block::Block;
-use crate::block::end::end_section;
+use crate::block::end::end_block;
 use crate::block::paragraph::paragraph_block;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
@@ -15,7 +15,7 @@ use nom::sequence::pair;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
-pub fn basic_section_start<'a>(
+pub fn basic_block_start<'a>(
     source: &'a str,
     config: &'a Config,
     parent: &'a BlockParent,
@@ -32,7 +32,7 @@ pub fn basic_section_start<'a>(
         many0(|src| paragraph_block(src, config, &BlockParent::Basic, debug))
             .parse(source)?;
     let (source, end_section) =
-        (|src| end_section(src, config, parent, kind)).parse(source)?;
+        (|src| end_block(src, config, parent, kind)).parse(source)?;
     Ok((
         source,
         Block::Basic {
@@ -81,7 +81,7 @@ delta zulu alfa
             flags: vec![],
             kind: "aside".to_string(),
         };
-        let right = basic_section_start(source, &config, &parent, debug)
+        let right = basic_block_start(source, &config, &parent, debug)
             .unwrap()
             .1;
         assert_eq!(left, right);

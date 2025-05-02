@@ -14,7 +14,7 @@ use nom::sequence::pair;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
-pub fn basic_section_full<'a>(
+pub fn basic_block_full<'a>(
     source: &'a str,
     config: &'a Config,
     parent: &'a BlockParent,
@@ -70,7 +70,7 @@ bravo foxtrot tango"#;
             flags: vec![],
             kind: "title".to_string(),
         };
-        let right = basic_section_full(source, &config, &parent, debug)
+        let right = basic_block_full(source, &config, &parent, debug)
             .unwrap()
             .1;
         assert_eq!(left, right);

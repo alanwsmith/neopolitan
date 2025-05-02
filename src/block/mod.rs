@@ -2,7 +2,7 @@ pub mod basic;
 pub mod end;
 pub mod paragraph;
 
-use crate::block::basic::basic_section;
+use crate::block::basic::basic_block;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -63,7 +63,7 @@ pub fn block<'a>(
     debug: bool,
 ) -> IResult<&'a str, Block> {
     let (source, section) =
-        alt((|src| basic_section(src, config, parent, debug),))
+        alt((|src| basic_block(src, config, parent, debug),))
             .parse(source)?;
     Ok((source, section))
 }

@@ -13,7 +13,7 @@ use nom::character::complete::space1;
 use nom::multi::many0;
 use nom::sequence::terminated;
 
-pub fn end_section<'a>(
+pub fn end_block<'a>(
     source: &'a str,
     config: &'a Config,
     parent: &'a BlockParent,
@@ -67,7 +67,7 @@ bravo foxtrot tango"#;
             flags: vec![],
             kind: "some-end-section-end".to_string(),
         };
-        let right = end_section(source, &config, &parent, kind).unwrap().1;
+        let right = end_block(source, &config, &parent, kind).unwrap().1;
         assert_eq!(left, right);
     }
 }
