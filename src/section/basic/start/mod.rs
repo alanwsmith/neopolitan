@@ -1,6 +1,6 @@
 use crate::config::Config;
 use crate::section::Section;
-use crate::section::blocks::text::text_block;
+use crate::section::blocks::paragraph::paragraph_block;
 use crate::section::bound::SectionBound;
 use crate::section::end::end_section;
 use crate::section::metadata::section_metadata;
@@ -29,7 +29,7 @@ pub fn basic_section_start<'a>(
         section_metadata(source, config, parent, debug)?;
     let (source, _) = multispace0.parse(source)?;
     let (source, children) =
-        many0(|src| text_block(src, config, &SectionParent::Basic, debug))
+        many0(|src| paragraph_block(src, config, &SectionParent::Basic, debug))
             .parse(source)?;
     let (source, end_section) =
         (|src| end_section(src, config, parent, kind)).parse(source)?;

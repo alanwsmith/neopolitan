@@ -1,7 +1,7 @@
 use crate::config::Config;
 use crate::section::Section;
 use crate::section::SectionParent;
-use crate::section::blocks::text::text_block;
+use crate::section::blocks::paragraph::paragraph_block;
 use crate::section::bound::SectionBound;
 use crate::section::metadata::section_metadata;
 use crate::span::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -27,7 +27,7 @@ pub fn end_section<'a>(
         section_metadata(source, config, parent, false)?;
     let (source, _) = multispace0.parse(source)?;
     let (source, children) =
-        many0(|src| text_block(src, config, &SectionParent::Basic, false))
+        many0(|src| paragraph_block(src, config, &SectionParent::Basic, false))
             .parse(source)?;
     Ok((
         source,

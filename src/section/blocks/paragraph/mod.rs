@@ -9,7 +9,7 @@ use nom::combinator::not;
 use nom::multi::many1;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 
-pub fn text_block<'a>(
+pub fn paragraph_block<'a>(
     source: &'a str,
     _config: &'a Config,
     _parent: &'a SectionParent,
@@ -77,7 +77,7 @@ text with some lines"#;
                 content: "this is some text with some lines".to_string(),
             }],
         };
-        let right = text_block(source, &config, &parent, debug).unwrap().1;
+        let right = paragraph_block(source, &config, &parent, debug).unwrap().1;
         assert_eq!(left, right);
     }
 }
