@@ -10,6 +10,10 @@ use nom::multi::many1;
 use nom::sequence::terminated;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 
+// TODO: NOTE that tags and shorthands to split
+// to following lines before being closed. Show
+// some examples of that.
+
 // TODO: Figure out if you want to have the
 // ability to have other span types inside
 // the attrs. It would involved having to
