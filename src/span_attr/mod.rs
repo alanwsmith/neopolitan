@@ -1,26 +1,17 @@
-#![allow(unused)]
-use crate::shorthand_span::shorthand_span;
-use crate::span::span_in_block;
 use crate::span::span_in_span_attr::span_in_span_attr;
 use crate::span_metadata::RawSpanMetadata;
-use crate::span_strings::not_span_close::not_span_close;
-use crate::span_strings::single_character::single_character;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;
 use nom::bytes::complete::is_a;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
-use nom::character;
 use nom::character::complete::line_ending;
-use nom::character::complete::one_of;
 use nom::character::complete::space0;
 use nom::combinator::not;
 use nom::combinator::opt;
 use nom::combinator::peek;
-use nom::combinator::recognize;
 use nom::multi::many1;
-use nom::sequence::preceded;
 use nom::sequence::terminated;
 
 // TODO: Probably don't move everything
