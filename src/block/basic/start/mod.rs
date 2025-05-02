@@ -31,7 +31,7 @@ pub fn basic_block_start<'a>(
     let (source, children) =
         many0(|src| paragraph_block(src, config, &BlockParent::Basic, debug))
             .parse(source)?;
-    let (source, end_section) =
+    let (source, end_block) =
         (|src| end_block(src, config, parent, kind)).parse(source)?;
     Ok((
         source,
@@ -39,7 +39,7 @@ pub fn basic_block_start<'a>(
             attrs,
             bound: BlockBound::Start,
             children,
-            end_block: Some(Box::new(end_section)),
+            end_block: Some(Box::new(end_block)),
             flags,
             kind: kind.to_string(),
         },
@@ -54,7 +54,7 @@ mod test {
     use std::collections::BTreeMap;
 
     #[test]
-    fn solo_basic_section_start_test() {
+    fn solo_basic_block_start_test() {
         let source = r#"-- aside/
 
 delta zulu alfa

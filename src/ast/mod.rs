@@ -72,7 +72,6 @@ mod test {
         let source = include_str!("test-data/basic-example.neo");
         if let Ast::Ok { blocks } = Ast::new_from_source(source, &config, false)
         {
-            // println!("{}", serde_json::to_string_pretty(&sections).unwrap());
             assert_eq!(1, blocks.len());
         } else {
             assert!(false);

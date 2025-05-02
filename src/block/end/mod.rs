@@ -49,13 +49,13 @@ mod test {
     use std::collections::BTreeMap;
 
     #[test]
-    fn solo_end_section_basic_test() {
-        let source = r#"-- /some-end-section
+    fn solo_end_block_basic_test() {
+        let source = r#"-- /some-end-block
 
 bravo foxtrot tango"#;
         let config = Config::default();
         let parent = BlockParent::Page;
-        let kind = "some-end-section";
+        let kind = "some-end-block";
         let left = Block::End {
             attrs: BTreeMap::new(),
             bound: BlockBound::Full,
@@ -65,7 +65,7 @@ bravo foxtrot tango"#;
                 }],
             }],
             flags: vec![],
-            kind: "some-end-section-end".to_string(),
+            kind: "some-end-block-end".to_string(),
         };
         let right = end_block(source, &config, &parent, kind).unwrap().1;
         assert_eq!(left, right);
