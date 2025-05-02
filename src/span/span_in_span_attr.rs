@@ -1,17 +1,9 @@
 use crate::shorthand_span::shorthand_span;
 use crate::span::Span;
-use crate::span_strings::plain_text_any_colons::plain_text_any_colons;
-use crate::span_strings::plain_text_single_line_ending_as_space::plain_text_single_line_ending_as_space;
-use crate::span_strings::plain_text_space1_as_single_space::plain_text_space1_as_single_space;
-use crate::span_strings::plain_text_string_base::plain_text_string_base;
+use crate::spans::text_span_in_span_attr::text_span_in_span_attr;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;
-use nom::character::complete::line_ending;
-use nom::character::complete::multispace0;
-use nom::character::complete::space0;
-use nom::combinator::not;
-use nom::multi::many1;
 
 pub fn span_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, span) =
@@ -28,23 +20,23 @@ pub fn span_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
 // TODO: Figure out a way to chomp
 // just the last one.
 
-pub fn text_span_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
-    let (source, results) = many1(alt((
-        plain_text_string_base,
-        plain_text_space1_as_single_space,
-        plain_text_single_line_ending_as_space,
-        plain_text_any_colons,
-    )))
-    .parse(source)?;
-    let (source, _) = not((line_ending, space0, line_ending)).parse(source)?;
-    let (source, _) = multispace0(source)?;
-    Ok((
-        source,
-        Span::Text {
-            content: results.join("").to_string(),
-        },
-    ))
-}
+// pub fn text_span_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
+//     let (source, results) = many1(alt((
+//         plain_text_string_base,
+//         plain_text_space1_as_single_space,
+//         plain_text_single_line_ending_as_space,
+//         plain_text_any_colons,
+//     )))
+//     .parse(source)?;
+//     let (source, _) = not((line_ending, space0, line_ending)).parse(source)?;
+//     let (source, _) = multispace0(source)?;
+//     Ok((
+//         source,
+//         Span::Text {
+//             content: results.join("").to_string(),
+//         },
+//     ))
+// }
 
 #[cfg(test)]
 mod test {
