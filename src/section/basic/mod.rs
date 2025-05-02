@@ -3,16 +3,9 @@ pub mod full;
 use super::Section;
 use crate::config::Config;
 use crate::section::basic::full::basic_section_full;
-use crate::section::category::SectionCategory;
 use crate::section::parent::SectionParent;
-use crate::span::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
-use nom::bytes::complete::is_not;
-use nom::character::complete::space1;
-use nom::sequence::pair;
-use nom::sequence::terminated;
-use nom::{IResult, branch::alt, bytes::complete::tag, combinator::rest};
-use serde::{Deserialize, Serialize};
+use nom::{IResult, branch::alt};
 
 pub fn basic_section<'a>(
     source: &'a str,
@@ -21,7 +14,7 @@ pub fn basic_section<'a>(
     debug: bool,
 ) -> IResult<&'a str, Section> {
     let (source, section) =
-        alt((|src| basic_section_full(source, config, parent, debug),))
+        alt((|src| basic_section_full(src, config, parent, debug),))
             .parse(source)?;
     Ok((source, section))
 }

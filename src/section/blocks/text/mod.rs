@@ -1,26 +1,19 @@
 use crate::config::Config;
 use crate::section::Section;
-use crate::section::bound::SectionBound;
 use crate::section::parent::SectionParent;
 use crate::span::shorthand::shorthand_span;
-use crate::span::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use crate::span::text::in_block::text_span_in_block;
 use nom::Parser;
-use nom::bytes::complete::is_not;
 use nom::character::complete::multispace0;
-use nom::character::complete::space1;
 use nom::combinator::not;
 use nom::multi::many1;
-use nom::sequence::pair;
-use nom::sequence::terminated;
-use nom::{IResult, branch::alt, bytes::complete::tag, combinator::rest};
-use serde::{Deserialize, Serialize};
+use nom::{IResult, branch::alt, bytes::complete::tag};
 
 pub fn text_block<'a>(
     source: &'a str,
-    config: &'a Config,
-    parent: &'a SectionParent,
-    debug: bool,
+    _config: &'a Config,
+    _parent: &'a SectionParent,
+    _debug: bool,
 ) -> IResult<&'a str, Section> {
     let (source, _) = not(tag("--")).parse(source)?;
 
@@ -68,9 +61,8 @@ pub fn text_block<'a>(
 
 #[cfg(test)]
 mod test {
-    use crate::span::Span;
-
     use super::*;
+    use crate::span::Span;
     use pretty_assertions::assert_eq;
 
     #[test]

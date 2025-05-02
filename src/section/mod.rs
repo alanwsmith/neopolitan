@@ -3,6 +3,7 @@ pub mod basic;
 pub mod blocks;
 pub mod bound;
 pub mod category;
+pub mod end;
 pub mod flag;
 pub mod metadata;
 pub mod parent;
@@ -10,11 +11,10 @@ pub mod parent;
 use crate::config::Config;
 use crate::section::basic::basic_section;
 use crate::section::bound::SectionBound;
-use crate::section::category::SectionCategory;
 use crate::section::parent::SectionParent;
 use crate::span::Span;
 use nom::Parser;
-use nom::{IResult, branch::alt, bytes::complete::tag};
+use nom::{IResult, branch::alt};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
@@ -39,7 +39,14 @@ pub enum Section {
     CheckList,
     CSS,
     CSV,
-    End,
+    End {
+        attrs: BTreeMap<String, Vec<Span>>,
+        bound: SectionBound,
+        children: Vec<Section>,
+        end_section: Option<Box<Section>>,
+        flags: Vec<String>,
+        kind: String,
+    },
     Html,
     JavaScript,
     Json5,
@@ -66,4 +73,10 @@ pub fn section<'a>(
         alt((|src| basic_section(src, config, parent, debug),))
             .parse(source)?;
     Ok((source, section))
+}
+
+#[cfg(test)]
+mod test {
+    // Tests are currently done at the individual section levels
+    // or above in the AST
 }

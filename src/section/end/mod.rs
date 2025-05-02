@@ -1,38 +1,39 @@
+use std::collections::BTreeMap;
+
 use crate::config::Config;
 use crate::section::Section;
+use crate::section::SectionParent;
 use crate::section::blocks::text::text_block;
 use crate::section::bound::SectionBound;
 use crate::section::metadata::section_metadata;
-use crate::section::parent::SectionParent;
 use crate::span::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
+use nom::IResult;
 use nom::Parser;
-use nom::bytes::complete::is_not;
+use nom::bytes::complete::tag;
 use nom::character::complete::multispace0;
 use nom::character::complete::space1;
 use nom::multi::many0;
-use nom::sequence::pair;
 use nom::sequence::terminated;
-use nom::{IResult, bytes::complete::tag};
 
-pub fn basic_section_full<'a>(
+pub fn end_section<'a>(
     source: &'a str,
     config: &'a Config,
     parent: &'a SectionParent,
-    debug: bool,
+    kind: &str,
 ) -> IResult<&'a str, Section> {
-    let (source, _) = pair(tag("--"), space1).parse(source)?;
-    let (source, kind) =
-        terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
-            .parse(source)?;
+    dbg!(&source);
+    let (source, _) = (tag("--"), space1, tag("/")).parse(source)?;
+    let (source, _) =
+        terminated(tag(kind), space0_line_ending_or_eof).parse(source)?;
     let (source, (attrs, flags)) =
-        section_metadata(source, config, parent, debug)?;
+        section_metadata(source, config, parent, false)?;
     let (source, _) = multispace0.parse(source)?;
     let (source, children) =
-        many0(|src| text_block(src, config, &SectionParent::Basic, debug))
+        many0(|src| text_block(src, config, &SectionParent::Basic, false))
             .parse(source)?;
     Ok((
         source,
-        Section::Basic {
+        Section::End {
             attrs,
             bound: SectionBound::Full,
             children,
@@ -51,14 +52,14 @@ mod test {
     use std::collections::BTreeMap;
 
     #[test]
-    fn basic_test() {
-        let source = r#"-- title
+    fn solo_end_section_basic_test() {
+        let source = r#"-- /some-end-section
 
 bravo foxtrot tango"#;
         let config = Config::default();
         let parent = SectionParent::Page;
-        let debug = false;
-        let left = Section::Basic {
+        let kind = "some-end-section";
+        let left = Section::End {
             attrs: BTreeMap::new(),
             bound: SectionBound::Full,
             children: vec![Section::Block {
@@ -68,11 +69,9 @@ bravo foxtrot tango"#;
             }],
             end_section: None,
             flags: vec![],
-            kind: "title".to_string(),
+            kind: "some-end-section".to_string(),
         };
-        let right = basic_section_full(source, &config, &parent, debug)
-            .unwrap()
-            .1;
+        let right = end_section(source, &config, &parent, kind).unwrap().1;
         assert_eq!(left, right);
     }
 }
