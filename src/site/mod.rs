@@ -1,5 +1,6 @@
 use crate::ast::Ast;
 use crate::config::Config;
+use crate::minijinja_functions::highlight_syntax::highlight_span;
 use crate::section::Section;
 use anyhow::Result;
 use minijinja::syntax::SyntaxConfig;
@@ -90,6 +91,7 @@ impl Site {
                 .build()
                 .unwrap(),
         );
+        env.add_function("highlight_span", highlight_span);
         env.set_loader(path_loader("docs-content/reference-templates"));
         // env.set_loader(path_loader("docs-templates"));
         self.pages.iter().for_each(|(relative_path, sections)| {
