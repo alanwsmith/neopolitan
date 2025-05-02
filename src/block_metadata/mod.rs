@@ -3,7 +3,7 @@ pub mod bound;
 pub mod flag;
 pub mod parent;
 
-use crate::block_metadata::attr::raw_section_attr;
+use crate::block_metadata::attr::raw_block_attr;
 use crate::block_metadata::flag::raw_section_flag;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -28,7 +28,7 @@ pub fn section_metadata<'a>(
 ) -> IResult<&'a str, (BTreeMap<String, Vec<Span>>, Vec<String>)> {
     let (source, raw_metadata) = many0(alt((
         |src| raw_section_flag(src, config, parent, debug),
-        |src| raw_section_attr(src, config, parent, debug),
+        |src| raw_block_attr(src, config, parent, debug),
     )))
     .parse(source)?;
     let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();

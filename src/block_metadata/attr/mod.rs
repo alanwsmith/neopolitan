@@ -39,7 +39,7 @@ use nom::{IResult, branch::alt, bytes::complete::tag};
 // -- class: some classes
 //
 
-pub fn raw_section_attr<'a>(
+pub fn raw_block_attr<'a>(
     source: &'a str,
     _config: &'a Config,
     _parent: &'a BlockParent,
@@ -99,7 +99,7 @@ mod test {
                 content: "bravo".to_string(),
             }],
         };
-        let right = raw_section_attr(source, config, parent, debug).unwrap().1;
+        let right = raw_block_attr(source, config, parent, debug).unwrap().1;
         assert_eq!(left, right);
     }
 
