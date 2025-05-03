@@ -1,4 +1,4 @@
-use crate::ast::Ast;
+use crate::page_ast::PageAst;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
@@ -8,5 +8,5 @@ use std::path::PathBuf;
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Page {
     pub path: PathBuf,
-    pub data: Ast,
+    pub data: PageAst,
 }

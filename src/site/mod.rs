@@ -1,8 +1,8 @@
-use crate::ast::Ast;
 use crate::block::Block;
 use crate::config::Config;
 use crate::minijinja_functions::highlight_syntax::highlight_span;
 use crate::page::Page;
+use crate::page_ast::PageAst;
 use anyhow::Result;
 use minijinja::syntax::SyntaxConfig;
 use minijinja::{Environment, Value, context, path_loader};
@@ -54,10 +54,10 @@ impl Site {
                     .to_path_buf();
                 let source =
                     std::fs::read_to_string(&source_path).unwrap().to_string();
-                let ast = Ast::new_from_source(&source, &self.config);
+                let page_ast = PageAst::new_from_source(&source, &self.config);
                 let page = Page {
                     path: stripped_output_path.clone(),
-                    data: ast,
+                    data: page_ast,
                 };
                 self.pages.insert(stripped_output_path, page);
 

@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 #[serde(rename_all = "lowercase")]
-pub enum Ast {
+pub enum PageAst {
     Error {
         message: String,
         remainder: String,
@@ -24,20 +24,20 @@ pub enum Ast {
     },
 }
 
-impl<'a> Ast {
-    pub fn new_from_source(source: &'a str, config: &'a Config) -> Ast {
-        match Ast::parse_ast(source, config, &BlockParent::Page) {
+impl<'a> PageAst {
+    pub fn new_from_source(source: &'a str, config: &'a Config) -> PageAst {
+        match PageAst::parse_ast(source, config, &BlockParent::Page) {
             Ok(results) => {
                 if results.0 == "" {
-                    Ast::Ok { blocks: results.1 }
+                    PageAst::Ok { blocks: results.1 }
                 } else {
-                    Ast::Incomplete {
+                    PageAst::Incomplete {
                         parsed: results.1,
                         remainder: results.0.to_string(),
                     }
                 }
             }
-            Err(_e) => Ast::Error {
+            Err(_e) => PageAst::Error {
                 message: "TODO: Put message here".to_string(),
                 remainder: "TODO: Put remainder here".to_string(),
             },
@@ -60,15 +60,13 @@ impl<'a> Ast {
 mod test {
     use super::*;
     use include_dir::{Dir, include_dir};
-    use pretty_assertions::assert_eq;
     use serde_json;
-    use std::path::Path;
 
-    static TESTS_DIR: Dir<'_> = include_dir!("src/ast/tests");
+    static TESTS_DIR: Dir<'_> = include_dir!("src/page_ast/tests");
 
     #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
     pub struct TestObject {
-        data: Ast,
+        data: PageAst,
     }
 
     #[test]
@@ -83,15 +81,13 @@ mod test {
                         .map(|part| part.to_string())
                         .collect::<Vec<String>>();
                     let under_test = TestObject {
-                        data: Ast::new_from_source(&parts[0], &config),
+                        data: PageAst::new_from_source(&parts[0], &config),
                     };
                     let target: TestObject =
                         serde_json::from_str(&parts[1]).unwrap();
                     if under_test == target {
-                        println!("MATCHED");
                         assert!(true)
                     } else {
-                        println!("DID NOTE MATCH");
                         dbg!(&target);
                         dbg!(&under_test);
                         assert!(false)
