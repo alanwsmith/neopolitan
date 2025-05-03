@@ -1,6 +1,3 @@
-[!- for span in block.spans -!]
-  [!- set templates = ["spans/" + span.category + "/default.neoj"] -!]
-  [!- include templates -!]
-[!- endfor !]
-
-
+<p>[!- for span in block.spans -!]
+[!- include "spans/" + span.category + "/default.neoj" -!]
+[!- endfor -!]</p>
