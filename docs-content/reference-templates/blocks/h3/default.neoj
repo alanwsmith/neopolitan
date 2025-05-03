@@ -1,9 +1,7 @@
 [!- for block in block.children -!]
-  [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
   [!- if loop.first -!]
-    <h3>[!- include templates -!]</h3>
+    <h3>[!- include "blocks/" + block.category + "/no-paragraphs.neoj" -!]</h3>
   [!- else -!]
-    <p>[!- include templates -!]</p>
+    [!- include "blocks/" + block.category + "/default.neoj" -!]
   [!- endif -!]
 [!- endfor -!]
-
