@@ -1,8 +1,10 @@
 pub mod basic;
 pub mod end;
 pub mod paragraph;
+pub mod raw;
 
 use crate::block::basic::basic_block;
+use crate::block::raw::raw_block;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -55,7 +57,14 @@ pub enum Block {
     Paragraph {
         spans: Vec<Span>,
     },
-    Raw,
+    Raw {
+        attrs: BTreeMap<String, Vec<Span>>,
+        body: Option<String>,
+        bound: BlockBound,
+        end_block: Option<Box<Block>>,
+        flags: Vec<String>,
+        kind: String,
+    },
 }
 
 pub fn block<'a>(
@@ -63,8 +72,12 @@ pub fn block<'a>(
     config: &'a Config,
     parent: &'a BlockParent,
 ) -> IResult<&'a str, Block> {
-    let (source, section) =
-        alt((|src| basic_block(src, config, parent),)).parse(source)?;
+    let (source, section) = alt((
+        |src| raw_block(src, config, parent),
+        // Make sure to keep basic in the last slot
+        |src| basic_block(src, config, parent),
+    ))
+    .parse(source)?;
     Ok((source, section))
 }
 
