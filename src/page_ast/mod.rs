@@ -28,7 +28,7 @@ impl<'a> PageAst {
     pub fn new_from_source(source: &'a str, config: &'a Config) -> PageAst {
         match PageAst::parse_ast(source, config, &BlockParent::Page) {
             Ok(results) => {
-                if results.0 == "" {
+                if results.0.is_empty() {
                     PageAst::Ok { blocks: results.1 }
                 } else {
                     PageAst::Incomplete {

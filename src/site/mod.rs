@@ -33,7 +33,7 @@ impl Site {
         let input_files = get_files_in_dir(&self.input_root)?;
         input_files.iter().for_each(|source_path| {
             let mut output_path = replace_path_root(
-                &source_path,
+                source_path,
                 &self.input_root,
                 &self.output_root,
             )
@@ -53,7 +53,7 @@ impl Site {
                     .unwrap()
                     .to_path_buf();
                 let source =
-                    std::fs::read_to_string(&source_path).unwrap().to_string();
+                    std::fs::read_to_string(source_path).unwrap().to_string();
                 let page_ast = PageAst::new_from_source(&source, &self.config);
                 let page = Page {
                     path: stripped_output_path.clone(),
@@ -96,7 +96,7 @@ impl Site {
     }
 
     pub fn output_pages(&self) -> Result<()> {
-        let site = Value::from_serialize(&self);
+        let site = Value::from_serialize(self);
         let mut env = Environment::new();
         env.set_syntax(
             SyntaxConfig::builder()
@@ -115,7 +115,7 @@ impl Site {
             let page = Value::from_serialize(page_struct);
             match template.render(context!(site, page)) {
                 Ok(output) => {
-                    write_file_with_mkdir(&output_path, &output).unwrap()
+                    write_file_with_mkdir(output_path, &output).unwrap()
                 }
                 Err(e) => {
                     // Attempt to fall back to error output
@@ -136,7 +136,7 @@ impl Site {
                     let context = context!(site, details, line, message, name);
                     match output_error_template.render(context) {
                         Ok(error_output) => {
-                            write_file_with_mkdir(&output_path, &error_output)
+                            write_file_with_mkdir(output_path, &error_output)
                                 .unwrap()
                         }
                         // Panic on purpose if the error file
@@ -197,7 +197,7 @@ impl Site {
     }
 
     pub fn output_errors(&self) -> Result<()> {
-        let site = Value::from_serialize(&self.clone());
+        let site = Value::from_serialize(self.clone());
         let mut env = Environment::new();
         env.set_syntax(
             SyntaxConfig::builder()
@@ -217,13 +217,13 @@ impl Site {
                 let output = template
                     .render(context!(site, message, remainder))
                     .unwrap();
-                write_file_with_mkdir(&output_path, &output).unwrap();
+                write_file_with_mkdir(output_path, &output).unwrap();
             });
         Ok(())
     }
 
     pub fn output_incompletes(&self) -> Result<()> {
-        let site = Value::from_serialize(&self.clone());
+        let site = Value::from_serialize(self.clone());
         let mut env = Environment::new();
         env.set_syntax(
             SyntaxConfig::builder()
@@ -243,7 +243,7 @@ impl Site {
                 let output = template
                     .render(context!(site, sections => Value::from_serialize(sections), remainder))
                     .unwrap();
-                write_file_with_mkdir(&output_path, &output).unwrap();
+                write_file_with_mkdir(output_path, &output).unwrap();
             });
         Ok(())
     }

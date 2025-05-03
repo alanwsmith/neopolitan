@@ -15,7 +15,7 @@ use nom::multi::many1;
 use nom::sequence::pair;
 use nom::sequence::preceded;
 
-pub fn code_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
+pub fn code_span(source: &str) -> IResult<&str, Span> {
     let (source, spans) = preceded(
         pair(tag("``"), opt(plain_text_space1_as_single_space)),
         many1(alt((escaped_span, code_span_text))),
@@ -36,7 +36,7 @@ pub fn code_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
 // TODO: Move this to text_span_in_span and
 // pass character to it.
 
-pub fn code_span_text<'a>(source: &'a str) -> IResult<&'a str, Span> {
+pub fn code_span_text(source: &str) -> IResult<&str, Span> {
     let (source, parts) = many1(alt((
         plain_text_string_base,
         plain_text_space1_as_single_space,

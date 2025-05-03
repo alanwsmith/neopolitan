@@ -82,9 +82,9 @@ pub fn span_attr_key_token<'a>(
     Ok((source, key_snippets.join("").to_string()))
 }
 
-pub fn span_attr_key_token_single_character<'a>(
-    source: &'a str,
-) -> IResult<&'a str, &'a str> {
+pub fn span_attr_key_token_single_character(
+    source: &str,
+) -> IResult<&str, &str> {
     let (source, token_character) = alt((
         terminated(tag("~"), peek(not(tag("~")))),
         terminated(tag("`"), peek(not(tag("`")))),

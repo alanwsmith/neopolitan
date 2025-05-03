@@ -24,7 +24,7 @@ use nom::multi::many1;
 // TODO: Figure out a way to chomp
 // just the last one?
 
-pub fn text_span_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
+pub fn text_span_in_span_attr(source: &str) -> IResult<&str, Span> {
     let (source, results) = many1(alt((
         plain_text_string_base,
         plain_text_space1_as_single_space,

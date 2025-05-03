@@ -91,17 +91,14 @@ pub fn span_metadata<'a>(
         })
         .collect::<Vec<String>>();
     let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();
-    raw_metadata.iter().for_each(|data| match data {
-        RawSpanMetadata::Attr { key, spans } => match attrs.get_mut(key) {
-            Some(v) => {
-                spans.iter().for_each(|span| v.push(span.clone()));
-            }
-            None => {
-                attrs.insert(key.to_string(), spans.clone());
-            }
-        },
-        _ => (),
-    });
+    raw_metadata.iter().for_each(|data| if let RawSpanMetadata::Attr { key, spans } = data { match attrs.get_mut(key) {
+        Some(v) => {
+            spans.iter().for_each(|span| v.push(span.clone()));
+        }
+        None => {
+            attrs.insert(key.to_string(), spans.clone());
+        }
+    } });
     Ok((source, (flags, attrs)))
 }
 

@@ -10,7 +10,7 @@ use nom::Parser;
 use nom::branch::alt;
 use nom::multi::many1;
 
-pub fn text_span_in_block<'a>(source: &'a str) -> IResult<&'a str, Span> {
+pub fn text_span_in_block(source: &str) -> IResult<&str, Span> {
     let (source, results) = many1(alt((
         plain_text_string_base,
         plain_text_space1_as_single_space,

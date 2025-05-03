@@ -31,19 +31,16 @@ pub fn block_metadata<'a>(
     )))
     .parse(source)?;
     let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();
-    raw_metadata.iter().for_each(|metadata| match metadata {
-        RawBlockMetaData::Attribtue { key, spans } => {
-            match attrs.get_mut(key) {
-                Some(payload) => spans.iter().for_each(|span| {
-                    payload.push(span.clone());
-                }),
-                None => {
-                    attrs.insert(key.to_string(), spans.clone());
-                    ()
-                }
+    raw_metadata.iter().for_each(|metadata| if let RawBlockMetaData::Attribtue { key, spans } = metadata {
+        match attrs.get_mut(key) {
+            Some(payload) => spans.iter().for_each(|span| {
+                payload.push(span.clone());
+            }),
+            None => {
+                attrs.insert(key.to_string(), spans.clone());
+                
             }
         }
-        _ => (),
     });
 
     let flags = raw_metadata
