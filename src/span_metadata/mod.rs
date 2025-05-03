@@ -19,6 +19,12 @@ pub enum RawSpanMetadata {
     Flag(String),
 }
 
+#[derive(Debug, PartialEq)]
+pub struct SpanMetadata {
+    attrs: BTreeMap<String, Vec<Span>>,
+    flags: Vec<String>,
+}
+
 // TODO: create ``metadata_key`` or something
 // like that that is used for flags and
 // the keys for attrs so they have the same
@@ -73,6 +79,35 @@ pub enum RawSpanMetadata {
 //     Ok((source, (flags, attrs)))
 // }
 
+pub fn span_metadata_dev<'a>(
+    source: &'a str,
+    character: &'a str,
+) -> IResult<&'a str, SpanMetadata> {
+    // Reminder: attrs first otherwise things go wrong with this setup
+    let (source, raw_metadata) = many0(alt((
+        |src| span_attr(src, character),
+        |src| span_flag(src, character),
+    )))
+    .parse(source)?;
+    let mut metadata = SpanMetadata {
+        attrs: BTreeMap::new(),
+        flags: vec![],
+    };
+    raw_metadata.iter().for_each(|item| match item {
+        RawSpanMetadata::Flag(string) => metadata.flags.push(string.clone()),
+        RawSpanMetadata::Attr { key, spans } => {
+            if let Some(x) = metadata.attrs.get_mut(key) {
+                for span in spans {
+                    x.push(span.clone())
+                }
+            } else {
+                metadata.attrs.insert(key.to_string(), spans.clone());
+            }
+        }
+    });
+    Ok((source, metadata))
+}
+
 pub fn span_metadata<'a>(
     source: &'a str,
     character: &'a str,
@@ -91,14 +126,18 @@ pub fn span_metadata<'a>(
         })
         .collect::<Vec<String>>();
     let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();
-    raw_metadata.iter().for_each(|data| if let RawSpanMetadata::Attr { key, spans } = data { match attrs.get_mut(key) {
-        Some(v) => {
-            spans.iter().for_each(|span| v.push(span.clone()));
+    raw_metadata.iter().for_each(|data| {
+        if let RawSpanMetadata::Attr { key, spans } = data {
+            match attrs.get_mut(key) {
+                Some(v) => {
+                    spans.iter().for_each(|span| v.push(span.clone()));
+                }
+                None => {
+                    attrs.insert(key.to_string(), spans.clone());
+                }
+            }
         }
-        None => {
-            attrs.insert(key.to_string(), spans.clone());
-        }
-    } });
+    });
     Ok((source, (flags, attrs)))
 }
 
@@ -110,14 +149,14 @@ mod test {
     use rstest::rstest;
 
     #[test]
-    fn single_flag_test() {
+    fn single_flag_test_dev() {
         let source = "|alfa``";
         let character = "`";
         let flags = vec!["alfa".to_string()];
         let attrs = BTreeMap::new();
-        let left = (flags, attrs);
+        let left = SpanMetadata { attrs, flags };
         let remainder = "``";
-        let right = span_metadata(source, character).unwrap();
+        let right = span_metadata_dev(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
