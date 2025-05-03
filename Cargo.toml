@@ -5,6 +5,7 @@ edition = "2024"
 
 [dev-dependencies]
 pretty_assertions = "1.4.1"
+include_dir = {version = "0.7.4", features = ["glob"] }
 
 
 [dependencies]

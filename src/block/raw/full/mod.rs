@@ -63,7 +63,7 @@ mod test {
     use std::collections::BTreeMap;
 
     #[test]
-    fn solo_raw_basic_test() {
+    fn raw_basic_test() {
         let source = r#"-- pre 
 alfa delta whiskey"#;
         let config = Config::default();

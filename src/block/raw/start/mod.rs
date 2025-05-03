@@ -141,7 +141,7 @@ mod test {
     }
 
     #[test]
-    fn solo_raw_block_start_nested_with_end_block_test() {
+    fn raw_block_start_nested_with_end_block_test() {
         let source = "-- code/\n\n-- title\n\nwhiskey tango bravo\n\n-- /code\n\nsierra kilo";
         let config = Config::default();
         let parent = BlockParent::Page;

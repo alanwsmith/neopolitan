@@ -8,7 +8,7 @@ use nom::character::complete::multispace0;
 use nom::multi::many1;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 #[serde(rename_all = "lowercase")]
 pub enum Ast {
     Error {
@@ -59,8 +59,47 @@ impl<'a> Ast {
 #[cfg(test)]
 mod test {
     use super::*;
+    use include_dir::{Dir, include_dir};
     use pretty_assertions::assert_eq;
-    // use serde_json;
+    use serde_json;
+    use std::path::Path;
+
+    static TESTS_DIR: Dir<'_> = include_dir!("src/ast/tests");
+
+    #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+    pub struct TestObject {
+        data: Ast,
+    }
+
+    #[test]
+    fn solo_ast_integration_tests() {
+        let config = Config::default();
+        let glob = "*.neo";
+        for entry in TESTS_DIR.find(glob).unwrap() {
+            if let Some(file) = entry.as_file() {
+                if let Some(contents) = file.contents_utf8() {
+                    let parts = contents
+                        .split("-- json")
+                        .map(|part| part.to_string())
+                        .collect::<Vec<String>>();
+                    let under_test = TestObject {
+                        data: Ast::new_from_source(&parts[0], &config),
+                    };
+                    let target: TestObject =
+                        serde_json::from_str(&parts[1]).unwrap();
+                    if under_test == target {
+                        println!("MATCHED");
+                        assert!(true)
+                    } else {
+                        println!("DID NOTE MATCH");
+                        dbg!(&target);
+                        dbg!(&under_test);
+                        assert!(false)
+                    }
+                }
+            }
+        }
+    }
 
     // #[test]
     // fn basic_test() {
