@@ -1,24 +1,33 @@
 -- neopolitan 
 
-alfa
+``code sample|rust``
+
 
 -- json
 
-{ 
+{
   "data": {
     "ok": {
       "blocks": [
         {
-          "attrs": {},
-          "bound": "full",
           "category": "basic",
+          "attrs": {},
           "children": [
             {
               "category": "text",
               "spans": [
                 {
-                  "category": "text",
-                  "content": "alfa"
+                  "category": "code",
+                  "attrs": {},
+                  "flags": [
+                    "rust"
+                  ],
+                  "spans": [
+                    {
+                      "category": "text",
+                      "content": "code sample"
+                    }
+                  ]
                 }
               ]
             }
@@ -31,5 +40,8 @@ alfa
     }
   }
 }
+
+
+
 
 

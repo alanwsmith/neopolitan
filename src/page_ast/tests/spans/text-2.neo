@@ -1,32 +1,25 @@
 -- neopolitan 
 
-``code sample``
+alfa bravo
+charlie delta
 
 
 -- json
 
-{
+{ 
   "data": {
     "ok": {
       "blocks": [
         {
-          "category": "basic",
           "attrs": {},
-          "bound": "full",
+          "category": "basic",
           "children": [
             {
               "category": "text",
               "spans": [
                 {
-                  "category": "code",
-                  "attrs": {},
-                  "flags": [],
-                  "spans": [
-                    {
-                      "category": "text",
-                      "content": "code sample"
-                    }
-                  ]
+                  "category": "text",
+                  "content": "alfa bravo charlie delta"
                 }
               ]
             }
@@ -39,7 +32,6 @@
     }
   }
 }
-
 
 
 

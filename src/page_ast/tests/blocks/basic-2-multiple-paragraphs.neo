@@ -1,7 +1,9 @@
 -- p
--- https://www.example.com/
 
-Flag test
+This is a test
+with multiple lines
+
+Across multiple paragraphs
 
 -- json
 
@@ -11,7 +13,6 @@ Flag test
       "blocks": [
         {
           "attrs": {},
-          "bound": "full",
           "category": "basic",
           "children": [
             {
@@ -19,15 +20,23 @@ Flag test
               "spans": [
                 {
                   "category": "text",
-                  "content": "Flag test"
+                  "content": "This is a test with multiple lines"
+                }
+              ]
+            },
+            {
+              "category": "text",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Across multiple paragraphs"
                 }
               ]
             }
+
           ],
           "end_block": null,
-          "flags": [
-            "https://www.example.com/"
-          ],
+          "flags": [],
           "kind": "p"
         }
       ]

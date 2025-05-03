@@ -15,12 +15,10 @@ Full Nested
         {
           "category": "basic",
           "attrs": {},
-          "bound": "start",
           "children": [
             {
               "category": "basic",
               "attrs": {},
-              "bound": "full",
               "children": [
                 {
                   "category": "text",
@@ -40,7 +38,6 @@ Full Nested
           "end_block": {
             "category": "end",
             "attrs": {},
-            "bound": "full",
             "children": [],
             "flags": [],
             "kind": "p-end"

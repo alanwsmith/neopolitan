@@ -1,8 +1,6 @@
 -- neopolitan 
 
-alfa bravo
-charlie delta
-
+alfa
 
 -- json
 
@@ -12,7 +10,6 @@ charlie delta
       "blocks": [
         {
           "attrs": {},
-          "bound": "full",
           "category": "basic",
           "children": [
             {
@@ -20,7 +17,7 @@ charlie delta
               "spans": [
                 {
                   "category": "text",
-                  "content": "alfa bravo charlie delta"
+                  "content": "alfa"
                 }
               ]
             }
@@ -33,6 +30,5 @@ charlie delta
     }
   }
 }
-
 
 

@@ -1,6 +1,6 @@
 -- neopolitan 
 
-``code sample|rust``
+``code sample|class: red``
 
 
 -- json
@@ -12,16 +12,21 @@
         {
           "category": "basic",
           "attrs": {},
-          "bound": "full",
           "children": [
             {
               "category": "text",
               "spans": [
                 {
                   "category": "code",
-                  "attrs": {},
+                  "attrs": {
+                    "class": [
+                      {
+                        "category": "text", 
+                        "content": "red"
+                      }
+                    ]
+                  },
                   "flags": [
-                    "rust"
                   ],
                   "spans": [
                     {
@@ -41,6 +46,7 @@
     }
   }
 }
+
 
 
 

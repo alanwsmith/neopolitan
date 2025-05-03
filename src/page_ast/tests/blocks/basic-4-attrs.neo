@@ -26,7 +26,6 @@ Attr test
               }
             ]
           },
-          "bound": "full",
           "children": [
             {
               "category": "text",

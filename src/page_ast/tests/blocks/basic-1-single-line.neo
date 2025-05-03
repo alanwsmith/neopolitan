@@ -1,9 +1,6 @@
 -- p
 
 This is a test
-with multiple lines
-
-Across multiple paragraphs
 
 -- json
 
@@ -13,7 +10,6 @@ Across multiple paragraphs
       "blocks": [
         {
           "attrs": {},
-          "bound": "full",
           "category": "basic",
           "children": [
             {
@@ -21,20 +17,10 @@ Across multiple paragraphs
               "spans": [
                 {
                   "category": "text",
-                  "content": "This is a test with multiple lines"
-                }
-              ]
-            },
-            {
-              "category": "text",
-              "spans": [
-                {
-                  "category": "text",
-                  "content": "Across multiple paragraphs"
+                  "content": "This is a test"
                 }
               ]
             }
-
           ],
           "end_block": null,
           "flags": [],
@@ -44,7 +30,6 @@ Across multiple paragraphs
     }
   }
 }
-
 
 
 

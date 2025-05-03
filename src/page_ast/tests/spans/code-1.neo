@@ -1,6 +1,6 @@
 -- neopolitan 
 
-``code sample|class: red``
+``code sample``
 
 
 -- json
@@ -12,23 +12,14 @@
         {
           "category": "basic",
           "attrs": {},
-          "bound": "full",
           "children": [
             {
               "category": "text",
               "spans": [
                 {
                   "category": "code",
-                  "attrs": {
-                    "class": [
-                      {
-                        "category": "text", 
-                        "content": "red"
-                      }
-                    ]
-                  },
-                  "flags": [
-                  ],
+                  "attrs": {},
+                  "flags": [],
                   "spans": [
                     {
                       "category": "text",
@@ -47,8 +38,6 @@
     }
   }
 }
-
-
 
 
 

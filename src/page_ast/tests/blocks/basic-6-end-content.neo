@@ -1,14 +1,10 @@
 -- p/
 
-Level 1
-
--- div
-
-Level 2
+Start End
 
 -- /p
 
-Level 1
+End Text
 
 -- json
 
@@ -19,48 +15,27 @@ Level 1
         {
           "category": "basic",
           "attrs": {},
-          "bound": "start",
           "children": [
             {
               "category": "text",
               "spans": [
                 {
                   "category": "text",
-                  "content": "Level 1"
+                  "content": "Start End"
                 }
               ]
-            },
-            {
-              "category": "basic",
-              "attrs": {},
-              "bound": "full",
-              "children": [
-                {
-                  "category": "text",
-                  "spans": [
-                    {
-                      "category": "text",
-                      "content": "Level 2"
-                    }
-                  ]
-                }
-              ],
-              "end_block": null,
-              "flags": [],
-              "kind": "div"
             }
           ],
           "end_block": {
             "category": "end",
             "attrs": {},
-            "bound": "full",
             "children": [
               {
                 "category": "text",
                 "spans": [
                   {
                     "category": "text",
-                    "content": "Level 1"
+                    "content": "End Text"
                   }
                 ]
               }
