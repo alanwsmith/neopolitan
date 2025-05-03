@@ -1,8 +1,8 @@
 use crate::block::Block;
 use crate::block::BlockParent;
 use crate::block::paragraph::paragraph_block;
-use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::block_metadata;
+use crate::block_metadata::bound::BlockBound;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::IResult;
@@ -49,7 +49,7 @@ mod test {
     use std::collections::BTreeMap;
 
     #[test]
-    fn solo_end_block_basic_test() {
+    fn end_block_basic_test() {
         let source = r#"-- /some-end-block
 
 bravo foxtrot tango"#;

@@ -261,7 +261,7 @@ mod test {
     }
 
     #[test]
-    fn solo_span_attr_string_closing_test() {
+    fn span_attr_string_closing_test() {
         let source = "|alfa: ``bravo``>> charlie";
         let character = ">";
         let left = RawSpanMetadata::Attr {

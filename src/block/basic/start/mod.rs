@@ -1,12 +1,14 @@
 use crate::block::Block;
+use crate::block::block;
 use crate::block::end::end_block;
 use crate::block::paragraph::paragraph_block;
+use crate::block_metadata::block_metadata;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
-use crate::block_metadata::block_metadata;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::Parser;
+use nom::branch::alt;
 use nom::bytes::complete::is_not;
 use nom::character::complete::multispace0;
 use nom::character::complete::space1;
@@ -28,9 +30,11 @@ pub fn basic_block_start<'a>(
     let (source, (attrs, flags)) =
         block_metadata(source, config, parent, debug)?;
     let (source, _) = multispace0.parse(source)?;
-    let (source, children) =
-        many0(|src| paragraph_block(src, config, &BlockParent::Basic, debug))
-            .parse(source)?;
+    let (source, children) = many0(alt((
+        |src| paragraph_block(src, config, &BlockParent::Basic, debug),
+        |src| block(src, config, &BlockParent::Basic, debug),
+    )))
+    .parse(source)?;
     let (source, end_block) =
         (|src| end_block(src, config, parent, kind)).parse(source)?;
     Ok((
@@ -54,7 +58,7 @@ mod test {
     use std::collections::BTreeMap;
 
     #[test]
-    fn solo_basic_block_start_test() {
+    fn basic_block_start_test() {
         let source = r#"-- aside/
 
 delta zulu alfa
@@ -80,6 +84,43 @@ delta zulu alfa
             })),
             flags: vec![],
             kind: "aside".to_string(),
+        };
+        let right = basic_block_start(source, &config, &parent, debug)
+            .unwrap()
+            .1;
+        assert_eq!(left, right);
+    }
+
+    #[test]
+    fn solo_nested_block_start_test() {
+        let source = "-- div/\n\n-- title\n\nwhiskey tango bravo\n\n-- /div";
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let debug = false;
+        let left = Block::Basic {
+            attrs: BTreeMap::new(),
+            bound: BlockBound::Start,
+            children: vec![Block::Basic {
+                attrs: BTreeMap::new(),
+                bound: BlockBound::Full,
+                children: vec![Block::Paragraph {
+                    spans: vec![Span::Text {
+                        content: "whiskey tango bravo".to_string(),
+                    }],
+                }],
+                end_block: None,
+                flags: vec![],
+                kind: "title".to_string(),
+            }],
+            end_block: Some(Box::new(Block::End {
+                attrs: BTreeMap::new(),
+                bound: BlockBound::Full,
+                children: vec![],
+                flags: vec![],
+                kind: "div-end".to_string(),
+            })),
+            flags: vec![],
+            kind: "div".to_string(),
         };
         let right = basic_block_start(source, &config, &parent, debug)
             .unwrap()

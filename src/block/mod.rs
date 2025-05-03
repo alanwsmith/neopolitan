@@ -63,8 +63,7 @@ pub fn block<'a>(
     debug: bool,
 ) -> IResult<&'a str, Block> {
     let (source, section) =
-        alt((|src| basic_block(src, config, parent, debug),))
-            .parse(source)?;
+        alt((|src| basic_block(src, config, parent, debug),)).parse(source)?;
     Ok((source, section))
 }
 
