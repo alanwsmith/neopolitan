@@ -1,7 +1,5 @@
 use crate::block::Block;
-use crate::block::block;
 use crate::block::end::end_block;
-use crate::block::paragraph::paragraph_block;
 use crate::block_metadata::block_metadata;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
@@ -10,13 +8,10 @@ use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending
 use nom::Parser;
 use nom::branch::alt;
 use nom::bytes::complete::is_not;
-use nom::bytes::complete::take_until;
 use nom::character::complete::multispace0;
 use nom::character::complete::space1;
 use nom::combinator::not;
-use nom::combinator::peek;
-use nom::combinator::rest;
-use nom::multi::many0;
+use nom::combinator::recognize;
 use nom::multi::many1;
 use nom::sequence::pair;
 use nom::sequence::terminated;
@@ -31,13 +26,15 @@ pub fn raw_block_start<'a>(
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), (tag("/"), space0_line_ending_or_eof))
             .parse(source)?;
-    dbg!(&source);
     if config.block_category_kinds.raw.contains(&kind.to_string()) {
         let (source, (attrs, flags)) = block_metadata(source, config, parent)?;
         let (source, _) = multispace0.parse(source)?;
         let (source, body_parts) = many1(alt((
             is_not("-"),
-            terminated(tag("-"), peek(not(tag("-")))),
+            recognize((
+                tag("-"),
+                not((tag("-"), space1, tag(format!("/{}", kind).as_str()))),
+            )),
         )))
         .parse(source)?;
         let joined_parts = body_parts.join("");
@@ -97,7 +94,7 @@ mod test {
     }
 
     #[test]
-    fn solo_raw_block_start_dash_in_content_test() {
+    fn raw_block_start_dash_in_content_test() {
         let source = "-- raw/\n\ndelta-zulu alfa\n\n-- /raw";
         let config = Config::default();
         let parent = BlockParent::Page;
@@ -119,28 +116,28 @@ mod test {
         assert_eq!(left, right);
     }
 
-    // #[test]
-    // fn solo_nested_block_start_test() {
-    //     let source = "-- code/\n\n-- title\n\nwhiskey tango bravo\n\n-- /code";
-    //     let config = Config::default();
-    //     let parent = BlockParent::Page;
-    //     let left = Block::Raw {
-    //         attrs: BTreeMap::new(),
-    //         body: Some("-- title\n\nwhiskey tango bravo".to_string()),
-    //         bound: BlockBound::Start,
-    //         end_block: Some(Box::new(Block::End {
-    //             attrs: BTreeMap::new(),
-    //             bound: BlockBound::Full,
-    //             children: vec![],
-    //             flags: vec![],
-    //             kind: "code-end".to_string(),
-    //         })),
-    //         flags: vec![],
-    //         kind: "code".to_string(),
-    //     };
-    //     let right = raw_block_start(source, &config, &parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
+    #[test]
+    fn solo_nested_block_start_test() {
+        let source = "-- code/\n\n-- title\n\nwhiskey tango bravo\n\n-- /code";
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Raw {
+            attrs: BTreeMap::new(),
+            body: Some("-- title\n\nwhiskey tango bravo".to_string()),
+            bound: BlockBound::Start,
+            end_block: Some(Box::new(Block::End {
+                attrs: BTreeMap::new(),
+                bound: BlockBound::Full,
+                children: vec![],
+                flags: vec![],
+                kind: "code-end".to_string(),
+            })),
+            flags: vec![],
+            kind: "code".to_string(),
+        };
+        let right = raw_block_start(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
 
     //
 }
