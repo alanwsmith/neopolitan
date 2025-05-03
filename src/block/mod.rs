@@ -5,7 +5,6 @@ pub mod text;
 
 use crate::block::basic::basic_block;
 use crate::block::raw::raw_block;
-use crate::block_metadata::bound::BlockType;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span::Span;
@@ -30,7 +29,6 @@ pub enum Block {
     CSV,
     End {
         attrs: BTreeMap<String, Vec<Span>>,
-        bound: BlockType,
         children: Vec<Block>,
         flags: Vec<String>,
         kind: String,
@@ -54,7 +52,6 @@ pub enum Block {
     Raw {
         attrs: BTreeMap<String, Vec<Span>>,
         body: Option<String>,
-        bound: BlockType,
         end_block: Option<Box<Block>>,
         flags: Vec<String>,
         kind: String,

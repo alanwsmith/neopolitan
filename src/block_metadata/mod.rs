@@ -1,6 +1,5 @@
 #![allow(unused)]
 pub mod attr;
-pub mod bound;
 pub mod flag;
 pub mod parent;
 

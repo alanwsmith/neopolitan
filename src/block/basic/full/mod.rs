@@ -1,7 +1,6 @@
 use crate::block::Block;
 use crate::block::text::text_block;
 use crate::block_metadata::block_metadata;
-use crate::block_metadata::bound::BlockType;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;

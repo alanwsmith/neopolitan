@@ -3,7 +3,6 @@ use crate::block::block;
 use crate::block::end::end_block;
 use crate::block::text::text_block;
 use crate::block_metadata::block_metadata;
-use crate::block_metadata::bound::BlockType;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -73,7 +72,6 @@ delta zulu alfa
             }],
             end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
-                bound: BlockType::FullBlock,
                 children: vec![],
                 flags: vec![],
                 kind: "aside-end".to_string(),
@@ -105,7 +103,6 @@ delta zulu alfa
             }],
             end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
-                bound: BlockType::FullBlock,
                 children: vec![],
                 flags: vec![],
                 kind: "div-end".to_string(),
