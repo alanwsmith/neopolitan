@@ -75,16 +75,6 @@ mod test {
         assert_eq!(left, right);
     }
 
-    // #[test]
-    // fn block_metadata_flag_test() {
-    //     let config = &Config::default();
-    //     let source = "-- test-flag\n\n";
-    //     let parent = &BlockParent::Basic;
-    //     let left = (BTreeMap::new(), vec!["test-flag".to_string()]);
-    //     let right = block_metadata(source, config, parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
-
     #[test]
     fn block_metadata_flag_whitespace_test() {
         let config = &Config::default();
@@ -96,16 +86,6 @@ mod test {
         let right = block_metadata(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
-
-    // #[test]
-    // fn block_metadata_flag_whitespace_test() {
-    //     let config = &Config::default();
-    //     let source = "--      foxtrot-bravo     ";
-    //     let parent = &BlockParent::Basic;
-    //     let left = (BTreeMap::new(), vec!["foxtrot-bravo".to_string()]);
-    //     let right = block_metadata(source, config, parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
 
     #[test]
     fn block_metadata_attribute_test() {
@@ -125,23 +105,6 @@ mod test {
         assert_eq!(left, right);
     }
 
-    // #[test]
-    // fn block_metadata_attribute_test() {
-    //     let config = &Config::default();
-    //     let source = "-- alfa: bravo\n\n";
-    //     let parent = &BlockParent::Basic;
-    //     let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
-    //     attributes.insert(
-    //         "alfa".to_string(),
-    //         vec![Span::Text {
-    //             content: "bravo".to_string(),
-    //         }],
-    //     );
-    //     let left = (attributes, vec![]);
-    //     let right = block_metadata(source, config, parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
-
     #[test]
     fn block_metadata_attribute_whitespace_test() {
         let config = &Config::default();
@@ -159,23 +122,6 @@ mod test {
         let right = block_metadata(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
-
-    // #[test]
-    // fn block_metadata_attribute_whitespace_test() {
-    //     let config = &Config::default();
-    //     let source = "--    hotel:      whiskey     \n\n";
-    //     let parent = &BlockParent::Basic;
-    //     let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
-    //     attributes.insert(
-    //         "hotel".to_string(),
-    //         vec![Span::Text {
-    //             content: "whiskey".to_string(),
-    //         }],
-    //     );
-    //     let left = (attributes, vec![]);
-    //     let right = block_metadata(source, config, parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
 
     #[test]
     fn multiple_metadata_test() {
@@ -199,29 +145,6 @@ mod test {
         let right = block_metadata(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
-
-    // #[test]
-    // fn multiple_metadata_test() {
-    //     let config = &Config::default();
-    //     let source = "-- delta: alfa\n-- foxtrot\n-- delta: bravo\n-- echo";
-    //     let parent = &BlockParent::Basic;
-    //     let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
-    //     attributes.insert(
-    //         "delta".to_string(),
-    //         vec![
-    //             Span::Text {
-    //                 content: "alfa".to_string(),
-    //             },
-    //             Span::Text {
-    //                 content: "bravo".to_string(),
-    //             },
-    //         ],
-    //     );
-    //     let left =
-    //         (attributes, vec!["foxtrot".to_string(), "echo".to_string()]);
-    //     let right = block_metadata(source, config, parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
 
     //
 }
