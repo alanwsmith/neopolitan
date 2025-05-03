@@ -24,8 +24,8 @@ pub struct Site {
     pub incompletes: BTreeMap<PathBuf, (Vec<Block>, String)>,
     pub input_root: PathBuf,
     pub output_root: PathBuf,
-    pub pages: BTreeMap<PathBuf, Vec<Block>>,
-    pub pages_dev: BTreeMap<PathBuf, Page>,
+    // pub pages: BTreeMap<PathBuf, Vec<Block>>,
+    pub pages: BTreeMap<PathBuf, Page>,
 }
 
 impl Site {
@@ -59,7 +59,7 @@ impl Site {
                     path: stripped_output_path.clone(),
                     data: ast,
                 };
-                self.pages_dev.insert(stripped_output_path, page);
+                self.pages.insert(stripped_output_path, page);
 
                 // match Ast::new_from_source(&source, &self.config, false) {
                 //     Ast::Ok { blocks } => {
@@ -108,7 +108,7 @@ impl Site {
         );
         env.add_function("highlight_span", highlight_span);
         env.set_loader(path_loader("docs-content/reference-templates"));
-        for page_struct in &self.pages_dev {
+        for page_struct in &self.pages {
             let output_path = &self.output_root.join(page_struct.0);
             let template =
                 env.get_template("helpers/template-picker.neoj").unwrap();
