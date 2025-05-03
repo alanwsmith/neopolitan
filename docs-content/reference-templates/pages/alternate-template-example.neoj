@@ -10,6 +10,5 @@
   ] -!]
   [!- include templates -!]
 [!- endfor -!]
-[@- macros.page_links(site) -@]
 [!- endblock -!]
 

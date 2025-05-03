@@ -1,0 +1,13 @@
+[# 
+  This is the temporary output
+  of HTML until the parser is
+  put back in place for raw content
+#]
+
+<div class="flow">
+[! for child in block.children !]
+  [! for span in child.spans !]
+    [@ span.content @]
+  [! endfor !]
+[! endfor !]
+</div>

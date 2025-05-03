@@ -1,4 +1,4 @@
 [!- for block in section.children -!]
-  [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
+  [!- set templates = ["sections/" + block.category + "/default.neoj"] -!]
   [!- include templates -!]
 [!- endfor -!]

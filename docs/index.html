@@ -13,22 +13,19 @@
 <head> 
 	<title></title>
   <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/syntax-highlighting.css" />
   <link rel="stylesheet" href="/styles/tmp-dev-styles.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <header>
+  <header class="wrapper-medium margin-bottom-large">
     <a href="/">Home</a>
   </header>
-  <main class="flow"><h1 class="title">Welcome to Neopolitan
-
+  <main class="wrapper-medium flow"><h1 class="title">Welcome to Neopolitan
 </h1><h2>Introduction
-
 </h2><p>Neopolitan is a plain-text file format. It's like Markdown, but with more features.
-
 </p><h2>Work-In-Progress
-
 </h2>
 
 <div class="flow">
@@ -54,9 +51,7 @@
   
 
 </div><h2>How It Works
-
 </h2><h3>The Basics
-
 </h3>
 
 <div class="flow">
@@ -98,9 +93,7 @@
   
 
 </div><h3>Section Flags
-
 </h3><p>Each section can have flags. They're defined by adding lines starting with two dashes immediately follow the section like this:
-
 </p>
 
 <div class="flow">
@@ -138,9 +131,7 @@
   
 
 </div><h3>Section Attributes
-
 </h3><p>Key/value attributes can be added as well. For example:
-
 </p>
 
 <div class="flow">
@@ -178,9 +169,7 @@
   
 
 </div><h2>Markdown Section Comparison
-
 </h2><p>A basic Markdown document might look like this:
-
 </p>
 
 <div class="flow">
@@ -262,11 +251,8 @@
   
 
 </div><h2>Enter Neopolitan
-
 </h2><p>Neopolitan's usefulness comes from adding HTML features to content<sup>1</sup>.
-
 </p><p>For example, changing the above demo to use explicit sections and attributes like this:
-
 </p>
 
 <div class="flow">
@@ -328,7 +314,6 @@
   
 
 </div><h2>Tags
-
 </h2>
 
 <div class="flow">
@@ -454,7 +439,6 @@
   
 
 </div><h2>Shorthands
-
 </h2>
 
 <div class="flow">
@@ -556,19 +540,12 @@
   
 
 </div><h2>No JavaScript Required
-
 </h2><p>TODO: add section about how all this is done with templates and no need for JavaScript. It can be added if you want it. But, it's not required.
-
 </p><h2>More To Come
-
 </h2><p>Formats can be interesting. If there's nothing that uses them, they don't mean much. In that light, I'm finishing up a reference static site generator that uses Neopolitan.
-
 </p><p>I expect to have a beta version ready by June 2025.
-
 </p><p>I'll post about progress on <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> and <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> if you want to follow along.
-
 </p><h2>Footnotes
-
 </h2>
 
 <div class="flow">
@@ -578,21 +555,23 @@
   
 
 </div><h2>TODO
-
 </h2><p>[] Write up No JavaScript Required section.
-
 </p><p>[] Output the contents of the example below it to show the rendered HTML.
-
 </p><p>[] Add syntax highlighting.
-
-</p><hr />
-<h3>Under Construction</h3>
-<ul class="flow"><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></main>
+</p></main>
   <footer>
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
     <a href="https://links.alanwsmith.com/">other projects</a> ~
     <a href="https://socials.alanwsmith.com/">socials</a>
   </footer>
+
+<div class="wrapper-medium padding-top-large">
+<pre class="font-size-xsmall"><hr />
+<h3>Under Construction</h3>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0/parser/span-tests.html">spec/2.0/parser/span-tests.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
+</div>
+
+
 </body>
 </html>

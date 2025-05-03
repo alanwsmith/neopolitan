@@ -1,0 +1,19 @@
+[!- extends "wrappers/default.neoj" -!]
+[!- import "macros/loader.neoj" as macros -!] 
+
+[# TODO: Move to helpers #]
+
+[! block main !]
+    <h1>Rendering Error</h1>
+    <p>[@ message @]</p>
+    <p>File: [@ name @]</p>
+    <p>Line: [@ line @]</p>
+    <h2>Details</h2>
+    <ul>
+    [! for detail in details !]
+        <li>[@ detail @]</li>
+    [! endfor !]
+    </ul>
+[! endblock !]
+
+

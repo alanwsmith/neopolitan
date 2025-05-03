@@ -1,11 +1,14 @@
 [!- extends "wrappers/default.neoj" -!]
 [!- import "macros/loader.neoj" as macros -!] 
 
+[# TODO: Move to helpers #]
+
 [! block main !]
     <h1>Rendering Error</h1>
     <p>File: [@ name @]</p>
     <p>Details: [@ detail @]</p>
-    <pre>[@ debug @]</pre>
+    <p>Line: [@ line @]</p>
+    <pre>[@ dbg @]</pre>
 [! endblock !]
 
 

@@ -2,6 +2,15 @@
 <code
 [@- macros.span_classes(span) -@]
 [@- macros.span_id(span) -@]
+[!- if span.flags|length > 0 -!][@- ' ' -@]
+data-lang="[@ span.flags[0] @]"
+[!-  endif -!]
 >
+
+[!- if span.flags|length > 0 -!][@- ' ' -@]
+[@- highlight_span(macros.child_spans(span.spans), "rust") -@]
+[!-  else-!]
 [@- macros.child_spans(span.spans) -@]
+[!-  endif -!]
+
 </code>

@@ -1,6 +1,8 @@
 use crate::ast::Ast;
+use crate::block::Block;
 use crate::config::Config;
-use crate::section::Section;
+use crate::minijinja_functions::highlight_syntax::highlight_span;
+use crate::page::Page;
 use anyhow::Result;
 use minijinja::syntax::SyntaxConfig;
 use minijinja::{Environment, Value, context, path_loader};
@@ -14,17 +16,18 @@ use walkdir::WalkDir;
 // for now
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct Site {
-    config: Config,
-    errors: BTreeMap<PathBuf, (String, String)>,
-    files: Vec<(PathBuf, PathBuf)>,
-    incompletes: BTreeMap<PathBuf, (Vec<Section>, String)>,
-    input_root: PathBuf,
-    output_root: PathBuf,
-    pages: BTreeMap<PathBuf, Vec<Section>>,
+pub struct Site<'a> {
+    pub config: Config,
+    pub errors: BTreeMap<PathBuf, (String, String)>,
+    pub files: Vec<(PathBuf, PathBuf)>,
+    pub incompletes: BTreeMap<PathBuf, (Vec<Block>, String)>,
+    pub input_root: PathBuf,
+    pub output_root: PathBuf,
+    pub pages: BTreeMap<PathBuf, Vec<Block>>,
+    pub pages_dev: BTreeMap<PathBuf, Page<'a>>,
 }
 
-impl Site {
+impl Site<'_> {
     pub fn load_pages_and_files(&mut self) -> Result<()> {
         let input_files = get_files_in_dir(&self.input_root)?;
         input_files.iter().for_each(|source_path| {
@@ -46,10 +49,10 @@ impl Site {
                 let source =
                     std::fs::read_to_string(&source_path).unwrap().to_string();
                 match Ast::new_from_source(&source, &self.config, false) {
-                    Ast::Ok { sections } => {
+                    Ast::Ok { blocks } => {
                         self.pages.insert(
                             stripped_output_path.clone(),
-                            sections.clone(),
+                            blocks.clone(),
                         );
                     }
                     Ast::Error { message, remainder } => {
@@ -90,26 +93,35 @@ impl Site {
                 .build()
                 .unwrap(),
         );
+        env.add_function("highlight_span", highlight_span);
         env.set_loader(path_loader("docs-content/reference-templates"));
         // env.set_loader(path_loader("docs-templates"));
-        self.pages.iter().for_each(|(relative_path, sections)| {
+        self.pages.iter().for_each(|(relative_path, blocks)| {
             let output_path = &self.output_root.join(relative_path);
             let template =
-                env.get_template("pages/template-picker.neoj").unwrap();
-            let sections = Value::from_serialize(&sections);
-            match template.render(context!(site, sections)) {
+                env.get_template("helpers/template-picker.neoj").unwrap();
+            let blocks = Value::from_serialize(&blocks);
+            match template.render(context!(site, blocks)) {
                 Ok(output) => {
                     write_file_with_mkdir(&output_path, &output).unwrap()
                 }
                 Err(e) => {
                     // Attempt to fall back to error output
-                    let output_error_template =
-                        env.get_template("pages/rendering-error.neoj").unwrap();
+                    let output_error_template = env
+                        .get_template("helpers/rendering-error.neoj")
+                        .unwrap();
                     let name = Value::from(e.name().unwrap());
-                    let detail = Value::from(e.detail().unwrap());
+                    let message = Value::from(e.detail().unwrap());
                     let line = Value::from(e.line().unwrap());
-                    let debug = Value::from(e.display_debug_info().to_string());
-                    let context = context!(site, debug, detail, line, name);
+                    let mut e = &e as &dyn std::error::Error;
+                    let mut error_details = vec![];
+                    while let Some(next_err) = e.source() {
+                        error_details.push(format!("{:#}", next_err));
+                        e = next_err;
+                    }
+                    error_details.reverse();
+                    let details = Value::from_serialize(error_details.clone());
+                    let context = context!(site, details, line, message, name);
                     match output_error_template.render(context) {
                         Ok(error_output) => {
                             write_file_with_mkdir(&output_path, &error_output)
@@ -171,7 +183,7 @@ impl Site {
             .for_each(|(relative_path, (sections, remainder))| {
                 let output_path = &self.output_root.join(relative_path);
                 let template =
-                    env.get_template("pages/incomplete.neoj").unwrap();
+                    env.get_template("helpers/incomplete.neoj").unwrap();
                 let output = template
                     .render(context!(site, sections => Value::from_serialize(sections), remainder))
                     .unwrap();
@@ -214,33 +226,4 @@ fn write_file_with_mkdir(path: &PathBuf, content: &str) -> Result<()> {
     std::fs::create_dir_all(parent_dir)?;
     std::fs::write(path, content)?;
     Ok(())
-}
-
-#[cfg(test)]
-mod test {
-    use super::*;
-
-    #[test]
-    fn solo_build_site() {
-        // This is a hack to attempt to built the
-        // site before running the rest of the
-        // tests. A more appropriate method will
-        // be added at a later date.
-        let mut site = Site {
-            config: Config::default(),
-            errors: BTreeMap::new(),
-            incompletes: BTreeMap::new(),
-            input_root: PathBuf::from("docs-content"),
-            output_root: PathBuf::from("docs"),
-            pages: BTreeMap::new(),
-            files: vec![],
-        };
-        // These will panic intentionally if
-        // they fail for now
-        site.load_pages_and_files().unwrap();
-        site.copy_files().unwrap();
-        site.output_pages().unwrap();
-        site.output_errors().unwrap();
-        site.output_incompletes().unwrap();
-    }
 }

@@ -1,0 +1,8 @@
+[!- for block in block.children -!]
+  [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
+  [!- if loop.first -!]
+    <h2>[!- include templates -!]</h2>
+  [!- else -!]
+    <p>[!- include templates -!]</p>
+  [!- endif -!]
+[!- endfor -!]

@@ -1,7 +1,7 @@
+use crate::block::Block;
+use crate::block::block;
+use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
-use crate::section::Section;
-use crate::section::section;
-use crate::section_parent::SectionParent;
 use nom::IResult;
 use nom::Parser;
 use nom::character::complete::multispace0;
@@ -15,11 +15,11 @@ pub enum Ast<'a> {
         remainder: String,
     },
     Incomplete {
-        parsed: Vec<Section>,
+        parsed: Vec<Block>,
         remainder: &'a str,
     },
     Ok {
-        sections: Vec<Section>,
+        blocks: Vec<Block>,
     },
 }
 
@@ -29,12 +29,10 @@ impl<'a> Ast<'_> {
         config: &'a Config,
         debug: bool,
     ) -> Ast<'a> {
-        match Ast::parse_ast(source, config, &SectionParent::Page, debug) {
+        match Ast::parse_ast(source, config, &BlockParent::Page, debug) {
             Ok(results) => {
                 if results.0 == "" {
-                    Ast::Ok {
-                        sections: results.1,
-                    }
+                    Ast::Ok { blocks: results.1 }
                 } else {
                     Ast::Incomplete {
                         parsed: results.1,
@@ -52,13 +50,13 @@ impl<'a> Ast<'_> {
     pub fn parse_ast(
         source: &'a str,
         config: &'a Config,
-        parent: &'a SectionParent,
+        parent: &'a BlockParent,
         debug: bool,
-    ) -> IResult<&'a str, Vec<Section>> {
+    ) -> IResult<&'a str, Vec<Block>> {
         let (source, _) = multispace0(source)?;
-        let (source, sections) =
-            many1(|src| section(src, config, parent, debug)).parse(source)?;
-        Ok((source, sections))
+        let (source, blocks) =
+            many1(|src| block(src, config, parent, debug)).parse(source)?;
+        Ok((source, blocks))
     }
 }
 
@@ -72,11 +70,9 @@ mod test {
     fn basic_test() {
         let config = Config::default();
         let source = include_str!("test-data/basic-example.neo");
-        if let Ast::Ok { sections } =
-            Ast::new_from_source(source, &config, false)
+        if let Ast::Ok { blocks } = Ast::new_from_source(source, &config, false)
         {
-            // println!("{}", serde_json::to_string_pretty(&sections).unwrap());
-            assert_eq!(1, sections.len());
+            assert_eq!(1, blocks.len());
         } else {
             assert!(false);
         }
@@ -86,48 +82,59 @@ mod test {
     fn span_test() {
         let config = Config::default();
         let source = include_str!("test-data/span-test.neo");
-        if let Ast::Ok { sections } =
-            Ast::new_from_source(source, &config, false)
-        {
-            // let mut env = Environment::new();
-            // env.set_syntax(
-            //     SyntaxConfig::builder()
-            //         .block_delimiters("[!", "!]")
-            //         .variable_delimiters("[@", "@]")
-            //         .comment_delimiters("[#", "#]")
-            //         .build()
-            //         .unwrap(),
-            // );
-            // env.add_template("t", include_str!("../dev/template.neoj"))
-            //     .unwrap();
-            // match env.get_template("t") {
-            //     Ok(template) => {
-            //         match template.render(
-            //             context!(page => Value::from_serialize(&sections)),
-            //         ) {
-            //             Ok(output) => {
-            //                 let tmp_html_path =
-            //                     PathBuf::from("dev-output/basic/index.html");
-            //                 let _ = std::fs::write(tmp_html_path, output);
-            //             }
-            //             Err(e) => {
-            //                 dbg!(e);
-            //                 ()
-            //             }
-            //         }
-            //     }
-            //     Err(e) => {
-            //         dbg!(e);
-            //         ()
-            //     }
-            // }
-            // let tmp_json_path = PathBuf::from("dev-output/basic/ast.json");
-            // let json = serde_json::to_string_pretty(&sections).unwrap();
-            // std::fs::write(tmp_json_path, json);
-            assert_eq!(1, sections.len());
-        } else {
-            assert!(false);
+        match Ast::new_from_source(source, &config, false) {
+            Ast::Ok { blocks } => assert_eq!(1, blocks.len()),
+            Ast::Error { message, remainder } => {
+                dbg!(message);
+                dbg!(remainder);
+                assert!(false)
+            }
+            Ast::Incomplete { parsed, remainder } => {
+                dbg!(parsed);
+                dbg!(remainder);
+                assert!(false)
+            }
         }
+        // }
+        // {
+        //     // let mut env = Environment::new();
+        //     // env.set_syntax(
+        //     //     SyntaxConfig::builder()
+        //     //         .block_delimiters("[!", "!]")
+        //     //         .variable_delimiters("[@", "@]")
+        //     //         .comment_delimiters("[#", "#]")
+        //     //         .build()
+        //     //         .unwrap(),
+        //     // );
+        //     // env.add_template("t", include_str!("../dev/template.neoj"))
+        //     //     .unwrap();
+        //     // match env.get_template("t") {
+        //     //     Ok(template) => {
+        //     //         match template.render(
+        //     //             context!(page => Value::from_serialize(&sections)),
+        //     //         ) {
+        //     //             Ok(output) => {
+        //     //                 let tmp_html_path =
+        //     //                     PathBuf::from("dev-output/basic/index.html");
+        //     //                 let _ = std::fs::write(tmp_html_path, output);
+        //     //             }
+        //     //             Err(e) => {
+        //     //                 dbg!(e);
+        //     //                 ()
+        //     //             }
+        //     //         }
+        //     //     }
+        //     //     Err(e) => {
+        //     //         dbg!(e);
+        //     //         ()
+        //     //     }
+        //     // }
+        //     // let tmp_json_path = PathBuf::from("dev-output/basic/ast.json");
+        //     // let json = serde_json::to_string_pretty(&sections).unwrap();
+        //     // std::fs::write(tmp_json_path, json);
+        // } else {
+        //     assert!(false);
+        // }
     }
 
     //

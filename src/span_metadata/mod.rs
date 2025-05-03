@@ -1,7 +1,12 @@
 #![allow(unused)]
+pub mod attr;
+pub mod flag;
+pub mod parsers;
+pub mod strings;
+
 use crate::span::Span;
-use crate::span_attr::span_attr;
-use crate::span_flag::span_flag;
+use crate::span_metadata::attr::span_attr;
+use crate::span_metadata::flag::span_flag;
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;

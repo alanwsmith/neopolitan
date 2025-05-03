@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+
+<!-- 
+  Welcome To The Source Code!
+
+  Please don't judge it too harshly. It's
+  very much a work in progress. 
+-->
+
+
+<head> 
+	<title></title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/syntax-highlighting.css" />
+  <link rel="stylesheet" href="/styles/tmp-dev-styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header class="wrapper-medium margin-bottom-large">
+    <a href="/">Home</a>
+  </header>
+  <main class="wrapper-medium flow">
+    <h1>Rendering Error</h1>
+    <p>error in "pages/default.neoj"</p>
+    <p>File: helpers/template-picker.neoj</p>
+    <p>Line: 15</p>
+    <h2>Details</h2>
+    <ul>
+    
+        <li>undefined value (in blocks/neopolitan/default.neoj:1)
+-------------------------------- default.neoj ---------------------------------
+   1 > [!- for block in section.children -!]
+     i                  ^^^^^^^^^^^^^^^^ undefined value
+   2 |   [!- set templates = ["sections/" + block.category + "/default.neoj"] -!]
+   3 |   [!- include templates -!]
+   4 | [!- endfor -!]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+No referenced variables
+-------------------------------------------------------------------------------</li>
+    
+        <li>could not render include: error in "blocks/neopolitan/default.neoj" (in pages/default.neoj:28)
+-------------------------------- default.neoj ---------------------------------
+  25 |     "blocks/" + block.kind + "/default.neoj",
+  26 |     "blocks/" + block.category + "/default.neoj",
+  27 |   ] -!]
+  28 >   [!- include templates -!]
+     i       ^^^^^^^^^^^^^^^^^ could not render include
+  29 | [!- endfor -!]
+  30 | [#
+  31 | 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Referenced variables: {
+    block: {
+        "attrs": {},
+        "bound": "Full",
+        "category": "basic",
+        "children": [
+            {
+                "category": "paragraph",
+                "spans": [
+                    {
+                        "category": "text",
+                        "content": "alfa",
+                    },
+                ],
+            },
+        ],
+        "end_block": none,
+        "flags": [],
+        "kind": "neopolitan",
+    },
+    blocks: [
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Neopolitan 2.0 Parser Tests",
+                        },
+                    ],
+                },
+            ],
+            "end_block": none,
+            "flags": [],
+            "kind": "title",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "Introduction",
+                        },
+                    ],
+                },
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "This document consists of the test cases used to verify a Neopolitan 2.0 parser conforms to the spec.",
+                        },
+                    ],
+                },
+            ],
+            "end_block": none,
+            "flags": [],
+            "kind": "h2",
+        },
+        {
+            "attrs": {},
+            "bound": "Full",
+            "category": "basic",
+            "children": [
+                {
+                    "category": "paragraph",
+                    "spans": [
+                        {
+                            "category": "text",
+                            "content": "alfa",
+                        },
+                    ],
+                },
+            ],
+            "end_block": none,
+            "flags": [],
+            "kind": "neopolitan",
+        },
+        {
+            "attrs": {
+                "created": [
+                    {
+                        "category": "text",
+                        "content": "2025-05-02T17:32:54-04:00",
+                    },
+                ],
+                "updated": [
+                    {
+                        "category": "text",
+                        "content": "2025-05-02T17:32:54-04:00",
+                    },
+                ],
+            },
+            "bound": "Full",
+            "category": "basic",
+            "children": [],
+            "end_block": none,
+            "flags": [],
+            "kind": "page",
+        },
+    ],
+    loop: <loop 2/4>,
+    templates: [
+        "blocks/neopolitan/default.neoj",
+        "blocks/basic/default.neoj",
+    ],
+}
+-------------------------------------------------------------------------------</li>
+    
+    </ul>
+</main>
+  <footer>
+    from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
+    <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
+    <a href="https://links.alanwsmith.com/">other projects</a> ~
+    <a href="https://socials.alanwsmith.com/">socials</a>
+  </footer>
+
+<div class="wrapper-medium padding-top-large">
+<pre><hr />
+<h3>Under Construction</h3>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/v_2_0/parser/span-tests.html">spec/v_2_0/parser/span-tests.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
+</div>
+
+</body>
+</html>
