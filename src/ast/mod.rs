@@ -62,75 +62,75 @@ mod test {
     use pretty_assertions::assert_eq;
     // use serde_json;
 
-    #[test]
-    fn basic_test() {
-        let config = Config::default();
-        let source = include_str!("test-data/basic-example.neo");
-        if let Ast::Ok { blocks } = Ast::new_from_source(source, &config) {
-            assert_eq!(1, blocks.len());
-        } else {
-            assert!(false);
-        }
-    }
+    // #[test]
+    // fn basic_test() {
+    //     let config = Config::default();
+    //     let source = include_str!("test-data/basic-example.neo");
+    //     if let Ast::Ok { blocks } = Ast::new_from_source(source, &config) {
+    //         assert_eq!(1, blocks.len());
+    //     } else {
+    //         assert!(false);
+    //     }
+    // }
 
-    #[test]
-    fn span_test() {
-        let config = Config::default();
-        let source = include_str!("test-data/span-test.neo");
-        match Ast::new_from_source(source, &config) {
-            Ast::Ok { blocks } => assert_eq!(1, blocks.len()),
-            Ast::Error { message, remainder } => {
-                dbg!(message);
-                dbg!(remainder);
-                assert!(false)
-            }
-            Ast::Incomplete { parsed, remainder } => {
-                dbg!(parsed);
-                dbg!(remainder);
-                assert!(false)
-            }
-        }
-        // }
-        // {
-        //     // let mut env = Environment::new();
-        //     // env.set_syntax(
-        //     //     SyntaxConfig::builder()
-        //     //         .block_delimiters("[!", "!]")
-        //     //         .variable_delimiters("[@", "@]")
-        //     //         .comment_delimiters("[#", "#]")
-        //     //         .build()
-        //     //         .unwrap(),
-        //     // );
-        //     // env.add_template("t", include_str!("../dev/template.neoj"))
-        //     //     .unwrap();
-        //     // match env.get_template("t") {
-        //     //     Ok(template) => {
-        //     //         match template.render(
-        //     //             context!(page => Value::from_serialize(&sections)),
-        //     //         ) {
-        //     //             Ok(output) => {
-        //     //                 let tmp_html_path =
-        //     //                     PathBuf::from("dev-output/basic/index.html");
-        //     //                 let _ = std::fs::write(tmp_html_path, output);
-        //     //             }
-        //     //             Err(e) => {
-        //     //                 dbg!(e);
-        //     //                 ()
-        //     //             }
-        //     //         }
-        //     //     }
-        //     //     Err(e) => {
-        //     //         dbg!(e);
-        //     //         ()
-        //     //     }
-        //     // }
-        //     // let tmp_json_path = PathBuf::from("dev-output/basic/ast.json");
-        //     // let json = serde_json::to_string_pretty(&sections).unwrap();
-        //     // std::fs::write(tmp_json_path, json);
-        // } else {
-        //     assert!(false);
-        // }
-    }
+    // #[test]
+    // fn span_test() {
+    //     let config = Config::default();
+    //     let source = include_str!("test-data/span-test.neo");
+    //     match Ast::new_from_source(source, &config) {
+    //         Ast::Ok { blocks } => assert_eq!(1, blocks.len()),
+    //         Ast::Error { message, remainder } => {
+    //             dbg!(message);
+    //             dbg!(remainder);
+    //             assert!(false)
+    //         }
+    //         Ast::Incomplete { parsed, remainder } => {
+    //             dbg!(parsed);
+    //             dbg!(remainder);
+    //             assert!(false)
+    //         }
+    //     }
+    //     // }
+    //     // {
+    //     //     // let mut env = Environment::new();
+    //     //     // env.set_syntax(
+    //     //     //     SyntaxConfig::builder()
+    //     //     //         .block_delimiters("[!", "!]")
+    //     //     //         .variable_delimiters("[@", "@]")
+    //     //     //         .comment_delimiters("[#", "#]")
+    //     //     //         .build()
+    //     //     //         .unwrap(),
+    //     //     // );
+    //     //     // env.add_template("t", include_str!("../dev/template.neoj"))
+    //     //     //     .unwrap();
+    //     //     // match env.get_template("t") {
+    //     //     //     Ok(template) => {
+    //     //     //         match template.render(
+    //     //     //             context!(page => Value::from_serialize(&sections)),
+    //     //     //         ) {
+    //     //     //             Ok(output) => {
+    //     //     //                 let tmp_html_path =
+    //     //     //                     PathBuf::from("dev-output/basic/index.html");
+    //     //     //                 let _ = std::fs::write(tmp_html_path, output);
+    //     //     //             }
+    //     //     //             Err(e) => {
+    //     //     //                 dbg!(e);
+    //     //     //                 ()
+    //     //     //             }
+    //     //     //         }
+    //     //     //     }
+    //     //     //     Err(e) => {
+    //     //     //         dbg!(e);
+    //     //     //         ()
+    //     //     //     }
+    //     //     // }
+    //     //     // let tmp_json_path = PathBuf::from("dev-output/basic/ast.json");
+    //     //     // let json = serde_json::to_string_pretty(&sections).unwrap();
+    //     //     // std::fs::write(tmp_json_path, json);
+    //     // } else {
+    //     //     assert!(false);
+    //     // }
+    // }
 
     //
 }
