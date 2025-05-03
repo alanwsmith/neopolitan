@@ -16,7 +16,7 @@ Across multiple paragraphs
           "category": "basic",
           "children": [
             {
-              "category": "text",
+              "category": "text-block",
               "spans": [
                 {
                   "category": "text",
@@ -25,7 +25,7 @@ Across multiple paragraphs
               ]
             },
             {
-              "category": "text",
+              "category": "text-block",
               "spans": [
                 {
                   "category": "text",

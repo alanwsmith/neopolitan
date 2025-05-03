@@ -14,7 +14,7 @@
           "attrs": {},
           "children": [
             {
-              "category": "text",
+              "category": "text-block",
               "spans": [
                 {
                   "category": "code",

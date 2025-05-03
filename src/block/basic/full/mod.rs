@@ -1,5 +1,5 @@
 use crate::block::Block;
-use crate::block::text::text_block;
+use crate::block::text_block::text_block;
 use crate::block_metadata::block_metadata;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -82,7 +82,7 @@ bravo foxtrot tango"#;
         let parent = BlockParent::Page;
         let left = Block::Basic {
             attrs: BTreeMap::new(),
-            children: vec![Block::Text {
+            children: vec![Block::TextBlock {
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),
                 }],

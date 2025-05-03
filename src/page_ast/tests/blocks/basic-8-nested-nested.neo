@@ -21,7 +21,7 @@ Level 1
           "attrs": {},
           "children": [
             {
-              "category": "text",
+              "category": "text-block",
               "spans": [
                 {
                   "category": "text",
@@ -34,7 +34,7 @@ Level 1
               "attrs": {},
               "children": [
                 {
-                  "category": "text",
+                  "category": "text-block",
                   "spans": [
                     {
                       "category": "text",
@@ -53,7 +53,7 @@ Level 1
             "attrs": {},
             "children": [
               {
-                "category": "text",
+                "category": "text-block",
                 "spans": [
                   {
                     "category": "text",

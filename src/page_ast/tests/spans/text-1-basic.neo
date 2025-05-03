@@ -13,7 +13,7 @@ alfa
           "category": "basic",
           "children": [
             {
-              "category": "text",
+              "category": "text-block",
               "spans": [
                 {
                   "category": "text",

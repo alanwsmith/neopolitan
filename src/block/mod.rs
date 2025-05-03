@@ -1,7 +1,7 @@
 pub mod basic;
 pub mod end;
 pub mod raw;
-pub mod text;
+pub mod text_block;
 
 use crate::block::basic::basic_block;
 use crate::block::raw::raw_block;
@@ -56,7 +56,8 @@ pub enum Block {
         flags: Vec<String>,
         kind: String,
     },
-    Text {
+    #[serde(rename = "text-block")]
+    TextBlock {
         spans: Vec<Span>,
     },
 }

@@ -1,6 +1,6 @@
 use crate::block::Block;
 use crate::block::BlockParent;
-use crate::block::text::text_block;
+use crate::block::text_block::text_block;
 use crate::block_metadata::block_metadata;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -54,7 +54,7 @@ bravo foxtrot tango"#;
         let kind = "some-end-block";
         let left = Block::End {
             attrs: BTreeMap::new(),
-            children: vec![Block::Text {
+            children: vec![Block::TextBlock {
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),
                 }],

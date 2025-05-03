@@ -15,7 +15,7 @@ Start End
           "attrs": {},
           "children": [
             {
-              "category": "text",
+              "category": "text-block",
               "spans": [
                 {
                   "category": "text",

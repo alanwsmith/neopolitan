@@ -142,7 +142,7 @@ mod test {
             body: Some("-- title\n\nwhiskey tango bravo".to_string()),
             end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
-                children: vec![Block::Text {
+                children: vec![Block::TextBlock {
                     spans: vec![Span::Text {
                         content: "sierra kilo".to_string(),
                     }],

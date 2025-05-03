@@ -1,7 +1,6 @@
--- p
--- https://www.example.com/
+-- neopolitan 
 
-Flag test
+alfa \** bravo
 
 -- json
 
@@ -18,22 +17,27 @@ Flag test
               "spans": [
                 {
                   "category": "text",
-                  "content": "Flag test"
+                  "content": "alfa "
+                },
+                {
+                  "category": "escaped",
+                  "content": "*"
+                },
+                {
+                  "category": "text",
+                  "content": "* bravo"
                 }
               ]
             }
           ],
           "end_block": null,
-          "flags": [
-            "https://www.example.com/"
-          ],
-          "kind": "p"
+          "flags": [],
+          "kind": "neopolitan"
         }
       ]
     }
   }
 }
-
 
 
 

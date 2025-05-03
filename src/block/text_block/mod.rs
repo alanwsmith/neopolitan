@@ -39,7 +39,7 @@ pub fn text_block<'a>(
     .parse(source)?;
     let (source, _) = multispace0(source)?;
 
-    Ok((source, Block::Text { spans }))
+    Ok((source, Block::TextBlock { spans }))
 
     // dump_parser_if_debug(debug, dbg_header, source, 2);
     // let (source, _) = multispace0.context("").parse(source)?;
@@ -70,7 +70,7 @@ mod test {
 text with some lines"#;
         let config = Config::default();
         let parent = BlockParent::Basic;
-        let left = Block::Text {
+        let left = Block::TextBlock {
             spans: vec![Span::Text {
                 content: "this is some text with some lines".to_string(),
             }],

@@ -1,7 +1,7 @@
 use crate::block::Block;
 use crate::block::block;
 use crate::block::end::end_block;
-use crate::block::text::text_block;
+use crate::block::text_block::text_block;
 use crate::block_metadata::block_metadata;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -65,7 +65,7 @@ delta zulu alfa
         let parent = BlockParent::Page;
         let left = Block::Basic {
             attrs: BTreeMap::new(),
-            children: vec![Block::Text {
+            children: vec![Block::TextBlock {
                 spans: vec![Span::Text {
                     content: "delta zulu alfa".to_string(),
                 }],
@@ -92,7 +92,7 @@ delta zulu alfa
             attrs: BTreeMap::new(),
             children: vec![Block::Basic {
                 attrs: BTreeMap::new(),
-                children: vec![Block::Text {
+                children: vec![Block::TextBlock {
                     spans: vec![Span::Text {
                         content: "whiskey tango bravo".to_string(),
                     }],
