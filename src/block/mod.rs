@@ -1,4 +1,3 @@
-#![allow(unused)]
 pub mod basic;
 pub mod end;
 pub mod paragraph;
@@ -6,7 +5,6 @@ pub mod raw;
 
 use crate::block::basic::basic_block;
 use crate::block::raw::raw_block;
-use crate::block_metadata::RawBlockMetaData;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -17,8 +15,6 @@ use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
-// #[serde(untagged)]
-// #[serde(tag = "type", content = "content", rename_all = "lowercase")]
 #[serde(tag = "category", rename_all = "lowercase")]
 pub enum Block {
     Basic {
@@ -81,10 +77,4 @@ pub fn block<'a>(
     ))
     .parse(source)?;
     Ok((source, section))
-}
-
-#[cfg(test)]
-mod test {
-    // Tests are currently done at the individual section levels
-    // or above in the AST
 }

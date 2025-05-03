@@ -1,7 +1,5 @@
-#![allow(unused)]
 use crate::block::Block;
 use crate::block::paragraph::paragraph_block;
-use crate::block_metadata::block_metadata;
 use crate::block_metadata::block_metadata_dev;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;

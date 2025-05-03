@@ -1,5 +1,5 @@
 use crate::block::Block;
-use crate::block_metadata::block_metadata;
+use crate::block_metadata::block_metadata_dev;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -25,7 +25,7 @@ pub fn raw_block_full<'a>(
         terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
             .parse(source)?;
     if config.block_category_kinds.raw.contains(&kind.to_string()) {
-        let (source, (attrs, flags)) = block_metadata(source, config, parent)?;
+        let (source, metadata) = block_metadata_dev(source, config, parent)?;
         // TODO: Update this so it doesn't slup initil
         // empty spaces up on lines that don't start
         // at the first character
@@ -40,11 +40,11 @@ pub fn raw_block_full<'a>(
         Ok((
             source,
             Block::Raw {
-                attrs,
+                attrs: metadata.attrs,
                 body,
                 bound: BlockBound::Full,
                 end_block: None,
-                flags,
+                flags: metadata.flags,
                 kind: kind.to_string(),
             },
         ))
