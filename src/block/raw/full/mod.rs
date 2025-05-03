@@ -8,9 +8,9 @@ use nom::branch::alt;
 use nom::bytes::complete::is_not;
 use nom::bytes::complete::take_until;
 use nom::character::complete::multispace0;
+use nom::character::complete::space0;
 use nom::character::complete::space1;
 use nom::combinator::rest;
-use nom::sequence::pair;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
@@ -19,7 +19,7 @@ pub fn raw_block_full<'a>(
     config: &'a Config,
     parent: &'a BlockParent,
 ) -> IResult<&'a str, Block> {
-    let (source, _) = pair(tag("--"), space1).parse(source)?;
+    let (source, _) = (space0, tag("--"), space1).parse(source)?;
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
             .parse(source)?;
@@ -76,4 +76,23 @@ alfa delta whiskey"#;
         let right = raw_block_full(source, &config, &parent).unwrap().1;
         assert_eq!(left, right);
     }
+
+    #[test]
+    fn raw_basic_test_chomp_leading_line_space() {
+        let source = r#"  -- pre 
+alfa delta whiskey"#;
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Raw {
+            attrs: BTreeMap::new(),
+            body: Some("alfa delta whiskey".to_string()),
+            end_block: None,
+            flags: vec![],
+            kind: "pre".to_string(),
+        };
+        let right = raw_block_full(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+//
 }

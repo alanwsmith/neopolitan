@@ -8,11 +8,11 @@ use nom::Parser;
 use nom::branch::alt;
 use nom::bytes::complete::is_not;
 use nom::character::complete::multispace0;
+use nom::character::complete::space0;
 use nom::character::complete::space1;
 use nom::combinator::not;
 use nom::combinator::recognize;
 use nom::multi::many1;
-use nom::sequence::pair;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
@@ -21,7 +21,7 @@ pub fn raw_block_start<'a>(
     config: &'a Config,
     parent: &'a BlockParent,
 ) -> IResult<&'a str, Block> {
-    let (source, _) = pair(tag("--"), space1).parse(source)?;
+    let (source, _) = (space0, tag("--"), space1).parse(source)?;
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), (tag("/"), space0_line_ending_or_eof))
             .parse(source)?;
@@ -72,6 +72,28 @@ mod test {
     #[test]
     fn raw_block_start_test() {
         let source = "-- pre/\n\ndelta zulu alfa\n\n-- /pre";
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Raw {
+            attrs: BTreeMap::new(),
+            body: Some("delta zulu alfa".to_string()),
+            end_block: Some(Box::new(Block::End {
+                attrs: BTreeMap::new(),
+                children: vec![],
+                flags: vec![],
+                kind: "pre-end".to_string(),
+            })),
+            flags: vec![],
+            kind: "pre".to_string(),
+        };
+        let right = raw_block_start(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+
+    #[test]
+    fn raw_block_start_test_chomp_leading_line_spaces() {
+        let source = "  -- pre/\n\ndelta zulu alfa\n\n-- /pre";
         let config = Config::default();
         let parent = BlockParent::Page;
         let left = Block::Raw {

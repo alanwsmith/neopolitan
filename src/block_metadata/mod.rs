@@ -13,6 +13,7 @@ use nom::multi::many0;
 use nom::{IResult, branch::alt};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
+use nom::character::complete::space0;
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub enum RawBlockMetaData {
@@ -31,6 +32,7 @@ pub fn block_metadata<'a>(
     config: &'a Config,
     parent: &'a BlockParent,
 ) -> IResult<&'a str, BlockMetadata> {
+    let (source, _) = space0(source)?;
     let (source, raw_metadata) = many0(alt((
         |src| raw_block_attr(src, config, parent),
         |src| raw_block_flag(src, config, parent),
@@ -63,7 +65,7 @@ mod test {
     use pretty_assertions::assert_eq;
 
     #[test]
-    fn solo_block_metadata_flag_test_dev() {
+    fn solo_block_metadata_flag_test() {
         let config = &Config::default();
         let source = "-- test-flag\n\n";
         let parent = &BlockParent::Basic;
@@ -73,6 +75,21 @@ mod test {
         let right = block_metadata(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
+
+
+    #[test]
+    fn solo_block_metadata_flag_test_chomp_leading_line_space() {
+        let config = &Config::default();
+        let source = "  -- test-flag\n\n";
+        let parent = &BlockParent::Basic;
+        let attrs = BTreeMap::new();
+        let flags = vec!["test-flag".to_string()];
+        let left = BlockMetadata { attrs, flags };
+        let right = block_metadata(source, config, parent).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+
 
     #[test]
     fn block_metadata_flag_whitespace_test() {

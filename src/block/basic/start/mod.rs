@@ -10,9 +10,9 @@ use nom::Parser;
 use nom::branch::alt;
 use nom::bytes::complete::is_not;
 use nom::character::complete::multispace0;
+use nom::character::complete::space0;
 use nom::character::complete::space1;
 use nom::multi::many0;
-use nom::sequence::pair;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
@@ -21,7 +21,7 @@ pub fn basic_block_start<'a>(
     config: &'a Config,
     parent: &'a BlockParent,
 ) -> IResult<&'a str, Block> {
-    let (source, _) = pair(tag("--"), space1).parse(source)?;
+    let (source, _) = (space0, tag("--"), space1).parse(source)?;
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), (tag("/"), space0_line_ending_or_eof))
             .parse(source)?;
@@ -113,4 +113,37 @@ delta zulu alfa
         let right = basic_block_start(source, &config, &parent).unwrap().1;
         assert_eq!(left, right);
     }
+
+    #[test]
+    fn nested_block_start_test_chomping_leading_line_spaces() {
+        let source = "  -- div/\n\n  -- title\n\nwhiskey tango bravo\n\n  -- /div";
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Basic {
+            attrs: BTreeMap::new(),
+            children: vec![Block::Basic {
+                attrs: BTreeMap::new(),
+                children: vec![Block::TextBlock {
+                    spans: vec![Span::Text {
+                        content: "whiskey tango bravo".to_string(),
+                    }],
+                }],
+                end_block: None,
+                flags: vec![],
+                kind: "title".to_string(),
+            }],
+            end_block: Some(Box::new(Block::End {
+                attrs: BTreeMap::new(),
+                children: vec![],
+                flags: vec![],
+                kind: "div-end".to_string(),
+            })),
+            flags: vec![],
+            kind: "div".to_string(),
+        };
+        let right = basic_block_start(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+    //
 }

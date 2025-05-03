@@ -7,9 +7,9 @@ use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending
 use nom::Parser;
 use nom::bytes::complete::is_not;
 use nom::character::complete::multispace0;
+use nom::character::complete::space0;
 use nom::character::complete::space1;
 use nom::multi::many0;
-use nom::sequence::pair;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
@@ -18,7 +18,7 @@ pub fn basic_block_full<'a>(
     config: &'a Config,
     parent: &'a BlockParent,
 ) -> IResult<&'a str, Block> {
-    let (source, _) = pair(tag("--"), space1).parse(source)?;
+    let (source, _) = (space0, tag("--"), space1).parse(source)?;
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
             .parse(source)?;
@@ -94,4 +94,27 @@ bravo foxtrot tango"#;
         let right = basic_block_full(source, &config, &parent).unwrap().1;
         assert_eq!(left, right);
     }
+
+    #[test]
+    fn basic_test_chomp_leading_spaces_on_the_same_line() {
+        let source = r#"  -- title
+
+bravo foxtrot tango"#;
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Basic {
+            attrs: BTreeMap::new(),
+            children: vec![Block::TextBlock {
+                spans: vec![Span::Text {
+                    content: "bravo foxtrot tango".to_string(),
+                }],
+            }],
+            end_block: None,
+            flags: vec![],
+            kind: "title".to_string(),
+        };
+        let right = basic_block_full(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
+
 }

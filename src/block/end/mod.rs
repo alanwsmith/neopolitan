@@ -8,6 +8,7 @@ use nom::IResult;
 use nom::Parser;
 use nom::bytes::complete::tag;
 use nom::character::complete::multispace0;
+use nom::character::complete::space0;
 use nom::character::complete::space1;
 use nom::multi::many0;
 use nom::sequence::terminated;
@@ -18,7 +19,7 @@ pub fn end_block<'a>(
     parent: &'a BlockParent,
     kind: &str,
 ) -> IResult<&'a str, Block> {
-    let (source, _) = (tag("--"), space1, tag("/")).parse(source)?;
+    let (source, _) = (space0, tag("--"), space1, tag("/")).parse(source)?;
     let (source, _) =
         terminated(tag(kind), space0_line_ending_or_eof).parse(source)?;
     let (source, metadata) = block_metadata(source, config, parent)?;
@@ -65,4 +66,28 @@ bravo foxtrot tango"#;
         let right = end_block(source, &config, &parent, kind).unwrap().1;
         assert_eq!(left, right);
     }
+
+    #[test]
+    fn end_block_basic_test_chomp_leading_line_space() {
+        let source = r#"  -- /some-end-block
+
+bravo foxtrot tango"#;
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let kind = "some-end-block";
+        let left = Block::End {
+            attrs: BTreeMap::new(),
+            children: vec![Block::TextBlock {
+                spans: vec![Span::Text {
+                    content: "bravo foxtrot tango".to_string(),
+                }],
+            }],
+            flags: vec![],
+            kind: "some-end-block-end".to_string(),
+        };
+        let right = end_block(source, &config, &parent, kind).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+//
 }

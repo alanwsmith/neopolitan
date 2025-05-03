@@ -39,7 +39,16 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <img 
   src="/images/under-construction-1.gif" 
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-</div><h1 class="title">Attributes and Flags</h1><p>This is a stub page.</p><p>Documentation on Attributes and Flags is a work in progress.</p>
+</div><h1 class="title">Nested Full Test</h1><div class="border-primary padding-medium flow"><p>This is the start of a start-end div</p><div class="color-alt-2 border-alt-3 padding-medium flow"><p>This is the internal div which is a full div (i.e. not start-end).</p><p>It has a color applied to it.</p></div>
+
+</div>
+
+
+  
+  
+
+<div class="border-primary padding-medium flow"><p>This is the content after the closing token for the block</p></div>
+
 
 </main>
   <footer>
@@ -70,25 +79,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "Attributes and Flags"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "This is a stub page."
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Documentation on Attributes and Flags is a work in progress."
+                "content": "Nested Full Test"
               }
             ]
           }
@@ -99,16 +90,116 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
       },
       {
         "attrs": {
+          "class": [
+            {
+              "category": "text",
+              "content": "border-primary padding-medium"
+            }
+          ]
+        },
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "This is the start of a start-end div"
+              }
+            ]
+          },
+          {
+            "attrs": {
+              "class": [
+                {
+                  "category": "text",
+                  "content": "color-alt-2 border-alt-3 padding-medium"
+                }
+              ]
+            },
+            "category": "basic",
+            "children": [
+              {
+                "category": "text-block",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "This is the internal div which is a full div (i.e. not start-end)."
+                  }
+                ]
+              },
+              {
+                "category": "text-block",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "It has a color applied to it."
+                  }
+                ]
+              }
+            ],
+            "end_block": null,
+            "flags": [],
+            "kind": "div"
+          }
+        ],
+        "end_block": {
+          "attrs": {
+            "class": [
+              {
+                "category": "text",
+                "content": "border-primary padding-medium"
+              }
+            ]
+          },
+          "category": "end",
+          "children": [
+            {
+              "category": "text-block",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "This is the content after the closing token for the block"
+                }
+              ]
+            }
+          ],
+          "flags": [],
+          "kind": "div-end"
+        },
+        "flags": [],
+        "kind": "div"
+      },
+      {
+        "attrs": {
           "created": [
             {
               "category": "text",
-              "content": "2025-04-28T16:45:43-04:00"
+              "content": "2025-05-03T18:23:57-04:00"
+            }
+          ],
+          "id": [
+            {
+              "category": "text",
+              "content": "2w/bx/2d/lz"
+            }
+          ],
+          "status": [
+            {
+              "category": "text",
+              "content": "prep"
+            }
+          ],
+          "template": [
+            {
+              "category": "text",
+              "content": "post"
             }
           ],
           "updated": [
             {
               "category": "text",
-              "content": "2025-04-28T16:45:43-04:00"
+              "content": "2025-05-03T18:23:57-04:00"
             }
           ]
         },
@@ -116,7 +207,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "children": [],
         "end_block": null,
         "flags": [],
-        "kind": "metadata"
+        "kind": "page"
       }
     ]
   }

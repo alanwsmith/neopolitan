@@ -39,7 +39,28 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <img 
   src="/images/under-construction-1.gif" 
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-</div><h1 class="title">Attributes and Flags</h1><p>This is a stub page.</p><p>Documentation on Attributes and Flags is a work in progress.</p>
+</div><h1 class="title">Nested 3 Levels</h1><div class="color-alt-1 border-alt-1 padding-medium flow"><p>Level 1 Top</p><div class="color-alt-2 border-alt-2 padding-medium flow"><p>Level 2 Top</p><div class="color-alt-3 border-alt-3 padding-medium flow"><p>Level 3 Inside</p></div>
+
+
+  
+  
+
+<div class="flow"><p>Level 2 Bottom</p></div>
+</div>
+
+
+  
+  
+
+<div class="flow"><p>Level 1 Bottom</p></div>
+</div>
+
+
+  
+  
+
+<div class="flow"><p>Content After Levels</p></div>
+
 
 </main>
   <footer>
@@ -70,25 +91,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "Attributes and Flags"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "This is a stub page."
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Documentation on Attributes and Flags is a work in progress."
+                "content": "Nested 3 Levels"
               }
             ]
           }
@@ -99,16 +102,139 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
       },
       {
         "attrs": {
+          "class": [
+            {
+              "category": "text",
+              "content": "color-alt-1 border-alt-1 padding-medium"
+            }
+          ]
+        },
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Level 1 Top"
+              }
+            ]
+          },
+          {
+            "attrs": {
+              "class": [
+                {
+                  "category": "text",
+                  "content": "color-alt-2 border-alt-2 padding-medium"
+                }
+              ]
+            },
+            "category": "basic",
+            "children": [
+              {
+                "category": "text-block",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "Level 2 Top"
+                  }
+                ]
+              },
+              {
+                "attrs": {
+                  "class": [
+                    {
+                      "category": "text",
+                      "content": "color-alt-3 border-alt-3 padding-medium"
+                    }
+                  ]
+                },
+                "category": "basic",
+                "children": [
+                  {
+                    "category": "text-block",
+                    "spans": [
+                      {
+                        "category": "text",
+                        "content": "Level 3 Inside"
+                      }
+                    ]
+                  }
+                ],
+                "end_block": {
+                  "attrs": {},
+                  "category": "end",
+                  "children": [
+                    {
+                      "category": "text-block",
+                      "spans": [
+                        {
+                          "category": "text",
+                          "content": "Level 2 Bottom"
+                        }
+                      ]
+                    }
+                  ],
+                  "flags": [],
+                  "kind": "div-end"
+                },
+                "flags": [],
+                "kind": "div"
+              }
+            ],
+            "end_block": {
+              "attrs": {},
+              "category": "end",
+              "children": [
+                {
+                  "category": "text-block",
+                  "spans": [
+                    {
+                      "category": "text",
+                      "content": "Level 1 Bottom"
+                    }
+                  ]
+                }
+              ],
+              "flags": [],
+              "kind": "div-end"
+            },
+            "flags": [],
+            "kind": "div"
+          }
+        ],
+        "end_block": {
+          "attrs": {},
+          "category": "end",
+          "children": [
+            {
+              "category": "text-block",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Content After Levels"
+                }
+              ]
+            }
+          ],
+          "flags": [],
+          "kind": "div-end"
+        },
+        "flags": [],
+        "kind": "div"
+      },
+      {
+        "attrs": {
           "created": [
             {
               "category": "text",
-              "content": "2025-04-28T16:45:43-04:00"
+              "content": "2025-05-03T19:38:12-04:00"
             }
           ],
           "updated": [
             {
               "category": "text",
-              "content": "2025-04-28T16:45:43-04:00"
+              "content": "2025-05-03T19:38:12-04:00"
             }
           ]
         },

@@ -39,15 +39,20 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <img 
   src="/images/under-construction-1.gif" 
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-</div><div class="color-alt-2 flow"><p>Level 1.1</p><div class="color-alt-4 flow"><p>Level 2--- <code class="color-alfa-1">code here</code> ping</p></div>
+</div><h1 class="title">Nested Multiple Levels</h1><div class="flow"><p>Level 1 Top</p><div class="color-alt-3 flow"><p>Level 2 Inside</p></div>
 
+
+  
+  
+
+<div class="flow"><p>Level 1 Bottom</p></div>
 </div>
 
 
   
   
 
-<div class="flow"><p>Level 1.2</p></div>
+<div class="flow"><p>Content After Level Check</p></div>
 
 
 </main>
@@ -61,7 +66,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <div class="wrapper-medium padding-top-large">
 <pre class="font-size-xsmall"><hr />
 <h3>Under Construction</h3>
-<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/_test_examples/basic-div-sections.html">_test_examples/basic-div-sections.html</a></li><li><a href="/_test_examples/nested-2-levels.html">_test_examples/nested-2-levels.html</a></li><li><a href="/_test_examples/nested-3-levels.html">_test_examples/nested-3-levels.html</a></li><li><a href="/_test_examples/nested-div-full.html">_test_examples/nested-div-full.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/_test_examples/basic-div-sections.html">_test_examples/basic-div-sections.html</a></li><li><a href="/_test_examples/nested-div-full.html">_test_examples/nested-div-full.html</a></li><li><a href="/_test_examples/nested-multiple-levels.html">_test_examples/nested-multiple-levels.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
 </div>
 
 
@@ -71,14 +76,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
   "ok": {
     "blocks": [
       {
-        "attrs": {
-          "class": [
-            {
-              "category": "text",
-              "content": "color-alt-2"
-            }
-          ]
-        },
+        "attrs": {},
         "category": "basic",
         "children": [
           {
@@ -86,7 +84,25 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "Level 1.1"
+                "content": "Nested Multiple Levels"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "title"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Level 1 Top"
               }
             ]
           },
@@ -95,7 +111,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
               "class": [
                 {
                   "category": "text",
-                  "content": "color-alt-4"
+                  "content": "color-alt-3"
                 }
               ]
             },
@@ -106,34 +122,28 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
                 "spans": [
                   {
                     "category": "text",
-                    "content": "Level 2--- "
-                  },
-                  {
-                    "attrs": {
-                      "class": [
-                        {
-                          "category": "text",
-                          "content": "color-alfa-1"
-                        }
-                      ]
-                    },
-                    "category": "code",
-                    "flags": [],
-                    "spans": [
-                      {
-                        "category": "text",
-                        "content": "code here"
-                      }
-                    ]
-                  },
-                  {
-                    "category": "text",
-                    "content": " ping"
+                    "content": "Level 2 Inside"
                   }
                 ]
               }
             ],
-            "end_block": null,
+            "end_block": {
+              "attrs": {},
+              "category": "end",
+              "children": [
+                {
+                  "category": "text-block",
+                  "spans": [
+                    {
+                      "category": "text",
+                      "content": "Level 1 Bottom"
+                    }
+                  ]
+                }
+              ],
+              "flags": [],
+              "kind": "div-end"
+            },
             "flags": [],
             "kind": "div"
           }
@@ -147,7 +157,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
               "spans": [
                 {
                   "category": "text",
-                  "content": "Level 1.2"
+                  "content": "Content After Level Check"
                 }
               ]
             }
@@ -163,13 +173,13 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
           "created": [
             {
               "category": "text",
-              "content": "2025-05-02T13:38:38-04:00"
+              "content": "2025-05-03T19:34:42-04:00"
             }
           ],
           "updated": [
             {
               "category": "text",
-              "content": "2025-05-02T13:38:38-04:00"
+              "content": "2025-05-03T19:34:42-04:00"
             }
           ]
         },
