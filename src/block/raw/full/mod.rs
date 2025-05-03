@@ -32,7 +32,7 @@ pub fn raw_block_full<'a>(
         // at the first character
         let (source, _) = multispace0.parse(source)?;
         let (source, body_base) =
-            alt((take_until("\n-- "), rest)).parse(source)?;
+            alt((take_until("-- "), rest)).parse(source)?;
         let trimmed_body = body_base.trim_end();
         let body = match trimmed_body {
             "" => None,

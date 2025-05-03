@@ -28,7 +28,7 @@
   [!- endif -!]
   [!- endfor -!]
 [! elif "incomplete" in page[1].data !]
-TODO: Show Incomplete Page
+[! include "helpers/incomplete.neoj" !]
 [! else !]
 TODO: Show Error Page
 [! endif !]
