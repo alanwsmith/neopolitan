@@ -1,3 +1,4 @@
+#![allow(unused)]
 pub mod basic;
 pub mod end;
 pub mod paragraph;
@@ -26,14 +27,6 @@ pub enum Block {
         children: Vec<Block>,
         end_block: Option<Box<Block>>,
         flags: Vec<String>,
-        kind: String,
-    },
-    BasicDev {
-        attrs: Vec<RawBlockMetaData>,
-        bound: BlockBound,
-        children: Vec<Block>,
-        end_block: Option<Box<Block>>,
-        flags: Vec<RawBlockMetaData>,
         kind: String,
     },
     CheckListItem,

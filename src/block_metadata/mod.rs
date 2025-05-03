@@ -1,3 +1,4 @@
+#![allow(unused)]
 pub mod attr;
 pub mod bound;
 pub mod flag;
@@ -18,36 +19,43 @@ use std::collections::BTreeMap;
 pub enum RawBlockMetaData {
     Attribute { key: String, spans: Vec<Span> },
     Flag { string: String },
-    // Attrs {
-    //     collection: Vec<RawBlockMetaData::Attribute>,
-    // },
+}
+
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+pub struct BlockMetadata {
+    pub attrs: BTreeMap<String, Vec<Span>>,
+    pub flags: Vec<String>,
 }
 
 pub fn block_metadata_dev<'a>(
     source: &'a str,
     config: &'a Config,
     parent: &'a BlockParent,
-) -> IResult<&'a str, (Vec<RawBlockMetaData>, Vec<RawBlockMetaData>)> {
+) -> IResult<&'a str, BlockMetadata> {
     let (source, raw_metadata) = many0(alt((
         |src| raw_block_attr(src, config, parent),
         |src| raw_block_flag(src, config, parent),
     )))
     .parse(source)?;
-    let attrs = raw_metadata
-        .iter()
-        .filter_map(|metadata| match metadata {
-            RawBlockMetaData::Attribute { .. } => Some(metadata.clone()),
-            _ => None,
-        })
-        .collect();
-    let flags = raw_metadata
-        .iter()
-        .filter_map(|metadata| match metadata {
-            RawBlockMetaData::Flag { .. } => Some(metadata.clone()),
-            _ => None,
-        })
-        .collect();
-    Ok((source, (attrs, flags)))
+    let mut metadata = BlockMetadata {
+        attrs: BTreeMap::new(),
+        flags: vec![],
+    };
+    raw_metadata.iter().for_each(|item| match item {
+        RawBlockMetaData::Flag { string } => {
+            metadata.flags.push(string.clone())
+        }
+        RawBlockMetaData::Attribute { key, spans } => {
+            if let Some(x) = metadata.attrs.get_mut(key) {
+                for span in spans {
+                    x.push(span.clone())
+                }
+            } else {
+                metadata.attrs.insert(key.to_string(), spans.clone());
+            }
+        }
+    });
+    Ok((source, metadata))
 }
 
 pub fn block_metadata<'a>(
@@ -89,41 +97,83 @@ mod test {
     use pretty_assertions::assert_eq;
 
     #[test]
-    fn block_metadata_flag_test() {
+    fn solo_block_metadata_flag_test_dev() {
         let config = &Config::default();
         let source = "-- test-flag\n\n";
         let parent = &BlockParent::Basic;
-        let left = (BTreeMap::new(), vec!["test-flag".to_string()]);
-        let right = block_metadata(source, config, parent).unwrap().1;
+        let attrs = BTreeMap::new();
+        let flags = vec!["test-flag".to_string()];
+        let left = BlockMetadata { attrs, flags };
+        let right = block_metadata_dev(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
+
+    // #[test]
+    // fn block_metadata_flag_test() {
+    //     let config = &Config::default();
+    //     let source = "-- test-flag\n\n";
+    //     let parent = &BlockParent::Basic;
+    //     let left = (BTreeMap::new(), vec!["test-flag".to_string()]);
+    //     let right = block_metadata(source, config, parent).unwrap().1;
+    //     assert_eq!(left, right);
+    // }
 
     #[test]
     fn block_metadata_flag_whitespace_test() {
         let config = &Config::default();
         let source = "--      foxtrot-bravo     ";
         let parent = &BlockParent::Basic;
-        let left = (BTreeMap::new(), vec!["foxtrot-bravo".to_string()]);
-        let right = block_metadata(source, config, parent).unwrap().1;
+        let attrs = BTreeMap::new();
+        let flags = vec!["foxtrot-bravo".to_string()];
+        let left = BlockMetadata { attrs, flags };
+        let right = block_metadata_dev(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
+
+    // #[test]
+    // fn block_metadata_flag_whitespace_test() {
+    //     let config = &Config::default();
+    //     let source = "--      foxtrot-bravo     ";
+    //     let parent = &BlockParent::Basic;
+    //     let left = (BTreeMap::new(), vec!["foxtrot-bravo".to_string()]);
+    //     let right = block_metadata(source, config, parent).unwrap().1;
+    //     assert_eq!(left, right);
+    // }
 
     #[test]
     fn block_metadata_attribute_test() {
         let config = &Config::default();
         let source = "-- alfa: bravo\n\n";
         let parent = &BlockParent::Basic;
-        let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
-        attributes.insert(
+        let mut attrs = BTreeMap::new();
+        attrs.insert(
             "alfa".to_string(),
             vec![Span::Text {
                 content: "bravo".to_string(),
             }],
         );
-        let left = (attributes, vec![]);
-        let right = block_metadata(source, config, parent).unwrap().1;
+        let flags = vec![];
+        let left = BlockMetadata { attrs, flags };
+        let right = block_metadata_dev(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
+
+    // #[test]
+    // fn block_metadata_attribute_test() {
+    //     let config = &Config::default();
+    //     let source = "-- alfa: bravo\n\n";
+    //     let parent = &BlockParent::Basic;
+    //     let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
+    //     attributes.insert(
+    //         "alfa".to_string(),
+    //         vec![Span::Text {
+    //             content: "bravo".to_string(),
+    //         }],
+    //     );
+    //     let left = (attributes, vec![]);
+    //     let right = block_metadata(source, config, parent).unwrap().1;
+    //     assert_eq!(left, right);
+    // }
 
     #[test]
     fn block_metadata_attribute_whitespace_test() {

@@ -1,3 +1,4 @@
+#![allow(unused)]
 use crate::block::Block;
 use crate::block::paragraph::paragraph_block;
 use crate::block_metadata::block_metadata;
@@ -15,33 +16,6 @@ use nom::sequence::pair;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
-pub fn basic_block_full_dev<'a>(
-    source: &'a str,
-    config: &'a Config,
-    parent: &'a BlockParent,
-) -> IResult<&'a str, Block> {
-    let (source, _) = pair(tag("--"), space1).parse(source)?;
-    let (source, kind) =
-        terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
-            .parse(source)?;
-    let (source, (attrs, flags)) = block_metadata_dev(source, config, parent)?;
-    let (source, _) = multispace0.parse(source)?;
-    let (source, children) =
-        many0(|src| paragraph_block(src, config, &BlockParent::Basic))
-            .parse(source)?;
-    Ok((
-        source,
-        Block::BasicDev {
-            attrs,
-            bound: BlockBound::Full,
-            children,
-            end_block: None,
-            flags,
-            kind: kind.to_string(),
-        },
-    ))
-}
-
 pub fn basic_block_full<'a>(
     source: &'a str,
     config: &'a Config,
@@ -51,7 +25,7 @@ pub fn basic_block_full<'a>(
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
             .parse(source)?;
-    let (source, (attrs, flags)) = block_metadata(source, config, parent)?;
+    let (source, metadata) = block_metadata_dev(source, config, parent)?;
     let (source, _) = multispace0.parse(source)?;
     let (source, children) =
         many0(|src| paragraph_block(src, config, &BlockParent::Basic))
@@ -59,15 +33,42 @@ pub fn basic_block_full<'a>(
     Ok((
         source,
         Block::Basic {
-            attrs,
+            attrs: metadata.attrs,
             bound: BlockBound::Full,
             children,
             end_block: None,
-            flags,
+            flags: metadata.flags,
             kind: kind.to_string(),
         },
     ))
 }
+
+// pub fn basic_block_full<'a>(
+//     source: &'a str,
+//     config: &'a Config,
+//     parent: &'a BlockParent,
+// ) -> IResult<&'a str, Block> {
+//     let (source, _) = pair(tag("--"), space1).parse(source)?;
+//     let (source, kind) =
+//         terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
+//             .parse(source)?;
+//     let (source, (attrs, flags)) = block_metadata(source, config, parent)?;
+//     let (source, _) = multispace0.parse(source)?;
+//     let (source, children) =
+//         many0(|src| paragraph_block(src, config, &BlockParent::Basic))
+//             .parse(source)?;
+//     Ok((
+//         source,
+//         Block::Basic {
+//             attrs,
+//             bound: BlockBound::Full,
+//             children,
+//             end_block: None,
+//             flags,
+//             kind: kind.to_string(),
+//         },
+//     ))
+// }
 
 #[cfg(test)]
 mod test {
