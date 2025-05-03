@@ -60,6 +60,7 @@ impl<'a> PageAst {
 mod test {
     use super::*;
     use include_dir::{Dir, include_dir};
+    use pretty_assertions::assert_eq;
     use serde_json;
 
     static TESTS_DIR: Dir<'_> = include_dir!("src/page_ast/tests");
@@ -72,7 +73,7 @@ mod test {
     #[test]
     fn solo_ast_integration_tests() {
         let config = Config::default();
-        let glob = "*.neo";
+        let glob = "**/*.neo";
         for entry in TESTS_DIR.find(glob).unwrap() {
             if let Some(file) = entry.as_file() {
                 if let Some(contents) = file.contents_utf8() {
@@ -85,13 +86,14 @@ mod test {
                     };
                     let target: TestObject =
                         serde_json::from_str(&parts[1]).unwrap();
-                    if under_test == target {
-                        assert!(true)
-                    } else {
-                        dbg!(&target);
-                        dbg!(&under_test);
-                        assert!(false)
+                    if under_test != target {
+                        let _ = std::fs::write(
+                            "/Users/alan/Desktop/neopolitan-tmp.json",
+                            serde_json::to_string_pretty(&under_test).unwrap(),
+                        );
                     }
+
+                    assert_eq!(under_test, target);
                 }
             }
         }

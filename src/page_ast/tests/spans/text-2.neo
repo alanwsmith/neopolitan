@@ -1,0 +1,38 @@
+-- neopolitan 
+
+alfa bravo
+charlie delta
+
+
+-- json
+
+{ 
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "attrs": {},
+          "bound": "Full",
+          "category": "basic",
+          "children": [
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "alfa bravo charlie delta"
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "neopolitan"
+        }
+      ]
+    }
+  }
+}
+
+
+

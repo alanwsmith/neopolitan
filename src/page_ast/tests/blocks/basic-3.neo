@@ -1,0 +1,40 @@
+-- p
+-- https://www.example.com/
+
+Flag test
+
+-- json
+
+{ 
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "attrs": {},
+          "bound": "Full",
+          "category": "basic",
+          "children": [
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Flag test"
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [
+            "https://www.example.com/"
+          ],
+          "kind": "p"
+        }
+      ]
+    }
+  }
+}
+
+
+
+

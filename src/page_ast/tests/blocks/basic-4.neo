@@ -1,0 +1,48 @@
+-- p
+-- class: red
+-- url: https://www.example.com/
+
+Attr test
+
+-- json
+
+{
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "category": "basic",
+          "attrs": {
+            "class": [
+              {
+                "category": "text",
+                "content": "red"
+              }
+            ],
+            "url": [
+              {
+                "category": "text",
+                "content": "https://www.example.com/"
+              }
+            ]
+          },
+          "bound": "Full",
+          "children": [
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Attr test"
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "p"
+        }
+      ]
+    }
+  }
+}
