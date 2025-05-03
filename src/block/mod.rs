@@ -39,7 +39,16 @@ pub enum Block {
     },
     Html,
     JavaScript,
-    Json5,
+    // TODO: Set up Json5 so that it's
+    // top level is an `ok` or `error`
+    // based of it it was able to be parsed
+    // or not. Though about making it json5
+    // but that might be a bridge to far?
+    // need to think about that a bit.
+    // If you do it, you'd have to figure out
+    // how to deal with comments and such
+    // in the AST which feels fraught.
+    Json,
     List,
     ListItem,
     Olist,
@@ -60,10 +69,9 @@ pub fn block<'a>(
     source: &'a str,
     config: &'a Config,
     parent: &'a BlockParent,
-    debug: bool,
 ) -> IResult<&'a str, Block> {
     let (source, section) =
-        alt((|src| basic_block(src, config, parent, debug),)).parse(source)?;
+        alt((|src| basic_block(src, config, parent),)).parse(source)?;
     Ok((source, section))
 }
 

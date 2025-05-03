@@ -1,11 +1,10 @@
+[#
+  This is the generic block that's used
+  for all end_blocks 
+#]
+
 [!- for block in block.children -!]
   [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
   <p>[!- include templates -!]</p>
 [!- endfor -!]
-
-[! if block.end_block != None !]
-  [! set block = block.end_block !]
-  [! include "blocks/end/default.neoj" !]
-[! endif !]
-
 

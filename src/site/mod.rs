@@ -54,7 +54,7 @@ impl Site {
                     .to_path_buf();
                 let source =
                     std::fs::read_to_string(&source_path).unwrap().to_string();
-                let ast = Ast::new_from_source(&source, &self.config, false);
+                let ast = Ast::new_from_source(&source, &self.config);
                 let page = Page {
                     path: stripped_output_path.clone(),
                     data: ast,

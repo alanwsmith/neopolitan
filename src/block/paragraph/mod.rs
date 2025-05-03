@@ -13,7 +13,6 @@ pub fn paragraph_block<'a>(
     source: &'a str,
     _config: &'a Config,
     _parent: &'a BlockParent,
-    _debug: bool,
 ) -> IResult<&'a str, Block> {
     let (source, _) = not(tag("--")).parse(source)?;
 
@@ -71,13 +70,12 @@ mod test {
 text with some lines"#;
         let config = Config::default();
         let parent = BlockParent::Basic;
-        let debug = false;
         let left = Block::Paragraph {
             spans: vec![Span::Text {
                 content: "this is some text with some lines".to_string(),
             }],
         };
-        let right = paragraph_block(source, &config, &parent, debug).unwrap().1;
+        let right = paragraph_block(source, &config, &parent).unwrap().1;
         assert_eq!(left, right);
     }
 }

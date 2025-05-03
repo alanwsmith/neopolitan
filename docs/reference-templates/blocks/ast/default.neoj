@@ -1,1 +1,1 @@
-THIS IS THE AST
+<pre class="font-size-xsmall">[@ page[1]|tojson(true) @]<pre>

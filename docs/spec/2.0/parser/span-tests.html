@@ -43,8 +43,171 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 </h1><h2>Introduction
 </h2><p>This document consists of the test cases used to verify a Neopolitan 2.0 parser conforms to the spec.
 </p><p><p>alfa
-</p></p><p><p>asdf
-</p></p>THIS IS THE AST</main>
+</p>
+
+</p><p><p>{ "data": { "ok": { "blocks": [ { "attrs": {}, "bound": "Full", "category": "basic", "children": [ { "category": "paragraph", "spans": [ { "category": "text", "content": "alfa" } ] } ], "end_block": null, "flags": [], "kind": "neopolitan" } ] } } }
+</p>
+
+</p>
+  
+  <p>this is the end
+</p>
+
+
+<pre class="font-size-xsmall">{
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "attrs": {},
+          "bound": "Full",
+          "category": "basic",
+          "children": [
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Neopolitan 2.0 Parser Tests"
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "title"
+        },
+        {
+          "attrs": {},
+          "bound": "Full",
+          "category": "basic",
+          "children": [
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Introduction"
+                }
+              ]
+            },
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "This document consists of the test cases used to verify a Neopolitan 2.0 parser conforms to the spec."
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "h2"
+        },
+        {
+          "attrs": {},
+          "bound": "Start",
+          "category": "basic",
+          "children": [
+            {
+              "attrs": {},
+              "bound": "Full",
+              "category": "basic",
+              "children": [
+                {
+                  "category": "paragraph",
+                  "spans": [
+                    {
+                      "category": "text",
+                      "content": "alfa"
+                    }
+                  ]
+                }
+              ],
+              "end_block": null,
+              "flags": [],
+              "kind": "neopolitan"
+            },
+            {
+              "attrs": {},
+              "bound": "Full",
+              "category": "basic",
+              "children": [
+                {
+                  "category": "paragraph",
+                  "spans": [
+                    {
+                      "category": "text",
+                      "content": "{ \"data\": { \"ok\": { \"blocks\": [ { \"attrs\": {}, \"bound\": \"Full\", \"category\": \"basic\", \"children\": [ { \"category\": \"paragraph\", \"spans\": [ { \"category\": \"text\", \"content\": \"alfa\" } ] } ], \"end_block\": null, \"flags\": [], \"kind\": \"neopolitan\" } ] } } }"
+                    }
+                  ]
+                }
+              ],
+              "end_block": null,
+              "flags": [],
+              "kind": "json"
+            }
+          ],
+          "end_block": {
+            "attrs": {},
+            "bound": "Full",
+            "category": "end",
+            "children": [
+              {
+                "category": "paragraph",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "this is the end"
+                  }
+                ]
+              }
+            ],
+            "flags": [],
+            "kind": "pre-end"
+          },
+          "flags": [],
+          "kind": "pre"
+        },
+        {
+          "attrs": {},
+          "bound": "Full",
+          "category": "basic",
+          "children": [],
+          "end_block": null,
+          "flags": [],
+          "kind": "ast"
+        },
+        {
+          "attrs": {
+            "created": [
+              {
+                "category": "text",
+                "content": "2025-05-02T17:32:54-04:00"
+              }
+            ],
+            "updated": [
+              {
+                "category": "text",
+                "content": "2025-05-02T17:32:54-04:00"
+              }
+            ]
+          },
+          "bound": "Full",
+          "category": "basic",
+          "children": [],
+          "end_block": null,
+          "flags": [],
+          "kind": "page"
+        }
+      ]
+    }
+  },
+  "path": "spec/2.0/parser/span-tests.html"
+}<pre>
+
+</main>
   <footer>
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 

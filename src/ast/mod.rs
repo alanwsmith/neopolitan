@@ -25,12 +25,8 @@ pub enum Ast {
 }
 
 impl<'a> Ast {
-    pub fn new_from_source(
-        source: &'a str,
-        config: &'a Config,
-        debug: bool,
-    ) -> Ast {
-        match Ast::parse_ast(source, config, &BlockParent::Page, debug) {
+    pub fn new_from_source(source: &'a str, config: &'a Config) -> Ast {
+        match Ast::parse_ast(source, config, &BlockParent::Page) {
             Ok(results) => {
                 if results.0 == "" {
                     Ast::Ok { blocks: results.1 }
@@ -52,11 +48,10 @@ impl<'a> Ast {
         source: &'a str,
         config: &'a Config,
         parent: &'a BlockParent,
-        debug: bool,
     ) -> IResult<&'a str, Vec<Block>> {
         let (source, _) = multispace0(source)?;
         let (source, blocks) =
-            many1(|src| block(src, config, parent, debug)).parse(source)?;
+            many1(|src| block(src, config, parent)).parse(source)?;
         Ok((source, blocks))
     }
 }
@@ -71,8 +66,7 @@ mod test {
     fn basic_test() {
         let config = Config::default();
         let source = include_str!("test-data/basic-example.neo");
-        if let Ast::Ok { blocks } = Ast::new_from_source(source, &config, false)
-        {
+        if let Ast::Ok { blocks } = Ast::new_from_source(source, &config) {
             assert_eq!(1, blocks.len());
         } else {
             assert!(false);
@@ -83,7 +77,7 @@ mod test {
     fn span_test() {
         let config = Config::default();
         let source = include_str!("test-data/span-test.neo");
-        match Ast::new_from_source(source, &config, false) {
+        match Ast::new_from_source(source, &config) {
             Ast::Ok { blocks } => assert_eq!(1, blocks.len()),
             Ast::Error { message, remainder } => {
                 dbg!(message);

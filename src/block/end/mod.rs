@@ -22,11 +22,10 @@ pub fn end_block<'a>(
     let (source, _) = (tag("--"), space1, tag("/")).parse(source)?;
     let (source, _) =
         terminated(tag(kind), space0_line_ending_or_eof).parse(source)?;
-    let (source, (attrs, flags)) =
-        block_metadata(source, config, parent, false)?;
+    let (source, (attrs, flags)) = block_metadata(source, config, parent)?;
     let (source, _) = multispace0.parse(source)?;
     let (source, children) =
-        many0(|src| paragraph_block(src, config, &BlockParent::Basic, false))
+        many0(|src| paragraph_block(src, config, &BlockParent::Basic))
             .parse(source)?;
     Ok((
         source,

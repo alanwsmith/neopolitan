@@ -11,7 +11,7 @@ This document consists of the test cases
 used to verify a Neopolitan 2.0 parser 
 conforms to the spec. 
 
--- neo-test/
+-- pre/
 
 -- neopolitan
 
@@ -19,10 +19,39 @@ alfa
 
 -- json
 
-asdf
+{ 
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "attrs": {},
+          "bound": "Full",
+          "category": "basic",
+          "children": [
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "alfa"
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "neopolitan"
+        }
+      ]
+    }
+  }
+}
+
+-- /pre
 
 
--- /neo-test
+this is the end
+
 
 -- ast
 

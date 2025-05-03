@@ -2,3 +2,10 @@
   [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
   <p>[!- include templates -!]</p>
 [!- endfor -!]
+
+[! if block.end_block != None !]
+  [! set block = block.end_block !]
+  [! include "blocks/end/default.neoj" !]
+[! endif !]
+
+

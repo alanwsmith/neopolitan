@@ -42,16 +42,30 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 </div><h1 class="title">Span Flags
 </h1><p>Tags and Shorthand spans accept flags.
 </p><p>The parsing logic is:
-</p><p>- Flags end at spaces, tabs, newlines or pipes [TKTKTK: Insert pipe character]
+</p>
+
+<p>- Flags end at spaces, tabs, newlines or pipes [TKTKTK: Insert pipe character]
 </p><p>- Flags can have individual characters that match the closing tag or shorthand token, but they can't have two in a row as that would be the closing indication.
 </p><p>- Emoji (e.g. 🕺) can be used. (Recognizing that different systems display different images for the same emoji)
 </p><p>- Escaping characters in flags is not supported. 1
-</p><p>Doing so would require switching the AST to use an array of spans to track the escaped characters instead of using a single text string. That would lead to an unacceptable increase in the complexity of using them in templates.
+</p>
+
+<p>Doing so would require switching the AST to use an array of spans to track the escaped characters instead of using a single text string. That would lead to an unacceptable increase in the complexity of using them in templates.
 </p><p>The reason spans would be required for escape characters is so the AST can be used to make an accurate reproduction of the input source.
-</p><p>Note that this means you can have multiple opening tag tokens like:
-</p><p>text|alfa&lt;&lt;bravo
-</p><p>Where <code>alfa<<bravo</code> is the flag. Same goes for the <code>[</code> and <code>{</code> characters for links and images.
-</p></main>
+</p>
+
+<p>Note that this means you can have multiple opening tag tokens like:
+</p>
+
+<p>text|alfa&lt;&lt;bravo
+</p>
+
+<p>Where <code>alfa<<bravo</code> is the flag. Same goes for the <code>[</code> and <code>{</code> characters for links and images.
+</p>
+
+
+
+</main>
   <footer>
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 

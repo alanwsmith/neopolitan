@@ -13,11 +13,10 @@ pub fn basic_block<'a>(
     source: &'a str,
     config: &'a Config,
     parent: &'a BlockParent,
-    debug: bool,
 ) -> IResult<&'a str, Block> {
     let (source, section) = alt((
-        |src| basic_block_full(src, config, parent, debug),
-        |src| basic_block_start(src, config, parent, debug),
+        |src| basic_block_full(src, config, parent),
+        |src| basic_block_start(src, config, parent),
     ))
     .parse(source)?;
     Ok((source, section))
