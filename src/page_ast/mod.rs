@@ -70,6 +70,7 @@ mod test {
         data: PageAst,
     }
 
+
     #[test]
     fn solo_ast_integration_tests() {
         let config = Config::default();
