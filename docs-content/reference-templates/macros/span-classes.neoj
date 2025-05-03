@@ -1,4 +1,3 @@
-[# DEPRECATED: Move into span-attributes.neoj #]
 [!- macro span_classes(span, extras = "") -!]
   [!- if "class" in span.attrs or extras != "" -!]
   [@- ' ' -@]
@@ -11,4 +10,3 @@
   "
   [!- endif -!]
 [!- endmacro -!]
-

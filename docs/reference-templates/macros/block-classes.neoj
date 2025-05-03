@@ -1,0 +1,9 @@
+[!- macro block_classes(block, extras = "") -!]
+<pre>
+[!- if "class" in block.attrs -!]
+[!- for span in block.attrs.class -!]
+[@ span.content @]
+[!- endfor -!]
+[!- endif -!]
+</pre>
+[!- endmacro -!]
