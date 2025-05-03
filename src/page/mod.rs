@@ -6,8 +6,7 @@ use std::path::PathBuf;
 // the output path is dependent on the system.
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct Page<'a> {
-    pub source_path: PathBuf,
-    pub data: Ast<'a>,
+pub struct Page {
+    pub path: PathBuf,
+    pub data: Ast,
 }
-

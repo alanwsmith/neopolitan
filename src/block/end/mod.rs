@@ -19,7 +19,6 @@ pub fn end_block<'a>(
     parent: &'a BlockParent,
     kind: &str,
 ) -> IResult<&'a str, Block> {
-    dbg!(&source);
     let (source, _) = (tag("--"), space1, tag("/")).parse(source)?;
     let (source, _) =
         terminated(tag(kind), space0_line_ending_or_eof).parse(source)?;

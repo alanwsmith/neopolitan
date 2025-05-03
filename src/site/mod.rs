@@ -16,18 +16,19 @@ use walkdir::WalkDir;
 // for now
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct Site<'a> {
+pub struct Site {
     pub config: Config,
     pub errors: BTreeMap<PathBuf, (String, String)>,
+    // TODO: Rename files to other_files
     pub files: Vec<(PathBuf, PathBuf)>,
     pub incompletes: BTreeMap<PathBuf, (Vec<Block>, String)>,
     pub input_root: PathBuf,
     pub output_root: PathBuf,
     pub pages: BTreeMap<PathBuf, Vec<Block>>,
-    pub pages_dev: BTreeMap<PathBuf, Page<'a>>,
+    pub pages_dev: BTreeMap<PathBuf, Page>,
 }
 
-impl Site<'_> {
+impl Site {
     pub fn load_pages_and_files(&mut self) -> Result<()> {
         let input_files = get_files_in_dir(&self.input_root)?;
         input_files.iter().for_each(|source_path| {
@@ -41,6 +42,11 @@ impl Site<'_> {
             std::fs::create_dir_all(parent).unwrap();
             let source_extension = source_path.extension().unwrap();
             if source_extension == "neo" {
+                // Reminder: using output path here because the
+                // reference engine is designed to be a one
+                // to one transfer of .neo files to their .html
+                // locations. (compared to neopoligen which
+                // uses IDs and allows for path overrides.
                 output_path.set_extension("html");
                 let stripped_output_path = output_path
                     .strip_prefix(&self.output_root)
@@ -48,26 +54,33 @@ impl Site<'_> {
                     .to_path_buf();
                 let source =
                     std::fs::read_to_string(&source_path).unwrap().to_string();
-                match Ast::new_from_source(&source, &self.config, false) {
-                    Ast::Ok { blocks } => {
-                        self.pages.insert(
-                            stripped_output_path.clone(),
-                            blocks.clone(),
-                        );
-                    }
-                    Ast::Error { message, remainder } => {
-                        self.errors.insert(
-                            stripped_output_path.clone(),
-                            (message, remainder),
-                        );
-                    }
-                    Ast::Incomplete { parsed, remainder } => {
-                        self.incompletes.insert(
-                            stripped_output_path.clone(),
-                            (parsed, remainder.to_string()),
-                        );
-                    }
-                }
+                let ast = Ast::new_from_source(&source, &self.config, false);
+                let page = Page {
+                    path: stripped_output_path.clone(),
+                    data: ast,
+                };
+                self.pages_dev.insert(stripped_output_path, page);
+
+                // match Ast::new_from_source(&source, &self.config, false) {
+                //     Ast::Ok { blocks } => {
+                //         self.pages.insert(
+                //             stripped_output_path.clone(),
+                //             blocks.clone(),
+                //         );
+                //     }
+                //     Ast::Error { message, remainder } => {
+                //         self.errors.insert(
+                //             stripped_output_path.clone(),
+                //             (message, remainder),
+                //         );
+                //     }
+                //     Ast::Incomplete { parsed, remainder } => {
+                //         self.incompletes.insert(
+                //             stripped_output_path.clone(),
+                //             (parsed, remainder.to_string()),
+                //         );
+                //     }
+                // }
             } else {
                 self.files.push((source_path.clone(), output_path.clone()));
             }
@@ -83,7 +96,7 @@ impl Site<'_> {
     }
 
     pub fn output_pages(&self) -> Result<()> {
-        let site = Value::from_serialize(&self.clone());
+        let site = Value::from_serialize(&self);
         let mut env = Environment::new();
         env.set_syntax(
             SyntaxConfig::builder()
@@ -95,13 +108,12 @@ impl Site<'_> {
         );
         env.add_function("highlight_span", highlight_span);
         env.set_loader(path_loader("docs-content/reference-templates"));
-        // env.set_loader(path_loader("docs-templates"));
-        self.pages.iter().for_each(|(relative_path, blocks)| {
-            let output_path = &self.output_root.join(relative_path);
+        for page_struct in &self.pages_dev {
+            let output_path = &self.output_root.join(page_struct.0);
             let template =
                 env.get_template("helpers/template-picker.neoj").unwrap();
-            let blocks = Value::from_serialize(&blocks);
-            match template.render(context!(site, blocks)) {
+            let page = Value::from_serialize(page_struct);
+            match template.render(context!(site, page)) {
                 Ok(output) => {
                     write_file_with_mkdir(&output_path, &output).unwrap()
                 }
@@ -136,7 +148,51 @@ impl Site<'_> {
                     }
                 }
             }
-        });
+        }
+
+        // self.pages.iter().for_each(|(relative_path, blocks)| {
+        //     let output_path = &self.output_root.join(relative_path);
+        //     let template =
+        //         env.get_template("helpers/template-picker.neoj").unwrap();
+        //     let blocks = Value::from_serialize(&blocks);
+        //     match template.render(context!(site, blocks)) {
+        //         Ok(output) => {
+        //             write_file_with_mkdir(&output_path, &output).unwrap()
+        //         }
+        //         Err(e) => {
+        //             // Attempt to fall back to error output
+        //             let output_error_template = env
+        //                 .get_template("helpers/rendering-error.neoj")
+        //                 .unwrap();
+        //             let name = Value::from(e.name().unwrap());
+        //             let message = Value::from(e.detail().unwrap());
+        //             let line = Value::from(e.line().unwrap());
+        //             let mut e = &e as &dyn std::error::Error;
+        //             let mut error_details = vec![];
+        //             while let Some(next_err) = e.source() {
+        //                 error_details.push(format!("{:#}", next_err));
+        //                 e = next_err;
+        //             }
+        //             error_details.reverse();
+        //             let details = Value::from_serialize(error_details.clone());
+        //             let context = context!(site, details, line, message, name);
+        //             match output_error_template.render(context) {
+        //                 Ok(error_output) => {
+        //                     write_file_with_mkdir(&output_path, &error_output)
+        //                         .unwrap()
+        //                 }
+        //                 // Panic on purpose if the error file
+        //                 // can't be written
+        //                 Err(panic_error) => {
+        //                     dbg!(panic_error);
+        //                     assert!(false);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
+
+        //
         Ok(())
     }
 

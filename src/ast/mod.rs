@@ -9,26 +9,27 @@ use nom::multi::many1;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub enum Ast<'a> {
+#[serde(rename_all = "lowercase")]
+pub enum Ast {
     Error {
         message: String,
         remainder: String,
     },
     Incomplete {
         parsed: Vec<Block>,
-        remainder: &'a str,
+        remainder: String,
     },
     Ok {
         blocks: Vec<Block>,
     },
 }
 
-impl<'a> Ast<'_> {
+impl<'a> Ast {
     pub fn new_from_source(
         source: &'a str,
         config: &'a Config,
         debug: bool,
-    ) -> Ast<'a> {
+    ) -> Ast {
         match Ast::parse_ast(source, config, &BlockParent::Page, debug) {
             Ok(results) => {
                 if results.0 == "" {
@@ -36,7 +37,7 @@ impl<'a> Ast<'_> {
                 } else {
                     Ast::Incomplete {
                         parsed: results.1,
-                        remainder: results.0,
+                        remainder: results.0.to_string(),
                     }
                 }
             }
