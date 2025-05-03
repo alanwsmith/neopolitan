@@ -1,0 +1,31 @@
+-- title
+
+Nested Full Test
+
+-- div/
+-- class: border-primary padding-medium
+
+This is the start of a start-end div
+
+-- div
+-- class: color-alt-2 border-alt-3 padding-medium
+
+This is the internal div which is a full
+div (i.e. not start-end). 
+
+It has a color applied to it.
+
+-- /div
+-- class: border-primary padding-medium
+
+This is the content after the closing
+token for the block
+
+
+-- page
+-- created: 2025-05-03T18:23:57-04:00
+-- updated: 2025-05-03T18:23:57-04:00
+-- id: 2w/bx/2d/lz
+-- template: post
+-- status: prep
+

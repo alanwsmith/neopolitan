@@ -3,8 +3,11 @@
   for all end_blocks 
 #]
 
+<div
+  [@- macros.block_classes(block, "flow") -@]
+>
 [!- for block in block.children -!]
   [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
   [!- include templates -!]
 [!- endfor -!]
-
+</div>

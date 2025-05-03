@@ -39,8 +39,15 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <img 
   src="/images/under-construction-1.gif" 
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-</div><h1 class="title"><p>Specifications</p></h1><p>[] Three levels of conforming: 1 properly produce the AST, 2 properly produce core HTML, 3 properly implement standard section and span outputs.</p><p>[] Make <code>neb-css</code> sections part of the level 3 requirement. Should not output to page. Only to be used in the RSS feeds.</p><p>[] Add other Neb stuff for level 3.</p><p>[] Make sure <code>link</code> shorthand moves <code>target</code> attr into the output as part of the spec</p><p>[] Go through required flags (e.g. <code>hidden</code>, etc.)</p><p>[] Required sections for the lower level: warning, note</p>
+</div><h1 class="title"><p>Nested Full Test</p></h1><div class="border-primary padding-medium flow"><p>This is the start of a start-end div</p><div class="color-alt-2 border-alt-3 padding-medium flow"><p>This is the internal div which is a full div (i.e. not start-end).</p><p>It has a color applied to it.</p></div>
 
+</div>
+
+
+  
+  
+
+<div class="border-primary padding-medium flow"><p>This is the content after the closing token for the block</p></div>
 
 
 </main>
@@ -73,7 +80,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "Specifications"
+                "content": "Nested Full Test"
               }
             ]
           }
@@ -83,8 +90,15 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "title"
       },
       {
-        "attrs": {},
-        "bound": "full",
+        "attrs": {
+          "class": [
+            {
+              "category": "text",
+              "content": "border-primary padding-medium"
+            }
+          ]
+        },
+        "bound": "start",
         "category": "basic",
         "children": [
           {
@@ -92,132 +106,104 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "[] Three levels of conforming: 1 properly produce the AST, 2 properly produce core HTML, 3 properly implement standard section and span outputs."
+                "content": "This is the start of a start-end div"
               }
             ]
           },
           {
-            "category": "text",
-            "spans": [
+            "attrs": {
+              "class": [
+                {
+                  "category": "text",
+                  "content": "color-alt-2 border-alt-3 padding-medium"
+                }
+              ]
+            },
+            "bound": "full",
+            "category": "basic",
+            "children": [
               {
                 "category": "text",
-                "content": "[] Make "
-              },
-              {
-                "attrs": {},
-                "category": "code",
-                "flags": [],
                 "spans": [
                   {
                     "category": "text",
-                    "content": "neb-css"
+                    "content": "This is the internal div which is a full div (i.e. not start-end)."
                   }
                 ]
               },
               {
                 "category": "text",
-                "content": " sections part of the level 3 requirement. Should not output to page. Only to be used in the RSS feeds."
-              }
-            ]
-          },
-          {
-            "category": "text",
-            "spans": [
-              {
-                "category": "text",
-                "content": "[] Add other Neb stuff for level 3."
-              }
-            ]
-          },
-          {
-            "category": "text",
-            "spans": [
-              {
-                "category": "text",
-                "content": "[] Make sure "
-              },
-              {
-                "attrs": {},
-                "category": "code",
-                "flags": [],
                 "spans": [
                   {
                     "category": "text",
-                    "content": "link"
+                    "content": "It has a color applied to it."
                   }
                 ]
-              },
-              {
-                "category": "text",
-                "content": " shorthand moves "
-              },
-              {
-                "attrs": {},
-                "category": "code",
-                "flags": [],
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "target"
-                  }
-                ]
-              },
-              {
-                "category": "text",
-                "content": " attr into the output as part of the spec"
               }
-            ]
-          },
-          {
-            "category": "text",
-            "spans": [
-              {
-                "category": "text",
-                "content": "[] Go through required flags (e.g. "
-              },
-              {
-                "attrs": {},
-                "category": "code",
-                "flags": [],
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "hidden"
-                  }
-                ]
-              },
-              {
-                "category": "text",
-                "content": ", etc.)"
-              }
-            ]
-          },
-          {
-            "category": "text",
-            "spans": [
-              {
-                "category": "text",
-                "content": "[] Required sections for the lower level: warning, note"
-              }
-            ]
+            ],
+            "end_block": null,
+            "flags": [],
+            "kind": "div"
           }
         ],
-        "end_block": null,
+        "end_block": {
+          "attrs": {
+            "class": [
+              {
+                "category": "text",
+                "content": "border-primary padding-medium"
+              }
+            ]
+          },
+          "bound": "full",
+          "category": "end",
+          "children": [
+            {
+              "category": "text",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "This is the content after the closing token for the block"
+                }
+              ]
+            }
+          ],
+          "flags": [],
+          "kind": "div-end"
+        },
         "flags": [],
-        "kind": "todo"
+        "kind": "div"
       },
       {
         "attrs": {
           "created": [
             {
               "category": "text",
-              "content": "2025-04-28T08:46:10-04:00"
+              "content": "2025-05-03T18:23:57-04:00"
+            }
+          ],
+          "id": [
+            {
+              "category": "text",
+              "content": "2w/bx/2d/lz"
+            }
+          ],
+          "status": [
+            {
+              "category": "text",
+              "content": "prep"
+            }
+          ],
+          "template": [
+            {
+              "category": "text",
+              "content": "post"
             }
           ],
           "updated": [
             {
               "category": "text",
-              "content": "2025-04-28T08:46:10-04:00"
+              "content": "2025-05-03T18:23:57-04:00"
             }
           ]
         },
@@ -226,7 +212,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "children": [],
         "end_block": null,
         "flags": [],
-        "kind": "metadata"
+        "kind": "page"
       }
     ]
   }
