@@ -22,6 +22,12 @@ be highlighted as rust.
 This is a ``code shorthand|class: color-alt-1`` that should have a
 different color though a class. 
 
+This is a ``code shorthand|aria-hidden: false`` with an aria attribute 
+
+This is a ``code shorthand|data-count: 1`` with a data attribute
+
+
+
 
 
 

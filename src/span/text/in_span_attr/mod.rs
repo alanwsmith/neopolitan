@@ -85,7 +85,7 @@ mod test {
     }
 
     #[test]
-    fn solo_text_span_in_span_attr_chomp_leading_whitespace_on_new_lines() {
+    fn text_span_in_span_attr_chomp_leading_whitespace_on_new_lines() {
         let source = "alfa  \n  bravo";
         let left = Span::Text {
             content: "alfa bravo".to_string(),

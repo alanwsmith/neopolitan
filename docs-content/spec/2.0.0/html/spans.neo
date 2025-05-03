@@ -1,0 +1,39 @@
+-- title
+
+Neopolitan 2.0.0 HTML Span Output
+
+-- h2
+
+Introduction
+
+These are the HTML Output that should be produced
+by an output engine. 
+
+
+-- h2
+
+The Tests
+
+
+-- pre/
+
+-- neopolitan
+
+``code|alfa bravo``
+
+-- html
+
+<code>alfa bravo</code>
+
+-- /pre
+
+
+
+
+
+
+-- metadata 
+-- created: 2025-05-03T08:58:20-04:00
+-- updated: 2025-05-03T08:58:20-04:00
+
+

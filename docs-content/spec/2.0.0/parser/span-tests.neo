@@ -11,17 +11,13 @@ This document consists of the test cases
 used to verify a Neopolitan 2.0 parser 
 conforms to the spec. 
 
--- pre
-
-asdfasdfasdko
-
 -- pre/
 
 -- neopolitan
 
 alfa
 
--- json
+-- pre 
 
 { 
   "data": {

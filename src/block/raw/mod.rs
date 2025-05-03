@@ -15,8 +15,8 @@ pub fn raw_block<'a>(
     parent: &'a BlockParent,
 ) -> IResult<&'a str, Block> {
     let (source, section) = alt((
-        |src| raw_block_full(src, config, parent),
         |src| raw_block_start(src, config, parent),
+        |src| raw_block_full(src, config, parent),
     ))
     .parse(source)?;
     Ok((source, section))

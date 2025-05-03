@@ -39,16 +39,76 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <img 
   src="/images/under-construction-1.gif" 
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-</div><h1 class="title">Specifications
-</h1><p>[] Three levels of conforming: 1 properly produce the AST, 2 properly produce core HTML, 3 properly implement standard section and span outputs.
-</p><p>[] Make <code>neb-css</code> sections part of the level 3 requirement. Should not output to page. Only to be used in the RSS feeds.
-</p><p>[] Add other Neb stuff for level 3.
-</p><p>[] Make sure <code>link</code> shorthand moves <code>target</code> attr into the output as part of the spec
-</p><p>[] Go through required flags (e.g. <code>hidden</code>, etc.)
-</p><p>[] Required sections for the lower level: warning, note
-</p>
-
-
+</div><h1 class="title">Neopolitan 2.0.0 HTML Span Output
+</h1><h2>Introduction
+</h2><p>These are the HTML Output that should be produced by an output engine.
+</p><h2>The Tests
+</h2><pre>
+{
+  "attrs": {},
+  "bound": "Start",
+  "category": "basic",
+  "children": [
+    {
+      "attrs": {},
+      "bound": "Full",
+      "category": "basic",
+      "children": [
+        {
+          "category": "paragraph",
+          "spans": [
+            {
+              "attrs": {},
+              "category": "code",
+              "flags": [
+                "alfa bravo"
+              ],
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "code"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "end_block": null,
+      "flags": [],
+      "kind": "neopolitan"
+    },
+    {
+      "attrs": {},
+      "bound": "Full",
+      "category": "basic",
+      "children": [
+        {
+          "category": "paragraph",
+          "spans": [
+            {
+              "category": "text",
+              "content": "\u003ccode\u003ealfa bravo\u003c/code\u003e"
+            }
+          ]
+        }
+      ],
+      "end_block": null,
+      "flags": [],
+      "kind": "html"
+    }
+  ],
+  "end_block": {
+    "attrs": {},
+    "bound": "Full",
+    "category": "end",
+    "children": [],
+    "flags": [],
+    "kind": "pre-end"
+  },
+  "flags": [],
+  "kind": "pre"
+}
+</pre>
 
 </main>
   <footer>

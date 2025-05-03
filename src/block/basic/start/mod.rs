@@ -87,7 +87,7 @@ delta zulu alfa
     }
 
     #[test]
-    fn solo_nested_block_start_test() {
+    fn nested_block_start_test() {
         let source = "-- div/\n\n-- title\n\nwhiskey tango bravo\n\n-- /div";
         let config = Config::default();
         let parent = BlockParent::Page;
