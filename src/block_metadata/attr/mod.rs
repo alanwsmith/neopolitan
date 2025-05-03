@@ -72,7 +72,7 @@ pub fn raw_block_attr<'a>(
     .parse(source)?;
     Ok((
         source,
-        RawBlockMetaData::Attribtue {
+        RawBlockMetaData::Attribute {
             key: key_parts.join("").to_string(),
             spans,
         },
@@ -91,7 +91,7 @@ mod test {
         let config = &Config::default();
         let parent = &BlockParent::Basic;
         let source = "-- alfa: bravo";
-        let left = RawBlockMetaData::Attribtue {
+        let left = RawBlockMetaData::Attribute {
             key: "alfa".to_string(),
             spans: vec![Span::Text {
                 content: "bravo".to_string(),

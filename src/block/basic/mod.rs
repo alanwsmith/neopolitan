@@ -6,6 +6,7 @@ use crate::block::basic::full::basic_block_full;
 use crate::block::basic::start::basic_block_start;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
+use full::basic_block_full_dev;
 use nom::Parser;
 use nom::{IResult, branch::alt};
 
@@ -15,7 +16,7 @@ pub fn basic_block<'a>(
     parent: &'a BlockParent,
 ) -> IResult<&'a str, Block> {
     let (source, section) = alt((
-        |src| basic_block_full(src, config, parent),
+        |src| basic_block_full_dev(src, config, parent),
         |src| basic_block_start(src, config, parent),
     ))
     .parse(source)?;

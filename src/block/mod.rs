@@ -5,6 +5,7 @@ pub mod raw;
 
 use crate::block::basic::basic_block;
 use crate::block::raw::raw_block;
+use crate::block_metadata::RawBlockMetaData;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -25,6 +26,14 @@ pub enum Block {
         children: Vec<Block>,
         end_block: Option<Box<Block>>,
         flags: Vec<String>,
+        kind: String,
+    },
+    BasicDev {
+        attrs: Vec<RawBlockMetaData>,
+        bound: BlockBound,
+        children: Vec<Block>,
+        end_block: Option<Box<Block>>,
+        flags: Vec<RawBlockMetaData>,
         kind: String,
     },
     CheckListItem,
