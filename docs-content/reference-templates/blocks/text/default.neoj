@@ -1,0 +1,3 @@
+<p>[!- for span in block.spans -!]
+[@- span.content -@]
+[!- endfor -!]</p>

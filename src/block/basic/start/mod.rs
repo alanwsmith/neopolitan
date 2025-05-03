@@ -1,7 +1,7 @@
 use crate::block::Block;
 use crate::block::block;
 use crate::block::end::end_block;
-use crate::block::paragraph::paragraph_block;
+use crate::block::text::text_block;
 use crate::block_metadata::block_metadata;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
@@ -30,7 +30,7 @@ pub fn basic_block_start<'a>(
     let (source, metadata) = block_metadata(source, config, parent)?;
     let (source, _) = multispace0.parse(source)?;
     let (source, children) = many0(alt((
-        |src| paragraph_block(src, config, &BlockParent::Basic),
+        |src| text_block(src, config, &BlockParent::Basic),
         |src| block(src, config, &BlockParent::Basic),
     )))
     .parse(source)?;
@@ -68,7 +68,7 @@ delta zulu alfa
         let left = Block::Basic {
             attrs: BTreeMap::new(),
             bound: BlockBound::Start,
-            children: vec![Block::Paragraph {
+            children: vec![Block::Text {
                 spans: vec![Span::Text {
                     content: "delta zulu alfa".to_string(),
                 }],
@@ -98,7 +98,7 @@ delta zulu alfa
             children: vec![Block::Basic {
                 attrs: BTreeMap::new(),
                 bound: BlockBound::Full,
-                children: vec![Block::Paragraph {
+                children: vec![Block::Text {
                     spans: vec![Span::Text {
                         content: "whiskey tango bravo".to_string(),
                     }],

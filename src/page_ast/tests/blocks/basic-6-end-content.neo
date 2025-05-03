@@ -1,0 +1,54 @@
+-- p/
+
+Start End
+
+-- /p
+
+End Text
+
+-- json
+
+{
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "category": "basic",
+          "attrs": {},
+          "bound": "start",
+          "children": [
+            {
+              "category": "text",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Start End"
+                }
+              ]
+            }
+          ],
+          "end_block": {
+            "category": "end",
+            "attrs": {},
+            "bound": "full",
+            "children": [
+              {
+                "category": "text",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "End Text"
+                  }
+                ]
+              }
+            ],
+            "flags": [],
+            "kind": "p-end"
+          },
+          "flags": [],
+          "kind": "p"
+        }
+      ]
+    }
+  }
+}

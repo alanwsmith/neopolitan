@@ -12,10 +12,10 @@
         {
           "category": "basic",
           "attrs": {},
-          "bound": "Full",
+          "bound": "full",
           "children": [
             {
-              "category": "paragraph",
+              "category": "text",
               "spans": [
                 {
                   "category": "code",

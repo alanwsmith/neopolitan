@@ -1,0 +1,54 @@
+-- p/
+
+-- div
+
+Full Nested
+
+-- /p
+
+-- json
+
+{
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "category": "basic",
+          "attrs": {},
+          "bound": "start",
+          "children": [
+            {
+              "category": "basic",
+              "attrs": {},
+              "bound": "full",
+              "children": [
+                {
+                  "category": "text",
+                  "spans": [
+                    {
+                      "category": "text",
+                      "content": "Full Nested"
+                    }
+                  ]
+                }
+              ],
+              "end_block": null,
+              "flags": [],
+              "kind": "div"
+            }
+          ],
+          "end_block": {
+            "category": "end",
+            "attrs": {},
+            "bound": "full",
+            "children": [],
+            "flags": [],
+            "kind": "p-end"
+          },
+          "flags": [],
+          "kind": "p"
+        }
+      ]
+    }
+  }
+}

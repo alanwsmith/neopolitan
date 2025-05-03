@@ -39,16 +39,14 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <img 
   src="/images/under-construction-1.gif" 
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-</div><h1 class="title">Output Sample
-</h1><h2>Introduction
-</h2><p>This is an h2 section with is part of the basic category.
-</p><h3>Code Sections
-</h3><p>This is a <code>code snippet</code> without attrs.
-</p><p>This is a <code data-lang="rust"> <span class="source rust"><span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>code shorthand<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span></span></code> that should be highlighted as rust.
-</p><p>This is a <code class="color-alt-1">code shorthand</code> that should have a different color though a class.
-</p><p>This is a <code>code shorthand</code> with an aria attribute
-</p><p>This is a <code>code shorthand</code> with a data attribute
-</p>
+</div><div><p>Level 1.1</p><div><p>Level 2</p></div>
+
+</div>
+
+
+  
+  <p>Level 1.2</p>
+
 
 </main>
   <footer>
@@ -63,5 +61,95 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <h3>Under Construction</h3>
 <ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
 </div>
+
+
+<div class="wrapper-medium padding-top-large">
+<pre class="font-size-xsmall">
+{
+  "ok": {
+    "blocks": [
+      {
+        "attrs": {},
+        "bound": "start",
+        "category": "basic",
+        "children": [
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Level 1.1"
+              }
+            ]
+          },
+          {
+            "attrs": {},
+            "bound": "full",
+            "category": "basic",
+            "children": [
+              {
+                "category": "text",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "Level 2"
+                  }
+                ]
+              }
+            ],
+            "end_block": null,
+            "flags": [],
+            "kind": "div"
+          }
+        ],
+        "end_block": {
+          "attrs": {},
+          "bound": "full",
+          "category": "end",
+          "children": [
+            {
+              "category": "text",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Level 1.2"
+                }
+              ]
+            }
+          ],
+          "flags": [],
+          "kind": "div-end"
+        },
+        "flags": [],
+        "kind": "div"
+      },
+      {
+        "attrs": {
+          "created": [
+            {
+              "category": "text",
+              "content": "2025-05-02T13:38:38-04:00"
+            }
+          ],
+          "updated": [
+            {
+              "category": "text",
+              "content": "2025-05-02T13:38:38-04:00"
+            }
+          ]
+        },
+        "bound": "full",
+        "category": "basic",
+        "children": [],
+        "end_block": null,
+        "flags": [],
+        "kind": "metadata"
+      }
+    ]
+  }
+}
+</pre>
+</div>
+
 </body>
 </html>

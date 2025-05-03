@@ -1,6 +1,6 @@
 [!- for block in block.children -!]
   [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
-  <p>[!- include templates -!]</p>
+  [!- include templates -!]
 [!- endfor -!]
 
 [! if block.end_block != None !]

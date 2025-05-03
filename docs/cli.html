@@ -39,19 +39,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <img 
   src="/images/under-construction-1.gif" 
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-</div><h1 class="title">Command Line Interface
-</h1><h2>Introduction
-</h2><p>Version 2.0 of Neopolitan generates ASTs for use in rust apps. It does not include a command line interface. I'm considering one in the future to output ASTs as JSONs either as files or as STDOUT.
-</p><p>Adding a basic HTML output from templates is also a possibility. I'm not sure about that though as there are so many possible quality-of-life improvement decisions that it's it might not be worth doing work inside Neopolitan. Other engines (e.g. Neopoligen) are likely where that effort is better spent.
-</p><h2>NOTES
-</h2><p>The first 2.0 version will only create the AST for use inside rust apps. Long term possibility of making a command line interface.
-</p><h2>TODO
-</h2><p>[] Make a config loader with a JSON schema you can pass in.
-</p><p>[] Output ASTs as JSONs in an output dir with the relative paths of the source files.
-</p><p>[] Output ASTs as JSONs in the same directory as the source files.
-</p><p>[] Provide minijinja output from the command line run.
-</p><p>[] Create a default formatter. Allow line length to be set. TBD on what else (aim to keep it at a minimum)
-</p>
+</div><h1 class="title"><p>Command Line Interface</p></h1><h2><p>Introduction</p></h2><p><p>Version 2.0 of Neopolitan generates ASTs for use in rust apps. It does not include a command line interface. I'm considering one in the future to output ASTs as JSONs either as files or as STDOUT.</p></p><p><p>Adding a basic HTML output from templates is also a possibility. I'm not sure about that though as there are so many possible quality-of-life improvement decisions that it's it might not be worth doing work inside Neopolitan. Other engines (e.g. Neopoligen) are likely where that effort is better spent.</p></p><h2><p>NOTES</p></h2><p><p>The first 2.0 version will only create the AST for use inside rust apps. Long term possibility of making a command line interface.</p></p><h2><p>TODO</p></h2><p><p>[] Make a config loader with a JSON schema you can pass in.</p></p><p><p>[] Output ASTs as JSONs in an output dir with the relative paths of the source files.</p></p><p><p>[] Output ASTs as JSONs in the same directory as the source files.</p></p><p><p>[] Provide minijinja output from the command line run.</p></p><p><p>[] Create a default formatter. Allow line length to be set. TBD on what else (aim to keep it at a minimum)</p></p>
 
 </main>
   <footer>
@@ -66,5 +54,188 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <h3>Under Construction</h3>
 <ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
 </div>
+
+
+<div class="wrapper-medium padding-top-large">
+<pre class="font-size-xsmall">
+{
+  "ok": {
+    "blocks": [
+      {
+        "attrs": {},
+        "bound": "full",
+        "category": "basic",
+        "children": [
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Command Line Interface"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "title"
+      },
+      {
+        "attrs": {},
+        "bound": "full",
+        "category": "basic",
+        "children": [
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Introduction"
+              }
+            ]
+          },
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Version 2.0 of Neopolitan generates ASTs for use in rust apps. It does not include a command line interface. I\u0027m considering one in the future to output ASTs as JSONs either as files or as STDOUT."
+              }
+            ]
+          },
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Adding a basic HTML output from templates is also a possibility. I\u0027m not sure about that though as there are so many possible quality-of-life improvement decisions that it\u0027s it might not be worth doing work inside Neopolitan. Other engines (e.g. Neopoligen) are likely where that effort is better spent."
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "bound": "full",
+        "category": "basic",
+        "children": [
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "NOTES"
+              }
+            ]
+          },
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "The first 2.0 version will only create the AST for use inside rust apps. Long term possibility of making a command line interface."
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "bound": "full",
+        "category": "basic",
+        "children": [
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "TODO"
+              }
+            ]
+          },
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Make a config loader with a JSON schema you can pass in."
+              }
+            ]
+          },
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Output ASTs as JSONs in an output dir with the relative paths of the source files."
+              }
+            ]
+          },
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Output ASTs as JSONs in the same directory as the source files."
+              }
+            ]
+          },
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Provide minijinja output from the command line run."
+              }
+            ]
+          },
+          {
+            "category": "text",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Create a default formatter. Allow line length to be set. TBD on what else (aim to keep it at a minimum)"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {
+          "created": [
+            {
+              "category": "text",
+              "content": "2025-04-27T10:12:27-04:00"
+            }
+          ],
+          "updated": [
+            {
+              "category": "text",
+              "content": "2025-04-27T10:12:27-04:00"
+            }
+          ]
+        },
+        "bound": "full",
+        "category": "basic",
+        "children": [],
+        "end_block": null,
+        "flags": [],
+        "kind": "metadata"
+      }
+    ]
+  }
+}
+</pre>
+</div>
+
 </body>
 </html>

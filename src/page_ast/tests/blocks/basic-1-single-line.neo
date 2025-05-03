@@ -10,11 +10,11 @@ This is a test
       "blocks": [
         {
           "attrs": {},
-          "bound": "Full",
+          "bound": "full",
           "category": "basic",
           "children": [
             {
-              "category": "paragraph",
+              "category": "text",
               "spans": [
                 {
                   "category": "text",

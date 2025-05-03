@@ -26,10 +26,10 @@ Attr test
               }
             ]
           },
-          "bound": "Full",
+          "bound": "full",
           "children": [
             {
-              "category": "paragraph",
+              "category": "text",
               "spans": [
                 {
                   "category": "text",

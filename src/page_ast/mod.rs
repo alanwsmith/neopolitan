@@ -77,6 +77,7 @@ mod test {
         for entry in TESTS_DIR.find(glob).unwrap() {
             if let Some(file) = entry.as_file() {
                 if let Some(contents) = file.contents_utf8() {
+                    dbg!(entry.path().display());
                     let parts = contents
                         .split("-- json")
                         .map(|part| part.to_string())
@@ -92,7 +93,6 @@ mod test {
                             serde_json::to_string_pretty(&under_test).unwrap(),
                         );
                     }
-
                     assert_eq!(under_test, target);
                 }
             }

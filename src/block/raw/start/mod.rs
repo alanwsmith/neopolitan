@@ -152,7 +152,7 @@ mod test {
             end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
                 bound: BlockBound::Full,
-                children: vec![Block::Paragraph {
+                children: vec![Block::Text {
                     spans: vec![Span::Text {
                         content: "sierra kilo".to_string(),
                     }],

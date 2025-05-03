@@ -1,7 +1,7 @@
 pub mod basic;
 pub mod end;
-pub mod paragraph;
 pub mod raw;
+pub mod text;
 
 use crate::block::basic::basic_block;
 use crate::block::raw::raw_block;
@@ -52,9 +52,6 @@ pub enum Block {
     ListItem,
     Olist,
     OlistItem,
-    Paragraph {
-        spans: Vec<Span>,
-    },
     Raw {
         attrs: BTreeMap<String, Vec<Span>>,
         body: Option<String>,
@@ -62,6 +59,9 @@ pub enum Block {
         end_block: Option<Box<Block>>,
         flags: Vec<String>,
         kind: String,
+    },
+    Text {
+        spans: Vec<Span>,
     },
 }
 

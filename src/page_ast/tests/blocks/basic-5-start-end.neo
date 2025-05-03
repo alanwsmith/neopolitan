@@ -1,35 +1,42 @@
--- neopolitan 
+-- p/
 
-alfa
+Start End
+
+-- /p
 
 -- json
 
-{ 
+{
   "data": {
     "ok": {
       "blocks": [
         {
-          "attrs": {},
-          "bound": "full",
           "category": "basic",
+          "attrs": {},
+          "bound": "start",
           "children": [
             {
               "category": "text",
               "spans": [
                 {
                   "category": "text",
-                  "content": "alfa"
+                  "content": "Start End"
                 }
               ]
             }
           ],
-          "end_block": null,
+          "end_block": {
+            "category": "end",
+            "attrs": {},
+            "bound": "full",
+            "children": [],
+            "flags": [],
+            "kind": "p-end"
+          },
           "flags": [],
-          "kind": "neopolitan"
+          "kind": "p"
         }
       ]
     }
   }
 }
-
-

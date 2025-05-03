@@ -9,7 +9,7 @@ use nom::combinator::not;
 use nom::multi::many1;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 
-pub fn paragraph_block<'a>(
+pub fn text_block<'a>(
     source: &'a str,
     _config: &'a Config,
     _parent: &'a BlockParent,
@@ -39,7 +39,7 @@ pub fn paragraph_block<'a>(
     .parse(source)?;
     let (source, _) = multispace0(source)?;
 
-    Ok((source, Block::Paragraph { spans }))
+    Ok((source, Block::Text { spans }))
 
     // dump_parser_if_debug(debug, dbg_header, source, 2);
     // let (source, _) = multispace0.context("").parse(source)?;
@@ -70,12 +70,12 @@ mod test {
 text with some lines"#;
         let config = Config::default();
         let parent = BlockParent::Basic;
-        let left = Block::Paragraph {
+        let left = Block::Text {
             spans: vec![Span::Text {
                 content: "this is some text with some lines".to_string(),
             }],
         };
-        let right = paragraph_block(source, &config, &parent).unwrap().1;
+        let right = text_block(source, &config, &parent).unwrap().1;
         assert_eq!(left, right);
     }
 }

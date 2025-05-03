@@ -13,11 +13,11 @@ Across multiple paragraphs
       "blocks": [
         {
           "attrs": {},
-          "bound": "Full",
+          "bound": "full",
           "category": "basic",
           "children": [
             {
-              "category": "paragraph",
+              "category": "text",
               "spans": [
                 {
                   "category": "text",
@@ -26,7 +26,7 @@ Across multiple paragraphs
               ]
             },
             {
-              "category": "paragraph",
+              "category": "text",
               "spans": [
                 {
                   "category": "text",
