@@ -25,6 +25,7 @@ mod test {
             input_root: PathBuf::from("docs-content"),
             output_root: PathBuf::from("docs"),
             pages: BTreeMap::new(),
+            pages_dev: BTreeMap::new(),
             files: vec![],
         };
         // These will panic intentionally if

@@ -2,6 +2,7 @@ use crate::ast::Ast;
 use crate::block::Block;
 use crate::config::Config;
 use crate::minijinja_functions::highlight_syntax::highlight_span;
+use crate::page::Page;
 use anyhow::Result;
 use minijinja::syntax::SyntaxConfig;
 use minijinja::{Environment, Value, context, path_loader};
@@ -15,7 +16,7 @@ use walkdir::WalkDir;
 // for now
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct Site {
+pub struct Site<'a> {
     pub config: Config,
     pub errors: BTreeMap<PathBuf, (String, String)>,
     pub files: Vec<(PathBuf, PathBuf)>,
@@ -23,9 +24,10 @@ pub struct Site {
     pub input_root: PathBuf,
     pub output_root: PathBuf,
     pub pages: BTreeMap<PathBuf, Vec<Block>>,
+    pub pages_dev: BTreeMap<PathBuf, Page<'a>>,
 }
 
-impl Site {
+impl Site<'_> {
     pub fn load_pages_and_files(&mut self) -> Result<()> {
         let input_files = get_files_in_dir(&self.input_root)?;
         input_files.iter().for_each(|source_path| {
