@@ -19,7 +19,6 @@ use std::collections::BTreeMap;
 pub enum Block {
     Basic {
         attrs: BTreeMap<String, Vec<Span>>,
-        r#type: BlockType,
         children: Vec<Block>,
         end_block: Option<Box<Block>>,
         flags: Vec<String>,

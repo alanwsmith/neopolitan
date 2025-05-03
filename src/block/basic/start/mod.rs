@@ -40,7 +40,6 @@ pub fn basic_block_start<'a>(
         source,
         Block::Basic {
             attrs: metadata.attrs,
-            r#type: BlockType::OpenBlock,
             children,
             end_block: Some(Box::new(end_block)),
             flags: metadata.flags,
@@ -67,7 +66,6 @@ delta zulu alfa
         let parent = BlockParent::Page;
         let left = Block::Basic {
             attrs: BTreeMap::new(),
-            r#type: BlockType::OpenBlock,
             children: vec![Block::Text {
                 spans: vec![Span::Text {
                     content: "delta zulu alfa".to_string(),
@@ -94,10 +92,8 @@ delta zulu alfa
         let parent = BlockParent::Page;
         let left = Block::Basic {
             attrs: BTreeMap::new(),
-            r#type: BlockType::OpenBlock,
             children: vec![Block::Basic {
                 attrs: BTreeMap::new(),
-                r#type: BlockType::FullBlock,
                 children: vec![Block::Text {
                     spans: vec![Span::Text {
                         content: "whiskey tango bravo".to_string(),

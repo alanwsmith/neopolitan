@@ -32,7 +32,6 @@ pub fn basic_block_full<'a>(
         source,
         Block::Basic {
             attrs: metadata.attrs,
-            r#type: BlockType::FullBlock,
             children,
             end_block: None,
             flags: metadata.flags,
@@ -84,7 +83,6 @@ bravo foxtrot tango"#;
         let parent = BlockParent::Page;
         let left = Block::Basic {
             attrs: BTreeMap::new(),
-            r#type: BlockType::FullBlock,
             children: vec![Block::Text {
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),
