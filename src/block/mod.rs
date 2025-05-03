@@ -25,7 +25,6 @@ pub enum Block {
         flags: Vec<String>,
         kind: String,
     },
-    #[serde(rename = "text-block")]
     CheckListItem,
     CheckList,
     CSS,
@@ -58,12 +57,6 @@ pub enum Block {
     },
     Raw,
 }
-
-// #[derive(Debug, Deserialize, PartialEq, Serialize)]
-// pub struct Section {
-//     pub category: SectionCategory,
-//     pub kind: String,
-// }
 
 pub fn block<'a>(
     source: &'a str,
