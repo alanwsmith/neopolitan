@@ -2,7 +2,7 @@ use crate::block::Block;
 use crate::block::block;
 use crate::block::end::end_block;
 use crate::block::paragraph::paragraph_block;
-use crate::block_metadata::block_metadata;
+use crate::block_metadata::block_metadata_dev;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -26,7 +26,8 @@ pub fn basic_block_start<'a>(
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), (tag("/"), space0_line_ending_or_eof))
             .parse(source)?;
-    let (source, (attrs, flags)) = block_metadata(source, config, parent)?;
+    // let (source, (attrs, flags)) = block_metadata(source, config, parent)?;
+    let (source, metadata) = block_metadata_dev(source, config, parent)?;
     let (source, _) = multispace0.parse(source)?;
     let (source, children) = many0(alt((
         |src| paragraph_block(src, config, &BlockParent::Basic),
@@ -38,11 +39,11 @@ pub fn basic_block_start<'a>(
     Ok((
         source,
         Block::Basic {
-            attrs,
+            attrs: metadata.attrs,
             bound: BlockBound::Start,
             children,
             end_block: Some(Box::new(end_block)),
-            flags,
+            flags: metadata.flags,
             kind: kind.to_string(),
         },
     ))

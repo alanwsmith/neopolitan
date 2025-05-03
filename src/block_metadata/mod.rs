@@ -180,25 +180,43 @@ mod test {
         let config = &Config::default();
         let source = "--    hotel:      whiskey     \n\n";
         let parent = &BlockParent::Basic;
-        let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
-        attributes.insert(
+        let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();
+        attrs.insert(
             "hotel".to_string(),
             vec![Span::Text {
                 content: "whiskey".to_string(),
             }],
         );
-        let left = (attributes, vec![]);
-        let right = block_metadata(source, config, parent).unwrap().1;
+        let flags = vec![];
+        let left = BlockMetadata { attrs, flags };
+        let right = block_metadata_dev(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
+
+    // #[test]
+    // fn block_metadata_attribute_whitespace_test() {
+    //     let config = &Config::default();
+    //     let source = "--    hotel:      whiskey     \n\n";
+    //     let parent = &BlockParent::Basic;
+    //     let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
+    //     attributes.insert(
+    //         "hotel".to_string(),
+    //         vec![Span::Text {
+    //             content: "whiskey".to_string(),
+    //         }],
+    //     );
+    //     let left = (attributes, vec![]);
+    //     let right = block_metadata(source, config, parent).unwrap().1;
+    //     assert_eq!(left, right);
+    // }
 
     #[test]
     fn multiple_metadata_test() {
         let config = &Config::default();
         let source = "-- delta: alfa\n-- foxtrot\n-- delta: bravo\n-- echo";
         let parent = &BlockParent::Basic;
-        let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
-        attributes.insert(
+        let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();
+        attrs.insert(
             "delta".to_string(),
             vec![
                 Span::Text {
@@ -209,9 +227,34 @@ mod test {
                 },
             ],
         );
-        let left =
-            (attributes, vec!["foxtrot".to_string(), "echo".to_string()]);
-        let right = block_metadata(source, config, parent).unwrap().1;
+        let flags = vec!["foxtrot".to_string(), "echo".to_string()];
+        let left = BlockMetadata { attrs, flags };
+        let right = block_metadata_dev(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
+
+    // #[test]
+    // fn multiple_metadata_test() {
+    //     let config = &Config::default();
+    //     let source = "-- delta: alfa\n-- foxtrot\n-- delta: bravo\n-- echo";
+    //     let parent = &BlockParent::Basic;
+    //     let mut attributes: BTreeMap<String, Vec<Span>> = BTreeMap::new();
+    //     attributes.insert(
+    //         "delta".to_string(),
+    //         vec![
+    //             Span::Text {
+    //                 content: "alfa".to_string(),
+    //             },
+    //             Span::Text {
+    //                 content: "bravo".to_string(),
+    //             },
+    //         ],
+    //     );
+    //     let left =
+    //         (attributes, vec!["foxtrot".to_string(), "echo".to_string()]);
+    //     let right = block_metadata(source, config, parent).unwrap().1;
+    //     assert_eq!(left, right);
+    // }
+
+    //
 }
