@@ -1,7 +1,7 @@
 use crate::block::Block;
 use crate::block::BlockParent;
 use crate::block::paragraph::paragraph_block;
-use crate::block_metadata::block_metadata_dev;
+use crate::block_metadata::block_metadata;
 use crate::block_metadata::bound::BlockBound;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -22,7 +22,7 @@ pub fn end_block<'a>(
     let (source, _) = (tag("--"), space1, tag("/")).parse(source)?;
     let (source, _) =
         terminated(tag(kind), space0_line_ending_or_eof).parse(source)?;
-    let (source, metadata) = block_metadata_dev(source, config, parent)?;
+    let (source, metadata) = block_metadata(source, config, parent)?;
     let (source, _) = multispace0.parse(source)?;
     let (source, children) =
         many0(|src| paragraph_block(src, config, &BlockParent::Basic))

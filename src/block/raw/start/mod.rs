@@ -1,6 +1,6 @@
 use crate::block::Block;
 use crate::block::end::end_block;
-use crate::block_metadata::block_metadata_dev;
+use crate::block_metadata::block_metadata;
 use crate::block_metadata::bound::BlockBound;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -27,7 +27,7 @@ pub fn raw_block_start<'a>(
         terminated(is_not("/ \t\r\n"), (tag("/"), space0_line_ending_or_eof))
             .parse(source)?;
     if config.block_category_kinds.raw.contains(&kind.to_string()) {
-        let (source, metadata) = block_metadata_dev(source, config, parent)?;
+        let (source, metadata) = block_metadata(source, config, parent)?;
         let (source, _) = multispace0.parse(source)?;
         let (source, body_parts) = many1(alt((
             is_not("-"),

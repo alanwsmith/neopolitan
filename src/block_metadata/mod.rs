@@ -27,7 +27,7 @@ pub struct BlockMetadata {
     pub flags: Vec<String>,
 }
 
-pub fn block_metadata_dev<'a>(
+pub fn block_metadata<'a>(
     source: &'a str,
     config: &'a Config,
     parent: &'a BlockParent,
@@ -58,39 +58,6 @@ pub fn block_metadata_dev<'a>(
     Ok((source, metadata))
 }
 
-pub fn block_metadata<'a>(
-    source: &'a str,
-    config: &'a Config,
-    parent: &'a BlockParent,
-) -> IResult<&'a str, (BTreeMap<String, Vec<Span>>, Vec<String>)> {
-    let (source, raw_metadata) = many0(alt((
-        |src| raw_block_attr(src, config, parent),
-        |src| raw_block_flag(src, config, parent),
-    )))
-    .parse(source)?;
-    let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();
-    raw_metadata.iter().for_each(|metadata| {
-        if let RawBlockMetaData::Attribute { key, spans } = metadata {
-            match attrs.get_mut(key) {
-                Some(payload) => spans.iter().for_each(|span| {
-                    payload.push(span.clone());
-                }),
-                None => {
-                    attrs.insert(key.to_string(), spans.clone());
-                }
-            }
-        }
-    });
-    let flags = raw_metadata
-        .iter()
-        .filter_map(|metadata| match metadata {
-            RawBlockMetaData::Flag { string } => Some(string.clone()),
-            _ => None,
-        })
-        .collect::<Vec<String>>();
-    Ok((source, (attrs, flags)))
-}
-
 #[cfg(test)]
 mod test {
     use super::*;
@@ -104,7 +71,7 @@ mod test {
         let attrs = BTreeMap::new();
         let flags = vec!["test-flag".to_string()];
         let left = BlockMetadata { attrs, flags };
-        let right = block_metadata_dev(source, config, parent).unwrap().1;
+        let right = block_metadata(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
 
@@ -126,7 +93,7 @@ mod test {
         let attrs = BTreeMap::new();
         let flags = vec!["foxtrot-bravo".to_string()];
         let left = BlockMetadata { attrs, flags };
-        let right = block_metadata_dev(source, config, parent).unwrap().1;
+        let right = block_metadata(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
 
@@ -154,7 +121,7 @@ mod test {
         );
         let flags = vec![];
         let left = BlockMetadata { attrs, flags };
-        let right = block_metadata_dev(source, config, parent).unwrap().1;
+        let right = block_metadata(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
 
@@ -189,7 +156,7 @@ mod test {
         );
         let flags = vec![];
         let left = BlockMetadata { attrs, flags };
-        let right = block_metadata_dev(source, config, parent).unwrap().1;
+        let right = block_metadata(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
 
@@ -229,7 +196,7 @@ mod test {
         );
         let flags = vec!["foxtrot".to_string(), "echo".to_string()];
         let left = BlockMetadata { attrs, flags };
-        let right = block_metadata_dev(source, config, parent).unwrap().1;
+        let right = block_metadata(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
 
