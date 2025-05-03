@@ -67,6 +67,7 @@ pub fn raw_block_start<'a>(
 #[cfg(test)]
 mod test {
     use super::*;
+    use crate::span::Span;
     use pretty_assertions::assert_eq;
     use std::collections::BTreeMap;
 
@@ -117,7 +118,7 @@ mod test {
     }
 
     #[test]
-    fn solo_nested_block_start_test() {
+    fn raw_block_start_nested_block_start_test() {
         let source = "-- code/\n\n-- title\n\nwhiskey tango bravo\n\n-- /code";
         let config = Config::default();
         let parent = BlockParent::Page;
@@ -129,6 +130,33 @@ mod test {
                 attrs: BTreeMap::new(),
                 bound: BlockBound::Full,
                 children: vec![],
+                flags: vec![],
+                kind: "code-end".to_string(),
+            })),
+            flags: vec![],
+            kind: "code".to_string(),
+        };
+        let right = raw_block_start(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+    #[test]
+    fn solo_raw_block_start_nested_with_end_block_test() {
+        let source = "-- code/\n\n-- title\n\nwhiskey tango bravo\n\n-- /code\n\nsierra kilo";
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Raw {
+            attrs: BTreeMap::new(),
+            body: Some("-- title\n\nwhiskey tango bravo".to_string()),
+            bound: BlockBound::Start,
+            end_block: Some(Box::new(Block::End {
+                attrs: BTreeMap::new(),
+                bound: BlockBound::Full,
+                children: vec![Block::Paragraph {
+                    spans: vec![Span::Text {
+                        content: "sierra kilo".to_string(),
+                    }],
+                }],
                 flags: vec![],
                 kind: "code-end".to_string(),
             })),
