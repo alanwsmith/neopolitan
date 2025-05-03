@@ -10,8 +10,8 @@ pub struct BlockTypes {
     pub raw: Vec<String>,
 }
 
-impl Config {
-    pub fn default() -> Config {
+impl Default for Config {
+    fn default() -> Config {
         let block_category_kinds = BlockTypes {
             raw: vec!["code".to_string(), "pre".to_string(), "raw".to_string()],
         };

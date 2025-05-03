@@ -8,6 +8,7 @@ use minijinja::syntax::SyntaxConfig;
 use minijinja::{Environment, Value, context, path_loader};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
+use std::path::Path;
 use std::path::PathBuf;
 use walkdir::WalkDir;
 
@@ -139,11 +140,11 @@ impl Site {
                             write_file_with_mkdir(output_path, &error_output)
                                 .unwrap()
                         }
-                        // Panic on purpose if the error file
-                        // can't be written
                         Err(panic_error) => {
-                            dbg!(panic_error);
-                            assert!(false);
+                            // TODO: Handle this as a result
+                            // that gets passed up to change
+                            // the return code.
+                            panic!("{}", panic_error);
                         }
                     }
                 }
@@ -266,12 +267,12 @@ pub fn get_files_in_dir(root_dir: &PathBuf) -> Result<Vec<PathBuf>> {
 }
 
 pub fn replace_path_root(
-    source: &PathBuf,
+    source: &Path,
     find: &PathBuf,
-    replacement: &PathBuf,
+    replacement: &Path,
 ) -> Result<PathBuf> {
     let stripped_path = source.strip_prefix(find)?;
-    let new_path = replacement.clone().join(stripped_path);
+    let new_path = replacement.to_path_buf().join(stripped_path);
     Ok(new_path)
 }
 
