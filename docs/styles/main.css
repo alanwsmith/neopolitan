@@ -757,6 +757,14 @@ code {
   margin-top: var(--flow-space, 1em);
 }
 
+.font-size-xsmall { font-size: var(--font-size-xsmall); }
+.font-size-small { font-size: var(--font-size-small); }
+.font-size-medium { font-size: var(--font-size-medium); }
+.font-size-large { font-size: var(--font-size-large); }
+.font-size-xlarge { font-size: var(--font-size-xlarge); }
+.font-size-xxlarge { font-size: var(--font-size-xxlarge); }
+.font-size-xxxlarge { font-size: var(--font-size-xxxlarge); }
+
 footer {
   border-top: var(--border-alt-4-20);
   color: var(--color-primary-40); 

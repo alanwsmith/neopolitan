@@ -35,10 +35,11 @@
   </footer>
 
 <div class="wrapper-medium padding-top-large">
-<pre>
+<pre class="font-size-xsmall">
 [@- macros.page_links(site) -@]
 </pre>
 </div>
+
 
 </body>
 </html>
