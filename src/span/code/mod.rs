@@ -21,13 +21,13 @@ pub fn code_span(source: &str) -> IResult<&str, Span> {
         many1(alt((escaped_span, code_span_text))),
     )
     .parse(source)?;
-    let (source, (flags, attrs)) = span_metadata(source, "`")?;
+    let (source, metadata) = span_metadata(source, "`")?;
     let (source, _) = tag("``").parse(source)?;
     Ok((
         source,
         Span::Code {
-            attrs,
-            flags,
+            attrs: metadata.attrs,
+            flags: metadata.flags,
             spans,
         },
     ))
