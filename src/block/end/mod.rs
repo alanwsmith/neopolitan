@@ -2,7 +2,7 @@ use crate::block::Block;
 use crate::block::BlockParent;
 use crate::block::text::text_block;
 use crate::block_metadata::block_metadata;
-use crate::block_metadata::bound::BlockBound;
+use crate::block_metadata::bound::BlockType;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
 use nom::IResult;
@@ -31,7 +31,7 @@ pub fn end_block<'a>(
         source,
         Block::End {
             attrs: metadata.attrs,
-            bound: BlockBound::Full,
+            bound: BlockType::FullBlock,
             children,
             flags: metadata.flags,
             kind: format!("{}-end", kind),
@@ -56,7 +56,7 @@ bravo foxtrot tango"#;
         let kind = "some-end-block";
         let left = Block::End {
             attrs: BTreeMap::new(),
-            bound: BlockBound::Full,
+            bound: BlockType::FullBlock,
             children: vec![Block::Text {
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),

@@ -3,7 +3,7 @@ use crate::block::block;
 use crate::block::end::end_block;
 use crate::block::text::text_block;
 use crate::block_metadata::block_metadata;
-use crate::block_metadata::bound::BlockBound;
+use crate::block_metadata::bound::BlockType;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -40,7 +40,7 @@ pub fn basic_block_start<'a>(
         source,
         Block::Basic {
             attrs: metadata.attrs,
-            bound: BlockBound::Start,
+            r#type: BlockType::OpenBlock,
             children,
             end_block: Some(Box::new(end_block)),
             flags: metadata.flags,
@@ -67,7 +67,7 @@ delta zulu alfa
         let parent = BlockParent::Page;
         let left = Block::Basic {
             attrs: BTreeMap::new(),
-            bound: BlockBound::Start,
+            r#type: BlockType::OpenBlock,
             children: vec![Block::Text {
                 spans: vec![Span::Text {
                     content: "delta zulu alfa".to_string(),
@@ -75,7 +75,7 @@ delta zulu alfa
             }],
             end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
-                bound: BlockBound::Full,
+                bound: BlockType::FullBlock,
                 children: vec![],
                 flags: vec![],
                 kind: "aside-end".to_string(),
@@ -94,10 +94,10 @@ delta zulu alfa
         let parent = BlockParent::Page;
         let left = Block::Basic {
             attrs: BTreeMap::new(),
-            bound: BlockBound::Start,
+            r#type: BlockType::OpenBlock,
             children: vec![Block::Basic {
                 attrs: BTreeMap::new(),
-                bound: BlockBound::Full,
+                r#type: BlockType::FullBlock,
                 children: vec![Block::Text {
                     spans: vec![Span::Text {
                         content: "whiskey tango bravo".to_string(),
@@ -109,7 +109,7 @@ delta zulu alfa
             }],
             end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
-                bound: BlockBound::Full,
+                bound: BlockType::FullBlock,
                 children: vec![],
                 flags: vec![],
                 kind: "div-end".to_string(),

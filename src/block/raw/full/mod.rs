@@ -1,6 +1,6 @@
 use crate::block::Block;
 use crate::block_metadata::block_metadata;
-use crate::block_metadata::bound::BlockBound;
+use crate::block_metadata::bound::BlockType;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -42,7 +42,7 @@ pub fn raw_block_full<'a>(
             Block::Raw {
                 attrs: metadata.attrs,
                 body,
-                bound: BlockBound::Full,
+                bound: BlockType::FullBlock,
                 end_block: None,
                 flags: metadata.flags,
                 kind: kind.to_string(),
@@ -71,7 +71,7 @@ alfa delta whiskey"#;
         let left = Block::Raw {
             attrs: BTreeMap::new(),
             body: Some("alfa delta whiskey".to_string()),
-            bound: BlockBound::Full,
+            bound: BlockType::FullBlock,
             end_block: None,
             flags: vec![],
             kind: "pre".to_string(),

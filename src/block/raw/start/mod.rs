@@ -1,7 +1,7 @@
 use crate::block::Block;
 use crate::block::end::end_block;
 use crate::block_metadata::block_metadata;
-use crate::block_metadata::bound::BlockBound;
+use crate::block_metadata::bound::BlockType;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span_metadata::strings::space0_line_ending_or_eof::space0_line_ending_or_eof;
@@ -50,7 +50,7 @@ pub fn raw_block_start<'a>(
             Block::Raw {
                 attrs: metadata.attrs,
                 body,
-                bound: BlockBound::Start,
+                bound: BlockType::OpenBlock,
                 end_block: Some(Box::new(end_block)),
                 flags: metadata.flags,
                 kind: kind.to_string(),
@@ -78,11 +78,11 @@ mod test {
         let parent = BlockParent::Page;
         let left = Block::Raw {
             attrs: BTreeMap::new(),
-            bound: BlockBound::Start,
+            bound: BlockType::OpenBlock,
             body: Some("delta zulu alfa".to_string()),
             end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
-                bound: BlockBound::Full,
+                bound: BlockType::FullBlock,
                 children: vec![],
                 flags: vec![],
                 kind: "pre-end".to_string(),
@@ -101,11 +101,11 @@ mod test {
         let parent = BlockParent::Page;
         let left = Block::Raw {
             attrs: BTreeMap::new(),
-            bound: BlockBound::Start,
+            bound: BlockType::OpenBlock,
             body: Some("delta-zulu alfa".to_string()),
             end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
-                bound: BlockBound::Full,
+                bound: BlockType::FullBlock,
                 children: vec![],
                 flags: vec![],
                 kind: "raw-end".to_string(),
@@ -125,10 +125,10 @@ mod test {
         let left = Block::Raw {
             attrs: BTreeMap::new(),
             body: Some("-- title\n\nwhiskey tango bravo".to_string()),
-            bound: BlockBound::Start,
+            bound: BlockType::OpenBlock,
             end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
-                bound: BlockBound::Full,
+                bound: BlockType::FullBlock,
                 children: vec![],
                 flags: vec![],
                 kind: "code-end".to_string(),
@@ -148,10 +148,10 @@ mod test {
         let left = Block::Raw {
             attrs: BTreeMap::new(),
             body: Some("-- title\n\nwhiskey tango bravo".to_string()),
-            bound: BlockBound::Start,
+            bound: BlockType::OpenBlock,
             end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
-                bound: BlockBound::Full,
+                bound: BlockType::FullBlock,
                 children: vec![Block::Text {
                     spans: vec![Span::Text {
                         content: "sierra kilo".to_string(),
