@@ -1,0 +1,6 @@
+[!- import "macros/loader.neoj" as macros -!] 
+
+[!- for block in block.children -!]
+  [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
+  [!- include templates -!]
+[!- endfor -!]

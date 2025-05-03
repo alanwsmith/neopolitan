@@ -22,355 +22,35 @@
   <header class="wrapper-medium margin-bottom-large">
     <a href="/">Home</a>
   </header>
-  <main class="wrapper-medium flow">
-    <h1>Rendering Error</h1>
-    <p>error in "pages/default.neoj"</p>
-    <p>File: helpers/template-picker.neoj</p>
-    <p>Line: 19</p>
-    <h2>Details</h2>
-    <ul>
-    
-        <li>template not found: tried to include non-existing template "sections/paragraph/default.neoj" (in sections/title/default.neoj:4)
--------------------------------- default.neoj ---------------------------------
-   1 | [!- for block in section.children -!]
-   2 |   [!- set templates = ["sections/" + block.category + "/default.neoj"] -!]
-   3 |   [!- if loop.first -!]
-   4 >     <h1 class="title">[!- include templates -!]</h1>
-     i                           ^^^^^^^^^^^^^^^^^ template not found
-   5 |   [!- else -!]
-   6 |     <p>[!- include templates -!]</p>
-   7 |   [!- endif -!]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Referenced variables: {
-    block: {
-        "category": "paragraph",
-        "spans": [
-            {
-                "category": "text",
-                "content": "Span Flags",
-            },
-        ],
-    },
-    loop: <loop 0/1>,
-    section: {
-        "attrs": {},
-        "bound": "Full",
-        "category": "basic",
-        "children": [
-            {
-                "category": "paragraph",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "Span Flags",
-                    },
-                ],
-            },
-        ],
-        "end_block": none,
-        "flags": [],
-        "kind": "title",
-    },
-    templates: [
-        "sections/paragraph/default.neoj",
-    ],
-}
--------------------------------------------------------------------------------</li>
-    
-        <li>could not render include: error in "sections/title/default.neoj" (in pages/default.neoj:32)
--------------------------------- default.neoj ---------------------------------
-  29 |     "sections/" + section.kind + "/default.neoj",
-  30 |     "sections/" + section.category + "/default.neoj",
-  31 |   ] -!]
-  32 >   [!- include templates -!]
-     i       ^^^^^^^^^^^^^^^^^ could not render include
-  33 | [!- endfor -!]
-  34 | [@- macros.page_links(site) -@]
-  35 | [!- endblock -!]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Referenced variables: {
-    loop: <loop 0/1>,
-    section: {
-        "attrs": {},
-        "bound": "Full",
-        "category": "basic",
-        "children": [
-            {
-                "category": "paragraph",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "Span Flags",
-                    },
-                ],
-            },
-        ],
-        "end_block": none,
-        "flags": [],
-        "kind": "title",
-    },
-    sections: [
-        {
-            "attrs": {},
-            "bound": "Full",
-            "category": "basic",
-            "children": [
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "Span Flags",
-                        },
-                    ],
-                },
-            ],
-            "end_block": none,
-            "flags": [],
-            "kind": "title",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "category": "basic",
-            "children": [
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "Tags and Shorthand spans accept flags.",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "The parsing logic is:",
-                        },
-                    ],
-                },
-            ],
-            "end_block": none,
-            "flags": [],
-            "kind": "Overview",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "category": "basic",
-            "children": [
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "- Flags end at spaces, tabs, newlines or pipes [TKTKTK: Insert pipe character]",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "- Flags can have individual characters that match the closing tag or shorthand token, but they can't have two in a row as that would be the closing indication.",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "- Emoji (e.g. 🕺) can be used. (Recognizing that different systems display different images for the same emoji)",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "- Escaping characters in flags is not supported. 1",
-                        },
-                    ],
-                },
-            ],
-            "end_block": none,
-            "flags": [],
-            "kind": "list",
-        },
-        {
-            "attrs": {
-                "id": [
-                    {
-                        "category": "text",
-                        "content": "1",
-                    },
-                ],
-            },
-            "bound": "Full",
-            "category": "basic",
-            "children": [
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "Doing so would require switching the AST to use an array of spans to track the escaped characters instead of using a single text string. That would lead to an unacceptable increase in the complexity of using them in templates.",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "The reason spans would be required for escape characters is so the AST can be used to make an accurate reproduction of the input source.",
-                        },
-                    ],
-                },
-            ],
-            "end_block": none,
-            "flags": [],
-            "kind": "footnote",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "category": "basic",
-            "children": [
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "Note that this means you can have multiple opening tag tokens like:",
-                        },
-                    ],
-                },
-            ],
-            "end_block": none,
-            "flags": [],
-            "kind": "footnote",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "category": "basic",
-            "children": [
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "text|alfa&lt;&lt;bravo",
-                        },
-                    ],
-                },
-            ],
-            "end_block": none,
-            "flags": [],
-            "kind": "code",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "category": "basic",
-            "children": [
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "Where ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text",
-                                    "content": "alfa<<bravo",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text",
-                            "content": " is the flag. Same goes for the ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text",
-                                    "content": "[",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text",
-                            "content": " and ",
-                        },
-                        {
-                            "attrs": {},
-                            "category": "code",
-                            "flags": [],
-                            "spans": [
-                                {
-                                    "category": "text",
-                                    "content": "{",
-                                },
-                            ],
-                        },
-                        {
-                            "category": "text",
-                            "content": " characters for links and images.",
-                        },
-                    ],
-                },
-            ],
-            "end_block": none,
-            "flags": [],
-            "kind": "p",
-        },
-        {
-            "attrs": {
-                "created": [
-                    {
-                        "category": "text",
-                        "content": "2025-04-28T07:37:11-04:00",
-                    },
-                ],
-                "updated": [
-                    {
-                        "category": "text",
-                        "content": "2025-04-28T07:37:11-04:00",
-                    },
-                ],
-            },
-            "bound": "Full",
-            "category": "basic",
-            "children": [],
-            "end_block": none,
-            "flags": [],
-            "kind": "metadata",
-        },
-    ],
-    templates: [
-        "sections/paragraph/default.neoj",
-    ],
-}
--------------------------------------------------------------------------------</li>
-    
-    </ul>
-</main>
+  <main class="wrapper-medium flow"><div class="tmp-under-construction">
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+  <div>
+    <p>This page is currently under construction.</p>
+    <p>
+      Depending on when you see it, it could be anywhere from a complete draft to nothing but
+      a bunch of scratch notes and placeholders. Follow me on
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
+    </p>
+  </div>
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+</div><h1 class="title">Span Flags
+</h1><p>Tags and Shorthand spans accept flags.
+</p><p>The parsing logic is:
+</p><p>- Flags end at spaces, tabs, newlines or pipes [TKTKTK: Insert pipe character]
+</p><p>- Flags can have individual characters that match the closing tag or shorthand token, but they can't have two in a row as that would be the closing indication.
+</p><p>- Emoji (e.g. 🕺) can be used. (Recognizing that different systems display different images for the same emoji)
+</p><p>- Escaping characters in flags is not supported. 1
+</p><p>Doing so would require switching the AST to use an array of spans to track the escaped characters instead of using a single text string. That would lead to an unacceptable increase in the complexity of using them in templates.
+</p><p>The reason spans would be required for escape characters is so the AST can be used to make an accurate reproduction of the input source.
+</p><p>Note that this means you can have multiple opening tag tokens like:
+</p><p>text|alfa&lt;&lt;bravo
+</p><p>Where <code>alfa<<bravo</code> is the flag. Same goes for the <code>[</code> and <code>{</code> characters for links and images.
+</p></main>
   <footer>
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
@@ -378,7 +58,11 @@ Referenced variables: {
     <a href="https://socials.alanwsmith.com/">socials</a>
   </footer>
 
-
+<div class="wrapper-medium padding-top-large">
+<pre><hr />
+<h3>Under Construction</h3>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0/parser/span-tests.html">spec/2.0/parser/span-tests.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
+</div>
 
 </body>
 </html>

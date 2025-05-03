@@ -1,5 +1,5 @@
-[!- for block in section.children -!]
-  [!- set templates = ["sections/" + block.category + "/default.neoj"] -!]
+[!- for block in block.children -!]
+  [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
   [!- if loop.first -!]
     <h3>[!- include templates -!]</h3>
   [!- else -!]

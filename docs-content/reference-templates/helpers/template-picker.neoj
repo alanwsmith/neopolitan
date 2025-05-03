@@ -1,16 +1,12 @@
 [!- import "macros/loader.neoj" as macros -!] 
 
-
-[# TODO: Move to helpers #]
-
-
 [!- set data = namespace() -!]
 [!- set data.templates = ["pages/default.neoj"] -!]
-[!- for section in sections -!]
-[!- if section.kind == "metadata" -!]
-[!- if "template" in section.attrs -!]
+[!- for block in blocks -!]
+[!- if block.kind == "metadata" -!]
+[!- if "template" in block.attrs -!]
 [!- set data.templates = [
-  "pages/" + macros.child_spans(section.attrs.template) + ".neoj",
+  "pages/" + macros.child_spans(block.attrs.template) + ".neoj",
   "pages/default.neoj"
 ] -!]
 [!- endif -!]

@@ -22,273 +22,35 @@
   <header class="wrapper-medium margin-bottom-large">
     <a href="/">Home</a>
   </header>
-  <main class="wrapper-medium flow">
-    <h1>Rendering Error</h1>
-    <p>error in "pages/default.neoj"</p>
-    <p>File: helpers/template-picker.neoj</p>
-    <p>Line: 19</p>
-    <h2>Details</h2>
-    <ul>
-    
-        <li>template not found: tried to include non-existing template "sections/paragraph/default.neoj" (in sections/title/default.neoj:4)
--------------------------------- default.neoj ---------------------------------
-   1 | [!- for block in section.children -!]
-   2 |   [!- set templates = ["sections/" + block.category + "/default.neoj"] -!]
-   3 |   [!- if loop.first -!]
-   4 >     <h1 class="title">[!- include templates -!]</h1>
-     i                           ^^^^^^^^^^^^^^^^^ template not found
-   5 |   [!- else -!]
-   6 |     <p>[!- include templates -!]</p>
-   7 |   [!- endif -!]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Referenced variables: {
-    block: {
-        "category": "paragraph",
-        "spans": [
-            {
-                "category": "text",
-                "content": "Command Line Interface",
-            },
-        ],
-    },
-    loop: <loop 0/1>,
-    section: {
-        "attrs": {},
-        "bound": "Full",
-        "category": "basic",
-        "children": [
-            {
-                "category": "paragraph",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "Command Line Interface",
-                    },
-                ],
-            },
-        ],
-        "end_block": none,
-        "flags": [],
-        "kind": "title",
-    },
-    templates: [
-        "sections/paragraph/default.neoj",
-    ],
-}
--------------------------------------------------------------------------------</li>
-    
-        <li>could not render include: error in "sections/title/default.neoj" (in pages/default.neoj:32)
--------------------------------- default.neoj ---------------------------------
-  29 |     "sections/" + section.kind + "/default.neoj",
-  30 |     "sections/" + section.category + "/default.neoj",
-  31 |   ] -!]
-  32 >   [!- include templates -!]
-     i       ^^^^^^^^^^^^^^^^^ could not render include
-  33 | [!- endfor -!]
-  34 | [@- macros.page_links(site) -@]
-  35 | [!- endblock -!]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Referenced variables: {
-    loop: <loop 0/1>,
-    section: {
-        "attrs": {},
-        "bound": "Full",
-        "category": "basic",
-        "children": [
-            {
-                "category": "paragraph",
-                "spans": [
-                    {
-                        "category": "text",
-                        "content": "Command Line Interface",
-                    },
-                ],
-            },
-        ],
-        "end_block": none,
-        "flags": [],
-        "kind": "title",
-    },
-    sections: [
-        {
-            "attrs": {},
-            "bound": "Full",
-            "category": "basic",
-            "children": [
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "Command Line Interface",
-                        },
-                    ],
-                },
-            ],
-            "end_block": none,
-            "flags": [],
-            "kind": "title",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "category": "basic",
-            "children": [
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "Introduction",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "Version 2.0 of Neopolitan generates ASTs for use in rust apps. It does not include a command line interface. I'm considering one in the future to output ASTs as JSONs either as files or as STDOUT.",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "Adding a basic HTML output from templates is also a possibility. I'm not sure about that though as there are so many possible quality-of-life improvement decisions that it's it might not be worth doing work inside Neopolitan. Other engines (e.g. Neopoligen) are likely where that effort is better spent.",
-                        },
-                    ],
-                },
-            ],
-            "end_block": none,
-            "flags": [],
-            "kind": "h2",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "category": "basic",
-            "children": [
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "NOTES",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "The first 2.0 version will only create the AST for use inside rust apps. Long term possibility of making a command line interface.",
-                        },
-                    ],
-                },
-            ],
-            "end_block": none,
-            "flags": [],
-            "kind": "h2",
-        },
-        {
-            "attrs": {},
-            "bound": "Full",
-            "category": "basic",
-            "children": [
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "TODO",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "[] Make a config loader with a JSON schema you can pass in.",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "[] Output ASTs as JSONs in an output dir with the relative paths of the source files.",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "[] Output ASTs as JSONs in the same directory as the source files.",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "[] Provide minijinja output from the command line run.",
-                        },
-                    ],
-                },
-                {
-                    "category": "paragraph",
-                    "spans": [
-                        {
-                            "category": "text",
-                            "content": "[] Create a default formatter. Allow line length to be set. TBD on what else (aim to keep it at a minimum)",
-                        },
-                    ],
-                },
-            ],
-            "end_block": none,
-            "flags": [],
-            "kind": "h2",
-        },
-        {
-            "attrs": {
-                "created": [
-                    {
-                        "category": "text",
-                        "content": "2025-04-27T10:12:27-04:00",
-                    },
-                ],
-                "updated": [
-                    {
-                        "category": "text",
-                        "content": "2025-04-27T10:12:27-04:00",
-                    },
-                ],
-            },
-            "bound": "Full",
-            "category": "basic",
-            "children": [],
-            "end_block": none,
-            "flags": [],
-            "kind": "metadata",
-        },
-    ],
-    templates: [
-        "sections/paragraph/default.neoj",
-    ],
-}
--------------------------------------------------------------------------------</li>
-    
-    </ul>
-</main>
+  <main class="wrapper-medium flow"><div class="tmp-under-construction">
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+  <div>
+    <p>This page is currently under construction.</p>
+    <p>
+      Depending on when you see it, it could be anywhere from a complete draft to nothing but
+      a bunch of scratch notes and placeholders. Follow me on
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
+    </p>
+  </div>
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+</div><h1 class="title">Command Line Interface
+</h1><h2>Introduction
+</h2><p>Version 2.0 of Neopolitan generates ASTs for use in rust apps. It does not include a command line interface. I'm considering one in the future to output ASTs as JSONs either as files or as STDOUT.
+</p><p>Adding a basic HTML output from templates is also a possibility. I'm not sure about that though as there are so many possible quality-of-life improvement decisions that it's it might not be worth doing work inside Neopolitan. Other engines (e.g. Neopoligen) are likely where that effort is better spent.
+</p><h2>NOTES
+</h2><p>The first 2.0 version will only create the AST for use inside rust apps. Long term possibility of making a command line interface.
+</p><h2>TODO
+</h2><p>[] Make a config loader with a JSON schema you can pass in.
+</p><p>[] Output ASTs as JSONs in an output dir with the relative paths of the source files.
+</p><p>[] Output ASTs as JSONs in the same directory as the source files.
+</p><p>[] Provide minijinja output from the command line run.
+</p><p>[] Create a default formatter. Allow line length to be set. TBD on what else (aim to keep it at a minimum)
+</p></main>
   <footer>
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
@@ -296,7 +58,11 @@ Referenced variables: {
     <a href="https://socials.alanwsmith.com/">socials</a>
   </footer>
 
-
+<div class="wrapper-medium padding-top-large">
+<pre><hr />
+<h3>Under Construction</h3>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0/parser/span-tests.html">spec/2.0/parser/span-tests.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
+</div>
 
 </body>
 </html>

@@ -34,13 +34,12 @@
     <a href="https://socials.alanwsmith.com/">socials</a>
   </footer>
 
-[#
 <div class="wrapper-medium padding-top-large">
 <pre>
-[@ sections|tojson(true) @]
+[@- macros.page_links(site) -@]
 </pre>
 </div>
-#]
 
 </body>
 </html>
+

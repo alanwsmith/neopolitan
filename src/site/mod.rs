@@ -94,12 +94,12 @@ impl Site {
         env.add_function("highlight_span", highlight_span);
         env.set_loader(path_loader("docs-content/reference-templates"));
         // env.set_loader(path_loader("docs-templates"));
-        self.pages.iter().for_each(|(relative_path, sections)| {
+        self.pages.iter().for_each(|(relative_path, blocks)| {
             let output_path = &self.output_root.join(relative_path);
             let template =
                 env.get_template("helpers/template-picker.neoj").unwrap();
-            let sections = Value::from_serialize(&sections);
-            match template.render(context!(site, sections)) {
+            let blocks = Value::from_serialize(&blocks);
+            match template.render(context!(site, blocks)) {
                 Ok(output) => {
                     write_file_with_mkdir(&output_path, &output).unwrap()
                 }

@@ -5,7 +5,7 @@
 #]
 
 <div class="flow">
-[! for child in section.children !]
+[! for child in block.children !]
   [! for span in child.spans !]
     [@ span.content @]
   [! endfor !]
