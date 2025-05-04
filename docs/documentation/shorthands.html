@@ -68,15 +68,14 @@ _ = emphasis
       
 >Tags</h2><p>For example:</p><p>TKTKTK</p><h2
       
->Footnotes</h2>
+>Footnotes</h2><pre
 
-<div class="flow">
-
-  
-    <ol> <li> The other way is <a href="/documentation/tags.html">Tags</a> </li> </ol>
-  
-
-</div><div
+><ol>
+  <li>
+    The other way is 
+    <a href="/documentation/tags.html">Tags</a>
+  </li>
+</ol></pre><div
    class="flow"
 ></div>
 
@@ -335,18 +334,8 @@ _ = emphasis
       },
       {
         "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "\u003col\u003e \u003cli\u003e The other way is \u003ca href=\"/documentation/tags.html\"\u003eTags\u003c/a\u003e \u003c/li\u003e \u003c/ol\u003e"
-              }
-            ]
-          }
-        ],
+        "body": "\u003col\u003e\n  \u003cli\u003e\n    The other way is \n    \u003ca href=\"/documentation/tags.html\"\u003eTags\u003c/a\u003e\n  \u003c/li\u003e\n\u003c/ol\u003e",
+        "category": "raw",
         "end_block": null,
         "flags": [],
         "kind": "html"

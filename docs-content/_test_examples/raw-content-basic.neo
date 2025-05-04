@@ -4,19 +4,29 @@ Basic Raw Content
 
 -- raw
 
-This is raw
+This is a raw block
 
 -- pre
 
-This is pre
+This is a pre block
+
+-- code
+
+this is a code block
+
+-- html
+
+this is an HTML block
+
+-- javascript
+
+This is a javascript block
+
+-- css
+
+This is a CSS block
 
 
-
-
--- page
+-- metadata
 -- created: 2025-05-03T20:03:54-04:00
 -- updated: 2025-05-03T20:03:54-04:00
--- id: 2w/bj/br/66
--- template: post
--- status: prep
-

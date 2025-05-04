@@ -13,10 +13,15 @@ pub struct BlockTypes {
 impl Default for Config {
     fn default() -> Config {
         let block_category_kinds = BlockTypes {
-            raw: vec!["code".to_string(), "pre".to_string(), "raw".to_string()],
+            raw: make_vec_of_strings("code|css|html|javascript|pre|raw")
         };
         Config {
             block_category_kinds,
         }
     }
 }
+
+fn make_vec_of_strings(input: &str) -> Vec<String> {
+    input.split("|").map(|i| i.to_string()).collect()
+}
+
