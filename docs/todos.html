@@ -47,7 +47,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
       >TODOs</h1></hgroup><div>
         Created: 2025-04-27T10:20:20-04:00</div><div
    class="flow"
-><p>[] Add web server?</p><p>[] Add front end?</p><p>[] Generate most recently changed page at specific location so you can see most recent set of changes automatically?</p><p>[] Add <code>wiki</code> tag and functionality for third level? (or maybe fourth)?</p><p>[] Add plugin architecture (this would be a later version)</p><p>[] Add <code>-- extension:</code> to <code>-- metadata</code> for changing the file extension of the output.</p><p>[] Add <code>-- path:</code> to the <code>-- metadata</code> to change the output path.</p></div>
+><p>[] Add web server?</p><p>[] Add front end?</p><p>[] Generate most recently changed page at specific location so you can see most recent set of changes automatically?</p><p>[] Add <code>wiki</code> tag and functionality for third level? (or maybe fourth)?</p><p>[] Add plugin architecture (this would be a later version)</p><p>[] Add <code>-- extension:</code> to <code>-- metadata</code> for changing the file extension of the output.</p><p>[] Add <code>-- path:</code> to the <code>-- metadata</code> to change the output path.</p><p>[] Set up functionality for <code>-- wiki</code> in the metadata the defines the target locations where other <code><<wiki|Name>></code> entires go</p></div>
 
 </main>
   <footer>
@@ -234,6 +234,46 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
               {
                 "category": "text",
                 "content": " to change the output path."
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Set up functionality for "
+              },
+              {
+                "attrs": {},
+                "category": "code",
+                "flags": [],
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- wiki"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " in the metadata the defines the target locations where other "
+              },
+              {
+                "attrs": {},
+                "category": "code",
+                "flags": [],
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "\u003c\u003cwiki|Name\u003e\u003e"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " entires go"
               }
             ]
           }
