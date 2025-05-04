@@ -1,4 +1,5 @@
 pub mod basic;
+pub mod csv;
 pub mod end;
 pub mod json;
 pub mod raw;
@@ -15,6 +16,14 @@ use nom::{IResult, branch::alt};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::BTreeMap;
+
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[serde(rename_all = "lowercase")]
+pub enum CsvData {
+    Ok(Vec<Vec<String>>),
+    Error(String),
+    None,
+}
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 #[serde(rename_all = "lowercase")]
@@ -41,8 +50,14 @@ pub enum Block {
     },
     CheckListItem,
     CheckList,
-    Csv,
-    // TODO: Rename to "Close"
+    Csv {
+        attrs: BTreeMap<String, Vec<Span>>,
+        data: CsvData,
+        end_block: Option<Box<Block>>,
+        flags: Vec<String>,
+        kind: String,
+    },
+    // TODO: Rename to "CloseBlock"
     End {
         attrs: BTreeMap<String, Vec<Span>>,
         children: Vec<Block>,

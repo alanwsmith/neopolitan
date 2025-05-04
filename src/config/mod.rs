@@ -7,6 +7,7 @@ pub struct Config {
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct BlockTypes {
+    pub csv: Vec<String>,
     pub json: Vec<String>,
     pub raw: Vec<String>,
 }
@@ -14,6 +15,7 @@ pub struct BlockTypes {
 impl Default for Config {
     fn default() -> Config {
         let block_category_kinds = BlockTypes {
+            csv: make_vec_of_strings("csv"),
             json: make_vec_of_strings("json|metadata"),
             raw: make_vec_of_strings(
                 "cli|code|css|html|javascript|output|pre|raw",
