@@ -39,7 +39,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <img 
   src="/images/under-construction-1.gif" 
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-</div><h1 class="title">Versioning</h1><p>Current Neopolitan Version is 2.0</p><p>Current Generator Version 2.0.0.0</p><h2>Updates</h2><p>When new changes are made to the Neopolitan schema they will increment the "Minor" version number (e.g. from <code>2.0</code> to <code>2.1</code> to <code>2.2</code> etc.) if they are backwards compatible with all prior versions with the same "Major" number (i.e. <code>2</code> for the current version)</p><p>The Generator version number is</p><p>NEO_MAJOR.NEO_MINOR.GEN_MAJOR.GEN_MINOR</p><p>It can updated independently of the Neopolitan version. This is so enhancements and bug fixes can be made to the support reference software without affecting the primary Neopolitan spec.</p>
+</div><h1 class="title">Code Samples</h1><p><code>code sample</code></p><p><code data-lang="rust"> <span class="source rust"><span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>rust code sample<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span></span></code></p><p><code class="color-alt-4">code sample with class</code></p>
 
 </main>
   <footer>
@@ -70,7 +70,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "Versioning"
+                "content": "Code Samples"
               }
             ]
           },
@@ -78,8 +78,15 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "category": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "Current Neopolitan Version is 2.0"
+                "attrs": {},
+                "category": "code",
+                "flags": [],
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "code sample"
+                  }
+                ]
               }
             ]
           },
@@ -87,8 +94,40 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "category": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "Current Generator Version 2.0.0.0"
+                "attrs": {},
+                "category": "code",
+                "flags": [
+                  "rust"
+                ],
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "println!(\"rust code sample\");"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "spans": [
+              {
+                "attrs": {
+                  "class": [
+                    {
+                      "category": "text",
+                      "content": "color-alt-4"
+                    }
+                  ]
+                },
+                "category": "code",
+                "flags": [],
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "code sample with class"
+                  }
+                ]
               }
             ]
           }
@@ -98,131 +137,17 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "title"
       },
       {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Updates"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "When new changes are made to the Neopolitan schema they will increment the \"Minor\" version number (e.g. from "
-              },
-              {
-                "attrs": {},
-                "category": "code",
-                "flags": [],
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "2.0"
-                  }
-                ]
-              },
-              {
-                "category": "text",
-                "content": " to "
-              },
-              {
-                "attrs": {},
-                "category": "code",
-                "flags": [],
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "2.1"
-                  }
-                ]
-              },
-              {
-                "category": "text",
-                "content": " to "
-              },
-              {
-                "attrs": {},
-                "category": "code",
-                "flags": [],
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "2.2"
-                  }
-                ]
-              },
-              {
-                "category": "text",
-                "content": " etc.) if they are backwards compatible with all prior versions with the same \"Major\" number (i.e. "
-              },
-              {
-                "attrs": {},
-                "category": "code",
-                "flags": [],
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "2"
-                  }
-                ]
-              },
-              {
-                "category": "text",
-                "content": " for the current version)"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "The Generator version number is"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "NEO_MAJOR.NEO_MINOR.GEN_MAJOR.GEN_MINOR"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "It can updated independently of the Neopolitan version. This is so enhancements and bug fixes can be made to the support reference software without affecting the primary Neopolitan spec."
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
         "attrs": {
           "created": [
             {
               "category": "text",
-              "content": "2025-04-27T20:39:45-04:00"
+              "content": "2025-05-03T20:01:03-04:00"
             }
           ],
           "updated": [
             {
               "category": "text",
-              "content": "2025-04-27T20:39:45-04:00"
+              "content": "2025-05-03T20:01:03-04:00"
             }
           ]
         },
