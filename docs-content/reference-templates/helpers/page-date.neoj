@@ -3,7 +3,9 @@
 [!- for block in blocks -!]
   [!- if block.kind == "metadata" -!]
     [!- if "created" in block.attrs -!]
-      Created: [@ macros.output_block_attribute(block, "created") -@]
+      <div>
+        Created: [@ macros.output_block_attribute(block, "created") -@]
+      </div>
     [!- endif -!]
   [!- endif -!]
 [!- endfor -!]

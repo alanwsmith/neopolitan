@@ -44,35 +44,10 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 
   <main class="wrapper-medium flow"><hgroup class="title-group">
       <h1  class="title"
-      >Description List Test</h1></hgroup><div>
-        Created: 2025-05-03T20:49:41-04:00</div><dl
-  
-><dt
-  
-><p>This is the term</p></dt>
-
-<dd
-   class="flow"
-><p>This is the detail</p><p>Here's another paragraph</p></dd>
-
-
-<dt
-  
-><p>This is the second term</p></dt>
-
-<dd
-   class="flow"
-><p>This is the second detail</p><p>And, a final paragraph</p></dd>
-
-
-</dl>
-
-
-  
-  <div
-   class="flow"
-></div>
-</main>
+      >CSV Example</h1></hgroup><div>
+        Created: 2025-05-04T00:13:19-04:00</div><table class="csv-table">
+  <tbody><tr><td>a</td><td>b</td><td>c</td></tr><tr><td>d</td><td>e</td><td>f</td></tr></tbody>
+</table></main>
   <footer>
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
@@ -102,7 +77,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "Description List Test"
+                "content": "CSV Example"
               }
             ]
           }
@@ -113,127 +88,37 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
       },
       {
         "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "attrs": {},
-            "category": "basic",
-            "children": [
-              {
-                "category": "text-block",
-                "kind": "text-block",
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "This is the term"
-                  }
-                ]
-              }
+        "category": "csv",
+        "data": {
+          "ok": [
+            [
+              "a",
+              "b",
+              "c"
             ],
-            "end_block": null,
-            "flags": [],
-            "kind": "term"
-          },
-          {
-            "attrs": {},
-            "category": "basic",
-            "children": [
-              {
-                "category": "text-block",
-                "kind": "text-block",
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "This is the detail"
-                  }
-                ]
-              },
-              {
-                "category": "text-block",
-                "kind": "text-block",
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "Here\u0027s another paragraph"
-                  }
-                ]
-              }
-            ],
-            "end_block": null,
-            "flags": [],
-            "kind": "detail"
-          },
-          {
-            "attrs": {},
-            "category": "basic",
-            "children": [
-              {
-                "category": "text-block",
-                "kind": "text-block",
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "This is the second term"
-                  }
-                ]
-              }
-            ],
-            "end_block": null,
-            "flags": [],
-            "kind": "term"
-          },
-          {
-            "attrs": {},
-            "category": "basic",
-            "children": [
-              {
-                "category": "text-block",
-                "kind": "text-block",
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "This is the second detail"
-                  }
-                ]
-              },
-              {
-                "category": "text-block",
-                "kind": "text-block",
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "And, a final paragraph"
-                  }
-                ]
-              }
-            ],
-            "end_block": null,
-            "flags": [],
-            "kind": "detail"
-          }
-        ],
-        "end_block": {
-          "attrs": {},
-          "category": "end",
-          "children": [],
-          "flags": [],
-          "kind": "descriptions-end"
+            [
+              "d",
+              "e",
+              "f"
+            ]
+          ]
         },
+        "end_block": null,
         "flags": [],
-        "kind": "descriptions"
+        "kind": "neo-example-csv-table"
       },
       {
         "attrs": {
           "created": [
             {
               "category": "text",
-              "content": "2025-05-03T20:49:41-04:00"
+              "content": "2025-05-04T00:13:19-04:00"
             }
           ],
           "updated": [
             {
               "category": "text",
-              "content": "2025-05-03T20:49:41-04:00"
+              "content": "2025-05-04T00:13:19-04:00"
             }
           ]
         },

@@ -18,6 +18,9 @@ use nom::combinator::rest;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
+// TODO: In docs, note that you can do custom
+// delimeters.
+
 pub fn csv_block_full<'a>(
     source: &'a str,
     config: &'a Config,

@@ -15,7 +15,7 @@ pub struct BlockTypes {
 impl Default for Config {
     fn default() -> Config {
         let block_category_kinds = BlockTypes {
-            csv: make_vec_of_strings("csv"),
+            csv: make_vec_of_strings("csv|neo-example-csv-table"),
             json: make_vec_of_strings("json|metadata"),
             raw: make_vec_of_strings(
                 "cli|code|css|html|javascript|output|pre|raw",
