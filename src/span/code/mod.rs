@@ -102,6 +102,7 @@ mod test {
 
 
 
+
 "#;
 
     #[test]
@@ -114,34 +115,6 @@ mod test {
             let right = code_span(parts[0]).unwrap().1;
             assert_eq!(left, right);
         }
-    }
-
-    #[rstest]
-    #[case(
-        "``alfa``",
-        r#"{ "category": "code", "attrs": {}, "flags": [], "spans": [{"category": "text", "content": "alfa"}]}"#
-    )]
-    #[case(
-        "`` \n alfa  \n  bravo \n ``",
-        r#"{ "category": "code", "attrs": {}, "flags": [], "spans": [{"category": "text", "content": "alfa bravo"}]}"#
-    )]
-    fn solo_span_attr_key_token_valid_tests(
-        #[case] source: &str,
-        #[case] json: &str,
-    ) {
-        let left: Span = serde_json::from_str(json).unwrap();
-        let right = code_span(source).unwrap().1;
-        assert_eq!(left, right);
-        // let response = code_span(source).unwrap();
-        // if let Span::Code { spans, .. } = response.1 {
-        //     if let Span::Text { content } = &spans[0] {
-        //         assert_eq!(left, **content);
-        //     } else {
-        //         assert!(false);
-        //     }
-        // } else {
-        //     assert!(false);
-        // }
     }
 
     #[test]
