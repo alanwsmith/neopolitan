@@ -66,7 +66,7 @@ mod test {
     use std::collections::BTreeMap;
 
     #[test]
-    fn basic_test() {
+    fn json_block_test() {
         let source = r#"-- json
 
 { "alfa": "bravo" }"#;
@@ -86,7 +86,7 @@ mod test {
     }
 
     #[test]
-    fn basic_test_chomp_leading_line_space() {
+    fn json_block_test_chomp_leading_line_space() {
         let source = r#"    -- json
 
 { "tango": "foxtrot" }"#;
@@ -96,6 +96,26 @@ mod test {
             attrs: BTreeMap::new(),
             data: JsonData::Ok(
                 serde_json::from_str(r#"{"tango": "foxtrot"}"#).unwrap(),
+            ),
+            end_block: None,
+            flags: vec![],
+            kind: "json".to_string(),
+        };
+        let right = json_block_full(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+    #[test]
+    fn json_block_error_test() {
+        let source = r#"-- json
+
+xxx"#;
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Json {
+            attrs: BTreeMap::new(),
+            data: JsonData::Error(
+                "expected value at line 1 column 1".to_string(),
             ),
             end_block: None,
             flags: vec![],
