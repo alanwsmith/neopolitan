@@ -70,7 +70,6 @@ mod test {
         data: PageAst,
     }
 
-
     #[test]
     fn solo_ast_integration_tests() {
         let config = Config::default();
@@ -78,7 +77,7 @@ mod test {
         for entry in TESTS_DIR.find(glob).unwrap() {
             if let Some(file) = entry.as_file() {
                 if let Some(contents) = file.contents_utf8() {
-                    dbg!(entry.path().display());
+                    // dbg!(entry.path().display());
                     let parts = contents
                         .split("-- json")
                         .map(|part| part.to_string())

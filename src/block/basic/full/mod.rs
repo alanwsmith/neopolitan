@@ -13,6 +13,16 @@ use nom::multi::many0;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
+// TODO: Make sure there has to be an empty line below
+// the block, flag, and atter tokens before the content
+// otherwise it should throw a parsing error if it's
+// after the block token or a flag, and it gets
+// slurped into the attribute if it's an attr
+// 
+// TODO: Check the blank line thing in all block types
+
+
+
 pub fn basic_block_full<'a>(
     source: &'a str,
     config: &'a Config,

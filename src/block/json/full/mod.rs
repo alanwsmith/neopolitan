@@ -1,4 +1,5 @@
 use crate::block::Block;
+use crate::block::JsonData;
 use crate::block_metadata::block_metadata;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -23,29 +24,33 @@ pub fn json_block_full<'a>(
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), space0_line_ending_or_eof)
             .parse(source)?;
-    if config.block_category_kinds.raw.contains(&kind.to_string()) {
+    if config.block_category_kinds.json.contains(&kind.to_string()) {
         let (source, metadata) = block_metadata(source, config, parent)?;
-        // TODO: Update this so it doesn't slup initil
-        // empty spaces up on lines that don't start
-        // at the first character
         let (source, _) = multispace0.parse(source)?;
         let (source, body_base) =
             alt((take_until("-- "), rest)).parse(source)?;
-        let trimmed_body = body_base.trim_end();
-        let body = match trimmed_body {
-            "" => None,
-            _ => Some(trimmed_body.to_string()),
-        };
-        Ok((
-            source,
-            Block::Raw {
-                attrs: metadata.attrs,
-                body,
-                end_block: None,
-                flags: metadata.flags,
-                kind: kind.to_string(),
-            },
-        ))
+        match serde_json::from_str(body_base) {
+            Ok(json) => Ok((
+                source,
+                Block::Json {
+                    attrs: metadata.attrs,
+                    data: JsonData::Ok(json),
+                    end_block: None,
+                    flags: metadata.flags,
+                    kind: kind.to_string(),
+                },
+            )),
+            Err(e) => Ok((
+                source,
+                Block::Json {
+                    attrs: metadata.attrs,
+                    data: JsonData::Error(e.to_string()),
+                    end_block: None,
+                    flags: metadata.flags,
+                    kind: kind.to_string(),
+                },
+            )),
+        }
     } else {
         Err(nom::Err::Error(nom::error::Error {
             input: source,
@@ -60,39 +65,45 @@ mod test {
     use pretty_assertions::assert_eq;
     use std::collections::BTreeMap;
 
-//     #[test]
-//     fn raw_basic_test() {
-//         let source = r#"-- pre 
-// alfa delta whiskey"#;
-//         let config = Config::default();
-//         let parent = BlockParent::Page;
-//         let left = Block::Raw {
-//             attrs: BTreeMap::new(),
-//             body: Some("alfa delta whiskey".to_string()),
-//             end_block: None,
-//             flags: vec![],
-//             kind: "pre".to_string(),
-//         };
-//         let right = raw_block_full(source, &config, &parent).unwrap().1;
-//         assert_eq!(left, right);
-//     }
+    #[test]
+    fn solo_basic_test() {
+        let source = r#"-- json
 
-//     #[test]
-//     fn raw_basic_test_chomp_leading_line_space() {
-//         let source = r#"  -- pre 
-// alfa delta whiskey"#;
-//         let config = Config::default();
-//         let parent = BlockParent::Page;
-//         let left = Block::Raw {
-//             attrs: BTreeMap::new(),
-//             body: Some("alfa delta whiskey".to_string()),
-//             end_block: None,
-//             flags: vec![],
-//             kind: "pre".to_string(),
-//         };
-//         let right = raw_block_full(source, &config, &parent).unwrap().1;
-//         assert_eq!(left, right);
-//     }
+{ "alfa": "bravo" }"#;
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Json {
+            attrs: BTreeMap::new(),
+            data: JsonData::Ok(
+                serde_json::from_str(r#"{"alfa": "bravo"}"#).unwrap(),
+            ),
+            end_block: None,
+            flags: vec![],
+            kind: "json".to_string(),
+        };
+        let right = json_block_full(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
 
-//
+    #[test]
+    fn solo_basic_test_chomp_leading_line_space() {
+        let source = r#"    -- json
+
+{ "tango": "foxtrot" }"#;
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Json {
+            attrs: BTreeMap::new(),
+            data: JsonData::Ok(
+                serde_json::from_str(r#"{"tango": "foxtrot"}"#).unwrap(),
+            ),
+            end_block: None,
+            flags: vec![],
+            kind: "json".to_string(),
+        };
+        let right = json_block_full(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+    //
 }
