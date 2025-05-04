@@ -2,6 +2,8 @@
 
 [!- for block in blocks -!]
   [!- if block.kind == "metadata" -!]
-    [@- macros.output_block_attribute(block, "created") -@]
+    [!- if "created" in block.attrs -!]
+      Created: [@ macros.output_block_attribute(block, "created") -@]
+    [!- endif -!]
   [!- endif -!]
 [!- endfor -!]
