@@ -123,26 +123,28 @@ mod test {
         assert_eq!(left, right);
     }
 
-    // #[test]
-    // fn solo_json_block_open_error() {
-    //     let source = "-- metadata/\n\nthis will break\n\n-- /metadata";
-    //     let config = Config::default();
-    //     let parent = BlockParent::Page;
-    //     let left = Block::Json {
-    //         attrs: BTreeMap::new(),
-    //         data: JsonData::Error("webn boom".to_string()),
-    //         end_block: Some(Box::new(Block::End {
-    //             attrs: BTreeMap::new(),
-    //             children: vec![],
-    //             flags: vec![],
-    //             kind: "code-end".to_string(),
-    //         })),
-    //         flags: vec![],
-    //         kind: "code".to_string(),
-    //     };
-    //     let right = json_block_open(source, &config, &parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
+    #[test]
+    fn solo_json_block_open_error() {
+        let source = "-- metadata/\n\nthis will break\n\n-- /metadata";
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Json {
+            attrs: BTreeMap::new(),
+            data: JsonData::Error(
+                "expected ident at line 1 column 2".to_string(),
+            ),
+            end_block: Some(Box::new(Block::End {
+                attrs: BTreeMap::new(),
+                children: vec![],
+                flags: vec![],
+                kind: "metadata-end".to_string(),
+            })),
+            flags: vec![],
+            kind: "metadata".to_string(),
+        };
+        let right = json_block_open(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
 
     // #[test]
     // fn solo_json_block_start_nested_block_start_test() {
