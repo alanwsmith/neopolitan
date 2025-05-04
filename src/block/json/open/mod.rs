@@ -124,7 +124,7 @@ mod test {
     }
 
     #[test]
-    fn solo_json_block_open_error() {
+    fn json_block_open_error() {
         let source = "-- metadata/\n\nthis will break\n\n-- /metadata";
         let config = Config::default();
         let parent = BlockParent::Page;
@@ -145,52 +145,6 @@ mod test {
         let right = json_block_open(source, &config, &parent).unwrap().1;
         assert_eq!(left, right);
     }
-
-    // #[test]
-    // fn solo_json_block_start_nested_block_start_test() {
-    //     let source = "-- code/\n\n-- title\n\nwhiskey tango bravo\n\n-- /code";
-    //     let config = Config::default();
-    //     let parent = BlockParent::Page;
-    //     let left = Block::Raw {
-    //         attrs: BTreeMap::new(),
-    //         body: Some("-- title\n\nwhiskey tango bravo".to_string()),
-    //         end_block: Some(Box::new(Block::End {
-    //             attrs: BTreeMap::new(),
-    //             children: vec![],
-    //             flags: vec![],
-    //             kind: "code-end".to_string(),
-    //         })),
-    //         flags: vec![],
-    //         kind: "code".to_string(),
-    //     };
-    //     let right = json_block_open(source, &config, &parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
-
-    // #[test]
-    // fn raw_block_start_nested_with_end_block_test() {
-    //     let source = "-- code/\n\n-- title\n\nwhiskey tango bravo\n\n-- /code\n\nsierra kilo";
-    //     let config = Config::default();
-    //     let parent = BlockParent::Page;
-    //     let left = Block::Raw {
-    //         attrs: BTreeMap::new(),
-    //         body: Some("-- title\n\nwhiskey tango bravo".to_string()),
-    //         end_block: Some(Box::new(Block::End {
-    //             attrs: BTreeMap::new(),
-    //             children: vec![Block::TextBlock {
-    //                 spans: vec![Span::Text {
-    //                     content: "sierra kilo".to_string(),
-    //                 }],
-    //             }],
-    //             flags: vec![],
-    //             kind: "code-end".to_string(),
-    //         })),
-    //         flags: vec![],
-    //         kind: "code".to_string(),
-    //     };
-    //     let right = raw_block_start(source, &config, &parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
 
     //
 }
