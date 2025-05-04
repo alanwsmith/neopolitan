@@ -26,6 +26,11 @@ the output.
 [] Add ``-- path:`` to the ``-- metadata``
 to change the output path. 
 
+[] Set up functionality for ``-- wiki``
+in the metadata the defines the target
+locations where other ``<<wiki\|Name>>``
+entires go
+
 
 
 
