@@ -29,27 +29,40 @@ pub fn json_block_full<'a>(
         let (source, _) = multispace0.parse(source)?;
         let (source, body_base) =
             alt((take_until("-- "), rest)).parse(source)?;
-        match serde_json::from_str(body_base) {
-            Ok(json) => Ok((
+        if body_base.trim() == "" {
+            Ok((
                 source,
                 Block::Json {
                     attrs: metadata.attrs,
-                    data: JsonData::Ok(json),
+                    data: JsonData::None,
                     end_block: None,
                     flags: metadata.flags,
                     kind: kind.to_string(),
                 },
-            )),
-            Err(e) => Ok((
-                source,
-                Block::Json {
-                    attrs: metadata.attrs,
-                    data: JsonData::Error(e.to_string()),
-                    end_block: None,
-                    flags: metadata.flags,
-                    kind: kind.to_string(),
-                },
-            )),
+            ))
+        } else {
+            match serde_json::from_str(body_base) {
+                Ok(json) => Ok((
+                    source,
+                    Block::Json {
+                        attrs: metadata.attrs,
+                        data: JsonData::Ok(json),
+                        end_block: None,
+                        flags: metadata.flags,
+                        kind: kind.to_string(),
+                    },
+                )),
+                Err(e) => Ok((
+                    source,
+                    Block::Json {
+                        attrs: metadata.attrs,
+                        data: JsonData::Error(e.to_string()),
+                        end_block: None,
+                        flags: metadata.flags,
+                        kind: kind.to_string(),
+                    },
+                )),
+            }
         }
     } else {
         Err(nom::Err::Error(nom::error::Error {
@@ -117,6 +130,24 @@ xxx"#;
             data: JsonData::Error(
                 "expected value at line 1 column 1".to_string(),
             ),
+            end_block: None,
+            flags: vec![],
+            kind: "json".to_string(),
+        };
+        let right = json_block_full(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+    #[test]
+    fn json_block_none_test() {
+        let source = r#"-- json
+
+"#;
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Json {
+            attrs: BTreeMap::new(),
+            data: JsonData::None,
             end_block: None,
             flags: vec![],
             kind: "json".to_string(),

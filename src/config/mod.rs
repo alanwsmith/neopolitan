@@ -15,7 +15,9 @@ impl Default for Config {
     fn default() -> Config {
         let block_category_kinds = BlockTypes {
             json: make_vec_of_strings("json|metadata"),
-            raw: make_vec_of_strings("cli|code|css|html|javascript|output|pre|raw")
+            raw: make_vec_of_strings(
+                "cli|code|css|html|javascript|output|pre|raw",
+            ),
         };
         Config {
             block_category_kinds,
@@ -26,4 +28,3 @@ impl Default for Config {
 fn make_vec_of_strings(input: &str) -> Vec<String> {
     input.split("|").map(|i| i.to_string()).collect()
 }
-

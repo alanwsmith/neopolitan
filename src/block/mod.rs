@@ -5,6 +5,7 @@ pub mod raw;
 pub mod text_block;
 
 use crate::block::basic::basic_block;
+use crate::block::json::json_block;
 use crate::block::raw::raw_block;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -16,9 +17,11 @@ use serde_json::Value;
 use std::collections::BTreeMap;
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[serde(rename_all = "lowercase")]
 pub enum JsonData {
     Ok(Value),
     Error(String),
+    None,
 }
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
@@ -84,6 +87,7 @@ pub fn block<'a>(
 ) -> IResult<&'a str, Block> {
     let (source, section) = alt((
         |src| raw_block(src, config, parent),
+        |src| json_block(src, config, parent),
         // Make sure to keep basic in the last slot
         |src| basic_block(src, config, parent),
     ))

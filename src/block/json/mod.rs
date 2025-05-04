@@ -1,5 +1,5 @@
-pub mod open;
 pub mod full;
+pub mod open;
 
 use crate::block::Block;
 use crate::block::json::full::json_block_full;
@@ -9,7 +9,7 @@ use crate::config::Config;
 use nom::Parser;
 use nom::{IResult, branch::alt};
 
-pub fn basic_block<'a>(
+pub fn json_block<'a>(
     source: &'a str,
     config: &'a Config,
     parent: &'a BlockParent,
