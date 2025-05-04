@@ -2,13 +2,13 @@
 
 Basic Raw Content
 
--- raw
+-- cli
 
-This is a raw block
+This is a CLI block
 
--- pre
+-- css
 
-This is a pre block
+This is a CSS block
 
 -- code
 
@@ -22,10 +22,17 @@ this is an HTML block
 
 This is a javascript block
 
--- css
+-- output
 
-This is a CSS block
+This is a output block
 
+-- pre
+
+This is a pre block
+
+-- raw
+
+This is a raw block
 
 -- metadata
 -- created: 2025-05-03T20:03:54-04:00

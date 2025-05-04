@@ -25,7 +25,6 @@ pub enum Block {
     },
     CheckListItem,
     CheckList,
-    CSS,
     CSV,
     End {
         attrs: BTreeMap<String, Vec<Span>>,
@@ -33,7 +32,6 @@ pub enum Block {
         flags: Vec<String>,
         kind: String,
     },
-    Html,
     JavaScript,
     // TODO: Set up Json5 so that it's
     // top level is an `ok` or `error`

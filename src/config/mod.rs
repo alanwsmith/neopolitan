@@ -13,7 +13,7 @@ pub struct BlockTypes {
 impl Default for Config {
     fn default() -> Config {
         let block_category_kinds = BlockTypes {
-            raw: make_vec_of_strings("code|css|html|javascript|pre|raw")
+            raw: make_vec_of_strings("cli|code|css|html|javascript|output|pre|raw")
         };
         Config {
             block_category_kinds,

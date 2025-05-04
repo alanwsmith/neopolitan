@@ -1,0 +1,5 @@
+[!- import "macros/loader.neoj" as macros -!] 
+
+<pre
+[@ macros.get_block_attributes(block) @]
+>[@ block.body @]</pre>
