@@ -9,11 +9,11 @@ use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span::Span;
 use nom::Parser;
+use nom::character::complete::space0;
 use nom::multi::many0;
 use nom::{IResult, branch::alt};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
-use nom::character::complete::space0;
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub enum RawBlockMetaData {
@@ -65,7 +65,7 @@ mod test {
     use pretty_assertions::assert_eq;
 
     #[test]
-    fn solo_block_metadata_flag_test() {
+    fn block_metadata_flag_test() {
         let config = &Config::default();
         let source = "-- test-flag\n\n";
         let parent = &BlockParent::Basic;
@@ -76,9 +76,8 @@ mod test {
         assert_eq!(left, right);
     }
 
-
     #[test]
-    fn solo_block_metadata_flag_test_chomp_leading_line_space() {
+    fn block_metadata_flag_test_chomp_leading_line_space() {
         let config = &Config::default();
         let source = "  -- test-flag\n\n";
         let parent = &BlockParent::Basic;
@@ -88,8 +87,6 @@ mod test {
         let right = block_metadata(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
-
-
 
     #[test]
     fn block_metadata_flag_whitespace_test() {

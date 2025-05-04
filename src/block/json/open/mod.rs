@@ -168,7 +168,7 @@ mod test {
     // without the open/close
 
     #[test]
-    fn solo_json_block_open_none_test() {
+    fn json_block_open_none_test() {
         let source = "-- metadata/\n\n\n-- /metadata";
         let config = Config::default();
         let parent = BlockParent::Page;
