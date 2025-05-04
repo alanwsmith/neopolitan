@@ -27,7 +27,7 @@ pub fn json_block_open<'a>(
     let (source, kind) =
         terminated(is_not("/ \t\r\n"), (tag("/"), space0_line_ending_or_eof))
             .parse(source)?;
-    if config.block_category_kinds.raw.contains(&kind.to_string()) {
+    if config.block_category_kinds.json.contains(&kind.to_string()) {
         let (source, metadata) = block_metadata(source, config, parent)?;
         let (source, _) = multispace0.parse(source)?;
         let (source, body_parts) = many1(alt((
@@ -78,8 +78,8 @@ mod test {
     use std::collections::BTreeMap;
 
     #[test]
-    fn solo_json_block_open_test() {
-        let source = "-- pre/\n\n{ \"bravo\": \"sierra\" }\n\n-- /pre";
+    fn json_block_open_test() {
+        let source = "-- json/\n\n{ \"bravo\": \"sierra\" }\n\n-- /json";
         let config = Config::default();
         let parent = BlockParent::Page;
         let left = Block::Json {
@@ -91,59 +91,61 @@ mod test {
                 attrs: BTreeMap::new(),
                 children: vec![],
                 flags: vec![],
-                kind: "pre-end".to_string(),
+                kind: "json-end".to_string(),
             })),
             flags: vec![],
-            kind: "pre".to_string(),
+            kind: "json".to_string(),
+        };
+        let right = json_block_open(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
+
+    #[test]
+    fn json_block_open_test_chomp_line_spaces() {
+        let source = "   -- json/\n\n{ \"alfa\": \"sierra\" }\n\n-- /json";
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Json {
+            attrs: BTreeMap::new(),
+            data: JsonData::Ok(
+                serde_json::from_str(r#"{"alfa": "sierra"}"#).unwrap(),
+            ),
+            end_block: Some(Box::new(Block::End {
+                attrs: BTreeMap::new(),
+                children: vec![],
+                flags: vec![],
+                kind: "json-end".to_string(),
+            })),
+            flags: vec![],
+            kind: "json".to_string(),
         };
         let right = json_block_open(source, &config, &parent).unwrap().1;
         assert_eq!(left, right);
     }
 
     // #[test]
-    // fn raw_block_start_test_chomp_leading_line_spaces() {
-    //     let source = "  -- pre/\n\ndelta zulu alfa\n\n-- /pre";
+    // fn solo_json_block_open_error() {
+    //     let source = "-- metadata/\n\nthis will break\n\n-- /metadata";
     //     let config = Config::default();
     //     let parent = BlockParent::Page;
-    //     let left = Block::Raw {
+    //     let left = Block::Json {
     //         attrs: BTreeMap::new(),
-    //         body: Some("delta zulu alfa".to_string()),
+    //         data: JsonData::Error("webn boom".to_string()),
     //         end_block: Some(Box::new(Block::End {
     //             attrs: BTreeMap::new(),
     //             children: vec![],
     //             flags: vec![],
-    //             kind: "pre-end".to_string(),
+    //             kind: "code-end".to_string(),
     //         })),
     //         flags: vec![],
-    //         kind: "pre".to_string(),
+    //         kind: "code".to_string(),
     //     };
-    //     let right = raw_block_start(source, &config, &parent).unwrap().1;
+    //     let right = json_block_open(source, &config, &parent).unwrap().1;
     //     assert_eq!(left, right);
     // }
 
     // #[test]
-    // fn raw_block_start_dash_in_content_test() {
-    //     let source = "-- raw/\n\ndelta-zulu alfa\n\n-- /raw";
-    //     let config = Config::default();
-    //     let parent = BlockParent::Page;
-    //     let left = Block::Raw {
-    //         attrs: BTreeMap::new(),
-    //         body: Some("delta-zulu alfa".to_string()),
-    //         end_block: Some(Box::new(Block::End {
-    //             attrs: BTreeMap::new(),
-    //             children: vec![],
-    //             flags: vec![],
-    //             kind: "raw-end".to_string(),
-    //         })),
-    //         flags: vec![],
-    //         kind: "raw".to_string(),
-    //     };
-    //     let right = raw_block_start(source, &config, &parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
-
-    // #[test]
-    // fn raw_block_start_nested_block_start_test() {
+    // fn solo_json_block_start_nested_block_start_test() {
     //     let source = "-- code/\n\n-- title\n\nwhiskey tango bravo\n\n-- /code";
     //     let config = Config::default();
     //     let parent = BlockParent::Page;
@@ -159,7 +161,7 @@ mod test {
     //         flags: vec![],
     //         kind: "code".to_string(),
     //     };
-    //     let right = raw_block_start(source, &config, &parent).unwrap().1;
+    //     let right = json_block_open(source, &config, &parent).unwrap().1;
     //     assert_eq!(left, right);
     // }
 
