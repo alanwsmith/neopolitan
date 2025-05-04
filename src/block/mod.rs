@@ -2,6 +2,7 @@ pub mod basic;
 pub mod end;
 pub mod raw;
 pub mod text_block;
+pub mod json;
 
 use crate::block::basic::basic_block;
 use crate::block::raw::raw_block;
@@ -12,6 +13,14 @@ use nom::Parser;
 use nom::{IResult, branch::alt};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
+use serde_json::Value;
+
+
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+pub enum JsonData {
+    Ok(Value),
+    Error(String)
+}
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 #[serde(tag = "category", rename_all = "lowercase")]
@@ -41,7 +50,13 @@ pub enum Block {
     // If you do it, you'd have to figure out
     // how to deal with comments and such
     // in the AST which feels fraught.
-    Json,
+    Json {
+        attrs: BTreeMap<String, Vec<Span>>,
+        data: JsonData,
+        end_block: Option<Box<Block>>,
+        flags: Vec<String>,
+        kind: String,
+    },
     List,
     #[serde(rename = "list-item")]
     ListItem,
