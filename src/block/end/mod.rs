@@ -56,6 +56,7 @@ bravo foxtrot tango"#;
         let left = Block::End {
             attrs: BTreeMap::new(),
             children: vec![Block::TextBlock {
+                kind: "text-block".to_string(),
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),
                 }],
@@ -78,6 +79,7 @@ bravo foxtrot tango"#;
         let left = Block::End {
             attrs: BTreeMap::new(),
             children: vec![Block::TextBlock {
+                kind: "text-block".to_string(),
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),
                 }],
@@ -89,5 +91,5 @@ bravo foxtrot tango"#;
         assert_eq!(left, right);
     }
 
-//
+    //
 }

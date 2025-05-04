@@ -24,6 +24,11 @@ pub enum JsonData {
     None,
 }
 
+// TODO: Make sure every block has a kind
+// so they can be parsed more easily.
+// In the case of text, the type and
+// kind can just be the same.
+
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 #[serde(tag = "category", rename_all = "lowercase")]
 pub enum Block {
@@ -76,6 +81,7 @@ pub enum Block {
     },
     #[serde(rename = "text-block")]
     TextBlock {
+        kind: String,
         spans: Vec<Span>,
     },
 }

@@ -66,6 +66,7 @@ delta zulu alfa
         let left = Block::Basic {
             attrs: BTreeMap::new(),
             children: vec![Block::TextBlock {
+                kind: "text-block".to_string(),
                 spans: vec![Span::Text {
                     content: "delta zulu alfa".to_string(),
                 }],
@@ -93,6 +94,7 @@ delta zulu alfa
             children: vec![Block::Basic {
                 attrs: BTreeMap::new(),
                 children: vec![Block::TextBlock {
+                    kind: "text-block".to_string(),
                     spans: vec![Span::Text {
                         content: "whiskey tango bravo".to_string(),
                     }],
@@ -116,7 +118,8 @@ delta zulu alfa
 
     #[test]
     fn nested_block_start_test_chomping_leading_line_spaces() {
-        let source = "  -- div/\n\n  -- title\n\nwhiskey tango bravo\n\n  -- /div";
+        let source =
+            "  -- div/\n\n  -- title\n\nwhiskey tango bravo\n\n  -- /div";
         let config = Config::default();
         let parent = BlockParent::Page;
         let left = Block::Basic {
@@ -124,6 +127,7 @@ delta zulu alfa
             children: vec![Block::Basic {
                 attrs: BTreeMap::new(),
                 children: vec![Block::TextBlock {
+                    kind: "text-block".to_string(),
                     spans: vec![Span::Text {
                         content: "whiskey tango bravo".to_string(),
                     }],

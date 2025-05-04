@@ -90,7 +90,6 @@ mod test {
         assert_eq!(left, right);
     }
 
-
     #[test]
     fn raw_block_start_test_chomp_leading_line_spaces() {
         let source = "  -- pre/\n\ndelta zulu alfa\n\n-- /pre";
@@ -165,6 +164,7 @@ mod test {
             end_block: Some(Box::new(Block::End {
                 attrs: BTreeMap::new(),
                 children: vec![Block::TextBlock {
+                    kind: "text-block".to_string(),
                     spans: vec![Span::Text {
                         content: "sierra kilo".to_string(),
                     }],

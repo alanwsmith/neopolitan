@@ -18,10 +18,8 @@ use nom::{IResult, bytes::complete::tag};
 // otherwise it should throw a parsing error if it's
 // after the block token or a flag, and it gets
 // slurped into the attribute if it's an attr
-// 
+//
 // TODO: Check the blank line thing in all block types
-
-
 
 pub fn basic_block_full<'a>(
     source: &'a str,
@@ -93,6 +91,7 @@ bravo foxtrot tango"#;
         let left = Block::Basic {
             attrs: BTreeMap::new(),
             children: vec![Block::TextBlock {
+                kind: "text-block".to_string(),
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),
                 }],
@@ -115,6 +114,7 @@ bravo foxtrot tango"#;
         let left = Block::Basic {
             attrs: BTreeMap::new(),
             children: vec![Block::TextBlock {
+                kind: "text-block".to_string(),
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),
                 }],
@@ -126,5 +126,4 @@ bravo foxtrot tango"#;
         let right = basic_block_full(source, &config, &parent).unwrap().1;
         assert_eq!(left, right);
     }
-
 }

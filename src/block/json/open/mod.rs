@@ -159,6 +159,14 @@ mod test {
         assert_eq!(left, right);
     }
 
+    // TODO:
+    // Test this with only ``\n\n`` instead of
+    // three (``\n\n\n``) and get it to work.
+    // It doesn't right, now, but having an
+    // empty thing like that isn't required
+    // since you can just do a single ``-- metadata``
+    // without the open/close
+
     #[test]
     fn solo_json_block_open_none_test() {
         let source = "-- metadata/\n\n\n-- /metadata";
