@@ -41,34 +41,11 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
 </div><h1
        class="title"
->Nested 3 Levels</h1><p>Content before div</p><div
-   class="color-alt-1 border-alt-1 padding-medium flow"
-><p>Level 1 Top</p><div
-   class="color-alt-2 border-alt-2 padding-medium flow"
-><p>Level 2 Top</p><div
-   class="color-alt-3 border-alt-3 padding-medium flow"
-><p>Level 3 Inside</p></div>
+>Basic Raw Content</h1><pre
 
+>This is raw</pre><pre
 
-  
-  <div
-   class="flow"
-><p>Level 2 Bottom</p></div>
-</div>
-
-
-  
-  <div
-   class="flow"
-><p>Level 1 Bottom</p></div>
-</div>
-
-
-  
-  <div
-   class="flow"
-><p>Content After Levels</p></div>
-<div
+>This is pre</pre><div
    class="flow"
 ></div>
 
@@ -101,16 +78,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "Nested 3 Levels"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Content before div"
+                "content": "Basic Raw Content"
               }
             ]
           }
@@ -120,140 +88,51 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "title"
       },
       {
-        "attrs": {
-          "class": [
-            {
-              "category": "text",
-              "content": "color-alt-1 border-alt-1 padding-medium"
-            }
-          ]
-        },
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Level 1 Top"
-              }
-            ]
-          },
-          {
-            "attrs": {
-              "class": [
-                {
-                  "category": "text",
-                  "content": "color-alt-2 border-alt-2 padding-medium"
-                }
-              ]
-            },
-            "category": "basic",
-            "children": [
-              {
-                "category": "text-block",
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "Level 2 Top"
-                  }
-                ]
-              },
-              {
-                "attrs": {
-                  "class": [
-                    {
-                      "category": "text",
-                      "content": "color-alt-3 border-alt-3 padding-medium"
-                    }
-                  ]
-                },
-                "category": "basic",
-                "children": [
-                  {
-                    "category": "text-block",
-                    "spans": [
-                      {
-                        "category": "text",
-                        "content": "Level 3 Inside"
-                      }
-                    ]
-                  }
-                ],
-                "end_block": {
-                  "attrs": {},
-                  "category": "end",
-                  "children": [
-                    {
-                      "category": "text-block",
-                      "spans": [
-                        {
-                          "category": "text",
-                          "content": "Level 2 Bottom"
-                        }
-                      ]
-                    }
-                  ],
-                  "flags": [],
-                  "kind": "div-end"
-                },
-                "flags": [],
-                "kind": "div"
-              }
-            ],
-            "end_block": {
-              "attrs": {},
-              "category": "end",
-              "children": [
-                {
-                  "category": "text-block",
-                  "spans": [
-                    {
-                      "category": "text",
-                      "content": "Level 1 Bottom"
-                    }
-                  ]
-                }
-              ],
-              "flags": [],
-              "kind": "div-end"
-            },
-            "flags": [],
-            "kind": "div"
-          }
-        ],
-        "end_block": {
-          "attrs": {},
-          "category": "end",
-          "children": [
-            {
-              "category": "text-block",
-              "spans": [
-                {
-                  "category": "text",
-                  "content": "Content After Levels"
-                }
-              ]
-            }
-          ],
-          "flags": [],
-          "kind": "div-end"
-        },
+        "attrs": {},
+        "body": "This is raw",
+        "category": "raw",
+        "end_block": null,
         "flags": [],
-        "kind": "div"
+        "kind": "raw"
+      },
+      {
+        "attrs": {},
+        "body": "This is pre",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "pre"
       },
       {
         "attrs": {
           "created": [
             {
               "category": "text",
-              "content": "2025-05-03T19:38:12-04:00"
+              "content": "2025-05-03T20:03:54-04:00"
+            }
+          ],
+          "id": [
+            {
+              "category": "text",
+              "content": "2w/bj/br/66"
+            }
+          ],
+          "status": [
+            {
+              "category": "text",
+              "content": "prep"
+            }
+          ],
+          "template": [
+            {
+              "category": "text",
+              "content": "post"
             }
           ],
           "updated": [
             {
               "category": "text",
-              "content": "2025-05-03T19:38:12-04:00"
+              "content": "2025-05-03T20:03:54-04:00"
             }
           ]
         },
@@ -261,7 +140,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "children": [],
         "end_block": null,
         "flags": [],
-        "kind": "metadata"
+        "kind": "page"
       }
     ]
   }

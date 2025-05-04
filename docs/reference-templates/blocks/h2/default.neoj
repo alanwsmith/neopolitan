@@ -1,6 +1,10 @@
+[!- import "macros/loader.neoj" as macros -!] 
+
 [!- for block in block.children -!]
   [!- if loop.first -!]
-    <h2>[!- include "blocks/" + block.category + "/no-paragraphs.neoj" -!]</h2>
+    <h2
+      [@ macros.get_block_attributes(block) @]
+>[!- include "blocks/" + block.category + "/no-paragraphs.neoj" -!]</h2>
   [!- else -!]
     [!- include "blocks/" + block.category + "/default.neoj" -!]
   [!- endif -!]

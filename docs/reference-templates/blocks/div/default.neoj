@@ -1,12 +1,8 @@
 [!- import "macros/loader.neoj" as macros -!] 
 
 <div
-  [@- macros.block_classes(block, "flow") -@]
+  [@ macros.get_block_attributes(block, "flow") @]
 >
-
-
-
-
 [!- for block in block.children -!]
   [!- if "kind" in block -!]
     [!- set templates = [

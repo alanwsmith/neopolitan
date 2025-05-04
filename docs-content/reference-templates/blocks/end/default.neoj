@@ -3,8 +3,9 @@
   for all end_blocks 
 #]
 
+[!- import "macros/loader.neoj" as macros -!] 
 <div
-  [@- macros.block_classes(block, "flow") -@]
+  [@ macros.get_block_attributes(block, "flow") @]
 >
 [!- for block in block.children -!]
   [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
