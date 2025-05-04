@@ -1,8 +1,8 @@
 pub mod basic;
 pub mod end;
+pub mod json;
 pub mod raw;
 pub mod text_block;
-pub mod json;
 
 use crate::block::basic::basic_block;
 use crate::block::raw::raw_block;
@@ -12,14 +12,13 @@ use crate::span::Span;
 use nom::Parser;
 use nom::{IResult, branch::alt};
 use serde::{Deserialize, Serialize};
-use std::collections::BTreeMap;
 use serde_json::Value;
-
+use std::collections::BTreeMap;
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub enum JsonData {
     Ok(Value),
-    Error(String)
+    Error(String),
 }
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
@@ -35,6 +34,7 @@ pub enum Block {
     CheckListItem,
     CheckList,
     Csv,
+    // TODO: Rename to "Close"
     End {
         attrs: BTreeMap<String, Vec<Span>>,
         children: Vec<Block>,

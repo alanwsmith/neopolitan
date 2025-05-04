@@ -66,7 +66,7 @@ mod test {
     use std::collections::BTreeMap;
 
     #[test]
-    fn solo_basic_test() {
+    fn basic_test() {
         let source = r#"-- json
 
 { "alfa": "bravo" }"#;
@@ -86,7 +86,7 @@ mod test {
     }
 
     #[test]
-    fn solo_basic_test_chomp_leading_line_space() {
+    fn basic_test_chomp_leading_line_space() {
         let source = r#"    -- json
 
 { "tango": "foxtrot" }"#;

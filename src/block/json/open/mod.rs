@@ -1,4 +1,5 @@
 use crate::block::Block;
+use crate::block::JsonData;
 use crate::block::end::end_block;
 use crate::block_metadata::block_metadata;
 use crate::block_metadata::parent::BlockParent;
@@ -15,6 +16,7 @@ use nom::combinator::recognize;
 use nom::multi::many1;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
+use serde_json::Value;
 
 pub fn json_block_open<'a>(
     source: &'a str,
@@ -36,24 +38,30 @@ pub fn json_block_open<'a>(
             )),
         )))
         .parse(source)?;
-        let joined_parts = body_parts.join("");
-        let body = if joined_parts.is_empty() {
-            None
-        } else {
-            Some(joined_parts.trim_end().to_string())
-        };
         let (source, end_block) =
             (|src| end_block(src, config, parent, kind)).parse(source)?;
-        Ok((
-            source,
-            Block::Raw {
-                attrs: metadata.attrs,
-                body,
-                end_block: Some(Box::new(end_block)),
-                flags: metadata.flags,
-                kind: kind.to_string(),
-            },
-        ))
+        match serde_json::from_str::<Value>(&body_parts.join("")) {
+            Ok(json) => Ok((
+                source,
+                Block::Json {
+                    attrs: metadata.attrs,
+                    data: JsonData::Ok(json),
+                    end_block: Some(Box::new(end_block)),
+                    flags: metadata.flags,
+                    kind: kind.to_string(),
+                },
+            )),
+            Err(e) => Ok((
+                source,
+                Block::Json {
+                    attrs: metadata.attrs,
+                    data: JsonData::Error(e.to_string()),
+                    end_block: Some(Box::new(end_block)),
+                    flags: metadata.flags,
+                    kind: kind.to_string(),
+                },
+            )),
+        }
     } else {
         Err(nom::Err::Error(nom::error::Error {
             input: source,
@@ -65,31 +73,32 @@ pub fn json_block_open<'a>(
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::span::Span;
+    use crate::block::JsonData;
     use pretty_assertions::assert_eq;
     use std::collections::BTreeMap;
 
-    // #[test]
-    // fn raw_block_start_test() {
-    //     let source = "-- pre/\n\ndelta zulu alfa\n\n-- /pre";
-    //     let config = Config::default();
-    //     let parent = BlockParent::Page;
-    //     let left = Block::Raw {
-    //         attrs: BTreeMap::new(),
-    //         body: Some("delta zulu alfa".to_string()),
-    //         end_block: Some(Box::new(Block::End {
-    //             attrs: BTreeMap::new(),
-    //             children: vec![],
-    //             flags: vec![],
-    //             kind: "pre-end".to_string(),
-    //         })),
-    //         flags: vec![],
-    //         kind: "pre".to_string(),
-    //     };
-    //     let right = raw_block_start(source, &config, &parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
-
+    #[test]
+    fn solo_json_block_open_test() {
+        let source = "-- pre/\n\n{ \"bravo\": \"sierra\" }\n\n-- /pre";
+        let config = Config::default();
+        let parent = BlockParent::Page;
+        let left = Block::Json {
+            attrs: BTreeMap::new(),
+            data: JsonData::Ok(
+                serde_json::from_str(r#"{"bravo": "sierra"}"#).unwrap(),
+            ),
+            end_block: Some(Box::new(Block::End {
+                attrs: BTreeMap::new(),
+                children: vec![],
+                flags: vec![],
+                kind: "pre-end".to_string(),
+            })),
+            flags: vec![],
+            kind: "pre".to_string(),
+        };
+        let right = json_block_open(source, &config, &parent).unwrap().1;
+        assert_eq!(left, right);
+    }
 
     // #[test]
     // fn raw_block_start_test_chomp_leading_line_spaces() {
