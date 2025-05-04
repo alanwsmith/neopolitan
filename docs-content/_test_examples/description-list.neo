@@ -2,29 +2,29 @@
 
 Description List Test
 
--- description-list/
+-- descriptions/
 
-    -- description-term
+    -- term
 
     This is the term
 
-        -- description-detail
+    -- detail
 
-        This is the detail
+    This is the detail
 
-        Here's another paragraph
+    Here's another paragraph
 
-    -- description-term
+    -- term
 
     This is the second term
 
-        -- description-detail
+    -- detail
 
-        This is the second detail
+    This is the second detail
 
-        And, a final paragraph
+    And, a final paragraph
 
--- /description-list
+-- /descriptions
 
 
 

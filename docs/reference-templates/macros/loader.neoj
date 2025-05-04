@@ -1,6 +1,7 @@
 [!- include "macros/child-spans.neoj" -!]
 [!- include "macros/debug.neoj" -!]
 [!- include "macros/get-block-attributes.neoj" -!]
+[!- include "macros/output-block-attribute.neoj" -!]
 [!- include "macros/page-links.neoj" -!]
 [!- include "macros/reproduce.neoj" -!]
 [!- include "macros/span-attributes.neoj" -!]
