@@ -32,7 +32,7 @@ pub enum Block {
         flags: Vec<String>,
         kind: String,
     },
-    // TODO: Set up Json5 so that it's
+    // TODO: Set up Json so that it's
     // top level is an `ok` or `error`
     // based of it it was able to be parsed
     // or not. Though about making it json5

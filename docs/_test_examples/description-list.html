@@ -41,24 +41,33 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
 </div><h1
        class="title"
->Nested Multiple Levels</h1><div
+>Description List Test</h1><dl
+  
+><dt
+  
+><p>This is the term</p></dt>
+
+<dd
    class="flow"
-><p>Level 1 Top</p><div
-   class="color-alt-3 flow"
-><p>Level 2 Inside</p></div>
+><p>This is the detail</p><p>Here's another paragraph</p></dd>
+
+
+<dt
+  
+><p>This is the second term</p></dt>
+
+<dd
+   class="flow"
+><p>This is the second detail</p><p>And, a final paragraph</p></dd>
+
+
+</dl>
 
 
   
   <div
    class="flow"
-><p>Level 1 Bottom</p></div>
-</div>
-
-
-  
-  <div
-   class="flow"
-><p>Content After Level Check</p></div>
+></div>
 <div
    class="flow"
 ></div>
@@ -92,7 +101,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "Nested Multiple Levels"
+                "content": "Description List Test"
               }
             ]
           }
@@ -106,23 +115,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "category": "basic",
         "children": [
           {
-            "category": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Level 1 Top"
-              }
-            ]
-          },
-          {
-            "attrs": {
-              "class": [
-                {
-                  "category": "text",
-                  "content": "color-alt-3"
-                }
-              ]
-            },
+            "attrs": {},
             "category": "basic",
             "children": [
               {
@@ -130,64 +123,110 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
                 "spans": [
                   {
                     "category": "text",
-                    "content": "Level 2 Inside"
+                    "content": "This is the term"
                   }
                 ]
               }
             ],
-            "end_block": {
-              "attrs": {},
-              "category": "end",
-              "children": [
-                {
-                  "category": "text-block",
-                  "spans": [
-                    {
-                      "category": "text",
-                      "content": "Level 1 Bottom"
-                    }
-                  ]
-                }
-              ],
-              "flags": [],
-              "kind": "div-end"
-            },
+            "end_block": null,
             "flags": [],
-            "kind": "div"
+            "kind": "description-term"
+          },
+          {
+            "attrs": {},
+            "category": "basic",
+            "children": [
+              {
+                "category": "text-block",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "This is the detail"
+                  }
+                ]
+              },
+              {
+                "category": "text-block",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "Here\u0027s another paragraph"
+                  }
+                ]
+              }
+            ],
+            "end_block": null,
+            "flags": [],
+            "kind": "description-detail"
+          },
+          {
+            "attrs": {},
+            "category": "basic",
+            "children": [
+              {
+                "category": "text-block",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "This is the second term"
+                  }
+                ]
+              }
+            ],
+            "end_block": null,
+            "flags": [],
+            "kind": "description-term"
+          },
+          {
+            "attrs": {},
+            "category": "basic",
+            "children": [
+              {
+                "category": "text-block",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "This is the second detail"
+                  }
+                ]
+              },
+              {
+                "category": "text-block",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "And, a final paragraph"
+                  }
+                ]
+              }
+            ],
+            "end_block": null,
+            "flags": [],
+            "kind": "description-detail"
           }
         ],
         "end_block": {
           "attrs": {},
           "category": "end",
-          "children": [
-            {
-              "category": "text-block",
-              "spans": [
-                {
-                  "category": "text",
-                  "content": "Content After Level Check"
-                }
-              ]
-            }
-          ],
+          "children": [],
           "flags": [],
-          "kind": "div-end"
+          "kind": "description-list-end"
         },
         "flags": [],
-        "kind": "div"
+        "kind": "description-list"
       },
       {
         "attrs": {
           "created": [
             {
               "category": "text",
-              "content": "2025-05-03T19:34:42-04:00"
+              "content": "2025-05-03T20:49:41-04:00"
             }
           ],
           "updated": [
             {
               "category": "text",
-              "content": "2025-05-03T19:34:42-04:00"
+              "content": "2025-05-03T20:49:41-04:00"
             }
           ]
         },

@@ -1593,6 +1593,18 @@ code {
   color: var(--color-alt-4-90);
 }
 
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: 1rem;
+  margin-left: 2rem; 
+}
+
+
+
+
 .flow > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
 }
