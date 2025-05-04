@@ -59,7 +59,37 @@ mod test {
     use super::*;
     use crate::span::Span;
     use pretty_assertions::assert_eq;
+    use rstest::rstest;
     use std::collections::BTreeMap;
+
+    #[rstest]
+    #[case(
+        "``alfa``",
+        r#"{ "category": "code", "attrs": {}, "flags": [], "spans": [{"category": "text", "content": "alfa"}]}"#
+    )]
+    #[case(
+        "`` \n alfa  \n  bravo \n ``",
+        r#"{ "category": "code", "attrs": {}, "flags": [], "spans": [{"category": "text", "content": "alfa bravo"}]}"#
+    )]
+    fn solo_span_attr_key_token_valid_tests(
+        #[case] source: &str,
+        #[case] json: &str,
+    ) {
+        let left: Span = serde_json::from_str(json).unwrap();
+        let right = code_span(source).unwrap().1;
+        assert_eq!(left, right);
+
+        // let response = code_span(source).unwrap();
+        // if let Span::Code { spans, .. } = response.1 {
+        //     if let Span::Text { content } = &spans[0] {
+        //         assert_eq!(left, **content);
+        //     } else {
+        //         assert!(false);
+        //     }
+        // } else {
+        //     assert!(false);
+        // }
+    }
 
     #[test]
     fn code_span_simple_test() {
