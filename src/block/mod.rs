@@ -25,14 +25,13 @@ pub enum Block {
     },
     CheckListItem,
     CheckList,
-    CSV,
+    Csv,
     End {
         attrs: BTreeMap<String, Vec<Span>>,
         children: Vec<Block>,
         flags: Vec<String>,
         kind: String,
     },
-    JavaScript,
     // TODO: Set up Json5 so that it's
     // top level is an `ok` or `error`
     // based of it it was able to be parsed
@@ -44,9 +43,12 @@ pub enum Block {
     // in the AST which feels fraught.
     Json,
     List,
+    #[serde(rename = "list-item")]
     ListItem,
-    Olist,
-    OlistItem,
+    #[serde(rename = "numbered-list")]
+    NumberedList,
+    #[serde(rename = "numbered-list-item")]
+    NumberedListItem,
     Raw {
         attrs: BTreeMap<String, Vec<Span>>,
         body: Option<String>,
