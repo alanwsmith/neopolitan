@@ -55,12 +55,66 @@ pub fn code_span_text(source: &str) -> IResult<&str, Span> {
 
 #[cfg(test)]
 mod test {
-
     use super::*;
     use crate::span::Span;
     use pretty_assertions::assert_eq;
     use rstest::rstest;
     use std::collections::BTreeMap;
+
+    const TEST_DATA: &str = r#"
+
+``alfa``
+
+~~~~~~
+
+{ 
+    "category": "code", 
+    "attrs": {}, 
+    "flags": [], 
+    "spans": [
+        {
+            "category": "text", 
+            "content": "alfa"
+        }
+    ]
+}
+
+!!!!!!
+
+`` 
+  alfa  
+  bravo
+  ``
+
+~~~~~~
+
+{ 
+    "category": "code", 
+    "attrs": {}, 
+    "flags": [], 
+    "spans": [
+        {
+            "category": "text", 
+            "content": "alfa bravo"
+        }
+    ]
+}
+
+
+
+"#;
+
+    #[test]
+    fn solo_code_span_test_runner() {
+        let cases: Vec<_> = TEST_DATA.split("!!!!!!").collect();
+        for case in cases {
+            let parts: Vec<_> =
+                case.split("~~~~~~").map(|c| c.trim()).collect();
+            let left: Span = serde_json::from_str(parts[1]).unwrap();
+            let right = code_span(parts[0]).unwrap().1;
+            assert_eq!(left, right);
+        }
+    }
 
     #[rstest]
     #[case(
@@ -78,7 +132,6 @@ mod test {
         let left: Span = serde_json::from_str(json).unwrap();
         let right = code_span(source).unwrap().1;
         assert_eq!(left, right);
-
         // let response = code_span(source).unwrap();
         // if let Span::Code { spans, .. } = response.1 {
         //     if let Span::Text { content } = &spans[0] {
