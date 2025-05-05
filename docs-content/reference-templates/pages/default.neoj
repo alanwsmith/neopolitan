@@ -8,7 +8,6 @@
   [!- endif -!]
 [!- endfor -!]
 
-[!- include "helpers/page-date.neoj" -!]
 
 [!- for block in blocks -!]
   [!- if block.kind != "title" -!]

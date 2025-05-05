@@ -44,28 +44,41 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 
   <main class="wrapper-medium flow"><hgroup class="title-group">
       <h1  class="title"
-      >Tags</h1></hgroup><h2
-      
->Introduction</h2><pre
+      >CSV Example</h1></hgroup><div
+   class="flow"
+><p>The page won't render in the <code>2.9.0</code> version of MiniJinja if something other than a number is used as the value in the <code data-lang="neo"> <span class="source rust"><span class="keyword operator rust">-</span><span class="keyword operator rust">-</span> headers<span class="punctuation separator rust">:</span></span></code> attribute. One possible fix is to make an environmental function to address that.</p><p>I've also opened a ticket at:</p><p>Converting to int halts rendering if the input is not a number</p><p>https://github.com/mitsuhiko/minijinja/issues/786</p></div>
 
-><p>Tag are one of the ways to enhance 
-content in Neopolitan files<sup>1</sup>.</p>
-
-<p>Details about how they work are currently 
-<a href="/">on the home page</a>.</p></pre><h2
-      
->TODO</h2><p>Move content from the home page to here.</p><h2
-      
->Footnote</h2><pre
-
-><ol>
-  <li>
-    The other way is 
-    <a href="/documentation/shorthands.html">Shorthands</a>
-  </li>
-</ol></pre></main>
+<h2>CSV Example Table</h2><table><thead><tr><th class="
+                background-color-alt-3-30
+                padding-inline-large 
+                ">alfa</th><th class="
+                background-color-alt-3-30
+                padding-inline-large 
+                ">bravo</th><th class="
+                background-color-alt-3-30
+                padding-inline-large 
+                ">charlie</th></tr></thead>
+      <tbody><tr><td class="
+                background-color-alt-1-20
+                text-align-center">delta</td><td class="
+                background-color-alt-1-20
+                text-align-center">echo</td><td class="
+                background-color-alt-1-20
+                text-align-center">foxtrot</td></tr><tr><td class="
+                background-color-alt-1-20
+                text-align-center">golf</td><td class="
+                background-color-alt-1-20
+                text-align-center">hotel</td><td class="
+                background-color-alt-1-20
+                text-align-center">india</td></tr><tr><td class="
+                background-color-alt-1-20
+                text-align-center">julite</td><td class="
+                background-color-alt-1-20
+                text-align-center">kilo</td><td class="
+                background-color-alt-1-20
+                text-align-center">lima</td></tr></tbody></table></main>
   <footer><div>
-        Created: 2025-04-28T14:26:15-04:00</div>from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
+        Created: 2025-05-04T00:13:19-04:00</div>from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
     <a href="https://links.alanwsmith.com/">other projects</a> ~
     <a href="https://socials.alanwsmith.com/">socials</a>
@@ -93,7 +106,7 @@ content in Neopolitan files<sup>1</sup>.</p>
             "spans": [
               {
                 "category": "text",
-                "content": "Tags"
+                "content": "CSV Example"
               }
             ]
           }
@@ -112,34 +125,39 @@ content in Neopolitan files<sup>1</sup>.</p>
             "spans": [
               {
                 "category": "text",
-                "content": "Introduction"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "body": "\u003cp\u003eTag are one of the ways to enhance \ncontent in Neopolitan files\u003csup\u003e1\u003c/sup\u003e.\u003c/p\u003e\n\n\u003cp\u003eDetails about how they work are currently \n\u003ca href=\"/\"\u003eon the home page\u003c/a\u003e.\u003c/p\u003e",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
+                "content": "The page won\u0027t render in the "
+              },
+              {
+                "attrs": {},
+                "category": "code",
+                "flags": [],
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "2.9.0"
+                  }
+                ]
+              },
               {
                 "category": "text",
-                "content": "TODO"
+                "content": " version of MiniJinja if something other than a number is used as the value in the "
+              },
+              {
+                "attrs": {},
+                "category": "code",
+                "flags": [
+                  "neo"
+                ],
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- headers:"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " attribute. One possible fix is to make an environmental function to address that."
               }
             ]
           },
@@ -149,54 +167,97 @@ content in Neopolitan files<sup>1</sup>.</p>
             "spans": [
               {
                 "category": "text",
-                "content": "Move content from the home page to here."
+                "content": "I\u0027ve also opened a ticket at:"
               }
             ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
+          },
           {
             "category": "text-block",
             "kind": "text-block",
             "spans": [
               {
                 "category": "text",
-                "content": "Footnote"
+                "content": "Converting to int halts rendering if the input is not a number"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "https://github.com/mitsuhiko/minijinja/issues/786"
               }
             ]
           }
         ],
         "end_block": null,
         "flags": [],
-        "kind": "h2"
+        "kind": "warning"
       },
       {
-        "attrs": {},
-        "body": "\u003col\u003e\n  \u003cli\u003e\n    The other way is \n    \u003ca href=\"/documentation/shorthands.html\"\u003eShorthands\u003c/a\u003e\n  \u003c/li\u003e\n\u003c/ol\u003e",
-        "category": "raw",
+        "attrs": {
+          "caption": [
+            {
+              "category": "text",
+              "content": "This is the caption for the table."
+            }
+          ],
+          "headers": [
+            {
+              "category": "text",
+              "content": "1"
+            }
+          ],
+          "title": [
+            {
+              "category": "text",
+              "content": "CSV Example Table"
+            }
+          ]
+        },
+        "category": "csv",
+        "data": {
+          "ok": [
+            [
+              "alfa",
+              "bravo",
+              "charlie"
+            ],
+            [
+              "delta",
+              "echo",
+              "foxtrot"
+            ],
+            [
+              "golf",
+              "hotel",
+              "india"
+            ],
+            [
+              "julite",
+              "kilo",
+              "lima"
+            ]
+          ]
+        },
         "end_block": null,
         "flags": [],
-        "kind": "html"
+        "kind": "neo-example-csv-table"
       },
       {
         "attrs": {
           "created": [
             {
               "category": "text",
-              "content": "2025-04-28T14:26:15-04:00"
+              "content": "2025-05-04T00:13:19-04:00"
             }
           ],
           "updated": [
             {
               "category": "text",
-              "content": "2025-04-28T14:26:15-04:00"
+              "content": "2025-05-04T00:13:19-04:00"
             }
           ]
         },

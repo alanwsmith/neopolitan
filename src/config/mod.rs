@@ -14,9 +14,13 @@ pub struct BlockTypes {
 
 impl Default for Config {
     fn default() -> Config {
+        // NOTE: the neo-example- items are built in to make demos
+        // easier. Part of the spec is that the ``neo-`` namespace
+        // is reserved. I don't expect to do much with it, but
+        // things like this are helpful for demos.
         let block_category_kinds = BlockTypes {
-            csv: make_vec_of_strings("csv|neo-csv-table"),
-            json: make_vec_of_strings("json|metadata|neo-json-table"),
+            csv: make_vec_of_strings("csv|neo-example-csv-table"),
+            json: make_vec_of_strings("json|metadata|neo-example-json-table"),
             raw: make_vec_of_strings(
                 "cli|code|css|html|javascript|output|path|pre|raw",
             ),

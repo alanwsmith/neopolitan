@@ -5,17 +5,17 @@ Nested 3 Levels
 Content before div
 
 -- div/
--- class: color-alt-1 border-alt-1 padding-medium
+-- class: color-alt-1 border-color-alt-1 padding-medium
 
 Level 1 Top
 
     -- div/
-    -- class: color-alt-2 border-alt-2 padding-medium
+    -- class: color-alt-2 border-color-alt-2 padding-medium
 
     Level 2 Top
 
         -- div/ 
-        -- class: color-alt-3 border-alt-3 padding-medium
+        -- class: color-alt-3 border-color-alt-3 padding-medium
 
         Level 3 Inside
 

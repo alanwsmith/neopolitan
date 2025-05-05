@@ -17,7 +17,7 @@ Converting to int halts rendering if the input is not a number
 https://github.com/mitsuhiko/minijinja/issues/786
 
 
--- neo-csv-table
+-- neo-example-csv-table
 -- headers: 1
 -- caption: This is the caption for the table. 
 -- title: CSV Example Table

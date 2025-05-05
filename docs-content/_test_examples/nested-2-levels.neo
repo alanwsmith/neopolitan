@@ -3,11 +3,13 @@
 Nested Multiple Levels
 
 -- div/
+-- class: border-color-alt-2 padding-medium
 
 Level 1 Top
 
 -- div/
--- class: color-alt-3
+-- class: color-alt-3 border-color-alt-1 padding-medium
+
 
 Level 2 Inside
 
