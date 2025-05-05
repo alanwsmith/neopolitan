@@ -79,35 +79,55 @@ mod test {
     ]
 }
 
-!!!!!!
+######
 
-`` 
-  alfa  
-  bravo
-  ``
+``alfa|bravo``
 
 ~~~~~~
 
 { 
     "category": "code", 
     "attrs": {}, 
-    "flags": [], 
+    "flags": ["bravo"], 
     "spans": [
         {
             "category": "text", 
-            "content": "alfa bravo"
+            "content": "alfa"
         }
     ]
 }
 
+######
 
+``alfa|bravo: charlie|delta``
+
+~~~~~~
+
+{ 
+    "category": "code", 
+    "attrs": {
+        "bravo": [
+            {
+                "category": "text", 
+                "content": "charlie"
+            }
+        ]
+    }, 
+    "flags": ["delta"], 
+    "spans": [
+        {
+            "category": "text", 
+            "content": "alfa"
+        }
+    ]
+}
 
 
 "#;
 
     #[test]
     fn solo_code_span_test_runner() {
-        let cases: Vec<_> = TEST_DATA.split("!!!!!!").collect();
+        let cases: Vec<_> = TEST_DATA.split("######").collect();
         for case in cases {
             let parts: Vec<_> =
                 case.split("~~~~~~").map(|c| c.trim()).collect();
@@ -115,22 +135,6 @@ mod test {
             let right = code_span(parts[0]).unwrap().1;
             assert_eq!(left, right);
         }
-    }
-
-    #[test]
-    fn code_span_simple_test() {
-        let source = "``alfa``";
-        let left = Span::Code {
-            attrs: BTreeMap::new(),
-            flags: vec![],
-            spans: vec![Span::Text {
-                content: "alfa".to_string(),
-            }],
-        };
-        let remainder = "";
-        let right = code_span(source).unwrap();
-        assert_eq!(left, right.1);
-        assert_eq!(remainder, right.0);
     }
 
     #[test]

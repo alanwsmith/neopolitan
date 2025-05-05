@@ -1,11 +1,8 @@
-[#-
-  TODO: Deprecated in favor of output_block_attr() 
--#]
-
-[!- macro output_block_attribute(block, key) -!]
+[!- macro output_block_attr(block, key) -!]
     [!- if key in block.attrs -!]
         [!- for span in block.attrs[key] -!]
             [!- include "spans/" ~ span.category ~ "/default.neoj" -!]
         [!- endfor -!]
     [!- endif -!]
 [!- endmacro -!]
+

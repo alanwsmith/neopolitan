@@ -29,7 +29,75 @@ to change the output path.
 [] Set up functionality for ``-- wiki``
 in the metadata the defines the target
 locations where other ``<<wiki\|Name>>``
-entires go
+entires go. 
+
+[] For the plugin architecture. 
+Send the ast to a function which 
+updates it as it sees fit then
+sends it back. Plugins can do things
+like add toplevel items as siblings
+of ``pages`` in the site ast. 
+
+[] Plugins could also update content.
+Basically do whatever to the ast. 
+There would likely need to be templates
+that are used with them. There might
+be a way to send those back, but
+at least for the first version just
+have folks copy pasted them into
+their template files. 
+
+[] It's up to plugins to do their
+own caching? Could there be a cache
+feature builtin? Probably. Just
+send back the prior object from 
+the plugin. Yeah, that probably 
+makes the most sense. 
+
+[] Make adding ``figure`` to 
+to raw sections part of the 
+default templates
+
+[] Make ``-- wiki-key`` what you add
+to a pages ``-- metadata`` to define
+keys. Can have multiple of them. 
+
+[] The page asts take care of themselves.
+Spec out other parts under the site
+(like "wiki" that are part of
+the reference engine.
+
+[] Put tags and groups under the
+standard reference engine. 
+
+[] Automatic ``figure`` numbering on
+pages with the ability to link
+to them with some sort of tag
+
+[] Automatically put commas
+between multiple consecutive
+footnote links
+
+[] Build a little debug thing
+into place where if you're
+on localhost and hit ``/``
+it brings an interface for you. 
+Could have things like the colors
+on it. lists of tags, etc...
+
+[] Store stuff in ``/.neo-files``
+so it's hidden from the main
+file system. 
+
+[] Store feeds in ``/.neo-feeds``
+so they don't have to show up
+on the file system. 
+
+[] Set up counters that can be used
+for things on the page. Like
+numbers for headings and figures. 
+
+
 
 
 

@@ -44,35 +44,13 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 
   <main class="wrapper-medium flow"><hgroup class="title-group">
       <h1  class="title"
-      >Description List Test</h1></hgroup><div>
-        Created: 2025-05-03T20:49:41-04:00</div><dl
-  
-><dt
-  
-><p>This is the term</p></dt>
-
-<dd
+      >CSV Example</h1></hgroup><div>
+        Created: 2025-05-04T00:13:19-04:00</div><div
    class="flow"
-><p>This is the detail</p><p>Here's another paragraph</p></dd>
+><p>The page won't render in the <code>2.9.0</code> version of MiniJinja if something other than a number is used as the value in the <code data-lang="neo"> <span class="source rust"><span class="keyword operator rust">-</span><span class="keyword operator rust">-</span> headers<span class="punctuation separator rust">:</span></span></code> attribute. One possible fix is to make an environmental function to address that.</p><p>I've also opened a ticket at:</p><p>Converting to int halts rendering if the input is not a number</p><p>https://github.com/mitsuhiko/minijinja/issues/786</p></div>
 
-
-<dt
-  
-><p>This is the second term</p></dt>
-
-<dd
-   class="flow"
-><p>This is the second detail</p><p>And, a final paragraph</p></dd>
-
-
-</dl>
-
-
-  
-  <div
-   class="flow"
-></div>
-</main>
+<h2>CSV Example Table</h2><table class="border-color-alt-2-70"><thead><tr><th class="padding-inline-large border-color-bottom-alt-4-50">alfa</th><th class="padding-inline-large border-color-bottom-alt-4-50">bravo</th><th class="padding-inline-large border-color-bottom-alt-4-50">charlie</th></tr></thead>
+      <tbody><tr><td class="text-align-center">delta</td><td class="text-align-center">echo</td><td class="text-align-center">foxtrot</td></tr><tr><td class="text-align-center">golf</td><td class="text-align-center">hotel</td><td class="text-align-center">india</td></tr><tr><td class="text-align-center">julite</td><td class="text-align-center">kilo</td><td class="text-align-center">lima</td></tr></tbody></table></main>
   <footer>
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
@@ -102,7 +80,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "Description List Test"
+                "content": "CSV Example"
               }
             ]
           }
@@ -116,124 +94,144 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "category": "basic",
         "children": [
           {
-            "attrs": {},
-            "category": "basic",
-            "children": [
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
               {
-                "category": "text-block",
-                "kind": "text-block",
+                "category": "text",
+                "content": "The page won\u0027t render in the "
+              },
+              {
+                "attrs": {},
+                "category": "code",
+                "flags": [],
                 "spans": [
                   {
                     "category": "text",
-                    "content": "This is the term"
-                  }
-                ]
-              }
-            ],
-            "end_block": null,
-            "flags": [],
-            "kind": "term"
-          },
-          {
-            "attrs": {},
-            "category": "basic",
-            "children": [
-              {
-                "category": "text-block",
-                "kind": "text-block",
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "This is the detail"
+                    "content": "2.9.0"
                   }
                 ]
               },
               {
-                "category": "text-block",
-                "kind": "text-block",
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "Here\u0027s another paragraph"
-                  }
-                ]
-              }
-            ],
-            "end_block": null,
-            "flags": [],
-            "kind": "detail"
-          },
-          {
-            "attrs": {},
-            "category": "basic",
-            "children": [
+                "category": "text",
+                "content": " version of MiniJinja if something other than a number is used as the value in the "
+              },
               {
-                "category": "text-block",
-                "kind": "text-block",
+                "attrs": {},
+                "category": "code",
+                "flags": [
+                  "neo"
+                ],
                 "spans": [
                   {
                     "category": "text",
-                    "content": "This is the second term"
-                  }
-                ]
-              }
-            ],
-            "end_block": null,
-            "flags": [],
-            "kind": "term"
-          },
-          {
-            "attrs": {},
-            "category": "basic",
-            "children": [
-              {
-                "category": "text-block",
-                "kind": "text-block",
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "This is the second detail"
+                    "content": "-- headers:"
                   }
                 ]
               },
               {
-                "category": "text-block",
-                "kind": "text-block",
-                "spans": [
-                  {
-                    "category": "text",
-                    "content": "And, a final paragraph"
-                  }
-                ]
+                "category": "text",
+                "content": " attribute. One possible fix is to make an environmental function to address that."
               }
-            ],
-            "end_block": null,
-            "flags": [],
-            "kind": "detail"
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "I\u0027ve also opened a ticket at:"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Converting to int halts rendering if the input is not a number"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "https://github.com/mitsuhiko/minijinja/issues/786"
+              }
+            ]
           }
         ],
-        "end_block": {
-          "attrs": {},
-          "category": "end",
-          "children": [],
-          "flags": [],
-          "kind": "descriptions-end"
-        },
+        "end_block": null,
         "flags": [],
-        "kind": "descriptions"
+        "kind": "warning"
+      },
+      {
+        "attrs": {
+          "caption": [
+            {
+              "category": "text",
+              "content": "This is the caption for the table."
+            }
+          ],
+          "headers": [
+            {
+              "category": "text",
+              "content": "1"
+            }
+          ],
+          "title": [
+            {
+              "category": "text",
+              "content": "CSV Example Table"
+            }
+          ]
+        },
+        "category": "csv",
+        "data": {
+          "ok": [
+            [
+              "alfa",
+              "bravo",
+              "charlie"
+            ],
+            [
+              "delta",
+              "echo",
+              "foxtrot"
+            ],
+            [
+              "golf",
+              "hotel",
+              "india"
+            ],
+            [
+              "julite",
+              "kilo",
+              "lima"
+            ]
+          ]
+        },
+        "end_block": null,
+        "flags": [],
+        "kind": "neo-csv-table"
       },
       {
         "attrs": {
           "created": [
             {
               "category": "text",
-              "content": "2025-05-03T20:49:41-04:00"
+              "content": "2025-05-04T00:13:19-04:00"
             }
           ],
           "updated": [
             {
               "category": "text",
-              "content": "2025-05-03T20:49:41-04:00"
+              "content": "2025-05-04T00:13:19-04:00"
             }
           ]
         },
