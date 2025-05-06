@@ -1,7 +1,7 @@
 \${TOKEN}bravo
 ~~~~~~txt~~~~~~ok~~~~~~
 
-Escaped backtick
+Escaped ${TOKEN}
 
 ~~~~~~
 

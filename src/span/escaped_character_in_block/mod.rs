@@ -5,9 +5,23 @@ use nom::sequence::preceded;
 use nom::{IResult, bytes::tag};
 
 pub fn escaped_character_in_block(source: &str) -> IResult<&str, Span> {
-    let (source, character) =
-        alt((preceded(tag("\\"), tag("~")), preceded(tag("\\"), tag("`"))))
-            .parse(source)?;
+    let (source, character) = alt((
+        preceded(tag("\\"), tag("~")),
+        preceded(tag("\\"), tag("`")),
+        preceded(tag("\\"), tag("@")),
+        preceded(tag("\\"), tag("^")),
+        preceded(tag("\\"), tag("*")),
+        preceded(tag("\\"), tag("_")),
+        preceded(tag("\\"), tag("(")),
+        preceded(tag("\\"), tag(")")),
+        preceded(tag("\\"), tag("[")),
+        preceded(tag("\\"), tag("]")),
+        preceded(tag("\\"), tag("{")),
+        preceded(tag("\\"), tag("}")),
+        preceded(tag("\\"), tag("<")),
+        preceded(tag("\\"), tag(">")),
+    ))
+    .parse(source)?;
     Ok((
         source,
         Span::Escaped {

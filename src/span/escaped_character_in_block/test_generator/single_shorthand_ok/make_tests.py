@@ -8,6 +8,18 @@ from string import Template
 single_shorthands = [
         { "NAME": "tilde", "TOKEN": "~"},
         { "NAME": "backtick", "TOKEN": "`"},
+        { "NAME": "ampersand", "TOKEN": "@"},
+        { "NAME": "caret", "TOKEN": "^"},
+        { "NAME": "astrisk", "TOKEN": "*"},
+        { "NAME": "underscore", "TOKEN": "_"},
+        { "NAME": "open_paren", "TOKEN": "("},
+        { "NAME": "close_paren", "TOKEN": ")"},
+        { "NAME": "open_square", "TOKEN": "["},
+        { "NAME": "close_square", "TOKEN": "]"},
+        { "NAME": "open_curly", "TOKEN": "{"},
+        { "NAME": "close_curly", "TOKEN": "}"},
+        { "NAME": "open_tag", "TOKEN": "<"},
+        { "NAME": "close_tag", "TOKEN": ">"},
         ]
 
 template_dir = "templates"
