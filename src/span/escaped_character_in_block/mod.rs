@@ -1,10 +1,13 @@
 use crate::span::Span;
 use nom::Parser;
+use nom::branch::alt;
 use nom::sequence::preceded;
 use nom::{IResult, bytes::tag};
 
 pub fn escaped_character_in_block(source: &str) -> IResult<&str, Span> {
-    let (source, character) = preceded(tag("\\"), tag("`")).parse(source)?;
+    let (source, character) =
+        alt((preceded(tag("\\"), tag("~")), preceded(tag("\\"), tag("`"))))
+            .parse(source)?;
     Ok((
         source,
         Span::Escaped {

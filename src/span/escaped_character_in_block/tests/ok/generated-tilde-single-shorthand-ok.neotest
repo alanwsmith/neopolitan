@@ -1,0 +1,19 @@
+\~bravo
+~~~~~~txt~~~~~~ok~~~~~~
+
+Escaped backtick
+
+~~~~~~
+
+{
+  "category": "escaped",
+  "content": "~"
+}
+
+~~~~~~
+
+{
+  "remainder": "bravo"
+}
+
+

@@ -1,0 +1,19 @@
+\${TOKEN}bravo
+~~~~~~txt~~~~~~ok~~~~~~
+
+Escaped backtick
+
+~~~~~~
+
+{
+  "category": "escaped",
+  "content": "${TOKEN}"
+}
+
+~~~~~~
+
+{
+  "remainder": "bravo"
+}
+
+
