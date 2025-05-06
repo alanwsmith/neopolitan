@@ -1,6 +1,5 @@
+alfa~~~~~~
 Single word
-~~~~~~
-alfa
 ~~~~~~
 {
   "category": "text",

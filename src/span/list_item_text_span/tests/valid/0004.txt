@@ -1,7 +1,6 @@
-Multiple lines
-~~~~~~
 alfa bravo
-charlie delta
+charlie delta~~~~~~
+Multiple lines
 ~~~~~~
 {
   "category": "text",

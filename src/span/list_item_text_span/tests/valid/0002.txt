@@ -1,6 +1,5 @@
+alfa bravo charlie~~~~~~
 Multiple words
-~~~~~~
-alfa bravo charlie
 ~~~~~~
 {
   "category": "text",
