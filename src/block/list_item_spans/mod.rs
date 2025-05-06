@@ -5,6 +5,7 @@ use crate::config::Config;
 use crate::span::Span;
 use crate::span::escaped_character_in_block::escaped_character_in_block;
 use crate::span::shorthand::shorthand_span;
+use crate::span::single_character_allowed_in_block::single_character_allowed_in_block;
 use crate::span::single_line_ending::single_line_ending;
 use crate::span::text::in_block::text_span_in_block;
 use crate::span::text_in_block::text_in_block;
@@ -27,6 +28,7 @@ pub fn list_item_spans<'a>(
         text_in_block,
         single_line_ending,
         escaped_character_in_block,
+        single_character_allowed_in_block,
     )))
     .parse(source)?;
     Ok((
@@ -49,7 +51,7 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn list_item_spans_tests() {
+    fn solo_list_item_spans_tests() {
         let source_dir = PathBuf::from("src/block/list_item_spans/tests");
         let config = Config::default();
         let parent = BlockParent::ListItem;

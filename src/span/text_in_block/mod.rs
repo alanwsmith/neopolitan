@@ -22,7 +22,6 @@ pub fn text_in_block<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, content) = many1(alt((
         is_not(" \r\n\t\\~`@^*_()[]{}<>"),
         (space1, not(line_ending)).map(|_| " "),
-        (tag("`"), not(tag("`"))).map(|_| "`"),
     )))
     .parse(source)?;
     Ok((

@@ -13,7 +13,7 @@ file_names = [
     if os.path.isfile(file)
 ]
 
-with open("../../../../helpers/data/characters-to-escape-in-blocks.txt", "r") as _char_file:
+with open("../../../../helpers/data/single-characters-to-allow-in-blocks.txt", "r") as _char_file:
     lines = _char_file.read().splitlines()
     for line in lines:
         parts = line.split(" ")
@@ -30,4 +30,5 @@ with open("../../../../helpers/data/characters-to-escape-in-blocks.txt", "r") as
                     output = template.substitute(payload)
                     with open(output_path, "w") as _out:
                         _out.write(output)
+
 

@@ -1,0 +1,24 @@
+_~~~~~~txt~~~~~~ok~~~~~~
+
+Single Character by itself: _ 
+
+~~~~~~
+
+{
+  "category": "list-item-spans",
+  "kind": "list-item-spans",
+  "spans": [
+    { 
+      "category": "text", 
+      "content": "_"
+    }
+  ]
+}
+
+~~~~~~
+
+{
+  "remainder": ""
+}
+
+
