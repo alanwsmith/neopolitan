@@ -1,5 +1,7 @@
 alfa~~~~~~
+
 Single word
+
 ~~~~~~
 {
   "category": "text",

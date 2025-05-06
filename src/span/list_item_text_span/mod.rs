@@ -7,15 +7,24 @@ use crate::span::shorthand::shorthand_span;
 use crate::span::text::in_block::text_span_in_block;
 use nom::Parser;
 use nom::bytes::complete::is_not;
+use nom::character::complete::line_ending;
 use nom::character::complete::multispace0;
+use nom::character::complete::not_line_ending;
+use nom::character::complete::space0;
 use nom::character::complete::space1;
 use nom::combinator::not;
+use nom::combinator::peek;
 use nom::multi::many1;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 
 pub fn list_item_text_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
-    let (source, content) =
-        many1(alt((is_not(" \n"), space1.map(|x| " ")))).parse(source)?;
+    let (source, content) = many1(alt((
+        is_not(" \r\n\t~`@^*_()[]{}<>"),
+        space1.map(|_| " "),
+        (line_ending, not(line_ending)).map(|_| " "),
+        (tag("`"), not(tag("`"))).map(|_| "`"),
+    )))
+    .parse(source)?;
     Ok((
         source,
         Span::Text {
@@ -51,8 +60,9 @@ mod test {
                 );
                 let right_content = (&case.path, result.1);
                 assert_eq!(left_content, right_content);
-                let left_remainder = (&case.path, case.remainder.trim_end());
-                let right_remainder = (&case.path, result.0);
+                dbg!(&case.remainder);
+                let left_remainder = (&case.path, case.remainder);
+                let right_remainder = (&case.path, result.0.to_string());
                 assert_eq!(left_remainder, right_remainder);
             } else {
                 assert!(false);

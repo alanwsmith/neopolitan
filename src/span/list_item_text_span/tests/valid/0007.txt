@@ -1,0 +1,15 @@
+alfa``bravo~~~~~~
+
+Double backticks cause a break
+
+~~~~~~
+{
+  "category": "text",
+  "content": "alfa"
+}
+~~~~~~
+{
+  "remainder": "``bravo"
+}
+
+

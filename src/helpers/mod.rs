@@ -49,7 +49,12 @@ pub fn get_test_data(source_path: &PathBuf) -> Result<TestCase> {
             description: parts[1].clone(),
             source: parts[0].clone(),
             json: parts[2].clone(),
-            remainder: remainder_json.get("remainder").unwrap().to_string(),
+            remainder: remainder_json
+                .get("remainder")
+                .unwrap()
+                .as_str()
+                .unwrap()
+                .to_string(),
         })
     } else {
         Err(Error::msg(format!(

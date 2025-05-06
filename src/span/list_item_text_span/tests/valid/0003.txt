@@ -1,5 +1,7 @@
 alfa   bravo    charlie~~~~~~
+
 Collapse spaces
+
 ~~~~~~
 {
   "category": "text",

@@ -1,6 +1,8 @@
 alfa bravo
 charlie delta~~~~~~
+
 Multiple lines
+
 ~~~~~~
 {
   "category": "text",

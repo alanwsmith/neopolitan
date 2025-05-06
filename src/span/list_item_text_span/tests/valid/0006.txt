@@ -1,0 +1,14 @@
+alfa`bravo~~~~~~
+
+Single backticks are okay 
+
+~~~~~~
+{
+  "category": "text",
+  "content": "alfa`bravo"
+}
+~~~~~~
+{
+  "remainder": ""
+}
+

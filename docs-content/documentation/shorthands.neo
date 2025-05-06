@@ -24,7 +24,7 @@ _ = emphasis
 
 ~ = delete 
 
-( and ) = insert
+( and ) = mark 
 
 [ and ] = link
 

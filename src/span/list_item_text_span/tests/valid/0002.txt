@@ -1,5 +1,7 @@
 alfa bravo charlie~~~~~~
+
 Multiple words
+
 ~~~~~~
 {
   "category": "text",
