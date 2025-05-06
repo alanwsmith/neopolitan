@@ -38,36 +38,38 @@ mod test {
     use serde_json::Value;
     use std::path::PathBuf;
 
-    #[test]
-    #[ignore]
-    fn list_item_text_tests() {
-        let config = Config::default();
-        let file_list = get_file_list(
-            &PathBuf::from("src/block/list_item_text/tests"),
-            &vec!["txt".to_string()],
-        )
-        .unwrap();
-        for source_path in file_list {
-            if let Ok(data) = get_test_data(&source_path) {
-                let result = list_item_text(
-                    &data.0,
-                    &config,
-                    &BlockParent::ListItem,
-                    "list-item",
-                )
-                .unwrap();
-                let left_content = (
-                    data.3.clone(),
-                    serde_json::from_str::<Block>(&data.1).unwrap(),
-                );
-                let right_content = (data.3.clone(), result.1);
-                assert_eq!(left_content, right_content);
-                let left_content = (data.3.clone(), data.2.trim_end());
-                let right_content = (data.3.clone(), result.0);
-                assert_eq!(left_content, right_content);
-            } else {
-                assert!(false);
-            }
-        }
-    }
+    // #[test]
+    // #[ignore]
+    // fn list_item_text_tests() {
+    //     let config = Config::default();
+    //     let file_list = get_file_list(
+    //         &PathBuf::from("src/block/list_item_text/tests"),
+    //         &vec!["txt".to_string()],
+    //     )
+    //     .unwrap();
+    //     for source_path in file_list {
+    //         if let Ok(data) = get_test_data(&source_path) {
+    //             let result = list_item_text(
+    //                 &data.0,
+    //                 &config,
+    //                 &BlockParent::ListItem,
+    //                 "list-item",
+    //             )
+    //             .unwrap();
+    //             let left_content = (
+    //                 data.3.clone(),
+    //                 serde_json::from_str::<Block>(&data.1).unwrap(),
+    //             );
+    //             let right_content = (data.3.clone(), result.1);
+    //             assert_eq!(left_content, right_content);
+    //             let left_content = (data.3.clone(), data.2.trim_end());
+    //             let right_content = (data.3.clone(), result.0);
+    //             assert_eq!(left_content, right_content);
+    //         } else {
+    //             assert!(false);
+    //         }
+    //     }
+    // }
+
+    //
 }

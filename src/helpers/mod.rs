@@ -4,6 +4,14 @@ use std::fs;
 use std::path::PathBuf;
 use walkdir::WalkDir;
 
+pub struct TestCase {
+    pub path: String,
+    pub description: String,
+    pub source: String,
+    pub json: String,
+    pub remainder: String,
+}
+
 pub fn get_file_list(
     source_dir: &PathBuf,
     extensions: &Vec<String>,
@@ -27,21 +35,20 @@ pub fn get_file_list(
     Ok(files)
 }
 
-pub fn get_test_data(
-    source_path: &PathBuf,
-) -> Result<(String, String, String, String)> {
+pub fn get_test_data(source_path: &PathBuf) -> Result<TestCase> {
     let content = fs::read_to_string(source_path)?;
     let parts: Vec<_> = content
         .split("~~~~~~\n")
         .filter_map(|part| Some(part.trim_end().to_string()))
         .collect();
-    if parts.len() == 3 {
-        Ok((
-            parts[0].clone(),
-            parts[1].clone(),
-            parts[2].clone(),
-            source_path.display().to_string(),
-        ))
+    if parts.len() == 4 {
+        Ok(TestCase {
+            path: source_path.display().to_string(),
+            description: parts[0].clone(),
+            source: parts[1].clone(),
+            json: parts[2].clone(),
+            remainder: parts[3].clone(),
+        })
     } else {
         Err(Error::msg(format!(
             "malformed test file: {}",

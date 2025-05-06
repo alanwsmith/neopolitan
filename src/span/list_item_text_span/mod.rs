@@ -42,17 +42,17 @@ mod test {
         )
         .unwrap();
         for source_path in file_list {
-            if let Ok(data) = get_test_data(&source_path) {
-                let result = list_item_text_span(&data.0).unwrap();
+            if let Ok(case) = get_test_data(&source_path) {
+                let result = list_item_text_span(&case.source).unwrap();
                 let left_content = (
-                    data.3.clone(),
-                    serde_json::from_str::<Span>(&data.1).unwrap(),
+                    &case.path,
+                    serde_json::from_str::<Span>(&case.json).unwrap(),
                 );
-                let right_content = (data.3.clone(), result.1);
+                let right_content = (&case.path, result.1);
                 assert_eq!(left_content, right_content);
-                let left_content = (data.3.clone(), data.2.trim_end());
-                let right_content = (data.3.clone(), result.0);
-                assert_eq!(left_content, right_content);
+                let left_remainder = (&case.path, case.remainder.trim_end());
+                let right_remainder = (&case.path, result.0);
+                assert_eq!(left_remainder, right_remainder);
             } else {
                 assert!(false);
             }
