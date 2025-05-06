@@ -71,7 +71,7 @@ mod test {
     }
 
     #[test]
-    fn solo_ast_integration_tests() {
+    fn ast_integration_tests() {
         let config = Config::default();
         let glob = "**/*.neo";
         for entry in TESTS_DIR.find(glob).unwrap() {

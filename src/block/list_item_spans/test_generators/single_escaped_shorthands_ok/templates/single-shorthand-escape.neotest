@@ -14,7 +14,15 @@ Escaped shorthand ${TOKEN} is okay
   "spans": [
     {
       "category": "text",
-      "content": "alfa bravo charlie"
+      "content": "alfa "
+    }, 
+    { 
+      "category": "escaped", 
+      "content": "`"
+    },
+    {
+      "category": "text",
+      "content": "bravo charlie"
     }, 
     {
       "category": "space"

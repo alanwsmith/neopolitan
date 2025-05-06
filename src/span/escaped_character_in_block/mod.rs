@@ -2,7 +2,7 @@ use crate::span::Span;
 use nom::Parser;
 use nom::branch::alt;
 use nom::sequence::preceded;
-use nom::{IResult, bytes::tag};
+use nom::{IResult, bytes::complete::tag};
 
 // NOTE: The closing ``)``, ``]``, ``}``, and
 // ``>`` aren't strictly necessary since they
@@ -78,7 +78,7 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn solo_escaped_character_in_block_tests() {
+    fn escaped_character_in_block_tests() {
         let test_file_list = get_file_list(
             &PathBuf::from("src/span/escaped_character_in_block/tests"),
             &vec!["neotest".to_string()],

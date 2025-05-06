@@ -25,6 +25,16 @@ pub enum TestCase {
     Skip,
 }
 
+pub enum TestBlockPayload {
+    Ok {
+        left_content: (String, Block),
+        right_content: (String, Block),
+        left_remainder: (String, String),
+        right_remainder: (String, String),
+    },
+    Skip,
+}
+
 pub enum TestSpanPayload {
     Ok {
         left_content: (String, Span),
@@ -96,6 +106,46 @@ pub fn get_test_data(source_path: &PathBuf) -> TestCase {
                 source,
             }
         }
+    }
+}
+pub fn run_block_test_case_with_source_config_parent_parent_kind(
+    source_path: &PathBuf,
+    config: &Config,
+    parent: &BlockParent,
+    parent_kind: &str,
+    f: &dyn for<'a> Fn(
+        &'a str,
+        &'a Config,
+        &'a BlockParent,
+        &'a str,
+    ) -> IResult<&'a str, Block>,
+) -> TestBlockPayload {
+    match get_test_data(&source_path) {
+        TestCase::Skip => TestBlockPayload::Skip,
+        TestCase::Ok {
+            json,
+            path,
+            remainder,
+            source,
+            ..
+        } => {
+            let result = f(&source, config, parent, parent_kind).unwrap();
+            let left_content = (
+                format!("Content: {}", &path),
+                serde_json::from_str::<Block>(&json).unwrap(),
+            );
+            let right_content = (format!("Content: {}", &path), result.1);
+            let left_remainder = (format!("Remainder: {}", &path), remainder);
+            let right_remainder =
+                (format!("Remainder: {}", &path), result.0.to_string());
+            TestBlockPayload::Ok {
+                left_content,
+                right_content,
+                left_remainder,
+                right_remainder,
+            }
+        }
+        _ => TestBlockPayload::Skip,
     }
 }
 
