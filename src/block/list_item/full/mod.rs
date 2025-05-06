@@ -1,5 +1,6 @@
 #![allow(unused)]
 use crate::block::Block;
+use crate::block::list_item_spans::list_item_spans;
 use crate::block::text_block::text_block;
 use crate::block_metadata::block_metadata;
 use crate::block_metadata::parent::BlockParent;
@@ -15,7 +16,7 @@ use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
 // TODO: Make sure there has to be an empty line below
-// the block, flag, and atter tokens before the content
+// the block, flag, and attr tokens before the content
 // otherwise it should throw a parsing error if it's
 // after the block token or a flag, and it gets
 // slurped into the attribute if it's an attr
@@ -36,9 +37,10 @@ pub fn list_item_block_full<'a>(
     parent_kind: &'a str,
 ) -> IResult<&'a str, Block> {
     let (source, _) = (space0, tag("-"), space1).parse(source)?;
-    let (source, children) =
-        many0(|src| text_block(src, config, &BlockParent::Basic))
-            .parse(source)?;
+    let (source, children) = many0(|src| {
+        list_item_spans(src, config, &BlockParent::Basic, &"list-item")
+    })
+    .parse(source)?;
     Ok((
         source,
         Block::ListItem {
@@ -58,38 +60,38 @@ mod test {
     use serde_json::Value;
     use std::path::PathBuf;
 
-    // #[test]
-    // #[ignore]
-    // fn list_item_block_full_tests() {
-    //     let config = Config::default();
-    //     let file_list = get_file_list(
-    //         &PathBuf::from("src/block/list_item/full/tests"),
-    //         &vec!["txt".to_string()],
-    //     )
-    //     .unwrap();
-    //     for source_path in file_list {
-    //         if let Ok(data) = get_test_data(&source_path) {
-    //             let result = list_item_block_full(
-    //                 &data.0,
-    //                 &config,
-    //                 &BlockParent::List,
-    //                 "list",
-    //             )
-    //             .unwrap();
-    //             let left_content = (
-    //                 data.3.clone(),
-    //                 serde_json::from_str::<Block>(&data.1).unwrap(),
-    //             );
-    //             let right_content = (data.3.clone(), result.1);
-    //             assert_eq!(left_content, right_content);
-    //             let left_content = (data.3.clone(), data.2.trim_end());
-    //             let right_content = (data.3.clone(), result.0);
-    //             assert_eq!(left_content, right_content);
-    //         } else {
-    //             assert!(false);
-    //         }
-    //     }
-    // }
+    #[test]
+    fn solo_list_item_spans_tests() {
+        let source_dir = PathBuf::from("src/block/list_item/full/tests");
+        let config = Config::default();
+        let parent = BlockParent::ListItem;
+        let parent_kind = "list";
+        let test_file_list =
+            get_file_list(&source_dir, &vec!["neotest".to_string()]).unwrap();
+        for source_path in test_file_list {
+            println!("test {}", &source_path.display());
+            match run_block_test_case_with_source_config_parent_parent_kind(
+                &source_path,
+                &config,
+                &parent,
+                &parent_kind,
+                &list_item_block_full,
+            ) {
+                TestBlockPayload::Ok {
+                    left_content,
+                    right_content,
+                    left_remainder,
+                    right_remainder,
+                } => {
+                    assert_eq!(left_content, right_content);
+                    assert_eq!(left_remainder, right_remainder);
+                }
+                _ => {
+                    assert!(false);
+                }
+            }
+        }
+    }
 
     //
 }

@@ -1,12 +1,15 @@
-- alfa
+- alfa~~~~~~text~~~~~~ok~~~~~~
+
+Single word list item at end of file
+
 ~~~~~~
 
 {
   "category": "list-item",
   "children": [
     {
-      "category": "text-block",
-      "kind": "text-block",
+      "category": "list-item-spans",
+      "kind": "list-item-spans",
       "spans": [
         {
           "category": "text",
@@ -20,3 +23,6 @@
 
 ~~~~~~
 
+{
+  "remainder": ""
+}

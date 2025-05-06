@@ -14,9 +14,18 @@ use nom::character::complete::line_ending;
 use nom::character::complete::multispace0;
 use nom::character::complete::space1;
 use nom::combinator::not;
-use nom::multi::many0;
+// use nom::multi::many0;
 use nom::multi::many1;
 use nom::{IResult, branch::alt, bytes::complete::tag};
+
+// NOTE: This is currently using ``many1`` which means
+// there has to be something after the ``-`` in the
+// source file (i.e. you can't have an empty list
+// item). I think that if that becomes necessary
+// the least complicated approach would be to
+// have a ``<<empty>>`` or something that
+// allows the ``many1`` to work. (dealing with
+// ``many0`` adds a lot of complication)
 
 pub fn list_item_spans<'a>(
     source: &'a str,
@@ -24,7 +33,7 @@ pub fn list_item_spans<'a>(
     _parent: &'a BlockParent,
     parent_kind: &'a str,
 ) -> IResult<&'a str, Block> {
-    let (source, spans) = many0(alt((
+    let (source, spans) = many1(alt((
         text_in_block,
         single_line_ending,
         escaped_character_in_block,
