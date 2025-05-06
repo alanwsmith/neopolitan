@@ -10,7 +10,7 @@ single_shorthands = [
         ]
 
 template_dir = "single_shorthands"
-output_dir = "../../../tests/valid"
+output_dir = "../../tests/ok"
 
 file_names = [
     os.path.basename(file).split(".")[0] for file in glob.glob(f"{template_dir}/*")
