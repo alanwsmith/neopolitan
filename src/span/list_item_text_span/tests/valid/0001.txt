@@ -1,0 +1,7 @@
+alfa
+~~~~~~
+{
+  "category": "text",
+  "content": "alfa"
+}
+~~~~~~

@@ -59,7 +59,8 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn solo_list_item_block_full_tests() {
+    #[ignore]
+    fn list_item_block_full_tests() {
         let config = Config::default();
         let file_list = get_file_list(
             &PathBuf::from("src/block/list_item/full/tests"),

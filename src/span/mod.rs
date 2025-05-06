@@ -1,5 +1,6 @@
 pub mod code;
 pub mod escaped;
+pub mod list_item_text_span;
 pub mod shorthand;
 pub mod tag;
 pub mod text;

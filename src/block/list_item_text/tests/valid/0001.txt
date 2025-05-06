@@ -1,0 +1,8 @@
+this is a thing
+~~~~~~
+{
+  "category": "list-item-text",
+  "kind": "list-item-text",
+  "spans": []
+}
+~~~~~~

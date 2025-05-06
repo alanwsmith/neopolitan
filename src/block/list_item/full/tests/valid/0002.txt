@@ -1,0 +1,25 @@
+- alfa bravo charlie
+
+- delta echo
+~~~~~~
+
+{
+  "category": "list-item",
+  "children": [
+    {
+      "category": "text-block",
+      "kind": "text-block",
+      "spans": [
+        {
+          "category": "text",
+          "content": "alfa"
+        }
+      ]
+    }
+  ],
+  "kind": "list-item"
+}
+
+~~~~~~
+- delta echo
+

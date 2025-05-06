@@ -9,6 +9,8 @@ use nom::combinator::not;
 use nom::multi::many1;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 
+// TODO: Move and rename to : basic_text
+
 pub fn text_block<'a>(
     source: &'a str,
     _config: &'a Config,

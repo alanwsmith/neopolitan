@@ -4,6 +4,7 @@ pub mod end;
 pub mod json;
 pub mod list;
 pub mod list_item;
+pub mod list_item_text;
 pub mod raw;
 pub mod text_block;
 
@@ -94,6 +95,11 @@ pub enum Block {
     ListItem {
         children: Vec<Block>,
         kind: String,
+    },
+    #[serde(rename = "list-item-text")]
+    ListItemText {
+        kind: String,
+        spans: Vec<Span>,
     },
     #[serde(rename = "numbered-list")]
     NumberedList,
