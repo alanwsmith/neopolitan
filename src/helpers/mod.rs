@@ -108,6 +108,46 @@ pub fn get_test_data(source_path: &PathBuf) -> TestCase {
         }
     }
 }
+
+pub fn run_block_test_case_with_source_config_parent(
+    source_path: &PathBuf,
+    config: &Config,
+    parent: &BlockParent,
+    f: &dyn for<'a> Fn(
+        &'a str,
+        &'a Config,
+        &'a BlockParent,
+    ) -> IResult<&'a str, Block>,
+) -> TestBlockPayload {
+    match get_test_data(&source_path) {
+        TestCase::Skip => TestBlockPayload::Skip,
+        TestCase::Ok {
+            json,
+            path,
+            remainder,
+            source,
+            ..
+        } => {
+            let result = f(&source, config, parent).unwrap();
+            let left_content = (
+                format!("Content: {}", &path),
+                serde_json::from_str::<Block>(&json).unwrap(),
+            );
+            let right_content = (format!("Content: {}", &path), result.1);
+            let left_remainder = (format!("Remainder: {}", &path), remainder);
+            let right_remainder =
+                (format!("Remainder: {}", &path), result.0.to_string());
+            TestBlockPayload::Ok {
+                left_content,
+                right_content,
+                left_remainder,
+                right_remainder,
+            }
+        }
+        _ => TestBlockPayload::Skip,
+    }
+}
+
 pub fn run_block_test_case_with_source_config_parent_parent_kind(
     source_path: &PathBuf,
     config: &Config,

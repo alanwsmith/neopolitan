@@ -1,0 +1,34 @@
+- alfa bravo charlie
+
+- delta echo~~~~~~txt~~~~~~ok~~~~~~
+
+List item with one line with 
+another item behind it.
+
+~~~~~~
+
+{
+  "category": "list",
+  "children": [
+    {
+      "category": "list-item-spans",
+      "kind": "list-item-spans",
+      "spans": [
+        {
+          "category": "text",
+          "content": "alfa bravo charlie"
+        }
+      ]
+    }
+  ],
+  "kind": "list"
+}
+
+~~~~~~
+
+{
+  "remainder": "\n\n- delta echo"
+}
+
+
+

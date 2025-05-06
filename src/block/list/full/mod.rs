@@ -51,51 +51,44 @@ pub fn list_block_full<'a>(
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::span::Span;
+    use crate::block::Block;
+    use crate::block_metadata::parent::BlockParent;
+    use crate::helpers::*;
     use pretty_assertions::assert_eq;
-    use std::collections::BTreeMap;
+    use serde_json::Value;
+    use std::path::PathBuf;
 
-    // #[test]
-    // fn basic_test() {
-    //     let source = "-- title\n\nbravo foxtrot tango";
-    //     let config = Config::default();
-    //     let parent = BlockParent::Page;
-    //     let left = Block::Basic {
-    //         attrs: BTreeMap::new(),
-    //         children: vec![Block::TextBlock {
-    //             kind: "text-block".to_string(),
-    //             spans: vec![Span::Text {
-    //                 content: "bravo foxtrot tango".to_string(),
-    //             }],
-    //         }],
-    //         end_block: None,
-    //         flags: vec![],
-    //         kind: "title".to_string(),
-    //     };
-    //     let right = basic_block_full(source, &config, &parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
-
-    // #[test]
-    // fn basic_test_chomp_leading_spaces_on_the_same_line() {
-    //     let source = "  -- title\n\nbravo foxtrot tango";
-    //     let config = Config::default();
-    //     let parent = BlockParent::Page;
-    //     let left = Block::Basic {
-    //         attrs: BTreeMap::new(),
-    //         children: vec![Block::TextBlock {
-    //             kind: "text-block".to_string(),
-    //             spans: vec![Span::Text {
-    //                 content: "bravo foxtrot tango".to_string(),
-    //             }],
-    //         }],
-    //         end_block: None,
-    //         flags: vec![],
-    //         kind: "title".to_string(),
-    //     };
-    //     let right = basic_block_full(source, &config, &parent).unwrap().1;
-    //     assert_eq!(left, right);
-    // }
+    #[test]
+    fn solo_list_item_spans_tests() {
+        let source_dir = PathBuf::from("src/block/list/full/tests");
+        let config = Config::default();
+        let parent = BlockParent::ListItem;
+        let parent_kind = "list";
+        let test_file_list =
+            get_file_list(&source_dir, &vec!["neotest".to_string()]).unwrap();
+        for source_path in test_file_list {
+            println!("test {}", &source_path.display());
+            match run_block_test_case_with_source_config_parent(
+                &source_path,
+                &config,
+                &parent,
+                &list_block_full,
+            ) {
+                TestBlockPayload::Ok {
+                    left_content,
+                    right_content,
+                    left_remainder,
+                    right_remainder,
+                } => {
+                    assert_eq!(left_content, right_content);
+                    assert_eq!(left_remainder, right_remainder);
+                }
+                _ => {
+                    assert!(false);
+                }
+            }
+        }
+    }
 
     //
 }
