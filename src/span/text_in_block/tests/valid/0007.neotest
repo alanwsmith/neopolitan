@@ -1,0 +1,20 @@
+alfa bravo          
+charlie delta~~~~~~
+
+Collapse empty spaces before newlines
+
+The first line looks like: 
+
+``alfa bravo          ``
+
+~~~~~~
+{
+  "category": "text",
+  "content": "alfa bravo"
+}
+~~~~~~
+{
+  "remainder": "          \ncharlie delta"
+}
+
+

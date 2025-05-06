@@ -1,0 +1,25 @@
+{
+  "content": " \nalfa"
+}
+
+~~~~~~json~~~~~~ok~~~~~~
+
+Spaces before line_ending
+
+NOTE: there has to be something
+after the line_ending for nom to 
+pick it up. See ``eof`` for 
+handling line_endings before 
+the end of a file. 
+
+
+~~~~~~
+{
+  "category": "space"
+}
+~~~~~~
+{
+  "remainder": "alfa"
+}
+
+

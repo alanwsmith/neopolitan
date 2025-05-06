@@ -20,8 +20,8 @@ use nom::{IResult, branch::alt, bytes::complete::tag};
 
 pub fn text_in_block<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, content) = many1(alt((
-        is_not(" \r\n\t~`@^*_()[]{}<>"),
-        space1.map(|_| " "),
+        is_not(" \r\n\t\\~`@^*_()[]{}<>"),
+        (space1, not(line_ending)).map(|_| " "),
         (tag("`"), not(tag("`"))).map(|_| "`"),
     )))
     .parse(source)?;
@@ -44,11 +44,11 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn solo_list_item_text_span_tests() {
+    fn text_in_block_tests() {
         let config = Config::default();
         let file_list = get_file_list(
             &PathBuf::from("src/span/text_in_block/tests"),
-            &vec!["txt".to_string()],
+            &vec!["neotest".to_string()],
         )
         .unwrap();
         for source_path in file_list {
@@ -60,7 +60,7 @@ mod test {
                 );
                 let right_content = (&case.path, result.1);
                 assert_eq!(left_content, right_content);
-                dbg!(&case.remainder);
+                // dbg!(&case.remainder);
                 let left_remainder = (&case.path, case.remainder);
                 let right_remainder = (&case.path, result.0.to_string());
                 assert_eq!(left_remainder, right_remainder);

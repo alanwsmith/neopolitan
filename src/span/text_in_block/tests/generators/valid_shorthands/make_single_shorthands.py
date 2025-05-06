@@ -20,7 +20,7 @@ file_names = [
 for shorthand in single_shorthands:
     for file_name in file_names:
         with open(f"{template_dir}/{file_name}.tmpl", "r") as _tmpl:
-            output_path = f"{output_dir}/generated-{shorthand["NAME"]}-{file_name}.txt"
+            output_path = f"{output_dir}/generated-{shorthand["NAME"]}-{file_name}.neotest"
             print(output_path)
             template = Template(_tmpl.read())
             output = template.substitute(shorthand)

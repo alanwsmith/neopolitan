@@ -1,6 +1,7 @@
 pub mod code;
 pub mod escaped;
 pub mod shorthand;
+pub mod single_line_ending;
 pub mod tag;
 pub mod text;
 pub mod text_in_block;
@@ -55,6 +56,7 @@ pub enum Span {
     Text {
         content: String,
     },
+    Space,
     // #[serde(rename = "strong-span")]
     // StrongShorthand(StrongShorthandV42),
     // #[serde(rename = "strike-span")]

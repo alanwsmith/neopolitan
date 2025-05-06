@@ -1,0 +1,13 @@
+alfa \| bravo~~~~~~
+
+Stop at escape character
+
+~~~~~~
+{
+  "category": "text",
+  "content": "alfa "
+}
+~~~~~~
+{
+  "remainder": "\\| bravo"
+}

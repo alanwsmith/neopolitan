@@ -1,3 +1,5 @@
+// TODO: Deprecate this stuff and move it up to
+// top level parsers
 #![allow(unused)]
 pub mod attr;
 pub mod flag;

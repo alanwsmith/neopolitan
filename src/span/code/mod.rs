@@ -126,7 +126,7 @@ mod test {
 "#;
 
     #[test]
-    fn solo_code_span_test_runner() {
+    fn code_span_test_runner() {
         let cases: Vec<_> = TEST_DATA.split("######").collect();
         for case in cases {
             let parts: Vec<_> =

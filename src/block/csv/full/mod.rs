@@ -125,7 +125,7 @@ mod test {
     }
 
     #[test]
-    fn solo_csv_change_delimeter() {
+    fn csv_change_delimeter() {
         let source = "-- csv\n-- delimeter: |\n\ng|h|i\nd|e|f\n\n";
         let config = Config::default();
         let parent = BlockParent::Page;
