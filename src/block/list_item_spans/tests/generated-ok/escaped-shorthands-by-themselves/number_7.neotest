@@ -1,0 +1,44 @@
+alfa \7bravo charlie
+delta echo foxtrot
+
+golf hotel india
+~~~~~~txt~~~~~~ok~~~~~~
+
+Escaped shorthand 7 is okay
+
+~~~~~~
+
+{
+  "category": "list-item-spans",
+  "kind": "list-item-spans",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa "
+    }, 
+    { 
+      "category": "escaped", 
+      "content": "7"
+    },
+    {
+      "category": "text",
+      "content": "bravo charlie"
+    }, 
+    {
+      "category": "space"
+    },
+    {
+      "category": "text",
+      "content": "delta echo foxtrot"
+    }
+  ]
+}
+
+~~~~~~
+
+{
+  "remainder": "\n\ngolf hotel india"
+}
+
+
+
