@@ -48,9 +48,17 @@ mod test {
                     assert_eq!(left_content, right_content);
                     assert_eq!(left_remainder, right_remainder);
                 }
-
-                _ => {
+                TestSpanPayload::ExpectedError => {
+                    assert!(true);
+                }
+                TestSpanPayload::ShouldHaveErroredButDidNot => {
+                    dbg!(
+                        "###### This should have failed, but it passed ######"
+                    );
                     assert!(false);
+                }
+                TestSpanPayload::Skip => {
+                    assert!(true);
                 }
             }
         }

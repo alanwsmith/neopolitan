@@ -50,8 +50,8 @@ pub enum TestSpanPayload {
     },
     Skip,
     ExpectedError,
-    // TODO: Possibly add Unexpected error for
-    // easier debugging?
+    ShouldHaveErroredButDidNot, // TODO: Possibly add Unexpected error for
+                                // easier debugging?
 }
 
 pub fn get_file_list(
@@ -210,6 +210,17 @@ pub fn run_span_test_case(
 ) -> TestSpanPayload {
     match get_test_data(&source_path) {
         TestCase::Skip => TestSpanPayload::Skip,
+        TestCase::ExpectingErr {
+            description,
+            path,
+            source,
+        } => {
+            if f(&source).is_err() {
+                TestSpanPayload::ExpectedError
+            } else {
+                TestSpanPayload::ShouldHaveErroredButDidNot
+            }
+        }
         TestCase::Ok {
             json,
             path,

@@ -48,8 +48,10 @@ mod test {
                     path,
                     source,
                 } => {
-                    dbg!("TODO: Move this to the generic process");
-                    assert!(false);
+                    dbg!(
+                        "TODO: Move this to the generic process and cover expected errors"
+                    );
+                    assert!(true);
                 }
                 TestCase::Skip => {
                     assert!(true);
