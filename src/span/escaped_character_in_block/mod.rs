@@ -4,24 +4,62 @@ use nom::branch::alt;
 use nom::sequence::preceded;
 use nom::{IResult, bytes::tag};
 
+// NOTE: The closing ``)``, ``]``, ``}``, and
+// ``>`` aren't strictly necessary since they
+// only need to be escaped inside a shorthand
+// or tag. Provided the escapes regardless
+// so it works regardless.
+//
+// NOTE: Same goes for the "|" pipe character.
+// It doesn't need to be escaped in block content
+// but this makes sure it works if someone does.
+// (It would be friction if it didn't cause
+// you'd have to think about it)
+//
+// NOTE: The ``-`` is so you can start a new
+// list-item-spans block with a ``-`` inside
+// a ``list-item`` block without starting
+// a new ``list-item-spans``.
+
+// The number character and hashtag escapes
+// are so you can start a text block inside
+// a num-list with those characters without
+// starting a new item.
+//
+
 pub fn escaped_character_in_block(source: &str) -> IResult<&str, Span> {
     let (source, character) = alt((
-        preceded(tag("\\"), tag("~")),
-        preceded(tag("\\"), tag("`")),
-        preceded(tag("\\"), tag("@")),
-        preceded(tag("\\"), tag("^")),
-        preceded(tag("\\"), tag("*")),
-        preceded(tag("\\"), tag("_")),
-        preceded(tag("\\"), tag("(")),
-        preceded(tag("\\"), tag(")")),
-        preceded(tag("\\"), tag("[")),
-        preceded(tag("\\"), tag("]")),
-        preceded(tag("\\"), tag("{")),
-        preceded(tag("\\"), tag("}")),
-        preceded(tag("\\"), tag("<")),
-        preceded(tag("\\"), tag(">")),
-        preceded(tag("\\"), tag("\\")),
-        preceded(tag("\\"), tag("|")),
+        alt((
+            preceded(tag("\\"), tag("~")),
+            preceded(tag("\\"), tag("`")),
+            preceded(tag("\\"), tag("@")),
+            preceded(tag("\\"), tag("^")),
+            preceded(tag("\\"), tag("*")),
+            preceded(tag("\\"), tag("_")),
+            preceded(tag("\\"), tag("(")),
+            preceded(tag("\\"), tag(")")),
+            preceded(tag("\\"), tag("[")),
+            preceded(tag("\\"), tag("]")),
+            preceded(tag("\\"), tag("{")),
+            preceded(tag("\\"), tag("}")),
+            preceded(tag("\\"), tag("<")),
+            preceded(tag("\\"), tag(">")),
+            preceded(tag("\\"), tag("|")),
+        )),
+        alt((
+            preceded(tag("\\"), tag("\\")),
+            preceded(tag("\\"), tag("1")),
+            preceded(tag("\\"), tag("2")),
+            preceded(tag("\\"), tag("3")),
+            preceded(tag("\\"), tag("4")),
+            preceded(tag("\\"), tag("5")),
+            preceded(tag("\\"), tag("6")),
+            preceded(tag("\\"), tag("7")),
+            preceded(tag("\\"), tag("8")),
+            preceded(tag("\\"), tag("9")),
+            preceded(tag("\\"), tag("0")),
+            preceded(tag("\\"), tag("#")),
+        )),
     ))
     .parse(source)?;
     Ok((

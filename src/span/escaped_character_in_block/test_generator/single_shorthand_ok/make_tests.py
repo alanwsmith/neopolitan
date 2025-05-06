@@ -21,6 +21,18 @@ single_shorthands = [
         { "NAME": "open_tag", "TOKEN": "<"},
         { "NAME": "close_tag", "TOKEN": ">"},
         { "NAME": "pipe", "TOKEN": "|"},
+        { "NAME": "dash", "TOKEN": "-"},
+        { "NAME": "dash", "TOKEN": "1"},
+        { "NAME": "dash", "TOKEN": "2"},
+        { "NAME": "dash", "TOKEN": "3"},
+        { "NAME": "dash", "TOKEN": "4"},
+        { "NAME": "dash", "TOKEN": "5"},
+        { "NAME": "dash", "TOKEN": "6"},
+        { "NAME": "dash", "TOKEN": "7"},
+        { "NAME": "dash", "TOKEN": "8"},
+        { "NAME": "dash", "TOKEN": "9"},
+        { "NAME": "dash", "TOKEN": "0"},
+        { "NAME": "dash", "TOKEN": "#"},
         ]
 
 template_dir = "templates"
