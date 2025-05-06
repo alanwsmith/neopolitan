@@ -8,7 +8,12 @@ Basic Check
 {
   "category": "list-item-spans",
   "kind": "list-item-spans",
-  "spans": []
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa bravo charlie"
+    }
+  ]
 }
 
 ~~~~~~

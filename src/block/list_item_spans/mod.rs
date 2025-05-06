@@ -25,7 +25,7 @@ pub fn list_item_spans<'a>(
         source,
         Block::ListItemSpans {
             kind: format!("{}-spans", parent_kind),
-            spans: vec![],
+            spans,
         },
     ))
 }
