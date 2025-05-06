@@ -20,6 +20,7 @@ single_shorthands = [
         { "NAME": "close_curly", "TOKEN": "}"},
         { "NAME": "open_tag", "TOKEN": "<"},
         { "NAME": "close_tag", "TOKEN": ">"},
+        { "NAME": "pipe", "TOKEN": "|"},
         ]
 
 template_dir = "templates"
