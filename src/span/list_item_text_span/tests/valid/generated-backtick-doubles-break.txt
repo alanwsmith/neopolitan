@@ -1,6 +1,6 @@
 alfa``bravo~~~~~~
 
-Double backticks cause a break
+Check single shorthand: backtick - Double characters break
 
 ~~~~~~
 {
@@ -11,5 +11,6 @@ Double backticks cause a break
 {
   "remainder": "``bravo"
 }
+
 
 
