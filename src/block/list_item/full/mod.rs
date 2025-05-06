@@ -75,11 +75,14 @@ mod test {
                     "list",
                 )
                 .unwrap();
-                let right_content = (data.3.clone(), result.1);
                 let left_content = (
                     data.3.clone(),
                     serde_json::from_str::<Block>(&data.1).unwrap(),
                 );
+                let right_content = (data.3.clone(), result.1);
+                assert_eq!(left_content, right_content);
+                let left_content = (data.3.clone(), data.2.trim_end());
+                let right_content = (data.3.clone(), result.0);
                 assert_eq!(left_content, right_content);
             } else {
                 assert!(false);

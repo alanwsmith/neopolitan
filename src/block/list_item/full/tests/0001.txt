@@ -1,19 +1,21 @@
 - alfa
-
 ~~~~~~
 
 {
   "category": "list-item",
   "children": [
     {
-      "category": "list-item",
-      "children": [],
-      "kind": "text"
-      
+      "category": "text-block",
+      "kind": "text-block",
+      "spans": [
+        {
+          "category": "text",
+          "content": "alfa"
+        }
+      ]
     }
   ],
   "kind": "list-item"
 }
 
 ~~~~~~
-

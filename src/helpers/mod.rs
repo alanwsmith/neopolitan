@@ -32,7 +32,7 @@ pub fn get_test_data(
 ) -> Result<(String, String, String, String)> {
     let content = fs::read_to_string(source_path)?;
     let parts: Vec<_> = content
-        .split("~~~~~~")
+        .split("~~~~~~\n")
         .filter_map(|part| Some(part.trim_end().to_string()))
         .collect();
     if parts.len() == 3 {
