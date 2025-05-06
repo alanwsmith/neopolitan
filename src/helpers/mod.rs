@@ -1,19 +1,10 @@
-use anyhow::Error;
 use anyhow::Result;
 use serde_json::Value;
 use std::fs;
 use std::path::PathBuf;
 use walkdir::WalkDir;
 
-pub struct TestCase {
-    pub path: String,
-    pub description: String,
-    pub source: String,
-    pub json: String,
-    pub remainder: String,
-}
-
-pub enum TestCaseDev {
+pub enum TestCase {
     Ok {
         description: String,
         json: String,
@@ -51,7 +42,7 @@ pub fn get_file_list(
     Ok(files)
 }
 
-pub fn get_test_data(source_path: &PathBuf) -> TestCaseDev {
+pub fn get_test_data(source_path: &PathBuf) -> TestCase {
     let content = fs::read_to_string(source_path).unwrap();
     let parts: Vec<_> = content
         .split("~~~~~~")
@@ -66,7 +57,7 @@ pub fn get_test_data(source_path: &PathBuf) -> TestCaseDev {
     };
     if parts.len() == 6 {
         let remainder_json: Value = serde_json::from_str(&parts[5]).unwrap();
-        TestCaseDev::Ok {
+        TestCase::Ok {
             path: source_path.display().to_string(),
             description: parts[1].clone(),
             source,
@@ -79,7 +70,7 @@ pub fn get_test_data(source_path: &PathBuf) -> TestCaseDev {
                 .to_string(),
         }
     } else {
-        TestCaseDev::Err {
+        TestCase::Err {
             path: source_path.display().to_string(),
             description: parts[1].clone(),
             source,

@@ -43,7 +43,7 @@ mod test {
         .unwrap();
         for source_path in file_list {
             match get_test_data(&source_path) {
-                TestCaseDev::Ok {
+                TestCase::Ok {
                     description,
                     json,
                     path,
@@ -62,7 +62,7 @@ mod test {
                     let right_remainder = (&path, result.0.to_string());
                     assert_eq!(left_remainder, right_remainder);
                 }
-                TestCaseDev::Err {
+                TestCase::Err {
                     description,
                     path,
                     source,
