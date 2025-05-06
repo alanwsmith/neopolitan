@@ -1,13 +1,13 @@
-\-bravo
+\3bravo
 ~~~~~~txt~~~~~~ok~~~~~~
 
-Escaped -
+Escaped 3
 
 ~~~~~~
 
 {
   "category": "escaped",
-  "content": "-"
+  "content": "3"
 }
 
 ~~~~~~

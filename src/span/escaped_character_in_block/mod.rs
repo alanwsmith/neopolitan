@@ -45,9 +45,10 @@ pub fn escaped_character_in_block(source: &str) -> IResult<&str, Span> {
             preceded(tag("\\"), tag("<")),
             preceded(tag("\\"), tag(">")),
             preceded(tag("\\"), tag("|")),
+            preceded(tag("\\"), tag("\\")),
         )),
         alt((
-            preceded(tag("\\"), tag("\\")),
+            preceded(tag("\\"), tag("-")),
             preceded(tag("\\"), tag("1")),
             preceded(tag("\\"), tag("2")),
             preceded(tag("\\"), tag("3")),
