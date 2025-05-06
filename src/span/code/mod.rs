@@ -60,7 +60,7 @@ mod test {
     use super::*;
     use crate::span::Span;
     use pretty_assertions::assert_eq;
-    use rstest::rstest;
+    // use rstest::rstest;
     use std::collections::BTreeMap;
 
     const TEST_DATA: &str = r#"
