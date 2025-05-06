@@ -39,6 +39,9 @@ pub enum TestBlockPayload {
         right_remainder: (String, String),
     },
     Skip,
+    ExpectedError,
+    ShouldHaveErroredButDidNot,
+    UnexpectedError,
 }
 
 pub enum TestSpanPayload {
@@ -50,8 +53,7 @@ pub enum TestSpanPayload {
     },
     Skip,
     ExpectedError,
-    ShouldHaveErroredButDidNot, // TODO: Possibly add Unexpected error for
-                                // easier debugging?
+    ShouldHaveErroredButDidNot,
 }
 
 pub fn get_file_list(
@@ -176,6 +178,18 @@ pub fn run_block_test_case_with_source_config_parent_parent_kind(
     ) -> IResult<&'a str, Block>,
 ) -> TestBlockPayload {
     match get_test_data(&source_path) {
+        TestCase::ExpectingErr {
+            description,
+            path,
+            source,
+        } => {
+            if f(&source, config, parent, parent_kind).is_err() {
+                TestBlockPayload::ExpectedError
+            } else {
+                TestBlockPayload::ShouldHaveErroredButDidNot
+            }
+        }
+
         TestCase::Skip => TestBlockPayload::Skip,
         TestCase::Ok {
             json,
@@ -200,7 +214,10 @@ pub fn run_block_test_case_with_source_config_parent_parent_kind(
                 right_remainder,
             }
         }
-        _ => TestBlockPayload::Skip,
+        TestCase::Err { .. } => {
+            dbg!("TODO: Get better messaging and handling here if needed");
+            TestBlockPayload::UnexpectedError
+        }
     }
 }
 

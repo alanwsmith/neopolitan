@@ -63,7 +63,7 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn list_item_spans_tests() {
+    fn solo_list_item_spans_tests() {
         let source_dir = PathBuf::from("src/block/list_item_spans/tests");
         let config = Config::default();
         let parent = BlockParent::ListItem;
@@ -79,6 +79,10 @@ mod test {
                 &parent_kind,
                 &list_item_spans,
             ) {
+                TestBlockPayload::ExpectedError => {
+                    println!("got expected error");
+                    assert!(true);
+                }
                 TestBlockPayload::Ok {
                     left_content,
                     right_content,
@@ -88,8 +92,20 @@ mod test {
                     assert_eq!(left_content, right_content);
                     assert_eq!(left_remainder, right_remainder);
                 }
-                _ => {
+                TestBlockPayload::ShouldHaveErroredButDidNot => {
+                    dbg!("########### THIS SHOULD HAVE ERRORED BUT DID NOTE");
                     assert!(false);
+                }
+                TestBlockPayload::UnexpectedError => {
+                    dbg!("########### GOT AN ERROR THAT WAS NOT EXPECTED");
+                    assert!(false);
+                }
+                TestBlockPayload::ExpectedError => {
+                    assert!(true);
+                }
+                TestBlockPayload::Skip => {
+                    dbg!("########### SKIPPING ############");
+                    assert!(true);
                 }
             }
         }
