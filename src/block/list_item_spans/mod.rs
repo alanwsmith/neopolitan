@@ -51,7 +51,7 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn solo_list_item_spans_tests() {
+    fn list_item_spans_tests() {
         let source_dir = PathBuf::from("src/block/list_item_spans/tests");
         let config = Config::default();
         let parent = BlockParent::ListItem;
@@ -82,76 +82,4 @@ mod test {
             }
         }
     }
-
-    // #[test]
-    // #[ignore]
-    // fn solo_text_in_block_tests() {
-    //     let config = Config::default();
-    //     let file_list = get_file_list(
-    //         &PathBuf::from("src/block/list_item_spans/tests"),
-    //         &vec!["neotest".to_string()],
-    //     )
-    //     .unwrap();
-    //     for source_path in file_list {
-    //         match get_test_data(&source_path) {
-    //             TestCase::Skip => {
-    //                 assert!(true);
-    //             }
-    //             TestCase::Ok {
-    //                 description,
-    //                 json,
-    //                 path,
-    //                 remainder,
-    //                 source,
-    //             } => {
-    //                 println!("test {}", &path);
-    //                 let result = list_item_spans(
-    //                     &source,
-    //                     &config,
-    //                     &BlockParent::ListItem,
-    //                     "list-item",
-    //                 )
-    //                 .unwrap();
-    //                 let left_content = (
-    //                     format!("Content: {}", &path),
-    //                     serde_json::from_str::<Block>(&json).unwrap(),
-    //                 );
-    //                 let right_content =
-    //                     (format!("Content: {}", &path), result.1);
-    //                 assert_eq!(left_content, right_content);
-    //                 let left_remainder =
-    //                     (format!("Remainder: {}", &path), remainder);
-    //                 let right_remainder =
-    //                     (format!("Remainder: {}", &path), result.0.to_string());
-    //                 assert_eq!(left_remainder, right_remainder);
-    //             }
-    //             TestCase::Err {
-    //                 description,
-    //                 path,
-    //                 source,
-    //             } => {
-    //                 println!("test {}", &path);
-    //                 let result = list_item_spans(
-    //                     &source,
-    //                     &config,
-    //                     &BlockParent::ListItem,
-    //                     "list-item",
-    //                 );
-    //                 match result {
-    //                     Ok(_) => {
-    //                         println!(
-    //                             "ERROR: Should not have gotten valid response"
-    //                         );
-    //                         assert!(false);
-    //                     }
-    //                     Err(_) => {
-    //                         assert!(true);
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
-    //
 }
