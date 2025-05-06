@@ -15,13 +15,13 @@ use nom::character::complete::space1;
 use nom::combinator::not;
 use nom::combinator::peek;
 use nom::multi::many1;
+use nom::sequence::terminated;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 
-pub fn list_item_text_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
+pub fn text_in_block<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, content) = many1(alt((
         is_not(" \r\n\t~`@^*_()[]{}<>"),
         space1.map(|_| " "),
-        (line_ending, not(line_ending)).map(|_| " "),
         (tag("`"), not(tag("`"))).map(|_| "`"),
     )))
     .parse(source)?;
@@ -47,13 +47,13 @@ mod test {
     fn solo_list_item_text_span_tests() {
         let config = Config::default();
         let file_list = get_file_list(
-            &PathBuf::from("src/span/list_item_text_span/tests"),
+            &PathBuf::from("src/span/text_in_block/tests"),
             &vec!["txt".to_string()],
         )
         .unwrap();
         for source_path in file_list {
             if let Ok(case) = get_test_data(&source_path) {
-                let result = list_item_text_span(&case.source).unwrap();
+                let result = text_in_block(&case.source).unwrap();
                 let left_content = (
                     &case.path,
                     serde_json::from_str::<Span>(&case.json).unwrap(),

@@ -1,9 +1,9 @@
 pub mod code;
 pub mod escaped;
-pub mod list_item_text_span;
 pub mod shorthand;
 pub mod tag;
 pub mod text;
+pub mod text_in_block;
 
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;

@@ -1,0 +1,17 @@
+alfa   `     `    bravo~~~~~~
+
+Check single shorthand: backtick - Spaces between are okay
+
+~~~~~~
+{
+  "category": "text",
+  "content": "alfa ` ` bravo"
+}
+~~~~~~
+{
+  "remainder": ""
+}
+
+
+
+

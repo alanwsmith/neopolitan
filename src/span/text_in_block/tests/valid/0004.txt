@@ -1,15 +1,15 @@
 alfa bravo
 charlie delta~~~~~~
 
-Multiple lines
+Stop at newline
 
 ~~~~~~
 {
   "category": "text",
-  "content": "alfa bravo charlie delta"
+  "content": "alfa bravo"
 }
 ~~~~~~
 {
-  "remainder": ""
+  "remainder": "\ncharlie delta"
 }
 
