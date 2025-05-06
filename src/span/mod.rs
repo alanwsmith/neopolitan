@@ -1,5 +1,6 @@
 pub mod code;
 pub mod escaped;
+pub mod escaped_character_in_block;
 pub mod shorthand;
 pub mod single_line_ending;
 pub mod tag;

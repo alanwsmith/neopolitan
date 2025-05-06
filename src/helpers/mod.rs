@@ -1,4 +1,9 @@
+use crate::block::Block;
+use crate::block_metadata::parent::BlockParent;
+use crate::config::Config;
+use crate::span::Span;
 use anyhow::Result;
+use nom::IResult;
 use serde_json::Value;
 use std::fs;
 use std::path::PathBuf;
@@ -16,6 +21,16 @@ pub enum TestCase {
         description: String,
         path: String,
         source: String,
+    },
+    Skip,
+}
+
+pub enum TestSpanPayload {
+    Ok {
+        left_content: (String, Span),
+        right_content: (String, Span),
+        left_remainder: (String, String),
+        right_remainder: (String, String),
     },
     Skip,
 }
@@ -81,5 +96,118 @@ pub fn get_test_data(source_path: &PathBuf) -> TestCase {
                 source,
             }
         }
+    }
+}
+
+//pub fn get_test_payload_span(
+//    test_dir: &PathBuf,
+//    f: &dyn Fn(&str) -> IResult<&'static str, Span>,
+//) -> TestSpanPayload {
+//    TestSpanPayload::Ok {
+//        left: ("asdf".to_string(), "wer".to_string()),
+//        right: ("asdf".to_string(), "wer".to_string()),
+//    }
+//    // let config = Config::default();
+//    // let file_list = get_file_list(
+//    //     &PathBuf::from("src/block/list_item_spans/tests"),
+//    //     &vec!["neotest".to_string()],
+//    // )
+//    // .unwrap();
+//    // for source_path in file_list {
+//    //     match get_test_data(&source_path) {
+//    //         TestCase::Skip => {
+//    //             assert!(true);
+//    //         }
+//    //         TestCase::Ok {
+//    //             description,
+//    //             json,
+//    //             path,
+//    //             remainder,
+//    //             source,
+//    //         } => {
+//    //             println!("test {}", &path);
+//    //             let result = list_item_spans(
+//    //                 &source,
+//    //                 &config,
+//    //                 &BlockParent::ListItem,
+//    //                 "list-item",
+//    //             )
+//    //             .unwrap();
+//    //             let left_content = (
+//    //                 format!("Content: {}", &path),
+//    //                 serde_json::from_str::<Block>(&json).unwrap(),
+//    //             );
+//    //             let right_content = (format!("Content: {}", &path), result.1);
+//    //             assert_eq!(left_content, right_content);
+//    //             let left_remainder =
+//    //                 (format!("Remainder: {}", &path), remainder);
+//    //             let right_remainder =
+//    //                 (format!("Remainder: {}", &path), result.0.to_string());
+//    //             assert_eq!(left_remainder, right_remainder);
+//    //         }
+//    //         TestCase::Err {
+//    //             description,
+//    //             path,
+//    //             source,
+//    //         } => {
+//    //             println!("test {}", &path);
+//    //             let result = list_item_spans(
+//    //                 &source,
+//    //                 &config,
+//    //                 &BlockParent::ListItem,
+//    //                 "list-item",
+//    //             );
+//    //             match result {
+//    //                 Ok(_) => {
+//    //                     println!(
+//    //                         "ERROR: Should not have gotten valid response"
+//    //                     );
+//    //                     assert!(false);
+//    //                 }
+//    //                 Err(_) => {
+//    //                     assert!(true);
+//    //                 }
+//    //             }
+//    //         }
+//    //     }
+//    // }
+//    //
+//}
+
+pub fn run_span_test_case(
+    source_path: &PathBuf,
+    f: &dyn Fn(&str) -> IResult<&str, Span>,
+) -> TestSpanPayload {
+    // let config = Config::default();
+    match get_test_data(&source_path) {
+        TestCase::Skip => TestSpanPayload::Skip,
+        TestCase::Ok {
+            json,
+            path,
+            remainder,
+            source,
+            ..
+        } => {
+            println!("test {}", &path);
+            let result = f(&source).unwrap();
+            let left_content = (
+                format!("Content: {}", &path),
+                serde_json::from_str::<Span>(&json).unwrap(),
+            );
+            let right_content = (format!("Content: {}", &path), result.1);
+
+            //assert_eq!(left_content, right_content);
+            let left_remainder = (format!("Remainder: {}", &path), remainder);
+            let right_remainder =
+                (format!("Remainder: {}", &path), result.0.to_string());
+            // assert_eq!(left_remainder, right_remainder);
+            TestSpanPayload::Ok {
+                left_content,
+                right_content,
+                left_remainder,
+                right_remainder,
+            }
+        }
+        _ => TestSpanPayload::Skip,
     }
 }

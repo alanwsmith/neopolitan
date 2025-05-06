@@ -1,0 +1,34 @@
+alfa \${TOKEN}bravo charlie
+delta echo foxtrot
+
+golf hotel india
+~~~~~~txt~~~~~~ok~~~~~~
+
+Escaped shorthand ${TOKEN} is okay
+
+~~~~~~
+
+{
+  "category": "list-item-spans",
+  "kind": "list-item-spans",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa bravo charlie"
+    }, 
+    {
+      "category": "space"
+    },
+    {
+      "category": "text",
+      "content": "delta echo foxtrot"
+    }
+  ]
+}
+
+~~~~~~
+
+{
+  "remainder": "\n\ngolf hotel india"
+}
+

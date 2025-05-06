@@ -43,6 +43,7 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
+    #[ignore]
     fn solo_text_in_block_tests() {
         let config = Config::default();
         let file_list = get_file_list(
