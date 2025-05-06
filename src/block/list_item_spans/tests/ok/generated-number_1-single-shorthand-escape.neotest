@@ -1,10 +1,10 @@
-alfa \-bravo charlie
+alfa \1bravo charlie
 delta echo foxtrot
 
 golf hotel india
 ~~~~~~txt~~~~~~ok~~~~~~
 
-Escaped shorthand - is okay
+Escaped shorthand 1 is okay
 
 ~~~~~~
 
@@ -18,7 +18,7 @@ Escaped shorthand - is okay
     }, 
     { 
       "category": "escaped", 
-      "content": "-"
+      "content": "1"
     },
     {
       "category": "text",
