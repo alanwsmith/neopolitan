@@ -58,6 +58,7 @@ mod test {
                     assert!(false);
                 }
                 TestSpanPayload::Skip => {
+                    dbg!("###### Test skipped here ######");
                     assert!(true);
                 }
             }
