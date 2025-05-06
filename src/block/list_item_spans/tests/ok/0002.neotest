@@ -1,6 +1,6 @@
 alfa bravo charlie
 delta echo foxtrot
-~~~~~~txt~~~~~~skip~~~~~~
+~~~~~~txt~~~~~~ok~~~~~~
 
 Basic Check
 
@@ -9,7 +9,19 @@ Basic Check
 {
   "category": "list-item-spans",
   "kind": "list-item-spans",
-  "spans": []
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa bravo charlie"
+    }, 
+    {
+      "category": "space"
+    },
+    {
+      "category": "text",
+      "content": "delta echo foxtrot"
+    }
+  ]
 }
 
 ~~~~~~

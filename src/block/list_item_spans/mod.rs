@@ -4,6 +4,7 @@ use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span::Span;
 use crate::span::shorthand::shorthand_span;
+use crate::span::single_line_ending::single_line_ending;
 use crate::span::text::in_block::text_span_in_block;
 use crate::span::text_in_block::text_in_block;
 use nom::Parser;
@@ -20,7 +21,8 @@ pub fn list_item_spans<'a>(
     _parent: &'a BlockParent,
     parent_kind: &'a str,
 ) -> IResult<&'a str, Block> {
-    let (source, spans) = many0(alt((text_in_block,))).parse(source)?;
+    let (source, spans) =
+        many0(alt((text_in_block, single_line_ending))).parse(source)?;
     Ok((
         source,
         Block::ListItemSpans {
