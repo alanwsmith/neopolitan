@@ -1,5 +1,6 @@
 use anyhow::Error;
 use anyhow::Result;
+use serde_json::Value;
 use std::fs;
 use std::path::PathBuf;
 use walkdir::WalkDir;
@@ -42,12 +43,13 @@ pub fn get_test_data(source_path: &PathBuf) -> Result<TestCase> {
         .filter_map(|part| Some(part.trim_end().to_string()))
         .collect();
     if parts.len() == 4 {
+        let remainder_json: Value = serde_json::from_str(&parts[3]).unwrap();
         Ok(TestCase {
             path: source_path.display().to_string(),
             description: parts[0].clone(),
             source: parts[1].clone(),
             json: parts[2].clone(),
-            remainder: parts[3].clone(),
+            remainder: remainder_json.get("remainder").unwrap().to_string(),
         })
     } else {
         Err(Error::msg(format!(

@@ -1,0 +1,14 @@
+Multiple lines
+~~~~~~
+alfa bravo
+charlie delta
+~~~~~~
+{
+  "category": "text",
+  "content": "alfa bravo charlie delta"
+}
+~~~~~~
+{
+  "remainder": ""
+}
+

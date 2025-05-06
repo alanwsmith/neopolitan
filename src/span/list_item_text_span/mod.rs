@@ -14,7 +14,8 @@ use nom::multi::many1;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 
 pub fn list_item_text_span<'a>(source: &'a str) -> IResult<&'a str, Span> {
-    let (source, content) = many1(alt((is_not("\n"),))).parse(source)?;
+    let (source, content) =
+        many1(alt((is_not(" \n"), space1.map(|x| " ")))).parse(source)?;
     Ok((
         source,
         Span::Text {

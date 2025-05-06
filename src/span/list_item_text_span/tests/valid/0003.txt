@@ -1,6 +1,6 @@
-Multiple words
+Collapse spaces
 ~~~~~~
-alfa bravo charlie
+alfa   bravo    charlie
 ~~~~~~
 {
   "category": "text",
