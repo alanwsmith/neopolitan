@@ -64,7 +64,7 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn solo_list_block_full_tests() {
+    fn list_block_full_tests() {
         let source_dir = PathBuf::from("src/block/list/full/tests");
         let config = Config::default();
         let parent = BlockParent::ListItem;

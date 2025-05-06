@@ -55,6 +55,7 @@ pub enum TestSpanPayload {
     Skip,
     ExpectedError,
     ShouldHaveErroredButDidNot,
+    UnexpectedError,
 }
 
 pub fn get_file_list(

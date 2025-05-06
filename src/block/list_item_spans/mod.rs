@@ -64,7 +64,7 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn solo_list_item_spans_tests() {
+    fn list_item_spans_tests() {
         let source_dir = PathBuf::from("src/block/list_item_spans/tests");
         let config = Config::default();
         let parent = BlockParent::ListItem;

@@ -5,6 +5,7 @@ pub mod escaped_character_in_block;
 pub mod shorthand;
 pub mod single_character_allowed_in_block;
 pub mod single_line_ending;
+pub mod strikethrough_shorthand;
 pub mod tag_shorthand;
 pub mod text;
 pub mod text_in_block;
@@ -61,11 +62,18 @@ pub enum Span {
     //     kind: String,
     //     text: String,
     // },
+    Space,
+    #[serde(rename = "strikethrough-shorthand")]
+    StrikethroughShorthand {
+        attrs: BTreeMap<String, Vec<Span>>,
+        flags: Vec<String>,
+        kind: String,
+        spans: Vec<Span>,
+    },
     #[serde(rename = "text")]
     Text {
         content: String,
     },
-    Space,
     // #[serde(rename = "strong-span")]
     // StrongShorthand(StrongShorthandV42),
     // #[serde(rename = "strike-span")]

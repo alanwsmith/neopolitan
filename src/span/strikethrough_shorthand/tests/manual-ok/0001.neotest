@@ -1,0 +1,30 @@
+{
+  "content": "~~alfa~~"
+}~~~~~~json~~~~~~ok~~~~~~
+
+Empty line directly after line ending
+with no spaces
+
+~~~~~~
+
+{
+  "attrs": {},
+  "category": "strikethrough-shorthand",
+  "flags": [],
+  "kind": "strikethrough-shorthand",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa"
+    }
+  ]
+}
+
+~~~~~~
+
+{
+  "remainder": ""
+}
+
+
+

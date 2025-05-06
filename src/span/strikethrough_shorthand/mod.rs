@@ -1,7 +1,9 @@
-#![allow(unused)]
+use std::collections::BTreeMap;
+
 use crate::span::Span;
 use nom::Parser;
 use nom::branch::alt;
+use nom::bytes::complete::is_not;
 use nom::character::complete::{line_ending, space0};
 use nom::combinator::eof;
 use nom::combinator::not;
@@ -9,17 +11,27 @@ use nom::multi::many0;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
-pub fn empty_line_or_lines_after_line_ending_or_eof(
-    source: &str,
-) -> IResult<&str, Span> {
-    let (source, _) =
-        alt(((space0, line_ending, space0, line_ending).map(|_| ""), eof))
-            .parse(source)?;
-    let (source, _) = many0((space0, line_ending)).parse(source)?;
+pub fn strikethrough_shorthand(source: &str) -> IResult<&str, Span> {
+    let (source, _) = tag("~~").parse(source)?;
+    let (source, spans) = many0(strikethrough_shorthand_text).parse(source)?;
+    let (source, _) = tag("~~").parse(source)?;
     Ok((
         source,
-        Span::EmptyLineOrLines {
-            kind: "empty-line-or-lines".to_string(),
+        Span::StrikethroughShorthand {
+            attrs: BTreeMap::new(),
+            flags: vec![],
+            kind: "strikethrough-shorthand".to_string(),
+            spans,
+        },
+    ))
+}
+
+pub fn strikethrough_shorthand_text(source: &str) -> IResult<&str, Span> {
+    let (source, content) = is_not("~").parse(source)?;
+    Ok((
+        source,
+        Span::Text {
+            content: content.to_string(),
         },
     ))
 }
@@ -32,18 +44,14 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn empty_lines_after_line_ending_tests() {
-        let source_dir = &PathBuf::from(
-            "src/span/empty_line_or_lines_after_line_ending_or_eof/tests",
-        );
+    fn solo_strikethrough_shorthand_tests() {
+        let source_dir =
+            &PathBuf::from("src/span/strikethrough_shorthand/tests");
         let test_file_list =
             get_file_list(&source_dir, &vec!["neotest".to_string()]).unwrap();
         for source_path in test_file_list {
             println!("test {}", &source_path.display());
-            match run_span_test_case(
-                &source_path,
-                &empty_line_or_lines_after_line_ending_or_eof,
-            ) {
+            match run_span_test_case(&source_path, &strikethrough_shorthand) {
                 TestSpanPayload::Ok {
                     left_content,
                     right_content,

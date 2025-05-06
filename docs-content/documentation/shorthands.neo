@@ -11,7 +11,7 @@ content in Neopolitan files<sup>1</sup>.
 
 -- code
 
-~ = delete 
+~ = strikethrough 
 
 ` = code
 
@@ -23,7 +23,7 @@ content in Neopolitan files<sup>1</sup>.
 
 _ = emphasis
 
-( and ) = mark 
+( and ) = html
 
 [ and ] = link
 
