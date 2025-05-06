@@ -1,3 +1,5 @@
+-- list
+
 - alfa bravo charlie
 
 - delta echo~~~~~~txt~~~~~~ok~~~~~~
@@ -8,19 +10,46 @@ another item behind it.
 ~~~~~~
 
 {
+  "attrs": {},
   "category": "list",
   "children": [
     {
-      "category": "list-item-spans",
-      "kind": "list-item-spans",
-      "spans": [
+      "category": "list-item",
+      "children": [
         {
-          "category": "text",
-          "content": "alfa bravo charlie"
+          "category": "list-item-spans",
+          "kind": "list-item-spans",
+          "spans": [
+            {
+              "category": "text",
+              "content": "alfa bravo charlie",
+              "kind": "text"
+            }
+          ]
         }
-      ]
+      ],
+      "kind": "list-item"
+    },
+    {
+      "category": "list-item",
+      "children": [
+        {
+          "category": "list-item-spans",
+          "kind": "list-item-spans",
+          "spans": [
+            {
+              "category": "text",
+              "content": "delta echo",
+              "kind": "text"
+            }
+          ]
+        }
+      ],
+      "kind": "list-item"
     }
   ],
+
+  "flags": [],
   "kind": "list"
 }
 

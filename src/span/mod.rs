@@ -1,4 +1,5 @@
 pub mod code;
+pub mod empty_lines_after_line_ending;
 pub mod escaped;
 pub mod escaped_character_in_block;
 pub mod shorthand;
@@ -23,6 +24,10 @@ pub enum Span {
         attrs: BTreeMap<String, Vec<Span>>,
         flags: Vec<String>,
         spans: Vec<Span>,
+    },
+    #[serde(rename = "empty-line-or-lines")]
+    EmptyLineOrLines {
+        kind: String,
     },
     // #[serde(rename = "emphasis-span")]
     // EmphasisShorthand(EmphasisShorthandV42),

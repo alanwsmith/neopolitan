@@ -1,33 +1,17 @@
 use crate::span::Span;
 use nom::Parser;
 use nom::branch::alt;
+use nom::character::complete::{line_ending, space0};
 use nom::combinator::not;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
-pub fn single_character_allowed_in_block(source: &str) -> IResult<&str, Span> {
-    let (source, character) = alt((
-        terminated(tag("~"), not(tag("~"))),
-        terminated(tag("`"), not(tag("`"))),
-        terminated(tag("@"), not(tag("@"))),
-        terminated(tag("^"), not(tag("^"))),
-        terminated(tag("*"), not(tag("*"))),
-        terminated(tag("_"), not(tag("_"))),
-        terminated(tag("|"), not(tag("|"))),
-        terminated(tag(")"), not(tag(")"))),
-        terminated(tag("("), not(tag("("))),
-        terminated(tag("["), not(tag("["))),
-        terminated(tag("]"), not(tag("]"))),
-        terminated(tag("{"), not(tag("{"))),
-        terminated(tag("}"), not(tag("}"))),
-        terminated(tag("<"), not(tag("<"))),
-        terminated(tag(">"), not(tag(">"))),
-    ))
-    .parse(source)?;
+pub fn empty_line_after_line_ending(source: &str) -> IResult<&str, Span> {
+    let (source, _) = (space0, line_ending, line_ending).parse(source)?;
     Ok((
         source,
-        Span::Text {
-            content: character.to_string(),
+        Span::EmptyLineOrLines {
+            kind: "empty-line-or-lines".to_string(),
         },
     ))
 }
@@ -40,15 +24,15 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn single_character_allowed_in_block_tests() {
+    fn solo_empty_lines_after_line_ending_tests() {
         let source_dir =
-            &PathBuf::from("src/span/single_character_allowed_in_block/tests");
+            &PathBuf::from("src/span/empty_lines_after_line_ending/tests");
         let test_file_list =
             get_file_list(&source_dir, &vec!["neotest".to_string()]).unwrap();
         for source_path in test_file_list {
             match run_span_test_case(
                 &source_path,
-                &single_character_allowed_in_block,
+                &empty_line_after_line_ending,
             ) {
                 TestSpanPayload::Ok {
                     left_content,

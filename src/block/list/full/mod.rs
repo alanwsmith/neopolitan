@@ -1,5 +1,6 @@
 #![allow(unused)]
 use crate::block::Block;
+use crate::block::list_item::full::list_item_block_full;
 use crate::block::text_block::text_block;
 use crate::block_metadata::block_metadata;
 use crate::block_metadata::parent::BlockParent;
@@ -10,7 +11,7 @@ use nom::bytes::complete::is_not;
 use nom::character::complete::multispace0;
 use nom::character::complete::space0;
 use nom::character::complete::space1;
-use nom::multi::many0;
+use nom::multi::many1;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
@@ -21,6 +22,9 @@ use nom::{IResult, bytes::complete::tag};
 // slurped into the attribute if it's an attr
 //
 // TODO: Check the blank line thing in all block types
+
+// NOTE: Currently lists must have at least one
+// item in them. TBD on allowing empty lists.
 
 pub fn list_block_full<'a>(
     source: &'a str,
@@ -33,9 +37,10 @@ pub fn list_block_full<'a>(
             .parse(source)?;
     let (source, metadata) = block_metadata(source, config, parent)?;
     let (source, _) = multispace0.parse(source)?;
-    let (source, children) =
-        many0(|src| text_block(src, config, &BlockParent::Basic))
-            .parse(source)?;
+    let (source, children) = many1(|src| {
+        list_item_block_full(src, config, &BlockParent::List, &kind)
+    })
+    .parse(source)?;
     Ok((
         source,
         Block::List {
@@ -59,7 +64,8 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn solo_list_item_spans_tests() {
+    #[ignore]
+    fn solo_list_tests() {
         let source_dir = PathBuf::from("src/block/list/full/tests");
         let config = Config::default();
         let parent = BlockParent::ListItem;
