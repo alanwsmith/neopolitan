@@ -11,6 +11,7 @@ pub mod text_block;
 use crate::block::basic::basic_block;
 use crate::block::csv::csv_block;
 use crate::block::json::json_block;
+use crate::block::list::list_block;
 use crate::block::raw::raw_block;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
@@ -126,6 +127,7 @@ pub fn block<'a>(
 ) -> IResult<&'a str, Block> {
     let (source, section) = alt((
         |src| raw_block(src, config, parent),
+        |src| list_block(src, config, parent),
         |src| json_block(src, config, parent),
         |src| csv_block(src, config, parent),
         // Make sure to keep basic in the last slot

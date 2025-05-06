@@ -1,0 +1,11 @@
+<ul>
+[!- for block in block.children -!]
+  [!- include [
+    "blocks/" ~ block.kind ~ "/default.neoj", 
+    "blocks/" ~ block.category~ "/default.neoj"
+  ] -!]
+
+[!- endfor -!]
+</ul>
+
+<pre>[@ block|tojson(true) @]</pre>

@@ -44,21 +44,51 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 
   <main class="wrapper-medium flow"><hgroup class="title-group">
       <h1  class="title"
-      >Neopolitan 2.0.0 HTML Span Output</h1></hgroup><h2
-      
->Introduction</h2><p>These are the HTML Output that should be produced by an output engine.</p><h2
-      
->The Tests</h2><pre
+      >Full List Test</h1></hgroup><ul><li>alfa</li><li>bravo</li></ul>
 
->-- neopolitan
-
-``code|alfa bravo``
-
--- html
-
-<code>alfa bravo</code></pre></main>
+<pre>{
+  "attrs": {},
+  "category": "list",
+  "children": [
+    {
+      "category": "list-item",
+      "children": [
+        {
+          "category": "list-item-spans",
+          "kind": "list-item-spans",
+          "spans": [
+            {
+              "category": "text",
+              "content": "alfa"
+            }
+          ]
+        }
+      ],
+      "kind": "list-item"
+    },
+    {
+      "category": "list-item",
+      "children": [
+        {
+          "category": "list-item-spans",
+          "kind": "list-item-spans",
+          "spans": [
+            {
+              "category": "text",
+              "content": "bravo"
+            }
+          ]
+        }
+      ],
+      "kind": "list-item"
+    }
+  ],
+  "end_block": null,
+  "flags": [],
+  "kind": "list"
+}</pre></main>
   <footer><div>
-        Created: 2025-05-03T08:58:20-04:00</div>from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
+        Created: 2025-05-06T16:50:09-04:00</div>from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
     <a href="https://links.alanwsmith.com/">other projects</a> ~
     <a href="https://socials.alanwsmith.com/">socials</a>
@@ -86,7 +116,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "Neopolitan 2.0.0 HTML Span Output"
+                "content": "Full List Test"
               }
             ]
           }
@@ -97,78 +127,57 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
       },
       {
         "attrs": {},
-        "category": "basic",
+        "category": "list",
         "children": [
           {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
+            "category": "list-item",
+            "children": [
               {
-                "category": "text",
-                "content": "Introduction"
+                "category": "list-item-spans",
+                "kind": "list-item-spans",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "alfa"
+                  }
+                ]
               }
-            ]
+            ],
+            "kind": "list-item"
           },
           {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
+            "category": "list-item",
+            "children": [
               {
-                "category": "text",
-                "content": "These are the HTML Output that should be produced by an output engine."
+                "category": "list-item-spans",
+                "kind": "list-item-spans",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "bravo"
+                  }
+                ]
               }
-            ]
+            ],
+            "kind": "list-item"
           }
         ],
         "end_block": null,
         "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "The Tests"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "body": "-- neopolitan\n\n``code|alfa bravo``\n\n-- html\n\n\u003ccode\u003ealfa bravo\u003c/code\u003e",
-        "category": "raw",
-        "end_block": {
-          "attrs": {},
-          "category": "end",
-          "children": [],
-          "flags": [],
-          "kind": "pre-end"
-        },
-        "flags": [],
-        "kind": "pre"
+        "kind": "list"
       },
       {
         "attrs": {
           "created": [
             {
               "category": "text",
-              "content": "2025-05-03T08:58:20-04:00"
+              "content": "2025-05-06T16:50:09-04:00"
             }
           ],
           "updated": [
             {
               "category": "text",
-              "content": "2025-05-03T08:58:20-04:00"
+              "content": "2025-05-06T16:50:09-04:00"
             }
           ]
         },

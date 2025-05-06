@@ -33,6 +33,7 @@ impl Site {
     pub fn load_pages_and_files(&mut self) -> Result<()> {
         let input_files = get_files_in_dir(&self.input_root)?;
         input_files.iter().for_each(|source_path| {
+            println!("Loading: {}", source_path.display().to_string());
             let mut output_path = replace_path_root(
                 source_path,
                 &self.input_root,
@@ -61,7 +62,6 @@ impl Site {
                     data: page_ast,
                 };
                 self.pages.insert(stripped_output_path, page);
-
                 // match Ast::new_from_source(&source, &self.config, false) {
                 //     Ast::Ok { blocks } => {
                 //         self.pages.insert(
@@ -111,6 +111,7 @@ impl Site {
         env.set_loader(path_loader("docs-content/reference-templates"));
         for page_struct in &self.pages {
             let output_path = &self.output_root.join(page_struct.0);
+            println!("Outputting: {}", output_path.display().to_string());
             let template =
                 env.get_template("helpers/template-picker.neoj").unwrap();
             let page = Value::from_serialize(page_struct);

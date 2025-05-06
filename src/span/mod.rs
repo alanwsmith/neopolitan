@@ -27,6 +27,8 @@ pub enum Span {
     },
     #[serde(rename = "empty-line-or-lines")]
     EmptyLineOrLines {
+        // TODO: Remove kind from here since
+        // spaces don't have them.
         kind: String,
     },
     // #[serde(rename = "emphasis-span")]

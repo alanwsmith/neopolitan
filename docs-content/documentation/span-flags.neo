@@ -8,21 +8,21 @@ Tags and Shorthand spans accept flags.
 
 The parsing logic is:
 
--- list
+-- p
 
-- Flags end at spaces, tabs, newlines
+Flags end at spaces, tabs, newlines
 or pipes [TKTKTK: Insert pipe character]
 
-- Flags can have individual characters
+Flags can have individual characters
 that match the closing tag or shorthand
 token, but they can't have two in a row
 as that would be the closing indication. 
 
-- Emoji (e.g. 🕺) can be used. (Recognizing
+Emoji (e.g. 🕺) can be used. (Recognizing
 that different systems display different
 images for the same emoji)
 
-- Escaping characters in flags is not 
+Escaping characters in flags is not 
 supported. 1
 
 

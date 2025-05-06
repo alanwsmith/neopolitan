@@ -97,7 +97,8 @@ on the file system.
 for things on the page. Like
 numbers for headings and figures. 
 
-
+[] Add better error message if
+a template doesn't exist. 
 
 
 
