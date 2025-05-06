@@ -57,14 +57,14 @@ pub fn get_test_data_dev(source_path: &PathBuf) -> TestCaseDev {
         .split("~~~~~~")
         .filter_map(|part| Some(part.trim_end().to_string()))
         .collect();
+    let source = match parts[1].as_str() {
+        "json" => {
+            let json: Value = serde_json::from_str(&parts[0]).unwrap();
+            json.get("content").unwrap().as_str().unwrap().to_string()
+        }
+        _ => parts[0].clone(),
+    };
     if parts.len() == 6 {
-        let source = match parts[1].as_str() {
-            "json" => {
-                let json: Value = serde_json::from_str(&parts[0]).unwrap();
-                json.get("content").unwrap().as_str().unwrap().to_string()
-            }
-            _ => parts[0].clone(),
-        };
         let remainder_json: Value = serde_json::from_str(&parts[5]).unwrap();
         TestCaseDev::Ok {
             path: source_path.display().to_string(),
@@ -82,7 +82,7 @@ pub fn get_test_data_dev(source_path: &PathBuf) -> TestCaseDev {
         TestCaseDev::Err {
             path: source_path.display().to_string(),
             description: parts[1].clone(),
-            source: parts[0].clone(),
+            source,
         }
     }
 }

@@ -50,7 +50,7 @@ mod test {
                     remainder,
                     source,
                 } => {
-                    dbg!(&path);
+                    println!("test {}", &path);
                     let result = single_line_ending(&source).unwrap();
                     let left_content = (
                         path.clone(),
@@ -66,7 +66,21 @@ mod test {
                     description,
                     path,
                     source,
-                } => assert!(true),
+                } => {
+                    println!("test {}", &path);
+                    let result = single_line_ending(&source);
+                    match result {
+                        Ok(_) => {
+                            println!(
+                                "ERROR: Should not have gotten valid response"
+                            );
+                            assert!(false);
+                        }
+                        Err(_) => {
+                            assert!(true);
+                        }
+                    }
+                }
             }
         }
     }
