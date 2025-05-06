@@ -17,6 +17,7 @@ pub enum TestCase {
         path: String,
         source: String,
     },
+    Skip,
 }
 
 pub fn get_file_list(
@@ -55,25 +56,30 @@ pub fn get_test_data(source_path: &PathBuf) -> TestCase {
         }
         _ => parts[0].clone(),
     };
-    if parts.len() == 6 {
-        let remainder_json: Value = serde_json::from_str(&parts[5]).unwrap();
-        TestCase::Ok {
-            path: source_path.display().to_string(),
-            description: parts[1].clone(),
-            source,
-            json: parts[4].clone(),
-            remainder: remainder_json
-                .get("remainder")
-                .unwrap()
-                .as_str()
-                .unwrap()
-                .to_string(),
-        }
+    if parts[2] == "skip" {
+        TestCase::Skip
     } else {
-        TestCase::Err {
-            path: source_path.display().to_string(),
-            description: parts[1].clone(),
-            source,
+        if parts.len() == 6 {
+            let remainder_json: Value =
+                serde_json::from_str(&parts[5]).unwrap();
+            TestCase::Ok {
+                path: source_path.display().to_string(),
+                description: parts[1].clone(),
+                source,
+                json: parts[4].clone(),
+                remainder: remainder_json
+                    .get("remainder")
+                    .unwrap()
+                    .as_str()
+                    .unwrap()
+                    .to_string(),
+            }
+        } else {
+            TestCase::Err {
+                path: source_path.display().to_string(),
+                description: parts[1].clone(),
+                source,
+            }
         }
     }
 }

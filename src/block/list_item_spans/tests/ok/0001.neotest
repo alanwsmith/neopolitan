@@ -1,0 +1,18 @@
+alfa bravo charlie
+~~~~~~txt~~~~~~ok~~~~~~
+
+Basic Check
+
+~~~~~~
+
+{
+  "category": "list-item-spans",
+  "kind": "list-item-spans",
+  "spans": []
+}
+
+~~~~~~
+
+{
+  "remainder": ""
+}

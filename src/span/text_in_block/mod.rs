@@ -53,6 +53,9 @@ mod test {
         .unwrap();
         for source_path in file_list {
             match get_test_data(&source_path) {
+                TestCase::Skip => {
+                    assert!(true);
+                }
                 TestCase::Ok {
                     description,
                     json,

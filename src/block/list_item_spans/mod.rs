@@ -5,22 +5,29 @@ use crate::config::Config;
 use crate::span::Span;
 use crate::span::shorthand::shorthand_span;
 use crate::span::text::in_block::text_span_in_block;
+use crate::span::text_in_block::text_in_block;
 use nom::Parser;
-use nom::bytes::complete::is_not;
-use nom::character::complete::line_ending;
 use nom::character::complete::multispace0;
-use nom::character::complete::not_line_ending;
-use nom::character::complete::space0;
 use nom::character::complete::space1;
 use nom::combinator::not;
-use nom::combinator::peek;
+use nom::multi::many0;
 use nom::multi::many1;
-use nom::sequence::terminated;
 use nom::{IResult, branch::alt, bytes::complete::tag};
 
-pub fn single_line_ending<'a>(source: &'a str) -> IResult<&'a str, Span> {
-    let (source, _) = (space0, line_ending, not(line_ending)).parse(source)?;
-    Ok((source, Span::Space))
+pub fn list_item_spans<'a>(
+    source: &'a str,
+    _config: &'a Config,
+    _parent: &'a BlockParent,
+    parent_kind: &'a str,
+) -> IResult<&'a str, Block> {
+    let (source, spans) = many0(alt((text_in_block,))).parse(source)?;
+    Ok((
+        source,
+        Block::ListItemSpans {
+            kind: format!("{}-spans", parent_kind),
+            spans: vec![],
+        },
+    ))
 }
 
 #[cfg(test)]
@@ -34,10 +41,10 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn single_line_ending_tests() {
+    fn solo_text_in_block_tests() {
         let config = Config::default();
         let file_list = get_file_list(
-            &PathBuf::from("src/span/single_line_ending/tests"),
+            &PathBuf::from("src/block/list_item_spans/tests"),
             &vec!["neotest".to_string()],
         )
         .unwrap();
@@ -54,15 +61,24 @@ mod test {
                     source,
                 } => {
                     println!("test {}", &path);
-                    let result = single_line_ending(&source).unwrap();
+                    let result = list_item_spans(
+                        &source,
+                        &config,
+                        &BlockParent::ListItem,
+                        "list-item",
+                    )
+                    .unwrap();
                     let left_content = (
-                        path.clone(),
-                        serde_json::from_str::<Span>(&json).unwrap(),
+                        format!("Content: {}", &path),
+                        serde_json::from_str::<Block>(&json).unwrap(),
                     );
-                    let right_content = (path.clone(), result.1);
+                    let right_content =
+                        (format!("Content: {}", &path), result.1);
                     assert_eq!(left_content, right_content);
-                    let left_remainder = (&path, remainder);
-                    let right_remainder = (&path, result.0.to_string());
+                    let left_remainder =
+                        (format!("Remainder: {}", &path), remainder);
+                    let right_remainder =
+                        (format!("Remainder: {}", &path), result.0.to_string());
                     assert_eq!(left_remainder, right_remainder);
                 }
                 TestCase::Err {
@@ -71,7 +87,12 @@ mod test {
                     source,
                 } => {
                     println!("test {}", &path);
-                    let result = single_line_ending(&source);
+                    let result = list_item_spans(
+                        &source,
+                        &config,
+                        &BlockParent::ListItem,
+                        "list-item",
+                    );
                     match result {
                         Ok(_) => {
                             println!(

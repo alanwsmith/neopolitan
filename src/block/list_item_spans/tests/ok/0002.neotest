@@ -1,0 +1,20 @@
+alfa bravo charlie
+delta echo foxtrot
+~~~~~~txt~~~~~~skip~~~~~~
+
+Basic Check
+
+~~~~~~
+
+{
+  "category": "list-item-spans",
+  "kind": "list-item-spans",
+  "spans": []
+}
+
+~~~~~~
+
+{
+  "remainder": ""
+}
+

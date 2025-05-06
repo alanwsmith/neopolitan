@@ -4,7 +4,7 @@ pub mod end;
 pub mod json;
 pub mod list;
 pub mod list_item;
-pub mod list_item_text;
+pub mod list_item_spans;
 pub mod raw;
 pub mod text_block;
 
@@ -96,8 +96,8 @@ pub enum Block {
         children: Vec<Block>,
         kind: String,
     },
-    #[serde(rename = "list-item-text")]
-    ListItemText {
+    #[serde(rename = "list-item-spans")]
+    ListItemSpans {
         kind: String,
         spans: Vec<Span>,
     },
