@@ -44,7 +44,7 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn solo_text_in_block_tests_dev() {
+    fn text_in_block_tests() {
         let config = Config::default();
         let file_list = get_file_list(
             &PathBuf::from("src/span/text_in_block/tests"),
@@ -52,7 +52,7 @@ mod test {
         )
         .unwrap();
         for source_path in file_list {
-            match get_test_data_dev(&source_path) {
+            match get_test_data(&source_path) {
                 TestCaseDev::Ok {
                     description,
                     json,
@@ -91,34 +91,6 @@ mod test {
                         }
                     }
                 }
-            }
-        }
-    }
-
-    #[test]
-    #[ignore]
-    fn text_in_block_tests() {
-        let config = Config::default();
-        let file_list = get_file_list(
-            &PathBuf::from("src/span/text_in_block/tests"),
-            &vec!["neotest".to_string()],
-        )
-        .unwrap();
-        for source_path in file_list {
-            if let Ok(case) = get_test_data(&source_path) {
-                let result = text_in_block(&case.source).unwrap();
-                let left_content = (
-                    &case.path,
-                    serde_json::from_str::<Span>(&case.json).unwrap(),
-                );
-                let right_content = (&case.path, result.1);
-                assert_eq!(left_content, right_content);
-                // dbg!(&case.remainder);
-                let left_remainder = (&case.path, case.remainder);
-                let right_remainder = (&case.path, result.0.to_string());
-                assert_eq!(left_remainder, right_remainder);
-            } else {
-                assert!(false);
             }
         }
     }

@@ -51,7 +51,7 @@ pub fn get_file_list(
     Ok(files)
 }
 
-pub fn get_test_data_dev(source_path: &PathBuf) -> TestCaseDev {
+pub fn get_test_data(source_path: &PathBuf) -> TestCaseDev {
     let content = fs::read_to_string(source_path).unwrap();
     let parts: Vec<_> = content
         .split("~~~~~~")
@@ -84,33 +84,5 @@ pub fn get_test_data_dev(source_path: &PathBuf) -> TestCaseDev {
             description: parts[1].clone(),
             source,
         }
-    }
-}
-
-pub fn get_test_data(source_path: &PathBuf) -> Result<TestCase> {
-    let content = fs::read_to_string(source_path)?;
-    let parts: Vec<_> = content
-        .split("~~~~~~")
-        .filter_map(|part| Some(part.trim_end().to_string()))
-        .collect();
-    if parts.len() == 4 {
-        let remainder_json: Value = serde_json::from_str(&parts[3]).unwrap();
-        Ok(TestCase {
-            path: source_path.display().to_string(),
-            description: parts[1].clone(),
-            source: parts[0].clone(),
-            json: parts[2].clone(),
-            remainder: remainder_json
-                .get("remainder")
-                .unwrap()
-                .as_str()
-                .unwrap()
-                .to_string(),
-        })
-    } else {
-        Err(Error::msg(format!(
-            "malformed test file: {}",
-            source_path.display()
-        )))
     }
 }

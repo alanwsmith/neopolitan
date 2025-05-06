@@ -42,7 +42,7 @@ mod test {
         )
         .unwrap();
         for source_path in file_list {
-            match get_test_data_dev(&source_path) {
+            match get_test_data(&source_path) {
                 TestCaseDev::Ok {
                     description,
                     json,
