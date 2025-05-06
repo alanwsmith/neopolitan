@@ -1,0 +1,20 @@
+\${TOKEN}bravo
+~~~~~~txt~~~~~~ok~~~~~~
+
+Escaped ${TOKEN}
+
+~~~~~~
+
+{
+  "category": "escaped",
+  "content": "${TOKEN}"
+}
+
+~~~~~~
+
+{
+  "remainder": "bravo"
+}
+
+
+

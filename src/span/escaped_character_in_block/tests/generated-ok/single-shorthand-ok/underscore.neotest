@@ -1,0 +1,20 @@
+\_bravo
+~~~~~~txt~~~~~~ok~~~~~~
+
+Escaped _
+
+~~~~~~
+
+{
+  "category": "escaped",
+  "content": "_"
+}
+
+~~~~~~
+
+{
+  "remainder": "bravo"
+}
+
+
+

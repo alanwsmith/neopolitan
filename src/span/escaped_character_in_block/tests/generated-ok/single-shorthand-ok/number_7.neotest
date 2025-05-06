@@ -1,0 +1,20 @@
+\7bravo
+~~~~~~txt~~~~~~ok~~~~~~
+
+Escaped 7
+
+~~~~~~
+
+{
+  "category": "escaped",
+  "content": "7"
+}
+
+~~~~~~
+
+{
+  "remainder": "bravo"
+}
+
+
+
