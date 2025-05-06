@@ -34,6 +34,7 @@ pub fn list_item_spans<'a>(
     _parent: &'a BlockParent,
     parent_kind: &'a str,
 ) -> IResult<&'a str, Block> {
+    let (source, _) = not(tag("-")).parse(source)?;
     let (source, spans) = many1(alt((
         text_in_block,
         single_line_ending,
@@ -93,7 +94,7 @@ mod test {
                     assert_eq!(left_remainder, right_remainder);
                 }
                 TestBlockPayload::ShouldHaveErroredButDidNot => {
-                    dbg!("########### THIS SHOULD HAVE ERRORED BUT DID NOTE");
+                    dbg!("########### THIS SHOULD HAVE ERRORED BUT DID NOT");
                     assert!(false);
                 }
                 TestBlockPayload::UnexpectedError => {

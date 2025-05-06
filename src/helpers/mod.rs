@@ -1,3 +1,4 @@
+#![allow(unused)]
 use crate::block::Block;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
