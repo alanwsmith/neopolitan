@@ -20,7 +20,7 @@ with open(data_file, "r") as _char_file:
                     "NAME": parts[1],
                     "TOKEN": parts[0]
                     }
-            with open(f"template.neotest", "r") as _tmpl:
+            with open(f"template.neotesttmpl", "r") as _tmpl:
                 output_dir = f"{output_root}/{test_name}"
                 Path(output_dir).mkdir(exist_ok=True)
                 output_path = f"{output_dir}/{payload["NAME"]}.neotest"

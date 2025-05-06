@@ -1,6 +1,9 @@
-${TOKEN}~~~~~~txt~~~~~~ok~~~~~~
+{
+  "content": "7"
+}
+~~~~~~json~~~~~~ok~~~~~~
 
-Single Character by itself: ${TOKEN} 
+Single Character by itself: 7 
 
 ~~~~~~
 
@@ -10,7 +13,7 @@ Single Character by itself: ${TOKEN}
   "spans": [
     { 
       "category": "text", 
-      "content": "${TOKEN}"
+      "content": "7"
     }
   ]
 }

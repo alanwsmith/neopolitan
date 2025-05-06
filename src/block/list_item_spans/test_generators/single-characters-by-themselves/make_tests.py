@@ -2,18 +2,16 @@
 
 import glob
 import os
+import sys
 
 from string import Template
+from pathlib import Path 
 
-template_dir = "templates"
-output_dir = "../../tests/ok"
+data_file = "../../../../helpers/data/characters-to-escape-in-blocks.txt"
+output_root = "../../tests/generated-ok"
+test_name = os.path.basename(sys.path[0])
 
-file_names = [
-    os.path.basename(file).split(".")[0] for file in glob.glob(f"{template_dir}/*")
-    if os.path.isfile(file)
-]
-
-with open("../../../../helpers/data/single-characters-to-allow-in-blocks.txt", "r") as _char_file:
+with open(data_file, "r") as _char_file:
     lines = _char_file.read().splitlines()
     for line in lines:
         parts = line.split(" ")
@@ -22,13 +20,14 @@ with open("../../../../helpers/data/single-characters-to-allow-in-blocks.txt", "
                     "NAME": parts[1],
                     "TOKEN": parts[0]
                     }
-            for file_name in file_names:
-                with open(f"{template_dir}/{file_name}.neotest", "r") as _tmpl:
-                    output_path = f"{output_dir}/{file_name}-{payload["NAME"]}-generated.neotest"
-                    print(output_path)
-                    template = Template(_tmpl.read())
-                    output = template.substitute(payload)
-                    with open(output_path, "w") as _out:
-                        _out.write(output)
+            with open(f"template.neotesttmpl", "r") as _tmpl:
+                output_dir = f"{output_root}/{test_name}"
+                Path(output_dir).mkdir(exist_ok=True)
+                output_path = f"{output_dir}/{payload["NAME"]}.neotest"
+                print(output_path)
+                template = Template(_tmpl.read())
+                output = template.substitute(payload)
+                with open(output_path, "w") as _out:
+                    _out.write(output)
 
 

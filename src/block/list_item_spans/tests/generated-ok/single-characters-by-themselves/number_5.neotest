@@ -1,0 +1,27 @@
+{
+  "content": "5"
+}
+~~~~~~json~~~~~~ok~~~~~~
+
+Single Character by itself: 5 
+
+~~~~~~
+
+{
+  "category": "list-item-spans",
+  "kind": "list-item-spans",
+  "spans": [
+    { 
+      "category": "text", 
+      "content": "5"
+    }
+  ]
+}
+
+~~~~~~
+
+{
+  "remainder": ""
+}
+
+
