@@ -1,7 +1,7 @@
 alfa`
 `bravo~~~~~~
 
-Newlines between backticks are okay
+Check single shorthand: backtick - Single newline between is okay
 
 ~~~~~~
 {
@@ -12,6 +12,7 @@ Newlines between backticks are okay
 {
   "remainder": ""
 }
+
 
 
 

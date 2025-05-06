@@ -1,6 +1,6 @@
 alfa` `bravo~~~~~~
 
-Spaced between backticks are okay
+Check single shorthand: backtick - Spaces between are okay
 
 ~~~~~~
 {
@@ -11,5 +11,6 @@ Spaced between backticks are okay
 {
   "remainder": ""
 }
+
 
 
