@@ -17,7 +17,13 @@ pub enum TestCase {
         remainder: String,
         source: String,
     },
+    // TODO: I think Err is the same as ExpectingErr
     Err {
+        description: String,
+        path: String,
+        source: String,
+    },
+    ExpectingErr {
         description: String,
         path: String,
         source: String,
@@ -43,6 +49,9 @@ pub enum TestSpanPayload {
         right_remainder: (String, String),
     },
     Skip,
+    ExpectedError,
+    // TODO: Possibly add Unexpected error for
+    // easier debugging?
 }
 
 pub fn get_file_list(
@@ -83,6 +92,12 @@ pub fn get_test_data(source_path: &PathBuf) -> TestCase {
     };
     if parts[2] == "skip" {
         TestCase::Skip
+    } else if parts[2] == "error" {
+        TestCase::ExpectingErr {
+            description: parts[3].clone(),
+            path: source_path.display().to_string(),
+            source,
+        }
     } else {
         if parts.len() == 6 {
             let remainder_json: Value =
@@ -202,7 +217,6 @@ pub fn run_span_test_case(
             source,
             ..
         } => {
-            println!("test {}", &path);
             let result = f(&source).unwrap();
             let left_content = (
                 format!("Content: {}", &path),

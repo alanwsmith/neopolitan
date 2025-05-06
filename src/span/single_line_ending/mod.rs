@@ -43,6 +43,14 @@ mod test {
         .unwrap();
         for source_path in file_list {
             match get_test_data(&source_path) {
+                TestCase::ExpectingErr {
+                    description,
+                    path,
+                    source,
+                } => {
+                    dbg!("TODO: Move this to the generic process");
+                    assert!(false);
+                }
                 TestCase::Skip => {
                     assert!(true);
                 }

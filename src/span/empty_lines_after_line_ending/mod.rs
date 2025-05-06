@@ -1,13 +1,17 @@
+#![allow(unused)]
 use crate::span::Span;
 use nom::Parser;
 use nom::branch::alt;
 use nom::character::complete::{line_ending, space0};
 use nom::combinator::not;
+use nom::multi::many0;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
 
 pub fn empty_line_after_line_ending(source: &str) -> IResult<&str, Span> {
-    let (source, _) = (space0, line_ending, line_ending).parse(source)?;
+    let (source, _) =
+        (space0, line_ending, space0, line_ending).parse(source)?;
+    let (source, _) = many0((space0, line_ending)).parse(source)?;
     Ok((
         source,
         Span::EmptyLineOrLines {
@@ -30,6 +34,7 @@ mod test {
         let test_file_list =
             get_file_list(&source_dir, &vec!["neotest".to_string()]).unwrap();
         for source_path in test_file_list {
+            println!("test {}", &source_path.display());
             match run_span_test_case(
                 &source_path,
                 &empty_line_after_line_ending,
@@ -43,6 +48,7 @@ mod test {
                     assert_eq!(left_content, right_content);
                     assert_eq!(left_remainder, right_remainder);
                 }
+
                 _ => {
                     assert!(false);
                 }
