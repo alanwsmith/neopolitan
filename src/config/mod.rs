@@ -9,6 +9,7 @@ pub struct Config {
 pub struct BlockTypes {
     pub csv: Vec<String>,
     pub json: Vec<String>,
+    pub list: Vec<String>,
     pub raw: Vec<String>,
 }
 
@@ -21,6 +22,7 @@ impl Default for Config {
         let block_category_kinds = BlockTypes {
             csv: make_vec_of_strings("csv|neo-example-csv-table"),
             json: make_vec_of_strings("json|metadata|neo-example-json-table"),
+            list: make_vec_of_strings("list|notes|warnings"),
             raw: make_vec_of_strings(
                 "cli|code|css|html|javascript|output|path|pre|raw",
             ),

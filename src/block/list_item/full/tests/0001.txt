@@ -1,0 +1,19 @@
+- alfa
+
+~~~~~~
+
+{
+  "category": "list-item",
+  "children": [
+    {
+      "category": "list-item",
+      "children": [],
+      "kind": "text"
+      
+    }
+  ],
+  "kind": "list-item"
+}
+
+~~~~~~
+

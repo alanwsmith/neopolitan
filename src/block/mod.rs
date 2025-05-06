@@ -2,6 +2,8 @@ pub mod basic;
 pub mod csv;
 pub mod end;
 pub mod json;
+pub mod list;
+pub mod list_item;
 pub mod raw;
 pub mod text_block;
 
@@ -81,9 +83,18 @@ pub enum Block {
         flags: Vec<String>,
         kind: String,
     },
-    List,
+    List {
+        attrs: BTreeMap<String, Vec<Span>>,
+        children: Vec<Block>,
+        end_block: Option<Box<Block>>,
+        flags: Vec<String>,
+        kind: String,
+    },
     #[serde(rename = "list-item")]
-    ListItem,
+    ListItem {
+        children: Vec<Block>,
+        kind: String,
+    },
     #[serde(rename = "numbered-list")]
     NumberedList,
     #[serde(rename = "numbered-list-item")]
