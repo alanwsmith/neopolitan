@@ -34,7 +34,7 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn solo_single_line_ending() {
+    fn single_line_ending_tests() {
         let config = Config::default();
         let file_list = get_file_list(
             &PathBuf::from("src/span/single_line_ending/tests"),

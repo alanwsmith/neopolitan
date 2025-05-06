@@ -44,6 +44,59 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
+    fn solo_text_in_block_tests_dev() {
+        let config = Config::default();
+        let file_list = get_file_list(
+            &PathBuf::from("src/span/text_in_block/tests"),
+            &vec!["neotest".to_string()],
+        )
+        .unwrap();
+        for source_path in file_list {
+            match get_test_data_dev(&source_path) {
+                TestCaseDev::Ok {
+                    description,
+                    json,
+                    path,
+                    remainder,
+                    source,
+                } => {
+                    println!("test {}", &path);
+                    let result = text_in_block(&source).unwrap();
+                    let left_content = (
+                        path.clone(),
+                        serde_json::from_str::<Span>(&json).unwrap(),
+                    );
+                    let right_content = (path.clone(), result.1);
+                    assert_eq!(left_content, right_content);
+                    let left_remainder = (&path, remainder);
+                    let right_remainder = (&path, result.0.to_string());
+                    assert_eq!(left_remainder, right_remainder);
+                }
+                TestCaseDev::Err {
+                    description,
+                    path,
+                    source,
+                } => {
+                    println!("test {}", &path);
+                    let result = text_in_block(&source);
+                    match result {
+                        Ok(_) => {
+                            println!(
+                                "ERROR: Should not have gotten valid response"
+                            );
+                            assert!(false);
+                        }
+                        Err(_) => {
+                            assert!(true);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    #[ignore]
     fn text_in_block_tests() {
         let config = Config::default();
         let file_list = get_file_list(
