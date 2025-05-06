@@ -178,7 +178,6 @@ pub fn run_span_test_case(
     source_path: &PathBuf,
     f: &dyn Fn(&str) -> IResult<&str, Span>,
 ) -> TestSpanPayload {
-    // let config = Config::default();
     match get_test_data(&source_path) {
         TestCase::Skip => TestSpanPayload::Skip,
         TestCase::Ok {
@@ -195,12 +194,9 @@ pub fn run_span_test_case(
                 serde_json::from_str::<Span>(&json).unwrap(),
             );
             let right_content = (format!("Content: {}", &path), result.1);
-
-            //assert_eq!(left_content, right_content);
             let left_remainder = (format!("Remainder: {}", &path), remainder);
             let right_remainder =
                 (format!("Remainder: {}", &path), result.0.to_string());
-            // assert_eq!(left_remainder, right_remainder);
             TestSpanPayload::Ok {
                 left_content,
                 right_content,
