@@ -1,4 +1,4 @@
-// DEPRECATED: Move to escaped_character
+// DEPRECATED: Move to escaped_character_in_block, etc...
 use crate::span::Span;
 use crate::span_metadata::strings::escaped_character::escaped_character;
 use nom::IResult;

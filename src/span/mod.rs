@@ -4,7 +4,7 @@ pub mod escaped_character_in_block;
 pub mod shorthand;
 pub mod single_character_allowed_in_block;
 pub mod single_line_ending;
-pub mod tag;
+pub mod tag_shorthand;
 pub mod text;
 pub mod text_in_block;
 
