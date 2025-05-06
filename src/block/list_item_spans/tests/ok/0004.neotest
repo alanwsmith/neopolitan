@@ -1,0 +1,36 @@
+alfa bravo charlie
+delta echo foxtrot
+
+golf hotel india
+~~~~~~txt~~~~~~ok~~~~~~
+
+Multi line stops before new list-item-spans
+
+~~~~~~
+
+{
+  "category": "list-item-spans",
+  "kind": "list-item-spans",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa bravo charlie"
+    }, 
+    {
+      "category": "space"
+    },
+    {
+      "category": "text",
+      "content": "delta echo foxtrot"
+    }
+  ]
+}
+
+~~~~~~
+
+{
+  "remainder": "\n\ngolf hotel india"
+}
+
+
+
