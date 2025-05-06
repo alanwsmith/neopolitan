@@ -1,3 +1,5 @@
+// TODO: Rename to code_shorthand
+
 use crate::span::Span;
 use crate::span::escaped::escaped_span;
 use crate::span_metadata::span_metadata;
