@@ -1,0 +1,19 @@
+_bravo
+~~~~~~txt~~~~~~ok~~~~~~
+
+Single Character _
+
+~~~~~~
+
+{
+  "category": "text",
+  "content": "_"
+}
+
+~~~~~~
+
+{
+  "remainder": "bravo"
+}
+
+

@@ -2,6 +2,7 @@ pub mod code;
 pub mod escaped;
 pub mod escaped_character_in_block;
 pub mod shorthand;
+pub mod single_character_allowed_in_block;
 pub mod single_line_ending;
 pub mod tag;
 pub mod text;
