@@ -1,0 +1,26 @@
+{
+  "content": ""
+}~~~~~~json~~~~~~ok~~~~~~
+
+Spaces after last line ending don't get eaten.
+Make sure spaces prior are still handled.
+
+~~~~~~
+
+{
+  "category": "empty-line-or-lines", 
+  "kind": "empty-line-or-lines"
+}
+
+~~~~~~
+
+{
+  "remainder": ""
+}
+
+
+
+
+
+
+

@@ -3,6 +3,7 @@ use crate::block::Block;
 use crate::block_metadata::parent::BlockParent;
 use crate::config::Config;
 use crate::span::Span;
+use crate::span::empty_line_or_lines_after_line_ending_or_eof::empty_line_or_lines_after_line_ending_or_eof;
 use crate::span::escaped_character_in_block::escaped_character_in_block;
 use crate::span::shorthand::shorthand_span;
 use crate::span::single_character_allowed_in_block::single_character_allowed_in_block;
@@ -40,6 +41,8 @@ pub fn list_item_spans<'a>(
         single_character_allowed_in_block,
     )))
     .parse(source)?;
+    let (source, _) =
+        empty_line_or_lines_after_line_ending_or_eof.parse(source)?;
     Ok((
         source,
         Block::ListItemSpans {

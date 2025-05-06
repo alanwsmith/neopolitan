@@ -29,7 +29,7 @@ Multi line stops before new list item
 ~~~~~~
 
 {
-  "remainder": "\n\n- golf hotel india"
+  "remainder": "- golf hotel india"
 }
 
 
