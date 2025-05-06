@@ -1,8 +1,9 @@
 {
-  "content": "\n\n   bravo"
+  "content": "   \n   \n   bravo"
 }~~~~~~json~~~~~~ok~~~~~~
 
-Spaces after last line ending don't get eaten
+Spaces after last line ending don't get eaten.
+Make sure spaces prior are still handled.
 
 ~~~~~~
 
@@ -16,6 +17,7 @@ Spaces after last line ending don't get eaten
 {
   "remainder": "   bravo"
 }
+
 
 
 
