@@ -1,7 +1,7 @@
-``alfa``
+``alfa      bravo``
 ######txt######ok######
 
-Single word
+Flatten spaces
 
 ######
 
@@ -13,7 +13,7 @@ Single word
   "spans": [
     {
       "category": "text",
-      "content": "alfa",
+      "content": "alfa bravo",
       "kind": "text"
     }
   ]
@@ -24,4 +24,6 @@ Single word
 {
   "remainder": ""
 }
+
+
 

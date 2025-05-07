@@ -1,3 +1,5 @@
+#![allow(unused)]
+use super::single_line_ending::single_line_ending;
 use crate::span::Span;
 use crate::span::escaped::escaped_span;
 use crate::span_metadata::span_metadata;
@@ -9,27 +11,46 @@ use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;
 use nom::bytes::complete::is_a;
+use nom::bytes::complete::is_not;
 use nom::bytes::complete::tag;
+use nom::character::complete::space0;
+use nom::character::complete::space1;
 use nom::combinator::opt;
 use nom::multi::many1;
 use nom::sequence::pair;
 use nom::sequence::preceded;
+use std::collections::BTreeMap;
 
 pub fn code_shorthand(source: &str) -> IResult<&str, Span> {
-    let (source, spans) = preceded(
-        pair(tag("``"), opt(plain_text_space1_as_single_space)),
-        many1(alt((escaped_span, code_span_text))),
-    )
-    .parse(source)?;
-    let (source, metadata) = span_metadata(source, "`")?;
+    let (source, _) = (tag("``"), space0).parse(source)?;
+    let (source, spans) = many1(alt((code_span_text,))).parse(source)?;
+    // let (source, metadata) = span_metadata(source, "`")?;
     let (source, _) = tag("``").parse(source)?;
     Ok((
         source,
         Span::Code {
-            attrs: metadata.attrs,
-            flags: metadata.flags,
+            attrs: BTreeMap::new(),
+            flags: vec![],
+            // attrs: metadata.attrs,
+            // flags: metadata.flags,
             kind: "code-shorthand".to_string(),
             spans,
+        },
+    ))
+}
+
+pub fn code_span_text(source: &str) -> IResult<&str, Span> {
+    let (source, parts) = many1(alt((
+        space1.map(|_| " "),
+        is_not(" \r\n\t`"),
+        single_line_ending.map(|_| " "),
+    )))
+    .parse(source)?;
+    Ok((
+        source,
+        Span::Text {
+            content: parts.join(""),
+            kind: "text".to_string(),
         },
     ))
 }
@@ -37,23 +58,23 @@ pub fn code_shorthand(source: &str) -> IResult<&str, Span> {
 // TODO: Move this to text_span_in_span and
 // pass character to it.
 
-pub fn code_span_text(source: &str) -> IResult<&str, Span> {
-    let (source, parts) = many1(alt((
-        plain_text_string_base,
-        plain_text_space1_as_single_space,
-        is_a("%@~*^![]{}<>_#:"),
-        plain_text_single_line_ending_as_space,
-        escaped_character,
-    )))
-    .parse(source)?;
-    Ok((
-        source,
-        Span::Text {
-            content: parts.join("").trim().to_string(),
-            kind: "text".to_string(),
-        },
-    ))
-}
+// pub fn code_span_text(source: &str) -> IResult<&str, Span> {
+//     let (source, parts) = many1(alt((
+//         plain_text_string_base,
+//         plain_text_space1_as_single_space,
+//         is_a("%@~*^![]{}<>_#:"),
+//         plain_text_single_line_ending_as_space,
+//         escaped_character,
+//     )))
+//     .parse(source)?;
+//     Ok((
+//         source,
+//         Span::Text {
+//             content: parts.join("").trim().to_string(),
+//             kind: "text".to_string(),
+//         },
+//     ))
+// }
 
 #[cfg(test)]
 mod test {
@@ -67,25 +88,6 @@ mod test {
 
     const TEST_DATA: &str = r#"
 
-``alfa``
-
-######
-
-{ 
-    "category": "code-shorthand", 
-    "kind": "code-shorthand", 
-    "attrs": {}, 
-    "flags": [], 
-    "spans": [
-        {
-            "category": "text", 
-            "content": "alfa",
-            "kind": "text"
-        }
-    ]
-}
-
-######
 
 ``alfa|bravo``
 

@@ -46,7 +46,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
       <h1  class="title"
       >CSV Example</h1></hgroup><div
    class="flow"
-><p>The page won't render in the <code>2.9.0</code> version of MiniJinja if something other than a number is used as the value in the <code data-lang="neo"> <span class="source rust"><span class="keyword operator rust">-</span><span class="keyword operator rust">-</span> headers<span class="punctuation separator rust">:</span></span></code> attribute. One possible fix is to make an environmental function to address that.</p><p>I've also opened a ticket at:</p><p>Converting to int halts rendering if the input is not a number</p><p>https://github.com/mitsuhiko/minijinja/issues/786</p></div>
+><p>The page won't render in the <code>2.9.0</code> version of MiniJinja if something other than a number is used as the value in the <code>-- headers: |neo</code> attribute. One possible fix is to make an environmental function to address that.</p><p>I've also opened a ticket at:</p><p>Converting to int halts rendering if the input is not a number</p><p>https://github.com/mitsuhiko/minijinja/issues/786</p></div>
 
 <h2>CSV Example Table</h2><table><thead><tr><th class="
                 background-color-alt-3-30
@@ -150,14 +150,12 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
               {
                 "attrs": {},
                 "category": "code-shorthand",
-                "flags": [
-                  "neo"
-                ],
+                "flags": [],
                 "kind": "code-shorthand",
                 "spans": [
                   {
                     "category": "text",
-                    "content": "-- headers:",
+                    "content": "-- headers: |neo",
                     "kind": "text"
                   }
                 ]
