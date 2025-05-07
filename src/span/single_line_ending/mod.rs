@@ -20,7 +20,12 @@ use nom::{IResult, branch::alt, bytes::complete::tag};
 
 pub fn single_line_ending<'a>(source: &'a str) -> IResult<&'a str, Span> {
     let (source, _) = (space0, line_ending, not(line_ending)).parse(source)?;
-    Ok((source, Span::Space))
+    Ok((
+        source,
+        Span::Space {
+            kind: "space".to_string(),
+        },
+    ))
 }
 
 #[cfg(test)]

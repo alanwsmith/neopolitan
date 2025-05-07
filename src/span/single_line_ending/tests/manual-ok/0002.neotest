@@ -15,7 +15,8 @@ the end of a file.
 
 ~~~~~~
 {
-  "category": "space"
+  "category": "space",
+  "kind": "space"
 }
 ~~~~~~
 {

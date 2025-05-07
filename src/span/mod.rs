@@ -62,7 +62,9 @@ pub enum Span {
     //     kind: String,
     //     text: String,
     // },
-    Space,
+    Space {
+        kind: String,
+    },
     #[serde(rename = "strikethrough-shorthand")]
     StrikethroughShorthand {
         attrs: BTreeMap<String, Vec<Span>>,

@@ -27,7 +27,8 @@ Escaped shorthand # is okay
       "kind": "text-span"
     }, 
     {
-      "category": "space"
+      "category": "space",
+      "kind": "space"
     },
     {
       "category": "text-span",
