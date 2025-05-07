@@ -1,0 +1,11 @@
+#!/bin/bash
+
+watchexec \
+  --project-origin .\
+  -c -r -p -e py\
+  --shell=bash -- '\
+  FILE_PATH="$WATCHEXEC_COMMON_PATH/$WATCHEXEC_WRITTEN_PATH" \
+  && PARENT_DIR="$(dirname "$FILE_PATH")" \
+  && cd $PARENT_DIR \
+  && python3 "$FILE_PATH"'
+

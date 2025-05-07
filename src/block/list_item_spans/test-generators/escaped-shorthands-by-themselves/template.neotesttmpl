@@ -18,8 +18,9 @@ Escaped shorthand ${TOKEN} is okay
       "kind": "text-span"
     }, 
     { 
-      "category": "escaped", 
-      "content": "${TOKEN}"
+      "category": "escaped-span", 
+      "content": "${TOKEN}",
+      "kind": "escaped-span"
     },
     {
       "category": "text-span",

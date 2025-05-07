@@ -18,8 +18,9 @@ Escaped shorthand _ is okay
       "kind": "text-span"
     }, 
     { 
-      "category": "escaped", 
-      "content": "_"
+      "category": "escaped-span", 
+      "content": "_",
+      "kind": "escaped-span"
     },
     {
       "category": "text-span",

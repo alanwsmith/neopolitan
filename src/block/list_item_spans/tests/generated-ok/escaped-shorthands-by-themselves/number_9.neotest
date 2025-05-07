@@ -18,8 +18,9 @@ Escaped shorthand 9 is okay
       "kind": "text-span"
     }, 
     { 
-      "category": "escaped", 
-      "content": "9"
+      "category": "escaped-span", 
+      "content": "9",
+      "kind": "escaped-span"
     },
     {
       "category": "text-span",

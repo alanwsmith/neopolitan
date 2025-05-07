@@ -67,6 +67,7 @@ pub fn escaped_character_in_block(source: &str) -> IResult<&str, Span> {
         source,
         Span::Escaped {
             content: character.to_string(),
+            kind: "escaped-span".to_string(),
         },
     ))
 }
@@ -79,7 +80,7 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn escaped_character_in_block_tests() {
+    fn solo_escaped_character_in_block_tests() {
         let test_file_list = get_file_list(
             &PathBuf::from("src/span/escaped_character_in_block/tests"),
             &vec!["neotest".to_string()],

@@ -37,10 +37,8 @@ pub enum Span {
     //
     // #[serde(rename = "escaped-span")]
     // EscapedCharacter(EscapedCharacterSpanV42),
-    // [serde(rename = "escaped")]
-    Escaped {
-        content: String,
-    },
+    #[serde(rename = "escaped-span")]
+    Escaped { content: String, kind: String },
     //
     // #[serde(rename = "footnote-span")]
     // FootnoteShorthand(FootnoteShorthandV42),
@@ -63,9 +61,7 @@ pub enum Span {
     //     text: String,
     // },
     #[serde(rename = "space-span")]
-    Space {
-        kind: String,
-    },
+    Space { kind: String },
     #[serde(rename = "strikethrough-shorthand")]
     StrikethroughShorthand {
         attrs: BTreeMap<String, Vec<Span>>,
@@ -74,10 +70,7 @@ pub enum Span {
         spans: Vec<Span>,
     },
     #[serde(rename = "text-span")]
-    Text {
-        content: String,
-        kind: String,
-    },
+    Text { content: String, kind: String },
     // #[serde(rename = "strong-span")]
     // StrongShorthand(StrongShorthandV42),
     // #[serde(rename = "strike-span")]

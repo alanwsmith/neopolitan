@@ -1,5 +1,4 @@
-use std::collections::BTreeMap;
-
+#![allow(unused)]
 use crate::span::Span;
 use nom::Parser;
 use nom::branch::alt;
@@ -10,6 +9,7 @@ use nom::combinator::not;
 use nom::multi::many0;
 use nom::sequence::terminated;
 use nom::{IResult, bytes::complete::tag};
+use std::collections::BTreeMap;
 
 pub fn strikethrough_shorthand(source: &str) -> IResult<&str, Span> {
     let (source, _) = tag("~~").parse(source)?;
@@ -45,7 +45,7 @@ mod test {
     use std::path::PathBuf;
 
     #[test]
-    fn solo_strikethrough_shorthand_tests() {
+    fn strikethrough_shorthand_tests() {
         let source_dir =
             &PathBuf::from("src/span/strikethrough_shorthand/tests");
         let test_file_list =

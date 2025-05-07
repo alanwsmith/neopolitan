@@ -9,6 +9,7 @@ pub fn escaped_span(source: &str) -> IResult<&str, Span> {
         source,
         Span::Escaped {
             content: content.to_string(),
+            kind: "escaped-span".to_string(),
         },
     ))
 }
@@ -22,10 +23,12 @@ mod test {
 
     #[rstest]
     #[case("\\|", Span::Escaped{
-        content: "|".to_string()
+        content: "|".to_string(),
+        kind: "escaped-span".to_string()
     }, "")]
     #[case("\\\\ ", Span::Escaped{
-        content: "\\".to_string()
+        content: "\\".to_string(),
+        kind: "escaped-span".to_string()
     }, " ")]
     fn escaped_span_valid_tests(
         #[case] source: &str,

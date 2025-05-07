@@ -100,6 +100,9 @@ numbers for headings and figures.
 [] Add better error message if
 a template doesn't exist. 
 
+[] Test doing thing like having a 
+footnote shorthand butted directly
+up against a code shorthand. 
 
 
 

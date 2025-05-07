@@ -18,8 +18,9 @@ Escaped shorthand | is okay
       "kind": "text-span"
     }, 
     { 
-      "category": "escaped", 
-      "content": "|"
+      "category": "escaped-span", 
+      "content": "|",
+      "kind": "escaped-span"
     },
     {
       "category": "text-span",
