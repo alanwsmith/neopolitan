@@ -13,23 +13,26 @@ Escaped shorthand 9 is okay
   "kind": "list-item-spans",
   "spans": [
     {
-      "category": "text",
-      "content": "alfa "
+      "category": "text-span",
+      "content": "alfa ",
+      "kind": "text-span"
     }, 
     { 
       "category": "escaped", 
       "content": "9"
     },
     {
-      "category": "text",
-      "content": "bravo charlie"
+      "category": "text-span",
+      "content": "bravo charlie",
+      "kind": "text-span"
     }, 
     {
       "category": "space"
     },
     {
-      "category": "text",
-      "content": "delta echo foxtrot"
+      "category": "text-span",
+      "content": "delta echo foxtrot",
+      "kind": "text-span"
     }
   ]
 }

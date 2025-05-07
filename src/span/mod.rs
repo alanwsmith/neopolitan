@@ -70,9 +70,10 @@ pub enum Span {
         kind: String,
         spans: Vec<Span>,
     },
-    #[serde(rename = "text")]
+    #[serde(rename = "text-span")]
     Text {
         content: String,
+        kind: String,
     },
     // #[serde(rename = "strong-span")]
     // StrongShorthand(StrongShorthandV42),

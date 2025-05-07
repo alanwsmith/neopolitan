@@ -35,6 +35,7 @@ pub fn span_of_plain_text_for_section_key_value_attr_value(
         source,
         Span::Text {
             content: results.join("").to_string(),
+                kind: "text-span".to_string(),
         },
     ))
 }

@@ -95,8 +95,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "Span Flags"
+                "category": "text-span",
+                "content": "Span Flags",
+                "kind": "text-span"
               }
             ]
           }
@@ -114,8 +115,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "Tags and Shorthand spans accept flags."
+                "category": "text-span",
+                "content": "Tags and Shorthand spans accept flags.",
+                "kind": "text-span"
               }
             ]
           },
@@ -124,8 +126,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "The parsing logic is:"
+                "category": "text-span",
+                "content": "The parsing logic is:",
+                "kind": "text-span"
               }
             ]
           }
@@ -143,8 +146,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "Flags end at spaces, tabs, newlines or pipes [TKTKTK: Insert pipe character]"
+                "category": "text-span",
+                "content": "Flags end at spaces, tabs, newlines or pipes [TKTKTK: Insert pipe character]",
+                "kind": "text-span"
               }
             ]
           },
@@ -153,8 +157,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "Flags can have individual characters that match the closing tag or shorthand token, but they can\u0027t have two in a row as that would be the closing indication."
+                "category": "text-span",
+                "content": "Flags can have individual characters that match the closing tag or shorthand token, but they can\u0027t have two in a row as that would be the closing indication.",
+                "kind": "text-span"
               }
             ]
           },
@@ -163,8 +168,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "Emoji (e.g. 🕺) can be used. (Recognizing that different systems display different images for the same emoji)"
+                "category": "text-span",
+                "content": "Emoji (e.g. 🕺) can be used. (Recognizing that different systems display different images for the same emoji)",
+                "kind": "text-span"
               }
             ]
           },
@@ -173,8 +179,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "Escaping characters in flags is not supported. 1"
+                "category": "text-span",
+                "content": "Escaping characters in flags is not supported. 1",
+                "kind": "text-span"
               }
             ]
           }
@@ -187,8 +194,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "attrs": {
           "id": [
             {
-              "category": "text",
-              "content": "1"
+              "category": "text-span",
+              "content": "1",
+              "kind": "text-span"
             }
           ]
         },
@@ -199,8 +207,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "Doing so would require switching the AST to use an array of spans to track the escaped characters instead of using a single text string. That would lead to an unacceptable increase in the complexity of using them in templates."
+                "category": "text-span",
+                "content": "Doing so would require switching the AST to use an array of spans to track the escaped characters instead of using a single text string. That would lead to an unacceptable increase in the complexity of using them in templates.",
+                "kind": "text-span"
               }
             ]
           },
@@ -209,8 +218,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "The reason spans would be required for escape characters is so the AST can be used to make an accurate reproduction of the input source."
+                "category": "text-span",
+                "content": "The reason spans would be required for escape characters is so the AST can be used to make an accurate reproduction of the input source.",
+                "kind": "text-span"
               }
             ]
           }
@@ -228,8 +238,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "Note that this means you can have multiple opening tag tokens like:"
+                "category": "text-span",
+                "content": "Note that this means you can have multiple opening tag tokens like:",
+                "kind": "text-span"
               }
             ]
           }
@@ -255,8 +266,9 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text",
-                "content": "Where "
+                "category": "text-span",
+                "content": "Where ",
+                "kind": "text-span"
               },
               {
                 "attrs": {},
@@ -264,14 +276,16 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
                 "flags": [],
                 "spans": [
                   {
-                    "category": "text",
-                    "content": "alfa\u003c\u003cbravo"
+                    "category": "text-span",
+                    "content": "alfa\u003c\u003cbravo",
+                    "kind": "text-span"
                   }
                 ]
               },
               {
-                "category": "text",
-                "content": " is the flag. Same goes for the "
+                "category": "text-span",
+                "content": " is the flag. Same goes for the ",
+                "kind": "text-span"
               },
               {
                 "attrs": {},
@@ -279,14 +293,16 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
                 "flags": [],
                 "spans": [
                   {
-                    "category": "text",
-                    "content": "["
+                    "category": "text-span",
+                    "content": "[",
+                    "kind": "text-span"
                   }
                 ]
               },
               {
-                "category": "text",
-                "content": " and "
+                "category": "text-span",
+                "content": " and ",
+                "kind": "text-span"
               },
               {
                 "attrs": {},
@@ -294,14 +310,16 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
                 "flags": [],
                 "spans": [
                   {
-                    "category": "text",
-                    "content": "{"
+                    "category": "text-span",
+                    "content": "{",
+                    "kind": "text-span"
                   }
                 ]
               },
               {
-                "category": "text",
-                "content": " characters for links and images."
+                "category": "text-span",
+                "content": " characters for links and images.",
+                "kind": "text-span"
               }
             ]
           }
@@ -314,14 +332,16 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "attrs": {
           "created": [
             {
-              "category": "text",
-              "content": "2025-04-28T07:37:11-04:00"
+              "category": "text-span",
+              "content": "2025-04-28T07:37:11-04:00",
+              "kind": "text-span"
             }
           ],
           "updated": [
             {
-              "category": "text",
-              "content": "2025-04-28T07:37:11-04:00"
+              "category": "text-span",
+              "content": "2025-04-28T07:37:11-04:00",
+              "kind": "text-span"
             }
           ]
         },

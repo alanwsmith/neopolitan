@@ -7,8 +7,9 @@ Don't capture empty space before line_ending
 
 ~~~~~~
 {
-  "category": "text",
-  "content": "alfa bravo"
+  "category": "text-span",
+  "content": "alfa bravo",
+  "kind": "text-span"
 }
 ~~~~~~
 {

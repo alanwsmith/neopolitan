@@ -14,8 +14,9 @@ with no spaces
   "kind": "strikethrough-shorthand",
   "spans": [
     {
-      "category": "text",
-      "content": "alfa"
+      "category": "text-span",
+      "content": "alfa",
+      "kind": "text-span"
     }
   ]
 }

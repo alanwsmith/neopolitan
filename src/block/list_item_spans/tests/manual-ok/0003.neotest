@@ -13,15 +13,17 @@ Multi line stops before new list item
   "kind": "list-item-spans",
   "spans": [
     {
-      "category": "text",
-      "content": "alfa bravo charlie"
+      "category": "text-span",
+      "content": "alfa bravo charlie",
+      "kind": "text-span"
     }, 
     {
       "category": "space"
     },
     {
-      "category": "text",
-      "content": "delta echo foxtrot"
+      "category": "text-span",
+      "content": "delta echo foxtrot",
+      "kind": "text-span"
     }
   ]
 }

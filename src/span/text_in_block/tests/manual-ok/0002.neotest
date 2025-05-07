@@ -4,8 +4,9 @@ Multiple words and spaces get collected
 
 ~~~~~~
 {
-  "category": "text",
-  "content": "alfa bravo charlie"
+  "category": "text-span",
+  "content": "alfa bravo charlie",
+  "kind": "text-span"
 }
 ~~~~~~
 {

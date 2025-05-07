@@ -103,6 +103,7 @@ mod test {
             "alfa".to_string(),
             vec![Span::Text {
                 content: "bravo".to_string(),
+                kind: "text-span".to_string(),
             }],
         );
         let left = SpanMetadata { attrs, flags };
@@ -125,6 +126,7 @@ mod test {
             "alfa".to_string(),
             vec![Span::Text {
                 content: "bravo ``charlie``".to_string(),
+                kind: "text-span".to_string(),
             }],
         );
         let left = SpanMetadata { attrs, flags };
@@ -144,12 +146,14 @@ mod test {
             "alfa".to_string(),
             vec![Span::Text {
                 content: "bravo".to_string(),
+                kind: "text-span".to_string(),
             }],
         );
         attrs.insert(
             "charlie".to_string(),
             vec![Span::Text {
                 content: "delta".to_string(),
+                kind: "text-span".to_string(),
             }],
         );
         let left = SpanMetadata { attrs, flags };
@@ -168,9 +172,11 @@ mod test {
         let alfa_vecs = vec![
             Span::Text {
                 content: "bravo".to_string(),
+                kind: "text-span".to_string(),
             },
             Span::Text {
                 content: "delta".to_string(),
+                kind: "text-span".to_string(),
             },
         ];
         attrs.insert("alfa".to_string(), alfa_vecs);

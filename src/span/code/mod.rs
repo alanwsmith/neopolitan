@@ -51,6 +51,7 @@ pub fn code_span_text(source: &str) -> IResult<&str, Span> {
         source,
         Span::Text {
             content: parts.join("").trim().to_string(),
+            kind: "text-span".to_string(),
         },
     ))
 }
@@ -75,8 +76,9 @@ mod test {
     "flags": [], 
     "spans": [
         {
-            "category": "text", 
-            "content": "alfa"
+            "category": "text-span", 
+            "content": "alfa",
+            "kind": "text-span"
         }
     ]
 }
@@ -93,8 +95,9 @@ mod test {
     "flags": ["bravo"], 
     "spans": [
         {
-            "category": "text", 
-            "content": "alfa"
+            "category": "text-span", 
+            "content": "alfa",
+            "kind": "text-span"
         }
     ]
 }
@@ -110,16 +113,18 @@ mod test {
     "attrs": {
         "bravo": [
             {
-                "category": "text", 
-                "content": "charlie"
+                "category": "text-span", 
+                "content": "charlie",
+                "kind": "text-span"
             }
         ]
     }, 
     "flags": ["delta"], 
     "spans": [
         {
-            "category": "text", 
-            "content": "alfa"
+            "category": "text-span", 
+            "content": "alfa",
+            "kind": "text-span"
         }
     ]
 }
@@ -147,6 +152,7 @@ mod test {
             flags: vec!["bravo".to_string()],
             spans: vec![Span::Text {
                 content: "alfa".to_string(),
+                kind: "text-span".to_string(),
             }],
         };
         let remainder = "";
@@ -163,6 +169,7 @@ mod test {
             "bravo".to_string(),
             vec![Span::Text {
                 content: "charlie ".to_string(),
+                kind: "text-span".to_string(),
             }],
         );
         let flags = vec!["delta".to_string()];
@@ -171,6 +178,7 @@ mod test {
             flags,
             spans: vec![Span::Text {
                 content: "alfa".to_string(),
+                kind: "text-span".to_string(),
             }],
         };
         let remainder = " ping";
@@ -187,6 +195,7 @@ mod test {
             "bravo".to_string(),
             vec![Span::Text {
                 content: "charlie echo ".to_string(),
+                kind: "text-span".to_string(),
             }],
         );
         let flags = vec!["delta".to_string()];
@@ -195,6 +204,7 @@ mod test {
             flags,
             spans: vec![Span::Text {
                 content: "alfa".to_string(),
+                kind: "text-span".to_string(),
             }],
         };
         let remainder = " ping";

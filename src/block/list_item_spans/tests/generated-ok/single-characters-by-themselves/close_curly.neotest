@@ -12,8 +12,9 @@ Single Character by itself: }
   "kind": "list-item-spans",
   "spans": [
     { 
-      "category": "text", 
-      "content": "}"
+      "category": "text-span", 
+      "content": "}",
+      "kind": "text-span"
     }
   ]
 }

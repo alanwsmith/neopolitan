@@ -10,8 +10,9 @@ Basic Check
   "kind": "list-item-spans",
   "spans": [
     {
-      "category": "text",
-      "content": "alfa bravo charlie"
+      "category": "text-span",
+      "content": "alfa bravo charlie",
+      "kind": "text-span"
     }
   ]
 }

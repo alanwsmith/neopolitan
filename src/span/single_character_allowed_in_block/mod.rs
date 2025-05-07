@@ -28,6 +28,7 @@ pub fn single_character_allowed_in_block(source: &str) -> IResult<&str, Span> {
         source,
         Span::Text {
             content: character.to_string(),
+            kind: "text-span".to_string(),
         },
     ))
 }

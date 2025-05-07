@@ -50,8 +50,9 @@ pub fn csv_block_full<'a>(
             let mut delimeter = ",".to_string();
             metadata.attrs.iter().for_each(|a| match a.0.as_str() {
                 "delimeter" => match &a.1[0] {
-                    Span::Text { content } => {
+                    Span::Text { content , ..} => {
                         delimeter = content.to_string();
+
                     }
                     _ => (),
                 },
@@ -134,6 +135,7 @@ mod test {
             "delimeter".to_string(),
             vec![Span::Text {
                 content: "|".to_string(),
+kind: "text-span".to_string()
             }],
         );
         let left = Block::Csv {

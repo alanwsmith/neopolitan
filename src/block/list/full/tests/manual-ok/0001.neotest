@@ -21,9 +21,9 @@ another item behind it.
           "kind": "list-item-spans",
           "spans": [
             {
-              "category": "text",
+              "category": "text-span",
               "content": "alfa bravo charlie",
-              "kind": "text"
+              "kind": "text-span"
             }
           ]
         }
@@ -38,9 +38,9 @@ another item behind it.
           "kind": "list-item-spans",
           "spans": [
             {
-              "category": "text",
+              "category": "text-span",
               "content": "delta echo",
-              "kind": "text"
+              "kind": "text-span"
             }
           ]
         }

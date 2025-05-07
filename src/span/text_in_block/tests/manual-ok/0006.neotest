@@ -4,8 +4,9 @@ Stop at escape character
 
 ~~~~~~
 {
-  "category": "text",
-  "content": "alfa "
+  "category": "text-span",
+  "content": "alfa ",
+  "kind": "text-span"
 }
 ~~~~~~
 {

@@ -110,6 +110,7 @@ mod test {
             "alfa".to_string(),
             vec![Span::Text {
                 content: "bravo".to_string(),
+kind: "text-span".to_string()
             }],
         );
         let flags = vec![];
@@ -128,6 +129,7 @@ mod test {
             "hotel".to_string(),
             vec![Span::Text {
                 content: "whiskey".to_string(),
+kind: "text-span".to_string()
             }],
         );
         let flags = vec![];
@@ -147,9 +149,11 @@ mod test {
             vec![
                 Span::Text {
                     content: "alfa".to_string(),
+kind: "text-span".to_string()
                 },
                 Span::Text {
                     content: "bravo".to_string(),
+kind: "text-span".to_string()
                 },
             ],
         );
