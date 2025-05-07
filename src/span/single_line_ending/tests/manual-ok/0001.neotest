@@ -14,8 +14,8 @@ the end of a file.
 
 ~~~~~~
 {
-  "category": "space",
-  "kind": "space"
+  "category": "space-span",
+  "kind": "space-span"
 }
 ~~~~~~
 {

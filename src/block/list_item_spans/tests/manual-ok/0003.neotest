@@ -18,8 +18,8 @@ Multi line stops before new list item
       "kind": "text-span"
     }, 
     {
-      "category": "space",
-      "kind": "space"
+      "category": "space-span",
+      "kind": "space-span"
     },
     {
       "category": "text-span",

@@ -62,6 +62,7 @@ pub enum Span {
     //     kind: String,
     //     text: String,
     // },
+    #[serde(rename = "space-span")]
     Space {
         kind: String,
     },

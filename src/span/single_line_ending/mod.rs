@@ -23,7 +23,7 @@ pub fn single_line_ending<'a>(source: &'a str) -> IResult<&'a str, Span> {
     Ok((
         source,
         Span::Space {
-            kind: "space".to_string(),
+            kind: "space-span".to_string(),
         },
     ))
 }
