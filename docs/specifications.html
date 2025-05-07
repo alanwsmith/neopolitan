@@ -61,7 +61,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "Neopolitan 2.0 Specification",
             "kind": "text-span"
           }
@@ -81,25 +81,25 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "[] make ",
             "kind": "text-span"
           },
           {
             "attrs": {},
-            "category": "code-span",
+            "category": "code-shorthand",
             "flags": [],
             "kind": "code-span",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "-- code",
                 "kind": "text-span"
               }
             ]
           },
           {
-            "category": "text-span",
+            "category": "text",
             "content": " a defined section where the first flag is the language to use for highlighting",
             "kind": "text-span"
           }
@@ -110,25 +110,25 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "[] Make ",
             "kind": "text-span"
           },
           {
             "attrs": {},
-            "category": "code-span",
+            "category": "code-shorthand",
             "flags": [],
             "kind": "code-span",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "style",
                 "kind": "text-span"
               }
             ]
           },
           {
-            "category": "text-span",
+            "category": "text",
             "content": " reserved attr for spans to output inline CSS styles if the system allows it.",
             "kind": "text-span"
           }
@@ -139,7 +139,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "[] Split specification requires into two levels. First passes basic test. Second implements standard features.",
             "kind": "text-span"
           }
@@ -159,7 +159,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "Introduction",
             "kind": "text-span"
           }
@@ -170,7 +170,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification.",
             "kind": "text-span"
           }
@@ -190,7 +190,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "Test Types",
             "kind": "text-span"
           }
@@ -201,7 +201,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "The specification is split into three parts.",
             "kind": "text-span"
           }
@@ -221,7 +221,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "1. AST Generation",
             "kind": "text-span"
           }
@@ -232,7 +232,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "2. Required Sections and Attributes",
             "kind": "text-span"
           }
@@ -243,7 +243,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "3. HTML Output",
             "kind": "text-span"
           }
@@ -263,7 +263,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "AST Generation",
             "kind": "text-span"
           }
@@ -274,7 +274,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "Tests are currently built into the rust code. They include parsing for the shorthands.",
             "kind": "text-span"
           }
@@ -285,7 +285,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order.",
             "kind": "text-span"
           }
@@ -305,7 +305,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "Reserved/Required Sections And Attributes",
             "kind": "text-span"
           }
@@ -325,7 +325,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "Sections",
             "kind": "text-span"
           }
@@ -336,7 +336,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
         "kind": "text-block",
         "spans": [
           {
-            "category": "text-span",
+            "category": "text",
             "content": "TODO: Add details about how documents must start with a section (which means all content is in a section)",
             "kind": "text-span"
           }
@@ -390,7 +390,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Neopolitan 2.0 Specification",
                 "kind": "text-span"
               }
@@ -410,25 +410,25 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "[] make ",
                 "kind": "text-span"
               },
               {
                 "attrs": {},
-                "category": "code-span",
+                "category": "code-shorthand",
                 "flags": [],
                 "kind": "code-span",
                 "spans": [
                   {
-                    "category": "text-span",
+                    "category": "text",
                     "content": "-- code",
                     "kind": "text-span"
                   }
                 ]
               },
               {
-                "category": "text-span",
+                "category": "text",
                 "content": " a defined section where the first flag is the language to use for highlighting",
                 "kind": "text-span"
               }
@@ -439,25 +439,25 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "[] Make ",
                 "kind": "text-span"
               },
               {
                 "attrs": {},
-                "category": "code-span",
+                "category": "code-shorthand",
                 "flags": [],
                 "kind": "code-span",
                 "spans": [
                   {
-                    "category": "text-span",
+                    "category": "text",
                     "content": "style",
                     "kind": "text-span"
                   }
                 ]
               },
               {
-                "category": "text-span",
+                "category": "text",
                 "content": " reserved attr for spans to output inline CSS styles if the system allows it.",
                 "kind": "text-span"
               }
@@ -468,7 +468,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "[] Split specification requires into two levels. First passes basic test. Second implements standard features.",
                 "kind": "text-span"
               }
@@ -488,7 +488,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Introduction",
                 "kind": "text-span"
               }
@@ -499,7 +499,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification.",
                 "kind": "text-span"
               }
@@ -519,7 +519,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Test Types",
                 "kind": "text-span"
               }
@@ -530,7 +530,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "The specification is split into three parts.",
                 "kind": "text-span"
               }
@@ -550,7 +550,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "1. AST Generation",
                 "kind": "text-span"
               }
@@ -561,7 +561,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "2. Required Sections and Attributes",
                 "kind": "text-span"
               }
@@ -572,7 +572,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "3. HTML Output",
                 "kind": "text-span"
               }
@@ -592,7 +592,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "AST Generation",
                 "kind": "text-span"
               }
@@ -603,7 +603,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Tests are currently built into the rust code. They include parsing for the shorthands.",
                 "kind": "text-span"
               }
@@ -614,7 +614,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order.",
                 "kind": "text-span"
               }
@@ -634,7 +634,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Reserved/Required Sections And Attributes",
                 "kind": "text-span"
               }
@@ -654,7 +654,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Sections",
                 "kind": "text-span"
               }
@@ -665,7 +665,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "TODO: Add details about how documents must start with a section (which means all content is in a section)",
                 "kind": "text-span"
               }
@@ -771,7 +771,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Neopolitan 2.0 Specification",
                 "kind": "text-span"
               }
@@ -791,25 +791,25 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "[] make ",
                 "kind": "text-span"
               },
               {
                 "attrs": {},
-                "category": "code-span",
+                "category": "code-shorthand",
                 "flags": [],
                 "kind": "code-span",
                 "spans": [
                   {
-                    "category": "text-span",
+                    "category": "text",
                     "content": "-- code",
                     "kind": "text-span"
                   }
                 ]
               },
               {
-                "category": "text-span",
+                "category": "text",
                 "content": " a defined section where the first flag is the language to use for highlighting",
                 "kind": "text-span"
               }
@@ -820,25 +820,25 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "[] Make ",
                 "kind": "text-span"
               },
               {
                 "attrs": {},
-                "category": "code-span",
+                "category": "code-shorthand",
                 "flags": [],
                 "kind": "code-span",
                 "spans": [
                   {
-                    "category": "text-span",
+                    "category": "text",
                     "content": "style",
                     "kind": "text-span"
                   }
                 ]
               },
               {
-                "category": "text-span",
+                "category": "text",
                 "content": " reserved attr for spans to output inline CSS styles if the system allows it.",
                 "kind": "text-span"
               }
@@ -849,7 +849,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "[] Split specification requires into two levels. First passes basic test. Second implements standard features.",
                 "kind": "text-span"
               }
@@ -869,7 +869,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Introduction",
                 "kind": "text-span"
               }
@@ -880,7 +880,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification.",
                 "kind": "text-span"
               }
@@ -900,7 +900,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Test Types",
                 "kind": "text-span"
               }
@@ -911,7 +911,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "The specification is split into three parts.",
                 "kind": "text-span"
               }
@@ -931,7 +931,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "1. AST Generation",
                 "kind": "text-span"
               }
@@ -942,7 +942,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "2. Required Sections and Attributes",
                 "kind": "text-span"
               }
@@ -953,7 +953,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "3. HTML Output",
                 "kind": "text-span"
               }
@@ -973,7 +973,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "AST Generation",
                 "kind": "text-span"
               }
@@ -984,7 +984,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Tests are currently built into the rust code. They include parsing for the shorthands.",
                 "kind": "text-span"
               }
@@ -995,7 +995,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order.",
                 "kind": "text-span"
               }
@@ -1015,7 +1015,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Reserved/Required Sections And Attributes",
                 "kind": "text-span"
               }
@@ -1035,7 +1035,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "Sections",
                 "kind": "text-span"
               }
@@ -1046,7 +1046,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "category": "text-span",
+                "category": "text",
                 "content": "TODO: Add details about how documents must start with a section (which means all content is in a section)",
                 "kind": "text-span"
               }

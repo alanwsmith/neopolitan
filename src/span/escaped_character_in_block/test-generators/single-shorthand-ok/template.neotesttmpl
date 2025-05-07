@@ -6,9 +6,9 @@ Escaped ${TOKEN}
 ~~~~~~
 
 {
-  "category": "escaped-span",
+  "category": "escaped-character",
   "content": "${TOKEN}",
-  "kind": "escaped-span"
+  "kind": "escaped-character"
 }
 
 ~~~~~~

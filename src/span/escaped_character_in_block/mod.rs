@@ -67,7 +67,7 @@ pub fn escaped_character_in_block(source: &str) -> IResult<&str, Span> {
         source,
         Span::Escaped {
             content: character.to_string(),
-            kind: "escaped-span".to_string(),
+            kind: "escaped-character".to_string(),
         },
     ))
 }

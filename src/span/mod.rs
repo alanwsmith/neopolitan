@@ -20,7 +20,7 @@ pub enum Span {
     // TODO: Move these so the values are directly
     // in the enum and not nested structs
     //
-    #[serde(rename = "code-span")]
+    #[serde(rename = "code-shorthand")]
     Code {
         attrs: BTreeMap<String, Vec<Span>>,
         flags: Vec<String>,
@@ -38,7 +38,7 @@ pub enum Span {
     //
     // #[serde(rename = "escaped-span")]
     // EscapedCharacter(EscapedCharacterSpanV42),
-    #[serde(rename = "escaped-span")]
+    #[serde(rename = "escaped-character")]
     Escaped { content: String, kind: String },
     //
     // #[serde(rename = "footnote-span")]
@@ -61,7 +61,7 @@ pub enum Span {
     //     kind: String,
     //     text: String,
     // },
-    #[serde(rename = "space-span")]
+    #[serde(rename = "space")]
     Space { kind: String },
     #[serde(rename = "strikethrough-shorthand")]
     StrikethroughShorthand {
@@ -70,7 +70,7 @@ pub enum Span {
         kind: String,
         spans: Vec<Span>,
     },
-    #[serde(rename = "text-span")]
+    #[serde(rename = "text")]
     Text { content: String, kind: String },
     // #[serde(rename = "strong-span")]
     // StrongShorthand(StrongShorthandV42),

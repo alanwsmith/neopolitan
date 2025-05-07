@@ -6,9 +6,9 @@ Escaped 4
 ~~~~~~
 
 {
-  "category": "escaped-span",
+  "category": "escaped-character",
   "content": "4",
-  "kind": "escaped-span"
+  "kind": "escaped-character"
 }
 
 ~~~~~~
