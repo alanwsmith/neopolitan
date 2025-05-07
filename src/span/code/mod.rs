@@ -30,6 +30,7 @@ pub fn code_span(source: &str) -> IResult<&str, Span> {
         Span::Code {
             attrs: metadata.attrs,
             flags: metadata.flags,
+            kind: "code-span".to_string(),
             spans,
         },
     ))
@@ -71,7 +72,8 @@ mod test {
 ~~~~~~
 
 { 
-    "category": "code", 
+    "category": "code-span", 
+    "kind": "code-span", 
     "attrs": {}, 
     "flags": [], 
     "spans": [
@@ -90,7 +92,8 @@ mod test {
 ~~~~~~
 
 { 
-    "category": "code", 
+    "category": "code-span", 
+    "kind": "code-span", 
     "attrs": {}, 
     "flags": ["bravo"], 
     "spans": [
@@ -109,7 +112,8 @@ mod test {
 ~~~~~~
 
 { 
-    "category": "code", 
+    "category": "code-span", 
+    "kind": "code-span", 
     "attrs": {
         "bravo": [
             {
@@ -150,6 +154,7 @@ mod test {
         let left = Span::Code {
             attrs: BTreeMap::new(),
             flags: vec!["bravo".to_string()],
+            kind: "code-span".to_string(),
             spans: vec![Span::Text {
                 content: "alfa".to_string(),
                 kind: "text-span".to_string(),
@@ -176,6 +181,7 @@ mod test {
         let left = Span::Code {
             attrs,
             flags,
+            kind: "code-span".to_string(),
             spans: vec![Span::Text {
                 content: "alfa".to_string(),
                 kind: "text-span".to_string(),
@@ -202,6 +208,7 @@ mod test {
         let left = Span::Code {
             attrs,
             flags,
+            kind: "code-span".to_string(),
             spans: vec![Span::Text {
                 content: "alfa".to_string(),
                 kind: "text-span".to_string(),

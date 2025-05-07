@@ -20,10 +20,11 @@ pub enum Span {
     // TODO: Move these so the values are directly
     // in the enum and not nested structs
     //
-    #[serde(rename = "code")]
+    #[serde(rename = "code-span")]
     Code {
         attrs: BTreeMap<String, Vec<Span>>,
         flags: Vec<String>,
+        kind: String,
         spans: Vec<Span>,
     },
     #[serde(rename = "empty-line-or-lines")]
