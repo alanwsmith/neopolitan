@@ -13,28 +13,28 @@ Escaped shorthand > is okay
   "kind": "list-item-spans",
   "spans": [
     {
-      "category": "text-span",
+      "category": "text",
       "content": "alfa ",
-      "kind": "text-span"
+      "kind": "text"
     }, 
     { 
-      "category": "escaped-span", 
+      "category": "escaped-character", 
       "content": ">",
-      "kind": "escaped-span"
+      "kind": "escaped-character"
     },
     {
-      "category": "text-span",
+      "category": "text",
       "content": "bravo charlie",
-      "kind": "text-span"
+      "kind": "text"
     }, 
     {
-      "category": "space-span",
-      "kind": "space-span"
+      "category": "space",
+      "kind": "space"
     },
     {
-      "category": "text-span",
+      "category": "text",
       "content": "delta echo foxtrot",
-      "kind": "text-span"
+      "kind": "text"
     }
   ]
 }

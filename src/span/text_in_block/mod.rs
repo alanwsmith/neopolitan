@@ -28,7 +28,7 @@ pub fn text_in_block<'a>(source: &'a str) -> IResult<&'a str, Span> {
         source,
         Span::Text {
             content: content.join(""),
-            kind: "text-span".to_string()
+            kind: "text".to_string()
         },
     ))
 }

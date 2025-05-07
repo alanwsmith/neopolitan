@@ -135,7 +135,7 @@ mod test {
             "delimeter".to_string(),
             vec![Span::Text {
                 content: "|".to_string(),
-kind: "text-span".to_string()
+kind: "text".to_string()
             }],
         );
         let left = Block::Csv {

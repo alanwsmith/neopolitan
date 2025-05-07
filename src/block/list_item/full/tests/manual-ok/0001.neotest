@@ -12,9 +12,9 @@ Single word list item at end of file
       "kind": "list-item-spans",
       "spans": [
         {
-          "category": "text-span",
+          "category": "text",
           "content": "alfa",
-          "kind": "text-span"
+          "kind": "text"
         }
       ]
     }

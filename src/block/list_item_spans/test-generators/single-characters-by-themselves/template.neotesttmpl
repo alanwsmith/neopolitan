@@ -12,9 +12,9 @@ Single Character by itself: ${TOKEN}
   "kind": "list-item-spans",
   "spans": [
     { 
-      "category": "text-span", 
+      "category": "text", 
       "content": "${TOKEN}",
-      "kind": "text-span"
+      "kind": "text"
     }
   ]
 }

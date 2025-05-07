@@ -30,7 +30,7 @@ pub fn code_span(source: &str) -> IResult<&str, Span> {
         Span::Code {
             attrs: metadata.attrs,
             flags: metadata.flags,
-            kind: "code-span".to_string(),
+            kind: "code-shorthand".to_string(),
             spans,
         },
     ))
@@ -52,7 +52,7 @@ pub fn code_span_text(source: &str) -> IResult<&str, Span> {
         source,
         Span::Text {
             content: parts.join("").trim().to_string(),
-            kind: "text-span".to_string(),
+            kind: "text".to_string(),
         },
     ))
 }
@@ -72,15 +72,15 @@ mod test {
 ~~~~~~
 
 { 
-    "category": "code-span", 
-    "kind": "code-span", 
+    "category": "code-shorthand", 
+    "kind": "code-shorthand", 
     "attrs": {}, 
     "flags": [], 
     "spans": [
         {
-            "category": "text-span", 
+            "category": "text", 
             "content": "alfa",
-            "kind": "text-span"
+            "kind": "text"
         }
     ]
 }
@@ -92,15 +92,15 @@ mod test {
 ~~~~~~
 
 { 
-    "category": "code-span", 
-    "kind": "code-span", 
+    "category": "code-shorthand", 
+    "kind": "code-shorthand", 
     "attrs": {}, 
     "flags": ["bravo"], 
     "spans": [
         {
-            "category": "text-span", 
+            "category": "text", 
             "content": "alfa",
-            "kind": "text-span"
+            "kind": "text"
         }
     ]
 }
@@ -112,23 +112,23 @@ mod test {
 ~~~~~~
 
 { 
-    "category": "code-span", 
-    "kind": "code-span", 
+    "category": "code-shorthand", 
+    "kind": "code-shorthand", 
     "attrs": {
         "bravo": [
             {
-                "category": "text-span", 
+                "category": "text", 
                 "content": "charlie",
-                "kind": "text-span"
+                "kind": "text"
             }
         ]
     }, 
     "flags": ["delta"], 
     "spans": [
         {
-            "category": "text-span", 
+            "category": "text", 
             "content": "alfa",
-            "kind": "text-span"
+            "kind": "text"
         }
     ]
 }
@@ -154,10 +154,10 @@ mod test {
         let left = Span::Code {
             attrs: BTreeMap::new(),
             flags: vec!["bravo".to_string()],
-            kind: "code-span".to_string(),
+            kind: "code-shorthand".to_string(),
             spans: vec![Span::Text {
                 content: "alfa".to_string(),
-                kind: "text-span".to_string(),
+                kind: "text".to_string(),
             }],
         };
         let remainder = "";
@@ -174,17 +174,17 @@ mod test {
             "bravo".to_string(),
             vec![Span::Text {
                 content: "charlie ".to_string(),
-                kind: "text-span".to_string(),
+                kind: "text".to_string(),
             }],
         );
         let flags = vec!["delta".to_string()];
         let left = Span::Code {
             attrs,
             flags,
-            kind: "code-span".to_string(),
+            kind: "code-shorthand".to_string(),
             spans: vec![Span::Text {
                 content: "alfa".to_string(),
-                kind: "text-span".to_string(),
+                kind: "text".to_string(),
             }],
         };
         let remainder = " ping";
@@ -201,17 +201,17 @@ mod test {
             "bravo".to_string(),
             vec![Span::Text {
                 content: "charlie echo ".to_string(),
-                kind: "text-span".to_string(),
+                kind: "text".to_string(),
             }],
         );
         let flags = vec!["delta".to_string()];
         let left = Span::Code {
             attrs,
             flags,
-            kind: "code-span".to_string(),
+            kind: "code-shorthand".to_string(),
             spans: vec![Span::Text {
                 content: "alfa".to_string(),
-                kind: "text-span".to_string(),
+                kind: "text".to_string(),
             }],
         };
         let remainder = " ping";

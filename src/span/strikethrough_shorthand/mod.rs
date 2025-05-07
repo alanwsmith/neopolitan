@@ -32,7 +32,7 @@ pub fn strikethrough_shorthand_text(source: &str) -> IResult<&str, Span> {
         source,
         Span::Text {
             content: content.to_string(),
-            kind: "text-span".to_string(),
+            kind: "text".to_string(),
         },
     ))
 }

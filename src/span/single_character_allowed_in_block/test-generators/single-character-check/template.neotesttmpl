@@ -6,9 +6,9 @@ Single Character ${TOKEN}
 ~~~~~~
 
 {
-  "category": "text-span",
+  "category": "text",
   "content": "${TOKEN}",
-  "kind": "text-span"
+  "kind": "text"
 }
 
 ~~~~~~

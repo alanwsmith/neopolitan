@@ -167,7 +167,7 @@ mod test {
                     kind: "text-block".to_string(),
                     spans: vec![Span::Text {
                         content: "sierra kilo".to_string(),
-kind: "text-span".to_string()
+kind: "text".to_string()
                     }],
                 }],
                 flags: vec![],

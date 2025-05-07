@@ -82,7 +82,7 @@ text with some lines"#;
             kind: "text-block".to_string(),
             spans: vec![Span::Text {
                 content: "this is some text with some lines".to_string(),
-kind: "text-span".to_string()
+kind: "text".to_string()
             }],
         };
         let right = text_block(source, &config, &parent).unwrap().1;

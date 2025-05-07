@@ -38,7 +38,7 @@ pub fn text_span_in_span_attr(source: &str) -> IResult<&str, Span> {
         source,
         Span::Text {
             content: results.join("").to_string(),
-            kind: "text-span".to_string(),
+            kind: "text".to_string(),
         },
     ))
 }
@@ -52,17 +52,17 @@ mod test {
 
                 
     #[rstest]
-    #[case("alfa", Span::Text{ content: "alfa".to_string(), kind: "text-span".to_string()}, "")]
-    #[case("alfa bravo", Span::Text{ content: "alfa bravo".to_string(), kind: "text-span".to_string()}, "")]
-    #[case("alfa \"bravo\"", Span::Text{ content: "alfa \"bravo\"".to_string(), kind: "text-span".to_string()}, "")]
-    #[case("alfa` bravo", Span::Text{ content: "alfa` bravo".to_string(), kind: "text-span".to_string()}, "")]
-    #[case("alfa~ bravo", Span::Text{ content: "alfa~ bravo".to_string(), kind: "text-span".to_string()}, "")]
-    #[case("alfa\nbravo", Span::Text{ content: "alfa bravo".to_string(), kind: "text-span".to_string()}, "")]
-    #[case("alfa \nbravo", Span::Text{ content: "alfa bravo".to_string(), kind: "text-span".to_string()}, "")]
-    #[case("https://www.example.com/", Span::Text{ content: "https://www.example.com/".to_string(), kind: "text-span".to_string()}, "")]
-    #[case("alfa bravo -\n- charlie delta", Span::Text{ content: "alfa bravo - - charlie delta".to_string(), kind: "text-span".to_string()}, "")]
-    #[case("alfa^^1^^", Span::Text{ content: "alfa".to_string(), kind: "text-span".to_string()}, "^^1^^")]
-    #[case("alfa\\<<", Span::Text{ content: "alfa".to_string(), kind: "text-span".to_string()}, "\\<<")]
+    #[case("alfa", Span::Text{ content: "alfa".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa bravo", Span::Text{ content: "alfa bravo".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa \"bravo\"", Span::Text{ content: "alfa \"bravo\"".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa` bravo", Span::Text{ content: "alfa` bravo".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa~ bravo", Span::Text{ content: "alfa~ bravo".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa\nbravo", Span::Text{ content: "alfa bravo".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa \nbravo", Span::Text{ content: "alfa bravo".to_string(), kind: "text".to_string()}, "")]
+    #[case("https://www.example.com/", Span::Text{ content: "https://www.example.com/".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa bravo -\n- charlie delta", Span::Text{ content: "alfa bravo - - charlie delta".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa^^1^^", Span::Text{ content: "alfa".to_string(), kind: "text".to_string()}, "^^1^^")]
+    #[case("alfa\\<<", Span::Text{ content: "alfa".to_string(), kind: "text".to_string()}, "\\<<")]
     // TODO: Make escaped version of this
     // #[case("alfa|bravo", Span::Text{ content: "alfa|bravo".to_string()}, "")]
     fn text_span_in_span_attr_valid_tests(
@@ -80,7 +80,7 @@ mod test {
         let source = "alfa    bravo \n   ";
         let left = Span::Text {
             content: "alfa bravo ".to_string(),
-            kind: "text-span".to_string()
+            kind: "text".to_string()
         };
         let remainder = "";
         let right = text_span_in_span_attr(source).unwrap();
@@ -93,7 +93,7 @@ mod test {
         let source = "alfa  \n  bravo";
         let left = Span::Text {
             content: "alfa bravo".to_string(),
-            kind: "text-span".to_string()
+            kind: "text".to_string()
         };
         let remainder = "";
         let right = text_span_in_span_attr(source).unwrap();
@@ -120,7 +120,7 @@ mod test {
         let source = "alfa <<span|ping>>";
         let left = Span::Text {
             content: "alfa ".to_string(),
-            kind: "text-span".to_string()
+            kind: "text".to_string()
         };
         let remainder = "<<span|ping>>";
         let right = text_span_in_span_attr(source).unwrap();

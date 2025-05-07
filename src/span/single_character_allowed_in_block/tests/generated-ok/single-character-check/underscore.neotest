@@ -6,9 +6,9 @@ Single Character _
 ~~~~~~
 
 {
-  "category": "text-span",
+  "category": "text",
   "content": "_",
-  "kind": "text-span"
+  "kind": "text"
 }
 
 ~~~~~~

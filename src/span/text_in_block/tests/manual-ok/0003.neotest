@@ -4,9 +4,9 @@ Collapse spaces
 
 ~~~~~~
 {
-  "category": "text-span",
+  "category": "text",
   "content": "alfa bravo charlie",
-  "kind": "text-span"
+  "kind": "text"
 }
 ~~~~~~
 {

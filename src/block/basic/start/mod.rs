@@ -69,7 +69,7 @@ delta zulu alfa
                 kind: "text-block".to_string(),
                 spans: vec![Span::Text {
                     content: "delta zulu alfa".to_string(),
-kind: "text-span".to_string()
+kind: "text".to_string()
                 }],
             }],
             end_block: Some(Box::new(Block::End {
@@ -98,7 +98,7 @@ kind: "text-span".to_string()
                     kind: "text-block".to_string(),
                     spans: vec![Span::Text {
                         content: "whiskey tango bravo".to_string(),
-kind: "text-span".to_string()
+kind: "text".to_string()
                     }],
                 }],
                 end_block: None,
@@ -132,7 +132,7 @@ kind: "text-span".to_string()
                     kind: "text-block".to_string(),
                     spans: vec![Span::Text {
                         content: "whiskey tango bravo".to_string(),
-kind: "text-span".to_string()
+kind: "text".to_string()
                     }],
                 }],
                 end_block: None,

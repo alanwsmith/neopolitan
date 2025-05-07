@@ -20,7 +20,6 @@ file_list = [
 for file in file_list:
     os.remove(file)
 
-
 with open(data_file, "r") as _char_file:
     lines = _char_file.read().splitlines()
     for line in lines:

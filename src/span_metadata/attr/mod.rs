@@ -227,12 +227,12 @@ mod test {
     }
 
     #[rstest]
-    #[case("|alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text-span".to_string()}]} , "``")]
-    #[case("| alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text-span".to_string()}]} , "``")]
-    #[case("| \n alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text-span".to_string()}]} , "``")]
-    #[case("|alfa:\nbravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text-span".to_string()}]} , "``")]
-    #[case("|alfa:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text-span".to_string()}]} , "``")]
-    #[case("|alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text-span".to_string()}]} , "``")]
+    #[case("|alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text".to_string()}]} , "``")]
+    #[case("| alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text".to_string()}]} , "``")]
+    #[case("| \n alfa: bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text".to_string()}]} , "``")]
+    #[case("|alfa:\nbravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text".to_string()}]} , "``")]
+    #[case("|alfa:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text".to_string()}]} , "``")]
+    #[case("|alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>:\n bravo``", "`", RawSpanMetadata::Attr{ key: "alfa!!@@##$$%%^^&&**(())[[]]{{}}<<>>".to_string(), spans: vec![Span::Text{content: "bravo".to_string(), kind: "text".to_string()}]} , "``")]
     fn span_attr_valid_tests(
         #[case] source: &str,
         #[case] character: &str,
@@ -252,7 +252,7 @@ mod test {
             key: "delta".to_string(),
             spans: vec![Span::Text {
                 content: "sierra yankee ".to_string(),
-                kind: "text-span".to_string(),
+                kind: "text".to_string(),
             }],
         };
         let remainder = "`` ping";
@@ -270,10 +270,10 @@ mod test {
             spans: vec![Span::Code {
                 attrs: BTreeMap::new(),
                 flags: vec![],
-                kind: "code-span".to_string(),
+                kind: "code-shorthand".to_string(),
                 spans: vec![Span::Text {
                     content: "bravo".to_string(),
-                    kind: "text-span".to_string(),
+                    kind: "text".to_string(),
                 }],
             }],
         };

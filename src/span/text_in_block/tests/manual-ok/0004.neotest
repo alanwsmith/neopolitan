@@ -5,9 +5,9 @@ Stop at newline
 
 ~~~~~~
 {
-  "category": "text-span",
+  "category": "text",
   "content": "alfa bravo",
-  "kind": "text-span"
+  "kind": "text"
 }
 ~~~~~~
 {

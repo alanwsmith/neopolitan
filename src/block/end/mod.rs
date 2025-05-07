@@ -59,7 +59,7 @@ bravo foxtrot tango"#;
                 kind: "text-block".to_string(),
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),
-kind: "text-span".to_string()
+kind: "text".to_string()
                 }],
             }],
             flags: vec![],
@@ -83,7 +83,7 @@ bravo foxtrot tango"#;
                 kind: "text-block".to_string(),
                 spans: vec![Span::Text {
                     content: "bravo foxtrot tango".to_string(),
-kind: "text-span".to_string()
+kind: "text".to_string()
                 }],
             }],
             flags: vec![],

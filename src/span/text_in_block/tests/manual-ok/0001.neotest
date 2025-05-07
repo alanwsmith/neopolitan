@@ -4,9 +4,9 @@ Single word
 
 ~~~~~~
 {
-  "category": "text-span",
+  "category": "text",
   "content": "alfa",
-  "kind": "text-span"
+  "kind": "text"
 }
 ~~~~~~
 {

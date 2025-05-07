@@ -95,7 +95,7 @@ mod test {
             key: "alfa".to_string(),
             spans: vec![Span::Text {
                 content: "bravo".to_string(),
-kind: "text-span".to_string()
+kind: "text".to_string()
             }],
         };
         let right = raw_block_attr(source, config, parent).unwrap().1;
