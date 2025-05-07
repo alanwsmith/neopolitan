@@ -44,7 +44,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 
   <main class="wrapper-medium flow"><hgroup class="title-group">
       <h1  class="title"
-      >Code Samples</h1></hgroup><p><code>code sample</code></p><p><code>println!("rust code sample");|rust</code></p><p><code>code sample with class|class: color-alt-4</code></p></main>
+      >Code Samples</h1></hgroup><p><code>code sample</code></p><p><code data-lang="rust"> <span class="source rust"><span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>rust code sample<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span></span></code></p><p><code class="color-alt-4">code sample with class</code></p></main>
   <footer><div>
         Created: 2025-05-03T20:01:03-04:00</div>from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
@@ -105,12 +105,14 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
               {
                 "attrs": {},
                 "category": "code-shorthand",
-                "flags": [],
+                "flags": [
+                  "rust"
+                ],
                 "kind": "code-shorthand",
                 "spans": [
                   {
                     "category": "text",
-                    "content": "println!(\"rust code sample\");|rust",
+                    "content": "println!(\"rust code sample\");",
                     "kind": "text"
                   }
                 ]
@@ -122,14 +124,22 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "kind": "text-block",
             "spans": [
               {
-                "attrs": {},
+                "attrs": {
+                  "class": [
+                    {
+                      "category": "text",
+                      "content": "color-alt-4",
+                      "kind": "text"
+                    }
+                  ]
+                },
                 "category": "code-shorthand",
                 "flags": [],
                 "kind": "code-shorthand",
                 "spans": [
                   {
                     "category": "text",
-                    "content": "code sample with class|class: color-alt-4",
+                    "content": "code sample with class",
                     "kind": "text"
                   }
                 ]

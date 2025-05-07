@@ -1,0 +1,32 @@
+`` alfa ``
+######txt######ok######
+
+Trim space around content
+
+######
+
+{
+  "attrs": {},
+  "category": "code-shorthand",
+  "flags": [],
+  "kind": "code-shorthand",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa",
+      "kind": "text"
+    }
+  ]
+}
+
+######
+
+{
+  "remainder": ""
+}
+
+
+
+
+
+

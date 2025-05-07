@@ -1,0 +1,38 @@
+``alfa|bravo: charlie``
+######txt######ok######
+
+Single attr
+
+######
+
+{
+  "attrs": {"bravo": [
+    {
+      "category": "text",
+      "content": "charlie",
+      "kind": "text"
+    }
+  ]},
+  "category": "code-shorthand",
+  "flags": [],
+  "kind": "code-shorthand",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa",
+      "kind": "text"
+    }
+  ]
+}
+
+######
+
+{
+  "remainder": ""
+}
+
+
+
+
+
+

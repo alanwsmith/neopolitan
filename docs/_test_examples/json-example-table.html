@@ -46,7 +46,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
       <h1  class="title"
       >JSON Table Example</h1></hgroup><h2
       
->From JSON To Table</h2><p>This is a basic example showing how JSON can be used to create tables. It can be used directly or as a starting point to make tables more specific to your needs:</p><p>NOTE: the format for the JSON is still under development and may change.</p><p>NOTE: This is mainly an example to show JSON usage. If you're looking for a table in lots of cases just assembling the HTML and dropping it in a <code>-- html|neo</code> block might make more sense.</p><p>NOTE: You could also make a much simpler table that is just arrays of arrays for the data</p><h2>The Example Table</h2><table class="border-color-alt-2-40"><thead><tr><th
+>From JSON To Table</h2><p>This is a basic example showing how JSON can be used to create tables. It can be used directly or as a starting point to make tables more specific to your needs:</p><p>NOTE: the format for the JSON is still under development and may change.</p><p>NOTE: This is mainly an example to show JSON usage. If you're looking for a table in lots of cases just assembling the HTML and dropping it in a <code data-lang="neo"> <span class="source rust"><span class="keyword operator rust">-</span><span class="keyword operator rust">-</span> html</span></code> block might make more sense.</p><p>NOTE: You could also make a much simpler table that is just arrays of arrays for the data</p><h2>The Example Table</h2><table class="border-color-alt-2-40"><thead><tr><th
                 class="vertical-align-top
                 padding-inline-large
                 border-bottom-color-alt-3"
@@ -215,12 +215,14 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
               {
                 "attrs": {},
                 "category": "code-shorthand",
-                "flags": [],
+                "flags": [
+                  "neo"
+                ],
                 "kind": "code-shorthand",
                 "spans": [
                   {
                     "category": "text",
-                    "content": "-- html|neo",
+                    "content": "-- html",
                     "kind": "text"
                   }
                 ]
