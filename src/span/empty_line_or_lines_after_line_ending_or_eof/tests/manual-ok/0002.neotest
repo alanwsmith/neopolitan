@@ -1,17 +1,17 @@
 {
   "content": "    \n\nbravo"
-}~~~~~~json~~~~~~ok~~~~~~
+}######json######ok######
 
 Spaces before first line ending
 
-~~~~~~
+######
 
 {
   "category": "empty-line-or-lines", 
   "kind": "empty-line-or-lines"
 }
 
-~~~~~~
+######
 
 {
   "remainder": "bravo"

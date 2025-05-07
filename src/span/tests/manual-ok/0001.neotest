@@ -1,8 +1,8 @@
-~~~~~~txt~~~~~~ok~~~~~~
+######txt######ok######
 
 Escaped ${TOKEN}
 
-~~~~~~
+######
 
 {
   "category": "escaped-character",
@@ -10,7 +10,7 @@ Escaped ${TOKEN}
   "kind": "escaped-character"
 }
 
-~~~~~~
+######
 
 {
   "remainder": "bravo"

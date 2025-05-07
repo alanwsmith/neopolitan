@@ -1,9 +1,9 @@
 \8bravo
-~~~~~~txt~~~~~~ok~~~~~~
+######txt######ok######
 
 Escaped 8
 
-~~~~~~
+######
 
 {
   "category": "escaped-character",
@@ -11,7 +11,7 @@ Escaped 8
   "kind": "escaped-character"
 }
 
-~~~~~~
+######
 
 {
   "remainder": "bravo"

@@ -1,11 +1,11 @@
 {
   "content": "~~alfa~~"
-}~~~~~~json~~~~~~ok~~~~~~
+}######json######ok######
 
 Empty line directly after line ending
 with no spaces
 
-~~~~~~
+######
 
 {
   "attrs": {},
@@ -21,7 +21,7 @@ with no spaces
   ]
 }
 
-~~~~~~
+######
 
 {
   "remainder": ""

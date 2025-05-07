@@ -1,9 +1,9 @@
 ${TOKEN}bravo
-~~~~~~txt~~~~~~ok~~~~~~
+######txt######ok######
 
 Single Character ${TOKEN}
 
-~~~~~~
+######
 
 {
   "category": "text",
@@ -11,7 +11,7 @@ Single Character ${TOKEN}
   "kind": "text"
 }
 
-~~~~~~
+######
 
 {
   "remainder": "bravo"

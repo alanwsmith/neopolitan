@@ -2,7 +2,7 @@
   "content": " \nalfa"
 }
 
-~~~~~~json~~~~~~ok~~~~~~
+######json######ok######
 
 Spaces before line_ending
 
@@ -13,12 +13,12 @@ handling line_endings before
 the end of a file. 
 
 
-~~~~~~
+######
 {
   "category": "space",
   "kind": "space"
 }
-~~~~~~
+######
 {
   "remainder": "alfa"
 }

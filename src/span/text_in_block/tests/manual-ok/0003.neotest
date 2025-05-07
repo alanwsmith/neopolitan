@@ -1,14 +1,14 @@
-alfa   bravo    charlie~~~~~~txt~~~~~~ok~~~~~~
+alfa   bravo    charlie######txt######ok######
 
 Collapse spaces
 
-~~~~~~
+######
 {
   "category": "text",
   "content": "alfa bravo charlie",
   "kind": "text"
 }
-~~~~~~
+######
 {
   "remainder": ""
 }

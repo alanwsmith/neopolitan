@@ -1,7 +1,7 @@
 {
   "content": "\nalfa"
 }
-~~~~~~json~~~~~~ok~~~~~~
+######json######ok######
 
 Single newline
 
@@ -12,12 +12,12 @@ handling line_endings before
 the end of a file. 
 
 
-~~~~~~
+######
 {
   "category": "space",
   "kind": "space"
 }
-~~~~~~
+######
 {
   "remainder": "alfa"
 }

@@ -84,7 +84,7 @@ pub fn get_file_list(
 pub fn get_test_data(source_path: &PathBuf) -> TestCase {
     let content = fs::read_to_string(source_path).unwrap();
     let parts: Vec<_> = content
-        .split("~~~~~~")
+        .split("######")
         .filter_map(|part| Some(part.trim_end().to_string()))
         .collect();
     let source = match parts[1].as_str() {

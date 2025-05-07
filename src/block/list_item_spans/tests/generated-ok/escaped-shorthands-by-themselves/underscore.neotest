@@ -2,11 +2,11 @@ alfa \_bravo charlie
 delta echo foxtrot
 
 golf hotel india
-~~~~~~txt~~~~~~ok~~~~~~
+######txt######ok######
 
 Escaped shorthand _ is okay
 
-~~~~~~
+######
 
 {
   "category": "list-item-spans",
@@ -39,7 +39,7 @@ Escaped shorthand _ is okay
   ]
 }
 
-~~~~~~
+######
 
 {
   "remainder": "golf hotel india"

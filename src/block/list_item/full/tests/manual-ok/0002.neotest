@@ -1,11 +1,11 @@
 - alfa bravo charlie
 
-- delta echo~~~~~~txt~~~~~~ok~~~~~~
+- delta echo######txt######ok######
 
 List item with one line with 
 another item behind it.
 
-~~~~~~
+######
 
 {
   "category": "list-item",
@@ -25,7 +25,7 @@ another item behind it.
   "kind": "list-item"
 }
 
-~~~~~~
+######
 
 {
   "remainder": "- delta echo"

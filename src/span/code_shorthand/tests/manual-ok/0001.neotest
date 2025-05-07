@@ -1,17 +1,19 @@
-alfa bravo charlie
+``code``
 ######txt######ok######
 
-Basic Check
+Escaped \
 
 ######
 
 {
-  "category": "list-item-spans",
-  "kind": "list-item-spans",
+  "attrs": {},
+  "category": "code-shorthand",
+  "flags": [],
+  "kind": "code-shorthand",
   "spans": [
     {
       "category": "text",
-      "content": "alfa bravo charlie",
+      "content": "code",
       "kind": "text"
     }
   ]
@@ -22,3 +24,7 @@ Basic Check
 {
   "remainder": ""
 }
+
+
+
+

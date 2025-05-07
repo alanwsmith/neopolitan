@@ -2,11 +2,11 @@ alfa bravo charlie
 delta echo foxtrot
 
 - golf hotel india
-~~~~~~txt~~~~~~ok~~~~~~
+######txt######ok######
 
 Multi line stops before new list item
 
-~~~~~~
+######
 
 {
   "category": "list-item-spans",
@@ -29,7 +29,7 @@ Multi line stops before new list item
   ]
 }
 
-~~~~~~
+######
 
 {
   "remainder": "- golf hotel india"

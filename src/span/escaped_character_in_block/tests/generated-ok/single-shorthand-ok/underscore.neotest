@@ -1,9 +1,9 @@
 \_bravo
-~~~~~~txt~~~~~~ok~~~~~~
+######txt######ok######
 
 Escaped _
 
-~~~~~~
+######
 
 {
   "category": "escaped-character",
@@ -11,7 +11,7 @@ Escaped _
   "kind": "escaped-character"
 }
 
-~~~~~~
+######
 
 {
   "remainder": "bravo"

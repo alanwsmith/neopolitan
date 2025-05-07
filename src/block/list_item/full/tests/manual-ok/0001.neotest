@@ -1,8 +1,8 @@
-- alfa~~~~~~text~~~~~~ok~~~~~~
+- alfa######text######ok######
 
 Single word list item at end of file
 
-~~~~~~
+######
 
 {
   "category": "list-item",
@@ -22,7 +22,7 @@ Single word list item at end of file
   "kind": "list-item"
 }
 
-~~~~~~
+######
 
 {
   "remainder": ""

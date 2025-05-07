@@ -1,14 +1,14 @@
-alfa bravo charlie~~~~~~txt~~~~~~ok~~~~~~
+alfa bravo charlie######txt######ok######
 
 Multiple words and spaces get collected 
 
-~~~~~~
+######
 {
   "category": "text",
   "content": "alfa bravo charlie",
   "kind": "text"
 }
-~~~~~~
+######
 {
   "remainder": ""
 }

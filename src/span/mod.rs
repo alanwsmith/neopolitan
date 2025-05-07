@@ -1,4 +1,4 @@
-pub mod code;
+pub mod code_shorthand;
 pub mod empty_line_or_lines_after_line_ending_or_eof;
 pub mod escaped;
 pub mod escaped_character_in_block;

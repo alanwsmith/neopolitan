@@ -1,10 +1,10 @@
 alfa bravo charlie
 delta echo foxtrot
-~~~~~~txt~~~~~~ok~~~~~~
+######txt######ok######
 
 Basic Check
 
-~~~~~~
+######
 
 {
   "category": "list-item-spans",
@@ -27,7 +27,7 @@ Basic Check
   ]
 }
 
-~~~~~~
+######
 
 {
   "remainder": ""

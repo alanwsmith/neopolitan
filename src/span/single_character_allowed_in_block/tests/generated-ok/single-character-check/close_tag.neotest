@@ -1,9 +1,9 @@
 >bravo
-~~~~~~txt~~~~~~ok~~~~~~
+######txt######ok######
 
 Single Character >
 
-~~~~~~
+######
 
 {
   "category": "text",
@@ -11,7 +11,7 @@ Single Character >
   "kind": "text"
 }
 
-~~~~~~
+######
 
 {
   "remainder": "bravo"

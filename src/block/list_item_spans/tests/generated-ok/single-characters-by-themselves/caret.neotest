@@ -1,11 +1,11 @@
 {
   "content": "^"
 }
-~~~~~~json~~~~~~ok~~~~~~
+######json######ok######
 
 Single Character by itself: ^ 
 
-~~~~~~
+######
 
 {
   "category": "list-item-spans",
@@ -19,7 +19,7 @@ Single Character by itself: ^
   ]
 }
 
-~~~~~~
+######
 
 {
   "remainder": ""
