@@ -2,6 +2,7 @@
 
 import os
 
+from html import escape
 from pathlib import Path
 
 file_list = []
@@ -24,9 +25,56 @@ for path in file_list:
         category = path_parts[4]
         kind = path_parts[5]
         del path_parts[:6]
-        key = "-".join(path_parts)
+        key = ".".join(path_parts)
         if kind not in cases[category]:
             cases[category][kind] = []
+        with open(path) as _case:
+            case = _case.read()
+            case_parts = case.split("######")
+            if case_parts[2] == "ok":
+                case_id = escape(key.replace("-", "-").strip())
+                description = escape(case_parts[3].replace("-", "-").strip())
+                given = escape(case_parts[0].replace("-", "-").strip())
+                expected = escape(case_parts[4].replace("-", "-").strip())
+                remainder = escape(case_parts[5].replace("-", "-").strip())
+                payload = f"""
+<div class="case">
+    <h3 class="case_id">{case_id}</h3>
+    <!--
+    <div class="description">{description}</div>
+    -->
+    <pre class="given">{given}</pre>
+    <pre class="expected">{escape(case_parts[4].strip())}</pre>
+    <pre class="remainder">{escape(case_parts[5].strip())}</pre>
+</div>
+"""
+                cases[category][kind].append(payload)
+                #print(case)
+                #print(payload)
+
+
+
+
+with open("../../../docs-content/_test-report.neo", "w") as _out:
+    _out.write("-- title\n\nTest Report\n\n-- html/\n\n")
+    _out.write('<div class="cases">')
+    for cat in cases:
+        _out.write('<div class="category"-cases>')
+        for kind in cases[cat]:
+            _out.write(f"""<div clsss="case-kind"><h2>{cat} - {kind}</h2>""")
+            for payload in cases[cat][kind]:
+                _out.write(payload)
+            _out.write('</div>')
+        _out.write('</div>')
+    _out.write('</div>')
+
+    _out.write("-- title\n\nTest Report\n\n-- /html\n\n")
+
+
+
+
+        #cases[category][kind].append(key)
+
 
 
 print(cases)

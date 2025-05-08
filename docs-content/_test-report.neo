@@ -1,0 +1,3197 @@
+-- title
+
+Test Report
+
+-- html/
+
+<div class="cases"><div class="category"-cases><div clsss="case-kind"><h2>block - list</h2>
+<div class="case">
+    <h3 class="case_id">full.tests.manual-ok.0001.neotest</h3>
+    <!--
+    <div class="description">List item with one line with 
+another item behind it.</div>
+    -->
+    <pre class="given">-- list
+
+- alfa bravo charlie
+
+- delta echo</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;list&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;category&quot;: &quot;list-item&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;category&quot;: &quot;list-item-spans&quot;,
+          &quot;kind&quot;: &quot;list-item-spans&quot;,
+          &quot;spans&quot;: [
+            {
+              &quot;category&quot;: &quot;text&quot;,
+              &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+              &quot;kind&quot;: &quot;text&quot;
+            }
+          ]
+        }
+      ],
+      &quot;kind&quot;: &quot;list-item&quot;
+    },
+    {
+      &quot;category&quot;: &quot;list-item&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;category&quot;: &quot;list-item-spans&quot;,
+          &quot;kind&quot;: &quot;list-item-spans&quot;,
+          &quot;spans&quot;: [
+            {
+              &quot;category&quot;: &quot;text&quot;,
+              &quot;content&quot;: &quot;delta echo&quot;,
+              &quot;kind&quot;: &quot;text&quot;
+            }
+          ]
+        }
+      ],
+      &quot;kind&quot;: &quot;list-item&quot;
+    }
+  ],
+
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;list&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+</div><div clsss="case-kind"><h2>block - list_item</h2>
+<div class="case">
+    <h3 class="case_id">full.tests.manual-ok.0001.neotest</h3>
+    <!--
+    <div class="description">Single word list item at end of file</div>
+    -->
+    <pre class="given">- alfa</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;category&quot;: &quot;list-item-spans&quot;,
+      &quot;kind&quot;: &quot;list-item-spans&quot;,
+      &quot;spans&quot;: [
+        {
+          &quot;category&quot;: &quot;text&quot;,
+          &quot;content&quot;: &quot;alfa&quot;,
+          &quot;kind&quot;: &quot;text&quot;
+        }
+      ]
+    }
+  ],
+  &quot;kind&quot;: &quot;list-item&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">full.tests.manual-ok.0002.neotest</h3>
+    <!--
+    <div class="description">List item with one line with 
+another item behind it.</div>
+    -->
+    <pre class="given">- alfa bravo charlie
+
+- delta echo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;category&quot;: &quot;list-item-spans&quot;,
+      &quot;kind&quot;: &quot;list-item-spans&quot;,
+      &quot;spans&quot;: [
+        {
+          &quot;category&quot;: &quot;text&quot;,
+          &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+          &quot;kind&quot;: &quot;text&quot;
+        }
+      ]
+    }
+  ],
+  &quot;kind&quot;: &quot;list-item&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;- delta echo&quot;
+}</pre>
+</div>
+</div><div clsss="case-kind"><h2>block - list_item_spans</h2>
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.ampersand.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand @ is okay</div>
+    -->
+    <pre class="given">alfa \@bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;@&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.astrisk.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand * is okay</div>
+    -->
+    <pre class="given">alfa \*bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;*&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.backtick.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand ` is okay</div>
+    -->
+    <pre class="given">alfa \`bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;`&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.caret.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand ^ is okay</div>
+    -->
+    <pre class="given">alfa \^bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;^&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.close_curly.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand } is okay</div>
+    -->
+    <pre class="given">alfa \}bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;}&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.close_paren.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand ) is okay</div>
+    -->
+    <pre class="given">alfa \)bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;)&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.close_square.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand ] is okay</div>
+    -->
+    <pre class="given">alfa \]bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;]&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.close_tag.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand &gt; is okay</div>
+    -->
+    <pre class="given">alfa \&gt;bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;&gt;&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.dash.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand - is okay</div>
+    -->
+    <pre class="given">alfa \-bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;-&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.hashtag.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand # is okay</div>
+    -->
+    <pre class="given">alfa \#bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;#&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.number_0.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand 0 is okay</div>
+    -->
+    <pre class="given">alfa \0bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;0&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.number_1.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand 1 is okay</div>
+    -->
+    <pre class="given">alfa \1bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;1&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.number_2.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand 2 is okay</div>
+    -->
+    <pre class="given">alfa \2bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;2&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.number_3.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand 3 is okay</div>
+    -->
+    <pre class="given">alfa \3bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;3&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.number_4.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand 4 is okay</div>
+    -->
+    <pre class="given">alfa \4bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;4&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.number_5.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand 5 is okay</div>
+    -->
+    <pre class="given">alfa \5bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;5&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.number_6.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand 6 is okay</div>
+    -->
+    <pre class="given">alfa \6bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;6&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.number_7.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand 7 is okay</div>
+    -->
+    <pre class="given">alfa \7bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;7&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.number_8.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand 8 is okay</div>
+    -->
+    <pre class="given">alfa \8bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;8&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.number_9.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand 9 is okay</div>
+    -->
+    <pre class="given">alfa \9bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;9&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.open_curly.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand { is okay</div>
+    -->
+    <pre class="given">alfa \{bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;{&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.open_paren.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand ( is okay</div>
+    -->
+    <pre class="given">alfa \(bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;(&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.open_square.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand [ is okay</div>
+    -->
+    <pre class="given">alfa \[bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;[&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.open_tag.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand &lt; is okay</div>
+    -->
+    <pre class="given">alfa \&lt;bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;&lt;&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.pipe.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand | is okay</div>
+    -->
+    <pre class="given">alfa \|bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;|&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.tilde.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand ~ is okay</div>
+    -->
+    <pre class="given">alfa \~bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;~&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.escaped-shorthands-by-themselves.underscore.neotest</h3>
+    <!--
+    <div class="description">Escaped shorthand _ is okay</div>
+    -->
+    <pre class="given">alfa \_bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;_&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.ampersand.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: @</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;@&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;@&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.astrisk.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: *</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;*&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;*&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.backtick.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: `</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;`&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;`&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.caret.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: ^</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;^&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;^&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.close_curly.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: }</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;}&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;}&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.close_paren.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: )</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;)&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;)&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.close_square.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: ]</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;]&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;]&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.close_tag.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: &gt;</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;&gt;&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;&gt;&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.open_curly.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: {</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;{&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;{&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.open_paren.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: (</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;(&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;(&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.open_square.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: [</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;[&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;[&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.open_tag.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: &lt;</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;&lt;&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;&lt;&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.pipe.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: |</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;|&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;|&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.tilde.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: ~</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;~&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;~&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-characters-by-themselves.underscore.neotest</h3>
+    <!--
+    <div class="description">Single Character by itself: _</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;_&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;_&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0001.neotest</h3>
+    <!--
+    <div class="description">Basic Check</div>
+    -->
+    <pre class="given">alfa bravo charlie</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0002.neotest</h3>
+    <!--
+    <div class="description">Basic Check</div>
+    -->
+    <pre class="given">alfa bravo charlie
+delta echo foxtrot</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0003.neotest</h3>
+    <!--
+    <div class="description">Multi line stops before new list item</div>
+    -->
+    <pre class="given">alfa bravo charlie
+delta echo foxtrot
+
+- golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;- golf hotel india&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0004.neotest</h3>
+    <!--
+    <div class="description">Multi line stops before new list-item-spans</div>
+    -->
+    <pre class="given">alfa bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+</div>
+</div></div><div class="category"-cases><div clsss="case-kind"><h2>span - code_shorthand</h2>
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0001.neotest</h3>
+    <!--
+    <div class="description">Single word</div>
+    -->
+    <pre class="given">``alfa``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0002.neotest</h3>
+    <!--
+    <div class="description">Code with space</div>
+    -->
+    <pre class="given">``alfa bravo``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0003.neotest</h3>
+    <!--
+    <div class="description">Flatten spaces</div>
+    -->
+    <pre class="given">``alfa      bravo``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0004.neotest</h3>
+    <!--
+    <div class="description">Single newline allowed.</div>
+    -->
+    <pre class="given">``alfa
+bravo``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0005.neotest</h3>
+    <!--
+    <div class="description">Single flag</div>
+    -->
+    <pre class="given">``alfa|bravo``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [&quot;bravo&quot;],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0006.neotest</h3>
+    <!--
+    <div class="description">Single attr</div>
+    -->
+    <pre class="given">``alfa|bravo: charlie``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {&quot;bravo&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0007.neotest</h3>
+    <!--
+    <div class="description">Same attr multiple times</div>
+    -->
+    <pre class="given">``alfa|bravo: charlie|bravo: delta``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {&quot;bravo&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0008.neotest</h3>
+    <!--
+    <div class="description">Trim space around content</div>
+    -->
+    <pre class="given">`` alfa ``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0009.neotest</h3>
+    <!--
+    <div class="description">Trim space around content</div>
+    -->
+    <pre class="given">``
+alfa
+``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0010.neotest</h3>
+    <!--
+    <div class="description">Trim space around content</div>
+    -->
+    <pre class="given">``alfa|
+bravo
+``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [&quot;bravo&quot;],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0011.neotest</h3>
+    <!--
+    <div class="description">Trim space around content</div>
+    -->
+    <pre class="given">``alfa
+|bravo
+``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [&quot;bravo&quot;],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0012.neotest</h3>
+    <!--
+    <div class="description">Trim space around content</div>
+    -->
+    <pre class="given">``alfa
+|
+bravo
+``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [&quot;bravo&quot;],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0013.neotest</h3>
+    <!--
+    <div class="description">Trim space around content</div>
+    -->
+    <pre class="given">``
+alfa
+|
+bravo
+``</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [&quot;bravo&quot;],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+</div><div clsss="case-kind"><h2>span - empty_line_or_lines_after_line_ending_or_eof</h2>
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0001.neotest</h3>
+    <!--
+    <div class="description">Empty line directly after line ending
+with no spaces</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;\n\nbravo&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0002.neotest</h3>
+    <!--
+    <div class="description">Spaces before first line ending</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;    \n\nbravo&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0003.neotest</h3>
+    <!--
+    <div class="description">Spaces after first line ending</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;\n    \nbravo&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0004.neotest</h3>
+    <!--
+    <div class="description">Spaces after last line ending don&#x27;t get eaten</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;\n\n   bravo&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;   bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0005.neotest</h3>
+    <!--
+    <div class="description">Multiple empty lines</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;\n\n\n\n\nbravo&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0006.neotest</h3>
+    <!--
+    <div class="description">Multiple empty lines with spaces</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;\n   \n   \n   \n   \nbravo&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0007.neotest</h3>
+    <!--
+    <div class="description">Spaces after last line ending don&#x27;t get eaten.
+Make sure spaces prior are still handled.</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;   \n   \n   bravo&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;   bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0008.neotest</h3>
+    <!--
+    <div class="description">Spaces after last line ending don&#x27;t get eaten.
+Make sure spaces prior are still handled.</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+</div><div clsss="case-kind"><h2>span - escaped_character_in_block</h2>
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.ampersand.neotest</h3>
+    <!--
+    <div class="description">Escaped @</div>
+    -->
+    <pre class="given">\@bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;@&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.astrisk.neotest</h3>
+    <!--
+    <div class="description">Escaped *</div>
+    -->
+    <pre class="given">\*bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;*&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.backtick.neotest</h3>
+    <!--
+    <div class="description">Escaped `</div>
+    -->
+    <pre class="given">\`bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;`&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.caret.neotest</h3>
+    <!--
+    <div class="description">Escaped ^</div>
+    -->
+    <pre class="given">\^bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;^&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.close_curly.neotest</h3>
+    <!--
+    <div class="description">Escaped }</div>
+    -->
+    <pre class="given">\}bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;}&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.close_paren.neotest</h3>
+    <!--
+    <div class="description">Escaped )</div>
+    -->
+    <pre class="given">\)bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;)&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.close_square.neotest</h3>
+    <!--
+    <div class="description">Escaped ]</div>
+    -->
+    <pre class="given">\]bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;]&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.close_tag.neotest</h3>
+    <!--
+    <div class="description">Escaped &gt;</div>
+    -->
+    <pre class="given">\&gt;bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;&gt;&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.dash.neotest</h3>
+    <!--
+    <div class="description">Escaped -</div>
+    -->
+    <pre class="given">\-bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;-&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.hashtag.neotest</h3>
+    <!--
+    <div class="description">Escaped #</div>
+    -->
+    <pre class="given">\#bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;#&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.number_0.neotest</h3>
+    <!--
+    <div class="description">Escaped 0</div>
+    -->
+    <pre class="given">\0bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;0&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.number_1.neotest</h3>
+    <!--
+    <div class="description">Escaped 1</div>
+    -->
+    <pre class="given">\1bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;1&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.number_2.neotest</h3>
+    <!--
+    <div class="description">Escaped 2</div>
+    -->
+    <pre class="given">\2bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;2&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.number_3.neotest</h3>
+    <!--
+    <div class="description">Escaped 3</div>
+    -->
+    <pre class="given">\3bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;3&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.number_4.neotest</h3>
+    <!--
+    <div class="description">Escaped 4</div>
+    -->
+    <pre class="given">\4bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;4&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.number_5.neotest</h3>
+    <!--
+    <div class="description">Escaped 5</div>
+    -->
+    <pre class="given">\5bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;5&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.number_6.neotest</h3>
+    <!--
+    <div class="description">Escaped 6</div>
+    -->
+    <pre class="given">\6bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;6&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.number_7.neotest</h3>
+    <!--
+    <div class="description">Escaped 7</div>
+    -->
+    <pre class="given">\7bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;7&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.number_8.neotest</h3>
+    <!--
+    <div class="description">Escaped 8</div>
+    -->
+    <pre class="given">\8bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;8&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.number_9.neotest</h3>
+    <!--
+    <div class="description">Escaped 9</div>
+    -->
+    <pre class="given">\9bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;9&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.open_curly.neotest</h3>
+    <!--
+    <div class="description">Escaped {</div>
+    -->
+    <pre class="given">\{bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;{&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.open_paren.neotest</h3>
+    <!--
+    <div class="description">Escaped (</div>
+    -->
+    <pre class="given">\(bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;(&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.open_square.neotest</h3>
+    <!--
+    <div class="description">Escaped [</div>
+    -->
+    <pre class="given">\[bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;[&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.open_tag.neotest</h3>
+    <!--
+    <div class="description">Escaped &lt;</div>
+    -->
+    <pre class="given">\&lt;bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;&lt;&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.pipe.neotest</h3>
+    <!--
+    <div class="description">Escaped |</div>
+    -->
+    <pre class="given">\|bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;|&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.tilde.neotest</h3>
+    <!--
+    <div class="description">Escaped ~</div>
+    -->
+    <pre class="given">\~bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;~&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-shorthand-ok.underscore.neotest</h3>
+    <!--
+    <div class="description">Escaped _</div>
+    -->
+    <pre class="given">\_bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;_&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0001.neotest</h3>
+    <!--
+    <div class="description">Escaped \</div>
+    -->
+    <pre class="given">\\bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;\\&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+</div><div clsss="case-kind"><h2>span - single_character_allowed_in_block</h2>
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.ampersand.neotest</h3>
+    <!--
+    <div class="description">Single Character @</div>
+    -->
+    <pre class="given">@bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;@&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.astrisk.neotest</h3>
+    <!--
+    <div class="description">Single Character *</div>
+    -->
+    <pre class="given">*bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;*&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.backtick.neotest</h3>
+    <!--
+    <div class="description">Single Character `</div>
+    -->
+    <pre class="given">`bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;`&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.caret.neotest</h3>
+    <!--
+    <div class="description">Single Character ^</div>
+    -->
+    <pre class="given">^bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;^&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.close_curly.neotest</h3>
+    <!--
+    <div class="description">Single Character }</div>
+    -->
+    <pre class="given">}bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;}&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.close_paren.neotest</h3>
+    <!--
+    <div class="description">Single Character )</div>
+    -->
+    <pre class="given">)bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;)&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.close_square.neotest</h3>
+    <!--
+    <div class="description">Single Character ]</div>
+    -->
+    <pre class="given">]bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;]&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.close_tag.neotest</h3>
+    <!--
+    <div class="description">Single Character &gt;</div>
+    -->
+    <pre class="given">&gt;bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;&gt;&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.open_curly.neotest</h3>
+    <!--
+    <div class="description">Single Character {</div>
+    -->
+    <pre class="given">{bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;{&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.open_paren.neotest</h3>
+    <!--
+    <div class="description">Single Character (</div>
+    -->
+    <pre class="given">(bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;(&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.open_square.neotest</h3>
+    <!--
+    <div class="description">Single Character [</div>
+    -->
+    <pre class="given">[bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;[&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.open_tag.neotest</h3>
+    <!--
+    <div class="description">Single Character &lt;</div>
+    -->
+    <pre class="given">&lt;bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;&lt;&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.pipe.neotest</h3>
+    <!--
+    <div class="description">Single Character |</div>
+    -->
+    <pre class="given">|bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;|&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.tilde.neotest</h3>
+    <!--
+    <div class="description">Single Character ~</div>
+    -->
+    <pre class="given">~bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;~&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.generated-ok.single-character-check.underscore.neotest</h3>
+    <!--
+    <div class="description">Single Character _</div>
+    -->
+    <pre class="given">_bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;_&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+</div><div clsss="case-kind"><h2>span - single_line_ending</h2>
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0001.neotest</h3>
+    <!--
+    <div class="description">Single newline
+
+NOTE: there has to be something
+after the line_ending for nom to 
+pick it up. See ``eof`` for 
+handling line_endings before 
+the end of a file.</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;\nalfa&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;space&quot;,
+  &quot;kind&quot;: &quot;space&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;alfa&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0002.neotest</h3>
+    <!--
+    <div class="description">Spaces before line_ending
+
+NOTE: there has to be something
+after the line_ending for nom to 
+pick it up. See ``eof`` for 
+handling line_endings before 
+the end of a file.</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot; \nalfa&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;space&quot;,
+  &quot;kind&quot;: &quot;space&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;alfa&quot;
+}</pre>
+</div>
+</div><div clsss="case-kind"><h2>span - space1_as_single_space</h2>
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0001.neotest</h3>
+    <!--
+    <div class="description">Single word</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot; &quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;space&quot;,
+  &quot;kind&quot;: &quot;space&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+</div><div clsss="case-kind"><h2>span - strikethrough_shorthand</h2>
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0001.neotest</h3>
+    <!--
+    <div class="description">Empty line directly after line ending
+with no spaces</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;~~alfa~~&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;strikethrough-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;strikethrough-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+</div><div clsss="case-kind"><h2>span - tests</h2>
+<div class="case">
+    <h3 class="case_id">manual-ok.0001.neotest</h3>
+    <!--
+    <div class="description">Escaped ${TOKEN}</div>
+    -->
+    <pre class="given"></pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;${TOKEN}&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+</div>
+</div><div clsss="case-kind"><h2>span - text_in_block</h2>
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0001.neotest</h3>
+    <!--
+    <div class="description">Single word</div>
+    -->
+    <pre class="given">alfa</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0002.neotest</h3>
+    <!--
+    <div class="description">Multiple words and spaces get collected</div>
+    -->
+    <pre class="given">alfa bravo charlie</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0003.neotest</h3>
+    <!--
+    <div class="description">Collapse spaces</div>
+    -->
+    <pre class="given">alfa   bravo    charlie</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0004.neotest</h3>
+    <!--
+    <div class="description">Stop at newline</div>
+    -->
+    <pre class="given">alfa bravo
+charlie delta</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa bravo&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;\ncharlie delta&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0005.neotest</h3>
+    <!--
+    <div class="description">Don&#x27;t cross empty lines
+
+NOTE: this leaves the trialing newline 
+on the last line of text. It&#x27;s dealt 
+with in a later parser</div>
+    -->
+    <pre class="given">alfa bravo
+
+charlie delta</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa bravo&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;\n\ncharlie delta&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0006.neotest</h3>
+    <!--
+    <div class="description">Stop at escape character</div>
+    -->
+    <pre class="given">alfa \| bravo</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa &quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot;\\| bravo&quot;
+}</pre>
+</div>
+
+<div class="case">
+    <h3 class="case_id">tests.manual-ok.0007.neotest</h3>
+    <!--
+    <div class="description">Don&#x27;t capture empty space before line_ending</div>
+    -->
+    <pre class="given">{
+  &quot;content&quot;: &quot;alfa bravo \ncharlie delta&quot;
+}</pre>
+    <pre class="expected">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa bravo&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    <pre class="remainder">{
+  &quot;remainder&quot;: &quot; \ncharlie delta&quot;
+}</pre>
+</div>
+</div></div></div>-- title
+
+Test Report
+
+-- /html
+
