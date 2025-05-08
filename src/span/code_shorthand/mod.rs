@@ -48,6 +48,7 @@ pub fn code_span_text(source: &str) -> IResult<&str, Span> {
         space1.map(|_| " "),
         is_not(" \r\n\t|`"),
         (line_ending, peek(tag("``"))).map(|_| ""),
+        (line_ending, peek(tag("|"))).map(|_| ""),
         single_line_ending.map(|_| " "),
     )))
     .parse(source)?;

@@ -46,9 +46,32 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
       <h1  class="title"
       >TODOs</h1></hgroup><div
    class="flow"
-><p>[] Add web server?</p><p>[] Add front end?</p><p>[] Generate most recently changed page at specific location so you can see most recent set of changes automatically?</p><p>[] Add <code>wiki</code> tag and functionality for third level? (or maybe fourth)?</p><p>[] Add plugin architecture (this would be a later version)</p><p>[] Add <code>-- extension:</code> to <code>-- metadata</code> for changing the file extension of the output.</p><p>[] Add <code>-- path:</code> to the <code>-- metadata</code> to change the output path.</p><p>[] Set up functionality for <code>-- wiki</code> in the metadata the defines the target locations where other <code data-lang="Name>>"> <span class="source rust"><span class="keyword operator rust">&lt;</span><span class="keyword operator rust">&lt;</span>wiki\</span></code> entires go.</p><p>[] For the plugin architecture. Send the ast to a function which updates it as it sees fit then sends it back. Plugins can do things like add toplevel items as siblings of <code>pages</code> in the site ast.</p><p>[] Plugins could also update content. Basically do whatever to the ast. There would likely need to be templates that are used with them. There might be a way to send those back, but at least for the first version just have folks copy pasted them into their template files.</p><p>[] It's up to plugins to do their own caching? Could there be a cache feature builtin? Probably. Just send back the prior object from the plugin. Yeah, that probably makes the most sense.</p><p>[] Make adding <code>figure</code> to to raw sections part of the default templates</p><p>[] Make <code>-- wiki-key</code> what you add to a pages <code>-- metadata</code> to define keys. Can have multiple of them.</p><p>[] The page asts take care of themselves. Spec out other parts under the site (like "wiki" that are part of the reference engine.</p><p>[] Put tags and groups under the standard reference engine.</p><p>[] Automatic <code>figure</code> numbering on pages with the ability to link to them with some sort of tag</p><p>[] Automatically put commas between multiple consecutive footnote links</p><p>[] Build a little debug thing into place where if you're on localhost and hit <code>/</code> it brings an interface for you. Could have things like the colors on it. lists of tags, etc...</p><p>[] Store stuff in <code>/.neo-files</code> so it's hidden from the main file system.</p><p>[] Store feeds in <code>/.neo-feeds</code> so they don't have to show up on the file system.</p><p>[] Set up counters that can be used for things on the page. Like numbers for headings and figures.</p><p>[] Add better error message if a template doesn't exist.</p><p>[] Test doing thing like having a footnote shorthand butted directly up against a code shorthand.</p></div>
+><p>[] Add web server?</p><p>[] Add front end?</p><p>[] Generate most recently changed page at specific location so you can see most recent set of changes automatically?</p><p>[] Add <code>wiki</code> tag and functionality for third level? (or maybe fourth)?</p><p>[] Add plugin architecture (this wo_json::fromuld be a later version)</p><p>[] Add <code>-- extension:</code> to <code>-- metadata</code> for changing the file extension of the output.</p><p>[] Add <code>-- path:</code> to the <code>-- metadata</code> to change the output path.</p><p>[] Set up functionality for <code>-- wiki</code> in the metadata the defines the target locations where other <code data-lang="Name>>"> <span class="source rust"><span class="keyword operator rust">&lt;</span><span class="keyword operator rust">&lt;</span>wiki\</span></code> entires go.</p><p>[] For the plugin architecture. Send the ast to a function which updates it as it sees fit then sends it back. Plugins can do things like add toplevel items as siblings of <code>pages</code> in the site ast.</p><p>[] Plugins could also update content. Basically do whatever to the ast. There would likely need to be templates that are used with them. There might be a way to send those back, but at least for the first version just have folks copy pasted them into their template files.</p><p>[] It's up to plugins to do their own caching? Could there be a cache feature builtin? Probably. Just send back the prior object from the plugin. Yeah, that probably makes the most sense.</p><p>[] Make adding <code>figure</code> to to raw sections part of the default templates</p><p>[] Make <code>-- wiki-key</code> what you add to a pages <code>-- metadata</code> to define keys. Can have multiple of them.</p><p>[] The page asts take care of themselves. Spec out other parts under the site (like "wiki" that are part of the reference engine.</p><p>[] Put tags and groups under the standard reference engine.</p><p>[] Automatic <code>figure</code> numbering on pages with the ability to link to them with some sort of tag</p><p>[] Automatically put commas between multiple consecutive footnote links</p><p>[] Build a little debug thing into place where if you're on localhost and hit <code>/</code> it brings an interface for you. Could have things like the colors on it. lists of tags, etc...</p><p>[] Store stuff in <code>/.neo-files</code> so it's hidden from the main file system.</p><p>[] Store feeds in <code>/.neo-feeds</code> so they don't have to show up on the file system.</p><p>[] Set up counters that can be used for things on the page. Like numbers for headings and figures.</p><p>[] Add better error message if a template doesn't exist.</p><p>[] Test doing thing like having a footnote shorthand butted directly up against a code shorthand.</p><p>[] Set up macro that lets you see the next and previous blocks. This will let you do stuff like group <code>code</code> and <code>output</code> sections together and wrap them with a <code>div</code> so they can have a single border around them.</p><p>[] Show how to use blocks for <code>forward</code> and <code>tldr</code> to shift stuff around so you can keep them in different places in your source files.</p><p>[] Set up a way to include blocks from other pages based off their IDs.</p><p>[] Make sure to test characters bumping directly against shorthands and tags.</p><p>[] Have the ability to use random numbers to pick things.</p></div>
 
-</main>
+<div
+   class="flow"
+><p>Things to check</p></div>
+
+<pre
+
+>-- forward/
+-- title: Just The Front
+
+I feel like Python gaslights me every time I try to remove
+extensions from a filename. It makes sense when I do this:
+
+-- code
+-- python
+
+print("asdf")
+
+-- results/
+
+asdf
+
+-- /results
+
+-- /forward</pre></main>
   <footer><div>
         Created: 2025-04-27T10:20:20-04:00</div>from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
@@ -160,7 +183,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
             "spans": [
               {
                 "category": "text",
-                "content": "[] Add plugin architecture (this would be a later version)",
+                "content": "[] Add plugin architecture (this wo_json::fromuld be a later version)",
                 "kind": "text"
               }
             ]
@@ -616,11 +639,190 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
                 "kind": "text"
               }
             ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Set up macro that lets you see the next and previous blocks. This will let you do stuff like group ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "code",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " and ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "output",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " sections together and wrap them with a ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "div",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " so they can have a single border around them.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Show how to use blocks for ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "forward",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " and ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "tldr",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " to shift stuff around so you can keep them in different places in your source files.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Set up a way to include blocks from other pages based off their IDs.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Make sure to test characters bumping directly against shorthands and tags.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Have the ability to use random numbers to pick things.",
+                "kind": "text"
+              }
+            ]
           }
         ],
         "end_block": null,
         "flags": [],
         "kind": "todo"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Things to check",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "p"
+      },
+      {
+        "attrs": {},
+        "body": "-- forward/\n-- title: Just The Front\n\nI feel like Python gaslights me every time I try to remove\nextensions from a filename. It makes sense when I do this:\n\n-- code\n-- python\n\nprint(\"asdf\")\n\n-- results/\n\nasdf\n\n-- /results\n\n-- /forward",
+        "category": "raw",
+        "end_block": {
+          "attrs": {},
+          "category": "end",
+          "children": [],
+          "flags": [],
+          "kind": "pre-end"
+        },
+        "flags": [],
+        "kind": "pre"
       },
       {
         "attrs": {

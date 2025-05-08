@@ -1,0 +1,29 @@
+``alfa
+|bravo
+``
+######txt######ok######
+
+Trim space around content
+
+######
+
+{
+  "attrs": {},
+  "category": "code-shorthand",
+  "flags": ["bravo"],
+  "kind": "code-shorthand",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa",
+      "kind": "text"
+    }
+  ]
+}
+
+######
+
+{
+  "remainder": ""
+}
+

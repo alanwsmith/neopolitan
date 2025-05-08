@@ -16,7 +16,7 @@ recent set of changes automatically?
 [] Add ``wiki`` tag and functionality
 for third level? (or maybe fourth)?
 
-[] Add plugin architecture (this would
+[] Add plugin architecture (this wo_json::fromuld
 be a later version)
 
 [] Add ``-- extension:`` to ``-- metadata``
@@ -104,7 +104,59 @@ a template doesn't exist.
 footnote shorthand butted directly
 up against a code shorthand. 
 
+[] Set up macro that lets you see
+the next and previous blocks. 
+This will let you do stuff
+like group ``code`` and
+``output`` sections together
+and wrap them with a ``div``
+so they can have a single 
+border around them. 
 
+[] Show how to use blocks for 
+``forward`` and ``tldr`` to shift
+stuff around so you can keep them
+in different places in your source
+files. 
+
+[] Set up a way to include blocks
+from other pages based off their
+IDs. 
+
+[] Make sure to test characters bumping
+directly against shorthands and tags. 
+
+[] Have the ability to use random
+numbers to pick things. 
+
+
+
+-- p
+
+Things to check
+
+-- pre/
+
+-- forward/
+-- title: Just The Front
+
+I feel like Python gaslights me every time I try to remove
+extensions from a filename. It makes sense when I do this:
+
+-- code
+-- python
+
+print("asdf")
+
+-- results/
+
+asdf
+
+-- /results
+
+-- /forward
+
+-- /pre
 
 
 -- metadata 
