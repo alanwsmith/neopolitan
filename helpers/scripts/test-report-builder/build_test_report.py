@@ -5,12 +5,21 @@ import os
 from html import escape
 from pathlib import Path
 
+class TestCase:
+    def __init__(self, input_path):
+        self.input_path = input_path
+        with open(self.input_path, "r") as _in:
+            self.source = _in.read()
+    
+
+
 class ReportMaker:
     def __init__(self, input_root, output_root):
         self.input_root = input_root 
         self.output_root = output_root
         self.file_path_parts = []
         self.dir_tree = {}
+        self.test_cases = {}
 
     def get_file_list(self):
         for root, dirs, files in os.walk(self.input_root):
@@ -36,16 +45,6 @@ class ReportMaker:
                 send_key = os.path.join(key, new_key)
                 _out_in.write(f"""<div class="padding-medium"><a href="{new_key}">{new_key}</a></div>""")
                 self.make_output_dir(send_key, next[new_key])
-                # print(send_key)
-
-        # print(output_dir)
-        # print(next)
-        #print(next)
-
-        # for path_parts in self.file_path_parts: 
-        #     rel_dir = "/".join(path_parts[4:-1])
-        #     output_dir = os.path.join(self.output_root, rel_dir)
-        #     print(output_dir)
 
     def load_dir_tree(self):
         for path_parts in self.file_path_parts: 
@@ -59,6 +58,18 @@ class ReportMaker:
         if len(chain) > 0:
             self.add_to_tree(current[link], chain)
 
+    def load_sources(self):
+        for parts in sorted(self.file_path_parts):
+            source_path = os.path.join(self.input_root, "/".join(parts[3:])) 
+            cases_key = "/".join(parts[4:-1])
+            if cases_key not in self.test_cases:
+                self.test_cases[cases_key] = []
+            test_case = TestCase(source_path)
+            self.test_cases[cases_key].append(test_case)
+
+
+            # print(cases_key)
+            # # print(parts[4:-1])
 
 
 
@@ -82,6 +93,7 @@ if __name__ == "__main__":
     maker.get_file_list()
     maker.load_dir_tree()
     maker.make_output_dirs()
+    maker.load_sources()
 
     #print(maker.dir_tree)
 
