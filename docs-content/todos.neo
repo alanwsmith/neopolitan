@@ -129,6 +129,14 @@ directly against shorthands and tags.
 [] Have the ability to use random
 numbers to pick things. 
 
+[] Add ``-- head`` type as standard
+for putting raw items in the
+head of the document. 
+
+[] Make ``nowrap`` a defined attr for spans. 
+(and, just generally go through the global
+attrs and spec them out. They should be hoisted
+into the output automatically.)
 
 
 -- p

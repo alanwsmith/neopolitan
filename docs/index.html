@@ -48,9 +48,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
       
 >Introduction</h2><p>Neopolitan is a plain-text file format. It's like Markdown, but with more features.</p><h2
       
->Work-In-Progress</h2><pre
-
-><div class="tmp-warning flow">
+>Work-In-Progress</h2><div class="tmp-warning flow">
 
 <p>
 <strong>Head's up:</strong> I'm in the middle of rebuilding the site. 
@@ -70,13 +68,11 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>
 for updates. 
 </p>
 
-</div></pre><h2
+</div><h2
       
 >How It Works</h2><h3
       
->The Basics</h3><pre
-
-><p>
+>The Basics</h3><p>
 Neopolitan documents are made from sections. Each one
 start with two dashes followed by a name. For example, 
 here's a <code>title</code> section:
@@ -106,11 +102,9 @@ document looks like.</p>
 &lt;/p&gt;
 </p>
 
-</div></pre><h3
+</div><h3
       
->Section Flags</h3><p>Each section can have flags. They're defined by adding lines starting with two dashes immediately follow the section like this:</p><pre
-
-><div class="tmp-example flow">
+>Section Flags</h3><p>Each section can have flags. They're defined by adding lines starting with two dashes immediately follow the section like this:</p><div class="tmp-example flow">
 
 <p>
 &#45;&#45; h2<br />
@@ -135,11 +129,9 @@ Which outputs:
 &lt;/h2&gt;
 </p>
 
-</div></pre><h3
+</div><h3
       
->Section Attributes</h3><p>Key/value attributes can be added as well. For example:</p><pre
-
-><div class="tmp-example flow">
+>Section Attributes</h3><p>Key/value attributes can be added as well. For example:</p><div class="tmp-example flow">
 
 <p>
 &#45;&#45; h2<br />
@@ -164,11 +156,9 @@ Which produces:
 &lt;/h2&gt;
 </p>
 
-</div></pre><h2
+</div><h2
       
->Markdown Section Comparison</h2><p>A basic Markdown document might look like this:</p><pre
-
-><div class="tmp-example flow">
+>Markdown Section Comparison</h2><p>A basic Markdown document might look like this:</p><div class="tmp-example flow">
 
 <p>
 &#35; The Title
@@ -239,11 +229,9 @@ Each would produce:
 Neopolitan takes more lines to produce 
 the same output. It provides no benefit if 
 that's all you need. 
-</p></pre><h2
+</p><h2
       
->Enter Neopolitan</h2><p>Neopolitan's usefulness comes from adding HTML features to content<sup>1</sup>.</p><p>For example, changing the above demo to use explicit sections and attributes like this:</p><pre
-
-><div class="tmp-example flow">
+>Enter Neopolitan</h2><p>Neopolitan's usefulness comes from adding HTML features to content<sup>1</sup>.</p><p>For example, changing the above demo to use explicit sections and attributes like this:</p><div class="tmp-example flow">
 
 <p>
 &#45;&#45; title
@@ -318,11 +306,9 @@ Specifically, it does the following:
 
 Of course, the same output could be produced with
 Markdown. It would require falling back to
-raw HTML for most of it, though.</pre><h2
+raw HTML for most of it, though.<h2
       
->Tags</h2><pre
-
-><h3>The Basics</h3>
+>Tags</h2><h3>The Basics</h3>
 
 <p>
 Neopolitan <code>tags</code> provide a way to enhance content. 
@@ -472,11 +458,9 @@ Which produces:
   id=&quot;alfa&quot;<br />
   hidden<br />
   &gt;example text&lt;/a&gt;</code>
-</p></pre><h2
+</p><h2
       
->Shorthands</h2><pre
-
-><h3>The Basics</h3>
+>Shorthands</h2><h3>The Basics</h3>
 
 <p>
   Shorthands provide another way to enhance
@@ -627,15 +611,13 @@ can be added like this:
       <code>&#123;&#123;image-name.jpg&#124;alt: Alt text for the image&#125;&#125;</code>
     </p>
   </li>
-</ul></pre><h2
+</ul><h2
       
 >No JavaScript Required</h2><p>TODO: add section about how all this is done with templates and no need for JavaScript. It can be added if you want it. But, it's not required.</p><h2
       
 >More To Come</h2><p>Formats can be interesting. If there's nothing that uses them, they don't mean much. In that light, I'm finishing up a reference static site generator that uses Neopolitan.</p><p>I expect to have a beta version ready by June 2025.</p><p>I'll post about progress on <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> and <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> if you want to follow along.</p><h2
       
->Footnotes</h2><pre
-
-><ol class="flow">
+>Footnotes</h2><ol class="flow">
   <li>
     Sure, you could always roll back to 
     using HTML directly in your Markdown
@@ -671,7 +653,7 @@ can be added like this:
     Okay, sure. There are limits to computer memory,
     etc. if you want to be pedantic about it.
   </li>
-</ol></pre><h2
+</ol><h2
       
 >TODO</h2><p>[] Write up No JavaScript Required section.</p><p>[] Output the contents of the example below it to show the rendered HTML.</p><p>[] Add syntax highlighting.</p></main>
   <footer><div>
@@ -684,565 +666,11 @@ can be added like this:
 <div class="wrapper-medium padding-top-large">
 <pre class="font-size-xsmall"><hr />
 <h3>Under Construction</h3>
-<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/_test-report.html">_test-report.html</a></li><li><a href="/_test_examples/basic-div-sections.html">_test_examples/basic-div-sections.html</a></li><li><a href="/_test_examples/code-samples.html">_test_examples/code-samples.html</a></li><li><a href="/_test_examples/csv-example-table.html">_test_examples/csv-example-table.html</a></li><li><a href="/_test_examples/description-list.html">_test_examples/description-list.html</a></li><li><a href="/_test_examples/details-test.html">_test_examples/details-test.html</a></li><li><a href="/_test_examples/json-example-table.html">_test_examples/json-example-table.html</a></li><li><a href="/_test_examples/list-full.html">_test_examples/list-full.html</a></li><li><a href="/_test_examples/nested-2-levels.html">_test_examples/nested-2-levels.html</a></li><li><a href="/_test_examples/nested-3-levels.html">_test_examples/nested-3-levels.html</a></li><li><a href="/_test_examples/nested-div-full.html">_test_examples/nested-div-full.html</a></li><li><a href="/_test_examples/raw-content-basic.html">_test_examples/raw-content-basic.html</a></li><li><a href="/_test_examples/strikethrough-shorthand-test.html">_test_examples/strikethrough-shorthand-test.html</a></li><li><a href="/_test_examples/title-subtitle-example.html">_test_examples/title-subtitle-example.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li></ul></pre>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/_test-report.html">_test-report.html</a></li><li><a href="/_test_examples/basic-div-sections.html">_test_examples/basic-div-sections.html</a></li><li><a href="/_test_examples/code-samples.html">_test_examples/code-samples.html</a></li><li><a href="/_test_examples/csv-example-table.html">_test_examples/csv-example-table.html</a></li><li><a href="/_test_examples/description-list.html">_test_examples/description-list.html</a></li><li><a href="/_test_examples/details-test.html">_test_examples/details-test.html</a></li><li><a href="/_test_examples/json-example-table.html">_test_examples/json-example-table.html</a></li><li><a href="/_test_examples/list-full.html">_test_examples/list-full.html</a></li><li><a href="/_test_examples/nested-2-levels.html">_test_examples/nested-2-levels.html</a></li><li><a href="/_test_examples/nested-3-levels.html">_test_examples/nested-3-levels.html</a></li><li><a href="/_test_examples/nested-div-full.html">_test_examples/nested-div-full.html</a></li><li><a href="/_test_examples/raw-content-basic.html">_test_examples/raw-content-basic.html</a></li><li><a href="/_test_examples/strikethrough-shorthand-test.html">_test_examples/strikethrough-shorthand-test.html</a></li><li><a href="/_test_examples/title-subtitle-example.html">_test_examples/title-subtitle-example.html</a></li><li><a href="/_test_examples/tree-view-from-fluent.html">_test_examples/tree-view-from-fluent.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests-to-move/level-1/spans/code.html">tests-to-move/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li></ul></pre>
 </div>
 
 
-<div class="wrapper-medium padding-top-large">
-<pre class="font-size-xsmall">
-{
-  "ok": {
-    "blocks": [
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Welcome to Neopolitan",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "title"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Introduction",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Neopolitan is a plain-text file format. It\u0027s like Markdown, but with more features.",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Work-In-Progress",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "body": "\u003cdiv class=\"tmp-warning flow\"\u003e\n\n\u003cp\u003e\n\u003cstrong\u003eHead\u0027s up:\u003c/strong\u003e I\u0027m in the middle of rebuilding the site. \n\u003c/p\u003e\n\n\u003cp\u003e\nThe examples on this page are up to date. Most\nof the rest of the site is just scratch notes and \nTODOs. Feel free to click around if you want to see how the \nsausage is being made. \n\u003c/p\u003e\n\n\u003cp\u003e\nFollow me on \n\u003ca href=\"https://hachyderm.io/deck/@TheIdOfAlan\"\u003eMastodon\u003c/a\u003e \nor \u003ca href=\"https://bsky.app/profile/alanwsmith.com\"\u003eBluesky\u003c/a\u003e\nfor updates. \n\u003c/p\u003e\n\n\u003c/div\u003e",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "How It Works",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "The Basics",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h3"
-      },
-      {
-        "attrs": {},
-        "body": "\u003cp\u003e\nNeopolitan documents are made from sections. Each one\nstart with two dashes followed by a name. For example, \nhere\u0027s a \u003ccode\u003etitle\u003c/code\u003e section:\n\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\u0026#45;\u0026#45; title\u003c/p\u003e\n\n\u003cp\u003eA Basic Example\u003c/p\u003e\n\n\u003cp\u003eThis is an example of what a Neopolitan\u003cbr /\u003e\ndocument looks like.\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003ewhich outputs this HTML:\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example flow\"\u003e\n\u003cp\u003e\n\u0026lt;h1 class=\u0026quot;title\u0026quot;\u0026gt;\u003cbr /\u003e\n\u0026nbsp;\u0026nbsp;A Basic Example\u003cbr /\u003e\n\u0026lt;/h1\u0026gt;\u003cbr /\u003e\n\u0026lt;p\u0026gt;\u003cbr /\u003e\n\u0026nbsp;\u0026nbsp;This is an example of what a\u003cbr /\u003e\n\u0026nbsp;\u0026nbsp;Neopolitan document looks like.\u003cbr /\u003e\n\u0026lt;/p\u0026gt;\n\u003c/p\u003e\n\n\u003c/div\u003e",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Section Flags",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Each section can have flags. They\u0027re defined by adding lines starting with two dashes immediately follow the section like this:",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h3"
-      },
-      {
-        "attrs": {},
-        "body": "\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; h2\u003cbr /\u003e\n\u0026#45;\u0026#45; hidden \n\u003c/p\u003e\n\n\u003cp\u003e\nThis H2 is hidden\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nWhich outputs:\n\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example\"\u003e\n\n\u003cp\u003e\n\u0026lt;h2 hidden\u0026gt;\u003cbr /\u003e\n\u0026nbsp;\u0026nbsp;This H2 is hidden\u003cbr /\u003e\n\u0026lt;/h2\u0026gt;\n\u003c/p\u003e\n\n\u003c/div\u003e",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Section Attributes",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Key/value attributes can be added as well. For example:",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h3"
-      },
-      {
-        "attrs": {},
-        "body": "\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; h2\u003cbr /\u003e\n\u0026#45;\u0026#45; class: red \n\u003c/p\u003e\n\n\u003cp\u003e\nThis H2 is red \n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nWhich produces:\n\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026lt;h2 class=\u0026quot;red\u0026quot;\u0026gt;\u003cbr /\u003e\n\u0026nbsp;\u0026nbsp;This H2 is red\u003cbr /\u003e\n\u0026lt;/h2\u0026gt;\n\u003c/p\u003e\n\n\u003c/div\u003e",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Markdown Section Comparison",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "A basic Markdown document might look like this:",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "body": "\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026#35; The Title\n\u003c/p\u003e\n\n\u003cp\u003e\nSome text.\n\u003c/p\u003e\n\n\u003cp\u003e\n\u0026#35;\u0026#35; Forward\n\u003c/p\u003e\n\n\u003cp\u003e\nMore text.\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nA corresponding Neopolitan document \nwould look like this:\n\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; h1\n\u003c/p\u003e\n\n\u003cp\u003e\nThe Title\n\u003c/p\u003e\n\n\u003cp\u003e\nSome text.\n\u003c/p\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; h2\n\u003c/p\u003e\n\u003cp\u003e\nForward\n\u003c/p\u003e\n\n\u003cp\u003e\nMore text.\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nEach would produce:\n\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026lt;h1\u0026gt;The Title\u0026lt;/h1\u0026gt;\u003cbr /\u003e\n\u0026lt;p\u0026gt;Some Text.\u0026lt;/p\u0026gt;\u003cbr /\u003e\n\u0026lt;h2\u0026gt;Forward\u0026lt;/h2\u0026gt;\u003cbr /\u003e\n\u0026lt;p\u0026gt;More Text.\u0026lt;/p\u0026gt;\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nNeopolitan takes more lines to produce \nthe same output. It provides no benefit if \nthat\u0027s all you need. \n\u003c/p\u003e",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Enter Neopolitan",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Neopolitan\u0027s usefulness comes from adding HTML features to content\u003csup\u003e1\u003c/sup\u003e.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "For example, changing the above demo to use explicit sections and attributes like this:",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "body": "\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; title\n\u003c/p\u003e\n\n\u003cp\u003e\nThe Title\n\u003c/p\u003e\n\n\u003cp\u003e\nSome text.\n\u003c/p\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; forward\u003cbr /\u003e\n\u0026#45;\u0026#45; class: blue\u003cbr /\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\nMore text.\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nproduces this:\n\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026lt;h1 class=\u0026quot;title\u0026quot; aria-label=\u0026quot;Page Title\u0026quot;\u0026gt;\u003cbr /\u003e\n\u0026nbsp;\u0026nbsp;The Title\u003cbr /\u003e\n\u0026lt;/h1\u0026gt;\u003cbr /\u003e\n\u0026lt;p\u0026gt;Some Text.\u0026lt;/p\u0026gt;\u003cbr /\u003e\n\u0026lt;h2 class=\u0026quot;forward blue\u0026quot;\u0026gt;\u003cbr /\u003e\n\u0026nbsp;\u0026nbsp;Forward\u003cbr /\u003e\n\u0026lt;/h2\u0026gt;\u003cbr /\u003e\n\u0026lt;p\u0026gt;More Text.\u0026lt;/p\u0026gt;\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nSpecifically, it does the following:\n\u003c/p\u003e\n\n\u003cul class=\"flow\"\u003e\n  \u003cli\u003e\n    Automatically add the \u0026quot;title\u0026quot; class \n    to the \u0026quot;h1\u0026quot; element\n  \u003c/li\u003e\n  \u003cli\u003e\n    Automatically add an \u0026quot;aria-label\u0026quot; to\n    the \u0026quot;h1\u0026quot; element\u003csup\u003e2\u003c/sup\u003e\n  \u003c/li\u003e\n  \u003cli\u003e\n    Output an H2 with the \u0026quot;Forward\u0026quot; text in\n    it without having to write the word in addition \n    to using it as the section name\u003csup\u003e3\u003c/sup\u003e.\n  \u003c/li\u003e\n  \u003cli\u003e\n    Automatically add the \u0026quot;forward\u0026quot; class\n    to the H2 \n  \u003c/li\u003e\n  \u003cli\u003e\n    Append the \u0026quot;blue\u0026quot; class to the H2 \n    via the \u0026quot;\u0026#45;\u0026#45; class: blue\u0026quot;\n    section attribute\n  \u003c/li\u003e\n\u003c/ul\u003e\n\nOf course, the same output could be produced with\nMarkdown. It would require falling back to\nraw HTML for most of it, though.",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Tags",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "body": "\u003ch3\u003eThe Basics\u003c/h3\u003e\n\n\u003cp\u003e\nNeopolitan \u003ccode\u003etags\u003c/code\u003e provide a way to enhance content. \nA basic one looks like this:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lttag-name\u0026#124;some text\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\n  The \u003ccode\u003etag-name\u003c/code\u003e defines what the type\n  of tag. The \u003ccode\u003esome text\u003c/code\u003e in this example\n  represents the content the tag works on.\n\u003c/p\u003e\n\n\u003ch3\u003eElement Examples\u003c/h3\u003e\n\n\u003cp\u003eBasic examples, include:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026ltstrong\u0026#124;some text\u0026gt;\u0026gt;\u003c/code\u003e\u003cbr /\u003e\n  \u003ccode\u003e\u0026lt;\u0026ltem\u0026#124;some text\u0026gt;\u0026gt;\u003c/code\u003e\u003cbr /\u003e\n  \u003ccode\u003e\u0026lt;\u0026ltkbd\u0026#124;some text\u0026gt;\u0026gt;\u003c/code\u003e\u003cbr /\u003e\n\u003c/p\u003e\n\n\u003cp\u003eWhich output:\u003c/p\u003e\n\n\u003cp\u003e\n  \u003cstrong\u003esome text\u003c/strong\u003e\u003cbr /\u003e\n  \u003cem\u003esome text\u003c/em\u003e\u003cbr /\u003e\n  \u003ckbd\u003esome text\u003c/kbd\u003e\u003cbr /\u003e\n\u003c/p\u003e\n\n\u003cp\u003eTODO: show raw HTML output here too\u003c/p\u003e\n\n\u003ch3\u003eCustom Tags\u003c/h3\u003e\n\n\u003cp\u003e\n  Those all map to existing HTML elements. \n  They don\u0027t have to. Tags can be used to do\n  anything with the content\u003csup\u003e4\u003c/sup\u003e. They\n  can also include content generated\n  by the output system itself. For example,\n  a \u003ccode\u003ewiki\u003c/code\u003e tag could be set\n  up like this:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lt;wiki\u0026#124;Documentation\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\nThe app generating the content could automatically \ntransform that into a link to the Documentation page, \nadd some styles, an id, and a data attribute.\nSomething like:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\n  \u0026lt;a\u003cbr /\u003e\n  href=\u0026quot;/documentation.html\u0026quot;\u003cbr /\u003e\n  id=\u0026quot;documentation-link\u0026quot;\u003cbr /\u003e\n  class=\u0026quot;wiki-link\u0026quot;\u003cbr /\u003e\n  data-group=\u0026quot;examples\u0026quot;\u003cbr /\u003e\n  \u0026gt;Documentation\u003c\u0026lt;a\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\nThe content stays readable while the\nHTML has all the parts necessary\nto provide the functionality\n\u003c/p\u003e\n\n\u003ch3\u003eAttributes and Flags\u003c/h3\u003e\n\n\u003cp\u003e\n  Tags can use attributes and flags. \n  They\u0027re made by adding a \u003ccode\u003e\u0026#124;\u003c/code\u003e at\n  the end of the content to separate them. \n  For example, a \u003ccode\u003elink\u003c/code\u003e tag needs a \n  URL. That\u0027s done by adding it as a flag like this:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lt;link\u0026#124;Example Site\u0026#124;https://www.example.com/\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003e(aside: It may feel weird to call a URL\na flag if you\u0027ve done a lot of coding.\nIn terms of Neopolitan, \u0026quot;flag\u0026quot;\njust means a string of content instead\nof a key value pair. You can \nlearn more about them on \u003ca href=\"/documentation/attributes-and-flags.html\"\u003e\nAttributes and Flags page\u003c/a\u003e.)\n\u003c/p\u003e\n\n\n\u003cp\u003e\nAttributes work the same way. The\nonly difference is they are key/value\npairs. For example, this is how to use\na tag attribute to add a CSS class to the output:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lt;kbd\u0026#124;Escape\u0026#124;class: red\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\nWhich produces: \n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;kbd class=\u0026quot;red\u0026quot;\u0026gt;Escape\u0026lt;kbd\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\n\u003cp\u003eTODO: Show the rendered HTML output here too.\u003c/p\u003e\n\n\u003ch3\u003eMultiple Attributes And Flags\u003c/h3\u003e\n\n\u003cp\u003e\n  Any number of attributes and flags can be added to \n  a given tag\u003csup\u003e5\u003c/sup\u003e. All that\u0027s needed is\n  another \u003ccode\u003e\u0026#124;\u003c/code\u003e separator between them.\n  For example:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lt;link\u003cbr /\u003e\n  \u0026#124;example text\u003cbr /\u003e\n  \u0026#124;https://www.example.com/\u003cbr /\u003e\n  \u0026#124;class: red\u003cbr /\u003e\n  \u0026#124;id: alfa\u003cbr /\u003e\n  \u0026#124;hidden\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003eWhich produces:\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;a\u003cbr /\u003e\n  href=\u0026quot;https://www.example.com/\u0026quot;\u003cbr /\u003e\n  class=\u0026quot;red\u0026quot;\u003cbr /\u003e\n  id=\u0026quot;alfa\u0026quot;\u003cbr /\u003e\n  hidden\u003cbr /\u003e\n  \u0026gt;example text\u0026lt;/a\u0026gt;\u003c/code\u003e\n\u003c/p\u003e",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Shorthands",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "body": "\u003ch3\u003eThe Basics\u003c/h3\u003e\n\n\u003cp\u003e\n  Shorthands provide another way to enhance\n  content in Neopolitan files. Each works\n  like a specific Tag, but without the \n  need to type the full thing. For example, \n  one shorthand uses \u003ccode\u003e\u0026#42;\u0026#42;\u003c/code\u003e.\n  It looks like this:\n\u003c/p\u003e\n\n\u003cp\u003e\u003ccode\u003e\u0026#42;\u0026#42;example text\u0026#42;\u0026#42;\u003c/code\u003e\u003c/pre\u003e\n\n\u003cp\u003eWhich outputs this HTML:\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;strong\u0026gt;example text\u0026lt;/strong\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\n\u003cp\u003eWhich is the exact same thing you\u0027d get if you used\na tag like this:\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lt;strong\u0026#124;example text\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003ch3\u003eAttributes and Flags\u003c/h3\u003e\n\n\u003cp\u003e\n  Shorthands can use attributes and flags the same\n  way Tags can. For example the \u003ccode\u003e\u0026#96;\u0026#96;\u003c/code\u003e\n  shorthand is for code snippets. Adding a flag\n  to it with the name of a language adds the \n  appropriate syntax highlighting:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026#96;\u0026#96;println!(\"ping\");\u0026#124;rust\u0026#96;\u0026#96;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003eWhich outputs:\u003c/p\u003e\n\n\u003cp\u003e\u003ccode\u003eTODO: output snippet when syntax highlighting\nis reinstated\u003c/code\u003e\u003c/p\u003e\n\n\u003cp\u003e\n  Adding an attribute to a strong shorthand\n  looks like this:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026#96;\u0026#96;example text\u0026#124;class: red\u0026#96;\u0026#96;\u003c/code\u003e\n\u003c/p\u003e\n  \n\u003cp\u003eWhich outputs:\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;strong class=\u0026quot;red\u0026quot;\u0026gt;example text\u0026lt;/strong\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\n\u003ch3\u003eMultiple Attributes and Flags\u003c/h3\u003e\n\n\u003cp\u003eShorthands can use multiple attributes and\nflags as well. For example, the link\nshorthand uses \u003ccode\u003e\u0026#91;\u0026#91;\u003c/code\u003e and \n\u003ccode\u003e\u0026#93;\u0026#93;\u003c/code\u003e. It uses a flag\nby default for the URL. Styles and IDs\ncan be added like this:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026#91;\u0026#91;example link\u003cbr /\u003e\n  \u0026#124;https://www.example.com/\u003cbr /\u003e\n  \u0026#124;id: example-link\u003cbr /\u003e\n  \u0026#124;class: red\u0026#93;\u0026#93;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003eWhich outputs:\u003c/p\u003e\n\n\u003cp\u003e\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;a\u003cbr /\u003e\n  href=\u0026quot;https://www.example.com/\u0026quot;\u003cbr /\u003e\n  id=\"example-link\"\u003cbr /\u003e\n  class=\"red\"\u003cbr /\u003e\n  \u0026gt;example link\u0026lt;/a\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003ch3\u003eThe Shorthand List\u003c/h3\u003e\n\n\u003cp\u003eNeopolitan provides nine shorthands. They are:\u003c/p\u003e\n\n\u003cul class=\"flow\"\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eSpan:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#64;\u0026#64;code snippet\u0026#64;\u0026#64;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eCode:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#96;\u0026#96;code snippet\u0026#96;\u0026#96;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eStrong:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#42;\u0026#42;strong text\u0026#42;\u0026#42;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eEmphasis:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#95;\u0026#95;emphasis text\u0026#95;\u0026#95;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eFootnote Reference:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#94;\u0026#94;1\u0026#94;\u0026#94;\u003c/code\u003e\n    \u003c/p\u003e\n    \u003cp\u003eSee: \u003ca href=\"/documentation/footnotes.html\"\u003ethe footnote documentation\n    for more details on how footnotes work\u003c/a\u003e\u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eDeleted:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#126;\u0026#126;deleted text\u0026#126;\u0026#126;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eInserted:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#40;\u0026#40;inserted text\u0026#41;\u0026#41;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eLink:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#91;\u0026#91;link text\u0026#124;https://www.example.com/\u0026#93;\u0026#93;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eImage:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#123;\u0026#123;image-name.jpg\u0026#124;alt: Alt text for the image\u0026#125;\u0026#125;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n\u003c/ul\u003e",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "No JavaScript Required",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "TODO: add section about how all this is done with templates and no need for JavaScript. It can be added if you want it. But, it\u0027s not required.",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "More To Come",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Formats can be interesting. If there\u0027s nothing that uses them, they don\u0027t mean much. In that light, I\u0027m finishing up a reference static site generator that uses Neopolitan.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "I expect to have a beta version ready by June 2025.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "I\u0027ll post about progress on \u003ca href=\"https://hachyderm.io/deck/@TheIdOfAlan\"\u003eMastodon\u003c/a\u003e and \u003ca href=\"https://bsky.app/profile/alanwsmith.com\"\u003eBluesky\u003c/a\u003e if you want to follow along.",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Footnotes",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "body": "\u003col class=\"flow\"\u003e\n  \u003cli\u003e\n    Sure, you could always roll back to \n    using HTML directly in your Markdown\n    documents. \n  \u003c/li\u003e\n  \u003cli\u003e\n    Adding the \u0026quot;aria-label\u0026quot; is a bit of\n    a contrived example. I don\u0027t know if including\n    one in an H1 is advisable. The point here is\n    not about the specific label. It\u0027s about\n    the general ability to add things like \n    aria labels during output without having to \n    define them directly in the content itself.\n  \u003c/li\u003e\n  \u003cli\u003e\n    \u003cp\u003e\n      The names don\u0027t have to match. You could just\n      as easily make a section called \u0026quot;\u0026#45;\u0026#45; week\u0026quot;\n      and have the output be \u0026quot;The Week In Review\u0026quot;.\n    \u003c/p\u003e\n    \u003cp\u003e\n      There\u0027s also no restriction limiting the output \n      to an H2 tag. An entire structure of divs could\n      be used the same way.\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli\u003e\n    Okay, only stuff that\u0027s possible with HTML, \n    CSS, and JavaScript if you want to be pedantic \n    about it. \n  \u003c/li\u003e\n  \u003cli\u003e\n    Okay, sure. There are limits to computer memory,\n    etc. if you want to be pedantic about it.\n  \u003c/li\u003e\n\u003c/ol\u003e",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "TODO",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "[] Write up No JavaScript Required section.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "[] Output the contents of the example below it to show the rendered HTML.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "[] Add syntax highlighting.",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {
-          "created": [
-            {
-              "category": "text",
-              "content": "2025-04-27T20:21:11-04:00",
-              "kind": "text"
-            }
-          ],
-          "template": [
-            {
-              "category": "text",
-              "content": "home-page",
-              "kind": "text"
-            }
-          ],
-          "updated": [
-            {
-              "category": "text",
-              "content": "2025-04-27T20:21:11-04:00",
-              "kind": "text"
-            }
-          ]
-        },
-        "category": "json",
-        "data": "none",
-        "end_block": null,
-        "flags": [],
-        "kind": "metadata"
-      }
-    ]
-  }
-}
-</pre>
-</div>
+
 
 </body>
 </html>

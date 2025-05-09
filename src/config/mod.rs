@@ -24,7 +24,7 @@ impl Default for Config {
             json: make_vec_of_strings("json|metadata|neo-example-json-table"),
             list: make_vec_of_strings("list|notes|warnings"),
             raw: make_vec_of_strings(
-                "cli|code|css|html|javascript|output|path|pre|raw",
+                "cli|code|css|head|html|javascript|output|path|pre|raw",
             ),
         };
         Config {

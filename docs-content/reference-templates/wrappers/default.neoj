@@ -61,11 +61,13 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 </div>
 
 
+[#
 <div class="wrapper-medium padding-top-large">
 <pre class="font-size-xsmall">
 [@ page[1].data|tojson(true) @]
 </pre>
 </div>
+#]
 
 </body>
 </html>

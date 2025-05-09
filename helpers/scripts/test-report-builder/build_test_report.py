@@ -32,43 +32,45 @@ for path in file_list:
             case = _case.read()
             case_parts = case.split("######")
             if case_parts[2] == "ok":
-                case_id = escape(key.replace("-", "-").strip())
-                description = escape(case_parts[3].replace("-", "-").strip())
-                given = escape(case_parts[0].replace("-", "-").strip())
-                expected = escape(case_parts[4].replace("-", "-").strip())
-                remainder = escape(case_parts[5].replace("-", "-").strip())
-                payload = f"""
-<div class="case">
-    <h3 class="case_id">{case_id}</h3>
-    <!--
-    <div class="description">{description}</div>
-    -->
-    <pre class="given">{given}</pre>
-    <pre class="expected">{escape(case_parts[4].strip())}</pre>
-    <pre class="remainder">{escape(case_parts[5].strip())}</pre>
-</div>
-"""
-                cases[category][kind].append(payload)
-                #print(case)
-                #print(payload)
+                pass
+
+                #case_id = escape(key.replace("-", "-").strip())
+                #description = escape(case_parts[3].replace("-", "-").strip())
+                #given = escape(case_parts[0].replace("-", "-").strip())
+                #expected = escape(case_parts[4].replace("-", "-").strip())
+                #remainder = escape(case_parts[5].replace("-", "-").strip())
+                #payload = f"""
+#<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    #<div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">{description}</div>
+    #<pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{given}</pre>
+    #<pre class="font-size-xsmall margin-top-xsmall color-primary-70">{escape(case_parts[5].strip())}</pre>
+    #<details>
+        #<summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        #<pre class="font-size-xsmall color-primary-70">{escape(case_parts[4].strip())}</pre>
+    #</details>
+    #<div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">{case_id}</div>
+#</div>
+#"""
+                #cases[category][kind].append(payload)
+                ##print(case)
+                ##print(payload)
 
 
 
 
-with open("../../../docs-content/_test-report.neo", "w") as _out:
-    _out.write("-- title\n\nTest Report\n\n-- html/\n\n")
-    _out.write('<div class="cases">')
-    for cat in cases:
-        _out.write('<div class="category"-cases>')
-        for kind in cases[cat]:
-            _out.write(f"""<div clsss="case-kind"><h2>{cat} - {kind}</h2>""")
-            for payload in cases[cat][kind]:
-                _out.write(payload)
-            _out.write('</div>')
-        _out.write('</div>')
-    _out.write('</div>')
-
-    _out.write("-- title\n\nTest Report\n\n-- /html\n\n")
+# with open("../../../docs-content/_test-report.neo", "w") as _out:
+#     _out.write("-- title\n\nTest Report\n\n-- html/\n\n")
+#     _out.write('<div class="cases">')
+#     for cat in cases:
+#         _out.write('<div class="category-cases">')
+#         for kind in cases[cat]:
+#             _out.write(f"""<details clsss="case-kind"><summary class="margin-xxsmall">{cat} - {kind}</summary>""")
+#             for payload in cases[cat][kind]:
+#                 _out.write(payload)
+#             _out.write('</details>')
+#         _out.write('</div>')
+#     _out.write('</div>')
+#     _out.write("-- title\n\nTest Report\n\n-- /html\n\n")
 
 
 

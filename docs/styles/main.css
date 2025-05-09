@@ -1102,6 +1102,35 @@ body {
 .border-top-3-color-alt-4-20 { border-top: 3px solid var(--color-alt-4-20); }
 .border-top-3-color-alt-4-10 { border-top: 3px solid var(--color-alt-4-10); }
 
+
+.border-radius-xxsmall {
+  border-radius: var(--border-radius-xxsmall);
+}
+
+.border-radius-xsmall {
+  border-radius: var(--border-radius-xsmall);
+}
+
+.border-radius-small {
+  border-radius: var(--border-radius-small);
+}
+
+.border-radius-medium{
+  border-radius: var(--border-radius-medium);
+}
+
+.border-radius-large{
+  border-radius: var(--border-radius-large);
+}
+
+.border-radius-xlarge{
+  border-radius: var(--border-radius-xlarge);
+}
+
+.border-radius-xxlarge{
+  border-radius: var(--border-radius-xxlarge);
+}
+
 canvas {
   display: block;
   max-width: 100%;
@@ -1343,6 +1372,7 @@ footer {
   width: var(--width-medium);
   text-align: center;
 }
+
 
 h1,
 h2,
@@ -1779,3 +1809,5 @@ video {
 .wrapper-full > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
 }
+
+
