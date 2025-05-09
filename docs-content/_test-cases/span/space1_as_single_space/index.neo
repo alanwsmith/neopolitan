@@ -1,0 +1,7 @@
+-- title
+
+span/space1_as_single_space
+
+-- html
+
+<div><a href="../">Up</a></div><div class="padding-medium"><a href="tests">tests</a></div>

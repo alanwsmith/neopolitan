@@ -1,0 +1,7 @@
+-- title
+
+block/list_item_spans/tests/generated-ok
+
+-- html
+
+<div><a href="../">Up</a></div><div class="padding-medium"><a href="escaped-shorthands-by-themselves">escaped-shorthands-by-themselves</a></div><div class="padding-medium"><a href="single-characters-by-themselves">single-characters-by-themselves</a></div>

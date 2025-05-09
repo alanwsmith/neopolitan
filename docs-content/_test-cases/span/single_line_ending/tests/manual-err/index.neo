@@ -1,0 +1,7 @@
+-- title
+
+span/single_line_ending/tests/manual-err
+
+-- html
+
+<div><a href="../">Up</a></div>

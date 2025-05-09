@@ -1,0 +1,7 @@
+-- title
+
+span/empty_line_or_lines_after_line_ending_or_eof
+
+-- html
+
+<div><a href="../">Up</a></div><div class="padding-medium"><a href="tests">tests</a></div>

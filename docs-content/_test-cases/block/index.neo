@@ -1,0 +1,7 @@
+-- title
+
+block
+
+-- html
+
+<div><a href="../">Up</a></div><div class="padding-medium"><a href="list">list</a></div><div class="padding-medium"><a href="list_item">list_item</a></div><div class="padding-medium"><a href="list_item_spans">list_item_spans</a></div>

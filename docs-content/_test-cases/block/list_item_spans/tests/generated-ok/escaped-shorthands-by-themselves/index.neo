@@ -1,0 +1,7 @@
+-- title
+
+block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves
+
+-- html
+
+<div><a href="../">Up</a></div>

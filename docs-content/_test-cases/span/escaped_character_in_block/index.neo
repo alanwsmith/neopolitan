@@ -1,0 +1,7 @@
+-- title
+
+span/escaped_character_in_block
+
+-- html
+
+<div><a href="../">Up</a></div><div class="padding-medium"><a href="tests">tests</a></div>

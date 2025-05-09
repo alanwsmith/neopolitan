@@ -1,0 +1,7 @@
+-- title
+
+span/strikethrough_shorthand/tests/manual-ok
+
+-- html
+
+<div><a href="../">Up</a></div>
