@@ -9,14 +9,25 @@ class ReportMaker:
     def __init__(self, input_root, output_root):
         self.input_root = input_root 
         self.output_root = output_root
-        self.file_list = []
+        self.file_path_parts = []
 
     def get_file_list(self):
         for root, dirs, files in os.walk(self.input_root):
             for file in files:
                 file_path = os.path.join(root, file)
-                file_parts = file_path.split("/")
-                self.file_list.append(file_parts)
+                ext = "".join(Path(file_path).suffixes)
+                if ext == ".neotest":
+                    file_parts = file_path.split("/")
+                    self.file_path_parts.append(file_parts)
+
+    def make_output_dirs(self):
+        for path_parts in self.file_path_parts: 
+            rel_dir = "/".join(path_parts[4:-1])
+            output_dir = os.path.join(self.output_root, rel_dir)
+            print(output_dir)
+            Path(output_dir).mkdir(parents=True, exist_ok=True)
+
+
 
 
 
@@ -27,10 +38,9 @@ if __name__ == "__main__":
             "../../..",
             "../../../docs-content/_test-cases"
         )
-
     maker.get_file_list()
-
-    print(maker.file_list)
+#    print(maker.file_list)
+    maker.make_output_dirs()
 
 # file_list = []
 # for root, dirs, files in os.walk("../../.."):
