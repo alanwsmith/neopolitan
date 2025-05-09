@@ -5,34 +5,65 @@ import os
 from html import escape
 from pathlib import Path
 
-file_list = []
-for root, dirs, files in os.walk("../../.."):
-    for file in files:
-        file_path = os.path.join(root, file)
-        file_list.append(file_path)
+class ReportMaker:
+    def __init__(self, input_root, output_root):
+        self.input_root = input_root 
+        self.output_root = output_root
+        self.file_list = []
 
-cases = {
-            "block": {},
-            "span": {}
-        }
+    def get_file_list(self):
+        for root, dirs, files in os.walk(self.input_root):
+            for file in files:
+                file_path = os.path.join(root, file)
+                file_parts = file_path.split("/")
+                self.file_list.append(file_parts)
 
-file_list.sort()
 
-for path in file_list:
-    ext = "".join(Path(path).suffixes)
-    if ext == ".neotest":
-        path_parts = path.split("/")
-        category = path_parts[4]
-        kind = path_parts[5]
-        del path_parts[:6]
-        key = ".".join(path_parts)
-        if kind not in cases[category]:
-            cases[category][kind] = []
-        with open(path) as _case:
-            case = _case.read()
-            case_parts = case.split("######")
-            if case_parts[2] == "ok":
-                pass
+
+
+
+if __name__ == "__main__": 
+    maker = ReportMaker(
+            "../../..",
+            "../../../docs-content/_test-cases"
+        )
+
+    maker.get_file_list()
+
+    print(maker.file_list)
+
+# file_list = []
+# for root, dirs, files in os.walk("../../.."):
+#     for file in files:
+#         file_path = os.path.join(root, file)
+#         file_list.append(file_path)
+# cases = {
+#             "block": {},
+#             "span": {}
+#         }
+
+#file_list.sort()
+
+# for path in file_list:
+#     ext = "".join(Path(path).suffixes)
+#     if ext == ".neotest":
+#         path_parts = path.split("/")
+#         del path_parts[:4]
+#         dir_parts = path_parts[:-1]
+#         print(path_parts)
+#         print(dir_parts)
+
+        # category = path_parts[4]
+        # kind = path_parts[5]
+        # key = ".".join(path_parts)
+        # if kind not in cases[category]:
+        #     cases[category][kind] = []
+        # with open(path) as _case:
+        #     case = _case.read()
+        #     case_parts = case.split("######")
+        #     if case_parts[2] == "ok":
+        #         pass
+
 
                 #case_id = escape(key.replace("-", "-").strip())
                 #description = escape(case_parts[3].replace("-", "-").strip())
@@ -79,5 +110,5 @@ for path in file_list:
 
 
 
-print(cases)
+#print(cases)
 
