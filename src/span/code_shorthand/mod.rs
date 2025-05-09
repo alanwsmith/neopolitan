@@ -157,7 +157,7 @@ mod test {
     // }
 
     #[test]
-    fn solo_code_shorthand_tests() {
+    fn code_shorthand_tests() {
         let source_dir = &PathBuf::from("src/span/code_shorthand/tests");
         let test_file_list =
             get_file_list(&source_dir, &vec!["neotest".to_string()]).unwrap();
