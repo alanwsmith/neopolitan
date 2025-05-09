@@ -9,3 +9,4 @@ pub mod site;
 pub mod span;
 pub mod span_metadata;
 pub mod test_overview;
+pub mod test_overview_case;

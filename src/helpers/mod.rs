@@ -58,6 +58,17 @@ pub enum TestSpanPayload {
     UnexpectedError,
 }
 
+pub fn get_dirs_in_dir(source_dir: &PathBuf) -> Result<Vec<PathBuf>> {
+    Ok(fs::read_dir(source_dir)?
+        .into_iter()
+        .filter_map(|entry| entry.ok())
+        .map(|entry| entry.path())
+        .filter(|path| path.is_dir())
+        .filter(|path| !path.starts_with("."))
+        .filter(|path| !path.starts_with("$"))
+        .collect::<Vec<PathBuf>>())
+}
+
 pub fn get_file_list(
     source_dir: &PathBuf,
     extensions: &Vec<String>,
