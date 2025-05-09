@@ -1,7 +1,0 @@
--- title
-
-span/single_line_ending
-
--- html
-
-<div><a href="../">Up</a></div><div class="padding-medium"><a href="tests">tests</a></div>

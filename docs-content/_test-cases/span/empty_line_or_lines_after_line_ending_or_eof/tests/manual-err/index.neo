@@ -1,7 +1,0 @@
--- title
-
-span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err
-
--- html
-
-<div><a href="../">Up</a></div>

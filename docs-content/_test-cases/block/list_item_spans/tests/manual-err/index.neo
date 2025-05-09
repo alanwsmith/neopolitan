@@ -1,7 +1,0 @@
--- title
-
-block/list_item_spans/tests/manual-err
-
--- html
-
-<div><a href="../">Up</a></div>

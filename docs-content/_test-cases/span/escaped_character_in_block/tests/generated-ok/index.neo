@@ -1,7 +1,0 @@
--- title
-
-span/escaped_character_in_block/tests/generated-ok
-
--- html
-
-<div><a href="../">Up</a></div><div class="padding-medium"><a href="single-shorthand-ok">single-shorthand-ok</a></div>

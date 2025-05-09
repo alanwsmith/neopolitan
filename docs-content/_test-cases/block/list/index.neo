@@ -1,7 +1,0 @@
--- title
-
-block/list
-
--- html
-
-<div><a href="../">Up</a></div><div class="padding-medium"><a href="full">full</a></div>

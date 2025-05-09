@@ -1,7 +1,0 @@
--- title
-
-span/escaped_character_in_block/tests/manual-ok
-
--- html
-
-<div><a href="../">Up</a></div>

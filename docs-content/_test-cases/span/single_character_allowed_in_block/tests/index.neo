@@ -1,7 +1,0 @@
--- title
-
-span/single_character_allowed_in_block/tests
-
--- html
-
-<div><a href="../">Up</a></div><div class="padding-medium"><a href="generated-ok">generated-ok</a></div>
