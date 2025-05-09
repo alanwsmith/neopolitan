@@ -5,67 +5,103 @@ import os
 from html import escape
 from pathlib import Path
 
+class TestFile: 
+    def __init__(self, source_path):
+        self.source_path = source_path
+        with open(source_path, "r") as _in:
+            self.source = _in.read()
+
 class TestCase:
     def __init__(self, input_path):
         self.input_path = input_path
         with open(self.input_path, "r") as _in:
             self.source = _in.read()
-    
+   
+# class FullReport:
+#     def __init__(self):
+#         self.reports = {}
 
 
-class ReportMaker:
+class Report:
     def __init__(self, input_root, output_root):
         self.input_root = input_root 
         self.output_root = output_root
-        self.file_path_parts = []
-        self.dir_tree = {}
-        self.test_cases = {}
+        self.files = []
 
-    def get_file_list(self):
+    def load_files(self):
         for root, dirs, files in os.walk(self.input_root):
             for file in files:
-                file_path = os.path.join(root, file)
-                ext = "".join(Path(file_path).suffixes)
+                source_path = os.path.join(root, file)
+                ext = "".join(Path(source_path).suffixes)
                 if ext == ".neotest":
-                    file_parts = file_path.split("/")
-                    self.file_path_parts.append(file_parts)
+                    test_file = TestFile(source_path)
+                    self.files.append(test_file)
 
-    def make_output_dirs(self):
-        for key in self.dir_tree:
-            self.make_output_dir(key, self.dir_tree[key])
 
-    def make_output_dir(self, key, next):
-        output_dir = os.path.join(self.output_root, key)
-        Path(output_dir).mkdir(parents=True, exist_ok=True)
-        output_index = os.path.join(output_dir, "index.neo")
-        with open(output_index, "w") as _out_in:
-            _out_in.write(f"""-- title\n\n{key}\n\n""")
-            _out_in.write(f"""-- html\n\n<div><a href="../">Up</a></div>""")
-            for new_key in sorted(next):
-                send_key = os.path.join(key, new_key)
-                _out_in.write(f"""<div class="padding-medium"><a href="{new_key}">{new_key}</a></div>""")
-                self.make_output_dir(send_key, next[new_key])
 
-    def load_dir_tree(self):
-        for path_parts in self.file_path_parts: 
-            sub_parts = path_parts[4:-1]
-            self.add_to_tree(self.dir_tree, sub_parts)
 
-    def add_to_tree(self, current, chain):
-        link = chain.pop(0)
-        if link not in current:
-            current[link] = {}
-        if len(chain) > 0:
-            self.add_to_tree(current[link], chain)
+if __name__ == "__main__": 
+    report = Report(
+            "../../..",
+            "../../../docs-content/_test-cases"
+        )
+    report.load_files()
 
-    def load_sources(self):
-        for parts in sorted(self.file_path_parts):
-            source_path = os.path.join(self.input_root, "/".join(parts[3:])) 
-            cases_key = "/".join(parts[4:-1])
-            if cases_key not in self.test_cases:
-                self.test_cases[cases_key] = []
-            test_case = TestCase(source_path)
-            self.test_cases[cases_key].append(test_case)
+        # self.file_path_parts = []
+        # self.dir_tree = {}
+        # self.test_cases = {}
+
+    # def get_file_list(self):
+    #     for root, dirs, files in os.walk(self.input_root):
+    #         for file in files:
+    #             file_path = os.path.join(root, file)
+    #             ext = "".join(Path(file_path).suffixes)
+    #             if ext == ".neotest":
+    #                 file_parts = file_path.split("/")
+    #                 self.file_path_parts.append(file_parts)
+
+    # def make_output_dirs(self):
+    #     for key in self.dir_tree:
+    #         self.make_output_dir(key, self.dir_tree[key])
+
+    # def make_output_dir(self, key, next):
+    #     output_dir = os.path.join(self.output_root, key)
+    #     Path(output_dir).mkdir(parents=True, exist_ok=True)
+    #     output_index = os.path.join(output_dir, "index.neo")
+    #     with open(output_index, "w") as _out_in:
+    #         _out_in.write(f"""-- title\n\n{key}\n\n""")
+    #         _out_in.write(f"""-- html\n\n<div><a href="../">Up</a></div>""")
+    #         for new_key in sorted(next):
+    #             send_key = os.path.join(key, new_key)
+    #             _out_in.write(f"""<div class="padding-medium"><a href="{new_key}">{new_key}</a></div>""")
+    #             self.make_output_dir(send_key, next[new_key])
+
+    # def load_dir_tree(self):
+    #     for path_parts in self.file_path_parts: 
+    #         sub_parts = path_parts[4:-1]
+    #         self.add_to_tree(self.dir_tree, sub_parts)
+
+    # def add_to_tree(self, current, chain):
+    #     link = chain.pop(0)
+    #     if link not in current:
+    #         current[link] = {}
+    #     if len(chain) > 0:
+    #         self.add_to_tree(current[link], chain)
+
+    # def load_sources(self):
+    #     for parts in sorted(self.file_path_parts):
+    #         source_path = os.path.join(self.input_root, "/".join(parts[3:])) 
+    #         cases_key = "/".join(parts[4:-1])
+    #         if cases_key not in self.test_cases:
+    #             self.test_cases[cases_key] = []
+    #         test_case = TestCase(source_path)
+    #         self.test_cases[cases_key].append(test_case)
+
+    # def output_reports(self):
+    #     for case_key in self.test_cases:
+    #         print(case_key)
+
+
 
 
             # print(cases_key)
@@ -85,15 +121,13 @@ class ReportMaker:
             #         self.dir_tree[sub_part] = {}
 
 
-if __name__ == "__main__": 
-    maker = ReportMaker(
-            "../../..",
-            "../../../docs-content/_test-cases"
-        )
-    maker.get_file_list()
-    maker.load_dir_tree()
-    maker.make_output_dirs()
-    maker.load_sources()
+
+    # maker.get_file_list()
+    # maker.load_dir_tree()
+    # maker.make_output_dirs()
+    # maker.load_sources()
+    # maker.output_reports()
+
 
     #print(maker.dir_tree)
 
