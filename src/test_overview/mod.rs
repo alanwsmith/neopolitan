@@ -1,3 +1,4 @@
+#![allow(unused)]
 // TODO: Make this a command line function
 // to output the coverage
 
@@ -45,12 +46,20 @@ impl TestReport {
         }
     }
 
-    pub fn output_dirs(self) -> Vec<PathBuf> {
+    pub fn make_output_dirs(&self) -> Result<()> {
+        for output_dir in &self.output_dirs() {
+            // dbg!(output_dir);
+            std::fs::create_dir_all(output_dir)?;
+        }
+        Ok(())
+    }
+
+    pub fn output_dirs(&self) -> Vec<PathBuf> {
         self.cases
             .iter()
             .filter_map(|case| case.source_path.parent())
             .filter_map(|p| p.strip_prefix(&self.input_root).ok())
-            .map(|p| self.output_root.clone().join(p))
+            .map(|p| self.output_root.clone().join("_test-overview").join(p))
             .unique()
             .sorted()
             .collect()
@@ -67,7 +76,8 @@ mod test {
             &PathBuf::from("src"),
             &PathBuf::from("docs-content"),
         );
-        dbg!(tr.output_dirs());
+        tr.make_output_dirs();
+        //dbg!(tr.output_dirs());
 
         assert!(false);
     }
