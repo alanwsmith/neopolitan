@@ -1,17 +1,12 @@
-#![allow(unused)]
 // TODO: Make this a command line function
 // to output the coverage
 
 use crate::helpers::*;
 use crate::test_overview_case::TestOverviewCase;
-use anyhow::Error;
 use anyhow::Result;
-use anyhow::anyhow;
 use itertools::Itertools;
 use minijinja::syntax::SyntaxConfig;
 use minijinja::{Environment, Value, context};
-use std::collections::BTreeMap;
-use std::collections::BTreeSet;
 use std::fs;
 use std::path::PathBuf;
 
@@ -24,19 +19,8 @@ pub struct TestOverview<'a> {
 }
 
 impl TestOverview<'_> {
-    // pub fn make_index_files(&self) -> Result<()> {
-    //     let
-    //     // let outputs: BTreeMap<PathBuf, Vec<PathBuf>> = BTreeMap::new();
-    //     // for dir in &self.output_dirs() {
-    //     //     let child_dirs = get_dirs_in_dir(dir)?;
-    //     //     dbg!(child_dirs);
-    //     // }
-    //     Ok(())
-    // }
-
     pub fn load_templates(&mut self) -> Result<()> {
-        &self
-            .env
+        self.env
             .add_template(
                 "index",
                 r#"-- title
@@ -104,21 +88,24 @@ Test Overview
     }
 
     pub fn output_index_files(&mut self, working_dir: &PathBuf) -> Result<()> {
-        //let template_string = self.index_template();
-        //self.env.add_template("index", template_string);
-        // .add_template_owned("index", self.index_template().to_string());
-        // &self.env.add_template_owned("index", "asdf".to_string());
         let file_output = working_dir.join("index.neo");
         dbg!(&file_output);
         let child_dirs: Vec<PathBuf> = get_dirs_in_dir(&working_dir)?
             .iter()
-            .filter_map(|p| p.strip_prefix(&self.output_root).ok())
+            .filter_map(|p| p.strip_prefix(&working_dir).ok())
             .map(|p| p.to_path_buf())
+            .sorted()
             .collect();
-        let links = Value::from_serialize(child_dirs);
+        let links = Value::from_serialize(&child_dirs);
         let template = self.env.get_template("index")?;
         let output = template.render(context![links])?;
         fs::write(file_output, output)?;
+        for child_dir in &child_dirs {
+            dbg!(&child_dir);
+            let next_dir = working_dir.join(&child_dir);
+            dbg!(&next_dir);
+            self.output_index_files(&next_dir)?;
+        }
         Ok(())
     }
 }
@@ -126,14 +113,17 @@ Test Overview
 #[cfg(test)]
 mod test {
     use super::*;
+    use anyhow::Result;
 
     #[test]
-    fn solo_make_report() {
+    fn solo_make_report() -> Result<()> {
         let input_root = PathBuf::from("src");
         let output_root = PathBuf::from("docs-content/_test-overview");
         let mut tr = TestOverview::new(&input_root, &output_root);
-        tr.load_templates();
-        tr.make_output_dirs();
-        tr.output_index_files(&tr.output_root.clone());
+        tr.load_templates()?;
+        tr.make_output_dirs()?;
+        tr.output_index_files(&tr.output_root.clone())?;
+        // assert!(false);
+        Ok(())
     }
 }
