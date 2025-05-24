@@ -2,6 +2,9 @@
 
 TODOs
 
+Some of this is for Neopolitan. Some
+for Neopoligen. Just throwing it all 
+here for now. 
 
 -- todo
 
@@ -137,6 +140,45 @@ head of the document.
 (and, just generally go through the global
 attrs and spec them out. They should be hoisted
 into the output automatically.)
+
+
+[] Automatic ``figure`` numbering where you use
+keys in the source data and then ``<<figure|key-nam>>``
+to referene them which would them get
+auto numbered in the output. 
+
+[] Could also be used to refrence figure
+on other pages. 
+
+[] Make a report of any spans/blocks that don't
+have templates associated with them. 
+
+[] Check CSS styles to see if anything is missing. 
+
+[] Confirm you can have a ``1.`` as the first characters
+on a newline in a numlist without it breaking to 
+a new item. 
+
+[] Allow attributes to contiue onto the next line. 
+
+[] Set up images so they don't all end up in the
+same folder. might be able to hash the image and
+use the first few characters to split into directories. 
+This would also help ensure that changes get picked
+up since the URLs would be new whenever the image
+is updated. 
+
+[] Show how to have one piece of javascript
+and then call in back with line numbers later
+in the post without having to copy paste 
+the code. 
+
+[] Defile both ``class`` and ``classes`` as
+part of the reference. They do the same
+thing, it's just a convenience alias. 
+
+[] Show code block web component. 
+
 
 
 -- p

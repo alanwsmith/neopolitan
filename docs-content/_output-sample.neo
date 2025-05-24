@@ -1,21 +1,8 @@
--- div/
--- class: color-alt-2
-
-Level 1.1
-
 -- div
--- class: color-alt-4
+-- example-attr: alfa  bravo
 
-Level 2--- ``code here|class: color-alfa-1`` ping
+``alfa|example-attr: alfa\`bravo``
 
--- /div
+-- html
 
-Level 1.2
-
-
-
-
--- metadata 
--- created: 2025-05-02T13:38:38-04:00
--- updated: 2025-05-02T13:38:38-04:00
-
+<div style="color: var(--color-secondary-70);">Secondary</div>

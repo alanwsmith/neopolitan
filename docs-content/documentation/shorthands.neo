@@ -15,7 +15,7 @@ content in Neopolitan files<sup>1</sup>.
 
 ` = code
 
-@ = span
+@ = span (first flag becomes classes)
 
 ^ = footnote
 

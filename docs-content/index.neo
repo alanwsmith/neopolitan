@@ -1,88 +1,44 @@
--- title
--- class: example-class 
--- flag-example
+-- html  
 
-Welcome to Neopolitan
+<hgroup>
+<h1>Neopolitan</h1>
+<p>Notes with Superpowers</p>
+</hgroup>
 
 -- h2
 
 Introduction
 
-Neopolitan is a plain-text file format. 
-It's like Markdown, but with more features. 
+Neopolitan is a way to take notes. 
+
+It's easy to learn, quick to customize,
+and super powerful. 
+
 
 -- h2
-
-Work-In-Progress
-
--- html
-
-<div class="tmp-warning flow">
-
-<p>
-<strong>Head's up:</strong> I'm in the middle of rebuilding the site. 
-</p>
-
-<p>
-The examples on this page are up to date. Most
-of the rest of the site is just scratch notes and 
-TODOs. Feel free to click around if you want to see how the 
-sausage is being made. 
-</p>
-
-<p>
-Follow me on 
-<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
-or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>
-for updates. 
-</p>
-
-</div>
-
--- h2
-
-How It Works
-
--- h3
 
 The Basics
 
-
-
-
 -- html
 
 <p>
-Neopolitan documents are made from sections. Each one
-start with two dashes followed by a name. For example, 
-here's a <code>title</code> section:
+Neopolitan notes are made up of <em>blocks</em>. Each 
+one start with two dashes and a name.
 </p>
 
-<div class="tmp-example flow">
+<pre class="pre-basic"><code>&#45;&#45; title</code></pre>
 
-<p>&#45;&#45; title</p>
+<p>Content comes after</p>
 
-<p>A Basic Example</p>
 
-<p>This is an example of what a Neopolitan<br />
-document looks like.</p>
+<pre class="pre-basic"><code>&#45;&#45; title
 
-</div>
+A Basic Example
 
-<p>which outputs this HTML:</p>
+This is an example of a title block in
+a Neopolitan note</code></pre>
 
-<div class="tmp-example flow">
-<p>
-&lt;h1 class=&quot;title&quot;&gt;<br />
-&nbsp;&nbsp;A Basic Example<br />
-&lt;/h1&gt;<br />
-&lt;p&gt;<br />
-&nbsp;&nbsp;This is an example of what a<br />
-&nbsp;&nbsp;Neopolitan document looks like.<br />
-&lt;/p&gt;
-</p>
 
-</div>
 
 
 
