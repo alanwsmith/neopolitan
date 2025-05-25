@@ -293,17 +293,16 @@ forward to sharing it with you.
 
 -a
 
--- html
-
-<hr>
 
 
--- h2
-
-Endnotes
 
 -- html
 
+<div class="large-bottom-margin">&nbsp;</div>
+
+
+<details class="">
+<summary>Endnotes</summary>
 <ul>
   <li>
     I love taking notes. 
@@ -348,33 +347,8 @@ as I can be that it'll last.
   Details page for more info.</a>
   </li>
 </ul>
+</details>
 
--- h2
-
-Footnotes
-
--- html
-
-<ol class="flow">
-  <li>
-    <a href="https://www.neopoligen.com/">Neopoligen</a> - the
-    web site builder that uses Neopolitan notes. 
-    I'm re-tooling it right now. The new version will
-    be available soon. I'll post updates <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a>,
-<a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>, 
-and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
-  </li>
-  <li>
-    Here's <a href="/details/">more details about the format</a>.
-  </li>
-</ol>
-
-
--- h2
-
-Further Reading
-
--- html
 
 
 <details>
@@ -468,6 +442,27 @@ Introducing Neb - A Social Network For People</a>.
 </ul>
 
 </details>
+
+-- h2
+
+Footnotes
+
+-- html
+
+<ol class="flow">
+  <li>
+    <a href="https://www.neopoligen.com/">Neopoligen</a> - the
+    web site builder that uses Neopolitan notes. 
+    I'm re-tooling it right now. The new version will
+    be available soon. I'll post updates <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a>,
+<a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>, 
+and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
+  </li>
+  <li>
+    Here's <a href="/details/">more details about the format</a>.
+  </li>
+</ol>
+
 
 
 
