@@ -1,0 +1,47 @@
+-- neopolitan 
+
+``code sample|rust``
+
+
+-- json
+
+{
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "category": "basic",
+          "attrs": {},
+          "children": [
+            {
+              "category": "text-block",
+              "spans": [
+                {
+                  "category": "code",
+                  "attrs": {},
+                  "flags": [
+                    "rust"
+                  ],
+                  "spans": [
+                    {
+                      "category": "text",
+                      "content": "code sample"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "neopolitan"
+        }
+      ]
+    }
+  }
+}
+
+
+
+
+

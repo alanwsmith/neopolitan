@@ -1,0 +1,14 @@
+alfa######txt######ok######
+
+Single word
+
+######
+{
+  "category": "text",
+  "content": "alfa",
+  "kind": "text"
+}
+######
+{
+  "remainder": ""
+}

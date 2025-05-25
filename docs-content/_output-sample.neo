@@ -1,35 +1,8 @@
--- title
+-- div
+-- example-attr: alfa  bravo
 
-Output Sample
+``alfa|example-attr: alfa\`bravo``
 
+-- html
 
--- h2
-
-Introduction
-
-This is an h2 section with is part of the 
-basic category. 
-
--- h3
-
-Code Sections
-
-This is a ``code snippet`` without attrs.
-
-This is a ``println!("code shorthand");|rust`` that should
-be highlighted as rust. 
-
-This is a ``code shorthand|class: color-alt-1`` that should have a
-different color though a class. 
-
-
-
-
--- page
--- created: 2025-05-02T13:38:38-04:00
--- updated: 2025-05-02T13:38:38-04:00
--- id: 2w/y9/dd/se
--- template: post
--- status: prep
-
-
+<div style="color: var(--color-secondary-70);">Secondary</div>

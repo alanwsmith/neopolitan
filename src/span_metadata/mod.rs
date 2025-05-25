@@ -1,3 +1,5 @@
+// TODO: Deprecate this stuff and move it up to
+// top level parsers
 #![allow(unused)]
 pub mod attr;
 pub mod flag;
@@ -19,6 +21,12 @@ pub enum RawSpanMetadata {
     Flag(String),
 }
 
+#[derive(Debug, PartialEq)]
+pub struct SpanMetadata {
+    pub attrs: BTreeMap<String, Vec<Span>>,
+    pub flags: Vec<String>,
+}
+
 // TODO: create ``metadata_key`` or something
 // like that that is used for flags and
 // the keys for attrs so they have the same
@@ -36,73 +44,33 @@ pub enum RawSpanMetadata {
 // the responsibility of the output
 // implementation.
 
-// pub fn span_metadata<'a>(
-//     source: &'a str,
-//     character: &'a str,
-// ) -> IResult<&'a str, (Vec<String>, BTreeMap<String, Vec<Vec<Span>>>)> {
-//     // Reminder: attrs first otherwise things go wrong with this setup
-//     let (source, raw_metadata) = many0(alt((
-//         |src| span_attr(src, character),
-//         |src| span_flag(src, character),
-//     )))
-//     .parse(source)?;
-//     let mut flags = raw_metadata
-//         .iter()
-//         .filter_map(|data| match data {
-//             RawSpanMetadata::Flag(content) => Some(content.clone()),
-//             _ => None,
-//         })
-//         .collect::<Vec<String>>();
-//     let mut attrs: BTreeMap<String, Vec<Vec<Span>>> = BTreeMap::new();
-//     raw_metadata.iter().for_each(|data| match data {
-//         RawSpanMetadata::Attr { key, spans } => {
-//             match attrs.get_mut(key) {
-//                 Some(v) => {
-//                     v.push(spans.clone());
-//                     ()
-//                 }
-//                 None => {
-//                     attrs.insert(key.to_string(), vec![spans.clone()]);
-//                     ()
-//                 }
-//             }
-//             ()
-//         }
-//         _ => (),
-//     });
-//     Ok((source, (flags, attrs)))
-// }
-
 pub fn span_metadata<'a>(
     source: &'a str,
     character: &'a str,
-) -> IResult<&'a str, (Vec<String>, BTreeMap<String, Vec<Span>>)> {
+) -> IResult<&'a str, SpanMetadata> {
     // Reminder: attrs first otherwise things go wrong with this setup
     let (source, raw_metadata) = many0(alt((
         |src| span_attr(src, character),
         |src| span_flag(src, character),
     )))
     .parse(source)?;
-    let mut flags = raw_metadata
-        .iter()
-        .filter_map(|data| match data {
-            RawSpanMetadata::Flag(content) => Some(content.clone()),
-            _ => None,
-        })
-        .collect::<Vec<String>>();
-    let mut attrs: BTreeMap<String, Vec<Span>> = BTreeMap::new();
-    raw_metadata.iter().for_each(|data| match data {
-        RawSpanMetadata::Attr { key, spans } => match attrs.get_mut(key) {
-            Some(v) => {
-                spans.iter().for_each(|span| v.push(span.clone()));
+    let mut metadata = SpanMetadata {
+        attrs: BTreeMap::new(),
+        flags: vec![],
+    };
+    raw_metadata.iter().for_each(|item| match item {
+        RawSpanMetadata::Flag(string) => metadata.flags.push(string.clone()),
+        RawSpanMetadata::Attr { key, spans } => {
+            if let Some(x) = metadata.attrs.get_mut(key) {
+                for span in spans {
+                    x.push(span.clone())
+                }
+            } else {
+                metadata.attrs.insert(key.to_string(), spans.clone());
             }
-            None => {
-                attrs.insert(key.to_string(), spans.clone());
-            }
-        },
-        _ => (),
+        }
     });
-    Ok((source, (flags, attrs)))
+    Ok((source, metadata))
 }
 
 #[cfg(test)]
@@ -118,7 +86,7 @@ mod test {
         let character = "`";
         let flags = vec!["alfa".to_string()];
         let attrs = BTreeMap::new();
-        let left = (flags, attrs);
+        let left = SpanMetadata { attrs, flags };
         let remainder = "``";
         let right = span_metadata(source, character).unwrap();
         assert_eq!(left, right.1);
@@ -135,9 +103,10 @@ mod test {
             "alfa".to_string(),
             vec![Span::Text {
                 content: "bravo".to_string(),
+                kind: "text".to_string(),
             }],
         );
-        let left = (flags, attrs);
+        let left = SpanMetadata { attrs, flags };
         let remainder = "``";
         let right = span_metadata(source, character).unwrap();
         assert_eq!(left, right.1);
@@ -157,9 +126,10 @@ mod test {
             "alfa".to_string(),
             vec![Span::Text {
                 content: "bravo ``charlie``".to_string(),
+                kind: "text".to_string(),
             }],
         );
-        let left = (flags, attrs);
+        let left = SpanMetadata { attrs, flags };
         let remainder = ">>";
         let right = span_metadata(source, character).unwrap();
         assert_eq!(left, right.1);
@@ -176,15 +146,17 @@ mod test {
             "alfa".to_string(),
             vec![Span::Text {
                 content: "bravo".to_string(),
+                kind: "text".to_string(),
             }],
         );
         attrs.insert(
             "charlie".to_string(),
             vec![Span::Text {
                 content: "delta".to_string(),
+                kind: "text".to_string(),
             }],
         );
-        let left = (flags, attrs);
+        let left = SpanMetadata { attrs, flags };
         let remainder = "``";
         let right = span_metadata(source, character).unwrap();
         assert_eq!(left, right.1);
@@ -200,16 +172,20 @@ mod test {
         let alfa_vecs = vec![
             Span::Text {
                 content: "bravo".to_string(),
+                kind: "text".to_string(),
             },
             Span::Text {
                 content: "delta".to_string(),
+                kind: "text".to_string(),
             },
         ];
         attrs.insert("alfa".to_string(), alfa_vecs);
-        let left = (flags, attrs);
+        let left = SpanMetadata { attrs, flags };
         let remainder = "``";
         let right = span_metadata(source, character).unwrap();
         assert_eq!(left, right.1);
         assert_eq!(remainder, right.0);
     }
+
+    //
 }

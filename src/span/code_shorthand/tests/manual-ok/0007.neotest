@@ -1,0 +1,44 @@
+``alfa|bravo: charlie|bravo: delta``
+######txt######ok######
+
+Same attr multiple times
+
+######
+
+{
+  "attrs": {"bravo": [
+    {
+      "category": "text",
+      "content": "charlie",
+      "kind": "text"
+    },
+    {
+      "category": "text",
+      "content": "delta",
+      "kind": "text"
+    }
+  ]},
+  "category": "code-shorthand",
+  "flags": [],
+  "kind": "code-shorthand",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa",
+      "kind": "text"
+    }
+  ]
+}
+
+######
+
+{
+  "remainder": ""
+}
+
+
+
+
+
+
+

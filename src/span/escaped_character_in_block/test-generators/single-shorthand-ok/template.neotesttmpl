@@ -1,0 +1,21 @@
+\${TOKEN}bravo
+######txt######ok######
+
+Escaped ${TOKEN}
+
+######
+
+{
+  "category": "escaped-character",
+  "content": "${TOKEN}",
+  "kind": "escaped-character"
+}
+
+######
+
+{
+  "remainder": "bravo"
+}
+
+
+

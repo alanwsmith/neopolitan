@@ -1,0 +1,54 @@
+-- neopolitan 
+
+``code sample|class: red``
+
+
+-- json
+
+{
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "category": "basic",
+          "attrs": {},
+          "children": [
+            {
+              "category": "text-block",
+              "spans": [
+                {
+                  "category": "code",
+                  "attrs": {
+                    "class": [
+                      {
+                        "category": "text", 
+                        "content": "red"
+                      }
+                    ]
+                  },
+                  "flags": [
+                  ],
+                  "spans": [
+                    {
+                      "category": "text",
+                      "content": "code sample"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "neopolitan"
+        }
+      ]
+    }
+  }
+}
+
+
+
+
+
+

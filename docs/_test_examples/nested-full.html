@@ -1,0 +1,219 @@
+
+  <!DOCTYPE html>
+<html lang="en"> 
+
+
+<!-- 
+  Welcome To The Source Code!
+
+  Please don't judge it too harshly. It's
+  very much a work in progress. 
+-->
+
+
+<head> 
+	<title></title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/syntax-highlighting.css" />
+  <link rel="stylesheet" href="/styles/tmp-dev-styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header class="wrapper-medium margin-bottom-large">
+    <a href="/">Home</a>
+  </header>
+  <main class="wrapper-medium flow"><div class="tmp-under-construction">
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+  <div>
+    <p>This page is currently under construction.</p>
+    <p>
+      Depending on when you see it, it could be anywhere from a complete draft to nothing but
+      a bunch of scratch notes and placeholders. Follow me on
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
+    </p>
+  </div>
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+</div><h1 class="title">Nested Full Test</h1><div class="border-primary padding-medium flow"><p>This is the start of a start-end div</p><div class="color-alt-2 border-alt-3 padding-medium flow"><p>This is the internal div which is a full div (i.e. not start-end).</p><p>It has a color applied to it.</p></div>
+
+</div>
+
+
+  
+  
+
+<div class="border-primary padding-medium flow"><p>This is the content after the closing token for the block</p></div>
+
+
+</main>
+  <footer>
+    from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
+    <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
+    <a href="https://links.alanwsmith.com/">other projects</a> ~
+    <a href="https://socials.alanwsmith.com/">socials</a>
+  </footer>
+
+<div class="wrapper-medium padding-top-large">
+<pre class="font-size-xsmall"><hr />
+<h3>Under Construction</h3>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/_test_examples/basic-div-sections.html">_test_examples/basic-div-sections.html</a></li><li><a href="/_test_examples/nested-full.html">_test_examples/nested-full.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
+</div>
+
+
+<div class="wrapper-medium padding-top-large">
+<pre class="font-size-xsmall">
+{
+  "ok": {
+    "blocks": [
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Nested Full Test"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "title"
+      },
+      {
+        "attrs": {
+          "class": [
+            {
+              "category": "text",
+              "content": "border-primary padding-medium"
+            }
+          ]
+        },
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "This is the start of a start-end div"
+              }
+            ]
+          },
+          {
+            "attrs": {
+              "class": [
+                {
+                  "category": "text",
+                  "content": "color-alt-2 border-alt-3 padding-medium"
+                }
+              ]
+            },
+            "category": "basic",
+            "children": [
+              {
+                "category": "text-block",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "This is the internal div which is a full div (i.e. not start-end)."
+                  }
+                ]
+              },
+              {
+                "category": "text-block",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "It has a color applied to it."
+                  }
+                ]
+              }
+            ],
+            "end_block": null,
+            "flags": [],
+            "kind": "div"
+          }
+        ],
+        "end_block": {
+          "attrs": {
+            "class": [
+              {
+                "category": "text",
+                "content": "border-primary padding-medium"
+              }
+            ]
+          },
+          "category": "end",
+          "children": [
+            {
+              "category": "text-block",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "This is the content after the closing token for the block"
+                }
+              ]
+            }
+          ],
+          "flags": [],
+          "kind": "div-end"
+        },
+        "flags": [],
+        "kind": "div"
+      },
+      {
+        "attrs": {
+          "created": [
+            {
+              "category": "text",
+              "content": "2025-05-03T18:23:57-04:00"
+            }
+          ],
+          "id": [
+            {
+              "category": "text",
+              "content": "2w/bx/2d/lz"
+            }
+          ],
+          "status": [
+            {
+              "category": "text",
+              "content": "prep"
+            }
+          ],
+          "template": [
+            {
+              "category": "text",
+              "content": "post"
+            }
+          ],
+          "updated": [
+            {
+              "category": "text",
+              "content": "2025-05-03T18:23:57-04:00"
+            }
+          ]
+        },
+        "category": "basic",
+        "children": [],
+        "end_block": null,
+        "flags": [],
+        "kind": "page"
+      }
+    ]
+  }
+}
+</pre>
+</div>
+
+</body>
+</html>

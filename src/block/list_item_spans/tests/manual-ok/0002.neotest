@@ -1,0 +1,35 @@
+alfa bravo charlie
+delta echo foxtrot
+######txt######ok######
+
+Basic Check
+
+######
+
+{
+  "category": "list-item-spans",
+  "kind": "list-item-spans",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa bravo charlie",
+      "kind": "text"
+    }, 
+    {
+      "category": "space",
+      "kind": "space"
+    },
+    {
+      "category": "text",
+      "content": "delta echo foxtrot",
+      "kind": "text"
+    }
+  ]
+}
+
+######
+
+{
+  "remainder": ""
+}
+

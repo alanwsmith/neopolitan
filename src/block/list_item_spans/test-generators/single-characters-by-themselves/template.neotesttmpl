@@ -1,0 +1,28 @@
+{
+  "content": "${TOKEN}"
+}
+######json######ok######
+
+Single Character by itself: ${TOKEN} 
+
+######
+
+{
+  "category": "list-item-spans",
+  "kind": "list-item-spans",
+  "spans": [
+    { 
+      "category": "text", 
+      "content": "${TOKEN}",
+      "kind": "text"
+    }
+  ]
+}
+
+######
+
+{
+  "remainder": ""
+}
+
+

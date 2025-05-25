@@ -1,0 +1,93 @@
+-- title
+
+Demos To Make
+
+Probably these are mainly for Neopoligen.
+Keeping them here until that overhaul
+work begins. 
+
+-- h2
+
+Possible Things To Show Off
+
+(When they are ready)
+
+-- list
+
+- Figures in code/pre blocks (with 
+auto numbering
+
+- Span code highlighting
+
+- Auto numbering footnotes
+
+- show templates for html/css/js
+
+- wiki links
+
+- wiki footnotes
+
+- Making num-lists with ``-``, ``#``, 
+or explicit ``1``, ``2``, etc... 
+
+- Show how to start ordered lists
+at different numbers. 
+
+- Show starting an ordered list with 
+``1``, then using ``#`` for the
+rest of the numbers. 
+
+- If the first number in an ordered 
+list isn't ``1``, the list starts
+with whatever the actual number is
+and can then use ``#`` from that
+point forward. 
+
+- youtube sections and web components
+
+- cache clears when templates change
+
+- Collection of all URLs and the pages
+they are on
+
+- Collections of all books, etc...
+
+- tlink style links that go to a
+specific block on a page (either
+by id or index, or maybe just ID
+since indexes could change pretty
+easily)
+
+
+- section names show up for section
+wrappers classes automatcially?
+Should you have section wrappers?
+probably, but tbd. 
+
+- image search where you can click
+to copy the name to the clipboard
+
+- using just the file's name
+without having to screw with 
+the path. 
+
+- page tags and groups
+
+- paging between numbers of pages
+
+- alt tags on images (multiline attrs)
+
+- adding classes
+
+- utility classes
+
+
+
+
+
+
+
+-- metadata 
+-- created: 2025-05-10T11:28:40-04:00
+-- updated: 2025-05-10T11:28:40-04:00
+

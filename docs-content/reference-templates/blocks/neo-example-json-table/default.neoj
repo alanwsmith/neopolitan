@@ -1,0 +1,90 @@
+[!- import "macros/loader.neoj" as macros -!] 
+
+[!- if "title" in block.attrs -!]
+  <h2>[@- macros.output_block_attr(block, "title") -@]</h2>
+[!- endif -!]
+
+[!- if "ok" in block.data -!]
+  <table class="border-color-alt-2-40">
+  [!- if "header_rows" in block.data.ok -!]
+    <thead>
+      [!- for row in block.data.ok.header_rows -!]
+        <tr>
+          [!- for cell in row -!]
+            <th
+                class="vertical-align-top
+                padding-inline-large
+                border-bottom-color-alt-3
+              [!- if "class" in cell !]
+                [@ cell.class @]
+              [!- endif -!]
+              "
+              [!- if "rowspan" in cell !]
+                rowspan="[@ cell.rowspan @]"
+              [!- endif -!]
+              [!- if "colspan" in cell !]
+                colspan="[@ cell.colspan @]"
+              [!- endif -!]
+            >[@ cell.content @]
+            </th>
+          [!- endfor -!]
+        </tr>
+      [!- endfor -!]
+    </thead>
+  [!- endif -!]
+  [!- if "body_rows" in block.data.ok -!]
+    <tbody>
+      [!- for row in block.data.ok.body_rows -!]
+        <tr>
+          [!- for cell in row -!]
+            <td
+                class="vertical-align-top
+                padding-inline-large
+              [!- if "class" in cell !]
+                [@ cell.class @]
+              [!- endif -!]
+              "
+              [!- if "rowspan" in cell !]
+                rowspan="[@ cell.rowspan @]"
+              [!- endif -!]
+              [!- if "colspan" in cell !]
+                colspan="[@ cell.colspan @]"
+              [!- endif -!]
+            >[@ cell.content @]
+            </td>
+          [!- endfor -!]
+        </tr>
+      [!- endfor -!]
+    </tbody>
+  [!- endif -!]
+  [!- if "footer_rows" in block.data.ok -!]
+    <tfoot>
+      [!- for row in block.data.ok.footer_rows -!]
+        <tr>
+          [!- for cell in row -!]
+            <td
+                class="vertical-align-top
+                padding-inline-large
+                border-top-color-alt-3-60
+              [!- if "class" in cell !]
+                [@ cell.class @]
+              [!- endif -!]
+              "
+              [!- if "rowspan" in cell !]
+                rowspan="[@ cell.rowspan @]"
+              [!- endif -!]
+              [!- if "colspan" in cell !]
+                colspan="[@ cell.colspan @]"
+              [!- endif -!]
+            >[@ cell.content @]
+            </td>
+          [!- endfor -!]
+        </tr>
+      [!- endfor -!]
+    </tfoot>
+  [!- endif -!]
+
+  </table>
+[!- elif "error" in block.data -!]
+  JSON Error: [@ block.data.error @]
+[!- endif -!]

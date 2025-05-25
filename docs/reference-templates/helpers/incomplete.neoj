@@ -1,15 +1,14 @@
 [!- extends "wrappers/default.neoj" -!]
 [!- import "macros/loader.neoj" as macros -!] 
-
-
-[# TODO: Move to helpers #]
-
-
 [! block main !]
     <h1>Incomplete Parsing</h1>
     <h2>Failed At:</h2>
-    <pre>[@ remainder @]</pre>
-    <h2>Completed:</h2>
-    <pre>[@ sections|tojson(true) @]</pre>
+    <pre>
+    [! autoescape true !]
+    [@ page[1].data.incomplete.remainder|tojson(true) @]
+    [! endautoescape !]
+    </pre>
+    <h2>After Completing:</h2>
+    <pre>[@ page[1].data.incomplete.parsed|tojson(true) @]</pre>
 [! endblock !]
 

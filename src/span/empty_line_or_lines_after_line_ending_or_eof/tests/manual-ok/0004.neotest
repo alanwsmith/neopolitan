@@ -1,0 +1,23 @@
+{
+  "content": "\n\n   bravo"
+}######json######ok######
+
+Spaces after last line ending don't get eaten
+
+######
+
+{
+  "category": "empty-line-or-lines", 
+  "kind": "empty-line-or-lines"
+}
+
+######
+
+{
+  "remainder": "   bravo"
+}
+
+
+
+
+

@@ -1,0 +1,21 @@
+\_bravo
+######txt######ok######
+
+Escaped _
+
+######
+
+{
+  "category": "escaped-character",
+  "content": "_",
+  "kind": "escaped-character"
+}
+
+######
+
+{
+  "remainder": "bravo"
+}
+
+
+

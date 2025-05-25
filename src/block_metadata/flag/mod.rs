@@ -19,7 +19,6 @@ pub fn raw_block_flag<'a>(
     source: &'a str,
     _config: &'a Config,
     _parent: &'a BlockParent,
-    _debug: bool,
 ) -> IResult<&'a str, RawBlockMetaData> {
     let (source, _) = tag("--").parse(source)?;
     let (source, _) = space1.parse(source)?;
@@ -57,12 +56,11 @@ mod test {
     fn raw_block_flag_valid_tests(#[case] left: &str) {
         let config = &Config::default();
         let parent = &BlockParent::Basic;
-        let debug = false;
         let source = format!("-- {}", left);
         let left = RawBlockMetaData::Flag {
             string: left.trim().to_string(),
         };
-        let right = raw_block_flag(&source, config, parent, debug).unwrap().1;
+        let right = raw_block_flag(&source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
 
@@ -75,9 +73,8 @@ mod test {
     fn raw_block_flag_invalid_tests(#[case] left: &str) {
         let config = &Config::default();
         let parent = &BlockParent::Basic;
-        let debug = false;
         let source = format!("-- {}", left);
-        let right = raw_block_flag(&source, config, parent, debug);
+        let right = raw_block_flag(&source, config, parent);
         if right.is_err() {
             assert!(true)
         } else {

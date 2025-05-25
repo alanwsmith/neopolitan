@@ -24,7 +24,7 @@ use nom::multi::many1;
 // TODO: Figure out a way to chomp
 // just the last one?
 
-pub fn text_span_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
+pub fn text_span_in_span_attr(source: &str) -> IResult<&str, Span> {
     let (source, results) = many1(alt((
         plain_text_string_base,
         plain_text_space1_as_single_space,
@@ -38,6 +38,7 @@ pub fn text_span_in_span_attr<'a>(source: &'a str) -> IResult<&'a str, Span> {
         source,
         Span::Text {
             content: results.join("").to_string(),
+            kind: "text".to_string(),
         },
     ))
 }
@@ -48,18 +49,20 @@ mod test {
     use pretty_assertions::assert_eq;
     use rstest::rstest;
 
+
+                
     #[rstest]
-    #[case("alfa", Span::Text{ content: "alfa".to_string()}, "")]
-    #[case("alfa bravo", Span::Text{ content: "alfa bravo".to_string()}, "")]
-    #[case("alfa \"bravo\"", Span::Text{ content: "alfa \"bravo\"".to_string()}, "")]
-    #[case("alfa` bravo", Span::Text{ content: "alfa` bravo".to_string()}, "")]
-    #[case("alfa~ bravo", Span::Text{ content: "alfa~ bravo".to_string()}, "")]
-    #[case("alfa\nbravo", Span::Text{ content: "alfa bravo".to_string()}, "")]
-    #[case("alfa \nbravo", Span::Text{ content: "alfa bravo".to_string()}, "")]
-    #[case("https://www.example.com/", Span::Text{ content: "https://www.example.com/".to_string()}, "")]
-    #[case("alfa bravo -\n- charlie delta", Span::Text{ content: "alfa bravo - - charlie delta".to_string()}, "")]
-    #[case("alfa^^1^^", Span::Text{ content: "alfa".to_string()}, "^^1^^")]
-    #[case("alfa\\<<", Span::Text{ content: "alfa".to_string()}, "\\<<")]
+    #[case("alfa", Span::Text{ content: "alfa".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa bravo", Span::Text{ content: "alfa bravo".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa \"bravo\"", Span::Text{ content: "alfa \"bravo\"".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa` bravo", Span::Text{ content: "alfa` bravo".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa~ bravo", Span::Text{ content: "alfa~ bravo".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa\nbravo", Span::Text{ content: "alfa bravo".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa \nbravo", Span::Text{ content: "alfa bravo".to_string(), kind: "text".to_string()}, "")]
+    #[case("https://www.example.com/", Span::Text{ content: "https://www.example.com/".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa bravo -\n- charlie delta", Span::Text{ content: "alfa bravo - - charlie delta".to_string(), kind: "text".to_string()}, "")]
+    #[case("alfa^^1^^", Span::Text{ content: "alfa".to_string(), kind: "text".to_string()}, "^^1^^")]
+    #[case("alfa\\<<", Span::Text{ content: "alfa".to_string(), kind: "text".to_string()}, "\\<<")]
     // TODO: Make escaped version of this
     // #[case("alfa|bravo", Span::Text{ content: "alfa|bravo".to_string()}, "")]
     fn text_span_in_span_attr_valid_tests(
@@ -77,6 +80,7 @@ mod test {
         let source = "alfa    bravo \n   ";
         let left = Span::Text {
             content: "alfa bravo ".to_string(),
+            kind: "text".to_string()
         };
         let remainder = "";
         let right = text_span_in_span_attr(source).unwrap();
@@ -85,10 +89,11 @@ mod test {
     }
 
     #[test]
-    fn solo_text_span_in_span_attr_chomp_leading_whitespace_on_new_lines() {
+    fn text_span_in_span_attr_chomp_leading_whitespace_on_new_lines() {
         let source = "alfa  \n  bravo";
         let left = Span::Text {
             content: "alfa bravo".to_string(),
+            kind: "text".to_string()
         };
         let remainder = "";
         let right = text_span_in_span_attr(source).unwrap();
@@ -115,6 +120,7 @@ mod test {
         let source = "alfa <<span|ping>>";
         let left = Span::Text {
             content: "alfa ".to_string(),
+            kind: "text".to_string()
         };
         let remainder = "<<span|ping>>";
         let right = text_span_in_span_attr(source).unwrap();

@@ -1,0 +1,16 @@
+alfa bravo
+charlie delta######txt######ok######
+
+Stop at newline
+
+######
+{
+  "category": "text",
+  "content": "alfa bravo",
+  "kind": "text"
+}
+######
+{
+  "remainder": "\ncharlie delta"
+}
+

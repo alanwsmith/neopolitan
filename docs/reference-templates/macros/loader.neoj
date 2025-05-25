@@ -1,7 +1,12 @@
-[!- include "macros/debug.neoj" -!]
+[# TODO: Rename files to have underscores so they
+match the function names #]
 [!- include "macros/child-spans.neoj" -!]
+[!- include "macros/debug.neoj" -!]
+[!- include "macros/get-block-attributes.neoj" -!]
+[!- include "macros/output-block-attribute.neoj" -!]
+[!- include "macros/output_block_attr.neoj" -!]
 [!- include "macros/page-links.neoj" -!]
 [!- include "macros/reproduce.neoj" -!]
+[!- include "macros/span-attributes.neoj" -!]
 [!- include "macros/span-classes.neoj" -!]
 [!- include "macros/span-id.neoj" -!]
-

@@ -1,0 +1,3322 @@
+-- title
+
+Test Report
+
+-- html/
+
+<div class="cases"><div class="category-cases"><details clsss="case-kind"><summary class="margin-xxsmall">block - list</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">List item with one line with 
+another item behind it.</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">-- list
+
+- alfa bravo charlie
+
+- delta echo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;list&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;category&quot;: &quot;list-item&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;category&quot;: &quot;list-item-spans&quot;,
+          &quot;kind&quot;: &quot;list-item-spans&quot;,
+          &quot;spans&quot;: [
+            {
+              &quot;category&quot;: &quot;text&quot;,
+              &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+              &quot;kind&quot;: &quot;text&quot;
+            }
+          ]
+        }
+      ],
+      &quot;kind&quot;: &quot;list-item&quot;
+    },
+    {
+      &quot;category&quot;: &quot;list-item&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;category&quot;: &quot;list-item-spans&quot;,
+          &quot;kind&quot;: &quot;list-item-spans&quot;,
+          &quot;spans&quot;: [
+            {
+              &quot;category&quot;: &quot;text&quot;,
+              &quot;content&quot;: &quot;delta echo&quot;,
+              &quot;kind&quot;: &quot;text&quot;
+            }
+          ]
+        }
+      ],
+      &quot;kind&quot;: &quot;list-item&quot;
+    }
+  ],
+
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;list&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">full.tests.manual-ok.0001.neotest</div>
+</div>
+</details><details clsss="case-kind"><summary class="margin-xxsmall">block - list_item</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single word list item at end of file</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">- alfa</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;category&quot;: &quot;list-item-spans&quot;,
+      &quot;kind&quot;: &quot;list-item-spans&quot;,
+      &quot;spans&quot;: [
+        {
+          &quot;category&quot;: &quot;text&quot;,
+          &quot;content&quot;: &quot;alfa&quot;,
+          &quot;kind&quot;: &quot;text&quot;
+        }
+      ]
+    }
+  ],
+  &quot;kind&quot;: &quot;list-item&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">full.tests.manual-ok.0001.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">List item with one line with 
+another item behind it.</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">- alfa bravo charlie
+
+- delta echo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;- delta echo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;category&quot;: &quot;list-item-spans&quot;,
+      &quot;kind&quot;: &quot;list-item-spans&quot;,
+      &quot;spans&quot;: [
+        {
+          &quot;category&quot;: &quot;text&quot;,
+          &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+          &quot;kind&quot;: &quot;text&quot;
+        }
+      ]
+    }
+  ],
+  &quot;kind&quot;: &quot;list-item&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">full.tests.manual-ok.0002.neotest</div>
+</div>
+</details><details clsss="case-kind"><summary class="margin-xxsmall">block - list_item_spans</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand @ is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \@bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;@&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.ampersand.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand * is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \*bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;*&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.astrisk.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand ` is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \`bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;`&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.backtick.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand ^ is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \^bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;^&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.caret.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand } is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \}bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;}&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.close_curly.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand ) is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \)bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;)&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.close_paren.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand ] is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \]bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;]&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.close_square.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand &gt; is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \&gt;bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;&gt;&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.close_tag.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand - is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \-bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;-&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.dash.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand # is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \#bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;#&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.hashtag.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand 0 is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \0bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;0&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.number_0.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand 1 is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \1bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;1&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.number_1.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand 2 is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \2bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;2&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.number_2.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand 3 is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \3bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;3&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.number_3.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand 4 is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \4bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;4&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.number_4.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand 5 is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \5bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;5&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.number_5.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand 6 is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \6bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;6&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.number_6.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand 7 is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \7bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;7&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.number_7.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand 8 is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \8bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;8&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.number_8.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand 9 is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \9bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;9&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.number_9.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand { is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \{bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;{&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.open_curly.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand ( is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \(bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;(&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.open_paren.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand [ is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \[bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;[&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.open_square.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand &lt; is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \&lt;bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;&lt;&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.open_tag.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand | is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \|bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;|&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.pipe.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand ~ is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \~bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;~&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.tilde.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped shorthand _ is okay</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \_bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa &quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    { 
+      &quot;category&quot;: &quot;escaped-character&quot;, 
+      &quot;content&quot;: &quot;_&quot;,
+      &quot;kind&quot;: &quot;escaped-character&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.escaped-shorthands-by-themselves.underscore.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: @</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;@&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;@&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.ampersand.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: *</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;*&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;*&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.astrisk.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: `</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;`&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;`&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.backtick.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: ^</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;^&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;^&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.caret.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: }</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;}&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;}&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.close_curly.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: )</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;)&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;)&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.close_paren.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: ]</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;]&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;]&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.close_square.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: &gt;</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;&gt;&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;&gt;&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.close_tag.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: {</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;{&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;{&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.open_curly.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: (</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;(&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;(&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.open_paren.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: [</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;[&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;[&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.open_square.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: &lt;</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;&lt;&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;&lt;&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.open_tag.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: |</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;|&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;|&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.pipe.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: ~</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;~&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;~&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.tilde.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character by itself: _</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;_&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    { 
+      &quot;category&quot;: &quot;text&quot;, 
+      &quot;content&quot;: &quot;_&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-characters-by-themselves.underscore.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Basic Check</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa bravo charlie</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0001.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Basic Check</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa bravo charlie
+delta echo foxtrot</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0002.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Multi line stops before new list item</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa bravo charlie
+delta echo foxtrot
+
+- golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;- golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0003.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Multi line stops before new list-item-spans</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa bravo charlie
+delta echo foxtrot
+
+golf hotel india</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;golf hotel india&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;list-item-spans&quot;,
+  &quot;kind&quot;: &quot;list-item-spans&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }, 
+    {
+      &quot;category&quot;: &quot;space&quot;,
+      &quot;kind&quot;: &quot;space&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta echo foxtrot&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0004.neotest</div>
+</div>
+</details></div><div class="category-cases"><details clsss="case-kind"><summary class="margin-xxsmall">span - code_shorthand</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single word</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``alfa``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0001.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Code with space</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``alfa bravo``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0002.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Flatten spaces</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``alfa      bravo``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0003.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single newline allowed.</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``alfa
+bravo``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa bravo&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0004.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single flag</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``alfa|bravo``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [&quot;bravo&quot;],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0005.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single attr</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``alfa|bravo: charlie``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {&quot;bravo&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0006.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Same attr multiple times</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``alfa|bravo: charlie|bravo: delta``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {&quot;bravo&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;charlie&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    },
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;delta&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0007.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Trim space around content</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">`` alfa ``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0008.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Trim space around content</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``
+alfa
+``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0009.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Trim space around content</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``alfa|
+bravo
+``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [&quot;bravo&quot;],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0010.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Trim space around content</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``alfa
+|bravo
+``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [&quot;bravo&quot;],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0011.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Trim space around content</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``alfa
+|
+bravo
+``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [&quot;bravo&quot;],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0012.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Trim space around content</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">``
+alfa
+|
+bravo
+``</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;code-shorthand&quot;,
+  &quot;flags&quot;: [&quot;bravo&quot;],
+  &quot;kind&quot;: &quot;code-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0013.neotest</div>
+</div>
+</details><details clsss="case-kind"><summary class="margin-xxsmall">span - empty_line_or_lines_after_line_ending_or_eof</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Empty line directly after line ending
+with no spaces</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;\n\nbravo&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0001.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Spaces before first line ending</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;    \n\nbravo&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0002.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Spaces after first line ending</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;\n    \nbravo&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0003.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Spaces after last line ending don&#x27;t get eaten</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;\n\n   bravo&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;   bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0004.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Multiple empty lines</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;\n\n\n\n\nbravo&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0005.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Multiple empty lines with spaces</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;\n   \n   \n   \n   \nbravo&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0006.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Spaces after last line ending don&#x27;t get eaten.
+Make sure spaces prior are still handled.</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;   \n   \n   bravo&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;   bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0007.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Spaces after last line ending don&#x27;t get eaten.
+Make sure spaces prior are still handled.</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;empty-line-or-lines&quot;, 
+  &quot;kind&quot;: &quot;empty-line-or-lines&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0008.neotest</div>
+</div>
+</details><details clsss="case-kind"><summary class="margin-xxsmall">span - escaped_character_in_block</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped @</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\@bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;@&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.ampersand.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped *</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\*bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;*&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.astrisk.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped `</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\`bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;`&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.backtick.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped ^</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\^bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;^&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.caret.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped }</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\}bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;}&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.close_curly.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped )</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\)bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;)&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.close_paren.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped ]</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\]bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;]&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.close_square.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped &gt;</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\&gt;bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;&gt;&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.close_tag.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped -</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\-bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;-&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.dash.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped #</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\#bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;#&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.hashtag.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped 0</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\0bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;0&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.number_0.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped 1</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\1bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;1&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.number_1.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped 2</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\2bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;2&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.number_2.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped 3</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\3bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;3&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.number_3.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped 4</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\4bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;4&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.number_4.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped 5</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\5bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;5&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.number_5.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped 6</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\6bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;6&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.number_6.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped 7</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\7bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;7&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.number_7.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped 8</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\8bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;8&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.number_8.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped 9</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\9bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;9&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.number_9.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped {</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\{bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;{&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.open_curly.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped (</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\(bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;(&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.open_paren.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped [</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\[bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;[&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.open_square.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped &lt;</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\&lt;bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;&lt;&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.open_tag.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped |</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\|bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;|&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.pipe.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped ~</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\~bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;~&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.tilde.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped _</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\_bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;_&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-shorthand-ok.underscore.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped \</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">\\bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;\\&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0001.neotest</div>
+</div>
+</details><details clsss="case-kind"><summary class="margin-xxsmall">span - single_character_allowed_in_block</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character @</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">@bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;@&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.ampersand.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character *</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">*bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;*&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.astrisk.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character `</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">`bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;`&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.backtick.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character ^</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">^bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;^&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.caret.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character }</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">}bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;}&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.close_curly.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character )</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">)bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;)&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.close_paren.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character ]</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">]bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;]&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.close_square.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character &gt;</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">&gt;bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;&gt;&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.close_tag.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character {</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;{&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.open_curly.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character (</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">(bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;(&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.open_paren.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character [</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">[bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;[&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.open_square.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character &lt;</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">&lt;bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;&lt;&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.open_tag.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character |</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">|bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;|&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.pipe.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character ~</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">~bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;~&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.tilde.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single Character _</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">_bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;_&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.generated-ok.single-character-check.underscore.neotest</div>
+</div>
+</details><details clsss="case-kind"><summary class="margin-xxsmall">span - single_line_ending</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single newline
+
+NOTE: there has to be something
+after the line_ending for nom to 
+pick it up. See ``eof`` for 
+handling line_endings before 
+the end of a file.</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;\nalfa&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;alfa&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;space&quot;,
+  &quot;kind&quot;: &quot;space&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0001.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Spaces before line_ending
+
+NOTE: there has to be something
+after the line_ending for nom to 
+pick it up. See ``eof`` for 
+handling line_endings before 
+the end of a file.</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot; \nalfa&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;alfa&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;space&quot;,
+  &quot;kind&quot;: &quot;space&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0002.neotest</div>
+</div>
+</details><details clsss="case-kind"><summary class="margin-xxsmall">span - space1_as_single_space</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single word</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot; &quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;space&quot;,
+  &quot;kind&quot;: &quot;space&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0001.neotest</div>
+</div>
+</details><details clsss="case-kind"><summary class="margin-xxsmall">span - strikethrough_shorthand</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Empty line directly after line ending
+with no spaces</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;~~alfa~~&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;attrs&quot;: {},
+  &quot;category&quot;: &quot;strikethrough-shorthand&quot;,
+  &quot;flags&quot;: [],
+  &quot;kind&quot;: &quot;strikethrough-shorthand&quot;,
+  &quot;spans&quot;: [
+    {
+      &quot;category&quot;: &quot;text&quot;,
+      &quot;content&quot;: &quot;alfa&quot;,
+      &quot;kind&quot;: &quot;text&quot;
+    }
+  ]
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0001.neotest</div>
+</div>
+</details><details clsss="case-kind"><summary class="margin-xxsmall">span - tests</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Escaped ${TOKEN}</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small"></pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;escaped-character&quot;,
+  &quot;content&quot;: &quot;${TOKEN}&quot;,
+  &quot;kind&quot;: &quot;escaped-character&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">manual-ok.0001.neotest</div>
+</div>
+</details><details clsss="case-kind"><summary class="margin-xxsmall">span - text_in_block</summary>
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Single word</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0001.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Multiple words and spaces get collected</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa bravo charlie</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0002.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Collapse spaces</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa   bravo    charlie</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa bravo charlie&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0003.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Stop at newline</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa bravo
+charlie delta</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;\ncharlie delta&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa bravo&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0004.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Don&#x27;t cross empty lines
+
+NOTE: this leaves the trialing newline 
+on the last line of text. It&#x27;s dealt 
+with in a later parser</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa bravo
+
+charlie delta</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;\n\ncharlie delta&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa bravo&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0005.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Stop at escape character</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">alfa \| bravo</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot;\\| bravo&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa &quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0006.neotest</div>
+</div>
+
+<div class="padding-xsmall border-color-alt-1-80 margin-bottom-medium border-radius-medium">
+    <div class="padding-xsmall font-size-xsmall border-bottom-color-alt-1-80 color-primary-50">Don&#x27;t capture empty space before line_ending</div>
+    <pre class="font-size-xsmall border-bottom-color-alt-1-80 padding-bottom-small">{
+  &quot;content&quot;: &quot;alfa bravo \ncharlie delta&quot;
+}</pre>
+    <pre class="font-size-xsmall margin-top-xsmall color-primary-70">{
+  &quot;remainder&quot;: &quot; \ncharlie delta&quot;
+}</pre>
+    <details>
+        <summary class="font-size-xsmall margin-top-xsmall padding-bottom-small color-primary-70">Expected</summary>
+        <pre class="font-size-xsmall color-primary-70">{
+  &quot;category&quot;: &quot;text&quot;,
+  &quot;content&quot;: &quot;alfa bravo&quot;,
+  &quot;kind&quot;: &quot;text&quot;
+}</pre>
+    </details>
+    <div class="font-size-xsmall border-top-color-alt-3-60 color-primary-30">tests.manual-ok.0007.neotest</div>
+</div>
+</details></div></div>-- title
+
+Test Report
+
+-- /html
+

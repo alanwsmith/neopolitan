@@ -1,0 +1,32 @@
+-- title
+
+Tree View From Fluent
+
+
+-- html
+
+<fluent-tree-view>
+  Root
+  <fluent-tree-item>
+    Fruit
+    <fluent-tree-item>Pear</fluent-tree-item>
+    <fluent-tree-item>Mango</fluent-tree-item>
+    <fluent-tree-item>Guava</fluent-tree-item>
+    <fluent-tree-item>Pomegranate</fluent-tree-item>
+  </fluent-tree-item>
+  <fluent-tree-item>
+    Guitars
+    <fluent-tree-item>Fender</fluent-tree-item>
+    <fluent-tree-item>Gibson</fluent-tree-item>
+    <fluent-tree-item>Teisco</fluent-tree-item>
+    <fluent-tree-item>Martin</fluent-tree-item>
+  </fluent-tree-item>
+  <fluent-tree-item>Earth</fluent-tree-item>
+</fluent-tree-view>
+
+
+-- metadata 
+-- created: 2025-05-08T14:18:59-04:00
+-- updated: 2025-05-08T14:18:59-04:00
+
+

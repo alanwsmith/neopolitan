@@ -1,0 +1,33 @@
+-- title
+
+Description List Test
+
+-- descriptions/
+
+    -- term
+
+    This is the term
+
+    -- detail
+
+    This is the detail
+
+    Here's another paragraph
+
+    -- term
+
+    This is the second term
+
+    -- detail
+
+    This is the second detail
+
+    And, a final paragraph
+
+-- /descriptions
+
+
+
+-- metadata
+-- created: 2025-05-03T20:49:41-04:00
+-- updated: 2025-05-03T20:49:41-04:00

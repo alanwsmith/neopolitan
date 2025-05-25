@@ -1,0 +1,742 @@
+
+  <!DOCTYPE html>
+<html lang="en"> 
+
+<!-- 
+  Welcome to the source code. 
+  Fair warning that things are still
+  kinda a mess. First make it work, 
+  then make it fast, them make it 
+  pretty. 
+-->
+
+<head> 
+	<title>Neopolitan</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/syntax-highlighting.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header>
+    <a href="/">Home</a> ~ <a href="/details/">Details</a>
+  </header>
+  <main><hgroup>
+<h1>Neopolitan</h1>
+<p>Notes with Superpowers</p>
+</hgroup><h2
+      
+>Details (Draft)</h2><p>Here's the specifics on how to format a Neopolitan note.</p><p>(A full technical spec and test suite is pending. I'm also making examples that will likely be easier to process via the <em>show don't tell</em> principal.)</p><h3
+      
+>Notes</h3><ul>
+
+<li>
+Neopolitan notes are made
+of <em>blocks</em>
+</li>
+
+<li>
+There are two types of blocks:
+<em>Basic</em> and <em>Wrapper</em>
+(details below)
+</li>
+
+<li>
+Blocks can have <em>attributes</em>
+and <em>flags</em> (details below)
+</li>
+
+<li>
+Blocks can contain content
+made up of <em>spans</em>
+</li>
+
+<li>
+Blocks without content
+are permitted  
+</li>
+
+<li>
+Content before the first block
+is not permitted
+</li>
+
+<li>
+Spans are either: <em>plain-text</em>, 
+<em>shorthands</em>, or <em>tags</em>
+(details below)
+</li>
+
+<li>
+Shorthand and Tag spans can have
+<em>attributes</em>
+and <em>flags</em> (details below)
+</li>
+
+</ul><h3
+      
+>Basic Blocks</h3><ul>
+
+<li>Basic blocks start with a
+line containing two hyphenes and
+a name separated by a one or
+more spaces</li>
+
+<li>
+Name can't contains spaces
+</li>
+
+<li>
+Other than the first block, at
+least one empty line must precede all 
+blocks 
+</li>
+
+<li>
+At least one empty line
+must be placed between the start 
+of a block (including 
+attributes and flags) and any content
+</li>
+
+<li>
+The contents of a basic block continue
+until reaching either a new block
+or the end of the note
+</li>
+
+<li>
+Each block belongs to a category
+(see below)
+</li>
+
+<li>
+A block's category determines
+how its content is treated
+</li>
+
+<li>
+Block categories can be defined
+by an app or via a <em>type</em>
+attribute on the block itself
+</li>
+
+<li>
+A set of requirements for blocks
+that belong to specific categories
+is forth coming. Apps are required
+to use the categories in order
+to be considered a valid Neopolitan
+app
+</li> 
+
+<li>
+A set of recommended categories
+for specific blocks is forthcoming.
+Apps should follow these recommendations
+if possible to assist in portability,
+but there's no requirement to do so. 
+</li>
+
+<li>
+Apps <em>are</em> required to honor <em>type</em>
+attributes if a block has one 
+</li>
+
+
+</ul><h3
+      
+>Wrapper Blocks</h3><ul>
+
+<li>
+  Wrapper blocks contain content between 
+  starting and ending lines
+</li>
+
+<li>
+Starting lines consist of two
+hyphens, one or more spaces, a name, and
+a <code>/</code> character<br>
+<br>
+<pre class="heading-border-faded large-padding default-radius">
+<code>&#45;&#45; book-review/</code>
+</pre>
+</li>
+
+
+
+<li>
+Ending lines consist of two hyphens, one
+or more spaces, a <code>/</code> character, 
+and the same name that was used on the
+starting line
+<br>
+<br>
+<pre class="heading-border-faded large-padding default-radius">
+<code>&#45;&#45; /book-review</code>
+</pre>
+</li>
+
+<li>
+Basic blocks can be included inside wrapper
+blocks:
+
+<br>
+<br>
+<pre class="heading-border-faded large-padding default-radius"><code>&#45;&#45; book-review/
+
+Some basic notes
+
+  &#45;&#45; supplemental-info
+
+  More details
+
+&#45;&#45; /book-review</code></pre>
+</li>
+
+<li>
+Wrapper blocks can contain other wrapper blocks.
+
+<br>
+<br>
+<pre class="heading-border-faded large-padding default-radius"><code>&#45;&#45; book-review/
+
+Some basic notes
+
+  &#45;&#45; supplemental-info/
+
+  More details
+
+  &#45;&#45; /supplemental-info
+
+More content
+
+&#45;&#45; /book-review</code></pre>
+</li>
+
+<li>
+Blocks contained inside a wrapper block
+can be tabbed over or kept flush starting
+at the first column of the note
+</li>
+
+<li>
+There's no practical limit to the number 
+of basic or wrapper blocks
+can be used as siblings inside 
+a wrapper block 
+</li>
+
+<li>
+There's no practical limit to the
+depth of the nesting
+</li>
+
+<li>
+Content after the ending line is treated
+like an basic category block
+</li>
+
+</ul><h3
+      
+>Block Categories</h3><ul>
+<li>The core block categories are: 
+Basic, Checklist, Checklist Item, CSV, 
+JSON, List, List Item,
+Numbered List, Numbered List Item, Raw, 
+and Text Content.
+</li>
+<li>
+Table is a reserved category type
+without an initial implementation.
+(I don't foresee a generalized table
+being implemented in the parse but
+want to make sure the name is free
+in case it does)
+</li>
+<li>Each category parses the contents
+of a block in a specific way</li>
+<li>
+If a block doesn't have a <em>type</em> attribute,
+and it doesn't match one of the predefined
+categories, and the app doesn't define
+it implicitly it is processed as 
+a <em>Basic</em> block 
+</li>
+<li>Apps are required to accommodate the
+core categories</li>
+<li>Apps can design and implement their
+own categories to parse content in
+ways the core categories don't</li>
+<li>
+Details about the handling of each
+category will be provided in further
+documentation
+</li>
+
+</ul><h3
+      
+>Block Attributes and Flags</h3><div class="heading-border-faded large-padding default-radius">
+Work-in-progress
+</div><div
+   class="flow"
+><p>Reserved attribute keys that the parse uses:</p></div>
+
+<ul>
+<li>type - for defining what
+category a block should be parsed
+with</li>
+<li>plugin - passes the block
+off to another process for
+parsing</li>
+</ul><h3
+      
+>Plain-Text Spans</h3><div class="heading-border-faded large-padding default-radius">
+Work-in-progress
+</div><h3
+      
+>Shorthand Spans</h3><p>Shorthands offer a way to quickly enhance content in Neopolitan files. They are:</p><pre
+
+>~~ = strikethrough 
+
+`` = code
+
+^^ = footnote
+
+** = strong
+
+__ = emphasis
+
+@@ = wikilink
+
+:: = image
+
+(( and )) = html
+
+[[ and ]] = link
+
+{{ and }} = class wrapper</pre><h3
+      
+>Tag Spans</h3><div class="heading-border-faded large-padding default-radius">
+Work-in-progress
+</div><h3
+      
+>Span Attributes And Flags</h3><div class="heading-border-faded large-padding default-radius">
+Work-in-progress
+</div></main>
+  <footer>
+
+
+    from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
+    <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
+    <a href="https://links.alanwsmith.com/">other projects</a> ~
+    <a href="https://socials.alanwsmith.com/">socials</a>
+  </footer>
+
+<!--
+<div class="">
+<pre class="font-size-xsmall"><hr />
+<h3>Under Construction</h3>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/_test-overview/block/index.html">_test-overview/block/index.html</a></li><li><a href="/_test-overview/block/list/full/index.html">_test-overview/block/list/full/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/index.html">_test-overview/block/list/full/tests/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/manual-ok/index.html">_test-overview/block/list/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list/index.html">_test-overview/block/list/index.html</a></li><li><a href="/_test-overview/block/list_item/full/index.html">_test-overview/block/list_item/full/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/index.html">_test-overview/block/list_item/full/tests/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/manual-ok/index.html">_test-overview/block/list_item/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list_item/index.html">_test-overview/block/list_item/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/index.html">_test-overview/block/list_item_spans/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/index.html">_test-overview/block/list_item_spans/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/index.html">_test-overview/block/list_item_spans/tests/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-err/index.html">_test-overview/block/list_item_spans/tests/manual-err/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-ok/index.html">_test-overview/block/list_item_spans/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/index.html">_test-overview/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/index.html">_test-overview/span/code_shorthand/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/index.html">_test-overview/span/code_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-err/index.html">_test-overview/span/code_shorthand/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-ok/index.html">_test-overview/span/code_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/index.html">_test-overview/span/escaped_character_in_block/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/index.html">_test-overview/span/escaped_character_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html">_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/index.html">_test-overview/span/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/index.html">_test-overview/span/single_character_allowed_in_block/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/index.html">_test-overview/span/single_character_allowed_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/index.html">_test-overview/span/single_line_ending/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/index.html">_test-overview/span/single_line_ending/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-err/index.html">_test-overview/span/single_line_ending/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-ok/index.html">_test-overview/span/single_line_ending/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/index.html">_test-overview/span/space1_as_single_space/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/index.html">_test-overview/span/space1_as_single_space/tests/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/manual-ok/index.html">_test-overview/span/space1_as_single_space/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/index.html">_test-overview/span/strikethrough_shorthand/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/index.html">_test-overview/span/strikethrough_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html">_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/tests/index.html">_test-overview/span/tests/index.html</a></li><li><a href="/_test-overview/span/tests/manual-ok/index.html">_test-overview/span/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/text_in_block/index.html">_test-overview/span/text_in_block/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/index.html">_test-overview/span/text_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/manual-ok/index.html">_test-overview/span/text_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-report.html">_test-report.html</a></li><li><a href="/_test_examples/basic-div-sections.html">_test_examples/basic-div-sections.html</a></li><li><a href="/_test_examples/code-samples.html">_test_examples/code-samples.html</a></li><li><a href="/_test_examples/csv-example-table.html">_test_examples/csv-example-table.html</a></li><li><a href="/_test_examples/description-list.html">_test_examples/description-list.html</a></li><li><a href="/_test_examples/details-test.html">_test_examples/details-test.html</a></li><li><a href="/_test_examples/json-example-table.html">_test_examples/json-example-table.html</a></li><li><a href="/_test_examples/list-full.html">_test_examples/list-full.html</a></li><li><a href="/_test_examples/nested-2-levels.html">_test_examples/nested-2-levels.html</a></li><li><a href="/_test_examples/nested-3-levels.html">_test_examples/nested-3-levels.html</a></li><li><a href="/_test_examples/nested-div-full.html">_test_examples/nested-div-full.html</a></li><li><a href="/_test_examples/raw-content-basic.html">_test_examples/raw-content-basic.html</a></li><li><a href="/_test_examples/strikethrough-shorthand-test.html">_test_examples/strikethrough-shorthand-test.html</a></li><li><a href="/_test_examples/title-subtitle-example.html">_test_examples/title-subtitle-example.html</a></li><li><a href="/_test_examples/tree-view-from-fluent.html">_test_examples/tree-view-from-fluent.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/demos-to-make.html">demos-to-make.html</a></li><li><a href="/details/index.html">details/index.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests-to-move/level-1/spans/code.html">tests-to-move/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li></ul></pre>
+</div>
+
+<div class="">
+<pre class="font-size-xsmall">
+{
+  "ok": {
+    "blocks": [
+      {
+        "attrs": {},
+        "body": "\u003chgroup\u003e\n\u003ch1\u003eNeopolitan\u003c/h1\u003e\n\u003cp\u003eNotes with Superpowers\u003c/p\u003e\n\u003c/hgroup\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Details (Draft)",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Here\u0027s the specifics on how to format a Neopolitan note.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "(A full technical spec and test suite is pending. I\u0027m also making examples that will likely be easier to process via the \u003cem\u003eshow don\u0027t tell\u003c/em\u003e principal.)",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Notes",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cul\u003e\n\n\u003cli\u003e\nNeopolitan notes are made\nof \u003cem\u003eblocks\u003c/em\u003e\n\u003c/li\u003e\n\n\u003cli\u003e\nThere are two types of blocks:\n\u003cem\u003eBasic\u003c/em\u003e and \u003cem\u003eWrapper\u003c/em\u003e\n(details below)\n\u003c/li\u003e\n\n\u003cli\u003e\nBlocks can have \u003cem\u003eattributes\u003c/em\u003e\nand \u003cem\u003eflags\u003c/em\u003e (details below)\n\u003c/li\u003e\n\n\u003cli\u003e\nBlocks can contain content\nmade up of \u003cem\u003espans\u003c/em\u003e\n\u003c/li\u003e\n\n\u003cli\u003e\nBlocks without content\nare permitted  \n\u003c/li\u003e\n\n\u003cli\u003e\nContent before the first block\nis not permitted\n\u003c/li\u003e\n\n\u003cli\u003e\nSpans are either: \u003cem\u003eplain-text\u003c/em\u003e, \n\u003cem\u003eshorthands\u003c/em\u003e, or \u003cem\u003etags\u003c/em\u003e\n(details below)\n\u003c/li\u003e\n\n\u003cli\u003e\nShorthand and Tag spans can have\n\u003cem\u003eattributes\u003c/em\u003e\nand \u003cem\u003eflags\u003c/em\u003e (details below)\n\u003c/li\u003e\n\n\u003c/ul\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Basic Blocks",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cul\u003e\n\n\u003cli\u003eBasic blocks start with a\nline containing two hyphenes and\na name separated by a one or\nmore spaces\u003c/li\u003e\n\n\u003cli\u003e\nName can\u0027t contains spaces\n\u003c/li\u003e\n\n\u003cli\u003e\nOther than the first block, at\nleast one empty line must precede all \nblocks \n\u003c/li\u003e\n\n\u003cli\u003e\nAt least one empty line\nmust be placed between the start \nof a block (including \nattributes and flags) and any content\n\u003c/li\u003e\n\n\u003cli\u003e\nThe contents of a basic block continue\nuntil reaching either a new block\nor the end of the note\n\u003c/li\u003e\n\n\u003cli\u003e\nEach block belongs to a category\n(see below)\n\u003c/li\u003e\n\n\u003cli\u003e\nA block\u0027s category determines\nhow its content is treated\n\u003c/li\u003e\n\n\u003cli\u003e\nBlock categories can be defined\nby an app or via a \u003cem\u003etype\u003c/em\u003e\nattribute on the block itself\n\u003c/li\u003e\n\n\u003cli\u003e\nA set of requirements for blocks\nthat belong to specific categories\nis forth coming. Apps are required\nto use the categories in order\nto be considered a valid Neopolitan\napp\n\u003c/li\u003e \n\n\u003cli\u003e\nA set of recommended categories\nfor specific blocks is forthcoming.\nApps should follow these recommendations\nif possible to assist in portability,\nbut there\u0027s no requirement to do so. \n\u003c/li\u003e\n\n\u003cli\u003e\nApps \u003cem\u003eare\u003c/em\u003e required to honor \u003cem\u003etype\u003c/em\u003e\nattributes if a block has one \n\u003c/li\u003e\n\n\n\u003c/ul\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Wrapper Blocks",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cul\u003e\n\n\u003cli\u003e\n  Wrapper blocks contain content between \n  starting and ending lines\n\u003c/li\u003e\n\n\u003cli\u003e\nStarting lines consist of two\nhyphens, one or more spaces, a name, and\na \u003ccode\u003e/\u003c/code\u003e character\u003cbr\u003e\n\u003cbr\u003e\n\u003cpre class=\"heading-border-faded large-padding default-radius\"\u003e\n\u003ccode\u003e\u0026#45;\u0026#45; book-review/\u003c/code\u003e\n\u003c/pre\u003e\n\u003c/li\u003e\n\n\n\n\u003cli\u003e\nEnding lines consist of two hyphens, one\nor more spaces, a \u003ccode\u003e/\u003c/code\u003e character, \nand the same name that was used on the\nstarting line\n\u003cbr\u003e\n\u003cbr\u003e\n\u003cpre class=\"heading-border-faded large-padding default-radius\"\u003e\n\u003ccode\u003e\u0026#45;\u0026#45; /book-review\u003c/code\u003e\n\u003c/pre\u003e\n\u003c/li\u003e\n\n\u003cli\u003e\nBasic blocks can be included inside wrapper\nblocks:\n\n\u003cbr\u003e\n\u003cbr\u003e\n\u003cpre class=\"heading-border-faded large-padding default-radius\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; book-review/\n\nSome basic notes\n\n  \u0026#45;\u0026#45; supplemental-info\n\n  More details\n\n\u0026#45;\u0026#45; /book-review\u003c/code\u003e\u003c/pre\u003e\n\u003c/li\u003e\n\n\u003cli\u003e\nWrapper blocks can contain other wrapper blocks.\n\n\u003cbr\u003e\n\u003cbr\u003e\n\u003cpre class=\"heading-border-faded large-padding default-radius\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; book-review/\n\nSome basic notes\n\n  \u0026#45;\u0026#45; supplemental-info/\n\n  More details\n\n  \u0026#45;\u0026#45; /supplemental-info\n\nMore content\n\n\u0026#45;\u0026#45; /book-review\u003c/code\u003e\u003c/pre\u003e\n\u003c/li\u003e\n\n\u003cli\u003e\nBlocks contained inside a wrapper block\ncan be tabbed over or kept flush starting\nat the first column of the note\n\u003c/li\u003e\n\n\u003cli\u003e\nThere\u0027s no practical limit to the number \nof basic or wrapper blocks\ncan be used as siblings inside \na wrapper block \n\u003c/li\u003e\n\n\u003cli\u003e\nThere\u0027s no practical limit to the\ndepth of the nesting\n\u003c/li\u003e\n\n\u003cli\u003e\nContent after the ending line is treated\nlike an basic category block\n\u003c/li\u003e\n\n\u003c/ul\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Block Categories",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cul\u003e\n\u003cli\u003eThe core block categories are: \nBasic, Checklist, Checklist Item, CSV, \nJSON, List, List Item,\nNumbered List, Numbered List Item, Raw, \nand Text Content.\n\u003c/li\u003e\n\u003cli\u003e\nTable is a reserved category type\nwithout an initial implementation.\n(I don\u0027t foresee a generalized table\nbeing implemented in the parse but\nwant to make sure the name is free\nin case it does)\n\u003c/li\u003e\n\u003cli\u003eEach category parses the contents\nof a block in a specific way\u003c/li\u003e\n\u003cli\u003e\nIf a block doesn\u0027t have a \u003cem\u003etype\u003c/em\u003e attribute,\nand it doesn\u0027t match one of the predefined\ncategories, and the app doesn\u0027t define\nit implicitly it is processed as \na \u003cem\u003eBasic\u003c/em\u003e block \n\u003c/li\u003e\n\u003cli\u003eApps are required to accommodate the\ncore categories\u003c/li\u003e\n\u003cli\u003eApps can design and implement their\nown categories to parse content in\nways the core categories don\u0027t\u003c/li\u003e\n\u003cli\u003e\nDetails about the handling of each\ncategory will be provided in further\ndocumentation\n\u003c/li\u003e\n\n\u003c/ul\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Block Attributes and Flags",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cdiv class=\"heading-border-faded large-padding default-radius\"\u003e\nWork-in-progress\n\u003c/div\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Reserved attribute keys that the parse uses:",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "p"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cul\u003e\n\u003cli\u003etype - for defining what\ncategory a block should be parsed\nwith\u003c/li\u003e\n\u003cli\u003eplugin - passes the block\noff to another process for\nparsing\u003c/li\u003e\n\u003c/ul\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Plain-Text Spans",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cdiv class=\"heading-border-faded large-padding default-radius\"\u003e\nWork-in-progress\n\u003c/div\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Shorthand Spans",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Shorthands offer a way to quickly enhance content in Neopolitan files. They are:",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "~~ = strikethrough \n\n`` = code\n\n^^ = footnote\n\n** = strong\n\n__ = emphasis\n\n@@ = wikilink\n\n:: = image\n\n(( and )) = html\n\n[[ and ]] = link\n\n{{ and }} = class wrapper",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "code"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Tag Spans",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cdiv class=\"heading-border-faded large-padding default-radius\"\u003e\nWork-in-progress\n\u003c/div\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Span Attributes And Flags",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cdiv class=\"heading-border-faded large-padding default-radius\"\u003e\nWork-in-progress\n\u003c/div\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {
+          "created": [
+            {
+              "category": "text",
+              "content": "2025-05-25T20:21:11-04:00",
+              "kind": "text"
+            }
+          ],
+          "updated": [
+            {
+              "category": "text",
+              "content": "2025-05-25T20:21:11-04:00",
+              "kind": "text"
+            }
+          ]
+        },
+        "category": "json",
+        "data": "none",
+        "end_block": null,
+        "flags": [],
+        "kind": "metadata"
+      }
+    ]
+  }
+}
+</pre>
+</div>
+-->
+
+</body>
+
+
+<!--
+<div class="tmp-under-construction">
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+  <div>
+    <p>This page is currently under construction.</p>
+    <p>
+      Depending on when you see it, it could be anywhere from a complete draft to nothing but
+      a bunch of scratch notes and placeholders. Follow me on
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
+    </p>
+  </div>
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+</div>
+-->
+
+</html>

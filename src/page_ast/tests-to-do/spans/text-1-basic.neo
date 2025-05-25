@@ -1,0 +1,34 @@
+-- neopolitan 
+
+alfa
+
+-- json
+
+{ 
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "attrs": {},
+          "category": "basic",
+          "children": [
+            {
+              "category": "text-block",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "alfa"
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "neopolitan"
+        }
+      ]
+    }
+  }
+}
+
+

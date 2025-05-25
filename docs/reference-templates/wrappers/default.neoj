@@ -3,44 +3,74 @@
 <!DOCTYPE html>
 <html lang="en"> 
 
-
 <!-- 
-  Welcome To The Source Code!
-
-  Please don't judge it too harshly. It's
-  very much a work in progress. 
+  Welcome to the source code. 
+  Fair warning that things are still
+  kinda a mess. First make it work, 
+  then make it fast, them make it 
+  pretty. 
 -->
 
-
 <head> 
-	<title></title>
+	<title>Neopolitan</title>
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/syntax-highlighting.css" />
-  <link rel="stylesheet" href="/styles/tmp-dev-styles.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <header class="wrapper-medium margin-bottom-large">
-    <a href="/">Home</a>
+  <header>
+    <a href="/">Home</a> ~ <a href="/details/">Details</a>
   </header>
-  <main class="wrapper-medium flow">
+  <main>
     [!- block main -!][!- endblock -!]
   </main>
   <footer>
+
+[#
+    [!- include "helpers/page-date.neoj" -!]
+    #]
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
     <a href="https://links.alanwsmith.com/">other projects</a> ~
     <a href="https://socials.alanwsmith.com/">socials</a>
   </footer>
 
-<div class="wrapper-medium padding-top-large">
+<!--
+<div class="">
 <pre class="font-size-xsmall">
 [@- macros.page_links(site) -@]
 </pre>
 </div>
 
+<div class="">
+<pre class="font-size-xsmall">
+[@ page[1].data|tojson(true) @]
+</pre>
+</div>
+-->
 
 </body>
-</html>
 
+
+<!--
+<div class="tmp-under-construction">
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+  <div>
+    <p>This page is currently under construction.</p>
+    <p>
+      Depending on when you see it, it could be anywhere from a complete draft to nothing but
+      a bunch of scratch notes and placeholders. Follow me on
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
+    </p>
+  </div>
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+</div>
+-->
+
+</html>

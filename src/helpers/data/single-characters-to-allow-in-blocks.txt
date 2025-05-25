@@ -1,0 +1,15 @@
+~ tilde 
+` backtick 
+@ ampersand 
+^ caret 
+* astrisk 
+_ underscore 
+( open_paren 
+) close_paren 
+[ open_square 
+] close_square 
+{ open_curly 
+} close_curly 
+< open_tag 
+> close_tag 
+| pipe 

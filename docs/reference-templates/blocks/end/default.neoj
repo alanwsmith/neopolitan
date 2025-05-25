@@ -1,0 +1,14 @@
+[#
+  This is the generic block that's used
+  for all end_blocks 
+#]
+
+[!- import "macros/loader.neoj" as macros -!] 
+<div
+  [@ macros.get_block_attributes(block, "flow") @]
+>
+[!- for block in block.children -!]
+  [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
+  [!- include templates -!]
+[!- endfor -!]
+</div>

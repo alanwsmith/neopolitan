@@ -1,0 +1,64 @@
+-- title
+
+Neopolitan 2.0 Parser Tests
+
+
+-- h2
+
+Introduction
+
+This document consists of the test cases 
+used to verify a Neopolitan 2.0 parser 
+conforms to the spec. 
+
+-- pre/
+
+-- neopolitan
+
+alfa
+
+-- pre 
+
+{ 
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "attrs": {},
+          "bound": "Full",
+          "category": "basic",
+          "children": [
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "alfa"
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "neopolitan"
+        }
+      ]
+    }
+  }
+}
+
+-- /pre
+
+
+this is the end
+
+
+-- ast
+
+
+
+-- page
+-- created: 2025-05-02T17:32:54-04:00
+-- updated: 2025-05-02T17:32:54-04:00
+
+

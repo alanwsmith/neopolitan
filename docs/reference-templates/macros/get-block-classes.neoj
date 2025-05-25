@@ -1,0 +1,18 @@
+[!- macro get_block_classes(block, extras = "") -!]
+[!- if "class" in block.attrs or extras != "" -!]
+    [@- " " -@]
+    class="
+    [!- if "class" in block.attrs -!]
+        [!- for span in block.attrs.class -!]
+            [@- span.content -@]
+        [!- endfor -!]
+    [!- endif -!]
+    [!- if "class" in block.attrs and extras != "" -!]
+        [@- " " -@]
+    [!- endif -!]
+    [!- if extras != "" -!]
+        [@- extras -@]
+    [!- endif -!]
+    "
+[!- endif -!]
+[!- endmacro -!]

@@ -1,0 +1,29 @@
+- alfa######text######ok######
+
+Single word list item at end of file
+
+######
+
+{
+  "category": "list-item",
+  "children": [
+    {
+      "category": "list-item-spans",
+      "kind": "list-item-spans",
+      "spans": [
+        {
+          "category": "text",
+          "content": "alfa",
+          "kind": "text"
+        }
+      ]
+    }
+  ],
+  "kind": "list-item"
+}
+
+######
+
+{
+  "remainder": ""
+}

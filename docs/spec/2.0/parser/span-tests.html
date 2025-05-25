@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="en"> 
 
 
@@ -42,8 +43,184 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 </h1><h2>Introduction
 </h2><p>This document consists of the test cases used to verify a Neopolitan 2.0 parser conforms to the spec.
 </p><p><p>alfa
-</p></p><p><p>asdf
-</p></p>THIS IS THE AST</main>
+</p>
+
+</p><p><pre>{ 
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "attrs": {},
+          "bound": "Full",
+          "category": "basic",
+          "children": [
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "alfa"
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "neopolitan"
+        }
+      ]
+    }
+  }
+}</pre></p>
+  
+  <p>this is the end
+</p>
+
+
+<pre class="font-size-xsmall">{
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "attrs": {},
+          "bound": "Full",
+          "category": "basic",
+          "children": [
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Neopolitan 2.0 Parser Tests"
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "title"
+        },
+        {
+          "attrs": {},
+          "bound": "Full",
+          "category": "basic",
+          "children": [
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Introduction"
+                }
+              ]
+            },
+            {
+              "category": "paragraph",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "This document consists of the test cases used to verify a Neopolitan 2.0 parser conforms to the spec."
+                }
+              ]
+            }
+          ],
+          "end_block": null,
+          "flags": [],
+          "kind": "h2"
+        },
+        {
+          "attrs": {},
+          "bound": "Start",
+          "category": "basic",
+          "children": [
+            {
+              "attrs": {},
+              "bound": "Full",
+              "category": "basic",
+              "children": [
+                {
+                  "category": "paragraph",
+                  "spans": [
+                    {
+                      "category": "text",
+                      "content": "alfa"
+                    }
+                  ]
+                }
+              ],
+              "end_block": null,
+              "flags": [],
+              "kind": "neopolitan"
+            },
+            {
+              "attrs": {},
+              "body": "{ \n  \"data\": {\n    \"ok\": {\n      \"blocks\": [\n        {\n          \"attrs\": {},\n          \"bound\": \"Full\",\n          \"category\": \"basic\",\n          \"children\": [\n            {\n              \"category\": \"paragraph\",\n              \"spans\": [\n                {\n                  \"category\": \"text\",\n                  \"content\": \"alfa\"\n                }\n              ]\n            }\n          ],\n          \"end_block\": null,\n          \"flags\": [],\n          \"kind\": \"neopolitan\"\n        }\n      ]\n    }\n  }\n}",
+              "bound": "Full",
+              "category": "raw",
+              "end_block": null,
+              "flags": [],
+              "kind": "pre"
+            }
+          ],
+          "end_block": {
+            "attrs": {},
+            "bound": "Full",
+            "category": "end",
+            "children": [
+              {
+                "category": "paragraph",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "this is the end"
+                  }
+                ]
+              }
+            ],
+            "flags": [],
+            "kind": "pre-end"
+          },
+          "flags": [],
+          "kind": "pre"
+        },
+        {
+          "attrs": {},
+          "bound": "Full",
+          "category": "basic",
+          "children": [],
+          "end_block": null,
+          "flags": [],
+          "kind": "ast"
+        },
+        {
+          "attrs": {
+            "created": [
+              {
+                "category": "text",
+                "content": "2025-05-02T17:32:54-04:00"
+              }
+            ],
+            "updated": [
+              {
+                "category": "text",
+                "content": "2025-05-02T17:32:54-04:00"
+              }
+            ]
+          },
+          "bound": "Full",
+          "category": "basic",
+          "children": [],
+          "end_block": null,
+          "flags": [],
+          "kind": "page"
+        }
+      ]
+    }
+  },
+  "path": "spec/2.0/parser/span-tests.html"
+}<pre>
+
+</main>
   <footer>
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
@@ -54,9 +231,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <div class="wrapper-medium padding-top-large">
 <pre class="font-size-xsmall"><hr />
 <h3>Under Construction</h3>
-<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0/parser/span-tests.html">spec/2.0/parser/span-tests.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0/html/spans.html">spec/2.0/html/spans.html</a></li><li><a href="/spec/2.0/parser/span-tests.html">spec/2.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
 </div>
-
-
 </body>
 </html>

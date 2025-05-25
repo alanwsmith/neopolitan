@@ -1,0 +1,74 @@
+-- p/
+
+Level 1
+
+-- div
+
+Level 2
+
+-- /p
+
+Level 1
+
+-- json
+
+{
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "category": "basic",
+          "attrs": {},
+          "children": [
+            {
+              "category": "text-block",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Level 1"
+                }
+              ]
+            },
+            {
+              "category": "basic",
+              "attrs": {},
+              "children": [
+                {
+                  "category": "text-block",
+                  "spans": [
+                    {
+                      "category": "text",
+                      "content": "Level 2"
+                    }
+                  ]
+                }
+              ],
+              "end_block": null,
+              "flags": [],
+              "kind": "div"
+            }
+          ],
+          "end_block": {
+            "category": "end",
+            "attrs": {},
+            "children": [
+              {
+                "category": "text-block",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "Level 1"
+                  }
+                ]
+              }
+            ],
+            "flags": [],
+            "kind": "p-end"
+          },
+          "flags": [],
+          "kind": "p"
+        }
+      ]
+    }
+  }
+}

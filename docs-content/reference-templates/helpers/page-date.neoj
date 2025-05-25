@@ -1,0 +1,11 @@
+[!- import "macros/loader.neoj" as macros -!] 
+
+[!- for block in blocks -!]
+  [!- if block.kind == "metadata" -!]
+    [!- if "created" in block.attrs -!]
+      <div>
+        Created: [@ macros.output_block_attribute(block, "created") -@]
+      </div>
+    [!- endif -!]
+  [!- endif -!]
+[!- endfor -!]

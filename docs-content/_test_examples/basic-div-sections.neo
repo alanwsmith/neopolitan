@@ -1,0 +1,30 @@
+-- title
+
+Basic Div Sections
+
+-- div
+
+This is the first div
+
+alfa bravo
+charlie
+
+delta echo
+
+-- div
+-- class: color-alt-3
+
+This is the second div that has
+a class applied to it
+
+foxtrot golf
+hotel
+
+india
+
+
+
+
+-- metadata
+-- created: 2025-05-03T18:21:52-04:00
+-- updated: 2025-05-03T18:21:52-04:00

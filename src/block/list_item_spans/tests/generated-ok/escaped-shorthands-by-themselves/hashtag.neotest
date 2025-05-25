@@ -1,0 +1,49 @@
+alfa \#bravo charlie
+delta echo foxtrot
+
+golf hotel india
+######txt######ok######
+
+Escaped shorthand # is okay
+
+######
+
+{
+  "category": "list-item-spans",
+  "kind": "list-item-spans",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa ",
+      "kind": "text"
+    }, 
+    { 
+      "category": "escaped-character", 
+      "content": "#",
+      "kind": "escaped-character"
+    },
+    {
+      "category": "text",
+      "content": "bravo charlie",
+      "kind": "text"
+    }, 
+    {
+      "category": "space",
+      "kind": "space"
+    },
+    {
+      "category": "text",
+      "content": "delta echo foxtrot",
+      "kind": "text"
+    }
+  ]
+}
+
+######
+
+{
+  "remainder": "golf hotel india"
+}
+
+
+

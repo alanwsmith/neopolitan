@@ -1,0 +1,40 @@
+-- p/
+
+Start End
+
+-- /p
+
+-- json
+
+{
+  "data": {
+    "ok": {
+      "blocks": [
+        {
+          "category": "basic",
+          "attrs": {},
+          "children": [
+            {
+              "category": "text-block",
+              "spans": [
+                {
+                  "category": "text",
+                  "content": "Start End"
+                }
+              ]
+            }
+          ],
+          "end_block": {
+            "category": "end",
+            "attrs": {},
+            "children": [],
+            "flags": [],
+            "kind": "p-end"
+          },
+          "flags": [],
+          "kind": "p"
+        }
+      ]
+    }
+  }
+}

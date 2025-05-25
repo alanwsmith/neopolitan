@@ -1,140 +1,48 @@
+
 <!DOCTYPE html>
 <html lang="en"> 
 
-
 <!-- 
-  Welcome To The Source Code!
-
-  Please don't judge it too harshly. It's
-  very much a work in progress. 
+  Welcome to the source code. 
+  Fair warning that things are still
+  kinda a mess. First make it work, 
+  then make it fast, them make it 
+  pretty. 
 -->
 
-
 <head> 
-	<title></title>
+	<title>Neopolitan</title>
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/syntax-highlighting.css" />
-  <link rel="stylesheet" href="/styles/tmp-dev-styles.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <header class="wrapper-medium margin-bottom-large">
-    <a href="/">Home</a>
+  <header>
+    <a href="/">Home</a> ~ <a href="/details/">Details</a>
   </header>
-  <main class="wrapper-medium flow">
+  <main>
     <h1>Incomplete Parsing</h1>
     <h2>Failed At:</h2>
-    <pre>``</body>`
-tag. Can be shown on the page
-by using another template,
-the details of that are left
-up to the implementation. 
-
-Note, of course, that some systems
-may not allow the output a script
-tags. In that case, nothing
-is output in the HTML by default. 
-But, escaped output can still 
-be rendered on the page by
-choosing an alternate template. 
-
-
-
-
-
-
-
-
-
-
--- h3
-
-Section Attributes
-
-These attributes must be handled by
-a parser to meet the spec. They can
-be used in any section. 
-
--- list
-
-- ``-- created:``
-
-Value is a date in the RFC 3339 format. 
-
-- ``-- updated:`` 
-
-Value is a date in the RFC 3339 format. 
-
-- ``-- template:``
-
-This is the way to change the output
-template for a section. The details
-of the values and their corresponding
-outputs is an implementation detail, but
-the attribute key is reserved. 
-
--- h2
-
-HTML Output
-
-Neopolitan is designed primarily to 
-generate web content. Output is 
-largely an implementation detail
-with a required exceptions designed
-to improve portability between
-systems. 
-
-Any generator that passes all
-the output tests meets the spec. 
-Anything not defined in the tests
-is left as an implementation detail. 
-
-TODO: Write up details of ``template:``
-being reserved. It's how you can
-change the output if you want
-something other than what's 
-speced for the shorthands. 
-
-TODO: Consider descriptions of how
-the HTML Output is representative. 
-(e.g. systems may add extra 
-classes, or attributes, but 
-they should work directionally 
-the same if any modifications
-are made)
-
-TODO: Reserve ``-- tag:`` as a reserved
-word used for tagging. can be done
-at the page level in ``-- metadata:``
-or the ``-- SECTION`` level 
-
-
-
-
-
-
-
-
--- metadata 
--- created: 2025-04-27T10:54:39-04:00
--- updated: 2025-04-27T10:54:39-04:00
-
-
-</pre>
-    <h2>Completed:</h2>
+    <pre>
+    
+    "metadata - must not output directly\non the page. \n\n- neopolitan - Outputs the contents\nof the section without adding anything\nbeyond the content generated from \nthe body of section. This ensures\nthere\u0027s a way to test AST generation\nfrom a parser. (Necessary because\ncontent can\u0027t exist outside \na section)\n\n- head - does not show up by default.\nThe contents are added directly \nto the head of the document. It\u0027s\na ``raw`` category. So, the\noutput is exactly what\u0027s input. \n\n- javascript - a raw section. \nThe output is added to the page inside \nscript tags just before the closing ``\u003c/body\u003e`\ntag. Can be shown on the page\nby using another template,\nthe details of that are left\nup to the implementation. \n\nNote, of course, that some systems\nmay not allow the output a script\ntags. In that case, nothing\nis output in the HTML by default. \nBut, escaped output can still \nbe rendered on the page by\nchoosing an alternate template. \n\n\n\n\n\n\n\n\n\n\n-- h3\n\nSection Attributes\n\nThese attributes must be handled by\na parser to meet the spec. They can\nbe used in any section. \n\n-- list\n\n- ``-- created:``\n\nValue is a date in the RFC 3339 format. \n\n- ``-- updated:`` \n\nValue is a date in the RFC 3339 format. \n\n- ``-- template:``\n\nThis is the way to change the output\ntemplate for a section. The details\nof the values and their corresponding\noutputs is an implementation detail, but\nthe attribute key is reserved. \n\n-- h2\n\nHTML Output\n\nNeopolitan is designed primarily to \ngenerate web content. Output is \nlargely an implementation detail\nwith a required exceptions designed\nto improve portability between\nsystems. \n\nAny generator that passes all\nthe output tests meets the spec. \nAnything not defined in the tests\nis left as an implementation detail. \n\nTODO: Write up details of ``template:``\nbeing reserved. It\u0027s how you can\nchange the output if you want\nsomething other than what\u0027s \nspeced for the shorthands. \n\nTODO: Consider descriptions of how\nthe HTML Output is representative. \n(e.g. systems may add extra \nclasses, or attributes, but \nthey should work directionally \nthe same if any modifications\nare made)\n\nTODO: Reserve ``-- tag:`` as a reserved\nword used for tagging. can be done\nat the page level in ``-- metadata:``\nor the ``-- SECTION`` level \n\n\n\n\n\n\n\n\n-- metadata \n-- created: 2025-04-27T10:54:39-04:00\n-- updated: 2025-04-27T10:54:39-04:00\n\n\n"
+    
+    </pre>
+    <h2>After Completing:</h2>
     <pre>[
   {
     "attrs": {},
-    "bound": "Full",
     "category": "basic",
     "children": [
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "Neopolitan 2.0 Specification"
+            "content": "Neopolitan 2.0 Specification",
+            "kind": "text"
           }
         ]
       }
@@ -145,63 +53,74 @@ or the ``-- SECTION`` level
   },
   {
     "attrs": {},
-    "bound": "Full",
     "category": "basic",
     "children": [
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "[] make "
+            "content": "[] make ",
+            "kind": "text"
           },
           {
             "attrs": {},
-            "category": "code",
+            "category": "code-shorthand",
             "flags": [],
+            "kind": "code-shorthand",
             "spans": [
               {
                 "category": "text",
-                "content": "-- code"
+                "content": "-- code",
+                "kind": "text"
               }
             ]
           },
           {
             "category": "text",
-            "content": " a defined section where the first flag is the language to use for highlighting"
+            "content": " a defined section where the first flag is the language to use for highlighting",
+            "kind": "text"
           }
         ]
       },
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "[] Make "
+            "content": "[] Make ",
+            "kind": "text"
           },
           {
             "attrs": {},
-            "category": "code",
+            "category": "code-shorthand",
             "flags": [],
+            "kind": "code-shorthand",
             "spans": [
               {
                 "category": "text",
-                "content": "style"
+                "content": "style",
+                "kind": "text"
               }
             ]
           },
           {
             "category": "text",
-            "content": " reserved attr for spans to output inline CSS styles if the system allows it."
+            "content": " reserved attr for spans to output inline CSS styles if the system allows it.",
+            "kind": "text"
           }
         ]
       },
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "[] Split specification requires into two levels. First passes basic test. Second implements standard features."
+            "content": "[] Split specification requires into two levels. First passes basic test. Second implements standard features.",
+            "kind": "text"
           }
         ]
       }
@@ -212,24 +131,27 @@ or the ``-- SECTION`` level
   },
   {
     "attrs": {},
-    "bound": "Full",
     "category": "basic",
     "children": [
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "Introduction"
+            "content": "Introduction",
+            "kind": "text"
           }
         ]
       },
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification."
+            "content": "The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification.",
+            "kind": "text"
           }
         ]
       }
@@ -240,24 +162,27 @@ or the ``-- SECTION`` level
   },
   {
     "attrs": {},
-    "bound": "Full",
     "category": "basic",
     "children": [
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "Test Types"
+            "content": "Test Types",
+            "kind": "text"
           }
         ]
       },
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "The specification is split into three parts."
+            "content": "The specification is split into three parts.",
+            "kind": "text"
           }
         ]
       }
@@ -268,33 +193,38 @@ or the ``-- SECTION`` level
   },
   {
     "attrs": {},
-    "bound": "Full",
     "category": "basic",
     "children": [
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "1. AST Generation"
+            "content": "1. AST Generation",
+            "kind": "text"
           }
         ]
       },
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "2. Required Sections and Attributes"
+            "content": "2. Required Sections and Attributes",
+            "kind": "text"
           }
         ]
       },
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "3. HTML Output"
+            "content": "3. HTML Output",
+            "kind": "text"
           }
         ]
       }
@@ -305,33 +235,38 @@ or the ``-- SECTION`` level
   },
   {
     "attrs": {},
-    "bound": "Full",
     "category": "basic",
     "children": [
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "AST Generation"
+            "content": "AST Generation",
+            "kind": "text"
           }
         ]
       },
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "Tests are currently built into the rust code. They include parsing for the shorthands."
+            "content": "Tests are currently built into the rust code. They include parsing for the shorthands.",
+            "kind": "text"
           }
         ]
       },
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order."
+            "content": "Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order.",
+            "kind": "text"
           }
         ]
       }
@@ -342,15 +277,16 @@ or the ``-- SECTION`` level
   },
   {
     "attrs": {},
-    "bound": "Full",
     "category": "basic",
     "children": [
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "Reserved/Required Sections And Attributes"
+            "content": "Reserved/Required Sections And Attributes",
+            "kind": "text"
           }
         ]
       }
@@ -361,24 +297,27 @@ or the ``-- SECTION`` level
   },
   {
     "attrs": {},
-    "bound": "Full",
     "category": "basic",
     "children": [
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "Sections"
+            "content": "Sections",
+            "kind": "text"
           }
         ]
       },
       {
-        "category": "paragraph",
+        "category": "text-block",
+        "kind": "text-block",
         "spans": [
           {
             "category": "text",
-            "content": "TODO: Add details about how documents must start with a section (which means all content is in a section)"
+            "content": "TODO: Add details about how documents must start with a section (which means all content is in a section)",
+            "kind": "text"
           }
         ]
       }
@@ -389,59 +328,12 @@ or the ``-- SECTION`` level
   },
   {
     "attrs": {},
-    "bound": "Full",
-    "category": "basic",
+    "category": "list",
     "children": [
       {
-        "category": "paragraph",
-        "spans": [
-          {
-            "category": "text",
-            "content": "- metadata - must not output directly on the page."
-          }
-        ]
-      },
-      {
-        "category": "paragraph",
-        "spans": [
-          {
-            "category": "text",
-            "content": "- neopolitan - Outputs the contents of the section without adding anything beyond the content generated from the body of section. This ensures there\u0027s a way to test AST generation from a parser. (Necessary because content can\u0027t exist outside a section)"
-          }
-        ]
-      },
-      {
-        "category": "paragraph",
-        "spans": [
-          {
-            "category": "text",
-            "content": "- head - does not show up by default. The contents are added directly to the head of the document. It\u0027s a "
-          },
-          {
-            "attrs": {},
-            "category": "code",
-            "flags": [],
-            "spans": [
-              {
-                "category": "text",
-                "content": "raw"
-              }
-            ]
-          },
-          {
-            "category": "text",
-            "content": " category. So, the output is exactly what\u0027s input."
-          }
-        ]
-      },
-      {
-        "category": "paragraph",
-        "spans": [
-          {
-            "category": "text",
-            "content": "- javascript - a raw section. The output is added to the page inside script tags just before the closing "
-          }
-        ]
+        "category": "list-item",
+        "children": [],
+        "kind": "list-item"
       }
     ],
     "end_block": null,
@@ -451,18 +343,749 @@ or the ``-- SECTION`` level
 ]</pre>
 </main>
   <footer>
+
+
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
     <a href="https://links.alanwsmith.com/">other projects</a> ~
     <a href="https://socials.alanwsmith.com/">socials</a>
   </footer>
 
-<div class="wrapper-medium padding-top-large">
+<!--
+<div class="">
 <pre class="font-size-xsmall"><hr />
 <h3>Under Construction</h3>
-<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0/parser/span-tests.html">spec/2.0/parser/span-tests.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/_test-overview/block/index.html">_test-overview/block/index.html</a></li><li><a href="/_test-overview/block/list/full/index.html">_test-overview/block/list/full/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/index.html">_test-overview/block/list/full/tests/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/manual-ok/index.html">_test-overview/block/list/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list/index.html">_test-overview/block/list/index.html</a></li><li><a href="/_test-overview/block/list_item/full/index.html">_test-overview/block/list_item/full/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/index.html">_test-overview/block/list_item/full/tests/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/manual-ok/index.html">_test-overview/block/list_item/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list_item/index.html">_test-overview/block/list_item/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/index.html">_test-overview/block/list_item_spans/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/index.html">_test-overview/block/list_item_spans/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/index.html">_test-overview/block/list_item_spans/tests/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-err/index.html">_test-overview/block/list_item_spans/tests/manual-err/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-ok/index.html">_test-overview/block/list_item_spans/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/index.html">_test-overview/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/index.html">_test-overview/span/code_shorthand/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/index.html">_test-overview/span/code_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-err/index.html">_test-overview/span/code_shorthand/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-ok/index.html">_test-overview/span/code_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/index.html">_test-overview/span/escaped_character_in_block/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/index.html">_test-overview/span/escaped_character_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html">_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/index.html">_test-overview/span/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/index.html">_test-overview/span/single_character_allowed_in_block/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/index.html">_test-overview/span/single_character_allowed_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/index.html">_test-overview/span/single_line_ending/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/index.html">_test-overview/span/single_line_ending/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-err/index.html">_test-overview/span/single_line_ending/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-ok/index.html">_test-overview/span/single_line_ending/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/index.html">_test-overview/span/space1_as_single_space/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/index.html">_test-overview/span/space1_as_single_space/tests/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/manual-ok/index.html">_test-overview/span/space1_as_single_space/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/index.html">_test-overview/span/strikethrough_shorthand/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/index.html">_test-overview/span/strikethrough_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html">_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/tests/index.html">_test-overview/span/tests/index.html</a></li><li><a href="/_test-overview/span/tests/manual-ok/index.html">_test-overview/span/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/text_in_block/index.html">_test-overview/span/text_in_block/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/index.html">_test-overview/span/text_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/manual-ok/index.html">_test-overview/span/text_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-report.html">_test-report.html</a></li><li><a href="/_test_examples/basic-div-sections.html">_test_examples/basic-div-sections.html</a></li><li><a href="/_test_examples/code-samples.html">_test_examples/code-samples.html</a></li><li><a href="/_test_examples/csv-example-table.html">_test_examples/csv-example-table.html</a></li><li><a href="/_test_examples/description-list.html">_test_examples/description-list.html</a></li><li><a href="/_test_examples/details-test.html">_test_examples/details-test.html</a></li><li><a href="/_test_examples/json-example-table.html">_test_examples/json-example-table.html</a></li><li><a href="/_test_examples/list-full.html">_test_examples/list-full.html</a></li><li><a href="/_test_examples/nested-2-levels.html">_test_examples/nested-2-levels.html</a></li><li><a href="/_test_examples/nested-3-levels.html">_test_examples/nested-3-levels.html</a></li><li><a href="/_test_examples/nested-div-full.html">_test_examples/nested-div-full.html</a></li><li><a href="/_test_examples/raw-content-basic.html">_test_examples/raw-content-basic.html</a></li><li><a href="/_test_examples/strikethrough-shorthand-test.html">_test_examples/strikethrough-shorthand-test.html</a></li><li><a href="/_test_examples/title-subtitle-example.html">_test_examples/title-subtitle-example.html</a></li><li><a href="/_test_examples/tree-view-from-fluent.html">_test_examples/tree-view-from-fluent.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/demos-to-make.html">demos-to-make.html</a></li><li><a href="/details/index.html">details/index.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests-to-move/level-1/spans/code.html">tests-to-move/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li></ul></pre>
 </div>
 
+<div class="">
+<pre class="font-size-xsmall">
+{
+  "incomplete": {
+    "parsed": [
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Neopolitan 2.0 Specification",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "title"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] make ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- code",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " a defined section where the first flag is the language to use for highlighting",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Make ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "style",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " reserved attr for spans to output inline CSS styles if the system allows it.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Split specification requires into two levels. First passes basic test. Second implements standard features.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "todo"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Introduction",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Test Types",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "The specification is split into three parts.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "1. AST Generation",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "2. Required Sections and Attributes",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "3. HTML Output",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "olist"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "AST Generation",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Tests are currently built into the rust code. They include parsing for the shorthands.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Reserved/Required Sections And Attributes",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Sections",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "TODO: Add details about how documents must start with a section (which means all content is in a section)",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "category": "list",
+        "children": [
+          {
+            "category": "list-item",
+            "children": [],
+            "kind": "list-item"
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "list"
+      }
+    ],
+    "remainder": "metadata - must not output directly\non the page. \n\n- neopolitan - Outputs the contents\nof the section without adding anything\nbeyond the content generated from \nthe body of section. This ensures\nthere\u0027s a way to test AST generation\nfrom a parser. (Necessary because\ncontent can\u0027t exist outside \na section)\n\n- head - does not show up by default.\nThe contents are added directly \nto the head of the document. It\u0027s\na ``raw`` category. So, the\noutput is exactly what\u0027s input. \n\n- javascript - a raw section. \nThe output is added to the page inside \nscript tags just before the closing ``\u003c/body\u003e`\ntag. Can be shown on the page\nby using another template,\nthe details of that are left\nup to the implementation. \n\nNote, of course, that some systems\nmay not allow the output a script\ntags. In that case, nothing\nis output in the HTML by default. \nBut, escaped output can still \nbe rendered on the page by\nchoosing an alternate template. \n\n\n\n\n\n\n\n\n\n\n-- h3\n\nSection Attributes\n\nThese attributes must be handled by\na parser to meet the spec. They can\nbe used in any section. \n\n-- list\n\n- ``-- created:``\n\nValue is a date in the RFC 3339 format. \n\n- ``-- updated:`` \n\nValue is a date in the RFC 3339 format. \n\n- ``-- template:``\n\nThis is the way to change the output\ntemplate for a section. The details\nof the values and their corresponding\noutputs is an implementation detail, but\nthe attribute key is reserved. \n\n-- h2\n\nHTML Output\n\nNeopolitan is designed primarily to \ngenerate web content. Output is \nlargely an implementation detail\nwith a required exceptions designed\nto improve portability between\nsystems. \n\nAny generator that passes all\nthe output tests meets the spec. \nAnything not defined in the tests\nis left as an implementation detail. \n\nTODO: Write up details of ``template:``\nbeing reserved. It\u0027s how you can\nchange the output if you want\nsomething other than what\u0027s \nspeced for the shorthands. \n\nTODO: Consider descriptions of how\nthe HTML Output is representative. \n(e.g. systems may add extra \nclasses, or attributes, but \nthey should work directionally \nthe same if any modifications\nare made)\n\nTODO: Reserve ``-- tag:`` as a reserved\nword used for tagging. can be done\nat the page level in ``-- metadata:``\nor the ``-- SECTION`` level \n\n\n\n\n\n\n\n\n-- metadata \n-- created: 2025-04-27T10:54:39-04:00\n-- updated: 2025-04-27T10:54:39-04:00\n\n\n"
+  }
+}
+</pre>
+</div>
+-->
 
 </body>
+
+
+<!--
+<div class="tmp-under-construction">
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+  <div>
+    <p>This page is currently under construction.</p>
+    <p>
+      Depending on when you see it, it could be anywhere from a complete draft to nothing but
+      a bunch of scratch notes and placeholders. Follow me on
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
+    </p>
+  </div>
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+</div>
+-->
+
+</html>
+<!DOCTYPE html>
+<html lang="en"> 
+
+<!-- 
+  Welcome to the source code. 
+  Fair warning that things are still
+  kinda a mess. First make it work, 
+  then make it fast, them make it 
+  pretty. 
+-->
+
+<head> 
+	<title>Neopolitan</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/syntax-highlighting.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header>
+    <a href="/">Home</a> ~ <a href="/details/">Details</a>
+  </header>
+  <main></main>
+  <footer>
+
+
+    from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
+    <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
+    <a href="https://links.alanwsmith.com/">other projects</a> ~
+    <a href="https://socials.alanwsmith.com/">socials</a>
+  </footer>
+
+<!--
+<div class="">
+<pre class="font-size-xsmall"><hr />
+<h3>Under Construction</h3>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/_test-overview/block/index.html">_test-overview/block/index.html</a></li><li><a href="/_test-overview/block/list/full/index.html">_test-overview/block/list/full/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/index.html">_test-overview/block/list/full/tests/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/manual-ok/index.html">_test-overview/block/list/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list/index.html">_test-overview/block/list/index.html</a></li><li><a href="/_test-overview/block/list_item/full/index.html">_test-overview/block/list_item/full/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/index.html">_test-overview/block/list_item/full/tests/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/manual-ok/index.html">_test-overview/block/list_item/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list_item/index.html">_test-overview/block/list_item/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/index.html">_test-overview/block/list_item_spans/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/index.html">_test-overview/block/list_item_spans/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/index.html">_test-overview/block/list_item_spans/tests/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-err/index.html">_test-overview/block/list_item_spans/tests/manual-err/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-ok/index.html">_test-overview/block/list_item_spans/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/index.html">_test-overview/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/index.html">_test-overview/span/code_shorthand/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/index.html">_test-overview/span/code_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-err/index.html">_test-overview/span/code_shorthand/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-ok/index.html">_test-overview/span/code_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/index.html">_test-overview/span/escaped_character_in_block/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/index.html">_test-overview/span/escaped_character_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html">_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/index.html">_test-overview/span/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/index.html">_test-overview/span/single_character_allowed_in_block/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/index.html">_test-overview/span/single_character_allowed_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/index.html">_test-overview/span/single_line_ending/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/index.html">_test-overview/span/single_line_ending/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-err/index.html">_test-overview/span/single_line_ending/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-ok/index.html">_test-overview/span/single_line_ending/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/index.html">_test-overview/span/space1_as_single_space/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/index.html">_test-overview/span/space1_as_single_space/tests/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/manual-ok/index.html">_test-overview/span/space1_as_single_space/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/index.html">_test-overview/span/strikethrough_shorthand/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/index.html">_test-overview/span/strikethrough_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html">_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/tests/index.html">_test-overview/span/tests/index.html</a></li><li><a href="/_test-overview/span/tests/manual-ok/index.html">_test-overview/span/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/text_in_block/index.html">_test-overview/span/text_in_block/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/index.html">_test-overview/span/text_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/manual-ok/index.html">_test-overview/span/text_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-report.html">_test-report.html</a></li><li><a href="/_test_examples/basic-div-sections.html">_test_examples/basic-div-sections.html</a></li><li><a href="/_test_examples/code-samples.html">_test_examples/code-samples.html</a></li><li><a href="/_test_examples/csv-example-table.html">_test_examples/csv-example-table.html</a></li><li><a href="/_test_examples/description-list.html">_test_examples/description-list.html</a></li><li><a href="/_test_examples/details-test.html">_test_examples/details-test.html</a></li><li><a href="/_test_examples/json-example-table.html">_test_examples/json-example-table.html</a></li><li><a href="/_test_examples/list-full.html">_test_examples/list-full.html</a></li><li><a href="/_test_examples/nested-2-levels.html">_test_examples/nested-2-levels.html</a></li><li><a href="/_test_examples/nested-3-levels.html">_test_examples/nested-3-levels.html</a></li><li><a href="/_test_examples/nested-div-full.html">_test_examples/nested-div-full.html</a></li><li><a href="/_test_examples/raw-content-basic.html">_test_examples/raw-content-basic.html</a></li><li><a href="/_test_examples/strikethrough-shorthand-test.html">_test_examples/strikethrough-shorthand-test.html</a></li><li><a href="/_test_examples/title-subtitle-example.html">_test_examples/title-subtitle-example.html</a></li><li><a href="/_test_examples/tree-view-from-fluent.html">_test_examples/tree-view-from-fluent.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/demos-to-make.html">demos-to-make.html</a></li><li><a href="/details/index.html">details/index.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests-to-move/level-1/spans/code.html">tests-to-move/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li></ul></pre>
+</div>
+
+<div class="">
+<pre class="font-size-xsmall">
+{
+  "incomplete": {
+    "parsed": [
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Neopolitan 2.0 Specification",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "title"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] make ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- code",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " a defined section where the first flag is the language to use for highlighting",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Make ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "style",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " reserved attr for spans to output inline CSS styles if the system allows it.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Split specification requires into two levels. First passes basic test. Second implements standard features.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "todo"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Introduction",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "The specification for Neopolitan 2.0.0 is test based. Any parser that passes all the test meets the specification.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Test Types",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "The specification is split into three parts.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "1. AST Generation",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "2. Required Sections and Attributes",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "3. HTML Output",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "olist"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "AST Generation",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Tests are currently built into the rust code. They include parsing for the shorthands.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Sections can have attrs (attributes) and flags. The flags must preserve the order from the source input. Attrs are key/value pairs with no requirement for maintaining a specific order.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Reserved/Required Sections And Attributes",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Sections",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "TODO: Add details about how documents must start with a section (which means all content is in a section)",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "category": "list",
+        "children": [
+          {
+            "category": "list-item",
+            "children": [],
+            "kind": "list-item"
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "list"
+      }
+    ],
+    "remainder": "metadata - must not output directly\non the page. \n\n- neopolitan - Outputs the contents\nof the section without adding anything\nbeyond the content generated from \nthe body of section. This ensures\nthere\u0027s a way to test AST generation\nfrom a parser. (Necessary because\ncontent can\u0027t exist outside \na section)\n\n- head - does not show up by default.\nThe contents are added directly \nto the head of the document. It\u0027s\na ``raw`` category. So, the\noutput is exactly what\u0027s input. \n\n- javascript - a raw section. \nThe output is added to the page inside \nscript tags just before the closing ``\u003c/body\u003e`\ntag. Can be shown on the page\nby using another template,\nthe details of that are left\nup to the implementation. \n\nNote, of course, that some systems\nmay not allow the output a script\ntags. In that case, nothing\nis output in the HTML by default. \nBut, escaped output can still \nbe rendered on the page by\nchoosing an alternate template. \n\n\n\n\n\n\n\n\n\n\n-- h3\n\nSection Attributes\n\nThese attributes must be handled by\na parser to meet the spec. They can\nbe used in any section. \n\n-- list\n\n- ``-- created:``\n\nValue is a date in the RFC 3339 format. \n\n- ``-- updated:`` \n\nValue is a date in the RFC 3339 format. \n\n- ``-- template:``\n\nThis is the way to change the output\ntemplate for a section. The details\nof the values and their corresponding\noutputs is an implementation detail, but\nthe attribute key is reserved. \n\n-- h2\n\nHTML Output\n\nNeopolitan is designed primarily to \ngenerate web content. Output is \nlargely an implementation detail\nwith a required exceptions designed\nto improve portability between\nsystems. \n\nAny generator that passes all\nthe output tests meets the spec. \nAnything not defined in the tests\nis left as an implementation detail. \n\nTODO: Write up details of ``template:``\nbeing reserved. It\u0027s how you can\nchange the output if you want\nsomething other than what\u0027s \nspeced for the shorthands. \n\nTODO: Consider descriptions of how\nthe HTML Output is representative. \n(e.g. systems may add extra \nclasses, or attributes, but \nthey should work directionally \nthe same if any modifications\nare made)\n\nTODO: Reserve ``-- tag:`` as a reserved\nword used for tagging. can be done\nat the page level in ``-- metadata:``\nor the ``-- SECTION`` level \n\n\n\n\n\n\n\n\n-- metadata \n-- created: 2025-04-27T10:54:39-04:00\n-- updated: 2025-04-27T10:54:39-04:00\n\n\n"
+  }
+}
+</pre>
+</div>
+-->
+
+</body>
+
+
+<!--
+<div class="tmp-under-construction">
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+  <div>
+    <p>This page is currently under construction.</p>
+    <p>
+      Depending on when you see it, it could be anywhere from a complete draft to nothing but
+      a bunch of scratch notes and placeholders. Follow me on
+<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
+or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
+    </p>
+  </div>
+<img 
+  src="/images/under-construction-1.gif" 
+  alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
+</div>
+-->
+
 </html>

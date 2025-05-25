@@ -1,0 +1,93 @@
+-- title
+
+JSON Table Example
+
+-- h2
+
+From JSON To Table
+
+This is a basic example showing how JSON can
+be used to create tables. It can be used
+directly or as a starting point to make
+tables more specific to your needs:
+
+NOTE: the format for the JSON is still 
+under development and may change. 
+
+NOTE: This is mainly an example to show
+JSON usage. If you're looking for a table
+in lots of cases just assembling the
+HTML and dropping it in a ``-- html|neo`` 
+block might make more sense. 
+
+NOTE: You could also make a much simpler
+table that is just arrays of arrays
+for the data
+
+-- neo-example-json-table
+-- title: The Example Table
+
+{
+    "header_rows": [
+        [
+            { 
+                "content": "alfa", 
+                "colspan": 2
+            },
+            { 
+                "content": "bravo", 
+                "rowspan": 2
+            },
+            { 
+                "content": "charlie"
+            }
+        ], 
+        [
+            { 
+                "content": "delta"
+            },
+            { 
+                "content": "echo", 
+                "class": "color-alt-1" 
+            },
+            { 
+                "content": "foxtrot"
+            }
+        ]
+    ], 
+    "body_rows": [
+        [
+            { "content": "golf" },
+            { "content": "hotel" },
+            { "content": "india" },
+            { "content": "juliet" }
+        ],
+        [
+            { "content": "kilo" },
+            { "content": "lima" },
+            { "content": "mike", "class": "color-alt-4" },
+            { "content": "november" }
+        ],
+        [
+            { "content": "oscar" },
+            { "content": "papa" },
+            { "content": "quebec" },
+            { "content": "romeo" }
+        ]
+    ], 
+    "footer_rows": [
+        [
+            { "content": "sierra" },
+            { "content": "tango" },
+            { "content": "uniform" },
+            { "content": "victor" }
+        ]
+    ]
+}
+
+
+
+
+-- metadata 
+-- created: 2025-05-05T14:23:28-04:00
+-- updated: 2025-05-05T14:23:28-04:00

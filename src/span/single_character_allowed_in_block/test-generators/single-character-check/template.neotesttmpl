@@ -1,0 +1,20 @@
+${TOKEN}bravo
+######txt######ok######
+
+Single Character ${TOKEN}
+
+######
+
+{
+  "category": "text",
+  "content": "${TOKEN}",
+  "kind": "text"
+}
+
+######
+
+{
+  "remainder": "bravo"
+}
+
+

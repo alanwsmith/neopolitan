@@ -1,0 +1,24 @@
+{
+  "content": "\nalfa"
+}
+######json######ok######
+
+Single newline
+
+NOTE: there has to be something
+after the line_ending for nom to 
+pick it up. See ``eof`` for 
+handling line_endings before 
+the end of a file. 
+
+
+######
+{
+  "category": "space",
+  "kind": "space"
+}
+######
+{
+  "remainder": "alfa"
+}
+

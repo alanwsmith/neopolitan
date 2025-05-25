@@ -1,28 +1,1116 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="en"> 
 
-
 <!-- 
-  Welcome To The Source Code!
-
-  Please don't judge it too harshly. It's
-  very much a work in progress. 
+  Welcome to the source code. 
+  Fair warning that things are still
+  kinda a mess. First make it work, 
+  then make it fast, them make it 
+  pretty. 
 -->
 
-
 <head> 
-	<title></title>
+	<title>Neopolitan</title>
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/syntax-highlighting.css" />
-  <link rel="stylesheet" href="/styles/tmp-dev-styles.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <header class="wrapper-medium margin-bottom-large">
-    <a href="/">Home</a>
+  <header>
+    <a href="/">Home</a> ~ <a href="/details/">Details</a>
   </header>
-  <main class="wrapper-medium flow"><div class="tmp-under-construction">
+  <main><hgroup class="title-group">
+      <h1  class="title"
+      >TODOs</h1></hgroup><p>Some of this is for Neopolitan. Some for Neopoligen. Just throwing it all here for now.</p><div
+   class="flow"
+><p>[] Add web server?</p><p>[] Add front end?</p><p>[] Generate most recently changed page at specific location so you can see most recent set of changes automatically?</p><p>[] Add <code>wiki</code> tag and functionality for third level? (or maybe fourth)?</p><p>[] Add plugin architecture (this wo_json::fromuld be a later version)</p><p>[] Add <code>-- extension:</code> to <code>-- metadata</code> for changing the file extension of the output.</p><p>[] Add <code>-- path:</code> to the <code>-- metadata</code> to change the output path.</p><p>[] Set up functionality for <code>-- wiki</code> in the metadata the defines the target locations where other <code data-lang="Name>>"> <span class="source rust"><span class="keyword operator rust">&lt;</span><span class="keyword operator rust">&lt;</span>wiki\</span></code> entires go.</p><p>[] For the plugin architecture. Send the ast to a function which updates it as it sees fit then sends it back. Plugins can do things like add toplevel items as siblings of <code>pages</code> in the site ast.</p><p>[] Plugins could also update content. Basically do whatever to the ast. There would likely need to be templates that are used with them. There might be a way to send those back, but at least for the first version just have folks copy pasted them into their template files.</p><p>[] It's up to plugins to do their own caching? Could there be a cache feature builtin? Probably. Just send back the prior object from the plugin. Yeah, that probably makes the most sense.</p><p>[] Make adding <code>figure</code> to to raw sections part of the default templates</p><p>[] Make <code>-- wiki-key</code> what you add to a pages <code>-- metadata</code> to define keys. Can have multiple of them.</p><p>[] The page asts take care of themselves. Spec out other parts under the site (like "wiki" that are part of the reference engine.</p><p>[] Put tags and groups under the standard reference engine.</p><p>[] Automatic <code>figure</code> numbering on pages with the ability to link to them with some sort of tag</p><p>[] Automatically put commas between multiple consecutive footnote links</p><p>[] Build a little debug thing into place where if you're on localhost and hit <code>/</code> it brings an interface for you. Could have things like the colors on it. lists of tags, etc...</p><p>[] Store stuff in <code>/.neo-files</code> so it's hidden from the main file system.</p><p>[] Store feeds in <code>/.neo-feeds</code> so they don't have to show up on the file system.</p><p>[] Set up counters that can be used for things on the page. Like numbers for headings and figures.</p><p>[] Add better error message if a template doesn't exist.</p><p>[] Test doing thing like having a footnote shorthand butted directly up against a code shorthand.</p><p>[] Set up macro that lets you see the next and previous blocks. This will let you do stuff like group <code>code</code> and <code>output</code> sections together and wrap them with a <code>div</code> so they can have a single border around them.</p><p>[] Show how to use blocks for <code>forward</code> and <code>tldr</code> to shift stuff around so you can keep them in different places in your source files.</p><p>[] Set up a way to include blocks from other pages based off their IDs.</p><p>[] Make sure to test characters bumping directly against shorthands and tags.</p><p>[] Have the ability to use random numbers to pick things.</p><p>[] Add <code>-- head</code> type as standard for putting raw items in the head of the document.</p><p>[] Make <code>nowrap</code> a defined attr for spans. (and, just generally go through the global attrs and spec them out. They should be hoisted into the output automatically.)</p><p>[] Automatic <code>figure</code> numbering where you use keys in the source data and then <code data-lang="key-nam>>"> <span class="source rust"><span class="keyword operator rust">&lt;</span><span class="keyword operator rust">&lt;</span>figure</span></code> to referene them which would them get auto numbered in the output.</p><p>[] Could also be used to refrence figure on other pages.</p><p>[] Make a report of any spans/blocks that don't have templates associated with them.</p><p>[] Check CSS styles to see if anything is missing.</p><p>[] Confirm you can have a <code>1.</code> as the first characters on a newline in a numlist without it breaking to a new item.</p><p>[] Allow attributes to contiue onto the next line.</p><p>[] Set up images so they don't all end up in the same folder. might be able to hash the image and use the first few characters to split into directories. This would also help ensure that changes get picked up since the URLs would be new whenever the image is updated.</p><p>[] Show how to have one piece of javascript and then call in back with line numbers later in the post without having to copy paste the code.</p><p>[] Defile both <code>class</code> and <code>classes</code> as part of the reference. They do the same thing, it's just a convenience alias.</p><p>[] Show code block web component.</p></div>
+
+<div
+   class="flow"
+><p>Things to check</p></div>
+
+<pre
+
+>-- forward/
+-- title: Just The Front
+
+I feel like Python gaslights me every time I try to remove
+extensions from a filename. It makes sense when I do this:
+
+-- code
+-- python
+
+print("asdf")
+
+-- results/
+
+asdf
+
+-- /results
+
+-- /forward</pre></main>
+  <footer>
+
+
+    from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
+    <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
+    <a href="https://links.alanwsmith.com/">other projects</a> ~
+    <a href="https://socials.alanwsmith.com/">socials</a>
+  </footer>
+
+<!--
+<div class="">
+<pre class="font-size-xsmall"><hr />
+<h3>Under Construction</h3>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/_test-overview/block/index.html">_test-overview/block/index.html</a></li><li><a href="/_test-overview/block/list/full/index.html">_test-overview/block/list/full/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/index.html">_test-overview/block/list/full/tests/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/manual-ok/index.html">_test-overview/block/list/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list/index.html">_test-overview/block/list/index.html</a></li><li><a href="/_test-overview/block/list_item/full/index.html">_test-overview/block/list_item/full/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/index.html">_test-overview/block/list_item/full/tests/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/manual-ok/index.html">_test-overview/block/list_item/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list_item/index.html">_test-overview/block/list_item/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/index.html">_test-overview/block/list_item_spans/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/index.html">_test-overview/block/list_item_spans/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/index.html">_test-overview/block/list_item_spans/tests/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-err/index.html">_test-overview/block/list_item_spans/tests/manual-err/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-ok/index.html">_test-overview/block/list_item_spans/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/index.html">_test-overview/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/index.html">_test-overview/span/code_shorthand/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/index.html">_test-overview/span/code_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-err/index.html">_test-overview/span/code_shorthand/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-ok/index.html">_test-overview/span/code_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/index.html">_test-overview/span/escaped_character_in_block/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/index.html">_test-overview/span/escaped_character_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html">_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/index.html">_test-overview/span/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/index.html">_test-overview/span/single_character_allowed_in_block/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/index.html">_test-overview/span/single_character_allowed_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/index.html">_test-overview/span/single_line_ending/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/index.html">_test-overview/span/single_line_ending/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-err/index.html">_test-overview/span/single_line_ending/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-ok/index.html">_test-overview/span/single_line_ending/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/index.html">_test-overview/span/space1_as_single_space/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/index.html">_test-overview/span/space1_as_single_space/tests/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/manual-ok/index.html">_test-overview/span/space1_as_single_space/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/index.html">_test-overview/span/strikethrough_shorthand/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/index.html">_test-overview/span/strikethrough_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html">_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/tests/index.html">_test-overview/span/tests/index.html</a></li><li><a href="/_test-overview/span/tests/manual-ok/index.html">_test-overview/span/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/text_in_block/index.html">_test-overview/span/text_in_block/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/index.html">_test-overview/span/text_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/manual-ok/index.html">_test-overview/span/text_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-report.html">_test-report.html</a></li><li><a href="/_test_examples/basic-div-sections.html">_test_examples/basic-div-sections.html</a></li><li><a href="/_test_examples/code-samples.html">_test_examples/code-samples.html</a></li><li><a href="/_test_examples/csv-example-table.html">_test_examples/csv-example-table.html</a></li><li><a href="/_test_examples/description-list.html">_test_examples/description-list.html</a></li><li><a href="/_test_examples/details-test.html">_test_examples/details-test.html</a></li><li><a href="/_test_examples/json-example-table.html">_test_examples/json-example-table.html</a></li><li><a href="/_test_examples/list-full.html">_test_examples/list-full.html</a></li><li><a href="/_test_examples/nested-2-levels.html">_test_examples/nested-2-levels.html</a></li><li><a href="/_test_examples/nested-3-levels.html">_test_examples/nested-3-levels.html</a></li><li><a href="/_test_examples/nested-div-full.html">_test_examples/nested-div-full.html</a></li><li><a href="/_test_examples/raw-content-basic.html">_test_examples/raw-content-basic.html</a></li><li><a href="/_test_examples/strikethrough-shorthand-test.html">_test_examples/strikethrough-shorthand-test.html</a></li><li><a href="/_test_examples/title-subtitle-example.html">_test_examples/title-subtitle-example.html</a></li><li><a href="/_test_examples/tree-view-from-fluent.html">_test_examples/tree-view-from-fluent.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/demos-to-make.html">demos-to-make.html</a></li><li><a href="/details/index.html">details/index.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests-to-move/level-1/spans/code.html">tests-to-move/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li></ul></pre>
+</div>
+
+<div class="">
+<pre class="font-size-xsmall">
+{
+  "ok": {
+    "blocks": [
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "TODOs",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Some of this is for Neopolitan. Some for Neopoligen. Just throwing it all here for now.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "title"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Add web server?",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Add front end?",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Generate most recently changed page at specific location so you can see most recent set of changes automatically?",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Add ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "wiki",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " tag and functionality for third level? (or maybe fourth)?",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Add plugin architecture (this wo_json::fromuld be a later version)",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Add ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- extension:",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " to ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- metadata",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " for changing the file extension of the output.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Add ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- path:",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " to the ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- metadata",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " to change the output path.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Set up functionality for ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- wiki",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " in the metadata the defines the target locations where other ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [
+                  "Name\u003e\u003e"
+                ],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "\u003c\u003cwiki\\",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " entires go.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] For the plugin architecture. Send the ast to a function which updates it as it sees fit then sends it back. Plugins can do things like add toplevel items as siblings of ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "pages",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " in the site ast.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Plugins could also update content. Basically do whatever to the ast. There would likely need to be templates that are used with them. There might be a way to send those back, but at least for the first version just have folks copy pasted them into their template files.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] It\u0027s up to plugins to do their own caching? Could there be a cache feature builtin? Probably. Just send back the prior object from the plugin. Yeah, that probably makes the most sense.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Make adding ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "figure",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " to to raw sections part of the default templates",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Make ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- wiki-key",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " what you add to a pages ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- metadata",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " to define keys. Can have multiple of them.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] The page asts take care of themselves. Spec out other parts under the site (like \"wiki\" that are part of the reference engine.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Put tags and groups under the standard reference engine.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Automatic ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "figure",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " numbering on pages with the ability to link to them with some sort of tag",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Automatically put commas between multiple consecutive footnote links",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Build a little debug thing into place where if you\u0027re on localhost and hit ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "/",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " it brings an interface for you. Could have things like the colors on it. lists of tags, etc...",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Store stuff in ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "/.neo-files",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " so it\u0027s hidden from the main file system.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Store feeds in ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "/.neo-feeds",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " so they don\u0027t have to show up on the file system.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Set up counters that can be used for things on the page. Like numbers for headings and figures.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Add better error message if a template doesn\u0027t exist.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Test doing thing like having a footnote shorthand butted directly up against a code shorthand.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Set up macro that lets you see the next and previous blocks. This will let you do stuff like group ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "code",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " and ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "output",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " sections together and wrap them with a ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "div",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " so they can have a single border around them.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Show how to use blocks for ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "forward",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " and ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "tldr",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " to shift stuff around so you can keep them in different places in your source files.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Set up a way to include blocks from other pages based off their IDs.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Make sure to test characters bumping directly against shorthands and tags.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Have the ability to use random numbers to pick things.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Add ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "-- head",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " type as standard for putting raw items in the head of the document.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Make ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "nowrap",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " a defined attr for spans. (and, just generally go through the global attrs and spec them out. They should be hoisted into the output automatically.)",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Automatic ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "figure",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " numbering where you use keys in the source data and then ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [
+                  "key-nam\u003e\u003e"
+                ],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "\u003c\u003cfigure",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " to referene them which would them get auto numbered in the output.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Could also be used to refrence figure on other pages.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Make a report of any spans/blocks that don\u0027t have templates associated with them.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Check CSS styles to see if anything is missing.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Confirm you can have a ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "1.",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " as the first characters on a newline in a numlist without it breaking to a new item.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Allow attributes to contiue onto the next line.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Set up images so they don\u0027t all end up in the same folder. might be able to hash the image and use the first few characters to split into directories. This would also help ensure that changes get picked up since the URLs would be new whenever the image is updated.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Show how to have one piece of javascript and then call in back with line numbers later in the post without having to copy paste the code.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Defile both ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "class",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " and ",
+                "kind": "text"
+              },
+              {
+                "attrs": {},
+                "category": "code-shorthand",
+                "flags": [],
+                "kind": "code-shorthand",
+                "spans": [
+                  {
+                    "category": "text",
+                    "content": "classes",
+                    "kind": "text"
+                  }
+                ]
+              },
+              {
+                "category": "text",
+                "content": " as part of the reference. They do the same thing, it\u0027s just a convenience alias.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "[] Show code block web component.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "todo"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Things to check",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "p"
+      },
+      {
+        "attrs": {},
+        "body": "-- forward/\n-- title: Just The Front\n\nI feel like Python gaslights me every time I try to remove\nextensions from a filename. It makes sense when I do this:\n\n-- code\n-- python\n\nprint(\"asdf\")\n\n-- results/\n\nasdf\n\n-- /results\n\n-- /forward",
+        "category": "raw",
+        "end_block": {
+          "attrs": {},
+          "category": "end",
+          "children": [],
+          "flags": [],
+          "kind": "pre-end"
+        },
+        "flags": [],
+        "kind": "pre"
+      },
+      {
+        "attrs": {
+          "created": [
+            {
+              "category": "text",
+              "content": "2025-04-27T10:20:20-04:00",
+              "kind": "text"
+            }
+          ],
+          "updated": [
+            {
+              "category": "text",
+              "content": "2025-04-27T10:20:20-04:00",
+              "kind": "text"
+            }
+          ]
+        },
+        "category": "json",
+        "data": "none",
+        "end_block": null,
+        "flags": [],
+        "kind": "metadata"
+      }
+    ]
+  }
+}
+</pre>
+</div>
+-->
+
+</body>
+
+
+<!--
+<div class="tmp-under-construction">
 <img 
   src="/images/under-construction-1.gif" 
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
@@ -38,28 +1126,7 @@ or <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> for updates.
 <img 
   src="/images/under-construction-1.gif" 
   alt="An animated GIF that looks like a yellow street sign with a stick-figure person using a shovel on a pile of dirt in front of them" />
-</div><h1 class="title">TODOs
-</h1><p>[] Add web server?
-</p><p>[] Add front end?
-</p><p>[] Generate most recently changed page at specific location so you can see most recent set of changes automatically?
-</p><p>[] Add <code>wiki</code> tag and functionality for third level? (or maybe fourth)?
-</p><p>[] Add plugin architecture (this would be a later version)
-</p><p>[] Add <code>-- extension:</code> to <code>-- metadata</code> for changing the file extension of the output.
-</p><p>[] Add <code>-- path:</code> to the <code>-- metadata</code> to change the output path.
-</p></main>
-  <footer>
-    from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
-    <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
-    <a href="https://links.alanwsmith.com/">other projects</a> ~
-    <a href="https://socials.alanwsmith.com/">socials</a>
-  </footer>
-
-<div class="wrapper-medium padding-top-large">
-<pre class="font-size-xsmall"><hr />
-<h3>Under Construction</h3>
-<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0/parser/span-tests.html">spec/2.0/parser/span-tests.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tests/level-1/spans/code.html">tests/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li><li><a href="/versioning.html">versioning.html</a></li></ul></pre>
 </div>
+-->
 
-
-</body>
 </html>

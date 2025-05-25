@@ -1,0 +1,22 @@
+alfa bravo
+
+charlie delta######txt######ok######
+
+Don't cross empty lines
+
+NOTE: this leaves the trialing newline 
+on the last line of text. It's dealt 
+with in a later parser
+
+######
+{
+  "category": "text",
+  "content": "alfa bravo",
+  "kind": "text"
+}
+######
+{
+  "remainder": "\n\ncharlie delta"
+}
+
+

@@ -21,11 +21,11 @@ use nom::sequence::terminated;
 pub fn plain_text_single_line_ending_as_space(
     source: &str,
 ) -> IResult<&str, &str> {
-    let (source, _) = ((
+    let (source, _) = (
         space0,
         pair(line_ending, space0),
         not(pair(space0, tag("\n"))),
-    ))
+    )
         .parse(source)?;
     Ok((source, " "))
 }

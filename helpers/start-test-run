@@ -7,6 +7,6 @@ watchexec\
   --project-origin .\
   -c\
   -r\
-  -e rs,neo,neoj,css\
+  -e rs,neo,neoj,css,neotest\
   "bash -c 'cargo test solo -- --nocapture && cargo test -- --nocapture'"
 

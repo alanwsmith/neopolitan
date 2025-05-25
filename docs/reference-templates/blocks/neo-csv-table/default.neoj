@@ -1,0 +1,38 @@
+[!- import "macros/loader.neoj" as macros -!] 
+
+
+[!- if "title" in block.attrs -!]
+  <h2>[@- macros.output_block_attr(block, "title") -@]</h2>
+[!- endif -!]
+
+[!- if "ok" in block.data -!]
+  <table class="border-color-alt-2-70">
+    [!- if "headers" in block.attrs -!]
+      [!- set header_count = block.attrs.headers[0].content |int -!]
+      <thead>
+        [!- for row in block.data.ok -!]
+          [!- if loop.index <= header_count -!]
+            <tr>
+              [!- for cell in row -!]
+                <th class="padding-inline-large border-color-bottom-alt-4-50">[@ cell @]</th>
+              [!- endfor -!]
+            </tr>
+          [!- endif -!]
+        [!- endfor -!]
+      </thead>
+      <tbody>
+        [!- for row in block.data.ok -!]
+          [!- if loop.index > header_count -!]
+            <tr>
+              [!- for cell in row -!]
+                <td class="text-align-center">[@ cell @]</td>
+              [!- endfor -!]
+            </tr>
+          [!- endif -!]
+        [!- endfor -!]
+      </tbody>
+    [!- endif -!]
+  </table>
+[!- endif -!]
+
+

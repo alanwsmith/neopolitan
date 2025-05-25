@@ -1,0 +1,21 @@
+{
+  "content": "\n\nbravo"
+}######json######ok######
+
+Empty line directly after line ending
+with no spaces
+
+######
+
+{
+  "category": "empty-line-or-lines", 
+  "kind": "empty-line-or-lines"
+}
+
+######
+
+{
+  "remainder": "bravo"
+}
+
+

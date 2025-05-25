@@ -1,0 +1,27 @@
+``alfa``
+######txt######ok######
+
+Single word
+
+######
+
+{
+  "attrs": {},
+  "category": "code-shorthand",
+  "flags": [],
+  "kind": "code-shorthand",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa",
+      "kind": "text"
+    }
+  ]
+}
+
+######
+
+{
+  "remainder": ""
+}
+

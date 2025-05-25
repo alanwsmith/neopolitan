@@ -1,3 +1,4 @@
+[# DEPRECATED: Move into span-attributes.neoj #]
 [!- macro span_id(span) -!]
   [!- if "id" in span.attrs -!]
     [@- ' ' -@]

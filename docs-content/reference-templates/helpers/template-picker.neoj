@@ -1,15 +1,35 @@
 [!- import "macros/loader.neoj" as macros -!] 
 
+[# 
+  This file chooses which template to use
+  for each page. The data comes down 
+  in a format that determines if there
+  were problems or not. The template
+  used depends on that. 
+
+  You probably won't need
+  to mess with it unless you're changing
+  the top level way templates work. 
+#]
+
 [!- set data = namespace() -!]
 [!- set data.templates = ["pages/default.neoj"] -!]
-[!- for block in blocks -!]
-[!- if block.kind == "metadata" -!]
-[!- if "template" in block.attrs -!]
-[!- set data.templates = [
-  "pages/" + macros.child_spans(block.attrs.template) + ".neoj",
-  "pages/default.neoj"
-] -!]
-[!- endif -!]
-[!- endif -!]
-[!- endfor -!]
+
+[! if "ok" in page[1].data !]
+  [! set blocks = page[1].data.ok.blocks !]
+  [!- for block in blocks -!]
+  [!- if block.kind == "metadata" -!]
+  [!- if "template" in block.attrs -!]
+  [!- set data.templates = [
+    "pages/" + macros.child_spans(block.attrs.template) + ".neoj",
+    "pages/default.neoj"
+  ] -!]
+  [!- endif -!]
+  [!- endif -!]
+  [!- endfor -!]
+[! elif "incomplete" in page[1].data !]
+[! include "helpers/incomplete.neoj" !]
+[! else !]
+TODO: Show Error Page
+[! endif !]
 [!- include data.templates -!]

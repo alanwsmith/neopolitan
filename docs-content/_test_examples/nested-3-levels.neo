@@ -1,0 +1,37 @@
+-- title
+
+Nested 3 Levels
+
+Content before div
+
+-- div/
+-- class: color-alt-1 border-color-alt-1 padding-medium
+
+Level 1 Top
+
+    -- div/
+    -- class: color-alt-2 border-color-alt-2 padding-medium
+
+    Level 2 Top
+
+        -- div/ 
+        -- class: color-alt-3 border-color-alt-3 padding-medium
+
+        Level 3 Inside
+
+        -- /div
+
+    Level 2 Bottom
+
+    -- /div
+
+Level 1 Bottom
+
+-- /div
+
+Content After Levels
+
+
+-- metadata
+-- created: 2025-05-03T19:38:12-04:00
+-- updated: 2025-05-03T19:38:12-04:00

@@ -1,0 +1,21 @@
+\6bravo
+######txt######ok######
+
+Escaped 6
+
+######
+
+{
+  "category": "escaped-character",
+  "content": "6",
+  "kind": "escaped-character"
+}
+
+######
+
+{
+  "remainder": "bravo"
+}
+
+
+

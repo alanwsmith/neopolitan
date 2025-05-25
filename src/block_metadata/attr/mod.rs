@@ -43,7 +43,6 @@ pub fn raw_block_attr<'a>(
     source: &'a str,
     _config: &'a Config,
     _parent: &'a BlockParent,
-    _debug: bool,
 ) -> IResult<&'a str, RawBlockMetaData> {
     let (source, _) = tag("--").parse(source)?;
     let (source, _) = space1.parse(source)?;
@@ -73,7 +72,7 @@ pub fn raw_block_attr<'a>(
     .parse(source)?;
     Ok((
         source,
-        RawBlockMetaData::Attribtue {
+        RawBlockMetaData::Attribute {
             key: key_parts.join("").to_string(),
             spans,
         },
@@ -91,15 +90,15 @@ mod test {
     fn block_attribute_line_basic_test() {
         let config = &Config::default();
         let parent = &BlockParent::Basic;
-        let debug = false;
         let source = "-- alfa: bravo";
-        let left = RawBlockMetaData::Attribtue {
+        let left = RawBlockMetaData::Attribute {
             key: "alfa".to_string(),
             spans: vec![Span::Text {
                 content: "bravo".to_string(),
+kind: "text".to_string()
             }],
         };
-        let right = raw_block_attr(source, config, parent, debug).unwrap().1;
+        let right = raw_block_attr(source, config, parent).unwrap().1;
         assert_eq!(left, right);
     }
 
@@ -119,8 +118,7 @@ mod test {
     // ) {
     //     let config = &Config::default();
     //     let parent = &SectionParent::Basic;
-    //     let debug = false;
-    //     let right = section_attribute(source, config, parent, debug).unwrap().1;
+    //     let right = section_attribute(source, config, parent).unwrap().1;
     //     // match results {
     //     //     Ok(result) => {
     //     //         assert_eq!(result.0, remainder);
@@ -139,8 +137,7 @@ mod test {
     // fn test_invalid_cases(#[case] source: &str) {
     //     let config = &Config::default();
     //     let parent = &SectionParent::Basic;
-    //     let debug = false;
-    //     let results = section_attribute(source, config, parent, debug);
+    //     let results = section_attribute(source, config, parent);
     //     match results {
     //         Ok(_) => {
     //             assert!(

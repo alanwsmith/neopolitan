@@ -1,8 +1,16 @@
+[!- import "macros/loader.neoj" as macros -!] 
+[!- set parent = block -!]
+
 [!- for block in block.children -!]
-  [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
   [!- if loop.first -!]
-    <h1 class="title">[!- include templates -!]</h1>
+    <hgroup class="title-group">
+      <h1 [@ macros.get_block_attributes(block, "title") @]
+      >[!- include "blocks/" + block.category + "/no-paragraphs.neoj" -!]</h1>
+      [!- if "subtitle" in parent.attrs -!]
+        <div class="subtitle">[@- macros.output_block_attribute(parent, "subtitle") -@]</div>
+      [!- endif -!]
+    </hgroup>
   [!- else -!]
-    <p>[!- include templates -!]</p>
+    [!- include "blocks/" ~ block.category ~ "/default.neoj" -!]
   [!- endif -!]
 [!- endfor -!]

@@ -1,3 +1,4 @@
+// TODO: DEPRECATE in favor of empty_line_after_line_ending
 use nom::IResult;
 use nom::Parser;
 use nom::branch::alt;

@@ -1,8 +1,11 @@
+[!- import "macros/loader.neoj" as macros -!] 
+
 [!- for block in block.children -!]
-  [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
   [!- if loop.first -!]
-    <h2>[!- include templates -!]</h2>
+    <h2
+      [@ macros.get_block_attributes(block) @]
+>[!- include "blocks/" + block.category + "/no-paragraphs.neoj" -!]</h2>
   [!- else -!]
-    <p>[!- include templates -!]</p>
+    [!- include "blocks/" + block.category + "/default.neoj" -!]
   [!- endif -!]
 [!- endfor -!]

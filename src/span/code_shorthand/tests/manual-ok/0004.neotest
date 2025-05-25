@@ -1,0 +1,31 @@
+``alfa
+bravo``
+######txt######ok######
+
+Single newline allowed. 
+
+######
+
+{
+  "attrs": {},
+  "category": "code-shorthand",
+  "flags": [],
+  "kind": "code-shorthand",
+  "spans": [
+    {
+      "category": "text",
+      "content": "alfa bravo",
+      "kind": "text"
+    }
+  ]
+}
+
+######
+
+{
+  "remainder": ""
+}
+
+
+
+

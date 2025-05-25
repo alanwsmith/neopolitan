@@ -1,0 +1,34 @@
+-- title
+
+CSV Example
+
+-- warning
+
+The page won't render in the ``2.9.0`` version
+of MiniJinja if something other than a 
+number is used as the value in the ``-- headers: |neo``
+attribute. One possible fix is to make
+an environmental function to address that. 
+
+I've also opened a ticket at:
+
+Converting to int halts rendering if the input is not a number
+
+https://github.com/mitsuhiko/minijinja/issues/786
+
+
+-- neo-example-csv-table
+-- headers: 1
+-- caption: This is the caption for the table. 
+-- title: CSV Example Table
+
+alfa, bravo, charlie
+delta, echo, foxtrot
+golf, hotel, india
+julite, kilo, lima 
+
+
+
+-- metadata 
+-- created: 2025-05-04T00:13:19-04:00
+-- updated: 2025-05-04T00:13:19-04:00

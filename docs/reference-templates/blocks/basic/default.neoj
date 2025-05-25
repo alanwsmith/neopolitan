@@ -1,4 +1,25 @@
+[!- import "macros/loader.neoj" as macros -!] 
+
+<div
+  [@ macros.get_block_attributes(block, "flow") @]
+>
 [!- for block in block.children -!]
-  [!- set templates = ["blocks/" + block.category + "/default.neoj"] -!]
-  <p>[!- include templates -!]</p>
+  [!- if "kind" in block -!]
+    [!- set templates = [
+      "blocks/" + block.kind + "/default.neoj",
+      "blocks/" + block.category + "/default.neoj"
+    ] -!]
+    [!- include templates -!]
+  [!- else -!]
+    [!- set templates = [
+      "blocks/" + block.category + "/default.neoj"
+    ] -!]
+    [!- include templates -!]
+  [!- endif -!]
 [!- endfor -!]
+</div>
+
+[! if block.end_block != None !]
+  [! set block = block.end_block !]
+  [! include "blocks/end/default.neoj" !]
+[! endif !]

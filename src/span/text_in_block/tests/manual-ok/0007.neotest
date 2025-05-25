@@ -1,0 +1,19 @@
+{
+  "content": "alfa bravo \ncharlie delta"
+}
+######json######ok######
+
+Don't capture empty space before line_ending
+
+######
+{
+  "category": "text",
+  "content": "alfa bravo",
+  "kind": "text"
+}
+######
+{
+  "remainder": " \ncharlie delta"
+}
+
+

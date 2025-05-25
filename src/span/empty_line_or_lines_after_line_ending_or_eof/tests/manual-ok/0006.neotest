@@ -1,0 +1,20 @@
+{
+  "content": "\n   \n   \n   \n   \nbravo"
+}######json######ok######
+
+Multiple empty lines with spaces
+
+######
+
+{
+  "category": "empty-line-or-lines", 
+  "kind": "empty-line-or-lines"
+}
+
+######
+
+{
+  "remainder": "bravo"
+}
+
+

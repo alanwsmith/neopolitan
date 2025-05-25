@@ -1,0 +1,39 @@
+-- title
+
+Basic Raw Content
+
+-- cli
+
+This is a CLI block
+
+-- css
+
+This is a CSS block
+
+-- code
+
+this is a code block
+
+-- html
+
+this is an HTML block
+
+-- javascript
+
+This is a javascript block
+
+-- output
+
+This is a output block
+
+-- pre
+
+This is a pre block
+
+-- raw
+
+This is a raw block
+
+-- metadata
+-- created: 2025-05-03T20:03:54-04:00
+-- updated: 2025-05-03T20:03:54-04:00
