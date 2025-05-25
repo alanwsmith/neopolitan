@@ -126,6 +126,12 @@ pub fn block<'a>(
     parent: &'a BlockParent,
 ) -> IResult<&'a str, Block> {
     let (source, section) = alt((
+        // TODO: add a `type` parser for the
+        // attributes that lets you define the
+        // type of block directly. The process
+        // will be 1. check for an attr, 2.
+        // check if the block is in a config,
+        // 3. fall back to basic.
         |src| raw_block(src, config, parent),
         |src| list_block(src, config, parent),
         |src| json_block(src, config, parent),

@@ -19,16 +19,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<!--
   <header>
-    <a href="/">Home</a>
+    <a href="/">Home</a> ~ <a href="/details/">Details</a>
   </header>
-  -->
   <main>
     [!- block main -!][!- endblock -!]
   </main>
   <footer>
+
+[#
     [!- include "helpers/page-date.neoj" -!]
+    #]
     from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
     <a href="https://links.alanwsmith.com/">other projects</a> ~

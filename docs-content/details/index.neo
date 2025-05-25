@@ -1,0 +1,396 @@
+-- html  
+
+<hgroup>
+<h1>Neopolitan</h1>
+<p>Notes with Superpowers</p>
+</hgroup>
+
+-- h2
+
+Details (Draft)
+
+Here's the specifics on how to
+format a Neopolitan note.
+
+(A full technical spec and test
+suite is pending. I'm also making examples that will
+likely be easier to process
+via the <em>show don't tell</em>
+principal.)
+
+
+-- h3
+
+Notes
+
+-- html
+
+<ul>
+
+<li>
+Neopolitan notes are made
+of <em>blocks</em>
+</li>
+
+<li>
+There are two types of blocks:
+<em>Basic</em> and <em>Wrapper</em>
+(details below)
+</li>
+
+<li>
+Blocks can have <em>attributes</em>
+and <em>flags</em> (details below)
+</li>
+
+<li>
+Blocks can contain content
+made up of <em>spans</em>
+</li>
+
+<li>
+Blocks without content
+are permitted  
+</li>
+
+<li>
+Content before the first block
+is not permitted
+</li>
+
+<li>
+Spans are either: <em>plain-text</em>, 
+<em>shorthands</em>, or <em>tags</em>
+(details below)
+</li>
+
+<li>
+Shorthand and Tag spans can have
+<em>attributes</em>
+and <em>flags</em> (details below)
+</li>
+
+</ul>
+
+-- h3
+
+Basic Blocks
+
+-- html
+
+<ul>
+
+<li>Basic blocks start with a
+line containing two hyphenes and
+a name separated by a one or
+more spaces</li>
+
+<li>
+Name can't contains spaces
+</li>
+
+<li>
+Other than the first block, at
+least one empty line must precede all 
+blocks 
+</li>
+
+<li>
+At least one empty line
+must be placed between the start 
+of a block (including 
+attributes and flags) and any content
+</li>
+
+<li>
+The contents of a basic block continue
+until reaching either a new block
+or the end of the note
+</li>
+
+<li>
+Each block belongs to a category
+(see below)
+</li>
+
+<li>
+A block's category determines
+how its content is treated
+</li>
+
+<li>
+Block categories can be defined
+by an app or via a <em>type</em>
+attribute on the block itself
+</li>
+
+<li>
+A set of requirements for blocks
+that belong to specific categories
+is forth coming. Apps are required
+to use the categories in order
+to be considered a valid Neopolitan
+app
+</li> 
+
+<li>
+A set of recommended categories
+for specific blocks is forthcoming.
+Apps should follow these recommendations
+if possible to assist in portability,
+but there's no requirement to do so. 
+</li>
+
+<li>
+Apps <em>are</em> required to honor <em>type</em>
+attributes if a block has one 
+</li>
+
+
+</ul>
+
+
+-- h3
+
+Wrapper Blocks
+
+-- html
+
+<ul>
+
+<li>
+  Wrapper blocks contain content between 
+  starting and ending lines
+</li>
+
+<li>
+Starting lines consist of two
+hyphens, one or more spaces, a name, and
+a <code>/</code> character<br>
+<br>
+<pre class="heading-border-faded large-padding default-radius">
+<code>&#45;&#45; book-review/</code>
+</pre>
+</li>
+
+
+
+<li>
+Ending lines consist of two hyphens, one
+or more spaces, a <code>/</code> character, 
+and the same name that was used on the
+starting line
+<br>
+<br>
+<pre class="heading-border-faded large-padding default-radius">
+<code>&#45;&#45; /book-review</code>
+</pre>
+</li>
+
+<li>
+Basic blocks can be included inside wrapper
+blocks:
+
+<br>
+<br>
+<pre class="heading-border-faded large-padding default-radius"><code>&#45;&#45; book-review/
+
+Some basic notes
+
+  &#45;&#45; supplemental-info
+
+  More details
+
+&#45;&#45; /book-review</code></pre>
+</li>
+
+<li>
+Wrapper blocks can contain other wrapper blocks.
+
+<br>
+<br>
+<pre class="heading-border-faded large-padding default-radius"><code>&#45;&#45; book-review/
+
+Some basic notes
+
+  &#45;&#45; supplemental-info/
+
+  More details
+
+  &#45;&#45; /supplemental-info
+
+More content
+
+&#45;&#45; /book-review</code></pre>
+</li>
+
+<li>
+Blocks contained inside a wrapper block
+can be tabbed over or kept flush starting
+at the first column of the note
+</li>
+
+<li>
+There's no practical limit to the number 
+of basic or wrapper blocks
+can be used as siblings inside 
+a wrapper block 
+</li>
+
+<li>
+There's no practical limit to the
+depth of the nesting
+</li>
+
+<li>
+Content after the ending line is treated
+like an basic category block
+</li>
+
+</ul>
+
+-- h3
+
+Block Categories
+
+-- html
+
+<ul>
+<li>The core block categories are: 
+Basic, Checklist, Checklist Item, CSV, 
+JSON, List, List Item,
+Numbered List, Numbered List Item, Raw, 
+and Text Content.
+</li>
+<li>
+Table is a reserved category type
+without an initial implementation.
+(I don't foresee a generalized table
+being implemented in the parse but
+want to make sure the name is free
+in case it does)
+</li>
+<li>Each category parses the contents
+of a block in a specific way</li>
+<li>
+If a block doesn't have a <em>type</em> attribute,
+and it doesn't match one of the predefined
+categories, and the app doesn't define
+it implicitly it is processed as 
+a <em>Basic</em> block 
+</li>
+<li>Apps are required to accommodate the
+core categories</li>
+<li>Apps can design and implement their
+own categories to parse content in
+ways the core categories don't</li>
+<li>
+Details about the handling of each
+category will be provided in further
+documentation
+</li>
+
+</ul>
+
+-- h3
+
+Block Attributes and Flags
+
+-- html
+
+<div class="heading-border-faded large-padding default-radius">
+Work-in-progress
+</div>
+
+-- p
+
+Reserved attribute keys that
+the parse uses: 
+
+-- html
+
+<ul>
+<li>type - for defining what
+category a block should be parsed
+with</li>
+<li>plugin - passes the block
+off to another process for
+parsing</li>
+</ul>
+
+
+
+
+
+
+-- h3
+
+Plain-Text Spans
+
+-- html
+
+<div class="heading-border-faded large-padding default-radius">
+Work-in-progress
+</div>
+
+
+-- h3
+
+Shorthand Spans
+
+Shorthands offer a way to quickly enhance
+content in Neopolitan files. They are:
+
+-- code
+
+~~ = strikethrough 
+
+`` = code
+
+^^ = footnote
+
+** = strong
+
+__ = emphasis
+
+@@ = wikilink
+
+:: = image
+
+(( and )) = html
+
+[[ and ]] = link
+
+{{ and }} = class wrapper
+
+
+-- h3
+
+Tag Spans
+
+-- html
+
+<div class="heading-border-faded large-padding default-radius">
+Work-in-progress
+</div>
+
+
+-- h3
+
+Span Attributes And Flags
+
+-- html
+
+<div class="heading-border-faded large-padding default-radius">
+Work-in-progress
+</div>
+
+
+
+
+-- metadata 
+-- created: 2025-05-25T20:21:11-04:00
+-- updated: 2025-05-25T20:21:11-04:00
+
+
+

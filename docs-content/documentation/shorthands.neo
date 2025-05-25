@@ -2,34 +2,10 @@
 
 Shorthands
 
--- h2
+-- note
 
-Introduction
-
-Shorthands offer a way to enhance
-content in Neopolitan files<sup>1</sup>. 
-
--- code
-
-~ = strikethrough 
-
-` = code
-
-@ = span (first flag becomes classes)
-
-^ = footnote
-
-* = strong
-
-_ = emphasis
-
-( and ) = html
-
-[ and ] = link
-
-{ and } = image
-
-
+Content of this page are being
+moved do the details page
 
 -- h2
 

@@ -1208,16 +1208,14 @@ hr {
   color: var(--reverse);
   overflow: visible;
   text-align: var(--align-center);
-  height: 5px;
+  height: 7px;
+  --flow-space: var(--xxxlarge-margin);
+  margin-bottom: var(--xxxlarge-margin);
 }
 hr::after {
-  /* background was in the mdn example, 
-  I'm not sure whey. commenting out until
-  I have a chance to look closer 
-  background: #fff;
-  */
+  background: var(--background);
   content: "§";
-  padding-inline: var(--small-padding);
+  padding-inline: var(--xlarge-padding);
   position: relative;
   top: -13px;
 }

@@ -18,11 +18,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<!--
   <header>
-    <a href="/">Home</a>
+    <a href="/">Home</a> ~ <a href="/details/">Details</a>
   </header>
-  -->
   <main><hgroup>
 <h1>Neopolitan</h1>
 <p>Notes with Superpowers</p>
@@ -32,7 +30,7 @@
       
 >The Basics</h3><p>
 Notes are made of blocks. Each 
-one starts with two dashes and a name.
+starts with two dashes and a name.
 </p>
 
 <pre class="pre-basic"><code>&#45;&#45; title</code></pre>
@@ -43,7 +41,7 @@ one starts with two dashes and a name.
 
 This is a Neopolitan Note</code></pre><h3
       
->You Name It</h3><p>Blocks names are up to you.</p><pre class="pre-basic"><code>&#45;&#45; title</code></pre>
+>You Name It</h3><p>Block names are up to you.</p><pre class="pre-basic"><code>&#45;&#45; title</code></pre>
 
 <pre class="pre-basic"><code>&#45;&#45; book-review</code></pre>
 
@@ -53,7 +51,7 @@ This is a Neopolitan Note</code></pre><h3
 
 <h3
       
->Extra Info</h3><p>Blocks can hold extra information. Each piece gets its own line that starts with two dashes.</p><div class="accent-border-faded default-radius default-padding">
+>Extra Info</h3><p>Blocks can have extra information. Each piece gets its own line that starts with two dashes.</p><div class="accent-border-faded default-radius default-padding">
 <pre><code>&#45;&#45; book-review
 &#45;&#45; title: On Writing
 &#45;&#45; author: Stephen King 
@@ -68,9 +66,9 @@ Get up. Do your thing.
 <div class="small-font align-right accent-top-border-faded default-top-padding">figure 1</div>
 </div><h2
       
->What Do They Do?</h2><p>Neopolitan notes are designed to be easy to make, read, and update. They don't do much on their own, though.</p><p>Using them in apps is where things get interesting.</p><h3
+>What Do They Do?</h2><p>Neopolitan notes are easy to make, read, and update. They don't do much on their own, though.</p><p>Using them in apps is where things get interesting.</p><h3
       
->Enter Neopoligen</h3><p>Neopoligen (with a gen) is the first app that uses Neopolitan (with a tan). It's a website builder. Point it at some Neopolitan notes and it'll turn them into a website.</p><p>The process works by applying templates to blocks. For example, the default template for the <code>book-review</code> block from <code>figure 1</code> produces this:</p><div class="
+>Enter Neopoligen</h3><p>Neopoligen<sup>1</sup> (with a <em>gen</em>) is the first app that uses Neopolitan (with a <em>tan</em>). It's a website builder. Point it at some notes and it'll turn them into a website.</p><p>The conversion works by applying templates to blocks. For example, the default template for the <code>book-review</code> block from <code>figure 1</code> produces this:</p><div class="
 xxlarge-block-margin heading-border-faded 
 default-radius
 xsmall-max-width
@@ -89,7 +87,7 @@ putting in the effort.</p>
 </div>
 </div><h4
       
->Switching Layouts</h4><p>The templates are yours to change. The same content from <code>figure 1</code> looks like this after a few tweaks:</p><div class="
+>Switching Things Up</h4><p>The templates are yours to change. The same content from <code>figure 1</code> looks like this after a few tweaks:</p><div class="
 xxlarge-block-margin
 heading-border-faded 
 default-radius
@@ -110,6 +108,7 @@ xsmall-font
 default-faded
 align-right
 default-bottom-border-faded
+xxsmall-block-padding
 ">Stephen King</div>
 <div class="match-background-faded small-padding default-bottom-border-faded"><strong>On Writing</strong></div>
 <div class="default-padding small-flow small-font">
@@ -121,7 +120,7 @@ putting in the effort.</p>
 </div>
 </div><h3
       
->Collect All The Things</h3><p>Neopoligen lets you make collections. If you've got a bunch of notes with <code>book-review</code> blocks, you can show them all on one page.</p><div class="dev-tmp-books-wrapper default-bottom-margin">
+>Collect All The Things</h3><p>Apps can use blocks to make collections. For example, you can use Neopoligen to gather all the <code>book-review</code> blocks for your notes and display them on a single page.</p><div class="dev-tmp-books-wrapper default-bottom-margin">
 <div class="dev-tmp-book">
   <div class="dev-tmp-title">A Closed and Common Orbit</div>
   <div class="dev-tmp-author">by: Becky Chambers</div>
@@ -131,12 +130,12 @@ putting in the effort.</p>
   <div class="dev-tmp-author">by: Atul Gawande</div>
 </div>
 <div class="dev-tmp-book">
-  <div class="dev-tmp-title">Dune</div>
-  <div class="dev-tmp-author">by: Frank Herbert</div>
-</div>
-<div class="dev-tmp-book">
   <div class="dev-tmp-title">Information Dashboard Design</div>
   <div class="dev-tmp-author">by: Stephen Few</div>
+</div>
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">Walkaway</div>
+  <div class="dev-tmp-author">by: Cory Doctorow</div>
 </div>
 <div class="dev-tmp-book">
   <div class="dev-tmp-title">On Writing</div>
@@ -144,11 +143,11 @@ putting in the effort.</p>
 </div>
 </div><div
    class="flow"
-><p>In this case, only the title and author are shown. You could just as easily show the content.</p></div>
+><p>In this case, only the title and author are shown. You could just as easily make a design that shows the content.</p></div>
 
 <h4
       
->All The Info</h4><p>Collections can also be created from extra info. If you've got a bunch of <code>book-review</code> blocks scattered around with <code>author</code> info you can make a page showing all the books from a specific author.</p><div class="
+>All The Info</h4><p>Apps can create collections from the extra block info too. Using the <code>author</code> info from <code>book-review</code> blocks to show everything you've read from one person, for example:</p><div class="
 xxlarge-block-margin
 heading-border-faded 
 default-radius
@@ -173,67 +172,164 @@ default-font">Stephen King Books</div>
 <div class="default-padding small-flow small-font">
 </div>
 </div>
-</div><div
-   class="flow"
-></div>
-
-<h2
+</div><h2
       
->Current Status</h2><p>I've been working on Neopolitan and Neopoligen for a few years. They've been powering my site for over a year. Everything is working nicely.</p><p>The original app bundled the Neopolitan reader inside the Neopoligen site builder. I'm in the process of splitting them apart. Doing so will make it easier for other developers to make apps that use Neopolitan.</p><p>I'm making good progress, but don't have an ETA. Follow me on Mastodon, Bluesky, or my RSS feed for updates.</p><p>It won't be too long now. I'm really looking forward to sharing it with you.</p><p>-a</p><h2
+>Current Status</h2><p>Neopolitan is a way to format notes<sup>2</sup>. You can make them in any app you want.</p><p>It's up to individual apps to <em>do</em> something beyond displaying a note's text. <a href="https://www.neopoligen">Neopoligen</a> is the first app that brings them to life. I've been using prototypes for a few years to run <a href="https://www.alanwsmith.com/">my site</a>. I couldn't be happier with it.</p><p>The current version of Neopoligen is the final prototype. Some parts of it are hard-wired for my site. I'm in the process of removing those bits to make it generally available. I don't have an ETA, but you can follow me on <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a>, <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>, or my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a> for updates.</p><p>It won't be long. I'm really looking forward to sharing it with you.</p><p>-a</p><hr><h2
       
->No JavaScript Required</h2><p>TODO: add section about how all this is done with templates and no need for JavaScript. It can be added if you want it. But, it's not required.</p><h2
-      
->More To Come</h2><p>Formats can be interesting. If there's nothing that uses them, they don't mean much. In that light, I'm finishing up a reference static site generator that uses Neopolitan.</p><p>I expect to have a beta version ready by June 2025.</p><p>I'll post about progress on <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> and <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a> if you want to follow along.</p><h2
+>Endnotes</h2><ul>
+  <li>
+    I love taking notes. 
+    <a href="https://www.alanwsmith.com/en/2h/1i/v2/7a">
+    My Grimoire</a> currently has 11,320 of them. 
+    I used to use <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>
+    but grew increasingly frustrated with 
+    its limitations. That frustration led
+    to the creation of Neopolitan. More details
+    on that in 
+    <a href="https://www.neopoligen.com/en/2kn3czfj/">Why I Built Neopoligen</a>
+    if you're interested. 
+</li>
+<li>
+I've been running my site for 25 years. I've moved content
+between various tools and technologies more times
+than I care to remember. I never want to do it again. 
+<br><br>
+A fundamental goal of Neopolitan is that, regardless
+of what I'm using to publish the site, I don't 
+have change the format of my notes for the rest of
+my life. 
+<br><br>
+After using it for a few years, I'm as confident
+as I can be that it'll last.
+</li>
+<li>
+    My opinion is as far as you can
+    get from objective, but Neopolitan
+    is really fun to work with. It's hard
+    to describe how nice it is to
+    use blocks as a free-form, plain-text
+    database without actually having to
+    use a database or javascript framework. 
+  </li>
+  <li>
+  This page only covers basic blocks. 
+  There are also <em>Wrapper Blocks</em>
+  as well as some Markdown and Wiki style
+  things you can do with the content. 
+  <a href="/details/">Check the
+  Details page for more info.</a>
+  </li>
+</ul><h2
       
 >Footnotes</h2><ol class="flow">
   <li>
-    Sure, you could always roll back to 
-    using HTML directly in your Markdown
-    documents. 
+    <a href="https://www.neopoligen.com/">Neopoligen</a> - the
+    web site builder that uses Neopolitan notes. 
+    I'm re-tooling it right now. The new version will
+    be available soon. I'll post updates <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a>,
+<a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>, 
+and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
   </li>
   <li>
-    Adding the &quot;aria-label&quot; is a bit of
-    a contrived example. I don't know if including
-    one in an H1 is advisable. The point here is
-    not about the specific label. It's about
-    the general ability to add things like 
-    aria labels during output without having to 
-    define them directly in the content itself.
-  </li>
-  <li>
-    <p>
-      The names don't have to match. You could just
-      as easily make a section called &quot;&#45;&#45; week&quot;
-      and have the output be &quot;The Week In Review&quot;.
-    </p>
-    <p>
-      There's also no restriction limiting the output 
-      to an H2 tag. An entire structure of divs could
-      be used the same way.
-    </p>
-  </li>
-  <li>
-    Okay, only stuff that's possible with HTML, 
-    CSS, and JavaScript if you want to be pedantic 
-    about it. 
-  </li>
-  <li>
-    Okay, sure. There are limits to computer memory,
-    etc. if you want to be pedantic about it.
+    Here's <a href="/details/">more details about the format</a>.
   </li>
 </ol><h2
       
->TODO</h2><p>[] Write up No JavaScript Required section.</p><p>[] Output the contents of the example below it to show the rendered HTML.</p><p>[] Add syntax highlighting.</p><div
-   class="flow"
-><p>Neopolitan is open source. The format is free to use. The parser was originally built into Neopoligen. I'm in the process of splitting it out so it can be used as a starting point for other apps as well.</p></div>
+>Further Reading</h2><details>
+<summary>Philosophy</summary>
+<ul>
+  <li>
+    Both Neopolitan and Neopoligen are
+    free, open-source software projects. Their
+    source repos are 
+    <a href="https://github.com/alanwsmith/neopolitan">
+    here for Neopolitan</a> and
+    <a href="https://github.com/neopoligen/neopoligen">
+    here for Neopoligen</a>. 
+    <br><br>
+    (I haven't pushed to Neopoligen in a while. 
+    The next updates will go out when I finish
+    getting the app ready for public launch)
+  </li>
+  <li>
+    There is not and will not be any VC funding 
+    involved. These projects are not about
+    increasing shareholder value. They're about 
+    offering tools folks can use to create.
+  </li>
+  <li>
+    There is also no vendor lock-in. Neopolitan
+    files are plain-text files. You can take
+    them pretty much anywhere. 
+  </li>
+  <li>
+    I'm working on another project to design
+    a social network made out of website
+    and RSS feeds. It's called Neb. You
+    can read more about it here: 
+    <a href="https://www.alanwsmith.com/en/2v/xe/x0/xr/">
+Introducing Neb - A Social Network For People</a>.
+    <br><br>
+    In addition to being the first app
+    that uses Neopolitan, Neopoligen will
+    also be the first app for the network.
+  </li>
+  </ul>
+</details>
 
-<div
-   class="flow"
-><p>You don't need a special app to make Neopolitan notes. There's nothing propriteray about the format. You can make them with pretty much any notes app.</p></div>
 
-</main>
-  <footer><div>
-        Created: 2025-04-27T20:21:11-04:00</div>from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
+<details open >
+<summary>Technical Details</summary>
+
+<ul>
+  <li>
+     To add some formality: 
+     Neopolitan is a specification for a plain-text
+     file format based on a corresponding 
+     reference parser. Anything 
+     the parser can parse is valid
+     Neopolitan. Anything it can't
+     isn't. 
+     <br><br>
+     The reference parser 
+     has a test suite of inputs and 
+     AST target outputs. Any parser that properly
+     converts the inputs into the outputs
+     is a valid parser. 
+  </li>
+  <li>
+    Parsing and rendering are completely 
+    separate concerns. A parser's sole
+    responsibility is to transform input
+    into an AST that's handed back to
+    the process that requested it. 
+    It's up to the receiver to determine
+    what to do with the AST. 
+  </li>
+  <li>
+    A plugin architecture is being designed
+    for the reference parser. It won't ship
+    in the first version but stubs
+    for it will be in place. 
+  </li>
+  <li>
+    Neither the Neopolitan parser or the Neopoligen 
+    site generator rely on 
+    JavaScript or JavaScript frameworks.
+    <br><br>
+    The apps are written in Rust.
+    They will generally be distributed as
+    complete binaries. They should work the same
+    way forever as long as your system
+    architecture doesn't change. 
+  </li>
+</ul>
+
+</details></main>
+  <footer>
+
+
+    from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
     <a href="https://links.alanwsmith.com/">other projects</a> ~
     <a href="https://socials.alanwsmith.com/">socials</a>
@@ -243,7 +339,7 @@ default-font">Stephen King Books</div>
 <div class="">
 <pre class="font-size-xsmall"><hr />
 <h3>Under Construction</h3>
-<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/_test-overview/block/index.html">_test-overview/block/index.html</a></li><li><a href="/_test-overview/block/list/full/index.html">_test-overview/block/list/full/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/index.html">_test-overview/block/list/full/tests/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/manual-ok/index.html">_test-overview/block/list/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list/index.html">_test-overview/block/list/index.html</a></li><li><a href="/_test-overview/block/list_item/full/index.html">_test-overview/block/list_item/full/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/index.html">_test-overview/block/list_item/full/tests/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/manual-ok/index.html">_test-overview/block/list_item/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list_item/index.html">_test-overview/block/list_item/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/index.html">_test-overview/block/list_item_spans/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/index.html">_test-overview/block/list_item_spans/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/index.html">_test-overview/block/list_item_spans/tests/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-err/index.html">_test-overview/block/list_item_spans/tests/manual-err/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-ok/index.html">_test-overview/block/list_item_spans/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/index.html">_test-overview/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/index.html">_test-overview/span/code_shorthand/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/index.html">_test-overview/span/code_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-err/index.html">_test-overview/span/code_shorthand/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-ok/index.html">_test-overview/span/code_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/index.html">_test-overview/span/escaped_character_in_block/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/index.html">_test-overview/span/escaped_character_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html">_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/index.html">_test-overview/span/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/index.html">_test-overview/span/single_character_allowed_in_block/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/index.html">_test-overview/span/single_character_allowed_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/index.html">_test-overview/span/single_line_ending/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/index.html">_test-overview/span/single_line_ending/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-err/index.html">_test-overview/span/single_line_ending/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-ok/index.html">_test-overview/span/single_line_ending/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/index.html">_test-overview/span/space1_as_single_space/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/index.html">_test-overview/span/space1_as_single_space/tests/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/manual-ok/index.html">_test-overview/span/space1_as_single_space/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/index.html">_test-overview/span/strikethrough_shorthand/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/index.html">_test-overview/span/strikethrough_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html">_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/tests/index.html">_test-overview/span/tests/index.html</a></li><li><a href="/_test-overview/span/tests/manual-ok/index.html">_test-overview/span/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/text_in_block/index.html">_test-overview/span/text_in_block/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/index.html">_test-overview/span/text_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/manual-ok/index.html">_test-overview/span/text_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-report.html">_test-report.html</a></li><li><a href="/_test_examples/basic-div-sections.html">_test_examples/basic-div-sections.html</a></li><li><a href="/_test_examples/code-samples.html">_test_examples/code-samples.html</a></li><li><a href="/_test_examples/csv-example-table.html">_test_examples/csv-example-table.html</a></li><li><a href="/_test_examples/description-list.html">_test_examples/description-list.html</a></li><li><a href="/_test_examples/details-test.html">_test_examples/details-test.html</a></li><li><a href="/_test_examples/json-example-table.html">_test_examples/json-example-table.html</a></li><li><a href="/_test_examples/list-full.html">_test_examples/list-full.html</a></li><li><a href="/_test_examples/nested-2-levels.html">_test_examples/nested-2-levels.html</a></li><li><a href="/_test_examples/nested-3-levels.html">_test_examples/nested-3-levels.html</a></li><li><a href="/_test_examples/nested-div-full.html">_test_examples/nested-div-full.html</a></li><li><a href="/_test_examples/raw-content-basic.html">_test_examples/raw-content-basic.html</a></li><li><a href="/_test_examples/strikethrough-shorthand-test.html">_test_examples/strikethrough-shorthand-test.html</a></li><li><a href="/_test_examples/title-subtitle-example.html">_test_examples/title-subtitle-example.html</a></li><li><a href="/_test_examples/tree-view-from-fluent.html">_test_examples/tree-view-from-fluent.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/demos-to-make.html">demos-to-make.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests-to-move/level-1/spans/code.html">tests-to-move/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li></ul></pre>
+<ul class="flow"><li><a href="/_output-sample.html">_output-sample.html</a></li><li><a href="/_test-overview/block/index.html">_test-overview/block/index.html</a></li><li><a href="/_test-overview/block/list/full/index.html">_test-overview/block/list/full/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/index.html">_test-overview/block/list/full/tests/index.html</a></li><li><a href="/_test-overview/block/list/full/tests/manual-ok/index.html">_test-overview/block/list/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list/index.html">_test-overview/block/list/index.html</a></li><li><a href="/_test-overview/block/list_item/full/index.html">_test-overview/block/list_item/full/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/index.html">_test-overview/block/list_item/full/tests/index.html</a></li><li><a href="/_test-overview/block/list_item/full/tests/manual-ok/index.html">_test-overview/block/list_item/full/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/block/list_item/index.html">_test-overview/block/list_item/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/index.html">_test-overview/block/list_item_spans/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/escaped-shorthands-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/index.html">_test-overview/block/list_item_spans/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html">_test-overview/block/list_item_spans/tests/generated-ok/single-characters-by-themselves/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/index.html">_test-overview/block/list_item_spans/tests/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-err/index.html">_test-overview/block/list_item_spans/tests/manual-err/index.html</a></li><li><a href="/_test-overview/block/list_item_spans/tests/manual-ok/index.html">_test-overview/block/list_item_spans/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/index.html">_test-overview/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/index.html">_test-overview/span/code_shorthand/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/index.html">_test-overview/span/code_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-err/index.html">_test-overview/span/code_shorthand/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/code_shorthand/tests/manual-ok/index.html">_test-overview/span/code_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html">_test-overview/span/empty_line_or_lines_after_line_ending_or_eof/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/index.html">_test-overview/span/escaped_character_in_block/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html">_test-overview/span/escaped_character_in_block/tests/generated-ok/single-shorthand-ok/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/index.html">_test-overview/span/escaped_character_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html">_test-overview/span/escaped_character_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/index.html">_test-overview/span/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/index.html">_test-overview/span/single_character_allowed_in_block/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html">_test-overview/span/single_character_allowed_in_block/tests/generated-ok/single-character-check/index.html</a></li><li><a href="/_test-overview/span/single_character_allowed_in_block/tests/index.html">_test-overview/span/single_character_allowed_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/index.html">_test-overview/span/single_line_ending/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/index.html">_test-overview/span/single_line_ending/tests/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-err/index.html">_test-overview/span/single_line_ending/tests/manual-err/index.html</a></li><li><a href="/_test-overview/span/single_line_ending/tests/manual-ok/index.html">_test-overview/span/single_line_ending/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/index.html">_test-overview/span/space1_as_single_space/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/index.html">_test-overview/span/space1_as_single_space/tests/index.html</a></li><li><a href="/_test-overview/span/space1_as_single_space/tests/manual-ok/index.html">_test-overview/span/space1_as_single_space/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/index.html">_test-overview/span/strikethrough_shorthand/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/index.html">_test-overview/span/strikethrough_shorthand/tests/index.html</a></li><li><a href="/_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html">_test-overview/span/strikethrough_shorthand/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/tests/index.html">_test-overview/span/tests/index.html</a></li><li><a href="/_test-overview/span/tests/manual-ok/index.html">_test-overview/span/tests/manual-ok/index.html</a></li><li><a href="/_test-overview/span/text_in_block/index.html">_test-overview/span/text_in_block/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/index.html">_test-overview/span/text_in_block/tests/index.html</a></li><li><a href="/_test-overview/span/text_in_block/tests/manual-ok/index.html">_test-overview/span/text_in_block/tests/manual-ok/index.html</a></li><li><a href="/_test-report.html">_test-report.html</a></li><li><a href="/_test_examples/basic-div-sections.html">_test_examples/basic-div-sections.html</a></li><li><a href="/_test_examples/code-samples.html">_test_examples/code-samples.html</a></li><li><a href="/_test_examples/csv-example-table.html">_test_examples/csv-example-table.html</a></li><li><a href="/_test_examples/description-list.html">_test_examples/description-list.html</a></li><li><a href="/_test_examples/details-test.html">_test_examples/details-test.html</a></li><li><a href="/_test_examples/json-example-table.html">_test_examples/json-example-table.html</a></li><li><a href="/_test_examples/list-full.html">_test_examples/list-full.html</a></li><li><a href="/_test_examples/nested-2-levels.html">_test_examples/nested-2-levels.html</a></li><li><a href="/_test_examples/nested-3-levels.html">_test_examples/nested-3-levels.html</a></li><li><a href="/_test_examples/nested-div-full.html">_test_examples/nested-div-full.html</a></li><li><a href="/_test_examples/raw-content-basic.html">_test_examples/raw-content-basic.html</a></li><li><a href="/_test_examples/strikethrough-shorthand-test.html">_test_examples/strikethrough-shorthand-test.html</a></li><li><a href="/_test_examples/title-subtitle-example.html">_test_examples/title-subtitle-example.html</a></li><li><a href="/_test_examples/tree-view-from-fluent.html">_test_examples/tree-view-from-fluent.html</a></li><li><a href="/alternate-templates.html">alternate-templates.html</a></li><li><a href="/cli.html">cli.html</a></li><li><a href="/demos-to-make.html">demos-to-make.html</a></li><li><a href="/details/index.html">details/index.html</a></li><li><a href="/documentation/attributes-and-flags.html">documentation/attributes-and-flags.html</a></li><li><a href="/documentation/footnotes.html">documentation/footnotes.html</a></li><li><a href="/documentation/shorthands.html">documentation/shorthands.html</a></li><li><a href="/documentation/span-flags.html">documentation/span-flags.html</a></li><li><a href="/documentation/tags.html">documentation/tags.html</a></li><li><a href="/documentations.html">documentations.html</a></li><li><a href="/goals.html">goals.html</a></li><li><a href="/index.html">index.html</a></li><li><a href="/possible-enhancements.html">possible-enhancements.html</a></li><li><a href="/recommendations.html">recommendations.html</a></li><li><a href="/spec/2.0.0/html/spans.html">spec/2.0.0/html/spans.html</a></li><li><a href="/spec/2.0.0/parser/span-tests.html">spec/2.0.0/parser/span-tests.html</a></li><li><a href="/specifications.html">specifications.html</a></li><li><a href="/specifications/index.html">specifications/index.html</a></li><li><a href="/tags.html">tags.html</a></li><li><a href="/tests-to-move/level-1/spans/code.html">tests-to-move/level-1/spans/code.html</a></li><li><a href="/todos.html">todos.html</a></li></ul></pre>
 </div>
 
 <div class="">
@@ -323,7 +419,7 @@ default-font">Stephen King Books</div>
       },
       {
         "attrs": {},
-        "body": "\u003cp\u003e\nNotes are made of blocks. Each \none starts with two dashes and a name.\n\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\u003c/code\u003e\u003c/pre\u003e\n\n\u003cp\u003eContent comes after.\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\n\nThis is a Neopolitan Note\u003c/code\u003e\u003c/pre\u003e",
+        "body": "\u003cp\u003e\nNotes are made of blocks. Each \nstarts with two dashes and a name.\n\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\u003c/code\u003e\u003c/pre\u003e\n\n\u003cp\u003eContent comes after.\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\n\nThis is a Neopolitan Note\u003c/code\u003e\u003c/pre\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
@@ -350,7 +446,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "Blocks names are up to you.",
+                "content": "Block names are up to you.",
                 "kind": "text"
               }
             ]
@@ -409,7 +505,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "Blocks can hold extra information. Each piece gets its own line that starts with two dashes.",
+                "content": "Blocks can have extra information. Each piece gets its own line that starts with two dashes.",
                 "kind": "text"
               }
             ]
@@ -448,7 +544,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "Neopolitan notes are designed to be easy to make, read, and update. They don\u0027t do much on their own, though.",
+                "content": "Neopolitan notes are easy to make, read, and update. They don\u0027t do much on their own, though.",
                 "kind": "text"
               }
             ]
@@ -490,7 +586,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "Neopoligen (with a gen) is the first app that uses Neopolitan (with a tan). It\u0027s a website builder. Point it at some Neopolitan notes and it\u0027ll turn them into a website.",
+                "content": "Neopoligen\u003csup\u003e1\u003c/sup\u003e (with a \u003cem\u003egen\u003c/em\u003e) is the first app that uses Neopolitan (with a \u003cem\u003etan\u003c/em\u003e). It\u0027s a website builder. Point it at some notes and it\u0027ll turn them into a website.",
                 "kind": "text"
               }
             ]
@@ -501,7 +597,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "The process works by applying templates to blocks. For example, the default template for the \u003ccode\u003ebook-review\u003c/code\u003e block from \u003ccode\u003efigure 1\u003c/code\u003e produces this:",
+                "content": "The conversion works by applying templates to blocks. For example, the default template for the \u003ccode\u003ebook-review\u003c/code\u003e block from \u003ccode\u003efigure 1\u003c/code\u003e produces this:",
                 "kind": "text"
               }
             ]
@@ -529,7 +625,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "Switching Layouts",
+                "content": "Switching Things Up",
                 "kind": "text"
               }
             ]
@@ -552,7 +648,7 @@ default-font">Stephen King Books</div>
       },
       {
         "attrs": {},
-        "body": "\u003cdiv class=\"\nxxlarge-block-margin\nheading-border-faded \ndefault-radius\nxsmall-max-width\ndev-tmp-flex\nauto-inline-margin\n\"\u003e\n\u003cdiv class=\"\ndev-tmp-rotate\nsmall-padding \nheading-background-faded \nsmall-right-radius \nsmall-font\"\u003eBook Review\u003c/div\u003e\n\u003cdiv\u003e\n\u003cdiv class=\"\ndefault-inline-padding \nxsmall-font \ndefault-faded\nalign-right\ndefault-bottom-border-faded\n\"\u003eStephen King\u003c/div\u003e\n\u003cdiv class=\"match-background-faded small-padding default-bottom-border-faded\"\u003e\u003cstrong\u003eOn Writing\u003c/strong\u003e\u003c/div\u003e\n\u003cdiv class=\"default-padding small-flow small-font\"\u003e\n\u003cp\u003eA fantastic read. Biggest take\naway: It all comes down to \nputting in the effort.\u003c/p\u003e\n\u003cp\u003eGet up. Do your thing.\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
+        "body": "\u003cdiv class=\"\nxxlarge-block-margin\nheading-border-faded \ndefault-radius\nxsmall-max-width\ndev-tmp-flex\nauto-inline-margin\n\"\u003e\n\u003cdiv class=\"\ndev-tmp-rotate\nsmall-padding \nheading-background-faded \nsmall-right-radius \nsmall-font\"\u003eBook Review\u003c/div\u003e\n\u003cdiv\u003e\n\u003cdiv class=\"\ndefault-inline-padding \nxsmall-font \ndefault-faded\nalign-right\ndefault-bottom-border-faded\nxxsmall-block-padding\n\"\u003eStephen King\u003c/div\u003e\n\u003cdiv class=\"match-background-faded small-padding default-bottom-border-faded\"\u003e\u003cstrong\u003eOn Writing\u003c/strong\u003e\u003c/div\u003e\n\u003cdiv class=\"default-padding small-flow small-font\"\u003e\n\u003cp\u003eA fantastic read. Biggest take\naway: It all comes down to \nputting in the effort.\u003c/p\u003e\n\u003cp\u003eGet up. Do your thing.\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
@@ -579,7 +675,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "Neopoligen lets you make collections. If you\u0027ve got a bunch of notes with \u003ccode\u003ebook-review\u003c/code\u003e blocks, you can show them all on one page.",
+                "content": "Apps can use blocks to make collections. For example, you can use Neopoligen to gather all the \u003ccode\u003ebook-review\u003c/code\u003e blocks for your notes and display them on a single page.",
                 "kind": "text"
               }
             ]
@@ -591,7 +687,7 @@ default-font">Stephen King Books</div>
       },
       {
         "attrs": {},
-        "body": "\u003cdiv class=\"dev-tmp-books-wrapper default-bottom-margin\"\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eA Closed and Common Orbit\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Becky Chambers\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eChecklist Manifesto\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Atul Gawande\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eDune\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Frank Herbert\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eInformation Dashboard Design\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Stephen Few\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eOn Writing\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Stephen King\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
+        "body": "\u003cdiv class=\"dev-tmp-books-wrapper default-bottom-margin\"\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eA Closed and Common Orbit\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Becky Chambers\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eChecklist Manifesto\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Atul Gawande\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eInformation Dashboard Design\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Stephen Few\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eWalkaway\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Cory Doctorow\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eOn Writing\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Stephen King\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
@@ -607,7 +703,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "In this case, only the title and author are shown. You could just as easily show the content.",
+                "content": "In this case, only the title and author are shown. You could just as easily make a design that shows the content.",
                 "kind": "text"
               }
             ]
@@ -638,7 +734,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "Collections can also be created from extra info. If you\u0027ve got a bunch of \u003ccode\u003ebook-review\u003c/code\u003e blocks scattered around with \u003ccode\u003eauthor\u003c/code\u003e info you can make a page showing all the books from a specific author.",
+                "content": "Apps can create collections from the extra block info too. Using the \u003ccode\u003eauthor\u003c/code\u003e info from \u003ccode\u003ebook-review\u003c/code\u003e blocks to show everything you\u0027ve read from one person, for example:",
                 "kind": "text"
               }
             ]
@@ -655,14 +751,6 @@ default-font">Stephen King Books</div>
         "end_block": null,
         "flags": [],
         "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [],
-        "end_block": null,
-        "flags": [],
-        "kind": "p"
       },
       {
         "attrs": {},
@@ -685,7 +773,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "I\u0027ve been working on Neopolitan and Neopoligen for a few years. They\u0027ve been powering my site for over a year. Everything is working nicely.",
+                "content": "Neopolitan is a way to format notes\u003csup\u003e2\u003c/sup\u003e. You can make them in any app you want.",
                 "kind": "text"
               }
             ]
@@ -696,7 +784,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "The original app bundled the Neopolitan reader inside the Neopoligen site builder. I\u0027m in the process of splitting them apart. Doing so will make it easier for other developers to make apps that use Neopolitan.",
+                "content": "It\u0027s up to individual apps to \u003cem\u003edo\u003c/em\u003e something beyond displaying a note\u0027s text. \u003ca href=\"https://www.neopoligen\"\u003eNeopoligen\u003c/a\u003e is the first app that brings them to life. I\u0027ve been using prototypes for a few years to run \u003ca href=\"https://www.alanwsmith.com/\"\u003emy site\u003c/a\u003e. I couldn\u0027t be happier with it.",
                 "kind": "text"
               }
             ]
@@ -707,7 +795,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "I\u0027m making good progress, but don\u0027t have an ETA. Follow me on Mastodon, Bluesky, or my RSS feed for updates.",
+                "content": "The current version of Neopoligen is the final prototype. Some parts of it are hard-wired for my site. I\u0027m in the process of removing those bits to make it generally available. I don\u0027t have an ETA, but you can follow me on \u003ca href=\"https://hachyderm.io/deck/@TheIdOfAlan\"\u003eMastodon\u003c/a\u003e, \u003ca href=\"https://bsky.app/profile/alanwsmith.com\"\u003eBluesky\u003c/a\u003e, or my \u003ca href=\"https://www.alanwsmith.com/feeds/posts.xml\"\u003emy RSS feed\u003c/a\u003e for updates.",
                 "kind": "text"
               }
             ]
@@ -718,7 +806,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "It won\u0027t be too long now. I\u0027m really looking forward to sharing it with you.",
+                "content": "It won\u0027t be long. I\u0027m really looking forward to sharing it with you.",
                 "kind": "text"
               }
             ]
@@ -741,34 +829,11 @@ default-font">Stephen King Books</div>
       },
       {
         "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "No JavaScript Required",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "TODO: add section about how all this is done with templates and no need for JavaScript. It can be added if you want it. But, it\u0027s not required.",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
+        "body": "\u003chr\u003e",
+        "category": "raw",
         "end_block": null,
         "flags": [],
-        "kind": "h2"
+        "kind": "html"
       },
       {
         "attrs": {},
@@ -780,40 +845,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "More To Come",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Formats can be interesting. If there\u0027s nothing that uses them, they don\u0027t mean much. In that light, I\u0027m finishing up a reference static site generator that uses Neopolitan.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "I expect to have a beta version ready by June 2025.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "I\u0027ll post about progress on \u003ca href=\"https://hachyderm.io/deck/@TheIdOfAlan\"\u003eMastodon\u003c/a\u003e and \u003ca href=\"https://bsky.app/profile/alanwsmith.com\"\u003eBluesky\u003c/a\u003e if you want to follow along.",
+                "content": "Endnotes",
                 "kind": "text"
               }
             ]
@@ -822,6 +854,14 @@ default-font">Stephen King Books</div>
         "end_block": null,
         "flags": [],
         "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cul\u003e\n  \u003cli\u003e\n    I love taking notes. \n    \u003ca href=\"https://www.alanwsmith.com/en/2h/1i/v2/7a\"\u003e\n    My Grimoire\u003c/a\u003e currently has 11,320 of them. \n    I used to use \u003ca href=\"https://en.wikipedia.org/wiki/Markdown\"\u003eMarkdown\u003c/a\u003e\n    but grew increasingly frustrated with \n    its limitations. That frustration led\n    to the creation of Neopolitan. More details\n    on that in \n    \u003ca href=\"https://www.neopoligen.com/en/2kn3czfj/\"\u003eWhy I Built Neopoligen\u003c/a\u003e\n    if you\u0027re interested. \n\u003c/li\u003e\n\u003cli\u003e\nI\u0027ve been running my site for 25 years. I\u0027ve moved content\nbetween various tools and technologies more times\nthan I care to remember. I never want to do it again. \n\u003cbr\u003e\u003cbr\u003e\nA fundamental goal of Neopolitan is that, regardless\nof what I\u0027m using to publish the site, I don\u0027t \nhave change the format of my notes for the rest of\nmy life. \n\u003cbr\u003e\u003cbr\u003e\nAfter using it for a few years, I\u0027m as confident\nas I can be that it\u0027ll last.\n\u003c/li\u003e\n\u003cli\u003e\n    My opinion is as far as you can\n    get from objective, but Neopolitan\n    is really fun to work with. It\u0027s hard\n    to describe how nice it is to\n    use blocks as a free-form, plain-text\n    database without actually having to\n    use a database or javascript framework. \n  \u003c/li\u003e\n  \u003cli\u003e\n  This page only covers basic blocks. \n  There are also \u003cem\u003eWrapper Blocks\u003c/em\u003e\n  as well as some Markdown and Wiki style\n  things you can do with the content. \n  \u003ca href=\"/details/\"\u003eCheck the\n  Details page for more info.\u003c/a\u003e\n  \u003c/li\u003e\n\u003c/ul\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
       },
       {
         "attrs": {},
@@ -845,7 +885,7 @@ default-font">Stephen King Books</div>
       },
       {
         "attrs": {},
-        "body": "\u003col class=\"flow\"\u003e\n  \u003cli\u003e\n    Sure, you could always roll back to \n    using HTML directly in your Markdown\n    documents. \n  \u003c/li\u003e\n  \u003cli\u003e\n    Adding the \u0026quot;aria-label\u0026quot; is a bit of\n    a contrived example. I don\u0027t know if including\n    one in an H1 is advisable. The point here is\n    not about the specific label. It\u0027s about\n    the general ability to add things like \n    aria labels during output without having to \n    define them directly in the content itself.\n  \u003c/li\u003e\n  \u003cli\u003e\n    \u003cp\u003e\n      The names don\u0027t have to match. You could just\n      as easily make a section called \u0026quot;\u0026#45;\u0026#45; week\u0026quot;\n      and have the output be \u0026quot;The Week In Review\u0026quot;.\n    \u003c/p\u003e\n    \u003cp\u003e\n      There\u0027s also no restriction limiting the output \n      to an H2 tag. An entire structure of divs could\n      be used the same way.\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli\u003e\n    Okay, only stuff that\u0027s possible with HTML, \n    CSS, and JavaScript if you want to be pedantic \n    about it. \n  \u003c/li\u003e\n  \u003cli\u003e\n    Okay, sure. There are limits to computer memory,\n    etc. if you want to be pedantic about it.\n  \u003c/li\u003e\n\u003c/ol\u003e",
+        "body": "\u003col class=\"flow\"\u003e\n  \u003cli\u003e\n    \u003ca href=\"https://www.neopoligen.com/\"\u003eNeopoligen\u003c/a\u003e - the\n    web site builder that uses Neopolitan notes. \n    I\u0027m re-tooling it right now. The new version will\n    be available soon. I\u0027ll post updates \u003ca href=\"https://hachyderm.io/deck/@TheIdOfAlan\"\u003eMastodon\u003c/a\u003e,\n\u003ca href=\"https://bsky.app/profile/alanwsmith.com\"\u003eBluesky\u003c/a\u003e, \nand my \u003ca href=\"https://www.alanwsmith.com/feeds/posts.xml\"\u003emy RSS feed\u003c/a\u003e.\n  \u003c/li\u003e\n  \u003cli\u003e\n    Here\u0027s \u003ca href=\"/details/\"\u003emore details about the format\u003c/a\u003e.\n  \u003c/li\u003e\n\u003c/ol\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
@@ -861,40 +901,7 @@ default-font">Stephen King Books</div>
             "spans": [
               {
                 "category": "text",
-                "content": "TODO",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "[] Write up No JavaScript Required section.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "[] Output the contents of the example below it to show the rendered HTML.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "[] Add syntax highlighting.",
+                "content": "Further Reading",
                 "kind": "text"
               }
             ]
@@ -906,43 +913,11 @@ default-font">Stephen King Books</div>
       },
       {
         "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Neopolitan is open source. The format is free to use. The parser was originally built into Neopoligen. I\u0027m in the process of splitting it out so it can be used as a starting point for other apps as well.",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
+        "body": "\u003cdetails\u003e\n\u003csummary\u003ePhilosophy\u003c/summary\u003e\n\u003cul\u003e\n  \u003cli\u003e\n    Both Neopolitan and Neopoligen are\n    free, open-source software projects. Their\n    source repos are \n    \u003ca href=\"https://github.com/alanwsmith/neopolitan\"\u003e\n    here for Neopolitan\u003c/a\u003e and\n    \u003ca href=\"https://github.com/neopoligen/neopoligen\"\u003e\n    here for Neopoligen\u003c/a\u003e. \n    \u003cbr\u003e\u003cbr\u003e\n    (I haven\u0027t pushed to Neopoligen in a while. \n    The next updates will go out when I finish\n    getting the app ready for public launch)\n  \u003c/li\u003e\n  \u003cli\u003e\n    There is not and will not be any VC funding \n    involved. These projects are not about\n    increasing shareholder value. They\u0027re about \n    offering tools folks can use to create.\n  \u003c/li\u003e\n  \u003cli\u003e\n    There is also no vendor lock-in. Neopolitan\n    files are plain-text files. You can take\n    them pretty much anywhere. \n  \u003c/li\u003e\n  \u003cli\u003e\n    I\u0027m working on another project to design\n    a social network made out of website\n    and RSS feeds. It\u0027s called Neb. You\n    can read more about it here: \n    \u003ca href=\"https://www.alanwsmith.com/en/2v/xe/x0/xr/\"\u003e\nIntroducing Neb - A Social Network For People\u003c/a\u003e.\n    \u003cbr\u003e\u003cbr\u003e\n    In addition to being the first app\n    that uses Neopolitan, Neopoligen will\n    also be the first app for the network.\n  \u003c/li\u003e\n  \u003c/ul\u003e\n\u003c/details\u003e\n\n\n\u003cdetails open \u003e\n\u003csummary\u003eTechnical Details\u003c/summary\u003e\n\n\u003cul\u003e\n  \u003cli\u003e\n     To add some formality: \n     Neopolitan is a specification for a plain-text\n     file format based on a corresponding \n     reference parser. Anything \n     the parser can parse is valid\n     Neopolitan. Anything it can\u0027t\n     isn\u0027t. \n     \u003cbr\u003e\u003cbr\u003e\n     The reference parser \n     has a test suite of inputs and \n     AST target outputs. Any parser that properly\n     converts the inputs into the outputs\n     is a valid parser. \n  \u003c/li\u003e\n  \u003cli\u003e\n    Parsing and rendering are completely \n    separate concerns. A parser\u0027s sole\n    responsibility is to transform input\n    into an AST that\u0027s handed back to\n    the process that requested it. \n    It\u0027s up to the receiver to determine\n    what to do with the AST. \n  \u003c/li\u003e\n  \u003cli\u003e\n    A plugin architecture is being designed\n    for the reference parser. It won\u0027t ship\n    in the first version but stubs\n    for it will be in place. \n  \u003c/li\u003e\n  \u003cli\u003e\n    Neither the Neopolitan parser or the Neopoligen \n    site generator rely on \n    JavaScript or JavaScript frameworks.\n    \u003cbr\u003e\u003cbr\u003e\n    The apps are written in Rust.\n    They will generally be distributed as\n    complete binaries. They should work the same\n    way forever as long as your system\n    architecture doesn\u0027t change. \n  \u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/details\u003e",
+        "category": "raw",
         "end_block": null,
         "flags": [],
-        "kind": "endnote"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "You don\u0027t need a special app to make Neopolitan notes. There\u0027s nothing propriteray about the format. You can make them with pretty much any notes app.",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "endnote"
+        "kind": "html"
       },
       {
         "attrs": {

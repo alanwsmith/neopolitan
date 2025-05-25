@@ -23,7 +23,7 @@ The Basics
 
 <p>
 Notes are made of blocks. Each 
-one starts with two dashes and a name.
+starts with two dashes and a name.
 </p>
 
 <pre class="pre-basic"><code>&#45;&#45; title</code></pre>
@@ -38,7 +38,7 @@ This is a Neopolitan Note</code></pre>
 
 You Name It
 
-Blocks names are up to you. 
+Block names are up to you. 
 
 -- html
 
@@ -59,7 +59,7 @@ have spaces.
 
 Extra Info
 
-Blocks can hold extra information. 
+Blocks can have extra information. 
 Each piece gets its own line 
 that starts with two dashes. 
 
@@ -85,7 +85,7 @@ Get up. Do your thing.
 
 What Do They Do?
 
-Neopolitan notes are designed to be
+Neopolitan notes are
 easy to make, read, and update. 
 They don't do much on their own, though.
 
@@ -97,13 +97,13 @@ get interesting.
 
 Enter Neopoligen
 
-Neopoligen (with a gen) is the first
+Neopoligen<sup>1</sup> (with a <em>gen</em>) is the first
 app that uses Neopolitan (with
-a tan). It's a website builder.
-Point it at some Neopolitan notes 
+a <em>tan</em>). It's a website builder.
+Point it at some notes 
 and it'll turn them into a website. 
 
-The process works by applying templates
+The conversion works by applying templates
 to blocks. For example, the default template
 for the <code>book-review</code> block 
 from <code>figure 1</code> produces this:
@@ -133,7 +133,7 @@ putting in the effort.</p>
 
 -- h4
 
-Switching Layouts
+Switching Things Up 
 
 The templates are yours to change. 
 The same content from <code>figure 1</code> 
@@ -162,6 +162,7 @@ xsmall-font
 default-faded
 align-right
 default-bottom-border-faded
+xxsmall-block-padding
 ">Stephen King</div>
 <div class="match-background-faded small-padding default-bottom-border-faded"><strong>On Writing</strong></div>
 <div class="default-padding small-flow small-font">
@@ -174,17 +175,15 @@ putting in the effort.</p>
 </div>
 
 
-
-
-
 -- h3
 
 Collect All The Things
 
-Neopoligen lets you make collections.
-If you've got a bunch of notes 
-with <code>book-review</code> blocks, you 
-can show them all on one page.
+Apps can use blocks to make collections. 
+For example, you can use Neopoligen
+to gather all the <code>book-review</code> blocks
+for your notes and display them on a 
+single page. 
 
 -- html
 
@@ -198,12 +197,12 @@ can show them all on one page.
   <div class="dev-tmp-author">by: Atul Gawande</div>
 </div>
 <div class="dev-tmp-book">
-  <div class="dev-tmp-title">Dune</div>
-  <div class="dev-tmp-author">by: Frank Herbert</div>
-</div>
-<div class="dev-tmp-book">
   <div class="dev-tmp-title">Information Dashboard Design</div>
   <div class="dev-tmp-author">by: Stephen Few</div>
+</div>
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">Walkaway</div>
+  <div class="dev-tmp-author">by: Cory Doctorow</div>
 </div>
 <div class="dev-tmp-book">
   <div class="dev-tmp-title">On Writing</div>
@@ -215,19 +214,18 @@ can show them all on one page.
 -- p
 
 In this case, only the title and author are
-shown. You could just as easily show 
-the content. 
+shown. You could just as easily make a design 
+that shows the content. 
 
 -- h4
 
 All The Info
 
-Collections can also be created from extra info.
-If you've got a bunch of <code>book-review</code>
-blocks scattered around with <code>author</code> info 
-you can make a page showing all the books from 
-a specific author.
-
+Apps can create collections from the
+extra block info too. Using the <code>author</code>
+info from <code>book-review</code> blocks to
+show everything you've read from one person,
+for example:
 
 -- html
 
@@ -258,64 +256,98 @@ default-font">Stephen King Books</div>
 </div>
 </div>
 
--- p
-
-
-
 
 
 -- h2
 
 Current Status 
 
-I've been working on Neopolitan and Neopoligen
-for a few years. They've been powering my
-site for over a year. Everything is working nicely.
+Neopolitan is a way to 
+format notes<sup>2</sup>.
+You can make them in any 
+app you want. 
 
-The original app bundled the Neopolitan
-reader inside the Neopoligen site builder. 
-I'm in the process of splitting them apart. 
-Doing so will make it easier for other developers
-to make apps that use Neopolitan. 
+It's up to individual apps to <em>do</em>
+something beyond displaying 
+a note's text. 
+<a href="https://www.neopoligen">Neopoligen</a> 
+is the first app that brings
+them to life. 
+I've been using prototypes for a few years 
+to run <a href="https://www.alanwsmith.com/">my site</a>.
+I couldn't be happier with it.
 
-I'm making good progress, but don't have an ETA. 
-Follow me on Mastodon, Bluesky, or my RSS feed
+The current version of Neopoligen is
+the final prototype. Some parts of it
+are hard-wired for my site. 
+I'm in the process of removing those bits
+to make it generally available. I don't 
+have an ETA, but you can 
+follow me on <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a>,
+<a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>, 
+or my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>
 for updates. 
 
-It won't be too long now. I'm really looking
+It won't be long. I'm really looking
 forward to sharing it with you. 
 
 -a
 
+-- html
 
-
-
-
--- h2
-
-No JavaScript Required
-
-TODO: add section about how all this is done with
-templates and no need for JavaScript. It can
-be added if you want it. But, it's not required. 
+<hr>
 
 
 -- h2
 
-More To Come
+Endnotes
 
-Formats can be interesting. If there's nothing that uses
-them, they don't mean much. In that light, I'm
-finishing up a reference static site generator 
-that uses Neopolitan. 
+-- html
 
-I expect to have a beta version ready by June 2025. 
-
-I'll post about progress on 
-<a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a> 
-and <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>
-if you want to follow along. 
-
+<ul>
+  <li>
+    I love taking notes. 
+    <a href="https://www.alanwsmith.com/en/2h/1i/v2/7a">
+    My Grimoire</a> currently has 11,320 of them. 
+    I used to use <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>
+    but grew increasingly frustrated with 
+    its limitations. That frustration led
+    to the creation of Neopolitan. More details
+    on that in 
+    <a href="https://www.neopoligen.com/en/2kn3czfj/">Why I Built Neopoligen</a>
+    if you're interested. 
+</li>
+<li>
+I've been running my site for 25 years. I've moved content
+between various tools and technologies more times
+than I care to remember. I never want to do it again. 
+<br><br>
+A fundamental goal of Neopolitan is that, regardless
+of what I'm using to publish the site, I don't 
+have change the format of my notes for the rest of
+my life. 
+<br><br>
+After using it for a few years, I'm as confident
+as I can be that it'll last.
+</li>
+<li>
+    My opinion is as far as you can
+    get from objective, but Neopolitan
+    is really fun to work with. It's hard
+    to describe how nice it is to
+    use blocks as a free-form, plain-text
+    database without actually having to
+    use a database or javascript framework. 
+  </li>
+  <li>
+  This page only covers basic blocks. 
+  There are also <em>Wrapper Blocks</em>
+  as well as some Markdown and Wiki style
+  things you can do with the content. 
+  <a href="/details/">Check the
+  Details page for more info.</a>
+  </li>
+</ul>
 
 -- h2
 
@@ -325,73 +357,117 @@ Footnotes
 
 <ol class="flow">
   <li>
-    Sure, you could always roll back to 
-    using HTML directly in your Markdown
-    documents. 
+    <a href="https://www.neopoligen.com/">Neopoligen</a> - the
+    web site builder that uses Neopolitan notes. 
+    I'm re-tooling it right now. The new version will
+    be available soon. I'll post updates <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a>,
+<a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>, 
+and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
   </li>
   <li>
-    Adding the &quot;aria-label&quot; is a bit of
-    a contrived example. I don't know if including
-    one in an H1 is advisable. The point here is
-    not about the specific label. It's about
-    the general ability to add things like 
-    aria labels during output without having to 
-    define them directly in the content itself.
-  </li>
-  <li>
-    <p>
-      The names don't have to match. You could just
-      as easily make a section called &quot;&#45;&#45; week&quot;
-      and have the output be &quot;The Week In Review&quot;.
-    </p>
-    <p>
-      There's also no restriction limiting the output 
-      to an H2 tag. An entire structure of divs could
-      be used the same way.
-    </p>
-  </li>
-  <li>
-    Okay, only stuff that's possible with HTML, 
-    CSS, and JavaScript if you want to be pedantic 
-    about it. 
-  </li>
-  <li>
-    Okay, sure. There are limits to computer memory,
-    etc. if you want to be pedantic about it.
+    Here's <a href="/details/">more details about the format</a>.
   </li>
 </ol>
 
 
-
 -- h2
 
-TODO
+Further Reading
 
-[] Write up No JavaScript Required section.
-
-[] Output the contents of the example
-below it to show the rendered HTML.
-
-[] Add syntax highlighting.
-
--- endnote
-
-Neopolitan is open source. The format
-is free to use. The parser was originally
-built into Neopoligen. I'm in the
-process of splitting it out so it
-can be used as a starting point
-for other apps as well.
+-- html
 
 
--- endnote
+<details>
+<summary>Philosophy</summary>
+<ul>
+  <li>
+    Both Neopolitan and Neopoligen are
+    free, open-source software projects. Their
+    source repos are 
+    <a href="https://github.com/alanwsmith/neopolitan">
+    here for Neopolitan</a> and
+    <a href="https://github.com/neopoligen/neopoligen">
+    here for Neopoligen</a>. 
+    <br><br>
+    (I haven't pushed to Neopoligen in a while. 
+    The next updates will go out when I finish
+    getting the app ready for public launch)
+  </li>
+  <li>
+    There is not and will not be any VC funding 
+    involved. These projects are not about
+    increasing shareholder value. They're about 
+    offering tools folks can use to create.
+  </li>
+  <li>
+    There is also no vendor lock-in. Neopolitan
+    files are plain-text files. You can take
+    them pretty much anywhere. 
+  </li>
+  <li>
+    I'm working on another project to design
+    a social network made out of website
+    and RSS feeds. It's called Neb. You
+    can read more about it here: 
+    <a href="https://www.alanwsmith.com/en/2v/xe/x0/xr/">
+Introducing Neb - A Social Network For People</a>.
+    <br><br>
+    In addition to being the first app
+    that uses Neopolitan, Neopoligen will
+    also be the first app for the network.
+  </li>
+  </ul>
+</details>
 
-You don't need a special app to make
-Neopolitan notes. There's nothing propriteray 
-about the format. You can make them
-with pretty much any notes app. 
 
+<details open >
+<summary>Technical Details</summary>
 
+<ul>
+  <li>
+     To add some formality: 
+     Neopolitan is a specification for a plain-text
+     file format based on a corresponding 
+     reference parser. Anything 
+     the parser can parse is valid
+     Neopolitan. Anything it can't
+     isn't. 
+     <br><br>
+     The reference parser 
+     has a test suite of inputs and 
+     AST target outputs. Any parser that properly
+     converts the inputs into the outputs
+     is a valid parser. 
+  </li>
+  <li>
+    Parsing and rendering are completely 
+    separate concerns. A parser's sole
+    responsibility is to transform input
+    into an AST that's handed back to
+    the process that requested it. 
+    It's up to the receiver to determine
+    what to do with the AST. 
+  </li>
+  <li>
+    A plugin architecture is being designed
+    for the reference parser. It won't ship
+    in the first version but stubs
+    for it will be in place. 
+  </li>
+  <li>
+    Neither the Neopolitan parser or the Neopoligen 
+    site generator rely on 
+    JavaScript or JavaScript frameworks.
+    <br><br>
+    The apps are written in Rust.
+    They will generally be distributed as
+    complete binaries. They should work the same
+    way forever as long as your system
+    architecture doesn't change. 
+  </li>
+</ul>
+
+</details>
 
 
 
