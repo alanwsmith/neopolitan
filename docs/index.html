@@ -18,541 +18,168 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<!--
   <header>
     <a href="/">Home</a>
   </header>
+  -->
   <main><hgroup>
 <h1>Neopolitan</h1>
 <p>Notes with Superpowers</p>
 </hgroup><h2
       
->Introduction</h2><p>Neopolitan is a way to take notes.</p><p>It's easy to learn, quick to customize, and super powerful.</p><h2
+>Introduction</h2><p>Neopolitan is a way to take notes.</p><p>It's easy to learn, quick to customize, and super powerful.</p><h3
       
->The Basics</h2><p>
-Neopolitan notes are made up of <em>blocks</em>. Each 
-one start with two dashes and a name.
+>The Basics</h3><p>
+Notes are made of blocks. Each 
+one starts with two dashes and a name.
 </p>
 
 <pre class="pre-basic"><code>&#45;&#45; title</code></pre>
 
-<p>Content comes after</p>
-
+<p>Content comes after.</p>
 
 <pre class="pre-basic"><code>&#45;&#45; title
 
-A Basic Example
-
-This is an example of a title block in
-a Neopolitan note</code></pre><h3
+This is a Neopolitan Note</code></pre><h3
       
->Section Flags</h3><p>Each section can have flags. They're defined by adding lines starting with two dashes immediately follow the section like this:</p><div class="tmp-example flow">
+>You Name It</h3><p>Blocks names are up to you.</p><pre class="pre-basic"><code>&#45;&#45; title</code></pre>
 
-<p>
-&#45;&#45; h2<br />
-&#45;&#45; hidden 
-</p>
+<pre class="pre-basic"><code>&#45;&#45; book-review</code></pre>
 
-<p>
-This H2 is hidden
-</p>
+<pre class="pre-basic"><code>&#45;&#45; any-random-thing-you-think-of</code></pre><div
+   class="flow"
+><p>All those work. The only rule is names can't have spaces.</p></div>
 
-</div>
-
-<p>
-Which outputs:
-</p>
-
-<div class="tmp-example">
-
-<p>
-&lt;h2 hidden&gt;<br />
-&nbsp;&nbsp;This H2 is hidden<br />
-&lt;/h2&gt;
-</p>
-
-</div><h3
+<h3
       
->Section Attributes</h3><p>Key/value attributes can be added as well. For example:</p><div class="tmp-example flow">
+>Extra Info</h3><p>Blocks can hold extra information. Each piece gets its own line that starts with two dashes.</p><div class="accent-border-faded default-radius default-padding">
+<pre><code>&#45;&#45; book-review
+&#45;&#45; title: On Writing
+&#45;&#45; author: Stephen King 
 
-<p>
-&#45;&#45; h2<br />
-&#45;&#45; class: red 
-</p>
+A fantastic read. Biggest take
+away: It all comes down to 
+putting in the effort. 
 
-<p>
-This H2 is red 
-</p>
-
-</div>
-
-<p>
-Which produces:
-</p>
-
-<div class="tmp-example flow">
-
-<p>
-&lt;h2 class=&quot;red&quot;&gt;<br />
-&nbsp;&nbsp;This H2 is red<br />
-&lt;/h2&gt;
-</p>
-
+Get up. Do your thing.
+</code>
+</pre>
+<div class="small-font align-right accent-top-border-faded default-top-padding">figure 1</div>
 </div><h2
       
->Markdown Section Comparison</h2><p>A basic Markdown document might look like this:</p><div class="tmp-example flow">
-
-<p>
-&#35; The Title
-</p>
-
-<p>
-Some text.
-</p>
-
-<p>
-&#35;&#35; Forward
-</p>
-
-<p>
-More text.
-</p>
-
-</div>
-
-<p>
-A corresponding Neopolitan document 
-would look like this:
-</p>
-
-<div class="tmp-example flow">
-
-<p>
-&#45;&#45; h1
-</p>
-
-<p>
-The Title
-</p>
-
-<p>
-Some text.
-</p>
-
-<p>
-&#45;&#45; h2
-</p>
-<p>
-Forward
-</p>
-
-<p>
-More text.
-</p>
-
-</div>
-
-<p>
-Each would produce:
-</p>
-
-<div class="tmp-example flow">
-
-<p>
-&lt;h1&gt;The Title&lt;/h1&gt;<br />
-&lt;p&gt;Some Text.&lt;/p&gt;<br />
-&lt;h2&gt;Forward&lt;/h2&gt;<br />
-&lt;p&gt;More Text.&lt;/p&gt;
-</p>
-
-</div>
-
-<p>
-Neopolitan takes more lines to produce 
-the same output. It provides no benefit if 
-that's all you need. 
-</p><h2
+>What Do They Do?</h2><p>Neopolitan notes are designed to be easy to make, read, and update. They don't do much on their own, though.</p><p>Using them in apps is where things get interesting.</p><h3
       
->Enter Neopolitan</h2><p>Neopolitan's usefulness comes from adding HTML features to content<sup>1</sup>.</p><p>For example, changing the above demo to use explicit sections and attributes like this:</p><div class="tmp-example flow">
-
-<p>
-&#45;&#45; title
-</p>
-
-<p>
-The Title
-</p>
-
-<p>
-Some text.
-</p>
-
-<p>
-&#45;&#45; forward<br />
-&#45;&#45; class: blue<br />
-</p>
-
-<p>
-More text.
-</p>
-
+>Enter Neopoligen</h3><p>Neopoligen (with a gen) is the first app that uses Neopolitan (with a tan). It's a website builder. Point it at some Neopolitan notes and it'll turn them into a website.</p><p>The process works by applying templates to blocks. For example, the default template for the <code>book-review</code> block from <code>figure 1</code> produces this:</p><div class="
+xxlarge-block-margin heading-border-faded 
+default-radius
+xsmall-max-width
+auto-inline-margin
+">
+<div class="default-left-padding heading-background-faded small-top-radius small-font">Book Review</div>
+<div class="default-padding">
+<div class="default-bottom-border-faded"><strong>On Writing</strong></div>
+<div class="small-font default-faded">By Stephen King</div>
+<div class="default-top-padding small-flow small-font">
+<p>A fantastic read. Biggest take
+away: It all comes down to 
+putting in the effort.</p>
+<p>Get up. Do your thing.</p>
 </div>
-
-<p>
-produces this:
-</p>
-
-<div class="tmp-example flow">
-
-<p>
-&lt;h1 class=&quot;title&quot; aria-label=&quot;Page Title&quot;&gt;<br />
-&nbsp;&nbsp;The Title<br />
-&lt;/h1&gt;<br />
-&lt;p&gt;Some Text.&lt;/p&gt;<br />
-&lt;h2 class=&quot;forward blue&quot;&gt;<br />
-&nbsp;&nbsp;Forward<br />
-&lt;/h2&gt;<br />
-&lt;p&gt;More Text.&lt;/p&gt;
-</p>
-
 </div>
+</div><h4
+      
+>Switching Layouts</h4><p>The templates are yours to change. The same content from <code>figure 1</code> looks like this after a few tweaks:</p><div class="
+xxlarge-block-margin
+heading-border-faded 
+default-radius
+xsmall-max-width
+dev-tmp-flex
+auto-inline-margin
+">
+<div class="
+dev-tmp-rotate
+small-padding 
+heading-background-faded 
+small-right-radius 
+small-font">Book Review</div>
+<div>
+<div class="
+default-inline-padding 
+xsmall-font 
+default-faded
+align-right
+default-bottom-border-faded
+">Stephen King</div>
+<div class="match-background-faded small-padding default-bottom-border-faded"><strong>On Writing</strong></div>
+<div class="default-padding small-flow small-font">
+<p>A fantastic read. Biggest take
+away: It all comes down to 
+putting in the effort.</p>
+<p>Get up. Do your thing.</p>
+</div>
+</div>
+</div><h3
+      
+>Collect All The Things</h3><p>Neopoligen lets you make collections. If you've got a bunch of notes with <code>book-review</code> blocks, you can show them all on one page.</p><div class="dev-tmp-books-wrapper default-bottom-margin">
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">A Closed and Common Orbit</div>
+  <div class="dev-tmp-author">by: Becky Chambers</div>
+</div>
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">Checklist Manifesto</div>
+  <div class="dev-tmp-author">by: Atul Gawande</div>
+</div>
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">Dune</div>
+  <div class="dev-tmp-author">by: Frank Herbert</div>
+</div>
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">Information Dashboard Design</div>
+  <div class="dev-tmp-author">by: Stephen Few</div>
+</div>
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">On Writing</div>
+  <div class="dev-tmp-author">by: Stephen King</div>
+</div>
+</div><div
+   class="flow"
+><p>In this case, only the title and author are shown. You could just as easily show the content.</p></div>
 
-<p>
-Specifically, it does the following:
-</p>
-
-<ul class="flow">
-  <li>
-    Automatically add the &quot;title&quot; class 
-    to the &quot;h1&quot; element
-  </li>
-  <li>
-    Automatically add an &quot;aria-label&quot; to
-    the &quot;h1&quot; element<sup>2</sup>
-  </li>
-  <li>
-    Output an H2 with the &quot;Forward&quot; text in
-    it without having to write the word in addition 
-    to using it as the section name<sup>3</sup>.
-  </li>
-  <li>
-    Automatically add the &quot;forward&quot; class
-    to the H2 
-  </li>
-  <li>
-    Append the &quot;blue&quot; class to the H2 
-    via the &quot;&#45;&#45; class: blue&quot;
-    section attribute
-  </li>
+<h4
+      
+>All The Info</h4><p>Collections can also be created from extra info. If you've got a bunch of <code>book-review</code> blocks scattered around with <code>author</code> info you can make a page showing all the books from a specific author.</p><div class="
+xxlarge-block-margin
+heading-border-faded 
+default-radius
+xsmall-max-width
+dev-tmp-flex
+auto-inline-margin
+">
+<div class="
+dev-tmp-rotate
+small-padding 
+heading-background-faded 
+small-right-radius 
+default-font">Stephen King Books</div>
+<div>
+<ul>
+<li class="small-font">Four Past Midnight</li>
+<li class="small-font">On Writing</li>
+<li class="small-font">The Gunslinger</li>
+<li class="small-font">The Stand</li>
+<li class="small-font">Wind Through the Keyhole</li>
 </ul>
+<div class="default-padding small-flow small-font">
+</div>
+</div>
+</div><div
+   class="flow"
+></div>
 
-Of course, the same output could be produced with
-Markdown. It would require falling back to
-raw HTML for most of it, though.<h2
+<h2
       
->Tags</h2><h3>The Basics</h3>
-
-<p>
-Neopolitan <code>tags</code> provide a way to enhance content. 
-A basic one looks like this:
-</p>
-
-<p>
-  <code>&lt;&lttag-name&#124;some text&gt;&gt;</code>
-</p>
-
-<p>
-  The <code>tag-name</code> defines what the type
-  of tag. The <code>some text</code> in this example
-  represents the content the tag works on.
-</p>
-
-<h3>Element Examples</h3>
-
-<p>Basic examples, include:
-</p>
-
-<p>
-  <code>&lt;&ltstrong&#124;some text&gt;&gt;</code><br />
-  <code>&lt;&ltem&#124;some text&gt;&gt;</code><br />
-  <code>&lt;&ltkbd&#124;some text&gt;&gt;</code><br />
-</p>
-
-<p>Which output:</p>
-
-<p>
-  <strong>some text</strong><br />
-  <em>some text</em><br />
-  <kbd>some text</kbd><br />
-</p>
-
-<p>TODO: show raw HTML output here too</p>
-
-<h3>Custom Tags</h3>
-
-<p>
-  Those all map to existing HTML elements. 
-  They don't have to. Tags can be used to do
-  anything with the content<sup>4</sup>. They
-  can also include content generated
-  by the output system itself. For example,
-  a <code>wiki</code> tag could be set
-  up like this:
-</p>
-
-<p>
-  <code>&lt;&lt;wiki&#124;Documentation&gt;&gt;</code>
-</p>
-
-<p>
-The app generating the content could automatically 
-transform that into a link to the Documentation page, 
-add some styles, an id, and a data attribute.
-Something like:
-</p>
-
-<p>
-  <code>
-  &lt;a<br />
-  href=&quot;/documentation.html&quot;<br />
-  id=&quot;documentation-link&quot;<br />
-  class=&quot;wiki-link&quot;<br />
-  data-group=&quot;examples&quot;<br />
-  &gt;Documentation<&lt;a&gt;</code>
-</p>
-
-<p>
-The content stays readable while the
-HTML has all the parts necessary
-to provide the functionality
-</p>
-
-<h3>Attributes and Flags</h3>
-
-<p>
-  Tags can use attributes and flags. 
-  They're made by adding a <code>&#124;</code> at
-  the end of the content to separate them. 
-  For example, a <code>link</code> tag needs a 
-  URL. That's done by adding it as a flag like this:
-</p>
-
-<p>
-  <code>&lt;&lt;link&#124;Example Site&#124;https://www.example.com/&gt;&gt;</code>
-</p>
-
-<p>(aside: It may feel weird to call a URL
-a flag if you've done a lot of coding.
-In terms of Neopolitan, &quot;flag&quot;
-just means a string of content instead
-of a key value pair. You can 
-learn more about them on <a href="/documentation/attributes-and-flags.html">
-Attributes and Flags page</a>.)
-</p>
-
-
-<p>
-Attributes work the same way. The
-only difference is they are key/value
-pairs. For example, this is how to use
-a tag attribute to add a CSS class to the output:
-</p>
-
-<p>
-  <code>&lt;&lt;kbd&#124;Escape&#124;class: red&gt;&gt;</code>
-</p>
-
-<p>
-Which produces: 
-</p>
-
-<p>
-  <code>&lt;kbd class=&quot;red&quot;&gt;Escape&lt;kbd&gt;</code>
-</p>
-
-
-<p>TODO: Show the rendered HTML output here too.</p>
-
-<h3>Multiple Attributes And Flags</h3>
-
-<p>
-  Any number of attributes and flags can be added to 
-  a given tag<sup>5</sup>. All that's needed is
-  another <code>&#124;</code> separator between them.
-  For example:
-</p>
-
-<p>
-  <code>&lt;&lt;link<br />
-  &#124;example text<br />
-  &#124;https://www.example.com/<br />
-  &#124;class: red<br />
-  &#124;id: alfa<br />
-  &#124;hidden&gt;&gt;</code>
-</p>
-
-<p>Which produces:</p>
-
-<p>
-  <code>&lt;a<br />
-  href=&quot;https://www.example.com/&quot;<br />
-  class=&quot;red&quot;<br />
-  id=&quot;alfa&quot;<br />
-  hidden<br />
-  &gt;example text&lt;/a&gt;</code>
-</p><h2
-      
->Shorthands</h2><h3>The Basics</h3>
-
-<p>
-  Shorthands provide another way to enhance
-  content in Neopolitan files. Each works
-  like a specific Tag, but without the 
-  need to type the full thing. For example, 
-  one shorthand uses <code>&#42;&#42;</code>.
-  It looks like this:
-</p>
-
-<p><code>&#42;&#42;example text&#42;&#42;</code></pre>
-
-<p>Which outputs this HTML:</p>
-
-<p>
-  <code>&lt;strong&gt;example text&lt;/strong&gt;</code>
-</p>
-
-
-<p>Which is the exact same thing you'd get if you used
-a tag like this:</p>
-
-<p>
-  <code>&lt;&lt;strong&#124;example text&gt;&gt;</code>
-</p>
-
-<h3>Attributes and Flags</h3>
-
-<p>
-  Shorthands can use attributes and flags the same
-  way Tags can. For example the <code>&#96;&#96;</code>
-  shorthand is for code snippets. Adding a flag
-  to it with the name of a language adds the 
-  appropriate syntax highlighting:
-</p>
-
-<p>
-  <code>&#96;&#96;println!("ping");&#124;rust&#96;&#96;</code>
-</p>
-
-<p>Which outputs:</p>
-
-<p><code>TODO: output snippet when syntax highlighting
-is reinstated</code></p>
-
-<p>
-  Adding an attribute to a strong shorthand
-  looks like this:
-</p>
-
-<p>
-  <code>&#96;&#96;example text&#124;class: red&#96;&#96;</code>
-</p>
-  
-<p>Which outputs:</p>
-
-<p>
-  <code>&lt;strong class=&quot;red&quot;&gt;example text&lt;/strong&gt;</code>
-</p>
-
-
-<h3>Multiple Attributes and Flags</h3>
-
-<p>Shorthands can use multiple attributes and
-flags as well. For example, the link
-shorthand uses <code>&#91;&#91;</code> and 
-<code>&#93;&#93;</code>. It uses a flag
-by default for the URL. Styles and IDs
-can be added like this:
-</p>
-
-<p>
-  <code>&#91;&#91;example link<br />
-  &#124;https://www.example.com/<br />
-  &#124;id: example-link<br />
-  &#124;class: red&#93;&#93;</code>
-</p>
-
-<p>Which outputs:</p>
-
-<p>
-<p>
-  <code>&lt;a<br />
-  href=&quot;https://www.example.com/&quot;<br />
-  id="example-link"<br />
-  class="red"<br />
-  &gt;example link&lt;/a&gt;</code>
-</p>
-
-<h3>The Shorthand List</h3>
-
-<p>Neopolitan provides nine shorthands. They are:</p>
-
-<ul class="flow">
-  <li class="flow">
-    <p>Span:</p>
-    <p>
-      <code>&#64;&#64;code snippet&#64;&#64;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Code:</p>
-    <p>
-      <code>&#96;&#96;code snippet&#96;&#96;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Strong:</p>
-    <p>
-      <code>&#42;&#42;strong text&#42;&#42;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Emphasis:</p>
-    <p>
-      <code>&#95;&#95;emphasis text&#95;&#95;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Footnote Reference:</p>
-    <p>
-      <code>&#94;&#94;1&#94;&#94;</code>
-    </p>
-    <p>See: <a href="/documentation/footnotes.html">the footnote documentation
-    for more details on how footnotes work</a></p>
-  </li>
-  <li class="flow">
-    <p>Deleted:</p>
-    <p>
-      <code>&#126;&#126;deleted text&#126;&#126;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Inserted:</p>
-    <p>
-      <code>&#40;&#40;inserted text&#41;&#41;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Link:</p>
-    <p>
-      <code>&#91;&#91;link text&#124;https://www.example.com/&#93;&#93;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Image:</p>
-    <p>
-      <code>&#123;&#123;image-name.jpg&#124;alt: Alt text for the image&#125;&#125;</code>
-    </p>
-  </li>
-</ul><h2
+>Current Status</h2><p>I've been working on Neopolitan and Neopoligen for a few years. They've been powering my site for over a year. Everything is working nicely.</p><p>The original app bundled the Neopolitan reader inside the Neopoligen site builder. I'm in the process of splitting them apart. Doing so will make it easier for other developers to make apps that use Neopolitan.</p><p>I'm making good progress, but don't have an ETA. Follow me on Mastodon, Bluesky, or my RSS feed for updates.</p><p>It won't be too long now. I'm really looking forward to sharing it with you.</p><p>-a</p><h2
       
 >No JavaScript Required</h2><p>TODO: add section about how all this is done with templates and no need for JavaScript. It can be added if you want it. But, it's not required.</p><h2
       
@@ -596,7 +223,15 @@ can be added like this:
   </li>
 </ol><h2
       
->TODO</h2><p>[] Write up No JavaScript Required section.</p><p>[] Output the contents of the example below it to show the rendered HTML.</p><p>[] Add syntax highlighting.</p></main>
+>TODO</h2><p>[] Write up No JavaScript Required section.</p><p>[] Output the contents of the example below it to show the rendered HTML.</p><p>[] Add syntax highlighting.</p><div
+   class="flow"
+><p>Neopolitan is open source. The format is free to use. The parser was originally built into Neopoligen. I'm in the process of splitting it out so it can be used as a starting point for other apps as well.</p></div>
+
+<div
+   class="flow"
+><p>You don't need a special app to make Neopolitan notes. There's nothing propriteray about the format. You can make them with pretty much any notes app.</p></div>
+
+</main>
   <footer><div>
         Created: 2025-04-27T20:21:11-04:00</div>from <a href="https://www.alanwsmith.com/">alan w smith</a><br />
     <a href="https://github.com/alanwsmith/neopolitan">source</a> ~ 
@@ -684,11 +319,11 @@ can be added like this:
         ],
         "end_block": null,
         "flags": [],
-        "kind": "h2"
+        "kind": "h3"
       },
       {
         "attrs": {},
-        "body": "\u003cp\u003e\nNeopolitan notes are made up of \u003cem\u003eblocks\u003c/em\u003e. Each \none start with two dashes and a name.\n\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\u003c/code\u003e\u003c/pre\u003e\n\n\u003cp\u003eContent comes after\u003c/p\u003e\n\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\n\nA Basic Example\n\nThis is an example of a title block in\na Neopolitan note\u003c/code\u003e\u003c/pre\u003e",
+        "body": "\u003cp\u003e\nNotes are made of blocks. Each \none starts with two dashes and a name.\n\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\u003c/code\u003e\u003c/pre\u003e\n\n\u003cp\u003eContent comes after.\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\n\nThis is a Neopolitan Note\u003c/code\u003e\u003c/pre\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
@@ -704,7 +339,7 @@ can be added like this:
             "spans": [
               {
                 "category": "text",
-                "content": "Section Flags",
+                "content": "You Name It",
                 "kind": "text"
               }
             ]
@@ -715,7 +350,7 @@ can be added like this:
             "spans": [
               {
                 "category": "text",
-                "content": "Each section can have flags. They\u0027re defined by adding lines starting with two dashes immediately follow the section like this:",
+                "content": "Blocks names are up to you.",
                 "kind": "text"
               }
             ]
@@ -727,7 +362,7 @@ can be added like this:
       },
       {
         "attrs": {},
-        "body": "\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; h2\u003cbr /\u003e\n\u0026#45;\u0026#45; hidden \n\u003c/p\u003e\n\n\u003cp\u003e\nThis H2 is hidden\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nWhich outputs:\n\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example\"\u003e\n\n\u003cp\u003e\n\u0026lt;h2 hidden\u0026gt;\u003cbr /\u003e\n\u0026nbsp;\u0026nbsp;This H2 is hidden\u003cbr /\u003e\n\u0026lt;/h2\u0026gt;\n\u003c/p\u003e\n\n\u003c/div\u003e",
+        "body": "\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\u003c/code\u003e\u003c/pre\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; book-review\u003c/code\u003e\u003c/pre\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; any-random-thing-you-think-of\u003c/code\u003e\u003c/pre\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
@@ -743,7 +378,27 @@ can be added like this:
             "spans": [
               {
                 "category": "text",
-                "content": "Section Attributes",
+                "content": "All those work. The only rule is names can\u0027t have spaces.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "p"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Extra Info",
                 "kind": "text"
               }
             ]
@@ -754,7 +409,7 @@ can be added like this:
             "spans": [
               {
                 "category": "text",
-                "content": "Key/value attributes can be added as well. For example:",
+                "content": "Blocks can hold extra information. Each piece gets its own line that starts with two dashes.",
                 "kind": "text"
               }
             ]
@@ -766,7 +421,7 @@ can be added like this:
       },
       {
         "attrs": {},
-        "body": "\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; h2\u003cbr /\u003e\n\u0026#45;\u0026#45; class: red \n\u003c/p\u003e\n\n\u003cp\u003e\nThis H2 is red \n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nWhich produces:\n\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026lt;h2 class=\u0026quot;red\u0026quot;\u0026gt;\u003cbr /\u003e\n\u0026nbsp;\u0026nbsp;This H2 is red\u003cbr /\u003e\n\u0026lt;/h2\u0026gt;\n\u003c/p\u003e\n\n\u003c/div\u003e",
+        "body": "\u003cdiv class=\"accent-border-faded default-radius default-padding\"\u003e\n\u003cpre\u003e\u003ccode\u003e\u0026#45;\u0026#45; book-review\n\u0026#45;\u0026#45; title: On Writing\n\u0026#45;\u0026#45; author: Stephen King \n\nA fantastic read. Biggest take\naway: It all comes down to \nputting in the effort. \n\nGet up. Do your thing.\n\u003c/code\u003e\n\u003c/pre\u003e\n\u003cdiv class=\"small-font align-right accent-top-border-faded default-top-padding\"\u003efigure 1\u003c/div\u003e\n\u003c/div\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
@@ -782,7 +437,7 @@ can be added like this:
             "spans": [
               {
                 "category": "text",
-                "content": "Markdown Section Comparison",
+                "content": "What Do They Do?",
                 "kind": "text"
               }
             ]
@@ -793,35 +448,7 @@ can be added like this:
             "spans": [
               {
                 "category": "text",
-                "content": "A basic Markdown document might look like this:",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "body": "\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026#35; The Title\n\u003c/p\u003e\n\n\u003cp\u003e\nSome text.\n\u003c/p\u003e\n\n\u003cp\u003e\n\u0026#35;\u0026#35; Forward\n\u003c/p\u003e\n\n\u003cp\u003e\nMore text.\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nA corresponding Neopolitan document \nwould look like this:\n\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; h1\n\u003c/p\u003e\n\n\u003cp\u003e\nThe Title\n\u003c/p\u003e\n\n\u003cp\u003e\nSome text.\n\u003c/p\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; h2\n\u003c/p\u003e\n\u003cp\u003e\nForward\n\u003c/p\u003e\n\n\u003cp\u003e\nMore text.\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nEach would produce:\n\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026lt;h1\u0026gt;The Title\u0026lt;/h1\u0026gt;\u003cbr /\u003e\n\u0026lt;p\u0026gt;Some Text.\u0026lt;/p\u0026gt;\u003cbr /\u003e\n\u0026lt;h2\u0026gt;Forward\u0026lt;/h2\u0026gt;\u003cbr /\u003e\n\u0026lt;p\u0026gt;More Text.\u0026lt;/p\u0026gt;\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nNeopolitan takes more lines to produce \nthe same output. It provides no benefit if \nthat\u0027s all you need. \n\u003c/p\u003e",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Enter Neopolitan",
+                "content": "Neopolitan notes are designed to be easy to make, read, and update. They don\u0027t do much on their own, though.",
                 "kind": "text"
               }
             ]
@@ -832,7 +459,27 @@ can be added like this:
             "spans": [
               {
                 "category": "text",
-                "content": "Neopolitan\u0027s usefulness comes from adding HTML features to content\u003csup\u003e1\u003c/sup\u003e.",
+                "content": "Using them in apps is where things get interesting.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Enter Neopoligen",
                 "kind": "text"
               }
             ]
@@ -843,7 +490,18 @@ can be added like this:
             "spans": [
               {
                 "category": "text",
-                "content": "For example, changing the above demo to use explicit sections and attributes like this:",
+                "content": "Neopoligen (with a gen) is the first app that uses Neopolitan (with a tan). It\u0027s a website builder. Point it at some Neopolitan notes and it\u0027ll turn them into a website.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "The process works by applying templates to blocks. For example, the default template for the \u003ccode\u003ebook-review\u003c/code\u003e block from \u003ccode\u003efigure 1\u003c/code\u003e produces this:",
                 "kind": "text"
               }
             ]
@@ -851,11 +509,11 @@ can be added like this:
         ],
         "end_block": null,
         "flags": [],
-        "kind": "h2"
+        "kind": "h3"
       },
       {
         "attrs": {},
-        "body": "\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; title\n\u003c/p\u003e\n\n\u003cp\u003e\nThe Title\n\u003c/p\u003e\n\n\u003cp\u003e\nSome text.\n\u003c/p\u003e\n\n\u003cp\u003e\n\u0026#45;\u0026#45; forward\u003cbr /\u003e\n\u0026#45;\u0026#45; class: blue\u003cbr /\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\nMore text.\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nproduces this:\n\u003c/p\u003e\n\n\u003cdiv class=\"tmp-example flow\"\u003e\n\n\u003cp\u003e\n\u0026lt;h1 class=\u0026quot;title\u0026quot; aria-label=\u0026quot;Page Title\u0026quot;\u0026gt;\u003cbr /\u003e\n\u0026nbsp;\u0026nbsp;The Title\u003cbr /\u003e\n\u0026lt;/h1\u0026gt;\u003cbr /\u003e\n\u0026lt;p\u0026gt;Some Text.\u0026lt;/p\u0026gt;\u003cbr /\u003e\n\u0026lt;h2 class=\u0026quot;forward blue\u0026quot;\u0026gt;\u003cbr /\u003e\n\u0026nbsp;\u0026nbsp;Forward\u003cbr /\u003e\n\u0026lt;/h2\u0026gt;\u003cbr /\u003e\n\u0026lt;p\u0026gt;More Text.\u0026lt;/p\u0026gt;\n\u003c/p\u003e\n\n\u003c/div\u003e\n\n\u003cp\u003e\nSpecifically, it does the following:\n\u003c/p\u003e\n\n\u003cul class=\"flow\"\u003e\n  \u003cli\u003e\n    Automatically add the \u0026quot;title\u0026quot; class \n    to the \u0026quot;h1\u0026quot; element\n  \u003c/li\u003e\n  \u003cli\u003e\n    Automatically add an \u0026quot;aria-label\u0026quot; to\n    the \u0026quot;h1\u0026quot; element\u003csup\u003e2\u003c/sup\u003e\n  \u003c/li\u003e\n  \u003cli\u003e\n    Output an H2 with the \u0026quot;Forward\u0026quot; text in\n    it without having to write the word in addition \n    to using it as the section name\u003csup\u003e3\u003c/sup\u003e.\n  \u003c/li\u003e\n  \u003cli\u003e\n    Automatically add the \u0026quot;forward\u0026quot; class\n    to the H2 \n  \u003c/li\u003e\n  \u003cli\u003e\n    Append the \u0026quot;blue\u0026quot; class to the H2 \n    via the \u0026quot;\u0026#45;\u0026#45; class: blue\u0026quot;\n    section attribute\n  \u003c/li\u003e\n\u003c/ul\u003e\n\nOf course, the same output could be produced with\nMarkdown. It would require falling back to\nraw HTML for most of it, though.",
+        "body": "\u003cdiv class=\"\nxxlarge-block-margin heading-border-faded \ndefault-radius\nxsmall-max-width\nauto-inline-margin\n\"\u003e\n\u003cdiv class=\"default-left-padding heading-background-faded small-top-radius small-font\"\u003eBook Review\u003c/div\u003e\n\u003cdiv class=\"default-padding\"\u003e\n\u003cdiv class=\"default-bottom-border-faded\"\u003e\u003cstrong\u003eOn Writing\u003c/strong\u003e\u003c/div\u003e\n\u003cdiv class=\"small-font default-faded\"\u003eBy Stephen King\u003c/div\u003e\n\u003cdiv class=\"default-top-padding small-flow small-font\"\u003e\n\u003cp\u003eA fantastic read. Biggest take\naway: It all comes down to \nputting in the effort.\u003c/p\u003e\n\u003cp\u003eGet up. Do your thing.\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
@@ -871,7 +529,18 @@ can be added like this:
             "spans": [
               {
                 "category": "text",
-                "content": "Tags",
+                "content": "Switching Layouts",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "The templates are yours to change. The same content from \u003ccode\u003efigure 1\u003c/code\u003e looks like this after a few tweaks:",
                 "kind": "text"
               }
             ]
@@ -879,11 +548,11 @@ can be added like this:
         ],
         "end_block": null,
         "flags": [],
-        "kind": "h2"
+        "kind": "h4"
       },
       {
         "attrs": {},
-        "body": "\u003ch3\u003eThe Basics\u003c/h3\u003e\n\n\u003cp\u003e\nNeopolitan \u003ccode\u003etags\u003c/code\u003e provide a way to enhance content. \nA basic one looks like this:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lttag-name\u0026#124;some text\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\n  The \u003ccode\u003etag-name\u003c/code\u003e defines what the type\n  of tag. The \u003ccode\u003esome text\u003c/code\u003e in this example\n  represents the content the tag works on.\n\u003c/p\u003e\n\n\u003ch3\u003eElement Examples\u003c/h3\u003e\n\n\u003cp\u003eBasic examples, include:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026ltstrong\u0026#124;some text\u0026gt;\u0026gt;\u003c/code\u003e\u003cbr /\u003e\n  \u003ccode\u003e\u0026lt;\u0026ltem\u0026#124;some text\u0026gt;\u0026gt;\u003c/code\u003e\u003cbr /\u003e\n  \u003ccode\u003e\u0026lt;\u0026ltkbd\u0026#124;some text\u0026gt;\u0026gt;\u003c/code\u003e\u003cbr /\u003e\n\u003c/p\u003e\n\n\u003cp\u003eWhich output:\u003c/p\u003e\n\n\u003cp\u003e\n  \u003cstrong\u003esome text\u003c/strong\u003e\u003cbr /\u003e\n  \u003cem\u003esome text\u003c/em\u003e\u003cbr /\u003e\n  \u003ckbd\u003esome text\u003c/kbd\u003e\u003cbr /\u003e\n\u003c/p\u003e\n\n\u003cp\u003eTODO: show raw HTML output here too\u003c/p\u003e\n\n\u003ch3\u003eCustom Tags\u003c/h3\u003e\n\n\u003cp\u003e\n  Those all map to existing HTML elements. \n  They don\u0027t have to. Tags can be used to do\n  anything with the content\u003csup\u003e4\u003c/sup\u003e. They\n  can also include content generated\n  by the output system itself. For example,\n  a \u003ccode\u003ewiki\u003c/code\u003e tag could be set\n  up like this:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lt;wiki\u0026#124;Documentation\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\nThe app generating the content could automatically \ntransform that into a link to the Documentation page, \nadd some styles, an id, and a data attribute.\nSomething like:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\n  \u0026lt;a\u003cbr /\u003e\n  href=\u0026quot;/documentation.html\u0026quot;\u003cbr /\u003e\n  id=\u0026quot;documentation-link\u0026quot;\u003cbr /\u003e\n  class=\u0026quot;wiki-link\u0026quot;\u003cbr /\u003e\n  data-group=\u0026quot;examples\u0026quot;\u003cbr /\u003e\n  \u0026gt;Documentation\u003c\u0026lt;a\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\nThe content stays readable while the\nHTML has all the parts necessary\nto provide the functionality\n\u003c/p\u003e\n\n\u003ch3\u003eAttributes and Flags\u003c/h3\u003e\n\n\u003cp\u003e\n  Tags can use attributes and flags. \n  They\u0027re made by adding a \u003ccode\u003e\u0026#124;\u003c/code\u003e at\n  the end of the content to separate them. \n  For example, a \u003ccode\u003elink\u003c/code\u003e tag needs a \n  URL. That\u0027s done by adding it as a flag like this:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lt;link\u0026#124;Example Site\u0026#124;https://www.example.com/\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003e(aside: It may feel weird to call a URL\na flag if you\u0027ve done a lot of coding.\nIn terms of Neopolitan, \u0026quot;flag\u0026quot;\njust means a string of content instead\nof a key value pair. You can \nlearn more about them on \u003ca href=\"/documentation/attributes-and-flags.html\"\u003e\nAttributes and Flags page\u003c/a\u003e.)\n\u003c/p\u003e\n\n\n\u003cp\u003e\nAttributes work the same way. The\nonly difference is they are key/value\npairs. For example, this is how to use\na tag attribute to add a CSS class to the output:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lt;kbd\u0026#124;Escape\u0026#124;class: red\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\nWhich produces: \n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;kbd class=\u0026quot;red\u0026quot;\u0026gt;Escape\u0026lt;kbd\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\n\u003cp\u003eTODO: Show the rendered HTML output here too.\u003c/p\u003e\n\n\u003ch3\u003eMultiple Attributes And Flags\u003c/h3\u003e\n\n\u003cp\u003e\n  Any number of attributes and flags can be added to \n  a given tag\u003csup\u003e5\u003c/sup\u003e. All that\u0027s needed is\n  another \u003ccode\u003e\u0026#124;\u003c/code\u003e separator between them.\n  For example:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lt;link\u003cbr /\u003e\n  \u0026#124;example text\u003cbr /\u003e\n  \u0026#124;https://www.example.com/\u003cbr /\u003e\n  \u0026#124;class: red\u003cbr /\u003e\n  \u0026#124;id: alfa\u003cbr /\u003e\n  \u0026#124;hidden\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003eWhich produces:\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;a\u003cbr /\u003e\n  href=\u0026quot;https://www.example.com/\u0026quot;\u003cbr /\u003e\n  class=\u0026quot;red\u0026quot;\u003cbr /\u003e\n  id=\u0026quot;alfa\u0026quot;\u003cbr /\u003e\n  hidden\u003cbr /\u003e\n  \u0026gt;example text\u0026lt;/a\u0026gt;\u003c/code\u003e\n\u003c/p\u003e",
+        "body": "\u003cdiv class=\"\nxxlarge-block-margin\nheading-border-faded \ndefault-radius\nxsmall-max-width\ndev-tmp-flex\nauto-inline-margin\n\"\u003e\n\u003cdiv class=\"\ndev-tmp-rotate\nsmall-padding \nheading-background-faded \nsmall-right-radius \nsmall-font\"\u003eBook Review\u003c/div\u003e\n\u003cdiv\u003e\n\u003cdiv class=\"\ndefault-inline-padding \nxsmall-font \ndefault-faded\nalign-right\ndefault-bottom-border-faded\n\"\u003eStephen King\u003c/div\u003e\n\u003cdiv class=\"match-background-faded small-padding default-bottom-border-faded\"\u003e\u003cstrong\u003eOn Writing\u003c/strong\u003e\u003c/div\u003e\n\u003cdiv class=\"default-padding small-flow small-font\"\u003e\n\u003cp\u003eA fantastic read. Biggest take\naway: It all comes down to \nputting in the effort.\u003c/p\u003e\n\u003cp\u003eGet up. Do your thing.\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
@@ -899,7 +568,168 @@ can be added like this:
             "spans": [
               {
                 "category": "text",
-                "content": "Shorthands",
+                "content": "Collect All The Things",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Neopoligen lets you make collections. If you\u0027ve got a bunch of notes with \u003ccode\u003ebook-review\u003c/code\u003e blocks, you can show them all on one page.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cdiv class=\"dev-tmp-books-wrapper default-bottom-margin\"\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eA Closed and Common Orbit\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Becky Chambers\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eChecklist Manifesto\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Atul Gawande\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eDune\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Frank Herbert\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eInformation Dashboard Design\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Stephen Few\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"dev-tmp-book\"\u003e\n  \u003cdiv class=\"dev-tmp-title\"\u003eOn Writing\u003c/div\u003e\n  \u003cdiv class=\"dev-tmp-author\"\u003eby: Stephen King\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "In this case, only the title and author are shown. You could just as easily show the content.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "p"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "All The Info",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Collections can also be created from extra info. If you\u0027ve got a bunch of \u003ccode\u003ebook-review\u003c/code\u003e blocks scattered around with \u003ccode\u003eauthor\u003c/code\u003e info you can make a page showing all the books from a specific author.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h4"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cdiv class=\"\nxxlarge-block-margin\nheading-border-faded \ndefault-radius\nxsmall-max-width\ndev-tmp-flex\nauto-inline-margin\n\"\u003e\n\u003cdiv class=\"\ndev-tmp-rotate\nsmall-padding \nheading-background-faded \nsmall-right-radius \ndefault-font\"\u003eStephen King Books\u003c/div\u003e\n\u003cdiv\u003e\n\u003cul\u003e\n\u003cli class=\"small-font\"\u003eFour Past Midnight\u003c/li\u003e\n\u003cli class=\"small-font\"\u003eOn Writing\u003c/li\u003e\n\u003cli class=\"small-font\"\u003eThe Gunslinger\u003c/li\u003e\n\u003cli class=\"small-font\"\u003eThe Stand\u003c/li\u003e\n\u003cli class=\"small-font\"\u003eWind Through the Keyhole\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class=\"default-padding small-flow small-font\"\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [],
+        "end_block": null,
+        "flags": [],
+        "kind": "p"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Current Status",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "I\u0027ve been working on Neopolitan and Neopoligen for a few years. They\u0027ve been powering my site for over a year. Everything is working nicely.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "The original app bundled the Neopolitan reader inside the Neopoligen site builder. I\u0027m in the process of splitting them apart. Doing so will make it easier for other developers to make apps that use Neopolitan.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "I\u0027m making good progress, but don\u0027t have an ETA. Follow me on Mastodon, Bluesky, or my RSS feed for updates.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "It won\u0027t be too long now. I\u0027m really looking forward to sharing it with you.",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "-a",
                 "kind": "text"
               }
             ]
@@ -908,14 +738,6 @@ can be added like this:
         "end_block": null,
         "flags": [],
         "kind": "h2"
-      },
-      {
-        "attrs": {},
-        "body": "\u003ch3\u003eThe Basics\u003c/h3\u003e\n\n\u003cp\u003e\n  Shorthands provide another way to enhance\n  content in Neopolitan files. Each works\n  like a specific Tag, but without the \n  need to type the full thing. For example, \n  one shorthand uses \u003ccode\u003e\u0026#42;\u0026#42;\u003c/code\u003e.\n  It looks like this:\n\u003c/p\u003e\n\n\u003cp\u003e\u003ccode\u003e\u0026#42;\u0026#42;example text\u0026#42;\u0026#42;\u003c/code\u003e\u003c/pre\u003e\n\n\u003cp\u003eWhich outputs this HTML:\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;strong\u0026gt;example text\u0026lt;/strong\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\n\u003cp\u003eWhich is the exact same thing you\u0027d get if you used\na tag like this:\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;\u0026lt;strong\u0026#124;example text\u0026gt;\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003ch3\u003eAttributes and Flags\u003c/h3\u003e\n\n\u003cp\u003e\n  Shorthands can use attributes and flags the same\n  way Tags can. For example the \u003ccode\u003e\u0026#96;\u0026#96;\u003c/code\u003e\n  shorthand is for code snippets. Adding a flag\n  to it with the name of a language adds the \n  appropriate syntax highlighting:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026#96;\u0026#96;println!(\"ping\");\u0026#124;rust\u0026#96;\u0026#96;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003eWhich outputs:\u003c/p\u003e\n\n\u003cp\u003e\u003ccode\u003eTODO: output snippet when syntax highlighting\nis reinstated\u003c/code\u003e\u003c/p\u003e\n\n\u003cp\u003e\n  Adding an attribute to a strong shorthand\n  looks like this:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026#96;\u0026#96;example text\u0026#124;class: red\u0026#96;\u0026#96;\u003c/code\u003e\n\u003c/p\u003e\n  \n\u003cp\u003eWhich outputs:\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;strong class=\u0026quot;red\u0026quot;\u0026gt;example text\u0026lt;/strong\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\n\u003ch3\u003eMultiple Attributes and Flags\u003c/h3\u003e\n\n\u003cp\u003eShorthands can use multiple attributes and\nflags as well. For example, the link\nshorthand uses \u003ccode\u003e\u0026#91;\u0026#91;\u003c/code\u003e and \n\u003ccode\u003e\u0026#93;\u0026#93;\u003c/code\u003e. It uses a flag\nby default for the URL. Styles and IDs\ncan be added like this:\n\u003c/p\u003e\n\n\u003cp\u003e\n  \u003ccode\u003e\u0026#91;\u0026#91;example link\u003cbr /\u003e\n  \u0026#124;https://www.example.com/\u003cbr /\u003e\n  \u0026#124;id: example-link\u003cbr /\u003e\n  \u0026#124;class: red\u0026#93;\u0026#93;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003cp\u003eWhich outputs:\u003c/p\u003e\n\n\u003cp\u003e\n\u003cp\u003e\n  \u003ccode\u003e\u0026lt;a\u003cbr /\u003e\n  href=\u0026quot;https://www.example.com/\u0026quot;\u003cbr /\u003e\n  id=\"example-link\"\u003cbr /\u003e\n  class=\"red\"\u003cbr /\u003e\n  \u0026gt;example link\u0026lt;/a\u0026gt;\u003c/code\u003e\n\u003c/p\u003e\n\n\u003ch3\u003eThe Shorthand List\u003c/h3\u003e\n\n\u003cp\u003eNeopolitan provides nine shorthands. They are:\u003c/p\u003e\n\n\u003cul class=\"flow\"\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eSpan:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#64;\u0026#64;code snippet\u0026#64;\u0026#64;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eCode:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#96;\u0026#96;code snippet\u0026#96;\u0026#96;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eStrong:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#42;\u0026#42;strong text\u0026#42;\u0026#42;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eEmphasis:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#95;\u0026#95;emphasis text\u0026#95;\u0026#95;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eFootnote Reference:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#94;\u0026#94;1\u0026#94;\u0026#94;\u003c/code\u003e\n    \u003c/p\u003e\n    \u003cp\u003eSee: \u003ca href=\"/documentation/footnotes.html\"\u003ethe footnote documentation\n    for more details on how footnotes work\u003c/a\u003e\u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eDeleted:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#126;\u0026#126;deleted text\u0026#126;\u0026#126;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eInserted:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#40;\u0026#40;inserted text\u0026#41;\u0026#41;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eLink:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#91;\u0026#91;link text\u0026#124;https://www.example.com/\u0026#93;\u0026#93;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli class=\"flow\"\u003e\n    \u003cp\u003eImage:\u003c/p\u003e\n    \u003cp\u003e\n      \u003ccode\u003e\u0026#123;\u0026#123;image-name.jpg\u0026#124;alt: Alt text for the image\u0026#125;\u0026#125;\u003c/code\u003e\n    \u003c/p\u003e\n  \u003c/li\u003e\n\u003c/ul\u003e",
-        "category": "raw",
-        "end_block": null,
-        "flags": [],
-        "kind": "html"
       },
       {
         "attrs": {},
@@ -1081,6 +903,46 @@ can be added like this:
         "end_block": null,
         "flags": [],
         "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Neopolitan is open source. The format is free to use. The parser was originally built into Neopoligen. I\u0027m in the process of splitting it out so it can be used as a starting point for other apps as well.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "endnote"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "You don\u0027t need a special app to make Neopolitan notes. There\u0027s nothing propriteray about the format. You can make them with pretty much any notes app.",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "endnote"
       },
       {
         "attrs": {

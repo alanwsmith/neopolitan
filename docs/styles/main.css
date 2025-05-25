@@ -300,7 +300,7 @@ TODO: large-border? where you can set the number of pixels vai a var?
   --xlarge-width: min(100vw - 1.4rem, 54rem);
   --xsmall-width: min(100vw - 1.4rem, 16rem);
   --xxlarge-width: min(100vw - 1.4rem, 58rem);
-  --xxsmall-width: min(100vw - 1.4rem, 7rem);
+  --xxsmall-width: min(100vw - 1.4rem, 11rem);
   --xxxlarge-width: min(100vw - 1.4rem, 64rem);
   --xxxsmall-width: min(100vw - 1.4rem, 3rem);
 }
@@ -417,158 +417,212 @@ video {
 
 
 /* Border Radii */
-.default-block-bottom-radius { border-block-bottom-radius: var(--default-radius); }
-.default-block-end-radius { border-block-end-radius: var(--default-radius); }
-.default-block-radius { border-block-radius: var(--default-radius); }
-.default-block-start-radius { border-block-start-radius: var(--default-radius); }
-.default-end-end-radius { border-end-end-radius: var(--default-radius); }
-.default-end-start-radius { border-end-start-radius: var(--default-radius); }
-.default-inline-end-radius { border-inline-end-radius: var(--default-radius); }
-.default-inline-radius { border-inline-radius: var(--default-radius); }
-.default-inline-start-radius { border-inline-start-radius: var(--default-radius); }
-.default-left-radius { border-left-radius: var(--default-radius); }
+.default-bottom-left-radius { border-bottom-left-radius: var(--default-radius); }
+.default-bottom-radius {
+  border-bottom-left-radius: var(--default-radius);
+  border-bottom-right-radius: var(--default-radius);
+}
+.default-bottom-right-radius { border-bottom-right-radius: var(--default-radius); }
+.default-left-radius {
+  border-top-left-radius: var(--default-radius);
+  border-bottom-left-radius: var(--default-radius);
+}
 .default-radius { border-radius: var(--default-radius); }
-.default-right-radius { border-right-radius: var(--default-radius); }
-.default-start-end-radius { border-start-end-radius: var(--default-radius); }
-.default-start-start-radius { border-start-start-radius: var(--default-radius); }
+.default-right-radius {
+  border-top-right-radius: var(--default-radius);
+  border-bottom-right-radius: var(--default-radius);
+}
+.default-top-left-and-bottom-right-radius { border-top-left-and-bottom-right-radius: var(--default-radius); }
 .default-top-left-radius { border-top-left-radius: var(--default-radius); }
-.default-top-radius { border-top-radius: var(--default-radius); }
+.default-top-radius {
+  border-top-left-radius: var(--default-radius);
+  border-top-right-radius: var(--default-radius);
+}
+.default-top-right-and-bottom-left-radius { border-top-right-and-bottom-left-radius: var(--default-radius); }
 .default-top-right-radius { border-top-right-radius: var(--default-radius); }
-.large-block-bottom-radius { border-block-bottom-radius: var(--large-radius); }
-.large-block-end-radius { border-block-end-radius: var(--large-radius); }
-.large-block-radius { border-block-radius: var(--large-radius); }
-.large-block-start-radius { border-block-start-radius: var(--large-radius); }
-.large-end-end-radius { border-end-end-radius: var(--large-radius); }
-.large-end-start-radius { border-end-start-radius: var(--large-radius); }
-.large-inline-end-radius { border-inline-end-radius: var(--large-radius); }
-.large-inline-radius { border-inline-radius: var(--large-radius); }
-.large-inline-start-radius { border-inline-start-radius: var(--large-radius); }
-.large-left-radius { border-left-radius: var(--large-radius); }
+.large-bottom-left-radius { border-bottom-left-radius: var(--large-radius); }
+.large-bottom-radius {
+  border-bottom-left-radius: var(--large-radius);
+  border-bottom-right-radius: var(--large-radius);
+}
+.large-bottom-right-radius { border-bottom-right-radius: var(--large-radius); }
+.large-left-radius {
+  border-top-left-radius: var(--large-radius);
+  border-bottom-left-radius: var(--large-radius);
+}
 .large-radius { border-radius: var(--large-radius); }
-.large-right-radius { border-right-radius: var(--large-radius); }
-.large-start-end-radius { border-start-end-radius: var(--large-radius); }
-.large-start-start-radius { border-start-start-radius: var(--large-radius); }
+.large-right-radius {
+  border-top-right-radius: var(--large-radius);
+  border-bottom-right-radius: var(--large-radius);
+}
+.large-top-left-and-bottom-right-radius { border-top-left-and-bottom-right-radius: var(--large-radius); }
 .large-top-left-radius { border-top-left-radius: var(--large-radius); }
-.large-top-radius { border-top-radius: var(--large-radius); }
+.large-top-radius {
+  border-top-left-radius: var(--large-radius);
+  border-top-right-radius: var(--large-radius);
+}
+.large-top-right-and-bottom-left-radius { border-top-right-and-bottom-left-radius: var(--large-radius); }
 .large-top-right-radius { border-top-right-radius: var(--large-radius); }
-.small-block-bottom-radius { border-block-bottom-radius: var(--small-radius); }
-.small-block-end-radius { border-block-end-radius: var(--small-radius); }
-.small-block-radius { border-block-radius: var(--small-radius); }
-.small-block-start-radius { border-block-start-radius: var(--small-radius); }
-.small-end-end-radius { border-end-end-radius: var(--small-radius); }
-.small-end-start-radius { border-end-start-radius: var(--small-radius); }
-.small-inline-end-radius { border-inline-end-radius: var(--small-radius); }
-.small-inline-radius { border-inline-radius: var(--small-radius); }
-.small-inline-start-radius { border-inline-start-radius: var(--small-radius); }
-.small-left-radius { border-left-radius: var(--small-radius); }
+.small-bottom-left-radius { border-bottom-left-radius: var(--small-radius); }
+.small-bottom-radius {
+  border-bottom-left-radius: var(--small-radius);
+  border-bottom-right-radius: var(--small-radius);
+}
+.small-bottom-right-radius { border-bottom-right-radius: var(--small-radius); }
+.small-left-radius {
+  border-top-left-radius: var(--small-radius);
+  border-bottom-left-radius: var(--small-radius);
+}
 .small-radius { border-radius: var(--small-radius); }
-.small-right-radius { border-right-radius: var(--small-radius); }
-.small-start-end-radius { border-start-end-radius: var(--small-radius); }
-.small-start-start-radius { border-start-start-radius: var(--small-radius); }
+.small-right-radius {
+  border-top-right-radius: var(--small-radius);
+  border-bottom-right-radius: var(--small-radius);
+}
+.small-top-left-and-bottom-right-radius { border-top-left-and-bottom-right-radius: var(--small-radius); }
 .small-top-left-radius { border-top-left-radius: var(--small-radius); }
-.small-top-radius { border-top-radius: var(--small-radius); }
+.small-top-radius {
+  border-top-left-radius: var(--small-radius);
+  border-top-right-radius: var(--small-radius);
+}
+.small-top-right-and-bottom-left-radius { border-top-right-and-bottom-left-radius: var(--small-radius); }
 .small-top-right-radius { border-top-right-radius: var(--small-radius); }
-.xlarge-block-bottom-radius { border-block-bottom-radius: var(--xlarge-radius); }
-.xlarge-block-end-radius { border-block-end-radius: var(--xlarge-radius); }
-.xlarge-block-radius { border-block-radius: var(--xlarge-radius); }
-.xlarge-block-start-radius { border-block-start-radius: var(--xlarge-radius); }
-.xlarge-end-end-radius { border-end-end-radius: var(--xlarge-radius); }
-.xlarge-end-start-radius { border-end-start-radius: var(--xlarge-radius); }
-.xlarge-inline-end-radius { border-inline-end-radius: var(--xlarge-radius); }
-.xlarge-inline-radius { border-inline-radius: var(--xlarge-radius); }
-.xlarge-inline-start-radius { border-inline-start-radius: var(--xlarge-radius); }
-.xlarge-left-radius { border-left-radius: var(--xlarge-radius); }
+.xlarge-bottom-left-radius { border-bottom-left-radius: var(--xlarge-radius); }
+.xlarge-bottom-radius {
+  border-bottom-left-radius: var(--xlarge-radius);
+  border-bottom-right-radius: var(--xlarge-radius);
+}
+.xlarge-bottom-right-radius { border-bottom-right-radius: var(--xlarge-radius); }
+.xlarge-left-radius {
+  border-top-left-radius: var(--xlarge-radius);
+  border-bottom-left-radius: var(--xlarge-radius);
+}
 .xlarge-radius { border-radius: var(--xlarge-radius); }
-.xlarge-right-radius { border-right-radius: var(--xlarge-radius); }
-.xlarge-start-end-radius { border-start-end-radius: var(--xlarge-radius); }
-.xlarge-start-start-radius { border-start-start-radius: var(--xlarge-radius); }
+.xlarge-right-radius {
+  border-top-right-radius: var(--xlarge-radius);
+  border-bottom-right-radius: var(--xlarge-radius);
+}
+.xlarge-top-left-and-bottom-right-radius { border-top-left-and-bottom-right-radius: var(--xlarge-radius); }
 .xlarge-top-left-radius { border-top-left-radius: var(--xlarge-radius); }
-.xlarge-top-radius { border-top-radius: var(--xlarge-radius); }
+.xlarge-top-radius {
+  border-top-left-radius: var(--xlarge-radius);
+  border-top-right-radius: var(--xlarge-radius);
+}
+.xlarge-top-right-and-bottom-left-radius { border-top-right-and-bottom-left-radius: var(--xlarge-radius); }
 .xlarge-top-right-radius { border-top-right-radius: var(--xlarge-radius); }
-.xsmall-block-bottom-radius { border-block-bottom-radius: var(--xsmall-radius); }
-.xsmall-block-end-radius { border-block-end-radius: var(--xsmall-radius); }
-.xsmall-block-radius { border-block-radius: var(--xsmall-radius); }
-.xsmall-block-start-radius { border-block-start-radius: var(--xsmall-radius); }
-.xsmall-end-end-radius { border-end-end-radius: var(--xsmall-radius); }
-.xsmall-end-start-radius { border-end-start-radius: var(--xsmall-radius); }
-.xsmall-inline-end-radius { border-inline-end-radius: var(--xsmall-radius); }
-.xsmall-inline-radius { border-inline-radius: var(--xsmall-radius); }
-.xsmall-inline-start-radius { border-inline-start-radius: var(--xsmall-radius); }
-.xsmall-left-radius { border-left-radius: var(--xsmall-radius); }
+.xsmall-bottom-left-radius { border-bottom-left-radius: var(--xsmall-radius); }
+.xsmall-bottom-radius {
+  border-bottom-left-radius: var(--xsmall-radius);
+  border-bottom-right-radius: var(--xsmall-radius);
+}
+.xsmall-bottom-right-radius { border-bottom-right-radius: var(--xsmall-radius); }
+.xsmall-left-radius {
+  border-top-left-radius: var(--xsmall-radius);
+  border-bottom-left-radius: var(--xsmall-radius);
+}
 .xsmall-radius { border-radius: var(--xsmall-radius); }
-.xsmall-right-radius { border-right-radius: var(--xsmall-radius); }
-.xsmall-start-end-radius { border-start-end-radius: var(--xsmall-radius); }
-.xsmall-start-start-radius { border-start-start-radius: var(--xsmall-radius); }
+.xsmall-right-radius {
+  border-top-right-radius: var(--xsmall-radius);
+  border-bottom-right-radius: var(--xsmall-radius);
+}
+.xsmall-top-left-and-bottom-right-radius { border-top-left-and-bottom-right-radius: var(--xsmall-radius); }
 .xsmall-top-left-radius { border-top-left-radius: var(--xsmall-radius); }
-.xsmall-top-radius { border-top-radius: var(--xsmall-radius); }
+.xsmall-top-radius {
+  border-top-left-radius: var(--xsmall-radius);
+  border-top-right-radius: var(--xsmall-radius);
+}
+.xsmall-top-right-and-bottom-left-radius { border-top-right-and-bottom-left-radius: var(--xsmall-radius); }
 .xsmall-top-right-radius { border-top-right-radius: var(--xsmall-radius); }
-.xxlarge-block-bottom-radius { border-block-bottom-radius: var(--xxlarge-radius); }
-.xxlarge-block-end-radius { border-block-end-radius: var(--xxlarge-radius); }
-.xxlarge-block-radius { border-block-radius: var(--xxlarge-radius); }
-.xxlarge-block-start-radius { border-block-start-radius: var(--xxlarge-radius); }
-.xxlarge-end-end-radius { border-end-end-radius: var(--xxlarge-radius); }
-.xxlarge-end-start-radius { border-end-start-radius: var(--xxlarge-radius); }
-.xxlarge-inline-end-radius { border-inline-end-radius: var(--xxlarge-radius); }
-.xxlarge-inline-radius { border-inline-radius: var(--xxlarge-radius); }
-.xxlarge-inline-start-radius { border-inline-start-radius: var(--xxlarge-radius); }
-.xxlarge-left-radius { border-left-radius: var(--xxlarge-radius); }
+.xxlarge-bottom-left-radius { border-bottom-left-radius: var(--xxlarge-radius); }
+.xxlarge-bottom-radius {
+  border-bottom-left-radius: var(--xxlarge-radius);
+  border-bottom-right-radius: var(--xxlarge-radius);
+}
+.xxlarge-bottom-right-radius { border-bottom-right-radius: var(--xxlarge-radius); }
+.xxlarge-left-radius {
+  border-top-left-radius: var(--xxlarge-radius);
+  border-bottom-left-radius: var(--xxlarge-radius);
+}
 .xxlarge-radius { border-radius: var(--xxlarge-radius); }
-.xxlarge-right-radius { border-right-radius: var(--xxlarge-radius); }
-.xxlarge-start-end-radius { border-start-end-radius: var(--xxlarge-radius); }
-.xxlarge-start-start-radius { border-start-start-radius: var(--xxlarge-radius); }
+.xxlarge-right-radius {
+  border-top-right-radius: var(--xxlarge-radius);
+  border-bottom-right-radius: var(--xxlarge-radius);
+}
+.xxlarge-top-left-and-bottom-right-radius { border-top-left-and-bottom-right-radius: var(--xxlarge-radius); }
 .xxlarge-top-left-radius { border-top-left-radius: var(--xxlarge-radius); }
-.xxlarge-top-radius { border-top-radius: var(--xxlarge-radius); }
+.xxlarge-top-radius {
+  border-top-left-radius: var(--xxlarge-radius);
+  border-top-right-radius: var(--xxlarge-radius);
+}
+.xxlarge-top-right-and-bottom-left-radius { border-top-right-and-bottom-left-radius: var(--xxlarge-radius); }
 .xxlarge-top-right-radius { border-top-right-radius: var(--xxlarge-radius); }
-.xxsmall-block-bottom-radius { border-block-bottom-radius: var(--xxsmall-radius); }
-.xxsmall-block-end-radius { border-block-end-radius: var(--xxsmall-radius); }
-.xxsmall-block-radius { border-block-radius: var(--xxsmall-radius); }
-.xxsmall-block-start-radius { border-block-start-radius: var(--xxsmall-radius); }
-.xxsmall-end-end-radius { border-end-end-radius: var(--xxsmall-radius); }
-.xxsmall-end-start-radius { border-end-start-radius: var(--xxsmall-radius); }
-.xxsmall-inline-end-radius { border-inline-end-radius: var(--xxsmall-radius); }
-.xxsmall-inline-radius { border-inline-radius: var(--xxsmall-radius); }
-.xxsmall-inline-start-radius { border-inline-start-radius: var(--xxsmall-radius); }
-.xxsmall-left-radius { border-left-radius: var(--xxsmall-radius); }
+.xxsmall-bottom-left-radius { border-bottom-left-radius: var(--xxsmall-radius); }
+.xxsmall-bottom-radius {
+  border-bottom-left-radius: var(--xxsmall-radius);
+  border-bottom-right-radius: var(--xxsmall-radius);
+}
+.xxsmall-bottom-right-radius { border-bottom-right-radius: var(--xxsmall-radius); }
+.xxsmall-left-radius {
+  border-top-left-radius: var(--xxsmall-radius);
+  border-bottom-left-radius: var(--xxsmall-radius);
+}
 .xxsmall-radius { border-radius: var(--xxsmall-radius); }
-.xxsmall-right-radius { border-right-radius: var(--xxsmall-radius); }
-.xxsmall-start-end-radius { border-start-end-radius: var(--xxsmall-radius); }
-.xxsmall-start-start-radius { border-start-start-radius: var(--xxsmall-radius); }
+.xxsmall-right-radius {
+  border-top-right-radius: var(--xxsmall-radius);
+  border-bottom-right-radius: var(--xxsmall-radius);
+}
+.xxsmall-top-left-and-bottom-right-radius { border-top-left-and-bottom-right-radius: var(--xxsmall-radius); }
 .xxsmall-top-left-radius { border-top-left-radius: var(--xxsmall-radius); }
-.xxsmall-top-radius { border-top-radius: var(--xxsmall-radius); }
+.xxsmall-top-radius {
+  border-top-left-radius: var(--xxsmall-radius);
+  border-top-right-radius: var(--xxsmall-radius);
+}
+.xxsmall-top-right-and-bottom-left-radius { border-top-right-and-bottom-left-radius: var(--xxsmall-radius); }
 .xxsmall-top-right-radius { border-top-right-radius: var(--xxsmall-radius); }
-.xxxlarge-block-bottom-radius { border-block-bottom-radius: var(--xxxlarge-radius); }
-.xxxlarge-block-end-radius { border-block-end-radius: var(--xxxlarge-radius); }
-.xxxlarge-block-radius { border-block-radius: var(--xxxlarge-radius); }
-.xxxlarge-block-start-radius { border-block-start-radius: var(--xxxlarge-radius); }
-.xxxlarge-end-end-radius { border-end-end-radius: var(--xxxlarge-radius); }
-.xxxlarge-end-start-radius { border-end-start-radius: var(--xxxlarge-radius); }
-.xxxlarge-inline-end-radius { border-inline-end-radius: var(--xxxlarge-radius); }
-.xxxlarge-inline-radius { border-inline-radius: var(--xxxlarge-radius); }
-.xxxlarge-inline-start-radius { border-inline-start-radius: var(--xxxlarge-radius); }
-.xxxlarge-left-radius { border-left-radius: var(--xxxlarge-radius); }
+.xxxlarge-bottom-left-radius { border-bottom-left-radius: var(--xxxlarge-radius); }
+.xxxlarge-bottom-radius {
+  border-bottom-left-radius: var(--xxxlarge-radius);
+  border-bottom-right-radius: var(--xxxlarge-radius);
+}
+.xxxlarge-bottom-right-radius { border-bottom-right-radius: var(--xxxlarge-radius); }
+.xxxlarge-left-radius {
+  border-top-left-radius: var(--xxxlarge-radius);
+  border-bottom-left-radius: var(--xxxlarge-radius);
+}
 .xxxlarge-radius { border-radius: var(--xxxlarge-radius); }
-.xxxlarge-right-radius { border-right-radius: var(--xxxlarge-radius); }
-.xxxlarge-start-end-radius { border-start-end-radius: var(--xxxlarge-radius); }
-.xxxlarge-start-start-radius { border-start-start-radius: var(--xxxlarge-radius); }
+.xxxlarge-right-radius {
+  border-top-right-radius: var(--xxxlarge-radius);
+  border-bottom-right-radius: var(--xxxlarge-radius);
+}
+.xxxlarge-top-left-and-bottom-right-radius { border-top-left-and-bottom-right-radius: var(--xxxlarge-radius); }
 .xxxlarge-top-left-radius { border-top-left-radius: var(--xxxlarge-radius); }
-.xxxlarge-top-radius { border-top-radius: var(--xxxlarge-radius); }
+.xxxlarge-top-radius {
+  border-top-left-radius: var(--xxxlarge-radius);
+  border-top-right-radius: var(--xxxlarge-radius);
+}
+.xxxlarge-top-right-and-bottom-left-radius { border-top-right-and-bottom-left-radius: var(--xxxlarge-radius); }
 .xxxlarge-top-right-radius { border-top-right-radius: var(--xxxlarge-radius); }
-.xxxsmall-block-bottom-radius { border-block-bottom-radius: var(--xxxsmall-radius); }
-.xxxsmall-block-end-radius { border-block-end-radius: var(--xxxsmall-radius); }
-.xxxsmall-block-radius { border-block-radius: var(--xxxsmall-radius); }
-.xxxsmall-block-start-radius { border-block-start-radius: var(--xxxsmall-radius); }
-.xxxsmall-end-end-radius { border-end-end-radius: var(--xxxsmall-radius); }
-.xxxsmall-end-start-radius { border-end-start-radius: var(--xxxsmall-radius); }
-.xxxsmall-inline-end-radius { border-inline-end-radius: var(--xxxsmall-radius); }
-.xxxsmall-inline-radius { border-inline-radius: var(--xxxsmall-radius); }
-.xxxsmall-inline-start-radius { border-inline-start-radius: var(--xxxsmall-radius); }
-.xxxsmall-left-radius { border-left-radius: var(--xxxsmall-radius); }
+.xxxsmall-bottom-left-radius { border-bottom-left-radius: var(--xxxsmall-radius); }
+.xxxsmall-bottom-radius {
+  border-bottom-left-radius: var(--xxxsmall-radius);
+  border-bottom-right-radius: var(--xxxsmall-radius);
+}
+.xxxsmall-bottom-right-radius { border-bottom-right-radius: var(--xxxsmall-radius); }
+.xxxsmall-left-radius {
+  border-top-left-radius: var(--xxxsmall-radius);
+  border-bottom-left-radius: var(--xxxsmall-radius);
+}
 .xxxsmall-radius { border-radius: var(--xxxsmall-radius); }
-.xxxsmall-right-radius { border-right-radius: var(--xxxsmall-radius); }
-.xxxsmall-start-end-radius { border-start-end-radius: var(--xxxsmall-radius); }
-.xxxsmall-start-start-radius { border-start-start-radius: var(--xxxsmall-radius); }
+.xxxsmall-right-radius {
+  border-top-right-radius: var(--xxxsmall-radius);
+  border-bottom-right-radius: var(--xxxsmall-radius);
+}
+.xxxsmall-top-left-and-bottom-right-radius { border-top-left-and-bottom-right-radius: var(--xxxsmall-radius); }
 .xxxsmall-top-left-radius { border-top-left-radius: var(--xxxsmall-radius); }
-.xxxsmall-top-radius { border-top-radius: var(--xxxsmall-radius); }
+.xxxsmall-top-radius {
+  border-top-left-radius: var(--xxxsmall-radius);
+  border-top-right-radius: var(--xxxsmall-radius);
+}
+.xxxsmall-top-right-and-bottom-left-radius { border-top-right-and-bottom-left-radius: var(--xxxsmall-radius); }
 .xxxsmall-top-right-radius { border-top-right-radius: var(--xxxsmall-radius); }
 
 
@@ -726,6 +780,7 @@ video {
 
 
 /* Margins */
+.auto-inline-margin { margin-inline: auto; }
 .default-block-margin { margin-block: var(--default-margin); }
 .default-bottom-margin { margin-bottom: var(--default-margin); }
 .default-inline-margin { margin-inline: var(--default-margin); }
@@ -934,16 +989,36 @@ video {
 .weight-900 { font-weight: var(--weight-900); }
 
 
-/* Widths */
+/* Widths and Max/Min Widths */
+.default-max-width { max-width: var(--default-width); }
+.default-min-width { min-width: var(--default-width); }
 .default-width { width: var(--default-width); }
+.full-max-width { max-width: var(--full-width); }
+.full-min-width { min-width: var(--full-width); }
 .full-width { width: var(--full-width); }
+.large-max-width { max-width: var(--large-width); }
+.large-min-width { min-width: var(--large-width); }
 .large-width { width: var(--large-width); }
+.small-max-width { max-width: var(--small-width); }
+.small-min-width { min-width: var(--small-width); }
 .small-width { width: var(--small-width); }
+.xlarge-max-width { max-width: var(--xlarge-width); }
+.xlarge-min-width { min-width: var(--xlarge-width); }
 .xlarge-width { width: var(--xlarge-width); }
+.xsmall-max-width { max-width: var(--xsmall-width); }
+.xsmall-min-width { min-width: var(--xsmall-width); }
 .xsmall-width { width: var(--xsmall-width); }
+.xxlarge-max-width { max-width: var(--xxlarge-width); }
+.xxlarge-min-width { min-width: var(--xxlarge-width); }
 .xxlarge-width { width: var(--xxlarge-width); }
+.xxsmall-max-width { max-width: var(--xxsmall-width); }
+.xxsmall-min-width { min-width: var(--xxsmall-width); }
 .xxsmall-width { width: var(--xxsmall-width); }
+.xxxlarge-max-width { max-width: var(--xxxlarge-width); }
+.xxxlarge-min-width { min-width: var(--xxxlarge-width); }
 .xxxlarge-width { width: var(--xxxlarge-width); }
+.xxxsmall-max-width { max-width: var(--xxxsmall-width); }
+.xxxsmall-min-width { min-width: var(--xxxsmall-width); }
 .xxxsmall-width { width: var(--xxxsmall-width); }
 
 
@@ -1083,7 +1158,7 @@ h1 {
 }
 h2 {
   color: var(--heading);
-  border-bottom: var(--default-border);
+  border-bottom: var(--default-border-faded);
   font-size: var(--xxlarge-font);
   font-weight: var(--weight-900);
   line-height: var(--xsmall-line-height);
@@ -1098,7 +1173,7 @@ h3 {
 }
 h4 {
   color: var(--heading);
-  font-size: var(--large-font);
+  font-size: var(--default-font);
   font-weight: var(--weight-900);
   line-height: var(--xsmall-line-height);
   text-wrap: balance;
@@ -1182,6 +1257,7 @@ li {
   /* */
 }
 main {
+  margin-top: var(--xlarge-margin);
   margin-inline: auto;
   width: var(--default-width);
 }
@@ -1302,12 +1378,52 @@ var {
 video {
   max-width: 100%;
 }
+
+.dev-tmp-author {
+  padding: var(--xsmall-padding);
+  font-size: var(--xsmall-font);
+  color: var(--default-faded);
+  text-align: var(--align-right);
+}
+
+.dev-tmp-book {
+  border: var(--heading-border-faded);
+  border-radius: var(--default-radius);
+  width: 7rem;
+  min-height: 6rem;
+}
     
+.dev-tmp-books-wrapper {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.dev-tmp-title {
+  border-bottom: var(--default-border);
+  background-color: var(--match-faded);
+  border-top-left-radius: var(--small-radius);
+  border-top-right-radius: var(--small-radius);
+  font-size: var(--small-font);
+  padding: var(--xsmall-padding);
+  font-weight: var(--weight-900);
+}
+
+.dev-tmp-flex {
+  display: flex;
+}
+.dev-tmp-flex2 {
+  display: flex;
+  gap: 1.4rem;
+}
+
+.dev-tmp-rotate {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
 .pre-basic {
   border: var(--accent-border-faded);
   border-radius: var(--default-radius);
   padding: var(--large-padding);
   margin: var(--xlarge-margin);
 }
-
-

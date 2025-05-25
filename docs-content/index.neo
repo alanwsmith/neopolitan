@@ -15,28 +15,163 @@ It's easy to learn, quick to customize,
 and super powerful. 
 
 
--- h2
+-- h3
 
 The Basics
 
 -- html
 
 <p>
-Neopolitan notes are made up of <em>blocks</em>. Each 
-one start with two dashes and a name.
+Notes are made of blocks. Each 
+one starts with two dashes and a name.
 </p>
 
 <pre class="pre-basic"><code>&#45;&#45; title</code></pre>
 
-<p>Content comes after</p>
-
+<p>Content comes after.</p>
 
 <pre class="pre-basic"><code>&#45;&#45; title
 
-A Basic Example
+This is a Neopolitan Note</code></pre>
 
-This is an example of a title block in
-a Neopolitan note</code></pre>
+-- h3
+
+You Name It
+
+Blocks names are up to you. 
+
+-- html
+
+<pre class="pre-basic"><code>&#45;&#45; title</code></pre>
+
+<pre class="pre-basic"><code>&#45;&#45; book-review</code></pre>
+
+<pre class="pre-basic"><code>&#45;&#45; any-random-thing-you-think-of</code></pre>
+
+-- p
+
+All those work. 
+The only rule is names can't 
+have spaces. 
+
+
+-- h3
+
+Extra Info
+
+Blocks can hold extra information. 
+Each piece gets its own line 
+that starts with two dashes. 
+
+-- html
+
+<div class="accent-border-faded default-radius default-padding">
+<pre><code>&#45;&#45; book-review
+&#45;&#45; title: On Writing
+&#45;&#45; author: Stephen King 
+
+A fantastic read. Biggest take
+away: It all comes down to 
+putting in the effort. 
+
+Get up. Do your thing.
+</code>
+</pre>
+<div class="small-font align-right accent-top-border-faded default-top-padding">figure 1</div>
+</div>
+
+
+-- h2
+
+What Do They Do?
+
+Neopolitan notes are designed to be
+easy to make, read, and update. 
+They don't do much on their own, though.
+
+Using them in apps is where things
+get interesting.
+
+
+-- h3
+
+Enter Neopoligen
+
+Neopoligen (with a gen) is the first
+app that uses Neopolitan (with
+a tan). It's a website builder.
+Point it at some Neopolitan notes 
+and it'll turn them into a website. 
+
+The process works by applying templates
+to blocks. For example, the default template
+for the <code>book-review</code> block 
+from <code>figure 1</code> produces this:
+
+-- html
+
+<div class="
+xxlarge-block-margin heading-border-faded 
+default-radius
+xsmall-max-width
+auto-inline-margin
+">
+<div class="default-left-padding heading-background-faded small-top-radius small-font">Book Review</div>
+<div class="default-padding">
+<div class="default-bottom-border-faded"><strong>On Writing</strong></div>
+<div class="small-font default-faded">By Stephen King</div>
+<div class="default-top-padding small-flow small-font">
+<p>A fantastic read. Biggest take
+away: It all comes down to 
+putting in the effort.</p>
+<p>Get up. Do your thing.</p>
+</div>
+</div>
+</div>
+
+
+
+-- h4
+
+Switching Layouts
+
+The templates are yours to change. 
+The same content from <code>figure 1</code> 
+looks like this after a few tweaks:
+
+-- html
+
+<div class="
+xxlarge-block-margin
+heading-border-faded 
+default-radius
+xsmall-max-width
+dev-tmp-flex
+auto-inline-margin
+">
+<div class="
+dev-tmp-rotate
+small-padding 
+heading-background-faded 
+small-right-radius 
+small-font">Book Review</div>
+<div>
+<div class="
+default-inline-padding 
+xsmall-font 
+default-faded
+align-right
+default-bottom-border-faded
+">Stephen King</div>
+<div class="match-background-faded small-padding default-bottom-border-faded"><strong>On Writing</strong></div>
+<div class="default-padding small-flow small-font">
+<p>A fantastic read. Biggest take
+away: It all comes down to 
+putting in the effort.</p>
+<p>Get up. Do your thing.</p>
+</div>
+</div>
+</div>
 
 
 
@@ -44,411 +179,86 @@ a Neopolitan note</code></pre>
 
 -- h3
 
-Section Flags
+Collect All The Things
 
-Each section can have flags. They're
-defined by adding lines starting
-with two dashes immediately
-follow the section like this:
-
--- html
-
-<div class="tmp-example flow">
-
-<p>
-&#45;&#45; h2<br />
-&#45;&#45; hidden 
-</p>
-
-<p>
-This H2 is hidden
-</p>
-
-</div>
-
-<p>
-Which outputs:
-</p>
-
-<div class="tmp-example">
-
-<p>
-&lt;h2 hidden&gt;<br />
-&nbsp;&nbsp;This H2 is hidden<br />
-&lt;/h2&gt;
-</p>
-
-</div>
-
-
-
--- h3
-
-Section Attributes
-
-Key/value attributes can be added as
-well. For example:
+Neopoligen lets you make collections.
+If you've got a bunch of notes 
+with <code>book-review</code> blocks, you 
+can show them all on one page.
 
 -- html
 
-<div class="tmp-example flow">
-
-<p>
-&#45;&#45; h2<br />
-&#45;&#45; class: red 
-</p>
-
-<p>
-This H2 is red 
-</p>
-
+<div class="dev-tmp-books-wrapper default-bottom-margin">
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">A Closed and Common Orbit</div>
+  <div class="dev-tmp-author">by: Becky Chambers</div>
 </div>
-
-<p>
-Which produces:
-</p>
-
-<div class="tmp-example flow">
-
-<p>
-&lt;h2 class=&quot;red&quot;&gt;<br />
-&nbsp;&nbsp;This H2 is red<br />
-&lt;/h2&gt;
-</p>
-
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">Checklist Manifesto</div>
+  <div class="dev-tmp-author">by: Atul Gawande</div>
+</div>
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">Dune</div>
+  <div class="dev-tmp-author">by: Frank Herbert</div>
+</div>
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">Information Dashboard Design</div>
+  <div class="dev-tmp-author">by: Stephen Few</div>
+</div>
+<div class="dev-tmp-book">
+  <div class="dev-tmp-title">On Writing</div>
+  <div class="dev-tmp-author">by: Stephen King</div>
+</div>
 </div>
 
 
--- h2
+-- p
 
-Markdown Section Comparison
+In this case, only the title and author are
+shown. You could just as easily show 
+the content. 
 
-A basic Markdown document might look like this:
+-- h4
+
+All The Info
+
+Collections can also be created from extra info.
+If you've got a bunch of <code>book-review</code>
+blocks scattered around with <code>author</code> info 
+you can make a page showing all the books from 
+a specific author.
+
 
 -- html
 
-<div class="tmp-example flow">
-
-<p>
-&#35; The Title
-</p>
-
-<p>
-Some text.
-</p>
-
-<p>
-&#35;&#35; Forward
-</p>
-
-<p>
-More text.
-</p>
-
-</div>
-
-<p>
-A corresponding Neopolitan document 
-would look like this:
-</p>
-
-<div class="tmp-example flow">
-
-<p>
-&#45;&#45; h1
-</p>
-
-<p>
-The Title
-</p>
-
-<p>
-Some text.
-</p>
-
-<p>
-&#45;&#45; h2
-</p>
-<p>
-Forward
-</p>
-
-<p>
-More text.
-</p>
-
-</div>
-
-<p>
-Each would produce:
-</p>
-
-<div class="tmp-example flow">
-
-<p>
-&lt;h1&gt;The Title&lt;/h1&gt;<br />
-&lt;p&gt;Some Text.&lt;/p&gt;<br />
-&lt;h2&gt;Forward&lt;/h2&gt;<br />
-&lt;p&gt;More Text.&lt;/p&gt;
-</p>
-
-</div>
-
-<p>
-Neopolitan takes more lines to produce 
-the same output. It provides no benefit if 
-that's all you need. 
-</p>
-
--- h2
-
-Enter Neopolitan
-
-Neopolitan's usefulness comes
-from adding HTML features
-to content<sup>1</sup>. 
-
-For example, changing the above
-demo to use explicit sections
-and attributes like this:
-
--- html
-
-<div class="tmp-example flow">
-
-<p>
-&#45;&#45; title
-</p>
-
-<p>
-The Title
-</p>
-
-<p>
-Some text.
-</p>
-
-<p>
-&#45;&#45; forward<br />
-&#45;&#45; class: blue<br />
-</p>
-
-<p>
-More text.
-</p>
-
-</div>
-
-<p>
-produces this:
-</p>
-
-<div class="tmp-example flow">
-
-<p>
-&lt;h1 class=&quot;title&quot; aria-label=&quot;Page Title&quot;&gt;<br />
-&nbsp;&nbsp;The Title<br />
-&lt;/h1&gt;<br />
-&lt;p&gt;Some Text.&lt;/p&gt;<br />
-&lt;h2 class=&quot;forward blue&quot;&gt;<br />
-&nbsp;&nbsp;Forward<br />
-&lt;/h2&gt;<br />
-&lt;p&gt;More Text.&lt;/p&gt;
-</p>
-
-</div>
-
-<p>
-Specifically, it does the following:
-</p>
-
-<ul class="flow">
-  <li>
-    Automatically add the &quot;title&quot; class 
-    to the &quot;h1&quot; element
-  </li>
-  <li>
-    Automatically add an &quot;aria-label&quot; to
-    the &quot;h1&quot; element<sup>2</sup>
-  </li>
-  <li>
-    Output an H2 with the &quot;Forward&quot; text in
-    it without having to write the word in addition 
-    to using it as the section name<sup>3</sup>.
-  </li>
-  <li>
-    Automatically add the &quot;forward&quot; class
-    to the H2 
-  </li>
-  <li>
-    Append the &quot;blue&quot; class to the H2 
-    via the &quot;&#45;&#45; class: blue&quot;
-    section attribute
-  </li>
+<div class="
+xxlarge-block-margin
+heading-border-faded 
+default-radius
+xsmall-max-width
+dev-tmp-flex
+auto-inline-margin
+">
+<div class="
+dev-tmp-rotate
+small-padding 
+heading-background-faded 
+small-right-radius 
+default-font">Stephen King Books</div>
+<div>
+<ul>
+<li class="small-font">Four Past Midnight</li>
+<li class="small-font">On Writing</li>
+<li class="small-font">The Gunslinger</li>
+<li class="small-font">The Stand</li>
+<li class="small-font">Wind Through the Keyhole</li>
 </ul>
+<div class="default-padding small-flow small-font">
+</div>
+</div>
+</div>
 
-Of course, the same output could be produced with
-Markdown. It would require falling back to
-raw HTML for most of it, though.
-
-
--- h2
-
-Tags 
-
--- html
-
-<h3>The Basics</h3>
-
-<p>
-Neopolitan <code>tags</code> provide a way to enhance content. 
-A basic one looks like this:
-</p>
-
-<p>
-  <code>&lt;&lttag-name&#124;some text&gt;&gt;</code>
-</p>
-
-<p>
-  The <code>tag-name</code> defines what the type
-  of tag. The <code>some text</code> in this example
-  represents the content the tag works on.
-</p>
-
-<h3>Element Examples</h3>
-
-<p>Basic examples, include:
-</p>
-
-<p>
-  <code>&lt;&ltstrong&#124;some text&gt;&gt;</code><br />
-  <code>&lt;&ltem&#124;some text&gt;&gt;</code><br />
-  <code>&lt;&ltkbd&#124;some text&gt;&gt;</code><br />
-</p>
-
-<p>Which output:</p>
-
-<p>
-  <strong>some text</strong><br />
-  <em>some text</em><br />
-  <kbd>some text</kbd><br />
-</p>
-
-<p>TODO: show raw HTML output here too</p>
-
-<h3>Custom Tags</h3>
-
-<p>
-  Those all map to existing HTML elements. 
-  They don't have to. Tags can be used to do
-  anything with the content<sup>4</sup>. They
-  can also include content generated
-  by the output system itself. For example,
-  a <code>wiki</code> tag could be set
-  up like this:
-</p>
-
-<p>
-  <code>&lt;&lt;wiki&#124;Documentation&gt;&gt;</code>
-</p>
-
-<p>
-The app generating the content could automatically 
-transform that into a link to the Documentation page, 
-add some styles, an id, and a data attribute.
-Something like:
-</p>
-
-<p>
-  <code>
-  &lt;a<br />
-  href=&quot;/documentation.html&quot;<br />
-  id=&quot;documentation-link&quot;<br />
-  class=&quot;wiki-link&quot;<br />
-  data-group=&quot;examples&quot;<br />
-  &gt;Documentation<&lt;a&gt;</code>
-</p>
-
-<p>
-The content stays readable while the
-HTML has all the parts necessary
-to provide the functionality
-</p>
-
-<h3>Attributes and Flags</h3>
-
-<p>
-  Tags can use attributes and flags. 
-  They're made by adding a <code>&#124;</code> at
-  the end of the content to separate them. 
-  For example, a <code>link</code> tag needs a 
-  URL. That's done by adding it as a flag like this:
-</p>
-
-<p>
-  <code>&lt;&lt;link&#124;Example Site&#124;https://www.example.com/&gt;&gt;</code>
-</p>
-
-<p>(aside: It may feel weird to call a URL
-a flag if you've done a lot of coding.
-In terms of Neopolitan, &quot;flag&quot;
-just means a string of content instead
-of a key value pair. You can 
-learn more about them on <a href="/documentation/attributes-and-flags.html">
-Attributes and Flags page</a>.)
-</p>
-
-
-<p>
-Attributes work the same way. The
-only difference is they are key/value
-pairs. For example, this is how to use
-a tag attribute to add a CSS class to the output:
-</p>
-
-<p>
-  <code>&lt;&lt;kbd&#124;Escape&#124;class: red&gt;&gt;</code>
-</p>
-
-<p>
-Which produces: 
-</p>
-
-<p>
-  <code>&lt;kbd class=&quot;red&quot;&gt;Escape&lt;kbd&gt;</code>
-</p>
-
-
-<p>TODO: Show the rendered HTML output here too.</p>
-
-<h3>Multiple Attributes And Flags</h3>
-
-<p>
-  Any number of attributes and flags can be added to 
-  a given tag<sup>5</sup>. All that's needed is
-  another <code>&#124;</code> separator between them.
-  For example:
-</p>
-
-<p>
-  <code>&lt;&lt;link<br />
-  &#124;example text<br />
-  &#124;https://www.example.com/<br />
-  &#124;class: red<br />
-  &#124;id: alfa<br />
-  &#124;hidden&gt;&gt;</code>
-</p>
-
-<p>Which produces:</p>
-
-<p>
-  <code>&lt;a<br />
-  href=&quot;https://www.example.com/&quot;<br />
-  class=&quot;red&quot;<br />
-  id=&quot;alfa&quot;<br />
-  hidden<br />
-  &gt;example text&lt;/a&gt;</code>
-</p>
+-- p
 
 
 
@@ -456,162 +266,29 @@ Which produces:
 
 -- h2
 
-Shorthands
+Current Status 
 
--- html
+I've been working on Neopolitan and Neopoligen
+for a few years. They've been powering my
+site for over a year. Everything is working nicely.
 
-<h3>The Basics</h3>
+The original app bundled the Neopolitan
+reader inside the Neopoligen site builder. 
+I'm in the process of splitting them apart. 
+Doing so will make it easier for other developers
+to make apps that use Neopolitan. 
 
-<p>
-  Shorthands provide another way to enhance
-  content in Neopolitan files. Each works
-  like a specific Tag, but without the 
-  need to type the full thing. For example, 
-  one shorthand uses <code>&#42;&#42;</code>.
-  It looks like this:
-</p>
+I'm making good progress, but don't have an ETA. 
+Follow me on Mastodon, Bluesky, or my RSS feed
+for updates. 
 
-<p><code>&#42;&#42;example text&#42;&#42;</code></pre>
+It won't be too long now. I'm really looking
+forward to sharing it with you. 
 
-<p>Which outputs this HTML:</p>
-
-<p>
-  <code>&lt;strong&gt;example text&lt;/strong&gt;</code>
-</p>
+-a
 
 
-<p>Which is the exact same thing you'd get if you used
-a tag like this:</p>
 
-<p>
-  <code>&lt;&lt;strong&#124;example text&gt;&gt;</code>
-</p>
-
-<h3>Attributes and Flags</h3>
-
-<p>
-  Shorthands can use attributes and flags the same
-  way Tags can. For example the <code>&#96;&#96;</code>
-  shorthand is for code snippets. Adding a flag
-  to it with the name of a language adds the 
-  appropriate syntax highlighting:
-</p>
-
-<p>
-  <code>&#96;&#96;println!("ping");&#124;rust&#96;&#96;</code>
-</p>
-
-<p>Which outputs:</p>
-
-<p><code>TODO: output snippet when syntax highlighting
-is reinstated</code></p>
-
-<p>
-  Adding an attribute to a strong shorthand
-  looks like this:
-</p>
-
-<p>
-  <code>&#96;&#96;example text&#124;class: red&#96;&#96;</code>
-</p>
-  
-<p>Which outputs:</p>
-
-<p>
-  <code>&lt;strong class=&quot;red&quot;&gt;example text&lt;/strong&gt;</code>
-</p>
-
-
-<h3>Multiple Attributes and Flags</h3>
-
-<p>Shorthands can use multiple attributes and
-flags as well. For example, the link
-shorthand uses <code>&#91;&#91;</code> and 
-<code>&#93;&#93;</code>. It uses a flag
-by default for the URL. Styles and IDs
-can be added like this:
-</p>
-
-<p>
-  <code>&#91;&#91;example link<br />
-  &#124;https://www.example.com/<br />
-  &#124;id: example-link<br />
-  &#124;class: red&#93;&#93;</code>
-</p>
-
-<p>Which outputs:</p>
-
-<p>
-<p>
-  <code>&lt;a<br />
-  href=&quot;https://www.example.com/&quot;<br />
-  id="example-link"<br />
-  class="red"<br />
-  &gt;example link&lt;/a&gt;</code>
-</p>
-
-<h3>The Shorthand List</h3>
-
-<p>Neopolitan provides nine shorthands. They are:</p>
-
-<ul class="flow">
-  <li class="flow">
-    <p>Span:</p>
-    <p>
-      <code>&#64;&#64;code snippet&#64;&#64;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Code:</p>
-    <p>
-      <code>&#96;&#96;code snippet&#96;&#96;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Strong:</p>
-    <p>
-      <code>&#42;&#42;strong text&#42;&#42;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Emphasis:</p>
-    <p>
-      <code>&#95;&#95;emphasis text&#95;&#95;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Footnote Reference:</p>
-    <p>
-      <code>&#94;&#94;1&#94;&#94;</code>
-    </p>
-    <p>See: <a href="/documentation/footnotes.html">the footnote documentation
-    for more details on how footnotes work</a></p>
-  </li>
-  <li class="flow">
-    <p>Deleted:</p>
-    <p>
-      <code>&#126;&#126;deleted text&#126;&#126;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Inserted:</p>
-    <p>
-      <code>&#40;&#40;inserted text&#41;&#41;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Link:</p>
-    <p>
-      <code>&#91;&#91;link text&#124;https://www.example.com/&#93;&#93;</code>
-    </p>
-  </li>
-  <li class="flow">
-    <p>Image:</p>
-    <p>
-      <code>&#123;&#123;image-name.jpg&#124;alt: Alt text for the image&#125;&#125;</code>
-    </p>
-  </li>
-</ul>
 
 
 -- h2
@@ -696,6 +373,24 @@ TODO
 below it to show the rendered HTML.
 
 [] Add syntax highlighting.
+
+-- endnote
+
+Neopolitan is open source. The format
+is free to use. The parser was originally
+built into Neopoligen. I'm in the
+process of splitting it out so it
+can be used as a starting point
+for other apps as well.
+
+
+-- endnote
+
+You don't need a special app to make
+Neopolitan notes. There's nothing propriteray 
+about the format. You can make them
+with pretty much any notes app. 
+
 
 
 
