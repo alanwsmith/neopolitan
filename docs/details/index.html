@@ -289,6 +289,14 @@ with</li>
 <li>plugin - passes the block
 off to another process for
 parsing</li>
+</ul><div
+   class="flow"
+><p>Reserved attribute keys that the parser doesn't use but are defined for standard usage:</p></div>
+
+<ul>
+<li>wiki - for defining terms on
+a page or block that apps should
+use for wiki links</li>
 </ul><h3
       
 >Plain-Text Spans</h3><div class="heading-border-faded large-padding default-radius">
@@ -558,6 +566,34 @@ Work-in-progress
       {
         "attrs": {},
         "body": "\u003cul\u003e\n\u003cli\u003etype - for defining what\ncategory a block should be parsed\nwith\u003c/li\u003e\n\u003cli\u003eplugin - passes the block\noff to another process for\nparsing\u003c/li\u003e\n\u003c/ul\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Reserved attribute keys that the parser doesn\u0027t use but are defined for standard usage:",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "p"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cul\u003e\n\u003cli\u003ewiki - for defining terms on\na page or block that apps should\nuse for wiki links\u003c/li\u003e\n\u003c/ul\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],

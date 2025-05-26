@@ -293,7 +293,7 @@ TODO: large-border? where you can set the number of pixels vai a var?
 
 :root {
   /* Width Variables */
-  --default-width: min(100vw - 1.4rem, 42rem);
+  --default-width: min(100vw - 1.4rem, 38rem);
   --full-width: calc(100vw - 1.4rem);
   --large-width: min(100vw - 1.4rem, 50rem);
   --small-width: min(100vw - 1.4rem, 33rem);
@@ -1422,6 +1422,6 @@ video {
 .pre-basic {
   border: var(--accent-border-faded);
   border-radius: var(--default-radius);
-  padding: var(--large-padding);
+  padding: var(--xlarge-padding);
   margin: var(--xlarge-margin);
 }

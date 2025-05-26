@@ -10,49 +10,55 @@
 Introduction
 
 Neopolitan is a way to take notes. 
-
 It's easy to learn, quick to customize,
 and super powerful. 
 
 
 -- h3
 
-The Basics
+Note Blocks
 
 -- html
 
 <p>
-Notes are made of blocks. Each 
+Neopolitan notes are made of blocks. Each 
 starts with two dashes and a name.
 </p>
 
 <pre class="pre-basic"><code>&#45;&#45; title</code></pre>
 
-<p>Content comes after.</p>
-
-<pre class="pre-basic"><code>&#45;&#45; title
-
-This is a Neopolitan Note</code></pre>
-
--- h3
-
-You Name It
-
-Block names are up to you. 
+Block names are up to you. These 
+all work perfectly:
 
 -- html
 
 <pre class="pre-basic"><code>&#45;&#45; title</code></pre>
 
-<pre class="pre-basic"><code>&#45;&#45; book-review</code></pre>
+<pre class="pre-basic"><code>&#45;&#45; Book-Review</code></pre>
 
-<pre class="pre-basic"><code>&#45;&#45; any-random-thing-you-think-of</code></pre>
+<pre class="pre-basic"><code>&#45;&#45; 101_Song_I_Recommend</code></pre>
 
--- p
+<p>The only rule is that names can't have spaces or a few other
+specific characters in them<sup><a href="#fn1">1</a></sup>.</p>
 
-All those work. 
-The only rule is names can't 
-have spaces. 
+-- h3
+
+Block Content
+
+Content goes below the starting line.
+
+-- html
+
+<pre class="pre-basic"><code>&#45;&#45; title
+
+This Is The Headline Title
+
+More lines down here become 
+paragraphs for the body of
+the block. 
+</code></pre>
+
+
 
 
 -- h3
@@ -85,8 +91,7 @@ Get up. Do your thing.
 
 What Do They Do?
 
-Neopolitan notes are
-easy to make, read, and update. 
+Neopolitan notes are easy to make. 
 They don't do much on their own, though.
 
 Using them in apps is where things
@@ -97,18 +102,20 @@ get interesting.
 
 Enter Neopoligen
 
-Neopoligen<sup>1</sup> (with a <em>gen</em>) is the first
+-- html
+
+<p>Neopoligen<sup><a href="#fn2">2</a></sup> 
+(with a <em>gen</em>) is the first
 app that uses Neopolitan (with
 a <em>tan</em>). It's a website builder.
 Point it at some notes 
-and it'll turn them into a website. 
+and it'll turn them into a website. </p>
 
-The conversion works by applying templates
+<p>The conversion works by applying templates
 to blocks. For example, the default template
 for the <code>book-review</code> block 
-from <code>figure 1</code> produces this:
+from <code>figure 1</code> produces this:</p>
 
--- html
 
 <div class="
 xxlarge-block-margin heading-border-faded 
@@ -130,10 +137,9 @@ putting in the effort.</p>
 </div>
 
 
+-- h3
 
--- h4
-
-Switching Things Up 
+Adjustable Layouts
 
 The templates are yours to change. 
 The same content from <code>figure 1</code> 
@@ -180,9 +186,9 @@ putting in the effort.</p>
 Collect All The Things
 
 Apps can use blocks to make collections. 
-For example, you can use Neopoligen
-to gather all the <code>book-review</code> blocks
-for your notes and display them on a 
+For example, Neopoligen can
+gather <code>book-review</code> blocks
+from all your notes and display them on a 
 single page. 
 
 -- html
@@ -217,15 +223,14 @@ In this case, only the title and author are
 shown. You could just as easily make a design 
 that shows the content. 
 
--- h4
+-- h3
 
-All The Info
+Using All The Info
 
 Apps can create collections from the
-extra block info too. Using the <code>author</code>
+extra block info too. For example, using the <code>author</code>
 info from <code>book-review</code> blocks to
-show everything you've read from one person,
-for example:
+show everything you've read from one person:
 
 -- html
 
@@ -257,16 +262,105 @@ default-font">Stephen King Books</div>
 </div>
 
 
+-- h3
+
+Formatting
+
+-- html
+
+<p>Content can be formatted in multiple ways.</p>
+
+<p>Surrounding text with pairs
+of asterisks <strong>**makes it bold**</strong></p>
+
+<p>Using pairs of underscores <em>__makes it italics__</em>
+
+<p>The other options are <a href="/details">listed in the
+Shorthand Spans section of the Details page</a>.</p>
+
+
+-- h3
+
+Footnotes
+
+-- html
+
+<p>Wrapping text in pairs of <code>^^</code> characters
+makes it a reference to a footnote. Apps can use the
+references to automatically generate footnote links.</p>
+
+<p>For example, this <code>^^3^^</code> turns into
+this<sup><a href="#fn3">3</a></sup> which links to the
+corresponding footnote at the bottom of the page.</p>
+
+<p>The block that makes up the footnote looks like this:</p>
+
+<pre class="pre-basic"><code>&#45;&#45 footnote
+&#45;&#45 id: 3
+
+This is an example footnote</code></pre>
+
+
+<p>(Footnotes can also link back. I just
+haven't added that to the template yet.)</p>
+
+
+-- h3
+
+Wiki Links
+
+-- html
+
+<p>Wrapping text in pairs of <code>@@</code>
+tells apps to treat it as a
+wikipedia style link to other content.</p>
+
+<p>Adding the connecting terms is done
+by adding a <code>&#45;&#45; wiki</code>
+piece of extra info to a block.</p>
+
+<p>For example, this:</p>
+
+<p><code>@@Example@@</code></p>
+
+<p>Would link to a note with this block:</p>
+
+<pre class="pre-basic"><code>&#45;&#45; title
+&#45;&#45 wiki: Example
+
+This Is An Example Note</code></pre>
+
+
+-- h2
+
+More Details
+
+-- html
+
+<p>That's it for the fundamentals. And, 
+really, that's just about it for the 
+entire format. The other two things are
+<code>Wrapper Blocks</code> and
+<code>Custom Tags</code>. You can 
+<a href="/details/">learn
+about them  on the details page</a>. 
+</p>
+
+
+
 
 -- h2
 
 Current Status 
 
-Neopolitan is a way to 
-format notes<sup>2</sup>.
-You can make them in any 
-app you want. 
+-- html
 
+<p>Neopolitan is a way to 
+format notes.
+You can make them in any 
+app you want.</p>
+
+<p>
 It's up to individual apps to <em>do</em>
 something beyond displaying 
 a note's text. 
@@ -276,7 +370,9 @@ them to life.
 I've been using prototypes for a few years 
 to run <a href="https://www.alanwsmith.com/">my site</a>.
 I couldn't be happier with it.
+</p>
 
+<p>
 The current version of Neopoligen is
 the final prototype. Some parts of it
 are hard-wired for my site. 
@@ -287,11 +383,14 @@ follow me on <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a>,
 <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>, 
 or my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>
 for updates. 
+</p>
 
+<p>
 It won't be long. I'm really looking
 forward to sharing it with you. 
+</p>
 
--a
+<p>-a</p>
 
 
 
@@ -450,7 +549,8 @@ Footnotes
 -- html
 
 <ol class="flow">
-  <li>
+  <li id="fn1">See <a href="/details/">the details page for more info</a></li>
+  <li id="fn2">
     <a href="https://www.neopoligen.com/">Neopoligen</a> - the
     web site builder that uses Neopolitan notes. 
     I'm re-tooling it right now. The new version will
@@ -458,10 +558,9 @@ Footnotes
 <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>, 
 and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
   </li>
-  <li>
-    Here's <a href="/details/">more details about the format</a>.
-  </li>
+  <li id="fn3">This is an example footnote</li>
 </ol>
+
 
 
 
