@@ -318,6 +318,20 @@ off to another process for
 parsing</li>
 </ul>
 
+-- p
+
+Reserved attribute keys that
+the parser doesn't use but 
+are defined for standard usage:
+
+-- html
+
+<ul>
+<li>wiki - for defining terms on
+a page or block that apps should
+use for wiki links</li>
+</ul>
+
 
 
 

@@ -26,30 +26,33 @@
 <p>Notes with Superpowers</p>
 </hgroup><h2
       
->Introduction</h2><p>Neopolitan is a way to take notes.</p><p>It's easy to learn, quick to customize, and super powerful.</p><h3
+>Introduction</h2><p>Neopolitan is a way to take notes. It's easy to learn, quick to customize, and super powerful.</p><h3
       
->The Basics</h3><p>
-Notes are made of blocks. Each 
+>Note Blocks</h3><p>
+Neopolitan notes are made of blocks. Each 
 starts with two dashes and a name.
 </p>
 
 <pre class="pre-basic"><code>&#45;&#45; title</code></pre>
 
-<p>Content comes after.</p>
+Block names are up to you. These 
+all work perfectly:<pre class="pre-basic"><code>&#45;&#45; title</code></pre>
 
-<pre class="pre-basic"><code>&#45;&#45; title
+<pre class="pre-basic"><code>&#45;&#45; Book-Review</code></pre>
 
-This is a Neopolitan Note</code></pre><h3
+<pre class="pre-basic"><code>&#45;&#45; 101_Song_I_Recommend</code></pre>
+
+<p>The only rule is that names can't have spaces or a few other
+specific characters in them<sup><a href="#fn1">1</a></sup>.</p><h3
       
->You Name It</h3><p>Block names are up to you.</p><pre class="pre-basic"><code>&#45;&#45; title</code></pre>
+>Block Content</h3><p>Content goes below the starting line.</p><pre class="pre-basic"><code>&#45;&#45; title
 
-<pre class="pre-basic"><code>&#45;&#45; book-review</code></pre>
+This Is The Headline Title
 
-<pre class="pre-basic"><code>&#45;&#45; any-random-thing-you-think-of</code></pre><div
-   class="flow"
-><p>All those work. The only rule is names can't have spaces.</p></div>
-
-<h3
+More lines down here become 
+paragraphs for the body of
+the block. 
+</code></pre><h3
       
 >Extra Info</h3><p>Blocks can have extra information. Each piece gets its own line that starts with two dashes.</p><div class="accent-border-faded default-radius default-padding">
 <pre><code>&#45;&#45; book-review
@@ -66,9 +69,22 @@ Get up. Do your thing.
 <div class="small-font align-right accent-top-border-faded default-top-padding">figure 1</div>
 </div><h2
       
->What Do They Do?</h2><p>Neopolitan notes are easy to make, read, and update. They don't do much on their own, though.</p><p>Using them in apps is where things get interesting.</p><h3
+>What Do They Do?</h2><p>Neopolitan notes are easy to make. They don't do much on their own, though.</p><p>Using them in apps is where things get interesting.</p><h3
       
->Enter Neopoligen</h3><p>Neopoligen<sup>1</sup> (with a <em>gen</em>) is the first app that uses Neopolitan (with a <em>tan</em>). It's a website builder. Point it at some notes and it'll turn them into a website.</p><p>The conversion works by applying templates to blocks. For example, the default template for the <code>book-review</code> block from <code>figure 1</code> produces this:</p><div class="
+>Enter Neopoligen</h3><p>Neopoligen<sup><a href="#fn2">2</a></sup> 
+(with a <em>gen</em>) is the first
+app that uses Neopolitan (with
+a <em>tan</em>). It's a website builder.
+Point it at some notes 
+and it'll turn them into a website. </p>
+
+<p>The conversion works by applying templates
+to blocks. For example, the default template
+for the <code>book-review</code> block 
+from <code>figure 1</code> produces this:</p>
+
+
+<div class="
 xxlarge-block-margin heading-border-faded 
 default-radius
 xsmall-max-width
@@ -85,9 +101,9 @@ putting in the effort.</p>
 <p>Get up. Do your thing.</p>
 </div>
 </div>
-</div><h4
+</div><h3
       
->Switching Things Up</h4><p>The templates are yours to change. The same content from <code>figure 1</code> looks like this after a few tweaks:</p><div class="
+>Adjustable Layouts</h3><p>The templates are yours to change. The same content from <code>figure 1</code> looks like this after a few tweaks:</p><div class="
 xxlarge-block-margin
 heading-border-faded 
 default-radius
@@ -120,7 +136,7 @@ putting in the effort.</p>
 </div>
 </div><h3
       
->Collect All The Things</h3><p>Apps can use blocks to make collections. For example, you can use Neopoligen to gather all the <code>book-review</code> blocks for your notes and display them on a single page.</p><div class="dev-tmp-books-wrapper default-bottom-margin">
+>Collect All The Things</h3><p>Apps can use blocks to make collections. For example, Neopoligen can gather <code>book-review</code> blocks from all your notes and display them on a single page.</p><div class="dev-tmp-books-wrapper default-bottom-margin">
 <div class="dev-tmp-book">
   <div class="dev-tmp-title">A Closed and Common Orbit</div>
   <div class="dev-tmp-author">by: Becky Chambers</div>
@@ -145,9 +161,9 @@ putting in the effort.</p>
    class="flow"
 ><p>In this case, only the title and author are shown. You could just as easily make a design that shows the content.</p></div>
 
-<h4
+<h3
       
->All The Info</h4><p>Apps can create collections from the extra block info too. Using the <code>author</code> info from <code>book-review</code> blocks to show everything you've read from one person, for example:</p><div class="
+>Using All The Info</h3><p>Apps can create collections from the extra block info too. For example, using the <code>author</code> info from <code>book-review</code> blocks to show everything you've read from one person:</p><div class="
 xxlarge-block-margin
 heading-border-faded 
 default-radius
@@ -172,9 +188,101 @@ default-font">Stephen King Books</div>
 <div class="default-padding small-flow small-font">
 </div>
 </div>
-</div><h2
+</div><h3
       
->Current Status</h2><p>Neopolitan is a way to format notes<sup>2</sup>. You can make them in any app you want.</p><p>It's up to individual apps to <em>do</em> something beyond displaying a note's text. <a href="https://www.neopoligen">Neopoligen</a> is the first app that brings them to life. I've been using prototypes for a few years to run <a href="https://www.alanwsmith.com/">my site</a>. I couldn't be happier with it.</p><p>The current version of Neopoligen is the final prototype. Some parts of it are hard-wired for my site. I'm in the process of removing those bits to make it generally available. I don't have an ETA, but you can follow me on <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a>, <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>, or my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a> for updates.</p><p>It won't be long. I'm really looking forward to sharing it with you.</p><p>-a</p><div class="large-bottom-margin">&nbsp;</div>
+>Formatting</h3><p>Content can be formatted in multiple ways.</p>
+
+<p>Surrounding text with pairs
+of asterisks <strong>**makes it bold**</strong></p>
+
+<p>Using pairs of underscores <em>__makes it italics__</em>
+
+<p>The other options are <a href="/details">listed in the
+Shorthand Spans section of the Details page</a>.</p><h3
+      
+>Footnotes</h3><p>Wrapping text in pairs of <code>^^</code> characters
+makes it a reference to a footnote. Apps can use the
+references to automatically generate footnote links.</p>
+
+<p>For example, this <code>^^3^^</code> turns into
+this<sup><a href="#fn3">3</a></sup> which links to the
+corresponding footnote at the bottom of the page.</p>
+
+<p>The block that makes up the footnote looks like this:</p>
+
+<pre class="pre-basic"><code>&#45;&#45 footnote
+&#45;&#45 id: 3
+
+This is an example footnote</code></pre>
+
+
+<p>(Footnotes can also link back. I just
+haven't added that to the template yet.)</p><h3
+      
+>Wiki Links</h3><p>Wrapping text in pairs of <code>@@</code>
+tells apps to treat it as a
+wikipedia style link to other content.</p>
+
+<p>Adding the connecting terms is done
+by adding a <code>&#45;&#45; wiki</code>
+piece of extra info to a block.</p>
+
+<p>For example, this:</p>
+
+<p><code>@@Example@@</code></p>
+
+<p>Would link to a note with this block:</p>
+
+<pre class="pre-basic"><code>&#45;&#45; title
+&#45;&#45 wiki: Example
+
+This Is An Example Note</code></pre><h2
+      
+>More Details</h2><p>That's it for the fundamentals. And, 
+really, that's just about it for the 
+entire format. The other two things are
+<code>Wrapper Blocks</code> and
+<code>Custom Tags</code>. You can 
+<a href="/details/">learn
+about them  on the details page</a>. 
+</p><h2
+      
+>Current Status</h2><p>Neopolitan is a way to 
+format notes.
+You can make them in any 
+app you want.</p>
+
+<p>
+It's up to individual apps to <em>do</em>
+something beyond displaying 
+a note's text. 
+<a href="https://www.neopoligen">Neopoligen</a> 
+is the first app that brings
+them to life. 
+I've been using prototypes for a few years 
+to run <a href="https://www.alanwsmith.com/">my site</a>.
+I couldn't be happier with it.
+</p>
+
+<p>
+The current version of Neopoligen is
+the final prototype. Some parts of it
+are hard-wired for my site. 
+I'm in the process of removing those bits
+to make it generally available. I don't 
+have an ETA, but you can 
+follow me on <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a>,
+<a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>, 
+or my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>
+for updates. 
+</p>
+
+<p>
+It won't be long. I'm really looking
+forward to sharing it with you. 
+</p>
+
+<p>-a</p><div class="large-bottom-margin">&nbsp;</div>
 
 
 <details class="">
@@ -320,7 +428,8 @@ Introducing Neb - A Social Network For People</a>.
 </details><h2
       
 >Footnotes</h2><ol class="flow">
-  <li>
+  <li id="fn1">See <a href="/details/">the details page for more info</a></li>
+  <li id="fn2">
     <a href="https://www.neopoligen.com/">Neopoligen</a> - the
     web site builder that uses Neopolitan notes. 
     I'm re-tooling it right now. The new version will
@@ -328,9 +437,7 @@ Introducing Neb - A Social Network For People</a>.
 <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>, 
 and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
   </li>
-  <li>
-    Here's <a href="/details/">more details about the format</a>.
-  </li>
+  <li id="fn3">This is an example footnote</li>
 </ol></main>
   <footer>
 
@@ -382,18 +489,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
             "spans": [
               {
                 "category": "text",
-                "content": "Neopolitan is a way to take notes.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "It\u0027s easy to learn, quick to customize, and super powerful.",
+                "content": "Neopolitan is a way to take notes. It\u0027s easy to learn, quick to customize, and super powerful.",
                 "kind": "text"
               }
             ]
@@ -413,7 +509,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
             "spans": [
               {
                 "category": "text",
-                "content": "The Basics",
+                "content": "Note Blocks",
                 "kind": "text"
               }
             ]
@@ -425,7 +521,15 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
       },
       {
         "attrs": {},
-        "body": "\u003cp\u003e\nNotes are made of blocks. Each \nstarts with two dashes and a name.\n\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\u003c/code\u003e\u003c/pre\u003e\n\n\u003cp\u003eContent comes after.\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\n\nThis is a Neopolitan Note\u003c/code\u003e\u003c/pre\u003e",
+        "body": "\u003cp\u003e\nNeopolitan notes are made of blocks. Each \nstarts with two dashes and a name.\n\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\u003c/code\u003e\u003c/pre\u003e\n\nBlock names are up to you. These \nall work perfectly:",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\u003c/code\u003e\u003c/pre\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; Book-Review\u003c/code\u003e\u003c/pre\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; 101_Song_I_Recommend\u003c/code\u003e\u003c/pre\u003e\n\n\u003cp\u003eThe only rule is that names can\u0027t have spaces or a few other\nspecific characters in them\u003csup\u003e\u003ca href=\"#fn1\"\u003e1\u003c/a\u003e\u003c/sup\u003e.\u003c/p\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
@@ -441,7 +545,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
             "spans": [
               {
                 "category": "text",
-                "content": "You Name It",
+                "content": "Block Content",
                 "kind": "text"
               }
             ]
@@ -452,7 +556,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
             "spans": [
               {
                 "category": "text",
-                "content": "Block names are up to you.",
+                "content": "Content goes below the starting line.",
                 "kind": "text"
               }
             ]
@@ -464,31 +568,11 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
       },
       {
         "attrs": {},
-        "body": "\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\u003c/code\u003e\u003c/pre\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; book-review\u003c/code\u003e\u003c/pre\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; any-random-thing-you-think-of\u003c/code\u003e\u003c/pre\u003e",
+        "body": "\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\n\nThis Is The Headline Title\n\nMore lines down here become \nparagraphs for the body of\nthe block. \n\u003c/code\u003e\u003c/pre\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
         "kind": "html"
-      },
-      {
-        "attrs": {},
-        "category": "basic",
-        "children": [
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "All those work. The only rule is names can\u0027t have spaces.",
-                "kind": "text"
-              }
-            ]
-          }
-        ],
-        "end_block": null,
-        "flags": [],
-        "kind": "p"
       },
       {
         "attrs": {},
@@ -550,7 +634,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
             "spans": [
               {
                 "category": "text",
-                "content": "Neopolitan notes are easy to make, read, and update. They don\u0027t do much on their own, though.",
+                "content": "Neopolitan notes are easy to make. They don\u0027t do much on their own, though.",
                 "kind": "text"
               }
             ]
@@ -585,28 +669,6 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
                 "kind": "text"
               }
             ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "Neopoligen\u003csup\u003e1\u003c/sup\u003e (with a \u003cem\u003egen\u003c/em\u003e) is the first app that uses Neopolitan (with a \u003cem\u003etan\u003c/em\u003e). It\u0027s a website builder. Point it at some notes and it\u0027ll turn them into a website.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "The conversion works by applying templates to blocks. For example, the default template for the \u003ccode\u003ebook-review\u003c/code\u003e block from \u003ccode\u003efigure 1\u003c/code\u003e produces this:",
-                "kind": "text"
-              }
-            ]
           }
         ],
         "end_block": null,
@@ -615,7 +677,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
       },
       {
         "attrs": {},
-        "body": "\u003cdiv class=\"\nxxlarge-block-margin heading-border-faded \ndefault-radius\nxsmall-max-width\nauto-inline-margin\n\"\u003e\n\u003cdiv class=\"default-left-padding heading-background-faded small-top-radius small-font\"\u003eBook Review\u003c/div\u003e\n\u003cdiv class=\"default-padding\"\u003e\n\u003cdiv class=\"default-bottom-border-faded\"\u003e\u003cstrong\u003eOn Writing\u003c/strong\u003e\u003c/div\u003e\n\u003cdiv class=\"small-font default-faded\"\u003eBy Stephen King\u003c/div\u003e\n\u003cdiv class=\"default-top-padding small-flow small-font\"\u003e\n\u003cp\u003eA fantastic read. Biggest take\naway: It all comes down to \nputting in the effort.\u003c/p\u003e\n\u003cp\u003eGet up. Do your thing.\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
+        "body": "\u003cp\u003eNeopoligen\u003csup\u003e\u003ca href=\"#fn2\"\u003e2\u003c/a\u003e\u003c/sup\u003e \n(with a \u003cem\u003egen\u003c/em\u003e) is the first\napp that uses Neopolitan (with\na \u003cem\u003etan\u003c/em\u003e). It\u0027s a website builder.\nPoint it at some notes \nand it\u0027ll turn them into a website. \u003c/p\u003e\n\n\u003cp\u003eThe conversion works by applying templates\nto blocks. For example, the default template\nfor the \u003ccode\u003ebook-review\u003c/code\u003e block \nfrom \u003ccode\u003efigure 1\u003c/code\u003e produces this:\u003c/p\u003e\n\n\n\u003cdiv class=\"\nxxlarge-block-margin heading-border-faded \ndefault-radius\nxsmall-max-width\nauto-inline-margin\n\"\u003e\n\u003cdiv class=\"default-left-padding heading-background-faded small-top-radius small-font\"\u003eBook Review\u003c/div\u003e\n\u003cdiv class=\"default-padding\"\u003e\n\u003cdiv class=\"default-bottom-border-faded\"\u003e\u003cstrong\u003eOn Writing\u003c/strong\u003e\u003c/div\u003e\n\u003cdiv class=\"small-font default-faded\"\u003eBy Stephen King\u003c/div\u003e\n\u003cdiv class=\"default-top-padding small-flow small-font\"\u003e\n\u003cp\u003eA fantastic read. Biggest take\naway: It all comes down to \nputting in the effort.\u003c/p\u003e\n\u003cp\u003eGet up. Do your thing.\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
@@ -631,7 +693,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
             "spans": [
               {
                 "category": "text",
-                "content": "Switching Things Up",
+                "content": "Adjustable Layouts",
                 "kind": "text"
               }
             ]
@@ -650,7 +712,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
         ],
         "end_block": null,
         "flags": [],
-        "kind": "h4"
+        "kind": "h3"
       },
       {
         "attrs": {},
@@ -681,7 +743,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
             "spans": [
               {
                 "category": "text",
-                "content": "Apps can use blocks to make collections. For example, you can use Neopoligen to gather all the \u003ccode\u003ebook-review\u003c/code\u003e blocks for your notes and display them on a single page.",
+                "content": "Apps can use blocks to make collections. For example, Neopoligen can gather \u003ccode\u003ebook-review\u003c/code\u003e blocks from all your notes and display them on a single page.",
                 "kind": "text"
               }
             ]
@@ -729,7 +791,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
             "spans": [
               {
                 "category": "text",
-                "content": "All The Info",
+                "content": "Using All The Info",
                 "kind": "text"
               }
             ]
@@ -740,7 +802,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
             "spans": [
               {
                 "category": "text",
-                "content": "Apps can create collections from the extra block info too. Using the \u003ccode\u003eauthor\u003c/code\u003e info from \u003ccode\u003ebook-review\u003c/code\u003e blocks to show everything you\u0027ve read from one person, for example:",
+                "content": "Apps can create collections from the extra block info too. For example, using the \u003ccode\u003eauthor\u003c/code\u003e info from \u003ccode\u003ebook-review\u003c/code\u003e blocks to show everything you\u0027ve read from one person:",
                 "kind": "text"
               }
             ]
@@ -748,7 +810,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
         ],
         "end_block": null,
         "flags": [],
-        "kind": "h4"
+        "kind": "h3"
       },
       {
         "attrs": {},
@@ -768,62 +830,91 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
             "spans": [
               {
                 "category": "text",
-                "content": "Current Status",
+                "content": "Formatting",
                 "kind": "text"
               }
             ]
-          },
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cp\u003eContent can be formatted in multiple ways.\u003c/p\u003e\n\n\u003cp\u003eSurrounding text with pairs\nof asterisks \u003cstrong\u003e**makes it bold**\u003c/strong\u003e\u003c/p\u003e\n\n\u003cp\u003eUsing pairs of underscores \u003cem\u003e__makes it italics__\u003c/em\u003e\n\n\u003cp\u003eThe other options are \u003ca href=\"/details\"\u003elisted in the\nShorthand Spans section of the Details page\u003c/a\u003e.\u003c/p\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
           {
             "category": "text-block",
             "kind": "text-block",
             "spans": [
               {
                 "category": "text",
-                "content": "Neopolitan is a way to format notes\u003csup\u003e2\u003c/sup\u003e. You can make them in any app you want.",
+                "content": "Footnotes",
                 "kind": "text"
               }
             ]
-          },
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cp\u003eWrapping text in pairs of \u003ccode\u003e^^\u003c/code\u003e characters\nmakes it a reference to a footnote. Apps can use the\nreferences to automatically generate footnote links.\u003c/p\u003e\n\n\u003cp\u003eFor example, this \u003ccode\u003e^^3^^\u003c/code\u003e turns into\nthis\u003csup\u003e\u003ca href=\"#fn3\"\u003e3\u003c/a\u003e\u003c/sup\u003e which links to the\ncorresponding footnote at the bottom of the page.\u003c/p\u003e\n\n\u003cp\u003eThe block that makes up the footnote looks like this:\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45 footnote\n\u0026#45;\u0026#45 id: 3\n\nThis is an example footnote\u003c/code\u003e\u003c/pre\u003e\n\n\n\u003cp\u003e(Footnotes can also link back. I just\nhaven\u0027t added that to the template yet.)\u003c/p\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
           {
             "category": "text-block",
             "kind": "text-block",
             "spans": [
               {
                 "category": "text",
-                "content": "It\u0027s up to individual apps to \u003cem\u003edo\u003c/em\u003e something beyond displaying a note\u0027s text. \u003ca href=\"https://www.neopoligen\"\u003eNeopoligen\u003c/a\u003e is the first app that brings them to life. I\u0027ve been using prototypes for a few years to run \u003ca href=\"https://www.alanwsmith.com/\"\u003emy site\u003c/a\u003e. I couldn\u0027t be happier with it.",
+                "content": "Wiki Links",
                 "kind": "text"
               }
             ]
-          },
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h3"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cp\u003eWrapping text in pairs of \u003ccode\u003e@@\u003c/code\u003e\ntells apps to treat it as a\nwikipedia style link to other content.\u003c/p\u003e\n\n\u003cp\u003eAdding the connecting terms is done\nby adding a \u003ccode\u003e\u0026#45;\u0026#45; wiki\u003c/code\u003e\npiece of extra info to a block.\u003c/p\u003e\n\n\u003cp\u003eFor example, this:\u003c/p\u003e\n\n\u003cp\u003e\u003ccode\u003e@@Example@@\u003c/code\u003e\u003c/p\u003e\n\n\u003cp\u003eWould link to a note with this block:\u003c/p\u003e\n\n\u003cpre class=\"pre-basic\"\u003e\u003ccode\u003e\u0026#45;\u0026#45; title\n\u0026#45;\u0026#45 wiki: Example\n\nThis Is An Example Note\u003c/code\u003e\u003c/pre\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
           {
             "category": "text-block",
             "kind": "text-block",
             "spans": [
               {
                 "category": "text",
-                "content": "The current version of Neopoligen is the final prototype. Some parts of it are hard-wired for my site. I\u0027m in the process of removing those bits to make it generally available. I don\u0027t have an ETA, but you can follow me on \u003ca href=\"https://hachyderm.io/deck/@TheIdOfAlan\"\u003eMastodon\u003c/a\u003e, \u003ca href=\"https://bsky.app/profile/alanwsmith.com\"\u003eBluesky\u003c/a\u003e, or my \u003ca href=\"https://www.alanwsmith.com/feeds/posts.xml\"\u003emy RSS feed\u003c/a\u003e for updates.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "It won\u0027t be long. I\u0027m really looking forward to sharing it with you.",
-                "kind": "text"
-              }
-            ]
-          },
-          {
-            "category": "text-block",
-            "kind": "text-block",
-            "spans": [
-              {
-                "category": "text",
-                "content": "-a",
+                "content": "More Details",
                 "kind": "text"
               }
             ]
@@ -832,6 +923,42 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
         "end_block": null,
         "flags": [],
         "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cp\u003eThat\u0027s it for the fundamentals. And, \nreally, that\u0027s just about it for the \nentire format. The other two things are\n\u003ccode\u003eWrapper Blocks\u003c/code\u003e and\n\u003ccode\u003eCustom Tags\u003c/code\u003e. You can \n\u003ca href=\"/details/\"\u003elearn\nabout them  on the details page\u003c/a\u003e. \n\u003c/p\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
+      },
+      {
+        "attrs": {},
+        "category": "basic",
+        "children": [
+          {
+            "category": "text-block",
+            "kind": "text-block",
+            "spans": [
+              {
+                "category": "text",
+                "content": "Current Status",
+                "kind": "text"
+              }
+            ]
+          }
+        ],
+        "end_block": null,
+        "flags": [],
+        "kind": "h2"
+      },
+      {
+        "attrs": {},
+        "body": "\u003cp\u003eNeopolitan is a way to \nformat notes.\nYou can make them in any \napp you want.\u003c/p\u003e\n\n\u003cp\u003e\nIt\u0027s up to individual apps to \u003cem\u003edo\u003c/em\u003e\nsomething beyond displaying \na note\u0027s text. \n\u003ca href=\"https://www.neopoligen\"\u003eNeopoligen\u003c/a\u003e \nis the first app that brings\nthem to life. \nI\u0027ve been using prototypes for a few years \nto run \u003ca href=\"https://www.alanwsmith.com/\"\u003emy site\u003c/a\u003e.\nI couldn\u0027t be happier with it.\n\u003c/p\u003e\n\n\u003cp\u003e\nThe current version of Neopoligen is\nthe final prototype. Some parts of it\nare hard-wired for my site. \nI\u0027m in the process of removing those bits\nto make it generally available. I don\u0027t \nhave an ETA, but you can \nfollow me on \u003ca href=\"https://hachyderm.io/deck/@TheIdOfAlan\"\u003eMastodon\u003c/a\u003e,\n\u003ca href=\"https://bsky.app/profile/alanwsmith.com\"\u003eBluesky\u003c/a\u003e, \nor my \u003ca href=\"https://www.alanwsmith.com/feeds/posts.xml\"\u003emy RSS feed\u003c/a\u003e\nfor updates. \n\u003c/p\u003e\n\n\u003cp\u003e\nIt won\u0027t be long. I\u0027m really looking\nforward to sharing it with you. \n\u003c/p\u003e\n\n\u003cp\u003e-a\u003c/p\u003e",
+        "category": "raw",
+        "end_block": null,
+        "flags": [],
+        "kind": "html"
       },
       {
         "attrs": {},
@@ -863,7 +990,7 @@ and my <a href="https://www.alanwsmith.com/feeds/posts.xml">my RSS feed</a>.
       },
       {
         "attrs": {},
-        "body": "\u003col class=\"flow\"\u003e\n  \u003cli\u003e\n    \u003ca href=\"https://www.neopoligen.com/\"\u003eNeopoligen\u003c/a\u003e - the\n    web site builder that uses Neopolitan notes. \n    I\u0027m re-tooling it right now. The new version will\n    be available soon. I\u0027ll post updates \u003ca href=\"https://hachyderm.io/deck/@TheIdOfAlan\"\u003eMastodon\u003c/a\u003e,\n\u003ca href=\"https://bsky.app/profile/alanwsmith.com\"\u003eBluesky\u003c/a\u003e, \nand my \u003ca href=\"https://www.alanwsmith.com/feeds/posts.xml\"\u003emy RSS feed\u003c/a\u003e.\n  \u003c/li\u003e\n  \u003cli\u003e\n    Here\u0027s \u003ca href=\"/details/\"\u003emore details about the format\u003c/a\u003e.\n  \u003c/li\u003e\n\u003c/ol\u003e",
+        "body": "\u003col class=\"flow\"\u003e\n  \u003cli id=\"fn1\"\u003eSee \u003ca href=\"/details/\"\u003ethe details page for more info\u003c/a\u003e\u003c/li\u003e\n  \u003cli id=\"fn2\"\u003e\n    \u003ca href=\"https://www.neopoligen.com/\"\u003eNeopoligen\u003c/a\u003e - the\n    web site builder that uses Neopolitan notes. \n    I\u0027m re-tooling it right now. The new version will\n    be available soon. I\u0027ll post updates \u003ca href=\"https://hachyderm.io/deck/@TheIdOfAlan\"\u003eMastodon\u003c/a\u003e,\n\u003ca href=\"https://bsky.app/profile/alanwsmith.com\"\u003eBluesky\u003c/a\u003e, \nand my \u003ca href=\"https://www.alanwsmith.com/feeds/posts.xml\"\u003emy RSS feed\u003c/a\u003e.\n  \u003c/li\u003e\n  \u003cli id=\"fn3\"\u003eThis is an example footnote\u003c/li\u003e\n\u003c/ol\u003e",
         "category": "raw",
         "end_block": null,
         "flags": [],
